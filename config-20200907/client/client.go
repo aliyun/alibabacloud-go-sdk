@@ -946,6 +946,111 @@ func (s *CreateAggregateConfigRuleResponse) SetBody(v *CreateAggregateConfigRule
 	return s
 }
 
+type CreateAggregateRemediationRequest struct {
+	AggregatorId          *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ConfigRuleId          *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	InvokeType            *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
+	Params                *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	RemediationTemplateId *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
+	RemediationType       *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+	SourceType            *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s CreateAggregateRemediationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAggregateRemediationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAggregateRemediationRequest) SetAggregatorId(v string) *CreateAggregateRemediationRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *CreateAggregateRemediationRequest) SetClientToken(v string) *CreateAggregateRemediationRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateAggregateRemediationRequest) SetConfigRuleId(v string) *CreateAggregateRemediationRequest {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *CreateAggregateRemediationRequest) SetInvokeType(v string) *CreateAggregateRemediationRequest {
+	s.InvokeType = &v
+	return s
+}
+
+func (s *CreateAggregateRemediationRequest) SetParams(v string) *CreateAggregateRemediationRequest {
+	s.Params = &v
+	return s
+}
+
+func (s *CreateAggregateRemediationRequest) SetRemediationTemplateId(v string) *CreateAggregateRemediationRequest {
+	s.RemediationTemplateId = &v
+	return s
+}
+
+func (s *CreateAggregateRemediationRequest) SetRemediationType(v string) *CreateAggregateRemediationRequest {
+	s.RemediationType = &v
+	return s
+}
+
+func (s *CreateAggregateRemediationRequest) SetSourceType(v string) *CreateAggregateRemediationRequest {
+	s.SourceType = &v
+	return s
+}
+
+type CreateAggregateRemediationResponseBody struct {
+	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAggregateRemediationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAggregateRemediationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAggregateRemediationResponseBody) SetRemediationId(v string) *CreateAggregateRemediationResponseBody {
+	s.RemediationId = &v
+	return s
+}
+
+func (s *CreateAggregateRemediationResponseBody) SetRequestId(v string) *CreateAggregateRemediationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAggregateRemediationResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateAggregateRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateAggregateRemediationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAggregateRemediationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAggregateRemediationResponse) SetHeaders(v map[string]*string) *CreateAggregateRemediationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAggregateRemediationResponse) SetBody(v *CreateAggregateRemediationResponseBody) *CreateAggregateRemediationResponse {
+	s.Body = v
+	return s
+}
+
 type CreateAggregatorRequest struct {
 	AggregatorAccounts []*CreateAggregatorRequestAggregatorAccounts `json:"AggregatorAccounts,omitempty" xml:"AggregatorAccounts,omitempty" type:"Repeated"`
 	AggregatorName     *string                                      `json:"AggregatorName,omitempty" xml:"AggregatorName,omitempty"`
@@ -1573,6 +1678,105 @@ func (s *CreateConfigRuleResponse) SetBody(v *CreateConfigRuleResponseBody) *Cre
 	return s
 }
 
+type CreateRemediationRequest struct {
+	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ConfigRuleId          *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	InvokeType            *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
+	Params                *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	RemediationTemplateId *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
+	RemediationType       *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+	SourceType            *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s CreateRemediationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRemediationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRemediationRequest) SetClientToken(v string) *CreateRemediationRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateRemediationRequest) SetConfigRuleId(v string) *CreateRemediationRequest {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *CreateRemediationRequest) SetInvokeType(v string) *CreateRemediationRequest {
+	s.InvokeType = &v
+	return s
+}
+
+func (s *CreateRemediationRequest) SetParams(v string) *CreateRemediationRequest {
+	s.Params = &v
+	return s
+}
+
+func (s *CreateRemediationRequest) SetRemediationTemplateId(v string) *CreateRemediationRequest {
+	s.RemediationTemplateId = &v
+	return s
+}
+
+func (s *CreateRemediationRequest) SetRemediationType(v string) *CreateRemediationRequest {
+	s.RemediationType = &v
+	return s
+}
+
+func (s *CreateRemediationRequest) SetSourceType(v string) *CreateRemediationRequest {
+	s.SourceType = &v
+	return s
+}
+
+type CreateRemediationResponseBody struct {
+	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateRemediationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRemediationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRemediationResponseBody) SetRemediationId(v string) *CreateRemediationResponseBody {
+	s.RemediationId = &v
+	return s
+}
+
+func (s *CreateRemediationResponseBody) SetRequestId(v string) *CreateRemediationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateRemediationResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateRemediationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRemediationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRemediationResponse) SetHeaders(v map[string]*string) *CreateRemediationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRemediationResponse) SetBody(v *CreateRemediationResponseBody) *CreateRemediationResponse {
+	s.Body = v
+	return s
+}
+
 type DeactiveAggregateConfigRulesRequest struct {
 	AggregatorId  *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
@@ -2039,6 +2243,104 @@ func (s *DeleteAggregateConfigRulesResponse) SetBody(v *DeleteAggregateConfigRul
 	return s
 }
 
+type DeleteAggregateRemediationsRequest struct {
+	AggregatorId   *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	RemediationIds *string `json:"RemediationIds,omitempty" xml:"RemediationIds,omitempty"`
+}
+
+func (s DeleteAggregateRemediationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAggregateRemediationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAggregateRemediationsRequest) SetAggregatorId(v string) *DeleteAggregateRemediationsRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *DeleteAggregateRemediationsRequest) SetRemediationIds(v string) *DeleteAggregateRemediationsRequest {
+	s.RemediationIds = &v
+	return s
+}
+
+type DeleteAggregateRemediationsResponseBody struct {
+	RemediationDeleteResults []*DeleteAggregateRemediationsResponseBodyRemediationDeleteResults `json:"RemediationDeleteResults,omitempty" xml:"RemediationDeleteResults,omitempty" type:"Repeated"`
+	RequestId                *string                                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAggregateRemediationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAggregateRemediationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAggregateRemediationsResponseBody) SetRemediationDeleteResults(v []*DeleteAggregateRemediationsResponseBodyRemediationDeleteResults) *DeleteAggregateRemediationsResponseBody {
+	s.RemediationDeleteResults = v
+	return s
+}
+
+func (s *DeleteAggregateRemediationsResponseBody) SetRequestId(v string) *DeleteAggregateRemediationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAggregateRemediationsResponseBodyRemediationDeleteResults struct {
+	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
+	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteAggregateRemediationsResponseBodyRemediationDeleteResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAggregateRemediationsResponseBodyRemediationDeleteResults) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAggregateRemediationsResponseBodyRemediationDeleteResults) SetErrorMessage(v string) *DeleteAggregateRemediationsResponseBodyRemediationDeleteResults {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteAggregateRemediationsResponseBodyRemediationDeleteResults) SetRemediationId(v string) *DeleteAggregateRemediationsResponseBodyRemediationDeleteResults {
+	s.RemediationId = &v
+	return s
+}
+
+func (s *DeleteAggregateRemediationsResponseBodyRemediationDeleteResults) SetSuccess(v bool) *DeleteAggregateRemediationsResponseBodyRemediationDeleteResults {
+	s.Success = &v
+	return s
+}
+
+type DeleteAggregateRemediationsResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteAggregateRemediationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAggregateRemediationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAggregateRemediationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAggregateRemediationsResponse) SetHeaders(v map[string]*string) *DeleteAggregateRemediationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAggregateRemediationsResponse) SetBody(v *DeleteAggregateRemediationsResponseBody) *DeleteAggregateRemediationsResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAggregatorsRequest struct {
 	AggregatorIds *string `json:"AggregatorIds,omitempty" xml:"AggregatorIds,omitempty"`
 	ClientToken   *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -2271,6 +2573,98 @@ func (s *DeleteCompliancePacksResponse) SetHeaders(v map[string]*string) *Delete
 }
 
 func (s *DeleteCompliancePacksResponse) SetBody(v *DeleteCompliancePacksResponseBody) *DeleteCompliancePacksResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteRemediationsRequest struct {
+	RemediationIds *string `json:"RemediationIds,omitempty" xml:"RemediationIds,omitempty"`
+}
+
+func (s DeleteRemediationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRemediationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRemediationsRequest) SetRemediationIds(v string) *DeleteRemediationsRequest {
+	s.RemediationIds = &v
+	return s
+}
+
+type DeleteRemediationsResponseBody struct {
+	RemediationDeleteResults []*DeleteRemediationsResponseBodyRemediationDeleteResults `json:"RemediationDeleteResults,omitempty" xml:"RemediationDeleteResults,omitempty" type:"Repeated"`
+	RequestId                *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteRemediationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRemediationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRemediationsResponseBody) SetRemediationDeleteResults(v []*DeleteRemediationsResponseBodyRemediationDeleteResults) *DeleteRemediationsResponseBody {
+	s.RemediationDeleteResults = v
+	return s
+}
+
+func (s *DeleteRemediationsResponseBody) SetRequestId(v string) *DeleteRemediationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteRemediationsResponseBodyRemediationDeleteResults struct {
+	ErrorMessage  *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
+	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteRemediationsResponseBodyRemediationDeleteResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRemediationsResponseBodyRemediationDeleteResults) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRemediationsResponseBodyRemediationDeleteResults) SetErrorMessage(v string) *DeleteRemediationsResponseBodyRemediationDeleteResults {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteRemediationsResponseBodyRemediationDeleteResults) SetRemediationId(v string) *DeleteRemediationsResponseBodyRemediationDeleteResults {
+	s.RemediationId = &v
+	return s
+}
+
+func (s *DeleteRemediationsResponseBodyRemediationDeleteResults) SetSuccess(v bool) *DeleteRemediationsResponseBodyRemediationDeleteResults {
+	s.Success = &v
+	return s
+}
+
+type DeleteRemediationsResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteRemediationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteRemediationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteRemediationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteRemediationsResponse) SetHeaders(v map[string]*string) *DeleteRemediationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteRemediationsResponse) SetBody(v *DeleteRemediationsResponseBody) *DeleteRemediationsResponse {
 	s.Body = v
 	return s
 }
@@ -4087,10 +4481,175 @@ func (s *GetAggregateConfigRulesReportResponse) SetBody(v *GetAggregateConfigRul
 	return s
 }
 
+type GetAggregateDiscoveredResourceRequest struct {
+	AggregatorId    *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	Region          *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceType    *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s GetAggregateDiscoveredResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateDiscoveredResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateDiscoveredResourceRequest) SetAggregatorId(v string) *GetAggregateDiscoveredResourceRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceRequest) SetRegion(v string) *GetAggregateDiscoveredResourceRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceRequest) SetResourceId(v string) *GetAggregateDiscoveredResourceRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceRequest) SetResourceOwnerId(v int64) *GetAggregateDiscoveredResourceRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceRequest) SetResourceType(v string) *GetAggregateDiscoveredResourceRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type GetAggregateDiscoveredResourceResponseBody struct {
+	DiscoveredResourceDetail *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail `json:"DiscoveredResourceDetail,omitempty" xml:"DiscoveredResourceDetail,omitempty" type:"Struct"`
+	RequestId                *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetAggregateDiscoveredResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateDiscoveredResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBody) SetDiscoveredResourceDetail(v *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) *GetAggregateDiscoveredResourceResponseBody {
+	s.DiscoveredResourceDetail = v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBody) SetRequestId(v string) *GetAggregateDiscoveredResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail struct {
+	AccountId            *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AvailabilityZone     *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
+	Configuration        *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceCreationTime *int64  `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty"`
+	ResourceDeleted      *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
+	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName         *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceStatus       *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetAccountId(v int64) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.AccountId = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetAvailabilityZone(v string) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.AvailabilityZone = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetConfiguration(v string) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.Configuration = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetRegion(v string) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.Region = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceCreationTime(v int64) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceCreationTime = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceDeleted(v int32) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceDeleted = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceId(v string) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceName(v string) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceStatus(v string) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceStatus = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceType(v string) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetTags(v string) *GetAggregateDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.Tags = &v
+	return s
+}
+
+type GetAggregateDiscoveredResourceResponse struct {
+	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetAggregateDiscoveredResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAggregateDiscoveredResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateDiscoveredResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateDiscoveredResourceResponse) SetHeaders(v map[string]*string) *GetAggregateDiscoveredResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAggregateDiscoveredResourceResponse) SetBody(v *GetAggregateDiscoveredResourceResponseBody) *GetAggregateDiscoveredResourceResponse {
+	s.Body = v
+	return s
+}
+
 type GetAggregateResourceComplianceByConfigRuleRequest struct {
-	AggregatorId   *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
-	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
-	ConfigRuleId   *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	AggregatorId    *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	ComplianceType  *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	ConfigRuleId    *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
 func (s GetAggregateResourceComplianceByConfigRuleRequest) String() string {
@@ -4113,6 +4672,11 @@ func (s *GetAggregateResourceComplianceByConfigRuleRequest) SetComplianceType(v 
 
 func (s *GetAggregateResourceComplianceByConfigRuleRequest) SetConfigRuleId(v string) *GetAggregateResourceComplianceByConfigRuleRequest {
 	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *GetAggregateResourceComplianceByConfigRuleRequest) SetResourceOwnerId(v int64) *GetAggregateResourceComplianceByConfigRuleRequest {
+	s.ResourceOwnerId = &v
 	return s
 }
 
@@ -6439,6 +7003,158 @@ func (s *GetConfigRulesReportResponse) SetBody(v *GetConfigRulesReportResponseBo
 	return s
 }
 
+type GetDiscoveredResourceRequest struct {
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s GetDiscoveredResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiscoveredResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiscoveredResourceRequest) SetRegion(v string) *GetDiscoveredResourceRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceRequest) SetResourceId(v string) *GetDiscoveredResourceRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceRequest) SetResourceType(v string) *GetDiscoveredResourceRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type GetDiscoveredResourceResponseBody struct {
+	DiscoveredResourceDetail *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail `json:"DiscoveredResourceDetail,omitempty" xml:"DiscoveredResourceDetail,omitempty" type:"Struct"`
+	RequestId                *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDiscoveredResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiscoveredResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiscoveredResourceResponseBody) SetDiscoveredResourceDetail(v *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail) *GetDiscoveredResourceResponseBody {
+	s.DiscoveredResourceDetail = v
+	return s
+}
+
+func (s *GetDiscoveredResourceResponseBody) SetRequestId(v string) *GetDiscoveredResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDiscoveredResourceResponseBodyDiscoveredResourceDetail struct {
+	AccountId            *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AvailabilityZone     *string `json:"AvailabilityZone,omitempty" xml:"AvailabilityZone,omitempty"`
+	Configuration        *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceCreationTime *int64  `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty"`
+	ResourceDeleted      *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
+	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName         *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceStatus       *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s GetDiscoveredResourceResponseBodyDiscoveredResourceDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiscoveredResourceResponseBodyDiscoveredResourceDetail) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetAccountId(v int64) *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.AccountId = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetAvailabilityZone(v string) *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.AvailabilityZone = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetConfiguration(v string) *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.Configuration = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetRegion(v string) *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.Region = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceCreationTime(v int64) *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceCreationTime = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceDeleted(v int32) *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceDeleted = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceId(v string) *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceName(v string) *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceStatus(v string) *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceStatus = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetResourceType(v string) *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail) SetTags(v string) *GetDiscoveredResourceResponseBodyDiscoveredResourceDetail {
+	s.Tags = &v
+	return s
+}
+
+type GetDiscoveredResourceResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetDiscoveredResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDiscoveredResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDiscoveredResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDiscoveredResourceResponse) SetHeaders(v map[string]*string) *GetDiscoveredResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDiscoveredResourceResponse) SetBody(v *GetDiscoveredResourceResponseBody) *GetDiscoveredResourceResponse {
+	s.Body = v
+	return s
+}
+
 type GetDiscoveredResourceCountsGroupByRegionRequest struct {
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 }
@@ -8699,6 +9415,369 @@ func (s *ListAggregateConfigRulesResponse) SetBody(v *ListAggregateConfigRulesRe
 	return s
 }
 
+type ListAggregateDiscoveredResourcesRequest struct {
+	AggregatorId    *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Regions         *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
+	ResourceDeleted *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
+	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceTypes   *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
+}
+
+func (s ListAggregateDiscoveredResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateDiscoveredResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateDiscoveredResourcesRequest) SetAggregatorId(v string) *ListAggregateDiscoveredResourcesRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesRequest) SetMaxResults(v int32) *ListAggregateDiscoveredResourcesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesRequest) SetNextToken(v string) *ListAggregateDiscoveredResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesRequest) SetRegions(v string) *ListAggregateDiscoveredResourcesRequest {
+	s.Regions = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesRequest) SetResourceDeleted(v int32) *ListAggregateDiscoveredResourcesRequest {
+	s.ResourceDeleted = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesRequest) SetResourceId(v string) *ListAggregateDiscoveredResourcesRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesRequest) SetResourceOwnerId(v int64) *ListAggregateDiscoveredResourcesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesRequest) SetResourceTypes(v string) *ListAggregateDiscoveredResourcesRequest {
+	s.ResourceTypes = &v
+	return s
+}
+
+type ListAggregateDiscoveredResourcesResponseBody struct {
+	DiscoveredResourceProfiles *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles `json:"DiscoveredResourceProfiles,omitempty" xml:"DiscoveredResourceProfiles,omitempty" type:"Struct"`
+	RequestId                  *string                                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListAggregateDiscoveredResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateDiscoveredResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBody) SetDiscoveredResourceProfiles(v *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) *ListAggregateDiscoveredResourcesResponseBody {
+	s.DiscoveredResourceProfiles = v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBody) SetRequestId(v string) *ListAggregateDiscoveredResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles struct {
+	DiscoveredResourceProfileList []*ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList `json:"DiscoveredResourceProfileList,omitempty" xml:"DiscoveredResourceProfileList,omitempty" type:"Repeated"`
+	MaxResults                    *int32                                                                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                     *string                                                                                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PreviousToken                 *string                                                                                                `json:"PreviousToken,omitempty" xml:"PreviousToken,omitempty"`
+}
+
+func (s ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) SetDiscoveredResourceProfileList(v []*ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles {
+	s.DiscoveredResourceProfileList = v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) SetMaxResults(v int32) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) SetNextToken(v string) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) SetPreviousToken(v string) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles {
+	s.PreviousToken = &v
+	return s
+}
+
+type ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList struct {
+	AccountId            *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceCreationTime *int64  `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty"`
+	ResourceDeleted      *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
+	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName         *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceStatus       *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetAccountId(v int64) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetRegion(v string) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.Region = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceCreationTime(v int64) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceCreationTime = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceDeleted(v int32) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceDeleted = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceId(v string) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceName(v string) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceOwnerId(v int64) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceStatus(v string) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceStatus = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceType(v string) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetTags(v string) *ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.Tags = &v
+	return s
+}
+
+type ListAggregateDiscoveredResourcesResponse struct {
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListAggregateDiscoveredResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAggregateDiscoveredResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateDiscoveredResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateDiscoveredResourcesResponse) SetHeaders(v map[string]*string) *ListAggregateDiscoveredResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAggregateDiscoveredResourcesResponse) SetBody(v *ListAggregateDiscoveredResourcesResponseBody) *ListAggregateDiscoveredResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type ListAggregateRemediationsRequest struct {
+	AggregatorId  *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
+}
+
+func (s ListAggregateRemediationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateRemediationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateRemediationsRequest) SetAggregatorId(v string) *ListAggregateRemediationsRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *ListAggregateRemediationsRequest) SetConfigRuleIds(v string) *ListAggregateRemediationsRequest {
+	s.ConfigRuleIds = &v
+	return s
+}
+
+type ListAggregateRemediationsResponseBody struct {
+	Remediations []*ListAggregateRemediationsResponseBodyRemediations `json:"Remediations,omitempty" xml:"Remediations,omitempty" type:"Repeated"`
+	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListAggregateRemediationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateRemediationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateRemediationsResponseBody) SetRemediations(v []*ListAggregateRemediationsResponseBodyRemediations) *ListAggregateRemediationsResponseBody {
+	s.Remediations = v
+	return s
+}
+
+func (s *ListAggregateRemediationsResponseBody) SetRequestId(v string) *ListAggregateRemediationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListAggregateRemediationsResponseBodyRemediations struct {
+	AccountId                    *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	AggregatorId                 *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	ConfigRuleId                 *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	InvokeType                   *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
+	LastSuccessfulInvocationId   *string `json:"LastSuccessfulInvocationId,omitempty" xml:"LastSuccessfulInvocationId,omitempty"`
+	LastSuccessfulInvocationTime *int64  `json:"LastSuccessfulInvocationTime,omitempty" xml:"LastSuccessfulInvocationTime,omitempty"`
+	LastSuccessfulInvocationType *string `json:"LastSuccessfulInvocationType,omitempty" xml:"LastSuccessfulInvocationType,omitempty"`
+	RemediationDynamicParams     *string `json:"RemediationDynamicParams,omitempty" xml:"RemediationDynamicParams,omitempty"`
+	RemediationId                *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
+	RemediationSourceType        *string `json:"RemediationSourceType,omitempty" xml:"RemediationSourceType,omitempty"`
+	RemediationTemplateId        *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
+	RemediationType              *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+}
+
+func (s ListAggregateRemediationsResponseBodyRemediations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateRemediationsResponseBodyRemediations) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateRemediationsResponseBodyRemediations) SetAccountId(v int64) *ListAggregateRemediationsResponseBodyRemediations {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListAggregateRemediationsResponseBodyRemediations) SetAggregatorId(v string) *ListAggregateRemediationsResponseBodyRemediations {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *ListAggregateRemediationsResponseBodyRemediations) SetConfigRuleId(v string) *ListAggregateRemediationsResponseBodyRemediations {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *ListAggregateRemediationsResponseBodyRemediations) SetInvokeType(v string) *ListAggregateRemediationsResponseBodyRemediations {
+	s.InvokeType = &v
+	return s
+}
+
+func (s *ListAggregateRemediationsResponseBodyRemediations) SetLastSuccessfulInvocationId(v string) *ListAggregateRemediationsResponseBodyRemediations {
+	s.LastSuccessfulInvocationId = &v
+	return s
+}
+
+func (s *ListAggregateRemediationsResponseBodyRemediations) SetLastSuccessfulInvocationTime(v int64) *ListAggregateRemediationsResponseBodyRemediations {
+	s.LastSuccessfulInvocationTime = &v
+	return s
+}
+
+func (s *ListAggregateRemediationsResponseBodyRemediations) SetLastSuccessfulInvocationType(v string) *ListAggregateRemediationsResponseBodyRemediations {
+	s.LastSuccessfulInvocationType = &v
+	return s
+}
+
+func (s *ListAggregateRemediationsResponseBodyRemediations) SetRemediationDynamicParams(v string) *ListAggregateRemediationsResponseBodyRemediations {
+	s.RemediationDynamicParams = &v
+	return s
+}
+
+func (s *ListAggregateRemediationsResponseBodyRemediations) SetRemediationId(v string) *ListAggregateRemediationsResponseBodyRemediations {
+	s.RemediationId = &v
+	return s
+}
+
+func (s *ListAggregateRemediationsResponseBodyRemediations) SetRemediationSourceType(v string) *ListAggregateRemediationsResponseBodyRemediations {
+	s.RemediationSourceType = &v
+	return s
+}
+
+func (s *ListAggregateRemediationsResponseBodyRemediations) SetRemediationTemplateId(v string) *ListAggregateRemediationsResponseBodyRemediations {
+	s.RemediationTemplateId = &v
+	return s
+}
+
+func (s *ListAggregateRemediationsResponseBodyRemediations) SetRemediationType(v string) *ListAggregateRemediationsResponseBodyRemediations {
+	s.RemediationType = &v
+	return s
+}
+
+type ListAggregateRemediationsResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListAggregateRemediationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListAggregateRemediationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAggregateRemediationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListAggregateRemediationsResponse) SetHeaders(v map[string]*string) *ListAggregateRemediationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListAggregateRemediationsResponse) SetBody(v *ListAggregateRemediationsResponseBody) *ListAggregateRemediationsResponse {
+	s.Body = v
+	return s
+}
+
 type ListAggregateResourceEvaluationResultsRequest struct {
 	AggregatorId   *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
@@ -9766,6 +10845,199 @@ func (s *ListConfigRuleEvaluationResultsResponse) SetBody(v *ListConfigRuleEvalu
 	return s
 }
 
+type ListDiscoveredResourcesRequest struct {
+	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Regions         *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
+	ResourceDeleted *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
+	ResourceId      *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceTypes   *string `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty"`
+}
+
+func (s ListDiscoveredResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiscoveredResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiscoveredResourcesRequest) SetMaxResults(v int32) *ListDiscoveredResourcesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesRequest) SetNextToken(v string) *ListDiscoveredResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesRequest) SetRegions(v string) *ListDiscoveredResourcesRequest {
+	s.Regions = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesRequest) SetResourceDeleted(v int32) *ListDiscoveredResourcesRequest {
+	s.ResourceDeleted = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesRequest) SetResourceId(v string) *ListDiscoveredResourcesRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesRequest) SetResourceTypes(v string) *ListDiscoveredResourcesRequest {
+	s.ResourceTypes = &v
+	return s
+}
+
+type ListDiscoveredResourcesResponseBody struct {
+	DiscoveredResourceProfiles *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles `json:"DiscoveredResourceProfiles,omitempty" xml:"DiscoveredResourceProfiles,omitempty" type:"Struct"`
+	RequestId                  *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDiscoveredResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiscoveredResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiscoveredResourcesResponseBody) SetDiscoveredResourceProfiles(v *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) *ListDiscoveredResourcesResponseBody {
+	s.DiscoveredResourceProfiles = v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBody) SetRequestId(v string) *ListDiscoveredResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles struct {
+	DiscoveredResourceProfileList []*ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList `json:"DiscoveredResourceProfileList,omitempty" xml:"DiscoveredResourceProfileList,omitempty" type:"Repeated"`
+	MaxResults                    *int32                                                                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                     *string                                                                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PreviousToken                 *string                                                                                       `json:"PreviousToken,omitempty" xml:"PreviousToken,omitempty"`
+}
+
+func (s ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) SetDiscoveredResourceProfileList(v []*ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles {
+	s.DiscoveredResourceProfileList = v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) SetMaxResults(v int32) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) SetNextToken(v string) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles) SetPreviousToken(v string) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfiles {
+	s.PreviousToken = &v
+	return s
+}
+
+type ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList struct {
+	AccountId            *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	Region               *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ResourceCreationTime *int64  `json:"ResourceCreationTime,omitempty" xml:"ResourceCreationTime,omitempty"`
+	ResourceDeleted      *int32  `json:"ResourceDeleted,omitempty" xml:"ResourceDeleted,omitempty"`
+	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName         *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceStatus       *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
+	ResourceType         *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Tags                 *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetAccountId(v int64) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetRegion(v string) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.Region = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceCreationTime(v int64) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceCreationTime = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceDeleted(v int32) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceDeleted = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceId(v string) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceName(v string) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceStatus(v string) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceStatus = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetResourceType(v string) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList) SetTags(v string) *ListDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDiscoveredResourceProfileList {
+	s.Tags = &v
+	return s
+}
+
+type ListDiscoveredResourcesResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDiscoveredResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDiscoveredResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDiscoveredResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDiscoveredResourcesResponse) SetHeaders(v map[string]*string) *ListDiscoveredResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDiscoveredResourcesResponse) SetBody(v *ListDiscoveredResourcesResponseBody) *ListDiscoveredResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type ListManagedRulesRequest struct {
 	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -9925,6 +11197,256 @@ func (s *ListManagedRulesResponse) SetHeaders(v map[string]*string) *ListManaged
 }
 
 func (s *ListManagedRulesResponse) SetBody(v *ListManagedRulesResponseBody) *ListManagedRulesResponse {
+	s.Body = v
+	return s
+}
+
+type ListRemediationTemplatesRequest struct {
+	ManagedRuleIdentifier *string `json:"ManagedRuleIdentifier,omitempty" xml:"ManagedRuleIdentifier,omitempty"`
+	RemediationType       *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+}
+
+func (s ListRemediationTemplatesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRemediationTemplatesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRemediationTemplatesRequest) SetManagedRuleIdentifier(v string) *ListRemediationTemplatesRequest {
+	s.ManagedRuleIdentifier = &v
+	return s
+}
+
+func (s *ListRemediationTemplatesRequest) SetRemediationType(v string) *ListRemediationTemplatesRequest {
+	s.RemediationType = &v
+	return s
+}
+
+type ListRemediationTemplatesResponseBody struct {
+	RemediationTemplates []*ListRemediationTemplatesResponseBodyRemediationTemplates `json:"RemediationTemplates,omitempty" xml:"RemediationTemplates,omitempty" type:"Repeated"`
+	RequestId            *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListRemediationTemplatesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRemediationTemplatesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRemediationTemplatesResponseBody) SetRemediationTemplates(v []*ListRemediationTemplatesResponseBodyRemediationTemplates) *ListRemediationTemplatesResponseBody {
+	s.RemediationTemplates = v
+	return s
+}
+
+func (s *ListRemediationTemplatesResponseBody) SetRequestId(v string) *ListRemediationTemplatesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListRemediationTemplatesResponseBodyRemediationTemplates struct {
+	RemediationType    *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+	TemplateDefinition *string `json:"TemplateDefinition,omitempty" xml:"TemplateDefinition,omitempty"`
+	TemplateIdentifier *string `json:"TemplateIdentifier,omitempty" xml:"TemplateIdentifier,omitempty"`
+	TemplateName       *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s ListRemediationTemplatesResponseBodyRemediationTemplates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRemediationTemplatesResponseBodyRemediationTemplates) GoString() string {
+	return s.String()
+}
+
+func (s *ListRemediationTemplatesResponseBodyRemediationTemplates) SetRemediationType(v string) *ListRemediationTemplatesResponseBodyRemediationTemplates {
+	s.RemediationType = &v
+	return s
+}
+
+func (s *ListRemediationTemplatesResponseBodyRemediationTemplates) SetTemplateDefinition(v string) *ListRemediationTemplatesResponseBodyRemediationTemplates {
+	s.TemplateDefinition = &v
+	return s
+}
+
+func (s *ListRemediationTemplatesResponseBodyRemediationTemplates) SetTemplateIdentifier(v string) *ListRemediationTemplatesResponseBodyRemediationTemplates {
+	s.TemplateIdentifier = &v
+	return s
+}
+
+func (s *ListRemediationTemplatesResponseBodyRemediationTemplates) SetTemplateName(v string) *ListRemediationTemplatesResponseBodyRemediationTemplates {
+	s.TemplateName = &v
+	return s
+}
+
+type ListRemediationTemplatesResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListRemediationTemplatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRemediationTemplatesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRemediationTemplatesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRemediationTemplatesResponse) SetHeaders(v map[string]*string) *ListRemediationTemplatesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRemediationTemplatesResponse) SetBody(v *ListRemediationTemplatesResponseBody) *ListRemediationTemplatesResponse {
+	s.Body = v
+	return s
+}
+
+type ListRemediationsRequest struct {
+	ConfigRuleIds *string `json:"ConfigRuleIds,omitempty" xml:"ConfigRuleIds,omitempty"`
+}
+
+func (s ListRemediationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRemediationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRemediationsRequest) SetConfigRuleIds(v string) *ListRemediationsRequest {
+	s.ConfigRuleIds = &v
+	return s
+}
+
+type ListRemediationsResponseBody struct {
+	Remediations []*ListRemediationsResponseBodyRemediations `json:"Remediations,omitempty" xml:"Remediations,omitempty" type:"Repeated"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListRemediationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRemediationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRemediationsResponseBody) SetRemediations(v []*ListRemediationsResponseBodyRemediations) *ListRemediationsResponseBody {
+	s.Remediations = v
+	return s
+}
+
+func (s *ListRemediationsResponseBody) SetRequestId(v string) *ListRemediationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListRemediationsResponseBodyRemediations struct {
+	AccountId                    *int64  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	ConfigRuleId                 *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+	InvokeType                   *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
+	LastSuccessfulInvocationId   *string `json:"LastSuccessfulInvocationId,omitempty" xml:"LastSuccessfulInvocationId,omitempty"`
+	LastSuccessfulInvocationTime *int64  `json:"LastSuccessfulInvocationTime,omitempty" xml:"LastSuccessfulInvocationTime,omitempty"`
+	LastSuccessfulInvocationType *string `json:"LastSuccessfulInvocationType,omitempty" xml:"LastSuccessfulInvocationType,omitempty"`
+	RemediationDynamicParams     *string `json:"RemediationDynamicParams,omitempty" xml:"RemediationDynamicParams,omitempty"`
+	RemediationId                *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
+	RemediationOriginParams      *string `json:"RemediationOriginParams,omitempty" xml:"RemediationOriginParams,omitempty"`
+	RemediationSourceType        *string `json:"RemediationSourceType,omitempty" xml:"RemediationSourceType,omitempty"`
+	RemediationTemplateId        *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
+	RemediationType              *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+}
+
+func (s ListRemediationsResponseBodyRemediations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRemediationsResponseBodyRemediations) GoString() string {
+	return s.String()
+}
+
+func (s *ListRemediationsResponseBodyRemediations) SetAccountId(v int64) *ListRemediationsResponseBodyRemediations {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListRemediationsResponseBodyRemediations) SetConfigRuleId(v string) *ListRemediationsResponseBodyRemediations {
+	s.ConfigRuleId = &v
+	return s
+}
+
+func (s *ListRemediationsResponseBodyRemediations) SetInvokeType(v string) *ListRemediationsResponseBodyRemediations {
+	s.InvokeType = &v
+	return s
+}
+
+func (s *ListRemediationsResponseBodyRemediations) SetLastSuccessfulInvocationId(v string) *ListRemediationsResponseBodyRemediations {
+	s.LastSuccessfulInvocationId = &v
+	return s
+}
+
+func (s *ListRemediationsResponseBodyRemediations) SetLastSuccessfulInvocationTime(v int64) *ListRemediationsResponseBodyRemediations {
+	s.LastSuccessfulInvocationTime = &v
+	return s
+}
+
+func (s *ListRemediationsResponseBodyRemediations) SetLastSuccessfulInvocationType(v string) *ListRemediationsResponseBodyRemediations {
+	s.LastSuccessfulInvocationType = &v
+	return s
+}
+
+func (s *ListRemediationsResponseBodyRemediations) SetRemediationDynamicParams(v string) *ListRemediationsResponseBodyRemediations {
+	s.RemediationDynamicParams = &v
+	return s
+}
+
+func (s *ListRemediationsResponseBodyRemediations) SetRemediationId(v string) *ListRemediationsResponseBodyRemediations {
+	s.RemediationId = &v
+	return s
+}
+
+func (s *ListRemediationsResponseBodyRemediations) SetRemediationOriginParams(v string) *ListRemediationsResponseBodyRemediations {
+	s.RemediationOriginParams = &v
+	return s
+}
+
+func (s *ListRemediationsResponseBodyRemediations) SetRemediationSourceType(v string) *ListRemediationsResponseBodyRemediations {
+	s.RemediationSourceType = &v
+	return s
+}
+
+func (s *ListRemediationsResponseBodyRemediations) SetRemediationTemplateId(v string) *ListRemediationsResponseBodyRemediations {
+	s.RemediationTemplateId = &v
+	return s
+}
+
+func (s *ListRemediationsResponseBodyRemediations) SetRemediationType(v string) *ListRemediationsResponseBodyRemediations {
+	s.RemediationType = &v
+	return s
+}
+
+type ListRemediationsResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListRemediationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRemediationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRemediationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRemediationsResponse) SetHeaders(v map[string]*string) *ListRemediationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRemediationsResponse) SetBody(v *ListRemediationsResponseBody) *ListRemediationsResponse {
 	s.Body = v
 	return s
 }
@@ -10521,6 +12043,138 @@ func (s *StartAggregateConfigRuleEvaluationResponse) SetBody(v *StartAggregateCo
 	return s
 }
 
+type StartAggregateRemediationRequest struct {
+	AggregatorId *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+}
+
+func (s StartAggregateRemediationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAggregateRemediationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartAggregateRemediationRequest) SetAggregatorId(v string) *StartAggregateRemediationRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *StartAggregateRemediationRequest) SetConfigRuleId(v string) *StartAggregateRemediationRequest {
+	s.ConfigRuleId = &v
+	return s
+}
+
+type StartAggregateRemediationResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartAggregateRemediationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAggregateRemediationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartAggregateRemediationResponseBody) SetData(v bool) *StartAggregateRemediationResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *StartAggregateRemediationResponseBody) SetRequestId(v string) *StartAggregateRemediationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartAggregateRemediationResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StartAggregateRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartAggregateRemediationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartAggregateRemediationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartAggregateRemediationResponse) SetHeaders(v map[string]*string) *StartAggregateRemediationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartAggregateRemediationResponse) SetBody(v *StartAggregateRemediationResponseBody) *StartAggregateRemediationResponse {
+	s.Body = v
+	return s
+}
+
+type StartRemediationRequest struct {
+	ConfigRuleId *string `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
+}
+
+func (s StartRemediationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartRemediationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartRemediationRequest) SetConfigRuleId(v string) *StartRemediationRequest {
+	s.ConfigRuleId = &v
+	return s
+}
+
+type StartRemediationResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartRemediationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartRemediationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartRemediationResponseBody) SetData(v bool) *StartRemediationResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *StartRemediationResponseBody) SetRequestId(v string) *StartRemediationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartRemediationResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StartRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartRemediationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartRemediationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartRemediationResponse) SetHeaders(v map[string]*string) *StartRemediationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartRemediationResponse) SetBody(v *StartRemediationResponseBody) *StartRemediationResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateAggregateCompliancePackRequest struct {
 	AggregatorId       *string                                            `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	ClientToken        *string                                            `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -11035,6 +12689,105 @@ func (s *UpdateAggregateConfigRuleResponse) SetHeaders(v map[string]*string) *Up
 }
 
 func (s *UpdateAggregateConfigRuleResponse) SetBody(v *UpdateAggregateConfigRuleResponseBody) *UpdateAggregateConfigRuleResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateAggregateRemediationRequest struct {
+	AggregatorId          *string `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
+	InvokeType            *string `json:"InvokeType,omitempty" xml:"InvokeType,omitempty"`
+	Params                *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	RemediationId         *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
+	RemediationTemplateId *string `json:"RemediationTemplateId,omitempty" xml:"RemediationTemplateId,omitempty"`
+	RemediationType       *string `json:"RemediationType,omitempty" xml:"RemediationType,omitempty"`
+	SourceType            *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s UpdateAggregateRemediationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAggregateRemediationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAggregateRemediationRequest) SetAggregatorId(v string) *UpdateAggregateRemediationRequest {
+	s.AggregatorId = &v
+	return s
+}
+
+func (s *UpdateAggregateRemediationRequest) SetInvokeType(v string) *UpdateAggregateRemediationRequest {
+	s.InvokeType = &v
+	return s
+}
+
+func (s *UpdateAggregateRemediationRequest) SetParams(v string) *UpdateAggregateRemediationRequest {
+	s.Params = &v
+	return s
+}
+
+func (s *UpdateAggregateRemediationRequest) SetRemediationId(v string) *UpdateAggregateRemediationRequest {
+	s.RemediationId = &v
+	return s
+}
+
+func (s *UpdateAggregateRemediationRequest) SetRemediationTemplateId(v string) *UpdateAggregateRemediationRequest {
+	s.RemediationTemplateId = &v
+	return s
+}
+
+func (s *UpdateAggregateRemediationRequest) SetRemediationType(v string) *UpdateAggregateRemediationRequest {
+	s.RemediationType = &v
+	return s
+}
+
+func (s *UpdateAggregateRemediationRequest) SetSourceType(v string) *UpdateAggregateRemediationRequest {
+	s.SourceType = &v
+	return s
+}
+
+type UpdateAggregateRemediationResponseBody struct {
+	RemediationId *string `json:"RemediationId,omitempty" xml:"RemediationId,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateAggregateRemediationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAggregateRemediationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAggregateRemediationResponseBody) SetRemediationId(v string) *UpdateAggregateRemediationResponseBody {
+	s.RemediationId = &v
+	return s
+}
+
+func (s *UpdateAggregateRemediationResponseBody) SetRequestId(v string) *UpdateAggregateRemediationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateAggregateRemediationResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateAggregateRemediationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAggregateRemediationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAggregateRemediationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAggregateRemediationResponse) SetHeaders(v map[string]*string) *UpdateAggregateRemediationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAggregateRemediationResponse) SetBody(v *UpdateAggregateRemediationResponseBody) *UpdateAggregateRemediationResponse {
 	s.Body = v
 	return s
 }
@@ -12057,6 +13810,78 @@ func (client *Client) CreateAggregateConfigRule(request *CreateAggregateConfigRu
 	return _result, _err
 }
 
+func (client *Client) CreateAggregateRemediationWithOptions(request *CreateAggregateRemediationRequest, runtime *util.RuntimeOptions) (_result *CreateAggregateRemediationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		body["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
+		body["ConfigRuleId"] = request.ConfigRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InvokeType)) {
+		body["InvokeType"] = request.InvokeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		body["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemediationTemplateId)) {
+		body["RemediationTemplateId"] = request.RemediationTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemediationType)) {
+		body["RemediationType"] = request.RemediationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		body["SourceType"] = request.SourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAggregateRemediation"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAggregateRemediationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAggregateRemediation(request *CreateAggregateRemediationRequest) (_result *CreateAggregateRemediationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAggregateRemediationResponse{}
+	_body, _err := client.CreateAggregateRemediationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateAggregatorWithOptions(tmpReq *CreateAggregatorRequest, runtime *util.RuntimeOptions) (_result *CreateAggregatorResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -12307,6 +14132,74 @@ func (client *Client) CreateConfigRule(request *CreateConfigRuleRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) CreateRemediationWithOptions(request *CreateRemediationRequest, runtime *util.RuntimeOptions) (_result *CreateRemediationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
+		body["ConfigRuleId"] = request.ConfigRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InvokeType)) {
+		body["InvokeType"] = request.InvokeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		body["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemediationTemplateId)) {
+		body["RemediationTemplateId"] = request.RemediationTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemediationType)) {
+		body["RemediationType"] = request.RemediationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		body["SourceType"] = request.SourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRemediation"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRemediationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateRemediation(request *CreateRemediationRequest) (_result *CreateRemediationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRemediationResponse{}
+	_body, _err := client.CreateRemediationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeactiveAggregateConfigRulesWithOptions(request *DeactiveAggregateConfigRulesRequest, runtime *util.RuntimeOptions) (_result *DeactiveAggregateConfigRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12503,6 +14396,54 @@ func (client *Client) DeleteAggregateConfigRules(request *DeleteAggregateConfigR
 	return _result, _err
 }
 
+func (client *Client) DeleteAggregateRemediationsWithOptions(request *DeleteAggregateRemediationsRequest, runtime *util.RuntimeOptions) (_result *DeleteAggregateRemediationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		body["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemediationIds)) {
+		body["RemediationIds"] = request.RemediationIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAggregateRemediations"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAggregateRemediationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAggregateRemediations(request *DeleteAggregateRemediationsRequest) (_result *DeleteAggregateRemediationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAggregateRemediationsResponse{}
+	_body, _err := client.DeleteAggregateRemediationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteAggregatorsWithOptions(request *DeleteAggregatorsRequest, runtime *util.RuntimeOptions) (_result *DeleteAggregatorsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12596,6 +14537,50 @@ func (client *Client) DeleteCompliancePacks(request *DeleteCompliancePacksReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteCompliancePacksResponse{}
 	_body, _err := client.DeleteCompliancePacksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteRemediationsWithOptions(request *DeleteRemediationsRequest, runtime *util.RuntimeOptions) (_result *DeleteRemediationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RemediationIds)) {
+		body["RemediationIds"] = request.RemediationIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteRemediations"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteRemediationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteRemediations(request *DeleteRemediationsRequest) (_result *DeleteRemediationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteRemediationsResponse{}
+	_body, _err := client.DeleteRemediationsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13199,6 +15184,46 @@ func (client *Client) GetAggregateConfigRulesReport(request *GetAggregateConfigR
 	return _result, _err
 }
 
+func (client *Client) GetAggregateDiscoveredResourceWithOptions(request *GetAggregateDiscoveredResourceRequest, runtime *util.RuntimeOptions) (_result *GetAggregateDiscoveredResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAggregateDiscoveredResource"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAggregateDiscoveredResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAggregateDiscoveredResource(request *GetAggregateDiscoveredResourceRequest) (_result *GetAggregateDiscoveredResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAggregateDiscoveredResourceResponse{}
+	_body, _err := client.GetAggregateDiscoveredResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetAggregateResourceComplianceByConfigRuleWithOptions(request *GetAggregateResourceComplianceByConfigRuleRequest, runtime *util.RuntimeOptions) (_result *GetAggregateResourceComplianceByConfigRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13215,6 +15240,10 @@ func (client *Client) GetAggregateResourceComplianceByConfigRuleWithOptions(requ
 
 	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
 		query["ConfigRuleId"] = request.ConfigRuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -13821,6 +15850,46 @@ func (client *Client) GetConfigRulesReport(request *GetConfigRulesReportRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &GetConfigRulesReportResponse{}
 	_body, _err := client.GetConfigRulesReportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDiscoveredResourceWithOptions(request *GetDiscoveredResourceRequest, runtime *util.RuntimeOptions) (_result *GetDiscoveredResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDiscoveredResource"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDiscoveredResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDiscoveredResource(request *GetDiscoveredResourceRequest) (_result *GetDiscoveredResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDiscoveredResourceResponse{}
+	_body, _err := client.GetDiscoveredResourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14440,6 +16509,126 @@ func (client *Client) ListAggregateConfigRules(request *ListAggregateConfigRules
 	return _result, _err
 }
 
+func (client *Client) ListAggregateDiscoveredResourcesWithOptions(request *ListAggregateDiscoveredResourcesRequest, runtime *util.RuntimeOptions) (_result *ListAggregateDiscoveredResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Regions)) {
+		query["Regions"] = request.Regions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceDeleted)) {
+		query["ResourceDeleted"] = request.ResourceDeleted
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypes)) {
+		query["ResourceTypes"] = request.ResourceTypes
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAggregateDiscoveredResources"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAggregateDiscoveredResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAggregateDiscoveredResources(request *ListAggregateDiscoveredResourcesRequest) (_result *ListAggregateDiscoveredResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAggregateDiscoveredResourcesResponse{}
+	_body, _err := client.ListAggregateDiscoveredResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListAggregateRemediationsWithOptions(request *ListAggregateRemediationsRequest, runtime *util.RuntimeOptions) (_result *ListAggregateRemediationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleIds)) {
+		query["ConfigRuleIds"] = request.ConfigRuleIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAggregateRemediations"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListAggregateRemediationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListAggregateRemediations(request *ListAggregateRemediationsRequest) (_result *ListAggregateRemediationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListAggregateRemediationsResponse{}
+	_body, _err := client.ListAggregateRemediationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListAggregateResourceEvaluationResultsWithOptions(request *ListAggregateResourceEvaluationResultsRequest, runtime *util.RuntimeOptions) (_result *ListAggregateResourceEvaluationResultsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14668,6 +16857,70 @@ func (client *Client) ListConfigRuleEvaluationResults(request *ListConfigRuleEva
 	return _result, _err
 }
 
+func (client *Client) ListDiscoveredResourcesWithOptions(request *ListDiscoveredResourcesRequest, runtime *util.RuntimeOptions) (_result *ListDiscoveredResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Regions)) {
+		query["Regions"] = request.Regions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceDeleted)) {
+		query["ResourceDeleted"] = request.ResourceDeleted
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceTypes)) {
+		query["ResourceTypes"] = request.ResourceTypes
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDiscoveredResources"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDiscoveredResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDiscoveredResources(request *ListDiscoveredResourcesRequest) (_result *ListDiscoveredResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDiscoveredResourcesResponse{}
+	_body, _err := client.ListDiscoveredResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListManagedRulesWithOptions(request *ListManagedRulesRequest, runtime *util.RuntimeOptions) (_result *ListManagedRulesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14717,6 +16970,98 @@ func (client *Client) ListManagedRules(request *ListManagedRulesRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListManagedRulesResponse{}
 	_body, _err := client.ListManagedRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRemediationTemplatesWithOptions(request *ListRemediationTemplatesRequest, runtime *util.RuntimeOptions) (_result *ListRemediationTemplatesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ManagedRuleIdentifier)) {
+		query["ManagedRuleIdentifier"] = request.ManagedRuleIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemediationType)) {
+		query["RemediationType"] = request.RemediationType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRemediationTemplates"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRemediationTemplatesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRemediationTemplates(request *ListRemediationTemplatesRequest) (_result *ListRemediationTemplatesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRemediationTemplatesResponse{}
+	_body, _err := client.ListRemediationTemplatesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRemediationsWithOptions(request *ListRemediationsRequest, runtime *util.RuntimeOptions) (_result *ListRemediationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleIds)) {
+		query["ConfigRuleIds"] = request.ConfigRuleIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRemediations"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRemediationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRemediations(request *ListRemediationsRequest) (_result *ListRemediationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRemediationsResponse{}
+	_body, _err := client.ListRemediationsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14956,6 +17301,98 @@ func (client *Client) StartAggregateConfigRuleEvaluation(request *StartAggregate
 	return _result, _err
 }
 
+func (client *Client) StartAggregateRemediationWithOptions(request *StartAggregateRemediationRequest, runtime *util.RuntimeOptions) (_result *StartAggregateRemediationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
+		query["ConfigRuleId"] = request.ConfigRuleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartAggregateRemediation"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartAggregateRemediationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartAggregateRemediation(request *StartAggregateRemediationRequest) (_result *StartAggregateRemediationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartAggregateRemediationResponse{}
+	_body, _err := client.StartAggregateRemediationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartRemediationWithOptions(request *StartRemediationRequest, runtime *util.RuntimeOptions) (_result *StartRemediationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleId)) {
+		query["ConfigRuleId"] = request.ConfigRuleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartRemediation"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartRemediationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartRemediation(request *StartRemediationRequest) (_result *StartRemediationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartRemediationResponse{}
+	_body, _err := client.StartRemediationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateAggregateCompliancePackWithOptions(tmpReq *UpdateAggregateCompliancePackRequest, runtime *util.RuntimeOptions) (_result *UpdateAggregateCompliancePackResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -15149,6 +17586,74 @@ func (client *Client) UpdateAggregateConfigRule(request *UpdateAggregateConfigRu
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateAggregateConfigRuleResponse{}
 	_body, _err := client.UpdateAggregateConfigRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateAggregateRemediationWithOptions(request *UpdateAggregateRemediationRequest, runtime *util.RuntimeOptions) (_result *UpdateAggregateRemediationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		body["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InvokeType)) {
+		body["InvokeType"] = request.InvokeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		body["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemediationId)) {
+		body["RemediationId"] = request.RemediationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemediationTemplateId)) {
+		body["RemediationTemplateId"] = request.RemediationTemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemediationType)) {
+		body["RemediationType"] = request.RemediationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		body["SourceType"] = request.SourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAggregateRemediation"),
+		Version:     tea.String("2020-09-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAggregateRemediationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAggregateRemediation(request *UpdateAggregateRemediationRequest) (_result *UpdateAggregateRemediationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAggregateRemediationResponse{}
+	_body, _err := client.UpdateAggregateRemediationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
