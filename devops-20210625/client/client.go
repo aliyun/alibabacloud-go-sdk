@@ -1268,6 +1268,8 @@ type CreateWorkitemResponseBodyWorkitem struct {
 	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
 	// 状态名称
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// 状态唯一标识id
+	StatusIdentifier *string `json:"statusIdentifier,omitempty" xml:"statusIdentifier,omitempty"`
 	// 状态阶段id
 	StatusStageIdentifier *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
 	// 工作项标题
@@ -1358,6 +1360,11 @@ func (s *CreateWorkitemResponseBodyWorkitem) SetSpaceType(v string) *CreateWorki
 
 func (s *CreateWorkitemResponseBodyWorkitem) SetStatus(v string) *CreateWorkitemResponseBodyWorkitem {
 	s.Status = &v
+	return s
+}
+
+func (s *CreateWorkitemResponseBodyWorkitem) SetStatusIdentifier(v string) *CreateWorkitemResponseBodyWorkitem {
+	s.StatusIdentifier = &v
 	return s
 }
 
@@ -4982,6 +4989,8 @@ type GetWorkItemInfoResponseBodyWorkitem struct {
 	CategoryIdentifier *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
 	// 创建人
 	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// 自定义字段列表
+	CustomFields []*GetWorkItemInfoResponseBodyWorkitemCustomFields `json:"customFields,omitempty" xml:"customFields,omitempty" type:"Repeated"`
 	// 工作项内容
 	Document *string `json:"document,omitempty" xml:"document,omitempty"`
 	// 创建时间
@@ -4996,6 +5005,8 @@ type GetWorkItemInfoResponseBodyWorkitem struct {
 	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
 	// 父工作项id
 	ParentIdentifier *string `json:"parentIdentifier,omitempty" xml:"parentIdentifier,omitempty"`
+	// 参与人aliyunPk id列表
+	Participant []*string `json:"participant,omitempty" xml:"participant,omitempty" type:"Repeated"`
 	// 编号
 	SerialNumber *string `json:"serialNumber,omitempty" xml:"serialNumber,omitempty"`
 	// 所属项目id
@@ -5004,14 +5015,24 @@ type GetWorkItemInfoResponseBodyWorkitem struct {
 	SpaceName *string `json:"spaceName,omitempty" xml:"spaceName,omitempty"`
 	// 项目类型
 	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+	// 关联的迭代id
+	Sprint []*string `json:"sprint,omitempty" xml:"sprint,omitempty" type:"Repeated"`
 	// 状态名称
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// 状态id
+	StatusIdentifier *string `json:"statusIdentifier,omitempty" xml:"statusIdentifier,omitempty"`
 	// 状态阶段id
 	StatusStageIdentifier *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
 	// 工作项标题
 	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	// 标签id列表
+	Tag []*string `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
+	// 抄送人的aliyunPk id列表
+	Tracker []*string `json:"tracker,omitempty" xml:"tracker,omitempty" type:"Repeated"`
 	// 状态更新时间
 	UpdateStatusAt *int64 `json:"updateStatusAt,omitempty" xml:"updateStatusAt,omitempty"`
+	// 验证者的aliyunPk id列表
+	Verifier []*string `json:"verifier,omitempty" xml:"verifier,omitempty" type:"Repeated"`
 	// 工作项类型id
 	WorkitemTypeIdentifier *string `json:"workitemTypeIdentifier,omitempty" xml:"workitemTypeIdentifier,omitempty"`
 }
@@ -5036,6 +5057,11 @@ func (s *GetWorkItemInfoResponseBodyWorkitem) SetCategoryIdentifier(v string) *G
 
 func (s *GetWorkItemInfoResponseBodyWorkitem) SetCreator(v string) *GetWorkItemInfoResponseBodyWorkitem {
 	s.Creator = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetCustomFields(v []*GetWorkItemInfoResponseBodyWorkitemCustomFields) *GetWorkItemInfoResponseBodyWorkitem {
+	s.CustomFields = v
 	return s
 }
 
@@ -5074,6 +5100,11 @@ func (s *GetWorkItemInfoResponseBodyWorkitem) SetParentIdentifier(v string) *Get
 	return s
 }
 
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetParticipant(v []*string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.Participant = v
+	return s
+}
+
 func (s *GetWorkItemInfoResponseBodyWorkitem) SetSerialNumber(v string) *GetWorkItemInfoResponseBodyWorkitem {
 	s.SerialNumber = &v
 	return s
@@ -5094,8 +5125,18 @@ func (s *GetWorkItemInfoResponseBodyWorkitem) SetSpaceType(v string) *GetWorkIte
 	return s
 }
 
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetSprint(v []*string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.Sprint = v
+	return s
+}
+
 func (s *GetWorkItemInfoResponseBodyWorkitem) SetStatus(v string) *GetWorkItemInfoResponseBodyWorkitem {
 	s.Status = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetStatusIdentifier(v string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.StatusIdentifier = &v
 	return s
 }
 
@@ -5109,13 +5150,148 @@ func (s *GetWorkItemInfoResponseBodyWorkitem) SetSubject(v string) *GetWorkItemI
 	return s
 }
 
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetTag(v []*string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.Tag = v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetTracker(v []*string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.Tracker = v
+	return s
+}
+
 func (s *GetWorkItemInfoResponseBodyWorkitem) SetUpdateStatusAt(v int64) *GetWorkItemInfoResponseBodyWorkitem {
 	s.UpdateStatusAt = &v
 	return s
 }
 
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetVerifier(v []*string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.Verifier = v
+	return s
+}
+
 func (s *GetWorkItemInfoResponseBodyWorkitem) SetWorkitemTypeIdentifier(v string) *GetWorkItemInfoResponseBodyWorkitem {
 	s.WorkitemTypeIdentifier = &v
+	return s
+}
+
+type GetWorkItemInfoResponseBodyWorkitemCustomFields struct {
+	// 字段的className，便于数据查询
+	FieldClassName *string `json:"fieldClassName,omitempty" xml:"fieldClassName,omitempty"`
+	// 字段格式，便于查询数据
+	FieldFormat *string `json:"fieldFormat,omitempty" xml:"fieldFormat,omitempty"`
+	// 字段的唯一标识
+	FieldIdentifier *string `json:"fieldIdentifier,omitempty" xml:"fieldIdentifier,omitempty"`
+	// 展示级别，数字范围1~9，数字越大，颜色越浅。
+	Level *int64 `json:"level,omitempty" xml:"level,omitempty"`
+	// 值对象列表
+	ObjectValue *string `json:"objectValue,omitempty" xml:"objectValue,omitempty"`
+	// 自定义字段值的position
+	Position *int64 `json:"position,omitempty" xml:"position,omitempty"`
+	// 字段值，写入时使用
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	// 值对象列表，查询时使用
+	ValueList []*GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList `json:"valueList,omitempty" xml:"valueList,omitempty" type:"Repeated"`
+	// 工作项的唯一标识
+	WorkitemIdentifier *string `json:"workitemIdentifier,omitempty" xml:"workitemIdentifier,omitempty"`
+}
+
+func (s GetWorkItemInfoResponseBodyWorkitemCustomFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkItemInfoResponseBodyWorkitemCustomFields) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitemCustomFields) SetFieldClassName(v string) *GetWorkItemInfoResponseBodyWorkitemCustomFields {
+	s.FieldClassName = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitemCustomFields) SetFieldFormat(v string) *GetWorkItemInfoResponseBodyWorkitemCustomFields {
+	s.FieldFormat = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitemCustomFields) SetFieldIdentifier(v string) *GetWorkItemInfoResponseBodyWorkitemCustomFields {
+	s.FieldIdentifier = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitemCustomFields) SetLevel(v int64) *GetWorkItemInfoResponseBodyWorkitemCustomFields {
+	s.Level = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitemCustomFields) SetObjectValue(v string) *GetWorkItemInfoResponseBodyWorkitemCustomFields {
+	s.ObjectValue = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitemCustomFields) SetPosition(v int64) *GetWorkItemInfoResponseBodyWorkitemCustomFields {
+	s.Position = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitemCustomFields) SetValue(v string) *GetWorkItemInfoResponseBodyWorkitemCustomFields {
+	s.Value = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitemCustomFields) SetValueList(v []*GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList) *GetWorkItemInfoResponseBodyWorkitemCustomFields {
+	s.ValueList = v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitemCustomFields) SetWorkitemIdentifier(v string) *GetWorkItemInfoResponseBodyWorkitemCustomFields {
+	s.WorkitemIdentifier = &v
+	return s
+}
+
+type GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList struct {
+	// 根据语言环境获取当前展示的值
+	DisplayValue *string `json:"displayValue,omitempty" xml:"displayValue,omitempty"`
+	// 字段值为对象类型时，值所对应的对象的唯一标识 例如：option表中的id
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 展示级别，数字范围1~9，数字越大，颜色越浅。
+	Level *int64 `json:"level,omitempty" xml:"level,omitempty"`
+	// 字段值
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+	// 字段英文值，目前只有列表类有英文值
+	ValueEn *string `json:"valueEn,omitempty" xml:"valueEn,omitempty"`
+}
+
+func (s GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList) SetDisplayValue(v string) *GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList {
+	s.DisplayValue = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList) SetIdentifier(v string) *GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList {
+	s.Identifier = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList) SetLevel(v int64) *GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList {
+	s.Level = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList) SetValue(v string) *GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList {
+	s.Value = &v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList) SetValueEn(v string) *GetWorkItemInfoResponseBodyWorkitemCustomFieldsValueList {
+	s.ValueEn = &v
 	return s
 }
 
@@ -9059,6 +9235,293 @@ func (s *ListWorkItemWorkFlowStatusResponse) SetBody(v *ListWorkItemWorkFlowStat
 	return s
 }
 
+type ListWorkitemsRequest struct {
+	// 工作项类型，需求为Req，缺陷为Bug，任务为Task，风险为Risk
+	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// 每页最大返回数量，0-200，默认值20
+	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// 分页中的起始序列
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// 项目id
+	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	// 项目类型
+	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+}
+
+func (s ListWorkitemsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkitemsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkitemsRequest) SetCategory(v string) *ListWorkitemsRequest {
+	s.Category = &v
+	return s
+}
+
+func (s *ListWorkitemsRequest) SetMaxResults(v string) *ListWorkitemsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListWorkitemsRequest) SetNextToken(v string) *ListWorkitemsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListWorkitemsRequest) SetSpaceIdentifier(v string) *ListWorkitemsRequest {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *ListWorkitemsRequest) SetSpaceType(v string) *ListWorkitemsRequest {
+	s.SpaceType = &v
+	return s
+}
+
+type ListWorkitemsResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// 每页数量
+	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
+	// 分页Token，没有下一页则为空
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true或者false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 总数
+	TotalCount *int64 `json:"totalCount,omitempty" xml:"totalCount,omitempty"`
+	// 工作项信息
+	Workitems []*ListWorkitemsResponseBodyWorkitems `json:"workitems,omitempty" xml:"workitems,omitempty" type:"Repeated"`
+}
+
+func (s ListWorkitemsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkitemsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkitemsResponseBody) SetErrorCode(v string) *ListWorkitemsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBody) SetErrorMsg(v string) *ListWorkitemsResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBody) SetMaxResults(v int64) *ListWorkitemsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBody) SetNextToken(v string) *ListWorkitemsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBody) SetRequestId(v string) *ListWorkitemsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBody) SetSuccess(v bool) *ListWorkitemsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBody) SetTotalCount(v int64) *ListWorkitemsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBody) SetWorkitems(v []*ListWorkitemsResponseBodyWorkitems) *ListWorkitemsResponseBody {
+	s.Workitems = v
+	return s
+}
+
+type ListWorkitemsResponseBodyWorkitems struct {
+	// 负责人aliyunPk
+	AssignedTo *string `json:"assignedTo,omitempty" xml:"assignedTo,omitempty"`
+	// 工作项的类型id
+	CategoryIdentifier *string `json:"categoryIdentifier,omitempty" xml:"categoryIdentifier,omitempty"`
+	// 创建人aliyunPK
+	Creator *string `json:"creator,omitempty" xml:"creator,omitempty"`
+	// 工作项内容
+	Document *string `json:"document,omitempty" xml:"document,omitempty"`
+	// 创建时间
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// 修改时间
+	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// 工作项唯一标识
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 逻辑状态
+	LogicalStatus *string `json:"logicalStatus,omitempty" xml:"logicalStatus,omitempty"`
+	// 修改人aliyunPK
+	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
+	// 父工作项id
+	ParentIdentifier *string `json:"parentIdentifier,omitempty" xml:"parentIdentifier,omitempty"`
+	// 编号
+	SerialNumber *string `json:"serialNumber,omitempty" xml:"serialNumber,omitempty"`
+	// 所属项目id
+	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
+	// 所属项目名称
+	SpaceName *string `json:"spaceName,omitempty" xml:"spaceName,omitempty"`
+	// 项目类型
+	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
+	// 状态名称
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// 状态唯一标识
+	StatusIdentifier *string `json:"statusIdentifier,omitempty" xml:"statusIdentifier,omitempty"`
+	// 状态阶段id
+	StatusStageIdentifier *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
+	// 工作项标题
+	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
+	// 状态更新时间
+	UpdateStatusAt *int64 `json:"updateStatusAt,omitempty" xml:"updateStatusAt,omitempty"`
+	// 工作项类型id
+	WorkitemTypeIdentifier *string `json:"workitemTypeIdentifier,omitempty" xml:"workitemTypeIdentifier,omitempty"`
+}
+
+func (s ListWorkitemsResponseBodyWorkitems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkitemsResponseBodyWorkitems) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkitemsResponseBodyWorkitems) SetAssignedTo(v string) *ListWorkitemsResponseBodyWorkitems {
+	s.AssignedTo = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBodyWorkitems) SetCategoryIdentifier(v string) *ListWorkitemsResponseBodyWorkitems {
+	s.CategoryIdentifier = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBodyWorkitems) SetCreator(v string) *ListWorkitemsResponseBodyWorkitems {
+	s.Creator = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBodyWorkitems) SetDocument(v string) *ListWorkitemsResponseBodyWorkitems {
+	s.Document = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBodyWorkitems) SetGmtCreate(v int64) *ListWorkitemsResponseBodyWorkitems {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBodyWorkitems) SetGmtModified(v int64) *ListWorkitemsResponseBodyWorkitems {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBodyWorkitems) SetIdentifier(v string) *ListWorkitemsResponseBodyWorkitems {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBodyWorkitems) SetLogicalStatus(v string) *ListWorkitemsResponseBodyWorkitems {
+	s.LogicalStatus = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBodyWorkitems) SetModifier(v string) *ListWorkitemsResponseBodyWorkitems {
+	s.Modifier = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBodyWorkitems) SetParentIdentifier(v string) *ListWorkitemsResponseBodyWorkitems {
+	s.ParentIdentifier = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBodyWorkitems) SetSerialNumber(v string) *ListWorkitemsResponseBodyWorkitems {
+	s.SerialNumber = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBodyWorkitems) SetSpaceIdentifier(v string) *ListWorkitemsResponseBodyWorkitems {
+	s.SpaceIdentifier = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBodyWorkitems) SetSpaceName(v string) *ListWorkitemsResponseBodyWorkitems {
+	s.SpaceName = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBodyWorkitems) SetSpaceType(v string) *ListWorkitemsResponseBodyWorkitems {
+	s.SpaceType = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBodyWorkitems) SetStatus(v string) *ListWorkitemsResponseBodyWorkitems {
+	s.Status = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBodyWorkitems) SetStatusIdentifier(v string) *ListWorkitemsResponseBodyWorkitems {
+	s.StatusIdentifier = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBodyWorkitems) SetStatusStageIdentifier(v string) *ListWorkitemsResponseBodyWorkitems {
+	s.StatusStageIdentifier = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBodyWorkitems) SetSubject(v string) *ListWorkitemsResponseBodyWorkitems {
+	s.Subject = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBodyWorkitems) SetUpdateStatusAt(v int64) *ListWorkitemsResponseBodyWorkitems {
+	s.UpdateStatusAt = &v
+	return s
+}
+
+func (s *ListWorkitemsResponseBodyWorkitems) SetWorkitemTypeIdentifier(v string) *ListWorkitemsResponseBodyWorkitems {
+	s.WorkitemTypeIdentifier = &v
+	return s
+}
+
+type ListWorkitemsResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListWorkitemsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListWorkitemsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkitemsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkitemsResponse) SetHeaders(v map[string]*string) *ListWorkitemsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWorkitemsResponse) SetBody(v *ListWorkitemsResponseBody) *ListWorkitemsResponse {
+	s.Body = v
+	return s
+}
+
 type ListWorkspacesRequest struct {
 	// 本次读取的最大数据记录数量，默认10，最大100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
@@ -11106,7 +11569,9 @@ func (s *UpdateVariableGroupResponse) SetBody(v *UpdateVariableGroupResponseBody
 }
 
 type UpdateWorkItemRequest struct {
-	// 工作项id
+	// 更新字段的类型，标题：subject/自定义字段：customField/状态：status/描述：document/基本字段：basic(包括负责人、迭代、参与人等)
+	FieldType *string `json:"fieldType,omitempty" xml:"fieldType,omitempty"`
+	// 工作项唯一标识id
 	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
 	// 更新的字段名
 	PropertyKey *string `json:"propertyKey,omitempty" xml:"propertyKey,omitempty"`
@@ -11120,6 +11585,11 @@ func (s UpdateWorkItemRequest) String() string {
 
 func (s UpdateWorkItemRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateWorkItemRequest) SetFieldType(v string) *UpdateWorkItemRequest {
+	s.FieldType = &v
+	return s
 }
 
 func (s *UpdateWorkItemRequest) SetIdentifier(v string) *UpdateWorkItemRequest {
@@ -11214,6 +11684,8 @@ type UpdateWorkItemResponseBodyWorkitem struct {
 	SpaceType *string `json:"spaceType,omitempty" xml:"spaceType,omitempty"`
 	// 状态名称
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// 状态id
+	StatusIdentifier *string `json:"statusIdentifier,omitempty" xml:"statusIdentifier,omitempty"`
 	// 状态阶段id
 	StatusStageIdentifier *string `json:"statusStageIdentifier,omitempty" xml:"statusStageIdentifier,omitempty"`
 	// 工作项标题
@@ -11304,6 +11776,11 @@ func (s *UpdateWorkItemResponseBodyWorkitem) SetSpaceType(v string) *UpdateWorkI
 
 func (s *UpdateWorkItemResponseBodyWorkitem) SetStatus(v string) *UpdateWorkItemResponseBodyWorkitem {
 	s.Status = &v
+	return s
+}
+
+func (s *UpdateWorkItemResponseBodyWorkitem) SetStatusIdentifier(v string) *UpdateWorkItemResponseBodyWorkitem {
+	s.StatusIdentifier = &v
 	return s
 }
 
@@ -14028,6 +14505,69 @@ func (client *Client) ListWorkItemWorkFlowStatusWithOptions(organizationId *stri
 	return _result, _err
 }
 
+func (client *Client) ListWorkitems(organizationId *string, request *ListWorkitemsRequest) (_result *ListWorkitemsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWorkitemsResponse{}
+	_body, _err := client.ListWorkitemsWithOptions(organizationId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListWorkitemsWithOptions(organizationId *string, request *ListWorkitemsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWorkitemsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Category)) {
+		query["category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpaceIdentifier)) {
+		query["spaceIdentifier"] = request.SpaceIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpaceType)) {
+		query["spaceType"] = request.SpaceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWorkitems"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/listWorkitems"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWorkitemsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ListWorkspaces(request *ListWorkspacesRequest) (_result *ListWorkspacesResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -15128,6 +15668,10 @@ func (client *Client) UpdateWorkItemWithOptions(organizationId *string, request 
 	}
 	organizationId = openapiutil.GetEncodeParam(organizationId)
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FieldType)) {
+		body["fieldType"] = request.FieldType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Identifier)) {
 		body["identifier"] = request.Identifier
 	}
