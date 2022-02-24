@@ -22001,6 +22001,159 @@ func (s *UpdateGatewayRouteTimeoutResponse) SetBody(v *UpdateGatewayRouteTimeout
 	return s
 }
 
+type UpdateGatewayServiceTrafficPolicyRequest struct {
+	AcceptLanguage       *string        `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GatewayId            *int64         `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayTrafficPolicy *TrafficPolicy `json:"GatewayTrafficPolicy,omitempty" xml:"GatewayTrafficPolicy,omitempty"`
+	GatewayUniqueId      *string        `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	ServiceId            *int64         `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s UpdateGatewayServiceTrafficPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayServiceTrafficPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayServiceTrafficPolicyRequest) SetAcceptLanguage(v string) *UpdateGatewayServiceTrafficPolicyRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceTrafficPolicyRequest) SetGatewayId(v int64) *UpdateGatewayServiceTrafficPolicyRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceTrafficPolicyRequest) SetGatewayTrafficPolicy(v *TrafficPolicy) *UpdateGatewayServiceTrafficPolicyRequest {
+	s.GatewayTrafficPolicy = v
+	return s
+}
+
+func (s *UpdateGatewayServiceTrafficPolicyRequest) SetGatewayUniqueId(v string) *UpdateGatewayServiceTrafficPolicyRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceTrafficPolicyRequest) SetServiceId(v int64) *UpdateGatewayServiceTrafficPolicyRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type UpdateGatewayServiceTrafficPolicyShrinkRequest struct {
+	AcceptLanguage             *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	GatewayId                  *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayTrafficPolicyShrink *string `json:"GatewayTrafficPolicy,omitempty" xml:"GatewayTrafficPolicy,omitempty"`
+	GatewayUniqueId            *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	ServiceId                  *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s UpdateGatewayServiceTrafficPolicyShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayServiceTrafficPolicyShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayServiceTrafficPolicyShrinkRequest) SetAcceptLanguage(v string) *UpdateGatewayServiceTrafficPolicyShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceTrafficPolicyShrinkRequest) SetGatewayId(v int64) *UpdateGatewayServiceTrafficPolicyShrinkRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceTrafficPolicyShrinkRequest) SetGatewayTrafficPolicyShrink(v string) *UpdateGatewayServiceTrafficPolicyShrinkRequest {
+	s.GatewayTrafficPolicyShrink = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceTrafficPolicyShrinkRequest) SetGatewayUniqueId(v string) *UpdateGatewayServiceTrafficPolicyShrinkRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceTrafficPolicyShrinkRequest) SetServiceId(v int64) *UpdateGatewayServiceTrafficPolicyShrinkRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type UpdateGatewayServiceTrafficPolicyResponseBody struct {
+	Code           *int32          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *GatewayService `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string         `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateGatewayServiceTrafficPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayServiceTrafficPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayServiceTrafficPolicyResponseBody) SetCode(v int32) *UpdateGatewayServiceTrafficPolicyResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceTrafficPolicyResponseBody) SetData(v *GatewayService) *UpdateGatewayServiceTrafficPolicyResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateGatewayServiceTrafficPolicyResponseBody) SetHttpStatusCode(v int32) *UpdateGatewayServiceTrafficPolicyResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceTrafficPolicyResponseBody) SetMessage(v string) *UpdateGatewayServiceTrafficPolicyResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceTrafficPolicyResponseBody) SetRequestId(v string) *UpdateGatewayServiceTrafficPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGatewayServiceTrafficPolicyResponseBody) SetSuccess(v bool) *UpdateGatewayServiceTrafficPolicyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateGatewayServiceTrafficPolicyResponse struct {
+	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateGatewayServiceTrafficPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGatewayServiceTrafficPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayServiceTrafficPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayServiceTrafficPolicyResponse) SetHeaders(v map[string]*string) *UpdateGatewayServiceTrafficPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayServiceTrafficPolicyResponse) SetBody(v *UpdateGatewayServiceTrafficPolicyResponseBody) *UpdateGatewayServiceTrafficPolicyResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateGatewayServiceVersionRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
@@ -30098,6 +30251,72 @@ func (client *Client) UpdateGatewayRouteTimeout(request *UpdateGatewayRouteTimeo
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateGatewayRouteTimeoutResponse{}
 	_body, _err := client.UpdateGatewayRouteTimeoutWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayServiceTrafficPolicyWithOptions(tmpReq *UpdateGatewayServiceTrafficPolicyRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayServiceTrafficPolicyResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateGatewayServiceTrafficPolicyShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.GatewayTrafficPolicy))) {
+		request.GatewayTrafficPolicyShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.GatewayTrafficPolicy), tea.String("GatewayTrafficPolicy"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayTrafficPolicyShrink)) {
+		query["GatewayTrafficPolicy"] = request.GatewayTrafficPolicyShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGatewayServiceTrafficPolicy"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGatewayServiceTrafficPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayServiceTrafficPolicy(request *UpdateGatewayServiceTrafficPolicyRequest) (_result *UpdateGatewayServiceTrafficPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGatewayServiceTrafficPolicyResponse{}
+	_body, _err := client.UpdateGatewayServiceTrafficPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
