@@ -672,6 +672,111 @@ func (s *DescribePackageStateResponse) SetBody(v *DescribePackageStateResponseBo
 	return s
 }
 
+type ListUserCertificateOrderRequest struct {
+	CurrentPage *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Keyword     *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	OrderType   *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
+	ShowSize    *int64  `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListUserCertificateOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserCertificateOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserCertificateOrderRequest) SetCurrentPage(v int64) *ListUserCertificateOrderRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderRequest) SetKeyword(v string) *ListUserCertificateOrderRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderRequest) SetOrderType(v string) *ListUserCertificateOrderRequest {
+	s.OrderType = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderRequest) SetShowSize(v int64) *ListUserCertificateOrderRequest {
+	s.ShowSize = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderRequest) SetStatus(v string) *ListUserCertificateOrderRequest {
+	s.Status = &v
+	return s
+}
+
+type ListUserCertificateOrderResponseBody struct {
+	CertificateOrderList *string `json:"CertificateOrderList,omitempty" xml:"CertificateOrderList,omitempty"`
+	CurrentPage          *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ShowSize             *int64  `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	TotalCount           *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListUserCertificateOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserCertificateOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserCertificateOrderResponseBody) SetCertificateOrderList(v string) *ListUserCertificateOrderResponseBody {
+	s.CertificateOrderList = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBody) SetCurrentPage(v int64) *ListUserCertificateOrderResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBody) SetRequestId(v string) *ListUserCertificateOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBody) SetShowSize(v int64) *ListUserCertificateOrderResponseBody {
+	s.ShowSize = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBody) SetTotalCount(v int64) *ListUserCertificateOrderResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListUserCertificateOrderResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListUserCertificateOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListUserCertificateOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserCertificateOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserCertificateOrderResponse) SetHeaders(v map[string]*string) *ListUserCertificateOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponse) SetBody(v *ListUserCertificateOrderResponseBody) *ListUserCertificateOrderResponse {
+	s.Body = v
+	return s
+}
+
 type RenewCertificateOrderForPackageRequestRequest struct {
 	Csr     *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
 	OrderId *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
@@ -845,7 +950,10 @@ func (client *Client) CancelCertificateForPackageRequestWithOptions(request *Can
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -886,7 +994,10 @@ func (client *Client) CancelOrderRequestWithOptions(request *CancelOrderRequestR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -927,14 +1038,38 @@ func (client *Client) CreateCertificateForPackageRequestWithOptions(request *Cre
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CompanyName"] = request.CompanyName
-	query["Csr"] = request.Csr
-	query["Domain"] = request.Domain
-	query["Email"] = request.Email
-	query["Phone"] = request.Phone
-	query["ProductCode"] = request.ProductCode
-	query["Username"] = request.Username
-	query["ValidateType"] = request.ValidateType
+	if !tea.BoolValue(util.IsUnset(request.CompanyName)) {
+		query["CompanyName"] = request.CompanyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Csr)) {
+		query["Csr"] = request.Csr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		query["Email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Phone)) {
+		query["Phone"] = request.Phone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		query["Username"] = request.Username
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValidateType)) {
+		query["ValidateType"] = request.ValidateType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -975,12 +1110,30 @@ func (client *Client) CreateCertificateRequestWithOptions(request *CreateCertifi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Domain"] = request.Domain
-	query["Email"] = request.Email
-	query["Phone"] = request.Phone
-	query["ProductCode"] = request.ProductCode
-	query["Username"] = request.Username
-	query["ValidateType"] = request.ValidateType
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		query["Email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Phone)) {
+		query["Phone"] = request.Phone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		query["Username"] = request.Username
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValidateType)) {
+		query["ValidateType"] = request.ValidateType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1021,12 +1174,30 @@ func (client *Client) CreateCertificateWithCsrRequestWithOptions(request *Create
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Csr"] = request.Csr
-	query["Email"] = request.Email
-	query["Phone"] = request.Phone
-	query["ProductCode"] = request.ProductCode
-	query["Username"] = request.Username
-	query["ValidateType"] = request.ValidateType
+	if !tea.BoolValue(util.IsUnset(request.Csr)) {
+		query["Csr"] = request.Csr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		query["Email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Phone)) {
+		query["Phone"] = request.Phone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		query["Username"] = request.Username
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValidateType)) {
+		query["ValidateType"] = request.ValidateType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1067,7 +1238,10 @@ func (client *Client) DeleteCertificateRequestWithOptions(request *DeleteCertifi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1108,7 +1282,10 @@ func (client *Client) DescribeCertificateStateWithOptions(request *DescribeCerti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderId"] = request.OrderId
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1149,7 +1326,10 @@ func (client *Client) DescribePackageStateWithOptions(request *DescribePackageSt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProductCode"] = request.ProductCode
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1184,14 +1364,80 @@ func (client *Client) DescribePackageState(request *DescribePackageStateRequest)
 	return _result, _err
 }
 
+func (client *Client) ListUserCertificateOrderWithOptions(request *ListUserCertificateOrderRequest, runtime *util.RuntimeOptions) (_result *ListUserCertificateOrderResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowSize)) {
+		query["ShowSize"] = request.ShowSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUserCertificateOrder"),
+		Version:     tea.String("2020-04-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUserCertificateOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListUserCertificateOrder(request *ListUserCertificateOrderRequest) (_result *ListUserCertificateOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUserCertificateOrderResponse{}
+	_body, _err := client.ListUserCertificateOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RenewCertificateOrderForPackageRequestWithOptions(request *RenewCertificateOrderForPackageRequestRequest, runtime *util.RuntimeOptions) (_result *RenewCertificateOrderForPackageRequestResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Csr"] = request.Csr
-	query["OrderId"] = request.OrderId
+	if !tea.BoolValue(util.IsUnset(request.Csr)) {
+		query["Csr"] = request.Csr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
