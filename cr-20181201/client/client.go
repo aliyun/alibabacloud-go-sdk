@@ -820,13 +820,15 @@ func (s *CreateNamespaceResponse) SetBody(v *CreateNamespaceResponseBody) *Creat
 }
 
 type CreateRepoBuildRuleRequest struct {
-	DockerfileLocation *string `json:"DockerfileLocation,omitempty" xml:"DockerfileLocation,omitempty"`
-	DockerfileName     *string `json:"DockerfileName,omitempty" xml:"DockerfileName,omitempty"`
-	ImageTag           *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PushName           *string `json:"PushName,omitempty" xml:"PushName,omitempty"`
-	PushType           *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	RepoId             *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	BuildArgs          []*string `json:"BuildArgs,omitempty" xml:"BuildArgs,omitempty" type:"Repeated"`
+	DockerfileLocation *string   `json:"DockerfileLocation,omitempty" xml:"DockerfileLocation,omitempty"`
+	DockerfileName     *string   `json:"DockerfileName,omitempty" xml:"DockerfileName,omitempty"`
+	ImageTag           *string   `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
+	InstanceId         *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Platforms          []*string `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
+	PushName           *string   `json:"PushName,omitempty" xml:"PushName,omitempty"`
+	PushType           *string   `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	RepoId             *string   `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
 }
 
 func (s CreateRepoBuildRuleRequest) String() string {
@@ -835,6 +837,11 @@ func (s CreateRepoBuildRuleRequest) String() string {
 
 func (s CreateRepoBuildRuleRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateRepoBuildRuleRequest) SetBuildArgs(v []*string) *CreateRepoBuildRuleRequest {
+	s.BuildArgs = v
+	return s
 }
 
 func (s *CreateRepoBuildRuleRequest) SetDockerfileLocation(v string) *CreateRepoBuildRuleRequest {
@@ -854,6 +861,11 @@ func (s *CreateRepoBuildRuleRequest) SetImageTag(v string) *CreateRepoBuildRuleR
 
 func (s *CreateRepoBuildRuleRequest) SetInstanceId(v string) *CreateRepoBuildRuleRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateRepoBuildRuleRequest) SetPlatforms(v []*string) *CreateRepoBuildRuleRequest {
+	s.Platforms = v
 	return s
 }
 
@@ -11362,6 +11374,10 @@ func (client *Client) CreateRepoBuildRuleWithOptions(request *CreateRepoBuildRul
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BuildArgs)) {
+		query["BuildArgs"] = request.BuildArgs
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DockerfileLocation)) {
 		query["DockerfileLocation"] = request.DockerfileLocation
 	}
@@ -11376,6 +11392,10 @@ func (client *Client) CreateRepoBuildRuleWithOptions(request *CreateRepoBuildRul
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Platforms)) {
+		query["Platforms"] = request.Platforms
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PushName)) {
