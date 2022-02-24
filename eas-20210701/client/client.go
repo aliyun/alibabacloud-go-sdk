@@ -893,53 +893,6 @@ func (s *CreateResourceLogResponse) SetBody(v *CreateResourceLogResponseBody) *C
 	return s
 }
 
-type CreateRoleResponseBody struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateRoleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRoleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRoleResponseBody) SetMessage(v string) *CreateRoleResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateRoleResponseBody) SetRequestId(v string) *CreateRoleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateRoleResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateRoleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRoleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRoleResponse) SetHeaders(v map[string]*string) *CreateRoleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateRoleResponse) SetBody(v *CreateRoleResponseBody) *CreateRoleResponse {
-	s.Body = v
-	return s
-}
-
 type CreateServiceRequest struct {
 	Body *string `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -2043,59 +1996,6 @@ func (s *DescribeResourceLogResponse) SetHeaders(v map[string]*string) *Describe
 }
 
 func (s *DescribeResourceLogResponse) SetBody(v *DescribeResourceLogResponseBody) *DescribeResourceLogResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeRoleResponseBody struct {
-	Exist   *bool   `json:"Exist,omitempty" xml:"Exist,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeRoleResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRoleResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRoleResponseBody) SetExist(v bool) *DescribeRoleResponseBody {
-	s.Exist = &v
-	return s
-}
-
-func (s *DescribeRoleResponseBody) SetMessage(v string) *DescribeRoleResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeRoleResponseBody) SetRequestId(v string) *DescribeRoleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeRoleResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRoleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRoleResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRoleResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRoleResponse) SetHeaders(v map[string]*string) *DescribeRoleResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeRoleResponse) SetBody(v *DescribeRoleResponseBody) *DescribeRoleResponse {
 	s.Body = v
 	return s
 }
@@ -4048,42 +3948,6 @@ func (client *Client) CreateResourceLogWithOptions(ClusterId *string, ResourceId
 	return _result, _err
 }
 
-func (client *Client) CreateRole() (_result *CreateRoleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateRoleResponse{}
-	_body, _err := client.CreateRoleWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateRoleWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateRoleResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateRole"),
-		Version:     tea.String("2021-07-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/role"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateRoleResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) CreateService(request *CreateServiceRequest) (_result *CreateServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4757,42 +4621,6 @@ func (client *Client) DescribeResourceLogWithOptions(ClusterId *string, Resource
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeResourceLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeRole() (_result *DescribeRoleResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeRoleResponse{}
-	_body, _err := client.DescribeRoleWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeRoleWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeRoleResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeRole"),
-		Version:     tea.String("2021-07-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/role"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeRoleResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
