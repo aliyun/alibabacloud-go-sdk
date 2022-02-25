@@ -61,12 +61,14 @@ func (s *AddClientIdToOIDCProviderResponseBody) SetRequestId(v string) *AddClien
 type AddClientIdToOIDCProviderResponseBodyOIDCProvider struct {
 	Arn              *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	ClientIds        *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Fingerprints     *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
 	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	IssuerUrl        *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
+	UpdateDate       *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s AddClientIdToOIDCProviderResponseBodyOIDCProvider) String() string {
@@ -84,6 +86,11 @@ func (s *AddClientIdToOIDCProviderResponseBodyOIDCProvider) SetArn(v string) *Ad
 
 func (s *AddClientIdToOIDCProviderResponseBodyOIDCProvider) SetClientIds(v string) *AddClientIdToOIDCProviderResponseBodyOIDCProvider {
 	s.ClientIds = &v
+	return s
+}
+
+func (s *AddClientIdToOIDCProviderResponseBodyOIDCProvider) SetCreateDate(v string) *AddClientIdToOIDCProviderResponseBodyOIDCProvider {
+	s.CreateDate = &v
 	return s
 }
 
@@ -114,6 +121,11 @@ func (s *AddClientIdToOIDCProviderResponseBodyOIDCProvider) SetIssuerUrl(v strin
 
 func (s *AddClientIdToOIDCProviderResponseBodyOIDCProvider) SetOIDCProviderName(v string) *AddClientIdToOIDCProviderResponseBodyOIDCProvider {
 	s.OIDCProviderName = &v
+	return s
+}
+
+func (s *AddClientIdToOIDCProviderResponseBodyOIDCProvider) SetUpdateDate(v string) *AddClientIdToOIDCProviderResponseBodyOIDCProvider {
+	s.UpdateDate = &v
 	return s
 }
 
@@ -189,12 +201,14 @@ func (s *AddFingerprintToOIDCProviderResponseBody) SetRequestId(v string) *AddFi
 type AddFingerprintToOIDCProviderResponseBodyOIDCProvider struct {
 	Arn              *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	ClientIds        *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Fingerprints     *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
 	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	IssuerUrl        *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
+	UpdateDate       *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s AddFingerprintToOIDCProviderResponseBodyOIDCProvider) String() string {
@@ -212,6 +226,11 @@ func (s *AddFingerprintToOIDCProviderResponseBodyOIDCProvider) SetArn(v string) 
 
 func (s *AddFingerprintToOIDCProviderResponseBodyOIDCProvider) SetClientIds(v string) *AddFingerprintToOIDCProviderResponseBodyOIDCProvider {
 	s.ClientIds = &v
+	return s
+}
+
+func (s *AddFingerprintToOIDCProviderResponseBodyOIDCProvider) SetCreateDate(v string) *AddFingerprintToOIDCProviderResponseBodyOIDCProvider {
+	s.CreateDate = &v
 	return s
 }
 
@@ -242,6 +261,11 @@ func (s *AddFingerprintToOIDCProviderResponseBodyOIDCProvider) SetIssuerUrl(v st
 
 func (s *AddFingerprintToOIDCProviderResponseBodyOIDCProvider) SetOIDCProviderName(v string) *AddFingerprintToOIDCProviderResponseBodyOIDCProvider {
 	s.OIDCProviderName = &v
+	return s
+}
+
+func (s *AddFingerprintToOIDCProviderResponseBodyOIDCProvider) SetUpdateDate(v string) *AddFingerprintToOIDCProviderResponseBodyOIDCProvider {
+	s.UpdateDate = &v
 	return s
 }
 
@@ -1256,12 +1280,14 @@ func (s *CreateOIDCProviderResponseBody) SetRequestId(v string) *CreateOIDCProvi
 type CreateOIDCProviderResponseBodyOIDCProvider struct {
 	Arn              *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	ClientIds        *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Fingerprints     *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
 	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	IssuerUrl        *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
+	UpdateDate       *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s CreateOIDCProviderResponseBodyOIDCProvider) String() string {
@@ -1279,6 +1305,11 @@ func (s *CreateOIDCProviderResponseBodyOIDCProvider) SetArn(v string) *CreateOID
 
 func (s *CreateOIDCProviderResponseBodyOIDCProvider) SetClientIds(v string) *CreateOIDCProviderResponseBodyOIDCProvider {
 	s.ClientIds = &v
+	return s
+}
+
+func (s *CreateOIDCProviderResponseBodyOIDCProvider) SetCreateDate(v string) *CreateOIDCProviderResponseBodyOIDCProvider {
+	s.CreateDate = &v
 	return s
 }
 
@@ -1309,6 +1340,11 @@ func (s *CreateOIDCProviderResponseBodyOIDCProvider) SetIssuerUrl(v string) *Cre
 
 func (s *CreateOIDCProviderResponseBodyOIDCProvider) SetOIDCProviderName(v string) *CreateOIDCProviderResponseBodyOIDCProvider {
 	s.OIDCProviderName = &v
+	return s
+}
+
+func (s *CreateOIDCProviderResponseBodyOIDCProvider) SetUpdateDate(v string) *CreateOIDCProviderResponseBodyOIDCProvider {
+	s.UpdateDate = &v
 	return s
 }
 
@@ -3469,12 +3505,14 @@ func (s *GetOIDCProviderResponseBody) SetRequestId(v string) *GetOIDCProviderRes
 type GetOIDCProviderResponseBodyOIDCProvider struct {
 	Arn              *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	ClientIds        *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Fingerprints     *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
 	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	IssuerUrl        *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
+	UpdateDate       *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s GetOIDCProviderResponseBodyOIDCProvider) String() string {
@@ -3492,6 +3530,11 @@ func (s *GetOIDCProviderResponseBodyOIDCProvider) SetArn(v string) *GetOIDCProvi
 
 func (s *GetOIDCProviderResponseBodyOIDCProvider) SetClientIds(v string) *GetOIDCProviderResponseBodyOIDCProvider {
 	s.ClientIds = &v
+	return s
+}
+
+func (s *GetOIDCProviderResponseBodyOIDCProvider) SetCreateDate(v string) *GetOIDCProviderResponseBodyOIDCProvider {
+	s.CreateDate = &v
 	return s
 }
 
@@ -3522,6 +3565,11 @@ func (s *GetOIDCProviderResponseBodyOIDCProvider) SetIssuerUrl(v string) *GetOID
 
 func (s *GetOIDCProviderResponseBodyOIDCProvider) SetOIDCProviderName(v string) *GetOIDCProviderResponseBodyOIDCProvider {
 	s.OIDCProviderName = &v
+	return s
+}
+
+func (s *GetOIDCProviderResponseBodyOIDCProvider) SetUpdateDate(v string) *GetOIDCProviderResponseBodyOIDCProvider {
+	s.UpdateDate = &v
 	return s
 }
 
@@ -3808,7 +3856,7 @@ type GetSecurityPreferenceResponseBodySecurityPreference struct {
 	AccessKeyPreference    *GetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference    `json:"AccessKeyPreference,omitempty" xml:"AccessKeyPreference,omitempty" type:"Struct"`
 	LoginProfilePreference *GetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference `json:"LoginProfilePreference,omitempty" xml:"LoginProfilePreference,omitempty" type:"Struct"`
 	MFAPreference          *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference          `json:"MFAPreference,omitempty" xml:"MFAPreference,omitempty" type:"Struct"`
-	VerificationPreference *GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference `json:"VerificationPreference,omitempty" xml:"VerificationPreference,omitempty" type:"Struct"`
+	PersonalInfoPreference *GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference `json:"PersonalInfoPreference,omitempty" xml:"PersonalInfoPreference,omitempty" type:"Struct"`
 }
 
 func (s GetSecurityPreferenceResponseBodySecurityPreference) String() string {
@@ -3834,8 +3882,8 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreference) SetMFAPreference(v
 	return s
 }
 
-func (s *GetSecurityPreferenceResponseBodySecurityPreference) SetVerificationPreference(v *GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) *GetSecurityPreferenceResponseBodySecurityPreference {
-	s.VerificationPreference = v
+func (s *GetSecurityPreferenceResponseBodySecurityPreference) SetPersonalInfoPreference(v *GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference) *GetSecurityPreferenceResponseBodySecurityPreference {
+	s.PersonalInfoPreference = v
 	return s
 }
 
@@ -3914,20 +3962,20 @@ func (s *GetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) SetAl
 	return s
 }
 
-type GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference struct {
-	VerificationTypes []*string `json:"VerificationTypes,omitempty" xml:"VerificationTypes,omitempty" type:"Repeated"`
+type GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference struct {
+	AllowUserToManagePersonalDingTalk *bool `json:"AllowUserToManagePersonalDingTalk,omitempty" xml:"AllowUserToManagePersonalDingTalk,omitempty"`
 }
 
-func (s GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) String() string {
+func (s GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) GoString() string {
+func (s GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference) GoString() string {
 	return s.String()
 }
 
-func (s *GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) SetVerificationTypes(v []*string) *GetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference {
-	s.VerificationTypes = v
+func (s *GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference) SetAllowUserToManagePersonalDingTalk(v bool) *GetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference {
+	s.AllowUserToManagePersonalDingTalk = &v
 	return s
 }
 
@@ -5055,12 +5103,14 @@ func (s *ListOIDCProvidersResponseBodyOIDCProviders) SetOIDCProvider(v []*ListOI
 type ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider struct {
 	Arn              *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	ClientIds        *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Fingerprints     *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
 	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	IssuerUrl        *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
+	UpdateDate       *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider) String() string {
@@ -5078,6 +5128,11 @@ func (s *ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider) SetArn(v string
 
 func (s *ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider) SetClientIds(v string) *ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider {
 	s.ClientIds = &v
+	return s
+}
+
+func (s *ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider) SetCreateDate(v string) *ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider {
+	s.CreateDate = &v
 	return s
 }
 
@@ -5108,6 +5163,11 @@ func (s *ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider) SetIssuerUrl(v 
 
 func (s *ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider) SetOIDCProviderName(v string) *ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider {
 	s.OIDCProviderName = &v
+	return s
+}
+
+func (s *ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider) SetUpdateDate(v string) *ListOIDCProvidersResponseBodyOIDCProvidersOIDCProvider {
+	s.UpdateDate = &v
 	return s
 }
 
@@ -6010,12 +6070,14 @@ func (s *RemoveClientIdFromOIDCProviderResponseBody) SetRequestId(v string) *Rem
 type RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider struct {
 	Arn              *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	ClientIds        *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Fingerprints     *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
 	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	IssuerUrl        *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
+	UpdateDate       *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider) String() string {
@@ -6033,6 +6095,11 @@ func (s *RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider) SetArn(v string
 
 func (s *RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider) SetClientIds(v string) *RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider {
 	s.ClientIds = &v
+	return s
+}
+
+func (s *RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider) SetCreateDate(v string) *RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider {
+	s.CreateDate = &v
 	return s
 }
 
@@ -6063,6 +6130,11 @@ func (s *RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider) SetIssuerUrl(v 
 
 func (s *RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider) SetOIDCProviderName(v string) *RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider {
 	s.OIDCProviderName = &v
+	return s
+}
+
+func (s *RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider) SetUpdateDate(v string) *RemoveClientIdFromOIDCProviderResponseBodyOIDCProvider {
+	s.UpdateDate = &v
 	return s
 }
 
@@ -6138,12 +6210,14 @@ func (s *RemoveFingerprintFromOIDCProviderResponseBody) SetRequestId(v string) *
 type RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider struct {
 	Arn              *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	ClientIds        *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Fingerprints     *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
 	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	IssuerUrl        *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
+	UpdateDate       *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider) String() string {
@@ -6161,6 +6235,11 @@ func (s *RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider) SetArn(v str
 
 func (s *RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider) SetClientIds(v string) *RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider {
 	s.ClientIds = &v
+	return s
+}
+
+func (s *RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider) SetCreateDate(v string) *RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider {
+	s.CreateDate = &v
 	return s
 }
 
@@ -6191,6 +6270,11 @@ func (s *RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider) SetIssuerUrl
 
 func (s *RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider) SetOIDCProviderName(v string) *RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider {
 	s.OIDCProviderName = &v
+	return s
+}
+
+func (s *RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider) SetUpdateDate(v string) *RemoveFingerprintFromOIDCProviderResponseBodyOIDCProvider {
+	s.UpdateDate = &v
 	return s
 }
 
@@ -6544,14 +6628,14 @@ func (s *SetPasswordPolicyResponse) SetBody(v *SetPasswordPolicyResponseBody) *S
 }
 
 type SetSecurityPreferenceRequest struct {
-	AllowUserToChangePassword   *bool     `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
-	AllowUserToManageAccessKeys *bool     `json:"AllowUserToManageAccessKeys,omitempty" xml:"AllowUserToManageAccessKeys,omitempty"`
-	AllowUserToManageMFADevices *bool     `json:"AllowUserToManageMFADevices,omitempty" xml:"AllowUserToManageMFADevices,omitempty"`
-	EnableSaveMFATicket         *bool     `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
-	EnforceMFAForLogin          *bool     `json:"EnforceMFAForLogin,omitempty" xml:"EnforceMFAForLogin,omitempty"`
-	LoginNetworkMasks           *string   `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
-	LoginSessionDuration        *int32    `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
-	VerificationTypes           []*string `json:"VerificationTypes,omitempty" xml:"VerificationTypes,omitempty" type:"Repeated"`
+	AllowUserToChangePassword         *bool   `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
+	AllowUserToManageAccessKeys       *bool   `json:"AllowUserToManageAccessKeys,omitempty" xml:"AllowUserToManageAccessKeys,omitempty"`
+	AllowUserToManageMFADevices       *bool   `json:"AllowUserToManageMFADevices,omitempty" xml:"AllowUserToManageMFADevices,omitempty"`
+	AllowUserToManagePersonalDingTalk *bool   `json:"AllowUserToManagePersonalDingTalk,omitempty" xml:"AllowUserToManagePersonalDingTalk,omitempty"`
+	EnableSaveMFATicket               *bool   `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
+	EnforceMFAForLogin                *bool   `json:"EnforceMFAForLogin,omitempty" xml:"EnforceMFAForLogin,omitempty"`
+	LoginNetworkMasks                 *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
+	LoginSessionDuration              *int32  `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
 }
 
 func (s SetSecurityPreferenceRequest) String() string {
@@ -6577,6 +6661,11 @@ func (s *SetSecurityPreferenceRequest) SetAllowUserToManageMFADevices(v bool) *S
 	return s
 }
 
+func (s *SetSecurityPreferenceRequest) SetAllowUserToManagePersonalDingTalk(v bool) *SetSecurityPreferenceRequest {
+	s.AllowUserToManagePersonalDingTalk = &v
+	return s
+}
+
 func (s *SetSecurityPreferenceRequest) SetEnableSaveMFATicket(v bool) *SetSecurityPreferenceRequest {
 	s.EnableSaveMFATicket = &v
 	return s
@@ -6594,70 +6683,6 @@ func (s *SetSecurityPreferenceRequest) SetLoginNetworkMasks(v string) *SetSecuri
 
 func (s *SetSecurityPreferenceRequest) SetLoginSessionDuration(v int32) *SetSecurityPreferenceRequest {
 	s.LoginSessionDuration = &v
-	return s
-}
-
-func (s *SetSecurityPreferenceRequest) SetVerificationTypes(v []*string) *SetSecurityPreferenceRequest {
-	s.VerificationTypes = v
-	return s
-}
-
-type SetSecurityPreferenceShrinkRequest struct {
-	AllowUserToChangePassword   *bool   `json:"AllowUserToChangePassword,omitempty" xml:"AllowUserToChangePassword,omitempty"`
-	AllowUserToManageAccessKeys *bool   `json:"AllowUserToManageAccessKeys,omitempty" xml:"AllowUserToManageAccessKeys,omitempty"`
-	AllowUserToManageMFADevices *bool   `json:"AllowUserToManageMFADevices,omitempty" xml:"AllowUserToManageMFADevices,omitempty"`
-	EnableSaveMFATicket         *bool   `json:"EnableSaveMFATicket,omitempty" xml:"EnableSaveMFATicket,omitempty"`
-	EnforceMFAForLogin          *bool   `json:"EnforceMFAForLogin,omitempty" xml:"EnforceMFAForLogin,omitempty"`
-	LoginNetworkMasks           *string `json:"LoginNetworkMasks,omitempty" xml:"LoginNetworkMasks,omitempty"`
-	LoginSessionDuration        *int32  `json:"LoginSessionDuration,omitempty" xml:"LoginSessionDuration,omitempty"`
-	VerificationTypesShrink     *string `json:"VerificationTypes,omitempty" xml:"VerificationTypes,omitempty"`
-}
-
-func (s SetSecurityPreferenceShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetSecurityPreferenceShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SetSecurityPreferenceShrinkRequest) SetAllowUserToChangePassword(v bool) *SetSecurityPreferenceShrinkRequest {
-	s.AllowUserToChangePassword = &v
-	return s
-}
-
-func (s *SetSecurityPreferenceShrinkRequest) SetAllowUserToManageAccessKeys(v bool) *SetSecurityPreferenceShrinkRequest {
-	s.AllowUserToManageAccessKeys = &v
-	return s
-}
-
-func (s *SetSecurityPreferenceShrinkRequest) SetAllowUserToManageMFADevices(v bool) *SetSecurityPreferenceShrinkRequest {
-	s.AllowUserToManageMFADevices = &v
-	return s
-}
-
-func (s *SetSecurityPreferenceShrinkRequest) SetEnableSaveMFATicket(v bool) *SetSecurityPreferenceShrinkRequest {
-	s.EnableSaveMFATicket = &v
-	return s
-}
-
-func (s *SetSecurityPreferenceShrinkRequest) SetEnforceMFAForLogin(v bool) *SetSecurityPreferenceShrinkRequest {
-	s.EnforceMFAForLogin = &v
-	return s
-}
-
-func (s *SetSecurityPreferenceShrinkRequest) SetLoginNetworkMasks(v string) *SetSecurityPreferenceShrinkRequest {
-	s.LoginNetworkMasks = &v
-	return s
-}
-
-func (s *SetSecurityPreferenceShrinkRequest) SetLoginSessionDuration(v int32) *SetSecurityPreferenceShrinkRequest {
-	s.LoginSessionDuration = &v
-	return s
-}
-
-func (s *SetSecurityPreferenceShrinkRequest) SetVerificationTypesShrink(v string) *SetSecurityPreferenceShrinkRequest {
-	s.VerificationTypesShrink = &v
 	return s
 }
 
@@ -6688,7 +6713,7 @@ type SetSecurityPreferenceResponseBodySecurityPreference struct {
 	AccessKeyPreference    *SetSecurityPreferenceResponseBodySecurityPreferenceAccessKeyPreference    `json:"AccessKeyPreference,omitempty" xml:"AccessKeyPreference,omitempty" type:"Struct"`
 	LoginProfilePreference *SetSecurityPreferenceResponseBodySecurityPreferenceLoginProfilePreference `json:"LoginProfilePreference,omitempty" xml:"LoginProfilePreference,omitempty" type:"Struct"`
 	MFAPreference          *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference          `json:"MFAPreference,omitempty" xml:"MFAPreference,omitempty" type:"Struct"`
-	VerificationPreference *SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference `json:"VerificationPreference,omitempty" xml:"VerificationPreference,omitempty" type:"Struct"`
+	PersonalInfoPreference *SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference `json:"PersonalInfoPreference,omitempty" xml:"PersonalInfoPreference,omitempty" type:"Struct"`
 }
 
 func (s SetSecurityPreferenceResponseBodySecurityPreference) String() string {
@@ -6714,8 +6739,8 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreference) SetMFAPreference(v
 	return s
 }
 
-func (s *SetSecurityPreferenceResponseBodySecurityPreference) SetVerificationPreference(v *SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) *SetSecurityPreferenceResponseBodySecurityPreference {
-	s.VerificationPreference = v
+func (s *SetSecurityPreferenceResponseBodySecurityPreference) SetPersonalInfoPreference(v *SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference) *SetSecurityPreferenceResponseBodySecurityPreference {
+	s.PersonalInfoPreference = v
 	return s
 }
 
@@ -6794,20 +6819,20 @@ func (s *SetSecurityPreferenceResponseBodySecurityPreferenceMFAPreference) SetAl
 	return s
 }
 
-type SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference struct {
-	VerificationTypes []*string `json:"VerificationTypes,omitempty" xml:"VerificationTypes,omitempty" type:"Repeated"`
+type SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference struct {
+	AllowUserToManagePersonalDingTalk *bool `json:"AllowUserToManagePersonalDingTalk,omitempty" xml:"AllowUserToManagePersonalDingTalk,omitempty"`
 }
 
-func (s SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) String() string {
+func (s SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference) String() string {
 	return tea.Prettify(s)
 }
 
-func (s SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) GoString() string {
+func (s SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference) GoString() string {
 	return s.String()
 }
 
-func (s *SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference) SetVerificationTypes(v []*string) *SetSecurityPreferenceResponseBodySecurityPreferenceVerificationPreference {
-	s.VerificationTypes = v
+func (s *SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference) SetAllowUserToManagePersonalDingTalk(v bool) *SetSecurityPreferenceResponseBodySecurityPreferencePersonalInfoPreference {
+	s.AllowUserToManagePersonalDingTalk = &v
 	return s
 }
 
@@ -7666,12 +7691,14 @@ func (s *UpdateOIDCProviderResponseBody) SetRequestId(v string) *UpdateOIDCProvi
 type UpdateOIDCProviderResponseBodyOIDCProvider struct {
 	Arn              *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	ClientIds        *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	CreateDate       *string `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
 	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Fingerprints     *string `json:"Fingerprints,omitempty" xml:"Fingerprints,omitempty"`
 	GmtCreate        *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified      *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	IssuerUrl        *string `json:"IssuerUrl,omitempty" xml:"IssuerUrl,omitempty"`
 	OIDCProviderName *string `json:"OIDCProviderName,omitempty" xml:"OIDCProviderName,omitempty"`
+	UpdateDate       *string `json:"UpdateDate,omitempty" xml:"UpdateDate,omitempty"`
 }
 
 func (s UpdateOIDCProviderResponseBodyOIDCProvider) String() string {
@@ -7689,6 +7716,11 @@ func (s *UpdateOIDCProviderResponseBodyOIDCProvider) SetArn(v string) *UpdateOID
 
 func (s *UpdateOIDCProviderResponseBodyOIDCProvider) SetClientIds(v string) *UpdateOIDCProviderResponseBodyOIDCProvider {
 	s.ClientIds = &v
+	return s
+}
+
+func (s *UpdateOIDCProviderResponseBodyOIDCProvider) SetCreateDate(v string) *UpdateOIDCProviderResponseBodyOIDCProvider {
+	s.CreateDate = &v
 	return s
 }
 
@@ -7719,6 +7751,11 @@ func (s *UpdateOIDCProviderResponseBodyOIDCProvider) SetIssuerUrl(v string) *Upd
 
 func (s *UpdateOIDCProviderResponseBodyOIDCProvider) SetOIDCProviderName(v string) *UpdateOIDCProviderResponseBodyOIDCProvider {
 	s.OIDCProviderName = &v
+	return s
+}
+
+func (s *UpdateOIDCProviderResponseBodyOIDCProvider) SetUpdateDate(v string) *UpdateOIDCProviderResponseBodyOIDCProvider {
+	s.UpdateDate = &v
 	return s
 }
 
@@ -8077,11 +8114,31 @@ func (client *Client) AddClientIdToOIDCProviderWithOptions(request *AddClientIdT
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		query["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OIDCProviderName)) {
+		query["OIDCProviderName"] = request.OIDCProviderName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddClientIdToOIDCProvider"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddClientIdToOIDCProviderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddClientIdToOIDCProvider"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8105,11 +8162,31 @@ func (client *Client) AddFingerprintToOIDCProviderWithOptions(request *AddFinger
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Fingerprint)) {
+		query["Fingerprint"] = request.Fingerprint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OIDCProviderName)) {
+		query["OIDCProviderName"] = request.OIDCProviderName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddFingerprintToOIDCProvider"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddFingerprintToOIDCProviderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddFingerprintToOIDCProvider"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8133,11 +8210,31 @@ func (client *Client) AddUserToGroupWithOptions(request *AddUserToGroupRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddUserToGroup"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddUserToGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddUserToGroup"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8161,11 +8258,39 @@ func (client *Client) BindMFADeviceWithOptions(request *BindMFADeviceRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthenticationCode1)) {
+		query["AuthenticationCode1"] = request.AuthenticationCode1
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthenticationCode2)) {
+		query["AuthenticationCode2"] = request.AuthenticationCode2
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SerialNumber)) {
+		query["SerialNumber"] = request.SerialNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindMFADevice"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &BindMFADeviceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BindMFADevice"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8189,11 +8314,31 @@ func (client *Client) ChangePasswordWithOptions(request *ChangePasswordRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewPassword)) {
+		query["NewPassword"] = request.NewPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OldPassword)) {
+		query["OldPassword"] = request.OldPassword
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangePassword"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ChangePasswordResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ChangePassword"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8217,11 +8362,27 @@ func (client *Client) CreateAccessKeyWithOptions(request *CreateAccessKeyRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAccessKey"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAccessKeyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAccessKey"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8245,11 +8406,27 @@ func (client *Client) CreateAppSecretWithOptions(request *CreateAppSecretRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAppSecret"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAppSecretResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAppSecret"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8273,11 +8450,59 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessTokenValidity)) {
+		query["AccessTokenValidity"] = request.AccessTokenValidity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		query["AppType"] = request.AppType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsMultiTenant)) {
+		query["IsMultiTenant"] = request.IsMultiTenant
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PredefinedScopes)) {
+		query["PredefinedScopes"] = request.PredefinedScopes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RedirectUris)) {
+		query["RedirectUris"] = request.RedirectUris
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefreshTokenValidity)) {
+		query["RefreshTokenValidity"] = request.RefreshTokenValidity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretRequired)) {
+		query["SecretRequired"] = request.SecretRequired
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateApplication"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateApplicationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateApplication"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8301,11 +8526,35 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comments)) {
+		query["Comments"] = request.Comments
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateGroup"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateGroup"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8329,11 +8578,43 @@ func (client *Client) CreateLoginProfileWithOptions(request *CreateLoginProfileR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MFABindRequired)) {
+		query["MFABindRequired"] = request.MFABindRequired
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PasswordResetRequired)) {
+		query["PasswordResetRequired"] = request.PasswordResetRequired
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLoginProfile"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateLoginProfileResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateLoginProfile"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8357,11 +8638,43 @@ func (client *Client) CreateOIDCProviderWithOptions(request *CreateOIDCProviderR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientIds)) {
+		query["ClientIds"] = request.ClientIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Fingerprints)) {
+		query["Fingerprints"] = request.Fingerprints
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IssuerUrl)) {
+		query["IssuerUrl"] = request.IssuerUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OIDCProviderName)) {
+		query["OIDCProviderName"] = request.OIDCProviderName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOIDCProvider"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateOIDCProviderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateOIDCProvider"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8385,11 +8698,35 @@ func (client *Client) CreateSAMLProviderWithOptions(request *CreateSAMLProviderR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncodedSAMLMetadataDocument)) {
+		query["EncodedSAMLMetadataDocument"] = request.EncodedSAMLMetadataDocument
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SAMLProviderName)) {
+		query["SAMLProviderName"] = request.SAMLProviderName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSAMLProvider"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateSAMLProviderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateSAMLProvider"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8413,11 +8750,43 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comments)) {
+		query["Comments"] = request.Comments
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		query["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		query["Email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MobilePhone)) {
+		query["MobilePhone"] = request.MobilePhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateUser"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateUser"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8441,11 +8810,27 @@ func (client *Client) CreateVirtualMFADeviceWithOptions(request *CreateVirtualMF
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VirtualMFADeviceName)) {
+		query["VirtualMFADeviceName"] = request.VirtualMFADeviceName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVirtualMFADevice"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateVirtualMFADeviceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateVirtualMFADevice"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8469,11 +8854,31 @@ func (client *Client) DeleteAccessKeyWithOptions(request *DeleteAccessKeyRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserAccessKeyId)) {
+		query["UserAccessKeyId"] = request.UserAccessKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAccessKey"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAccessKeyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAccessKey"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8497,11 +8902,31 @@ func (client *Client) DeleteAppSecretWithOptions(request *DeleteAppSecretRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppSecretId)) {
+		query["AppSecretId"] = request.AppSecretId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAppSecret"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAppSecretResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAppSecret"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8525,11 +8950,27 @@ func (client *Client) DeleteApplicationWithOptions(request *DeleteApplicationReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteApplication"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteApplicationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteApplication"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8553,11 +8994,27 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGroup"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteGroup"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8581,11 +9038,27 @@ func (client *Client) DeleteLoginProfileWithOptions(request *DeleteLoginProfileR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLoginProfile"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteLoginProfileResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteLoginProfile"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8609,11 +9082,27 @@ func (client *Client) DeleteOIDCProviderWithOptions(request *DeleteOIDCProviderR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OIDCProviderName)) {
+		query["OIDCProviderName"] = request.OIDCProviderName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteOIDCProvider"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteOIDCProviderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteOIDCProvider"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8637,11 +9126,27 @@ func (client *Client) DeleteSAMLProviderWithOptions(request *DeleteSAMLProviderR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SAMLProviderName)) {
+		query["SAMLProviderName"] = request.SAMLProviderName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSAMLProvider"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSAMLProviderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteSAMLProvider"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8665,11 +9170,31 @@ func (client *Client) DeleteUserWithOptions(request *DeleteUserRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteUser"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteUser"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8693,11 +9218,27 @@ func (client *Client) DeleteVirtualMFADeviceWithOptions(request *DeleteVirtualMF
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SerialNumber)) {
+		query["SerialNumber"] = request.SerialNumber
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteVirtualMFADevice"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteVirtualMFADeviceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteVirtualMFADevice"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8721,11 +9262,27 @@ func (client *Client) DisableVirtualMFAWithOptions(request *DisableVirtualMFAReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableVirtualMFA"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DisableVirtualMFAResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DisableVirtualMFA"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8746,8 +9303,19 @@ func (client *Client) DisableVirtualMFA(request *DisableVirtualMFARequest) (_res
 
 func (client *Client) GenerateCredentialReportWithOptions(runtime *util.RuntimeOptions) (_result *GenerateCredentialReportResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateCredentialReport"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GenerateCredentialReportResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GenerateCredentialReport"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8771,11 +9339,31 @@ func (client *Client) GetAccessKeyLastUsedWithOptions(request *GetAccessKeyLastU
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserAccessKeyId)) {
+		query["UserAccessKeyId"] = request.UserAccessKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAccessKeyLastUsed"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAccessKeyLastUsedResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAccessKeyLastUsed"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8796,8 +9384,19 @@ func (client *Client) GetAccessKeyLastUsed(request *GetAccessKeyLastUsedRequest)
 
 func (client *Client) GetAccountMFAInfoWithOptions(runtime *util.RuntimeOptions) (_result *GetAccountMFAInfoResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetAccountMFAInfo"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetAccountMFAInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAccountMFAInfo"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8818,8 +9417,19 @@ func (client *Client) GetAccountMFAInfo() (_result *GetAccountMFAInfoResponse, _
 
 func (client *Client) GetAccountSecurityPracticeReportWithOptions(runtime *util.RuntimeOptions) (_result *GetAccountSecurityPracticeReportResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetAccountSecurityPracticeReport"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetAccountSecurityPracticeReportResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAccountSecurityPracticeReport"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8840,8 +9450,19 @@ func (client *Client) GetAccountSecurityPracticeReport() (_result *GetAccountSec
 
 func (client *Client) GetAccountSummaryWithOptions(runtime *util.RuntimeOptions) (_result *GetAccountSummaryResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetAccountSummary"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetAccountSummaryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAccountSummary"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8865,11 +9486,31 @@ func (client *Client) GetAppSecretWithOptions(request *GetAppSecretRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppSecretId)) {
+		query["AppSecretId"] = request.AppSecretId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAppSecret"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetAppSecretResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetAppSecret"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8893,11 +9534,27 @@ func (client *Client) GetApplicationWithOptions(request *GetApplicationRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetApplication"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetApplicationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetApplication"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8918,8 +9575,19 @@ func (client *Client) GetApplication(request *GetApplicationRequest) (_result *G
 
 func (client *Client) GetCredentialReportWithOptions(runtime *util.RuntimeOptions) (_result *GetCredentialReportResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetCredentialReport"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetCredentialReportResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetCredentialReport"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8940,8 +9608,19 @@ func (client *Client) GetCredentialReport() (_result *GetCredentialReportRespons
 
 func (client *Client) GetDefaultDomainWithOptions(runtime *util.RuntimeOptions) (_result *GetDefaultDomainResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetDefaultDomain"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetDefaultDomainResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetDefaultDomain"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8965,11 +9644,27 @@ func (client *Client) GetGroupWithOptions(request *GetGroupRequest, runtime *uti
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetGroup"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetGroup"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8993,11 +9688,27 @@ func (client *Client) GetLoginProfileWithOptions(request *GetLoginProfileRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLoginProfile"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetLoginProfileResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetLoginProfile"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9021,11 +9732,27 @@ func (client *Client) GetOIDCProviderWithOptions(request *GetOIDCProviderRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OIDCProviderName)) {
+		query["OIDCProviderName"] = request.OIDCProviderName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOIDCProvider"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetOIDCProviderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetOIDCProvider"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9046,8 +9773,19 @@ func (client *Client) GetOIDCProvider(request *GetOIDCProviderRequest) (_result 
 
 func (client *Client) GetPasswordPolicyWithOptions(runtime *util.RuntimeOptions) (_result *GetPasswordPolicyResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetPasswordPolicy"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetPasswordPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetPasswordPolicy"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9071,11 +9809,27 @@ func (client *Client) GetSAMLProviderWithOptions(request *GetSAMLProviderRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SAMLProviderName)) {
+		query["SAMLProviderName"] = request.SAMLProviderName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSAMLProvider"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetSAMLProviderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetSAMLProvider"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9096,8 +9850,19 @@ func (client *Client) GetSAMLProvider(request *GetSAMLProviderRequest) (_result 
 
 func (client *Client) GetSecurityPreferenceWithOptions(runtime *util.RuntimeOptions) (_result *GetSecurityPreferenceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetSecurityPreference"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetSecurityPreferenceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetSecurityPreference"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9121,11 +9886,35 @@ func (client *Client) GetUserWithOptions(request *GetUserRequest, runtime *util.
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserAccessKeyId)) {
+		query["UserAccessKeyId"] = request.UserAccessKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUser"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetUser"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9149,11 +9938,27 @@ func (client *Client) GetUserMFAInfoWithOptions(request *GetUserMFAInfoRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserMFAInfo"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetUserMFAInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetUserMFAInfo"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9174,8 +9979,19 @@ func (client *Client) GetUserMFAInfo(request *GetUserMFAInfoRequest) (_result *G
 
 func (client *Client) GetUserSsoSettingsWithOptions(runtime *util.RuntimeOptions) (_result *GetUserSsoSettingsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserSsoSettings"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetUserSsoSettingsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetUserSsoSettings"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9199,11 +10015,27 @@ func (client *Client) ListAccessKeysWithOptions(request *ListAccessKeysRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAccessKeys"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAccessKeysResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAccessKeys"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9227,11 +10059,27 @@ func (client *Client) ListAppSecretIdsWithOptions(request *ListAppSecretIdsReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAppSecretIds"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAppSecretIdsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAppSecretIds"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9252,8 +10100,19 @@ func (client *Client) ListAppSecretIds(request *ListAppSecretIdsRequest) (_resul
 
 func (client *Client) ListApplicationsWithOptions(runtime *util.RuntimeOptions) (_result *ListApplicationsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListApplications"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListApplicationsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListApplications"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9277,11 +10136,31 @@ func (client *Client) ListGroupsWithOptions(request *ListGroupsRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		query["Marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxItems)) {
+		query["MaxItems"] = request.MaxItems
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGroups"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListGroupsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListGroups"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9305,11 +10184,27 @@ func (client *Client) ListGroupsForUserWithOptions(request *ListGroupsForUserReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGroupsForUser"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListGroupsForUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListGroupsForUser"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9333,11 +10228,31 @@ func (client *Client) ListOIDCProvidersWithOptions(request *ListOIDCProvidersReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		query["Marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxItems)) {
+		query["MaxItems"] = request.MaxItems
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListOIDCProviders"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListOIDCProvidersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListOIDCProviders"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9361,11 +10276,27 @@ func (client *Client) ListPredefinedScopesWithOptions(request *ListPredefinedSco
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppType)) {
+		query["AppType"] = request.AppType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListPredefinedScopes"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListPredefinedScopesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListPredefinedScopes"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9389,11 +10320,31 @@ func (client *Client) ListSAMLProvidersWithOptions(request *ListSAMLProvidersReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		query["Marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxItems)) {
+		query["MaxItems"] = request.MaxItems
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSAMLProviders"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListSAMLProvidersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListSAMLProviders"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9417,11 +10368,31 @@ func (client *Client) ListUserBasicInfosWithOptions(request *ListUserBasicInfosR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		query["Marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxItems)) {
+		query["MaxItems"] = request.MaxItems
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUserBasicInfos"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListUserBasicInfosResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListUserBasicInfos"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9445,11 +10416,31 @@ func (client *Client) ListUsersWithOptions(request *ListUsersRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		query["Marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxItems)) {
+		query["MaxItems"] = request.MaxItems
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUsers"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListUsersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListUsers"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9473,11 +10464,35 @@ func (client *Client) ListUsersForGroupWithOptions(request *ListUsersForGroupReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		query["Marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxItems)) {
+		query["MaxItems"] = request.MaxItems
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUsersForGroup"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListUsersForGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListUsersForGroup"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9501,11 +10516,31 @@ func (client *Client) ListVirtualMFADevicesWithOptions(request *ListVirtualMFADe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		query["Marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxItems)) {
+		query["MaxItems"] = request.MaxItems
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVirtualMFADevices"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListVirtualMFADevicesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListVirtualMFADevices"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9529,11 +10564,31 @@ func (client *Client) RemoveClientIdFromOIDCProviderWithOptions(request *RemoveC
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		query["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OIDCProviderName)) {
+		query["OIDCProviderName"] = request.OIDCProviderName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveClientIdFromOIDCProvider"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveClientIdFromOIDCProviderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveClientIdFromOIDCProvider"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9557,11 +10612,31 @@ func (client *Client) RemoveFingerprintFromOIDCProviderWithOptions(request *Remo
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Fingerprint)) {
+		query["Fingerprint"] = request.Fingerprint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OIDCProviderName)) {
+		query["OIDCProviderName"] = request.OIDCProviderName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveFingerprintFromOIDCProvider"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveFingerprintFromOIDCProviderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveFingerprintFromOIDCProvider"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9585,11 +10660,31 @@ func (client *Client) RemoveUserFromGroupWithOptions(request *RemoveUserFromGrou
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveUserFromGroup"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveUserFromGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveUserFromGroup"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9613,11 +10708,27 @@ func (client *Client) SetDefaultDomainWithOptions(request *SetDefaultDomainReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefaultDomainName)) {
+		query["DefaultDomainName"] = request.DefaultDomainName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetDefaultDomain"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetDefaultDomainResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetDefaultDomain"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9641,11 +10752,67 @@ func (client *Client) SetPasswordPolicyWithOptions(request *SetPasswordPolicyReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HardExpire)) {
+		query["HardExpire"] = request.HardExpire
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxLoginAttemps)) {
+		query["MaxLoginAttemps"] = request.MaxLoginAttemps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxPasswordAge)) {
+		query["MaxPasswordAge"] = request.MaxPasswordAge
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumPasswordDifferentCharacter)) {
+		query["MinimumPasswordDifferentCharacter"] = request.MinimumPasswordDifferentCharacter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinimumPasswordLength)) {
+		query["MinimumPasswordLength"] = request.MinimumPasswordLength
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PasswordNotContainUserName)) {
+		query["PasswordNotContainUserName"] = request.PasswordNotContainUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PasswordReusePrevention)) {
+		query["PasswordReusePrevention"] = request.PasswordReusePrevention
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequireLowercaseCharacters)) {
+		query["RequireLowercaseCharacters"] = request.RequireLowercaseCharacters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequireNumbers)) {
+		query["RequireNumbers"] = request.RequireNumbers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequireSymbols)) {
+		query["RequireSymbols"] = request.RequireSymbols
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequireUppercaseCharacters)) {
+		query["RequireUppercaseCharacters"] = request.RequireUppercaseCharacters
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetPasswordPolicy"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetPasswordPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetPasswordPolicy"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9664,22 +10831,60 @@ func (client *Client) SetPasswordPolicy(request *SetPasswordPolicyRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) SetSecurityPreferenceWithOptions(tmpReq *SetSecurityPreferenceRequest, runtime *util.RuntimeOptions) (_result *SetSecurityPreferenceResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
+func (client *Client) SetSecurityPreferenceWithOptions(request *SetSecurityPreferenceRequest, runtime *util.RuntimeOptions) (_result *SetSecurityPreferenceResponse, _err error) {
+	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	request := &SetSecurityPreferenceShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.VerificationTypes)) {
-		request.VerificationTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.VerificationTypes, tea.String("VerificationTypes"), tea.String("json"))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowUserToChangePassword)) {
+		query["AllowUserToChangePassword"] = request.AllowUserToChangePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AllowUserToManageAccessKeys)) {
+		query["AllowUserToManageAccessKeys"] = request.AllowUserToManageAccessKeys
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AllowUserToManageMFADevices)) {
+		query["AllowUserToManageMFADevices"] = request.AllowUserToManageMFADevices
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AllowUserToManagePersonalDingTalk)) {
+		query["AllowUserToManagePersonalDingTalk"] = request.AllowUserToManagePersonalDingTalk
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSaveMFATicket)) {
+		query["EnableSaveMFATicket"] = request.EnableSaveMFATicket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnforceMFAForLogin)) {
+		query["EnforceMFAForLogin"] = request.EnforceMFAForLogin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginNetworkMasks)) {
+		query["LoginNetworkMasks"] = request.LoginNetworkMasks
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginSessionDuration)) {
+		query["LoginSessionDuration"] = request.LoginSessionDuration
 	}
 
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetSecurityPreference"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetSecurityPreferenceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetSecurityPreference"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9703,11 +10908,35 @@ func (client *Client) SetUserSsoSettingsWithOptions(request *SetUserSsoSettingsR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuxiliaryDomain)) {
+		query["AuxiliaryDomain"] = request.AuxiliaryDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MetadataDocument)) {
+		query["MetadataDocument"] = request.MetadataDocument
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SsoEnabled)) {
+		query["SsoEnabled"] = request.SsoEnabled
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetUserSsoSettings"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetUserSsoSettingsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetUserSsoSettings"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9731,11 +10960,27 @@ func (client *Client) UnbindMFADeviceWithOptions(request *UnbindMFADeviceRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnbindMFADevice"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UnbindMFADeviceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UnbindMFADevice"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9759,11 +11004,35 @@ func (client *Client) UpdateAccessKeyWithOptions(request *UpdateAccessKeyRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserAccessKeyId)) {
+		query["UserAccessKeyId"] = request.UserAccessKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAccessKey"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAccessKeyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAccessKey"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9787,11 +11056,55 @@ func (client *Client) UpdateApplicationWithOptions(request *UpdateApplicationReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewAccessTokenValidity)) {
+		query["NewAccessTokenValidity"] = request.NewAccessTokenValidity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewDisplayName)) {
+		query["NewDisplayName"] = request.NewDisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewIsMultiTenant)) {
+		query["NewIsMultiTenant"] = request.NewIsMultiTenant
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewPredefinedScopes)) {
+		query["NewPredefinedScopes"] = request.NewPredefinedScopes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewRedirectUris)) {
+		query["NewRedirectUris"] = request.NewRedirectUris
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewRefreshTokenValidity)) {
+		query["NewRefreshTokenValidity"] = request.NewRefreshTokenValidity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewSecretRequired)) {
+		query["NewSecretRequired"] = request.NewSecretRequired
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateApplication"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateApplicationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateApplication"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9815,11 +11128,39 @@ func (client *Client) UpdateGroupWithOptions(request *UpdateGroupRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewComments)) {
+		query["NewComments"] = request.NewComments
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewDisplayName)) {
+		query["NewDisplayName"] = request.NewDisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewGroupName)) {
+		query["NewGroupName"] = request.NewGroupName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGroup"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateGroup"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9843,11 +11184,43 @@ func (client *Client) UpdateLoginProfileWithOptions(request *UpdateLoginProfileR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MFABindRequired)) {
+		query["MFABindRequired"] = request.MFABindRequired
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PasswordResetRequired)) {
+		query["PasswordResetRequired"] = request.PasswordResetRequired
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLoginProfile"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateLoginProfileResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateLoginProfile"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9871,11 +11244,35 @@ func (client *Client) UpdateOIDCProviderWithOptions(request *UpdateOIDCProviderR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientIds)) {
+		query["ClientIds"] = request.ClientIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewDescription)) {
+		query["NewDescription"] = request.NewDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OIDCProviderName)) {
+		query["OIDCProviderName"] = request.OIDCProviderName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateOIDCProvider"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateOIDCProviderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateOIDCProvider"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9899,11 +11296,35 @@ func (client *Client) UpdateSAMLProviderWithOptions(request *UpdateSAMLProviderR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewDescription)) {
+		query["NewDescription"] = request.NewDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewEncodedSAMLMetadataDocument)) {
+		query["NewEncodedSAMLMetadataDocument"] = request.NewEncodedSAMLMetadataDocument
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SAMLProviderName)) {
+		query["SAMLProviderName"] = request.SAMLProviderName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSAMLProvider"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateSAMLProviderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateSAMLProvider"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9927,11 +11348,51 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewComments)) {
+		query["NewComments"] = request.NewComments
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewDisplayName)) {
+		query["NewDisplayName"] = request.NewDisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewEmail)) {
+		query["NewEmail"] = request.NewEmail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewMobilePhone)) {
+		query["NewMobilePhone"] = request.NewMobilePhone
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewUserPrincipalName)) {
+		query["NewUserPrincipalName"] = request.NewUserPrincipalName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPrincipalName)) {
+		query["UserPrincipalName"] = request.UserPrincipalName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateUser"),
+		Version:     tea.String("2019-08-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateUserResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateUser"), tea.String("2019-08-15"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
