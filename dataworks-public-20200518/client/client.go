@@ -360,150 +360,6 @@ func (s *ApprovePermissionApplyOrderResponse) SetBody(v *ApprovePermissionApplyO
 	return s
 }
 
-type CheckEngineMetaPartitionRequest struct {
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	Partition      *string `json:"Partition,omitempty" xml:"Partition,omitempty"`
-	TableGuid      *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-}
-
-func (s CheckEngineMetaPartitionRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckEngineMetaPartitionRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CheckEngineMetaPartitionRequest) SetDataSourceType(v string) *CheckEngineMetaPartitionRequest {
-	s.DataSourceType = &v
-	return s
-}
-
-func (s *CheckEngineMetaPartitionRequest) SetPartition(v string) *CheckEngineMetaPartitionRequest {
-	s.Partition = &v
-	return s
-}
-
-func (s *CheckEngineMetaPartitionRequest) SetTableGuid(v string) *CheckEngineMetaPartitionRequest {
-	s.TableGuid = &v
-	return s
-}
-
-type CheckEngineMetaPartitionResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CheckEngineMetaPartitionResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckEngineMetaPartitionResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CheckEngineMetaPartitionResponseBody) SetData(v bool) *CheckEngineMetaPartitionResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CheckEngineMetaPartitionResponseBody) SetRequestId(v string) *CheckEngineMetaPartitionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CheckEngineMetaPartitionResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckEngineMetaPartitionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CheckEngineMetaPartitionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckEngineMetaPartitionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CheckEngineMetaPartitionResponse) SetHeaders(v map[string]*string) *CheckEngineMetaPartitionResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CheckEngineMetaPartitionResponse) SetBody(v *CheckEngineMetaPartitionResponseBody) *CheckEngineMetaPartitionResponse {
-	s.Body = v
-	return s
-}
-
-type CheckEngineMetaTableRequest struct {
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	TableGuid      *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
-}
-
-func (s CheckEngineMetaTableRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckEngineMetaTableRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CheckEngineMetaTableRequest) SetDataSourceType(v string) *CheckEngineMetaTableRequest {
-	s.DataSourceType = &v
-	return s
-}
-
-func (s *CheckEngineMetaTableRequest) SetTableGuid(v string) *CheckEngineMetaTableRequest {
-	s.TableGuid = &v
-	return s
-}
-
-type CheckEngineMetaTableResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CheckEngineMetaTableResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckEngineMetaTableResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CheckEngineMetaTableResponseBody) SetData(v bool) *CheckEngineMetaTableResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CheckEngineMetaTableResponseBody) SetRequestId(v string) *CheckEngineMetaTableResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CheckEngineMetaTableResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckEngineMetaTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CheckEngineMetaTableResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckEngineMetaTableResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CheckEngineMetaTableResponse) SetHeaders(v map[string]*string) *CheckEngineMetaTableResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CheckEngineMetaTableResponse) SetBody(v *CheckEngineMetaTableResponseBody) *CheckEngineMetaTableResponse {
-	s.Body = v
-	return s
-}
-
 type CheckFileDeploymentRequest struct {
 	CheckDetailUrl    *string `json:"CheckDetailUrl,omitempty" xml:"CheckDetailUrl,omitempty"`
 	CheckerInstanceId *string `json:"CheckerInstanceId,omitempty" xml:"CheckerInstanceId,omitempty"`
@@ -773,52 +629,6 @@ func (s *CheckMetaTableResponse) SetHeaders(v map[string]*string) *CheckMetaTabl
 }
 
 func (s *CheckMetaTableResponse) SetBody(v *CheckMetaTableResponseBody) *CheckMetaTableResponse {
-	s.Body = v
-	return s
-}
-
-type CheckMetaTableTaskResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CheckMetaTableTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckMetaTableTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CheckMetaTableTaskResponseBody) SetData(v bool) *CheckMetaTableTaskResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CheckMetaTableTaskResponseBody) SetRequestId(v string) *CheckMetaTableTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CheckMetaTableTaskResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckMetaTableTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CheckMetaTableTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckMetaTableTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CheckMetaTableTaskResponse) SetHeaders(v map[string]*string) *CheckMetaTableTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CheckMetaTableTaskResponse) SetBody(v *CheckMetaTableTaskResponseBody) *CheckMetaTableTaskResponse {
 	s.Body = v
 	return s
 }
@@ -2086,6 +1896,7 @@ func (s *CreateExportMigrationResponse) SetBody(v *CreateExportMigrationResponse
 }
 
 type CreateFileRequest struct {
+	AdvancedSettings        *string `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
 	AutoParsing             *bool   `json:"AutoParsing,omitempty" xml:"AutoParsing,omitempty"`
 	AutoRerunIntervalMillis *int32  `json:"AutoRerunIntervalMillis,omitempty" xml:"AutoRerunIntervalMillis,omitempty"`
 	AutoRerunTimes          *int32  `json:"AutoRerunTimes,omitempty" xml:"AutoRerunTimes,omitempty"`
@@ -2110,6 +1921,7 @@ type CreateFileRequest struct {
 	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
 	SchedulerType           *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
 	StartEffectDate         *int64  `json:"StartEffectDate,omitempty" xml:"StartEffectDate,omitempty"`
+	StartImmediately        *bool   `json:"StartImmediately,omitempty" xml:"StartImmediately,omitempty"`
 	Stop                    *bool   `json:"Stop,omitempty" xml:"Stop,omitempty"`
 }
 
@@ -2119,6 +1931,11 @@ func (s CreateFileRequest) String() string {
 
 func (s CreateFileRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateFileRequest) SetAdvancedSettings(v string) *CreateFileRequest {
+	s.AdvancedSettings = &v
+	return s
 }
 
 func (s *CreateFileRequest) SetAutoParsing(v bool) *CreateFileRequest {
@@ -2238,6 +2055,11 @@ func (s *CreateFileRequest) SetSchedulerType(v string) *CreateFileRequest {
 
 func (s *CreateFileRequest) SetStartEffectDate(v int64) *CreateFileRequest {
 	s.StartEffectDate = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetStartImmediately(v bool) *CreateFileRequest {
+	s.StartImmediately = &v
 	return s
 }
 
@@ -4412,175 +4234,6 @@ func (s *CreateUdfFileResponse) SetBody(v *CreateUdfFileResponseBody) *CreateUdf
 	return s
 }
 
-type CreateViewRequest struct {
-	AppGuid         *string                        `json:"AppGuid,omitempty" xml:"AppGuid,omitempty"`
-	ClientToken     *string                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Comment         *string                        `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	SelectColumn    *string                        `json:"SelectColumn,omitempty" xml:"SelectColumn,omitempty"`
-	SelectSQL       *string                        `json:"SelectSQL,omitempty" xml:"SelectSQL,omitempty"`
-	SelectTableName *string                        `json:"SelectTableName,omitempty" xml:"SelectTableName,omitempty"`
-	SelectWhere     *string                        `json:"SelectWhere,omitempty" xml:"SelectWhere,omitempty"`
-	ViewColumn      []*CreateViewRequestViewColumn `json:"ViewColumn,omitempty" xml:"ViewColumn,omitempty" type:"Repeated"`
-	ViewName        *string                        `json:"ViewName,omitempty" xml:"ViewName,omitempty"`
-}
-
-func (s CreateViewRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateViewRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateViewRequest) SetAppGuid(v string) *CreateViewRequest {
-	s.AppGuid = &v
-	return s
-}
-
-func (s *CreateViewRequest) SetClientToken(v string) *CreateViewRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *CreateViewRequest) SetComment(v string) *CreateViewRequest {
-	s.Comment = &v
-	return s
-}
-
-func (s *CreateViewRequest) SetSelectColumn(v string) *CreateViewRequest {
-	s.SelectColumn = &v
-	return s
-}
-
-func (s *CreateViewRequest) SetSelectSQL(v string) *CreateViewRequest {
-	s.SelectSQL = &v
-	return s
-}
-
-func (s *CreateViewRequest) SetSelectTableName(v string) *CreateViewRequest {
-	s.SelectTableName = &v
-	return s
-}
-
-func (s *CreateViewRequest) SetSelectWhere(v string) *CreateViewRequest {
-	s.SelectWhere = &v
-	return s
-}
-
-func (s *CreateViewRequest) SetViewColumn(v []*CreateViewRequestViewColumn) *CreateViewRequest {
-	s.ViewColumn = v
-	return s
-}
-
-func (s *CreateViewRequest) SetViewName(v string) *CreateViewRequest {
-	s.ViewName = &v
-	return s
-}
-
-type CreateViewRequestViewColumn struct {
-	ColumnName *string `json:"ColumnName,omitempty" xml:"ColumnName,omitempty"`
-	Comment    *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-}
-
-func (s CreateViewRequestViewColumn) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateViewRequestViewColumn) GoString() string {
-	return s.String()
-}
-
-func (s *CreateViewRequestViewColumn) SetColumnName(v string) *CreateViewRequestViewColumn {
-	s.ColumnName = &v
-	return s
-}
-
-func (s *CreateViewRequestViewColumn) SetComment(v string) *CreateViewRequestViewColumn {
-	s.Comment = &v
-	return s
-}
-
-type CreateViewResponseBody struct {
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskInfo  *CreateViewResponseBodyTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
-}
-
-func (s CreateViewResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateViewResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateViewResponseBody) SetRequestId(v string) *CreateViewResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateViewResponseBody) SetTaskInfo(v *CreateViewResponseBodyTaskInfo) *CreateViewResponseBody {
-	s.TaskInfo = v
-	return s
-}
-
-type CreateViewResponseBodyTaskInfo struct {
-	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	NextTaskId *string `json:"NextTaskId,omitempty" xml:"NextTaskId,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s CreateViewResponseBodyTaskInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateViewResponseBodyTaskInfo) GoString() string {
-	return s.String()
-}
-
-func (s *CreateViewResponseBodyTaskInfo) SetContent(v string) *CreateViewResponseBodyTaskInfo {
-	s.Content = &v
-	return s
-}
-
-func (s *CreateViewResponseBodyTaskInfo) SetNextTaskId(v string) *CreateViewResponseBodyTaskInfo {
-	s.NextTaskId = &v
-	return s
-}
-
-func (s *CreateViewResponseBodyTaskInfo) SetStatus(v string) *CreateViewResponseBodyTaskInfo {
-	s.Status = &v
-	return s
-}
-
-func (s *CreateViewResponseBodyTaskInfo) SetTaskId(v string) *CreateViewResponseBodyTaskInfo {
-	s.TaskId = &v
-	return s
-}
-
-type CreateViewResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateViewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateViewResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateViewResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateViewResponse) SetHeaders(v map[string]*string) *CreateViewResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateViewResponse) SetBody(v *CreateViewResponseBody) *CreateViewResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteBusinessRequest struct {
 	BusinessId        *int64  `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
 	ProjectId         *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
@@ -6322,110 +5975,6 @@ func (s *DeleteTableThemeResponse) SetBody(v *DeleteTableThemeResponseBody) *Del
 	return s
 }
 
-type DeleteViewRequest struct {
-	AppGuid  *string `json:"AppGuid,omitempty" xml:"AppGuid,omitempty"`
-	ViewName *string `json:"ViewName,omitempty" xml:"ViewName,omitempty"`
-}
-
-func (s DeleteViewRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteViewRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteViewRequest) SetAppGuid(v string) *DeleteViewRequest {
-	s.AppGuid = &v
-	return s
-}
-
-func (s *DeleteViewRequest) SetViewName(v string) *DeleteViewRequest {
-	s.ViewName = &v
-	return s
-}
-
-type DeleteViewResponseBody struct {
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TaskInfo  *DeleteViewResponseBodyTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
-}
-
-func (s DeleteViewResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteViewResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteViewResponseBody) SetRequestId(v string) *DeleteViewResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteViewResponseBody) SetTaskInfo(v *DeleteViewResponseBodyTaskInfo) *DeleteViewResponseBody {
-	s.TaskInfo = v
-	return s
-}
-
-type DeleteViewResponseBodyTaskInfo struct {
-	Content    *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	NextTaskId *string `json:"NextTaskId,omitempty" xml:"NextTaskId,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TaskId     *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s DeleteViewResponseBodyTaskInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteViewResponseBodyTaskInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteViewResponseBodyTaskInfo) SetContent(v string) *DeleteViewResponseBodyTaskInfo {
-	s.Content = &v
-	return s
-}
-
-func (s *DeleteViewResponseBodyTaskInfo) SetNextTaskId(v string) *DeleteViewResponseBodyTaskInfo {
-	s.NextTaskId = &v
-	return s
-}
-
-func (s *DeleteViewResponseBodyTaskInfo) SetStatus(v string) *DeleteViewResponseBodyTaskInfo {
-	s.Status = &v
-	return s
-}
-
-func (s *DeleteViewResponseBodyTaskInfo) SetTaskId(v string) *DeleteViewResponseBodyTaskInfo {
-	s.TaskId = &v
-	return s
-}
-
-type DeleteViewResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteViewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteViewResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteViewResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteViewResponse) SetHeaders(v map[string]*string) *DeleteViewResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteViewResponse) SetBody(v *DeleteViewResponseBody) *DeleteViewResponse {
-	s.Body = v
-	return s
-}
-
 type DeployDISyncTaskRequest struct {
 	FileId    *int64  `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	ProjectId *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
@@ -6811,369 +6360,6 @@ func (s *EstablishRelationTableToBusinessResponse) SetHeaders(v map[string]*stri
 }
 
 func (s *EstablishRelationTableToBusinessResponse) SetBody(v *EstablishRelationTableToBusinessResponseBody) *EstablishRelationTableToBusinessResponse {
-	s.Body = v
-	return s
-}
-
-type ExportConnectionsRequest struct {
-	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	EnvType        *int32  `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId      *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	SubType        *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
-}
-
-func (s ExportConnectionsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExportConnectionsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ExportConnectionsRequest) SetDataSourceType(v string) *ExportConnectionsRequest {
-	s.DataSourceType = &v
-	return s
-}
-
-func (s *ExportConnectionsRequest) SetEnvType(v int32) *ExportConnectionsRequest {
-	s.EnvType = &v
-	return s
-}
-
-func (s *ExportConnectionsRequest) SetName(v string) *ExportConnectionsRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *ExportConnectionsRequest) SetPageNumber(v int32) *ExportConnectionsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ExportConnectionsRequest) SetPageSize(v int32) *ExportConnectionsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ExportConnectionsRequest) SetProjectId(v int64) *ExportConnectionsRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *ExportConnectionsRequest) SetSubType(v string) *ExportConnectionsRequest {
-	s.SubType = &v
-	return s
-}
-
-type ExportConnectionsResponseBody struct {
-	Data           *ExportConnectionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	RequestId      *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ExportConnectionsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExportConnectionsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ExportConnectionsResponseBody) SetData(v *ExportConnectionsResponseBodyData) *ExportConnectionsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ExportConnectionsResponseBody) SetHttpStatusCode(v int32) *ExportConnectionsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ExportConnectionsResponseBody) SetRequestId(v string) *ExportConnectionsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ExportConnectionsResponseBody) SetSuccess(v bool) *ExportConnectionsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ExportConnectionsResponseBodyData struct {
-	DataSources []*ExportConnectionsResponseBodyDataDataSources `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
-	PageNumber  *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ExportConnectionsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExportConnectionsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ExportConnectionsResponseBodyData) SetDataSources(v []*ExportConnectionsResponseBodyDataDataSources) *ExportConnectionsResponseBodyData {
-	s.DataSources = v
-	return s
-}
-
-func (s *ExportConnectionsResponseBodyData) SetPageNumber(v int32) *ExportConnectionsResponseBodyData {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ExportConnectionsResponseBodyData) SetPageSize(v int32) *ExportConnectionsResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ExportConnectionsResponseBodyData) SetTotalCount(v int32) *ExportConnectionsResponseBodyData {
-	s.TotalCount = &v
-	return s
-}
-
-type ExportConnectionsResponseBodyDataDataSources struct {
-	BindingCalcEngineId *int32  `json:"BindingCalcEngineId,omitempty" xml:"BindingCalcEngineId,omitempty"`
-	ConnectStatus       *int32  `json:"ConnectStatus,omitempty" xml:"ConnectStatus,omitempty"`
-	Content             *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	DataSourceType      *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
-	DefaultEngine       *bool   `json:"DefaultEngine,omitempty" xml:"DefaultEngine,omitempty"`
-	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnvType             *int32  `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	GmtCreate           *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified         *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id                  *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Operator            *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	ProjectId           *int32  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	Sequence            *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
-	Shared              *bool   `json:"Shared,omitempty" xml:"Shared,omitempty"`
-	Status              *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubType             *string `json:"SubType,omitempty" xml:"SubType,omitempty"`
-	TenantId            *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-}
-
-func (s ExportConnectionsResponseBodyDataDataSources) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExportConnectionsResponseBodyDataDataSources) GoString() string {
-	return s.String()
-}
-
-func (s *ExportConnectionsResponseBodyDataDataSources) SetBindingCalcEngineId(v int32) *ExportConnectionsResponseBodyDataDataSources {
-	s.BindingCalcEngineId = &v
-	return s
-}
-
-func (s *ExportConnectionsResponseBodyDataDataSources) SetConnectStatus(v int32) *ExportConnectionsResponseBodyDataDataSources {
-	s.ConnectStatus = &v
-	return s
-}
-
-func (s *ExportConnectionsResponseBodyDataDataSources) SetContent(v string) *ExportConnectionsResponseBodyDataDataSources {
-	s.Content = &v
-	return s
-}
-
-func (s *ExportConnectionsResponseBodyDataDataSources) SetDataSourceType(v string) *ExportConnectionsResponseBodyDataDataSources {
-	s.DataSourceType = &v
-	return s
-}
-
-func (s *ExportConnectionsResponseBodyDataDataSources) SetDefaultEngine(v bool) *ExportConnectionsResponseBodyDataDataSources {
-	s.DefaultEngine = &v
-	return s
-}
-
-func (s *ExportConnectionsResponseBodyDataDataSources) SetDescription(v string) *ExportConnectionsResponseBodyDataDataSources {
-	s.Description = &v
-	return s
-}
-
-func (s *ExportConnectionsResponseBodyDataDataSources) SetEnvType(v int32) *ExportConnectionsResponseBodyDataDataSources {
-	s.EnvType = &v
-	return s
-}
-
-func (s *ExportConnectionsResponseBodyDataDataSources) SetGmtCreate(v string) *ExportConnectionsResponseBodyDataDataSources {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *ExportConnectionsResponseBodyDataDataSources) SetGmtModified(v string) *ExportConnectionsResponseBodyDataDataSources {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *ExportConnectionsResponseBodyDataDataSources) SetId(v int32) *ExportConnectionsResponseBodyDataDataSources {
-	s.Id = &v
-	return s
-}
-
-func (s *ExportConnectionsResponseBodyDataDataSources) SetName(v string) *ExportConnectionsResponseBodyDataDataSources {
-	s.Name = &v
-	return s
-}
-
-func (s *ExportConnectionsResponseBodyDataDataSources) SetOperator(v string) *ExportConnectionsResponseBodyDataDataSources {
-	s.Operator = &v
-	return s
-}
-
-func (s *ExportConnectionsResponseBodyDataDataSources) SetProjectId(v int32) *ExportConnectionsResponseBodyDataDataSources {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *ExportConnectionsResponseBodyDataDataSources) SetSequence(v int32) *ExportConnectionsResponseBodyDataDataSources {
-	s.Sequence = &v
-	return s
-}
-
-func (s *ExportConnectionsResponseBodyDataDataSources) SetShared(v bool) *ExportConnectionsResponseBodyDataDataSources {
-	s.Shared = &v
-	return s
-}
-
-func (s *ExportConnectionsResponseBodyDataDataSources) SetStatus(v int32) *ExportConnectionsResponseBodyDataDataSources {
-	s.Status = &v
-	return s
-}
-
-func (s *ExportConnectionsResponseBodyDataDataSources) SetSubType(v string) *ExportConnectionsResponseBodyDataDataSources {
-	s.SubType = &v
-	return s
-}
-
-func (s *ExportConnectionsResponseBodyDataDataSources) SetTenantId(v int64) *ExportConnectionsResponseBodyDataDataSources {
-	s.TenantId = &v
-	return s
-}
-
-type ExportConnectionsResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExportConnectionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ExportConnectionsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExportConnectionsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ExportConnectionsResponse) SetHeaders(v map[string]*string) *ExportConnectionsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ExportConnectionsResponse) SetBody(v *ExportConnectionsResponseBody) *ExportConnectionsResponse {
-	s.Body = v
-	return s
-}
-
-type ExportDISyncTasksRequest struct {
-	ProjectId *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
-	TaskType  *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-}
-
-func (s ExportDISyncTasksRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExportDISyncTasksRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ExportDISyncTasksRequest) SetProjectId(v int64) *ExportDISyncTasksRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *ExportDISyncTasksRequest) SetTaskParam(v string) *ExportDISyncTasksRequest {
-	s.TaskParam = &v
-	return s
-}
-
-func (s *ExportDISyncTasksRequest) SetTaskType(v string) *ExportDISyncTasksRequest {
-	s.TaskType = &v
-	return s
-}
-
-type ExportDISyncTasksResponseBody struct {
-	Data      *ExportDISyncTasksResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	RequestId *string                            `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	Success   *bool                              `json:"success,omitempty" xml:"success,omitempty"`
-}
-
-func (s ExportDISyncTasksResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExportDISyncTasksResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ExportDISyncTasksResponseBody) SetData(v *ExportDISyncTasksResponseBodyData) *ExportDISyncTasksResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ExportDISyncTasksResponseBody) SetRequestId(v string) *ExportDISyncTasksResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ExportDISyncTasksResponseBody) SetSuccess(v bool) *ExportDISyncTasksResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ExportDISyncTasksResponseBodyData struct {
-	RealTimeSolution *string `json:"realTimeSolution,omitempty" xml:"realTimeSolution,omitempty"`
-}
-
-func (s ExportDISyncTasksResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExportDISyncTasksResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ExportDISyncTasksResponseBodyData) SetRealTimeSolution(v string) *ExportDISyncTasksResponseBodyData {
-	s.RealTimeSolution = &v
-	return s
-}
-
-type ExportDISyncTasksResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExportDISyncTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ExportDISyncTasksResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExportDISyncTasksResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ExportDISyncTasksResponse) SetHeaders(v map[string]*string) *ExportDISyncTasksResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ExportDISyncTasksResponse) SetBody(v *ExportDISyncTasksResponseBody) *ExportDISyncTasksResponse {
 	s.Body = v
 	return s
 }
@@ -8641,116 +7827,6 @@ func (s *GetBusinessResponse) SetHeaders(v map[string]*string) *GetBusinessRespo
 }
 
 func (s *GetBusinessResponse) SetBody(v *GetBusinessResponseBody) *GetBusinessResponse {
-	s.Body = v
-	return s
-}
-
-type GetConnectionMetaRequest struct {
-	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
-	EnvType        *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	PageNumber     *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId      *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-}
-
-func (s GetConnectionMetaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetConnectionMetaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetConnectionMetaRequest) SetDatasourceName(v string) *GetConnectionMetaRequest {
-	s.DatasourceName = &v
-	return s
-}
-
-func (s *GetConnectionMetaRequest) SetEnvType(v string) *GetConnectionMetaRequest {
-	s.EnvType = &v
-	return s
-}
-
-func (s *GetConnectionMetaRequest) SetPageNumber(v int64) *GetConnectionMetaRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *GetConnectionMetaRequest) SetPageSize(v int64) *GetConnectionMetaRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *GetConnectionMetaRequest) SetProjectId(v int64) *GetConnectionMetaRequest {
-	s.ProjectId = &v
-	return s
-}
-
-type GetConnectionMetaResponseBody struct {
-	Data      *GetConnectionMetaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetConnectionMetaResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetConnectionMetaResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetConnectionMetaResponseBody) SetData(v *GetConnectionMetaResponseBodyData) *GetConnectionMetaResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetConnectionMetaResponseBody) SetRequestId(v string) *GetConnectionMetaResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetConnectionMetaResponseBody) SetSuccess(v bool) *GetConnectionMetaResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetConnectionMetaResponseBodyData struct {
-	Meta *string `json:"Meta,omitempty" xml:"Meta,omitempty"`
-}
-
-func (s GetConnectionMetaResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetConnectionMetaResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetConnectionMetaResponseBodyData) SetMeta(v string) *GetConnectionMetaResponseBodyData {
-	s.Meta = &v
-	return s
-}
-
-type GetConnectionMetaResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetConnectionMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetConnectionMetaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetConnectionMetaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetConnectionMetaResponse) SetHeaders(v map[string]*string) *GetConnectionMetaResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetConnectionMetaResponse) SetBody(v *GetConnectionMetaResponseBody) *GetConnectionMetaResponse {
 	s.Body = v
 	return s
 }
@@ -11919,27 +10995,28 @@ func (s *GetFileResponseBodyData) SetNodeConfiguration(v *GetFileResponseBodyDat
 }
 
 type GetFileResponseBodyDataFile struct {
-	AutoParsing     *bool   `json:"AutoParsing,omitempty" xml:"AutoParsing,omitempty"`
-	BizId           *int64  `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	BusinessId      *int64  `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
-	CommitStatus    *int32  `json:"CommitStatus,omitempty" xml:"CommitStatus,omitempty"`
-	ConnectionName  *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
-	Content         *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	CreateTime      *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CreateUser      *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
-	CurrentVersion  *int32  `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
-	DeletedStatus   *string `json:"DeletedStatus,omitempty" xml:"DeletedStatus,omitempty"`
-	FileDescription *string `json:"FileDescription,omitempty" xml:"FileDescription,omitempty"`
-	FileFolderId    *string `json:"FileFolderId,omitempty" xml:"FileFolderId,omitempty"`
-	FileName        *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileType        *int32  `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	IsMaxCompute    *bool   `json:"IsMaxCompute,omitempty" xml:"IsMaxCompute,omitempty"`
-	LastEditTime    *int64  `json:"LastEditTime,omitempty" xml:"LastEditTime,omitempty"`
-	LastEditUser    *string `json:"LastEditUser,omitempty" xml:"LastEditUser,omitempty"`
-	NodeId          *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	Owner           *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
-	ParentId        *int64  `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	UseType         *string `json:"UseType,omitempty" xml:"UseType,omitempty"`
+	AdvancedSettings *string `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
+	AutoParsing      *bool   `json:"AutoParsing,omitempty" xml:"AutoParsing,omitempty"`
+	BizId            *int64  `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	BusinessId       *int64  `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
+	CommitStatus     *int32  `json:"CommitStatus,omitempty" xml:"CommitStatus,omitempty"`
+	ConnectionName   *string `json:"ConnectionName,omitempty" xml:"ConnectionName,omitempty"`
+	Content          *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	CreateTime       *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateUser       *string `json:"CreateUser,omitempty" xml:"CreateUser,omitempty"`
+	CurrentVersion   *int32  `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
+	DeletedStatus    *string `json:"DeletedStatus,omitempty" xml:"DeletedStatus,omitempty"`
+	FileDescription  *string `json:"FileDescription,omitempty" xml:"FileDescription,omitempty"`
+	FileFolderId     *string `json:"FileFolderId,omitempty" xml:"FileFolderId,omitempty"`
+	FileName         *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileType         *int32  `json:"FileType,omitempty" xml:"FileType,omitempty"`
+	IsMaxCompute     *bool   `json:"IsMaxCompute,omitempty" xml:"IsMaxCompute,omitempty"`
+	LastEditTime     *int64  `json:"LastEditTime,omitempty" xml:"LastEditTime,omitempty"`
+	LastEditUser     *string `json:"LastEditUser,omitempty" xml:"LastEditUser,omitempty"`
+	NodeId           *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Owner            *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	ParentId         *int64  `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	UseType          *string `json:"UseType,omitempty" xml:"UseType,omitempty"`
 }
 
 func (s GetFileResponseBodyDataFile) String() string {
@@ -11948,6 +11025,11 @@ func (s GetFileResponseBodyDataFile) String() string {
 
 func (s GetFileResponseBodyDataFile) GoString() string {
 	return s.String()
+}
+
+func (s *GetFileResponseBodyDataFile) SetAdvancedSettings(v string) *GetFileResponseBodyDataFile {
+	s.AdvancedSettings = &v
+	return s
 }
 
 func (s *GetFileResponseBodyDataFile) SetAutoParsing(v bool) *GetFileResponseBodyDataFile {
@@ -12070,6 +11152,7 @@ type GetFileResponseBodyDataNodeConfiguration struct {
 	ResourceGroupId         *int64                                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SchedulerType           *string                                               `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
 	StartEffectDate         *int64                                                `json:"StartEffectDate,omitempty" xml:"StartEffectDate,omitempty"`
+	StartImmediately        *bool                                                 `json:"StartImmediately,omitempty" xml:"StartImmediately,omitempty"`
 	Stop                    *bool                                                 `json:"Stop,omitempty" xml:"Stop,omitempty"`
 }
 
@@ -12148,6 +11231,11 @@ func (s *GetFileResponseBodyDataNodeConfiguration) SetSchedulerType(v string) *G
 
 func (s *GetFileResponseBodyDataNodeConfiguration) SetStartEffectDate(v int64) *GetFileResponseBodyDataNodeConfiguration {
 	s.StartEffectDate = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetStartImmediately(v bool) *GetFileResponseBodyDataNodeConfiguration {
+	s.StartImmediately = &v
 	return s
 }
 
@@ -20955,208 +20043,6 @@ func (s *GetTopicInfluenceResponse) SetBody(v *GetTopicInfluenceResponseBody) *G
 	return s
 }
 
-type ImportConnectionsRequest struct {
-	Connections *string `json:"Connections,omitempty" xml:"Connections,omitempty"`
-	ProjectId   *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-}
-
-func (s ImportConnectionsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportConnectionsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ImportConnectionsRequest) SetConnections(v string) *ImportConnectionsRequest {
-	s.Connections = &v
-	return s
-}
-
-func (s *ImportConnectionsRequest) SetProjectId(v int64) *ImportConnectionsRequest {
-	s.ProjectId = &v
-	return s
-}
-
-type ImportConnectionsResponseBody struct {
-	Data      *ImportConnectionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ImportConnectionsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportConnectionsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ImportConnectionsResponseBody) SetData(v *ImportConnectionsResponseBodyData) *ImportConnectionsResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ImportConnectionsResponseBody) SetRequestId(v string) *ImportConnectionsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ImportConnectionsResponseBody) SetSuccess(v bool) *ImportConnectionsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ImportConnectionsResponseBodyData struct {
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Status  *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s ImportConnectionsResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportConnectionsResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ImportConnectionsResponseBodyData) SetMessage(v string) *ImportConnectionsResponseBodyData {
-	s.Message = &v
-	return s
-}
-
-func (s *ImportConnectionsResponseBodyData) SetStatus(v bool) *ImportConnectionsResponseBodyData {
-	s.Status = &v
-	return s
-}
-
-type ImportConnectionsResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ImportConnectionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ImportConnectionsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportConnectionsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ImportConnectionsResponse) SetHeaders(v map[string]*string) *ImportConnectionsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ImportConnectionsResponse) SetBody(v *ImportConnectionsResponseBody) *ImportConnectionsResponse {
-	s.Body = v
-	return s
-}
-
-type ImportDISyncTasksRequest struct {
-	ProjectId *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	TaskParam *string `json:"TaskParam,omitempty" xml:"TaskParam,omitempty"`
-	TaskType  *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	Body      *string `json:"body,omitempty" xml:"body,omitempty"`
-}
-
-func (s ImportDISyncTasksRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportDISyncTasksRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ImportDISyncTasksRequest) SetProjectId(v int64) *ImportDISyncTasksRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *ImportDISyncTasksRequest) SetTaskParam(v string) *ImportDISyncTasksRequest {
-	s.TaskParam = &v
-	return s
-}
-
-func (s *ImportDISyncTasksRequest) SetTaskType(v string) *ImportDISyncTasksRequest {
-	s.TaskType = &v
-	return s
-}
-
-func (s *ImportDISyncTasksRequest) SetBody(v string) *ImportDISyncTasksRequest {
-	s.Body = &v
-	return s
-}
-
-type ImportDISyncTasksResponseBody struct {
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskInfo  *ImportDISyncTasksResponseBodyTaskInfo `json:"TaskInfo,omitempty" xml:"TaskInfo,omitempty" type:"Struct"`
-}
-
-func (s ImportDISyncTasksResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportDISyncTasksResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ImportDISyncTasksResponseBody) SetRequestId(v string) *ImportDISyncTasksResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ImportDISyncTasksResponseBody) SetSuccess(v bool) *ImportDISyncTasksResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *ImportDISyncTasksResponseBody) SetTaskInfo(v *ImportDISyncTasksResponseBodyTaskInfo) *ImportDISyncTasksResponseBody {
-	s.TaskInfo = v
-	return s
-}
-
-type ImportDISyncTasksResponseBodyTaskInfo struct {
-	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s ImportDISyncTasksResponseBodyTaskInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportDISyncTasksResponseBodyTaskInfo) GoString() string {
-	return s.String()
-}
-
-func (s *ImportDISyncTasksResponseBodyTaskInfo) SetTaskId(v int64) *ImportDISyncTasksResponseBodyTaskInfo {
-	s.TaskId = &v
-	return s
-}
-
-type ImportDISyncTasksResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ImportDISyncTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ImportDISyncTasksResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportDISyncTasksResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ImportDISyncTasksResponse) SetHeaders(v map[string]*string) *ImportDISyncTasksResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ImportDISyncTasksResponse) SetBody(v *ImportDISyncTasksResponseBody) *ImportDISyncTasksResponse {
-	s.Body = v
-	return s
-}
-
 type ImportDataSourcesRequest struct {
 	DataSources *string `json:"DataSources,omitempty" xml:"DataSources,omitempty"`
 	ProjectId   *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
@@ -23001,169 +21887,6 @@ func (s *ListDIProjectConfigResponse) SetHeaders(v map[string]*string) *ListDIPr
 }
 
 func (s *ListDIProjectConfigResponse) SetBody(v *ListDIProjectConfigResponseBody) *ListDIProjectConfigResponse {
-	s.Body = v
-	return s
-}
-
-type ListDISyncTasksRequest struct {
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProjectId  *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	TaskType   *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-}
-
-func (s ListDISyncTasksRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDISyncTasksRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDISyncTasksRequest) SetPageNumber(v int64) *ListDISyncTasksRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListDISyncTasksRequest) SetPageSize(v int64) *ListDISyncTasksRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListDISyncTasksRequest) SetProjectId(v int64) *ListDISyncTasksRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *ListDISyncTasksRequest) SetTaskType(v string) *ListDISyncTasksRequest {
-	s.TaskType = &v
-	return s
-}
-
-type ListDISyncTasksResponseBody struct {
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskList  *ListDISyncTasksResponseBodyTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Struct"`
-}
-
-func (s ListDISyncTasksResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDISyncTasksResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDISyncTasksResponseBody) SetRequestId(v string) *ListDISyncTasksResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListDISyncTasksResponseBody) SetSuccess(v bool) *ListDISyncTasksResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *ListDISyncTasksResponseBody) SetTaskList(v *ListDISyncTasksResponseBodyTaskList) *ListDISyncTasksResponseBody {
-	s.TaskList = v
-	return s
-}
-
-type ListDISyncTasksResponseBodyTaskList struct {
-	PageNumber           *int32                                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32                                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RealTimeSolutionList []*ListDISyncTasksResponseBodyTaskListRealTimeSolutionList `json:"RealTimeSolutionList,omitempty" xml:"RealTimeSolutionList,omitempty" type:"Repeated"`
-	TotalCount           *int32                                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListDISyncTasksResponseBodyTaskList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDISyncTasksResponseBodyTaskList) GoString() string {
-	return s.String()
-}
-
-func (s *ListDISyncTasksResponseBodyTaskList) SetPageNumber(v int32) *ListDISyncTasksResponseBodyTaskList {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListDISyncTasksResponseBodyTaskList) SetPageSize(v int32) *ListDISyncTasksResponseBodyTaskList {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListDISyncTasksResponseBodyTaskList) SetRealTimeSolutionList(v []*ListDISyncTasksResponseBodyTaskListRealTimeSolutionList) *ListDISyncTasksResponseBodyTaskList {
-	s.RealTimeSolutionList = v
-	return s
-}
-
-func (s *ListDISyncTasksResponseBodyTaskList) SetTotalCount(v int32) *ListDISyncTasksResponseBodyTaskList {
-	s.TotalCount = &v
-	return s
-}
-
-type ListDISyncTasksResponseBodyTaskListRealTimeSolutionList struct {
-	CreateTime  *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	ProcessId   *int64  `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
-	TaskStatus  *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	TaskType    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-}
-
-func (s ListDISyncTasksResponseBodyTaskListRealTimeSolutionList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDISyncTasksResponseBodyTaskListRealTimeSolutionList) GoString() string {
-	return s.String()
-}
-
-func (s *ListDISyncTasksResponseBodyTaskListRealTimeSolutionList) SetCreateTime(v int64) *ListDISyncTasksResponseBodyTaskListRealTimeSolutionList {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListDISyncTasksResponseBodyTaskListRealTimeSolutionList) SetProcessId(v int64) *ListDISyncTasksResponseBodyTaskListRealTimeSolutionList {
-	s.ProcessId = &v
-	return s
-}
-
-func (s *ListDISyncTasksResponseBodyTaskListRealTimeSolutionList) SetProcessName(v string) *ListDISyncTasksResponseBodyTaskListRealTimeSolutionList {
-	s.ProcessName = &v
-	return s
-}
-
-func (s *ListDISyncTasksResponseBodyTaskListRealTimeSolutionList) SetTaskStatus(v string) *ListDISyncTasksResponseBodyTaskListRealTimeSolutionList {
-	s.TaskStatus = &v
-	return s
-}
-
-func (s *ListDISyncTasksResponseBodyTaskListRealTimeSolutionList) SetTaskType(v string) *ListDISyncTasksResponseBodyTaskListRealTimeSolutionList {
-	s.TaskType = &v
-	return s
-}
-
-type ListDISyncTasksResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDISyncTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDISyncTasksResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDISyncTasksResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListDISyncTasksResponse) SetHeaders(v map[string]*string) *ListDISyncTasksResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDISyncTasksResponse) SetBody(v *ListDISyncTasksResponseBody) *ListDISyncTasksResponse {
 	s.Body = v
 	return s
 }
@@ -34176,116 +32899,6 @@ func (s *SearchNodesByOutputResponse) SetBody(v *SearchNodesByOutputResponseBody
 	return s
 }
 
-type SetConnectionShareRequest struct {
-	DatasourceName     *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
-	EnvType            *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	ProjectId          *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectPermissions *string `json:"ProjectPermissions,omitempty" xml:"ProjectPermissions,omitempty"`
-	UserPermissions    *string `json:"UserPermissions,omitempty" xml:"UserPermissions,omitempty"`
-}
-
-func (s SetConnectionShareRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetConnectionShareRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SetConnectionShareRequest) SetDatasourceName(v string) *SetConnectionShareRequest {
-	s.DatasourceName = &v
-	return s
-}
-
-func (s *SetConnectionShareRequest) SetEnvType(v string) *SetConnectionShareRequest {
-	s.EnvType = &v
-	return s
-}
-
-func (s *SetConnectionShareRequest) SetProjectId(v int64) *SetConnectionShareRequest {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *SetConnectionShareRequest) SetProjectPermissions(v string) *SetConnectionShareRequest {
-	s.ProjectPermissions = &v
-	return s
-}
-
-func (s *SetConnectionShareRequest) SetUserPermissions(v string) *SetConnectionShareRequest {
-	s.UserPermissions = &v
-	return s
-}
-
-type SetConnectionShareResponseBody struct {
-	Data      *SetConnectionShareResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SetConnectionShareResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetConnectionShareResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SetConnectionShareResponseBody) SetData(v *SetConnectionShareResponseBodyData) *SetConnectionShareResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *SetConnectionShareResponseBody) SetRequestId(v string) *SetConnectionShareResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SetConnectionShareResponseBody) SetSuccess(v bool) *SetConnectionShareResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SetConnectionShareResponseBodyData struct {
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s SetConnectionShareResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetConnectionShareResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *SetConnectionShareResponseBodyData) SetStatus(v string) *SetConnectionShareResponseBodyData {
-	s.Status = &v
-	return s
-}
-
-type SetConnectionShareResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetConnectionShareResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SetConnectionShareResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetConnectionShareResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SetConnectionShareResponse) SetHeaders(v map[string]*string) *SetConnectionShareResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SetConnectionShareResponse) SetBody(v *SetConnectionShareResponseBody) *SetConnectionShareResponse {
-	s.Body = v
-	return s
-}
-
 type SetDataSourceShareRequest struct {
 	DatasourceName     *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
 	EnvType            *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
@@ -36268,6 +34881,7 @@ func (s *UpdateDataSourceResponse) SetBody(v *UpdateDataSourceResponseBody) *Upd
 }
 
 type UpdateFileRequest struct {
+	AdvancedSettings        *string `json:"AdvancedSettings,omitempty" xml:"AdvancedSettings,omitempty"`
 	AutoParsing             *bool   `json:"AutoParsing,omitempty" xml:"AutoParsing,omitempty"`
 	AutoRerunIntervalMillis *int32  `json:"AutoRerunIntervalMillis,omitempty" xml:"AutoRerunIntervalMillis,omitempty"`
 	AutoRerunTimes          *int32  `json:"AutoRerunTimes,omitempty" xml:"AutoRerunTimes,omitempty"`
@@ -36292,6 +34906,7 @@ type UpdateFileRequest struct {
 	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
 	SchedulerType           *string `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
 	StartEffectDate         *int64  `json:"StartEffectDate,omitempty" xml:"StartEffectDate,omitempty"`
+	StartImmediately        *bool   `json:"StartImmediately,omitempty" xml:"StartImmediately,omitempty"`
 	Stop                    *bool   `json:"Stop,omitempty" xml:"Stop,omitempty"`
 }
 
@@ -36301,6 +34916,11 @@ func (s UpdateFileRequest) String() string {
 
 func (s UpdateFileRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateFileRequest) SetAdvancedSettings(v string) *UpdateFileRequest {
+	s.AdvancedSettings = &v
+	return s
 }
 
 func (s *UpdateFileRequest) SetAutoParsing(v bool) *UpdateFileRequest {
@@ -36420,6 +35040,11 @@ func (s *UpdateFileRequest) SetSchedulerType(v string) *UpdateFileRequest {
 
 func (s *UpdateFileRequest) SetStartEffectDate(v int64) *UpdateFileRequest {
 	s.StartEffectDate = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetStartImmediately(v bool) *UpdateFileRequest {
+	s.StartImmediately = &v
 	return s
 }
 
@@ -38529,8 +37154,21 @@ func (client *Client) AbolishDataServiceApiWithOptions(request *AbolishDataServi
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		body["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AbolishDataServiceApi"),
@@ -38569,13 +37207,24 @@ func (client *Client) AddProjectMemberToRoleWithOptions(request *AddProjectMembe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["ProjectId"] = request.ProjectId
-	query["RoleCode"] = request.RoleCode
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleCode)) {
+		query["RoleCode"] = request.RoleCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddProjectMemberToRole"),
@@ -38585,7 +37234,7 @@ func (client *Client) AddProjectMemberToRoleWithOptions(request *AddProjectMembe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddProjectMemberToRoleResponse{}
@@ -38614,11 +37263,16 @@ func (client *Client) AddToMetaCategoryWithOptions(request *AddToMetaCategoryReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CategoryId"] = request.CategoryId
-	query["TableGuid"] = request.TableGuid
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
+		query["TableGuid"] = request.TableGuid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("AddToMetaCategory"),
@@ -38628,7 +37282,7 @@ func (client *Client) AddToMetaCategoryWithOptions(request *AddToMetaCategoryReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &AddToMetaCategoryResponse{}
@@ -38657,12 +37311,20 @@ func (client *Client) ApprovePermissionApplyOrderWithOptions(request *ApprovePer
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApproveAction"] = request.ApproveAction
-	query["ApproveComment"] = request.ApproveComment
-	query["FlowId"] = request.FlowId
+	if !tea.BoolValue(util.IsUnset(request.ApproveAction)) {
+		query["ApproveAction"] = request.ApproveAction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApproveComment)) {
+		query["ApproveComment"] = request.ApproveComment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowId)) {
+		query["FlowId"] = request.FlowId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ApprovePermissionApplyOrder"),
@@ -38672,7 +37334,7 @@ func (client *Client) ApprovePermissionApplyOrderWithOptions(request *ApprovePer
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ApprovePermissionApplyOrderResponse{}
@@ -38695,100 +37357,26 @@ func (client *Client) ApprovePermissionApplyOrder(request *ApprovePermissionAppl
 	return _result, _err
 }
 
-func (client *Client) CheckEngineMetaPartitionWithOptions(request *CheckEngineMetaPartitionRequest, runtime *util.RuntimeOptions) (_result *CheckEngineMetaPartitionResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DataSourceType"] = request.DataSourceType
-	query["Partition"] = request.Partition
-	query["TableGuid"] = request.TableGuid
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CheckEngineMetaPartition"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CheckEngineMetaPartitionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CheckEngineMetaPartition(request *CheckEngineMetaPartitionRequest) (_result *CheckEngineMetaPartitionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CheckEngineMetaPartitionResponse{}
-	_body, _err := client.CheckEngineMetaPartitionWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CheckEngineMetaTableWithOptions(request *CheckEngineMetaTableRequest, runtime *util.RuntimeOptions) (_result *CheckEngineMetaTableResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DataSourceType"] = request.DataSourceType
-	query["TableGuid"] = request.TableGuid
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CheckEngineMetaTable"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CheckEngineMetaTableResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CheckEngineMetaTable(request *CheckEngineMetaTableRequest) (_result *CheckEngineMetaTableResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CheckEngineMetaTableResponse{}
-	_body, _err := client.CheckEngineMetaTableWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CheckFileDeploymentWithOptions(request *CheckFileDeploymentRequest, runtime *util.RuntimeOptions) (_result *CheckFileDeploymentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckDetailUrl)) {
+		body["CheckDetailUrl"] = request.CheckDetailUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckerInstanceId)) {
+		body["CheckerInstanceId"] = request.CheckerInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CheckFileDeployment"),
@@ -38827,15 +37415,32 @@ func (client *Client) CheckMetaPartitionWithOptions(request *CheckMetaPartitionR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClusterId"] = request.ClusterId
-	query["DataSourceType"] = request.DataSourceType
-	query["DatabaseName"] = request.DatabaseName
-	query["Partition"] = request.Partition
-	query["TableGuid"] = request.TableGuid
-	query["TableName"] = request.TableName
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		query["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Partition)) {
+		query["Partition"] = request.Partition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
+		query["TableGuid"] = request.TableGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CheckMetaPartition"),
@@ -38845,7 +37450,7 @@ func (client *Client) CheckMetaPartitionWithOptions(request *CheckMetaPartitionR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CheckMetaPartitionResponse{}
@@ -38874,14 +37479,28 @@ func (client *Client) CheckMetaTableWithOptions(request *CheckMetaTableRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClusterId"] = request.ClusterId
-	query["DataSourceType"] = request.DataSourceType
-	query["DatabaseName"] = request.DatabaseName
-	query["TableGuid"] = request.TableGuid
-	query["TableName"] = request.TableName
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		query["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
+		query["TableGuid"] = request.TableGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CheckMetaTable"),
@@ -38891,7 +37510,7 @@ func (client *Client) CheckMetaTableWithOptions(request *CheckMetaTableRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CheckMetaTableResponse{}
@@ -38914,46 +37533,38 @@ func (client *Client) CheckMetaTable(request *CheckMetaTableRequest) (_result *C
 	return _result, _err
 }
 
-func (client *Client) CheckMetaTableTaskWithOptions(runtime *util.RuntimeOptions) (_result *CheckMetaTableTaskResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	params := &openapi.Params{
-		Action:      tea.String("CheckMetaTableTask"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CheckMetaTableTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CheckMetaTableTask() (_result *CheckMetaTableTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CheckMetaTableTaskResponse{}
-	_body, _err := client.CheckMetaTableTaskWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateBusinessWithOptions(request *CreateBusinessRequest, runtime *util.RuntimeOptions) (_result *CreateBusinessResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessName)) {
+		body["BusinessName"] = request.BusinessName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseType)) {
+		body["UseType"] = request.UseType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateBusiness"),
@@ -38992,16 +37603,36 @@ func (client *Client) CreateConnectionWithOptions(request *CreateConnectionReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConnectionType"] = request.ConnectionType
-	query["Content"] = request.Content
-	query["Description"] = request.Description
-	query["EnvType"] = request.EnvType
-	query["Name"] = request.Name
-	query["ProjectId"] = request.ProjectId
-	query["SubType"] = request.SubType
+	if !tea.BoolValue(util.IsUnset(request.ConnectionType)) {
+		query["ConnectionType"] = request.ConnectionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubType)) {
+		query["SubType"] = request.SubType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateConnection"),
@@ -39011,7 +37642,7 @@ func (client *Client) CreateConnectionWithOptions(request *CreateConnectionReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateConnectionResponse{}
@@ -39040,15 +37671,32 @@ func (client *Client) CreateDISyncTaskWithOptions(request *CreateDISyncTaskReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["ProjectId"] = request.ProjectId
-	query["TaskContent"] = request.TaskContent
-	query["TaskName"] = request.TaskName
-	query["TaskParam"] = request.TaskParam
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskContent)) {
+		query["TaskContent"] = request.TaskContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		query["TaskName"] = request.TaskName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskParam)) {
+		query["TaskParam"] = request.TaskParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDISyncTask"),
@@ -39058,7 +37706,7 @@ func (client *Client) CreateDISyncTaskWithOptions(request *CreateDISyncTaskReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateDISyncTaskResponse{}
@@ -39086,8 +37734,53 @@ func (client *Client) CreateDagComplementWithOptions(request *CreateDagComplemen
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizBeginTime)) {
+		body["BizBeginTime"] = request.BizBeginTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizEndTime)) {
+		body["BizEndTime"] = request.BizEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndBizDate)) {
+		body["EndBizDate"] = request.EndBizDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeNodeIds)) {
+		body["ExcludeNodeIds"] = request.ExcludeNodeIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeNodeIds)) {
+		body["IncludeNodeIds"] = request.IncludeNodeIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeParams)) {
+		body["NodeParams"] = request.NodeParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parallelism)) {
+		body["Parallelism"] = request.Parallelism
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RootNodeId)) {
+		body["RootNodeId"] = request.RootNodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartBizDate)) {
+		body["StartBizDate"] = request.StartBizDate
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDagComplement"),
@@ -39125,8 +37818,29 @@ func (client *Client) CreateDagTestWithOptions(request *CreateDagTestRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Bizdate)) {
+		body["Bizdate"] = request.Bizdate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeParams)) {
+		body["NodeParams"] = request.NodeParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDagTest"),
@@ -39164,8 +37878,73 @@ func (client *Client) CreateDataServiceApiWithOptions(request *CreateDataService
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiDescription)) {
+		body["ApiDescription"] = request.ApiDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiMode)) {
+		body["ApiMode"] = request.ApiMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiName)) {
+		body["ApiName"] = request.ApiName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiPath)) {
+		body["ApiPath"] = request.ApiPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		body["FolderId"] = request.FolderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocols)) {
+		body["Protocols"] = request.Protocols
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegistrationDetails)) {
+		body["RegistrationDetails"] = request.RegistrationDetails
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestMethod)) {
+		body["RequestMethod"] = request.RequestMethod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseContentType)) {
+		body["ResponseContentType"] = request.ResponseContentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptDetails)) {
+		body["ScriptDetails"] = request.ScriptDetails
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		body["Timeout"] = request.Timeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VisibleRange)) {
+		body["VisibleRange"] = request.VisibleRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WizardDetails)) {
+		body["WizardDetails"] = request.WizardDetails
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDataServiceApi"),
@@ -39203,8 +37982,29 @@ func (client *Client) CreateDataServiceApiAuthorityWithOptions(request *CreateDa
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		body["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizedProjectId)) {
+		body["AuthorizedProjectId"] = request.AuthorizedProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDataServiceApiAuthority"),
@@ -39242,8 +38042,29 @@ func (client *Client) CreateDataServiceFolderWithOptions(request *CreateDataServ
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FolderName)) {
+		body["FolderName"] = request.FolderName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentId)) {
+		body["ParentId"] = request.ParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDataServiceFolder"),
@@ -39281,8 +38102,29 @@ func (client *Client) CreateDataServiceGroupWithOptions(request *CreateDataServi
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiGatewayGroupId)) {
+		body["ApiGatewayGroupId"] = request.ApiGatewayGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		body["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDataServiceGroup"),
@@ -39321,16 +38163,36 @@ func (client *Client) CreateDataSourceWithOptions(request *CreateDataSourceReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Content"] = request.Content
-	query["DataSourceType"] = request.DataSourceType
-	query["Description"] = request.Description
-	query["EnvType"] = request.EnvType
-	query["Name"] = request.Name
-	query["ProjectId"] = request.ProjectId
-	query["SubType"] = request.SubType
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		query["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubType)) {
+		query["SubType"] = request.SubType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDataSource"),
@@ -39340,7 +38202,7 @@ func (client *Client) CreateDataSourceWithOptions(request *CreateDataSourceReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateDataSourceResponse{}
@@ -39368,8 +38230,33 @@ func (client *Client) CreateExportMigrationWithOptions(request *CreateExportMigr
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExportMode)) {
+		body["ExportMode"] = request.ExportMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExportObjectStatus)) {
+		body["ExportObjectStatus"] = request.ExportObjectStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncrementalSince)) {
+		body["IncrementalSince"] = request.IncrementalSince
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateExportMigration"),
@@ -39407,8 +38294,117 @@ func (client *Client) CreateFileWithOptions(request *CreateFileRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdvancedSettings)) {
+		body["AdvancedSettings"] = request.AdvancedSettings
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoParsing)) {
+		body["AutoParsing"] = request.AutoParsing
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRerunIntervalMillis)) {
+		body["AutoRerunIntervalMillis"] = request.AutoRerunIntervalMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRerunTimes)) {
+		body["AutoRerunTimes"] = request.AutoRerunTimes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionName)) {
+		body["ConnectionName"] = request.ConnectionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CronExpress)) {
+		body["CronExpress"] = request.CronExpress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CycleType)) {
+		body["CycleType"] = request.CycleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DependentNodeIdList)) {
+		body["DependentNodeIdList"] = request.DependentNodeIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DependentType)) {
+		body["DependentType"] = request.DependentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndEffectDate)) {
+		body["EndEffectDate"] = request.EndEffectDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileDescription)) {
+		body["FileDescription"] = request.FileDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileFolderPath)) {
+		body["FileFolderPath"] = request.FileFolderPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		body["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileType)) {
+		body["FileType"] = request.FileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputList)) {
+		body["InputList"] = request.InputList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParaValue)) {
+		body["ParaValue"] = request.ParaValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RerunMode)) {
+		body["RerunMode"] = request.RerunMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		body["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdentifier)) {
+		body["ResourceGroupIdentifier"] = request.ResourceGroupIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchedulerType)) {
+		body["SchedulerType"] = request.SchedulerType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartEffectDate)) {
+		body["StartEffectDate"] = request.StartEffectDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartImmediately)) {
+		body["StartImmediately"] = request.StartImmediately
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Stop)) {
+		body["Stop"] = request.Stop
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateFile"),
@@ -39446,8 +38442,21 @@ func (client *Client) CreateFolderWithOptions(request *CreateFolderRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FolderPath)) {
+		body["FolderPath"] = request.FolderPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateFolder"),
@@ -39485,8 +38494,45 @@ func (client *Client) CreateImportMigrationWithOptions(request *CreateImportMigr
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CalculateEngineMap)) {
+		body["CalculateEngineMap"] = request.CalculateEngineMap
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommitRule)) {
+		body["CommitRule"] = request.CommitRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageFile)) {
+		body["PackageFile"] = request.PackageFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageType)) {
+		body["PackageType"] = request.PackageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupMap)) {
+		body["ResourceGroupMap"] = request.ResourceGroupMap
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceMap)) {
+		body["WorkspaceMap"] = request.WorkspaceMap
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateImportMigration"),
@@ -39630,8 +38676,41 @@ func (client *Client) CreateManualDagWithOptions(request *CreateManualDagRequest
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizDate)) {
+		body["BizDate"] = request.BizDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagParameters)) {
+		body["DagParameters"] = request.DagParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeNodeIds)) {
+		body["ExcludeNodeIds"] = request.ExcludeNodeIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowName)) {
+		body["FlowName"] = request.FlowName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeNodeIds)) {
+		body["IncludeNodeIds"] = request.IncludeNodeIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeParameters)) {
+		body["NodeParameters"] = request.NodeParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateManualDag"),
@@ -39669,8 +38748,21 @@ func (client *Client) CreateMetaCategoryWithOptions(request *CreateMetaCategoryR
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		body["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentId)) {
+		body["ParentId"] = request.ParentId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateMetaCategory"),
@@ -39709,17 +38801,40 @@ func (client *Client) CreatePermissionApplyOrderWithOptions(request *CreatePermi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ApplyObject"] = request.ApplyObject
-	query["ApplyReason"] = request.ApplyReason
-	query["ApplyUserIds"] = request.ApplyUserIds
-	query["Deadline"] = request.Deadline
-	query["EngineType"] = request.EngineType
-	query["MaxComputeProjectName"] = request.MaxComputeProjectName
-	query["OrderType"] = request.OrderType
-	query["WorkspaceId"] = request.WorkspaceId
+	if !tea.BoolValue(util.IsUnset(request.ApplyObject)) {
+		query["ApplyObject"] = request.ApplyObject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApplyReason)) {
+		query["ApplyReason"] = request.ApplyReason
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApplyUserIds)) {
+		query["ApplyUserIds"] = request.ApplyUserIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Deadline)) {
+		query["Deadline"] = request.Deadline
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineType)) {
+		query["EngineType"] = request.EngineType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxComputeProjectName)) {
+		query["MaxComputeProjectName"] = request.MaxComputeProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreatePermissionApplyOrder"),
@@ -39729,7 +38844,7 @@ func (client *Client) CreatePermissionApplyOrderWithOptions(request *CreatePermi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreatePermissionApplyOrderResponse{}
@@ -39758,13 +38873,24 @@ func (client *Client) CreateProjectMemberWithOptions(request *CreateProjectMembe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["ProjectId"] = request.ProjectId
-	query["RoleCode"] = request.RoleCode
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleCode)) {
+		query["RoleCode"] = request.RoleCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateProjectMember"),
@@ -39774,7 +38900,7 @@ func (client *Client) CreateProjectMemberWithOptions(request *CreateProjectMembe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateProjectMemberResponse{}
@@ -39802,8 +38928,29 @@ func (client *Client) CreateQualityEntityWithOptions(request *CreateQualityEntit
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EntityLevel)) {
+		body["EntityLevel"] = request.EntityLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		body["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchExpression)) {
+		body["MatchExpression"] = request.MatchExpression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		body["TableName"] = request.TableName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateQualityEntity"),
@@ -39841,8 +38988,25 @@ func (client *Client) CreateQualityFollowerWithOptions(request *CreateQualityFol
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlarmMode)) {
+		body["AlarmMode"] = request.AlarmMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		body["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Follower)) {
+		body["Follower"] = request.Follower
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateQualityFollower"),
@@ -39880,8 +39044,41 @@ func (client *Client) CreateQualityRelativeNodeWithOptions(request *CreateQualit
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		body["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchExpression)) {
+		body["MatchExpression"] = request.MatchExpression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		body["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetNodeProjectId)) {
+		body["TargetNodeProjectId"] = request.TargetNodeProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetNodeProjectName)) {
+		body["TargetNodeProjectName"] = request.TargetNodeProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateQualityRelativeNode"),
@@ -39919,8 +39116,81 @@ func (client *Client) CreateQualityRuleWithOptions(request *CreateQualityRuleReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BlockType)) {
+		body["BlockType"] = request.BlockType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Checker)) {
+		body["Checker"] = request.Checker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		body["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CriticalThreshold)) {
+		body["CriticalThreshold"] = request.CriticalThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		body["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpectValue)) {
+		body["ExpectValue"] = request.ExpectValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MethodName)) {
+		body["MethodName"] = request.MethodName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Operator)) {
+		body["Operator"] = request.Operator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PredictType)) {
+		body["PredictType"] = request.PredictType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Property)) {
+		body["Property"] = request.Property
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PropertyType)) {
+		body["PropertyType"] = request.PropertyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		body["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleType)) {
+		body["RuleType"] = request.RuleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Trend)) {
+		body["Trend"] = request.Trend
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WarningThreshold)) {
+		body["WarningThreshold"] = request.WarningThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WhereCondition)) {
+		body["WhereCondition"] = request.WhereCondition
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateQualityRule"),
@@ -39958,8 +39228,69 @@ func (client *Client) CreateRemindWithOptions(request *CreateRemindRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertInterval)) {
+		body["AlertInterval"] = request.AlertInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertMethods)) {
+		body["AlertMethods"] = request.AlertMethods
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertTargets)) {
+		body["AlertTargets"] = request.AlertTargets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertUnit)) {
+		body["AlertUnit"] = request.AlertUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BaselineIds)) {
+		body["BaselineIds"] = request.BaselineIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizProcessIds)) {
+		body["BizProcessIds"] = request.BizProcessIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Detail)) {
+		body["Detail"] = request.Detail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DndEnd)) {
+		body["DndEnd"] = request.DndEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxAlertTimes)) {
+		body["MaxAlertTimes"] = request.MaxAlertTimes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeIds)) {
+		body["NodeIds"] = request.NodeIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemindName)) {
+		body["RemindName"] = request.RemindName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemindType)) {
+		body["RemindType"] = request.RemindType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemindUnit)) {
+		body["RemindUnit"] = request.RemindUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RobotUrls)) {
+		body["RobotUrls"] = request.RobotUrls
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateRemind"),
@@ -39998,24 +39329,86 @@ func (client *Client) CreateTableWithOptions(request *CreateTableRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppGuid"] = request.AppGuid
-	query["CategoryId"] = request.CategoryId
-	query["ClientToken"] = request.ClientToken
-	query["Comment"] = request.Comment
-	query["ExternalTableType"] = request.ExternalTableType
-	query["HasPart"] = request.HasPart
-	query["IsView"] = request.IsView
-	query["LifeCycle"] = request.LifeCycle
-	query["Location"] = request.Location
-	query["LogicalLevelId"] = request.LogicalLevelId
-	query["OwnerId"] = request.OwnerId
-	query["PhysicsLevelId"] = request.PhysicsLevelId
-	query["ProjectId"] = request.ProjectId
-	query["TableName"] = request.TableName
-	query["Visibility"] = request.Visibility
+	if !tea.BoolValue(util.IsUnset(request.AppGuid)) {
+		query["AppGuid"] = request.AppGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalTableType)) {
+		query["ExternalTableType"] = request.ExternalTableType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HasPart)) {
+		query["HasPart"] = request.HasPart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsView)) {
+		query["IsView"] = request.IsView
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LifeCycle)) {
+		query["LifeCycle"] = request.LifeCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Location)) {
+		query["Location"] = request.Location
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogicalLevelId)) {
+		query["LogicalLevelId"] = request.LogicalLevelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhysicsLevelId)) {
+		query["PhysicsLevelId"] = request.PhysicsLevelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Visibility)) {
+		query["Visibility"] = request.Visibility
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Columns)) {
+		body["Columns"] = request.Columns
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Endpoint)) {
+		body["Endpoint"] = request.Endpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		body["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Themes)) {
+		body["Themes"] = request.Themes
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateTable"),
@@ -40054,13 +39447,24 @@ func (client *Client) CreateTableLevelWithOptions(request *CreateTableLevelReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["LevelType"] = request.LevelType
-	query["Name"] = request.Name
-	query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LevelType)) {
+		query["LevelType"] = request.LevelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateTableLevel"),
@@ -40070,7 +39474,7 @@ func (client *Client) CreateTableLevelWithOptions(request *CreateTableLevelReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateTableLevelResponse{}
@@ -40099,13 +39503,24 @@ func (client *Client) CreateTableThemeWithOptions(request *CreateTableThemeReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Level"] = request.Level
-	query["Name"] = request.Name
-	query["ParentId"] = request.ParentId
-	query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.Level)) {
+		query["Level"] = request.Level
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentId)) {
+		query["ParentId"] = request.ParentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateTableTheme"),
@@ -40115,7 +39530,7 @@ func (client *Client) CreateTableThemeWithOptions(request *CreateTableThemeReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateTableThemeResponse{}
@@ -40143,8 +39558,57 @@ func (client *Client) CreateUdfFileWithOptions(request *CreateUdfFileRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClassName)) {
+		body["ClassName"] = request.ClassName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CmdDescription)) {
+		body["CmdDescription"] = request.CmdDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Example)) {
+		body["Example"] = request.Example
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileFolderPath)) {
+		body["FileFolderPath"] = request.FileFolderPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		body["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionType)) {
+		body["FunctionType"] = request.FunctionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParameterDescription)) {
+		body["ParameterDescription"] = request.ParameterDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resources)) {
+		body["Resources"] = request.Resources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnValue)) {
+		body["ReturnValue"] = request.ReturnValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UdfDescription)) {
+		body["UdfDescription"] = request.UdfDescription
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateUdfFile"),
@@ -40177,52 +39641,26 @@ func (client *Client) CreateUdfFile(request *CreateUdfFileRequest) (_result *Cre
 	return _result, _err
 }
 
-func (client *Client) CreateViewWithOptions(request *CreateViewRequest, runtime *util.RuntimeOptions) (_result *CreateViewResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateView"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateViewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateView(request *CreateViewRequest) (_result *CreateViewResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateViewResponse{}
-	_body, _err := client.CreateViewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteBusinessWithOptions(request *DeleteBusinessRequest, runtime *util.RuntimeOptions) (_result *DeleteBusinessResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessId)) {
+		body["BusinessId"] = request.BusinessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteBusiness"),
@@ -40261,10 +39699,12 @@ func (client *Client) DeleteConnectionWithOptions(request *DeleteConnectionReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConnectionId"] = request.ConnectionId
+	if !tea.BoolValue(util.IsUnset(request.ConnectionId)) {
+		query["ConnectionId"] = request.ConnectionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteConnection"),
@@ -40274,7 +39714,7 @@ func (client *Client) DeleteConnectionWithOptions(request *DeleteConnectionReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteConnectionResponse{}
@@ -40303,12 +39743,20 @@ func (client *Client) DeleteDISyncTaskWithOptions(request *DeleteDISyncTaskReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FileId"] = request.FileId
-	query["ProjectId"] = request.ProjectId
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		query["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteDISyncTask"),
@@ -40318,7 +39766,7 @@ func (client *Client) DeleteDISyncTaskWithOptions(request *DeleteDISyncTaskReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteDISyncTaskResponse{}
@@ -40346,8 +39794,21 @@ func (client *Client) DeleteDataServiceApiWithOptions(request *DeleteDataService
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		body["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteDataServiceApi"),
@@ -40385,8 +39846,25 @@ func (client *Client) DeleteDataServiceApiAuthorityWithOptions(request *DeleteDa
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		body["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthorizedProjectId)) {
+		body["AuthorizedProjectId"] = request.AuthorizedProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteDataServiceApiAuthority"),
@@ -40425,10 +39903,12 @@ func (client *Client) DeleteDataSourceWithOptions(request *DeleteDataSourceReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DataSourceId"] = request.DataSourceId
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteDataSource"),
@@ -40438,7 +39918,7 @@ func (client *Client) DeleteDataSourceWithOptions(request *DeleteDataSourceReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteDataSourceResponse{}
@@ -40466,8 +39946,21 @@ func (client *Client) DeleteFileWithOptions(request *DeleteFileRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteFile"),
@@ -40505,8 +39998,21 @@ func (client *Client) DeleteFolderWithOptions(request *DeleteFolderRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		body["FolderId"] = request.FolderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteFolder"),
@@ -40545,11 +40051,16 @@ func (client *Client) DeleteFromMetaCategoryWithOptions(request *DeleteFromMetaC
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CategoryId"] = request.CategoryId
-	query["TableGuid"] = request.TableGuid
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
+		query["TableGuid"] = request.TableGuid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteFromMetaCategory"),
@@ -40559,7 +40070,7 @@ func (client *Client) DeleteFromMetaCategoryWithOptions(request *DeleteFromMetaC
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteFromMetaCategoryResponse{}
@@ -40599,7 +40110,7 @@ func (client *Client) DeleteMetaCategoryWithOptions(request *DeleteMetaCategoryR
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteMetaCategoryResponse{}
@@ -40628,11 +40139,16 @@ func (client *Client) DeleteProjectMemberWithOptions(request *DeleteProjectMembe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProjectId"] = request.ProjectId
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteProjectMember"),
@@ -40642,7 +40158,7 @@ func (client *Client) DeleteProjectMemberWithOptions(request *DeleteProjectMembe
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteProjectMemberResponse{}
@@ -40670,8 +40186,21 @@ func (client *Client) DeleteQualityEntityWithOptions(request *DeleteQualityEntit
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		body["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		body["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteQualityEntity"),
@@ -40709,8 +40238,17 @@ func (client *Client) DeleteQualityFollowerWithOptions(request *DeleteQualityFol
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FollowerId)) {
+		body["FollowerId"] = request.FollowerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteQualityFollower"),
@@ -40748,8 +40286,41 @@ func (client *Client) DeleteQualityRelativeNodeWithOptions(request *DeleteQualit
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		body["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchExpression)) {
+		body["MatchExpression"] = request.MatchExpression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		body["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetNodeProjectId)) {
+		body["TargetNodeProjectId"] = request.TargetNodeProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetNodeProjectName)) {
+		body["TargetNodeProjectName"] = request.TargetNodeProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteQualityRelativeNode"),
@@ -40787,8 +40358,17 @@ func (client *Client) DeleteQualityRuleWithOptions(request *DeleteQualityRuleReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		body["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteQualityRule"),
@@ -40826,8 +40406,13 @@ func (client *Client) DeleteRemindWithOptions(request *DeleteRemindRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RemindId)) {
+		body["RemindId"] = request.RemindId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteRemind"),
@@ -40866,13 +40451,24 @@ func (client *Client) DeleteTableWithOptions(request *DeleteTableRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppGuid"] = request.AppGuid
-	query["EnvType"] = request.EnvType
-	query["ProjectId"] = request.ProjectId
-	query["TableName"] = request.TableName
+	if !tea.BoolValue(util.IsUnset(request.AppGuid)) {
+		query["AppGuid"] = request.AppGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteTable"),
@@ -40882,7 +40478,7 @@ func (client *Client) DeleteTableWithOptions(request *DeleteTableRequest, runtim
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteTableResponse{}
@@ -40911,11 +40507,16 @@ func (client *Client) DeleteTableLevelWithOptions(request *DeleteTableLevelReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["LevelId"] = request.LevelId
-	query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.LevelId)) {
+		query["LevelId"] = request.LevelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteTableLevel"),
@@ -40925,7 +40526,7 @@ func (client *Client) DeleteTableLevelWithOptions(request *DeleteTableLevelReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteTableLevelResponse{}
@@ -40954,11 +40555,16 @@ func (client *Client) DeleteTableThemeWithOptions(request *DeleteTableThemeReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProjectId"] = request.ProjectId
-	query["ThemeId"] = request.ThemeId
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThemeId)) {
+		query["ThemeId"] = request.ThemeId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteTableTheme"),
@@ -40968,7 +40574,7 @@ func (client *Client) DeleteTableThemeWithOptions(request *DeleteTableThemeReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteTableThemeResponse{}
@@ -40991,61 +40597,26 @@ func (client *Client) DeleteTableTheme(request *DeleteTableThemeRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) DeleteViewWithOptions(request *DeleteViewRequest, runtime *util.RuntimeOptions) (_result *DeleteViewResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["AppGuid"] = request.AppGuid
-	query["ViewName"] = request.ViewName
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteView"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteViewResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteView(request *DeleteViewRequest) (_result *DeleteViewResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteViewResponse{}
-	_body, _err := client.DeleteViewWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeployDISyncTaskWithOptions(request *DeployDISyncTaskRequest, runtime *util.RuntimeOptions) (_result *DeployDISyncTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FileId"] = request.FileId
-	query["ProjectId"] = request.ProjectId
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		query["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeployDISyncTask"),
@@ -41055,7 +40626,7 @@ func (client *Client) DeployDISyncTaskWithOptions(request *DeployDISyncTaskReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeployDISyncTaskResponse{}
@@ -41083,8 +40654,29 @@ func (client *Client) DeployFileWithOptions(request *DeployFileRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		body["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeployFile"),
@@ -41162,8 +40754,29 @@ func (client *Client) EstablishRelationTableToBusinessWithOptions(request *Estab
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessId)) {
+		body["BusinessId"] = request.BusinessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		body["FolderId"] = request.FolderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
+		body["TableGuid"] = request.TableGuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("EstablishRelationTableToBusiness"),
@@ -41196,90 +40809,6 @@ func (client *Client) EstablishRelationTableToBusiness(request *EstablishRelatio
 	return _result, _err
 }
 
-func (client *Client) ExportConnectionsWithOptions(request *ExportConnectionsRequest, runtime *util.RuntimeOptions) (_result *ExportConnectionsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ExportConnections"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ExportConnectionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ExportConnections(request *ExportConnectionsRequest) (_result *ExportConnectionsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ExportConnectionsResponse{}
-	_body, _err := client.ExportConnectionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ExportDISyncTasksWithOptions(request *ExportDISyncTasksRequest, runtime *util.RuntimeOptions) (_result *ExportDISyncTasksResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["ProjectId"] = request.ProjectId
-	query["TaskParam"] = request.TaskParam
-	query["TaskType"] = request.TaskType
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ExportDISyncTasks"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ExportDISyncTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ExportDISyncTasks(request *ExportDISyncTasksRequest) (_result *ExportDISyncTasksResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ExportDISyncTasksResponse{}
-	_body, _err := client.ExportDISyncTasksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ExportDataSourcesWithOptions(request *ExportDataSourcesRequest, runtime *util.RuntimeOptions) (_result *ExportDataSourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41297,7 +40826,7 @@ func (client *Client) ExportDataSourcesWithOptions(request *ExportDataSourcesReq
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ExportDataSourcesResponse{}
@@ -41326,13 +40855,24 @@ func (client *Client) GenerateDISyncTaskConfigForCreatingWithOptions(request *Ge
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["ProjectId"] = request.ProjectId
-	query["TaskParam"] = request.TaskParam
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskParam)) {
+		query["TaskParam"] = request.TaskParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GenerateDISyncTaskConfigForCreating"),
@@ -41342,7 +40882,7 @@ func (client *Client) GenerateDISyncTaskConfigForCreatingWithOptions(request *Ge
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GenerateDISyncTaskConfigForCreatingResponse{}
@@ -41371,14 +40911,28 @@ func (client *Client) GenerateDISyncTaskConfigForUpdatingWithOptions(request *Ge
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["ProjectId"] = request.ProjectId
-	query["TaskId"] = request.TaskId
-	query["TaskParam"] = request.TaskParam
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskParam)) {
+		query["TaskParam"] = request.TaskParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GenerateDISyncTaskConfigForUpdating"),
@@ -41388,7 +40942,7 @@ func (client *Client) GenerateDISyncTaskConfigForUpdatingWithOptions(request *Ge
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GenerateDISyncTaskConfigForUpdatingResponse{}
@@ -41416,8 +40970,13 @@ func (client *Client) GetBaselineConfigWithOptions(request *GetBaselineConfigReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaselineId)) {
+		body["BaselineId"] = request.BaselineId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetBaselineConfig"),
@@ -41455,8 +41014,21 @@ func (client *Client) GetBaselineKeyPathWithOptions(request *GetBaselineKeyPathR
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaselineId)) {
+		body["BaselineId"] = request.BaselineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Bizdate)) {
+		body["Bizdate"] = request.Bizdate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InGroupId)) {
+		body["InGroupId"] = request.InGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetBaselineKeyPath"),
@@ -41494,8 +41066,21 @@ func (client *Client) GetBaselineStatusWithOptions(request *GetBaselineStatusReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaselineId)) {
+		body["BaselineId"] = request.BaselineId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Bizdate)) {
+		body["Bizdate"] = request.Bizdate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InGroupId)) {
+		body["InGroupId"] = request.InGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetBaselineStatus"),
@@ -41533,8 +41118,21 @@ func (client *Client) GetBusinessWithOptions(request *GetBusinessRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessId)) {
+		body["BusinessId"] = request.BusinessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetBusiness"),
@@ -41567,52 +41165,6 @@ func (client *Client) GetBusiness(request *GetBusinessRequest) (_result *GetBusi
 	return _result, _err
 }
 
-func (client *Client) GetConnectionMetaWithOptions(request *GetConnectionMetaRequest, runtime *util.RuntimeOptions) (_result *GetConnectionMetaResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DatasourceName"] = request.DatasourceName
-	query["EnvType"] = request.EnvType
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ProjectId"] = request.ProjectId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetConnectionMeta"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetConnectionMetaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetConnectionMeta(request *GetConnectionMetaRequest) (_result *GetConnectionMetaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetConnectionMetaResponse{}
-	_body, _err := client.GetConnectionMetaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetDDLJobStatusWithOptions(request *GetDDLJobStatusRequest, runtime *util.RuntimeOptions) (_result *GetDDLJobStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41630,7 +41182,7 @@ func (client *Client) GetDDLJobStatusWithOptions(request *GetDDLJobStatusRequest
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetDDLJobStatusResponse{}
@@ -41659,12 +41211,20 @@ func (client *Client) GetDISyncInstanceInfoWithOptions(request *GetDISyncInstanc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FileId"] = request.FileId
-	query["ProjectId"] = request.ProjectId
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		query["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetDISyncInstanceInfo"),
@@ -41674,7 +41234,7 @@ func (client *Client) GetDISyncInstanceInfoWithOptions(request *GetDISyncInstanc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetDISyncInstanceInfoResponse{}
@@ -41703,12 +41263,20 @@ func (client *Client) GetDISyncTaskWithOptions(request *GetDISyncTaskRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FileId"] = request.FileId
-	query["ProjectId"] = request.ProjectId
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		query["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetDISyncTask"),
@@ -41718,7 +41286,7 @@ func (client *Client) GetDISyncTaskWithOptions(request *GetDISyncTaskRequest, ru
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetDISyncTaskResponse{}
@@ -41758,7 +41326,7 @@ func (client *Client) GetDISyncTaskMetricInfoWithOptions(request *GetDISyncTaskM
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetDISyncTaskMetricInfoResponse{}
@@ -41786,8 +41354,17 @@ func (client *Client) GetDagWithOptions(request *GetDagRequest, runtime *util.Ru
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		body["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetDag"),
@@ -41825,8 +41402,21 @@ func (client *Client) GetDataServiceApiWithOptions(request *GetDataServiceApiReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		body["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetDataServiceApi"),
@@ -41864,8 +41454,21 @@ func (client *Client) GetDataServiceApplicationWithOptions(request *GetDataServi
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
+		body["ApplicationId"] = request.ApplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetDataServiceApplication"),
@@ -41903,8 +41506,21 @@ func (client *Client) GetDataServiceFolderWithOptions(request *GetDataServiceFol
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		body["FolderId"] = request.FolderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetDataServiceFolder"),
@@ -41942,8 +41558,21 @@ func (client *Client) GetDataServiceGroupWithOptions(request *GetDataServiceGrou
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetDataServiceGroup"),
@@ -41981,8 +41610,21 @@ func (client *Client) GetDataServicePublishedApiWithOptions(request *GetDataServ
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		body["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetDataServicePublishedApi"),
@@ -42021,14 +41663,28 @@ func (client *Client) GetDataSourceMetaWithOptions(request *GetDataSourceMetaReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatasourceName"] = request.DatasourceName
-	query["EnvType"] = request.EnvType
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.DatasourceName)) {
+		query["DatasourceName"] = request.DatasourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetDataSourceMeta"),
@@ -42038,7 +41694,7 @@ func (client *Client) GetDataSourceMetaWithOptions(request *GetDataSourceMetaReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetDataSourceMetaResponse{}
@@ -42066,8 +41722,21 @@ func (client *Client) GetDeploymentWithOptions(request *GetDeploymentRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeploymentId)) {
+		body["DeploymentId"] = request.DeploymentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetDeployment"),
@@ -42105,8 +41774,25 @@ func (client *Client) GetFileWithOptions(request *GetFileRequest, runtime *util.
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetFile"),
@@ -42144,8 +41830,17 @@ func (client *Client) GetFileTypeStatisticWithOptions(request *GetFileTypeStatis
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetFileTypeStatistic"),
@@ -42183,8 +41878,25 @@ func (client *Client) GetFileVersionWithOptions(request *GetFileVersionRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileVersion)) {
+		body["FileVersion"] = request.FileVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetFileVersion"),
@@ -42222,8 +41934,25 @@ func (client *Client) GetFolderWithOptions(request *GetFolderRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		body["FolderId"] = request.FolderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FolderPath)) {
+		body["FolderPath"] = request.FolderPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetFolder"),
@@ -42261,8 +41990,17 @@ func (client *Client) GetIDEEventDetailWithOptions(request *GetIDEEventDetailReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MessageId)) {
+		body["MessageId"] = request.MessageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetIDEEventDetail"),
@@ -42300,8 +42038,17 @@ func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetInstance"),
@@ -42339,8 +42086,17 @@ func (client *Client) GetInstanceConsumeTimeRankWithOptions(request *GetInstance
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Bizdate)) {
+		body["Bizdate"] = request.Bizdate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetInstanceConsumeTimeRank"),
@@ -42378,8 +42134,21 @@ func (client *Client) GetInstanceCountTrendWithOptions(request *GetInstanceCount
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BeginDate)) {
+		body["BeginDate"] = request.BeginDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetInstanceCountTrend"),
@@ -42417,8 +42186,13 @@ func (client *Client) GetInstanceErrorRankWithOptions(request *GetInstanceErrorR
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetInstanceErrorRank"),
@@ -42456,8 +42230,17 @@ func (client *Client) GetInstanceLogWithOptions(request *GetInstanceLogRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetInstanceLog"),
@@ -42495,8 +42278,21 @@ func (client *Client) GetInstanceStatusCountWithOptions(request *GetInstanceStat
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizDate)) {
+		body["BizDate"] = request.BizDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetInstanceStatusCount"),
@@ -42534,8 +42330,29 @@ func (client *Client) GetInstanceStatusStatisticWithOptions(request *GetInstance
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizDate)) {
+		body["BizDate"] = request.BizDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagType)) {
+		body["DagType"] = request.DagType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchedulerType)) {
+		body["SchedulerType"] = request.SchedulerType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetInstanceStatusStatistic"),
@@ -42573,8 +42390,21 @@ func (client *Client) GetManualDagInstancesWithOptions(request *GetManualDagInst
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		body["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetManualDagInstances"),
@@ -42613,12 +42443,20 @@ func (client *Client) GetMetaCategoryWithOptions(request *GetMetaCategoryRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["ParentCategoryId"] = request.ParentCategoryId
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentCategoryId)) {
+		query["ParentCategoryId"] = request.ParentCategoryId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetMetaCategory"),
@@ -42628,7 +42466,7 @@ func (client *Client) GetMetaCategoryWithOptions(request *GetMetaCategoryRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMetaCategoryResponse{}
@@ -42657,18 +42495,44 @@ func (client *Client) GetMetaColumnLineageWithOptions(request *GetMetaColumnLine
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClusterId"] = request.ClusterId
-	query["ColumnGuid"] = request.ColumnGuid
-	query["ColumnName"] = request.ColumnName
-	query["DataSourceType"] = request.DataSourceType
-	query["DatabaseName"] = request.DatabaseName
-	query["Direction"] = request.Direction
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["TableName"] = request.TableName
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ColumnGuid)) {
+		query["ColumnGuid"] = request.ColumnGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ColumnName)) {
+		query["ColumnName"] = request.ColumnName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		query["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetMetaColumnLineage"),
@@ -42678,7 +42542,7 @@ func (client *Client) GetMetaColumnLineageWithOptions(request *GetMetaColumnLine
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMetaColumnLineageResponse{}
@@ -42718,7 +42582,7 @@ func (client *Client) GetMetaDBInfoWithOptions(request *GetMetaDBInfoRequest, ru
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMetaDBInfoResponse{}
@@ -42747,15 +42611,32 @@ func (client *Client) GetMetaDBTableListWithOptions(request *GetMetaDBTableListR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppGuid"] = request.AppGuid
-	query["ClusterId"] = request.ClusterId
-	query["DataSourceType"] = request.DataSourceType
-	query["DatabaseName"] = request.DatabaseName
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.AppGuid)) {
+		query["AppGuid"] = request.AppGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		query["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetMetaDBTableList"),
@@ -42765,7 +42646,7 @@ func (client *Client) GetMetaDBTableListWithOptions(request *GetMetaDBTableListR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMetaDBTableListResponse{}
@@ -42805,7 +42686,7 @@ func (client *Client) GetMetaTableBasicInfoWithOptions(request *GetMetaTableBasi
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMetaTableBasicInfoResponse{}
@@ -42833,8 +42714,37 @@ func (client *Client) GetMetaTableChangeLogWithOptions(request *GetMetaTableChan
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChangeType)) {
+		body["ChangeType"] = request.ChangeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectType)) {
+		body["ObjectType"] = request.ObjectType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		body["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
+		body["TableGuid"] = request.TableGuid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetMetaTableChangeLog"),
@@ -42884,7 +42794,7 @@ func (client *Client) GetMetaTableColumnWithOptions(request *GetMetaTableColumnR
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMetaTableColumnResponse{}
@@ -42924,7 +42834,7 @@ func (client *Client) GetMetaTableFullInfoWithOptions(request *GetMetaTableFullI
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMetaTableFullInfoResponse{}
@@ -42953,11 +42863,16 @@ func (client *Client) GetMetaTableIntroWikiWithOptions(request *GetMetaTableIntr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TableGuid"] = request.TableGuid
-	query["WikiVersion"] = request.WikiVersion
+	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
+		query["TableGuid"] = request.TableGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WikiVersion)) {
+		query["WikiVersion"] = request.WikiVersion
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetMetaTableIntroWiki"),
@@ -42967,7 +42882,7 @@ func (client *Client) GetMetaTableIntroWikiWithOptions(request *GetMetaTableIntr
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMetaTableIntroWikiResponse{}
@@ -42996,17 +42911,40 @@ func (client *Client) GetMetaTableLineageWithOptions(request *GetMetaTableLineag
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClusterId"] = request.ClusterId
-	query["DataSourceType"] = request.DataSourceType
-	query["DatabaseName"] = request.DatabaseName
-	query["Direction"] = request.Direction
-	query["NextPrimaryKey"] = request.NextPrimaryKey
-	query["PageSize"] = request.PageSize
-	query["TableGuid"] = request.TableGuid
-	query["TableName"] = request.TableName
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		query["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextPrimaryKey)) {
+		query["NextPrimaryKey"] = request.NextPrimaryKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
+		query["TableGuid"] = request.TableGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetMetaTableLineage"),
@@ -43016,7 +42954,7 @@ func (client *Client) GetMetaTableLineageWithOptions(request *GetMetaTableLineag
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMetaTableLineageResponse{}
@@ -43056,7 +42994,7 @@ func (client *Client) GetMetaTableListByCategoryWithOptions(request *GetMetaTabl
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMetaTableListByCategoryResponse{}
@@ -43085,14 +43023,28 @@ func (client *Client) GetMetaTableOutputWithOptions(request *GetMetaTableOutputR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndDate"] = request.EndDate
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["StartDate"] = request.StartDate
-	query["TableGuid"] = request.TableGuid
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
+		query["TableGuid"] = request.TableGuid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetMetaTableOutput"),
@@ -43102,7 +43054,7 @@ func (client *Client) GetMetaTableOutputWithOptions(request *GetMetaTableOutputR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMetaTableOutputResponse{}
@@ -43131,16 +43083,36 @@ func (client *Client) GetMetaTablePartitionWithOptions(request *GetMetaTablePart
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClusterId"] = request.ClusterId
-	query["DataSourceType"] = request.DataSourceType
-	query["DatabaseName"] = request.DatabaseName
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["TableGuid"] = request.TableGuid
-	query["TableName"] = request.TableName
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		query["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
+		query["TableGuid"] = request.TableGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetMetaTablePartition"),
@@ -43150,7 +43122,7 @@ func (client *Client) GetMetaTablePartitionWithOptions(request *GetMetaTablePart
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMetaTablePartitionResponse{}
@@ -43190,7 +43162,7 @@ func (client *Client) GetMetaTableThemeLevelWithOptions(request *GetMetaTableThe
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetMetaTableThemeLevelResponse{}
@@ -43218,8 +43190,17 @@ func (client *Client) GetMigrationProcessWithOptions(request *GetMigrationProces
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MigrationId)) {
+		body["MigrationId"] = request.MigrationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetMigrationProcess"),
@@ -43257,8 +43238,17 @@ func (client *Client) GetMigrationSummaryWithOptions(request *GetMigrationSummar
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MigrationId)) {
+		body["MigrationId"] = request.MigrationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetMigrationSummary"),
@@ -43296,8 +43286,17 @@ func (client *Client) GetNodeWithOptions(request *GetNodeRequest, runtime *util.
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetNode"),
@@ -43335,8 +43334,17 @@ func (client *Client) GetNodeChildrenWithOptions(request *GetNodeChildrenRequest
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetNodeChildren"),
@@ -43374,8 +43382,17 @@ func (client *Client) GetNodeCodeWithOptions(request *GetNodeCodeRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetNodeCode"),
@@ -43413,8 +43430,13 @@ func (client *Client) GetNodeOnBaselineWithOptions(request *GetNodeOnBaselineReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaselineId)) {
+		body["BaselineId"] = request.BaselineId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetNodeOnBaseline"),
@@ -43452,8 +43474,17 @@ func (client *Client) GetNodeParentsWithOptions(request *GetNodeParentsRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetNodeParents"),
@@ -43491,8 +43522,33 @@ func (client *Client) GetNodeTypeListInfoWithOptions(request *GetNodeTypeListInf
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Locale)) {
+		body["Locale"] = request.Locale
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetNodeTypeListInfo"),
@@ -43542,7 +43598,7 @@ func (client *Client) GetOpRiskDataWithOptions(request *GetOpRiskDataRequest, ru
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetOpRiskDataResponse{}
@@ -43582,7 +43638,7 @@ func (client *Client) GetOpSensitiveDataWithOptions(request *GetOpSensitiveDataR
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetOpSensitiveDataResponse{}
@@ -43611,10 +43667,12 @@ func (client *Client) GetPermissionApplyOrderDetailWithOptions(request *GetPermi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FlowId"] = request.FlowId
+	if !tea.BoolValue(util.IsUnset(request.FlowId)) {
+		query["FlowId"] = request.FlowId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetPermissionApplyOrderDetail"),
@@ -43624,7 +43682,7 @@ func (client *Client) GetPermissionApplyOrderDetailWithOptions(request *GetPermi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetPermissionApplyOrderDetailResponse{}
@@ -43653,10 +43711,12 @@ func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetProject"),
@@ -43666,7 +43726,7 @@ func (client *Client) GetProjectWithOptions(request *GetProjectRequest, runtime 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetProjectResponse{}
@@ -43695,10 +43755,12 @@ func (client *Client) GetProjectDetailWithOptions(request *GetProjectDetailReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetProjectDetail"),
@@ -43708,7 +43770,7 @@ func (client *Client) GetProjectDetailWithOptions(request *GetProjectDetailReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetProjectDetailResponse{}
@@ -43736,8 +43798,25 @@ func (client *Client) GetQualityEntityWithOptions(request *GetQualityEntityReque
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		body["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MatchExpression)) {
+		body["MatchExpression"] = request.MatchExpression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		body["TableName"] = request.TableName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetQualityEntity"),
@@ -43775,8 +43854,17 @@ func (client *Client) GetQualityFollowerWithOptions(request *GetQualityFollowerR
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		body["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetQualityFollower"),
@@ -43814,8 +43902,17 @@ func (client *Client) GetQualityRuleWithOptions(request *GetQualityRuleRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		body["RuleId"] = request.RuleId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetQualityRule"),
@@ -43853,8 +43950,13 @@ func (client *Client) GetRemindWithOptions(request *GetRemindRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RemindId)) {
+		body["RemindId"] = request.RemindId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetRemind"),
@@ -43904,7 +44006,7 @@ func (client *Client) GetSensitiveDataWithOptions(request *GetSensitiveDataReque
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetSensitiveDataResponse{}
@@ -43932,8 +44034,13 @@ func (client *Client) GetSuccessInstanceTrendWithOptions(request *GetSuccessInst
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetSuccessInstanceTrend"),
@@ -43971,8 +44078,13 @@ func (client *Client) GetTopicWithOptions(request *GetTopicRequest, runtime *uti
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TopicId)) {
+		body["TopicId"] = request.TopicId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetTopic"),
@@ -44010,8 +44122,13 @@ func (client *Client) GetTopicInfluenceWithOptions(request *GetTopicInfluenceReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TopicId)) {
+		body["TopicId"] = request.TopicId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetTopicInfluence"),
@@ -44044,104 +44161,22 @@ func (client *Client) GetTopicInfluence(request *GetTopicInfluenceRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) ImportConnectionsWithOptions(request *ImportConnectionsRequest, runtime *util.RuntimeOptions) (_result *ImportConnectionsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["Connections"] = request.Connections
-	query["ProjectId"] = request.ProjectId
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ImportConnections"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ImportConnectionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ImportConnections(request *ImportConnectionsRequest) (_result *ImportConnectionsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ImportConnectionsResponse{}
-	_body, _err := client.ImportConnectionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ImportDISyncTasksWithOptions(request *ImportDISyncTasksRequest, runtime *util.RuntimeOptions) (_result *ImportDISyncTasksResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["ProjectId"] = request.ProjectId
-	query["TaskParam"] = request.TaskParam
-	query["TaskType"] = request.TaskType
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ImportDISyncTasks"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ImportDISyncTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ImportDISyncTasks(request *ImportDISyncTasksRequest) (_result *ImportDISyncTasksResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ImportDISyncTasksResponse{}
-	_body, _err := client.ImportDISyncTasksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ImportDataSourcesWithOptions(request *ImportDataSourcesRequest, runtime *util.RuntimeOptions) (_result *ImportDataSourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DataSources"] = request.DataSources
-	query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.DataSources)) {
+		query["DataSources"] = request.DataSources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ImportDataSources"),
@@ -44151,7 +44186,7 @@ func (client *Client) ImportDataSourcesWithOptions(request *ImportDataSourcesReq
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ImportDataSourcesResponse{}
@@ -44179,8 +44214,41 @@ func (client *Client) ListAlertMessagesWithOptions(request *ListAlertMessagesReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertMethods)) {
+		body["AlertMethods"] = request.AlertMethods
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertRuleTypes)) {
+		body["AlertRuleTypes"] = request.AlertRuleTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertUser)) {
+		body["AlertUser"] = request.AlertUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BeginTime)) {
+		body["BeginTime"] = request.BeginTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemindId)) {
+		body["RemindId"] = request.RemindId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListAlertMessages"),
@@ -44218,8 +44286,41 @@ func (client *Client) ListBaselineConfigsWithOptions(request *ListBaselineConfig
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaselineTypes)) {
+		body["BaselineTypes"] = request.BaselineTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		body["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchText)) {
+		body["SearchText"] = request.SearchText
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Useflag)) {
+		body["Useflag"] = request.Useflag
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListBaselineConfigs"),
@@ -44257,8 +44358,49 @@ func (client *Client) ListBaselineStatusesWithOptions(request *ListBaselineStatu
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaselineTypes)) {
+		body["BaselineTypes"] = request.BaselineTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Bizdate)) {
+		body["Bizdate"] = request.Bizdate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FinishStatus)) {
+		body["FinishStatus"] = request.FinishStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		body["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchText)) {
+		body["SearchText"] = request.SearchText
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicId)) {
+		body["TopicId"] = request.TopicId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListBaselineStatuses"),
@@ -44296,8 +44438,29 @@ func (client *Client) ListBusinessWithOptions(request *ListBusinessRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListBusiness"),
@@ -44336,15 +44499,32 @@ func (client *Client) ListCalcEnginesWithOptions(request *ListCalcEnginesRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CalcEngineType"] = request.CalcEngineType
-	query["EnvType"] = request.EnvType
-	query["Name"] = request.Name
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.CalcEngineType)) {
+		query["CalcEngineType"] = request.CalcEngineType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListCalcEngines"),
@@ -44354,7 +44534,7 @@ func (client *Client) ListCalcEnginesWithOptions(request *ListCalcEnginesRequest
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListCalcEnginesResponse{}
@@ -44394,7 +44574,7 @@ func (client *Client) ListConnectionsWithOptions(request *ListConnectionsRequest
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListConnectionsResponse{}
@@ -44423,12 +44603,20 @@ func (client *Client) ListDIProjectConfigWithOptions(request *ListDIProjectConfi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DestinationType"] = request.DestinationType
-	query["ProjectId"] = request.ProjectId
-	query["SourceType"] = request.SourceType
+	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
+		query["DestinationType"] = request.DestinationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListDIProjectConfig"),
@@ -44438,7 +44626,7 @@ func (client *Client) ListDIProjectConfigWithOptions(request *ListDIProjectConfi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListDIProjectConfigResponse{}
@@ -44461,58 +44649,22 @@ func (client *Client) ListDIProjectConfig(request *ListDIProjectConfigRequest) (
 	return _result, _err
 }
 
-func (client *Client) ListDISyncTasksWithOptions(request *ListDISyncTasksRequest, runtime *util.RuntimeOptions) (_result *ListDISyncTasksResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ProjectId"] = request.ProjectId
-	query["TaskType"] = request.TaskType
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListDISyncTasks"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListDISyncTasksResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDISyncTasks(request *ListDISyncTasksRequest) (_result *ListDISyncTasksResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListDISyncTasksResponse{}
-	_body, _err := client.ListDISyncTasksWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListDagsWithOptions(request *ListDagsRequest, runtime *util.RuntimeOptions) (_result *ListDagsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OpSeq)) {
+		body["OpSeq"] = request.OpSeq
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListDags"),
@@ -44551,11 +44703,30 @@ func (client *Client) ListDataServiceApiAuthoritiesWithOptions(request *ListData
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiNameKeyword)) {
+		body["ApiNameKeyword"] = request.ApiNameKeyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListDataServiceApiAuthorities"),
@@ -44593,8 +44764,37 @@ func (client *Client) ListDataServiceApisWithOptions(request *ListDataServiceApi
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiNameKeyword)) {
+		body["ApiNameKeyword"] = request.ApiNameKeyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiPathKeyword)) {
+		body["ApiPathKeyword"] = request.ApiPathKeyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreatorId)) {
+		body["CreatorId"] = request.CreatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListDataServiceApis"),
@@ -44632,8 +44832,25 @@ func (client *Client) ListDataServiceApplicationsWithOptions(request *ListDataSe
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdList)) {
+		body["ProjectIdList"] = request.ProjectIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListDataServiceApplications"),
@@ -44672,11 +44889,30 @@ func (client *Client) ListDataServiceAuthorizedApisWithOptions(request *ListData
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiNameKeyword)) {
+		body["ApiNameKeyword"] = request.ApiNameKeyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListDataServiceAuthorizedApis"),
@@ -44714,8 +44950,33 @@ func (client *Client) ListDataServiceFoldersWithOptions(request *ListDataService
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FolderNameKeyword)) {
+		body["FolderNameKeyword"] = request.FolderNameKeyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		body["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListDataServiceFolders"),
@@ -44753,8 +45014,29 @@ func (client *Client) ListDataServiceGroupsWithOptions(request *ListDataServiceG
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupNameKeyword)) {
+		body["GroupNameKeyword"] = request.GroupNameKeyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListDataServiceGroups"),
@@ -44792,8 +45074,37 @@ func (client *Client) ListDataServicePublishedApisWithOptions(request *ListDataS
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiNameKeyword)) {
+		body["ApiNameKeyword"] = request.ApiNameKeyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiPathKeyword)) {
+		body["ApiPathKeyword"] = request.ApiPathKeyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreatorId)) {
+		body["CreatorId"] = request.CreatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListDataServicePublishedApis"),
@@ -44843,7 +45154,7 @@ func (client *Client) ListDataSourcesWithOptions(request *ListDataSourcesRequest
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListDataSourcesResponse{}
@@ -44871,8 +45182,49 @@ func (client *Client) ListDeploymentsWithOptions(request *ListDeploymentsRequest
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Creator)) {
+		body["Creator"] = request.Creator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndCreateTime)) {
+		body["EndCreateTime"] = request.EndCreateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndExecuteTime)) {
+		body["EndExecuteTime"] = request.EndExecuteTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Executor)) {
+		body["Executor"] = request.Executor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListDeployments"),
@@ -44910,8 +45262,33 @@ func (client *Client) ListFileTypeWithOptions(request *ListFileTypeRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Locale)) {
+		body["Locale"] = request.Locale
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListFileType"),
@@ -44949,8 +45326,29 @@ func (client *Client) ListFileVersionsWithOptions(request *ListFileVersionsReque
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListFileVersions"),
@@ -44988,8 +45386,49 @@ func (client *Client) ListFilesWithOptions(request *ListFilesRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileFolderPath)) {
+		body["FileFolderPath"] = request.FileFolderPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileTypes)) {
+		body["FileTypes"] = request.FileTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		body["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseType)) {
+		body["UseType"] = request.UseType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListFiles"),
@@ -45027,8 +45466,29 @@ func (client *Client) ListFoldersWithOptions(request *ListFoldersRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentFolderPath)) {
+		body["ParentFolderPath"] = request.ParentFolderPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListFolders"),
@@ -45066,8 +45526,21 @@ func (client *Client) ListInstanceAmountWithOptions(request *ListInstanceAmountR
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BeginDate)) {
+		body["BeginDate"] = request.BeginDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListInstanceAmount"),
@@ -45105,8 +45578,61 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BeginBizdate)) {
+		body["BeginBizdate"] = request.BeginBizdate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizName)) {
+		body["BizName"] = request.BizName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Bizdate)) {
+		body["Bizdate"] = request.Bizdate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		body["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndBizdate)) {
+		body["EndBizdate"] = request.EndBizdate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeName)) {
+		body["NodeName"] = request.NodeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProgramType)) {
+		body["ProgramType"] = request.ProgramType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListInstances"),
@@ -45144,8 +45670,21 @@ func (client *Client) ListManualDagInstancesWithOptions(request *ListManualDagIn
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		body["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListManualDagInstances"),
@@ -45195,7 +45734,7 @@ func (client *Client) ListMetaDBWithOptions(request *ListMetaDBRequest, runtime 
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListMetaDBResponse{}
@@ -45223,8 +45762,21 @@ func (client *Client) ListNodeIOWithOptions(request *ListNodeIORequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IoType)) {
+		body["IoType"] = request.IoType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListNodeIO"),
@@ -45262,8 +45814,21 @@ func (client *Client) ListNodeInputOrOutputWithOptions(request *ListNodeInputOrO
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IoType)) {
+		body["IoType"] = request.IoType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListNodeInputOrOutput"),
@@ -45301,8 +45866,41 @@ func (client *Client) ListNodesWithOptions(request *ListNodesRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizName)) {
+		body["BizName"] = request.BizName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeName)) {
+		body["NodeName"] = request.NodeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProgramType)) {
+		body["ProgramType"] = request.ProgramType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListNodes"),
@@ -45340,8 +45938,13 @@ func (client *Client) ListNodesByBaselineWithOptions(request *ListNodesByBaselin
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BaselineId)) {
+		body["BaselineId"] = request.BaselineId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListNodesByBaseline"),
@@ -45379,8 +45982,17 @@ func (client *Client) ListNodesByOutputWithOptions(request *ListNodesByOutputReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Outputs)) {
+		body["Outputs"] = request.Outputs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListNodesByOutput"),
@@ -45419,20 +46031,52 @@ func (client *Client) ListPermissionApplyOrdersWithOptions(request *ListPermissi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["EngineType"] = request.EngineType
-	query["FlowStatus"] = request.FlowStatus
-	query["MaxComputeProjectName"] = request.MaxComputeProjectName
-	query["OrderType"] = request.OrderType
-	query["PageNum"] = request.PageNum
-	query["PageSize"] = request.PageSize
-	query["QueryType"] = request.QueryType
-	query["StartTime"] = request.StartTime
-	query["TableName"] = request.TableName
-	query["WorkspaceId"] = request.WorkspaceId
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineType)) {
+		query["EngineType"] = request.EngineType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowStatus)) {
+		query["FlowStatus"] = request.FlowStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxComputeProjectName)) {
+		query["MaxComputeProjectName"] = request.MaxComputeProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryType)) {
+		query["QueryType"] = request.QueryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListPermissionApplyOrders"),
@@ -45442,7 +46086,7 @@ func (client *Client) ListPermissionApplyOrdersWithOptions(request *ListPermissi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListPermissionApplyOrdersResponse{}
@@ -45470,8 +46114,17 @@ func (client *Client) ListProgramTypeCountWithOptions(request *ListProgramTypeCo
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListProgramTypeCount"),
@@ -45510,10 +46163,12 @@ func (client *Client) ListProjectIdsWithOptions(request *ListProjectIdsRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListProjectIds"),
@@ -45523,7 +46178,7 @@ func (client *Client) ListProjectIdsWithOptions(request *ListProjectIdsRequest, 
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListProjectIdsResponse{}
@@ -45552,12 +46207,20 @@ func (client *Client) ListProjectMembersWithOptions(request *ListProjectMembersR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListProjectMembers"),
@@ -45567,7 +46230,7 @@ func (client *Client) ListProjectMembersWithOptions(request *ListProjectMembersR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListProjectMembersResponse{}
@@ -45596,10 +46259,12 @@ func (client *Client) ListProjectRolesWithOptions(request *ListProjectRolesReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListProjectRoles"),
@@ -45609,7 +46274,7 @@ func (client *Client) ListProjectRolesWithOptions(request *ListProjectRolesReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListProjectRolesResponse{}
@@ -45638,11 +46303,16 @@ func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListProjects"),
@@ -45652,7 +46322,7 @@ func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runt
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListProjectsResponse{}
@@ -45680,8 +46350,33 @@ func (client *Client) ListQualityResultsByEntityWithOptions(request *ListQuality
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		body["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		body["StartDate"] = request.StartDate
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListQualityResultsByEntity"),
@@ -45719,8 +46414,33 @@ func (client *Client) ListQualityResultsByRuleWithOptions(request *ListQualityRe
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		body["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		body["StartDate"] = request.StartDate
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListQualityResultsByRule"),
@@ -45758,8 +46478,25 @@ func (client *Client) ListQualityRulesWithOptions(request *ListQualityRulesReque
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		body["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListQualityRules"),
@@ -45798,15 +46535,32 @@ func (client *Client) ListRefDISyncTasksWithOptions(request *ListRefDISyncTasksR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatasourceName"] = request.DatasourceName
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ProjectId"] = request.ProjectId
-	query["RefType"] = request.RefType
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.DatasourceName)) {
+		query["DatasourceName"] = request.DatasourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RefType)) {
+		query["RefType"] = request.RefType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListRefDISyncTasks"),
@@ -45816,7 +46570,7 @@ func (client *Client) ListRefDISyncTasksWithOptions(request *ListRefDISyncTasksR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListRefDISyncTasksResponse{}
@@ -45844,8 +46598,37 @@ func (client *Client) ListRemindsWithOptions(request *ListRemindsRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertTarget)) {
+		body["AlertTarget"] = request.AlertTarget
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Founder)) {
+		body["Founder"] = request.Founder
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemindTypes)) {
+		body["RemindTypes"] = request.RemindTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchText)) {
+		body["SearchText"] = request.SearchText
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListReminds"),
@@ -45884,12 +46667,20 @@ func (client *Client) ListResourceGroupsWithOptions(request *ListResourceGroupsR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BizExtKey"] = request.BizExtKey
-	query["Keyword"] = request.Keyword
-	query["ResourceGroupType"] = request.ResourceGroupType
+	if !tea.BoolValue(util.IsUnset(request.BizExtKey)) {
+		query["BizExtKey"] = request.BizExtKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupType)) {
+		query["ResourceGroupType"] = request.ResourceGroupType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListResourceGroups"),
@@ -45899,7 +46690,7 @@ func (client *Client) ListResourceGroupsWithOptions(request *ListResourceGroupsR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListResourceGroupsResponse{}
@@ -45927,8 +46718,13 @@ func (client *Client) ListSuccessInstanceAmountWithOptions(request *ListSuccessI
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListSuccessInstanceAmount"),
@@ -45978,7 +46774,7 @@ func (client *Client) ListTableLevelWithOptions(request *ListTableLevelRequest, 
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTableLevelResponse{}
@@ -46018,7 +46814,7 @@ func (client *Client) ListTableThemeWithOptions(request *ListTableThemeRequest, 
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTableThemeResponse{}
@@ -46046,8 +46842,45 @@ func (client *Client) ListTopicsWithOptions(request *ListTopicsRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BeginTime)) {
+		body["BeginTime"] = request.BeginTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicStatuses)) {
+		body["TopicStatuses"] = request.TopicStatuses
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TopicTypes)) {
+		body["TopicTypes"] = request.TopicTypes
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListTopics"),
@@ -46085,8 +46918,21 @@ func (client *Client) PublishDataServiceApiWithOptions(request *PublishDataServi
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		body["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PublishDataServiceApi"),
@@ -46125,12 +46971,20 @@ func (client *Client) QueryDISyncTaskConfigProcessResultWithOptions(request *Que
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AsyncProcessId"] = request.AsyncProcessId
-	query["ProjectId"] = request.ProjectId
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.AsyncProcessId)) {
+		query["AsyncProcessId"] = request.AsyncProcessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryDISyncTaskConfigProcessResult"),
@@ -46140,7 +46994,7 @@ func (client *Client) QueryDISyncTaskConfigProcessResultWithOptions(request *Que
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &QueryDISyncTaskConfigProcessResultResponse{}
@@ -46168,8 +47022,17 @@ func (client *Client) QueryPublicModelEngineWithOptions(request *QueryPublicMode
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Text)) {
+		body["Text"] = request.Text
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryPublicModelEngine"),
@@ -46208,12 +47071,20 @@ func (client *Client) RemoveProjectMemberFromRoleWithOptions(request *RemoveProj
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProjectId"] = request.ProjectId
-	query["RoleCode"] = request.RoleCode
-	query["UserId"] = request.UserId
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleCode)) {
+		query["RoleCode"] = request.RoleCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RemoveProjectMemberFromRole"),
@@ -46223,7 +47094,7 @@ func (client *Client) RemoveProjectMemberFromRoleWithOptions(request *RemoveProj
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveProjectMemberFromRoleResponse{}
@@ -46251,8 +47122,17 @@ func (client *Client) RestartInstanceWithOptions(request *RestartInstanceRequest
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RestartInstance"),
@@ -46290,8 +47170,17 @@ func (client *Client) ResumeInstanceWithOptions(request *ResumeInstanceRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ResumeInstance"),
@@ -46330,15 +47219,32 @@ func (client *Client) RevokeColumnPermissionWithOptions(request *RevokeColumnPer
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Columns"] = request.Columns
-	query["MaxComputeProjectName"] = request.MaxComputeProjectName
-	query["RevokeUserId"] = request.RevokeUserId
-	query["RevokeUserName"] = request.RevokeUserName
-	query["TableName"] = request.TableName
-	query["WorkspaceId"] = request.WorkspaceId
+	if !tea.BoolValue(util.IsUnset(request.Columns)) {
+		query["Columns"] = request.Columns
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxComputeProjectName)) {
+		query["MaxComputeProjectName"] = request.MaxComputeProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RevokeUserId)) {
+		query["RevokeUserId"] = request.RevokeUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RevokeUserName)) {
+		query["RevokeUserName"] = request.RevokeUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RevokeColumnPermission"),
@@ -46348,7 +47254,7 @@ func (client *Client) RevokeColumnPermissionWithOptions(request *RevokeColumnPer
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RevokeColumnPermissionResponse{}
@@ -46377,15 +47283,32 @@ func (client *Client) RevokeTablePermissionWithOptions(request *RevokeTablePermi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Actions"] = request.Actions
-	query["MaxComputeProjectName"] = request.MaxComputeProjectName
-	query["RevokeUserId"] = request.RevokeUserId
-	query["RevokeUserName"] = request.RevokeUserName
-	query["TableName"] = request.TableName
-	query["WorkspaceId"] = request.WorkspaceId
+	if !tea.BoolValue(util.IsUnset(request.Actions)) {
+		query["Actions"] = request.Actions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxComputeProjectName)) {
+		query["MaxComputeProjectName"] = request.MaxComputeProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RevokeUserId)) {
+		query["RevokeUserId"] = request.RevokeUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RevokeUserName)) {
+		query["RevokeUserName"] = request.RevokeUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RevokeTablePermission"),
@@ -46395,7 +47318,7 @@ func (client *Client) RevokeTablePermissionWithOptions(request *RevokeTablePermi
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &RevokeTablePermissionResponse{}
@@ -46423,8 +47346,53 @@ func (client *Client) RunCycleDagNodesWithOptions(request *RunCycleDagNodesReque
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizBeginTime)) {
+		body["BizBeginTime"] = request.BizBeginTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizEndTime)) {
+		body["BizEndTime"] = request.BizEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndBizDate)) {
+		body["EndBizDate"] = request.EndBizDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeNodeIds)) {
+		body["ExcludeNodeIds"] = request.ExcludeNodeIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeNodeIds)) {
+		body["IncludeNodeIds"] = request.IncludeNodeIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeParams)) {
+		body["NodeParams"] = request.NodeParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parallelism)) {
+		body["Parallelism"] = request.Parallelism
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RootNodeId)) {
+		body["RootNodeId"] = request.RootNodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartBizDate)) {
+		body["StartBizDate"] = request.StartBizDate
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RunCycleDagNodes"),
@@ -46462,8 +47430,45 @@ func (client *Client) RunManualDagNodesWithOptions(request *RunManualDagNodesReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BizDate)) {
+		body["BizDate"] = request.BizDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagParameters)) {
+		body["DagParameters"] = request.DagParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeNodeIds)) {
+		body["ExcludeNodeIds"] = request.ExcludeNodeIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FlowName)) {
+		body["FlowName"] = request.FlowName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeNodeIds)) {
+		body["IncludeNodeIds"] = request.IncludeNodeIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeParameters)) {
+		body["NodeParameters"] = request.NodeParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RunManualDagNodes"),
@@ -46501,8 +47506,29 @@ func (client *Client) RunSmokeTestWithOptions(request *RunSmokeTestRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Bizdate)) {
+		body["Bizdate"] = request.Bizdate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeParams)) {
+		body["NodeParams"] = request.NodeParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RunSmokeTest"),
@@ -46540,8 +47566,25 @@ func (client *Client) RunTriggerNodeWithOptions(request *RunTriggerNodeRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizDate)) {
+		body["BizDate"] = request.BizDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CycleTime)) {
+		body["CycleTime"] = request.CycleTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RunTriggerNode"),
@@ -46591,7 +47634,7 @@ func (client *Client) ScanSensitiveDataWithOptions(request *ScanSensitiveDataReq
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &ScanSensitiveDataResponse{}
@@ -46620,16 +47663,36 @@ func (client *Client) SearchMetaTablesWithOptions(request *SearchMetaTablesReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppGuid"] = request.AppGuid
-	query["ClusterId"] = request.ClusterId
-	query["DataSourceType"] = request.DataSourceType
-	query["EntityType"] = request.EntityType
-	query["Keyword"] = request.Keyword
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.AppGuid)) {
+		query["AppGuid"] = request.AppGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		query["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SearchMetaTables"),
@@ -46639,7 +47702,7 @@ func (client *Client) SearchMetaTablesWithOptions(request *SearchMetaTablesReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SearchMetaTablesResponse{}
@@ -46667,8 +47730,17 @@ func (client *Client) SearchNodesByOutputWithOptions(request *SearchNodesByOutpu
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Outputs)) {
+		body["Outputs"] = request.Outputs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SearchNodesByOutput"),
@@ -46701,66 +47773,34 @@ func (client *Client) SearchNodesByOutput(request *SearchNodesByOutputRequest) (
 	return _result, _err
 }
 
-func (client *Client) SetConnectionShareWithOptions(request *SetConnectionShareRequest, runtime *util.RuntimeOptions) (_result *SetConnectionShareResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	query["DatasourceName"] = request.DatasourceName
-	query["EnvType"] = request.EnvType
-	query["ProjectId"] = request.ProjectId
-	query["ProjectPermissions"] = request.ProjectPermissions
-	query["UserPermissions"] = request.UserPermissions
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetConnectionShare"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SetConnectionShareResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SetConnectionShare(request *SetConnectionShareRequest) (_result *SetConnectionShareResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SetConnectionShareResponse{}
-	_body, _err := client.SetConnectionShareWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) SetDataSourceShareWithOptions(request *SetDataSourceShareRequest, runtime *util.RuntimeOptions) (_result *SetDataSourceShareResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatasourceName"] = request.DatasourceName
-	query["EnvType"] = request.EnvType
-	query["ProjectId"] = request.ProjectId
-	query["ProjectPermissions"] = request.ProjectPermissions
-	query["UserPermissions"] = request.UserPermissions
+	if !tea.BoolValue(util.IsUnset(request.DatasourceName)) {
+		query["DatasourceName"] = request.DatasourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectPermissions)) {
+		query["ProjectPermissions"] = request.ProjectPermissions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserPermissions)) {
+		query["UserPermissions"] = request.UserPermissions
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetDataSourceShare"),
@@ -46770,7 +47810,7 @@ func (client *Client) SetDataSourceShareWithOptions(request *SetDataSourceShareR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &SetDataSourceShareResponse{}
@@ -46798,8 +47838,17 @@ func (client *Client) SetSuccessInstanceWithOptions(request *SetSuccessInstanceR
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetSuccessInstance"),
@@ -46838,13 +47887,24 @@ func (client *Client) StartDISyncInstanceWithOptions(request *StartDISyncInstanc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FileId"] = request.FileId
-	query["ProjectId"] = request.ProjectId
-	query["StartParam"] = request.StartParam
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		query["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartParam)) {
+		query["StartParam"] = request.StartParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StartDISyncInstance"),
@@ -46854,7 +47914,7 @@ func (client *Client) StartDISyncInstanceWithOptions(request *StartDISyncInstanc
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StartDISyncInstanceResponse{}
@@ -46882,8 +47942,17 @@ func (client *Client) StartMigrationWithOptions(request *StartMigrationRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MigrationId)) {
+		body["MigrationId"] = request.MigrationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StartMigration"),
@@ -46922,12 +47991,20 @@ func (client *Client) StopDISyncInstanceWithOptions(request *StopDISyncInstanceR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FileId"] = request.FileId
-	query["ProjectId"] = request.ProjectId
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		query["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StopDISyncInstance"),
@@ -46937,7 +48014,7 @@ func (client *Client) StopDISyncInstanceWithOptions(request *StopDISyncInstanceR
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopDISyncInstanceResponse{}
@@ -46965,8 +48042,17 @@ func (client *Client) StopInstanceWithOptions(request *StopInstanceRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("StopInstance"),
@@ -47004,8 +48090,25 @@ func (client *Client) SubmitFileWithOptions(request *SubmitFileRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		body["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SubmitFile"),
@@ -47043,8 +48146,17 @@ func (client *Client) SuspendInstanceWithOptions(request *SuspendInstanceRequest
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SuspendInstance"),
@@ -47083,12 +48195,20 @@ func (client *Client) TerminateDISyncInstanceWithOptions(request *TerminateDISyn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FileId"] = request.FileId
-	query["ProjectId"] = request.ProjectId
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		query["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TerminateDISyncInstance"),
@@ -47098,7 +48218,7 @@ func (client *Client) TerminateDISyncInstanceWithOptions(request *TerminateDISyn
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &TerminateDISyncInstanceResponse{}
@@ -47127,13 +48247,24 @@ func (client *Client) TestNetworkConnectionWithOptions(request *TestNetworkConne
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DatasourceName"] = request.DatasourceName
-	query["EnvType"] = request.EnvType
-	query["ProjectId"] = request.ProjectId
-	query["ResourceGroup"] = request.ResourceGroup
+	if !tea.BoolValue(util.IsUnset(request.DatasourceName)) {
+		query["DatasourceName"] = request.DatasourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroup)) {
+		query["ResourceGroup"] = request.ResourceGroup
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TestNetworkConnection"),
@@ -47143,7 +48274,7 @@ func (client *Client) TestNetworkConnectionWithOptions(request *TestNetworkConne
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &TestNetworkConnectionResponse{}
@@ -47171,8 +48302,13 @@ func (client *Client) TopTenElapsedTimeInstanceWithOptions(request *TopTenElapse
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TopTenElapsedTimeInstance"),
@@ -47210,8 +48346,13 @@ func (client *Client) TopTenErrorTimesInstanceWithOptions(request *TopTenErrorTi
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TopTenErrorTimesInstance"),
@@ -47249,8 +48390,33 @@ func (client *Client) UpdateBusinessWithOptions(request *UpdateBusinessRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessId)) {
+		body["BusinessId"] = request.BusinessId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BusinessName)) {
+		body["BusinessName"] = request.BusinessName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateBusiness"),
@@ -47289,14 +48455,28 @@ func (client *Client) UpdateConnectionWithOptions(request *UpdateConnectionReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ConnectionId"] = request.ConnectionId
-	query["Content"] = request.Content
-	query["Description"] = request.Description
-	query["EnvType"] = request.EnvType
-	query["Status"] = request.Status
+	if !tea.BoolValue(util.IsUnset(request.ConnectionId)) {
+		query["ConnectionId"] = request.ConnectionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateConnection"),
@@ -47306,7 +48486,7 @@ func (client *Client) UpdateConnectionWithOptions(request *UpdateConnectionReque
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateConnectionResponse{}
@@ -47335,13 +48515,24 @@ func (client *Client) UpdateDIProjectConfigWithOptions(request *UpdateDIProjectC
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DestinationType"] = request.DestinationType
-	query["ProjectConfig"] = request.ProjectConfig
-	query["ProjectId"] = request.ProjectId
-	query["SourceType"] = request.SourceType
+	if !tea.BoolValue(util.IsUnset(request.DestinationType)) {
+		query["DestinationType"] = request.DestinationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectConfig)) {
+		query["ProjectConfig"] = request.ProjectConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateDIProjectConfig"),
@@ -47351,7 +48542,7 @@ func (client *Client) UpdateDIProjectConfigWithOptions(request *UpdateDIProjectC
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateDIProjectConfigResponse{}
@@ -47380,14 +48571,28 @@ func (client *Client) UpdateDISyncTaskWithOptions(request *UpdateDISyncTaskReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FileId"] = request.FileId
-	query["ProjectId"] = request.ProjectId
-	query["TaskContent"] = request.TaskContent
-	query["TaskParam"] = request.TaskParam
-	query["TaskType"] = request.TaskType
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		query["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskContent)) {
+		query["TaskContent"] = request.TaskContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskParam)) {
+		query["TaskParam"] = request.TaskParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateDISyncTask"),
@@ -47397,7 +48602,7 @@ func (client *Client) UpdateDISyncTaskWithOptions(request *UpdateDISyncTaskReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateDISyncTaskResponse{}
@@ -47425,8 +48630,61 @@ func (client *Client) UpdateDataServiceApiWithOptions(request *UpdateDataService
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiDescription)) {
+		body["ApiDescription"] = request.ApiDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		body["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiPath)) {
+		body["ApiPath"] = request.ApiPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocols)) {
+		body["Protocols"] = request.Protocols
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegistrationDetails)) {
+		body["RegistrationDetails"] = request.RegistrationDetails
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestMethod)) {
+		body["RequestMethod"] = request.RequestMethod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseContentType)) {
+		body["ResponseContentType"] = request.ResponseContentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptDetails)) {
+		body["ScriptDetails"] = request.ScriptDetails
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Timeout)) {
+		body["Timeout"] = request.Timeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VisibleRange)) {
+		body["VisibleRange"] = request.VisibleRange
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WizardDetails)) {
+		body["WizardDetails"] = request.WizardDetails
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateDataServiceApi"),
@@ -47465,14 +48723,28 @@ func (client *Client) UpdateDataSourceWithOptions(request *UpdateDataSourceReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Content"] = request.Content
-	query["DataSourceId"] = request.DataSourceId
-	query["Description"] = request.Description
-	query["EnvType"] = request.EnvType
-	query["Status"] = request.Status
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateDataSource"),
@@ -47482,7 +48754,7 @@ func (client *Client) UpdateDataSourceWithOptions(request *UpdateDataSourceReque
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateDataSourceResponse{}
@@ -47510,8 +48782,117 @@ func (client *Client) UpdateFileWithOptions(request *UpdateFileRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdvancedSettings)) {
+		body["AdvancedSettings"] = request.AdvancedSettings
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoParsing)) {
+		body["AutoParsing"] = request.AutoParsing
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRerunIntervalMillis)) {
+		body["AutoRerunIntervalMillis"] = request.AutoRerunIntervalMillis
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRerunTimes)) {
+		body["AutoRerunTimes"] = request.AutoRerunTimes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConnectionName)) {
+		body["ConnectionName"] = request.ConnectionName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CronExpress)) {
+		body["CronExpress"] = request.CronExpress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CycleType)) {
+		body["CycleType"] = request.CycleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DependentNodeIdList)) {
+		body["DependentNodeIdList"] = request.DependentNodeIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DependentType)) {
+		body["DependentType"] = request.DependentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndEffectDate)) {
+		body["EndEffectDate"] = request.EndEffectDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileDescription)) {
+		body["FileDescription"] = request.FileDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileFolderPath)) {
+		body["FileFolderPath"] = request.FileFolderPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileName)) {
+		body["FileName"] = request.FileName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputList)) {
+		body["InputList"] = request.InputList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputList)) {
+		body["OutputList"] = request.OutputList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParaValue)) {
+		body["ParaValue"] = request.ParaValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RerunMode)) {
+		body["RerunMode"] = request.RerunMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdentifier)) {
+		body["ResourceGroupIdentifier"] = request.ResourceGroupIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchedulerType)) {
+		body["SchedulerType"] = request.SchedulerType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartEffectDate)) {
+		body["StartEffectDate"] = request.StartEffectDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartImmediately)) {
+		body["StartImmediately"] = request.StartImmediately
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Stop)) {
+		body["Stop"] = request.Stop
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateFile"),
@@ -47549,8 +48930,25 @@ func (client *Client) UpdateFolderWithOptions(request *UpdateFolderRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FolderId)) {
+		body["FolderId"] = request.FolderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FolderName)) {
+		body["FolderName"] = request.FolderName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateFolder"),
@@ -47588,8 +48986,25 @@ func (client *Client) UpdateIDEEventResultWithOptions(request *UpdateIDEEventRes
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckResult)) {
+		body["CheckResult"] = request.CheckResult
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckResultTip)) {
+		body["CheckResultTip"] = request.CheckResultTip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtensionCode)) {
+		body["ExtensionCode"] = request.ExtensionCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageId)) {
+		body["MessageId"] = request.MessageId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateIDEEventResult"),
@@ -47627,8 +49042,21 @@ func (client *Client) UpdateMetaCategoryWithOptions(request *UpdateMetaCategoryR
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		body["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		body["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateMetaCategory"),
@@ -47667,17 +49095,50 @@ func (client *Client) UpdateMetaTableWithOptions(request *UpdateMetaTableRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Caption"] = request.Caption
-	query["CategoryId"] = request.CategoryId
-	query["EnvType"] = request.EnvType
-	query["NewOwnerId"] = request.NewOwnerId
-	query["ProjectId"] = request.ProjectId
-	query["TableGuid"] = request.TableGuid
-	query["TableName"] = request.TableName
-	query["Visibility"] = request.Visibility
+	if !tea.BoolValue(util.IsUnset(request.Caption)) {
+		query["Caption"] = request.Caption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		query["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewOwnerId)) {
+		query["NewOwnerId"] = request.NewOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
+		query["TableGuid"] = request.TableGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Visibility)) {
+		query["Visibility"] = request.Visibility
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddedLabels)) {
+		body["AddedLabels"] = request.AddedLabels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemovedLabels)) {
+		body["RemovedLabels"] = request.RemovedLabels
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateMetaTable"),
@@ -47716,10 +49177,18 @@ func (client *Client) UpdateMetaTableIntroWikiWithOptions(request *UpdateMetaTab
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TableGuid"] = request.TableGuid
+	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
+		query["TableGuid"] = request.TableGuid
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		body["Content"] = request.Content
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateMetaTableIntroWiki"),
@@ -47757,8 +49226,21 @@ func (client *Client) UpdateNodeOwnerWithOptions(request *UpdateNodeOwnerRequest
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateNodeOwner"),
@@ -47796,8 +49278,21 @@ func (client *Client) UpdateNodeRunModeWithOptions(request *UpdateNodeRunModeReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
+		body["NodeId"] = request.NodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SchedulerType)) {
+		body["SchedulerType"] = request.SchedulerType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateNodeRunMode"),
@@ -47835,8 +49330,25 @@ func (client *Client) UpdateQualityFollowerWithOptions(request *UpdateQualityFol
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlarmMode)) {
+		body["AlarmMode"] = request.AlarmMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Follower)) {
+		body["Follower"] = request.Follower
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FollowerId)) {
+		body["FollowerId"] = request.FollowerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateQualityFollower"),
@@ -47874,8 +49386,85 @@ func (client *Client) UpdateQualityRuleWithOptions(request *UpdateQualityRuleReq
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BlockType)) {
+		body["BlockType"] = request.BlockType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Checker)) {
+		body["Checker"] = request.Checker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		body["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CriticalThreshold)) {
+		body["CriticalThreshold"] = request.CriticalThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
+		body["EntityId"] = request.EntityId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpectValue)) {
+		body["ExpectValue"] = request.ExpectValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		body["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MethodName)) {
+		body["MethodName"] = request.MethodName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Operator)) {
+		body["Operator"] = request.Operator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PredictType)) {
+		body["PredictType"] = request.PredictType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Property)) {
+		body["Property"] = request.Property
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PropertyType)) {
+		body["PropertyType"] = request.PropertyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		body["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleType)) {
+		body["RuleType"] = request.RuleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Trend)) {
+		body["Trend"] = request.Trend
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WarningThreshold)) {
+		body["WarningThreshold"] = request.WarningThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WhereCondition)) {
+		body["WhereCondition"] = request.WhereCondition
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateQualityRule"),
@@ -47913,8 +49502,77 @@ func (client *Client) UpdateRemindWithOptions(request *UpdateRemindRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertInterval)) {
+		body["AlertInterval"] = request.AlertInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertMethods)) {
+		body["AlertMethods"] = request.AlertMethods
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertTargets)) {
+		body["AlertTargets"] = request.AlertTargets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertUnit)) {
+		body["AlertUnit"] = request.AlertUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BaselineIds)) {
+		body["BaselineIds"] = request.BaselineIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizProcessIds)) {
+		body["BizProcessIds"] = request.BizProcessIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Detail)) {
+		body["Detail"] = request.Detail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DndEnd)) {
+		body["DndEnd"] = request.DndEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxAlertTimes)) {
+		body["MaxAlertTimes"] = request.MaxAlertTimes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeIds)) {
+		body["NodeIds"] = request.NodeIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemindId)) {
+		body["RemindId"] = request.RemindId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemindName)) {
+		body["RemindName"] = request.RemindName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemindType)) {
+		body["RemindType"] = request.RemindType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemindUnit)) {
+		body["RemindUnit"] = request.RemindUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RobotUrls)) {
+		body["RobotUrls"] = request.RobotUrls
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseFlag)) {
+		body["UseFlag"] = request.UseFlag
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateRemind"),
@@ -47953,24 +49611,86 @@ func (client *Client) UpdateTableWithOptions(request *UpdateTableRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AppGuid"] = request.AppGuid
-	query["CategoryId"] = request.CategoryId
-	query["Comment"] = request.Comment
-	query["CreateIfNotExists"] = request.CreateIfNotExists
-	query["ExternalTableType"] = request.ExternalTableType
-	query["HasPart"] = request.HasPart
-	query["IsView"] = request.IsView
-	query["LifeCycle"] = request.LifeCycle
-	query["Location"] = request.Location
-	query["LogicalLevelId"] = request.LogicalLevelId
-	query["OwnerId"] = request.OwnerId
-	query["PhysicsLevelId"] = request.PhysicsLevelId
-	query["ProjectId"] = request.ProjectId
-	query["TableName"] = request.TableName
-	query["Visibility"] = request.Visibility
+	if !tea.BoolValue(util.IsUnset(request.AppGuid)) {
+		query["AppGuid"] = request.AppGuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateIfNotExists)) {
+		query["CreateIfNotExists"] = request.CreateIfNotExists
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalTableType)) {
+		query["ExternalTableType"] = request.ExternalTableType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HasPart)) {
+		query["HasPart"] = request.HasPart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsView)) {
+		query["IsView"] = request.IsView
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LifeCycle)) {
+		query["LifeCycle"] = request.LifeCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Location)) {
+		query["Location"] = request.Location
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogicalLevelId)) {
+		query["LogicalLevelId"] = request.LogicalLevelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhysicsLevelId)) {
+		query["PhysicsLevelId"] = request.PhysicsLevelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableName)) {
+		query["TableName"] = request.TableName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Visibility)) {
+		query["Visibility"] = request.Visibility
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Columns)) {
+		body["Columns"] = request.Columns
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Endpoint)) {
+		body["Endpoint"] = request.Endpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvType)) {
+		body["EnvType"] = request.EnvType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Themes)) {
+		body["Themes"] = request.Themes
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateTable"),
@@ -48009,10 +49729,18 @@ func (client *Client) UpdateTableAddColumnWithOptions(request *UpdateTableAddCol
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TableGuid"] = request.TableGuid
+	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
+		query["TableGuid"] = request.TableGuid
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Column)) {
+		body["Column"] = request.Column
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateTableAddColumn"),
@@ -48051,14 +49779,28 @@ func (client *Client) UpdateTableLevelWithOptions(request *UpdateTableLevelReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Description"] = request.Description
-	query["LevelId"] = request.LevelId
-	query["LevelType"] = request.LevelType
-	query["Name"] = request.Name
-	query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LevelId)) {
+		query["LevelId"] = request.LevelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LevelType)) {
+		query["LevelType"] = request.LevelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateTableLevel"),
@@ -48068,7 +49810,7 @@ func (client *Client) UpdateTableLevelWithOptions(request *UpdateTableLevelReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateTableLevelResponse{}
@@ -48097,14 +49839,28 @@ func (client *Client) UpdateTableModelInfoWithOptions(request *UpdateTableModelI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FirstLevelThemeId"] = request.FirstLevelThemeId
-	query["LevelId"] = request.LevelId
-	query["LevelType"] = request.LevelType
-	query["SecondLevelThemeId"] = request.SecondLevelThemeId
-	query["TableGuid"] = request.TableGuid
+	if !tea.BoolValue(util.IsUnset(request.FirstLevelThemeId)) {
+		query["FirstLevelThemeId"] = request.FirstLevelThemeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LevelId)) {
+		query["LevelId"] = request.LevelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LevelType)) {
+		query["LevelType"] = request.LevelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecondLevelThemeId)) {
+		query["SecondLevelThemeId"] = request.SecondLevelThemeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
+		query["TableGuid"] = request.TableGuid
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateTableModelInfo"),
@@ -48114,7 +49870,7 @@ func (client *Client) UpdateTableModelInfoWithOptions(request *UpdateTableModelI
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateTableModelInfoResponse{}
@@ -48143,12 +49899,20 @@ func (client *Client) UpdateTableThemeWithOptions(request *UpdateTableThemeReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Name"] = request.Name
-	query["ProjectId"] = request.ProjectId
-	query["ThemeId"] = request.ThemeId
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThemeId)) {
+		query["ThemeId"] = request.ThemeId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  util.ToMap(request),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateTableTheme"),
@@ -48158,7 +49922,7 @@ func (client *Client) UpdateTableThemeWithOptions(request *UpdateTableThemeReque
 		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("json"),
+		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateTableThemeResponse{}
@@ -48186,8 +49950,57 @@ func (client *Client) UpdateUdfFileWithOptions(request *UpdateUdfFileRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClassName)) {
+		body["ClassName"] = request.ClassName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CmdDescription)) {
+		body["CmdDescription"] = request.CmdDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Example)) {
+		body["Example"] = request.Example
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileFolderPath)) {
+		body["FileFolderPath"] = request.FileFolderPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["FileId"] = request.FileId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionType)) {
+		body["FunctionType"] = request.FunctionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParameterDescription)) {
+		body["ParameterDescription"] = request.ParameterDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
+		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resources)) {
+		body["Resources"] = request.Resources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReturnValue)) {
+		body["ReturnValue"] = request.ReturnValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UdfDescription)) {
+		body["UdfDescription"] = request.UdfDescription
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateUdfFile"),
