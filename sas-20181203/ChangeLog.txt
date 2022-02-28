@@ -1,3 +1,6 @@
+2022-02-28 Version: v1.0.15
+- Support DescribeSuspEvents, DescribeAlarmEventList API.
+
 2022-02-25 Version: v1.0.14
 - Generated golang 2018-12-03 for Sas.
 
