@@ -3645,12 +3645,13 @@ func (s *GetServiceProvisionsResponseBody) SetServiceProvisions(v []*GetServiceP
 }
 
 type GetServiceProvisionsResponseBodyServiceProvisions struct {
-	AutoEnableService *bool                                                           `json:"AutoEnableService,omitempty" xml:"AutoEnableService,omitempty"`
-	EnableURL         *string                                                         `json:"EnableURL,omitempty" xml:"EnableURL,omitempty"`
-	RoleProvision     *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision `json:"RoleProvision,omitempty" xml:"RoleProvision,omitempty" type:"Struct"`
-	ServiceName       *string                                                         `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Status            *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusReason      *string                                                         `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
+	AutoEnableService     *bool                                                           `json:"AutoEnableService,omitempty" xml:"AutoEnableService,omitempty"`
+	DependentServiceNames []*string                                                       `json:"DependentServiceNames,omitempty" xml:"DependentServiceNames,omitempty" type:"Repeated"`
+	EnableURL             *string                                                         `json:"EnableURL,omitempty" xml:"EnableURL,omitempty"`
+	RoleProvision         *GetServiceProvisionsResponseBodyServiceProvisionsRoleProvision `json:"RoleProvision,omitempty" xml:"RoleProvision,omitempty" type:"Struct"`
+	ServiceName           *string                                                         `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	Status                *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusReason          *string                                                         `json:"StatusReason,omitempty" xml:"StatusReason,omitempty"`
 }
 
 func (s GetServiceProvisionsResponseBodyServiceProvisions) String() string {
@@ -3663,6 +3664,11 @@ func (s GetServiceProvisionsResponseBodyServiceProvisions) GoString() string {
 
 func (s *GetServiceProvisionsResponseBodyServiceProvisions) SetAutoEnableService(v bool) *GetServiceProvisionsResponseBodyServiceProvisions {
 	s.AutoEnableService = &v
+	return s
+}
+
+func (s *GetServiceProvisionsResponseBodyServiceProvisions) SetDependentServiceNames(v []*string) *GetServiceProvisionsResponseBodyServiceProvisions {
+	s.DependentServiceNames = v
 	return s
 }
 
@@ -3825,6 +3831,8 @@ type GetStackResponseBody struct {
 	ResourceGroupId     *string                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceProgress    *GetStackResponseBodyResourceProgress `json:"ResourceProgress,omitempty" xml:"ResourceProgress,omitempty" type:"Struct"`
 	RootStackId         *string                               `json:"RootStackId,omitempty" xml:"RootStackId,omitempty"`
+	ServiceManaged      *bool                                 `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	ServiceName         *string                               `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	StackDriftStatus    *string                               `json:"StackDriftStatus,omitempty" xml:"StackDriftStatus,omitempty"`
 	StackId             *string                               `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	StackName           *string                               `json:"StackName,omitempty" xml:"StackName,omitempty"`
@@ -3931,6 +3939,16 @@ func (s *GetStackResponseBody) SetResourceProgress(v *GetStackResponseBodyResour
 
 func (s *GetStackResponseBody) SetRootStackId(v string) *GetStackResponseBody {
 	s.RootStackId = &v
+	return s
+}
+
+func (s *GetStackResponseBody) SetServiceManaged(v bool) *GetStackResponseBody {
+	s.ServiceManaged = &v
+	return s
+}
+
+func (s *GetStackResponseBody) SetServiceName(v string) *GetStackResponseBody {
+	s.ServiceName = &v
 	return s
 }
 
@@ -8175,6 +8193,8 @@ type ListStacksResponseBodyStacks struct {
 	ParentStackId      *string                             `json:"ParentStackId,omitempty" xml:"ParentStackId,omitempty"`
 	RegionId           *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId    *string                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServiceManaged     *bool                               `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
+	ServiceName        *string                             `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	StackDriftStatus   *string                             `json:"StackDriftStatus,omitempty" xml:"StackDriftStatus,omitempty"`
 	StackId            *string                             `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	StackName          *string                             `json:"StackName,omitempty" xml:"StackName,omitempty"`
@@ -8221,6 +8241,16 @@ func (s *ListStacksResponseBodyStacks) SetRegionId(v string) *ListStacksResponse
 
 func (s *ListStacksResponseBodyStacks) SetResourceGroupId(v string) *ListStacksResponseBodyStacks {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListStacksResponseBodyStacks) SetServiceManaged(v bool) *ListStacksResponseBodyStacks {
+	s.ServiceManaged = &v
+	return s
+}
+
+func (s *ListStacksResponseBodyStacks) SetServiceName(v string) *ListStacksResponseBodyStacks {
+	s.ServiceName = &v
 	return s
 }
 
