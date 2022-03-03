@@ -372,6 +372,117 @@ func (s *CreateImageAmazonTaskResponse) SetBody(v *CreateImageAmazonTaskResponse
 	return s
 }
 
+type CreateRemoveWorkTaskRequest struct {
+	ItemIdentity *string `json:"ItemIdentity,omitempty" xml:"ItemIdentity,omitempty"`
+	PicUrl       *string `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
+}
+
+func (s CreateRemoveWorkTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRemoveWorkTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRemoveWorkTaskRequest) SetItemIdentity(v string) *CreateRemoveWorkTaskRequest {
+	s.ItemIdentity = &v
+	return s
+}
+
+func (s *CreateRemoveWorkTaskRequest) SetPicUrl(v string) *CreateRemoveWorkTaskRequest {
+	s.PicUrl = &v
+	return s
+}
+
+type CreateRemoveWorkTaskAdvanceRequest struct {
+	PicUrlObject io.Reader `json:"PicUrlObject,omitempty" xml:"PicUrlObject,omitempty" require:"true"`
+	ItemIdentity *string   `json:"ItemIdentity,omitempty" xml:"ItemIdentity,omitempty"`
+}
+
+func (s CreateRemoveWorkTaskAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRemoveWorkTaskAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRemoveWorkTaskAdvanceRequest) SetPicUrlObject(v io.Reader) *CreateRemoveWorkTaskAdvanceRequest {
+	s.PicUrlObject = v
+	return s
+}
+
+func (s *CreateRemoveWorkTaskAdvanceRequest) SetItemIdentity(v string) *CreateRemoveWorkTaskAdvanceRequest {
+	s.ItemIdentity = &v
+	return s
+}
+
+type CreateRemoveWorkTaskResponseBody struct {
+	Code    *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SuccessResponse *bool   `json:"SuccessResponse,omitempty" xml:"SuccessResponse,omitempty"`
+}
+
+func (s CreateRemoveWorkTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRemoveWorkTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRemoveWorkTaskResponseBody) SetCode(v int64) *CreateRemoveWorkTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateRemoveWorkTaskResponseBody) SetData(v int64) *CreateRemoveWorkTaskResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateRemoveWorkTaskResponseBody) SetMessage(v string) *CreateRemoveWorkTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateRemoveWorkTaskResponseBody) SetRequestId(v string) *CreateRemoveWorkTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRemoveWorkTaskResponseBody) SetSuccessResponse(v bool) *CreateRemoveWorkTaskResponseBody {
+	s.SuccessResponse = &v
+	return s
+}
+
+type CreateRemoveWorkTaskResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateRemoveWorkTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateRemoveWorkTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRemoveWorkTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRemoveWorkTaskResponse) SetHeaders(v map[string]*string) *CreateRemoveWorkTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRemoveWorkTaskResponse) SetBody(v *CreateRemoveWorkTaskResponseBody) *CreateRemoveWorkTaskResponse {
+	s.Body = v
+	return s
+}
+
 type FaceshifterTRequest struct {
 	Age    *int32  `json:"Age,omitempty" xml:"Age,omitempty"`
 	Gender *int32  `json:"Gender,omitempty" xml:"Gender,omitempty"`
@@ -1617,6 +1728,160 @@ func (client *Client) CreateImageAmazonTask(request *CreateImageAmazonTaskReques
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateRemoveWorkTaskWithOptions(request *CreateRemoveWorkTaskRequest, runtime *util.RuntimeOptions) (_result *CreateRemoveWorkTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ItemIdentity)) {
+		query["ItemIdentity"] = request.ItemIdentity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PicUrl)) {
+		query["PicUrl"] = request.PicUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRemoveWorkTask"),
+		Version:     tea.String("2020-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRemoveWorkTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateRemoveWorkTask(request *CreateRemoveWorkTaskRequest) (_result *CreateRemoveWorkTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateRemoveWorkTaskResponse{}
+	_body, _err := client.CreateRemoveWorkTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateRemoveWorkTaskAdvance(request *CreateRemoveWorkTaskAdvanceRequest, runtime *util.RuntimeOptions) (_result *CreateRemoveWorkTaskResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("dplus"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	createRemoveWorkTaskReq := &CreateRemoveWorkTaskRequest{}
+	openapiutil.Convert(request, createRemoveWorkTaskReq)
+	if !tea.BoolValue(util.IsUnset(request.PicUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.PicUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		createRemoveWorkTaskReq.PicUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	}
+
+	createRemoveWorkTaskResp, _err := client.CreateRemoveWorkTaskWithOptions(createRemoveWorkTaskReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = createRemoveWorkTaskResp
 	return _result, _err
 }
 
