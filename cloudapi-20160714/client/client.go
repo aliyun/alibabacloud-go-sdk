@@ -3135,6 +3135,75 @@ func (s *DeleteModelResponse) SetBody(v *DeleteModelResponseBody) *DeleteModelRe
 	return s
 }
 
+type DeleteMonitorGroupRequest struct {
+	GroupId           *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	RawMonitorGroupId *int64  `json:"RawMonitorGroupId,omitempty" xml:"RawMonitorGroupId,omitempty"`
+	SecurityToken     *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DeleteMonitorGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMonitorGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMonitorGroupRequest) SetGroupId(v string) *DeleteMonitorGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DeleteMonitorGroupRequest) SetRawMonitorGroupId(v int64) *DeleteMonitorGroupRequest {
+	s.RawMonitorGroupId = &v
+	return s
+}
+
+func (s *DeleteMonitorGroupRequest) SetSecurityToken(v string) *DeleteMonitorGroupRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DeleteMonitorGroupResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteMonitorGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMonitorGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMonitorGroupResponseBody) SetRequestId(v string) *DeleteMonitorGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteMonitorGroupResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteMonitorGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteMonitorGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMonitorGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMonitorGroupResponse) SetHeaders(v map[string]*string) *DeleteMonitorGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMonitorGroupResponse) SetBody(v *DeleteMonitorGroupResponseBody) *DeleteMonitorGroupResponse {
+	s.Body = v
+	return s
+}
+
 type DeletePluginRequest struct {
 	PluginId      *string                   `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
 	SecurityToken *string                   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -23385,6 +23454,58 @@ func (client *Client) DeleteModel(request *DeleteModelRequest) (_result *DeleteM
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteModelResponse{}
 	_body, _err := client.DeleteModelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteMonitorGroupWithOptions(request *DeleteMonitorGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteMonitorGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RawMonitorGroupId)) {
+		query["RawMonitorGroupId"] = request.RawMonitorGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMonitorGroup"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteMonitorGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteMonitorGroup(request *DeleteMonitorGroupRequest) (_result *DeleteMonitorGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteMonitorGroupResponse{}
+	_body, _err := client.DeleteMonitorGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
