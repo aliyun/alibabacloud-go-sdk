@@ -644,23 +644,6 @@ func (s *RecognizeBankCardRequest) SetImageURL(v string) *RecognizeBankCardReque
 	return s
 }
 
-type RecognizeBankCardAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-}
-
-func (s RecognizeBankCardAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RecognizeBankCardAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RecognizeBankCardAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeBankCardAdvanceRequest {
-	s.ImageURLObject = v
-	return s
-}
-
 type RecognizeBankCardResponseBody struct {
 	Data      *RecognizeBankCardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3742,6 +3725,145 @@ func (s *RecognizeStampResponse) SetBody(v *RecognizeStampResponseBody) *Recogni
 	return s
 }
 
+type RecognizeStructuredTaxiInvoicesRequest struct {
+	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
+}
+
+func (s RecognizeStructuredTaxiInvoicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeStructuredTaxiInvoicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeStructuredTaxiInvoicesRequest) SetImageURL(v string) *RecognizeStructuredTaxiInvoicesRequest {
+	s.ImageURL = &v
+	return s
+}
+
+type RecognizeStructuredTaxiInvoicesAdvanceRequest struct {
+	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+}
+
+func (s RecognizeStructuredTaxiInvoicesAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeStructuredTaxiInvoicesAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeStructuredTaxiInvoicesAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeStructuredTaxiInvoicesAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
+type RecognizeStructuredTaxiInvoicesResponseBody struct {
+	Data      *RecognizeStructuredTaxiInvoicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RecognizeStructuredTaxiInvoicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeStructuredTaxiInvoicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeStructuredTaxiInvoicesResponseBody) SetData(v *RecognizeStructuredTaxiInvoicesResponseBodyData) *RecognizeStructuredTaxiInvoicesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RecognizeStructuredTaxiInvoicesResponseBody) SetRequestId(v string) *RecognizeStructuredTaxiInvoicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RecognizeStructuredTaxiInvoicesResponseBodyData struct {
+	Addresses          []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
+	CellPhoneNumbers   []*string `json:"CellPhoneNumbers,omitempty" xml:"CellPhoneNumbers,omitempty" type:"Repeated"`
+	Companies          []*string `json:"Companies,omitempty" xml:"Companies,omitempty" type:"Repeated"`
+	Departments        []*string `json:"Departments,omitempty" xml:"Departments,omitempty" type:"Repeated"`
+	Emails             []*string `json:"Emails,omitempty" xml:"Emails,omitempty" type:"Repeated"`
+	Name               *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	OfficePhoneNumbers []*string `json:"OfficePhoneNumbers,omitempty" xml:"OfficePhoneNumbers,omitempty" type:"Repeated"`
+	Titles             []*string `json:"Titles,omitempty" xml:"Titles,omitempty" type:"Repeated"`
+}
+
+func (s RecognizeStructuredTaxiInvoicesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeStructuredTaxiInvoicesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeStructuredTaxiInvoicesResponseBodyData) SetAddresses(v []*string) *RecognizeStructuredTaxiInvoicesResponseBodyData {
+	s.Addresses = v
+	return s
+}
+
+func (s *RecognizeStructuredTaxiInvoicesResponseBodyData) SetCellPhoneNumbers(v []*string) *RecognizeStructuredTaxiInvoicesResponseBodyData {
+	s.CellPhoneNumbers = v
+	return s
+}
+
+func (s *RecognizeStructuredTaxiInvoicesResponseBodyData) SetCompanies(v []*string) *RecognizeStructuredTaxiInvoicesResponseBodyData {
+	s.Companies = v
+	return s
+}
+
+func (s *RecognizeStructuredTaxiInvoicesResponseBodyData) SetDepartments(v []*string) *RecognizeStructuredTaxiInvoicesResponseBodyData {
+	s.Departments = v
+	return s
+}
+
+func (s *RecognizeStructuredTaxiInvoicesResponseBodyData) SetEmails(v []*string) *RecognizeStructuredTaxiInvoicesResponseBodyData {
+	s.Emails = v
+	return s
+}
+
+func (s *RecognizeStructuredTaxiInvoicesResponseBodyData) SetName(v string) *RecognizeStructuredTaxiInvoicesResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *RecognizeStructuredTaxiInvoicesResponseBodyData) SetOfficePhoneNumbers(v []*string) *RecognizeStructuredTaxiInvoicesResponseBodyData {
+	s.OfficePhoneNumbers = v
+	return s
+}
+
+func (s *RecognizeStructuredTaxiInvoicesResponseBodyData) SetTitles(v []*string) *RecognizeStructuredTaxiInvoicesResponseBodyData {
+	s.Titles = v
+	return s
+}
+
+type RecognizeStructuredTaxiInvoicesResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RecognizeStructuredTaxiInvoicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RecognizeStructuredTaxiInvoicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeStructuredTaxiInvoicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeStructuredTaxiInvoicesResponse) SetHeaders(v map[string]*string) *RecognizeStructuredTaxiInvoicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecognizeStructuredTaxiInvoicesResponse) SetBody(v *RecognizeStructuredTaxiInvoicesResponseBody) *RecognizeStructuredTaxiInvoicesResponse {
+	s.Body = v
+	return s
+}
+
 type RecognizeTableRequest struct {
 	AssureDirection *bool   `json:"AssureDirection,omitempty" xml:"AssureDirection,omitempty"`
 	HasLine         *bool   `json:"HasLine,omitempty" xml:"HasLine,omitempty"`
@@ -5409,6 +5531,495 @@ func (s *RecognizeVerificationcodeResponse) SetBody(v *RecognizeVerificationcode
 	return s
 }
 
+type RecognizeVideoCastCrewListRequest struct {
+	Params      []*RecognizeVideoCastCrewListRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	RegisterUrl *string                                    `json:"RegisterUrl,omitempty" xml:"RegisterUrl,omitempty"`
+	VideoUrl    *string                                    `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s RecognizeVideoCastCrewListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVideoCastCrewListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVideoCastCrewListRequest) SetParams(v []*RecognizeVideoCastCrewListRequestParams) *RecognizeVideoCastCrewListRequest {
+	s.Params = v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListRequest) SetRegisterUrl(v string) *RecognizeVideoCastCrewListRequest {
+	s.RegisterUrl = &v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListRequest) SetVideoUrl(v string) *RecognizeVideoCastCrewListRequest {
+	s.VideoUrl = &v
+	return s
+}
+
+type RecognizeVideoCastCrewListRequestParams struct {
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s RecognizeVideoCastCrewListRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVideoCastCrewListRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVideoCastCrewListRequestParams) SetType(v string) *RecognizeVideoCastCrewListRequestParams {
+	s.Type = &v
+	return s
+}
+
+type RecognizeVideoCastCrewListAdvanceRequest struct {
+	VideoUrlObject io.Reader                                         `json:"VideoUrlObject,omitempty" xml:"VideoUrlObject,omitempty" require:"true"`
+	Params         []*RecognizeVideoCastCrewListAdvanceRequestParams `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
+	RegisterUrl    *string                                           `json:"RegisterUrl,omitempty" xml:"RegisterUrl,omitempty"`
+}
+
+func (s RecognizeVideoCastCrewListAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVideoCastCrewListAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVideoCastCrewListAdvanceRequest) SetVideoUrlObject(v io.Reader) *RecognizeVideoCastCrewListAdvanceRequest {
+	s.VideoUrlObject = v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListAdvanceRequest) SetParams(v []*RecognizeVideoCastCrewListAdvanceRequestParams) *RecognizeVideoCastCrewListAdvanceRequest {
+	s.Params = v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListAdvanceRequest) SetRegisterUrl(v string) *RecognizeVideoCastCrewListAdvanceRequest {
+	s.RegisterUrl = &v
+	return s
+}
+
+type RecognizeVideoCastCrewListAdvanceRequestParams struct {
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s RecognizeVideoCastCrewListAdvanceRequestParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVideoCastCrewListAdvanceRequestParams) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVideoCastCrewListAdvanceRequestParams) SetType(v string) *RecognizeVideoCastCrewListAdvanceRequestParams {
+	s.Type = &v
+	return s
+}
+
+type RecognizeVideoCastCrewListShrinkRequest struct {
+	ParamsShrink *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	RegisterUrl  *string `json:"RegisterUrl,omitempty" xml:"RegisterUrl,omitempty"`
+	VideoUrl     *string `json:"VideoUrl,omitempty" xml:"VideoUrl,omitempty"`
+}
+
+func (s RecognizeVideoCastCrewListShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVideoCastCrewListShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVideoCastCrewListShrinkRequest) SetParamsShrink(v string) *RecognizeVideoCastCrewListShrinkRequest {
+	s.ParamsShrink = &v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListShrinkRequest) SetRegisterUrl(v string) *RecognizeVideoCastCrewListShrinkRequest {
+	s.RegisterUrl = &v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListShrinkRequest) SetVideoUrl(v string) *RecognizeVideoCastCrewListShrinkRequest {
+	s.VideoUrl = &v
+	return s
+}
+
+type RecognizeVideoCastCrewListResponseBody struct {
+	Data *RecognizeVideoCastCrewListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RecognizeVideoCastCrewListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVideoCastCrewListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVideoCastCrewListResponseBody) SetData(v *RecognizeVideoCastCrewListResponseBodyData) *RecognizeVideoCastCrewListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBody) SetRequestId(v string) *RecognizeVideoCastCrewListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RecognizeVideoCastCrewListResponseBodyData struct {
+	CastResults      []*RecognizeVideoCastCrewListResponseBodyDataCastResults      `json:"CastResults,omitempty" xml:"CastResults,omitempty" type:"Repeated"`
+	OcrResults       []*RecognizeVideoCastCrewListResponseBodyDataOcrResults       `json:"OcrResults,omitempty" xml:"OcrResults,omitempty" type:"Repeated"`
+	SubtitlesResults []*RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults `json:"SubtitlesResults,omitempty" xml:"SubtitlesResults,omitempty" type:"Repeated"`
+	VideoOcrResults  []*RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults  `json:"VideoOcrResults,omitempty" xml:"VideoOcrResults,omitempty" type:"Repeated"`
+}
+
+func (s RecognizeVideoCastCrewListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVideoCastCrewListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyData) SetCastResults(v []*RecognizeVideoCastCrewListResponseBodyDataCastResults) *RecognizeVideoCastCrewListResponseBodyData {
+	s.CastResults = v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyData) SetOcrResults(v []*RecognizeVideoCastCrewListResponseBodyDataOcrResults) *RecognizeVideoCastCrewListResponseBodyData {
+	s.OcrResults = v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyData) SetSubtitlesResults(v []*RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults) *RecognizeVideoCastCrewListResponseBodyData {
+	s.SubtitlesResults = v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyData) SetVideoOcrResults(v []*RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults) *RecognizeVideoCastCrewListResponseBodyData {
+	s.VideoOcrResults = v
+	return s
+}
+
+type RecognizeVideoCastCrewListResponseBodyDataCastResults struct {
+	DetailInfoes map[string]*string `json:"DetailInfoes,omitempty" xml:"DetailInfoes,omitempty"`
+	EndTime      *float32           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime    *float32           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s RecognizeVideoCastCrewListResponseBodyDataCastResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVideoCastCrewListResponseBodyDataCastResults) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataCastResults) SetDetailInfoes(v map[string]*string) *RecognizeVideoCastCrewListResponseBodyDataCastResults {
+	s.DetailInfoes = v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataCastResults) SetEndTime(v float32) *RecognizeVideoCastCrewListResponseBodyDataCastResults {
+	s.EndTime = &v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataCastResults) SetStartTime(v float32) *RecognizeVideoCastCrewListResponseBodyDataCastResults {
+	s.StartTime = &v
+	return s
+}
+
+type RecognizeVideoCastCrewListResponseBodyDataOcrResults struct {
+	DetailInfoes []*RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes `json:"DetailInfoes,omitempty" xml:"DetailInfoes,omitempty" type:"Repeated"`
+	EndTime      *float32                                                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime    *float32                                                            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s RecognizeVideoCastCrewListResponseBodyDataOcrResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVideoCastCrewListResponseBodyDataOcrResults) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResults) SetDetailInfoes(v []*RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) *RecognizeVideoCastCrewListResponseBodyDataOcrResults {
+	s.DetailInfoes = v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResults) SetEndTime(v float32) *RecognizeVideoCastCrewListResponseBodyDataOcrResults {
+	s.EndTime = &v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResults) SetStartTime(v float32) *RecognizeVideoCastCrewListResponseBodyDataOcrResults {
+	s.StartTime = &v
+	return s
+}
+
+type RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes struct {
+	Boxes      []*int32                                                                    `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
+	CharProbs  [][]*float32                                                                `json:"CharProbs,omitempty" xml:"CharProbs,omitempty" type:"Repeated"`
+	FrameIndex *int64                                                                      `json:"FrameIndex,omitempty" xml:"FrameIndex,omitempty"`
+	Position   []*RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition `json:"Position,omitempty" xml:"Position,omitempty" type:"Repeated"`
+	Score      *float32                                                                    `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text       *string                                                                     `json:"Text,omitempty" xml:"Text,omitempty"`
+	TextProb   *float32                                                                    `json:"TextProb,omitempty" xml:"TextProb,omitempty"`
+	TimeStamp  *float32                                                                    `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TrackId    *int64                                                                      `json:"TrackId,omitempty" xml:"TrackId,omitempty"`
+}
+
+func (s RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) SetBoxes(v []*int32) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes {
+	s.Boxes = v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) SetCharProbs(v [][]*float32) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes {
+	s.CharProbs = v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) SetFrameIndex(v int64) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes {
+	s.FrameIndex = &v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) SetPosition(v []*RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes {
+	s.Position = v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) SetScore(v float32) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) SetText(v string) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes {
+	s.Text = &v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) SetTextProb(v float32) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes {
+	s.TextProb = &v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) SetTimeStamp(v float32) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) SetTrackId(v int64) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes {
+	s.TrackId = &v
+	return s
+}
+
+type RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition struct {
+	X *int64 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition) SetX(v int64) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition) SetY(v int64) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition {
+	s.Y = &v
+	return s
+}
+
+type RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults struct {
+	SubtitlesAllResults        map[string]*string     `json:"SubtitlesAllResults,omitempty" xml:"SubtitlesAllResults,omitempty"`
+	SubtitlesAllResultsUrl     *string                `json:"SubtitlesAllResultsUrl,omitempty" xml:"SubtitlesAllResultsUrl,omitempty"`
+	SubtitlesChineseResults    map[string]*string     `json:"SubtitlesChineseResults,omitempty" xml:"SubtitlesChineseResults,omitempty"`
+	SubtitlesChineseResultsUrl *string                `json:"SubtitlesChineseResultsUrl,omitempty" xml:"SubtitlesChineseResultsUrl,omitempty"`
+	SubtitlesEnglishResults    map[string]interface{} `json:"SubtitlesEnglishResults,omitempty" xml:"SubtitlesEnglishResults,omitempty"`
+	SubtitlesEnglishResultsUrl *string                `json:"SubtitlesEnglishResultsUrl,omitempty" xml:"SubtitlesEnglishResultsUrl,omitempty"`
+}
+
+func (s RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults) SetSubtitlesAllResults(v map[string]*string) *RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults {
+	s.SubtitlesAllResults = v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults) SetSubtitlesAllResultsUrl(v string) *RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults {
+	s.SubtitlesAllResultsUrl = &v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults) SetSubtitlesChineseResults(v map[string]*string) *RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults {
+	s.SubtitlesChineseResults = v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults) SetSubtitlesChineseResultsUrl(v string) *RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults {
+	s.SubtitlesChineseResultsUrl = &v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults) SetSubtitlesEnglishResults(v map[string]interface{}) *RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults {
+	s.SubtitlesEnglishResults = v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults) SetSubtitlesEnglishResultsUrl(v string) *RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults {
+	s.SubtitlesEnglishResultsUrl = &v
+	return s
+}
+
+type RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults struct {
+	DetailInfoes []*RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes `json:"DetailInfoes,omitempty" xml:"DetailInfoes,omitempty" type:"Repeated"`
+	EndTime      *float32                                                                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime    *float32                                                                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults) SetDetailInfoes(v []*RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults {
+	s.DetailInfoes = v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults) SetEndTime(v float32) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults {
+	s.EndTime = &v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults) SetStartTime(v float32) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults {
+	s.StartTime = &v
+	return s
+}
+
+type RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes struct {
+	Boxes    []*int64                                                                         `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
+	Position []*RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition `json:"Position,omitempty" xml:"Position,omitempty" type:"Repeated"`
+	Score    *float32                                                                         `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text     *string                                                                          `json:"Text,omitempty" xml:"Text,omitempty"`
+	TextType *int64                                                                           `json:"TextType,omitempty" xml:"TextType,omitempty"`
+}
+
+func (s RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes) SetBoxes(v []*int64) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes {
+	s.Boxes = v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes) SetPosition(v []*RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes {
+	s.Position = v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes) SetScore(v float32) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes) SetText(v string) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes {
+	s.Text = &v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes) SetTextType(v int64) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes {
+	s.TextType = &v
+	return s
+}
+
+type RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition struct {
+	X *int64 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *int64 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition) SetX(v int64) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition) SetY(v int64) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition {
+	s.Y = &v
+	return s
+}
+
+type RecognizeVideoCastCrewListResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RecognizeVideoCastCrewListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RecognizeVideoCastCrewListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVideoCastCrewListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVideoCastCrewListResponse) SetHeaders(v map[string]*string) *RecognizeVideoCastCrewListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponse) SetBody(v *RecognizeVideoCastCrewListResponseBody) *RecognizeVideoCastCrewListResponse {
+	s.Body = v
+	return s
+}
+
 type RecognizeVideoCharacterRequest struct {
 	// 视频文件地址
 	VideoURL *string `json:"VideoURL,omitempty" xml:"VideoURL,omitempty"`
@@ -6165,112 +6776,6 @@ func (client *Client) RecognizeBankCard(request *RecognizeBankCardRequest) (_res
 		return _result, _err
 	}
 	_result = _body
-	return _result, _err
-}
-
-func (client *Client) RecognizeBankCardAdvance(request *RecognizeBankCardAdvanceRequest, runtime *util.RuntimeOptions) (_result *RecognizeBankCardResponse, _err error) {
-	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	securityToken, _err := client.Credential.GetSecurityToken()
-	if _err != nil {
-		return _result, _err
-	}
-
-	credentialType := client.Credential.GetType()
-	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
-		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
-	}
-
-	if tea.BoolValue(util.IsUnset(credentialType)) {
-		credentialType = tea.String("access_key")
-	}
-
-	authConfig := &rpc.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		SecurityToken:   securityToken,
-		Type:            credentialType,
-		Endpoint:        openPlatformEndpoint,
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openplatform.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("ocr"),
-		RegionId: client.RegionId,
-	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	var ossClient *oss.Client
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
-	recognizeBankCardReq := &RecognizeBankCardRequest{}
-	openapiutil.Convert(request, recognizeBankCardReq)
-	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
-		if _err != nil {
-			return _result, _err
-		}
-
-		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
-			Content:     request.ImageURLObject,
-			ContentType: tea.String(""),
-		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
-		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-		if _err != nil {
-			return _result, _err
-		}
-		recognizeBankCardReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	}
-
-	recognizeBankCardResp, _err := client.RecognizeBankCardWithOptions(recognizeBankCardReq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = recognizeBankCardResp
 	return _result, _err
 }
 
@@ -8288,6 +8793,156 @@ func (client *Client) RecognizeStampAdvance(request *RecognizeStampAdvanceReques
 	return _result, _err
 }
 
+func (client *Client) RecognizeStructuredTaxiInvoicesWithOptions(request *RecognizeStructuredTaxiInvoicesRequest, runtime *util.RuntimeOptions) (_result *RecognizeStructuredTaxiInvoicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		body["ImageURL"] = request.ImageURL
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeStructuredTaxiInvoices"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecognizeStructuredTaxiInvoicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RecognizeStructuredTaxiInvoices(request *RecognizeStructuredTaxiInvoicesRequest) (_result *RecognizeStructuredTaxiInvoicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecognizeStructuredTaxiInvoicesResponse{}
+	_body, _err := client.RecognizeStructuredTaxiInvoicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RecognizeStructuredTaxiInvoicesAdvance(request *RecognizeStructuredTaxiInvoicesAdvanceRequest, runtime *util.RuntimeOptions) (_result *RecognizeStructuredTaxiInvoicesResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("ocr"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	recognizeStructuredTaxiInvoicesReq := &RecognizeStructuredTaxiInvoicesRequest{}
+	openapiutil.Convert(request, recognizeStructuredTaxiInvoicesReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeStructuredTaxiInvoicesReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	}
+
+	recognizeStructuredTaxiInvoicesResp, _err := client.RecognizeStructuredTaxiInvoicesWithOptions(recognizeStructuredTaxiInvoicesReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = recognizeStructuredTaxiInvoicesResp
+	return _result, _err
+}
+
 func (client *Client) RecognizeTableWithOptions(request *RecognizeTableRequest, runtime *util.RuntimeOptions) (_result *RecognizeTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9218,7 +9873,10 @@ func (client *Client) RecognizeVINCodeWithOptions(request *RecognizeVINCodeReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ImageURL"] = request.ImageURL
+	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
+		query["ImageURL"] = request.ImageURL
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -9506,6 +10164,170 @@ func (client *Client) RecognizeVerificationcodeAdvance(request *RecognizeVerific
 	}
 
 	_result = recognizeVerificationcodeResp
+	return _result, _err
+}
+
+func (client *Client) RecognizeVideoCastCrewListWithOptions(tmpReq *RecognizeVideoCastCrewListRequest, runtime *util.RuntimeOptions) (_result *RecognizeVideoCastCrewListResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RecognizeVideoCastCrewListShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Params)) {
+		request.ParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Params, tea.String("Params"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ParamsShrink)) {
+		body["Params"] = request.ParamsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegisterUrl)) {
+		body["RegisterUrl"] = request.RegisterUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoUrl)) {
+		body["VideoUrl"] = request.VideoUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeVideoCastCrewList"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecognizeVideoCastCrewListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RecognizeVideoCastCrewList(request *RecognizeVideoCastCrewListRequest) (_result *RecognizeVideoCastCrewListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecognizeVideoCastCrewListResponse{}
+	_body, _err := client.RecognizeVideoCastCrewListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RecognizeVideoCastCrewListAdvance(request *RecognizeVideoCastCrewListAdvanceRequest, runtime *util.RuntimeOptions) (_result *RecognizeVideoCastCrewListResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("ocr"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	recognizeVideoCastCrewListReq := &RecognizeVideoCastCrewListRequest{}
+	openapiutil.Convert(request, recognizeVideoCastCrewListReq)
+	if !tea.BoolValue(util.IsUnset(request.VideoUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.VideoUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeVideoCastCrewListReq.VideoUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	}
+
+	recognizeVideoCastCrewListResp, _err := client.RecognizeVideoCastCrewListWithOptions(recognizeVideoCastCrewListReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = recognizeVideoCastCrewListResp
 	return _result, _err
 }
 
