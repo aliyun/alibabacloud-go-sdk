@@ -105,6 +105,128 @@ func (s *AddDataForApiSourceResponse) SetBody(v *AddDataForApiSourceResponseBody
 	return s
 }
 
+type BatchAddDataForApiSourceRequest struct {
+	ApiId         *string                `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ContentList   map[string]interface{} `json:"ContentList,omitempty" xml:"ContentList,omitempty"`
+	IotInstanceId *string                `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+}
+
+func (s BatchAddDataForApiSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddDataForApiSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddDataForApiSourceRequest) SetApiId(v string) *BatchAddDataForApiSourceRequest {
+	s.ApiId = &v
+	return s
+}
+
+func (s *BatchAddDataForApiSourceRequest) SetContentList(v map[string]interface{}) *BatchAddDataForApiSourceRequest {
+	s.ContentList = v
+	return s
+}
+
+func (s *BatchAddDataForApiSourceRequest) SetIotInstanceId(v string) *BatchAddDataForApiSourceRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+type BatchAddDataForApiSourceShrinkRequest struct {
+	ApiId             *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ContentListShrink *string `json:"ContentList,omitempty" xml:"ContentList,omitempty"`
+	IotInstanceId     *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+}
+
+func (s BatchAddDataForApiSourceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddDataForApiSourceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddDataForApiSourceShrinkRequest) SetApiId(v string) *BatchAddDataForApiSourceShrinkRequest {
+	s.ApiId = &v
+	return s
+}
+
+func (s *BatchAddDataForApiSourceShrinkRequest) SetContentListShrink(v string) *BatchAddDataForApiSourceShrinkRequest {
+	s.ContentListShrink = &v
+	return s
+}
+
+func (s *BatchAddDataForApiSourceShrinkRequest) SetIotInstanceId(v string) *BatchAddDataForApiSourceShrinkRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+type BatchAddDataForApiSourceResponseBody struct {
+	Code         *string                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage *string                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BatchAddDataForApiSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddDataForApiSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddDataForApiSourceResponseBody) SetCode(v string) *BatchAddDataForApiSourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BatchAddDataForApiSourceResponseBody) SetData(v map[string]interface{}) *BatchAddDataForApiSourceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *BatchAddDataForApiSourceResponseBody) SetErrorMessage(v string) *BatchAddDataForApiSourceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BatchAddDataForApiSourceResponseBody) SetRequestId(v string) *BatchAddDataForApiSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchAddDataForApiSourceResponseBody) SetSuccess(v bool) *BatchAddDataForApiSourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BatchAddDataForApiSourceResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BatchAddDataForApiSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchAddDataForApiSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchAddDataForApiSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchAddDataForApiSourceResponse) SetHeaders(v map[string]*string) *BatchAddDataForApiSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchAddDataForApiSourceResponse) SetBody(v *BatchAddDataForApiSourceResponseBody) *BatchAddDataForApiSourceResponse {
+	s.Body = v
+	return s
+}
+
 type BatchAddDeviceGroupRelationsRequest struct {
 	Device        []*BatchAddDeviceGroupRelationsRequestDevice `json:"Device,omitempty" xml:"Device,omitempty" type:"Repeated"`
 	GroupId       *string                                      `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -4492,6 +4614,87 @@ func (s *ClearEdgeInstanceDriverConfigsResponse) SetBody(v *ClearEdgeInstanceDri
 	return s
 }
 
+type CloseDeviceTunnelRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	TunnelId      *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
+}
+
+func (s CloseDeviceTunnelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseDeviceTunnelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CloseDeviceTunnelRequest) SetIotInstanceId(v string) *CloseDeviceTunnelRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *CloseDeviceTunnelRequest) SetTunnelId(v string) *CloseDeviceTunnelRequest {
+	s.TunnelId = &v
+	return s
+}
+
+type CloseDeviceTunnelResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CloseDeviceTunnelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseDeviceTunnelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CloseDeviceTunnelResponseBody) SetCode(v string) *CloseDeviceTunnelResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CloseDeviceTunnelResponseBody) SetErrorMessage(v string) *CloseDeviceTunnelResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CloseDeviceTunnelResponseBody) SetRequestId(v string) *CloseDeviceTunnelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CloseDeviceTunnelResponseBody) SetSuccess(v bool) *CloseDeviceTunnelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CloseDeviceTunnelResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CloseDeviceTunnelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CloseDeviceTunnelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CloseDeviceTunnelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CloseDeviceTunnelResponse) SetHeaders(v map[string]*string) *CloseDeviceTunnelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CloseDeviceTunnelResponse) SetBody(v *CloseDeviceTunnelResponseBody) *CloseDeviceTunnelResponse {
+	s.Body = v
+	return s
+}
+
 type CloseEdgeInstanceDeploymentRequest struct {
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
@@ -5295,6 +5498,146 @@ func (s *CreateDeviceDistributeJobResponse) SetBody(v *CreateDeviceDistributeJob
 	return s
 }
 
+type CreateDeviceDynamicGroupRequest struct {
+	DynamicGroupExpression *string `json:"DynamicGroupExpression,omitempty" xml:"DynamicGroupExpression,omitempty"`
+	GroupDesc              *string `json:"GroupDesc,omitempty" xml:"GroupDesc,omitempty"`
+	GroupName              *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	IotInstanceId          *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+}
+
+func (s CreateDeviceDynamicGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeviceDynamicGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeviceDynamicGroupRequest) SetDynamicGroupExpression(v string) *CreateDeviceDynamicGroupRequest {
+	s.DynamicGroupExpression = &v
+	return s
+}
+
+func (s *CreateDeviceDynamicGroupRequest) SetGroupDesc(v string) *CreateDeviceDynamicGroupRequest {
+	s.GroupDesc = &v
+	return s
+}
+
+func (s *CreateDeviceDynamicGroupRequest) SetGroupName(v string) *CreateDeviceDynamicGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateDeviceDynamicGroupRequest) SetIotInstanceId(v string) *CreateDeviceDynamicGroupRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+type CreateDeviceDynamicGroupResponseBody struct {
+	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *CreateDeviceDynamicGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateDeviceDynamicGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeviceDynamicGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeviceDynamicGroupResponseBody) SetCode(v string) *CreateDeviceDynamicGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateDeviceDynamicGroupResponseBody) SetData(v *CreateDeviceDynamicGroupResponseBodyData) *CreateDeviceDynamicGroupResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateDeviceDynamicGroupResponseBody) SetErrorMessage(v string) *CreateDeviceDynamicGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateDeviceDynamicGroupResponseBody) SetRequestId(v string) *CreateDeviceDynamicGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDeviceDynamicGroupResponseBody) SetSuccess(v bool) *CreateDeviceDynamicGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDeviceDynamicGroupResponseBodyData struct {
+	DynamicGroupExpression *string `json:"DynamicGroupExpression,omitempty" xml:"DynamicGroupExpression,omitempty"`
+	GroupDesc              *string `json:"GroupDesc,omitempty" xml:"GroupDesc,omitempty"`
+	GroupId                *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName              *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	UtcCreate              *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
+}
+
+func (s CreateDeviceDynamicGroupResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeviceDynamicGroupResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeviceDynamicGroupResponseBodyData) SetDynamicGroupExpression(v string) *CreateDeviceDynamicGroupResponseBodyData {
+	s.DynamicGroupExpression = &v
+	return s
+}
+
+func (s *CreateDeviceDynamicGroupResponseBodyData) SetGroupDesc(v string) *CreateDeviceDynamicGroupResponseBodyData {
+	s.GroupDesc = &v
+	return s
+}
+
+func (s *CreateDeviceDynamicGroupResponseBodyData) SetGroupId(v string) *CreateDeviceDynamicGroupResponseBodyData {
+	s.GroupId = &v
+	return s
+}
+
+func (s *CreateDeviceDynamicGroupResponseBodyData) SetGroupName(v string) *CreateDeviceDynamicGroupResponseBodyData {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateDeviceDynamicGroupResponseBodyData) SetUtcCreate(v string) *CreateDeviceDynamicGroupResponseBodyData {
+	s.UtcCreate = &v
+	return s
+}
+
+type CreateDeviceDynamicGroupResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateDeviceDynamicGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDeviceDynamicGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeviceDynamicGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeviceDynamicGroupResponse) SetHeaders(v map[string]*string) *CreateDeviceDynamicGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDeviceDynamicGroupResponse) SetBody(v *CreateDeviceDynamicGroupResponseBody) *CreateDeviceDynamicGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDeviceGroupRequest struct {
 	GroupDesc     *string `json:"GroupDesc,omitempty" xml:"GroupDesc,omitempty"`
 	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
@@ -5425,6 +5768,146 @@ func (s *CreateDeviceGroupResponse) SetHeaders(v map[string]*string) *CreateDevi
 }
 
 func (s *CreateDeviceGroupResponse) SetBody(v *CreateDeviceGroupResponseBody) *CreateDeviceGroupResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDeviceTunnelRequest struct {
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	Udi           *string `json:"Udi,omitempty" xml:"Udi,omitempty"`
+}
+
+func (s CreateDeviceTunnelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeviceTunnelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeviceTunnelRequest) SetDescription(v string) *CreateDeviceTunnelRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDeviceTunnelRequest) SetDeviceName(v string) *CreateDeviceTunnelRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *CreateDeviceTunnelRequest) SetIotId(v string) *CreateDeviceTunnelRequest {
+	s.IotId = &v
+	return s
+}
+
+func (s *CreateDeviceTunnelRequest) SetIotInstanceId(v string) *CreateDeviceTunnelRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *CreateDeviceTunnelRequest) SetProductKey(v string) *CreateDeviceTunnelRequest {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *CreateDeviceTunnelRequest) SetUdi(v string) *CreateDeviceTunnelRequest {
+	s.Udi = &v
+	return s
+}
+
+type CreateDeviceTunnelResponseBody struct {
+	Code         *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *CreateDeviceTunnelResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateDeviceTunnelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeviceTunnelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeviceTunnelResponseBody) SetCode(v string) *CreateDeviceTunnelResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateDeviceTunnelResponseBody) SetData(v *CreateDeviceTunnelResponseBodyData) *CreateDeviceTunnelResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateDeviceTunnelResponseBody) SetErrorMessage(v string) *CreateDeviceTunnelResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateDeviceTunnelResponseBody) SetRequestId(v string) *CreateDeviceTunnelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDeviceTunnelResponseBody) SetSuccess(v bool) *CreateDeviceTunnelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDeviceTunnelResponseBodyData struct {
+	SourceAccessToken *string `json:"SourceAccessToken,omitempty" xml:"SourceAccessToken,omitempty"`
+	SourceURI         *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	TunnelId          *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
+}
+
+func (s CreateDeviceTunnelResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeviceTunnelResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeviceTunnelResponseBodyData) SetSourceAccessToken(v string) *CreateDeviceTunnelResponseBodyData {
+	s.SourceAccessToken = &v
+	return s
+}
+
+func (s *CreateDeviceTunnelResponseBodyData) SetSourceURI(v string) *CreateDeviceTunnelResponseBodyData {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *CreateDeviceTunnelResponseBodyData) SetTunnelId(v string) *CreateDeviceTunnelResponseBodyData {
+	s.TunnelId = &v
+	return s
+}
+
+type CreateDeviceTunnelResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateDeviceTunnelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDeviceTunnelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDeviceTunnelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDeviceTunnelResponse) SetHeaders(v map[string]*string) *CreateDeviceTunnelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDeviceTunnelResponse) SetBody(v *CreateDeviceTunnelResponseBody) *CreateDeviceTunnelResponse {
 	s.Body = v
 	return s
 }
@@ -6259,16 +6742,16 @@ func (s *CreateEdgeOssPreSignedAddressResponse) SetBody(v *CreateEdgeOssPreSigne
 }
 
 type CreateJobRequest struct {
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	JobDocument   *string `json:"JobDocument,omitempty" xml:"JobDocument,omitempty"`
-	JobFile       *string `json:"JobFile,omitempty" xml:"JobFile,omitempty"`
-	JobName       *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	RolloutConfig *string `json:"RolloutConfig,omitempty" xml:"RolloutConfig,omitempty"`
-	ScheduledTime *int64  `json:"ScheduledTime,omitempty" xml:"ScheduledTime,omitempty"`
-	TargetConfig  *string `json:"TargetConfig,omitempty" xml:"TargetConfig,omitempty"`
-	TimeoutConfig *string `json:"TimeoutConfig,omitempty" xml:"TimeoutConfig,omitempty"`
-	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Description   *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	IotInstanceId *string                `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	JobDocument   *string                `json:"JobDocument,omitempty" xml:"JobDocument,omitempty"`
+	JobFile       map[string]interface{} `json:"JobFile,omitempty" xml:"JobFile,omitempty"`
+	JobName       *string                `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	RolloutConfig map[string]interface{} `json:"RolloutConfig,omitempty" xml:"RolloutConfig,omitempty"`
+	ScheduledTime *int64                 `json:"ScheduledTime,omitempty" xml:"ScheduledTime,omitempty"`
+	TargetConfig  map[string]interface{} `json:"TargetConfig,omitempty" xml:"TargetConfig,omitempty"`
+	TimeoutConfig map[string]interface{} `json:"TimeoutConfig,omitempty" xml:"TimeoutConfig,omitempty"`
+	Type          *string                `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateJobRequest) String() string {
@@ -6294,8 +6777,8 @@ func (s *CreateJobRequest) SetJobDocument(v string) *CreateJobRequest {
 	return s
 }
 
-func (s *CreateJobRequest) SetJobFile(v string) *CreateJobRequest {
-	s.JobFile = &v
+func (s *CreateJobRequest) SetJobFile(v map[string]interface{}) *CreateJobRequest {
+	s.JobFile = v
 	return s
 }
 
@@ -6304,8 +6787,8 @@ func (s *CreateJobRequest) SetJobName(v string) *CreateJobRequest {
 	return s
 }
 
-func (s *CreateJobRequest) SetRolloutConfig(v string) *CreateJobRequest {
-	s.RolloutConfig = &v
+func (s *CreateJobRequest) SetRolloutConfig(v map[string]interface{}) *CreateJobRequest {
+	s.RolloutConfig = v
 	return s
 }
 
@@ -6314,17 +6797,88 @@ func (s *CreateJobRequest) SetScheduledTime(v int64) *CreateJobRequest {
 	return s
 }
 
-func (s *CreateJobRequest) SetTargetConfig(v string) *CreateJobRequest {
-	s.TargetConfig = &v
+func (s *CreateJobRequest) SetTargetConfig(v map[string]interface{}) *CreateJobRequest {
+	s.TargetConfig = v
 	return s
 }
 
-func (s *CreateJobRequest) SetTimeoutConfig(v string) *CreateJobRequest {
-	s.TimeoutConfig = &v
+func (s *CreateJobRequest) SetTimeoutConfig(v map[string]interface{}) *CreateJobRequest {
+	s.TimeoutConfig = v
 	return s
 }
 
 func (s *CreateJobRequest) SetType(v string) *CreateJobRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateJobShrinkRequest struct {
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IotInstanceId       *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	JobDocument         *string `json:"JobDocument,omitempty" xml:"JobDocument,omitempty"`
+	JobFileShrink       *string `json:"JobFile,omitempty" xml:"JobFile,omitempty"`
+	JobName             *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	RolloutConfigShrink *string `json:"RolloutConfig,omitempty" xml:"RolloutConfig,omitempty"`
+	ScheduledTime       *int64  `json:"ScheduledTime,omitempty" xml:"ScheduledTime,omitempty"`
+	TargetConfigShrink  *string `json:"TargetConfig,omitempty" xml:"TargetConfig,omitempty"`
+	TimeoutConfigShrink *string `json:"TimeoutConfig,omitempty" xml:"TimeoutConfig,omitempty"`
+	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateJobShrinkRequest) SetDescription(v string) *CreateJobShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateJobShrinkRequest) SetIotInstanceId(v string) *CreateJobShrinkRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *CreateJobShrinkRequest) SetJobDocument(v string) *CreateJobShrinkRequest {
+	s.JobDocument = &v
+	return s
+}
+
+func (s *CreateJobShrinkRequest) SetJobFileShrink(v string) *CreateJobShrinkRequest {
+	s.JobFileShrink = &v
+	return s
+}
+
+func (s *CreateJobShrinkRequest) SetJobName(v string) *CreateJobShrinkRequest {
+	s.JobName = &v
+	return s
+}
+
+func (s *CreateJobShrinkRequest) SetRolloutConfigShrink(v string) *CreateJobShrinkRequest {
+	s.RolloutConfigShrink = &v
+	return s
+}
+
+func (s *CreateJobShrinkRequest) SetScheduledTime(v int64) *CreateJobShrinkRequest {
+	s.ScheduledTime = &v
+	return s
+}
+
+func (s *CreateJobShrinkRequest) SetTargetConfigShrink(v string) *CreateJobShrinkRequest {
+	s.TargetConfigShrink = &v
+	return s
+}
+
+func (s *CreateJobShrinkRequest) SetTimeoutConfigShrink(v string) *CreateJobShrinkRequest {
+	s.TimeoutConfigShrink = &v
+	return s
+}
+
+func (s *CreateJobShrinkRequest) SetType(v string) *CreateJobShrinkRequest {
 	s.Type = &v
 	return s
 }
@@ -6510,10 +7064,14 @@ func (s *CreateLoRaNodesTaskResponse) SetBody(v *CreateLoRaNodesTaskResponseBody
 }
 
 type CreateOTADynamicUpgradeJobRequest struct {
+	DownloadProtocol *string                                 `json:"DownloadProtocol,omitempty" xml:"DownloadProtocol,omitempty"`
 	DynamicMode      *int32                                  `json:"DynamicMode,omitempty" xml:"DynamicMode,omitempty"`
 	FirmwareId       *string                                 `json:"FirmwareId,omitempty" xml:"FirmwareId,omitempty"`
+	GroupId          *string                                 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupType        *string                                 `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	IotInstanceId    *string                                 `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	MaximumPerMinute *int32                                  `json:"MaximumPerMinute,omitempty" xml:"MaximumPerMinute,omitempty"`
+	MultiModuleMode  *bool                                   `json:"MultiModuleMode,omitempty" xml:"MultiModuleMode,omitempty"`
 	NeedConfirm      *bool                                   `json:"NeedConfirm,omitempty" xml:"NeedConfirm,omitempty"`
 	NeedPush         *bool                                   `json:"NeedPush,omitempty" xml:"NeedPush,omitempty"`
 	OverwriteMode    *int32                                  `json:"OverwriteMode,omitempty" xml:"OverwriteMode,omitempty"`
@@ -6533,6 +7091,11 @@ func (s CreateOTADynamicUpgradeJobRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateOTADynamicUpgradeJobRequest) SetDownloadProtocol(v string) *CreateOTADynamicUpgradeJobRequest {
+	s.DownloadProtocol = &v
+	return s
+}
+
 func (s *CreateOTADynamicUpgradeJobRequest) SetDynamicMode(v int32) *CreateOTADynamicUpgradeJobRequest {
 	s.DynamicMode = &v
 	return s
@@ -6543,6 +7106,16 @@ func (s *CreateOTADynamicUpgradeJobRequest) SetFirmwareId(v string) *CreateOTADy
 	return s
 }
 
+func (s *CreateOTADynamicUpgradeJobRequest) SetGroupId(v string) *CreateOTADynamicUpgradeJobRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *CreateOTADynamicUpgradeJobRequest) SetGroupType(v string) *CreateOTADynamicUpgradeJobRequest {
+	s.GroupType = &v
+	return s
+}
+
 func (s *CreateOTADynamicUpgradeJobRequest) SetIotInstanceId(v string) *CreateOTADynamicUpgradeJobRequest {
 	s.IotInstanceId = &v
 	return s
@@ -6550,6 +7123,11 @@ func (s *CreateOTADynamicUpgradeJobRequest) SetIotInstanceId(v string) *CreateOT
 
 func (s *CreateOTADynamicUpgradeJobRequest) SetMaximumPerMinute(v int32) *CreateOTADynamicUpgradeJobRequest {
 	s.MaximumPerMinute = &v
+	return s
+}
+
+func (s *CreateOTADynamicUpgradeJobRequest) SetMultiModuleMode(v bool) *CreateOTADynamicUpgradeJobRequest {
+	s.MultiModuleMode = &v
 	return s
 }
 
@@ -6709,20 +7287,21 @@ func (s *CreateOTADynamicUpgradeJobResponse) SetBody(v *CreateOTADynamicUpgradeJ
 }
 
 type CreateOTAFirmwareRequest struct {
-	DestVersion   *string `json:"DestVersion,omitempty" xml:"DestVersion,omitempty"`
-	FirmwareDesc  *string `json:"FirmwareDesc,omitempty" xml:"FirmwareDesc,omitempty"`
-	FirmwareName  *string `json:"FirmwareName,omitempty" xml:"FirmwareName,omitempty"`
-	FirmwareSign  *string `json:"FirmwareSign,omitempty" xml:"FirmwareSign,omitempty"`
-	FirmwareSize  *int32  `json:"FirmwareSize,omitempty" xml:"FirmwareSize,omitempty"`
-	FirmwareUrl   *string `json:"FirmwareUrl,omitempty" xml:"FirmwareUrl,omitempty"`
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	ModuleName    *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
-	NeedToVerify  *bool   `json:"NeedToVerify,omitempty" xml:"NeedToVerify,omitempty"`
-	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	SignMethod    *string `json:"SignMethod,omitempty" xml:"SignMethod,omitempty"`
-	SrcVersion    *string `json:"SrcVersion,omitempty" xml:"SrcVersion,omitempty"`
-	Type          *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Udi           *string `json:"Udi,omitempty" xml:"Udi,omitempty"`
+	DestVersion   *string                               `json:"DestVersion,omitempty" xml:"DestVersion,omitempty"`
+	FirmwareDesc  *string                               `json:"FirmwareDesc,omitempty" xml:"FirmwareDesc,omitempty"`
+	FirmwareName  *string                               `json:"FirmwareName,omitempty" xml:"FirmwareName,omitempty"`
+	FirmwareSign  *string                               `json:"FirmwareSign,omitempty" xml:"FirmwareSign,omitempty"`
+	FirmwareSize  *int32                                `json:"FirmwareSize,omitempty" xml:"FirmwareSize,omitempty"`
+	FirmwareUrl   *string                               `json:"FirmwareUrl,omitempty" xml:"FirmwareUrl,omitempty"`
+	IotInstanceId *string                               `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ModuleName    *string                               `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	MultiFiles    []*CreateOTAFirmwareRequestMultiFiles `json:"MultiFiles,omitempty" xml:"MultiFiles,omitempty" type:"Repeated"`
+	NeedToVerify  *bool                                 `json:"NeedToVerify,omitempty" xml:"NeedToVerify,omitempty"`
+	ProductKey    *string                               `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	SignMethod    *string                               `json:"SignMethod,omitempty" xml:"SignMethod,omitempty"`
+	SrcVersion    *string                               `json:"SrcVersion,omitempty" xml:"SrcVersion,omitempty"`
+	Type          *int32                                `json:"Type,omitempty" xml:"Type,omitempty"`
+	Udi           *string                               `json:"Udi,omitempty" xml:"Udi,omitempty"`
 }
 
 func (s CreateOTAFirmwareRequest) String() string {
@@ -6773,6 +7352,11 @@ func (s *CreateOTAFirmwareRequest) SetModuleName(v string) *CreateOTAFirmwareReq
 	return s
 }
 
+func (s *CreateOTAFirmwareRequest) SetMultiFiles(v []*CreateOTAFirmwareRequestMultiFiles) *CreateOTAFirmwareRequest {
+	s.MultiFiles = v
+	return s
+}
+
 func (s *CreateOTAFirmwareRequest) SetNeedToVerify(v bool) *CreateOTAFirmwareRequest {
 	s.NeedToVerify = &v
 	return s
@@ -6800,6 +7384,47 @@ func (s *CreateOTAFirmwareRequest) SetType(v int32) *CreateOTAFirmwareRequest {
 
 func (s *CreateOTAFirmwareRequest) SetUdi(v string) *CreateOTAFirmwareRequest {
 	s.Udi = &v
+	return s
+}
+
+type CreateOTAFirmwareRequestMultiFiles struct {
+	FileMd5   *string `json:"FileMd5,omitempty" xml:"FileMd5,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SignValue *string `json:"SignValue,omitempty" xml:"SignValue,omitempty"`
+	Size      *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Url       *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s CreateOTAFirmwareRequestMultiFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOTAFirmwareRequestMultiFiles) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOTAFirmwareRequestMultiFiles) SetFileMd5(v string) *CreateOTAFirmwareRequestMultiFiles {
+	s.FileMd5 = &v
+	return s
+}
+
+func (s *CreateOTAFirmwareRequestMultiFiles) SetName(v string) *CreateOTAFirmwareRequestMultiFiles {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateOTAFirmwareRequestMultiFiles) SetSignValue(v string) *CreateOTAFirmwareRequestMultiFiles {
+	s.SignValue = &v
+	return s
+}
+
+func (s *CreateOTAFirmwareRequestMultiFiles) SetSize(v int32) *CreateOTAFirmwareRequestMultiFiles {
+	s.Size = &v
+	return s
+}
+
+func (s *CreateOTAFirmwareRequestMultiFiles) SetUrl(v string) *CreateOTAFirmwareRequestMultiFiles {
+	s.Url = &v
 	return s
 }
 
@@ -6991,10 +7616,14 @@ func (s *CreateOTAModuleResponse) SetBody(v *CreateOTAModuleResponseBody) *Creat
 
 type CreateOTAStaticUpgradeJobRequest struct {
 	DnListFileUrl      *string                                `json:"DnListFileUrl,omitempty" xml:"DnListFileUrl,omitempty"`
+	DownloadProtocol   *string                                `json:"DownloadProtocol,omitempty" xml:"DownloadProtocol,omitempty"`
 	FirmwareId         *string                                `json:"FirmwareId,omitempty" xml:"FirmwareId,omitempty"`
 	GrayPercent        *string                                `json:"GrayPercent,omitempty" xml:"GrayPercent,omitempty"`
+	GroupId            *string                                `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupType          *string                                `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	IotInstanceId      *string                                `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	MaximumPerMinute   *int32                                 `json:"MaximumPerMinute,omitempty" xml:"MaximumPerMinute,omitempty"`
+	MultiModuleMode    *bool                                  `json:"MultiModuleMode,omitempty" xml:"MultiModuleMode,omitempty"`
 	NeedConfirm        *bool                                  `json:"NeedConfirm,omitempty" xml:"NeedConfirm,omitempty"`
 	NeedPush           *bool                                  `json:"NeedPush,omitempty" xml:"NeedPush,omitempty"`
 	OverwriteMode      *int32                                 `json:"OverwriteMode,omitempty" xml:"OverwriteMode,omitempty"`
@@ -7023,6 +7652,11 @@ func (s *CreateOTAStaticUpgradeJobRequest) SetDnListFileUrl(v string) *CreateOTA
 	return s
 }
 
+func (s *CreateOTAStaticUpgradeJobRequest) SetDownloadProtocol(v string) *CreateOTAStaticUpgradeJobRequest {
+	s.DownloadProtocol = &v
+	return s
+}
+
 func (s *CreateOTAStaticUpgradeJobRequest) SetFirmwareId(v string) *CreateOTAStaticUpgradeJobRequest {
 	s.FirmwareId = &v
 	return s
@@ -7033,6 +7667,16 @@ func (s *CreateOTAStaticUpgradeJobRequest) SetGrayPercent(v string) *CreateOTASt
 	return s
 }
 
+func (s *CreateOTAStaticUpgradeJobRequest) SetGroupId(v string) *CreateOTAStaticUpgradeJobRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *CreateOTAStaticUpgradeJobRequest) SetGroupType(v string) *CreateOTAStaticUpgradeJobRequest {
+	s.GroupType = &v
+	return s
+}
+
 func (s *CreateOTAStaticUpgradeJobRequest) SetIotInstanceId(v string) *CreateOTAStaticUpgradeJobRequest {
 	s.IotInstanceId = &v
 	return s
@@ -7040,6 +7684,11 @@ func (s *CreateOTAStaticUpgradeJobRequest) SetIotInstanceId(v string) *CreateOTA
 
 func (s *CreateOTAStaticUpgradeJobRequest) SetMaximumPerMinute(v int32) *CreateOTAStaticUpgradeJobRequest {
 	s.MaximumPerMinute = &v
+	return s
+}
+
+func (s *CreateOTAStaticUpgradeJobRequest) SetMultiModuleMode(v bool) *CreateOTAStaticUpgradeJobRequest {
+	s.MultiModuleMode = &v
 	return s
 }
 
@@ -7219,13 +7868,15 @@ func (s *CreateOTAStaticUpgradeJobResponse) SetBody(v *CreateOTAStaticUpgradeJob
 }
 
 type CreateOTAVerifyJobRequest struct {
-	FirmwareId       *string   `json:"FirmwareId,omitempty" xml:"FirmwareId,omitempty"`
-	IotInstanceId    *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	NeedConfirm      *bool     `json:"NeedConfirm,omitempty" xml:"NeedConfirm,omitempty"`
-	NeedPush         *bool     `json:"NeedPush,omitempty" xml:"NeedPush,omitempty"`
-	ProductKey       *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	TargetDeviceName []*string `json:"TargetDeviceName,omitempty" xml:"TargetDeviceName,omitempty" type:"Repeated"`
-	TimeoutInMinutes *int32    `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
+	DownloadProtocol *string                         `json:"DownloadProtocol,omitempty" xml:"DownloadProtocol,omitempty"`
+	FirmwareId       *string                         `json:"FirmwareId,omitempty" xml:"FirmwareId,omitempty"`
+	IotInstanceId    *string                         `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	NeedConfirm      *bool                           `json:"NeedConfirm,omitempty" xml:"NeedConfirm,omitempty"`
+	NeedPush         *bool                           `json:"NeedPush,omitempty" xml:"NeedPush,omitempty"`
+	ProductKey       *string                         `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	Tag              []*CreateOTAVerifyJobRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	TargetDeviceName []*string                       `json:"TargetDeviceName,omitempty" xml:"TargetDeviceName,omitempty" type:"Repeated"`
+	TimeoutInMinutes *int32                          `json:"TimeoutInMinutes,omitempty" xml:"TimeoutInMinutes,omitempty"`
 }
 
 func (s CreateOTAVerifyJobRequest) String() string {
@@ -7234,6 +7885,11 @@ func (s CreateOTAVerifyJobRequest) String() string {
 
 func (s CreateOTAVerifyJobRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateOTAVerifyJobRequest) SetDownloadProtocol(v string) *CreateOTAVerifyJobRequest {
+	s.DownloadProtocol = &v
+	return s
 }
 
 func (s *CreateOTAVerifyJobRequest) SetFirmwareId(v string) *CreateOTAVerifyJobRequest {
@@ -7261,6 +7917,11 @@ func (s *CreateOTAVerifyJobRequest) SetProductKey(v string) *CreateOTAVerifyJobR
 	return s
 }
 
+func (s *CreateOTAVerifyJobRequest) SetTag(v []*CreateOTAVerifyJobRequestTag) *CreateOTAVerifyJobRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *CreateOTAVerifyJobRequest) SetTargetDeviceName(v []*string) *CreateOTAVerifyJobRequest {
 	s.TargetDeviceName = v
 	return s
@@ -7268,6 +7929,29 @@ func (s *CreateOTAVerifyJobRequest) SetTargetDeviceName(v []*string) *CreateOTAV
 
 func (s *CreateOTAVerifyJobRequest) SetTimeoutInMinutes(v int32) *CreateOTAVerifyJobRequest {
 	s.TimeoutInMinutes = &v
+	return s
+}
+
+type CreateOTAVerifyJobRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateOTAVerifyJobRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOTAVerifyJobRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOTAVerifyJobRequestTag) SetKey(v string) *CreateOTAVerifyJobRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateOTAVerifyJobRequestTag) SetValue(v string) *CreateOTAVerifyJobRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -8212,93 +8896,6 @@ func (s *CreateRuleActionResponse) SetBody(v *CreateRuleActionResponseBody) *Cre
 	return s
 }
 
-type CreateRulengDistributeJobRequest struct {
-	ProductKey       *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	SourceInstanceId *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
-	TargetInstanceId *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-}
-
-func (s CreateRulengDistributeJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRulengDistributeJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRulengDistributeJobRequest) SetProductKey(v string) *CreateRulengDistributeJobRequest {
-	s.ProductKey = &v
-	return s
-}
-
-func (s *CreateRulengDistributeJobRequest) SetSourceInstanceId(v string) *CreateRulengDistributeJobRequest {
-	s.SourceInstanceId = &v
-	return s
-}
-
-func (s *CreateRulengDistributeJobRequest) SetTargetInstanceId(v string) *CreateRulengDistributeJobRequest {
-	s.TargetInstanceId = &v
-	return s
-}
-
-type CreateRulengDistributeJobResponseBody struct {
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateRulengDistributeJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRulengDistributeJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRulengDistributeJobResponseBody) SetCode(v string) *CreateRulengDistributeJobResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateRulengDistributeJobResponseBody) SetErrorMessage(v string) *CreateRulengDistributeJobResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *CreateRulengDistributeJobResponseBody) SetRequestId(v string) *CreateRulengDistributeJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateRulengDistributeJobResponseBody) SetSuccess(v bool) *CreateRulengDistributeJobResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateRulengDistributeJobResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateRulengDistributeJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateRulengDistributeJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRulengDistributeJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRulengDistributeJobResponse) SetHeaders(v map[string]*string) *CreateRulengDistributeJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateRulengDistributeJobResponse) SetBody(v *CreateRulengDistributeJobResponseBody) *CreateRulengDistributeJobResponse {
-	s.Body = v
-	return s
-}
-
 type CreateSceneRuleRequest struct {
 	IotInstanceId   *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	RuleContent     *string `json:"RuleContent,omitempty" xml:"RuleContent,omitempty"`
@@ -8398,15 +8995,111 @@ func (s *CreateSceneRuleResponse) SetBody(v *CreateSceneRuleResponseBody) *Creat
 	return s
 }
 
+type CreateSoundCodeRequest struct {
+	Duration         *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	IotInstanceId    *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	SoundCodeContent *string `json:"SoundCodeContent,omitempty" xml:"SoundCodeContent,omitempty"`
+}
+
+func (s CreateSoundCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSoundCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSoundCodeRequest) SetDuration(v int32) *CreateSoundCodeRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *CreateSoundCodeRequest) SetIotInstanceId(v string) *CreateSoundCodeRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *CreateSoundCodeRequest) SetSoundCodeContent(v string) *CreateSoundCodeRequest {
+	s.SoundCodeContent = &v
+	return s
+}
+
+type CreateSoundCodeResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateSoundCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSoundCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSoundCodeResponseBody) SetCode(v string) *CreateSoundCodeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateSoundCodeResponseBody) SetData(v string) *CreateSoundCodeResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateSoundCodeResponseBody) SetErrorMessage(v string) *CreateSoundCodeResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateSoundCodeResponseBody) SetRequestId(v string) *CreateSoundCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSoundCodeResponseBody) SetSuccess(v bool) *CreateSoundCodeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateSoundCodeResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateSoundCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSoundCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSoundCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSoundCodeResponse) SetHeaders(v map[string]*string) *CreateSoundCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSoundCodeResponse) SetBody(v *CreateSoundCodeResponseBody) *CreateSoundCodeResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSpeechRequest struct {
-	BizCode       *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	ProjectCode   *string `json:"ProjectCode,omitempty" xml:"ProjectCode,omitempty"`
-	SpeechRate    *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	SpeechType    *string `json:"SpeechType,omitempty" xml:"SpeechType,omitempty"`
-	Text          *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	Voice         *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
-	Volume        *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	AudioFormat     *string                `json:"AudioFormat,omitempty" xml:"AudioFormat,omitempty"`
+	BizCode         *string                `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	EnableSoundCode *bool                  `json:"EnableSoundCode,omitempty" xml:"EnableSoundCode,omitempty"`
+	IotInstanceId   *string                `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProjectCode     *string                `json:"ProjectCode,omitempty" xml:"ProjectCode,omitempty"`
+	SoundCodeConfig map[string]interface{} `json:"SoundCodeConfig,omitempty" xml:"SoundCodeConfig,omitempty"`
+	SpeechRate      *int32                 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	SpeechType      *string                `json:"SpeechType,omitempty" xml:"SpeechType,omitempty"`
+	Text            *string                `json:"Text,omitempty" xml:"Text,omitempty"`
+	Voice           *string                `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	Volume          *int32                 `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
 func (s CreateSpeechRequest) String() string {
@@ -8417,8 +9110,18 @@ func (s CreateSpeechRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateSpeechRequest) SetAudioFormat(v string) *CreateSpeechRequest {
+	s.AudioFormat = &v
+	return s
+}
+
 func (s *CreateSpeechRequest) SetBizCode(v string) *CreateSpeechRequest {
 	s.BizCode = &v
+	return s
+}
+
+func (s *CreateSpeechRequest) SetEnableSoundCode(v bool) *CreateSpeechRequest {
+	s.EnableSoundCode = &v
 	return s
 }
 
@@ -8429,6 +9132,11 @@ func (s *CreateSpeechRequest) SetIotInstanceId(v string) *CreateSpeechRequest {
 
 func (s *CreateSpeechRequest) SetProjectCode(v string) *CreateSpeechRequest {
 	s.ProjectCode = &v
+	return s
+}
+
+func (s *CreateSpeechRequest) SetSoundCodeConfig(v map[string]interface{}) *CreateSpeechRequest {
+	s.SoundCodeConfig = v
 	return s
 }
 
@@ -8453,6 +9161,83 @@ func (s *CreateSpeechRequest) SetVoice(v string) *CreateSpeechRequest {
 }
 
 func (s *CreateSpeechRequest) SetVolume(v int32) *CreateSpeechRequest {
+	s.Volume = &v
+	return s
+}
+
+type CreateSpeechShrinkRequest struct {
+	AudioFormat           *string `json:"AudioFormat,omitempty" xml:"AudioFormat,omitempty"`
+	BizCode               *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	EnableSoundCode       *bool   `json:"EnableSoundCode,omitempty" xml:"EnableSoundCode,omitempty"`
+	IotInstanceId         *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProjectCode           *string `json:"ProjectCode,omitempty" xml:"ProjectCode,omitempty"`
+	SoundCodeConfigShrink *string `json:"SoundCodeConfig,omitempty" xml:"SoundCodeConfig,omitempty"`
+	SpeechRate            *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	SpeechType            *string `json:"SpeechType,omitempty" xml:"SpeechType,omitempty"`
+	Text                  *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	Voice                 *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	Volume                *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s CreateSpeechShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSpeechShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSpeechShrinkRequest) SetAudioFormat(v string) *CreateSpeechShrinkRequest {
+	s.AudioFormat = &v
+	return s
+}
+
+func (s *CreateSpeechShrinkRequest) SetBizCode(v string) *CreateSpeechShrinkRequest {
+	s.BizCode = &v
+	return s
+}
+
+func (s *CreateSpeechShrinkRequest) SetEnableSoundCode(v bool) *CreateSpeechShrinkRequest {
+	s.EnableSoundCode = &v
+	return s
+}
+
+func (s *CreateSpeechShrinkRequest) SetIotInstanceId(v string) *CreateSpeechShrinkRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *CreateSpeechShrinkRequest) SetProjectCode(v string) *CreateSpeechShrinkRequest {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *CreateSpeechShrinkRequest) SetSoundCodeConfigShrink(v string) *CreateSpeechShrinkRequest {
+	s.SoundCodeConfigShrink = &v
+	return s
+}
+
+func (s *CreateSpeechShrinkRequest) SetSpeechRate(v int32) *CreateSpeechShrinkRequest {
+	s.SpeechRate = &v
+	return s
+}
+
+func (s *CreateSpeechShrinkRequest) SetSpeechType(v string) *CreateSpeechShrinkRequest {
+	s.SpeechType = &v
+	return s
+}
+
+func (s *CreateSpeechShrinkRequest) SetText(v string) *CreateSpeechShrinkRequest {
+	s.Text = &v
+	return s
+}
+
+func (s *CreateSpeechShrinkRequest) SetVoice(v string) *CreateSpeechShrinkRequest {
+	s.Voice = &v
+	return s
+}
+
+func (s *CreateSpeechShrinkRequest) SetVolume(v int32) *CreateSpeechShrinkRequest {
 	s.Volume = &v
 	return s
 }
@@ -9107,7 +9892,7 @@ func (s *CreateTopicRouteTableResponseBody) SetSuccess(v bool) *CreateTopicRoute
 }
 
 type CreateTopicRouteTableResponseBodyFailureTopics struct {
-	Topic []map[string]*string `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Repeated"`
+	Topic []map[string]interface{} `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Repeated"`
 }
 
 func (s CreateTopicRouteTableResponseBodyFailureTopics) String() string {
@@ -9118,7 +9903,7 @@ func (s CreateTopicRouteTableResponseBodyFailureTopics) GoString() string {
 	return s.String()
 }
 
-func (s *CreateTopicRouteTableResponseBodyFailureTopics) SetTopic(v []map[string]*string) *CreateTopicRouteTableResponseBodyFailureTopics {
+func (s *CreateTopicRouteTableResponseBodyFailureTopics) SetTopic(v []map[string]interface{}) *CreateTopicRouteTableResponseBodyFailureTopics {
 	s.Topic = v
 	return s
 }
@@ -9142,6 +9927,87 @@ func (s *CreateTopicRouteTableResponse) SetHeaders(v map[string]*string) *Create
 }
 
 func (s *CreateTopicRouteTableResponse) SetBody(v *CreateTopicRouteTableResponseBody) *CreateTopicRouteTableResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteClientIdsRequest struct {
+	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+}
+
+func (s DeleteClientIdsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClientIdsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClientIdsRequest) SetIotId(v string) *DeleteClientIdsRequest {
+	s.IotId = &v
+	return s
+}
+
+func (s *DeleteClientIdsRequest) SetIotInstanceId(v string) *DeleteClientIdsRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+type DeleteClientIdsResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteClientIdsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClientIdsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClientIdsResponseBody) SetCode(v string) *DeleteClientIdsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteClientIdsResponseBody) SetErrorMessage(v string) *DeleteClientIdsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteClientIdsResponseBody) SetRequestId(v string) *DeleteClientIdsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteClientIdsResponseBody) SetSuccess(v bool) *DeleteClientIdsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteClientIdsResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteClientIdsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteClientIdsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClientIdsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClientIdsResponse) SetHeaders(v map[string]*string) *DeleteClientIdsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteClientIdsResponse) SetBody(v *DeleteClientIdsResponseBody) *DeleteClientIdsResponse {
 	s.Body = v
 	return s
 }
@@ -9482,6 +10348,87 @@ func (s *DeleteDeviceDistributeJobResponse) SetBody(v *DeleteDeviceDistributeJob
 	return s
 }
 
+type DeleteDeviceDynamicGroupRequest struct {
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+}
+
+func (s DeleteDeviceDynamicGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeviceDynamicGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeviceDynamicGroupRequest) SetGroupId(v string) *DeleteDeviceDynamicGroupRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DeleteDeviceDynamicGroupRequest) SetIotInstanceId(v string) *DeleteDeviceDynamicGroupRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+type DeleteDeviceDynamicGroupResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDeviceDynamicGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeviceDynamicGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeviceDynamicGroupResponseBody) SetCode(v string) *DeleteDeviceDynamicGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDeviceDynamicGroupResponseBody) SetErrorMessage(v string) *DeleteDeviceDynamicGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteDeviceDynamicGroupResponseBody) SetRequestId(v string) *DeleteDeviceDynamicGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDeviceDynamicGroupResponseBody) SetSuccess(v bool) *DeleteDeviceDynamicGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDeviceDynamicGroupResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteDeviceDynamicGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDeviceDynamicGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeviceDynamicGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeviceDynamicGroupResponse) SetHeaders(v map[string]*string) *DeleteDeviceDynamicGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDeviceDynamicGroupResponse) SetBody(v *DeleteDeviceDynamicGroupResponseBody) *DeleteDeviceDynamicGroupResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDeviceFileRequest struct {
 	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	FileId        *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
@@ -9757,6 +10704,197 @@ func (s *DeleteDevicePropResponse) SetHeaders(v map[string]*string) *DeleteDevic
 }
 
 func (s *DeleteDevicePropResponse) SetBody(v *DeleteDevicePropResponseBody) *DeleteDevicePropResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDeviceSpeechRequest struct {
+	DeviceSpeechList []*DeleteDeviceSpeechRequestDeviceSpeechList `json:"DeviceSpeechList,omitempty" xml:"DeviceSpeechList,omitempty" type:"Repeated"`
+	IotId            *string                                      `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	IotInstanceId    *string                                      `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+}
+
+func (s DeleteDeviceSpeechRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeviceSpeechRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeviceSpeechRequest) SetDeviceSpeechList(v []*DeleteDeviceSpeechRequestDeviceSpeechList) *DeleteDeviceSpeechRequest {
+	s.DeviceSpeechList = v
+	return s
+}
+
+func (s *DeleteDeviceSpeechRequest) SetIotId(v string) *DeleteDeviceSpeechRequest {
+	s.IotId = &v
+	return s
+}
+
+func (s *DeleteDeviceSpeechRequest) SetIotInstanceId(v string) *DeleteDeviceSpeechRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+type DeleteDeviceSpeechRequestDeviceSpeechList struct {
+	AudioFormat *string `json:"AudioFormat,omitempty" xml:"AudioFormat,omitempty"`
+	BizCode     *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+}
+
+func (s DeleteDeviceSpeechRequestDeviceSpeechList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeviceSpeechRequestDeviceSpeechList) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeviceSpeechRequestDeviceSpeechList) SetAudioFormat(v string) *DeleteDeviceSpeechRequestDeviceSpeechList {
+	s.AudioFormat = &v
+	return s
+}
+
+func (s *DeleteDeviceSpeechRequestDeviceSpeechList) SetBizCode(v string) *DeleteDeviceSpeechRequestDeviceSpeechList {
+	s.BizCode = &v
+	return s
+}
+
+type DeleteDeviceSpeechResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDeviceSpeechResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeviceSpeechResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeviceSpeechResponseBody) SetCode(v string) *DeleteDeviceSpeechResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDeviceSpeechResponseBody) SetErrorMessage(v string) *DeleteDeviceSpeechResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteDeviceSpeechResponseBody) SetRequestId(v string) *DeleteDeviceSpeechResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDeviceSpeechResponseBody) SetSuccess(v bool) *DeleteDeviceSpeechResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDeviceSpeechResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteDeviceSpeechResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDeviceSpeechResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeviceSpeechResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeviceSpeechResponse) SetHeaders(v map[string]*string) *DeleteDeviceSpeechResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDeviceSpeechResponse) SetBody(v *DeleteDeviceSpeechResponseBody) *DeleteDeviceSpeechResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDeviceTunnelRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	TunnelId      *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
+}
+
+func (s DeleteDeviceTunnelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeviceTunnelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeviceTunnelRequest) SetIotInstanceId(v string) *DeleteDeviceTunnelRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *DeleteDeviceTunnelRequest) SetTunnelId(v string) *DeleteDeviceTunnelRequest {
+	s.TunnelId = &v
+	return s
+}
+
+type DeleteDeviceTunnelResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDeviceTunnelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeviceTunnelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeviceTunnelResponseBody) SetCode(v string) *DeleteDeviceTunnelResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDeviceTunnelResponseBody) SetErrorMessage(v string) *DeleteDeviceTunnelResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteDeviceTunnelResponseBody) SetRequestId(v string) *DeleteDeviceTunnelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDeviceTunnelResponseBody) SetSuccess(v bool) *DeleteDeviceTunnelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDeviceTunnelResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteDeviceTunnelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDeviceTunnelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDeviceTunnelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDeviceTunnelResponse) SetHeaders(v map[string]*string) *DeleteDeviceTunnelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDeviceTunnelResponse) SetBody(v *DeleteDeviceTunnelResponseBody) *DeleteDeviceTunnelResponse {
 	s.Body = v
 	return s
 }
@@ -10838,6 +11976,87 @@ func (s *DeleteSceneRuleResponse) SetBody(v *DeleteSceneRuleResponseBody) *Delet
 	return s
 }
 
+type DeleteSoundCodeRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	SoundCode     *string `json:"SoundCode,omitempty" xml:"SoundCode,omitempty"`
+}
+
+func (s DeleteSoundCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSoundCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSoundCodeRequest) SetIotInstanceId(v string) *DeleteSoundCodeRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *DeleteSoundCodeRequest) SetSoundCode(v string) *DeleteSoundCodeRequest {
+	s.SoundCode = &v
+	return s
+}
+
+type DeleteSoundCodeResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteSoundCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSoundCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSoundCodeResponseBody) SetCode(v string) *DeleteSoundCodeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteSoundCodeResponseBody) SetErrorMessage(v string) *DeleteSoundCodeResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteSoundCodeResponseBody) SetRequestId(v string) *DeleteSoundCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSoundCodeResponseBody) SetSuccess(v bool) *DeleteSoundCodeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteSoundCodeResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteSoundCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSoundCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSoundCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSoundCodeResponse) SetHeaders(v map[string]*string) *DeleteSoundCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSoundCodeResponse) SetBody(v *DeleteSoundCodeResponseBody) *DeleteSoundCodeResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteSpeechRequest struct {
 	IotInstanceId  *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	SpeechCodeList []*string `json:"SpeechCodeList,omitempty" xml:"SpeechCodeList,omitempty" type:"Repeated"`
@@ -11293,7 +12512,7 @@ func (s *DeleteTopicRouteTableResponseBody) SetSuccess(v bool) *DeleteTopicRoute
 }
 
 type DeleteTopicRouteTableResponseBodyFailureTopics struct {
-	Topic []map[string]*string `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Repeated"`
+	Topic []map[string]interface{} `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Repeated"`
 }
 
 func (s DeleteTopicRouteTableResponseBodyFailureTopics) String() string {
@@ -11304,7 +12523,7 @@ func (s DeleteTopicRouteTableResponseBodyFailureTopics) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteTopicRouteTableResponseBodyFailureTopics) SetTopic(v []map[string]*string) *DeleteTopicRouteTableResponseBodyFailureTopics {
+func (s *DeleteTopicRouteTableResponseBodyFailureTopics) SetTopic(v []map[string]interface{}) *DeleteTopicRouteTableResponseBodyFailureTopics {
 	s.Topic = v
 	return s
 }
@@ -14480,134 +15699,6 @@ func (s *GetLoraNodesTaskResponse) SetBody(v *GetLoraNodesTaskResponseBody) *Get
 	return s
 }
 
-type GetNodesAddingTaskRequest struct {
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	TaskId        *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-}
-
-func (s GetNodesAddingTaskRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetNodesAddingTaskRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetNodesAddingTaskRequest) SetIotInstanceId(v string) *GetNodesAddingTaskRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *GetNodesAddingTaskRequest) SetTaskId(v string) *GetNodesAddingTaskRequest {
-	s.TaskId = &v
-	return s
-}
-
-type GetNodesAddingTaskResponseBody struct {
-	Code           *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
-	ErrorMessage   *string                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
-	SuccessCount   *int64                                        `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	SuccessDevEuis *GetNodesAddingTaskResponseBodySuccessDevEuis `json:"SuccessDevEuis,omitempty" xml:"SuccessDevEuis,omitempty" type:"Struct"`
-	TaskId         *string                                       `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskState      *string                                       `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
-	TotalCount     *int64                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s GetNodesAddingTaskResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetNodesAddingTaskResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetNodesAddingTaskResponseBody) SetCode(v string) *GetNodesAddingTaskResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetNodesAddingTaskResponseBody) SetErrorMessage(v string) *GetNodesAddingTaskResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetNodesAddingTaskResponseBody) SetRequestId(v string) *GetNodesAddingTaskResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetNodesAddingTaskResponseBody) SetSuccess(v bool) *GetNodesAddingTaskResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *GetNodesAddingTaskResponseBody) SetSuccessCount(v int64) *GetNodesAddingTaskResponseBody {
-	s.SuccessCount = &v
-	return s
-}
-
-func (s *GetNodesAddingTaskResponseBody) SetSuccessDevEuis(v *GetNodesAddingTaskResponseBodySuccessDevEuis) *GetNodesAddingTaskResponseBody {
-	s.SuccessDevEuis = v
-	return s
-}
-
-func (s *GetNodesAddingTaskResponseBody) SetTaskId(v string) *GetNodesAddingTaskResponseBody {
-	s.TaskId = &v
-	return s
-}
-
-func (s *GetNodesAddingTaskResponseBody) SetTaskState(v string) *GetNodesAddingTaskResponseBody {
-	s.TaskState = &v
-	return s
-}
-
-func (s *GetNodesAddingTaskResponseBody) SetTotalCount(v int64) *GetNodesAddingTaskResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type GetNodesAddingTaskResponseBodySuccessDevEuis struct {
-	SuccessDevEui []*string `json:"SuccessDevEui,omitempty" xml:"SuccessDevEui,omitempty" type:"Repeated"`
-}
-
-func (s GetNodesAddingTaskResponseBodySuccessDevEuis) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetNodesAddingTaskResponseBodySuccessDevEuis) GoString() string {
-	return s.String()
-}
-
-func (s *GetNodesAddingTaskResponseBodySuccessDevEuis) SetSuccessDevEui(v []*string) *GetNodesAddingTaskResponseBodySuccessDevEuis {
-	s.SuccessDevEui = v
-	return s
-}
-
-type GetNodesAddingTaskResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetNodesAddingTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetNodesAddingTaskResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetNodesAddingTaskResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetNodesAddingTaskResponse) SetHeaders(v map[string]*string) *GetNodesAddingTaskResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetNodesAddingTaskResponse) SetBody(v *GetNodesAddingTaskResponseBody) *GetNodesAddingTaskResponse {
-	s.Body = v
-	return s
-}
-
 type GetRuleRequest struct {
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	RuleId        *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
@@ -15060,6 +16151,250 @@ func (s *GetSceneRuleResponse) SetHeaders(v map[string]*string) *GetSceneRuleRes
 }
 
 func (s *GetSceneRuleResponse) SetBody(v *GetSceneRuleResponseBody) *GetSceneRuleResponse {
+	s.Body = v
+	return s
+}
+
+type GetSoundCodeAudioRequest struct {
+	IotInstanceId *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	SoundCodeList []*string `json:"SoundCodeList,omitempty" xml:"SoundCodeList,omitempty" type:"Repeated"`
+}
+
+func (s GetSoundCodeAudioRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSoundCodeAudioRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSoundCodeAudioRequest) SetIotInstanceId(v string) *GetSoundCodeAudioRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *GetSoundCodeAudioRequest) SetSoundCodeList(v []*string) *GetSoundCodeAudioRequest {
+	s.SoundCodeList = v
+	return s
+}
+
+type GetSoundCodeAudioResponseBody struct {
+	Code         *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *GetSoundCodeAudioResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetSoundCodeAudioResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSoundCodeAudioResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSoundCodeAudioResponseBody) SetCode(v string) *GetSoundCodeAudioResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSoundCodeAudioResponseBody) SetData(v *GetSoundCodeAudioResponseBodyData) *GetSoundCodeAudioResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSoundCodeAudioResponseBody) SetErrorMessage(v string) *GetSoundCodeAudioResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetSoundCodeAudioResponseBody) SetRequestId(v string) *GetSoundCodeAudioResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSoundCodeAudioResponseBody) SetSuccess(v bool) *GetSoundCodeAudioResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetSoundCodeAudioResponseBodyData struct {
+	Items []*string `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+}
+
+func (s GetSoundCodeAudioResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSoundCodeAudioResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSoundCodeAudioResponseBodyData) SetItems(v []*string) *GetSoundCodeAudioResponseBodyData {
+	s.Items = v
+	return s
+}
+
+type GetSoundCodeAudioResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetSoundCodeAudioResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSoundCodeAudioResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSoundCodeAudioResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSoundCodeAudioResponse) SetHeaders(v map[string]*string) *GetSoundCodeAudioResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSoundCodeAudioResponse) SetBody(v *GetSoundCodeAudioResponseBody) *GetSoundCodeAudioResponse {
+	s.Body = v
+	return s
+}
+
+type GetSpeechDeviceDetailRequest struct {
+	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+}
+
+func (s GetSpeechDeviceDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSpeechDeviceDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSpeechDeviceDetailRequest) SetIotId(v string) *GetSpeechDeviceDetailRequest {
+	s.IotId = &v
+	return s
+}
+
+func (s *GetSpeechDeviceDetailRequest) SetIotInstanceId(v string) *GetSpeechDeviceDetailRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+type GetSpeechDeviceDetailResponseBody struct {
+	Code         *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *GetSpeechDeviceDetailResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetSpeechDeviceDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSpeechDeviceDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSpeechDeviceDetailResponseBody) SetCode(v string) *GetSpeechDeviceDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSpeechDeviceDetailResponseBody) SetData(v *GetSpeechDeviceDetailResponseBodyData) *GetSpeechDeviceDetailResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSpeechDeviceDetailResponseBody) SetErrorMessage(v string) *GetSpeechDeviceDetailResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetSpeechDeviceDetailResponseBody) SetRequestId(v string) *GetSpeechDeviceDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSpeechDeviceDetailResponseBody) SetSuccess(v bool) *GetSpeechDeviceDetailResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetSpeechDeviceDetailResponseBodyData struct {
+	AvailableSpace       *float32 `json:"AvailableSpace,omitempty" xml:"AvailableSpace,omitempty"`
+	DeviceName           *string  `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotId                *string  `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	ProductKey           *string  `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	SpeechListUpdateTime *int64   `json:"SpeechListUpdateTime,omitempty" xml:"SpeechListUpdateTime,omitempty"`
+	Status               *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalSpace           *float32 `json:"TotalSpace,omitempty" xml:"TotalSpace,omitempty"`
+}
+
+func (s GetSpeechDeviceDetailResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSpeechDeviceDetailResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSpeechDeviceDetailResponseBodyData) SetAvailableSpace(v float32) *GetSpeechDeviceDetailResponseBodyData {
+	s.AvailableSpace = &v
+	return s
+}
+
+func (s *GetSpeechDeviceDetailResponseBodyData) SetDeviceName(v string) *GetSpeechDeviceDetailResponseBodyData {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *GetSpeechDeviceDetailResponseBodyData) SetIotId(v string) *GetSpeechDeviceDetailResponseBodyData {
+	s.IotId = &v
+	return s
+}
+
+func (s *GetSpeechDeviceDetailResponseBodyData) SetProductKey(v string) *GetSpeechDeviceDetailResponseBodyData {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *GetSpeechDeviceDetailResponseBodyData) SetSpeechListUpdateTime(v int64) *GetSpeechDeviceDetailResponseBodyData {
+	s.SpeechListUpdateTime = &v
+	return s
+}
+
+func (s *GetSpeechDeviceDetailResponseBodyData) SetStatus(v string) *GetSpeechDeviceDetailResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetSpeechDeviceDetailResponseBodyData) SetTotalSpace(v float32) *GetSpeechDeviceDetailResponseBodyData {
+	s.TotalSpace = &v
+	return s
+}
+
+type GetSpeechDeviceDetailResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetSpeechDeviceDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSpeechDeviceDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSpeechDeviceDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSpeechDeviceDetailResponse) SetHeaders(v map[string]*string) *GetSpeechDeviceDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSpeechDeviceDetailResponse) SetBody(v *GetSpeechDeviceDetailResponseBody) *GetSpeechDeviceDetailResponse {
 	s.Body = v
 	return s
 }
@@ -16011,6 +17346,350 @@ func (s *GetThingTopoResponse) SetBody(v *GetThingTopoResponseBody) *GetThingTop
 	return s
 }
 
+type GisQueryDeviceLocationRequest struct {
+	IotInstanceId *string                                   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ThingList     []*GisQueryDeviceLocationRequestThingList `json:"ThingList,omitempty" xml:"ThingList,omitempty" type:"Repeated"`
+}
+
+func (s GisQueryDeviceLocationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GisQueryDeviceLocationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GisQueryDeviceLocationRequest) SetIotInstanceId(v string) *GisQueryDeviceLocationRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *GisQueryDeviceLocationRequest) SetThingList(v []*GisQueryDeviceLocationRequestThingList) *GisQueryDeviceLocationRequest {
+	s.ThingList = v
+	return s
+}
+
+type GisQueryDeviceLocationRequestThingList struct {
+	DeviceName *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	ProductKey *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s GisQueryDeviceLocationRequestThingList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GisQueryDeviceLocationRequestThingList) GoString() string {
+	return s.String()
+}
+
+func (s *GisQueryDeviceLocationRequestThingList) SetDeviceName(v string) *GisQueryDeviceLocationRequestThingList {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *GisQueryDeviceLocationRequestThingList) SetProductKey(v string) *GisQueryDeviceLocationRequestThingList {
+	s.ProductKey = &v
+	return s
+}
+
+type GisQueryDeviceLocationResponseBody struct {
+	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         []*GisQueryDeviceLocationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorMessage *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GisQueryDeviceLocationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GisQueryDeviceLocationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GisQueryDeviceLocationResponseBody) SetCode(v string) *GisQueryDeviceLocationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GisQueryDeviceLocationResponseBody) SetData(v []*GisQueryDeviceLocationResponseBodyData) *GisQueryDeviceLocationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GisQueryDeviceLocationResponseBody) SetErrorMessage(v string) *GisQueryDeviceLocationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GisQueryDeviceLocationResponseBody) SetRequestId(v string) *GisQueryDeviceLocationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GisQueryDeviceLocationResponseBody) SetSuccess(v bool) *GisQueryDeviceLocationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GisQueryDeviceLocationResponseBodyData struct {
+	Adcode           *int64   `json:"Adcode,omitempty" xml:"Adcode,omitempty"`
+	City             *string  `json:"City,omitempty" xml:"City,omitempty"`
+	CoordinateSystem *int32   `json:"CoordinateSystem,omitempty" xml:"CoordinateSystem,omitempty"`
+	Country          *string  `json:"Country,omitempty" xml:"Country,omitempty"`
+	DeviceName       *string  `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	Ip               *string  `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Latitude         *float32 `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
+	Longitude        *float32 `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
+	ProductKey       *string  `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	Province         *string  `json:"Province,omitempty" xml:"Province,omitempty"`
+}
+
+func (s GisQueryDeviceLocationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GisQueryDeviceLocationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GisQueryDeviceLocationResponseBodyData) SetAdcode(v int64) *GisQueryDeviceLocationResponseBodyData {
+	s.Adcode = &v
+	return s
+}
+
+func (s *GisQueryDeviceLocationResponseBodyData) SetCity(v string) *GisQueryDeviceLocationResponseBodyData {
+	s.City = &v
+	return s
+}
+
+func (s *GisQueryDeviceLocationResponseBodyData) SetCoordinateSystem(v int32) *GisQueryDeviceLocationResponseBodyData {
+	s.CoordinateSystem = &v
+	return s
+}
+
+func (s *GisQueryDeviceLocationResponseBodyData) SetCountry(v string) *GisQueryDeviceLocationResponseBodyData {
+	s.Country = &v
+	return s
+}
+
+func (s *GisQueryDeviceLocationResponseBodyData) SetDeviceName(v string) *GisQueryDeviceLocationResponseBodyData {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *GisQueryDeviceLocationResponseBodyData) SetIp(v string) *GisQueryDeviceLocationResponseBodyData {
+	s.Ip = &v
+	return s
+}
+
+func (s *GisQueryDeviceLocationResponseBodyData) SetLatitude(v float32) *GisQueryDeviceLocationResponseBodyData {
+	s.Latitude = &v
+	return s
+}
+
+func (s *GisQueryDeviceLocationResponseBodyData) SetLongitude(v float32) *GisQueryDeviceLocationResponseBodyData {
+	s.Longitude = &v
+	return s
+}
+
+func (s *GisQueryDeviceLocationResponseBodyData) SetProductKey(v string) *GisQueryDeviceLocationResponseBodyData {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *GisQueryDeviceLocationResponseBodyData) SetProvince(v string) *GisQueryDeviceLocationResponseBodyData {
+	s.Province = &v
+	return s
+}
+
+type GisQueryDeviceLocationResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GisQueryDeviceLocationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GisQueryDeviceLocationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GisQueryDeviceLocationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GisQueryDeviceLocationResponse) SetHeaders(v map[string]*string) *GisQueryDeviceLocationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GisQueryDeviceLocationResponse) SetBody(v *GisQueryDeviceLocationResponseBody) *GisQueryDeviceLocationResponse {
+	s.Body = v
+	return s
+}
+
+type GisSearchDeviceTraceRequest struct {
+	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	EndTime       *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	MapMatch      *int32  `json:"MapMatch,omitempty" xml:"MapMatch,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s GisSearchDeviceTraceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GisSearchDeviceTraceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GisSearchDeviceTraceRequest) SetDeviceName(v string) *GisSearchDeviceTraceRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *GisSearchDeviceTraceRequest) SetEndTime(v int64) *GisSearchDeviceTraceRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GisSearchDeviceTraceRequest) SetIotInstanceId(v string) *GisSearchDeviceTraceRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *GisSearchDeviceTraceRequest) SetMapMatch(v int32) *GisSearchDeviceTraceRequest {
+	s.MapMatch = &v
+	return s
+}
+
+func (s *GisSearchDeviceTraceRequest) SetProductKey(v string) *GisSearchDeviceTraceRequest {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *GisSearchDeviceTraceRequest) SetStartTime(v int64) *GisSearchDeviceTraceRequest {
+	s.StartTime = &v
+	return s
+}
+
+type GisSearchDeviceTraceResponseBody struct {
+	Code         *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *GisSearchDeviceTraceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GisSearchDeviceTraceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GisSearchDeviceTraceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GisSearchDeviceTraceResponseBody) SetCode(v string) *GisSearchDeviceTraceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GisSearchDeviceTraceResponseBody) SetData(v *GisSearchDeviceTraceResponseBodyData) *GisSearchDeviceTraceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GisSearchDeviceTraceResponseBody) SetErrorMessage(v string) *GisSearchDeviceTraceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GisSearchDeviceTraceResponseBody) SetRequestId(v string) *GisSearchDeviceTraceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GisSearchDeviceTraceResponseBody) SetSuccess(v bool) *GisSearchDeviceTraceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GisSearchDeviceTraceResponseBodyData struct {
+	DeviceName *string                                       `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	Points     []*GisSearchDeviceTraceResponseBodyDataPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Repeated"`
+	ProductKey *string                                       `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s GisSearchDeviceTraceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GisSearchDeviceTraceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GisSearchDeviceTraceResponseBodyData) SetDeviceName(v string) *GisSearchDeviceTraceResponseBodyData {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *GisSearchDeviceTraceResponseBodyData) SetPoints(v []*GisSearchDeviceTraceResponseBodyDataPoints) *GisSearchDeviceTraceResponseBodyData {
+	s.Points = v
+	return s
+}
+
+func (s *GisSearchDeviceTraceResponseBodyData) SetProductKey(v string) *GisSearchDeviceTraceResponseBodyData {
+	s.ProductKey = &v
+	return s
+}
+
+type GisSearchDeviceTraceResponseBodyDataPoints struct {
+	LocateTime *int64  `json:"LocateTime,omitempty" xml:"LocateTime,omitempty"`
+	Location   *string `json:"Location,omitempty" xml:"Location,omitempty"`
+}
+
+func (s GisSearchDeviceTraceResponseBodyDataPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GisSearchDeviceTraceResponseBodyDataPoints) GoString() string {
+	return s.String()
+}
+
+func (s *GisSearchDeviceTraceResponseBodyDataPoints) SetLocateTime(v int64) *GisSearchDeviceTraceResponseBodyDataPoints {
+	s.LocateTime = &v
+	return s
+}
+
+func (s *GisSearchDeviceTraceResponseBodyDataPoints) SetLocation(v string) *GisSearchDeviceTraceResponseBodyDataPoints {
+	s.Location = &v
+	return s
+}
+
+type GisSearchDeviceTraceResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GisSearchDeviceTraceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GisSearchDeviceTraceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GisSearchDeviceTraceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GisSearchDeviceTraceResponse) SetHeaders(v map[string]*string) *GisSearchDeviceTraceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GisSearchDeviceTraceResponse) SetBody(v *GisSearchDeviceTraceResponseBody) *GisSearchDeviceTraceResponse {
+	s.Body = v
+	return s
+}
+
 type ImportThingModelTslRequest struct {
 	FunctionBlockId   *string `json:"FunctionBlockId,omitempty" xml:"FunctionBlockId,omitempty"`
 	FunctionBlockName *string `json:"FunctionBlockName,omitempty" xml:"FunctionBlockName,omitempty"`
@@ -16239,6 +17918,7 @@ type InvokeDataAPIServiceResponseBodyData struct {
 	PageNo        *int32                                             `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize      *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResultList    *InvokeDataAPIServiceResponseBodyDataResultList    `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Struct"`
+	TotalSize     *int32                                             `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s InvokeDataAPIServiceResponseBodyData) String() string {
@@ -16274,6 +17954,11 @@ func (s *InvokeDataAPIServiceResponseBodyData) SetResultList(v *InvokeDataAPISer
 	return s
 }
 
+func (s *InvokeDataAPIServiceResponseBodyData) SetTotalSize(v int32) *InvokeDataAPIServiceResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
 type InvokeDataAPIServiceResponseBodyDataFieldNameList struct {
 	FieldNameList []*string `json:"FieldNameList,omitempty" xml:"FieldNameList,omitempty" type:"Repeated"`
 }
@@ -16292,7 +17977,7 @@ func (s *InvokeDataAPIServiceResponseBodyDataFieldNameList) SetFieldNameList(v [
 }
 
 type InvokeDataAPIServiceResponseBodyDataResultList struct {
-	ResultList []map[string]*string `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Repeated"`
+	ResultList []map[string]interface{} `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Repeated"`
 }
 
 func (s InvokeDataAPIServiceResponseBodyDataResultList) String() string {
@@ -16303,7 +17988,7 @@ func (s InvokeDataAPIServiceResponseBodyDataResultList) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeDataAPIServiceResponseBodyDataResultList) SetResultList(v []map[string]*string) *InvokeDataAPIServiceResponseBodyDataResultList {
+func (s *InvokeDataAPIServiceResponseBodyDataResultList) SetResultList(v []map[string]interface{}) *InvokeDataAPIServiceResponseBodyDataResultList {
 	s.ResultList = v
 	return s
 }
@@ -16762,6 +18447,7 @@ type ListDeviceDistributeJobRequest struct {
 	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductKey  *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	TargetUid   *string `json:"TargetUid,omitempty" xml:"TargetUid,omitempty"`
 }
@@ -16791,6 +18477,11 @@ func (s *ListDeviceDistributeJobRequest) SetNextToken(v string) *ListDeviceDistr
 
 func (s *ListDeviceDistributeJobRequest) SetPageSize(v int32) *ListDeviceDistributeJobRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListDeviceDistributeJobRequest) SetProductKey(v string) *ListDeviceDistributeJobRequest {
+	s.ProductKey = &v
 	return s
 }
 
@@ -19974,12 +21665,12 @@ func (s *ListRuleActionsResponse) SetBody(v *ListRuleActionsResponseBody) *ListR
 }
 
 type ListTaskRequest struct {
-	Device        *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Limit         *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Device        map[string]interface{} `json:"Device,omitempty" xml:"Device,omitempty"`
+	IotInstanceId *string                `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	JobId         *string                `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Limit         *int32                 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	NextToken     *string                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Status        *string                `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListTaskRequest) String() string {
@@ -19990,8 +21681,8 @@ func (s ListTaskRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListTaskRequest) SetDevice(v string) *ListTaskRequest {
-	s.Device = &v
+func (s *ListTaskRequest) SetDevice(v map[string]interface{}) *ListTaskRequest {
+	s.Device = v
 	return s
 }
 
@@ -20016,6 +21707,53 @@ func (s *ListTaskRequest) SetNextToken(v string) *ListTaskRequest {
 }
 
 func (s *ListTaskRequest) SetStatus(v string) *ListTaskRequest {
+	s.Status = &v
+	return s
+}
+
+type ListTaskShrinkRequest struct {
+	DeviceShrink  *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Limit         *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskShrinkRequest) SetDeviceShrink(v string) *ListTaskShrinkRequest {
+	s.DeviceShrink = &v
+	return s
+}
+
+func (s *ListTaskShrinkRequest) SetIotInstanceId(v string) *ListTaskShrinkRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *ListTaskShrinkRequest) SetJobId(v string) *ListTaskShrinkRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListTaskShrinkRequest) SetLimit(v int32) *ListTaskShrinkRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListTaskShrinkRequest) SetNextToken(v string) *ListTaskShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTaskShrinkRequest) SetStatus(v string) *ListTaskShrinkRequest {
 	s.Status = &v
 	return s
 }
@@ -20174,253 +21912,6 @@ func (s *ListTaskResponse) SetHeaders(v map[string]*string) *ListTaskResponse {
 }
 
 func (s *ListTaskResponse) SetBody(v *ListTaskResponseBody) *ListTaskResponse {
-	s.Body = v
-	return s
-}
-
-type ListTaskByPageRequest struct {
-	Device        *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobName       *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	PageNo        *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize      *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s ListTaskByPageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTaskByPageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListTaskByPageRequest) SetDevice(v string) *ListTaskByPageRequest {
-	s.Device = &v
-	return s
-}
-
-func (s *ListTaskByPageRequest) SetDeviceName(v string) *ListTaskByPageRequest {
-	s.DeviceName = &v
-	return s
-}
-
-func (s *ListTaskByPageRequest) SetIotInstanceId(v string) *ListTaskByPageRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *ListTaskByPageRequest) SetJobId(v string) *ListTaskByPageRequest {
-	s.JobId = &v
-	return s
-}
-
-func (s *ListTaskByPageRequest) SetJobName(v string) *ListTaskByPageRequest {
-	s.JobName = &v
-	return s
-}
-
-func (s *ListTaskByPageRequest) SetPageNo(v string) *ListTaskByPageRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *ListTaskByPageRequest) SetPageSize(v string) *ListTaskByPageRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListTaskByPageRequest) SetStatus(v string) *ListTaskByPageRequest {
-	s.Status = &v
-	return s
-}
-
-type ListTaskByPageResponseBody struct {
-	Code         *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data         *ListTaskByPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Page         *int32                          `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageCount    *int32                          `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	PageSize     *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
-	Total        *int32                          `json:"Total,omitempty" xml:"Total,omitempty"`
-}
-
-func (s ListTaskByPageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTaskByPageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListTaskByPageResponseBody) SetCode(v string) *ListTaskByPageResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListTaskByPageResponseBody) SetData(v *ListTaskByPageResponseBodyData) *ListTaskByPageResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListTaskByPageResponseBody) SetErrorMessage(v string) *ListTaskByPageResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *ListTaskByPageResponseBody) SetPage(v int32) *ListTaskByPageResponseBody {
-	s.Page = &v
-	return s
-}
-
-func (s *ListTaskByPageResponseBody) SetPageCount(v int32) *ListTaskByPageResponseBody {
-	s.PageCount = &v
-	return s
-}
-
-func (s *ListTaskByPageResponseBody) SetPageSize(v int32) *ListTaskByPageResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListTaskByPageResponseBody) SetRequestId(v string) *ListTaskByPageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListTaskByPageResponseBody) SetSuccess(v bool) *ListTaskByPageResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *ListTaskByPageResponseBody) SetTotal(v int32) *ListTaskByPageResponseBody {
-	s.Total = &v
-	return s
-}
-
-type ListTaskByPageResponseBodyData struct {
-	Data []*ListTaskByPageResponseBodyDataData `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
-}
-
-func (s ListTaskByPageResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTaskByPageResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListTaskByPageResponseBodyData) SetData(v []*ListTaskByPageResponseBodyDataData) *ListTaskByPageResponseBodyData {
-	s.Data = v
-	return s
-}
-
-type ListTaskByPageResponseBodyDataData struct {
-	DeviceName   *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	IotId        *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
-	JobId        *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	JobName      *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
-	ProductKey   *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	ProductName  *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	Progress     *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusDetail *string `json:"StatusDetail,omitempty" xml:"StatusDetail,omitempty"`
-	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	UtcModified  *string `json:"UtcModified,omitempty" xml:"UtcModified,omitempty"`
-	UtcQueueTime *string `json:"UtcQueueTime,omitempty" xml:"UtcQueueTime,omitempty"`
-}
-
-func (s ListTaskByPageResponseBodyDataData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTaskByPageResponseBodyDataData) GoString() string {
-	return s.String()
-}
-
-func (s *ListTaskByPageResponseBodyDataData) SetDeviceName(v string) *ListTaskByPageResponseBodyDataData {
-	s.DeviceName = &v
-	return s
-}
-
-func (s *ListTaskByPageResponseBodyDataData) SetIotId(v string) *ListTaskByPageResponseBodyDataData {
-	s.IotId = &v
-	return s
-}
-
-func (s *ListTaskByPageResponseBodyDataData) SetJobId(v string) *ListTaskByPageResponseBodyDataData {
-	s.JobId = &v
-	return s
-}
-
-func (s *ListTaskByPageResponseBodyDataData) SetJobName(v string) *ListTaskByPageResponseBodyDataData {
-	s.JobName = &v
-	return s
-}
-
-func (s *ListTaskByPageResponseBodyDataData) SetProductKey(v string) *ListTaskByPageResponseBodyDataData {
-	s.ProductKey = &v
-	return s
-}
-
-func (s *ListTaskByPageResponseBodyDataData) SetProductName(v string) *ListTaskByPageResponseBodyDataData {
-	s.ProductName = &v
-	return s
-}
-
-func (s *ListTaskByPageResponseBodyDataData) SetProgress(v int32) *ListTaskByPageResponseBodyDataData {
-	s.Progress = &v
-	return s
-}
-
-func (s *ListTaskByPageResponseBodyDataData) SetStatus(v string) *ListTaskByPageResponseBodyDataData {
-	s.Status = &v
-	return s
-}
-
-func (s *ListTaskByPageResponseBodyDataData) SetStatusDetail(v string) *ListTaskByPageResponseBodyDataData {
-	s.StatusDetail = &v
-	return s
-}
-
-func (s *ListTaskByPageResponseBodyDataData) SetTaskId(v string) *ListTaskByPageResponseBodyDataData {
-	s.TaskId = &v
-	return s
-}
-
-func (s *ListTaskByPageResponseBodyDataData) SetUtcModified(v string) *ListTaskByPageResponseBodyDataData {
-	s.UtcModified = &v
-	return s
-}
-
-func (s *ListTaskByPageResponseBodyDataData) SetUtcQueueTime(v string) *ListTaskByPageResponseBodyDataData {
-	s.UtcQueueTime = &v
-	return s
-}
-
-type ListTaskByPageResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTaskByPageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListTaskByPageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTaskByPageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListTaskByPageResponse) SetHeaders(v map[string]*string) *ListTaskByPageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListTaskByPageResponse) SetBody(v *ListTaskByPageResponseBody) *ListTaskByPageResponse {
 	s.Body = v
 	return s
 }
@@ -20848,13 +22339,13 @@ func (s *OpenIotServiceResponse) SetBody(v *OpenIotServiceResponseBody) *OpenIot
 }
 
 type PrintByTemplateRequest struct {
-	DeviceName       *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	IotId            *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
-	IotInstanceId    *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	ParamsJsonString *string `json:"ParamsJsonString,omitempty" xml:"ParamsJsonString,omitempty"`
-	ProductKey       *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	ProjectCode      *string `json:"ProjectCode,omitempty" xml:"ProjectCode,omitempty"`
-	TemplateBizCode  *string `json:"TemplateBizCode,omitempty" xml:"TemplateBizCode,omitempty"`
+	DeviceName        *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	HistoryPrintTopic *bool   `json:"HistoryPrintTopic,omitempty" xml:"HistoryPrintTopic,omitempty"`
+	IotId             *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	IotInstanceId     *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ParamsJsonString  *string `json:"ParamsJsonString,omitempty" xml:"ParamsJsonString,omitempty"`
+	ProductKey        *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	TemplateBizCode   *string `json:"TemplateBizCode,omitempty" xml:"TemplateBizCode,omitempty"`
 }
 
 func (s PrintByTemplateRequest) String() string {
@@ -20867,6 +22358,11 @@ func (s PrintByTemplateRequest) GoString() string {
 
 func (s *PrintByTemplateRequest) SetDeviceName(v string) *PrintByTemplateRequest {
 	s.DeviceName = &v
+	return s
+}
+
+func (s *PrintByTemplateRequest) SetHistoryPrintTopic(v bool) *PrintByTemplateRequest {
+	s.HistoryPrintTopic = &v
 	return s
 }
 
@@ -20887,11 +22383,6 @@ func (s *PrintByTemplateRequest) SetParamsJsonString(v string) *PrintByTemplateR
 
 func (s *PrintByTemplateRequest) SetProductKey(v string) *PrintByTemplateRequest {
 	s.ProductKey = &v
-	return s
-}
-
-func (s *PrintByTemplateRequest) SetProjectCode(v string) *PrintByTemplateRequest {
-	s.ProjectCode = &v
 	return s
 }
 
@@ -21577,270 +23068,6 @@ func (s *PushSpeechResponse) SetBody(v *PushSpeechResponseBody) *PushSpeechRespo
 	return s
 }
 
-type QueryAppDeviceListRequest struct {
-	AppKey          *string                             `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	CategoryKeyList []*string                           `json:"CategoryKeyList,omitempty" xml:"CategoryKeyList,omitempty" type:"Repeated"`
-	CurrentPage     *int32                              `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	IotInstanceId   *string                             `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	PageSize        *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProductKeyList  []*string                           `json:"ProductKeyList,omitempty" xml:"ProductKeyList,omitempty" type:"Repeated"`
-	TagList         []*QueryAppDeviceListRequestTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
-}
-
-func (s QueryAppDeviceListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryAppDeviceListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryAppDeviceListRequest) SetAppKey(v string) *QueryAppDeviceListRequest {
-	s.AppKey = &v
-	return s
-}
-
-func (s *QueryAppDeviceListRequest) SetCategoryKeyList(v []*string) *QueryAppDeviceListRequest {
-	s.CategoryKeyList = v
-	return s
-}
-
-func (s *QueryAppDeviceListRequest) SetCurrentPage(v int32) *QueryAppDeviceListRequest {
-	s.CurrentPage = &v
-	return s
-}
-
-func (s *QueryAppDeviceListRequest) SetIotInstanceId(v string) *QueryAppDeviceListRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *QueryAppDeviceListRequest) SetPageSize(v int32) *QueryAppDeviceListRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *QueryAppDeviceListRequest) SetProductKeyList(v []*string) *QueryAppDeviceListRequest {
-	s.ProductKeyList = v
-	return s
-}
-
-func (s *QueryAppDeviceListRequest) SetTagList(v []*QueryAppDeviceListRequestTagList) *QueryAppDeviceListRequest {
-	s.TagList = v
-	return s
-}
-
-type QueryAppDeviceListRequestTagList struct {
-	TagName  *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-}
-
-func (s QueryAppDeviceListRequestTagList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryAppDeviceListRequestTagList) GoString() string {
-	return s.String()
-}
-
-func (s *QueryAppDeviceListRequestTagList) SetTagName(v string) *QueryAppDeviceListRequestTagList {
-	s.TagName = &v
-	return s
-}
-
-func (s *QueryAppDeviceListRequestTagList) SetTagValue(v string) *QueryAppDeviceListRequestTagList {
-	s.TagValue = &v
-	return s
-}
-
-type QueryAppDeviceListResponseBody struct {
-	Code         *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data         *QueryAppDeviceListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorMessage *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Page         *int32                              `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageCount    *int32                              `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	PageSize     *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
-	Total        *int32                              `json:"Total,omitempty" xml:"Total,omitempty"`
-}
-
-func (s QueryAppDeviceListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryAppDeviceListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryAppDeviceListResponseBody) SetCode(v string) *QueryAppDeviceListResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *QueryAppDeviceListResponseBody) SetData(v *QueryAppDeviceListResponseBodyData) *QueryAppDeviceListResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *QueryAppDeviceListResponseBody) SetErrorMessage(v string) *QueryAppDeviceListResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *QueryAppDeviceListResponseBody) SetPage(v int32) *QueryAppDeviceListResponseBody {
-	s.Page = &v
-	return s
-}
-
-func (s *QueryAppDeviceListResponseBody) SetPageCount(v int32) *QueryAppDeviceListResponseBody {
-	s.PageCount = &v
-	return s
-}
-
-func (s *QueryAppDeviceListResponseBody) SetPageSize(v int32) *QueryAppDeviceListResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *QueryAppDeviceListResponseBody) SetRequestId(v string) *QueryAppDeviceListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *QueryAppDeviceListResponseBody) SetSuccess(v bool) *QueryAppDeviceListResponseBody {
-	s.Success = &v
-	return s
-}
-
-func (s *QueryAppDeviceListResponseBody) SetTotal(v int32) *QueryAppDeviceListResponseBody {
-	s.Total = &v
-	return s
-}
-
-type QueryAppDeviceListResponseBodyData struct {
-	Data []*QueryAppDeviceListResponseBodyDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-}
-
-func (s QueryAppDeviceListResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryAppDeviceListResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *QueryAppDeviceListResponseBodyData) SetData(v []*QueryAppDeviceListResponseBodyDataData) *QueryAppDeviceListResponseBodyData {
-	s.Data = v
-	return s
-}
-
-type QueryAppDeviceListResponseBodyDataData struct {
-	ActiveTime        *string `json:"ActiveTime,omitempty" xml:"ActiveTime,omitempty"`
-	ChildDeviceCount  *int64  `json:"ChildDeviceCount,omitempty" xml:"ChildDeviceCount,omitempty"`
-	CreateTime        *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeviceName        *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
-	LastOnlineTime    *string `json:"LastOnlineTime,omitempty" xml:"LastOnlineTime,omitempty"`
-	NodeType          *int32  `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	ProductKey        *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	ProductName       *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	UtcActiveTime     *string `json:"UtcActiveTime,omitempty" xml:"UtcActiveTime,omitempty"`
-	UtcCreateTime     *string `json:"UtcCreateTime,omitempty" xml:"UtcCreateTime,omitempty"`
-	UtcLastOnlineTime *string `json:"UtcLastOnlineTime,omitempty" xml:"UtcLastOnlineTime,omitempty"`
-}
-
-func (s QueryAppDeviceListResponseBodyDataData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryAppDeviceListResponseBodyDataData) GoString() string {
-	return s.String()
-}
-
-func (s *QueryAppDeviceListResponseBodyDataData) SetActiveTime(v string) *QueryAppDeviceListResponseBodyDataData {
-	s.ActiveTime = &v
-	return s
-}
-
-func (s *QueryAppDeviceListResponseBodyDataData) SetChildDeviceCount(v int64) *QueryAppDeviceListResponseBodyDataData {
-	s.ChildDeviceCount = &v
-	return s
-}
-
-func (s *QueryAppDeviceListResponseBodyDataData) SetCreateTime(v string) *QueryAppDeviceListResponseBodyDataData {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *QueryAppDeviceListResponseBodyDataData) SetDeviceName(v string) *QueryAppDeviceListResponseBodyDataData {
-	s.DeviceName = &v
-	return s
-}
-
-func (s *QueryAppDeviceListResponseBodyDataData) SetLastOnlineTime(v string) *QueryAppDeviceListResponseBodyDataData {
-	s.LastOnlineTime = &v
-	return s
-}
-
-func (s *QueryAppDeviceListResponseBodyDataData) SetNodeType(v int32) *QueryAppDeviceListResponseBodyDataData {
-	s.NodeType = &v
-	return s
-}
-
-func (s *QueryAppDeviceListResponseBodyDataData) SetProductKey(v string) *QueryAppDeviceListResponseBodyDataData {
-	s.ProductKey = &v
-	return s
-}
-
-func (s *QueryAppDeviceListResponseBodyDataData) SetProductName(v string) *QueryAppDeviceListResponseBodyDataData {
-	s.ProductName = &v
-	return s
-}
-
-func (s *QueryAppDeviceListResponseBodyDataData) SetStatus(v string) *QueryAppDeviceListResponseBodyDataData {
-	s.Status = &v
-	return s
-}
-
-func (s *QueryAppDeviceListResponseBodyDataData) SetUtcActiveTime(v string) *QueryAppDeviceListResponseBodyDataData {
-	s.UtcActiveTime = &v
-	return s
-}
-
-func (s *QueryAppDeviceListResponseBodyDataData) SetUtcCreateTime(v string) *QueryAppDeviceListResponseBodyDataData {
-	s.UtcCreateTime = &v
-	return s
-}
-
-func (s *QueryAppDeviceListResponseBodyDataData) SetUtcLastOnlineTime(v string) *QueryAppDeviceListResponseBodyDataData {
-	s.UtcLastOnlineTime = &v
-	return s
-}
-
-type QueryAppDeviceListResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryAppDeviceListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryAppDeviceListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryAppDeviceListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryAppDeviceListResponse) SetHeaders(v map[string]*string) *QueryAppDeviceListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryAppDeviceListResponse) SetBody(v *QueryAppDeviceListResponseBody) *QueryAppDeviceListResponse {
-	s.Body = v
-	return s
-}
-
 type QueryBatchRegisterDeviceStatusRequest struct {
 	ApplyId       *int64  `json:"ApplyId,omitempty" xml:"ApplyId,omitempty"`
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
@@ -22080,6 +23307,139 @@ func (s *QueryCertUrlByApplyIdResponse) SetHeaders(v map[string]*string) *QueryC
 }
 
 func (s *QueryCertUrlByApplyIdResponse) SetBody(v *QueryCertUrlByApplyIdResponseBody) *QueryCertUrlByApplyIdResponse {
+	s.Body = v
+	return s
+}
+
+type QueryClientIdsRequest struct {
+	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+}
+
+func (s QueryClientIdsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClientIdsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClientIdsRequest) SetIotId(v string) *QueryClientIdsRequest {
+	s.IotId = &v
+	return s
+}
+
+func (s *QueryClientIdsRequest) SetIotInstanceId(v string) *QueryClientIdsRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+type QueryClientIdsResponseBody struct {
+	Code         *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *QueryClientIdsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryClientIdsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClientIdsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClientIdsResponseBody) SetCode(v string) *QueryClientIdsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryClientIdsResponseBody) SetData(v *QueryClientIdsResponseBodyData) *QueryClientIdsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryClientIdsResponseBody) SetErrorMessage(v string) *QueryClientIdsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QueryClientIdsResponseBody) SetRequestId(v string) *QueryClientIdsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryClientIdsResponseBody) SetSuccess(v bool) *QueryClientIdsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryClientIdsResponseBodyData struct {
+	DynamicRegClientIds []*QueryClientIdsResponseBodyDataDynamicRegClientIds `json:"DynamicRegClientIds,omitempty" xml:"DynamicRegClientIds,omitempty" type:"Repeated"`
+	IotId               *string                                              `json:"IotId,omitempty" xml:"IotId,omitempty"`
+}
+
+func (s QueryClientIdsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClientIdsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClientIdsResponseBodyData) SetDynamicRegClientIds(v []*QueryClientIdsResponseBodyDataDynamicRegClientIds) *QueryClientIdsResponseBodyData {
+	s.DynamicRegClientIds = v
+	return s
+}
+
+func (s *QueryClientIdsResponseBodyData) SetIotId(v string) *QueryClientIdsResponseBodyData {
+	s.IotId = &v
+	return s
+}
+
+type QueryClientIdsResponseBodyDataDynamicRegClientIds struct {
+	ClientId   *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+}
+
+func (s QueryClientIdsResponseBodyDataDynamicRegClientIds) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClientIdsResponseBodyDataDynamicRegClientIds) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClientIdsResponseBodyDataDynamicRegClientIds) SetClientId(v string) *QueryClientIdsResponseBodyDataDynamicRegClientIds {
+	s.ClientId = &v
+	return s
+}
+
+func (s *QueryClientIdsResponseBodyDataDynamicRegClientIds) SetCreateTime(v int64) *QueryClientIdsResponseBodyDataDynamicRegClientIds {
+	s.CreateTime = &v
+	return s
+}
+
+type QueryClientIdsResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryClientIdsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryClientIdsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryClientIdsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryClientIdsResponse) SetHeaders(v map[string]*string) *QueryClientIdsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryClientIdsResponse) SetBody(v *QueryClientIdsResponseBody) *QueryClientIdsResponse {
 	s.Body = v
 	return s
 }
@@ -25077,6 +26437,7 @@ type QueryDeviceGroupByDeviceResponseBodyGroupInfosGroupInfo struct {
 	GroupDesc *string `json:"GroupDesc,omitempty" xml:"GroupDesc,omitempty"`
 	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	UtcCreate *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
 }
 
@@ -25100,6 +26461,11 @@ func (s *QueryDeviceGroupByDeviceResponseBodyGroupInfosGroupInfo) SetGroupId(v s
 
 func (s *QueryDeviceGroupByDeviceResponseBodyGroupInfosGroupInfo) SetGroupName(v string) *QueryDeviceGroupByDeviceResponseBodyGroupInfosGroupInfo {
 	s.GroupName = &v
+	return s
+}
+
+func (s *QueryDeviceGroupByDeviceResponseBodyGroupInfosGroupInfo) SetGroupType(v string) *QueryDeviceGroupByDeviceResponseBodyGroupInfosGroupInfo {
+	s.GroupType = &v
 	return s
 }
 
@@ -25319,6 +26685,7 @@ func (s *QueryDeviceGroupByTagsResponse) SetBody(v *QueryDeviceGroupByTagsRespon
 
 type QueryDeviceGroupInfoRequest struct {
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupType     *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 }
 
@@ -25332,6 +26699,11 @@ func (s QueryDeviceGroupInfoRequest) GoString() string {
 
 func (s *QueryDeviceGroupInfoRequest) SetGroupId(v string) *QueryDeviceGroupInfoRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *QueryDeviceGroupInfoRequest) SetGroupType(v string) *QueryDeviceGroupInfoRequest {
+	s.GroupType = &v
 	return s
 }
 
@@ -25382,13 +26754,14 @@ func (s *QueryDeviceGroupInfoResponseBody) SetSuccess(v bool) *QueryDeviceGroupI
 }
 
 type QueryDeviceGroupInfoResponseBodyData struct {
-	DeviceActive *int32  `json:"DeviceActive,omitempty" xml:"DeviceActive,omitempty"`
-	DeviceCount  *int32  `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
-	DeviceOnline *int32  `json:"DeviceOnline,omitempty" xml:"DeviceOnline,omitempty"`
-	GroupDesc    *string `json:"GroupDesc,omitempty" xml:"GroupDesc,omitempty"`
-	GroupId      *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	UtcCreate    *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
+	DeviceActive           *int32  `json:"DeviceActive,omitempty" xml:"DeviceActive,omitempty"`
+	DeviceCount            *int32  `json:"DeviceCount,omitempty" xml:"DeviceCount,omitempty"`
+	DeviceOnline           *int32  `json:"DeviceOnline,omitempty" xml:"DeviceOnline,omitempty"`
+	DynamicGroupExpression *string `json:"DynamicGroupExpression,omitempty" xml:"DynamicGroupExpression,omitempty"`
+	GroupDesc              *string `json:"GroupDesc,omitempty" xml:"GroupDesc,omitempty"`
+	GroupId                *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName              *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	UtcCreate              *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
 }
 
 func (s QueryDeviceGroupInfoResponseBodyData) String() string {
@@ -25411,6 +26784,11 @@ func (s *QueryDeviceGroupInfoResponseBodyData) SetDeviceCount(v int32) *QueryDev
 
 func (s *QueryDeviceGroupInfoResponseBodyData) SetDeviceOnline(v int32) *QueryDeviceGroupInfoResponseBodyData {
 	s.DeviceOnline = &v
+	return s
+}
+
+func (s *QueryDeviceGroupInfoResponseBodyData) SetDynamicGroupExpression(v string) *QueryDeviceGroupInfoResponseBodyData {
+	s.DynamicGroupExpression = &v
 	return s
 }
 
@@ -25458,11 +26836,12 @@ func (s *QueryDeviceGroupInfoResponse) SetBody(v *QueryDeviceGroupInfoResponseBo
 }
 
 type QueryDeviceGroupListRequest struct {
-	CurrentPage   *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	GroupName     *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SuperGroupId  *string `json:"SuperGroupId,omitempty" xml:"SuperGroupId,omitempty"`
+	CurrentPage   *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	GroupName     *string   `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupTypes    []*string `json:"GroupTypes,omitempty" xml:"GroupTypes,omitempty" type:"Repeated"`
+	IotInstanceId *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	PageSize      *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SuperGroupId  *string   `json:"SuperGroupId,omitempty" xml:"SuperGroupId,omitempty"`
 }
 
 func (s QueryDeviceGroupListRequest) String() string {
@@ -25480,6 +26859,11 @@ func (s *QueryDeviceGroupListRequest) SetCurrentPage(v int32) *QueryDeviceGroupL
 
 func (s *QueryDeviceGroupListRequest) SetGroupName(v string) *QueryDeviceGroupListRequest {
 	s.GroupName = &v
+	return s
+}
+
+func (s *QueryDeviceGroupListRequest) SetGroupTypes(v []*string) *QueryDeviceGroupListRequest {
+	s.GroupTypes = v
 	return s
 }
 
@@ -25584,6 +26968,7 @@ type QueryDeviceGroupListResponseBodyDataGroupInfo struct {
 	GroupDesc *string `json:"GroupDesc,omitempty" xml:"GroupDesc,omitempty"`
 	GroupId   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	UtcCreate *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
 }
 
@@ -25607,6 +26992,11 @@ func (s *QueryDeviceGroupListResponseBodyDataGroupInfo) SetGroupId(v string) *Qu
 
 func (s *QueryDeviceGroupListResponseBodyDataGroupInfo) SetGroupName(v string) *QueryDeviceGroupListResponseBodyDataGroupInfo {
 	s.GroupName = &v
+	return s
+}
+
+func (s *QueryDeviceGroupListResponseBodyDataGroupInfo) SetGroupType(v string) *QueryDeviceGroupListResponseBodyDataGroupInfo {
+	s.GroupType = &v
 	return s
 }
 
@@ -25640,6 +27030,7 @@ func (s *QueryDeviceGroupListResponse) SetBody(v *QueryDeviceGroupListResponseBo
 
 type QueryDeviceGroupTagListRequest struct {
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupType     *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 }
 
@@ -25653,6 +27044,11 @@ func (s QueryDeviceGroupTagListRequest) GoString() string {
 
 func (s *QueryDeviceGroupTagListRequest) SetGroupId(v string) *QueryDeviceGroupTagListRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *QueryDeviceGroupTagListRequest) SetGroupType(v string) *QueryDeviceGroupTagListRequest {
+	s.GroupType = &v
 	return s
 }
 
@@ -27840,6 +29236,186 @@ func (s *QueryDeviceServiceDataResponse) SetBody(v *QueryDeviceServiceDataRespon
 	return s
 }
 
+type QueryDeviceSpeechRequest struct {
+	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	PageId        *int32  `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s QueryDeviceSpeechRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceSpeechRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceSpeechRequest) SetIotId(v string) *QueryDeviceSpeechRequest {
+	s.IotId = &v
+	return s
+}
+
+func (s *QueryDeviceSpeechRequest) SetIotInstanceId(v string) *QueryDeviceSpeechRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *QueryDeviceSpeechRequest) SetPageId(v int32) *QueryDeviceSpeechRequest {
+	s.PageId = &v
+	return s
+}
+
+func (s *QueryDeviceSpeechRequest) SetPageSize(v int32) *QueryDeviceSpeechRequest {
+	s.PageSize = &v
+	return s
+}
+
+type QueryDeviceSpeechResponseBody struct {
+	Code         *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *QueryDeviceSpeechResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryDeviceSpeechResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceSpeechResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceSpeechResponseBody) SetCode(v string) *QueryDeviceSpeechResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryDeviceSpeechResponseBody) SetData(v *QueryDeviceSpeechResponseBodyData) *QueryDeviceSpeechResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryDeviceSpeechResponseBody) SetErrorMessage(v string) *QueryDeviceSpeechResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QueryDeviceSpeechResponseBody) SetRequestId(v string) *QueryDeviceSpeechResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDeviceSpeechResponseBody) SetSuccess(v bool) *QueryDeviceSpeechResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryDeviceSpeechResponseBodyData struct {
+	List     *QueryDeviceSpeechResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
+	PageId   *int32                                 `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	PageSize *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int32                                 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s QueryDeviceSpeechResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceSpeechResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceSpeechResponseBodyData) SetList(v *QueryDeviceSpeechResponseBodyDataList) *QueryDeviceSpeechResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *QueryDeviceSpeechResponseBodyData) SetPageId(v int32) *QueryDeviceSpeechResponseBodyData {
+	s.PageId = &v
+	return s
+}
+
+func (s *QueryDeviceSpeechResponseBodyData) SetPageSize(v int32) *QueryDeviceSpeechResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryDeviceSpeechResponseBodyData) SetTotal(v int32) *QueryDeviceSpeechResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type QueryDeviceSpeechResponseBodyDataList struct {
+	Items []*QueryDeviceSpeechResponseBodyDataListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+}
+
+func (s QueryDeviceSpeechResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceSpeechResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceSpeechResponseBodyDataList) SetItems(v []*QueryDeviceSpeechResponseBodyDataListItems) *QueryDeviceSpeechResponseBodyDataList {
+	s.Items = v
+	return s
+}
+
+type QueryDeviceSpeechResponseBodyDataListItems struct {
+	AudioFormat *string  `json:"AudioFormat,omitempty" xml:"AudioFormat,omitempty"`
+	BizCode     *string  `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	Size        *float32 `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s QueryDeviceSpeechResponseBodyDataListItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceSpeechResponseBodyDataListItems) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceSpeechResponseBodyDataListItems) SetAudioFormat(v string) *QueryDeviceSpeechResponseBodyDataListItems {
+	s.AudioFormat = &v
+	return s
+}
+
+func (s *QueryDeviceSpeechResponseBodyDataListItems) SetBizCode(v string) *QueryDeviceSpeechResponseBodyDataListItems {
+	s.BizCode = &v
+	return s
+}
+
+func (s *QueryDeviceSpeechResponseBodyDataListItems) SetSize(v float32) *QueryDeviceSpeechResponseBodyDataListItems {
+	s.Size = &v
+	return s
+}
+
+type QueryDeviceSpeechResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryDeviceSpeechResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryDeviceSpeechResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceSpeechResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceSpeechResponse) SetHeaders(v map[string]*string) *QueryDeviceSpeechResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDeviceSpeechResponse) SetBody(v *QueryDeviceSpeechResponseBody) *QueryDeviceSpeechResponse {
+	s.Body = v
+	return s
+}
+
 type QueryDeviceStatisticsRequest struct {
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
@@ -27958,6 +29534,435 @@ func (s *QueryDeviceStatisticsResponse) SetHeaders(v map[string]*string) *QueryD
 }
 
 func (s *QueryDeviceStatisticsResponse) SetBody(v *QueryDeviceStatisticsResponseBody) *QueryDeviceStatisticsResponse {
+	s.Body = v
+	return s
+}
+
+type QueryDeviceTunnelRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	TunnelId      *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
+}
+
+func (s QueryDeviceTunnelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceTunnelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceTunnelRequest) SetIotInstanceId(v string) *QueryDeviceTunnelRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *QueryDeviceTunnelRequest) SetTunnelId(v string) *QueryDeviceTunnelRequest {
+	s.TunnelId = &v
+	return s
+}
+
+type QueryDeviceTunnelResponseBody struct {
+	Code         *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *QueryDeviceTunnelResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryDeviceTunnelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceTunnelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceTunnelResponseBody) SetCode(v string) *QueryDeviceTunnelResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryDeviceTunnelResponseBody) SetData(v *QueryDeviceTunnelResponseBodyData) *QueryDeviceTunnelResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryDeviceTunnelResponseBody) SetErrorMessage(v string) *QueryDeviceTunnelResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QueryDeviceTunnelResponseBody) SetRequestId(v string) *QueryDeviceTunnelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDeviceTunnelResponseBody) SetSuccess(v bool) *QueryDeviceTunnelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryDeviceTunnelResponseBodyData struct {
+	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DeviceConnState *string `json:"DeviceConnState,omitempty" xml:"DeviceConnState,omitempty"`
+	DeviceName      *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotId           *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	ProductKey      *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	ProductName     *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	SourceConnState *string `json:"SourceConnState,omitempty" xml:"SourceConnState,omitempty"`
+	TunnelId        *string `json:"TunnelId,omitempty" xml:"TunnelId,omitempty"`
+	TunnelState     *string `json:"TunnelState,omitempty" xml:"TunnelState,omitempty"`
+	Udi             *string `json:"Udi,omitempty" xml:"Udi,omitempty"`
+	UtcClosed       *string `json:"UtcClosed,omitempty" xml:"UtcClosed,omitempty"`
+	UtcCreated      *string `json:"UtcCreated,omitempty" xml:"UtcCreated,omitempty"`
+}
+
+func (s QueryDeviceTunnelResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceTunnelResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceTunnelResponseBodyData) SetDescription(v string) *QueryDeviceTunnelResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *QueryDeviceTunnelResponseBodyData) SetDeviceConnState(v string) *QueryDeviceTunnelResponseBodyData {
+	s.DeviceConnState = &v
+	return s
+}
+
+func (s *QueryDeviceTunnelResponseBodyData) SetDeviceName(v string) *QueryDeviceTunnelResponseBodyData {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryDeviceTunnelResponseBodyData) SetIotId(v string) *QueryDeviceTunnelResponseBodyData {
+	s.IotId = &v
+	return s
+}
+
+func (s *QueryDeviceTunnelResponseBodyData) SetProductKey(v string) *QueryDeviceTunnelResponseBodyData {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *QueryDeviceTunnelResponseBodyData) SetProductName(v string) *QueryDeviceTunnelResponseBodyData {
+	s.ProductName = &v
+	return s
+}
+
+func (s *QueryDeviceTunnelResponseBodyData) SetSourceConnState(v string) *QueryDeviceTunnelResponseBodyData {
+	s.SourceConnState = &v
+	return s
+}
+
+func (s *QueryDeviceTunnelResponseBodyData) SetTunnelId(v string) *QueryDeviceTunnelResponseBodyData {
+	s.TunnelId = &v
+	return s
+}
+
+func (s *QueryDeviceTunnelResponseBodyData) SetTunnelState(v string) *QueryDeviceTunnelResponseBodyData {
+	s.TunnelState = &v
+	return s
+}
+
+func (s *QueryDeviceTunnelResponseBodyData) SetUdi(v string) *QueryDeviceTunnelResponseBodyData {
+	s.Udi = &v
+	return s
+}
+
+func (s *QueryDeviceTunnelResponseBodyData) SetUtcClosed(v string) *QueryDeviceTunnelResponseBodyData {
+	s.UtcClosed = &v
+	return s
+}
+
+func (s *QueryDeviceTunnelResponseBodyData) SetUtcCreated(v string) *QueryDeviceTunnelResponseBodyData {
+	s.UtcCreated = &v
+	return s
+}
+
+type QueryDeviceTunnelResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryDeviceTunnelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryDeviceTunnelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceTunnelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceTunnelResponse) SetHeaders(v map[string]*string) *QueryDeviceTunnelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDeviceTunnelResponse) SetBody(v *QueryDeviceTunnelResponseBody) *QueryDeviceTunnelResponse {
+	s.Body = v
+	return s
+}
+
+type QueryDynamicGroupDevicesRequest struct {
+	CurrentPage   *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	FuzzyName     *bool   `json:"FuzzyName,omitempty" xml:"FuzzyName,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	NextToken     *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s QueryDynamicGroupDevicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDynamicGroupDevicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDynamicGroupDevicesRequest) SetCurrentPage(v int32) *QueryDynamicGroupDevicesRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesRequest) SetDeviceName(v string) *QueryDynamicGroupDevicesRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesRequest) SetFuzzyName(v bool) *QueryDynamicGroupDevicesRequest {
+	s.FuzzyName = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesRequest) SetGroupId(v string) *QueryDynamicGroupDevicesRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesRequest) SetIotInstanceId(v string) *QueryDynamicGroupDevicesRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesRequest) SetNextToken(v string) *QueryDynamicGroupDevicesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesRequest) SetPageSize(v int32) *QueryDynamicGroupDevicesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesRequest) SetProductKey(v string) *QueryDynamicGroupDevicesRequest {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesRequest) SetStatus(v string) *QueryDynamicGroupDevicesRequest {
+	s.Status = &v
+	return s
+}
+
+type QueryDynamicGroupDevicesResponseBody struct {
+	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *QueryDynamicGroupDevicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	NextToken    *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Page         *int32                                    `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageCount    *int32                                    `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	PageSize     *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total        *int32                                    `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s QueryDynamicGroupDevicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDynamicGroupDevicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDynamicGroupDevicesResponseBody) SetCode(v string) *QueryDynamicGroupDevicesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesResponseBody) SetData(v *QueryDynamicGroupDevicesResponseBodyData) *QueryDynamicGroupDevicesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesResponseBody) SetErrorMessage(v string) *QueryDynamicGroupDevicesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesResponseBody) SetNextToken(v string) *QueryDynamicGroupDevicesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesResponseBody) SetPage(v int32) *QueryDynamicGroupDevicesResponseBody {
+	s.Page = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesResponseBody) SetPageCount(v int32) *QueryDynamicGroupDevicesResponseBody {
+	s.PageCount = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesResponseBody) SetPageSize(v int32) *QueryDynamicGroupDevicesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesResponseBody) SetRequestId(v string) *QueryDynamicGroupDevicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesResponseBody) SetSuccess(v bool) *QueryDynamicGroupDevicesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesResponseBody) SetTotal(v int32) *QueryDynamicGroupDevicesResponseBody {
+	s.Total = &v
+	return s
+}
+
+type QueryDynamicGroupDevicesResponseBodyData struct {
+	SimpleDeviceInfo []*QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo `json:"SimpleDeviceInfo,omitempty" xml:"SimpleDeviceInfo,omitempty" type:"Repeated"`
+}
+
+func (s QueryDynamicGroupDevicesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDynamicGroupDevicesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDynamicGroupDevicesResponseBodyData) SetSimpleDeviceInfo(v []*QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo) *QueryDynamicGroupDevicesResponseBodyData {
+	s.SimpleDeviceInfo = v
+	return s
+}
+
+type QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo struct {
+	ActiveTime        *string `json:"ActiveTime,omitempty" xml:"ActiveTime,omitempty"`
+	CategoryKey       *string `json:"CategoryKey,omitempty" xml:"CategoryKey,omitempty"`
+	DeviceName        *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotId             *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	LastOnlineTime    *string `json:"LastOnlineTime,omitempty" xml:"LastOnlineTime,omitempty"`
+	Nickname          *string `json:"Nickname,omitempty" xml:"Nickname,omitempty"`
+	NodeType          *int32  `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	ProductKey        *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	ProductName       *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UtcActiveTime     *string `json:"UtcActiveTime,omitempty" xml:"UtcActiveTime,omitempty"`
+	UtcLastOnlineTime *string `json:"UtcLastOnlineTime,omitempty" xml:"UtcLastOnlineTime,omitempty"`
+}
+
+func (s QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo) SetActiveTime(v string) *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo {
+	s.ActiveTime = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo) SetCategoryKey(v string) *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo {
+	s.CategoryKey = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo) SetDeviceName(v string) *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo) SetIotId(v string) *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo {
+	s.IotId = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo) SetLastOnlineTime(v string) *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo {
+	s.LastOnlineTime = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo) SetNickname(v string) *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo {
+	s.Nickname = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo) SetNodeType(v int32) *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo {
+	s.NodeType = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo) SetProductKey(v string) *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo) SetProductName(v string) *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo {
+	s.ProductName = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo) SetStatus(v string) *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo {
+	s.Status = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo) SetUtcActiveTime(v string) *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo {
+	s.UtcActiveTime = &v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo) SetUtcLastOnlineTime(v string) *QueryDynamicGroupDevicesResponseBodyDataSimpleDeviceInfo {
+	s.UtcLastOnlineTime = &v
+	return s
+}
+
+type QueryDynamicGroupDevicesResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryDynamicGroupDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryDynamicGroupDevicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDynamicGroupDevicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDynamicGroupDevicesResponse) SetHeaders(v map[string]*string) *QueryDynamicGroupDevicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDynamicGroupDevicesResponse) SetBody(v *QueryDynamicGroupDevicesResponseBody) *QueryDynamicGroupDevicesResponse {
 	s.Body = v
 	return s
 }
@@ -28086,6 +30091,7 @@ type QueryEdgeDriverResponseBodyDataDriverList struct {
 	DriverProtocol       *string `json:"DriverProtocol,omitempty" xml:"DriverProtocol,omitempty"`
 	GmtCreateTimestamp   *int64  `json:"GmtCreateTimestamp,omitempty" xml:"GmtCreateTimestamp,omitempty"`
 	GmtModifiedTimestamp *int64  `json:"GmtModifiedTimestamp,omitempty" xml:"GmtModifiedTimestamp,omitempty"`
+	IsApply              *bool   `json:"IsApply,omitempty" xml:"IsApply,omitempty"`
 	IsBuiltIn            *bool   `json:"IsBuiltIn,omitempty" xml:"IsBuiltIn,omitempty"`
 	Runtime              *string `json:"Runtime,omitempty" xml:"Runtime,omitempty"`
 	Type                 *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
@@ -28126,6 +30132,11 @@ func (s *QueryEdgeDriverResponseBodyDataDriverList) SetGmtCreateTimestamp(v int6
 
 func (s *QueryEdgeDriverResponseBodyDataDriverList) SetGmtModifiedTimestamp(v int64) *QueryEdgeDriverResponseBodyDataDriverList {
 	s.GmtModifiedTimestamp = &v
+	return s
+}
+
+func (s *QueryEdgeDriverResponseBodyDataDriverList) SetIsApply(v bool) *QueryEdgeDriverResponseBodyDataDriverList {
+	s.IsApply = &v
 	return s
 }
 
@@ -30396,7 +32407,8 @@ func (s *QueryJobResponseBodyDataJobFile) SetSignMethod(v string) *QueryJobRespo
 }
 
 type QueryJobResponseBodyDataRolloutConfig struct {
-	MaximumPerMinute *int32 `json:"MaximumPerMinute,omitempty" xml:"MaximumPerMinute,omitempty"`
+	MaximumPerMinute *int32  `json:"MaximumPerMinute,omitempty" xml:"MaximumPerMinute,omitempty"`
+	MessageQoS       *string `json:"MessageQoS,omitempty" xml:"MessageQoS,omitempty"`
 }
 
 func (s QueryJobResponseBodyDataRolloutConfig) String() string {
@@ -30409,6 +32421,11 @@ func (s QueryJobResponseBodyDataRolloutConfig) GoString() string {
 
 func (s *QueryJobResponseBodyDataRolloutConfig) SetMaximumPerMinute(v int32) *QueryJobResponseBodyDataRolloutConfig {
 	s.MaximumPerMinute = &v
+	return s
+}
+
+func (s *QueryJobResponseBodyDataRolloutConfig) SetMessageQoS(v string) *QueryJobResponseBodyDataRolloutConfig {
+	s.MessageQoS = &v
 	return s
 }
 
@@ -31046,24 +33063,25 @@ func (s *QueryOTAFirmwareResponseBody) SetSuccess(v bool) *QueryOTAFirmwareRespo
 }
 
 type QueryOTAFirmwareResponseBodyFirmwareInfo struct {
-	DestVersion    *string `json:"DestVersion,omitempty" xml:"DestVersion,omitempty"`
-	FirmwareDesc   *string `json:"FirmwareDesc,omitempty" xml:"FirmwareDesc,omitempty"`
-	FirmwareId     *string `json:"FirmwareId,omitempty" xml:"FirmwareId,omitempty"`
-	FirmwareName   *string `json:"FirmwareName,omitempty" xml:"FirmwareName,omitempty"`
-	FirmwareSign   *string `json:"FirmwareSign,omitempty" xml:"FirmwareSign,omitempty"`
-	FirmwareSize   *int32  `json:"FirmwareSize,omitempty" xml:"FirmwareSize,omitempty"`
-	FirmwareUrl    *string `json:"FirmwareUrl,omitempty" xml:"FirmwareUrl,omitempty"`
-	ModuleName     *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
-	ProductKey     *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	ProductName    *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
-	SignMethod     *string `json:"SignMethod,omitempty" xml:"SignMethod,omitempty"`
-	SrcVersion     *string `json:"SrcVersion,omitempty" xml:"SrcVersion,omitempty"`
-	Status         *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	Type           *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
-	Udi            *string `json:"Udi,omitempty" xml:"Udi,omitempty"`
-	UtcCreate      *string `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
-	UtcModified    *string `json:"UtcModified,omitempty" xml:"UtcModified,omitempty"`
-	VerifyProgress *int32  `json:"VerifyProgress,omitempty" xml:"VerifyProgress,omitempty"`
+	DestVersion    *string                                               `json:"DestVersion,omitempty" xml:"DestVersion,omitempty"`
+	FirmwareDesc   *string                                               `json:"FirmwareDesc,omitempty" xml:"FirmwareDesc,omitempty"`
+	FirmwareId     *string                                               `json:"FirmwareId,omitempty" xml:"FirmwareId,omitempty"`
+	FirmwareName   *string                                               `json:"FirmwareName,omitempty" xml:"FirmwareName,omitempty"`
+	FirmwareSign   *string                                               `json:"FirmwareSign,omitempty" xml:"FirmwareSign,omitempty"`
+	FirmwareSize   *int32                                                `json:"FirmwareSize,omitempty" xml:"FirmwareSize,omitempty"`
+	FirmwareUrl    *string                                               `json:"FirmwareUrl,omitempty" xml:"FirmwareUrl,omitempty"`
+	ModuleName     *string                                               `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	MultiFiles     []*QueryOTAFirmwareResponseBodyFirmwareInfoMultiFiles `json:"MultiFiles,omitempty" xml:"MultiFiles,omitempty" type:"Repeated"`
+	ProductKey     *string                                               `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	ProductName    *string                                               `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	SignMethod     *string                                               `json:"SignMethod,omitempty" xml:"SignMethod,omitempty"`
+	SrcVersion     *string                                               `json:"SrcVersion,omitempty" xml:"SrcVersion,omitempty"`
+	Status         *int32                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type           *int32                                                `json:"Type,omitempty" xml:"Type,omitempty"`
+	Udi            *string                                               `json:"Udi,omitempty" xml:"Udi,omitempty"`
+	UtcCreate      *string                                               `json:"UtcCreate,omitempty" xml:"UtcCreate,omitempty"`
+	UtcModified    *string                                               `json:"UtcModified,omitempty" xml:"UtcModified,omitempty"`
+	VerifyProgress *int32                                                `json:"VerifyProgress,omitempty" xml:"VerifyProgress,omitempty"`
 }
 
 func (s QueryOTAFirmwareResponseBodyFirmwareInfo) String() string {
@@ -31114,6 +33132,11 @@ func (s *QueryOTAFirmwareResponseBodyFirmwareInfo) SetModuleName(v string) *Quer
 	return s
 }
 
+func (s *QueryOTAFirmwareResponseBodyFirmwareInfo) SetMultiFiles(v []*QueryOTAFirmwareResponseBodyFirmwareInfoMultiFiles) *QueryOTAFirmwareResponseBodyFirmwareInfo {
+	s.MultiFiles = v
+	return s
+}
+
 func (s *QueryOTAFirmwareResponseBodyFirmwareInfo) SetProductKey(v string) *QueryOTAFirmwareResponseBodyFirmwareInfo {
 	s.ProductKey = &v
 	return s
@@ -31161,6 +33184,47 @@ func (s *QueryOTAFirmwareResponseBodyFirmwareInfo) SetUtcModified(v string) *Que
 
 func (s *QueryOTAFirmwareResponseBodyFirmwareInfo) SetVerifyProgress(v int32) *QueryOTAFirmwareResponseBodyFirmwareInfo {
 	s.VerifyProgress = &v
+	return s
+}
+
+type QueryOTAFirmwareResponseBodyFirmwareInfoMultiFiles struct {
+	FileMd5   *string `json:"FileMd5,omitempty" xml:"FileMd5,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SignValue *string `json:"SignValue,omitempty" xml:"SignValue,omitempty"`
+	Size      *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	Url       *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s QueryOTAFirmwareResponseBodyFirmwareInfoMultiFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryOTAFirmwareResponseBodyFirmwareInfoMultiFiles) GoString() string {
+	return s.String()
+}
+
+func (s *QueryOTAFirmwareResponseBodyFirmwareInfoMultiFiles) SetFileMd5(v string) *QueryOTAFirmwareResponseBodyFirmwareInfoMultiFiles {
+	s.FileMd5 = &v
+	return s
+}
+
+func (s *QueryOTAFirmwareResponseBodyFirmwareInfoMultiFiles) SetName(v string) *QueryOTAFirmwareResponseBodyFirmwareInfoMultiFiles {
+	s.Name = &v
+	return s
+}
+
+func (s *QueryOTAFirmwareResponseBodyFirmwareInfoMultiFiles) SetSignValue(v string) *QueryOTAFirmwareResponseBodyFirmwareInfoMultiFiles {
+	s.SignValue = &v
+	return s
+}
+
+func (s *QueryOTAFirmwareResponseBodyFirmwareInfoMultiFiles) SetSize(v int32) *QueryOTAFirmwareResponseBodyFirmwareInfoMultiFiles {
+	s.Size = &v
+	return s
+}
+
+func (s *QueryOTAFirmwareResponseBodyFirmwareInfoMultiFiles) SetUrl(v string) *QueryOTAFirmwareResponseBodyFirmwareInfoMultiFiles {
+	s.Url = &v
 	return s
 }
 
@@ -31253,14 +33317,18 @@ func (s *QueryOTAJobResponseBody) SetSuccess(v bool) *QueryOTAJobResponseBody {
 
 type QueryOTAJobResponseBodyData struct {
 	DestVersion           *string                                 `json:"DestVersion,omitempty" xml:"DestVersion,omitempty"`
+	DownloadProtocol      *string                                 `json:"DownloadProtocol,omitempty" xml:"DownloadProtocol,omitempty"`
 	DynamicMode           *int32                                  `json:"DynamicMode,omitempty" xml:"DynamicMode,omitempty"`
 	FirmwareId            *string                                 `json:"FirmwareId,omitempty" xml:"FirmwareId,omitempty"`
 	GrayPercent           *string                                 `json:"GrayPercent,omitempty" xml:"GrayPercent,omitempty"`
+	GroupId               *string                                 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName             *string                                 `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	JobDesc               *string                                 `json:"JobDesc,omitempty" xml:"JobDesc,omitempty"`
 	JobId                 *string                                 `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	JobStatus             *string                                 `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
 	JobType               *string                                 `json:"JobType,omitempty" xml:"JobType,omitempty"`
 	MaximumPerMinute      *int32                                  `json:"MaximumPerMinute,omitempty" xml:"MaximumPerMinute,omitempty"`
+	MultiModuleMode       *bool                                   `json:"MultiModuleMode,omitempty" xml:"MultiModuleMode,omitempty"`
 	Name                  *string                                 `json:"Name,omitempty" xml:"Name,omitempty"`
 	NeedConfirm           *bool                                   `json:"NeedConfirm,omitempty" xml:"NeedConfirm,omitempty"`
 	NeedPush              *bool                                   `json:"NeedPush,omitempty" xml:"NeedPush,omitempty"`
@@ -31294,6 +33362,11 @@ func (s *QueryOTAJobResponseBodyData) SetDestVersion(v string) *QueryOTAJobRespo
 	return s
 }
 
+func (s *QueryOTAJobResponseBodyData) SetDownloadProtocol(v string) *QueryOTAJobResponseBodyData {
+	s.DownloadProtocol = &v
+	return s
+}
+
 func (s *QueryOTAJobResponseBodyData) SetDynamicMode(v int32) *QueryOTAJobResponseBodyData {
 	s.DynamicMode = &v
 	return s
@@ -31306,6 +33379,16 @@ func (s *QueryOTAJobResponseBodyData) SetFirmwareId(v string) *QueryOTAJobRespon
 
 func (s *QueryOTAJobResponseBodyData) SetGrayPercent(v string) *QueryOTAJobResponseBodyData {
 	s.GrayPercent = &v
+	return s
+}
+
+func (s *QueryOTAJobResponseBodyData) SetGroupId(v string) *QueryOTAJobResponseBodyData {
+	s.GroupId = &v
+	return s
+}
+
+func (s *QueryOTAJobResponseBodyData) SetGroupName(v string) *QueryOTAJobResponseBodyData {
+	s.GroupName = &v
 	return s
 }
 
@@ -31331,6 +33414,11 @@ func (s *QueryOTAJobResponseBodyData) SetJobType(v string) *QueryOTAJobResponseB
 
 func (s *QueryOTAJobResponseBodyData) SetMaximumPerMinute(v int32) *QueryOTAJobResponseBodyData {
 	s.MaximumPerMinute = &v
+	return s
+}
+
+func (s *QueryOTAJobResponseBodyData) SetMultiModuleMode(v bool) *QueryOTAJobResponseBodyData {
+	s.MultiModuleMode = &v
 	return s
 }
 
@@ -32741,6 +34829,186 @@ func (s *QuerySolutionDeviceGroupPageResponse) SetBody(v *QuerySolutionDeviceGro
 	return s
 }
 
+type QuerySoundCodeListRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	PageId        *int32  `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s QuerySoundCodeListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeListRequest) SetIotInstanceId(v string) *QuerySoundCodeListRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *QuerySoundCodeListRequest) SetPageId(v int32) *QuerySoundCodeListRequest {
+	s.PageId = &v
+	return s
+}
+
+func (s *QuerySoundCodeListRequest) SetPageSize(v int32) *QuerySoundCodeListRequest {
+	s.PageSize = &v
+	return s
+}
+
+type QuerySoundCodeListResponseBody struct {
+	Code         *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *QuerySoundCodeListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                             `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QuerySoundCodeListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeListResponseBody) SetCode(v string) *QuerySoundCodeListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySoundCodeListResponseBody) SetData(v *QuerySoundCodeListResponseBodyData) *QuerySoundCodeListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QuerySoundCodeListResponseBody) SetErrorMessage(v string) *QuerySoundCodeListResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QuerySoundCodeListResponseBody) SetRequestId(v string) *QuerySoundCodeListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySoundCodeListResponseBody) SetSuccess(v bool) *QuerySoundCodeListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QuerySoundCodeListResponseBodyData struct {
+	List     *QuerySoundCodeListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
+	PageId   *int32                                  `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	PageSize *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int32                                  `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s QuerySoundCodeListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeListResponseBodyData) SetList(v *QuerySoundCodeListResponseBodyDataList) *QuerySoundCodeListResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *QuerySoundCodeListResponseBodyData) SetPageId(v int32) *QuerySoundCodeListResponseBodyData {
+	s.PageId = &v
+	return s
+}
+
+func (s *QuerySoundCodeListResponseBodyData) SetPageSize(v int32) *QuerySoundCodeListResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QuerySoundCodeListResponseBodyData) SetTotal(v int32) *QuerySoundCodeListResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type QuerySoundCodeListResponseBodyDataList struct {
+	Items []*QuerySoundCodeListResponseBodyDataListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+}
+
+func (s QuerySoundCodeListResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeListResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeListResponseBodyDataList) SetItems(v []*QuerySoundCodeListResponseBodyDataListItems) *QuerySoundCodeListResponseBodyDataList {
+	s.Items = v
+	return s
+}
+
+type QuerySoundCodeListResponseBodyDataListItems struct {
+	Duration         *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	GmtCreate        *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	SoundCode        *string `json:"SoundCode,omitempty" xml:"SoundCode,omitempty"`
+	SoundCodeContent *string `json:"SoundCodeContent,omitempty" xml:"SoundCodeContent,omitempty"`
+}
+
+func (s QuerySoundCodeListResponseBodyDataListItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeListResponseBodyDataListItems) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeListResponseBodyDataListItems) SetDuration(v int32) *QuerySoundCodeListResponseBodyDataListItems {
+	s.Duration = &v
+	return s
+}
+
+func (s *QuerySoundCodeListResponseBodyDataListItems) SetGmtCreate(v int64) *QuerySoundCodeListResponseBodyDataListItems {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *QuerySoundCodeListResponseBodyDataListItems) SetSoundCode(v string) *QuerySoundCodeListResponseBodyDataListItems {
+	s.SoundCode = &v
+	return s
+}
+
+func (s *QuerySoundCodeListResponseBodyDataListItems) SetSoundCodeContent(v string) *QuerySoundCodeListResponseBodyDataListItems {
+	s.SoundCodeContent = &v
+	return s
+}
+
+type QuerySoundCodeListResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QuerySoundCodeListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySoundCodeListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeListResponse) SetHeaders(v map[string]*string) *QuerySoundCodeListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySoundCodeListResponse) SetBody(v *QuerySoundCodeListResponseBody) *QuerySoundCodeListResponse {
+	s.Body = v
+	return s
+}
+
 type QuerySpeechRequest struct {
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	SpeechCode    *string `json:"SpeechCode,omitempty" xml:"SpeechCode,omitempty"`
@@ -32806,14 +35074,16 @@ func (s *QuerySpeechResponseBody) SetSuccess(v bool) *QuerySpeechResponseBody {
 }
 
 type QuerySpeechResponseBodyData struct {
-	AudioFormat *string `json:"AudioFormat,omitempty" xml:"AudioFormat,omitempty"`
-	BizCode     *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	SpeechCode  *string `json:"SpeechCode,omitempty" xml:"SpeechCode,omitempty"`
-	SpeechRate  *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	SpeechType  *string `json:"SpeechType,omitempty" xml:"SpeechType,omitempty"`
-	Text        *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	Voice       *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
-	Volume      *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	AudioFormat     *string                                     `json:"AudioFormat,omitempty" xml:"AudioFormat,omitempty"`
+	BizCode         *string                                     `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	EnableSoundCode *bool                                       `json:"EnableSoundCode,omitempty" xml:"EnableSoundCode,omitempty"`
+	SoundCodeConfig *QuerySpeechResponseBodyDataSoundCodeConfig `json:"SoundCodeConfig,omitempty" xml:"SoundCodeConfig,omitempty" type:"Struct"`
+	SpeechCode      *string                                     `json:"SpeechCode,omitempty" xml:"SpeechCode,omitempty"`
+	SpeechRate      *int32                                      `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	SpeechType      *string                                     `json:"SpeechType,omitempty" xml:"SpeechType,omitempty"`
+	Text            *string                                     `json:"Text,omitempty" xml:"Text,omitempty"`
+	Voice           *string                                     `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	Volume          *int32                                      `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
 func (s QuerySpeechResponseBodyData) String() string {
@@ -32831,6 +35101,16 @@ func (s *QuerySpeechResponseBodyData) SetAudioFormat(v string) *QuerySpeechRespo
 
 func (s *QuerySpeechResponseBodyData) SetBizCode(v string) *QuerySpeechResponseBodyData {
 	s.BizCode = &v
+	return s
+}
+
+func (s *QuerySpeechResponseBodyData) SetEnableSoundCode(v bool) *QuerySpeechResponseBodyData {
+	s.EnableSoundCode = &v
+	return s
+}
+
+func (s *QuerySpeechResponseBodyData) SetSoundCodeConfig(v *QuerySpeechResponseBodyDataSoundCodeConfig) *QuerySpeechResponseBodyData {
+	s.SoundCodeConfig = v
 	return s
 }
 
@@ -32864,6 +35144,29 @@ func (s *QuerySpeechResponseBodyData) SetVolume(v int32) *QuerySpeechResponseBod
 	return s
 }
 
+type QuerySpeechResponseBodyDataSoundCodeConfig struct {
+	AdditionalDuration *int32  `json:"AdditionalDuration,omitempty" xml:"AdditionalDuration,omitempty"`
+	SoundCodeContent   *string `json:"SoundCodeContent,omitempty" xml:"SoundCodeContent,omitempty"`
+}
+
+func (s QuerySpeechResponseBodyDataSoundCodeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySpeechResponseBodyDataSoundCodeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySpeechResponseBodyDataSoundCodeConfig) SetAdditionalDuration(v int32) *QuerySpeechResponseBodyDataSoundCodeConfig {
+	s.AdditionalDuration = &v
+	return s
+}
+
+func (s *QuerySpeechResponseBodyDataSoundCodeConfig) SetSoundCodeContent(v string) *QuerySpeechResponseBodyDataSoundCodeConfig {
+	s.SoundCodeContent = &v
+	return s
+}
+
 type QuerySpeechResponse struct {
 	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *QuerySpeechResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -32887,7 +35190,212 @@ func (s *QuerySpeechResponse) SetBody(v *QuerySpeechResponseBody) *QuerySpeechRe
 	return s
 }
 
+type QuerySpeechDeviceRequest struct {
+	AvailableSpace      *string `json:"AvailableSpace,omitempty" xml:"AvailableSpace,omitempty"`
+	AvailableSpaceScope *string `json:"AvailableSpaceScope,omitempty" xml:"AvailableSpaceScope,omitempty"`
+	DeviceName          *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotInstanceId       *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	PageId              *int32  `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectCode         *string `json:"ProjectCode,omitempty" xml:"ProjectCode,omitempty"`
+}
+
+func (s QuerySpeechDeviceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySpeechDeviceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySpeechDeviceRequest) SetAvailableSpace(v string) *QuerySpeechDeviceRequest {
+	s.AvailableSpace = &v
+	return s
+}
+
+func (s *QuerySpeechDeviceRequest) SetAvailableSpaceScope(v string) *QuerySpeechDeviceRequest {
+	s.AvailableSpaceScope = &v
+	return s
+}
+
+func (s *QuerySpeechDeviceRequest) SetDeviceName(v string) *QuerySpeechDeviceRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QuerySpeechDeviceRequest) SetIotInstanceId(v string) *QuerySpeechDeviceRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *QuerySpeechDeviceRequest) SetPageId(v int32) *QuerySpeechDeviceRequest {
+	s.PageId = &v
+	return s
+}
+
+func (s *QuerySpeechDeviceRequest) SetPageSize(v int32) *QuerySpeechDeviceRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QuerySpeechDeviceRequest) SetProjectCode(v string) *QuerySpeechDeviceRequest {
+	s.ProjectCode = &v
+	return s
+}
+
+type QuerySpeechDeviceResponseBody struct {
+	Code         *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *QuerySpeechDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QuerySpeechDeviceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySpeechDeviceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySpeechDeviceResponseBody) SetCode(v string) *QuerySpeechDeviceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySpeechDeviceResponseBody) SetData(v *QuerySpeechDeviceResponseBodyData) *QuerySpeechDeviceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QuerySpeechDeviceResponseBody) SetErrorMessage(v string) *QuerySpeechDeviceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QuerySpeechDeviceResponseBody) SetRequestId(v string) *QuerySpeechDeviceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySpeechDeviceResponseBody) SetSuccess(v bool) *QuerySpeechDeviceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QuerySpeechDeviceResponseBodyData struct {
+	List     *QuerySpeechDeviceResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
+	PageId   *int32                                 `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	PageSize *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int32                                 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s QuerySpeechDeviceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySpeechDeviceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySpeechDeviceResponseBodyData) SetList(v *QuerySpeechDeviceResponseBodyDataList) *QuerySpeechDeviceResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *QuerySpeechDeviceResponseBodyData) SetPageId(v int32) *QuerySpeechDeviceResponseBodyData {
+	s.PageId = &v
+	return s
+}
+
+func (s *QuerySpeechDeviceResponseBodyData) SetPageSize(v int32) *QuerySpeechDeviceResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QuerySpeechDeviceResponseBodyData) SetTotal(v int32) *QuerySpeechDeviceResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type QuerySpeechDeviceResponseBodyDataList struct {
+	Items []*QuerySpeechDeviceResponseBodyDataListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+}
+
+func (s QuerySpeechDeviceResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySpeechDeviceResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySpeechDeviceResponseBodyDataList) SetItems(v []*QuerySpeechDeviceResponseBodyDataListItems) *QuerySpeechDeviceResponseBodyDataList {
+	s.Items = v
+	return s
+}
+
+type QuerySpeechDeviceResponseBodyDataListItems struct {
+	AvailableSpace *float32 `json:"AvailableSpace,omitempty" xml:"AvailableSpace,omitempty"`
+	DeviceName     *string  `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotId          *string  `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	ProductKey     *string  `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s QuerySpeechDeviceResponseBodyDataListItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySpeechDeviceResponseBodyDataListItems) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySpeechDeviceResponseBodyDataListItems) SetAvailableSpace(v float32) *QuerySpeechDeviceResponseBodyDataListItems {
+	s.AvailableSpace = &v
+	return s
+}
+
+func (s *QuerySpeechDeviceResponseBodyDataListItems) SetDeviceName(v string) *QuerySpeechDeviceResponseBodyDataListItems {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *QuerySpeechDeviceResponseBodyDataListItems) SetIotId(v string) *QuerySpeechDeviceResponseBodyDataListItems {
+	s.IotId = &v
+	return s
+}
+
+func (s *QuerySpeechDeviceResponseBodyDataListItems) SetProductKey(v string) *QuerySpeechDeviceResponseBodyDataListItems {
+	s.ProductKey = &v
+	return s
+}
+
+type QuerySpeechDeviceResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QuerySpeechDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySpeechDeviceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySpeechDeviceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySpeechDeviceResponse) SetHeaders(v map[string]*string) *QuerySpeechDeviceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySpeechDeviceResponse) SetBody(v *QuerySpeechDeviceResponseBody) *QuerySpeechDeviceResponse {
+	s.Body = v
+	return s
+}
+
 type QuerySpeechListRequest struct {
+	AudioFormat   *string `json:"AudioFormat,omitempty" xml:"AudioFormat,omitempty"`
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	PageId        *int32  `json:"PageId,omitempty" xml:"PageId,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -32900,6 +35408,11 @@ func (s QuerySpeechListRequest) String() string {
 
 func (s QuerySpeechListRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QuerySpeechListRequest) SetAudioFormat(v string) *QuerySpeechListRequest {
+	s.AudioFormat = &v
+	return s
 }
 
 func (s *QuerySpeechListRequest) SetIotInstanceId(v string) *QuerySpeechListRequest {
@@ -33016,12 +35529,13 @@ func (s *QuerySpeechListResponseBodyDataList) SetItems(v []*QuerySpeechListRespo
 }
 
 type QuerySpeechListResponseBodyDataListItems struct {
-	BizCode    *string                                             `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
-	SpeechCode *string                                             `json:"SpeechCode,omitempty" xml:"SpeechCode,omitempty"`
-	SpeechList *QuerySpeechListResponseBodyDataListItemsSpeechList `json:"SpeechList,omitempty" xml:"SpeechList,omitempty" type:"Struct"`
-	SpeechType *string                                             `json:"SpeechType,omitempty" xml:"SpeechType,omitempty"`
-	Text       *string                                             `json:"Text,omitempty" xml:"Text,omitempty"`
-	Voice      *string                                             `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	AudioFormat *string                                             `json:"AudioFormat,omitempty" xml:"AudioFormat,omitempty"`
+	BizCode     *string                                             `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
+	SpeechCode  *string                                             `json:"SpeechCode,omitempty" xml:"SpeechCode,omitempty"`
+	SpeechList  *QuerySpeechListResponseBodyDataListItemsSpeechList `json:"SpeechList,omitempty" xml:"SpeechList,omitempty" type:"Struct"`
+	SpeechType  *string                                             `json:"SpeechType,omitempty" xml:"SpeechType,omitempty"`
+	Text        *string                                             `json:"Text,omitempty" xml:"Text,omitempty"`
+	Voice       *string                                             `json:"Voice,omitempty" xml:"Voice,omitempty"`
 }
 
 func (s QuerySpeechListResponseBodyDataListItems) String() string {
@@ -33030,6 +35544,11 @@ func (s QuerySpeechListResponseBodyDataListItems) String() string {
 
 func (s QuerySpeechListResponseBodyDataListItems) GoString() string {
 	return s.String()
+}
+
+func (s *QuerySpeechListResponseBodyDataListItems) SetAudioFormat(v string) *QuerySpeechListResponseBodyDataListItems {
+	s.AudioFormat = &v
+	return s
 }
 
 func (s *QuerySpeechListResponseBodyDataListItems) SetBizCode(v string) *QuerySpeechListResponseBodyDataListItems {
@@ -35980,7 +38499,7 @@ func (s *QueryTopicReverseRouteTableResponseBody) SetSuccess(v bool) *QueryTopic
 }
 
 type QueryTopicReverseRouteTableResponseBodySrcTopics struct {
-	Topic []map[string]*string `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Repeated"`
+	Topic []map[string]interface{} `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Repeated"`
 }
 
 func (s QueryTopicReverseRouteTableResponseBodySrcTopics) String() string {
@@ -35991,7 +38510,7 @@ func (s QueryTopicReverseRouteTableResponseBodySrcTopics) GoString() string {
 	return s.String()
 }
 
-func (s *QueryTopicReverseRouteTableResponseBodySrcTopics) SetTopic(v []map[string]*string) *QueryTopicReverseRouteTableResponseBodySrcTopics {
+func (s *QueryTopicReverseRouteTableResponseBodySrcTopics) SetTopic(v []map[string]interface{}) *QueryTopicReverseRouteTableResponseBodySrcTopics {
 	s.Topic = v
 	return s
 }
@@ -36084,7 +38603,7 @@ func (s *QueryTopicRouteTableResponseBody) SetSuccess(v bool) *QueryTopicRouteTa
 }
 
 type QueryTopicRouteTableResponseBodyDstTopics struct {
-	Topic []map[string]*string `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Repeated"`
+	Topic []map[string]interface{} `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Repeated"`
 }
 
 func (s QueryTopicRouteTableResponseBodyDstTopics) String() string {
@@ -36095,7 +38614,7 @@ func (s QueryTopicRouteTableResponseBodyDstTopics) GoString() string {
 	return s.String()
 }
 
-func (s *QueryTopicRouteTableResponseBodyDstTopics) SetTopic(v []map[string]*string) *QueryTopicRouteTableResponseBodyDstTopics {
+func (s *QueryTopicRouteTableResponseBodyDstTopics) SetTopic(v []map[string]interface{}) *QueryTopicRouteTableResponseBodyDstTopics {
 	s.Topic = v
 	return s
 }
@@ -37270,6 +39789,93 @@ func (s *ResetThingResponse) SetBody(v *ResetThingResponseBody) *ResetThingRespo
 	return s
 }
 
+type ReupgradeOTATaskRequest struct {
+	IotInstanceId *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	JobId         *string   `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	TaskId        []*string `json:"TaskId,omitempty" xml:"TaskId,omitempty" type:"Repeated"`
+}
+
+func (s ReupgradeOTATaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReupgradeOTATaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReupgradeOTATaskRequest) SetIotInstanceId(v string) *ReupgradeOTATaskRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *ReupgradeOTATaskRequest) SetJobId(v string) *ReupgradeOTATaskRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *ReupgradeOTATaskRequest) SetTaskId(v []*string) *ReupgradeOTATaskRequest {
+	s.TaskId = v
+	return s
+}
+
+type ReupgradeOTATaskResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ReupgradeOTATaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReupgradeOTATaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReupgradeOTATaskResponseBody) SetCode(v string) *ReupgradeOTATaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ReupgradeOTATaskResponseBody) SetErrorMessage(v string) *ReupgradeOTATaskResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ReupgradeOTATaskResponseBody) SetRequestId(v string) *ReupgradeOTATaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReupgradeOTATaskResponseBody) SetSuccess(v bool) *ReupgradeOTATaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ReupgradeOTATaskResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ReupgradeOTATaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReupgradeOTATaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReupgradeOTATaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReupgradeOTATaskResponse) SetHeaders(v map[string]*string) *ReupgradeOTATaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReupgradeOTATaskResponse) SetBody(v *ReupgradeOTATaskResponseBody) *ReupgradeOTATaskResponse {
+	s.Body = v
+	return s
+}
+
 type SaveDevicePropRequest struct {
 	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
@@ -37505,6 +40111,7 @@ func (s *SetDeviceDesiredPropertyResponse) SetBody(v *SetDeviceDesiredPropertyRe
 
 type SetDeviceGroupTagsRequest struct {
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupType     *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	TagString     *string `json:"TagString,omitempty" xml:"TagString,omitempty"`
 }
@@ -37519,6 +40126,11 @@ func (s SetDeviceGroupTagsRequest) GoString() string {
 
 func (s *SetDeviceGroupTagsRequest) SetGroupId(v string) *SetDeviceGroupTagsRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *SetDeviceGroupTagsRequest) SetGroupType(v string) *SetDeviceGroupTagsRequest {
+	s.GroupType = &v
 	return s
 }
 
@@ -38265,11 +40877,13 @@ func (s *SetupStudioAppAuthModeOpenResponse) SetBody(v *SetupStudioAppAuthModeOp
 }
 
 type SpeechByCombinationRequest struct {
+	AudioFormat     *string   `json:"AudioFormat,omitempty" xml:"AudioFormat,omitempty"`
 	CombinationList []*string `json:"CombinationList,omitempty" xml:"CombinationList,omitempty" type:"Repeated"`
 	DeviceName      *string   `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	IotId           *string   `json:"IotId,omitempty" xml:"IotId,omitempty"`
 	IotInstanceId   *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	ProductKey      *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	SpeechId        *string   `json:"SpeechId,omitempty" xml:"SpeechId,omitempty"`
 }
 
 func (s SpeechByCombinationRequest) String() string {
@@ -38278,6 +40892,11 @@ func (s SpeechByCombinationRequest) String() string {
 
 func (s SpeechByCombinationRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SpeechByCombinationRequest) SetAudioFormat(v string) *SpeechByCombinationRequest {
+	s.AudioFormat = &v
+	return s
 }
 
 func (s *SpeechByCombinationRequest) SetCombinationList(v []*string) *SpeechByCombinationRequest {
@@ -38302,6 +40921,11 @@ func (s *SpeechByCombinationRequest) SetIotInstanceId(v string) *SpeechByCombina
 
 func (s *SpeechByCombinationRequest) SetProductKey(v string) *SpeechByCombinationRequest {
 	s.ProductKey = &v
+	return s
+}
+
+func (s *SpeechByCombinationRequest) SetSpeechId(v string) *SpeechByCombinationRequest {
+	s.SpeechId = &v
 	return s
 }
 
@@ -38359,6 +40983,135 @@ func (s *SpeechByCombinationResponse) SetHeaders(v map[string]*string) *SpeechBy
 }
 
 func (s *SpeechByCombinationResponse) SetBody(v *SpeechByCombinationResponseBody) *SpeechByCombinationResponse {
+	s.Body = v
+	return s
+}
+
+type SpeechBySynthesisRequest struct {
+	AudioFormat   *string `json:"AudioFormat,omitempty" xml:"AudioFormat,omitempty"`
+	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	SpeechId      *string `json:"SpeechId,omitempty" xml:"SpeechId,omitempty"`
+	SpeechRate    *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	Text          *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	Voice         *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	Volume        *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s SpeechBySynthesisRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SpeechBySynthesisRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SpeechBySynthesisRequest) SetAudioFormat(v string) *SpeechBySynthesisRequest {
+	s.AudioFormat = &v
+	return s
+}
+
+func (s *SpeechBySynthesisRequest) SetDeviceName(v string) *SpeechBySynthesisRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *SpeechBySynthesisRequest) SetIotId(v string) *SpeechBySynthesisRequest {
+	s.IotId = &v
+	return s
+}
+
+func (s *SpeechBySynthesisRequest) SetIotInstanceId(v string) *SpeechBySynthesisRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *SpeechBySynthesisRequest) SetProductKey(v string) *SpeechBySynthesisRequest {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *SpeechBySynthesisRequest) SetSpeechId(v string) *SpeechBySynthesisRequest {
+	s.SpeechId = &v
+	return s
+}
+
+func (s *SpeechBySynthesisRequest) SetSpeechRate(v int32) *SpeechBySynthesisRequest {
+	s.SpeechRate = &v
+	return s
+}
+
+func (s *SpeechBySynthesisRequest) SetText(v string) *SpeechBySynthesisRequest {
+	s.Text = &v
+	return s
+}
+
+func (s *SpeechBySynthesisRequest) SetVoice(v string) *SpeechBySynthesisRequest {
+	s.Voice = &v
+	return s
+}
+
+func (s *SpeechBySynthesisRequest) SetVolume(v int32) *SpeechBySynthesisRequest {
+	s.Volume = &v
+	return s
+}
+
+type SpeechBySynthesisResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SpeechBySynthesisResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SpeechBySynthesisResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SpeechBySynthesisResponseBody) SetCode(v string) *SpeechBySynthesisResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SpeechBySynthesisResponseBody) SetErrorMessage(v string) *SpeechBySynthesisResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SpeechBySynthesisResponseBody) SetRequestId(v string) *SpeechBySynthesisResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SpeechBySynthesisResponseBody) SetSuccess(v bool) *SpeechBySynthesisResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SpeechBySynthesisResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SpeechBySynthesisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SpeechBySynthesisResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SpeechBySynthesisResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SpeechBySynthesisResponse) SetHeaders(v map[string]*string) *SpeechBySynthesisResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SpeechBySynthesisResponse) SetBody(v *SpeechBySynthesisResponseBody) *SpeechBySynthesisResponse {
 	s.Body = v
 	return s
 }
@@ -38653,12 +41406,107 @@ func (s *StopRuleResponse) SetBody(v *StopRuleResponseBody) *StopRuleResponse {
 	return s
 }
 
+type SubscribeTopicRequest struct {
+	DeviceName    *string   `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	IotInstanceId *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey    *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	Topic         []*string `json:"Topic,omitempty" xml:"Topic,omitempty" type:"Repeated"`
+}
+
+func (s SubscribeTopicRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubscribeTopicRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SubscribeTopicRequest) SetDeviceName(v string) *SubscribeTopicRequest {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *SubscribeTopicRequest) SetIotInstanceId(v string) *SubscribeTopicRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *SubscribeTopicRequest) SetProductKey(v string) *SubscribeTopicRequest {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *SubscribeTopicRequest) SetTopic(v []*string) *SubscribeTopicRequest {
+	s.Topic = v
+	return s
+}
+
+type SubscribeTopicResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SubscribeTopicResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubscribeTopicResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SubscribeTopicResponseBody) SetCode(v string) *SubscribeTopicResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SubscribeTopicResponseBody) SetErrorMessage(v string) *SubscribeTopicResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SubscribeTopicResponseBody) SetRequestId(v string) *SubscribeTopicResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SubscribeTopicResponseBody) SetSuccess(v bool) *SubscribeTopicResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SubscribeTopicResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SubscribeTopicResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SubscribeTopicResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SubscribeTopicResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SubscribeTopicResponse) SetHeaders(v map[string]*string) *SubscribeTopicResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SubscribeTopicResponse) SetBody(v *SubscribeTopicResponseBody) *SubscribeTopicResponse {
+	s.Body = v
+	return s
+}
+
 type SyncSpeechByCombinationRequest struct {
+	AudioFormat     *string   `json:"AudioFormat,omitempty" xml:"AudioFormat,omitempty"`
 	CombinationList []*string `json:"CombinationList,omitempty" xml:"CombinationList,omitempty" type:"Repeated"`
 	DeviceName      *string   `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	IotId           *string   `json:"IotId,omitempty" xml:"IotId,omitempty"`
 	IotInstanceId   *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	ProductKey      *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	SpeechId        *string   `json:"SpeechId,omitempty" xml:"SpeechId,omitempty"`
 }
 
 func (s SyncSpeechByCombinationRequest) String() string {
@@ -38667,6 +41515,11 @@ func (s SyncSpeechByCombinationRequest) String() string {
 
 func (s SyncSpeechByCombinationRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SyncSpeechByCombinationRequest) SetAudioFormat(v string) *SyncSpeechByCombinationRequest {
+	s.AudioFormat = &v
+	return s
 }
 
 func (s *SyncSpeechByCombinationRequest) SetCombinationList(v []*string) *SyncSpeechByCombinationRequest {
@@ -38691,6 +41544,11 @@ func (s *SyncSpeechByCombinationRequest) SetIotInstanceId(v string) *SyncSpeechB
 
 func (s *SyncSpeechByCombinationRequest) SetProductKey(v string) *SyncSpeechByCombinationRequest {
 	s.ProductKey = &v
+	return s
+}
+
+func (s *SyncSpeechByCombinationRequest) SetSpeechId(v string) *SyncSpeechByCombinationRequest {
+	s.SpeechId = &v
 	return s
 }
 
@@ -38736,6 +41594,7 @@ func (s *SyncSpeechByCombinationResponseBody) SetSuccess(v bool) *SyncSpeechByCo
 }
 
 type SyncSpeechByCombinationResponseBodyData struct {
+	Detail             *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	DeviceErrorCode    *string `json:"DeviceErrorCode,omitempty" xml:"DeviceErrorCode,omitempty"`
 	DeviceErrorMessage *string `json:"DeviceErrorMessage,omitempty" xml:"DeviceErrorMessage,omitempty"`
 	Id                 *string `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -38750,6 +41609,11 @@ func (s SyncSpeechByCombinationResponseBodyData) String() string {
 
 func (s SyncSpeechByCombinationResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *SyncSpeechByCombinationResponseBodyData) SetDetail(v string) *SyncSpeechByCombinationResponseBodyData {
+	s.Detail = &v
+	return s
 }
 
 func (s *SyncSpeechByCombinationResponseBodyData) SetDeviceErrorCode(v string) *SyncSpeechByCombinationResponseBodyData {
@@ -38806,13 +41670,16 @@ func (s *SyncSpeechByCombinationResponse) SetBody(v *SyncSpeechByCombinationResp
 }
 
 type TestSpeechRequest struct {
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	ProjectCode   *string `json:"ProjectCode,omitempty" xml:"ProjectCode,omitempty"`
-	SpeechRate    *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	SpeechType    *string `json:"SpeechType,omitempty" xml:"SpeechType,omitempty"`
-	Text          *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	Voice         *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
-	Volume        *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	AudioFormat     *string                `json:"AudioFormat,omitempty" xml:"AudioFormat,omitempty"`
+	EnableSoundCode *bool                  `json:"EnableSoundCode,omitempty" xml:"EnableSoundCode,omitempty"`
+	IotInstanceId   *string                `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProjectCode     *string                `json:"ProjectCode,omitempty" xml:"ProjectCode,omitempty"`
+	SoundCodeConfig map[string]interface{} `json:"SoundCodeConfig,omitempty" xml:"SoundCodeConfig,omitempty"`
+	SpeechRate      *int32                 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	SpeechType      *string                `json:"SpeechType,omitempty" xml:"SpeechType,omitempty"`
+	Text            *string                `json:"Text,omitempty" xml:"Text,omitempty"`
+	Voice           *string                `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	Volume          *int32                 `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
 func (s TestSpeechRequest) String() string {
@@ -38823,6 +41690,16 @@ func (s TestSpeechRequest) GoString() string {
 	return s.String()
 }
 
+func (s *TestSpeechRequest) SetAudioFormat(v string) *TestSpeechRequest {
+	s.AudioFormat = &v
+	return s
+}
+
+func (s *TestSpeechRequest) SetEnableSoundCode(v bool) *TestSpeechRequest {
+	s.EnableSoundCode = &v
+	return s
+}
+
 func (s *TestSpeechRequest) SetIotInstanceId(v string) *TestSpeechRequest {
 	s.IotInstanceId = &v
 	return s
@@ -38830,6 +41707,11 @@ func (s *TestSpeechRequest) SetIotInstanceId(v string) *TestSpeechRequest {
 
 func (s *TestSpeechRequest) SetProjectCode(v string) *TestSpeechRequest {
 	s.ProjectCode = &v
+	return s
+}
+
+func (s *TestSpeechRequest) SetSoundCodeConfig(v map[string]interface{}) *TestSpeechRequest {
+	s.SoundCodeConfig = v
 	return s
 }
 
@@ -38854,6 +41736,77 @@ func (s *TestSpeechRequest) SetVoice(v string) *TestSpeechRequest {
 }
 
 func (s *TestSpeechRequest) SetVolume(v int32) *TestSpeechRequest {
+	s.Volume = &v
+	return s
+}
+
+type TestSpeechShrinkRequest struct {
+	AudioFormat           *string `json:"AudioFormat,omitempty" xml:"AudioFormat,omitempty"`
+	EnableSoundCode       *bool   `json:"EnableSoundCode,omitempty" xml:"EnableSoundCode,omitempty"`
+	IotInstanceId         *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProjectCode           *string `json:"ProjectCode,omitempty" xml:"ProjectCode,omitempty"`
+	SoundCodeConfigShrink *string `json:"SoundCodeConfig,omitempty" xml:"SoundCodeConfig,omitempty"`
+	SpeechRate            *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	SpeechType            *string `json:"SpeechType,omitempty" xml:"SpeechType,omitempty"`
+	Text                  *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	Voice                 *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	Volume                *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s TestSpeechShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestSpeechShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TestSpeechShrinkRequest) SetAudioFormat(v string) *TestSpeechShrinkRequest {
+	s.AudioFormat = &v
+	return s
+}
+
+func (s *TestSpeechShrinkRequest) SetEnableSoundCode(v bool) *TestSpeechShrinkRequest {
+	s.EnableSoundCode = &v
+	return s
+}
+
+func (s *TestSpeechShrinkRequest) SetIotInstanceId(v string) *TestSpeechShrinkRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *TestSpeechShrinkRequest) SetProjectCode(v string) *TestSpeechShrinkRequest {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *TestSpeechShrinkRequest) SetSoundCodeConfigShrink(v string) *TestSpeechShrinkRequest {
+	s.SoundCodeConfigShrink = &v
+	return s
+}
+
+func (s *TestSpeechShrinkRequest) SetSpeechRate(v int32) *TestSpeechShrinkRequest {
+	s.SpeechRate = &v
+	return s
+}
+
+func (s *TestSpeechShrinkRequest) SetSpeechType(v string) *TestSpeechShrinkRequest {
+	s.SpeechType = &v
+	return s
+}
+
+func (s *TestSpeechShrinkRequest) SetText(v string) *TestSpeechShrinkRequest {
+	s.Text = &v
+	return s
+}
+
+func (s *TestSpeechShrinkRequest) SetVoice(v string) *TestSpeechShrinkRequest {
+	s.Voice = &v
+	return s
+}
+
+func (s *TestSpeechShrinkRequest) SetVolume(v int32) *TestSpeechShrinkRequest {
 	s.Volume = &v
 	return s
 }
@@ -38935,6 +41888,93 @@ func (s *TestSpeechResponse) SetHeaders(v map[string]*string) *TestSpeechRespons
 }
 
 func (s *TestSpeechResponse) SetBody(v *TestSpeechResponseBody) *TestSpeechResponse {
+	s.Body = v
+	return s
+}
+
+type TransformClientIdRequest struct {
+	ClientId      *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+}
+
+func (s TransformClientIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransformClientIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TransformClientIdRequest) SetClientId(v string) *TransformClientIdRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *TransformClientIdRequest) SetIotId(v string) *TransformClientIdRequest {
+	s.IotId = &v
+	return s
+}
+
+func (s *TransformClientIdRequest) SetIotInstanceId(v string) *TransformClientIdRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+type TransformClientIdResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s TransformClientIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransformClientIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TransformClientIdResponseBody) SetCode(v string) *TransformClientIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TransformClientIdResponseBody) SetErrorMessage(v string) *TransformClientIdResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *TransformClientIdResponseBody) SetRequestId(v string) *TransformClientIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TransformClientIdResponseBody) SetSuccess(v bool) *TransformClientIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type TransformClientIdResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *TransformClientIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TransformClientIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransformClientIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TransformClientIdResponse) SetHeaders(v map[string]*string) *TransformClientIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TransformClientIdResponse) SetBody(v *TransformClientIdResponseBody) *TransformClientIdResponse {
 	s.Body = v
 	return s
 }
@@ -39458,6 +42498,7 @@ func (s *UpdateConsumerGroupResponse) SetBody(v *UpdateConsumerGroupResponseBody
 type UpdateDeviceGroupRequest struct {
 	GroupDesc     *string `json:"GroupDesc,omitempty" xml:"GroupDesc,omitempty"`
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupType     *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 }
 
@@ -39476,6 +42517,11 @@ func (s *UpdateDeviceGroupRequest) SetGroupDesc(v string) *UpdateDeviceGroupRequ
 
 func (s *UpdateDeviceGroupRequest) SetGroupId(v string) *UpdateDeviceGroupRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *UpdateDeviceGroupRequest) SetGroupType(v string) *UpdateDeviceGroupRequest {
+	s.GroupType = &v
 	return s
 }
 
@@ -40139,11 +43185,11 @@ func (s *UpdateEdgeInstanceMessageRoutingResponse) SetBody(v *UpdateEdgeInstance
 }
 
 type UpdateJobRequest struct {
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	RolloutConfig *string `json:"RolloutConfig,omitempty" xml:"RolloutConfig,omitempty"`
-	TimeoutConfig *string `json:"TimeoutConfig,omitempty" xml:"TimeoutConfig,omitempty"`
+	Description   *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	IotInstanceId *string                `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	JobId         *string                `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RolloutConfig map[string]interface{} `json:"RolloutConfig,omitempty" xml:"RolloutConfig,omitempty"`
+	TimeoutConfig map[string]interface{} `json:"TimeoutConfig,omitempty" xml:"TimeoutConfig,omitempty"`
 }
 
 func (s UpdateJobRequest) String() string {
@@ -40169,13 +43215,54 @@ func (s *UpdateJobRequest) SetJobId(v string) *UpdateJobRequest {
 	return s
 }
 
-func (s *UpdateJobRequest) SetRolloutConfig(v string) *UpdateJobRequest {
-	s.RolloutConfig = &v
+func (s *UpdateJobRequest) SetRolloutConfig(v map[string]interface{}) *UpdateJobRequest {
+	s.RolloutConfig = v
 	return s
 }
 
-func (s *UpdateJobRequest) SetTimeoutConfig(v string) *UpdateJobRequest {
-	s.TimeoutConfig = &v
+func (s *UpdateJobRequest) SetTimeoutConfig(v map[string]interface{}) *UpdateJobRequest {
+	s.TimeoutConfig = v
+	return s
+}
+
+type UpdateJobShrinkRequest struct {
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IotInstanceId       *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	JobId               *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	RolloutConfigShrink *string `json:"RolloutConfig,omitempty" xml:"RolloutConfig,omitempty"`
+	TimeoutConfigShrink *string `json:"TimeoutConfig,omitempty" xml:"TimeoutConfig,omitempty"`
+}
+
+func (s UpdateJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateJobShrinkRequest) SetDescription(v string) *UpdateJobShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateJobShrinkRequest) SetIotInstanceId(v string) *UpdateJobShrinkRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *UpdateJobShrinkRequest) SetJobId(v string) *UpdateJobShrinkRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *UpdateJobShrinkRequest) SetRolloutConfigShrink(v string) *UpdateJobShrinkRequest {
+	s.RolloutConfigShrink = &v
+	return s
+}
+
+func (s *UpdateJobShrinkRequest) SetTimeoutConfigShrink(v string) *UpdateJobShrinkRequest {
+	s.TimeoutConfigShrink = &v
 	return s
 }
 
@@ -41099,12 +44186,14 @@ func (s *UpdateSceneRuleResponse) SetBody(v *UpdateSceneRuleResponseBody) *Updat
 }
 
 type UpdateSpeechRequest struct {
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	ProjectCode   *string `json:"ProjectCode,omitempty" xml:"ProjectCode,omitempty"`
-	SpeechCode    *string `json:"SpeechCode,omitempty" xml:"SpeechCode,omitempty"`
-	SpeechRate    *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
-	Voice         *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
-	Volume        *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+	EnableSoundCode *bool                  `json:"EnableSoundCode,omitempty" xml:"EnableSoundCode,omitempty"`
+	IotInstanceId   *string                `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProjectCode     *string                `json:"ProjectCode,omitempty" xml:"ProjectCode,omitempty"`
+	SoundCodeConfig map[string]interface{} `json:"SoundCodeConfig,omitempty" xml:"SoundCodeConfig,omitempty"`
+	SpeechCode      *string                `json:"SpeechCode,omitempty" xml:"SpeechCode,omitempty"`
+	SpeechRate      *int32                 `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	Voice           *string                `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	Volume          *int32                 `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
 func (s UpdateSpeechRequest) String() string {
@@ -41115,6 +44204,11 @@ func (s UpdateSpeechRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateSpeechRequest) SetEnableSoundCode(v bool) *UpdateSpeechRequest {
+	s.EnableSoundCode = &v
+	return s
+}
+
 func (s *UpdateSpeechRequest) SetIotInstanceId(v string) *UpdateSpeechRequest {
 	s.IotInstanceId = &v
 	return s
@@ -41122,6 +44216,11 @@ func (s *UpdateSpeechRequest) SetIotInstanceId(v string) *UpdateSpeechRequest {
 
 func (s *UpdateSpeechRequest) SetProjectCode(v string) *UpdateSpeechRequest {
 	s.ProjectCode = &v
+	return s
+}
+
+func (s *UpdateSpeechRequest) SetSoundCodeConfig(v map[string]interface{}) *UpdateSpeechRequest {
+	s.SoundCodeConfig = v
 	return s
 }
 
@@ -41141,6 +44240,65 @@ func (s *UpdateSpeechRequest) SetVoice(v string) *UpdateSpeechRequest {
 }
 
 func (s *UpdateSpeechRequest) SetVolume(v int32) *UpdateSpeechRequest {
+	s.Volume = &v
+	return s
+}
+
+type UpdateSpeechShrinkRequest struct {
+	EnableSoundCode       *bool   `json:"EnableSoundCode,omitempty" xml:"EnableSoundCode,omitempty"`
+	IotInstanceId         *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProjectCode           *string `json:"ProjectCode,omitempty" xml:"ProjectCode,omitempty"`
+	SoundCodeConfigShrink *string `json:"SoundCodeConfig,omitempty" xml:"SoundCodeConfig,omitempty"`
+	SpeechCode            *string `json:"SpeechCode,omitempty" xml:"SpeechCode,omitempty"`
+	SpeechRate            *int32  `json:"SpeechRate,omitempty" xml:"SpeechRate,omitempty"`
+	Voice                 *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	Volume                *int32  `json:"Volume,omitempty" xml:"Volume,omitempty"`
+}
+
+func (s UpdateSpeechShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSpeechShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSpeechShrinkRequest) SetEnableSoundCode(v bool) *UpdateSpeechShrinkRequest {
+	s.EnableSoundCode = &v
+	return s
+}
+
+func (s *UpdateSpeechShrinkRequest) SetIotInstanceId(v string) *UpdateSpeechShrinkRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *UpdateSpeechShrinkRequest) SetProjectCode(v string) *UpdateSpeechShrinkRequest {
+	s.ProjectCode = &v
+	return s
+}
+
+func (s *UpdateSpeechShrinkRequest) SetSoundCodeConfigShrink(v string) *UpdateSpeechShrinkRequest {
+	s.SoundCodeConfigShrink = &v
+	return s
+}
+
+func (s *UpdateSpeechShrinkRequest) SetSpeechCode(v string) *UpdateSpeechShrinkRequest {
+	s.SpeechCode = &v
+	return s
+}
+
+func (s *UpdateSpeechShrinkRequest) SetSpeechRate(v int32) *UpdateSpeechShrinkRequest {
+	s.SpeechRate = &v
+	return s
+}
+
+func (s *UpdateSpeechShrinkRequest) SetVoice(v string) *UpdateSpeechShrinkRequest {
+	s.Voice = &v
+	return s
+}
+
+func (s *UpdateSpeechShrinkRequest) SetVolume(v int32) *UpdateSpeechShrinkRequest {
 	s.Volume = &v
 	return s
 }
@@ -41467,93 +44625,6 @@ func (s *UpdateThingModelResponse) SetBody(v *UpdateThingModelResponseBody) *Upd
 	return s
 }
 
-type UpdateThingModelValidationConfigRequest struct {
-	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
-	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
-	ValidateType  *int32  `json:"ValidateType,omitempty" xml:"ValidateType,omitempty"`
-}
-
-func (s UpdateThingModelValidationConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateThingModelValidationConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateThingModelValidationConfigRequest) SetIotInstanceId(v string) *UpdateThingModelValidationConfigRequest {
-	s.IotInstanceId = &v
-	return s
-}
-
-func (s *UpdateThingModelValidationConfigRequest) SetProductKey(v string) *UpdateThingModelValidationConfigRequest {
-	s.ProductKey = &v
-	return s
-}
-
-func (s *UpdateThingModelValidationConfigRequest) SetValidateType(v int32) *UpdateThingModelValidationConfigRequest {
-	s.ValidateType = &v
-	return s
-}
-
-type UpdateThingModelValidationConfigResponseBody struct {
-	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s UpdateThingModelValidationConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateThingModelValidationConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateThingModelValidationConfigResponseBody) SetCode(v string) *UpdateThingModelValidationConfigResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *UpdateThingModelValidationConfigResponseBody) SetErrorMessage(v string) *UpdateThingModelValidationConfigResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *UpdateThingModelValidationConfigResponseBody) SetRequestId(v string) *UpdateThingModelValidationConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *UpdateThingModelValidationConfigResponseBody) SetSuccess(v bool) *UpdateThingModelValidationConfigResponseBody {
-	s.Success = &v
-	return s
-}
-
-type UpdateThingModelValidationConfigResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateThingModelValidationConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateThingModelValidationConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateThingModelValidationConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateThingModelValidationConfigResponse) SetHeaders(v map[string]*string) *UpdateThingModelValidationConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateThingModelValidationConfigResponse) SetBody(v *UpdateThingModelValidationConfigResponseBody) *UpdateThingModelValidationConfigResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateThingScriptRequest struct {
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
@@ -41795,6 +44866,64 @@ func (client *Client) AddDataForApiSource(request *AddDataForApiSourceRequest) (
 	return _result, _err
 }
 
+func (client *Client) BatchAddDataForApiSourceWithOptions(tmpReq *BatchAddDataForApiSourceRequest, runtime *util.RuntimeOptions) (_result *BatchAddDataForApiSourceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &BatchAddDataForApiSourceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ContentList)) {
+		request.ContentListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ContentList, tea.String("ContentList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentListShrink)) {
+		query["ContentList"] = request.ContentListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchAddDataForApiSource"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchAddDataForApiSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchAddDataForApiSource(request *BatchAddDataForApiSourceRequest) (_result *BatchAddDataForApiSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchAddDataForApiSourceResponse{}
+	_body, _err := client.BatchAddDataForApiSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) BatchAddDeviceGroupRelationsWithOptions(request *BatchAddDeviceGroupRelationsRequest, runtime *util.RuntimeOptions) (_result *BatchAddDeviceGroupRelationsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -41964,8 +45093,21 @@ func (client *Client) BatchBindDevicesIntoProjectWithOptions(request *BatchBindD
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Devices)) {
+		body["Devices"] = request.Devices
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.Devices,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchBindDevicesIntoProject"),
@@ -42003,8 +45145,21 @@ func (client *Client) BatchBindProductsIntoProjectWithOptions(request *BatchBind
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKeys)) {
+		body["ProductKeys"] = request.ProductKeys
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.IotInstanceId,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchBindProductsIntoProject"),
@@ -43062,8 +46217,21 @@ func (client *Client) BatchUnbindProjectDevicesWithOptions(request *BatchUnbindP
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Devices)) {
+		body["Devices"] = request.Devices
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.Devices,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchUnbindProjectDevices"),
@@ -43101,8 +46269,21 @@ func (client *Client) BatchUnbindProjectProductsWithOptions(request *BatchUnbind
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKeys)) {
+		body["ProductKeys"] = request.ProductKeys
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.IotInstanceId,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("BatchUnbindProjectProducts"),
@@ -43791,6 +46972,54 @@ func (client *Client) ClearEdgeInstanceDriverConfigs(request *ClearEdgeInstanceD
 	return _result, _err
 }
 
+func (client *Client) CloseDeviceTunnelWithOptions(request *CloseDeviceTunnelRequest, runtime *util.RuntimeOptions) (_result *CloseDeviceTunnelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TunnelId)) {
+		query["TunnelId"] = request.TunnelId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CloseDeviceTunnel"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CloseDeviceTunnelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CloseDeviceTunnel(request *CloseDeviceTunnelRequest) (_result *CloseDeviceTunnelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CloseDeviceTunnelResponse{}
+	_body, _err := client.CloseDeviceTunnelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CloseEdgeInstanceDeploymentWithOptions(request *CloseEdgeInstanceDeploymentRequest, runtime *util.RuntimeOptions) (_result *CloseEdgeInstanceDeploymentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44052,8 +47281,41 @@ func (client *Client) CreateDataAPIServiceWithOptions(request *CreateDataAPIServ
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiPath)) {
+		body["ApiPath"] = request.ApiPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Desc)) {
+		body["Desc"] = request.Desc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisplayName)) {
+		body["DisplayName"] = request.DisplayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginSql)) {
+		body["OriginSql"] = request.OriginSql
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestParam)) {
+		body["RequestParam"] = request.RequestParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResponseParam)) {
+		body["ResponseParam"] = request.ResponseParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateSql)) {
+		body["TemplateSql"] = request.TemplateSql
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.ApiPath,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDataAPIService"),
@@ -44091,8 +47353,37 @@ func (client *Client) CreateDeviceDistributeJobWithOptions(request *CreateDevice
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		body["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		body["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceInstanceId)) {
+		body["SourceInstanceId"] = request.SourceInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Strategy)) {
+		body["Strategy"] = request.Strategy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetAliyunId)) {
+		body["TargetAliyunId"] = request.TargetAliyunId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetInstanceConfig)) {
+		body["TargetInstanceConfig"] = request.TargetInstanceConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetUid)) {
+		body["TargetUid"] = request.TargetUid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.DeviceName,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDeviceDistributeJob"),
@@ -44118,6 +47409,62 @@ func (client *Client) CreateDeviceDistributeJob(request *CreateDeviceDistributeJ
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDeviceDistributeJobResponse{}
 	_body, _err := client.CreateDeviceDistributeJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDeviceDynamicGroupWithOptions(request *CreateDeviceDynamicGroupRequest, runtime *util.RuntimeOptions) (_result *CreateDeviceDynamicGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DynamicGroupExpression)) {
+		query["DynamicGroupExpression"] = request.DynamicGroupExpression
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupDesc)) {
+		query["GroupDesc"] = request.GroupDesc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDeviceDynamicGroup"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDeviceDynamicGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDeviceDynamicGroup(request *CreateDeviceDynamicGroupRequest) (_result *CreateDeviceDynamicGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDeviceDynamicGroupResponse{}
+	_body, _err := client.CreateDeviceDynamicGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44174,6 +47521,70 @@ func (client *Client) CreateDeviceGroup(request *CreateDeviceGroupRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDeviceGroupResponse{}
 	_body, _err := client.CreateDeviceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDeviceTunnelWithOptions(request *CreateDeviceTunnelRequest, runtime *util.RuntimeOptions) (_result *CreateDeviceTunnelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		query["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		query["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Udi)) {
+		query["Udi"] = request.Udi
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDeviceTunnel"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDeviceTunnelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDeviceTunnel(request *CreateDeviceTunnelRequest) (_result *CreateDeviceTunnelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDeviceTunnelResponse{}
+	_body, _err := client.CreateDeviceTunnelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -44633,11 +48044,29 @@ func (client *Client) CreateEdgeOssPreSignedAddress(request *CreateEdgeOssPreSig
 	return _result, _err
 }
 
-func (client *Client) CreateJobWithOptions(request *CreateJobRequest, runtime *util.RuntimeOptions) (_result *CreateJobResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateJobWithOptions(tmpReq *CreateJobRequest, runtime *util.RuntimeOptions) (_result *CreateJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.JobFile)) {
+		request.JobFileShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.JobFile, tea.String("JobFile"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RolloutConfig)) {
+		request.RolloutConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RolloutConfig, tea.String("RolloutConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TargetConfig)) {
+		request.TargetConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TargetConfig, tea.String("TargetConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TimeoutConfig)) {
+		request.TimeoutConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TimeoutConfig, tea.String("TimeoutConfig"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
@@ -44651,28 +48080,28 @@ func (client *Client) CreateJobWithOptions(request *CreateJobRequest, runtime *u
 		query["JobDocument"] = request.JobDocument
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.JobFile)) {
-		query["JobFile"] = request.JobFile
+	if !tea.BoolValue(util.IsUnset(request.JobFileShrink)) {
+		query["JobFile"] = request.JobFileShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.JobName)) {
 		query["JobName"] = request.JobName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RolloutConfig)) {
-		query["RolloutConfig"] = request.RolloutConfig
+	if !tea.BoolValue(util.IsUnset(request.RolloutConfigShrink)) {
+		query["RolloutConfig"] = request.RolloutConfigShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ScheduledTime)) {
 		query["ScheduledTime"] = request.ScheduledTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TargetConfig)) {
-		query["TargetConfig"] = request.TargetConfig
+	if !tea.BoolValue(util.IsUnset(request.TargetConfigShrink)) {
+		query["TargetConfig"] = request.TargetConfigShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TimeoutConfig)) {
-		query["TimeoutConfig"] = request.TimeoutConfig
+	if !tea.BoolValue(util.IsUnset(request.TimeoutConfigShrink)) {
+		query["TimeoutConfig"] = request.TimeoutConfigShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Type)) {
@@ -44771,6 +48200,10 @@ func (client *Client) CreateOTADynamicUpgradeJobWithOptions(request *CreateOTADy
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DownloadProtocol)) {
+		query["DownloadProtocol"] = request.DownloadProtocol
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DynamicMode)) {
 		query["DynamicMode"] = request.DynamicMode
 	}
@@ -44779,12 +48212,24 @@ func (client *Client) CreateOTADynamicUpgradeJobWithOptions(request *CreateOTADy
 		query["FirmwareId"] = request.FirmwareId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupType)) {
+		query["GroupType"] = request.GroupType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
 		query["IotInstanceId"] = request.IotInstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaximumPerMinute)) {
 		query["MaximumPerMinute"] = request.MaximumPerMinute
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiModuleMode)) {
+		query["MultiModuleMode"] = request.MultiModuleMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NeedConfirm)) {
@@ -44893,6 +48338,10 @@ func (client *Client) CreateOTAFirmwareWithOptions(request *CreateOTAFirmwareReq
 
 	if !tea.BoolValue(util.IsUnset(request.ModuleName)) {
 		query["ModuleName"] = request.ModuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiFiles)) {
+		query["MultiFiles"] = request.MultiFiles
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NeedToVerify)) {
@@ -45023,6 +48472,10 @@ func (client *Client) CreateOTAStaticUpgradeJobWithOptions(request *CreateOTASta
 		query["DnListFileUrl"] = request.DnListFileUrl
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DownloadProtocol)) {
+		query["DownloadProtocol"] = request.DownloadProtocol
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FirmwareId)) {
 		query["FirmwareId"] = request.FirmwareId
 	}
@@ -45031,12 +48484,24 @@ func (client *Client) CreateOTAStaticUpgradeJobWithOptions(request *CreateOTASta
 		query["GrayPercent"] = request.GrayPercent
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupType)) {
+		query["GroupType"] = request.GroupType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
 		query["IotInstanceId"] = request.IotInstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaximumPerMinute)) {
 		query["MaximumPerMinute"] = request.MaximumPerMinute
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiModuleMode)) {
+		query["MultiModuleMode"] = request.MultiModuleMode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NeedConfirm)) {
@@ -45131,6 +48596,10 @@ func (client *Client) CreateOTAVerifyJobWithOptions(request *CreateOTAVerifyJobR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DownloadProtocol)) {
+		query["DownloadProtocol"] = request.DownloadProtocol
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FirmwareId)) {
 		query["FirmwareId"] = request.FirmwareId
 	}
@@ -45149,6 +48618,10 @@ func (client *Client) CreateOTAVerifyJobWithOptions(request *CreateOTAVerifyJobR
 
 	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
 		query["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TargetDeviceName)) {
@@ -45609,58 +49082,6 @@ func (client *Client) CreateRuleAction(request *CreateRuleActionRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) CreateRulengDistributeJobWithOptions(request *CreateRulengDistributeJobRequest, runtime *util.RuntimeOptions) (_result *CreateRulengDistributeJobResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
-		query["ProductKey"] = request.ProductKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceInstanceId)) {
-		query["SourceInstanceId"] = request.SourceInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TargetInstanceId)) {
-		query["TargetInstanceId"] = request.TargetInstanceId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateRulengDistributeJob"),
-		Version:     tea.String("2018-01-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateRulengDistributeJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateRulengDistributeJob(request *CreateRulengDistributeJobRequest) (_result *CreateRulengDistributeJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateRulengDistributeJobResponse{}
-	_body, _err := client.CreateRulengDistributeJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateSceneRuleWithOptions(request *CreateSceneRuleRequest, runtime *util.RuntimeOptions) (_result *CreateSceneRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45717,13 +49138,116 @@ func (client *Client) CreateSceneRule(request *CreateSceneRuleRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) CreateSpeechWithOptions(request *CreateSpeechRequest, runtime *util.RuntimeOptions) (_result *CreateSpeechResponse, _err error) {
+func (client *Client) CreateSoundCodeWithOptions(request *CreateSoundCodeRequest, runtime *util.RuntimeOptions) (_result *CreateSoundCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		body["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SoundCodeContent)) {
+		body["SoundCodeContent"] = request.SoundCodeContent
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.BizCode,
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSoundCode"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSoundCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSoundCode(request *CreateSoundCodeRequest) (_result *CreateSoundCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSoundCodeResponse{}
+	_body, _err := client.CreateSoundCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSpeechWithOptions(tmpReq *CreateSpeechRequest, runtime *util.RuntimeOptions) (_result *CreateSpeechResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateSpeechShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SoundCodeConfig)) {
+		request.SoundCodeConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SoundCodeConfig, tea.String("SoundCodeConfig"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AudioFormat)) {
+		body["AudioFormat"] = request.AudioFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizCode)) {
+		body["BizCode"] = request.BizCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSoundCode)) {
+		body["EnableSoundCode"] = request.EnableSoundCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectCode)) {
+		body["ProjectCode"] = request.ProjectCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SoundCodeConfigShrink)) {
+		body["SoundCodeConfig"] = request.SoundCodeConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeechRate)) {
+		body["SpeechRate"] = request.SpeechRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeechType)) {
+		body["SpeechType"] = request.SpeechType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Text)) {
+		body["Text"] = request.Text
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Voice)) {
+		body["Voice"] = request.Voice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Volume)) {
+		body["Volume"] = request.Volume
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateSpeech"),
@@ -45761,8 +49285,29 @@ func (client *Client) CreateStudioAppDomainOpenWithOptions(request *CreateStudio
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		body["Host"] = request.Host
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		body["Protocol"] = request.Protocol
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.AppId,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateStudioAppDomainOpen"),
@@ -46063,6 +49608,54 @@ func (client *Client) CreateTopicRouteTable(request *CreateTopicRouteTableReques
 	return _result, _err
 }
 
+func (client *Client) DeleteClientIdsWithOptions(request *DeleteClientIdsRequest, runtime *util.RuntimeOptions) (_result *DeleteClientIdsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		query["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteClientIds"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteClientIdsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteClientIds(request *DeleteClientIdsRequest) (_result *DeleteClientIdsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteClientIdsResponse{}
+	_body, _err := client.DeleteClientIdsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteConsumerGroupWithOptions(request *DeleteConsumerGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteConsumerGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46263,6 +49856,54 @@ func (client *Client) DeleteDeviceDistributeJob(request *DeleteDeviceDistributeJ
 	return _result, _err
 }
 
+func (client *Client) DeleteDeviceDynamicGroupWithOptions(request *DeleteDeviceDynamicGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteDeviceDynamicGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDeviceDynamicGroup"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDeviceDynamicGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDeviceDynamicGroup(request *DeleteDeviceDynamicGroupRequest) (_result *DeleteDeviceDynamicGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDeviceDynamicGroupResponse{}
+	_body, _err := client.DeleteDeviceDynamicGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteDeviceFileWithOptions(request *DeleteDeviceFileRequest, runtime *util.RuntimeOptions) (_result *DeleteDeviceFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -46424,6 +50065,106 @@ func (client *Client) DeleteDeviceProp(request *DeleteDevicePropRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDevicePropResponse{}
 	_body, _err := client.DeleteDevicePropWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDeviceSpeechWithOptions(request *DeleteDeviceSpeechRequest, runtime *util.RuntimeOptions) (_result *DeleteDeviceSpeechResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceSpeechList)) {
+		body["DeviceSpeechList"] = request.DeviceSpeechList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		body["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDeviceSpeech"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDeviceSpeechResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDeviceSpeech(request *DeleteDeviceSpeechRequest) (_result *DeleteDeviceSpeechResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDeviceSpeechResponse{}
+	_body, _err := client.DeleteDeviceSpeechWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDeviceTunnelWithOptions(request *DeleteDeviceTunnelRequest, runtime *util.RuntimeOptions) (_result *DeleteDeviceTunnelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TunnelId)) {
+		query["TunnelId"] = request.TunnelId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDeviceTunnel"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDeviceTunnelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDeviceTunnel(request *DeleteDeviceTunnelRequest) (_result *DeleteDeviceTunnelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDeviceTunnelResponse{}
+	_body, _err := client.DeleteDeviceTunnelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -47071,13 +50812,70 @@ func (client *Client) DeleteSceneRule(request *DeleteSceneRuleRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) DeleteSoundCodeWithOptions(request *DeleteSoundCodeRequest, runtime *util.RuntimeOptions) (_result *DeleteSoundCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SoundCode)) {
+		body["SoundCode"] = request.SoundCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSoundCode"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSoundCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSoundCode(request *DeleteSoundCodeRequest) (_result *DeleteSoundCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSoundCodeResponse{}
+	_body, _err := client.DeleteSoundCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteSpeechWithOptions(request *DeleteSpeechRequest, runtime *util.RuntimeOptions) (_result *DeleteSpeechResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeechCodeList)) {
+		body["SpeechCodeList"] = request.SpeechCodeList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.IotInstanceId,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteSpeech"),
@@ -47115,8 +50913,25 @@ func (client *Client) DeleteStudioAppDomainOpenWithOptions(request *DeleteStudio
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainId)) {
+		body["DomainId"] = request.DomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.AppId,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteStudioAppDomainOpen"),
@@ -47890,8 +51705,17 @@ func (client *Client) GetDataAPIServiceDetailWithOptions(request *GetDataAPIServ
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiSrn)) {
+		body["ApiSrn"] = request.ApiSrn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.ApiSrn,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetDataAPIServiceDetail"),
@@ -48444,54 +52268,6 @@ func (client *Client) GetLoraNodesTask(request *GetLoraNodesTaskRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) GetNodesAddingTaskWithOptions(request *GetNodesAddingTaskRequest, runtime *util.RuntimeOptions) (_result *GetNodesAddingTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
-		query["IotInstanceId"] = request.IotInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
-		query["TaskId"] = request.TaskId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetNodesAddingTask"),
-		Version:     tea.String("2018-01-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetNodesAddingTaskResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetNodesAddingTask(request *GetNodesAddingTaskRequest) (_result *GetNodesAddingTaskResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetNodesAddingTaskResponse{}
-	_body, _err := client.GetNodesAddingTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetRuleWithOptions(request *GetRuleRequest, runtime *util.RuntimeOptions) (_result *GetRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48636,6 +52412,102 @@ func (client *Client) GetSceneRule(request *GetSceneRuleRequest) (_result *GetSc
 	return _result, _err
 }
 
+func (client *Client) GetSoundCodeAudioWithOptions(request *GetSoundCodeAudioRequest, runtime *util.RuntimeOptions) (_result *GetSoundCodeAudioResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SoundCodeList)) {
+		body["SoundCodeList"] = request.SoundCodeList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSoundCodeAudio"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSoundCodeAudioResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSoundCodeAudio(request *GetSoundCodeAudioRequest) (_result *GetSoundCodeAudioResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSoundCodeAudioResponse{}
+	_body, _err := client.GetSoundCodeAudioWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetSpeechDeviceDetailWithOptions(request *GetSpeechDeviceDetailRequest, runtime *util.RuntimeOptions) (_result *GetSpeechDeviceDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		body["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSpeechDeviceDetail"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSpeechDeviceDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSpeechDeviceDetail(request *GetSpeechDeviceDetailRequest) (_result *GetSpeechDeviceDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSpeechDeviceDetailResponse{}
+	_body, _err := client.GetSpeechDeviceDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetSpeechVoiceWithOptions(runtime *util.RuntimeOptions) (_result *GetSpeechVoiceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -48674,8 +52546,21 @@ func (client *Client) GetStudioAppTokenOpenWithOptions(request *GetStudioAppToke
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.AppId,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetStudioAppTokenOpen"),
@@ -48996,6 +52881,118 @@ func (client *Client) GetThingTopo(request *GetThingTopoRequest) (_result *GetTh
 	return _result, _err
 }
 
+func (client *Client) GisQueryDeviceLocationWithOptions(request *GisQueryDeviceLocationRequest, runtime *util.RuntimeOptions) (_result *GisQueryDeviceLocationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ThingList)) {
+		query["ThingList"] = request.ThingList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GisQueryDeviceLocation"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GisQueryDeviceLocationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GisQueryDeviceLocation(request *GisQueryDeviceLocationRequest) (_result *GisQueryDeviceLocationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GisQueryDeviceLocationResponse{}
+	_body, _err := client.GisQueryDeviceLocationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GisSearchDeviceTraceWithOptions(request *GisSearchDeviceTraceRequest, runtime *util.RuntimeOptions) (_result *GisSearchDeviceTraceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		query["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MapMatch)) {
+		query["MapMatch"] = request.MapMatch
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GisSearchDeviceTrace"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GisSearchDeviceTraceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GisSearchDeviceTrace(request *GisSearchDeviceTraceRequest) (_result *GisSearchDeviceTraceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GisSearchDeviceTraceResponse{}
+	_body, _err := client.GisSearchDeviceTraceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ImportThingModelTslWithOptions(request *ImportThingModelTslRequest, runtime *util.RuntimeOptions) (_result *ImportThingModelTslResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49069,8 +53066,21 @@ func (client *Client) InvokeDataAPIServiceWithOptions(request *InvokeDataAPIServ
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiSrn)) {
+		body["ApiSrn"] = request.ApiSrn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Param)) {
+		body["Param"] = request.Param
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToArray(request.ApiSrn),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("InvokeDataAPIService"),
@@ -49309,6 +53319,10 @@ func (client *Client) ListDeviceDistributeJobWithOptions(request *ListDeviceDist
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Status)) {
 		query["Status"] = request.Status
 	}
@@ -49317,9 +53331,14 @@ func (client *Client) ListDeviceDistributeJobWithOptions(request *ListDeviceDist
 		query["TargetUid"] = request.TargetUid
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		body["JobId"] = request.JobId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  request.JobId,
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListDeviceDistributeJob"),
@@ -50156,14 +54175,20 @@ func (client *Client) ListRuleActions(request *ListRuleActionsRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) ListTaskWithOptions(request *ListTaskRequest, runtime *util.RuntimeOptions) (_result *ListTaskResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListTaskWithOptions(tmpReq *ListTaskRequest, runtime *util.RuntimeOptions) (_result *ListTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Device)) {
+		request.DeviceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Device, tea.String("Device"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Device)) {
-		query["Device"] = request.Device
+	if !tea.BoolValue(util.IsUnset(request.DeviceShrink)) {
+		query["Device"] = request.DeviceShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
@@ -50213,78 +54238,6 @@ func (client *Client) ListTask(request *ListTaskRequest) (_result *ListTaskRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTaskResponse{}
 	_body, _err := client.ListTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListTaskByPageWithOptions(request *ListTaskByPageRequest, runtime *util.RuntimeOptions) (_result *ListTaskByPageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Device)) {
-		query["Device"] = request.Device
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
-		query["DeviceName"] = request.DeviceName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
-		query["IotInstanceId"] = request.IotInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.JobId)) {
-		query["JobId"] = request.JobId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.JobName)) {
-		query["JobName"] = request.JobName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
-		query["PageNo"] = request.PageNo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		query["Status"] = request.Status
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListTaskByPage"),
-		Version:     tea.String("2018-01-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListTaskByPageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListTaskByPage(request *ListTaskByPageRequest) (_result *ListTaskByPageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListTaskByPageResponse{}
-	_body, _err := client.ListTaskByPageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -50493,8 +54446,37 @@ func (client *Client) PrintByTemplateWithOptions(request *PrintByTemplateRequest
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		body["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HistoryPrintTopic)) {
+		body["HistoryPrintTopic"] = request.HistoryPrintTopic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		body["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamsJsonString)) {
+		body["ParamsJsonString"] = request.ParamsJsonString
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		body["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateBizCode)) {
+		body["TemplateBizCode"] = request.TemplateBizCode
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.DeviceName,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PrintByTemplate"),
@@ -50660,8 +54642,25 @@ func (client *Client) PublishStudioAppWithOptions(request *PublishStudioAppReque
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.AppId,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PublishStudioApp"),
@@ -50764,9 +54763,38 @@ func (client *Client) PushSpeechWithOptions(request *PushSpeechRequest, runtime 
 		query["GroupId"] = request.GroupId
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		body["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		body["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		body["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectCode)) {
+		body["ProjectCode"] = request.ProjectCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PushMode)) {
+		body["PushMode"] = request.PushMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeechCodeList)) {
+		body["SpeechCodeList"] = request.SpeechCodeList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  request.DeviceName,
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("PushSpeech"),
@@ -50792,74 +54820,6 @@ func (client *Client) PushSpeech(request *PushSpeechRequest) (_result *PushSpeec
 	runtime := &util.RuntimeOptions{}
 	_result = &PushSpeechResponse{}
 	_body, _err := client.PushSpeechWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) QueryAppDeviceListWithOptions(request *QueryAppDeviceListRequest, runtime *util.RuntimeOptions) (_result *QueryAppDeviceListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
-		query["AppKey"] = request.AppKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CategoryKeyList)) {
-		query["CategoryKeyList"] = request.CategoryKeyList
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
-		query["CurrentPage"] = request.CurrentPage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
-		query["IotInstanceId"] = request.IotInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProductKeyList)) {
-		query["ProductKeyList"] = request.ProductKeyList
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TagList)) {
-		query["TagList"] = request.TagList
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryAppDeviceList"),
-		Version:     tea.String("2018-01-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &QueryAppDeviceListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryAppDeviceList(request *QueryAppDeviceListRequest) (_result *QueryAppDeviceListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryAppDeviceListResponse{}
-	_body, _err := client.QueryAppDeviceListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -50960,6 +54920,54 @@ func (client *Client) QueryCertUrlByApplyId(request *QueryCertUrlByApplyIdReques
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryCertUrlByApplyIdResponse{}
 	_body, _err := client.QueryCertUrlByApplyIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryClientIdsWithOptions(request *QueryClientIdsRequest, runtime *util.RuntimeOptions) (_result *QueryClientIdsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		query["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryClientIds"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryClientIdsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryClientIds(request *QueryClientIdsRequest) (_result *QueryClientIdsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryClientIdsResponse{}
+	_body, _err := client.QueryClientIdsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -52001,6 +56009,10 @@ func (client *Client) QueryDeviceGroupInfoWithOptions(request *QueryDeviceGroupI
 		query["GroupId"] = request.GroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.GroupType)) {
+		query["GroupType"] = request.GroupType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
 		query["IotInstanceId"] = request.IotInstanceId
 	}
@@ -52051,6 +56063,10 @@ func (client *Client) QueryDeviceGroupListWithOptions(request *QueryDeviceGroupL
 
 	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
 		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupTypes)) {
+		query["GroupTypes"] = request.GroupTypes
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
@@ -52107,6 +56123,10 @@ func (client *Client) QueryDeviceGroupTagListWithOptions(request *QueryDeviceGro
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupType)) {
+		query["GroupType"] = request.GroupType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
@@ -52911,6 +56931,62 @@ func (client *Client) QueryDeviceServiceData(request *QueryDeviceServiceDataRequ
 	return _result, _err
 }
 
+func (client *Client) QueryDeviceSpeechWithOptions(request *QueryDeviceSpeechRequest, runtime *util.RuntimeOptions) (_result *QueryDeviceSpeechResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		body["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageId)) {
+		body["PageId"] = request.PageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDeviceSpeech"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDeviceSpeechResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryDeviceSpeech(request *QueryDeviceSpeechRequest) (_result *QueryDeviceSpeechResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDeviceSpeechResponse{}
+	_body, _err := client.QueryDeviceSpeechWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryDeviceStatisticsWithOptions(request *QueryDeviceStatisticsRequest, runtime *util.RuntimeOptions) (_result *QueryDeviceStatisticsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -52956,6 +57032,130 @@ func (client *Client) QueryDeviceStatistics(request *QueryDeviceStatisticsReques
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryDeviceStatisticsResponse{}
 	_body, _err := client.QueryDeviceStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryDeviceTunnelWithOptions(request *QueryDeviceTunnelRequest, runtime *util.RuntimeOptions) (_result *QueryDeviceTunnelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TunnelId)) {
+		query["TunnelId"] = request.TunnelId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDeviceTunnel"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDeviceTunnelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryDeviceTunnel(request *QueryDeviceTunnelRequest) (_result *QueryDeviceTunnelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDeviceTunnelResponse{}
+	_body, _err := client.QueryDeviceTunnelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryDynamicGroupDevicesWithOptions(request *QueryDynamicGroupDevicesRequest, runtime *util.RuntimeOptions) (_result *QueryDynamicGroupDevicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		query["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FuzzyName)) {
+		query["FuzzyName"] = request.FuzzyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDynamicGroupDevices"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDynamicGroupDevicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryDynamicGroupDevices(request *QueryDynamicGroupDevicesRequest) (_result *QueryDynamicGroupDevicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDynamicGroupDevicesResponse{}
+	_body, _err := client.QueryDynamicGroupDevicesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -54259,13 +58459,74 @@ func (client *Client) QuerySolutionDeviceGroupPage(request *QuerySolutionDeviceG
 	return _result, _err
 }
 
+func (client *Client) QuerySoundCodeListWithOptions(request *QuerySoundCodeListRequest, runtime *util.RuntimeOptions) (_result *QuerySoundCodeListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageId)) {
+		body["PageId"] = request.PageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySoundCodeList"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySoundCodeListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySoundCodeList(request *QuerySoundCodeListRequest) (_result *QuerySoundCodeListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySoundCodeListResponse{}
+	_body, _err := client.QuerySoundCodeListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QuerySpeechWithOptions(request *QuerySpeechRequest, runtime *util.RuntimeOptions) (_result *QuerySpeechResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeechCode)) {
+		body["SpeechCode"] = request.SpeechCode
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.IotInstanceId,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QuerySpeech"),
@@ -54298,13 +58559,102 @@ func (client *Client) QuerySpeech(request *QuerySpeechRequest) (_result *QuerySp
 	return _result, _err
 }
 
+func (client *Client) QuerySpeechDeviceWithOptions(request *QuerySpeechDeviceRequest, runtime *util.RuntimeOptions) (_result *QuerySpeechDeviceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AvailableSpace)) {
+		body["AvailableSpace"] = request.AvailableSpace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AvailableSpaceScope)) {
+		body["AvailableSpaceScope"] = request.AvailableSpaceScope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		body["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageId)) {
+		body["PageId"] = request.PageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectCode)) {
+		body["ProjectCode"] = request.ProjectCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySpeechDevice"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySpeechDeviceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySpeechDevice(request *QuerySpeechDeviceRequest) (_result *QuerySpeechDeviceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySpeechDeviceResponse{}
+	_body, _err := client.QuerySpeechDeviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QuerySpeechListWithOptions(request *QuerySpeechListRequest, runtime *util.RuntimeOptions) (_result *QuerySpeechListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AudioFormat)) {
+		body["AudioFormat"] = request.AudioFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageId)) {
+		body["PageId"] = request.PageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectCode)) {
+		body["ProjectCode"] = request.ProjectCode
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.IotInstanceId,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QuerySpeechList"),
@@ -54347,9 +58697,34 @@ func (client *Client) QuerySpeechPushJobWithOptions(request *QuerySpeechPushJobR
 		query["JobCode"] = request.JobCode
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageId)) {
+		body["PageId"] = request.PageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectCode)) {
+		body["ProjectCode"] = request.ProjectCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PushMode)) {
+		body["PushMode"] = request.PushMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusList)) {
+		body["StatusList"] = request.StatusList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
-		Body:  request.IotInstanceId,
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QuerySpeechPushJob"),
@@ -54387,8 +58762,33 @@ func (client *Client) QuerySpeechPushJobDeviceWithOptions(request *QuerySpeechPu
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		body["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobCode)) {
+		body["JobCode"] = request.JobCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageId)) {
+		body["PageId"] = request.PageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.DeviceName,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QuerySpeechPushJobDevice"),
@@ -54426,8 +58826,25 @@ func (client *Client) QuerySpeechPushJobSpeechWithOptions(request *QuerySpeechPu
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobCode)) {
+		body["JobCode"] = request.JobCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageId)) {
+		body["PageId"] = request.PageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.IotInstanceId,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QuerySpeechPushJobSpeech"),
@@ -54465,8 +58882,21 @@ func (client *Client) QueryStudioAppDomainListOpenWithOptions(request *QueryStud
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.AppId,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryStudioAppDomainListOpen"),
@@ -54504,8 +58934,33 @@ func (client *Client) QueryStudioAppListWithOptions(request *QueryStudioAppListR
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FuzzyName)) {
+		body["FuzzyName"] = request.FuzzyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Types)) {
+		body["Types"] = request.Types
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.FuzzyName,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryStudioAppList"),
@@ -54543,8 +58998,33 @@ func (client *Client) QueryStudioAppPageListOpenWithOptions(request *QueryStudio
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsRelease)) {
+		body["IsRelease"] = request.IsRelease
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.AppId,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryStudioAppPageListOpen"),
@@ -54582,8 +59062,25 @@ func (client *Client) QueryStudioProjectListWithOptions(request *QueryStudioProj
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		body["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.IotInstanceId,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QueryStudioProjectList"),
@@ -55289,8 +59786,21 @@ func (client *Client) RefreshStudioAppTokenOpenWithOptions(request *RefreshStudi
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.AppId,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RefreshStudioAppTokenOpen"),
@@ -55763,6 +60273,58 @@ func (client *Client) ResetThing(request *ResetThingRequest) (_result *ResetThin
 	return _result, _err
 }
 
+func (client *Client) ReupgradeOTATaskWithOptions(request *ReupgradeOTATaskRequest, runtime *util.RuntimeOptions) (_result *ReupgradeOTATaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReupgradeOTATask"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReupgradeOTATaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReupgradeOTATask(request *ReupgradeOTATaskRequest) (_result *ReupgradeOTATaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReupgradeOTATaskResponse{}
+	_body, _err := client.ReupgradeOTATaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SaveDevicePropWithOptions(request *SaveDevicePropRequest, runtime *util.RuntimeOptions) (_result *SaveDevicePropResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -55895,6 +60457,10 @@ func (client *Client) SetDeviceGroupTagsWithOptions(request *SetDeviceGroupTagsR
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupType)) {
+		query["GroupType"] = request.GroupType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
@@ -56168,8 +60734,17 @@ func (client *Client) SetStudioProjectCooperationWithOptions(request *SetStudioP
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.IotInstanceId,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetStudioProjectCooperation"),
@@ -56207,8 +60782,25 @@ func (client *Client) SetupStudioAppAuthModeOpenWithOptions(request *SetupStudio
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthMode)) {
+		body["AuthMode"] = request.AuthMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.AppId,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SetupStudioAppAuthModeOpen"),
@@ -56246,8 +60838,37 @@ func (client *Client) SpeechByCombinationWithOptions(request *SpeechByCombinatio
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AudioFormat)) {
+		body["AudioFormat"] = request.AudioFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CombinationList)) {
+		body["CombinationList"] = request.CombinationList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		body["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		body["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		body["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeechId)) {
+		body["SpeechId"] = request.SpeechId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.CombinationList,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SpeechByCombination"),
@@ -56273,6 +60894,86 @@ func (client *Client) SpeechByCombination(request *SpeechByCombinationRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &SpeechByCombinationResponse{}
 	_body, _err := client.SpeechByCombinationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SpeechBySynthesisWithOptions(request *SpeechBySynthesisRequest, runtime *util.RuntimeOptions) (_result *SpeechBySynthesisResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AudioFormat)) {
+		body["AudioFormat"] = request.AudioFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		body["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		body["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		body["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeechId)) {
+		body["SpeechId"] = request.SpeechId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeechRate)) {
+		body["SpeechRate"] = request.SpeechRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Text)) {
+		body["Text"] = request.Text
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Voice)) {
+		body["Voice"] = request.Voice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Volume)) {
+		body["Volume"] = request.Volume
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SpeechBySynthesis"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SpeechBySynthesisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SpeechBySynthesis(request *SpeechBySynthesisRequest) (_result *SpeechBySynthesisResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SpeechBySynthesisResponse{}
+	_body, _err := client.SpeechBySynthesisWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -56428,13 +61129,98 @@ func (client *Client) StopRule(request *StopRuleRequest) (_result *StopRuleRespo
 	return _result, _err
 }
 
+func (client *Client) SubscribeTopicWithOptions(request *SubscribeTopicRequest, runtime *util.RuntimeOptions) (_result *SubscribeTopicResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		query["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		query["Topic"] = request.Topic
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubscribeTopic"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SubscribeTopicResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SubscribeTopic(request *SubscribeTopicRequest) (_result *SubscribeTopicResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SubscribeTopicResponse{}
+	_body, _err := client.SubscribeTopicWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SyncSpeechByCombinationWithOptions(request *SyncSpeechByCombinationRequest, runtime *util.RuntimeOptions) (_result *SyncSpeechByCombinationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AudioFormat)) {
+		body["AudioFormat"] = request.AudioFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CombinationList)) {
+		body["CombinationList"] = request.CombinationList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		body["DeviceName"] = request.DeviceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		body["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		body["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeechId)) {
+		body["SpeechId"] = request.SpeechId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.CombinationList,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("SyncSpeechByCombination"),
@@ -56467,13 +61253,60 @@ func (client *Client) SyncSpeechByCombination(request *SyncSpeechByCombinationRe
 	return _result, _err
 }
 
-func (client *Client) TestSpeechWithOptions(request *TestSpeechRequest, runtime *util.RuntimeOptions) (_result *TestSpeechResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) TestSpeechWithOptions(tmpReq *TestSpeechRequest, runtime *util.RuntimeOptions) (_result *TestSpeechResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &TestSpeechShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SoundCodeConfig)) {
+		request.SoundCodeConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SoundCodeConfig, tea.String("SoundCodeConfig"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AudioFormat)) {
+		body["AudioFormat"] = request.AudioFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSoundCode)) {
+		body["EnableSoundCode"] = request.EnableSoundCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectCode)) {
+		body["ProjectCode"] = request.ProjectCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SoundCodeConfigShrink)) {
+		body["SoundCodeConfig"] = request.SoundCodeConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeechRate)) {
+		body["SpeechRate"] = request.SpeechRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeechType)) {
+		body["SpeechType"] = request.SpeechType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Text)) {
+		body["Text"] = request.Text
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Voice)) {
+		body["Voice"] = request.Voice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Volume)) {
+		body["Volume"] = request.Volume
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.IotInstanceId,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("TestSpeech"),
@@ -56499,6 +61332,58 @@ func (client *Client) TestSpeech(request *TestSpeechRequest) (_result *TestSpeec
 	runtime := &util.RuntimeOptions{}
 	_result = &TestSpeechResponse{}
 	_body, _err := client.TestSpeechWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TransformClientIdWithOptions(request *TransformClientIdRequest, runtime *util.RuntimeOptions) (_result *TransformClientIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		query["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotId)) {
+		query["IotId"] = request.IotId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TransformClientId"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TransformClientIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TransformClientId(request *TransformClientIdRequest) (_result *TransformClientIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TransformClientIdResponse{}
+	_body, _err := client.TransformClientIdWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -56826,6 +61711,10 @@ func (client *Client) UpdateDeviceGroupWithOptions(request *UpdateDeviceGroupReq
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupType)) {
+		query["GroupType"] = request.GroupType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
@@ -57214,11 +62103,21 @@ func (client *Client) UpdateEdgeInstanceMessageRouting(request *UpdateEdgeInstan
 	return _result, _err
 }
 
-func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, runtime *util.RuntimeOptions) (_result *UpdateJobResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateJobWithOptions(tmpReq *UpdateJobRequest, runtime *util.RuntimeOptions) (_result *UpdateJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpdateJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.RolloutConfig)) {
+		request.RolloutConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RolloutConfig, tea.String("RolloutConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.TimeoutConfig)) {
+		request.TimeoutConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TimeoutConfig, tea.String("TimeoutConfig"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
@@ -57232,12 +62131,12 @@ func (client *Client) UpdateJobWithOptions(request *UpdateJobRequest, runtime *u
 		query["JobId"] = request.JobId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.RolloutConfig)) {
-		query["RolloutConfig"] = request.RolloutConfig
+	if !tea.BoolValue(util.IsUnset(request.RolloutConfigShrink)) {
+		query["RolloutConfig"] = request.RolloutConfigShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.TimeoutConfig)) {
-		query["TimeoutConfig"] = request.TimeoutConfig
+	if !tea.BoolValue(util.IsUnset(request.TimeoutConfigShrink)) {
+		query["TimeoutConfig"] = request.TimeoutConfigShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -57754,13 +62653,52 @@ func (client *Client) UpdateSceneRule(request *UpdateSceneRuleRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) UpdateSpeechWithOptions(request *UpdateSpeechRequest, runtime *util.RuntimeOptions) (_result *UpdateSpeechResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateSpeechWithOptions(tmpReq *UpdateSpeechRequest, runtime *util.RuntimeOptions) (_result *UpdateSpeechResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpdateSpeechShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SoundCodeConfig)) {
+		request.SoundCodeConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SoundCodeConfig, tea.String("SoundCodeConfig"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnableSoundCode)) {
+		body["EnableSoundCode"] = request.EnableSoundCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectCode)) {
+		body["ProjectCode"] = request.ProjectCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SoundCodeConfigShrink)) {
+		body["SoundCodeConfig"] = request.SoundCodeConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeechCode)) {
+		body["SpeechCode"] = request.SpeechCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeechRate)) {
+		body["SpeechRate"] = request.SpeechRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Voice)) {
+		body["Voice"] = request.Voice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Volume)) {
+		body["Volume"] = request.Volume
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: request.IotInstanceId,
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateSpeech"),
@@ -57950,58 +62888,6 @@ func (client *Client) UpdateThingModel(request *UpdateThingModelRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateThingModelResponse{}
 	_body, _err := client.UpdateThingModelWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateThingModelValidationConfigWithOptions(request *UpdateThingModelValidationConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateThingModelValidationConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
-		query["IotInstanceId"] = request.IotInstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
-		query["ProductKey"] = request.ProductKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ValidateType)) {
-		query["ValidateType"] = request.ValidateType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateThingModelValidationConfig"),
-		Version:     tea.String("2018-01-20"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateThingModelValidationConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateThingModelValidationConfig(request *UpdateThingModelValidationConfigRequest) (_result *UpdateThingModelValidationConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateThingModelValidationConfigResponse{}
-	_body, _err := client.UpdateThingModelValidationConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
