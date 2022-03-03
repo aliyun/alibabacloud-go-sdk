@@ -111,6 +111,7 @@ type CheckClickhouseToRDSRequest struct {
 	RdsPort              *int64  `json:"RdsPort,omitempty" xml:"RdsPort,omitempty"`
 	RdsUserName          *string `json:"RdsUserName,omitempty" xml:"RdsUserName,omitempty"`
 	RdsVpcId             *string `json:"RdsVpcId,omitempty" xml:"RdsVpcId,omitempty"`
+	RdsVpcUrl            *string `json:"RdsVpcUrl,omitempty" xml:"RdsVpcUrl,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -178,6 +179,11 @@ func (s *CheckClickhouseToRDSRequest) SetRdsVpcId(v string) *CheckClickhouseToRD
 	return s
 }
 
+func (s *CheckClickhouseToRDSRequest) SetRdsVpcUrl(v string) *CheckClickhouseToRDSRequest {
+	s.RdsVpcUrl = &v
+	return s
+}
+
 func (s *CheckClickhouseToRDSRequest) SetResourceOwnerAccount(v string) *CheckClickhouseToRDSRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -236,6 +242,99 @@ func (s *CheckClickhouseToRDSResponse) SetHeaders(v map[string]*string) *CheckCl
 }
 
 func (s *CheckClickhouseToRDSResponse) SetBody(v *CheckClickhouseToRDSResponseBody) *CheckClickhouseToRDSResponse {
+	s.Body = v
+	return s
+}
+
+type CheckHealthRequest struct {
+	DbClusterId          *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CheckHealthRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckHealthRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckHealthRequest) SetDbClusterId(v string) *CheckHealthRequest {
+	s.DbClusterId = &v
+	return s
+}
+
+func (s *CheckHealthRequest) SetOwnerAccount(v string) *CheckHealthRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CheckHealthRequest) SetOwnerId(v int64) *CheckHealthRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CheckHealthRequest) SetResourceOwnerAccount(v string) *CheckHealthRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CheckHealthRequest) SetResourceOwnerId(v int64) *CheckHealthRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CheckHealthResponseBody struct {
+	Info      *string `json:"Info,omitempty" xml:"Info,omitempty"`
+	IsHealthy *bool   `json:"IsHealthy,omitempty" xml:"IsHealthy,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CheckHealthResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckHealthResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckHealthResponseBody) SetInfo(v string) *CheckHealthResponseBody {
+	s.Info = &v
+	return s
+}
+
+func (s *CheckHealthResponseBody) SetIsHealthy(v bool) *CheckHealthResponseBody {
+	s.IsHealthy = &v
+	return s
+}
+
+func (s *CheckHealthResponseBody) SetRequestId(v string) *CheckHealthResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CheckHealthResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CheckHealthResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckHealthResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckHealthResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckHealthResponse) SetHeaders(v map[string]*string) *CheckHealthResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckHealthResponse) SetBody(v *CheckHealthResponseBody) *CheckHealthResponse {
 	s.Body = v
 	return s
 }
@@ -1210,6 +1309,7 @@ type CreateDBInstanceRequest struct {
 	DbNodeStorageType    *string `json:"DbNodeStorageType,omitempty" xml:"DbNodeStorageType,omitempty"`
 	EncryptionKey        *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	EncryptionType       *string `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	OpenMonitor          *bool   `json:"OpenMonitor,omitempty" xml:"OpenMonitor,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
@@ -1283,6 +1383,11 @@ func (s *CreateDBInstanceRequest) SetEncryptionKey(v string) *CreateDBInstanceRe
 
 func (s *CreateDBInstanceRequest) SetEncryptionType(v string) *CreateDBInstanceRequest {
 	s.EncryptionType = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetOpenMonitor(v bool) *CreateDBInstanceRequest {
+	s.OpenMonitor = &v
 	return s
 }
 
@@ -1674,6 +1779,7 @@ type CreateRDSToClickhouseDbRequest struct {
 	RdsPort              *int64  `json:"RdsPort,omitempty" xml:"RdsPort,omitempty"`
 	RdsUserName          *string `json:"RdsUserName,omitempty" xml:"RdsUserName,omitempty"`
 	RdsVpcId             *string `json:"RdsVpcId,omitempty" xml:"RdsVpcId,omitempty"`
+	RdsVpcUrl            *string `json:"RdsVpcUrl,omitempty" xml:"RdsVpcUrl,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SkipUnsupported      *bool   `json:"SkipUnsupported,omitempty" xml:"SkipUnsupported,omitempty"`
@@ -1745,6 +1851,11 @@ func (s *CreateRDSToClickhouseDbRequest) SetRdsUserName(v string) *CreateRDSToCl
 
 func (s *CreateRDSToClickhouseDbRequest) SetRdsVpcId(v string) *CreateRDSToClickhouseDbRequest {
 	s.RdsVpcId = &v
+	return s
+}
+
+func (s *CreateRDSToClickhouseDbRequest) SetRdsVpcUrl(v string) *CreateRDSToClickhouseDbRequest {
+	s.RdsVpcUrl = &v
 	return s
 }
 
@@ -4202,6 +4313,7 @@ type DescribeDBClusterAttributeResponseBodyDBCluster struct {
 	PayType                *string                                                        `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	Port                   *int32                                                         `json:"Port,omitempty" xml:"Port,omitempty"`
 	PublicConnectionString *string                                                        `json:"PublicConnectionString,omitempty" xml:"PublicConnectionString,omitempty"`
+	PublicIpAddr           *string                                                        `json:"PublicIpAddr,omitempty" xml:"PublicIpAddr,omitempty"`
 	PublicPort             *string                                                        `json:"PublicPort,omitempty" xml:"PublicPort,omitempty"`
 	RegionId               *string                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ScaleOutStatus         *DescribeDBClusterAttributeResponseBodyDBClusterScaleOutStatus `json:"ScaleOutStatus,omitempty" xml:"ScaleOutStatus,omitempty" type:"Struct"`
@@ -4213,6 +4325,7 @@ type DescribeDBClusterAttributeResponseBodyDBCluster struct {
 	VSwitchId              *string                                                        `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VpcCloudInstanceId     *string                                                        `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
 	VpcId                  *string                                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcIpAddr              *string                                                        `json:"VpcIpAddr,omitempty" xml:"VpcIpAddr,omitempty"`
 	ZoneId                 *string                                                        `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -4359,6 +4472,11 @@ func (s *DescribeDBClusterAttributeResponseBodyDBCluster) SetPublicConnectionStr
 	return s
 }
 
+func (s *DescribeDBClusterAttributeResponseBodyDBCluster) SetPublicIpAddr(v string) *DescribeDBClusterAttributeResponseBodyDBCluster {
+	s.PublicIpAddr = &v
+	return s
+}
+
 func (s *DescribeDBClusterAttributeResponseBodyDBCluster) SetPublicPort(v string) *DescribeDBClusterAttributeResponseBodyDBCluster {
 	s.PublicPort = &v
 	return s
@@ -4411,6 +4529,11 @@ func (s *DescribeDBClusterAttributeResponseBodyDBCluster) SetVpcCloudInstanceId(
 
 func (s *DescribeDBClusterAttributeResponseBodyDBCluster) SetVpcId(v string) *DescribeDBClusterAttributeResponseBodyDBCluster {
 	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBCluster) SetVpcIpAddr(v string) *DescribeDBClusterAttributeResponseBodyDBCluster {
+	s.VpcIpAddr = &v
 	return s
 }
 
@@ -7270,6 +7393,7 @@ type DescribeRDSTablesRequest struct {
 	RdsPassword          *string `json:"RdsPassword,omitempty" xml:"RdsPassword,omitempty"`
 	RdsPort              *int64  `json:"RdsPort,omitempty" xml:"RdsPort,omitempty"`
 	RdsUserName          *string `json:"RdsUserName,omitempty" xml:"RdsUserName,omitempty"`
+	RdsVpcUrl            *string `json:"RdsVpcUrl,omitempty" xml:"RdsVpcUrl,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	Schema               *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
@@ -7315,6 +7439,11 @@ func (s *DescribeRDSTablesRequest) SetRdsPort(v int64) *DescribeRDSTablesRequest
 
 func (s *DescribeRDSTablesRequest) SetRdsUserName(v string) *DescribeRDSTablesRequest {
 	s.RdsUserName = &v
+	return s
+}
+
+func (s *DescribeRDSTablesRequest) SetRdsVpcUrl(v string) *DescribeRDSTablesRequest {
+	s.RdsVpcUrl = &v
 	return s
 }
 
@@ -7486,6 +7615,7 @@ type DescribeRDSschemasRequest struct {
 	RdsPassword          *string `json:"RdsPassword,omitempty" xml:"RdsPassword,omitempty"`
 	RdsPort              *int64  `json:"RdsPort,omitempty" xml:"RdsPort,omitempty"`
 	RdsUserName          *string `json:"RdsUserName,omitempty" xml:"RdsUserName,omitempty"`
+	RdsVpcUrl            *string `json:"RdsVpcUrl,omitempty" xml:"RdsVpcUrl,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -7530,6 +7660,11 @@ func (s *DescribeRDSschemasRequest) SetRdsPort(v int64) *DescribeRDSschemasReque
 
 func (s *DescribeRDSschemasRequest) SetRdsUserName(v string) *DescribeRDSschemasRequest {
 	s.RdsUserName = &v
+	return s
+}
+
+func (s *DescribeRDSschemasRequest) SetRdsVpcUrl(v string) *DescribeRDSschemasRequest {
+	s.RdsVpcUrl = &v
 	return s
 }
 
@@ -7585,6 +7720,457 @@ func (s *DescribeRDSschemasResponse) SetHeaders(v map[string]*string) *DescribeR
 }
 
 func (s *DescribeRDSschemasResponse) SetBody(v *DescribeRDSschemasResponseBody) *DescribeRDSschemasResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRdsVSwitchsRequest struct {
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeRdsVSwitchsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsVSwitchsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsVSwitchsRequest) SetOwnerAccount(v string) *DescribeRdsVSwitchsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsRequest) SetOwnerId(v int64) *DescribeRdsVSwitchsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsRequest) SetRegionId(v string) *DescribeRdsVSwitchsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsRequest) SetResourceOwnerAccount(v string) *DescribeRdsVSwitchsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsRequest) SetResourceOwnerId(v int64) *DescribeRdsVSwitchsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsRequest) SetSecurityToken(v string) *DescribeRdsVSwitchsRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsRequest) SetVpcId(v string) *DescribeRdsVSwitchsRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsRequest) SetZoneId(v string) *DescribeRdsVSwitchsRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeRdsVSwitchsResponseBody struct {
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VSwitches *DescribeRdsVSwitchsResponseBodyVSwitches `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Struct"`
+}
+
+func (s DescribeRdsVSwitchsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsVSwitchsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsVSwitchsResponseBody) SetRequestId(v string) *DescribeRdsVSwitchsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsResponseBody) SetVSwitches(v *DescribeRdsVSwitchsResponseBodyVSwitches) *DescribeRdsVSwitchsResponseBody {
+	s.VSwitches = v
+	return s
+}
+
+type DescribeRdsVSwitchsResponseBodyVSwitches struct {
+	VSwitch []*DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch `json:"VSwitch,omitempty" xml:"VSwitch,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRdsVSwitchsResponseBodyVSwitches) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsVSwitchsResponseBodyVSwitches) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsVSwitchsResponseBodyVSwitches) SetVSwitch(v []*DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch) *DescribeRdsVSwitchsResponseBodyVSwitches {
+	s.VSwitch = v
+	return s
+}
+
+type DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch struct {
+	AliUid      *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	Bid         *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	CidrBlock   *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	IsDefault   *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	IzNo        *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
+	RegionNo    *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
+}
+
+func (s DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch) SetAliUid(v string) *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch {
+	s.AliUid = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch) SetBid(v string) *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch {
+	s.Bid = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch) SetCidrBlock(v string) *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch {
+	s.CidrBlock = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch) SetGmtCreate(v string) *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch) SetGmtModified(v string) *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch) SetIsDefault(v bool) *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch {
+	s.IsDefault = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch) SetIzNo(v string) *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch {
+	s.IzNo = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch) SetRegionNo(v string) *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch {
+	s.RegionNo = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch) SetStatus(v string) *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch) SetVSwitchId(v string) *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch) SetVSwitchName(v string) *DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch {
+	s.VSwitchName = &v
+	return s
+}
+
+type DescribeRdsVSwitchsResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeRdsVSwitchsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRdsVSwitchsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsVSwitchsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsVSwitchsResponse) SetHeaders(v map[string]*string) *DescribeRdsVSwitchsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRdsVSwitchsResponse) SetBody(v *DescribeRdsVSwitchsResponseBody) *DescribeRdsVSwitchsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeRdsVpcsRequest struct {
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeRdsVpcsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsVpcsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsVpcsRequest) SetOwnerAccount(v string) *DescribeRdsVpcsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsRequest) SetOwnerId(v int64) *DescribeRdsVpcsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsRequest) SetRegionId(v string) *DescribeRdsVpcsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsRequest) SetResourceOwnerAccount(v string) *DescribeRdsVpcsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsRequest) SetResourceOwnerId(v int64) *DescribeRdsVpcsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsRequest) SetSecurityToken(v string) *DescribeRdsVpcsRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsRequest) SetZoneId(v string) *DescribeRdsVpcsRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeRdsVpcsResponseBody struct {
+	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Vpcs      *DescribeRdsVpcsResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Struct"`
+}
+
+func (s DescribeRdsVpcsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsVpcsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsVpcsResponseBody) SetRequestId(v string) *DescribeRdsVpcsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsResponseBody) SetVpcs(v *DescribeRdsVpcsResponseBodyVpcs) *DescribeRdsVpcsResponseBody {
+	s.Vpcs = v
+	return s
+}
+
+type DescribeRdsVpcsResponseBodyVpcs struct {
+	Vpc []*DescribeRdsVpcsResponseBodyVpcsVpc `json:"Vpc,omitempty" xml:"Vpc,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRdsVpcsResponseBodyVpcs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsVpcsResponseBodyVpcs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsVpcsResponseBodyVpcs) SetVpc(v []*DescribeRdsVpcsResponseBodyVpcsVpc) *DescribeRdsVpcsResponseBodyVpcs {
+	s.Vpc = v
+	return s
+}
+
+type DescribeRdsVpcsResponseBodyVpcsVpc struct {
+	AliUid      *string                                       `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	Bid         *string                                       `json:"Bid,omitempty" xml:"Bid,omitempty"`
+	CidrBlock   *string                                       `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	GmtCreate   *string                                       `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified *string                                       `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	IsDefault   *bool                                         `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	RegionNo    *string                                       `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
+	Status      *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	VSwitchs    []*DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs `json:"VSwitchs,omitempty" xml:"VSwitchs,omitempty" type:"Repeated"`
+	VpcId       *string                                       `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName     *string                                       `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+}
+
+func (s DescribeRdsVpcsResponseBodyVpcsVpc) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsVpcsResponseBodyVpcsVpc) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsVpcsResponseBodyVpcsVpc) SetAliUid(v string) *DescribeRdsVpcsResponseBodyVpcsVpc {
+	s.AliUid = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsResponseBodyVpcsVpc) SetBid(v string) *DescribeRdsVpcsResponseBodyVpcsVpc {
+	s.Bid = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsResponseBodyVpcsVpc) SetCidrBlock(v string) *DescribeRdsVpcsResponseBodyVpcsVpc {
+	s.CidrBlock = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsResponseBodyVpcsVpc) SetGmtCreate(v string) *DescribeRdsVpcsResponseBodyVpcsVpc {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsResponseBodyVpcsVpc) SetGmtModified(v string) *DescribeRdsVpcsResponseBodyVpcsVpc {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsResponseBodyVpcsVpc) SetIsDefault(v bool) *DescribeRdsVpcsResponseBodyVpcsVpc {
+	s.IsDefault = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsResponseBodyVpcsVpc) SetRegionNo(v string) *DescribeRdsVpcsResponseBodyVpcsVpc {
+	s.RegionNo = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsResponseBodyVpcsVpc) SetStatus(v string) *DescribeRdsVpcsResponseBodyVpcsVpc {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsResponseBodyVpcsVpc) SetVSwitchs(v []*DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs) *DescribeRdsVpcsResponseBodyVpcsVpc {
+	s.VSwitchs = v
+	return s
+}
+
+func (s *DescribeRdsVpcsResponseBodyVpcsVpc) SetVpcId(v string) *DescribeRdsVpcsResponseBodyVpcsVpc {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsResponseBodyVpcsVpc) SetVpcName(v string) *DescribeRdsVpcsResponseBodyVpcsVpc {
+	s.VpcName = &v
+	return s
+}
+
+type DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs struct {
+	CidrBlock   *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	GmtCreate   *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	IsDefault   *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	IzNo        *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
+}
+
+func (s DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs) SetCidrBlock(v string) *DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs {
+	s.CidrBlock = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs) SetGmtCreate(v string) *DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs) SetGmtModified(v string) *DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs) SetIsDefault(v bool) *DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs {
+	s.IsDefault = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs) SetIzNo(v string) *DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs {
+	s.IzNo = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs) SetStatus(v string) *DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs) SetVSwitchId(v string) *DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs) SetVSwitchName(v string) *DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs {
+	s.VSwitchName = &v
+	return s
+}
+
+type DescribeRdsVpcsResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeRdsVpcsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRdsVpcsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRdsVpcsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRdsVpcsResponse) SetHeaders(v map[string]*string) *DescribeRdsVpcsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRdsVpcsResponse) SetBody(v *DescribeRdsVpcsResponseBody) *DescribeRdsVpcsResponse {
 	s.Body = v
 	return s
 }
@@ -8657,6 +9243,7 @@ type DescribeSynDbsResponseBodySynDbs struct {
 	RdsId       *string `json:"RdsId,omitempty" xml:"RdsId,omitempty"`
 	RdsPassword *string `json:"RdsPassword,omitempty" xml:"RdsPassword,omitempty"`
 	RdsUserName *string `json:"RdsUserName,omitempty" xml:"RdsUserName,omitempty"`
+	RdsVpcUrl   *string `json:"RdsVpcUrl,omitempty" xml:"RdsVpcUrl,omitempty"`
 	SynDb       *string `json:"SynDb,omitempty" xml:"SynDb,omitempty"`
 	SynStatus   *bool   `json:"SynStatus,omitempty" xml:"SynStatus,omitempty"`
 }
@@ -8686,6 +9273,11 @@ func (s *DescribeSynDbsResponseBodySynDbs) SetRdsPassword(v string) *DescribeSyn
 
 func (s *DescribeSynDbsResponseBodySynDbs) SetRdsUserName(v string) *DescribeSynDbsResponseBodySynDbs {
 	s.RdsUserName = &v
+	return s
+}
+
+func (s *DescribeSynDbsResponseBodySynDbs) SetRdsVpcUrl(v string) *DescribeSynDbsResponseBodySynDbs {
+	s.RdsVpcUrl = &v
 	return s
 }
 
@@ -9416,6 +10008,112 @@ func (s *ModifyBackupPolicyResponse) SetHeaders(v map[string]*string) *ModifyBac
 }
 
 func (s *ModifyBackupPolicyResponse) SetBody(v *ModifyBackupPolicyResponseBody) *ModifyBackupPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyClickHouseClusterServerGRPCRequest struct {
+	Config               *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	DbClusterId          *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
+	Namespace            *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ModifyClickHouseClusterServerGRPCRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClickHouseClusterServerGRPCRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClickHouseClusterServerGRPCRequest) SetConfig(v string) *ModifyClickHouseClusterServerGRPCRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *ModifyClickHouseClusterServerGRPCRequest) SetDbClusterId(v string) *ModifyClickHouseClusterServerGRPCRequest {
+	s.DbClusterId = &v
+	return s
+}
+
+func (s *ModifyClickHouseClusterServerGRPCRequest) SetNamespace(v string) *ModifyClickHouseClusterServerGRPCRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ModifyClickHouseClusterServerGRPCRequest) SetOwnerAccount(v string) *ModifyClickHouseClusterServerGRPCRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyClickHouseClusterServerGRPCRequest) SetOwnerId(v int64) *ModifyClickHouseClusterServerGRPCRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyClickHouseClusterServerGRPCRequest) SetRegionId(v string) *ModifyClickHouseClusterServerGRPCRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyClickHouseClusterServerGRPCRequest) SetResourceOwnerAccount(v string) *ModifyClickHouseClusterServerGRPCRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyClickHouseClusterServerGRPCRequest) SetResourceOwnerId(v int64) *ModifyClickHouseClusterServerGRPCRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ModifyClickHouseClusterServerGRPCResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyClickHouseClusterServerGRPCResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClickHouseClusterServerGRPCResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClickHouseClusterServerGRPCResponseBody) SetRequestId(v string) *ModifyClickHouseClusterServerGRPCResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyClickHouseClusterServerGRPCResponseBody) SetSuccess(v bool) *ModifyClickHouseClusterServerGRPCResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyClickHouseClusterServerGRPCResponse struct {
+	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyClickHouseClusterServerGRPCResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyClickHouseClusterServerGRPCResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClickHouseClusterServerGRPCResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClickHouseClusterServerGRPCResponse) SetHeaders(v map[string]*string) *ModifyClickHouseClusterServerGRPCResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyClickHouseClusterServerGRPCResponse) SetBody(v *ModifyClickHouseClusterServerGRPCResponseBody) *ModifyClickHouseClusterServerGRPCResponse {
 	s.Body = v
 	return s
 }
@@ -10776,6 +11474,7 @@ type SearchRDSTablesRequest struct {
 	RdsPassword          *string `json:"RdsPassword,omitempty" xml:"RdsPassword,omitempty"`
 	RdsPort              *int64  `json:"RdsPort,omitempty" xml:"RdsPort,omitempty"`
 	RdsUserName          *string `json:"RdsUserName,omitempty" xml:"RdsUserName,omitempty"`
+	RdsVpcUrl            *string `json:"RdsVpcUrl,omitempty" xml:"RdsVpcUrl,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TableName            *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
@@ -10821,6 +11520,11 @@ func (s *SearchRDSTablesRequest) SetRdsPort(v int64) *SearchRDSTablesRequest {
 
 func (s *SearchRDSTablesRequest) SetRdsUserName(v string) *SearchRDSTablesRequest {
 	s.RdsUserName = &v
+	return s
+}
+
+func (s *SearchRDSTablesRequest) SetRdsVpcUrl(v string) *SearchRDSTablesRequest {
+	s.RdsVpcUrl = &v
 	return s
 }
 
@@ -11262,6 +11966,10 @@ func (client *Client) CheckClickhouseToRDSWithOptions(request *CheckClickhouseTo
 		query["RdsVpcId"] = request.RdsVpcId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RdsVpcUrl)) {
+		query["RdsVpcUrl"] = request.RdsVpcUrl
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -11297,6 +12005,66 @@ func (client *Client) CheckClickhouseToRDS(request *CheckClickhouseToRDSRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckClickhouseToRDSResponse{}
 	_body, _err := client.CheckClickhouseToRDSWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckHealthWithOptions(request *CheckHealthRequest, runtime *util.RuntimeOptions) (_result *CheckHealthResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbClusterId)) {
+		query["DbClusterId"] = request.DbClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckHealth"),
+		Version:     tea.String("2019-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckHealthResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckHealth(request *CheckHealthRequest) (_result *CheckHealthResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckHealthResponse{}
+	_body, _err := client.CheckHealthWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11886,6 +12654,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 		query["EncryptionType"] = request.EncryptionType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OpenMonitor)) {
+		query["OpenMonitor"] = request.OpenMonitor
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
 		query["OwnerAccount"] = request.OwnerAccount
 	}
@@ -12212,6 +12984,10 @@ func (client *Client) CreateRDSToClickhouseDbWithOptions(request *CreateRDSToCli
 
 	if !tea.BoolValue(util.IsUnset(request.RdsVpcId)) {
 		query["RdsVpcId"] = request.RdsVpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RdsVpcUrl)) {
+		query["RdsVpcUrl"] = request.RdsVpcUrl
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -14322,6 +15098,10 @@ func (client *Client) DescribeRDSTablesWithOptions(request *DescribeRDSTablesReq
 		query["RdsUserName"] = request.RdsUserName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RdsVpcUrl)) {
+		query["RdsVpcUrl"] = request.RdsVpcUrl
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -14470,6 +15250,10 @@ func (client *Client) DescribeRDSschemasWithOptions(request *DescribeRDSschemasR
 		query["RdsUserName"] = request.RdsUserName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RdsVpcUrl)) {
+		query["RdsVpcUrl"] = request.RdsVpcUrl
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -14505,6 +15289,146 @@ func (client *Client) DescribeRDSschemas(request *DescribeRDSschemasRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRDSschemasResponse{}
 	_body, _err := client.DescribeRDSschemasWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeRdsVSwitchsWithOptions(request *DescribeRdsVSwitchsRequest, runtime *util.RuntimeOptions) (_result *DescribeRdsVSwitchsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRdsVSwitchs"),
+		Version:     tea.String("2019-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRdsVSwitchsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRdsVSwitchs(request *DescribeRdsVSwitchsRequest) (_result *DescribeRdsVSwitchsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRdsVSwitchsResponse{}
+	_body, _err := client.DescribeRdsVSwitchsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeRdsVpcsWithOptions(request *DescribeRdsVpcsRequest, runtime *util.RuntimeOptions) (_result *DescribeRdsVpcsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRdsVpcs"),
+		Version:     tea.String("2019-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRdsVpcsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRdsVpcs(request *DescribeRdsVpcsRequest) (_result *DescribeRdsVpcsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRdsVpcsResponse{}
+	_body, _err := client.DescribeRdsVpcsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15341,6 +16265,78 @@ func (client *Client) ModifyBackupPolicy(request *ModifyBackupPolicyRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyBackupPolicyResponse{}
 	_body, _err := client.ModifyBackupPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyClickHouseClusterServerGRPCWithOptions(request *ModifyClickHouseClusterServerGRPCRequest, runtime *util.RuntimeOptions) (_result *ModifyClickHouseClusterServerGRPCResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbClusterId)) {
+		query["DbClusterId"] = request.DbClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyClickHouseClusterServerGRPC"),
+		Version:     tea.String("2019-11-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyClickHouseClusterServerGRPCResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyClickHouseClusterServerGRPC(request *ModifyClickHouseClusterServerGRPCRequest) (_result *ModifyClickHouseClusterServerGRPCResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyClickHouseClusterServerGRPCResponse{}
+	_body, _err := client.ModifyClickHouseClusterServerGRPCWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16300,6 +17296,10 @@ func (client *Client) SearchRDSTablesWithOptions(request *SearchRDSTablesRequest
 
 	if !tea.BoolValue(util.IsUnset(request.RdsUserName)) {
 		query["RdsUserName"] = request.RdsUserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RdsVpcUrl)) {
+		query["RdsVpcUrl"] = request.RdsVpcUrl
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
