@@ -1543,6 +1543,8 @@ func (s *ListInstanceStatisticsResponse) SetBody(v *ListInstanceStatisticsRespon
 }
 
 type ListInstancesRequest struct {
+	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	Accessibility   *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
 	// 实例名称
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// 排列顺序
@@ -1550,7 +1552,8 @@ type ListInstancesRequest struct {
 	// 页码
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// 分页数量大小
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
 	// 排序字段
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// 实例状态
@@ -1565,6 +1568,16 @@ func (s ListInstancesRequest) String() string {
 
 func (s ListInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListInstancesRequest) SetAcceleratorType(v string) *ListInstancesRequest {
+	s.AcceleratorType = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetAccessibility(v string) *ListInstancesRequest {
+	s.Accessibility = &v
+	return s
 }
 
 func (s *ListInstancesRequest) SetInstanceName(v string) *ListInstancesRequest {
@@ -1584,6 +1597,11 @@ func (s *ListInstancesRequest) SetPageNumber(v int64) *ListInstancesRequest {
 
 func (s *ListInstancesRequest) SetPageSize(v int64) *ListInstancesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetPaymentType(v string) *ListInstancesRequest {
+	s.PaymentType = &v
 	return s
 }
 
@@ -2869,6 +2887,14 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceleratorType)) {
+		query["AcceleratorType"] = request.AcceleratorType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
+		query["Accessibility"] = request.Accessibility
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
 		query["InstanceName"] = request.InstanceName
 	}
@@ -2883,6 +2909,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaymentType)) {
+		query["PaymentType"] = request.PaymentType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
