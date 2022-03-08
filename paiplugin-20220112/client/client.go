@@ -149,12 +149,14 @@ func (s *CreateSignatureResponse) SetBody(v *CreateSignatureResponseBody) *Creat
 }
 
 type CreateTemplateRequest struct {
-	// 模板内容，请注意控制总字数在70个字以内，超出部分按长短信收费，按67个字为单位记一条短信，必须在结尾添加”回T退订“。
+	// 模板内容，请注意控制总字数在70个字以内，超出部分按长短信收费，按67个字为单位记一条短信，营销短信必须在结尾添加“回T退订”。
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// 申请说明。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// 模板名称。
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 签名名称，同时只能指定签名名称或签名Id其中之一。
+	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
 	// 签名Id，可通过ListSignatures获取审核状态为已通过的签名列表，获取签名Id。
 	SignatureId *string `json:"SignatureId,omitempty" xml:"SignatureId,omitempty"`
 	// 模板类型。
@@ -184,6 +186,11 @@ func (s *CreateTemplateRequest) SetDescription(v string) *CreateTemplateRequest 
 
 func (s *CreateTemplateRequest) SetName(v string) *CreateTemplateRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateTemplateRequest) SetSignature(v string) *CreateTemplateRequest {
+	s.Signature = &v
 	return s
 }
 
@@ -2702,6 +2709,10 @@ func (client *Client) CreateTemplateWithOptions(request *CreateTemplateRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Signature)) {
+		body["Signature"] = request.Signature
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SignatureId)) {
