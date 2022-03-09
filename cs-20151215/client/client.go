@@ -2307,6 +2307,40 @@ func (s *CreateTriggerResponse) SetBody(v *CreateTriggerResponseBody) *CreateTri
 	return s
 }
 
+type DeleteAlertContactResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s DeleteAlertContactResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlertContactResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlertContactResponse) SetHeaders(v map[string]*string) *DeleteAlertContactResponse {
+	s.Headers = v
+	return s
+}
+
+type DeleteAlertContactGroupResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s DeleteAlertContactGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAlertContactGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAlertContactGroupResponse) SetHeaders(v map[string]*string) *DeleteAlertContactGroupResponse {
+	s.Headers = v
+	return s
+}
+
 type DeleteClusterRequest struct {
 	// 是否保留SLB。  true：保留 false：不保留 默认值：false。
 	KeepSlb *bool `json:"keep_slb,omitempty" xml:"keep_slb,omitempty"`
@@ -11467,6 +11501,48 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 	return s
 }
 
+type UpdateContactGroupForAlertResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+}
+
+func (s UpdateContactGroupForAlertResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateContactGroupForAlertResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateContactGroupForAlertResponse) SetHeaders(v map[string]*string) *UpdateContactGroupForAlertResponse {
+	s.Headers = v
+	return s
+}
+
+type UpdateK8sClusterUserConfigExpireRequest struct {
+	// kubeconfig过期小时
+	ExpireHour *int64 `json:"expire_hour,omitempty" xml:"expire_hour,omitempty"`
+	// 指定用户id
+	User *string `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s UpdateK8sClusterUserConfigExpireRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateK8sClusterUserConfigExpireRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateK8sClusterUserConfigExpireRequest) SetExpireHour(v int64) *UpdateK8sClusterUserConfigExpireRequest {
+	s.ExpireHour = &v
+	return s
+}
+
+func (s *UpdateK8sClusterUserConfigExpireRequest) SetUser(v string) *UpdateK8sClusterUserConfigExpireRequest {
+	s.User = &v
+	return s
+}
+
 type UpdateK8sClusterUserConfigExpireResponse struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 }
@@ -12759,6 +12835,78 @@ func (client *Client) CreateTriggerWithOptions(clusterId *string, request *Creat
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateTriggerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAlertContact() (_result *DeleteAlertContactResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAlertContactResponse{}
+	_body, _err := client.DeleteAlertContactWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteAlertContactWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAlertContactResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAlertContact"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/alert/contacts"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteAlertContactResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAlertContactGroup() (_result *DeleteAlertContactGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteAlertContactGroupResponse{}
+	_body, _err := client.DeleteAlertContactGroupWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteAlertContactGroupWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteAlertContactGroupResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAlertContactGroup"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/alert/contact_groups"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteAlertContactGroupResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -16455,11 +16603,11 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	return _result, _err
 }
 
-func (client *Client) UpdateK8sClusterUserConfigExpire(ClusterId *string) (_result *UpdateK8sClusterUserConfigExpireResponse, _err error) {
+func (client *Client) UpdateContactGroupForAlert(ClusterId *string) (_result *UpdateContactGroupForAlertResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &UpdateK8sClusterUserConfigExpireResponse{}
-	_body, _err := client.UpdateK8sClusterUserConfigExpireWithOptions(ClusterId, headers, runtime)
+	_result = &UpdateContactGroupForAlertResponse{}
+	_body, _err := client.UpdateContactGroupForAlertWithOptions(ClusterId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16467,10 +16615,61 @@ func (client *Client) UpdateK8sClusterUserConfigExpire(ClusterId *string) (_resu
 	return _result, _err
 }
 
-func (client *Client) UpdateK8sClusterUserConfigExpireWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateK8sClusterUserConfigExpireResponse, _err error) {
+func (client *Client) UpdateContactGroupForAlertWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateContactGroupForAlertResponse, _err error) {
 	ClusterId = openapiutil.GetEncodeParam(ClusterId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateContactGroupForAlert"),
+		Version:     tea.String("2015-12-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/alert/" + tea.StringValue(ClusterId) + "/alert_rule/contact_groups"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateContactGroupForAlertResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateK8sClusterUserConfigExpire(ClusterId *string, request *UpdateK8sClusterUserConfigExpireRequest) (_result *UpdateK8sClusterUserConfigExpireResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateK8sClusterUserConfigExpireResponse{}
+	_body, _err := client.UpdateK8sClusterUserConfigExpireWithOptions(ClusterId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateK8sClusterUserConfigExpireWithOptions(ClusterId *string, request *UpdateK8sClusterUserConfigExpireRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateK8sClusterUserConfigExpireResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	ClusterId = openapiutil.GetEncodeParam(ClusterId)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExpireHour)) {
+		body["expire_hour"] = request.ExpireHour
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.User)) {
+		body["user"] = request.User
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateK8sClusterUserConfigExpire"),
