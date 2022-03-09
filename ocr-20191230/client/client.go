@@ -5712,9 +5712,9 @@ func (s *RecognizeVideoCastCrewListResponseBodyData) SetVideoOcrResults(v []*Rec
 }
 
 type RecognizeVideoCastCrewListResponseBodyDataCastResults struct {
-	DetailInfoes map[string]*string `json:"DetailInfoes,omitempty" xml:"DetailInfoes,omitempty"`
-	EndTime      *float32           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime    *float32           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	DetailInfo map[string]*string `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty"`
+	EndTime    *float32           `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime  *float32           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s RecognizeVideoCastCrewListResponseBodyDataCastResults) String() string {
@@ -5725,8 +5725,8 @@ func (s RecognizeVideoCastCrewListResponseBodyDataCastResults) GoString() string
 	return s.String()
 }
 
-func (s *RecognizeVideoCastCrewListResponseBodyDataCastResults) SetDetailInfoes(v map[string]*string) *RecognizeVideoCastCrewListResponseBodyDataCastResults {
-	s.DetailInfoes = v
+func (s *RecognizeVideoCastCrewListResponseBodyDataCastResults) SetDetailInfo(v map[string]*string) *RecognizeVideoCastCrewListResponseBodyDataCastResults {
+	s.DetailInfo = v
 	return s
 }
 
@@ -5741,9 +5741,9 @@ func (s *RecognizeVideoCastCrewListResponseBodyDataCastResults) SetStartTime(v f
 }
 
 type RecognizeVideoCastCrewListResponseBodyDataOcrResults struct {
-	DetailInfoes []*RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes `json:"DetailInfoes,omitempty" xml:"DetailInfoes,omitempty" type:"Repeated"`
-	EndTime      *float32                                                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime    *float32                                                            `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	DetailInfo []*RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty" type:"Repeated"`
+	EndTime    *float32                                                          `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime  *float32                                                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s RecognizeVideoCastCrewListResponseBodyDataOcrResults) String() string {
@@ -5754,8 +5754,8 @@ func (s RecognizeVideoCastCrewListResponseBodyDataOcrResults) GoString() string 
 	return s.String()
 }
 
-func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResults) SetDetailInfoes(v []*RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) *RecognizeVideoCastCrewListResponseBodyDataOcrResults {
-	s.DetailInfoes = v
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResults) SetDetailInfo(v []*RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo) *RecognizeVideoCastCrewListResponseBodyDataOcrResults {
+	s.DetailInfo = v
 	return s
 }
 
@@ -5769,90 +5769,90 @@ func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResults) SetStartTime(v fl
 	return s
 }
 
-type RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes struct {
-	Boxes      []*int32                                                                    `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
-	CharProbs  [][]*float32                                                                `json:"CharProbs,omitempty" xml:"CharProbs,omitempty" type:"Repeated"`
-	FrameIndex *int64                                                                      `json:"FrameIndex,omitempty" xml:"FrameIndex,omitempty"`
-	Position   []*RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition `json:"Position,omitempty" xml:"Position,omitempty" type:"Repeated"`
-	Score      *float32                                                                    `json:"Score,omitempty" xml:"Score,omitempty"`
-	Text       *string                                                                     `json:"Text,omitempty" xml:"Text,omitempty"`
-	TextProb   *float32                                                                    `json:"TextProb,omitempty" xml:"TextProb,omitempty"`
-	TimeStamp  *float32                                                                    `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	TrackId    *int64                                                                      `json:"TrackId,omitempty" xml:"TrackId,omitempty"`
+type RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo struct {
+	Boxes      []*int32                                                                  `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
+	CharProbs  [][]*float32                                                              `json:"CharProbs,omitempty" xml:"CharProbs,omitempty" type:"Repeated"`
+	FrameIndex *int64                                                                    `json:"FrameIndex,omitempty" xml:"FrameIndex,omitempty"`
+	Position   []*RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoPosition `json:"Position,omitempty" xml:"Position,omitempty" type:"Repeated"`
+	Score      *float32                                                                  `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text       *string                                                                   `json:"Text,omitempty" xml:"Text,omitempty"`
+	TextProb   *float32                                                                  `json:"TextProb,omitempty" xml:"TextProb,omitempty"`
+	TimeStamp  *float32                                                                  `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TrackId    *int64                                                                    `json:"TrackId,omitempty" xml:"TrackId,omitempty"`
 }
 
-func (s RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) String() string {
+func (s RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo) String() string {
 	return tea.Prettify(s)
 }
 
-func (s RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) GoString() string {
+func (s RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) SetBoxes(v []*int32) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes {
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo) SetBoxes(v []*int32) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo {
 	s.Boxes = v
 	return s
 }
 
-func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) SetCharProbs(v [][]*float32) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes {
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo) SetCharProbs(v [][]*float32) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo {
 	s.CharProbs = v
 	return s
 }
 
-func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) SetFrameIndex(v int64) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes {
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo) SetFrameIndex(v int64) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo {
 	s.FrameIndex = &v
 	return s
 }
 
-func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) SetPosition(v []*RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes {
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo) SetPosition(v []*RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoPosition) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo {
 	s.Position = v
 	return s
 }
 
-func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) SetScore(v float32) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes {
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo) SetScore(v float32) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo {
 	s.Score = &v
 	return s
 }
 
-func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) SetText(v string) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes {
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo) SetText(v string) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo {
 	s.Text = &v
 	return s
 }
 
-func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) SetTextProb(v float32) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes {
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo) SetTextProb(v float32) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo {
 	s.TextProb = &v
 	return s
 }
 
-func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) SetTimeStamp(v float32) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes {
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo) SetTimeStamp(v float32) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo {
 	s.TimeStamp = &v
 	return s
 }
 
-func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes) SetTrackId(v int64) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoes {
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo) SetTrackId(v int64) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo {
 	s.TrackId = &v
 	return s
 }
 
-type RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition struct {
+type RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoPosition struct {
 	X *int64 `json:"X,omitempty" xml:"X,omitempty"`
 	Y *int64 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
-func (s RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition) String() string {
+func (s RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoPosition) String() string {
 	return tea.Prettify(s)
 }
 
-func (s RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition) GoString() string {
+func (s RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoPosition) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition) SetX(v int64) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition {
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoPosition) SetX(v int64) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoPosition {
 	s.X = &v
 	return s
 }
 
-func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition) SetY(v int64) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoesPosition {
+func (s *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoPosition) SetY(v int64) *RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoPosition {
 	s.Y = &v
 	return s
 }
@@ -5905,9 +5905,9 @@ func (s *RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults) SetSubtitle
 }
 
 type RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults struct {
-	DetailInfoes []*RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes `json:"DetailInfoes,omitempty" xml:"DetailInfoes,omitempty" type:"Repeated"`
-	EndTime      *float32                                                                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime    *float32                                                                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	DetailInfo []*RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo `json:"DetailInfo,omitempty" xml:"DetailInfo,omitempty" type:"Repeated"`
+	EndTime    *float32                                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	StartTime  *float32                                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults) String() string {
@@ -5918,8 +5918,8 @@ func (s RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults) GoString() st
 	return s.String()
 }
 
-func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults) SetDetailInfoes(v []*RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults {
-	s.DetailInfoes = v
+func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults) SetDetailInfo(v []*RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults {
+	s.DetailInfo = v
 	return s
 }
 
@@ -5933,66 +5933,66 @@ func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults) SetStartTime
 	return s
 }
 
-type RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes struct {
-	Boxes    []*int64                                                                         `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
-	Position []*RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition `json:"Position,omitempty" xml:"Position,omitempty" type:"Repeated"`
-	Score    *float32                                                                         `json:"Score,omitempty" xml:"Score,omitempty"`
-	Text     *string                                                                          `json:"Text,omitempty" xml:"Text,omitempty"`
-	TextType *int64                                                                           `json:"TextType,omitempty" xml:"TextType,omitempty"`
+type RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo struct {
+	Boxes    []*int64                                                                       `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
+	Position []*RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoPosition `json:"Position,omitempty" xml:"Position,omitempty" type:"Repeated"`
+	Score    *float32                                                                       `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text     *string                                                                        `json:"Text,omitempty" xml:"Text,omitempty"`
+	TextType *int64                                                                         `json:"TextType,omitempty" xml:"TextType,omitempty"`
 }
 
-func (s RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes) String() string {
+func (s RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo) String() string {
 	return tea.Prettify(s)
 }
 
-func (s RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes) GoString() string {
+func (s RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes) SetBoxes(v []*int64) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes {
+func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo) SetBoxes(v []*int64) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo {
 	s.Boxes = v
 	return s
 }
 
-func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes) SetPosition(v []*RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes {
+func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo) SetPosition(v []*RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoPosition) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo {
 	s.Position = v
 	return s
 }
 
-func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes) SetScore(v float32) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes {
+func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo) SetScore(v float32) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo {
 	s.Score = &v
 	return s
 }
 
-func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes) SetText(v string) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes {
+func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo) SetText(v string) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo {
 	s.Text = &v
 	return s
 }
 
-func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes) SetTextType(v int64) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoes {
+func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo) SetTextType(v int64) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo {
 	s.TextType = &v
 	return s
 }
 
-type RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition struct {
+type RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoPosition struct {
 	X *int64 `json:"X,omitempty" xml:"X,omitempty"`
 	Y *int64 `json:"Y,omitempty" xml:"Y,omitempty"`
 }
 
-func (s RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition) String() string {
+func (s RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoPosition) String() string {
 	return tea.Prettify(s)
 }
 
-func (s RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition) GoString() string {
+func (s RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoPosition) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition) SetX(v int64) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition {
+func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoPosition) SetX(v int64) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoPosition {
 	s.X = &v
 	return s
 }
 
-func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition) SetY(v int64) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoesPosition {
+func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoPosition) SetY(v int64) *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoPosition {
 	s.Y = &v
 	return s
 }
