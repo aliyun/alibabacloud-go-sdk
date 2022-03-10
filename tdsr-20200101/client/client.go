@@ -636,557 +636,89 @@ func (s *AddSubSceneResponse) SetBody(v *AddSubSceneResponseBody) *AddSubSceneRe
 	return s
 }
 
-type CheckResourceRequest struct {
-	Bid            *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	Country        *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	GmtWakeup      *string `json:"GmtWakeup,omitempty" xml:"GmtWakeup,omitempty"`
-	Hid            *int64  `json:"Hid,omitempty" xml:"Hid,omitempty"`
-	Interrupt      *bool   `json:"Interrupt,omitempty" xml:"Interrupt,omitempty"`
-	Invoker        *string `json:"Invoker,omitempty" xml:"Invoker,omitempty"`
-	Level          *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Pk             *string `json:"Pk,omitempty" xml:"Pk,omitempty"`
-	Prompt         *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskExtraData  *string `json:"TaskExtraData,omitempty" xml:"TaskExtraData,omitempty"`
-	TaskIdentifier *string `json:"TaskIdentifier,omitempty" xml:"TaskIdentifier,omitempty"`
-	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
+type CheckUserPropertyRequest struct {
+	// 用户uid
+	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
-func (s CheckResourceRequest) String() string {
+func (s CheckUserPropertyRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CheckResourceRequest) GoString() string {
+func (s CheckUserPropertyRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CheckResourceRequest) SetBid(v string) *CheckResourceRequest {
-	s.Bid = &v
+func (s *CheckUserPropertyRequest) SetUid(v string) *CheckUserPropertyRequest {
+	s.Uid = &v
 	return s
 }
 
-func (s *CheckResourceRequest) SetCountry(v string) *CheckResourceRequest {
-	s.Country = &v
+type CheckUserPropertyResponseBody struct {
+	// 返回码
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 用户属性是否匹配
+	Match *bool `json:"Match,omitempty" xml:"Match,omitempty"`
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求ID，与入参requestId对应
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 是否请求成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CheckUserPropertyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckUserPropertyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckUserPropertyResponseBody) SetCode(v int64) *CheckUserPropertyResponseBody {
+	s.Code = &v
 	return s
 }
 
-func (s *CheckResourceRequest) SetGmtWakeup(v string) *CheckResourceRequest {
-	s.GmtWakeup = &v
+func (s *CheckUserPropertyResponseBody) SetMatch(v bool) *CheckUserPropertyResponseBody {
+	s.Match = &v
 	return s
 }
 
-func (s *CheckResourceRequest) SetHid(v int64) *CheckResourceRequest {
-	s.Hid = &v
-	return s
-}
-
-func (s *CheckResourceRequest) SetInterrupt(v bool) *CheckResourceRequest {
-	s.Interrupt = &v
-	return s
-}
-
-func (s *CheckResourceRequest) SetInvoker(v string) *CheckResourceRequest {
-	s.Invoker = &v
-	return s
-}
-
-func (s *CheckResourceRequest) SetLevel(v int64) *CheckResourceRequest {
-	s.Level = &v
-	return s
-}
-
-func (s *CheckResourceRequest) SetMessage(v string) *CheckResourceRequest {
+func (s *CheckUserPropertyResponseBody) SetMessage(v string) *CheckUserPropertyResponseBody {
 	s.Message = &v
 	return s
 }
 
-func (s *CheckResourceRequest) SetPk(v string) *CheckResourceRequest {
-	s.Pk = &v
-	return s
-}
-
-func (s *CheckResourceRequest) SetPrompt(v string) *CheckResourceRequest {
-	s.Prompt = &v
-	return s
-}
-
-func (s *CheckResourceRequest) SetSuccess(v bool) *CheckResourceRequest {
-	s.Success = &v
-	return s
-}
-
-func (s *CheckResourceRequest) SetTaskExtraData(v string) *CheckResourceRequest {
-	s.TaskExtraData = &v
-	return s
-}
-
-func (s *CheckResourceRequest) SetTaskIdentifier(v string) *CheckResourceRequest {
-	s.TaskIdentifier = &v
-	return s
-}
-
-func (s *CheckResourceRequest) SetUrl(v string) *CheckResourceRequest {
-	s.Url = &v
-	return s
-}
-
-type CheckResourceResponseBody struct {
-	Bid            *string `json:"Bid,omitempty" xml:"Bid,omitempty"`
-	Country        *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	GmtWakeup      *string `json:"GmtWakeup,omitempty" xml:"GmtWakeup,omitempty"`
-	Hid            *int64  `json:"Hid,omitempty" xml:"Hid,omitempty"`
-	Interrupt      *bool   `json:"Interrupt,omitempty" xml:"Interrupt,omitempty"`
-	Invoker        *string `json:"Invoker,omitempty" xml:"Invoker,omitempty"`
-	Level          *int64  `json:"Level,omitempty" xml:"Level,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Pk             *string `json:"Pk,omitempty" xml:"Pk,omitempty"`
-	Prompt         *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TaskExtraData  *string `json:"TaskExtraData,omitempty" xml:"TaskExtraData,omitempty"`
-	TaskIdentifier *string `json:"TaskIdentifier,omitempty" xml:"TaskIdentifier,omitempty"`
-	Url            *string `json:"Url,omitempty" xml:"Url,omitempty"`
-}
-
-func (s CheckResourceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckResourceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CheckResourceResponseBody) SetBid(v string) *CheckResourceResponseBody {
-	s.Bid = &v
-	return s
-}
-
-func (s *CheckResourceResponseBody) SetCountry(v string) *CheckResourceResponseBody {
-	s.Country = &v
-	return s
-}
-
-func (s *CheckResourceResponseBody) SetGmtWakeup(v string) *CheckResourceResponseBody {
-	s.GmtWakeup = &v
-	return s
-}
-
-func (s *CheckResourceResponseBody) SetHid(v int64) *CheckResourceResponseBody {
-	s.Hid = &v
-	return s
-}
-
-func (s *CheckResourceResponseBody) SetInterrupt(v bool) *CheckResourceResponseBody {
-	s.Interrupt = &v
-	return s
-}
-
-func (s *CheckResourceResponseBody) SetInvoker(v string) *CheckResourceResponseBody {
-	s.Invoker = &v
-	return s
-}
-
-func (s *CheckResourceResponseBody) SetLevel(v int64) *CheckResourceResponseBody {
-	s.Level = &v
-	return s
-}
-
-func (s *CheckResourceResponseBody) SetMessage(v string) *CheckResourceResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CheckResourceResponseBody) SetPk(v string) *CheckResourceResponseBody {
-	s.Pk = &v
-	return s
-}
-
-func (s *CheckResourceResponseBody) SetPrompt(v string) *CheckResourceResponseBody {
-	s.Prompt = &v
-	return s
-}
-
-func (s *CheckResourceResponseBody) SetRequestId(v string) *CheckResourceResponseBody {
+func (s *CheckUserPropertyResponseBody) SetRequestId(v string) *CheckUserPropertyResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *CheckResourceResponseBody) SetSuccess(v bool) *CheckResourceResponseBody {
+func (s *CheckUserPropertyResponseBody) SetSuccess(v bool) *CheckUserPropertyResponseBody {
 	s.Success = &v
 	return s
 }
 
-func (s *CheckResourceResponseBody) SetTaskExtraData(v string) *CheckResourceResponseBody {
-	s.TaskExtraData = &v
-	return s
+type CheckUserPropertyResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CheckUserPropertyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s *CheckResourceResponseBody) SetTaskIdentifier(v string) *CheckResourceResponseBody {
-	s.TaskIdentifier = &v
-	return s
-}
-
-func (s *CheckResourceResponseBody) SetUrl(v string) *CheckResourceResponseBody {
-	s.Url = &v
-	return s
-}
-
-type CheckResourceResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CheckResourceResponse) String() string {
+func (s CheckUserPropertyResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CheckResourceResponse) GoString() string {
+func (s CheckUserPropertyResponse) GoString() string {
 	return s.String()
 }
 
-func (s *CheckResourceResponse) SetHeaders(v map[string]*string) *CheckResourceResponse {
+func (s *CheckUserPropertyResponse) SetHeaders(v map[string]*string) *CheckUserPropertyResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *CheckResourceResponse) SetBody(v *CheckResourceResponseBody) *CheckResourceResponse {
-	s.Body = v
-	return s
-}
-
-type CreateProjectRequest struct {
-	BuilderUserIdList  *string `json:"BuilderUserIdList,omitempty" xml:"BuilderUserIdList,omitempty"`
-	BusinessId         *string `json:"BusinessId,omitempty" xml:"BusinessId,omitempty"`
-	BusinessUserIdList *string `json:"BusinessUserIdList,omitempty" xml:"BusinessUserIdList,omitempty"`
-	GatherUserIdList   *string `json:"GatherUserIdList,omitempty" xml:"GatherUserIdList,omitempty"`
-	Name               *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s CreateProjectRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateProjectRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateProjectRequest) SetBuilderUserIdList(v string) *CreateProjectRequest {
-	s.BuilderUserIdList = &v
-	return s
-}
-
-func (s *CreateProjectRequest) SetBusinessId(v string) *CreateProjectRequest {
-	s.BusinessId = &v
-	return s
-}
-
-func (s *CreateProjectRequest) SetBusinessUserIdList(v string) *CreateProjectRequest {
-	s.BusinessUserIdList = &v
-	return s
-}
-
-func (s *CreateProjectRequest) SetGatherUserIdList(v string) *CreateProjectRequest {
-	s.GatherUserIdList = &v
-	return s
-}
-
-func (s *CreateProjectRequest) SetName(v string) *CreateProjectRequest {
-	s.Name = &v
-	return s
-}
-
-type CreateProjectResponseBody struct {
-	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	Id         *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateProjectResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateProjectResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateProjectResponseBody) SetErrMessage(v string) *CreateProjectResponseBody {
-	s.ErrMessage = &v
-	return s
-}
-
-func (s *CreateProjectResponseBody) SetId(v int64) *CreateProjectResponseBody {
-	s.Id = &v
-	return s
-}
-
-func (s *CreateProjectResponseBody) SetName(v string) *CreateProjectResponseBody {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateProjectResponseBody) SetRequestId(v string) *CreateProjectResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateProjectResponseBody) SetSuccess(v bool) *CreateProjectResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateProjectResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateProjectResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateProjectResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateProjectResponse) SetHeaders(v map[string]*string) *CreateProjectResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreateProjectResponse {
-	s.Body = v
-	return s
-}
-
-type CreateSceneRequest struct {
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-}
-
-func (s CreateSceneRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSceneRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSceneRequest) SetName(v string) *CreateSceneRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateSceneRequest) SetProjectId(v string) *CreateSceneRequest {
-	s.ProjectId = &v
-	return s
-}
-
-type CreateSceneResponseBody struct {
-	ErrMessage   *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	PreviewToken *string `json:"PreviewToken,omitempty" xml:"PreviewToken,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SceneId      *int64  `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateSceneResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSceneResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSceneResponseBody) SetErrMessage(v string) *CreateSceneResponseBody {
-	s.ErrMessage = &v
-	return s
-}
-
-func (s *CreateSceneResponseBody) SetPreviewToken(v string) *CreateSceneResponseBody {
-	s.PreviewToken = &v
-	return s
-}
-
-func (s *CreateSceneResponseBody) SetRequestId(v string) *CreateSceneResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateSceneResponseBody) SetSceneId(v int64) *CreateSceneResponseBody {
-	s.SceneId = &v
-	return s
-}
-
-func (s *CreateSceneResponseBody) SetSuccess(v bool) *CreateSceneResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateSceneResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateSceneResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateSceneResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateSceneResponse) SetHeaders(v map[string]*string) *CreateSceneResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateSceneResponse) SetBody(v *CreateSceneResponseBody) *CreateSceneResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteFileRequest struct {
-	ParamFile    *string `json:"ParamFile,omitempty" xml:"ParamFile,omitempty"`
-	SubSceneUuid *string `json:"SubSceneUuid,omitempty" xml:"SubSceneUuid,omitempty"`
-}
-
-func (s DeleteFileRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteFileRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteFileRequest) SetParamFile(v string) *DeleteFileRequest {
-	s.ParamFile = &v
-	return s
-}
-
-func (s *DeleteFileRequest) SetSubSceneUuid(v string) *DeleteFileRequest {
-	s.SubSceneUuid = &v
-	return s
-}
-
-type DeleteFileResponseBody struct {
-	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeleteFileResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteFileResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteFileResponseBody) SetErrMessage(v string) *DeleteFileResponseBody {
-	s.ErrMessage = &v
-	return s
-}
-
-func (s *DeleteFileResponseBody) SetRequestId(v string) *DeleteFileResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteFileResponseBody) SetSuccess(v bool) *DeleteFileResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DeleteFileResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteFileResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteFileResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteFileResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteFileResponse) SetHeaders(v map[string]*string) *DeleteFileResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteFileResponse) SetBody(v *DeleteFileResponseBody) *DeleteFileResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteProjectRequest struct {
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-}
-
-func (s DeleteProjectRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteProjectRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteProjectRequest) SetProjectId(v string) *DeleteProjectRequest {
-	s.ProjectId = &v
-	return s
-}
-
-type DeleteProjectResponseBody struct {
-	ErrMessage *string `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeleteProjectResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteProjectResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteProjectResponseBody) SetErrMessage(v string) *DeleteProjectResponseBody {
-	s.ErrMessage = &v
-	return s
-}
-
-func (s *DeleteProjectResponseBody) SetRequestId(v string) *DeleteProjectResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteProjectResponseBody) SetSuccess(v bool) *DeleteProjectResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DeleteProjectResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteProjectResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteProjectResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteProjectResponse) SetHeaders(v map[string]*string) *DeleteProjectResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteProjectResponse) SetBody(v *DeleteProjectResponseBody) *DeleteProjectResponse {
+func (s *CheckUserPropertyResponse) SetBody(v *CheckUserPropertyResponseBody) *CheckUserPropertyResponse {
 	s.Body = v
 	return s
 }
@@ -2660,93 +2192,6 @@ func (s *GetOssPolicyResponse) SetHeaders(v map[string]*string) *GetOssPolicyRes
 }
 
 func (s *GetOssPolicyResponse) SetBody(v *GetOssPolicyResponseBody) *GetOssPolicyResponse {
-	s.Body = v
-	return s
-}
-
-type GetPolicyRequest struct {
-	SubSceneUuid *string `json:"SubSceneUuid,omitempty" xml:"SubSceneUuid,omitempty"`
-	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s GetPolicyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPolicyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetPolicyRequest) SetSubSceneUuid(v string) *GetPolicyRequest {
-	s.SubSceneUuid = &v
-	return s
-}
-
-func (s *GetPolicyRequest) SetType(v string) *GetPolicyRequest {
-	s.Type = &v
-	return s
-}
-
-type GetPolicyResponseBody struct {
-	Data         map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrMessage   *string                `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	ObjectString *string                `json:"ObjectString,omitempty" xml:"ObjectString,omitempty"`
-	RequestId    *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success      *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetPolicyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPolicyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetPolicyResponseBody) SetData(v map[string]interface{}) *GetPolicyResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetPolicyResponseBody) SetErrMessage(v string) *GetPolicyResponseBody {
-	s.ErrMessage = &v
-	return s
-}
-
-func (s *GetPolicyResponseBody) SetObjectString(v string) *GetPolicyResponseBody {
-	s.ObjectString = &v
-	return s
-}
-
-func (s *GetPolicyResponseBody) SetRequestId(v string) *GetPolicyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetPolicyResponseBody) SetSuccess(v bool) *GetPolicyResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetPolicyResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetPolicyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPolicyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetPolicyResponse) SetHeaders(v map[string]*string) *GetPolicyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetPolicyResponse) SetBody(v *GetPolicyResponseBody) *GetPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -4641,104 +4086,6 @@ func (s *ListSceneResponse) SetHeaders(v map[string]*string) *ListSceneResponse 
 }
 
 func (s *ListSceneResponse) SetBody(v *ListSceneResponseBody) *ListSceneResponse {
-	s.Body = v
-	return s
-}
-
-type ListScenesRequest struct {
-	IsPublishQuery *bool   `json:"IsPublishQuery,omitempty" xml:"IsPublishQuery,omitempty"`
-	ProjectId      *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-}
-
-func (s ListScenesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListScenesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListScenesRequest) SetIsPublishQuery(v bool) *ListScenesRequest {
-	s.IsPublishQuery = &v
-	return s
-}
-
-func (s *ListScenesRequest) SetProjectId(v string) *ListScenesRequest {
-	s.ProjectId = &v
-	return s
-}
-
-type ListScenesResponseBody struct {
-	Data       []*ListScenesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrMessage *string                       `json:"ErrMessage,omitempty" xml:"ErrMessage,omitempty"`
-	RequestId  *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success    *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListScenesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListScenesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListScenesResponseBody) SetData(v []*ListScenesResponseBodyData) *ListScenesResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListScenesResponseBody) SetErrMessage(v string) *ListScenesResponseBody {
-	s.ErrMessage = &v
-	return s
-}
-
-func (s *ListScenesResponseBody) SetRequestId(v string) *ListScenesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListScenesResponseBody) SetSuccess(v bool) *ListScenesResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListScenesResponseBodyData struct {
-	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-}
-
-func (s ListScenesResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListScenesResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListScenesResponseBodyData) SetSceneId(v string) *ListScenesResponseBodyData {
-	s.SceneId = &v
-	return s
-}
-
-type ListScenesResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListScenesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListScenesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListScenesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListScenesResponse) SetHeaders(v map[string]*string) *ListScenesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListScenesResponse) SetBody(v *ListScenesResponseBody) *ListScenesResponse {
 	s.Body = v
 	return s
 }
@@ -7116,73 +6463,21 @@ func (client *Client) AddSubScene(request *AddSubSceneRequest) (_result *AddSubS
 	return _result, _err
 }
 
-func (client *Client) CheckResourceWithOptions(request *CheckResourceRequest, runtime *util.RuntimeOptions) (_result *CheckResourceResponse, _err error) {
+func (client *Client) CheckUserPropertyWithOptions(request *CheckUserPropertyRequest, runtime *util.RuntimeOptions) (_result *CheckUserPropertyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Bid)) {
-		query["Bid"] = request.Bid
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Country)) {
-		query["Country"] = request.Country
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.GmtWakeup)) {
-		query["GmtWakeup"] = request.GmtWakeup
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Hid)) {
-		query["Hid"] = request.Hid
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Interrupt)) {
-		query["Interrupt"] = request.Interrupt
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Invoker)) {
-		query["Invoker"] = request.Invoker
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Level)) {
-		query["Level"] = request.Level
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Message)) {
-		query["Message"] = request.Message
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Pk)) {
-		query["Pk"] = request.Pk
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Prompt)) {
-		query["Prompt"] = request.Prompt
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Success)) {
-		query["Success"] = request.Success
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TaskExtraData)) {
-		query["TaskExtraData"] = request.TaskExtraData
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TaskIdentifier)) {
-		query["TaskIdentifier"] = request.TaskIdentifier
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Url)) {
-		query["Url"] = request.Url
+	if !tea.BoolValue(util.IsUnset(request.Uid)) {
+		query["Uid"] = request.Uid
 	}
 
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
 	params := &openapi.Params{
-		Action:      tea.String("CheckResource"),
+		Action:      tea.String("CheckUserProperty"),
 		Version:     tea.String("2020-01-01"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -7192,7 +6487,7 @@ func (client *Client) CheckResourceWithOptions(request *CheckResourceRequest, ru
 		ReqBodyType: tea.String("formData"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &CheckResourceResponse{}
+	_result = &CheckUserPropertyResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7201,210 +6496,10 @@ func (client *Client) CheckResourceWithOptions(request *CheckResourceRequest, ru
 	return _result, _err
 }
 
-func (client *Client) CheckResource(request *CheckResourceRequest) (_result *CheckResourceResponse, _err error) {
+func (client *Client) CheckUserProperty(request *CheckUserPropertyRequest) (_result *CheckUserPropertyResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &CheckResourceResponse{}
-	_body, _err := client.CheckResourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, runtime *util.RuntimeOptions) (_result *CreateProjectResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BuilderUserIdList)) {
-		query["BuilderUserIdList"] = request.BuilderUserIdList
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BusinessId)) {
-		query["BusinessId"] = request.BusinessId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BusinessUserIdList)) {
-		query["BusinessUserIdList"] = request.BusinessUserIdList
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.GatherUserIdList)) {
-		query["GatherUserIdList"] = request.GatherUserIdList
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		query["Name"] = request.Name
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateProject"),
-		Version:     tea.String("2020-01-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateProject(request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateProjectResponse{}
-	_body, _err := client.CreateProjectWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateSceneWithOptions(request *CreateSceneRequest, runtime *util.RuntimeOptions) (_result *CreateSceneResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		query["Name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
-		query["ProjectId"] = request.ProjectId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateScene"),
-		Version:     tea.String("2020-01-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateSceneResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateScene(request *CreateSceneRequest) (_result *CreateSceneResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateSceneResponse{}
-	_body, _err := client.CreateSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteFileWithOptions(request *DeleteFileRequest, runtime *util.RuntimeOptions) (_result *DeleteFileResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ParamFile)) {
-		query["ParamFile"] = request.ParamFile
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SubSceneUuid)) {
-		query["SubSceneUuid"] = request.SubSceneUuid
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteFile"),
-		Version:     tea.String("2020-01-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteFileResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteFile(request *DeleteFileRequest) (_result *DeleteFileResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteFileResponse{}
-	_body, _err := client.DeleteFileWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, runtime *util.RuntimeOptions) (_result *DeleteProjectResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
-		query["ProjectId"] = request.ProjectId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteProject"),
-		Version:     tea.String("2020-01-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteProjectResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteProject(request *DeleteProjectRequest) (_result *DeleteProjectResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteProjectResponse{}
-	_body, _err := client.DeleteProjectWithOptions(request, runtime)
+	_result = &CheckUserPropertyResponse{}
+	_body, _err := client.CheckUserPropertyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8024,54 +7119,6 @@ func (client *Client) GetOssPolicy(request *GetOssPolicyRequest) (_result *GetOs
 	return _result, _err
 }
 
-func (client *Client) GetPolicyWithOptions(request *GetPolicyRequest, runtime *util.RuntimeOptions) (_result *GetPolicyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.SubSceneUuid)) {
-		query["SubSceneUuid"] = request.SubSceneUuid
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["Type"] = request.Type
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetPolicy"),
-		Version:     tea.String("2020-01-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetPolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetPolicy(request *GetPolicyRequest) (_result *GetPolicyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetPolicyResponse{}
-	_body, _err := client.GetPolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetRectifyImageWithOptions(request *GetRectifyImageRequest, runtime *util.RuntimeOptions) (_result *GetRectifyImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8649,54 +7696,6 @@ func (client *Client) ListScene(request *ListSceneRequest) (_result *ListSceneRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListSceneResponse{}
 	_body, _err := client.ListSceneWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListScenesWithOptions(request *ListScenesRequest, runtime *util.RuntimeOptions) (_result *ListScenesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.IsPublishQuery)) {
-		query["IsPublishQuery"] = request.IsPublishQuery
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
-		query["ProjectId"] = request.ProjectId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListScenes"),
-		Version:     tea.String("2020-01-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListScenesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListScenes(request *ListScenesRequest) (_result *ListScenesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListScenesResponse{}
-	_body, _err := client.ListScenesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
