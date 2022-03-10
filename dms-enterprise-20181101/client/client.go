@@ -890,6 +890,205 @@ func (s *CreateDataCronClearOrderResponse) SetBody(v *CreateDataCronClearOrderRe
 	return s
 }
 
+type CreateDataExportOrderRequest struct {
+	AttachmentKey   *string                            `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	Comment         *string                            `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Param           *CreateDataExportOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
+	RelatedUserList []*int64                           `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
+	Tid             *int64                             `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateDataExportOrderRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataExportOrderRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataExportOrderRequest) SetAttachmentKey(v string) *CreateDataExportOrderRequest {
+	s.AttachmentKey = &v
+	return s
+}
+
+func (s *CreateDataExportOrderRequest) SetComment(v string) *CreateDataExportOrderRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateDataExportOrderRequest) SetParam(v *CreateDataExportOrderRequestParam) *CreateDataExportOrderRequest {
+	s.Param = v
+	return s
+}
+
+func (s *CreateDataExportOrderRequest) SetRelatedUserList(v []*int64) *CreateDataExportOrderRequest {
+	s.RelatedUserList = v
+	return s
+}
+
+func (s *CreateDataExportOrderRequest) SetTid(v int64) *CreateDataExportOrderRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateDataExportOrderRequestParam struct {
+	Classify   *string                                        `json:"Classify,omitempty" xml:"Classify,omitempty"`
+	DbItemList []*CreateDataExportOrderRequestParamDbItemList `json:"DbItemList,omitempty" xml:"DbItemList,omitempty" type:"Repeated"`
+	ExecSQL    *string                                        `json:"ExecSQL,omitempty" xml:"ExecSQL,omitempty"`
+}
+
+func (s CreateDataExportOrderRequestParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataExportOrderRequestParam) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataExportOrderRequestParam) SetClassify(v string) *CreateDataExportOrderRequestParam {
+	s.Classify = &v
+	return s
+}
+
+func (s *CreateDataExportOrderRequestParam) SetDbItemList(v []*CreateDataExportOrderRequestParamDbItemList) *CreateDataExportOrderRequestParam {
+	s.DbItemList = v
+	return s
+}
+
+func (s *CreateDataExportOrderRequestParam) SetExecSQL(v string) *CreateDataExportOrderRequestParam {
+	s.ExecSQL = &v
+	return s
+}
+
+type CreateDataExportOrderRequestParamDbItemList struct {
+	DbId  *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
+	Logic *bool  `json:"Logic,omitempty" xml:"Logic,omitempty"`
+}
+
+func (s CreateDataExportOrderRequestParamDbItemList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataExportOrderRequestParamDbItemList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataExportOrderRequestParamDbItemList) SetDbId(v int64) *CreateDataExportOrderRequestParamDbItemList {
+	s.DbId = &v
+	return s
+}
+
+func (s *CreateDataExportOrderRequestParamDbItemList) SetLogic(v bool) *CreateDataExportOrderRequestParamDbItemList {
+	s.Logic = &v
+	return s
+}
+
+type CreateDataExportOrderShrinkRequest struct {
+	AttachmentKey         *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
+	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
+	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
+	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateDataExportOrderShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataExportOrderShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataExportOrderShrinkRequest) SetAttachmentKey(v string) *CreateDataExportOrderShrinkRequest {
+	s.AttachmentKey = &v
+	return s
+}
+
+func (s *CreateDataExportOrderShrinkRequest) SetComment(v string) *CreateDataExportOrderShrinkRequest {
+	s.Comment = &v
+	return s
+}
+
+func (s *CreateDataExportOrderShrinkRequest) SetParamShrink(v string) *CreateDataExportOrderShrinkRequest {
+	s.ParamShrink = &v
+	return s
+}
+
+func (s *CreateDataExportOrderShrinkRequest) SetRelatedUserListShrink(v string) *CreateDataExportOrderShrinkRequest {
+	s.RelatedUserListShrink = &v
+	return s
+}
+
+func (s *CreateDataExportOrderShrinkRequest) SetTid(v int64) *CreateDataExportOrderShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateDataExportOrderResponseBody struct {
+	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
+	ErrorCode         *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage      *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateDataExportOrderResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataExportOrderResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataExportOrderResponseBody) SetCreateOrderResult(v []*int64) *CreateDataExportOrderResponseBody {
+	s.CreateOrderResult = v
+	return s
+}
+
+func (s *CreateDataExportOrderResponseBody) SetErrorCode(v string) *CreateDataExportOrderResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateDataExportOrderResponseBody) SetErrorMessage(v string) *CreateDataExportOrderResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateDataExportOrderResponseBody) SetRequestId(v string) *CreateDataExportOrderResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDataExportOrderResponseBody) SetSuccess(v bool) *CreateDataExportOrderResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDataExportOrderResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateDataExportOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDataExportOrderResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataExportOrderResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataExportOrderResponse) SetHeaders(v map[string]*string) *CreateDataExportOrderResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDataExportOrderResponse) SetBody(v *CreateDataExportOrderResponseBody) *CreateDataExportOrderResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDataImportOrderRequest struct {
 	AttachmentKey   *string                            `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
 	Comment         *string                            `json:"Comment,omitempty" xml:"Comment,omitempty"`
@@ -8530,450 +8729,6 @@ func (s *GetSQLReviewOptimizeDetailResponse) SetBody(v *GetSQLReviewOptimizeDeta
 	return s
 }
 
-type GetSparkJobDetailRequest struct {
-	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s GetSparkJobDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSparkJobDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetSparkJobDetailRequest) SetJobId(v int64) *GetSparkJobDetailRequest {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetSparkJobDetailRequest) SetTid(v int64) *GetSparkJobDetailRequest {
-	s.Tid = &v
-	return s
-}
-
-type GetSparkJobDetailResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Details of the spark job
-	JobDetail *GetSparkJobDetailResponseBodyJobDetail `json:"JobDetail,omitempty" xml:"JobDetail,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetSparkJobDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSparkJobDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetSparkJobDetailResponseBody) SetErrorCode(v string) *GetSparkJobDetailResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetSparkJobDetailResponseBody) SetErrorMessage(v string) *GetSparkJobDetailResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetSparkJobDetailResponseBody) SetJobDetail(v *GetSparkJobDetailResponseBodyJobDetail) *GetSparkJobDetailResponseBody {
-	s.JobDetail = v
-	return s
-}
-
-func (s *GetSparkJobDetailResponseBody) SetRequestId(v string) *GetSparkJobDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetSparkJobDetailResponseBody) SetSuccess(v bool) *GetSparkJobDetailResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetSparkJobDetailResponseBodyJobDetail struct {
-	Arguments     *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
-	BeginTime     *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	Configuration *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
-	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	MainClass     *string `json:"MainClass,omitempty" xml:"MainClass,omitempty"`
-	MainFile      *string `json:"MainFile,omitempty" xml:"MainFile,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubmitTime    *string `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
-}
-
-func (s GetSparkJobDetailResponseBodyJobDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSparkJobDetailResponseBodyJobDetail) GoString() string {
-	return s.String()
-}
-
-func (s *GetSparkJobDetailResponseBodyJobDetail) SetArguments(v string) *GetSparkJobDetailResponseBodyJobDetail {
-	s.Arguments = &v
-	return s
-}
-
-func (s *GetSparkJobDetailResponseBodyJobDetail) SetBeginTime(v string) *GetSparkJobDetailResponseBodyJobDetail {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *GetSparkJobDetailResponseBodyJobDetail) SetConfiguration(v string) *GetSparkJobDetailResponseBodyJobDetail {
-	s.Configuration = &v
-	return s
-}
-
-func (s *GetSparkJobDetailResponseBodyJobDetail) SetEndTime(v string) *GetSparkJobDetailResponseBodyJobDetail {
-	s.EndTime = &v
-	return s
-}
-
-func (s *GetSparkJobDetailResponseBodyJobDetail) SetJobId(v string) *GetSparkJobDetailResponseBodyJobDetail {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetSparkJobDetailResponseBodyJobDetail) SetMainClass(v string) *GetSparkJobDetailResponseBodyJobDetail {
-	s.MainClass = &v
-	return s
-}
-
-func (s *GetSparkJobDetailResponseBodyJobDetail) SetMainFile(v string) *GetSparkJobDetailResponseBodyJobDetail {
-	s.MainFile = &v
-	return s
-}
-
-func (s *GetSparkJobDetailResponseBodyJobDetail) SetName(v string) *GetSparkJobDetailResponseBodyJobDetail {
-	s.Name = &v
-	return s
-}
-
-func (s *GetSparkJobDetailResponseBodyJobDetail) SetStatus(v string) *GetSparkJobDetailResponseBodyJobDetail {
-	s.Status = &v
-	return s
-}
-
-func (s *GetSparkJobDetailResponseBodyJobDetail) SetSubmitTime(v string) *GetSparkJobDetailResponseBodyJobDetail {
-	s.SubmitTime = &v
-	return s
-}
-
-type GetSparkJobDetailResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSparkJobDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetSparkJobDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSparkJobDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetSparkJobDetailResponse) SetHeaders(v map[string]*string) *GetSparkJobDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetSparkJobDetailResponse) SetBody(v *GetSparkJobDetailResponseBody) *GetSparkJobDetailResponse {
-	s.Body = v
-	return s
-}
-
-type GetSparkJobDriverLogRequest struct {
-	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s GetSparkJobDriverLogRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSparkJobDriverLogRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetSparkJobDriverLogRequest) SetJobId(v int64) *GetSparkJobDriverLogRequest {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetSparkJobDriverLogRequest) SetTid(v int64) *GetSparkJobDriverLogRequest {
-	s.Tid = &v
-	return s
-}
-
-type GetSparkJobDriverLogResponseBody struct {
-	// driver log of the spark job
-	DriverLog    *string `json:"DriverLog,omitempty" xml:"DriverLog,omitempty"`
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetSparkJobDriverLogResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSparkJobDriverLogResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetSparkJobDriverLogResponseBody) SetDriverLog(v string) *GetSparkJobDriverLogResponseBody {
-	s.DriverLog = &v
-	return s
-}
-
-func (s *GetSparkJobDriverLogResponseBody) SetErrorCode(v string) *GetSparkJobDriverLogResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetSparkJobDriverLogResponseBody) SetErrorMessage(v string) *GetSparkJobDriverLogResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetSparkJobDriverLogResponseBody) SetRequestId(v string) *GetSparkJobDriverLogResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetSparkJobDriverLogResponseBody) SetSuccess(v bool) *GetSparkJobDriverLogResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetSparkJobDriverLogResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSparkJobDriverLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetSparkJobDriverLogResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSparkJobDriverLogResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetSparkJobDriverLogResponse) SetHeaders(v map[string]*string) *GetSparkJobDriverLogResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetSparkJobDriverLogResponse) SetBody(v *GetSparkJobDriverLogResponseBody) *GetSparkJobDriverLogResponse {
-	s.Body = v
-	return s
-}
-
-type GetSparkJobExecutorLogsRequest struct {
-	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s GetSparkJobExecutorLogsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSparkJobExecutorLogsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetSparkJobExecutorLogsRequest) SetJobId(v int64) *GetSparkJobExecutorLogsRequest {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetSparkJobExecutorLogsRequest) SetTid(v int64) *GetSparkJobExecutorLogsRequest {
-	s.Tid = &v
-	return s
-}
-
-type GetSparkJobExecutorLogsResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// log of the spark job
-	ExecutorLogs *GetSparkJobExecutorLogsResponseBodyExecutorLogs `json:"ExecutorLogs,omitempty" xml:"ExecutorLogs,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetSparkJobExecutorLogsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSparkJobExecutorLogsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetSparkJobExecutorLogsResponseBody) SetErrorCode(v string) *GetSparkJobExecutorLogsResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetSparkJobExecutorLogsResponseBody) SetErrorMessage(v string) *GetSparkJobExecutorLogsResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetSparkJobExecutorLogsResponseBody) SetExecutorLogs(v *GetSparkJobExecutorLogsResponseBodyExecutorLogs) *GetSparkJobExecutorLogsResponseBody {
-	s.ExecutorLogs = v
-	return s
-}
-
-func (s *GetSparkJobExecutorLogsResponseBody) SetRequestId(v string) *GetSparkJobExecutorLogsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetSparkJobExecutorLogsResponseBody) SetSuccess(v bool) *GetSparkJobExecutorLogsResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetSparkJobExecutorLogsResponseBodyExecutorLogs struct {
-	ExecutorLogs []*string `json:"executorLogs,omitempty" xml:"executorLogs,omitempty" type:"Repeated"`
-}
-
-func (s GetSparkJobExecutorLogsResponseBodyExecutorLogs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSparkJobExecutorLogsResponseBodyExecutorLogs) GoString() string {
-	return s.String()
-}
-
-func (s *GetSparkJobExecutorLogsResponseBodyExecutorLogs) SetExecutorLogs(v []*string) *GetSparkJobExecutorLogsResponseBodyExecutorLogs {
-	s.ExecutorLogs = v
-	return s
-}
-
-type GetSparkJobExecutorLogsResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSparkJobExecutorLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetSparkJobExecutorLogsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSparkJobExecutorLogsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetSparkJobExecutorLogsResponse) SetHeaders(v map[string]*string) *GetSparkJobExecutorLogsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetSparkJobExecutorLogsResponse) SetBody(v *GetSparkJobExecutorLogsResponseBody) *GetSparkJobExecutorLogsResponse {
-	s.Body = v
-	return s
-}
-
-type GetSparkJobLogRequest struct {
-	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s GetSparkJobLogRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSparkJobLogRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetSparkJobLogRequest) SetJobId(v int64) *GetSparkJobLogRequest {
-	s.JobId = &v
-	return s
-}
-
-func (s *GetSparkJobLogRequest) SetTid(v int64) *GetSparkJobLogRequest {
-	s.Tid = &v
-	return s
-}
-
-type GetSparkJobLogResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// log of the spark job
-	Log *string `json:"Log,omitempty" xml:"Log,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetSparkJobLogResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSparkJobLogResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetSparkJobLogResponseBody) SetErrorCode(v string) *GetSparkJobLogResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetSparkJobLogResponseBody) SetErrorMessage(v string) *GetSparkJobLogResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *GetSparkJobLogResponseBody) SetLog(v string) *GetSparkJobLogResponseBody {
-	s.Log = &v
-	return s
-}
-
-func (s *GetSparkJobLogResponseBody) SetRequestId(v string) *GetSparkJobLogResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetSparkJobLogResponseBody) SetSuccess(v bool) *GetSparkJobLogResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetSparkJobLogResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSparkJobLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetSparkJobLogResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetSparkJobLogResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetSparkJobLogResponse) SetHeaders(v map[string]*string) *GetSparkJobLogResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetSparkJobLogResponse) SetBody(v *GetSparkJobLogResponseBody) *GetSparkJobLogResponse {
-	s.Body = v
-	return s
-}
-
 type GetStructSyncExecSqlDetailRequest struct {
 	OrderId    *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -10901,89 +10656,6 @@ func (s *InspectProxyAccessSecretResponse) SetHeaders(v map[string]*string) *Ins
 }
 
 func (s *InspectProxyAccessSecretResponse) SetBody(v *InspectProxyAccessSecretResponseBody) *InspectProxyAccessSecretResponse {
-	s.Body = v
-	return s
-}
-
-type KillSparkJobRequest struct {
-	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s KillSparkJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s KillSparkJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *KillSparkJobRequest) SetJobId(v int64) *KillSparkJobRequest {
-	s.JobId = &v
-	return s
-}
-
-func (s *KillSparkJobRequest) SetTid(v int64) *KillSparkJobRequest {
-	s.Tid = &v
-	return s
-}
-
-type KillSparkJobResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Killing status
-	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s KillSparkJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s KillSparkJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *KillSparkJobResponseBody) SetErrorCode(v string) *KillSparkJobResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *KillSparkJobResponseBody) SetErrorMessage(v string) *KillSparkJobResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *KillSparkJobResponseBody) SetRequestId(v string) *KillSparkJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *KillSparkJobResponseBody) SetSuccess(v bool) *KillSparkJobResponseBody {
-	s.Success = &v
-	return s
-}
-
-type KillSparkJobResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *KillSparkJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s KillSparkJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s KillSparkJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *KillSparkJobResponse) SetHeaders(v map[string]*string) *KillSparkJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *KillSparkJobResponse) SetBody(v *KillSparkJobResponseBody) *KillSparkJobResponse {
 	s.Body = v
 	return s
 }
@@ -15886,6 +15558,129 @@ func (s *ListSensitiveColumnsDetailResponse) SetBody(v *ListSensitiveColumnsDeta
 	return s
 }
 
+type ListStandardGroupsRequest struct {
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListStandardGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStandardGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListStandardGroupsRequest) SetTid(v int64) *ListStandardGroupsRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListStandardGroupsResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Id of the request
+	RequestId         *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StandardGroupList []*ListStandardGroupsResponseBodyStandardGroupList `json:"StandardGroupList,omitempty" xml:"StandardGroupList,omitempty" type:"Repeated"`
+	Success           *bool                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListStandardGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStandardGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListStandardGroupsResponseBody) SetErrorCode(v string) *ListStandardGroupsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListStandardGroupsResponseBody) SetErrorMessage(v string) *ListStandardGroupsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListStandardGroupsResponseBody) SetRequestId(v string) *ListStandardGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListStandardGroupsResponseBody) SetStandardGroupList(v []*ListStandardGroupsResponseBodyStandardGroupList) *ListStandardGroupsResponseBody {
+	s.StandardGroupList = v
+	return s
+}
+
+func (s *ListStandardGroupsResponseBody) SetSuccess(v bool) *ListStandardGroupsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListStandardGroupsResponseBodyStandardGroupList struct {
+	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupMode    *string `json:"GroupMode,omitempty" xml:"GroupMode,omitempty"`
+	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	LastMenderId *int64  `json:"LastMenderId,omitempty" xml:"LastMenderId,omitempty"`
+}
+
+func (s ListStandardGroupsResponseBodyStandardGroupList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStandardGroupsResponseBodyStandardGroupList) GoString() string {
+	return s.String()
+}
+
+func (s *ListStandardGroupsResponseBodyStandardGroupList) SetDbType(v string) *ListStandardGroupsResponseBodyStandardGroupList {
+	s.DbType = &v
+	return s
+}
+
+func (s *ListStandardGroupsResponseBodyStandardGroupList) SetDescription(v string) *ListStandardGroupsResponseBodyStandardGroupList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListStandardGroupsResponseBodyStandardGroupList) SetGroupMode(v string) *ListStandardGroupsResponseBodyStandardGroupList {
+	s.GroupMode = &v
+	return s
+}
+
+func (s *ListStandardGroupsResponseBodyStandardGroupList) SetGroupName(v string) *ListStandardGroupsResponseBodyStandardGroupList {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ListStandardGroupsResponseBodyStandardGroupList) SetLastMenderId(v int64) *ListStandardGroupsResponseBodyStandardGroupList {
+	s.LastMenderId = &v
+	return s
+}
+
+type ListStandardGroupsResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListStandardGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListStandardGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStandardGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListStandardGroupsResponse) SetHeaders(v map[string]*string) *ListStandardGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListStandardGroupsResponse) SetBody(v *ListStandardGroupsResponseBody) *ListStandardGroupsResponse {
+	s.Body = v
+	return s
+}
+
 type ListTablesRequest struct {
 	DatabaseId *string `json:"DatabaseId,omitempty" xml:"DatabaseId,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -18834,231 +18629,6 @@ func (s *SubmitOrderApprovalResponse) SetBody(v *SubmitOrderApprovalResponseBody
 	return s
 }
 
-type SubmitSparkJobRequest struct {
-	AppCode       *string                       `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
-	Arguments     []*string                     `json:"Arguments,omitempty" xml:"Arguments,omitempty" type:"Repeated"`
-	Configuration map[string]interface{}        `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
-	Files         []*string                     `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	MainClass     *string                       `json:"MainClass,omitempty" xml:"MainClass,omitempty"`
-	MainFile      *string                       `json:"MainFile,omitempty" xml:"MainFile,omitempty"`
-	Name          *string                       `json:"Name,omitempty" xml:"Name,omitempty"`
-	OssInfo       *SubmitSparkJobRequestOssInfo `json:"OssInfo,omitempty" xml:"OssInfo,omitempty" type:"Struct"`
-	Tid           *int64                        `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s SubmitSparkJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitSparkJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitSparkJobRequest) SetAppCode(v string) *SubmitSparkJobRequest {
-	s.AppCode = &v
-	return s
-}
-
-func (s *SubmitSparkJobRequest) SetArguments(v []*string) *SubmitSparkJobRequest {
-	s.Arguments = v
-	return s
-}
-
-func (s *SubmitSparkJobRequest) SetConfiguration(v map[string]interface{}) *SubmitSparkJobRequest {
-	s.Configuration = v
-	return s
-}
-
-func (s *SubmitSparkJobRequest) SetFiles(v []*string) *SubmitSparkJobRequest {
-	s.Files = v
-	return s
-}
-
-func (s *SubmitSparkJobRequest) SetMainClass(v string) *SubmitSparkJobRequest {
-	s.MainClass = &v
-	return s
-}
-
-func (s *SubmitSparkJobRequest) SetMainFile(v string) *SubmitSparkJobRequest {
-	s.MainFile = &v
-	return s
-}
-
-func (s *SubmitSparkJobRequest) SetName(v string) *SubmitSparkJobRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *SubmitSparkJobRequest) SetOssInfo(v *SubmitSparkJobRequestOssInfo) *SubmitSparkJobRequest {
-	s.OssInfo = v
-	return s
-}
-
-func (s *SubmitSparkJobRequest) SetTid(v int64) *SubmitSparkJobRequest {
-	s.Tid = &v
-	return s
-}
-
-type SubmitSparkJobRequestOssInfo struct {
-	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
-	Endpoint        *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-}
-
-func (s SubmitSparkJobRequestOssInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitSparkJobRequestOssInfo) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitSparkJobRequestOssInfo) SetAccessKeyId(v string) *SubmitSparkJobRequestOssInfo {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *SubmitSparkJobRequestOssInfo) SetAccessKeySecret(v string) *SubmitSparkJobRequestOssInfo {
-	s.AccessKeySecret = &v
-	return s
-}
-
-func (s *SubmitSparkJobRequestOssInfo) SetEndpoint(v string) *SubmitSparkJobRequestOssInfo {
-	s.Endpoint = &v
-	return s
-}
-
-type SubmitSparkJobShrinkRequest struct {
-	AppCode             *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
-	ArgumentsShrink     *string `json:"Arguments,omitempty" xml:"Arguments,omitempty"`
-	ConfigurationShrink *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
-	FilesShrink         *string `json:"Files,omitempty" xml:"Files,omitempty"`
-	MainClass           *string `json:"MainClass,omitempty" xml:"MainClass,omitempty"`
-	MainFile            *string `json:"MainFile,omitempty" xml:"MainFile,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	OssInfoShrink       *string `json:"OssInfo,omitempty" xml:"OssInfo,omitempty"`
-	Tid                 *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s SubmitSparkJobShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitSparkJobShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitSparkJobShrinkRequest) SetAppCode(v string) *SubmitSparkJobShrinkRequest {
-	s.AppCode = &v
-	return s
-}
-
-func (s *SubmitSparkJobShrinkRequest) SetArgumentsShrink(v string) *SubmitSparkJobShrinkRequest {
-	s.ArgumentsShrink = &v
-	return s
-}
-
-func (s *SubmitSparkJobShrinkRequest) SetConfigurationShrink(v string) *SubmitSparkJobShrinkRequest {
-	s.ConfigurationShrink = &v
-	return s
-}
-
-func (s *SubmitSparkJobShrinkRequest) SetFilesShrink(v string) *SubmitSparkJobShrinkRequest {
-	s.FilesShrink = &v
-	return s
-}
-
-func (s *SubmitSparkJobShrinkRequest) SetMainClass(v string) *SubmitSparkJobShrinkRequest {
-	s.MainClass = &v
-	return s
-}
-
-func (s *SubmitSparkJobShrinkRequest) SetMainFile(v string) *SubmitSparkJobShrinkRequest {
-	s.MainFile = &v
-	return s
-}
-
-func (s *SubmitSparkJobShrinkRequest) SetName(v string) *SubmitSparkJobShrinkRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *SubmitSparkJobShrinkRequest) SetOssInfoShrink(v string) *SubmitSparkJobShrinkRequest {
-	s.OssInfoShrink = &v
-	return s
-}
-
-func (s *SubmitSparkJobShrinkRequest) SetTid(v int64) *SubmitSparkJobShrinkRequest {
-	s.Tid = &v
-	return s
-}
-
-type SubmitSparkJobResponseBody struct {
-	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the spark job
-	JobId *int64 `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s SubmitSparkJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitSparkJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitSparkJobResponseBody) SetErrorCode(v string) *SubmitSparkJobResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *SubmitSparkJobResponseBody) SetErrorMessage(v string) *SubmitSparkJobResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *SubmitSparkJobResponseBody) SetJobId(v int64) *SubmitSparkJobResponseBody {
-	s.JobId = &v
-	return s
-}
-
-func (s *SubmitSparkJobResponseBody) SetRequestId(v string) *SubmitSparkJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SubmitSparkJobResponseBody) SetSuccess(v bool) *SubmitSparkJobResponseBody {
-	s.Success = &v
-	return s
-}
-
-type SubmitSparkJobResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SubmitSparkJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SubmitSparkJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitSparkJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitSparkJobResponse) SetHeaders(v map[string]*string) *SubmitSparkJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitSparkJobResponse) SetBody(v *SubmitSparkJobResponseBody) *SubmitSparkJobResponse {
-	s.Body = v
-	return s
-}
-
 type SubmitStructSyncOrderApprovalRequest struct {
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
@@ -20045,6 +19615,76 @@ func (client *Client) CreateDataCronClearOrder(request *CreateDataCronClearOrder
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDataCronClearOrderResponse{}
 	_body, _err := client.CreateDataCronClearOrderWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDataExportOrderWithOptions(tmpReq *CreateDataExportOrderRequest, runtime *util.RuntimeOptions) (_result *CreateDataExportOrderResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateDataExportOrderShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Param))) {
+		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Param), tea.String("Param"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedUserList)) {
+		request.RelatedUserListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelatedUserList, tea.String("RelatedUserList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AttachmentKey)) {
+		query["AttachmentKey"] = request.AttachmentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Comment)) {
+		query["Comment"] = request.Comment
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParamShrink)) {
+		query["Param"] = request.ParamShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelatedUserListShrink)) {
+		query["RelatedUserList"] = request.RelatedUserListShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDataExportOrder"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDataExportOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDataExportOrder(request *CreateDataExportOrderRequest) (_result *CreateDataExportOrderResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDataExportOrderResponse{}
+	_body, _err := client.CreateDataExportOrderWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22598,198 +22238,6 @@ func (client *Client) GetSQLReviewOptimizeDetail(request *GetSQLReviewOptimizeDe
 	return _result, _err
 }
 
-func (client *Client) GetSparkJobDetailWithOptions(request *GetSparkJobDetailRequest, runtime *util.RuntimeOptions) (_result *GetSparkJobDetailResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.JobId)) {
-		query["JobId"] = request.JobId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tid)) {
-		query["Tid"] = request.Tid
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetSparkJobDetail"),
-		Version:     tea.String("2018-11-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetSparkJobDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetSparkJobDetail(request *GetSparkJobDetailRequest) (_result *GetSparkJobDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetSparkJobDetailResponse{}
-	_body, _err := client.GetSparkJobDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetSparkJobDriverLogWithOptions(request *GetSparkJobDriverLogRequest, runtime *util.RuntimeOptions) (_result *GetSparkJobDriverLogResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.JobId)) {
-		query["JobId"] = request.JobId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tid)) {
-		query["Tid"] = request.Tid
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetSparkJobDriverLog"),
-		Version:     tea.String("2018-11-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetSparkJobDriverLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetSparkJobDriverLog(request *GetSparkJobDriverLogRequest) (_result *GetSparkJobDriverLogResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetSparkJobDriverLogResponse{}
-	_body, _err := client.GetSparkJobDriverLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetSparkJobExecutorLogsWithOptions(request *GetSparkJobExecutorLogsRequest, runtime *util.RuntimeOptions) (_result *GetSparkJobExecutorLogsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.JobId)) {
-		query["JobId"] = request.JobId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tid)) {
-		query["Tid"] = request.Tid
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetSparkJobExecutorLogs"),
-		Version:     tea.String("2018-11-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetSparkJobExecutorLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetSparkJobExecutorLogs(request *GetSparkJobExecutorLogsRequest) (_result *GetSparkJobExecutorLogsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetSparkJobExecutorLogsResponse{}
-	_body, _err := client.GetSparkJobExecutorLogsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetSparkJobLogWithOptions(request *GetSparkJobLogRequest, runtime *util.RuntimeOptions) (_result *GetSparkJobLogResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.JobId)) {
-		query["JobId"] = request.JobId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tid)) {
-		query["Tid"] = request.Tid
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetSparkJobLog"),
-		Version:     tea.String("2018-11-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetSparkJobLogResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetSparkJobLog(request *GetSparkJobLogRequest) (_result *GetSparkJobLogResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetSparkJobLogResponse{}
-	_body, _err := client.GetSparkJobLogWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetStructSyncExecSqlDetailWithOptions(request *GetStructSyncExecSqlDetailRequest, runtime *util.RuntimeOptions) (_result *GetStructSyncExecSqlDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23363,54 +22811,6 @@ func (client *Client) InspectProxyAccessSecret(request *InspectProxyAccessSecret
 	runtime := &util.RuntimeOptions{}
 	_result = &InspectProxyAccessSecretResponse{}
 	_body, _err := client.InspectProxyAccessSecretWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) KillSparkJobWithOptions(request *KillSparkJobRequest, runtime *util.RuntimeOptions) (_result *KillSparkJobResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.JobId)) {
-		query["JobId"] = request.JobId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tid)) {
-		query["Tid"] = request.Tid
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("KillSparkJob"),
-		Version:     tea.String("2018-11-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &KillSparkJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) KillSparkJob(request *KillSparkJobRequest) (_result *KillSparkJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &KillSparkJobResponse{}
-	_body, _err := client.KillSparkJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24812,6 +24212,50 @@ func (client *Client) ListSensitiveColumnsDetail(request *ListSensitiveColumnsDe
 	return _result, _err
 }
 
+func (client *Client) ListStandardGroupsWithOptions(request *ListStandardGroupsRequest, runtime *util.RuntimeOptions) (_result *ListStandardGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListStandardGroups"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListStandardGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListStandardGroups(request *ListStandardGroupsRequest) (_result *ListStandardGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListStandardGroupsResponse{}
+	_body, _err := client.ListStandardGroupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListTablesWithOptions(request *ListTablesRequest, runtime *util.RuntimeOptions) (_result *ListTablesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25885,102 +25329,6 @@ func (client *Client) SubmitOrderApproval(request *SubmitOrderApprovalRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitOrderApprovalResponse{}
 	_body, _err := client.SubmitOrderApprovalWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SubmitSparkJobWithOptions(tmpReq *SubmitSparkJobRequest, runtime *util.RuntimeOptions) (_result *SubmitSparkJobResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &SubmitSparkJobShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.Arguments)) {
-		request.ArgumentsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Arguments, tea.String("Arguments"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.Configuration)) {
-		request.ConfigurationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Configuration, tea.String("Configuration"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.Files)) {
-		request.FilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Files, tea.String("Files"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.OssInfo))) {
-		request.OssInfoShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.OssInfo), tea.String("OssInfo"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Tid)) {
-		query["Tid"] = request.Tid
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppCode)) {
-		body["AppCode"] = request.AppCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ArgumentsShrink)) {
-		body["Arguments"] = request.ArgumentsShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ConfigurationShrink)) {
-		body["Configuration"] = request.ConfigurationShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FilesShrink)) {
-		body["Files"] = request.FilesShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MainClass)) {
-		body["MainClass"] = request.MainClass
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MainFile)) {
-		body["MainFile"] = request.MainFile
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		body["Name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OssInfoShrink)) {
-		body["OssInfo"] = request.OssInfoShrink
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitSparkJob"),
-		Version:     tea.String("2018-11-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SubmitSparkJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SubmitSparkJob(request *SubmitSparkJobRequest) (_result *SubmitSparkJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SubmitSparkJobResponse{}
-	_body, _err := client.SubmitSparkJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
