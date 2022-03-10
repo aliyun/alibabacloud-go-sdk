@@ -365,6 +365,7 @@ type CreateChartNamespaceRequest struct {
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s CreateChartNamespaceRequest) String() string {
@@ -392,6 +393,11 @@ func (s *CreateChartNamespaceRequest) SetInstanceId(v string) *CreateChartNamesp
 
 func (s *CreateChartNamespaceRequest) SetNamespaceName(v string) *CreateChartNamespaceRequest {
 	s.NamespaceName = &v
+	return s
+}
+
+func (s *CreateChartNamespaceRequest) SetResourceGroupId(v string) *CreateChartNamespaceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -737,6 +743,7 @@ type CreateNamespaceRequest struct {
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s CreateNamespaceRequest) String() string {
@@ -764,6 +771,11 @@ func (s *CreateNamespaceRequest) SetInstanceId(v string) *CreateNamespaceRequest
 
 func (s *CreateNamespaceRequest) SetNamespaceName(v string) *CreateNamespaceRequest {
 	s.NamespaceName = &v
+	return s
+}
+
+func (s *CreateNamespaceRequest) SetResourceGroupId(v string) *CreateNamespaceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -1713,6 +1725,7 @@ type CreateRepositoryRequest struct {
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	RepoType          *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
+	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Summary           *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 	TagImmutability   *bool   `json:"TagImmutability,omitempty" xml:"TagImmutability,omitempty"`
 }
@@ -1747,6 +1760,11 @@ func (s *CreateRepositoryRequest) SetRepoNamespaceName(v string) *CreateReposito
 
 func (s *CreateRepositoryRequest) SetRepoType(v string) *CreateRepositoryRequest {
 	s.RepoType = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetResourceGroupId(v string) *CreateRepositoryRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -3481,6 +3499,7 @@ type GetChartNamespaceResponseBody struct {
 	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
 	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s GetChartNamespaceResponseBody) String() string {
@@ -3533,6 +3552,11 @@ func (s *GetChartNamespaceResponseBody) SetNamespaceStatus(v string) *GetChartNa
 
 func (s *GetChartNamespaceResponseBody) SetRequestId(v string) *GetChartNamespaceResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetChartNamespaceResponseBody) SetResourceGroupId(v string) *GetChartNamespaceResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -3721,6 +3745,7 @@ type GetInstanceResponseBody struct {
 	IsSuccess             *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	ModifiedTime          *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s GetInstanceResponseBody) String() string {
@@ -3773,6 +3798,11 @@ func (s *GetInstanceResponseBody) SetModifiedTime(v int64) *GetInstanceResponseB
 
 func (s *GetInstanceResponseBody) SetRequestId(v string) *GetInstanceResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetResourceGroupId(v string) *GetInstanceResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -4295,15 +4325,17 @@ func (s *GetNamespaceRequest) SetNamespaceName(v string) *GetNamespaceRequest {
 }
 
 type GetNamespaceResponseBody struct {
-	AutoCreateRepo  *bool   `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
-	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsSuccess       *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	NamespaceId     *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	AutoCreateRepo  *bool                           `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	Code            *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	DefaultRepoType *string                         `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
+	InstanceId      *string                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IsSuccess       *bool                           `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	NamespaceId     *string                         `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NamespaceName   *string                         `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	NamespaceStatus *string                         `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
+	RequestId       *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId *string                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            []*GetNamespaceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s GetNamespaceResponseBody) String() string {
@@ -4356,6 +4388,39 @@ func (s *GetNamespaceResponseBody) SetNamespaceStatus(v string) *GetNamespaceRes
 
 func (s *GetNamespaceResponseBody) SetRequestId(v string) *GetNamespaceResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetNamespaceResponseBody) SetResourceGroupId(v string) *GetNamespaceResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetNamespaceResponseBody) SetTags(v []*GetNamespaceResponseBodyTags) *GetNamespaceResponseBody {
+	s.Tags = v
+	return s
+}
+
+type GetNamespaceResponseBodyTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s GetNamespaceResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetNamespaceResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetNamespaceResponseBodyTags) SetTagKey(v string) *GetNamespaceResponseBodyTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *GetNamespaceResponseBodyTags) SetTagValue(v string) *GetNamespaceResponseBodyTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -5821,6 +5886,7 @@ type GetRepositoryResponseBody struct {
 	RepoStatus        *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
 	RepoType          *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
 	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Summary           *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 	TagImmutability   *bool   `json:"TagImmutability,omitempty" xml:"TagImmutability,omitempty"`
 }
@@ -5895,6 +5961,11 @@ func (s *GetRepositoryResponseBody) SetRepoType(v string) *GetRepositoryResponse
 
 func (s *GetRepositoryResponseBody) SetRequestId(v string) *GetRepositoryResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBody) SetResourceGroupId(v string) *GetRepositoryResponseBody {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -6440,6 +6511,170 @@ func (s *ListChainInstanceResponse) SetBody(v *ListChainInstanceResponseBody) *L
 	return s
 }
 
+type ListChartRequest struct {
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	PageNo            *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
+	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
+}
+
+func (s ListChartRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChartRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListChartRequest) SetInstanceId(v string) *ListChartRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListChartRequest) SetPageNo(v int32) *ListChartRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListChartRequest) SetPageSize(v int32) *ListChartRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListChartRequest) SetRepoName(v string) *ListChartRequest {
+	s.RepoName = &v
+	return s
+}
+
+func (s *ListChartRequest) SetRepoNamespaceName(v string) *ListChartRequest {
+	s.RepoNamespaceName = &v
+	return s
+}
+
+type ListChartResponseBody struct {
+	Charts     []*ListChartResponseBodyCharts `json:"Charts,omitempty" xml:"Charts,omitempty" type:"Repeated"`
+	Code       *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess  *bool                          `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	PageNo     *int32                         `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize   *int32                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListChartResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChartResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListChartResponseBody) SetCharts(v []*ListChartResponseBodyCharts) *ListChartResponseBody {
+	s.Charts = v
+	return s
+}
+
+func (s *ListChartResponseBody) SetCode(v string) *ListChartResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListChartResponseBody) SetIsSuccess(v bool) *ListChartResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *ListChartResponseBody) SetPageNo(v int32) *ListChartResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *ListChartResponseBody) SetPageSize(v int32) *ListChartResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListChartResponseBody) SetRequestId(v string) *ListChartResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListChartResponseBody) SetTotalCount(v int32) *ListChartResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListChartResponseBodyCharts struct {
+	Chart        *string `json:"Chart,omitempty" xml:"Chart,omitempty"`
+	CreateTime   *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ModifiedTime *int64  `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
+	RepoId       *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListChartResponseBodyCharts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChartResponseBodyCharts) GoString() string {
+	return s.String()
+}
+
+func (s *ListChartResponseBodyCharts) SetChart(v string) *ListChartResponseBodyCharts {
+	s.Chart = &v
+	return s
+}
+
+func (s *ListChartResponseBodyCharts) SetCreateTime(v string) *ListChartResponseBodyCharts {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListChartResponseBodyCharts) SetInstanceId(v string) *ListChartResponseBodyCharts {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListChartResponseBodyCharts) SetModifiedTime(v int64) *ListChartResponseBodyCharts {
+	s.ModifiedTime = &v
+	return s
+}
+
+func (s *ListChartResponseBodyCharts) SetRepoId(v string) *ListChartResponseBodyCharts {
+	s.RepoId = &v
+	return s
+}
+
+func (s *ListChartResponseBodyCharts) SetStatus(v string) *ListChartResponseBodyCharts {
+	s.Status = &v
+	return s
+}
+
+type ListChartResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListChartResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListChartResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListChartResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListChartResponse) SetHeaders(v map[string]*string) *ListChartResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListChartResponse) SetBody(v *ListChartResponseBody) *ListChartResponse {
+	s.Body = v
+	return s
+}
+
 type ListChartNamespaceRequest struct {
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
@@ -6541,6 +6776,7 @@ type ListChartNamespaceResponseBodyNamespaces struct {
 	NamespaceId     *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ListChartNamespaceResponseBodyNamespaces) String() string {
@@ -6578,6 +6814,11 @@ func (s *ListChartNamespaceResponseBodyNamespaces) SetNamespaceName(v string) *L
 
 func (s *ListChartNamespaceResponseBodyNamespaces) SetNamespaceStatus(v string) *ListChartNamespaceResponseBodyNamespaces {
 	s.NamespaceStatus = &v
+	return s
+}
+
+func (s *ListChartNamespaceResponseBodyNamespaces) SetResourceGroupId(v string) *ListChartNamespaceResponseBodyNamespaces {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -7275,10 +7516,11 @@ func (s *ListEventCenterRuleNameResponse) SetBody(v *ListEventCenterRuleNameResp
 }
 
 type ListInstanceRequest struct {
-	InstanceName   *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	PageNo         *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceStatus  *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ListInstanceRequest) String() string {
@@ -7306,6 +7548,11 @@ func (s *ListInstanceRequest) SetPageNo(v int32) *ListInstanceRequest {
 
 func (s *ListInstanceRequest) SetPageSize(v int32) *ListInstanceRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstanceRequest) SetResourceGroupId(v string) *ListInstanceRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -7370,6 +7617,7 @@ type ListInstanceResponseBodyInstances struct {
 	InstanceStatus        *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	ModifiedTime          *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId       *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ListInstanceResponseBodyInstances) String() string {
@@ -7412,6 +7660,11 @@ func (s *ListInstanceResponseBodyInstances) SetModifiedTime(v string) *ListInsta
 
 func (s *ListInstanceResponseBodyInstances) SetRegionId(v string) *ListInstanceResponseBodyInstances {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListInstanceResponseBodyInstances) SetResourceGroupId(v string) *ListInstanceResponseBodyInstances {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -7728,11 +7981,13 @@ func (s *ListInstanceRegionResponse) SetBody(v *ListInstanceRegionResponseBody) 
 }
 
 type ListNamespaceRequest struct {
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
-	PageNo          *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	InstanceId      *string                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NamespaceName   *string                    `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	NamespaceStatus *string                    `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
+	PageNo          *int32                     `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize        *int32                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceGroupId *string                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag             []*ListNamespaceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s ListNamespaceRequest) String() string {
@@ -7765,6 +8020,39 @@ func (s *ListNamespaceRequest) SetPageNo(v int32) *ListNamespaceRequest {
 
 func (s *ListNamespaceRequest) SetPageSize(v int32) *ListNamespaceRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListNamespaceRequest) SetResourceGroupId(v string) *ListNamespaceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListNamespaceRequest) SetTag(v []*ListNamespaceRequestTag) *ListNamespaceRequest {
+	s.Tag = v
+	return s
+}
+
+type ListNamespaceRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListNamespaceRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNamespaceRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListNamespaceRequestTag) SetKey(v string) *ListNamespaceRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListNamespaceRequestTag) SetValue(v string) *ListNamespaceRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -7822,12 +8110,14 @@ func (s *ListNamespaceResponseBody) SetTotalCount(v string) *ListNamespaceRespon
 }
 
 type ListNamespaceResponseBodyNamespaces struct {
-	AutoCreateRepo  *bool   `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
-	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NamespaceId     *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
-	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	NamespaceStatus *string `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
+	AutoCreateRepo  *bool                                      `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
+	DefaultRepoType *string                                    `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
+	InstanceId      *string                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NamespaceId     *string                                    `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	NamespaceName   *string                                    `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	NamespaceStatus *string                                    `json:"NamespaceStatus,omitempty" xml:"NamespaceStatus,omitempty"`
+	ResourceGroupId *string                                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tags            []*ListNamespaceResponseBodyNamespacesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
 func (s ListNamespaceResponseBodyNamespaces) String() string {
@@ -7865,6 +8155,39 @@ func (s *ListNamespaceResponseBodyNamespaces) SetNamespaceName(v string) *ListNa
 
 func (s *ListNamespaceResponseBodyNamespaces) SetNamespaceStatus(v string) *ListNamespaceResponseBodyNamespaces {
 	s.NamespaceStatus = &v
+	return s
+}
+
+func (s *ListNamespaceResponseBodyNamespaces) SetResourceGroupId(v string) *ListNamespaceResponseBodyNamespaces {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *ListNamespaceResponseBodyNamespaces) SetTags(v []*ListNamespaceResponseBodyNamespacesTags) *ListNamespaceResponseBodyNamespaces {
+	s.Tags = v
+	return s
+}
+
+type ListNamespaceResponseBodyNamespacesTags struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListNamespaceResponseBodyNamespacesTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListNamespaceResponseBodyNamespacesTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListNamespaceResponseBodyNamespacesTags) SetTagKey(v string) *ListNamespaceResponseBodyNamespacesTags {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListNamespaceResponseBodyNamespacesTags) SetTagValue(v string) *ListNamespaceResponseBodyNamespacesTags {
+	s.TagValue = &v
 	return s
 }
 
@@ -8739,6 +9062,7 @@ func (s *ListRepoSyncTaskResponseBody) SetTotalCount(v string) *ListRepoSyncTask
 type ListRepoSyncTaskResponseBodySyncTasks struct {
 	CreateTime          *int64                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CrossUser           *bool                                           `json:"CrossUser,omitempty" xml:"CrossUser,omitempty"`
+	CustomLink          *bool                                           `json:"CustomLink,omitempty" xml:"CustomLink,omitempty"`
 	ImageFrom           *ListRepoSyncTaskResponseBodySyncTasksImageFrom `json:"ImageFrom,omitempty" xml:"ImageFrom,omitempty" type:"Struct"`
 	ImageTo             *ListRepoSyncTaskResponseBodySyncTasksImageTo   `json:"ImageTo,omitempty" xml:"ImageTo,omitempty" type:"Struct"`
 	ModifedTime         *int64                                          `json:"ModifedTime,omitempty" xml:"ModifedTime,omitempty"`
@@ -8765,6 +9089,11 @@ func (s *ListRepoSyncTaskResponseBodySyncTasks) SetCreateTime(v int64) *ListRepo
 
 func (s *ListRepoSyncTaskResponseBodySyncTasks) SetCrossUser(v bool) *ListRepoSyncTaskResponseBodySyncTasks {
 	s.CrossUser = &v
+	return s
+}
+
+func (s *ListRepoSyncTaskResponseBodySyncTasks) SetCustomLink(v bool) *ListRepoSyncTaskResponseBodySyncTasks {
+	s.CustomLink = &v
 	return s
 }
 
@@ -9459,6 +9788,7 @@ type ListRepositoryRequest struct {
 	RepoName          *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	RepoStatus        *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
+	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s ListRepositoryRequest) String() string {
@@ -9496,6 +9826,11 @@ func (s *ListRepositoryRequest) SetRepoNamespaceName(v string) *ListRepositoryRe
 
 func (s *ListRepositoryRequest) SetRepoStatus(v string) *ListRepositoryRequest {
 	s.RepoStatus = &v
+	return s
+}
+
+func (s *ListRepositoryRequest) SetResourceGroupId(v string) *ListRepositoryRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -9562,6 +9897,7 @@ type ListRepositoryResponseBodyRepositories struct {
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	RepoStatus        *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
 	RepoType          *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
+	ResourceGroupId   *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Summary           *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
 	TagImmutability   *bool   `json:"TagImmutability,omitempty" xml:"TagImmutability,omitempty"`
 }
@@ -9616,6 +9952,11 @@ func (s *ListRepositoryResponseBodyRepositories) SetRepoStatus(v string) *ListRe
 
 func (s *ListRepositoryResponseBodyRepositories) SetRepoType(v string) *ListRepositoryResponseBodyRepositories {
 	s.RepoType = &v
+	return s
+}
+
+func (s *ListRepositoryResponseBodyRepositories) SetResourceGroupId(v string) *ListRepositoryResponseBodyRepositories {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -10370,6 +10711,7 @@ func (s *UpdateNamespaceResponse) SetBody(v *UpdateNamespaceResponseBody) *Updat
 }
 
 type UpdateRepoBuildRuleRequest struct {
+	BuildArgs          []*string `json:"BuildArgs,omitempty" xml:"BuildArgs,omitempty" type:"Repeated"`
 	BuildRuleId        *string   `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
 	DockerfileLocation *string   `json:"DockerfileLocation,omitempty" xml:"DockerfileLocation,omitempty"`
 	DockerfileName     *string   `json:"DockerfileName,omitempty" xml:"DockerfileName,omitempty"`
@@ -10387,6 +10729,11 @@ func (s UpdateRepoBuildRuleRequest) String() string {
 
 func (s UpdateRepoBuildRuleRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateRepoBuildRuleRequest) SetBuildArgs(v []*string) *UpdateRepoBuildRuleRequest {
+	s.BuildArgs = v
+	return s
 }
 
 func (s *UpdateRepoBuildRuleRequest) SetBuildRuleId(v string) *UpdateRepoBuildRuleRequest {
@@ -11098,6 +11445,10 @@ func (client *Client) CreateChartNamespaceWithOptions(request *CreateChartNamesp
 		query["NamespaceName"] = request.NamespaceName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11332,6 +11683,10 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 
 	if !tea.BoolValue(util.IsUnset(request.NamespaceName)) {
 		query["NamespaceName"] = request.NamespaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -11948,6 +12303,10 @@ func (client *Client) CreateRepositoryWithOptions(request *CreateRepositoryReque
 
 	if !tea.BoolValue(util.IsUnset(request.RepoType)) {
 		query["RepoType"] = request.RepoType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Summary)) {
@@ -13849,6 +14208,66 @@ func (client *Client) ListChainInstance(request *ListChainInstanceRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) ListChartWithOptions(request *ListChartRequest, runtime *util.RuntimeOptions) (_result *ListChartResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoName)) {
+		query["RepoName"] = request.RepoName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepoNamespaceName)) {
+		query["RepoNamespaceName"] = request.RepoNamespaceName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListChart"),
+		Version:     tea.String("2018-12-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListChartResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListChart(request *ListChartRequest) (_result *ListChartResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListChartResponse{}
+	_body, _err := client.ListChartWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListChartNamespaceWithOptions(request *ListChartNamespaceRequest, runtime *util.RuntimeOptions) (_result *ListChartNamespaceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14139,6 +14558,10 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, runt
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -14289,6 +14712,14 @@ func (client *Client) ListNamespaceWithOptions(request *ListNamespaceRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -14847,6 +15278,10 @@ func (client *Client) ListRepositoryWithOptions(request *ListRepositoryRequest, 
 		query["RepoStatus"] = request.RepoStatus
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15313,6 +15748,10 @@ func (client *Client) UpdateRepoBuildRuleWithOptions(request *UpdateRepoBuildRul
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BuildArgs)) {
+		query["BuildArgs"] = request.BuildArgs
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.BuildRuleId)) {
 		query["BuildRuleId"] = request.BuildRuleId
 	}
