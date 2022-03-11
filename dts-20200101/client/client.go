@@ -17,6 +17,7 @@ type ConfigureDtsJobRequest struct {
 	DataInitialization              *bool   `json:"DataInitialization,omitempty" xml:"DataInitialization,omitempty"`
 	DataSynchronization             *bool   `json:"DataSynchronization,omitempty" xml:"DataSynchronization,omitempty"`
 	DbList                          *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
+	DedicatedClusterId              *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
 	DelayNotice                     *bool   `json:"DelayNotice,omitempty" xml:"DelayNotice,omitempty"`
 	DelayPhone                      *string `json:"DelayPhone,omitempty" xml:"DelayPhone,omitempty"`
 	DelayRuleTime                   *int64  `json:"DelayRuleTime,omitempty" xml:"DelayRuleTime,omitempty"`
@@ -80,6 +81,11 @@ func (s *ConfigureDtsJobRequest) SetDataSynchronization(v bool) *ConfigureDtsJob
 
 func (s *ConfigureDtsJobRequest) SetDbList(v string) *ConfigureDtsJobRequest {
 	s.DbList = &v
+	return s
+}
+
+func (s *ConfigureDtsJobRequest) SetDedicatedClusterId(v string) *ConfigureDtsJobRequest {
+	s.DedicatedClusterId = &v
 	return s
 }
 
@@ -783,6 +789,7 @@ func (s *ConfigureMigrationJobAlertResponse) SetBody(v *ConfigureMigrationJobAle
 type ConfigureSubscriptionRequest struct {
 	Checkpoint                      *string `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
 	DbList                          *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
+	DedicatedClusterId              *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
 	DelayNotice                     *bool   `json:"DelayNotice,omitempty" xml:"DelayNotice,omitempty"`
 	DelayPhone                      *string `json:"DelayPhone,omitempty" xml:"DelayPhone,omitempty"`
 	DelayRuleTime                   *int64  `json:"DelayRuleTime,omitempty" xml:"DelayRuleTime,omitempty"`
@@ -827,6 +834,11 @@ func (s *ConfigureSubscriptionRequest) SetCheckpoint(v string) *ConfigureSubscri
 
 func (s *ConfigureSubscriptionRequest) SetDbList(v string) *ConfigureSubscriptionRequest {
 	s.DbList = &v
+	return s
+}
+
+func (s *ConfigureSubscriptionRequest) SetDedicatedClusterId(v string) *ConfigureSubscriptionRequest {
+	s.DedicatedClusterId = &v
 	return s
 }
 
@@ -2356,6 +2368,7 @@ type CreateDtsInstanceRequest struct {
 	DatabaseCount                 *int32  `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty"`
 	DestinationEndpointEngineName *string `json:"DestinationEndpointEngineName,omitempty" xml:"DestinationEndpointEngineName,omitempty"`
 	DestinationRegion             *string `json:"DestinationRegion,omitempty" xml:"DestinationRegion,omitempty"`
+	Du                            *int32  `json:"Du,omitempty" xml:"Du,omitempty"`
 	FeeType                       *string `json:"FeeType,omitempty" xml:"FeeType,omitempty"`
 	InstanceClass                 *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
 	JobId                         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
@@ -2405,6 +2418,11 @@ func (s *CreateDtsInstanceRequest) SetDestinationEndpointEngineName(v string) *C
 
 func (s *CreateDtsInstanceRequest) SetDestinationRegion(v string) *CreateDtsInstanceRequest {
 	s.DestinationRegion = &v
+	return s
+}
+
+func (s *CreateDtsInstanceRequest) SetDu(v int32) *CreateDtsInstanceRequest {
+	s.Du = &v
 	return s
 }
 
@@ -4767,6 +4785,7 @@ type DescribeDtsJobDetailResponseBody struct {
 	CreateTime               *string                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DatabaseCount            *int32                                                `json:"DatabaseCount,omitempty" xml:"DatabaseCount,omitempty"`
 	DbObject                 *string                                               `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
+	DedicatedClusterId       *string                                               `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
 	Delay                    *int64                                                `json:"Delay,omitempty" xml:"Delay,omitempty"`
 	DemoJob                  *bool                                                 `json:"DemoJob,omitempty" xml:"DemoJob,omitempty"`
 	DestNetType              *string                                               `json:"DestNetType,omitempty" xml:"DestNetType,omitempty"`
@@ -4853,6 +4872,11 @@ func (s *DescribeDtsJobDetailResponseBody) SetDatabaseCount(v int32) *DescribeDt
 
 func (s *DescribeDtsJobDetailResponseBody) SetDbObject(v string) *DescribeDtsJobDetailResponseBody {
 	s.DbObject = &v
+	return s
+}
+
+func (s *DescribeDtsJobDetailResponseBody) SetDedicatedClusterId(v string) *DescribeDtsJobDetailResponseBody {
+	s.DedicatedClusterId = &v
 	return s
 }
 
@@ -9259,18 +9283,22 @@ func (s *DescribeDtsJobDetailResponse) SetBody(v *DescribeDtsJobDetailResponseBo
 }
 
 type DescribeDtsJobsRequest struct {
-	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	JobType        *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
-	OrderColumn    *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	OrderDirection *string `json:"OrderDirection,omitempty" xml:"OrderDirection,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Params         *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags           *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	DedicatedClusterId     *string `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
+	DedicatedClusterNodeId *int64  `json:"DedicatedClusterNodeId,omitempty" xml:"DedicatedClusterNodeId,omitempty"`
+	DtsJobId               *string `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
+	GroupId                *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	JobType                *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	OrderColumn            *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
+	OrderDirection         *string `json:"OrderDirection,omitempty" xml:"OrderDirection,omitempty"`
+	OwnerId                *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber             *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize               *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Params                 *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	Region                 *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status                 *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                   *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	Type                   *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s DescribeDtsJobsRequest) String() string {
@@ -9279,6 +9307,21 @@ func (s DescribeDtsJobsRequest) String() string {
 
 func (s DescribeDtsJobsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeDtsJobsRequest) SetDedicatedClusterId(v string) *DescribeDtsJobsRequest {
+	s.DedicatedClusterId = &v
+	return s
+}
+
+func (s *DescribeDtsJobsRequest) SetDedicatedClusterNodeId(v int64) *DescribeDtsJobsRequest {
+	s.DedicatedClusterNodeId = &v
+	return s
+}
+
+func (s *DescribeDtsJobsRequest) SetDtsJobId(v string) *DescribeDtsJobsRequest {
+	s.DtsJobId = &v
+	return s
 }
 
 func (s *DescribeDtsJobsRequest) SetGroupId(v string) *DescribeDtsJobsRequest {
@@ -9298,6 +9341,11 @@ func (s *DescribeDtsJobsRequest) SetOrderColumn(v string) *DescribeDtsJobsReques
 
 func (s *DescribeDtsJobsRequest) SetOrderDirection(v string) *DescribeDtsJobsRequest {
 	s.OrderDirection = &v
+	return s
+}
+
+func (s *DescribeDtsJobsRequest) SetOwnerId(v string) *DescribeDtsJobsRequest {
+	s.OwnerId = &v
 	return s
 }
 
@@ -9430,11 +9478,13 @@ type DescribeDtsJobsResponseBodyDtsJobList struct {
 	Checkpoint                *string                                                         `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
 	ConsumptionCheckpoint     *string                                                         `json:"ConsumptionCheckpoint,omitempty" xml:"ConsumptionCheckpoint,omitempty"`
 	ConsumptionClient         *string                                                         `json:"ConsumptionClient,omitempty" xml:"ConsumptionClient,omitempty"`
+	CpuUsage                  *string                                                         `json:"CpuUsage,omitempty" xml:"CpuUsage,omitempty"`
 	CreateTime                *string                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DataEtlStatus             *DescribeDtsJobsResponseBodyDtsJobListDataEtlStatus             `json:"DataEtlStatus,omitempty" xml:"DataEtlStatus,omitempty" type:"Struct"`
 	DataInitializationStatus  *DescribeDtsJobsResponseBodyDtsJobListDataInitializationStatus  `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
 	DataSynchronizationStatus *DescribeDtsJobsResponseBodyDtsJobListDataSynchronizationStatus `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
 	DbObject                  *string                                                         `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
+	DedicatedClusterId        *string                                                         `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
 	Delay                     *int64                                                          `json:"Delay,omitempty" xml:"Delay,omitempty"`
 	DestinationEndpoint       *DescribeDtsJobsResponseBodyDtsJobListDestinationEndpoint       `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
 	DtsInstanceID             *string                                                         `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
@@ -9442,11 +9492,13 @@ type DescribeDtsJobsResponseBodyDtsJobList struct {
 	DtsJobDirection           *string                                                         `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
 	DtsJobId                  *string                                                         `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	DtsJobName                *string                                                         `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	DuUsage                   *int64                                                          `json:"DuUsage,omitempty" xml:"DuUsage,omitempty"`
 	EndTimestamp              *string                                                         `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	ErrorMessage              *string                                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	ExpireTime                *string                                                         `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// DTS任务类型
 	JobType                       *string                                                             `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MemUsage                      *string                                                             `json:"MemUsage,omitempty" xml:"MemUsage,omitempty"`
 	MigrationMode                 *DescribeDtsJobsResponseBodyDtsJobListMigrationMode                 `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
 	OriginType                    *string                                                             `json:"OriginType,omitempty" xml:"OriginType,omitempty"`
 	PayType                       *string                                                             `json:"PayType,omitempty" xml:"PayType,omitempty"`
@@ -9494,6 +9546,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobList) SetConsumptionClient(v string) *
 	return s
 }
 
+func (s *DescribeDtsJobsResponseBodyDtsJobList) SetCpuUsage(v string) *DescribeDtsJobsResponseBodyDtsJobList {
+	s.CpuUsage = &v
+	return s
+}
+
 func (s *DescribeDtsJobsResponseBodyDtsJobList) SetCreateTime(v string) *DescribeDtsJobsResponseBodyDtsJobList {
 	s.CreateTime = &v
 	return s
@@ -9516,6 +9573,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobList) SetDataSynchronizationStatus(v *
 
 func (s *DescribeDtsJobsResponseBodyDtsJobList) SetDbObject(v string) *DescribeDtsJobsResponseBodyDtsJobList {
 	s.DbObject = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobList) SetDedicatedClusterId(v string) *DescribeDtsJobsResponseBodyDtsJobList {
+	s.DedicatedClusterId = &v
 	return s
 }
 
@@ -9554,6 +9616,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobList) SetDtsJobName(v string) *Describ
 	return s
 }
 
+func (s *DescribeDtsJobsResponseBodyDtsJobList) SetDuUsage(v int64) *DescribeDtsJobsResponseBodyDtsJobList {
+	s.DuUsage = &v
+	return s
+}
+
 func (s *DescribeDtsJobsResponseBodyDtsJobList) SetEndTimestamp(v string) *DescribeDtsJobsResponseBodyDtsJobList {
 	s.EndTimestamp = &v
 	return s
@@ -9571,6 +9638,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobList) SetExpireTime(v string) *Describ
 
 func (s *DescribeDtsJobsResponseBodyDtsJobList) SetJobType(v string) *DescribeDtsJobsResponseBodyDtsJobList {
 	s.JobType = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobList) SetMemUsage(v string) *DescribeDtsJobsResponseBodyDtsJobList {
+	s.MemUsage = &v
 	return s
 }
 
@@ -9987,10 +10059,12 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListRetryState) SetRetryTime(v int32) 
 
 type DescribeDtsJobsResponseBodyDtsJobListReverseJob struct {
 	Checkpoint                    *string                                                                       `json:"Checkpoint,omitempty" xml:"Checkpoint,omitempty"`
+	CpuUsage                      *string                                                                       `json:"CpuUsage,omitempty" xml:"CpuUsage,omitempty"`
 	CreateTime                    *string                                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	DataInitializationStatus      *DescribeDtsJobsResponseBodyDtsJobListReverseJobDataInitializationStatus      `json:"DataInitializationStatus,omitempty" xml:"DataInitializationStatus,omitempty" type:"Struct"`
 	DataSynchronizationStatus     *DescribeDtsJobsResponseBodyDtsJobListReverseJobDataSynchronizationStatus     `json:"DataSynchronizationStatus,omitempty" xml:"DataSynchronizationStatus,omitempty" type:"Struct"`
 	DbObject                      *string                                                                       `json:"DbObject,omitempty" xml:"DbObject,omitempty"`
+	DedicatedClusterId            *string                                                                       `json:"DedicatedClusterId,omitempty" xml:"DedicatedClusterId,omitempty"`
 	Delay                         *int64                                                                        `json:"Delay,omitempty" xml:"Delay,omitempty"`
 	DestinationEndpoint           *DescribeDtsJobsResponseBodyDtsJobListReverseJobDestinationEndpoint           `json:"DestinationEndpoint,omitempty" xml:"DestinationEndpoint,omitempty" type:"Struct"`
 	DtsInstanceID                 *string                                                                       `json:"DtsInstanceID,omitempty" xml:"DtsInstanceID,omitempty"`
@@ -9998,8 +10072,10 @@ type DescribeDtsJobsResponseBodyDtsJobListReverseJob struct {
 	DtsJobDirection               *string                                                                       `json:"DtsJobDirection,omitempty" xml:"DtsJobDirection,omitempty"`
 	DtsJobId                      *string                                                                       `json:"DtsJobId,omitempty" xml:"DtsJobId,omitempty"`
 	DtsJobName                    *string                                                                       `json:"DtsJobName,omitempty" xml:"DtsJobName,omitempty"`
+	DuUsage                       *int64                                                                        `json:"DuUsage,omitempty" xml:"DuUsage,omitempty"`
 	ErrorMessage                  *string                                                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	ExpireTime                    *string                                                                       `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	MemUsage                      *string                                                                       `json:"MemUsage,omitempty" xml:"MemUsage,omitempty"`
 	MigrationMode                 *DescribeDtsJobsResponseBodyDtsJobListReverseJobMigrationMode                 `json:"MigrationMode,omitempty" xml:"MigrationMode,omitempty" type:"Struct"`
 	PayType                       *string                                                                       `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	Performance                   *DescribeDtsJobsResponseBodyDtsJobListReverseJobPerformance                   `json:"Performance,omitempty" xml:"Performance,omitempty" type:"Struct"`
@@ -10023,6 +10099,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetCheckpoint(v string
 	return s
 }
 
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetCpuUsage(v string) *DescribeDtsJobsResponseBodyDtsJobListReverseJob {
+	s.CpuUsage = &v
+	return s
+}
+
 func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetCreateTime(v string) *DescribeDtsJobsResponseBodyDtsJobListReverseJob {
 	s.CreateTime = &v
 	return s
@@ -10040,6 +10121,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetDataSynchronization
 
 func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetDbObject(v string) *DescribeDtsJobsResponseBodyDtsJobListReverseJob {
 	s.DbObject = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetDedicatedClusterId(v string) *DescribeDtsJobsResponseBodyDtsJobListReverseJob {
+	s.DedicatedClusterId = &v
 	return s
 }
 
@@ -10078,6 +10164,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetDtsJobName(v string
 	return s
 }
 
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetDuUsage(v int64) *DescribeDtsJobsResponseBodyDtsJobListReverseJob {
+	s.DuUsage = &v
+	return s
+}
+
 func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetErrorMessage(v string) *DescribeDtsJobsResponseBodyDtsJobListReverseJob {
 	s.ErrorMessage = &v
 	return s
@@ -10085,6 +10176,11 @@ func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetErrorMessage(v stri
 
 func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetExpireTime(v string) *DescribeDtsJobsResponseBodyDtsJobListReverseJob {
 	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeDtsJobsResponseBodyDtsJobListReverseJob) SetMemUsage(v string) *DescribeDtsJobsResponseBodyDtsJobListReverseJob {
+	s.MemUsage = &v
 	return s
 }
 
@@ -22943,6 +23039,10 @@ func (client *Client) ConfigureDtsJobWithOptions(request *ConfigureDtsJobRequest
 		query["DataSynchronization"] = request.DataSynchronization
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DedicatedClusterId)) {
+		query["DedicatedClusterId"] = request.DedicatedClusterId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DelayNotice)) {
 		query["DelayNotice"] = request.DelayNotice
 	}
@@ -23301,6 +23401,10 @@ func (client *Client) ConfigureSubscriptionWithOptions(request *ConfigureSubscri
 
 	if !tea.BoolValue(util.IsUnset(request.DbList)) {
 		query["DbList"] = request.DbList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DedicatedClusterId)) {
+		query["DedicatedClusterId"] = request.DedicatedClusterId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DelayNotice)) {
@@ -24085,6 +24189,10 @@ func (client *Client) CreateDtsInstanceWithOptions(request *CreateDtsInstanceReq
 
 	if !tea.BoolValue(util.IsUnset(request.DestinationRegion)) {
 		query["DestinationRegion"] = request.DestinationRegion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Du)) {
+		query["Du"] = request.Du
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FeeType)) {
@@ -25299,6 +25407,18 @@ func (client *Client) DescribeDtsJobsWithOptions(request *DescribeDtsJobsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DedicatedClusterId)) {
+		query["DedicatedClusterId"] = request.DedicatedClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DedicatedClusterNodeId)) {
+		query["DedicatedClusterNodeId"] = request.DedicatedClusterNodeId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DtsJobId)) {
+		query["DtsJobId"] = request.DtsJobId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
 		query["GroupId"] = request.GroupId
 	}
@@ -25313,6 +25433,10 @@ func (client *Client) DescribeDtsJobsWithOptions(request *DescribeDtsJobsRequest
 
 	if !tea.BoolValue(util.IsUnset(request.OrderDirection)) {
 		query["OrderDirection"] = request.OrderDirection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -27453,12 +27577,14 @@ func (client *Client) ModifySynchronizationObjectWithOptions(request *ModifySync
 		query["SynchronizationJobId"] = request.SynchronizationJobId
 	}
 
+	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.SynchronizationObjects)) {
-		query["SynchronizationObjects"] = request.SynchronizationObjects
+		body["SynchronizationObjects"] = request.SynchronizationObjects
 	}
 
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ModifySynchronizationObject"),
