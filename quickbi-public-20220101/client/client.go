@@ -8091,6 +8091,87 @@ func (s *QueryWorkspaceUserListResponse) SetBody(v *QueryWorkspaceUserListRespon
 	return s
 }
 
+type ResultCallbackRequest struct {
+	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
+	HandleReason  *string `json:"HandleReason,omitempty" xml:"HandleReason,omitempty"`
+	Status        *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ResultCallbackRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResultCallbackRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ResultCallbackRequest) SetApplicationId(v string) *ResultCallbackRequest {
+	s.ApplicationId = &v
+	return s
+}
+
+func (s *ResultCallbackRequest) SetHandleReason(v string) *ResultCallbackRequest {
+	s.HandleReason = &v
+	return s
+}
+
+func (s *ResultCallbackRequest) SetStatus(v int32) *ResultCallbackRequest {
+	s.Status = &v
+	return s
+}
+
+type ResultCallbackResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ResultCallbackResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResultCallbackResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ResultCallbackResponseBody) SetRequestId(v string) *ResultCallbackResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ResultCallbackResponseBody) SetResult(v bool) *ResultCallbackResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *ResultCallbackResponseBody) SetSuccess(v bool) *ResultCallbackResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ResultCallbackResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ResultCallbackResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ResultCallbackResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ResultCallbackResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ResultCallbackResponse) SetHeaders(v map[string]*string) *ResultCallbackResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ResultCallbackResponse) SetBody(v *ResultCallbackResponseBody) *ResultCallbackResponse {
+	s.Body = v
+	return s
+}
+
 type SaveFavoritesRequest struct {
 	UserId  *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
@@ -9233,7 +9314,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = tea.String("central")
+	client.EndpointRule = tea.String("")
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -12348,6 +12429,58 @@ func (client *Client) QueryWorkspaceUserList(request *QueryWorkspaceUserListRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryWorkspaceUserListResponse{}
 	_body, _err := client.QueryWorkspaceUserListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ResultCallbackWithOptions(request *ResultCallbackRequest, runtime *util.RuntimeOptions) (_result *ResultCallbackResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationId)) {
+		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HandleReason)) {
+		query["HandleReason"] = request.HandleReason
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResultCallback"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ResultCallbackResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ResultCallback(request *ResultCallbackRequest) (_result *ResultCallbackResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ResultCallbackResponse{}
+	_body, _err := client.ResultCallbackWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
