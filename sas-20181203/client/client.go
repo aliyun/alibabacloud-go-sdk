@@ -1856,6 +1856,7 @@ type DescribeAlarmEventListRequest struct {
 	PageSize             *string   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Remark               *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	SourceIp             *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	TacticId             *string   `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
 }
 
 func (s DescribeAlarmEventListRequest) String() string {
@@ -1923,6 +1924,11 @@ func (s *DescribeAlarmEventListRequest) SetRemark(v string) *DescribeAlarmEventL
 
 func (s *DescribeAlarmEventListRequest) SetSourceIp(v string) *DescribeAlarmEventListRequest {
 	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeAlarmEventListRequest) SetTacticId(v string) *DescribeAlarmEventListRequest {
+	s.TacticId = &v
 	return s
 }
 
@@ -2016,7 +2022,9 @@ type DescribeAlarmEventListResponseBodySuspEvents struct {
 	Stages                 *string `json:"Stages,omitempty" xml:"Stages,omitempty"`
 	StartTime              *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	SuspiciousEventCount   *int32  `json:"SuspiciousEventCount,omitempty" xml:"SuspiciousEventCount,omitempty"`
-	Uuid                   *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// 攻击阶段展示名
+	TacticItems []*DescribeAlarmEventListResponseBodySuspEventsTacticItems `json:"TacticItems,omitempty" xml:"TacticItems,omitempty" type:"Repeated"`
+	Uuid        *string                                                    `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeAlarmEventListResponseBodySuspEvents) String() string {
@@ -2152,8 +2160,36 @@ func (s *DescribeAlarmEventListResponseBodySuspEvents) SetSuspiciousEventCount(v
 	return s
 }
 
+func (s *DescribeAlarmEventListResponseBodySuspEvents) SetTacticItems(v []*DescribeAlarmEventListResponseBodySuspEventsTacticItems) *DescribeAlarmEventListResponseBodySuspEvents {
+	s.TacticItems = v
+	return s
+}
+
 func (s *DescribeAlarmEventListResponseBodySuspEvents) SetUuid(v string) *DescribeAlarmEventListResponseBodySuspEvents {
 	s.Uuid = &v
+	return s
+}
+
+type DescribeAlarmEventListResponseBodySuspEventsTacticItems struct {
+	TacticDisplayName *string `json:"TacticDisplayName,omitempty" xml:"TacticDisplayName,omitempty"`
+	TacticId          *string `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
+}
+
+func (s DescribeAlarmEventListResponseBodySuspEventsTacticItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlarmEventListResponseBodySuspEventsTacticItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlarmEventListResponseBodySuspEventsTacticItems) SetTacticDisplayName(v string) *DescribeAlarmEventListResponseBodySuspEventsTacticItems {
+	s.TacticDisplayName = &v
+	return s
+}
+
+func (s *DescribeAlarmEventListResponseBodySuspEventsTacticItems) SetTacticId(v string) *DescribeAlarmEventListResponseBodySuspEventsTacticItems {
+	s.TacticId = &v
 	return s
 }
 
@@ -17401,6 +17437,7 @@ type DescribeSuspEventsRequest struct {
 	Source               *string   `json:"Source,omitempty" xml:"Source,omitempty"`
 	SourceIp             *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	TacticId             *string   `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
 	TargetType           *string   `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 	UniqueInfo           *string   `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
 	Uuids                *string   `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
@@ -17506,6 +17543,11 @@ func (s *DescribeSuspEventsRequest) SetSourceIp(v string) *DescribeSuspEventsReq
 
 func (s *DescribeSuspEventsRequest) SetStatus(v string) *DescribeSuspEventsRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeSuspEventsRequest) SetTacticId(v string) *DescribeSuspEventsRequest {
+	s.TacticId = &v
 	return s
 }
 
@@ -17617,8 +17659,10 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	SaleVersion           *string                                               `json:"SaleVersion,omitempty" xml:"SaleVersion,omitempty"`
 	SecurityEventIds      *string                                               `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty"`
 	Stages                *string                                               `json:"Stages,omitempty" xml:"Stages,omitempty"`
-	UniqueInfo            *string                                               `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
-	Uuid                  *string                                               `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	// 攻击阶段展示名
+	TacticItems []*DescribeSuspEventsResponseBodySuspEventsTacticItems `json:"TacticItems,omitempty" xml:"TacticItems,omitempty" type:"Repeated"`
+	UniqueInfo  *string                                                `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
+	Uuid        *string                                                `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeSuspEventsResponseBodySuspEvents) String() string {
@@ -17854,6 +17898,11 @@ func (s *DescribeSuspEventsResponseBodySuspEvents) SetStages(v string) *Describe
 	return s
 }
 
+func (s *DescribeSuspEventsResponseBodySuspEvents) SetTacticItems(v []*DescribeSuspEventsResponseBodySuspEventsTacticItems) *DescribeSuspEventsResponseBodySuspEvents {
+	s.TacticItems = v
+	return s
+}
+
 func (s *DescribeSuspEventsResponseBodySuspEvents) SetUniqueInfo(v string) *DescribeSuspEventsResponseBodySuspEvents {
 	s.UniqueInfo = &v
 	return s
@@ -17925,6 +17974,29 @@ func (s *DescribeSuspEventsResponseBodySuspEventsEventNotes) SetNoteId(v int64) 
 
 func (s *DescribeSuspEventsResponseBodySuspEventsEventNotes) SetNoteTime(v string) *DescribeSuspEventsResponseBodySuspEventsEventNotes {
 	s.NoteTime = &v
+	return s
+}
+
+type DescribeSuspEventsResponseBodySuspEventsTacticItems struct {
+	TacticDisplayName *string `json:"TacticDisplayName,omitempty" xml:"TacticDisplayName,omitempty"`
+	TacticId          *string `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
+}
+
+func (s DescribeSuspEventsResponseBodySuspEventsTacticItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSuspEventsResponseBodySuspEventsTacticItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSuspEventsResponseBodySuspEventsTacticItems) SetTacticDisplayName(v string) *DescribeSuspEventsResponseBodySuspEventsTacticItems {
+	s.TacticDisplayName = &v
+	return s
+}
+
+func (s *DescribeSuspEventsResponseBodySuspEventsTacticItems) SetTacticId(v string) *DescribeSuspEventsResponseBodySuspEventsTacticItems {
+	s.TacticId = &v
 	return s
 }
 
@@ -22315,6 +22387,75 @@ func (s *ModifyOperateVulResponse) SetBody(v *ModifyOperateVulResponseBody) *Mod
 	return s
 }
 
+type ModifyPropertyScheduleConfigRequest struct {
+	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
+	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ModifyPropertyScheduleConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPropertyScheduleConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPropertyScheduleConfigRequest) SetScheduleTime(v string) *ModifyPropertyScheduleConfigRequest {
+	s.ScheduleTime = &v
+	return s
+}
+
+func (s *ModifyPropertyScheduleConfigRequest) SetType(v string) *ModifyPropertyScheduleConfigRequest {
+	s.Type = &v
+	return s
+}
+
+type ModifyPropertyScheduleConfigResponseBody struct {
+	ModifyResult *bool   `json:"ModifyResult,omitempty" xml:"ModifyResult,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyPropertyScheduleConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPropertyScheduleConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPropertyScheduleConfigResponseBody) SetModifyResult(v bool) *ModifyPropertyScheduleConfigResponseBody {
+	s.ModifyResult = &v
+	return s
+}
+
+func (s *ModifyPropertyScheduleConfigResponseBody) SetRequestId(v string) *ModifyPropertyScheduleConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyPropertyScheduleConfigResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyPropertyScheduleConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyPropertyScheduleConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPropertyScheduleConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPropertyScheduleConfigResponse) SetHeaders(v map[string]*string) *ModifyPropertyScheduleConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyPropertyScheduleConfigResponse) SetBody(v *ModifyPropertyScheduleConfigResponseBody) *ModifyPropertyScheduleConfigResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyPushAllTaskRequest struct {
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	Tasks    *string `json:"Tasks,omitempty" xml:"Tasks,omitempty"`
@@ -25788,6 +25929,10 @@ func (client *Client) DescribeAlarmEventListWithOptions(request *DescribeAlarmEv
 
 	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
 		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TacticId)) {
+		query["TacticId"] = request.TacticId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -31047,8 +31192,14 @@ func (client *Client) DescribeSuspEventsWithOptions(request *DescribeSuspEventsR
 		query["Uuids"] = request.Uuids
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TacticId)) {
+		body["TacticId"] = request.TacticId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeSuspEvents"),
@@ -33128,6 +33279,54 @@ func (client *Client) ModifyOperateVul(request *ModifyOperateVulRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyOperateVulResponse{}
 	_body, _err := client.ModifyOperateVulWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyPropertyScheduleConfigWithOptions(request *ModifyPropertyScheduleConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyPropertyScheduleConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ScheduleTime)) {
+		query["ScheduleTime"] = request.ScheduleTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyPropertyScheduleConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyPropertyScheduleConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyPropertyScheduleConfig(request *ModifyPropertyScheduleConfigRequest) (_result *ModifyPropertyScheduleConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyPropertyScheduleConfigResponse{}
+	_body, _err := client.ModifyPropertyScheduleConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
