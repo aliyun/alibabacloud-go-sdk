@@ -8391,6 +8391,93 @@ func (s *CreateSpaceModelResponse) SetBody(v *CreateSpaceModelResponseBody) *Cre
 	return s
 }
 
+type CreateTaskRequest struct {
+	// 幂等参数
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 任务参数
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// 模板id
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+}
+
+func (s CreateTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskRequest) SetClientToken(v string) *CreateTaskRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateTaskRequest) SetInstanceId(v string) *CreateTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateTaskRequest) SetParams(v string) *CreateTaskRequest {
+	s.Params = &v
+	return s
+}
+
+func (s *CreateTaskRequest) SetTemplateId(v string) *CreateTaskRequest {
+	s.TemplateId = &v
+	return s
+}
+
+type CreateTaskResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskResponseBody) SetRequestId(v string) *CreateTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTaskResponseBody) SetTaskId(v string) *CreateTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateTaskResponse struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTaskResponse) SetHeaders(v map[string]*string) *CreateTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTaskResponse) SetBody(v *CreateTaskResponseBody) *CreateTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateTimePeriodRequest struct {
 	// 幂等参数
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -14623,6 +14710,160 @@ func (s *GetSpaceModelSortResponse) SetBody(v *GetSpaceModelSortResponseBody) *G
 	return s
 }
 
+type GetTaskRequest struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskRequest) SetInstanceId(v string) *GetTaskRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetTaskRequest) SetTaskId(v string) *GetTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetTaskResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 任务信息
+	Task *GetTaskResponseBodyTask `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
+}
+
+func (s GetTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBody) SetRequestId(v string) *GetTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTaskResponseBody) SetTask(v *GetTaskResponseBodyTask) *GetTaskResponseBody {
+	s.Task = v
+	return s
+}
+
+type GetTaskResponseBodyTask struct {
+	// 模板类别
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 任务参数
+	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
+	// 任务错误码
+	ResponseCode *string `json:"ResponseCode,omitempty" xml:"ResponseCode,omitempty"`
+	// 任务返回
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
+	// 任务状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 任务id
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// 模板id
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// 模板名称
+	TemplateName *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	// 修改时间
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s GetTaskResponseBodyTask) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponseBodyTask) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponseBodyTask) SetCategory(v string) *GetTaskResponseBodyTask {
+	s.Category = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetCreateTime(v string) *GetTaskResponseBodyTask {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetParams(v string) *GetTaskResponseBodyTask {
+	s.Params = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetResponseCode(v string) *GetTaskResponseBodyTask {
+	s.ResponseCode = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetResult(v string) *GetTaskResponseBodyTask {
+	s.Result = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetStatus(v string) *GetTaskResponseBodyTask {
+	s.Status = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetTaskId(v string) *GetTaskResponseBodyTask {
+	s.TaskId = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetTemplateId(v string) *GetTaskResponseBodyTask {
+	s.TemplateId = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetTemplateName(v string) *GetTaskResponseBodyTask {
+	s.TemplateName = &v
+	return s
+}
+
+func (s *GetTaskResponseBodyTask) SetUpdateTime(v string) *GetTaskResponseBodyTask {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetTaskResponse struct {
+	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskResponse) SetHeaders(v map[string]*string) *GetTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTaskResponse) SetBody(v *GetTaskResponseBody) *GetTaskResponse {
+	s.Body = v
+	return s
+}
+
 type GetWorkOrderRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 工单Id
@@ -19718,6 +19959,8 @@ type ListIpBlocksRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 业务类型小类
 	SubNetBusiness *string `json:"SubNetBusiness,omitempty" xml:"SubNetBusiness,omitempty"`
+	// 是否获取顶层父类
+	TopParent *bool `json:"TopParent,omitempty" xml:"TopParent,omitempty"`
 	// 是否树状展示地址段
 	TreeType *bool `json:"TreeType,omitempty" xml:"TreeType,omitempty"`
 	// 园区名称，NetType为PUBLIC有效
@@ -19779,6 +20022,11 @@ func (s *ListIpBlocksRequest) SetStatus(v string) *ListIpBlocksRequest {
 
 func (s *ListIpBlocksRequest) SetSubNetBusiness(v string) *ListIpBlocksRequest {
 	s.SubNetBusiness = &v
+	return s
+}
+
+func (s *ListIpBlocksRequest) SetTopParent(v bool) *ListIpBlocksRequest {
+	s.TopParent = &v
 	return s
 }
 
@@ -28129,6 +28377,64 @@ func (client *Client) CreateSpaceModel(request *CreateSpaceModelRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) CreateTaskWithOptions(request *CreateTaskRequest, runtime *util.RuntimeOptions) (_result *CreateTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Params)) {
+		body["Params"] = request.Params
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
+		body["TemplateId"] = request.TemplateId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTask"),
+		Version:     tea.String("2020-08-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTask(request *CreateTaskRequest) (_result *CreateTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTaskResponse{}
+	_body, _err := client.CreateTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateTimePeriodWithOptions(request *CreateTimePeriodRequest, runtime *util.RuntimeOptions) (_result *CreateTimePeriodResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30402,6 +30708,46 @@ func (client *Client) GetSpaceModelSort(request *GetSpaceModelSortRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &GetSpaceModelSortResponse{}
 	_body, _err := client.GetSpaceModelSortWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTaskWithOptions(request *GetTaskRequest, runtime *util.RuntimeOptions) (_result *GetTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTask"),
+		Version:     tea.String("2020-08-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTask(request *GetTaskRequest) (_result *GetTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTaskResponse{}
+	_body, _err := client.GetTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
