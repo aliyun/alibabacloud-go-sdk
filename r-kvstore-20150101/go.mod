@@ -1,4 +1,4 @@
-module github.com/alibabacloud-go/r-kvstore-20150101
+module github.com/alibabacloud-go/r-kvstore-20150101/v2
 
 go 1.15
 
