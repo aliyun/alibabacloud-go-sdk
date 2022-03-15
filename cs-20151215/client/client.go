@@ -2698,7 +2698,7 @@ func (s *DeleteTriggerResponse) SetHeaders(v map[string]*string) *DeleteTriggerR
 type DeployPolicyInstanceRequest struct {
 	// 规则治理动作
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
-	// 策略实例实施范围（限定命名空间）。默认 [] 代表集群所有命名空间。
+	// 限制策略实施的命名空间，为空时表示所有命名空间
 	Namespaces []*string `json:"namespaces,omitempty" xml:"namespaces,omitempty" type:"Repeated"`
 	// 当前规则实例的配置参数
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
@@ -10165,8 +10165,8 @@ type ModifyPolicyInstanceRequest struct {
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
 	// 策略规则实例id
 	InstanceName *string `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
-	// 策略实例实施范围
-	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
+	// 限制策略实施的命名空间，为空时表示所有命名空间
+	Namespaces []*string `json:"namespaces,omitempty" xml:"namespaces,omitempty" type:"Repeated"`
 	// 当前规则实例的配置参数
 	Parameters map[string]interface{} `json:"parameters,omitempty" xml:"parameters,omitempty"`
 }
@@ -10189,8 +10189,8 @@ func (s *ModifyPolicyInstanceRequest) SetInstanceName(v string) *ModifyPolicyIns
 	return s
 }
 
-func (s *ModifyPolicyInstanceRequest) SetNamespace(v string) *ModifyPolicyInstanceRequest {
-	s.Namespace = &v
+func (s *ModifyPolicyInstanceRequest) SetNamespaces(v []*string) *ModifyPolicyInstanceRequest {
+	s.Namespaces = v
 	return s
 }
 
@@ -15661,8 +15661,8 @@ func (client *Client) ModifyPolicyInstanceWithOptions(clusterId *string, policyN
 		body["instance_name"] = request.InstanceName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
-		body["namespace"] = request.Namespace
+	if !tea.BoolValue(util.IsUnset(request.Namespaces)) {
+		body["namespaces"] = request.Namespaces
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
