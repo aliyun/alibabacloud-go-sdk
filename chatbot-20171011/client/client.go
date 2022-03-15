@@ -1423,7 +1423,6 @@ type ChatRequest struct {
 	IntentName  *string   `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
 	KnowledgeId *string   `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 	Perspective []*string `json:"Perspective,omitempty" xml:"Perspective,omitempty" type:"Repeated"`
-	Recommend   *bool     `json:"Recommend,omitempty" xml:"Recommend,omitempty"`
 	SenderId    *string   `json:"SenderId,omitempty" xml:"SenderId,omitempty"`
 	SenderNick  *string   `json:"SenderNick,omitempty" xml:"SenderNick,omitempty"`
 	SessionId   *string   `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
@@ -1457,11 +1456,6 @@ func (s *ChatRequest) SetKnowledgeId(v string) *ChatRequest {
 
 func (s *ChatRequest) SetPerspective(v []*string) *ChatRequest {
 	s.Perspective = v
-	return s
-}
-
-func (s *ChatRequest) SetRecommend(v bool) *ChatRequest {
-	s.Recommend = &v
 	return s
 }
 
@@ -1542,7 +1536,11 @@ type ChatResponseBodyMessages struct {
 	Knowledge    *ChatResponseBodyMessagesKnowledge    `json:"Knowledge,omitempty" xml:"Knowledge,omitempty" type:"Struct"`
 	Recommends   []*ChatResponseBodyMessagesRecommends `json:"Recommends,omitempty" xml:"Recommends,omitempty" type:"Repeated"`
 	Text         *ChatResponseBodyMessagesText         `json:"Text,omitempty" xml:"Text,omitempty" type:"Struct"`
-	Type         *string                               `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 在线场景，反问标题
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 语音场景，澄清内容
+	VoiceTitle *string `json:"VoiceTitle,omitempty" xml:"VoiceTitle,omitempty"`
 }
 
 func (s ChatResponseBodyMessages) String() string {
@@ -1578,8 +1576,18 @@ func (s *ChatResponseBodyMessages) SetText(v *ChatResponseBodyMessagesText) *Cha
 	return s
 }
 
+func (s *ChatResponseBodyMessages) SetTitle(v string) *ChatResponseBodyMessages {
+	s.Title = &v
+	return s
+}
+
 func (s *ChatResponseBodyMessages) SetType(v string) *ChatResponseBodyMessages {
 	s.Type = &v
+	return s
+}
+
+func (s *ChatResponseBodyMessages) SetVoiceTitle(v string) *ChatResponseBodyMessages {
+	s.VoiceTitle = &v
 	return s
 }
 
@@ -1679,11 +1687,8 @@ func (s *ChatResponseBodyMessagesKnowledgeRelatedKnowledges) SetTitle(v string) 
 
 type ChatResponseBodyMessagesRecommends struct {
 	AnswerSource *string  `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	Category     *string  `json:"Category,omitempty" xml:"Category,omitempty"`
-	Content      *string  `json:"Content,omitempty" xml:"Content,omitempty"`
 	KnowledgeId  *string  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
 	Score        *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	Summary      *string  `json:"Summary,omitempty" xml:"Summary,omitempty"`
 	Title        *string  `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -1700,16 +1705,6 @@ func (s *ChatResponseBodyMessagesRecommends) SetAnswerSource(v string) *ChatResp
 	return s
 }
 
-func (s *ChatResponseBodyMessagesRecommends) SetCategory(v string) *ChatResponseBodyMessagesRecommends {
-	s.Category = &v
-	return s
-}
-
-func (s *ChatResponseBodyMessagesRecommends) SetContent(v string) *ChatResponseBodyMessagesRecommends {
-	s.Content = &v
-	return s
-}
-
 func (s *ChatResponseBodyMessagesRecommends) SetKnowledgeId(v string) *ChatResponseBodyMessagesRecommends {
 	s.KnowledgeId = &v
 	return s
@@ -1717,11 +1712,6 @@ func (s *ChatResponseBodyMessagesRecommends) SetKnowledgeId(v string) *ChatRespo
 
 func (s *ChatResponseBodyMessagesRecommends) SetScore(v float64) *ChatResponseBodyMessagesRecommends {
 	s.Score = &v
-	return s
-}
-
-func (s *ChatResponseBodyMessagesRecommends) SetSummary(v string) *ChatResponseBodyMessagesRecommends {
-	s.Summary = &v
 	return s
 }
 
@@ -1733,6 +1723,7 @@ func (s *ChatResponseBodyMessagesRecommends) SetTitle(v string) *ChatResponseBod
 type ChatResponseBodyMessagesText struct {
 	AnswerSource         *string                              `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
 	ArticleTitle         *string                              `json:"ArticleTitle,omitempty" xml:"ArticleTitle,omitempty"`
+	Commands             map[string]interface{}               `json:"Commands,omitempty" xml:"Commands,omitempty"`
 	Content              *string                              `json:"Content,omitempty" xml:"Content,omitempty"`
 	ContentType          *string                              `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
 	DialogName           *string                              `json:"DialogName,omitempty" xml:"DialogName,omitempty"`
@@ -1763,6 +1754,11 @@ func (s *ChatResponseBodyMessagesText) SetAnswerSource(v string) *ChatResponseBo
 
 func (s *ChatResponseBodyMessagesText) SetArticleTitle(v string) *ChatResponseBodyMessagesText {
 	s.ArticleTitle = &v
+	return s
+}
+
+func (s *ChatResponseBodyMessagesText) SetCommands(v map[string]interface{}) *ChatResponseBodyMessagesText {
+	s.Commands = v
 	return s
 }
 
@@ -9644,10 +9640,6 @@ func (client *Client) ChatWithOptions(request *ChatRequest, runtime *util.Runtim
 
 	if !tea.BoolValue(util.IsUnset(request.Perspective)) {
 		query["Perspective"] = request.Perspective
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Recommend)) {
-		query["Recommend"] = request.Recommend
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SenderId)) {
