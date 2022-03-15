@@ -735,12 +735,16 @@ type CreateApplicationRequest struct {
 	JarStartArgs         *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
 	JarStartOptions      *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
 	Jdk                  *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
+	KafkaEndpoint        *string `json:"KafkaEndpoint,omitempty" xml:"KafkaEndpoint,omitempty"`
+	KafkaInstanceId      *string `json:"KafkaInstanceId,omitempty" xml:"KafkaInstanceId,omitempty"`
+	KafkaLogfileConfig   *string `json:"KafkaLogfileConfig,omitempty" xml:"KafkaLogfileConfig,omitempty"`
 	Liveness             *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
 	Memory               *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	MountDesc            *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
 	MountHost            *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
 	NamespaceId          *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	NasId                *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	OpenCollectToKafka   *bool   `json:"OpenCollectToKafka,omitempty" xml:"OpenCollectToKafka,omitempty"`
 	// OSS使用的AKID
 	OssAkId *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
 	// OSS AKID对应的secret
@@ -866,6 +870,21 @@ func (s *CreateApplicationRequest) SetJdk(v string) *CreateApplicationRequest {
 	return s
 }
 
+func (s *CreateApplicationRequest) SetKafkaEndpoint(v string) *CreateApplicationRequest {
+	s.KafkaEndpoint = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetKafkaInstanceId(v string) *CreateApplicationRequest {
+	s.KafkaInstanceId = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetKafkaLogfileConfig(v string) *CreateApplicationRequest {
+	s.KafkaLogfileConfig = &v
+	return s
+}
+
 func (s *CreateApplicationRequest) SetLiveness(v string) *CreateApplicationRequest {
 	s.Liveness = &v
 	return s
@@ -893,6 +912,11 @@ func (s *CreateApplicationRequest) SetNamespaceId(v string) *CreateApplicationRe
 
 func (s *CreateApplicationRequest) SetNasId(v string) *CreateApplicationRequest {
 	s.NasId = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetOpenCollectToKafka(v bool) *CreateApplicationRequest {
+	s.OpenCollectToKafka = &v
 	return s
 }
 
@@ -2564,12 +2588,16 @@ type DeployApplicationRequest struct {
 	JarStartArgs          *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
 	JarStartOptions       *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
 	Jdk                   *string `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
+	KafkaEndpoint         *string `json:"KafkaEndpoint,omitempty" xml:"KafkaEndpoint,omitempty"`
+	KafkaInstanceId       *string `json:"KafkaInstanceId,omitempty" xml:"KafkaInstanceId,omitempty"`
+	KafkaLogfileConfig    *string `json:"KafkaLogfileConfig,omitempty" xml:"KafkaLogfileConfig,omitempty"`
 	Liveness              *string `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
 	MinReadyInstanceRatio *int32  `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
 	MinReadyInstances     *int32  `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
 	MountDesc             *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
 	MountHost             *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
 	NasId                 *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
+	OpenCollectToKafka    *bool   `json:"OpenCollectToKafka,omitempty" xml:"OpenCollectToKafka,omitempty"`
 	// OSS使用的AKID
 	OssAkId *string `json:"OssAkId,omitempty" xml:"OssAkId,omitempty"`
 	// OSS AKID对应的secret
@@ -2696,6 +2724,21 @@ func (s *DeployApplicationRequest) SetJdk(v string) *DeployApplicationRequest {
 	return s
 }
 
+func (s *DeployApplicationRequest) SetKafkaEndpoint(v string) *DeployApplicationRequest {
+	s.KafkaEndpoint = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetKafkaInstanceId(v string) *DeployApplicationRequest {
+	s.KafkaInstanceId = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetKafkaLogfileConfig(v string) *DeployApplicationRequest {
+	s.KafkaLogfileConfig = &v
+	return s
+}
+
 func (s *DeployApplicationRequest) SetLiveness(v string) *DeployApplicationRequest {
 	s.Liveness = &v
 	return s
@@ -2723,6 +2766,11 @@ func (s *DeployApplicationRequest) SetMountHost(v string) *DeployApplicationRequ
 
 func (s *DeployApplicationRequest) SetNasId(v string) *DeployApplicationRequest {
 	s.NasId = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetOpenCollectToKafka(v bool) *DeployApplicationRequest {
+	s.OpenCollectToKafka = &v
 	return s
 }
 
@@ -3302,6 +3350,7 @@ type DescribeApplicationConfigResponseBodyData struct {
 	JarStartArgs          *string                                               `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
 	JarStartOptions       *string                                               `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
 	Jdk                   *string                                               `json:"Jdk,omitempty" xml:"Jdk,omitempty"`
+	KafkaConfigs          *string                                               `json:"KafkaConfigs,omitempty" xml:"KafkaConfigs,omitempty"`
 	Liveness              *string                                               `json:"Liveness,omitempty" xml:"Liveness,omitempty"`
 	Memory                *int32                                                `json:"Memory,omitempty" xml:"Memory,omitempty"`
 	MinReadyInstanceRatio *int32                                                `json:"MinReadyInstanceRatio,omitempty" xml:"MinReadyInstanceRatio,omitempty"`
@@ -3442,6 +3491,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetJarStartOptions(v string)
 
 func (s *DescribeApplicationConfigResponseBodyData) SetJdk(v string) *DescribeApplicationConfigResponseBodyData {
 	s.Jdk = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetKafkaConfigs(v string) *DescribeApplicationConfigResponseBodyData {
+	s.KafkaConfigs = &v
 	return s
 }
 
@@ -4236,6 +4290,7 @@ func (s *DescribeApplicationInstancesResponseBodyData) SetTotalSize(v int32) *De
 type DescribeApplicationInstancesResponseBodyDataInstances struct {
 	CreateTimeStamp           *int64  `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
 	Eip                       *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
+	FinishTimeStamp           *int64  `json:"FinishTimeStamp,omitempty" xml:"FinishTimeStamp,omitempty"`
 	GroupId                   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	ImageUrl                  *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	InstanceContainerIp       *string `json:"InstanceContainerIp,omitempty" xml:"InstanceContainerIp,omitempty"`
@@ -4262,6 +4317,11 @@ func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetCreateTimeSta
 
 func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetEip(v string) *DescribeApplicationInstancesResponseBodyDataInstances {
 	s.Eip = &v
+	return s
+}
+
+func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetFinishTimeStamp(v int64) *DescribeApplicationInstancesResponseBodyDataInstances {
+	s.FinishTimeStamp = &v
 	return s
 }
 
@@ -5705,6 +5765,7 @@ func (s *DescribeChangeOrderResponseBody) SetTraceId(v string) *DescribeChangeOr
 }
 
 type DescribeChangeOrderResponseBodyData struct {
+	AppId             *string                                         `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	AppName           *string                                         `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	ApprovalId        *string                                         `json:"ApprovalId,omitempty" xml:"ApprovalId,omitempty"`
 	Auto              *bool                                           `json:"Auto,omitempty" xml:"Auto,omitempty"`
@@ -5730,6 +5791,11 @@ func (s DescribeChangeOrderResponseBodyData) String() string {
 
 func (s DescribeChangeOrderResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeChangeOrderResponseBodyData) SetAppId(v string) *DescribeChangeOrderResponseBodyData {
+	s.AppId = &v
+	return s
 }
 
 func (s *DescribeChangeOrderResponseBodyData) SetAppName(v string) *DescribeChangeOrderResponseBodyData {
@@ -6583,6 +6649,7 @@ func (s *DescribeGreyTagRouteResponseBody) SetTraceId(v string) *DescribeGreyTag
 }
 
 type DescribeGreyTagRouteResponseBodyData struct {
+	AppId          *string                                           `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	CreateTime     *int64                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description    *string                                           `json:"Description,omitempty" xml:"Description,omitempty"`
 	DubboRules     []*DescribeGreyTagRouteResponseBodyDataDubboRules `json:"DubboRules,omitempty" xml:"DubboRules,omitempty" type:"Repeated"`
@@ -6598,6 +6665,11 @@ func (s DescribeGreyTagRouteResponseBodyData) String() string {
 
 func (s DescribeGreyTagRouteResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeGreyTagRouteResponseBodyData) SetAppId(v string) *DescribeGreyTagRouteResponseBodyData {
+	s.AppId = &v
+	return s
 }
 
 func (s *DescribeGreyTagRouteResponseBodyData) SetCreateTime(v int64) *DescribeGreyTagRouteResponseBodyData {
@@ -8954,14 +9026,12 @@ func (s *ListAppServicesPageResponseBodyData) SetTotalSize(v string) *ListAppSer
 }
 
 type ListAppServicesPageResponseBodyDataResult struct {
-	ClusterName   *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	EdasAppId     *string `json:"EdasAppId,omitempty" xml:"EdasAppId,omitempty"`
-	EdasAppName   *string `json:"EdasAppName,omitempty" xml:"EdasAppName,omitempty"`
-	GmtModifyTime *string `json:"GmtModifyTime,omitempty" xml:"GmtModifyTime,omitempty"`
-	Group         *string `json:"Group,omitempty" xml:"Group,omitempty"`
-	InstanceNum   *int64  `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
-	ServiceName   *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	EdasAppId   *string `json:"EdasAppId,omitempty" xml:"EdasAppId,omitempty"`
+	EdasAppName *string `json:"EdasAppName,omitempty" xml:"EdasAppName,omitempty"`
+	Group       *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	InstanceNum *int64  `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ListAppServicesPageResponseBodyDataResult) String() string {
@@ -8972,11 +9042,6 @@ func (s ListAppServicesPageResponseBodyDataResult) GoString() string {
 	return s.String()
 }
 
-func (s *ListAppServicesPageResponseBodyDataResult) SetClusterName(v string) *ListAppServicesPageResponseBodyDataResult {
-	s.ClusterName = &v
-	return s
-}
-
 func (s *ListAppServicesPageResponseBodyDataResult) SetEdasAppId(v string) *ListAppServicesPageResponseBodyDataResult {
 	s.EdasAppId = &v
 	return s
@@ -8984,11 +9049,6 @@ func (s *ListAppServicesPageResponseBodyDataResult) SetEdasAppId(v string) *List
 
 func (s *ListAppServicesPageResponseBodyDataResult) SetEdasAppName(v string) *ListAppServicesPageResponseBodyDataResult {
 	s.EdasAppName = &v
-	return s
-}
-
-func (s *ListAppServicesPageResponseBodyDataResult) SetGmtModifyTime(v string) *ListAppServicesPageResponseBodyDataResult {
-	s.GmtModifyTime = &v
 	return s
 }
 
@@ -14420,6 +14480,18 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		query["Jdk"] = request.Jdk
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.KafkaEndpoint)) {
+		query["KafkaEndpoint"] = request.KafkaEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KafkaInstanceId)) {
+		query["KafkaInstanceId"] = request.KafkaInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KafkaLogfileConfig)) {
+		query["KafkaLogfileConfig"] = request.KafkaLogfileConfig
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Liveness)) {
 		query["Liveness"] = request.Liveness
 	}
@@ -14442,6 +14514,10 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.NasId)) {
 		query["NasId"] = request.NasId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenCollectToKafka)) {
+		query["OpenCollectToKafka"] = request.OpenCollectToKafka
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PackageType)) {
@@ -15254,6 +15330,18 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 		query["Jdk"] = request.Jdk
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.KafkaEndpoint)) {
+		query["KafkaEndpoint"] = request.KafkaEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KafkaInstanceId)) {
+		query["KafkaInstanceId"] = request.KafkaInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KafkaLogfileConfig)) {
+		query["KafkaLogfileConfig"] = request.KafkaLogfileConfig
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Liveness)) {
 		query["Liveness"] = request.Liveness
 	}
@@ -15276,6 +15364,10 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.NasId)) {
 		query["NasId"] = request.NasId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenCollectToKafka)) {
+		query["OpenCollectToKafka"] = request.OpenCollectToKafka
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PackageUrl)) {
