@@ -6534,69 +6534,6 @@ func (s *RevokeKubeconfigResponse) SetBody(v *RevokeKubeconfigResponseBody) *Rev
 	return s
 }
 
-type RunDiagnosisRequest struct {
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-}
-
-func (s RunDiagnosisRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RunDiagnosisRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RunDiagnosisRequest) SetServiceMeshId(v string) *RunDiagnosisRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-type RunDiagnosisResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *string `json:"Result,omitempty" xml:"Result,omitempty"`
-}
-
-func (s RunDiagnosisResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RunDiagnosisResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RunDiagnosisResponseBody) SetRequestId(v string) *RunDiagnosisResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *RunDiagnosisResponseBody) SetResult(v string) *RunDiagnosisResponseBody {
-	s.Result = &v
-	return s
-}
-
-type RunDiagnosisResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RunDiagnosisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RunDiagnosisResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RunDiagnosisResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RunDiagnosisResponse) SetHeaders(v map[string]*string) *RunDiagnosisResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RunDiagnosisResponse) SetBody(v *RunDiagnosisResponseBody) *RunDiagnosisResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateASMGatewayRequest struct {
 	Body             *string `json:"Body,omitempty" xml:"Body,omitempty"`
 	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
@@ -10084,50 +10021,6 @@ func (client *Client) RevokeKubeconfig(request *RevokeKubeconfigRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &RevokeKubeconfigResponse{}
 	_body, _err := client.RevokeKubeconfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) RunDiagnosisWithOptions(request *RunDiagnosisRequest, runtime *util.RuntimeOptions) (_result *RunDiagnosisResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
-		body["ServiceMeshId"] = request.ServiceMeshId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RunDiagnosis"),
-		Version:     tea.String("2020-01-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &RunDiagnosisResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) RunDiagnosis(request *RunDiagnosisRequest) (_result *RunDiagnosisResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RunDiagnosisResponse{}
-	_body, _err := client.RunDiagnosisWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
