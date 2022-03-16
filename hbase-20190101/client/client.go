@@ -7,14 +7,15 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type AddUserHdfsInfoRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ExtInfo     *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 }
 
 func (s AddUserHdfsInfoRequest) String() string {
@@ -25,6 +26,11 @@ func (s AddUserHdfsInfoRequest) GoString() string {
 	return s.String()
 }
 
+func (s *AddUserHdfsInfoRequest) SetClientToken(v string) *AddUserHdfsInfoRequest {
+	s.ClientToken = &v
+	return s
+}
+
 func (s *AddUserHdfsInfoRequest) SetClusterId(v string) *AddUserHdfsInfoRequest {
 	s.ClusterId = &v
 	return s
@@ -32,11 +38,6 @@ func (s *AddUserHdfsInfoRequest) SetClusterId(v string) *AddUserHdfsInfoRequest 
 
 func (s *AddUserHdfsInfoRequest) SetExtInfo(v string) *AddUserHdfsInfoRequest {
 	s.ExtInfo = &v
-	return s
-}
-
-func (s *AddUserHdfsInfoRequest) SetClientToken(v string) *AddUserHdfsInfoRequest {
-	s.ClientToken = &v
 	return s
 }
 
@@ -81,8 +82,8 @@ func (s *AddUserHdfsInfoResponse) SetBody(v *AddUserHdfsInfoResponseBody) *AddUs
 }
 
 type AllocatePublicNetworkAddressRequest struct {
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
 func (s AllocatePublicNetworkAddressRequest) String() string {
@@ -93,13 +94,13 @@ func (s AllocatePublicNetworkAddressRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AllocatePublicNetworkAddressRequest) SetClusterId(v string) *AllocatePublicNetworkAddressRequest {
-	s.ClusterId = &v
+func (s *AllocatePublicNetworkAddressRequest) SetClientToken(v string) *AllocatePublicNetworkAddressRequest {
+	s.ClientToken = &v
 	return s
 }
 
-func (s *AllocatePublicNetworkAddressRequest) SetClientToken(v string) *AllocatePublicNetworkAddressRequest {
-	s.ClientToken = &v
+func (s *AllocatePublicNetworkAddressRequest) SetClusterId(v string) *AllocatePublicNetworkAddressRequest {
+	s.ClusterId = &v
 	return s
 }
 
@@ -207,8 +208,8 @@ func (s *CheckComponentsVersionResponseBodyComponents) SetComponent(v []*CheckCo
 }
 
 type CheckComponentsVersionResponseBodyComponentsComponent struct {
-	IsLatestVersion *string `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
 	Component       *string `json:"Component,omitempty" xml:"Component,omitempty"`
+	IsLatestVersion *string `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
 }
 
 func (s CheckComponentsVersionResponseBodyComponentsComponent) String() string {
@@ -219,13 +220,13 @@ func (s CheckComponentsVersionResponseBodyComponentsComponent) GoString() string
 	return s.String()
 }
 
-func (s *CheckComponentsVersionResponseBodyComponentsComponent) SetIsLatestVersion(v string) *CheckComponentsVersionResponseBodyComponentsComponent {
-	s.IsLatestVersion = &v
+func (s *CheckComponentsVersionResponseBodyComponentsComponent) SetComponent(v string) *CheckComponentsVersionResponseBodyComponentsComponent {
+	s.Component = &v
 	return s
 }
 
-func (s *CheckComponentsVersionResponseBodyComponentsComponent) SetComponent(v string) *CheckComponentsVersionResponseBodyComponentsComponent {
-	s.Component = &v
+func (s *CheckComponentsVersionResponseBodyComponentsComponent) SetIsLatestVersion(v string) *CheckComponentsVersionResponseBodyComponentsComponent {
+	s.IsLatestVersion = &v
 	return s
 }
 
@@ -311,8 +312,9 @@ func (s *CloseBackupResponse) SetBody(v *CloseBackupResponseBody) *CloseBackupRe
 
 type ConvertInstanceRequest struct {
 	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	Duration     *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	PayType      *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 }
 
 func (s ConvertInstanceRequest) String() string {
@@ -328,19 +330,24 @@ func (s *ConvertInstanceRequest) SetClusterId(v string) *ConvertInstanceRequest 
 	return s
 }
 
-func (s *ConvertInstanceRequest) SetPricingCycle(v string) *ConvertInstanceRequest {
-	s.PricingCycle = &v
-	return s
-}
-
 func (s *ConvertInstanceRequest) SetDuration(v int32) *ConvertInstanceRequest {
 	s.Duration = &v
 	return s
 }
 
+func (s *ConvertInstanceRequest) SetPayType(v string) *ConvertInstanceRequest {
+	s.PayType = &v
+	return s
+}
+
+func (s *ConvertInstanceRequest) SetPricingCycle(v string) *ConvertInstanceRequest {
+	s.PricingCycle = &v
+	return s
+}
+
 type ConvertInstanceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ConvertInstanceResponseBody) String() string {
@@ -351,13 +358,13 @@ func (s ConvertInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ConvertInstanceResponseBody) SetRequestId(v string) *ConvertInstanceResponseBody {
-	s.RequestId = &v
+func (s *ConvertInstanceResponseBody) SetOrderId(v int64) *ConvertInstanceResponseBody {
+	s.OrderId = &v
 	return s
 }
 
-func (s *ConvertInstanceResponseBody) SetOrderId(v int64) *ConvertInstanceResponseBody {
-	s.OrderId = &v
+func (s *ConvertInstanceResponseBody) SetRequestId(v string) *ConvertInstanceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -442,26 +449,27 @@ func (s *CreateBackupPlanResponse) SetBody(v *CreateBackupPlanResponseBody) *Cre
 }
 
 type CreateClusterRequest struct {
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	ClusterName        *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	VpcId              *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	MasterInstanceType *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
-	CoreInstanceType   *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
-	DiskType           *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	DiskSize           *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	NodeCount          *int32  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	PayType            *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Engine             *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	SecurityIPList     *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	EngineVersion      *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ColdStorageSize    *int32  `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
-	PeriodUnit         *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	Period             *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	AutoRenewPeriod    *int32  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
 	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClusterName        *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ColdStorageSize    *int32  `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
+	CoreInstanceType   *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	DiskSize           *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	DiskType           *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	EncryptionKey      *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	Engine             *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion      *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	MasterInstanceType *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
+	NodeCount          *int32  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
+	PayType            *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Period             *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit         *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId    *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityIPList     *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId              *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateClusterRequest) String() string {
@@ -472,13 +480,13 @@ func (s CreateClusterRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateClusterRequest) SetRegionId(v string) *CreateClusterRequest {
-	s.RegionId = &v
+func (s *CreateClusterRequest) SetAutoRenewPeriod(v int32) *CreateClusterRequest {
+	s.AutoRenewPeriod = &v
 	return s
 }
 
-func (s *CreateClusterRequest) SetZoneId(v string) *CreateClusterRequest {
-	s.ZoneId = &v
+func (s *CreateClusterRequest) SetClientToken(v string) *CreateClusterRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -487,18 +495,8 @@ func (s *CreateClusterRequest) SetClusterName(v string) *CreateClusterRequest {
 	return s
 }
 
-func (s *CreateClusterRequest) SetVpcId(v string) *CreateClusterRequest {
-	s.VpcId = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetVSwitchId(v string) *CreateClusterRequest {
-	s.VSwitchId = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetMasterInstanceType(v string) *CreateClusterRequest {
-	s.MasterInstanceType = &v
+func (s *CreateClusterRequest) SetColdStorageSize(v int32) *CreateClusterRequest {
+	s.ColdStorageSize = &v
 	return s
 }
 
@@ -507,13 +505,33 @@ func (s *CreateClusterRequest) SetCoreInstanceType(v string) *CreateClusterReque
 	return s
 }
 
+func (s *CreateClusterRequest) SetDiskSize(v int32) *CreateClusterRequest {
+	s.DiskSize = &v
+	return s
+}
+
 func (s *CreateClusterRequest) SetDiskType(v string) *CreateClusterRequest {
 	s.DiskType = &v
 	return s
 }
 
-func (s *CreateClusterRequest) SetDiskSize(v int32) *CreateClusterRequest {
-	s.DiskSize = &v
+func (s *CreateClusterRequest) SetEncryptionKey(v string) *CreateClusterRequest {
+	s.EncryptionKey = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetEngine(v string) *CreateClusterRequest {
+	s.Engine = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetEngineVersion(v string) *CreateClusterRequest {
+	s.EngineVersion = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetMasterInstanceType(v string) *CreateClusterRequest {
+	s.MasterInstanceType = &v
 	return s
 }
 
@@ -527,23 +545,8 @@ func (s *CreateClusterRequest) SetPayType(v string) *CreateClusterRequest {
 	return s
 }
 
-func (s *CreateClusterRequest) SetEngine(v string) *CreateClusterRequest {
-	s.Engine = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetSecurityIPList(v string) *CreateClusterRequest {
-	s.SecurityIPList = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetEngineVersion(v string) *CreateClusterRequest {
-	s.EngineVersion = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetColdStorageSize(v int32) *CreateClusterRequest {
-	s.ColdStorageSize = &v
+func (s *CreateClusterRequest) SetPeriod(v int32) *CreateClusterRequest {
+	s.Period = &v
 	return s
 }
 
@@ -552,18 +555,8 @@ func (s *CreateClusterRequest) SetPeriodUnit(v string) *CreateClusterRequest {
 	return s
 }
 
-func (s *CreateClusterRequest) SetPeriod(v int32) *CreateClusterRequest {
-	s.Period = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetAutoRenewPeriod(v int32) *CreateClusterRequest {
-	s.AutoRenewPeriod = &v
-	return s
-}
-
-func (s *CreateClusterRequest) SetClientToken(v string) *CreateClusterRequest {
-	s.ClientToken = &v
+func (s *CreateClusterRequest) SetRegionId(v string) *CreateClusterRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -572,10 +565,30 @@ func (s *CreateClusterRequest) SetResourceGroupId(v string) *CreateClusterReques
 	return s
 }
 
+func (s *CreateClusterRequest) SetSecurityIPList(v string) *CreateClusterRequest {
+	s.SecurityIPList = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetVSwitchId(v string) *CreateClusterRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetVpcId(v string) *CreateClusterRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetZoneId(v string) *CreateClusterRequest {
+	s.ZoneId = &v
+	return s
+}
+
 type CreateClusterResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateClusterResponseBody) String() string {
@@ -586,11 +599,6 @@ func (s CreateClusterResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateClusterResponseBody) SetRequestId(v string) *CreateClusterResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *CreateClusterResponseBody) SetClusterId(v string) *CreateClusterResponseBody {
 	s.ClusterId = &v
 	return s
@@ -598,6 +606,11 @@ func (s *CreateClusterResponseBody) SetClusterId(v string) *CreateClusterRespons
 
 func (s *CreateClusterResponseBody) SetOrderId(v string) *CreateClusterResponseBody {
 	s.OrderId = &v
+	return s
+}
+
+func (s *CreateClusterResponseBody) SetRequestId(v string) *CreateClusterResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -625,10 +638,10 @@ func (s *CreateClusterResponse) SetBody(v *CreateClusterResponseBody) *CreateClu
 }
 
 type CreateGlobalResourceRequest struct {
+	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	ClientToken  *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 }
 
 func (s CreateGlobalResourceRequest) String() string {
@@ -637,6 +650,11 @@ func (s CreateGlobalResourceRequest) String() string {
 
 func (s CreateGlobalResourceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateGlobalResourceRequest) SetClientToken(v string) *CreateGlobalResourceRequest {
+	s.ClientToken = &v
+	return s
 }
 
 func (s *CreateGlobalResourceRequest) SetClusterId(v string) *CreateGlobalResourceRequest {
@@ -651,11 +669,6 @@ func (s *CreateGlobalResourceRequest) SetResourceName(v string) *CreateGlobalRes
 
 func (s *CreateGlobalResourceRequest) SetResourceType(v string) *CreateGlobalResourceRequest {
 	s.ResourceType = &v
-	return s
-}
-
-func (s *CreateGlobalResourceRequest) SetClientToken(v string) *CreateGlobalResourceRequest {
-	s.ClientToken = &v
 	return s
 }
 
@@ -699,91 +712,10 @@ func (s *CreateGlobalResourceResponse) SetBody(v *CreateGlobalResourceResponseBo
 	return s
 }
 
-type CreateHbaseHaSlbRequest struct {
-	BdsId       *string `json:"BdsId,omitempty" xml:"BdsId,omitempty"`
-	HaId        *string `json:"HaId,omitempty" xml:"HaId,omitempty"`
-	HaTypes     *string `json:"HaTypes,omitempty" xml:"HaTypes,omitempty"`
-	HbaseType   *string `json:"HbaseType,omitempty" xml:"HbaseType,omitempty"`
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-}
-
-func (s CreateHbaseHaSlbRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateHbaseHaSlbRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateHbaseHaSlbRequest) SetBdsId(v string) *CreateHbaseHaSlbRequest {
-	s.BdsId = &v
-	return s
-}
-
-func (s *CreateHbaseHaSlbRequest) SetHaId(v string) *CreateHbaseHaSlbRequest {
-	s.HaId = &v
-	return s
-}
-
-func (s *CreateHbaseHaSlbRequest) SetHaTypes(v string) *CreateHbaseHaSlbRequest {
-	s.HaTypes = &v
-	return s
-}
-
-func (s *CreateHbaseHaSlbRequest) SetHbaseType(v string) *CreateHbaseHaSlbRequest {
-	s.HbaseType = &v
-	return s
-}
-
-func (s *CreateHbaseHaSlbRequest) SetClientToken(v string) *CreateHbaseHaSlbRequest {
-	s.ClientToken = &v
-	return s
-}
-
-type CreateHbaseHaSlbResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateHbaseHaSlbResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateHbaseHaSlbResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateHbaseHaSlbResponseBody) SetRequestId(v string) *CreateHbaseHaSlbResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateHbaseHaSlbResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateHbaseHaSlbResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateHbaseHaSlbResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateHbaseHaSlbResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateHbaseHaSlbResponse) SetHeaders(v map[string]*string) *CreateHbaseHaSlbResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateHbaseHaSlbResponse) SetBody(v *CreateHbaseHaSlbResponseBody) *CreateHbaseHaSlbResponse {
-	s.Body = v
-	return s
-}
-
 type CreateHBaseSlbServerRequest struct {
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	SlbServer   *string `json:"SlbServer,omitempty" xml:"SlbServer,omitempty"`
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 }
 
 func (s CreateHBaseSlbServerRequest) String() string {
@@ -794,6 +726,11 @@ func (s CreateHBaseSlbServerRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateHBaseSlbServerRequest) SetClientToken(v string) *CreateHBaseSlbServerRequest {
+	s.ClientToken = &v
+	return s
+}
+
 func (s *CreateHBaseSlbServerRequest) SetClusterId(v string) *CreateHBaseSlbServerRequest {
 	s.ClusterId = &v
 	return s
@@ -801,11 +738,6 @@ func (s *CreateHBaseSlbServerRequest) SetClusterId(v string) *CreateHBaseSlbServ
 
 func (s *CreateHBaseSlbServerRequest) SetSlbServer(v string) *CreateHBaseSlbServerRequest {
 	s.SlbServer = &v
-	return s
-}
-
-func (s *CreateHBaseSlbServerRequest) SetClientToken(v string) *CreateHBaseSlbServerRequest {
-	s.ClientToken = &v
 	return s
 }
 
@@ -849,36 +781,117 @@ func (s *CreateHBaseSlbServerResponse) SetBody(v *CreateHBaseSlbServerResponseBo
 	return s
 }
 
+type CreateHbaseHaSlbRequest struct {
+	BdsId       *string `json:"BdsId,omitempty" xml:"BdsId,omitempty"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	HaId        *string `json:"HaId,omitempty" xml:"HaId,omitempty"`
+	HaTypes     *string `json:"HaTypes,omitempty" xml:"HaTypes,omitempty"`
+	HbaseType   *string `json:"HbaseType,omitempty" xml:"HbaseType,omitempty"`
+}
+
+func (s CreateHbaseHaSlbRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHbaseHaSlbRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHbaseHaSlbRequest) SetBdsId(v string) *CreateHbaseHaSlbRequest {
+	s.BdsId = &v
+	return s
+}
+
+func (s *CreateHbaseHaSlbRequest) SetClientToken(v string) *CreateHbaseHaSlbRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateHbaseHaSlbRequest) SetHaId(v string) *CreateHbaseHaSlbRequest {
+	s.HaId = &v
+	return s
+}
+
+func (s *CreateHbaseHaSlbRequest) SetHaTypes(v string) *CreateHbaseHaSlbRequest {
+	s.HaTypes = &v
+	return s
+}
+
+func (s *CreateHbaseHaSlbRequest) SetHbaseType(v string) *CreateHbaseHaSlbRequest {
+	s.HbaseType = &v
+	return s
+}
+
+type CreateHbaseHaSlbResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateHbaseHaSlbResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHbaseHaSlbResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHbaseHaSlbResponseBody) SetRequestId(v string) *CreateHbaseHaSlbResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateHbaseHaSlbResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateHbaseHaSlbResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateHbaseHaSlbResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHbaseHaSlbResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHbaseHaSlbResponse) SetHeaders(v map[string]*string) *CreateHbaseHaSlbResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHbaseHaSlbResponse) SetBody(v *CreateHbaseHaSlbResponseBody) *CreateHbaseHaSlbResponse {
+	s.Body = v
+	return s
+}
+
 type CreateMultiZoneClusterRequest struct {
-	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion        *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ArchVersion          *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
-	ClusterName          *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	MultiZoneCombination *string `json:"MultiZoneCombination,omitempty" xml:"MultiZoneCombination,omitempty"`
-	PrimaryZoneId        *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
-	PrimaryVSwitchId     *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
-	StandbyZoneId        *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
-	StandbyVSwitchId     *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
-	ArbiterZoneId        *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
 	ArbiterVSwitchId     *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
-	MasterInstanceType   *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
-	CoreInstanceType     *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
-	CoreDiskType         *string `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
-	CoreDiskSize         *int32  `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
-	CoreNodeCount        *int32  `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
-	LogInstanceType      *string `json:"LogInstanceType,omitempty" xml:"LogInstanceType,omitempty"`
-	LogDiskType          *string `json:"LogDiskType,omitempty" xml:"LogDiskType,omitempty"`
-	LogDiskSize          *int32  `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty"`
-	LogNodeCount         *int32  `json:"LogNodeCount,omitempty" xml:"LogNodeCount,omitempty"`
-	SecurityIPList       *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	PeriodUnit           *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	Period               *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	ArbiterZoneId        *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
+	ArchVersion          *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
 	AutoRenewPeriod      *int32  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClusterName          *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	CoreDiskSize         *int32  `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
+	CoreDiskType         *string `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
+	CoreInstanceType     *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	CoreNodeCount        *int32  `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
+	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion        *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	LogDiskSize          *int32  `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty"`
+	LogDiskType          *string `json:"LogDiskType,omitempty" xml:"LogDiskType,omitempty"`
+	LogInstanceType      *string `json:"LogInstanceType,omitempty" xml:"LogInstanceType,omitempty"`
+	LogNodeCount         *int32  `json:"LogNodeCount,omitempty" xml:"LogNodeCount,omitempty"`
+	MasterInstanceType   *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
+	MultiZoneCombination *string `json:"MultiZoneCombination,omitempty" xml:"MultiZoneCombination,omitempty"`
+	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Period               *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit           *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PrimaryVSwitchId     *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
+	PrimaryZoneId        *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityIPList       *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	StandbyVSwitchId     *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
+	StandbyZoneId        *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
+	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s CreateMultiZoneClusterRequest) String() string {
@@ -889,58 +902,8 @@ func (s CreateMultiZoneClusterRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMultiZoneClusterRequest) SetEngine(v string) *CreateMultiZoneClusterRequest {
-	s.Engine = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetEngineVersion(v string) *CreateMultiZoneClusterRequest {
-	s.EngineVersion = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetArchVersion(v string) *CreateMultiZoneClusterRequest {
-	s.ArchVersion = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetClusterName(v string) *CreateMultiZoneClusterRequest {
-	s.ClusterName = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetRegionId(v string) *CreateMultiZoneClusterRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetVpcId(v string) *CreateMultiZoneClusterRequest {
-	s.VpcId = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetMultiZoneCombination(v string) *CreateMultiZoneClusterRequest {
-	s.MultiZoneCombination = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetPrimaryZoneId(v string) *CreateMultiZoneClusterRequest {
-	s.PrimaryZoneId = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetPrimaryVSwitchId(v string) *CreateMultiZoneClusterRequest {
-	s.PrimaryVSwitchId = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetStandbyZoneId(v string) *CreateMultiZoneClusterRequest {
-	s.StandbyZoneId = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetStandbyVSwitchId(v string) *CreateMultiZoneClusterRequest {
-	s.StandbyVSwitchId = &v
+func (s *CreateMultiZoneClusterRequest) SetArbiterVSwitchId(v string) *CreateMultiZoneClusterRequest {
+	s.ArbiterVSwitchId = &v
 	return s
 }
 
@@ -949,73 +912,8 @@ func (s *CreateMultiZoneClusterRequest) SetArbiterZoneId(v string) *CreateMultiZ
 	return s
 }
 
-func (s *CreateMultiZoneClusterRequest) SetArbiterVSwitchId(v string) *CreateMultiZoneClusterRequest {
-	s.ArbiterVSwitchId = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetMasterInstanceType(v string) *CreateMultiZoneClusterRequest {
-	s.MasterInstanceType = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetCoreInstanceType(v string) *CreateMultiZoneClusterRequest {
-	s.CoreInstanceType = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetCoreDiskType(v string) *CreateMultiZoneClusterRequest {
-	s.CoreDiskType = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetCoreDiskSize(v int32) *CreateMultiZoneClusterRequest {
-	s.CoreDiskSize = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetCoreNodeCount(v int32) *CreateMultiZoneClusterRequest {
-	s.CoreNodeCount = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetLogInstanceType(v string) *CreateMultiZoneClusterRequest {
-	s.LogInstanceType = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetLogDiskType(v string) *CreateMultiZoneClusterRequest {
-	s.LogDiskType = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetLogDiskSize(v int32) *CreateMultiZoneClusterRequest {
-	s.LogDiskSize = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetLogNodeCount(v int32) *CreateMultiZoneClusterRequest {
-	s.LogNodeCount = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetSecurityIPList(v string) *CreateMultiZoneClusterRequest {
-	s.SecurityIPList = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetPayType(v string) *CreateMultiZoneClusterRequest {
-	s.PayType = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetPeriodUnit(v string) *CreateMultiZoneClusterRequest {
-	s.PeriodUnit = &v
-	return s
-}
-
-func (s *CreateMultiZoneClusterRequest) SetPeriod(v int32) *CreateMultiZoneClusterRequest {
-	s.Period = &v
+func (s *CreateMultiZoneClusterRequest) SetArchVersion(v string) *CreateMultiZoneClusterRequest {
+	s.ArchVersion = &v
 	return s
 }
 
@@ -1029,15 +927,130 @@ func (s *CreateMultiZoneClusterRequest) SetClientToken(v string) *CreateMultiZon
 	return s
 }
 
+func (s *CreateMultiZoneClusterRequest) SetClusterName(v string) *CreateMultiZoneClusterRequest {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterRequest) SetCoreDiskSize(v int32) *CreateMultiZoneClusterRequest {
+	s.CoreDiskSize = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterRequest) SetCoreDiskType(v string) *CreateMultiZoneClusterRequest {
+	s.CoreDiskType = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterRequest) SetCoreInstanceType(v string) *CreateMultiZoneClusterRequest {
+	s.CoreInstanceType = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterRequest) SetCoreNodeCount(v int32) *CreateMultiZoneClusterRequest {
+	s.CoreNodeCount = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterRequest) SetEngine(v string) *CreateMultiZoneClusterRequest {
+	s.Engine = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterRequest) SetEngineVersion(v string) *CreateMultiZoneClusterRequest {
+	s.EngineVersion = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterRequest) SetLogDiskSize(v int32) *CreateMultiZoneClusterRequest {
+	s.LogDiskSize = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterRequest) SetLogDiskType(v string) *CreateMultiZoneClusterRequest {
+	s.LogDiskType = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterRequest) SetLogInstanceType(v string) *CreateMultiZoneClusterRequest {
+	s.LogInstanceType = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterRequest) SetLogNodeCount(v int32) *CreateMultiZoneClusterRequest {
+	s.LogNodeCount = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterRequest) SetMasterInstanceType(v string) *CreateMultiZoneClusterRequest {
+	s.MasterInstanceType = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterRequest) SetMultiZoneCombination(v string) *CreateMultiZoneClusterRequest {
+	s.MultiZoneCombination = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterRequest) SetPayType(v string) *CreateMultiZoneClusterRequest {
+	s.PayType = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterRequest) SetPeriod(v int32) *CreateMultiZoneClusterRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterRequest) SetPeriodUnit(v string) *CreateMultiZoneClusterRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterRequest) SetPrimaryVSwitchId(v string) *CreateMultiZoneClusterRequest {
+	s.PrimaryVSwitchId = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterRequest) SetPrimaryZoneId(v string) *CreateMultiZoneClusterRequest {
+	s.PrimaryZoneId = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterRequest) SetRegionId(v string) *CreateMultiZoneClusterRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *CreateMultiZoneClusterRequest) SetResourceGroupId(v string) *CreateMultiZoneClusterRequest {
 	s.ResourceGroupId = &v
 	return s
 }
 
+func (s *CreateMultiZoneClusterRequest) SetSecurityIPList(v string) *CreateMultiZoneClusterRequest {
+	s.SecurityIPList = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterRequest) SetStandbyVSwitchId(v string) *CreateMultiZoneClusterRequest {
+	s.StandbyVSwitchId = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterRequest) SetStandbyZoneId(v string) *CreateMultiZoneClusterRequest {
+	s.StandbyZoneId = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterRequest) SetVpcId(v string) *CreateMultiZoneClusterRequest {
+	s.VpcId = &v
+	return s
+}
+
 type CreateMultiZoneClusterResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateMultiZoneClusterResponseBody) String() string {
@@ -1048,11 +1061,6 @@ func (s CreateMultiZoneClusterResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMultiZoneClusterResponseBody) SetRequestId(v string) *CreateMultiZoneClusterResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *CreateMultiZoneClusterResponseBody) SetClusterId(v string) *CreateMultiZoneClusterResponseBody {
 	s.ClusterId = &v
 	return s
@@ -1060,6 +1068,11 @@ func (s *CreateMultiZoneClusterResponseBody) SetClusterId(v string) *CreateMulti
 
 func (s *CreateMultiZoneClusterResponseBody) SetOrderId(v string) *CreateMultiZoneClusterResponseBody {
 	s.OrderId = &v
+	return s
+}
+
+func (s *CreateMultiZoneClusterResponseBody) SetRequestId(v string) *CreateMultiZoneClusterResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1088,11 +1101,11 @@ func (s *CreateMultiZoneClusterResponse) SetBody(v *CreateMultiZoneClusterRespon
 
 type CreateRestorePlanRequest struct {
 	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	TargetClusterId *string `json:"TargetClusterId,omitempty" xml:"TargetClusterId,omitempty"`
 	RestoreAllTable *bool   `json:"RestoreAllTable,omitempty" xml:"RestoreAllTable,omitempty"`
 	RestoreByCopy   *bool   `json:"RestoreByCopy,omitempty" xml:"RestoreByCopy,omitempty"`
 	RestoreToDate   *string `json:"RestoreToDate,omitempty" xml:"RestoreToDate,omitempty"`
 	Tables          *string `json:"Tables,omitempty" xml:"Tables,omitempty"`
+	TargetClusterId *string `json:"TargetClusterId,omitempty" xml:"TargetClusterId,omitempty"`
 }
 
 func (s CreateRestorePlanRequest) String() string {
@@ -1105,11 +1118,6 @@ func (s CreateRestorePlanRequest) GoString() string {
 
 func (s *CreateRestorePlanRequest) SetClusterId(v string) *CreateRestorePlanRequest {
 	s.ClusterId = &v
-	return s
-}
-
-func (s *CreateRestorePlanRequest) SetTargetClusterId(v string) *CreateRestorePlanRequest {
-	s.TargetClusterId = &v
 	return s
 }
 
@@ -1130,6 +1138,11 @@ func (s *CreateRestorePlanRequest) SetRestoreToDate(v string) *CreateRestorePlan
 
 func (s *CreateRestorePlanRequest) SetTables(v string) *CreateRestorePlanRequest {
 	s.Tables = &v
+	return s
+}
+
+func (s *CreateRestorePlanRequest) SetTargetClusterId(v string) *CreateRestorePlanRequest {
+	s.TargetClusterId = &v
 	return s
 }
 
@@ -1174,23 +1187,24 @@ func (s *CreateRestorePlanResponse) SetBody(v *CreateRestorePlanResponseBody) *C
 }
 
 type CreateServerlessClusterRequest struct {
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	ClusterName          *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	PeriodUnit           *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	Period               *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
 	AutoRenewPeriod      *int32  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	ServerlessSpec       *string `json:"ServerlessSpec,omitempty" xml:"ServerlessSpec,omitempty"`
-	ServerlessCapability *int32  `json:"ServerlessCapability,omitempty" xml:"ServerlessCapability,omitempty"`
-	ServerlessStorage    *int32  `json:"ServerlessStorage,omitempty" xml:"ServerlessStorage,omitempty"`
-	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion        *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	ClientType           *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	ClusterName          *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	DiskType             *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion        *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Period               *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit           *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServerlessCapability *int32  `json:"ServerlessCapability,omitempty" xml:"ServerlessCapability,omitempty"`
+	ServerlessSpec       *string `json:"ServerlessSpec,omitempty" xml:"ServerlessSpec,omitempty"`
+	ServerlessStorage    *int32  `json:"ServerlessStorage,omitempty" xml:"ServerlessStorage,omitempty"`
+	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s CreateServerlessClusterRequest) String() string {
@@ -1201,73 +1215,8 @@ func (s CreateServerlessClusterRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateServerlessClusterRequest) SetRegionId(v string) *CreateServerlessClusterRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *CreateServerlessClusterRequest) SetZoneId(v string) *CreateServerlessClusterRequest {
-	s.ZoneId = &v
-	return s
-}
-
-func (s *CreateServerlessClusterRequest) SetClusterName(v string) *CreateServerlessClusterRequest {
-	s.ClusterName = &v
-	return s
-}
-
-func (s *CreateServerlessClusterRequest) SetVpcId(v string) *CreateServerlessClusterRequest {
-	s.VpcId = &v
-	return s
-}
-
-func (s *CreateServerlessClusterRequest) SetVSwitchId(v string) *CreateServerlessClusterRequest {
-	s.VSwitchId = &v
-	return s
-}
-
-func (s *CreateServerlessClusterRequest) SetPayType(v string) *CreateServerlessClusterRequest {
-	s.PayType = &v
-	return s
-}
-
-func (s *CreateServerlessClusterRequest) SetPeriodUnit(v string) *CreateServerlessClusterRequest {
-	s.PeriodUnit = &v
-	return s
-}
-
-func (s *CreateServerlessClusterRequest) SetPeriod(v int32) *CreateServerlessClusterRequest {
-	s.Period = &v
-	return s
-}
-
 func (s *CreateServerlessClusterRequest) SetAutoRenewPeriod(v int32) *CreateServerlessClusterRequest {
 	s.AutoRenewPeriod = &v
-	return s
-}
-
-func (s *CreateServerlessClusterRequest) SetServerlessSpec(v string) *CreateServerlessClusterRequest {
-	s.ServerlessSpec = &v
-	return s
-}
-
-func (s *CreateServerlessClusterRequest) SetServerlessCapability(v int32) *CreateServerlessClusterRequest {
-	s.ServerlessCapability = &v
-	return s
-}
-
-func (s *CreateServerlessClusterRequest) SetServerlessStorage(v int32) *CreateServerlessClusterRequest {
-	s.ServerlessStorage = &v
-	return s
-}
-
-func (s *CreateServerlessClusterRequest) SetEngine(v string) *CreateServerlessClusterRequest {
-	s.Engine = &v
-	return s
-}
-
-func (s *CreateServerlessClusterRequest) SetEngineVersion(v string) *CreateServerlessClusterRequest {
-	s.EngineVersion = &v
 	return s
 }
 
@@ -1281,16 +1230,86 @@ func (s *CreateServerlessClusterRequest) SetClientType(v string) *CreateServerle
 	return s
 }
 
+func (s *CreateServerlessClusterRequest) SetClusterName(v string) *CreateServerlessClusterRequest {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *CreateServerlessClusterRequest) SetDiskType(v string) *CreateServerlessClusterRequest {
+	s.DiskType = &v
+	return s
+}
+
+func (s *CreateServerlessClusterRequest) SetEngine(v string) *CreateServerlessClusterRequest {
+	s.Engine = &v
+	return s
+}
+
+func (s *CreateServerlessClusterRequest) SetEngineVersion(v string) *CreateServerlessClusterRequest {
+	s.EngineVersion = &v
+	return s
+}
+
+func (s *CreateServerlessClusterRequest) SetPayType(v string) *CreateServerlessClusterRequest {
+	s.PayType = &v
+	return s
+}
+
+func (s *CreateServerlessClusterRequest) SetPeriod(v int32) *CreateServerlessClusterRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateServerlessClusterRequest) SetPeriodUnit(v string) *CreateServerlessClusterRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *CreateServerlessClusterRequest) SetRegionId(v string) *CreateServerlessClusterRequest {
+	s.RegionId = &v
+	return s
+}
+
 func (s *CreateServerlessClusterRequest) SetResourceGroupId(v string) *CreateServerlessClusterRequest {
 	s.ResourceGroupId = &v
 	return s
 }
 
+func (s *CreateServerlessClusterRequest) SetServerlessCapability(v int32) *CreateServerlessClusterRequest {
+	s.ServerlessCapability = &v
+	return s
+}
+
+func (s *CreateServerlessClusterRequest) SetServerlessSpec(v string) *CreateServerlessClusterRequest {
+	s.ServerlessSpec = &v
+	return s
+}
+
+func (s *CreateServerlessClusterRequest) SetServerlessStorage(v int32) *CreateServerlessClusterRequest {
+	s.ServerlessStorage = &v
+	return s
+}
+
+func (s *CreateServerlessClusterRequest) SetVSwitchId(v string) *CreateServerlessClusterRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateServerlessClusterRequest) SetVpcId(v string) *CreateServerlessClusterRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *CreateServerlessClusterRequest) SetZoneId(v string) *CreateServerlessClusterRequest {
+	s.ZoneId = &v
+	return s
+}
+
 type CreateServerlessClusterResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	PassWord  *string `json:"PassWord,omitempty" xml:"PassWord,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateServerlessClusterResponseBody) String() string {
@@ -1299,11 +1318,6 @@ func (s CreateServerlessClusterResponseBody) String() string {
 
 func (s CreateServerlessClusterResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *CreateServerlessClusterResponseBody) SetRequestId(v string) *CreateServerlessClusterResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *CreateServerlessClusterResponseBody) SetClusterId(v string) *CreateServerlessClusterResponseBody {
@@ -1318,6 +1332,11 @@ func (s *CreateServerlessClusterResponseBody) SetOrderId(v string) *CreateServer
 
 func (s *CreateServerlessClusterResponseBody) SetPassWord(v string) *CreateServerlessClusterResponseBody {
 	s.PassWord = &v
+	return s
+}
+
+func (s *CreateServerlessClusterResponseBody) SetRequestId(v string) *CreateServerlessClusterResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1476,6 +1495,69 @@ func (s *DeleteHBaseHaDBResponse) SetBody(v *DeleteHBaseHaDBResponseBody) *Delet
 	return s
 }
 
+type DeleteHBaseSlbServerRequest struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	SlbServer *string `json:"SlbServer,omitempty" xml:"SlbServer,omitempty"`
+}
+
+func (s DeleteHBaseSlbServerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHBaseSlbServerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHBaseSlbServerRequest) SetClusterId(v string) *DeleteHBaseSlbServerRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DeleteHBaseSlbServerRequest) SetSlbServer(v string) *DeleteHBaseSlbServerRequest {
+	s.SlbServer = &v
+	return s
+}
+
+type DeleteHBaseSlbServerResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteHBaseSlbServerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHBaseSlbServerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHBaseSlbServerResponseBody) SetRequestId(v string) *DeleteHBaseSlbServerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteHBaseSlbServerResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteHBaseSlbServerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteHBaseSlbServerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHBaseSlbServerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHBaseSlbServerResponse) SetHeaders(v map[string]*string) *DeleteHBaseSlbServerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteHBaseSlbServerResponse) SetBody(v *DeleteHBaseSlbServerResponseBody) *DeleteHBaseSlbServerResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteHbaseHaSlbRequest struct {
 	BdsId   *string `json:"BdsId,omitempty" xml:"BdsId,omitempty"`
 	HaId    *string `json:"HaId,omitempty" xml:"HaId,omitempty"`
@@ -1541,69 +1623,6 @@ func (s *DeleteHbaseHaSlbResponse) SetHeaders(v map[string]*string) *DeleteHbase
 }
 
 func (s *DeleteHbaseHaSlbResponse) SetBody(v *DeleteHbaseHaSlbResponseBody) *DeleteHbaseHaSlbResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteHBaseSlbServerRequest struct {
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	SlbServer *string `json:"SlbServer,omitempty" xml:"SlbServer,omitempty"`
-}
-
-func (s DeleteHBaseSlbServerRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteHBaseSlbServerRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteHBaseSlbServerRequest) SetClusterId(v string) *DeleteHBaseSlbServerRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *DeleteHBaseSlbServerRequest) SetSlbServer(v string) *DeleteHBaseSlbServerRequest {
-	s.SlbServer = &v
-	return s
-}
-
-type DeleteHBaseSlbServerResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteHBaseSlbServerResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteHBaseSlbServerResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteHBaseSlbServerResponseBody) SetRequestId(v string) *DeleteHBaseSlbServerResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteHBaseSlbServerResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteHBaseSlbServerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteHBaseSlbServerResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteHBaseSlbServerResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteHBaseSlbServerResponse) SetHeaders(v map[string]*string) *DeleteHBaseSlbServerResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteHBaseSlbServerResponse) SetBody(v *DeleteHBaseSlbServerResponseBody) *DeleteHBaseSlbServerResponse {
 	s.Body = v
 	return s
 }
@@ -1867,9 +1886,13 @@ func (s *DeleteUserHdfsInfoResponse) SetBody(v *DeleteUserHdfsInfoResponseBody) 
 }
 
 type DescribeAvailableResourceRequest struct {
-	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId     *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ChargeType       *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	CoreInstanceType *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	DiskType         *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	Engine           *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion    *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ZoneId           *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeAvailableResourceRequest) String() string {
@@ -1885,6 +1908,26 @@ func (s *DescribeAvailableResourceRequest) SetChargeType(v string) *DescribeAvai
 	return s
 }
 
+func (s *DescribeAvailableResourceRequest) SetCoreInstanceType(v string) *DescribeAvailableResourceRequest {
+	s.CoreInstanceType = &v
+	return s
+}
+
+func (s *DescribeAvailableResourceRequest) SetDiskType(v string) *DescribeAvailableResourceRequest {
+	s.DiskType = &v
+	return s
+}
+
+func (s *DescribeAvailableResourceRequest) SetEngine(v string) *DescribeAvailableResourceRequest {
+	s.Engine = &v
+	return s
+}
+
+func (s *DescribeAvailableResourceRequest) SetEngineVersion(v string) *DescribeAvailableResourceRequest {
+	s.EngineVersion = &v
+	return s
+}
+
 func (s *DescribeAvailableResourceRequest) SetRegionId(v string) *DescribeAvailableResourceRequest {
 	s.RegionId = &v
 	return s
@@ -1896,8 +1939,8 @@ func (s *DescribeAvailableResourceRequest) SetZoneId(v string) *DescribeAvailabl
 }
 
 type DescribeAvailableResourceResponseBody struct {
-	RequestId      *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AvailableZones *DescribeAvailableResourceResponseBodyAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Struct"`
+	RequestId      *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBody) String() string {
@@ -1908,13 +1951,13 @@ func (s DescribeAvailableResourceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeAvailableResourceResponseBody) SetRequestId(v string) *DescribeAvailableResourceResponseBody {
-	s.RequestId = &v
+func (s *DescribeAvailableResourceResponseBody) SetAvailableZones(v *DescribeAvailableResourceResponseBodyAvailableZones) *DescribeAvailableResourceResponseBody {
+	s.AvailableZones = v
 	return s
 }
 
-func (s *DescribeAvailableResourceResponseBody) SetAvailableZones(v *DescribeAvailableResourceResponseBodyAvailableZones) *DescribeAvailableResourceResponseBody {
-	s.AvailableZones = v
+func (s *DescribeAvailableResourceResponseBody) SetRequestId(v string) *DescribeAvailableResourceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1936,10 +1979,10 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZones) SetAvailableZone(v
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone struct {
-	SupportedEngines *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Struct"`
-	ZoneId           *string                                                                           `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	MasterResources  *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources  `json:"MasterResources,omitempty" xml:"MasterResources,omitempty" type:"Struct"`
 	RegionId         *string                                                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SupportedEngines *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Struct"`
+	ZoneId           *string                                                                           `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) String() string {
@@ -1948,6 +1991,16 @@ func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) String
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) SetMasterResources(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone {
+	s.MasterResources = v
+	return s
+}
+
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) SetRegionId(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone {
+	s.RegionId = &v
+	return s
 }
 
 func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) SetSupportedEngines(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEngines) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone {
@@ -1960,13 +2013,66 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) SetZo
 	return s
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) SetMasterResources(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone {
-	s.MasterResources = v
+type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources struct {
+	MasterResource []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource `json:"MasterResource,omitempty" xml:"MasterResource,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources) SetMasterResource(v []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources {
+	s.MasterResource = v
 	return s
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone) SetRegionId(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZone {
-	s.RegionId = &v
+type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource struct {
+	InstanceType       *string                                                                                                          `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceTypeDetail *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail `json:"InstanceTypeDetail,omitempty" xml:"InstanceTypeDetail,omitempty" type:"Struct"`
+}
+
+func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource) SetInstanceType(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource) SetInstanceTypeDetail(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource {
+	s.InstanceTypeDetail = v
+	return s
+}
+
+type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail struct {
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+}
+
+func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail) SetCpu(v int32) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail) SetMem(v int32) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail {
+	s.Mem = &v
 	return s
 }
 
@@ -1988,8 +2094,8 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine struct {
-	SupportedEngineVersions *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersions `json:"SupportedEngineVersions,omitempty" xml:"SupportedEngineVersions,omitempty" type:"Struct"`
 	Engine                  *string                                                                                                                 `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	SupportedEngineVersions *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersions `json:"SupportedEngineVersions,omitempty" xml:"SupportedEngineVersions,omitempty" type:"Struct"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine) String() string {
@@ -2000,13 +2106,13 @@ func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupporte
 	return s.String()
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine) SetSupportedEngineVersions(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersions) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine {
-	s.SupportedEngineVersions = v
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine) SetEngine(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine {
+	s.Engine = &v
 	return s
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine) SetEngine(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine {
-	s.Engine = &v
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine) SetSupportedEngineVersions(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersions) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine {
+	s.SupportedEngineVersions = v
 	return s
 }
 
@@ -2028,8 +2134,8 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion struct {
-	Version             *string                                                                                                                                                          `json:"Version,omitempty" xml:"Version,omitempty"`
 	SupportedCategories *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategories `json:"SupportedCategories,omitempty" xml:"SupportedCategories,omitempty" type:"Struct"`
+	Version             *string                                                                                                                                                          `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion) String() string {
@@ -2040,13 +2146,13 @@ func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupporte
 	return s.String()
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion) SetVersion(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion {
-	s.Version = &v
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion) SetSupportedCategories(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategories) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion {
+	s.SupportedCategories = v
 	return s
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion) SetSupportedCategories(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategories) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion {
-	s.SupportedCategories = v
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion) SetVersion(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion {
+	s.Version = &v
 	return s
 }
 
@@ -2068,8 +2174,8 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories struct {
-	SupportedStorageTypes *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypes `json:"SupportedStorageTypes,omitempty" xml:"SupportedStorageTypes,omitempty" type:"Struct"`
 	Category              *string                                                                                                                                                                                                  `json:"Category,omitempty" xml:"Category,omitempty"`
+	SupportedStorageTypes *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypes `json:"SupportedStorageTypes,omitempty" xml:"SupportedStorageTypes,omitempty" type:"Struct"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories) String() string {
@@ -2080,13 +2186,13 @@ func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupporte
 	return s.String()
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories) SetSupportedStorageTypes(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypes) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories {
-	s.SupportedStorageTypes = v
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories) SetCategory(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories {
+	s.Category = &v
 	return s
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories) SetCategory(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories {
-	s.Category = &v
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories) SetSupportedStorageTypes(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypes) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories {
+	s.SupportedStorageTypes = v
 	return s
 }
 
@@ -2148,10 +2254,10 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource struct {
-	InstanceTypeDetail     *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceInstanceTypeDetail     `json:"InstanceTypeDetail,omitempty" xml:"InstanceTypeDetail,omitempty" type:"Struct"`
 	DBInstanceStorageRange *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange `json:"DBInstanceStorageRange,omitempty" xml:"DBInstanceStorageRange,omitempty" type:"Struct"`
-	MaxCoreCount           *int32                                                                                                                                                                                                                                                                      `json:"MaxCoreCount,omitempty" xml:"MaxCoreCount,omitempty"`
 	InstanceType           *string                                                                                                                                                                                                                                                                     `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceTypeDetail     *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceInstanceTypeDetail     `json:"InstanceTypeDetail,omitempty" xml:"InstanceTypeDetail,omitempty" type:"Struct"`
+	MaxCoreCount           *int32                                                                                                                                                                                                                                                                      `json:"MaxCoreCount,omitempty" xml:"MaxCoreCount,omitempty"`
 }
 
 func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource) String() string {
@@ -2162,13 +2268,18 @@ func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupporte
 	return s.String()
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource) SetInstanceTypeDetail(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceInstanceTypeDetail) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource {
-	s.InstanceTypeDetail = v
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource) SetDBInstanceStorageRange(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource {
+	s.DBInstanceStorageRange = v
 	return s
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource) SetDBInstanceStorageRange(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource {
-	s.DBInstanceStorageRange = v
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource) SetInstanceType(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource) SetInstanceTypeDetail(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceInstanceTypeDetail) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource {
+	s.InstanceTypeDetail = v
 	return s
 }
 
@@ -2177,8 +2288,32 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 	return s
 }
 
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource) SetInstanceType(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource {
-	s.InstanceType = &v
+type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange struct {
+	MaxSize  *int32 `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
+	MinSize  *int32 `json:"MinSize,omitempty" xml:"MinSize,omitempty"`
+	StepSize *int32 `json:"StepSize,omitempty" xml:"StepSize,omitempty"`
+}
+
+func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) SetMaxSize(v int32) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange {
+	s.MaxSize = &v
+	return s
+}
+
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) SetMinSize(v int32) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange {
+	s.MinSize = &v
+	return s
+}
+
+func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) SetStepSize(v int32) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange {
+	s.StepSize = &v
 	return s
 }
 
@@ -2201,98 +2336,6 @@ func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupport
 }
 
 func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceInstanceTypeDetail) SetMem(v int32) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceInstanceTypeDetail {
-	s.Mem = &v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange struct {
-	MaxSize  *int32 `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
-	StepSize *int32 `json:"StepSize,omitempty" xml:"StepSize,omitempty"`
-	MinSize  *int32 `json:"MinSize,omitempty" xml:"MinSize,omitempty"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) SetMaxSize(v int32) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange {
-	s.MaxSize = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) SetStepSize(v int32) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange {
-	s.StepSize = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) SetMinSize(v int32) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange {
-	s.MinSize = &v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources struct {
-	MasterResource []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource `json:"MasterResource,omitempty" xml:"MasterResource,omitempty" type:"Repeated"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources) SetMasterResource(v []*DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources {
-	s.MasterResource = v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource struct {
-	InstanceTypeDetail *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail `json:"InstanceTypeDetail,omitempty" xml:"InstanceTypeDetail,omitempty" type:"Struct"`
-	InstanceType       *string                                                                                                          `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource) SetInstanceTypeDetail(v *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource {
-	s.InstanceTypeDetail = v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource) SetInstanceType(v string) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource {
-	s.InstanceType = &v
-	return s
-}
-
-type DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail struct {
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail) SetCpu(v int32) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail {
-	s.Cpu = &v
-	return s
-}
-
-func (s *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail) SetMem(v int32) *DescribeAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail {
 	s.Mem = &v
 	return s
 }
@@ -2338,11 +2381,11 @@ func (s *DescribeBackupPlanConfigRequest) SetClusterId(v string) *DescribeBackup
 }
 
 type DescribeBackupPlanConfigResponseBody struct {
-	RequestId           *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	FullBackupCycle     *int32                                      `json:"FullBackupCycle,omitempty" xml:"FullBackupCycle,omitempty"`
-	NextFullBackupDate  *string                                     `json:"NextFullBackupDate,omitempty" xml:"NextFullBackupDate,omitempty"`
-	Tables              *DescribeBackupPlanConfigResponseBodyTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
 	MinHFileBackupCount *int32                                      `json:"MinHFileBackupCount,omitempty" xml:"MinHFileBackupCount,omitempty"`
+	NextFullBackupDate  *string                                     `json:"NextFullBackupDate,omitempty" xml:"NextFullBackupDate,omitempty"`
+	RequestId           *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tables              *DescribeBackupPlanConfigResponseBodyTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
 }
 
 func (s DescribeBackupPlanConfigResponseBody) String() string {
@@ -2353,13 +2396,13 @@ func (s DescribeBackupPlanConfigResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBackupPlanConfigResponseBody) SetRequestId(v string) *DescribeBackupPlanConfigResponseBody {
-	s.RequestId = &v
+func (s *DescribeBackupPlanConfigResponseBody) SetFullBackupCycle(v int32) *DescribeBackupPlanConfigResponseBody {
+	s.FullBackupCycle = &v
 	return s
 }
 
-func (s *DescribeBackupPlanConfigResponseBody) SetFullBackupCycle(v int32) *DescribeBackupPlanConfigResponseBody {
-	s.FullBackupCycle = &v
+func (s *DescribeBackupPlanConfigResponseBody) SetMinHFileBackupCount(v int32) *DescribeBackupPlanConfigResponseBody {
+	s.MinHFileBackupCount = &v
 	return s
 }
 
@@ -2368,13 +2411,13 @@ func (s *DescribeBackupPlanConfigResponseBody) SetNextFullBackupDate(v string) *
 	return s
 }
 
-func (s *DescribeBackupPlanConfigResponseBody) SetTables(v *DescribeBackupPlanConfigResponseBodyTables) *DescribeBackupPlanConfigResponseBody {
-	s.Tables = v
+func (s *DescribeBackupPlanConfigResponseBody) SetRequestId(v string) *DescribeBackupPlanConfigResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeBackupPlanConfigResponseBody) SetMinHFileBackupCount(v int32) *DescribeBackupPlanConfigResponseBody {
-	s.MinHFileBackupCount = &v
+func (s *DescribeBackupPlanConfigResponseBody) SetTables(v *DescribeBackupPlanConfigResponseBodyTables) *DescribeBackupPlanConfigResponseBody {
+	s.Tables = v
 	return s
 }
 
@@ -2436,12 +2479,12 @@ func (s *DescribeBackupPolicyRequest) SetClusterId(v string) *DescribeBackupPoli
 }
 
 type DescribeBackupPolicyResponseBody struct {
-	PreferredBackupPeriod       *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	PreferredBackupEndTimeUTC   *string `json:"PreferredBackupEndTimeUTC,omitempty" xml:"PreferredBackupEndTimeUTC,omitempty"`
-	PreferredBackupStartTimeUTC *string `json:"PreferredBackupStartTimeUTC,omitempty" xml:"PreferredBackupStartTimeUTC,omitempty"`
-	RequestId                   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PreferredBackupTime         *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
 	BackupRetentionPeriod       *string `json:"BackupRetentionPeriod,omitempty" xml:"BackupRetentionPeriod,omitempty"`
+	PreferredBackupEndTimeUTC   *string `json:"PreferredBackupEndTimeUTC,omitempty" xml:"PreferredBackupEndTimeUTC,omitempty"`
+	PreferredBackupPeriod       *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
+	PreferredBackupStartTimeUTC *string `json:"PreferredBackupStartTimeUTC,omitempty" xml:"PreferredBackupStartTimeUTC,omitempty"`
+	PreferredBackupTime         *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	RequestId                   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBackupPolicyResponseBody) String() string {
@@ -2452,8 +2495,8 @@ func (s DescribeBackupPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBackupPolicyResponseBody) SetPreferredBackupPeriod(v string) *DescribeBackupPolicyResponseBody {
-	s.PreferredBackupPeriod = &v
+func (s *DescribeBackupPolicyResponseBody) SetBackupRetentionPeriod(v string) *DescribeBackupPolicyResponseBody {
+	s.BackupRetentionPeriod = &v
 	return s
 }
 
@@ -2462,13 +2505,13 @@ func (s *DescribeBackupPolicyResponseBody) SetPreferredBackupEndTimeUTC(v string
 	return s
 }
 
-func (s *DescribeBackupPolicyResponseBody) SetPreferredBackupStartTimeUTC(v string) *DescribeBackupPolicyResponseBody {
-	s.PreferredBackupStartTimeUTC = &v
+func (s *DescribeBackupPolicyResponseBody) SetPreferredBackupPeriod(v string) *DescribeBackupPolicyResponseBody {
+	s.PreferredBackupPeriod = &v
 	return s
 }
 
-func (s *DescribeBackupPolicyResponseBody) SetRequestId(v string) *DescribeBackupPolicyResponseBody {
-	s.RequestId = &v
+func (s *DescribeBackupPolicyResponseBody) SetPreferredBackupStartTimeUTC(v string) *DescribeBackupPolicyResponseBody {
+	s.PreferredBackupStartTimeUTC = &v
 	return s
 }
 
@@ -2477,8 +2520,8 @@ func (s *DescribeBackupPolicyResponseBody) SetPreferredBackupTime(v string) *Des
 	return s
 }
 
-func (s *DescribeBackupPolicyResponseBody) SetBackupRetentionPeriod(v string) *DescribeBackupPolicyResponseBody {
-	s.BackupRetentionPeriod = &v
+func (s *DescribeBackupPolicyResponseBody) SetRequestId(v string) *DescribeBackupPolicyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2505,235 +2548,6 @@ func (s *DescribeBackupPolicyResponse) SetBody(v *DescribeBackupPolicyResponseBo
 	return s
 }
 
-type DescribeBackupsRequest struct {
-	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	BackupId     *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	PageNumber   *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTimeUTC *string `json:"StartTimeUTC,omitempty" xml:"StartTimeUTC,omitempty"`
-	EndTimeUTC   *string `json:"EndTimeUTC,omitempty" xml:"EndTimeUTC,omitempty"`
-}
-
-func (s DescribeBackupsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBackupsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBackupsRequest) SetClusterId(v string) *DescribeBackupsRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *DescribeBackupsRequest) SetBackupId(v string) *DescribeBackupsRequest {
-	s.BackupId = &v
-	return s
-}
-
-func (s *DescribeBackupsRequest) SetPageNumber(v string) *DescribeBackupsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeBackupsRequest) SetPageSize(v string) *DescribeBackupsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeBackupsRequest) SetStartTime(v string) *DescribeBackupsRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeBackupsRequest) SetEndTime(v string) *DescribeBackupsRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeBackupsRequest) SetStartTimeUTC(v string) *DescribeBackupsRequest {
-	s.StartTimeUTC = &v
-	return s
-}
-
-func (s *DescribeBackupsRequest) SetEndTimeUTC(v string) *DescribeBackupsRequest {
-	s.EndTimeUTC = &v
-	return s
-}
-
-type DescribeBackupsResponseBody struct {
-	TotalCount   *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize     *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber   *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	EnableStatus *string                             `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
-	Backups      *DescribeBackupsResponseBodyBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Struct"`
-}
-
-func (s DescribeBackupsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBackupsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBackupsResponseBody) SetTotalCount(v int32) *DescribeBackupsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *DescribeBackupsResponseBody) SetPageSize(v int32) *DescribeBackupsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeBackupsResponseBody) SetRequestId(v string) *DescribeBackupsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeBackupsResponseBody) SetPageNumber(v int32) *DescribeBackupsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeBackupsResponseBody) SetEnableStatus(v string) *DescribeBackupsResponseBody {
-	s.EnableStatus = &v
-	return s
-}
-
-func (s *DescribeBackupsResponseBody) SetBackups(v *DescribeBackupsResponseBodyBackups) *DescribeBackupsResponseBody {
-	s.Backups = v
-	return s
-}
-
-type DescribeBackupsResponseBodyBackups struct {
-	Backup []*DescribeBackupsResponseBodyBackupsBackup `json:"Backup,omitempty" xml:"Backup,omitempty" type:"Repeated"`
-}
-
-func (s DescribeBackupsResponseBodyBackups) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBackupsResponseBodyBackups) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBackupsResponseBodyBackups) SetBackup(v []*DescribeBackupsResponseBodyBackupsBackup) *DescribeBackupsResponseBodyBackups {
-	s.Backup = v
-	return s
-}
-
-type DescribeBackupsResponseBodyBackupsBackup struct {
-	BackupStatus       *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	BackupType         *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	BackupStartTime    *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
-	BackupDownloadURL  *string `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
-	BackupStartTimeUTC *string `json:"BackupStartTimeUTC,omitempty" xml:"BackupStartTimeUTC,omitempty"`
-	BackupEndTime      *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
-	BackupId           *int32  `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
-	BackupDBNames      *string `json:"BackupDBNames,omitempty" xml:"BackupDBNames,omitempty"`
-	BackupEndTimeUTC   *string `json:"BackupEndTimeUTC,omitempty" xml:"BackupEndTimeUTC,omitempty"`
-	BackupSize         *string `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
-	BackupMode         *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
-	BackupMethod       *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
-}
-
-func (s DescribeBackupsResponseBodyBackupsBackup) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBackupsResponseBodyBackupsBackup) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupStatus(v string) *DescribeBackupsResponseBodyBackupsBackup {
-	s.BackupStatus = &v
-	return s
-}
-
-func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupType(v string) *DescribeBackupsResponseBodyBackupsBackup {
-	s.BackupType = &v
-	return s
-}
-
-func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupStartTime(v string) *DescribeBackupsResponseBodyBackupsBackup {
-	s.BackupStartTime = &v
-	return s
-}
-
-func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupDownloadURL(v string) *DescribeBackupsResponseBodyBackupsBackup {
-	s.BackupDownloadURL = &v
-	return s
-}
-
-func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupStartTimeUTC(v string) *DescribeBackupsResponseBodyBackupsBackup {
-	s.BackupStartTimeUTC = &v
-	return s
-}
-
-func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupEndTime(v string) *DescribeBackupsResponseBodyBackupsBackup {
-	s.BackupEndTime = &v
-	return s
-}
-
-func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupId(v int32) *DescribeBackupsResponseBodyBackupsBackup {
-	s.BackupId = &v
-	return s
-}
-
-func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupDBNames(v string) *DescribeBackupsResponseBodyBackupsBackup {
-	s.BackupDBNames = &v
-	return s
-}
-
-func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupEndTimeUTC(v string) *DescribeBackupsResponseBodyBackupsBackup {
-	s.BackupEndTimeUTC = &v
-	return s
-}
-
-func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupSize(v string) *DescribeBackupsResponseBodyBackupsBackup {
-	s.BackupSize = &v
-	return s
-}
-
-func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupMode(v string) *DescribeBackupsResponseBodyBackupsBackup {
-	s.BackupMode = &v
-	return s
-}
-
-func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupMethod(v string) *DescribeBackupsResponseBodyBackupsBackup {
-	s.BackupMethod = &v
-	return s
-}
-
-type DescribeBackupsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeBackupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeBackupsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBackupsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBackupsResponse) SetHeaders(v map[string]*string) *DescribeBackupsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeBackupsResponse) SetBody(v *DescribeBackupsResponseBody) *DescribeBackupsResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeBackupStatusRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
@@ -2752,10 +2566,10 @@ func (s *DescribeBackupStatusRequest) SetClusterId(v string) *DescribeBackupStat
 }
 
 type DescribeBackupStatusResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
 	BdsClusterId *string `json:"BdsClusterId,omitempty" xml:"BdsClusterId,omitempty"`
 	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	BackupStatus *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBackupStatusResponseBody) String() string {
@@ -2766,8 +2580,8 @@ func (s DescribeBackupStatusResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBackupStatusResponseBody) SetRequestId(v string) *DescribeBackupStatusResponseBody {
-	s.RequestId = &v
+func (s *DescribeBackupStatusResponseBody) SetBackupStatus(v string) *DescribeBackupStatusResponseBody {
+	s.BackupStatus = &v
 	return s
 }
 
@@ -2781,8 +2595,8 @@ func (s *DescribeBackupStatusResponseBody) SetClusterId(v string) *DescribeBacku
 	return s
 }
 
-func (s *DescribeBackupStatusResponseBody) SetBackupStatus(v string) *DescribeBackupStatusResponseBody {
-	s.BackupStatus = &v
+func (s *DescribeBackupStatusResponseBody) SetRequestId(v string) *DescribeBackupStatusResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2839,9 +2653,9 @@ func (s *DescribeBackupSummaryRequest) SetPageSize(v int32) *DescribeBackupSumma
 }
 
 type DescribeBackupSummaryResponseBody struct {
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Incr      *DescribeBackupSummaryResponseBodyIncr `json:"Incr,omitempty" xml:"Incr,omitempty" type:"Struct"`
 	Full      *DescribeBackupSummaryResponseBodyFull `json:"Full,omitempty" xml:"Full,omitempty" type:"Struct"`
+	Incr      *DescribeBackupSummaryResponseBodyIncr `json:"Incr,omitempty" xml:"Incr,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeBackupSummaryResponseBody) String() string {
@@ -2852,8 +2666,8 @@ func (s DescribeBackupSummaryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBackupSummaryResponseBody) SetRequestId(v string) *DescribeBackupSummaryResponseBody {
-	s.RequestId = &v
+func (s *DescribeBackupSummaryResponseBody) SetFull(v *DescribeBackupSummaryResponseBodyFull) *DescribeBackupSummaryResponseBody {
+	s.Full = v
 	return s
 }
 
@@ -2862,64 +2676,17 @@ func (s *DescribeBackupSummaryResponseBody) SetIncr(v *DescribeBackupSummaryResp
 	return s
 }
 
-func (s *DescribeBackupSummaryResponseBody) SetFull(v *DescribeBackupSummaryResponseBodyFull) *DescribeBackupSummaryResponseBody {
-	s.Full = v
-	return s
-}
-
-type DescribeBackupSummaryResponseBodyIncr struct {
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Speed         *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	Pos           *string `json:"Pos,omitempty" xml:"Pos,omitempty"`
-	QueueLogNum   *string `json:"QueueLogNum,omitempty" xml:"QueueLogNum,omitempty"`
-	BackupLogSize *string `json:"BackupLogSize,omitempty" xml:"BackupLogSize,omitempty"`
-	RunningLogNum *string `json:"RunningLogNum,omitempty" xml:"RunningLogNum,omitempty"`
-}
-
-func (s DescribeBackupSummaryResponseBodyIncr) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeBackupSummaryResponseBodyIncr) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeBackupSummaryResponseBodyIncr) SetStatus(v string) *DescribeBackupSummaryResponseBodyIncr {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeBackupSummaryResponseBodyIncr) SetSpeed(v string) *DescribeBackupSummaryResponseBodyIncr {
-	s.Speed = &v
-	return s
-}
-
-func (s *DescribeBackupSummaryResponseBodyIncr) SetPos(v string) *DescribeBackupSummaryResponseBodyIncr {
-	s.Pos = &v
-	return s
-}
-
-func (s *DescribeBackupSummaryResponseBodyIncr) SetQueueLogNum(v string) *DescribeBackupSummaryResponseBodyIncr {
-	s.QueueLogNum = &v
-	return s
-}
-
-func (s *DescribeBackupSummaryResponseBodyIncr) SetBackupLogSize(v string) *DescribeBackupSummaryResponseBodyIncr {
-	s.BackupLogSize = &v
-	return s
-}
-
-func (s *DescribeBackupSummaryResponseBodyIncr) SetRunningLogNum(v string) *DescribeBackupSummaryResponseBodyIncr {
-	s.RunningLogNum = &v
+func (s *DescribeBackupSummaryResponseBody) SetRequestId(v string) *DescribeBackupSummaryResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 type DescribeBackupSummaryResponseBodyFull struct {
-	NextFullBackupDate *string                                       `json:"NextFullBackupDate,omitempty" xml:"NextFullBackupDate,omitempty"`
-	Records            *DescribeBackupSummaryResponseBodyFullRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
 	HasMore            *string                                       `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	PageSize           *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	NextFullBackupDate *string                                       `json:"NextFullBackupDate,omitempty" xml:"NextFullBackupDate,omitempty"`
 	PageNumber         *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize           *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Records            *DescribeBackupSummaryResponseBodyFullRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Struct"`
 	Total              *int32                                        `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -2931,18 +2698,18 @@ func (s DescribeBackupSummaryResponseBodyFull) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeBackupSummaryResponseBodyFull) SetHasMore(v string) *DescribeBackupSummaryResponseBodyFull {
+	s.HasMore = &v
+	return s
+}
+
 func (s *DescribeBackupSummaryResponseBodyFull) SetNextFullBackupDate(v string) *DescribeBackupSummaryResponseBodyFull {
 	s.NextFullBackupDate = &v
 	return s
 }
 
-func (s *DescribeBackupSummaryResponseBodyFull) SetRecords(v *DescribeBackupSummaryResponseBodyFullRecords) *DescribeBackupSummaryResponseBodyFull {
-	s.Records = v
-	return s
-}
-
-func (s *DescribeBackupSummaryResponseBodyFull) SetHasMore(v string) *DescribeBackupSummaryResponseBodyFull {
-	s.HasMore = &v
+func (s *DescribeBackupSummaryResponseBodyFull) SetPageNumber(v int32) *DescribeBackupSummaryResponseBodyFull {
+	s.PageNumber = &v
 	return s
 }
 
@@ -2951,8 +2718,8 @@ func (s *DescribeBackupSummaryResponseBodyFull) SetPageSize(v int32) *DescribeBa
 	return s
 }
 
-func (s *DescribeBackupSummaryResponseBodyFull) SetPageNumber(v int32) *DescribeBackupSummaryResponseBodyFull {
-	s.PageNumber = &v
+func (s *DescribeBackupSummaryResponseBodyFull) SetRecords(v *DescribeBackupSummaryResponseBodyFullRecords) *DescribeBackupSummaryResponseBodyFull {
+	s.Records = v
 	return s
 }
 
@@ -2979,13 +2746,13 @@ func (s *DescribeBackupSummaryResponseBodyFullRecords) SetRecord(v []*DescribeBa
 }
 
 type DescribeBackupSummaryResponseBodyFullRecordsRecord struct {
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DataSize   *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
 	FinishTime *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
 	Process    *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	DataSize   *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	Speed      *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
 	RecordId   *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Speed      *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeBackupSummaryResponseBodyFullRecordsRecord) String() string {
@@ -2996,8 +2763,13 @@ func (s DescribeBackupSummaryResponseBodyFullRecordsRecord) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBackupSummaryResponseBodyFullRecordsRecord) SetStatus(v string) *DescribeBackupSummaryResponseBodyFullRecordsRecord {
-	s.Status = &v
+func (s *DescribeBackupSummaryResponseBodyFullRecordsRecord) SetCreateTime(v string) *DescribeBackupSummaryResponseBodyFullRecordsRecord {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeBackupSummaryResponseBodyFullRecordsRecord) SetDataSize(v string) *DescribeBackupSummaryResponseBodyFullRecordsRecord {
+	s.DataSize = &v
 	return s
 }
 
@@ -3011,8 +2783,8 @@ func (s *DescribeBackupSummaryResponseBodyFullRecordsRecord) SetProcess(v string
 	return s
 }
 
-func (s *DescribeBackupSummaryResponseBodyFullRecordsRecord) SetDataSize(v string) *DescribeBackupSummaryResponseBodyFullRecordsRecord {
-	s.DataSize = &v
+func (s *DescribeBackupSummaryResponseBodyFullRecordsRecord) SetRecordId(v string) *DescribeBackupSummaryResponseBodyFullRecordsRecord {
+	s.RecordId = &v
 	return s
 }
 
@@ -3021,13 +2793,55 @@ func (s *DescribeBackupSummaryResponseBodyFullRecordsRecord) SetSpeed(v string) 
 	return s
 }
 
-func (s *DescribeBackupSummaryResponseBodyFullRecordsRecord) SetRecordId(v string) *DescribeBackupSummaryResponseBodyFullRecordsRecord {
-	s.RecordId = &v
+func (s *DescribeBackupSummaryResponseBodyFullRecordsRecord) SetStatus(v string) *DescribeBackupSummaryResponseBodyFullRecordsRecord {
+	s.Status = &v
 	return s
 }
 
-func (s *DescribeBackupSummaryResponseBodyFullRecordsRecord) SetCreateTime(v string) *DescribeBackupSummaryResponseBodyFullRecordsRecord {
-	s.CreateTime = &v
+type DescribeBackupSummaryResponseBodyIncr struct {
+	BackupLogSize *string `json:"BackupLogSize,omitempty" xml:"BackupLogSize,omitempty"`
+	Pos           *string `json:"Pos,omitempty" xml:"Pos,omitempty"`
+	QueueLogNum   *string `json:"QueueLogNum,omitempty" xml:"QueueLogNum,omitempty"`
+	RunningLogNum *string `json:"RunningLogNum,omitempty" xml:"RunningLogNum,omitempty"`
+	Speed         *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeBackupSummaryResponseBodyIncr) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupSummaryResponseBodyIncr) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupSummaryResponseBodyIncr) SetBackupLogSize(v string) *DescribeBackupSummaryResponseBodyIncr {
+	s.BackupLogSize = &v
+	return s
+}
+
+func (s *DescribeBackupSummaryResponseBodyIncr) SetPos(v string) *DescribeBackupSummaryResponseBodyIncr {
+	s.Pos = &v
+	return s
+}
+
+func (s *DescribeBackupSummaryResponseBodyIncr) SetQueueLogNum(v string) *DescribeBackupSummaryResponseBodyIncr {
+	s.QueueLogNum = &v
+	return s
+}
+
+func (s *DescribeBackupSummaryResponseBodyIncr) SetRunningLogNum(v string) *DescribeBackupSummaryResponseBodyIncr {
+	s.RunningLogNum = &v
+	return s
+}
+
+func (s *DescribeBackupSummaryResponseBodyIncr) SetSpeed(v string) *DescribeBackupSummaryResponseBodyIncr {
+	s.Speed = &v
+	return s
+}
+
+func (s *DescribeBackupSummaryResponseBodyIncr) SetStatus(v string) *DescribeBackupSummaryResponseBodyIncr {
+	s.Status = &v
 	return s
 }
 
@@ -3055,8 +2869,8 @@ func (s *DescribeBackupSummaryResponse) SetBody(v *DescribeBackupSummaryResponse
 }
 
 type DescribeBackupTablesRequest struct {
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	BackupRecordId *string `json:"BackupRecordId,omitempty" xml:"BackupRecordId,omitempty"`
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
@@ -3069,13 +2883,13 @@ func (s DescribeBackupTablesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeBackupTablesRequest) SetClusterId(v string) *DescribeBackupTablesRequest {
-	s.ClusterId = &v
+func (s *DescribeBackupTablesRequest) SetBackupRecordId(v string) *DescribeBackupTablesRequest {
+	s.BackupRecordId = &v
 	return s
 }
 
-func (s *DescribeBackupTablesRequest) SetBackupRecordId(v string) *DescribeBackupTablesRequest {
-	s.BackupRecordId = &v
+func (s *DescribeBackupTablesRequest) SetClusterId(v string) *DescribeBackupTablesRequest {
+	s.ClusterId = &v
 	return s
 }
 
@@ -3090,12 +2904,12 @@ func (s *DescribeBackupTablesRequest) SetPageSize(v int32) *DescribeBackupTables
 }
 
 type DescribeBackupTablesResponseBody struct {
-	RequestId     *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize      *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	BackupRecords *DescribeBackupTablesResponseBodyBackupRecords `json:"BackupRecords,omitempty" xml:"BackupRecords,omitempty" type:"Struct"`
 	PageNumber    *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Total         *int64                                         `json:"Total,omitempty" xml:"Total,omitempty"`
+	PageSize      *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId     *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Tables        *DescribeBackupTablesResponseBodyTables        `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
+	Total         *int64                                         `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeBackupTablesResponseBody) String() string {
@@ -3104,16 +2918,6 @@ func (s DescribeBackupTablesResponseBody) String() string {
 
 func (s DescribeBackupTablesResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeBackupTablesResponseBody) SetRequestId(v string) *DescribeBackupTablesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeBackupTablesResponseBody) SetPageSize(v int32) *DescribeBackupTablesResponseBody {
-	s.PageSize = &v
-	return s
 }
 
 func (s *DescribeBackupTablesResponseBody) SetBackupRecords(v *DescribeBackupTablesResponseBodyBackupRecords) *DescribeBackupTablesResponseBody {
@@ -3126,13 +2930,23 @@ func (s *DescribeBackupTablesResponseBody) SetPageNumber(v int32) *DescribeBacku
 	return s
 }
 
-func (s *DescribeBackupTablesResponseBody) SetTotal(v int64) *DescribeBackupTablesResponseBody {
-	s.Total = &v
+func (s *DescribeBackupTablesResponseBody) SetPageSize(v int32) *DescribeBackupTablesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeBackupTablesResponseBody) SetRequestId(v string) *DescribeBackupTablesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 func (s *DescribeBackupTablesResponseBody) SetTables(v *DescribeBackupTablesResponseBodyTables) *DescribeBackupTablesResponseBody {
 	s.Tables = v
+	return s
+}
+
+func (s *DescribeBackupTablesResponseBody) SetTotal(v int64) *DescribeBackupTablesResponseBody {
+	s.Total = &v
 	return s
 }
 
@@ -3154,13 +2968,13 @@ func (s *DescribeBackupTablesResponseBodyBackupRecords) SetBackupRecord(v []*Des
 }
 
 type DescribeBackupTablesResponseBodyBackupRecordsBackupRecord struct {
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Process   *string `json:"Process,omitempty" xml:"Process,omitempty"`
 	DataSize  *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	Speed     *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Process   *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	Speed     *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
 	Table     *string `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
@@ -3172,13 +2986,18 @@ func (s DescribeBackupTablesResponseBodyBackupRecordsBackupRecord) GoString() st
 	return s.String()
 }
 
+func (s *DescribeBackupTablesResponseBodyBackupRecordsBackupRecord) SetDataSize(v string) *DescribeBackupTablesResponseBodyBackupRecordsBackupRecord {
+	s.DataSize = &v
+	return s
+}
+
 func (s *DescribeBackupTablesResponseBodyBackupRecordsBackupRecord) SetEndTime(v string) *DescribeBackupTablesResponseBodyBackupRecordsBackupRecord {
 	s.EndTime = &v
 	return s
 }
 
-func (s *DescribeBackupTablesResponseBodyBackupRecordsBackupRecord) SetStartTime(v string) *DescribeBackupTablesResponseBodyBackupRecordsBackupRecord {
-	s.StartTime = &v
+func (s *DescribeBackupTablesResponseBodyBackupRecordsBackupRecord) SetMessage(v string) *DescribeBackupTablesResponseBodyBackupRecordsBackupRecord {
+	s.Message = &v
 	return s
 }
 
@@ -3187,23 +3006,18 @@ func (s *DescribeBackupTablesResponseBodyBackupRecordsBackupRecord) SetProcess(v
 	return s
 }
 
-func (s *DescribeBackupTablesResponseBodyBackupRecordsBackupRecord) SetDataSize(v string) *DescribeBackupTablesResponseBodyBackupRecordsBackupRecord {
-	s.DataSize = &v
-	return s
-}
-
 func (s *DescribeBackupTablesResponseBodyBackupRecordsBackupRecord) SetSpeed(v string) *DescribeBackupTablesResponseBodyBackupRecordsBackupRecord {
 	s.Speed = &v
 	return s
 }
 
-func (s *DescribeBackupTablesResponseBodyBackupRecordsBackupRecord) SetState(v string) *DescribeBackupTablesResponseBodyBackupRecordsBackupRecord {
-	s.State = &v
+func (s *DescribeBackupTablesResponseBodyBackupRecordsBackupRecord) SetStartTime(v string) *DescribeBackupTablesResponseBodyBackupRecordsBackupRecord {
+	s.StartTime = &v
 	return s
 }
 
-func (s *DescribeBackupTablesResponseBodyBackupRecordsBackupRecord) SetMessage(v string) *DescribeBackupTablesResponseBodyBackupRecordsBackupRecord {
-	s.Message = &v
+func (s *DescribeBackupTablesResponseBodyBackupRecordsBackupRecord) SetState(v string) *DescribeBackupTablesResponseBodyBackupRecordsBackupRecord {
+	s.State = &v
 	return s
 }
 
@@ -3252,9 +3066,238 @@ func (s *DescribeBackupTablesResponse) SetBody(v *DescribeBackupTablesResponseBo
 	return s
 }
 
+type DescribeBackupsRequest struct {
+	BackupId     *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTimeUTC   *string `json:"EndTimeUTC,omitempty" xml:"EndTimeUTC,omitempty"`
+	PageNumber   *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTimeUTC *string `json:"StartTimeUTC,omitempty" xml:"StartTimeUTC,omitempty"`
+}
+
+func (s DescribeBackupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupsRequest) SetBackupId(v string) *DescribeBackupsRequest {
+	s.BackupId = &v
+	return s
+}
+
+func (s *DescribeBackupsRequest) SetClusterId(v string) *DescribeBackupsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeBackupsRequest) SetEndTime(v string) *DescribeBackupsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeBackupsRequest) SetEndTimeUTC(v string) *DescribeBackupsRequest {
+	s.EndTimeUTC = &v
+	return s
+}
+
+func (s *DescribeBackupsRequest) SetPageNumber(v string) *DescribeBackupsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeBackupsRequest) SetPageSize(v string) *DescribeBackupsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeBackupsRequest) SetStartTime(v string) *DescribeBackupsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeBackupsRequest) SetStartTimeUTC(v string) *DescribeBackupsRequest {
+	s.StartTimeUTC = &v
+	return s
+}
+
+type DescribeBackupsResponseBody struct {
+	Backups      *DescribeBackupsResponseBodyBackups `json:"Backups,omitempty" xml:"Backups,omitempty" type:"Struct"`
+	EnableStatus *string                             `json:"EnableStatus,omitempty" xml:"EnableStatus,omitempty"`
+	PageNumber   *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeBackupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupsResponseBody) SetBackups(v *DescribeBackupsResponseBodyBackups) *DescribeBackupsResponseBody {
+	s.Backups = v
+	return s
+}
+
+func (s *DescribeBackupsResponseBody) SetEnableStatus(v string) *DescribeBackupsResponseBody {
+	s.EnableStatus = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBody) SetPageNumber(v int32) *DescribeBackupsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBody) SetPageSize(v int32) *DescribeBackupsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBody) SetRequestId(v string) *DescribeBackupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBody) SetTotalCount(v int32) *DescribeBackupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeBackupsResponseBodyBackups struct {
+	Backup []*DescribeBackupsResponseBodyBackupsBackup `json:"Backup,omitempty" xml:"Backup,omitempty" type:"Repeated"`
+}
+
+func (s DescribeBackupsResponseBodyBackups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupsResponseBodyBackups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupsResponseBodyBackups) SetBackup(v []*DescribeBackupsResponseBodyBackupsBackup) *DescribeBackupsResponseBodyBackups {
+	s.Backup = v
+	return s
+}
+
+type DescribeBackupsResponseBodyBackupsBackup struct {
+	BackupDBNames      *string `json:"BackupDBNames,omitempty" xml:"BackupDBNames,omitempty"`
+	BackupDownloadURL  *string `json:"BackupDownloadURL,omitempty" xml:"BackupDownloadURL,omitempty"`
+	BackupEndTime      *string `json:"BackupEndTime,omitempty" xml:"BackupEndTime,omitempty"`
+	BackupEndTimeUTC   *string `json:"BackupEndTimeUTC,omitempty" xml:"BackupEndTimeUTC,omitempty"`
+	BackupId           *int32  `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	BackupMethod       *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
+	BackupMode         *string `json:"BackupMode,omitempty" xml:"BackupMode,omitempty"`
+	BackupSize         *string `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	BackupStartTime    *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
+	BackupStartTimeUTC *string `json:"BackupStartTimeUTC,omitempty" xml:"BackupStartTimeUTC,omitempty"`
+	BackupStatus       *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	BackupType         *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+}
+
+func (s DescribeBackupsResponseBodyBackupsBackup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupsResponseBodyBackupsBackup) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupDBNames(v string) *DescribeBackupsResponseBodyBackupsBackup {
+	s.BackupDBNames = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupDownloadURL(v string) *DescribeBackupsResponseBodyBackupsBackup {
+	s.BackupDownloadURL = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupEndTime(v string) *DescribeBackupsResponseBodyBackupsBackup {
+	s.BackupEndTime = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupEndTimeUTC(v string) *DescribeBackupsResponseBodyBackupsBackup {
+	s.BackupEndTimeUTC = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupId(v int32) *DescribeBackupsResponseBodyBackupsBackup {
+	s.BackupId = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupMethod(v string) *DescribeBackupsResponseBodyBackupsBackup {
+	s.BackupMethod = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupMode(v string) *DescribeBackupsResponseBodyBackupsBackup {
+	s.BackupMode = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupSize(v string) *DescribeBackupsResponseBodyBackupsBackup {
+	s.BackupSize = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupStartTime(v string) *DescribeBackupsResponseBodyBackupsBackup {
+	s.BackupStartTime = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupStartTimeUTC(v string) *DescribeBackupsResponseBodyBackupsBackup {
+	s.BackupStartTimeUTC = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupStatus(v string) *DescribeBackupsResponseBodyBackupsBackup {
+	s.BackupStatus = &v
+	return s
+}
+
+func (s *DescribeBackupsResponseBodyBackupsBackup) SetBackupType(v string) *DescribeBackupsResponseBodyBackupsBackup {
+	s.BackupType = &v
+	return s
+}
+
+type DescribeBackupsResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeBackupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeBackupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupsResponse) SetHeaders(v map[string]*string) *DescribeBackupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBackupsResponse) SetBody(v *DescribeBackupsResponseBody) *DescribeBackupsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeClusterConnectionRequest struct {
-	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeClusterConnectionRequest) String() string {
@@ -3265,28 +3308,28 @@ func (s DescribeClusterConnectionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeClusterConnectionRequest) SetRegionId(v string) *DescribeClusterConnectionRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *DescribeClusterConnectionRequest) SetClusterId(v string) *DescribeClusterConnectionRequest {
 	s.ClusterId = &v
 	return s
 }
 
+func (s *DescribeClusterConnectionRequest) SetRegionId(v string) *DescribeClusterConnectionRequest {
+	s.RegionId = &v
+	return s
+}
+
 type DescribeClusterConnectionResponseBody struct {
+	DbType              *string                                                   `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	IsMultimod          *string                                                   `json:"IsMultimod,omitempty" xml:"IsMultimod,omitempty"`
-	VpcId               *string                                                   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	NetType             *string                                                   `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	RequestId           *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceConnAddrs    *DescribeClusterConnectionResponseBodyServiceConnAddrs    `json:"ServiceConnAddrs,omitempty" xml:"ServiceConnAddrs,omitempty" type:"Struct"`
+	SlbConnAddrs        *DescribeClusterConnectionResponseBodySlbConnAddrs        `json:"SlbConnAddrs,omitempty" xml:"SlbConnAddrs,omitempty" type:"Struct"`
+	ThriftConn          *DescribeClusterConnectionResponseBodyThriftConn          `json:"ThriftConn,omitempty" xml:"ThriftConn,omitempty" type:"Struct"`
 	UiProxyConnAddrInfo *DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo `json:"UiProxyConnAddrInfo,omitempty" xml:"UiProxyConnAddrInfo,omitempty" type:"Struct"`
 	VSwitchId           *string                                                   `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ServiceConnAddrs    *DescribeClusterConnectionResponseBodyServiceConnAddrs    `json:"ServiceConnAddrs,omitempty" xml:"ServiceConnAddrs,omitempty" type:"Struct"`
-	NetType             *string                                                   `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	DbType              *string                                                   `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	ThriftConn          *DescribeClusterConnectionResponseBodyThriftConn          `json:"ThriftConn,omitempty" xml:"ThriftConn,omitempty" type:"Struct"`
+	VpcId               *string                                                   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	ZkConnAddrs         *DescribeClusterConnectionResponseBodyZkConnAddrs         `json:"ZkConnAddrs,omitempty" xml:"ZkConnAddrs,omitempty" type:"Struct"`
-	SlbConnAddrs        *DescribeClusterConnectionResponseBodySlbConnAddrs        `json:"SlbConnAddrs,omitempty" xml:"SlbConnAddrs,omitempty" type:"Struct"`
 }
 
 func (s DescribeClusterConnectionResponseBody) String() string {
@@ -3297,18 +3340,38 @@ func (s DescribeClusterConnectionResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeClusterConnectionResponseBody) SetDbType(v string) *DescribeClusterConnectionResponseBody {
+	s.DbType = &v
+	return s
+}
+
 func (s *DescribeClusterConnectionResponseBody) SetIsMultimod(v string) *DescribeClusterConnectionResponseBody {
 	s.IsMultimod = &v
 	return s
 }
 
-func (s *DescribeClusterConnectionResponseBody) SetVpcId(v string) *DescribeClusterConnectionResponseBody {
-	s.VpcId = &v
+func (s *DescribeClusterConnectionResponseBody) SetNetType(v string) *DescribeClusterConnectionResponseBody {
+	s.NetType = &v
 	return s
 }
 
 func (s *DescribeClusterConnectionResponseBody) SetRequestId(v string) *DescribeClusterConnectionResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeClusterConnectionResponseBody) SetServiceConnAddrs(v *DescribeClusterConnectionResponseBodyServiceConnAddrs) *DescribeClusterConnectionResponseBody {
+	s.ServiceConnAddrs = v
+	return s
+}
+
+func (s *DescribeClusterConnectionResponseBody) SetSlbConnAddrs(v *DescribeClusterConnectionResponseBodySlbConnAddrs) *DescribeClusterConnectionResponseBody {
+	s.SlbConnAddrs = v
+	return s
+}
+
+func (s *DescribeClusterConnectionResponseBody) SetThriftConn(v *DescribeClusterConnectionResponseBodyThriftConn) *DescribeClusterConnectionResponseBody {
+	s.ThriftConn = v
 	return s
 }
 
@@ -3322,62 +3385,13 @@ func (s *DescribeClusterConnectionResponseBody) SetVSwitchId(v string) *Describe
 	return s
 }
 
-func (s *DescribeClusterConnectionResponseBody) SetServiceConnAddrs(v *DescribeClusterConnectionResponseBodyServiceConnAddrs) *DescribeClusterConnectionResponseBody {
-	s.ServiceConnAddrs = v
-	return s
-}
-
-func (s *DescribeClusterConnectionResponseBody) SetNetType(v string) *DescribeClusterConnectionResponseBody {
-	s.NetType = &v
-	return s
-}
-
-func (s *DescribeClusterConnectionResponseBody) SetDbType(v string) *DescribeClusterConnectionResponseBody {
-	s.DbType = &v
-	return s
-}
-
-func (s *DescribeClusterConnectionResponseBody) SetThriftConn(v *DescribeClusterConnectionResponseBodyThriftConn) *DescribeClusterConnectionResponseBody {
-	s.ThriftConn = v
+func (s *DescribeClusterConnectionResponseBody) SetVpcId(v string) *DescribeClusterConnectionResponseBody {
+	s.VpcId = &v
 	return s
 }
 
 func (s *DescribeClusterConnectionResponseBody) SetZkConnAddrs(v *DescribeClusterConnectionResponseBodyZkConnAddrs) *DescribeClusterConnectionResponseBody {
 	s.ZkConnAddrs = v
-	return s
-}
-
-func (s *DescribeClusterConnectionResponseBody) SetSlbConnAddrs(v *DescribeClusterConnectionResponseBodySlbConnAddrs) *DescribeClusterConnectionResponseBody {
-	s.SlbConnAddrs = v
-	return s
-}
-
-type DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo struct {
-	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
-	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	ConnAddr     *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
-}
-
-func (s DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo) SetConnAddrPort(v string) *DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo {
-	s.ConnAddrPort = &v
-	return s
-}
-
-func (s *DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo) SetNetType(v string) *DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo {
-	s.NetType = &v
-	return s
-}
-
-func (s *DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo) SetConnAddr(v string) *DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo {
-	s.ConnAddr = &v
 	return s
 }
 
@@ -3422,9 +3436,9 @@ func (s *DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddr) S
 }
 
 type DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddrConnAddrInfo struct {
+	ConnAddr     *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
 	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
 	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	ConnAddr     *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
 }
 
 func (s DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddrConnAddrInfo) String() string {
@@ -3435,6 +3449,11 @@ func (s DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddrConn
 	return s.String()
 }
 
+func (s *DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddrConnAddrInfo) SetConnAddr(v string) *DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddrConnAddrInfo {
+	s.ConnAddr = &v
+	return s
+}
+
 func (s *DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddrConnAddrInfo) SetConnAddrPort(v string) *DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddrConnAddrInfo {
 	s.ConnAddrPort = &v
 	return s
@@ -3442,86 +3461,6 @@ func (s *DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddrCon
 
 func (s *DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddrConnAddrInfo) SetNetType(v string) *DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddrConnAddrInfo {
 	s.NetType = &v
-	return s
-}
-
-func (s *DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddrConnAddrInfo) SetConnAddr(v string) *DescribeClusterConnectionResponseBodyServiceConnAddrsServiceConnAddrConnAddrInfo {
-	s.ConnAddr = &v
-	return s
-}
-
-type DescribeClusterConnectionResponseBodyThriftConn struct {
-	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
-	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	ConnAddr     *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
-}
-
-func (s DescribeClusterConnectionResponseBodyThriftConn) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterConnectionResponseBodyThriftConn) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterConnectionResponseBodyThriftConn) SetConnAddrPort(v string) *DescribeClusterConnectionResponseBodyThriftConn {
-	s.ConnAddrPort = &v
-	return s
-}
-
-func (s *DescribeClusterConnectionResponseBodyThriftConn) SetNetType(v string) *DescribeClusterConnectionResponseBodyThriftConn {
-	s.NetType = &v
-	return s
-}
-
-func (s *DescribeClusterConnectionResponseBodyThriftConn) SetConnAddr(v string) *DescribeClusterConnectionResponseBodyThriftConn {
-	s.ConnAddr = &v
-	return s
-}
-
-type DescribeClusterConnectionResponseBodyZkConnAddrs struct {
-	ZkConnAddr []*DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr `json:"ZkConnAddr,omitempty" xml:"ZkConnAddr,omitempty" type:"Repeated"`
-}
-
-func (s DescribeClusterConnectionResponseBodyZkConnAddrs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterConnectionResponseBodyZkConnAddrs) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterConnectionResponseBodyZkConnAddrs) SetZkConnAddr(v []*DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr) *DescribeClusterConnectionResponseBodyZkConnAddrs {
-	s.ZkConnAddr = v
-	return s
-}
-
-type DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr struct {
-	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
-	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	ConnAddr     *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
-}
-
-func (s DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr) SetConnAddrPort(v string) *DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr {
-	s.ConnAddrPort = &v
-	return s
-}
-
-func (s *DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr) SetNetType(v string) *DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr {
-	s.NetType = &v
-	return s
-}
-
-func (s *DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr) SetConnAddr(v string) *DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr {
-	s.ConnAddr = &v
 	return s
 }
 
@@ -3566,9 +3505,9 @@ func (s *DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddr) SetSlbTyp
 }
 
 type DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddrConnAddrInfo struct {
+	ConnAddr     *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
 	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
 	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	ConnAddr     *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
 }
 
 func (s DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddrConnAddrInfo) String() string {
@@ -3577,6 +3516,11 @@ func (s DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddrConnAddrInfo
 
 func (s DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddrConnAddrInfo) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddrConnAddrInfo) SetConnAddr(v string) *DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddrConnAddrInfo {
+	s.ConnAddr = &v
+	return s
 }
 
 func (s *DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddrConnAddrInfo) SetConnAddrPort(v string) *DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddrConnAddrInfo {
@@ -3589,8 +3533,107 @@ func (s *DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddrConnAddrInf
 	return s
 }
 
-func (s *DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddrConnAddrInfo) SetConnAddr(v string) *DescribeClusterConnectionResponseBodySlbConnAddrsSlbConnAddrConnAddrInfo {
+type DescribeClusterConnectionResponseBodyThriftConn struct {
+	ConnAddr     *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
+	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
+	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+}
+
+func (s DescribeClusterConnectionResponseBodyThriftConn) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterConnectionResponseBodyThriftConn) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterConnectionResponseBodyThriftConn) SetConnAddr(v string) *DescribeClusterConnectionResponseBodyThriftConn {
 	s.ConnAddr = &v
+	return s
+}
+
+func (s *DescribeClusterConnectionResponseBodyThriftConn) SetConnAddrPort(v string) *DescribeClusterConnectionResponseBodyThriftConn {
+	s.ConnAddrPort = &v
+	return s
+}
+
+func (s *DescribeClusterConnectionResponseBodyThriftConn) SetNetType(v string) *DescribeClusterConnectionResponseBodyThriftConn {
+	s.NetType = &v
+	return s
+}
+
+type DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo struct {
+	ConnAddr     *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
+	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
+	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+}
+
+func (s DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo) SetConnAddr(v string) *DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo {
+	s.ConnAddr = &v
+	return s
+}
+
+func (s *DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo) SetConnAddrPort(v string) *DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo {
+	s.ConnAddrPort = &v
+	return s
+}
+
+func (s *DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo) SetNetType(v string) *DescribeClusterConnectionResponseBodyUiProxyConnAddrInfo {
+	s.NetType = &v
+	return s
+}
+
+type DescribeClusterConnectionResponseBodyZkConnAddrs struct {
+	ZkConnAddr []*DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr `json:"ZkConnAddr,omitempty" xml:"ZkConnAddr,omitempty" type:"Repeated"`
+}
+
+func (s DescribeClusterConnectionResponseBodyZkConnAddrs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterConnectionResponseBodyZkConnAddrs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterConnectionResponseBodyZkConnAddrs) SetZkConnAddr(v []*DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr) *DescribeClusterConnectionResponseBodyZkConnAddrs {
+	s.ZkConnAddr = v
+	return s
+}
+
+type DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr struct {
+	ConnAddr     *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
+	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
+	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+}
+
+func (s DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr) SetConnAddr(v string) *DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr {
+	s.ConnAddr = &v
+	return s
+}
+
+func (s *DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr) SetConnAddrPort(v string) *DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr {
+	s.ConnAddrPort = &v
+	return s
+}
+
+func (s *DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr) SetNetType(v string) *DescribeClusterConnectionResponseBodyZkConnAddrsZkConnAddr {
+	s.NetType = &v
 	return s
 }
 
@@ -3635,12 +3678,14 @@ func (s *DescribeColdStorageRequest) SetClusterId(v string) *DescribeColdStorage
 }
 
 type DescribeColdStorageResponseBody struct {
-	ColdStorageUsePercent *string `json:"ColdStorageUsePercent,omitempty" xml:"ColdStorageUsePercent,omitempty"`
-	ColdStorageSize       *string `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
-	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ClusterId             *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	PayType               *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	ColdStorageSize       *string `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
+	ColdStorageType       *string `json:"ColdStorageType,omitempty" xml:"ColdStorageType,omitempty"`
+	ColdStorageUseAmount  *string `json:"ColdStorageUseAmount,omitempty" xml:"ColdStorageUseAmount,omitempty"`
+	ColdStorageUsePercent *string `json:"ColdStorageUsePercent,omitempty" xml:"ColdStorageUsePercent,omitempty"`
 	OpenStatus            *string `json:"OpenStatus,omitempty" xml:"OpenStatus,omitempty"`
+	PayType               *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeColdStorageResponseBody) String() string {
@@ -3651,8 +3696,8 @@ func (s DescribeColdStorageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeColdStorageResponseBody) SetColdStorageUsePercent(v string) *DescribeColdStorageResponseBody {
-	s.ColdStorageUsePercent = &v
+func (s *DescribeColdStorageResponseBody) SetClusterId(v string) *DescribeColdStorageResponseBody {
+	s.ClusterId = &v
 	return s
 }
 
@@ -3661,13 +3706,23 @@ func (s *DescribeColdStorageResponseBody) SetColdStorageSize(v string) *Describe
 	return s
 }
 
-func (s *DescribeColdStorageResponseBody) SetRequestId(v string) *DescribeColdStorageResponseBody {
-	s.RequestId = &v
+func (s *DescribeColdStorageResponseBody) SetColdStorageType(v string) *DescribeColdStorageResponseBody {
+	s.ColdStorageType = &v
 	return s
 }
 
-func (s *DescribeColdStorageResponseBody) SetClusterId(v string) *DescribeColdStorageResponseBody {
-	s.ClusterId = &v
+func (s *DescribeColdStorageResponseBody) SetColdStorageUseAmount(v string) *DescribeColdStorageResponseBody {
+	s.ColdStorageUseAmount = &v
+	return s
+}
+
+func (s *DescribeColdStorageResponseBody) SetColdStorageUsePercent(v string) *DescribeColdStorageResponseBody {
+	s.ColdStorageUsePercent = &v
+	return s
+}
+
+func (s *DescribeColdStorageResponseBody) SetOpenStatus(v string) *DescribeColdStorageResponseBody {
+	s.OpenStatus = &v
 	return s
 }
 
@@ -3676,8 +3731,8 @@ func (s *DescribeColdStorageResponseBody) SetPayType(v string) *DescribeColdStor
 	return s
 }
 
-func (s *DescribeColdStorageResponseBody) SetOpenStatus(v string) *DescribeColdStorageResponseBody {
-	s.OpenStatus = &v
+func (s *DescribeColdStorageResponseBody) SetRequestId(v string) *DescribeColdStorageResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3768,9 +3823,9 @@ func (s *DescribeDBInstanceUsageResponse) SetBody(v *DescribeDBInstanceUsageResp
 }
 
 type DescribeDeletedInstancesRequest struct {
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s DescribeDeletedInstancesRequest) String() string {
@@ -3779,11 +3834,6 @@ func (s DescribeDeletedInstancesRequest) String() string {
 
 func (s DescribeDeletedInstancesRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeDeletedInstancesRequest) SetRegionId(v string) *DescribeDeletedInstancesRequest {
-	s.RegionId = &v
-	return s
 }
 
 func (s *DescribeDeletedInstancesRequest) SetPageNumber(v int32) *DescribeDeletedInstancesRequest {
@@ -3796,12 +3846,17 @@ func (s *DescribeDeletedInstancesRequest) SetPageSize(v int32) *DescribeDeletedI
 	return s
 }
 
+func (s *DescribeDeletedInstancesRequest) SetRegionId(v string) *DescribeDeletedInstancesRequest {
+	s.RegionId = &v
+	return s
+}
+
 type DescribeDeletedInstancesResponseBody struct {
 	Instances  *DescribeDeletedInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	TotalCount *int64                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount *int64                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDeletedInstancesResponseBody) String() string {
@@ -3817,8 +3872,8 @@ func (s *DescribeDeletedInstancesResponseBody) SetInstances(v *DescribeDeletedIn
 	return s
 }
 
-func (s *DescribeDeletedInstancesResponseBody) SetTotalCount(v int64) *DescribeDeletedInstancesResponseBody {
-	s.TotalCount = &v
+func (s *DescribeDeletedInstancesResponseBody) SetPageNumber(v int32) *DescribeDeletedInstancesResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -3832,8 +3887,8 @@ func (s *DescribeDeletedInstancesResponseBody) SetRequestId(v string) *DescribeD
 	return s
 }
 
-func (s *DescribeDeletedInstancesResponseBody) SetPageNumber(v int32) *DescribeDeletedInstancesResponseBody {
-	s.PageNumber = &v
+func (s *DescribeDeletedInstancesResponseBody) SetTotalCount(v int64) *DescribeDeletedInstancesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -3855,18 +3910,18 @@ func (s *DescribeDeletedInstancesResponseBodyInstances) SetInstance(v []*Describ
 }
 
 type DescribeDeletedInstancesResponseBodyInstancesInstance struct {
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ParentId           *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	ClusterType        *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	DeleteTime         *string `json:"DeleteTime,omitempty" xml:"DeleteTime,omitempty"`
-	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	ModuleStackVersion *string `json:"ModuleStackVersion,omitempty" xml:"ModuleStackVersion,omitempty"`
-	Engine             *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	MajorVersion       *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
 	CreatedTime        *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DeleteTime         *string `json:"DeleteTime,omitempty" xml:"DeleteTime,omitempty"`
+	Engine             *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	MajorVersion       *string `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
+	ModuleStackVersion *string `json:"ModuleStackVersion,omitempty" xml:"ModuleStackVersion,omitempty"`
+	ParentId           *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeDeletedInstancesResponseBodyInstancesInstance) String() string {
@@ -3877,33 +3932,13 @@ func (s DescribeDeletedInstancesResponseBodyInstancesInstance) GoString() string
 	return s.String()
 }
 
-func (s *DescribeDeletedInstancesResponseBodyInstancesInstance) SetStatus(v string) *DescribeDeletedInstancesResponseBodyInstancesInstance {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeDeletedInstancesResponseBodyInstancesInstance) SetInstanceId(v string) *DescribeDeletedInstancesResponseBodyInstancesInstance {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeDeletedInstancesResponseBodyInstancesInstance) SetRegionId(v string) *DescribeDeletedInstancesResponseBodyInstancesInstance {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeDeletedInstancesResponseBodyInstancesInstance) SetParentId(v string) *DescribeDeletedInstancesResponseBodyInstancesInstance {
-	s.ParentId = &v
-	return s
-}
-
 func (s *DescribeDeletedInstancesResponseBodyInstancesInstance) SetClusterType(v string) *DescribeDeletedInstancesResponseBodyInstancesInstance {
 	s.ClusterType = &v
 	return s
 }
 
-func (s *DescribeDeletedInstancesResponseBodyInstancesInstance) SetInstanceName(v string) *DescribeDeletedInstancesResponseBodyInstancesInstance {
-	s.InstanceName = &v
+func (s *DescribeDeletedInstancesResponseBodyInstancesInstance) SetCreatedTime(v string) *DescribeDeletedInstancesResponseBodyInstancesInstance {
+	s.CreatedTime = &v
 	return s
 }
 
@@ -3912,18 +3947,18 @@ func (s *DescribeDeletedInstancesResponseBodyInstancesInstance) SetDeleteTime(v 
 	return s
 }
 
-func (s *DescribeDeletedInstancesResponseBodyInstancesInstance) SetZoneId(v string) *DescribeDeletedInstancesResponseBodyInstancesInstance {
-	s.ZoneId = &v
-	return s
-}
-
-func (s *DescribeDeletedInstancesResponseBodyInstancesInstance) SetModuleStackVersion(v string) *DescribeDeletedInstancesResponseBodyInstancesInstance {
-	s.ModuleStackVersion = &v
-	return s
-}
-
 func (s *DescribeDeletedInstancesResponseBodyInstancesInstance) SetEngine(v string) *DescribeDeletedInstancesResponseBodyInstancesInstance {
 	s.Engine = &v
+	return s
+}
+
+func (s *DescribeDeletedInstancesResponseBodyInstancesInstance) SetInstanceId(v string) *DescribeDeletedInstancesResponseBodyInstancesInstance {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeDeletedInstancesResponseBodyInstancesInstance) SetInstanceName(v string) *DescribeDeletedInstancesResponseBodyInstancesInstance {
+	s.InstanceName = &v
 	return s
 }
 
@@ -3932,8 +3967,28 @@ func (s *DescribeDeletedInstancesResponseBodyInstancesInstance) SetMajorVersion(
 	return s
 }
 
-func (s *DescribeDeletedInstancesResponseBodyInstancesInstance) SetCreatedTime(v string) *DescribeDeletedInstancesResponseBodyInstancesInstance {
-	s.CreatedTime = &v
+func (s *DescribeDeletedInstancesResponseBodyInstancesInstance) SetModuleStackVersion(v string) *DescribeDeletedInstancesResponseBodyInstancesInstance {
+	s.ModuleStackVersion = &v
+	return s
+}
+
+func (s *DescribeDeletedInstancesResponseBodyInstancesInstance) SetParentId(v string) *DescribeDeletedInstancesResponseBodyInstancesInstance {
+	s.ParentId = &v
+	return s
+}
+
+func (s *DescribeDeletedInstancesResponseBodyInstancesInstance) SetRegionId(v string) *DescribeDeletedInstancesResponseBodyInstancesInstance {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDeletedInstancesResponseBodyInstancesInstance) SetStatus(v string) *DescribeDeletedInstancesResponseBodyInstancesInstance {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDeletedInstancesResponseBodyInstancesInstance) SetZoneId(v string) *DescribeDeletedInstancesResponseBodyInstancesInstance {
+	s.ZoneId = &v
 	return s
 }
 
@@ -4041,12 +4096,12 @@ func (s *DescribeEndpointsRequest) SetClusterId(v string) *DescribeEndpointsRequ
 }
 
 type DescribeEndpointsResponseBody struct {
-	VpcId     *string                                 `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ConnAddrs *DescribeEndpointsResponseBodyConnAddrs `json:"ConnAddrs,omitempty" xml:"ConnAddrs,omitempty" type:"Struct"`
-	VSwitchId *string                                 `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	NetType   *string                                 `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	Engine    *string                                 `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	NetType   *string                                 `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VSwitchId *string                                 `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId     *string                                 `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeEndpointsResponseBody) String() string {
@@ -4057,23 +4112,13 @@ func (s DescribeEndpointsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeEndpointsResponseBody) SetVpcId(v string) *DescribeEndpointsResponseBody {
-	s.VpcId = &v
-	return s
-}
-
-func (s *DescribeEndpointsResponseBody) SetRequestId(v string) *DescribeEndpointsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *DescribeEndpointsResponseBody) SetConnAddrs(v *DescribeEndpointsResponseBodyConnAddrs) *DescribeEndpointsResponseBody {
 	s.ConnAddrs = v
 	return s
 }
 
-func (s *DescribeEndpointsResponseBody) SetVSwitchId(v string) *DescribeEndpointsResponseBody {
-	s.VSwitchId = &v
+func (s *DescribeEndpointsResponseBody) SetEngine(v string) *DescribeEndpointsResponseBody {
+	s.Engine = &v
 	return s
 }
 
@@ -4082,8 +4127,18 @@ func (s *DescribeEndpointsResponseBody) SetNetType(v string) *DescribeEndpointsR
 	return s
 }
 
-func (s *DescribeEndpointsResponseBody) SetEngine(v string) *DescribeEndpointsResponseBody {
-	s.Engine = &v
+func (s *DescribeEndpointsResponseBody) SetRequestId(v string) *DescribeEndpointsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeEndpointsResponseBody) SetVSwitchId(v string) *DescribeEndpointsResponseBody {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeEndpointsResponseBody) SetVpcId(v string) *DescribeEndpointsResponseBody {
+	s.VpcId = &v
 	return s
 }
 
@@ -4105,10 +4160,10 @@ func (s *DescribeEndpointsResponseBodyConnAddrs) SetConnAddrInfo(v []*DescribeEn
 }
 
 type DescribeEndpointsResponseBodyConnAddrsConnAddrInfo struct {
-	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
-	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 	ConnAddr     *string `json:"ConnAddr,omitempty" xml:"ConnAddr,omitempty"`
+	ConnAddrPort *string `json:"ConnAddrPort,omitempty" xml:"ConnAddrPort,omitempty"`
 	ConnType     *string `json:"ConnType,omitempty" xml:"ConnType,omitempty"`
+	NetType      *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
 }
 
 func (s DescribeEndpointsResponseBodyConnAddrsConnAddrInfo) String() string {
@@ -4119,23 +4174,23 @@ func (s DescribeEndpointsResponseBodyConnAddrsConnAddrInfo) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeEndpointsResponseBodyConnAddrsConnAddrInfo) SetConnAddrPort(v string) *DescribeEndpointsResponseBodyConnAddrsConnAddrInfo {
-	s.ConnAddrPort = &v
-	return s
-}
-
-func (s *DescribeEndpointsResponseBodyConnAddrsConnAddrInfo) SetNetType(v string) *DescribeEndpointsResponseBodyConnAddrsConnAddrInfo {
-	s.NetType = &v
-	return s
-}
-
 func (s *DescribeEndpointsResponseBodyConnAddrsConnAddrInfo) SetConnAddr(v string) *DescribeEndpointsResponseBodyConnAddrsConnAddrInfo {
 	s.ConnAddr = &v
 	return s
 }
 
+func (s *DescribeEndpointsResponseBodyConnAddrsConnAddrInfo) SetConnAddrPort(v string) *DescribeEndpointsResponseBodyConnAddrsConnAddrInfo {
+	s.ConnAddrPort = &v
+	return s
+}
+
 func (s *DescribeEndpointsResponseBodyConnAddrsConnAddrInfo) SetConnType(v string) *DescribeEndpointsResponseBodyConnAddrsConnAddrInfo {
 	s.ConnType = &v
+	return s
+}
+
+func (s *DescribeEndpointsResponseBodyConnAddrsConnAddrInfo) SetNetType(v string) *DescribeEndpointsResponseBodyConnAddrsConnAddrInfo {
+	s.NetType = &v
 	return s
 }
 
@@ -4180,51 +4235,57 @@ func (s *DescribeInstanceRequest) SetClusterId(v string) *DescribeInstanceReques
 }
 
 type DescribeInstanceResponseBody struct {
-	ModuleStackVersion   *string                           `json:"ModuleStackVersion,omitempty" xml:"ModuleStackVersion,omitempty"`
-	IsHa                 *bool                             `json:"IsHa,omitempty" xml:"IsHa,omitempty"`
-	CreatedTime          *string                           `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	ResourceGroupId      *string                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	MasterInstanceType   *string                           `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
-	IsDeletionProtection *bool                             `json:"IsDeletionProtection,omitempty" xml:"IsDeletionProtection,omitempty"`
-	ModuleId             *int32                            `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
-	IsLatestVersion      *bool                             `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
-	MaintainEndTime      *string                           `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	NetworkType          *string                           `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	CoreInstanceType     *string                           `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
-	ClusterName          *string                           `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	MasterDiskType       *string                           `json:"MasterDiskType,omitempty" xml:"MasterDiskType,omitempty"`
-	MaintainStartTime    *string                           `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	Engine               *string                           `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	Tags                 *DescribeInstanceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	Status               *string                           `json:"Status,omitempty" xml:"Status,omitempty"`
-	ColdStorageSize      *int32                            `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
-	ParentId             *string                           `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	MajorVersion         *string                           `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
-	CoreDiskCount        *string                           `json:"CoreDiskCount,omitempty" xml:"CoreDiskCount,omitempty"`
-	ExpireTimeUTC        *string                           `json:"ExpireTimeUTC,omitempty" xml:"ExpireTimeUTC,omitempty"`
-	MasterDiskSize       *int32                            `json:"MasterDiskSize,omitempty" xml:"MasterDiskSize,omitempty"`
-	RequestId            *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ZoneId               *string                           `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	ClusterId            *string                           `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	InstanceId           *string                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	CoreNodeCount        *int32                            `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
-	ColdStorageStatus    *string                           `json:"ColdStorageStatus,omitempty" xml:"ColdStorageStatus,omitempty"`
-	CreatedTimeUTC       *string                           `json:"CreatedTimeUTC,omitempty" xml:"CreatedTimeUTC,omitempty"`
-	MinorVersion         *string                           `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	Duration             *int32                            `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	PayType              *string                           `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	IsMultiModel         *bool                             `json:"IsMultiModel,omitempty" xml:"IsMultiModel,omitempty"`
-	ClusterType          *string                           `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	VswitchId            *string                           `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	MasterNodeCount      *int32                            `json:"MasterNodeCount,omitempty" xml:"MasterNodeCount,omitempty"`
-	InstanceName         *string                           `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	VpcId                *string                           `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	AutoRenewal          *bool                             `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	CoreDiskType         *string                           `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
-	RegionId             *string                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ExpireTime           *string                           `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	BackupStatus         *string                           `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	CoreDiskSize         *int32                            `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
+	AutoRenewal          *bool                                         `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
+	BackupStatus         *string                                       `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
+	ClusterId            *string                                       `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName          *string                                       `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ClusterType          *string                                       `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	ColdStorageSize      *int32                                        `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
+	ColdStorageStatus    *string                                       `json:"ColdStorageStatus,omitempty" xml:"ColdStorageStatus,omitempty"`
+	ConfirmMaintainTime  *string                                       `json:"ConfirmMaintainTime,omitempty" xml:"ConfirmMaintainTime,omitempty"`
+	CoreDiskCount        *string                                       `json:"CoreDiskCount,omitempty" xml:"CoreDiskCount,omitempty"`
+	CoreDiskSize         *int32                                        `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
+	CoreDiskType         *string                                       `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
+	CoreInstanceType     *string                                       `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	CoreNodeCount        *int32                                        `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
+	CreatedTime          *string                                       `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CreatedTimeUTC       *string                                       `json:"CreatedTimeUTC,omitempty" xml:"CreatedTimeUTC,omitempty"`
+	Duration             *int32                                        `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EncryptionKey        *string                                       `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	EncryptionType       *string                                       `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	Engine               *string                                       `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	ExpireTime           *string                                       `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpireTimeUTC        *string                                       `json:"ExpireTimeUTC,omitempty" xml:"ExpireTimeUTC,omitempty"`
+	InstanceId           *string                                       `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName         *string                                       `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	IsDeletionProtection *bool                                         `json:"IsDeletionProtection,omitempty" xml:"IsDeletionProtection,omitempty"`
+	IsHa                 *bool                                         `json:"IsHa,omitempty" xml:"IsHa,omitempty"`
+	IsLatestVersion      *bool                                         `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
+	IsMultiModel         *bool                                         `json:"IsMultiModel,omitempty" xml:"IsMultiModel,omitempty"`
+	MaintainEndTime      *string                                       `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	MaintainStartTime    *string                                       `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	MajorVersion         *string                                       `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
+	MasterDiskSize       *int32                                        `json:"MasterDiskSize,omitempty" xml:"MasterDiskSize,omitempty"`
+	MasterDiskType       *string                                       `json:"MasterDiskType,omitempty" xml:"MasterDiskType,omitempty"`
+	MasterInstanceType   *string                                       `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
+	MasterNodeCount      *int32                                        `json:"MasterNodeCount,omitempty" xml:"MasterNodeCount,omitempty"`
+	MinorVersion         *string                                       `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	ModuleId             *int32                                        `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	ModuleStackVersion   *string                                       `json:"ModuleStackVersion,omitempty" xml:"ModuleStackVersion,omitempty"`
+	NeedUpgrade          *bool                                         `json:"NeedUpgrade,omitempty" xml:"NeedUpgrade,omitempty"`
+	NeedUpgradeComps     *DescribeInstanceResponseBodyNeedUpgradeComps `json:"NeedUpgradeComps,omitempty" xml:"NeedUpgradeComps,omitempty" type:"Struct"`
+	NetworkType          *string                                       `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	ParentId             *string                                       `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	PayType              *string                                       `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	RegionId             *string                                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId            *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId      *string                                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status               *string                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                 *DescribeInstanceResponseBodyTags             `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	TaskProgress         *string                                       `json:"TaskProgress,omitempty" xml:"TaskProgress,omitempty"`
+	VpcId                *string                                       `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchId            *string                                       `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	ZoneId               *string                                       `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeInstanceResponseBody) String() string {
@@ -4235,218 +4296,8 @@ func (s DescribeInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeInstanceResponseBody) SetModuleStackVersion(v string) *DescribeInstanceResponseBody {
-	s.ModuleStackVersion = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetIsHa(v bool) *DescribeInstanceResponseBody {
-	s.IsHa = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetCreatedTime(v string) *DescribeInstanceResponseBody {
-	s.CreatedTime = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetResourceGroupId(v string) *DescribeInstanceResponseBody {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetMasterInstanceType(v string) *DescribeInstanceResponseBody {
-	s.MasterInstanceType = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetIsDeletionProtection(v bool) *DescribeInstanceResponseBody {
-	s.IsDeletionProtection = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetModuleId(v int32) *DescribeInstanceResponseBody {
-	s.ModuleId = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetIsLatestVersion(v bool) *DescribeInstanceResponseBody {
-	s.IsLatestVersion = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetMaintainEndTime(v string) *DescribeInstanceResponseBody {
-	s.MaintainEndTime = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetNetworkType(v string) *DescribeInstanceResponseBody {
-	s.NetworkType = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetCoreInstanceType(v string) *DescribeInstanceResponseBody {
-	s.CoreInstanceType = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetClusterName(v string) *DescribeInstanceResponseBody {
-	s.ClusterName = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetMasterDiskType(v string) *DescribeInstanceResponseBody {
-	s.MasterDiskType = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetMaintainStartTime(v string) *DescribeInstanceResponseBody {
-	s.MaintainStartTime = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetEngine(v string) *DescribeInstanceResponseBody {
-	s.Engine = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetTags(v *DescribeInstanceResponseBodyTags) *DescribeInstanceResponseBody {
-	s.Tags = v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetStatus(v string) *DescribeInstanceResponseBody {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetColdStorageSize(v int32) *DescribeInstanceResponseBody {
-	s.ColdStorageSize = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetParentId(v string) *DescribeInstanceResponseBody {
-	s.ParentId = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetMajorVersion(v string) *DescribeInstanceResponseBody {
-	s.MajorVersion = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetCoreDiskCount(v string) *DescribeInstanceResponseBody {
-	s.CoreDiskCount = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetExpireTimeUTC(v string) *DescribeInstanceResponseBody {
-	s.ExpireTimeUTC = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetMasterDiskSize(v int32) *DescribeInstanceResponseBody {
-	s.MasterDiskSize = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetRequestId(v string) *DescribeInstanceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetZoneId(v string) *DescribeInstanceResponseBody {
-	s.ZoneId = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetClusterId(v string) *DescribeInstanceResponseBody {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetInstanceId(v string) *DescribeInstanceResponseBody {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetCoreNodeCount(v int32) *DescribeInstanceResponseBody {
-	s.CoreNodeCount = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetColdStorageStatus(v string) *DescribeInstanceResponseBody {
-	s.ColdStorageStatus = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetCreatedTimeUTC(v string) *DescribeInstanceResponseBody {
-	s.CreatedTimeUTC = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetMinorVersion(v string) *DescribeInstanceResponseBody {
-	s.MinorVersion = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetDuration(v int32) *DescribeInstanceResponseBody {
-	s.Duration = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetPayType(v string) *DescribeInstanceResponseBody {
-	s.PayType = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetIsMultiModel(v bool) *DescribeInstanceResponseBody {
-	s.IsMultiModel = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetClusterType(v string) *DescribeInstanceResponseBody {
-	s.ClusterType = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetVswitchId(v string) *DescribeInstanceResponseBody {
-	s.VswitchId = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetMasterNodeCount(v int32) *DescribeInstanceResponseBody {
-	s.MasterNodeCount = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetInstanceName(v string) *DescribeInstanceResponseBody {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetVpcId(v string) *DescribeInstanceResponseBody {
-	s.VpcId = &v
-	return s
-}
-
 func (s *DescribeInstanceResponseBody) SetAutoRenewal(v bool) *DescribeInstanceResponseBody {
 	s.AutoRenewal = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetCoreDiskType(v string) *DescribeInstanceResponseBody {
-	s.CoreDiskType = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetRegionId(v string) *DescribeInstanceResponseBody {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeInstanceResponseBody) SetExpireTime(v string) *DescribeInstanceResponseBody {
-	s.ExpireTime = &v
 	return s
 }
 
@@ -4455,8 +4306,265 @@ func (s *DescribeInstanceResponseBody) SetBackupStatus(v string) *DescribeInstan
 	return s
 }
 
+func (s *DescribeInstanceResponseBody) SetClusterId(v string) *DescribeInstanceResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetClusterName(v string) *DescribeInstanceResponseBody {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetClusterType(v string) *DescribeInstanceResponseBody {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetColdStorageSize(v int32) *DescribeInstanceResponseBody {
+	s.ColdStorageSize = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetColdStorageStatus(v string) *DescribeInstanceResponseBody {
+	s.ColdStorageStatus = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetConfirmMaintainTime(v string) *DescribeInstanceResponseBody {
+	s.ConfirmMaintainTime = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetCoreDiskCount(v string) *DescribeInstanceResponseBody {
+	s.CoreDiskCount = &v
+	return s
+}
+
 func (s *DescribeInstanceResponseBody) SetCoreDiskSize(v int32) *DescribeInstanceResponseBody {
 	s.CoreDiskSize = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetCoreDiskType(v string) *DescribeInstanceResponseBody {
+	s.CoreDiskType = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetCoreInstanceType(v string) *DescribeInstanceResponseBody {
+	s.CoreInstanceType = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetCoreNodeCount(v int32) *DescribeInstanceResponseBody {
+	s.CoreNodeCount = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetCreatedTime(v string) *DescribeInstanceResponseBody {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetCreatedTimeUTC(v string) *DescribeInstanceResponseBody {
+	s.CreatedTimeUTC = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetDuration(v int32) *DescribeInstanceResponseBody {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetEncryptionKey(v string) *DescribeInstanceResponseBody {
+	s.EncryptionKey = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetEncryptionType(v string) *DescribeInstanceResponseBody {
+	s.EncryptionType = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetEngine(v string) *DescribeInstanceResponseBody {
+	s.Engine = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetExpireTime(v string) *DescribeInstanceResponseBody {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetExpireTimeUTC(v string) *DescribeInstanceResponseBody {
+	s.ExpireTimeUTC = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetInstanceId(v string) *DescribeInstanceResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetInstanceName(v string) *DescribeInstanceResponseBody {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetIsDeletionProtection(v bool) *DescribeInstanceResponseBody {
+	s.IsDeletionProtection = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetIsHa(v bool) *DescribeInstanceResponseBody {
+	s.IsHa = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetIsLatestVersion(v bool) *DescribeInstanceResponseBody {
+	s.IsLatestVersion = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetIsMultiModel(v bool) *DescribeInstanceResponseBody {
+	s.IsMultiModel = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetMaintainEndTime(v string) *DescribeInstanceResponseBody {
+	s.MaintainEndTime = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetMaintainStartTime(v string) *DescribeInstanceResponseBody {
+	s.MaintainStartTime = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetMajorVersion(v string) *DescribeInstanceResponseBody {
+	s.MajorVersion = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetMasterDiskSize(v int32) *DescribeInstanceResponseBody {
+	s.MasterDiskSize = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetMasterDiskType(v string) *DescribeInstanceResponseBody {
+	s.MasterDiskType = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetMasterInstanceType(v string) *DescribeInstanceResponseBody {
+	s.MasterInstanceType = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetMasterNodeCount(v int32) *DescribeInstanceResponseBody {
+	s.MasterNodeCount = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetMinorVersion(v string) *DescribeInstanceResponseBody {
+	s.MinorVersion = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetModuleId(v int32) *DescribeInstanceResponseBody {
+	s.ModuleId = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetModuleStackVersion(v string) *DescribeInstanceResponseBody {
+	s.ModuleStackVersion = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetNeedUpgrade(v bool) *DescribeInstanceResponseBody {
+	s.NeedUpgrade = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetNeedUpgradeComps(v *DescribeInstanceResponseBodyNeedUpgradeComps) *DescribeInstanceResponseBody {
+	s.NeedUpgradeComps = v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetNetworkType(v string) *DescribeInstanceResponseBody {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetParentId(v string) *DescribeInstanceResponseBody {
+	s.ParentId = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetPayType(v string) *DescribeInstanceResponseBody {
+	s.PayType = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetRegionId(v string) *DescribeInstanceResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetRequestId(v string) *DescribeInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetResourceGroupId(v string) *DescribeInstanceResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetStatus(v string) *DescribeInstanceResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetTags(v *DescribeInstanceResponseBodyTags) *DescribeInstanceResponseBody {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetTaskProgress(v string) *DescribeInstanceResponseBody {
+	s.TaskProgress = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetVpcId(v string) *DescribeInstanceResponseBody {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetVswitchId(v string) *DescribeInstanceResponseBody {
+	s.VswitchId = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBody) SetZoneId(v string) *DescribeInstanceResponseBody {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeInstanceResponseBodyNeedUpgradeComps struct {
+	Comps []*string `json:"Comps,omitempty" xml:"Comps,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstanceResponseBodyNeedUpgradeComps) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceResponseBodyNeedUpgradeComps) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceResponseBodyNeedUpgradeComps) SetComps(v []*string) *DescribeInstanceResponseBodyNeedUpgradeComps {
+	s.Comps = v
 	return s
 }
 
@@ -4523,12 +4631,122 @@ func (s *DescribeInstanceResponse) SetBody(v *DescribeInstanceResponseBody) *Des
 	return s
 }
 
+type DescribeInstanceTypeRequest struct {
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+}
+
+func (s DescribeInstanceTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTypeRequest) SetInstanceType(v string) *DescribeInstanceTypeRequest {
+	s.InstanceType = &v
+	return s
+}
+
+type DescribeInstanceTypeResponseBody struct {
+	InstanceTypeSpecList *DescribeInstanceTypeResponseBodyInstanceTypeSpecList `json:"InstanceTypeSpecList,omitempty" xml:"InstanceTypeSpecList,omitempty" type:"Struct"`
+	RequestId            *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInstanceTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTypeResponseBody) SetInstanceTypeSpecList(v *DescribeInstanceTypeResponseBodyInstanceTypeSpecList) *DescribeInstanceTypeResponseBody {
+	s.InstanceTypeSpecList = v
+	return s
+}
+
+func (s *DescribeInstanceTypeResponseBody) SetRequestId(v string) *DescribeInstanceTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInstanceTypeResponseBodyInstanceTypeSpecList struct {
+	InstanceTypeSpec []*DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec `json:"InstanceTypeSpec,omitempty" xml:"InstanceTypeSpec,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstanceTypeResponseBodyInstanceTypeSpecList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceTypeResponseBodyInstanceTypeSpecList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTypeResponseBodyInstanceTypeSpecList) SetInstanceTypeSpec(v []*DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec) *DescribeInstanceTypeResponseBodyInstanceTypeSpecList {
+	s.InstanceTypeSpec = v
+	return s
+}
+
+type DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec struct {
+	CpuSize      *int64  `json:"CpuSize,omitempty" xml:"CpuSize,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	MemSize      *int64  `json:"MemSize,omitempty" xml:"MemSize,omitempty"`
+}
+
+func (s DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec) SetCpuSize(v int64) *DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec {
+	s.CpuSize = &v
+	return s
+}
+
+func (s *DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec) SetInstanceType(v string) *DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec) SetMemSize(v int64) *DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec {
+	s.MemSize = &v
+	return s
+}
+
+type DescribeInstanceTypeResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeInstanceTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstanceTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceTypeResponse) SetHeaders(v map[string]*string) *DescribeInstanceTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceTypeResponse) SetBody(v *DescribeInstanceTypeResponseBody) *DescribeInstanceTypeResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeInstancesRequest struct {
-	RegionId        *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClusterId       *string                        `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName     *string                        `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	DbType          *string                        `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	PageNumber      *int32                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize        *int32                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	DbType          *string                        `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	ClusterName     *string                        `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	RegionId        *string                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceGroupId *string                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Tag             []*DescribeInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -4541,8 +4759,18 @@ func (s DescribeInstancesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeInstancesRequest) SetRegionId(v string) *DescribeInstancesRequest {
-	s.RegionId = &v
+func (s *DescribeInstancesRequest) SetClusterId(v string) *DescribeInstancesRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeInstancesRequest) SetClusterName(v string) *DescribeInstancesRequest {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *DescribeInstancesRequest) SetDbType(v string) *DescribeInstancesRequest {
+	s.DbType = &v
 	return s
 }
 
@@ -4556,13 +4784,8 @@ func (s *DescribeInstancesRequest) SetPageSize(v int32) *DescribeInstancesReques
 	return s
 }
 
-func (s *DescribeInstancesRequest) SetDbType(v string) *DescribeInstancesRequest {
-	s.DbType = &v
-	return s
-}
-
-func (s *DescribeInstancesRequest) SetClusterName(v string) *DescribeInstancesRequest {
-	s.ClusterName = &v
+func (s *DescribeInstancesRequest) SetRegionId(v string) *DescribeInstancesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -4601,10 +4824,10 @@ func (s *DescribeInstancesRequestTag) SetValue(v string) *DescribeInstancesReque
 
 type DescribeInstancesResponseBody struct {
 	Instances  *DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeInstancesResponseBody) String() string {
@@ -4620,8 +4843,8 @@ func (s *DescribeInstancesResponseBody) SetInstances(v *DescribeInstancesRespons
 	return s
 }
 
-func (s *DescribeInstancesResponseBody) SetTotalCount(v int64) *DescribeInstancesResponseBody {
-	s.TotalCount = &v
+func (s *DescribeInstancesResponseBody) SetPageNumber(v int32) *DescribeInstancesResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -4635,8 +4858,8 @@ func (s *DescribeInstancesResponseBody) SetRequestId(v string) *DescribeInstance
 	return s
 }
 
-func (s *DescribeInstancesResponseBody) SetPageNumber(v int32) *DescribeInstancesResponseBody {
-	s.PageNumber = &v
+func (s *DescribeInstancesResponseBody) SetTotalCount(v int64) *DescribeInstancesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -4658,44 +4881,44 @@ func (s *DescribeInstancesResponseBodyInstances) SetInstance(v []*DescribeInstan
 }
 
 type DescribeInstancesResponseBodyInstancesInstance struct {
-	VpcId                *string                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	Status               *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
-	ModuleId             *int32                                              `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
-	VswitchId            *string                                             `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	AutoRenewal          *bool                                               `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
 	BackupStatus         *string                                             `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
-	PayType              *string                                             `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	CoreDiskType         *string                                             `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
-	Tags                 *DescribeInstancesResponseBodyInstancesInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	MasterNodeCount      *int32                                              `json:"MasterNodeCount,omitempty" xml:"MasterNodeCount,omitempty"`
-	NetworkType          *string                                             `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	CreatedTimeUTC       *string                                             `json:"CreatedTimeUTC,omitempty" xml:"CreatedTimeUTC,omitempty"`
-	ParentId             *string                                             `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	ExpireTimeUTC        *string                                             `json:"ExpireTimeUTC,omitempty" xml:"ExpireTimeUTC,omitempty"`
-	InstanceName         *string                                             `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	MasterInstanceType   *string                                             `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
-	CoreInstanceType     *string                                             `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
-	CreatedTime          *string                                             `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	CoreDiskSize         *int32                                              `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
 	ClusterId            *string                                             `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ExpireTime           *string                                             `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	IsHa                 *bool                                               `json:"IsHa,omitempty" xml:"IsHa,omitempty"`
-	InstanceId           *string                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ClusterName          *string                                             `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ClusterType          *string                                             `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
 	ColdStorageStatus    *string                                             `json:"ColdStorageStatus,omitempty" xml:"ColdStorageStatus,omitempty"`
+	CoreDiskCount        *string                                             `json:"CoreDiskCount,omitempty" xml:"CoreDiskCount,omitempty"`
+	CoreDiskSize         *int32                                              `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
+	CoreDiskType         *string                                             `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
+	CoreInstanceType     *string                                             `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	CoreNodeCount        *int32                                              `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
+	CreatedTime          *string                                             `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CreatedTimeUTC       *string                                             `json:"CreatedTimeUTC,omitempty" xml:"CreatedTimeUTC,omitempty"`
+	Duration             *int32                                              `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Engine               *string                                             `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	ExpireTime           *string                                             `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpireTimeUTC        *string                                             `json:"ExpireTimeUTC,omitempty" xml:"ExpireTimeUTC,omitempty"`
+	InstanceId           *string                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName         *string                                             `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	IsDeletionProtection *bool                                               `json:"IsDeletionProtection,omitempty" xml:"IsDeletionProtection,omitempty"`
-	RegionId             *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	IsHa                 *bool                                               `json:"IsHa,omitempty" xml:"IsHa,omitempty"`
+	MajorVersion         *string                                             `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
 	MasterDiskSize       *int32                                              `json:"MasterDiskSize,omitempty" xml:"MasterDiskSize,omitempty"`
 	MasterDiskType       *string                                             `json:"MasterDiskType,omitempty" xml:"MasterDiskType,omitempty"`
-	AutoRenewal          *bool                                               `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	ClusterType          *string                                             `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	ResourceGroupId      *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ClusterName          *string                                             `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	ZoneId               *string                                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	Duration             *int32                                              `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	MasterInstanceType   *string                                             `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
+	MasterNodeCount      *int32                                              `json:"MasterNodeCount,omitempty" xml:"MasterNodeCount,omitempty"`
+	ModuleId             *int32                                              `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
 	ModuleStackVersion   *string                                             `json:"ModuleStackVersion,omitempty" xml:"ModuleStackVersion,omitempty"`
-	Engine               *string                                             `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	MajorVersion         *string                                             `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
-	CoreDiskCount        *string                                             `json:"CoreDiskCount,omitempty" xml:"CoreDiskCount,omitempty"`
-	CoreNodeCount        *int32                                              `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
+	NetworkType          *string                                             `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	ParentId             *string                                             `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	PayType              *string                                             `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	RegionId             *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId      *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status               *string                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                 *DescribeInstancesResponseBodyInstancesInstanceTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VpcId                *string                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchId            *string                                             `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	ZoneId               *string                                             `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstancesInstance) String() string {
@@ -4706,23 +4929,8 @@ func (s DescribeInstancesResponseBodyInstancesInstance) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetVpcId(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.VpcId = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetStatus(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetModuleId(v int32) *DescribeInstancesResponseBodyInstancesInstance {
-	s.ModuleId = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetVswitchId(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.VswitchId = &v
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetAutoRenewal(v bool) *DescribeInstancesResponseBodyInstancesInstance {
+	s.AutoRenewal = &v
 	return s
 }
 
@@ -4731,88 +4939,18 @@ func (s *DescribeInstancesResponseBodyInstancesInstance) SetBackupStatus(v strin
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetPayType(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.PayType = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetCoreDiskType(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.CoreDiskType = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetTags(v *DescribeInstancesResponseBodyInstancesInstanceTags) *DescribeInstancesResponseBodyInstancesInstance {
-	s.Tags = v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetMasterNodeCount(v int32) *DescribeInstancesResponseBodyInstancesInstance {
-	s.MasterNodeCount = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetNetworkType(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.NetworkType = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetCreatedTimeUTC(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.CreatedTimeUTC = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetParentId(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.ParentId = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetExpireTimeUTC(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.ExpireTimeUTC = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetInstanceName(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetMasterInstanceType(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.MasterInstanceType = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetCoreInstanceType(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.CoreInstanceType = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetCreatedTime(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.CreatedTime = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetCoreDiskSize(v int32) *DescribeInstancesResponseBodyInstancesInstance {
-	s.CoreDiskSize = &v
-	return s
-}
-
 func (s *DescribeInstancesResponseBodyInstancesInstance) SetClusterId(v string) *DescribeInstancesResponseBodyInstancesInstance {
 	s.ClusterId = &v
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetExpireTime(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.ExpireTime = &v
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetClusterName(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.ClusterName = &v
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetIsHa(v bool) *DescribeInstancesResponseBodyInstancesInstance {
-	s.IsHa = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetInstanceId(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.InstanceId = &v
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetClusterType(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.ClusterType = &v
 	return s
 }
 
@@ -4821,13 +4959,83 @@ func (s *DescribeInstancesResponseBodyInstancesInstance) SetColdStorageStatus(v 
 	return s
 }
 
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetCoreDiskCount(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.CoreDiskCount = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetCoreDiskSize(v int32) *DescribeInstancesResponseBodyInstancesInstance {
+	s.CoreDiskSize = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetCoreDiskType(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.CoreDiskType = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetCoreInstanceType(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.CoreInstanceType = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetCoreNodeCount(v int32) *DescribeInstancesResponseBodyInstancesInstance {
+	s.CoreNodeCount = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetCreatedTime(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetCreatedTimeUTC(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.CreatedTimeUTC = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetDuration(v int32) *DescribeInstancesResponseBodyInstancesInstance {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetEngine(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.Engine = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetExpireTime(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetExpireTimeUTC(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.ExpireTimeUTC = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetInstanceId(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetInstanceName(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.InstanceName = &v
+	return s
+}
+
 func (s *DescribeInstancesResponseBodyInstancesInstance) SetIsDeletionProtection(v bool) *DescribeInstancesResponseBodyInstancesInstance {
 	s.IsDeletionProtection = &v
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetRegionId(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.RegionId = &v
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetIsHa(v bool) *DescribeInstancesResponseBodyInstancesInstance {
+	s.IsHa = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetMajorVersion(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.MajorVersion = &v
 	return s
 }
 
@@ -4841,33 +5049,18 @@ func (s *DescribeInstancesResponseBodyInstancesInstance) SetMasterDiskType(v str
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetAutoRenewal(v bool) *DescribeInstancesResponseBodyInstancesInstance {
-	s.AutoRenewal = &v
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetMasterInstanceType(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.MasterInstanceType = &v
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetClusterType(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.ClusterType = &v
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetMasterNodeCount(v int32) *DescribeInstancesResponseBodyInstancesInstance {
+	s.MasterNodeCount = &v
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetResourceGroupId(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetClusterName(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.ClusterName = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetZoneId(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.ZoneId = &v
-	return s
-}
-
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetDuration(v int32) *DescribeInstancesResponseBodyInstancesInstance {
-	s.Duration = &v
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetModuleId(v int32) *DescribeInstancesResponseBodyInstancesInstance {
+	s.ModuleId = &v
 	return s
 }
 
@@ -4876,23 +5069,53 @@ func (s *DescribeInstancesResponseBodyInstancesInstance) SetModuleStackVersion(v
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetEngine(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.Engine = &v
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetNetworkType(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.NetworkType = &v
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetMajorVersion(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.MajorVersion = &v
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetParentId(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.ParentId = &v
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetCoreDiskCount(v string) *DescribeInstancesResponseBodyInstancesInstance {
-	s.CoreDiskCount = &v
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetPayType(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.PayType = &v
 	return s
 }
 
-func (s *DescribeInstancesResponseBodyInstancesInstance) SetCoreNodeCount(v int32) *DescribeInstancesResponseBodyInstancesInstance {
-	s.CoreNodeCount = &v
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetRegionId(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetResourceGroupId(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetStatus(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetTags(v *DescribeInstancesResponseBodyInstancesInstanceTags) *DescribeInstancesResponseBodyInstancesInstance {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetVpcId(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetVswitchId(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.VswitchId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstance) SetZoneId(v string) *DescribeInstancesResponseBodyInstancesInstance {
+	s.ZoneId = &v
 	return s
 }
 
@@ -4959,115 +5182,6 @@ func (s *DescribeInstancesResponse) SetBody(v *DescribeInstancesResponseBody) *D
 	return s
 }
 
-type DescribeInstanceTypeRequest struct {
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-}
-
-func (s DescribeInstanceTypeRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeInstanceTypeRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeInstanceTypeRequest) SetInstanceType(v string) *DescribeInstanceTypeRequest {
-	s.InstanceType = &v
-	return s
-}
-
-type DescribeInstanceTypeResponseBody struct {
-	RequestId            *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	InstanceTypeSpecList *DescribeInstanceTypeResponseBodyInstanceTypeSpecList `json:"InstanceTypeSpecList,omitempty" xml:"InstanceTypeSpecList,omitempty" type:"Struct"`
-}
-
-func (s DescribeInstanceTypeResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeInstanceTypeResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeInstanceTypeResponseBody) SetRequestId(v string) *DescribeInstanceTypeResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeInstanceTypeResponseBody) SetInstanceTypeSpecList(v *DescribeInstanceTypeResponseBodyInstanceTypeSpecList) *DescribeInstanceTypeResponseBody {
-	s.InstanceTypeSpecList = v
-	return s
-}
-
-type DescribeInstanceTypeResponseBodyInstanceTypeSpecList struct {
-	InstanceTypeSpec []*DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec `json:"InstanceTypeSpec,omitempty" xml:"InstanceTypeSpec,omitempty" type:"Repeated"`
-}
-
-func (s DescribeInstanceTypeResponseBodyInstanceTypeSpecList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeInstanceTypeResponseBodyInstanceTypeSpecList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeInstanceTypeResponseBodyInstanceTypeSpecList) SetInstanceTypeSpec(v []*DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec) *DescribeInstanceTypeResponseBodyInstanceTypeSpecList {
-	s.InstanceTypeSpec = v
-	return s
-}
-
-type DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec struct {
-	CpuSize      *int64  `json:"CpuSize,omitempty" xml:"CpuSize,omitempty"`
-	MemSize      *int64  `json:"MemSize,omitempty" xml:"MemSize,omitempty"`
-	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-}
-
-func (s DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec) SetCpuSize(v int64) *DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec {
-	s.CpuSize = &v
-	return s
-}
-
-func (s *DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec) SetMemSize(v int64) *DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec {
-	s.MemSize = &v
-	return s
-}
-
-func (s *DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec) SetInstanceType(v string) *DescribeInstanceTypeResponseBodyInstanceTypeSpecListInstanceTypeSpec {
-	s.InstanceType = &v
-	return s
-}
-
-type DescribeInstanceTypeResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeInstanceTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeInstanceTypeResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeInstanceTypeResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeInstanceTypeResponse) SetHeaders(v map[string]*string) *DescribeInstanceTypeResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeInstanceTypeResponse) SetBody(v *DescribeInstanceTypeResponseBody) *DescribeInstanceTypeResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeIpWhitelistRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
@@ -5086,8 +5200,8 @@ func (s *DescribeIpWhitelistRequest) SetClusterId(v string) *DescribeIpWhitelist
 }
 
 type DescribeIpWhitelistResponseBody struct {
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Groups    *DescribeIpWhitelistResponseBodyGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeIpWhitelistResponseBody) String() string {
@@ -5098,13 +5212,13 @@ func (s DescribeIpWhitelistResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeIpWhitelistResponseBody) SetRequestId(v string) *DescribeIpWhitelistResponseBody {
-	s.RequestId = &v
+func (s *DescribeIpWhitelistResponseBody) SetGroups(v *DescribeIpWhitelistResponseBodyGroups) *DescribeIpWhitelistResponseBody {
+	s.Groups = v
 	return s
 }
 
-func (s *DescribeIpWhitelistResponseBody) SetGroups(v *DescribeIpWhitelistResponseBodyGroups) *DescribeIpWhitelistResponseBody {
-	s.Groups = v
+func (s *DescribeIpWhitelistResponseBody) SetRequestId(v string) *DescribeIpWhitelistResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -5126,9 +5240,9 @@ func (s *DescribeIpWhitelistResponseBodyGroups) SetGroup(v []*DescribeIpWhitelis
 }
 
 type DescribeIpWhitelistResponseBodyGroupsGroup struct {
-	IpVersion *int32                                            `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	GroupName *string                                           `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	IpList    *DescribeIpWhitelistResponseBodyGroupsGroupIpList `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Struct"`
+	IpVersion *int32                                            `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 }
 
 func (s DescribeIpWhitelistResponseBodyGroupsGroup) String() string {
@@ -5139,11 +5253,6 @@ func (s DescribeIpWhitelistResponseBodyGroupsGroup) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeIpWhitelistResponseBodyGroupsGroup) SetIpVersion(v int32) *DescribeIpWhitelistResponseBodyGroupsGroup {
-	s.IpVersion = &v
-	return s
-}
-
 func (s *DescribeIpWhitelistResponseBodyGroupsGroup) SetGroupName(v string) *DescribeIpWhitelistResponseBodyGroupsGroup {
 	s.GroupName = &v
 	return s
@@ -5151,6 +5260,11 @@ func (s *DescribeIpWhitelistResponseBodyGroupsGroup) SetGroupName(v string) *Des
 
 func (s *DescribeIpWhitelistResponseBodyGroupsGroup) SetIpList(v *DescribeIpWhitelistResponseBodyGroupsGroupIpList) *DescribeIpWhitelistResponseBodyGroupsGroup {
 	s.IpList = v
+	return s
+}
+
+func (s *DescribeIpWhitelistResponseBodyGroupsGroup) SetIpVersion(v int32) *DescribeIpWhitelistResponseBodyGroupsGroup {
+	s.IpVersion = &v
 	return s
 }
 
@@ -5212,8 +5326,8 @@ func (s *DescribeMultiZoneAvailableRegionsRequest) SetAcceptLanguage(v string) *
 }
 
 type DescribeMultiZoneAvailableRegionsResponseBody struct {
-	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Regions   *DescribeMultiZoneAvailableRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeMultiZoneAvailableRegionsResponseBody) String() string {
@@ -5224,13 +5338,13 @@ func (s DescribeMultiZoneAvailableRegionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeMultiZoneAvailableRegionsResponseBody) SetRequestId(v string) *DescribeMultiZoneAvailableRegionsResponseBody {
-	s.RequestId = &v
+func (s *DescribeMultiZoneAvailableRegionsResponseBody) SetRegions(v *DescribeMultiZoneAvailableRegionsResponseBodyRegions) *DescribeMultiZoneAvailableRegionsResponseBody {
+	s.Regions = v
 	return s
 }
 
-func (s *DescribeMultiZoneAvailableRegionsResponseBody) SetRegions(v *DescribeMultiZoneAvailableRegionsResponseBodyRegions) *DescribeMultiZoneAvailableRegionsResponseBody {
-	s.Regions = v
+func (s *DescribeMultiZoneAvailableRegionsResponseBody) SetRequestId(v string) *DescribeMultiZoneAvailableRegionsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -5252,9 +5366,9 @@ func (s *DescribeMultiZoneAvailableRegionsResponseBodyRegions) SetRegion(v []*De
 }
 
 type DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegion struct {
+	AvailableCombines *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombines `json:"AvailableCombines,omitempty" xml:"AvailableCombines,omitempty" type:"Struct"`
 	LocalName         *string                                                                      `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionEndpoint    *string                                                                      `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	AvailableCombines *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombines `json:"AvailableCombines,omitempty" xml:"AvailableCombines,omitempty" type:"Struct"`
 	RegionId          *string                                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -5266,6 +5380,11 @@ func (s DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegion) GoString() s
 	return s.String()
 }
 
+func (s *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegion) SetAvailableCombines(v *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombines) *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegion {
+	s.AvailableCombines = v
+	return s
+}
+
 func (s *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegion) SetLocalName(v string) *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegion {
 	s.LocalName = &v
 	return s
@@ -5273,11 +5392,6 @@ func (s *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegion) SetLocalNam
 
 func (s *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegion) SetRegionEndpoint(v string) *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegion {
 	s.RegionEndpoint = &v
-	return s
-}
-
-func (s *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegion) SetAvailableCombines(v *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombines) *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegion {
-	s.AvailableCombines = v
 	return s
 }
 
@@ -5304,8 +5418,8 @@ func (s *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableComb
 }
 
 type DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombinesAvailableCombine struct {
-	Zones *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombinesAvailableCombineZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 	Id    *string                                                                                           `json:"Id,omitempty" xml:"Id,omitempty"`
+	Zones *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombinesAvailableCombineZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
 func (s DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombinesAvailableCombine) String() string {
@@ -5316,13 +5430,13 @@ func (s DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombi
 	return s.String()
 }
 
-func (s *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombinesAvailableCombine) SetZones(v *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombinesAvailableCombineZones) *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombinesAvailableCombine {
-	s.Zones = v
+func (s *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombinesAvailableCombine) SetId(v string) *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombinesAvailableCombine {
+	s.Id = &v
 	return s
 }
 
-func (s *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombinesAvailableCombine) SetId(v string) *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombinesAvailableCombine {
-	s.Id = &v
+func (s *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombinesAvailableCombine) SetZones(v *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombinesAvailableCombineZones) *DescribeMultiZoneAvailableRegionsResponseBodyRegionsRegionAvailableCombinesAvailableCombine {
+	s.Zones = v
 	return s
 }
 
@@ -5396,8 +5510,8 @@ func (s *DescribeMultiZoneAvailableResourceRequest) SetZoneCombination(v string)
 }
 
 type DescribeMultiZoneAvailableResourceResponseBody struct {
-	RequestId      *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AvailableZones *DescribeMultiZoneAvailableResourceResponseBodyAvailableZones `json:"AvailableZones,omitempty" xml:"AvailableZones,omitempty" type:"Struct"`
+	RequestId      *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeMultiZoneAvailableResourceResponseBody) String() string {
@@ -5408,13 +5522,13 @@ func (s DescribeMultiZoneAvailableResourceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeMultiZoneAvailableResourceResponseBody) SetRequestId(v string) *DescribeMultiZoneAvailableResourceResponseBody {
-	s.RequestId = &v
+func (s *DescribeMultiZoneAvailableResourceResponseBody) SetAvailableZones(v *DescribeMultiZoneAvailableResourceResponseBodyAvailableZones) *DescribeMultiZoneAvailableResourceResponseBody {
+	s.AvailableZones = v
 	return s
 }
 
-func (s *DescribeMultiZoneAvailableResourceResponseBody) SetAvailableZones(v *DescribeMultiZoneAvailableResourceResponseBodyAvailableZones) *DescribeMultiZoneAvailableResourceResponseBody {
-	s.AvailableZones = v
+func (s *DescribeMultiZoneAvailableResourceResponseBody) SetRequestId(v string) *DescribeMultiZoneAvailableResourceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -5436,10 +5550,10 @@ func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZones) SetAvaila
 }
 
 type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZone struct {
-	SupportedEngines *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Struct"`
-	ZoneCombination  *string                                                                                    `json:"ZoneCombination,omitempty" xml:"ZoneCombination,omitempty"`
 	MasterResources  *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources  `json:"MasterResources,omitempty" xml:"MasterResources,omitempty" type:"Struct"`
 	RegionId         *string                                                                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SupportedEngines *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEngines `json:"SupportedEngines,omitempty" xml:"SupportedEngines,omitempty" type:"Struct"`
+	ZoneCombination  *string                                                                                    `json:"ZoneCombination,omitempty" xml:"ZoneCombination,omitempty"`
 }
 
 func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZone) String() string {
@@ -5448,6 +5562,16 @@ func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZon
 
 func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZone) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZone) SetMasterResources(v *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZone {
+	s.MasterResources = v
+	return s
+}
+
+func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZone) SetRegionId(v string) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZone {
+	s.RegionId = &v
+	return s
 }
 
 func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZone) SetSupportedEngines(v *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEngines) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZone {
@@ -5460,13 +5584,66 @@ func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZo
 	return s
 }
 
-func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZone) SetMasterResources(v *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZone {
-	s.MasterResources = v
+type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources struct {
+	MasterResource []*DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource `json:"MasterResource,omitempty" xml:"MasterResource,omitempty" type:"Repeated"`
+}
+
+func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources) SetMasterResource(v []*DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources {
+	s.MasterResource = v
 	return s
 }
 
-func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZone) SetRegionId(v string) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZone {
-	s.RegionId = &v
+type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource struct {
+	InstanceType       *string                                                                                                                   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceTypeDetail *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail `json:"InstanceTypeDetail,omitempty" xml:"InstanceTypeDetail,omitempty" type:"Struct"`
+}
+
+func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource) SetInstanceType(v string) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource) SetInstanceTypeDetail(v *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource {
+	s.InstanceTypeDetail = v
+	return s
+}
+
+type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail struct {
+	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
+}
+
+func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail) SetCpu(v int32) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail {
+	s.Cpu = &v
+	return s
+}
+
+func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail) SetMem(v int32) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail {
+	s.Mem = &v
 	return s
 }
 
@@ -5488,8 +5665,8 @@ func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZo
 }
 
 type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine struct {
-	SupportedEngineVersions *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersions `json:"SupportedEngineVersions,omitempty" xml:"SupportedEngineVersions,omitempty" type:"Struct"`
 	Engine                  *string                                                                                                                          `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	SupportedEngineVersions *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersions `json:"SupportedEngineVersions,omitempty" xml:"SupportedEngineVersions,omitempty" type:"Struct"`
 }
 
 func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine) String() string {
@@ -5500,13 +5677,13 @@ func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZon
 	return s.String()
 }
 
-func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine) SetSupportedEngineVersions(v *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersions) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine {
-	s.SupportedEngineVersions = v
+func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine) SetEngine(v string) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine {
+	s.Engine = &v
 	return s
 }
 
-func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine) SetEngine(v string) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine {
-	s.Engine = &v
+func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine) SetSupportedEngineVersions(v *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersions) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngine {
+	s.SupportedEngineVersions = v
 	return s
 }
 
@@ -5528,8 +5705,8 @@ func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZo
 }
 
 type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion struct {
-	Version             *string                                                                                                                                                                   `json:"Version,omitempty" xml:"Version,omitempty"`
 	SupportedCategories *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategories `json:"SupportedCategories,omitempty" xml:"SupportedCategories,omitempty" type:"Struct"`
+	Version             *string                                                                                                                                                                   `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion) String() string {
@@ -5540,13 +5717,13 @@ func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZon
 	return s.String()
 }
 
-func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion) SetVersion(v string) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion {
-	s.Version = &v
+func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion) SetSupportedCategories(v *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategories) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion {
+	s.SupportedCategories = v
 	return s
 }
 
-func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion) SetSupportedCategories(v *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategories) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion {
-	s.SupportedCategories = v
+func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion) SetVersion(v string) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersion {
+	s.Version = &v
 	return s
 }
 
@@ -5568,8 +5745,8 @@ func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZo
 }
 
 type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories struct {
-	SupportedStorageTypes *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypes `json:"SupportedStorageTypes,omitempty" xml:"SupportedStorageTypes,omitempty" type:"Struct"`
 	Category              *string                                                                                                                                                                                                           `json:"Category,omitempty" xml:"Category,omitempty"`
+	SupportedStorageTypes *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypes `json:"SupportedStorageTypes,omitempty" xml:"SupportedStorageTypes,omitempty" type:"Struct"`
 }
 
 func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories) String() string {
@@ -5580,13 +5757,13 @@ func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZon
 	return s.String()
 }
 
-func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories) SetSupportedStorageTypes(v *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypes) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories {
-	s.SupportedStorageTypes = v
+func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories) SetCategory(v string) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories {
+	s.Category = &v
 	return s
 }
 
-func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories) SetCategory(v string) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories {
-	s.Category = &v
+func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories) SetSupportedStorageTypes(v *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypes) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategories {
+	s.SupportedStorageTypes = v
 	return s
 }
 
@@ -5648,10 +5825,10 @@ func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZo
 }
 
 type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource struct {
-	InstanceTypeDetail     *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceInstanceTypeDetail     `json:"InstanceTypeDetail,omitempty" xml:"InstanceTypeDetail,omitempty" type:"Struct"`
 	DBInstanceStorageRange *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange `json:"DBInstanceStorageRange,omitempty" xml:"DBInstanceStorageRange,omitempty" type:"Struct"`
-	MaxCoreCount           *int32                                                                                                                                                                                                                                                                               `json:"MaxCoreCount,omitempty" xml:"MaxCoreCount,omitempty"`
 	InstanceType           *string                                                                                                                                                                                                                                                                              `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InstanceTypeDetail     *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceInstanceTypeDetail     `json:"InstanceTypeDetail,omitempty" xml:"InstanceTypeDetail,omitempty" type:"Struct"`
+	MaxCoreCount           *int32                                                                                                                                                                                                                                                                               `json:"MaxCoreCount,omitempty" xml:"MaxCoreCount,omitempty"`
 }
 
 func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource) String() string {
@@ -5662,13 +5839,18 @@ func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZon
 	return s.String()
 }
 
-func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource) SetInstanceTypeDetail(v *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceInstanceTypeDetail) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource {
-	s.InstanceTypeDetail = v
+func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource) SetDBInstanceStorageRange(v *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource {
+	s.DBInstanceStorageRange = v
 	return s
 }
 
-func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource) SetDBInstanceStorageRange(v *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource {
-	s.DBInstanceStorageRange = v
+func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource) SetInstanceType(v string) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource) SetInstanceTypeDetail(v *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceInstanceTypeDetail) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource {
+	s.InstanceTypeDetail = v
 	return s
 }
 
@@ -5677,8 +5859,32 @@ func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZo
 	return s
 }
 
-func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource) SetInstanceType(v string) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResource {
-	s.InstanceType = &v
+type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange struct {
+	MaxSize  *int32 `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
+	MinSize  *int32 `json:"MinSize,omitempty" xml:"MinSize,omitempty"`
+	StepSize *int32 `json:"StepSize,omitempty" xml:"StepSize,omitempty"`
+}
+
+func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) SetMaxSize(v int32) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange {
+	s.MaxSize = &v
+	return s
+}
+
+func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) SetMinSize(v int32) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange {
+	s.MinSize = &v
+	return s
+}
+
+func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) SetStepSize(v int32) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange {
+	s.StepSize = &v
 	return s
 }
 
@@ -5701,98 +5907,6 @@ func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZo
 }
 
 func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceInstanceTypeDetail) SetMem(v int32) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceInstanceTypeDetail {
-	s.Mem = &v
-	return s
-}
-
-type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange struct {
-	MaxSize  *int32 `json:"MaxSize,omitempty" xml:"MaxSize,omitempty"`
-	StepSize *int32 `json:"StepSize,omitempty" xml:"StepSize,omitempty"`
-	MinSize  *int32 `json:"MinSize,omitempty" xml:"MinSize,omitempty"`
-}
-
-func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) SetMaxSize(v int32) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange {
-	s.MaxSize = &v
-	return s
-}
-
-func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) SetStepSize(v int32) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange {
-	s.StepSize = &v
-	return s
-}
-
-func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange) SetMinSize(v int32) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneSupportedEnginesSupportedEngineSupportedEngineVersionsSupportedEngineVersionSupportedCategoriesSupportedCategoriesSupportedStorageTypesSupportedStorageTypeCoreResourcesCoreResourceDBInstanceStorageRange {
-	s.MinSize = &v
-	return s
-}
-
-type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources struct {
-	MasterResource []*DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource `json:"MasterResource,omitempty" xml:"MasterResource,omitempty" type:"Repeated"`
-}
-
-func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources) SetMasterResource(v []*DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResources {
-	s.MasterResource = v
-	return s
-}
-
-type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource struct {
-	InstanceTypeDetail *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail `json:"InstanceTypeDetail,omitempty" xml:"InstanceTypeDetail,omitempty" type:"Struct"`
-	InstanceType       *string                                                                                                                   `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-}
-
-func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource) SetInstanceTypeDetail(v *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource {
-	s.InstanceTypeDetail = v
-	return s
-}
-
-func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource) SetInstanceType(v string) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResource {
-	s.InstanceType = &v
-	return s
-}
-
-type DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail struct {
-	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Mem *int32 `json:"Mem,omitempty" xml:"Mem,omitempty"`
-}
-
-func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail) SetCpu(v int32) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail {
-	s.Cpu = &v
-	return s
-}
-
-func (s *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail) SetMem(v int32) *DescribeMultiZoneAvailableResourceResponseBodyAvailableZonesAvailableZoneMasterResourcesMasterResourceInstanceTypeDetail {
 	s.Mem = &v
 	return s
 }
@@ -5838,54 +5952,56 @@ func (s *DescribeMultiZoneClusterRequest) SetClusterId(v string) *DescribeMultiZ
 }
 
 type DescribeMultiZoneClusterResponseBody struct {
-	StandbyZoneId           *string                                                      `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
-	ModuleStackVersion      *string                                                      `json:"ModuleStackVersion,omitempty" xml:"ModuleStackVersion,omitempty"`
-	CreatedTime             *string                                                      `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	ResourceGroupId         *string                                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	PrimaryVSwitchIds       *string                                                      `json:"PrimaryVSwitchIds,omitempty" xml:"PrimaryVSwitchIds,omitempty"`
-	MasterInstanceType      *string                                                      `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
-	LogDiskCount            *string                                                      `json:"LogDiskCount,omitempty" xml:"LogDiskCount,omitempty"`
-	IsDeletionProtection    *bool                                                        `json:"IsDeletionProtection,omitempty" xml:"IsDeletionProtection,omitempty"`
-	LogDiskSize             *int32                                                       `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty"`
-	ModuleId                *int32                                                       `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
 	ArbiterVSwitchIds       *string                                                      `json:"ArbiterVSwitchIds,omitempty" xml:"ArbiterVSwitchIds,omitempty"`
-	MaintainEndTime         *string                                                      `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	StandbyVSwitchIds       *string                                                      `json:"StandbyVSwitchIds,omitempty" xml:"StandbyVSwitchIds,omitempty"`
-	NetworkType             *string                                                      `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	CoreInstanceType        *string                                                      `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
-	ClusterName             *string                                                      `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	MasterDiskType          *string                                                      `json:"MasterDiskType,omitempty" xml:"MasterDiskType,omitempty"`
-	MaintainStartTime       *string                                                      `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	Engine                  *string                                                      `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	Tags                    *DescribeMultiZoneClusterResponseBodyTags                    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	ArbiterZoneId           *string                                                      `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
-	Status                  *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	ParentId                *string                                                      `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	MajorVersion            *string                                                      `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
-	CoreDiskCount           *string                                                      `json:"CoreDiskCount,omitempty" xml:"CoreDiskCount,omitempty"`
-	MultiZoneInstanceModels *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModels `json:"MultiZoneInstanceModels,omitempty" xml:"MultiZoneInstanceModels,omitempty" type:"Struct"`
-	ExpireTimeUTC           *string                                                      `json:"ExpireTimeUTC,omitempty" xml:"ExpireTimeUTC,omitempty"`
-	PrimaryZoneId           *string                                                      `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
-	MasterDiskSize          *int32                                                       `json:"MasterDiskSize,omitempty" xml:"MasterDiskSize,omitempty"`
-	RequestId               *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	MultiZoneCombination    *string                                                      `json:"MultiZoneCombination,omitempty" xml:"MultiZoneCombination,omitempty"`
-	ClusterId               *string                                                      `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	InstanceId              *string                                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	CoreNodeCount           *int32                                                       `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
-	CreatedTimeUTC          *string                                                      `json:"CreatedTimeUTC,omitempty" xml:"CreatedTimeUTC,omitempty"`
-	LogInstanceType         *string                                                      `json:"LogInstanceType,omitempty" xml:"LogInstanceType,omitempty"`
-	Duration                *int32                                                       `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	PayType                 *string                                                      `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	MasterNodeCount         *int32                                                       `json:"MasterNodeCount,omitempty" xml:"MasterNodeCount,omitempty"`
-	InstanceName            *string                                                      `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	VpcId                   *string                                                      `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	AutoRenewal             *bool                                                        `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	CoreDiskType            *string                                                      `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
-	LogNodeCount            *int32                                                       `json:"LogNodeCount,omitempty" xml:"LogNodeCount,omitempty"`
-	LogDiskType             *string                                                      `json:"LogDiskType,omitempty" xml:"LogDiskType,omitempty"`
-	RegionId                *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ExpireTime              *string                                                      `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ClusterId               *string                                                      `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName             *string                                                      `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	CoreDiskCount           *string                                                      `json:"CoreDiskCount,omitempty" xml:"CoreDiskCount,omitempty"`
 	CoreDiskSize            *int32                                                       `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
+	CoreDiskType            *string                                                      `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
+	CoreInstanceType        *string                                                      `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	CoreNodeCount           *int32                                                       `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
+	CreatedTime             *string                                                      `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CreatedTimeUTC          *string                                                      `json:"CreatedTimeUTC,omitempty" xml:"CreatedTimeUTC,omitempty"`
+	Duration                *int32                                                       `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EncryptionKey           *string                                                      `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
+	EncryptionType          *string                                                      `json:"EncryptionType,omitempty" xml:"EncryptionType,omitempty"`
+	Engine                  *string                                                      `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	ExpireTime              *string                                                      `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpireTimeUTC           *string                                                      `json:"ExpireTimeUTC,omitempty" xml:"ExpireTimeUTC,omitempty"`
+	InstanceId              *string                                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName            *string                                                      `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	IsDeletionProtection    *bool                                                        `json:"IsDeletionProtection,omitempty" xml:"IsDeletionProtection,omitempty"`
+	LogDiskCount            *string                                                      `json:"LogDiskCount,omitempty" xml:"LogDiskCount,omitempty"`
+	LogDiskSize             *int32                                                       `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty"`
+	LogDiskType             *string                                                      `json:"LogDiskType,omitempty" xml:"LogDiskType,omitempty"`
+	LogInstanceType         *string                                                      `json:"LogInstanceType,omitempty" xml:"LogInstanceType,omitempty"`
+	LogNodeCount            *int32                                                       `json:"LogNodeCount,omitempty" xml:"LogNodeCount,omitempty"`
+	MaintainEndTime         *string                                                      `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	MaintainStartTime       *string                                                      `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	MajorVersion            *string                                                      `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
+	MasterDiskSize          *int32                                                       `json:"MasterDiskSize,omitempty" xml:"MasterDiskSize,omitempty"`
+	MasterDiskType          *string                                                      `json:"MasterDiskType,omitempty" xml:"MasterDiskType,omitempty"`
+	MasterInstanceType      *string                                                      `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
+	MasterNodeCount         *int32                                                       `json:"MasterNodeCount,omitempty" xml:"MasterNodeCount,omitempty"`
+	ModuleId                *int32                                                       `json:"ModuleId,omitempty" xml:"ModuleId,omitempty"`
+	ModuleStackVersion      *string                                                      `json:"ModuleStackVersion,omitempty" xml:"ModuleStackVersion,omitempty"`
+	MultiZoneCombination    *string                                                      `json:"MultiZoneCombination,omitempty" xml:"MultiZoneCombination,omitempty"`
+	MultiZoneInstanceModels *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModels `json:"MultiZoneInstanceModels,omitempty" xml:"MultiZoneInstanceModels,omitempty" type:"Struct"`
+	NetworkType             *string                                                      `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	ParentId                *string                                                      `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	PayType                 *string                                                      `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PrimaryVSwitchIds       *string                                                      `json:"PrimaryVSwitchIds,omitempty" xml:"PrimaryVSwitchIds,omitempty"`
+	PrimaryZoneId           *string                                                      `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	RegionId                *string                                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId               *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId         *string                                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	StandbyVSwitchIds       *string                                                      `json:"StandbyVSwitchIds,omitempty" xml:"StandbyVSwitchIds,omitempty"`
+	StandbyZoneId           *string                                                      `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
+	Status                  *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                    *DescribeMultiZoneClusterResponseBodyTags                    `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	VpcId                   *string                                                      `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeMultiZoneClusterResponseBody) String() string {
@@ -5896,103 +6012,8 @@ func (s DescribeMultiZoneClusterResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeMultiZoneClusterResponseBody) SetStandbyZoneId(v string) *DescribeMultiZoneClusterResponseBody {
-	s.StandbyZoneId = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetModuleStackVersion(v string) *DescribeMultiZoneClusterResponseBody {
-	s.ModuleStackVersion = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetCreatedTime(v string) *DescribeMultiZoneClusterResponseBody {
-	s.CreatedTime = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetResourceGroupId(v string) *DescribeMultiZoneClusterResponseBody {
-	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetPrimaryVSwitchIds(v string) *DescribeMultiZoneClusterResponseBody {
-	s.PrimaryVSwitchIds = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetMasterInstanceType(v string) *DescribeMultiZoneClusterResponseBody {
-	s.MasterInstanceType = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetLogDiskCount(v string) *DescribeMultiZoneClusterResponseBody {
-	s.LogDiskCount = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetIsDeletionProtection(v bool) *DescribeMultiZoneClusterResponseBody {
-	s.IsDeletionProtection = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetLogDiskSize(v int32) *DescribeMultiZoneClusterResponseBody {
-	s.LogDiskSize = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetModuleId(v int32) *DescribeMultiZoneClusterResponseBody {
-	s.ModuleId = &v
-	return s
-}
-
 func (s *DescribeMultiZoneClusterResponseBody) SetArbiterVSwitchIds(v string) *DescribeMultiZoneClusterResponseBody {
 	s.ArbiterVSwitchIds = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetMaintainEndTime(v string) *DescribeMultiZoneClusterResponseBody {
-	s.MaintainEndTime = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetStandbyVSwitchIds(v string) *DescribeMultiZoneClusterResponseBody {
-	s.StandbyVSwitchIds = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetNetworkType(v string) *DescribeMultiZoneClusterResponseBody {
-	s.NetworkType = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetCoreInstanceType(v string) *DescribeMultiZoneClusterResponseBody {
-	s.CoreInstanceType = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetClusterName(v string) *DescribeMultiZoneClusterResponseBody {
-	s.ClusterName = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetMasterDiskType(v string) *DescribeMultiZoneClusterResponseBody {
-	s.MasterDiskType = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetMaintainStartTime(v string) *DescribeMultiZoneClusterResponseBody {
-	s.MaintainStartTime = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetEngine(v string) *DescribeMultiZoneClusterResponseBody {
-	s.Engine = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetTags(v *DescribeMultiZoneClusterResponseBodyTags) *DescribeMultiZoneClusterResponseBody {
-	s.Tags = v
 	return s
 }
 
@@ -6001,53 +6022,8 @@ func (s *DescribeMultiZoneClusterResponseBody) SetArbiterZoneId(v string) *Descr
 	return s
 }
 
-func (s *DescribeMultiZoneClusterResponseBody) SetStatus(v string) *DescribeMultiZoneClusterResponseBody {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetParentId(v string) *DescribeMultiZoneClusterResponseBody {
-	s.ParentId = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetMajorVersion(v string) *DescribeMultiZoneClusterResponseBody {
-	s.MajorVersion = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetCoreDiskCount(v string) *DescribeMultiZoneClusterResponseBody {
-	s.CoreDiskCount = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetMultiZoneInstanceModels(v *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModels) *DescribeMultiZoneClusterResponseBody {
-	s.MultiZoneInstanceModels = v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetExpireTimeUTC(v string) *DescribeMultiZoneClusterResponseBody {
-	s.ExpireTimeUTC = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetPrimaryZoneId(v string) *DescribeMultiZoneClusterResponseBody {
-	s.PrimaryZoneId = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetMasterDiskSize(v int32) *DescribeMultiZoneClusterResponseBody {
-	s.MasterDiskSize = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetRequestId(v string) *DescribeMultiZoneClusterResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetMultiZoneCombination(v string) *DescribeMultiZoneClusterResponseBody {
-	s.MultiZoneCombination = &v
+func (s *DescribeMultiZoneClusterResponseBody) SetAutoRenewal(v bool) *DescribeMultiZoneClusterResponseBody {
+	s.AutoRenewal = &v
 	return s
 }
 
@@ -6056,53 +6032,18 @@ func (s *DescribeMultiZoneClusterResponseBody) SetClusterId(v string) *DescribeM
 	return s
 }
 
-func (s *DescribeMultiZoneClusterResponseBody) SetInstanceId(v string) *DescribeMultiZoneClusterResponseBody {
-	s.InstanceId = &v
+func (s *DescribeMultiZoneClusterResponseBody) SetClusterName(v string) *DescribeMultiZoneClusterResponseBody {
+	s.ClusterName = &v
 	return s
 }
 
-func (s *DescribeMultiZoneClusterResponseBody) SetCoreNodeCount(v int32) *DescribeMultiZoneClusterResponseBody {
-	s.CoreNodeCount = &v
+func (s *DescribeMultiZoneClusterResponseBody) SetCoreDiskCount(v string) *DescribeMultiZoneClusterResponseBody {
+	s.CoreDiskCount = &v
 	return s
 }
 
-func (s *DescribeMultiZoneClusterResponseBody) SetCreatedTimeUTC(v string) *DescribeMultiZoneClusterResponseBody {
-	s.CreatedTimeUTC = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetLogInstanceType(v string) *DescribeMultiZoneClusterResponseBody {
-	s.LogInstanceType = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetDuration(v int32) *DescribeMultiZoneClusterResponseBody {
-	s.Duration = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetPayType(v string) *DescribeMultiZoneClusterResponseBody {
-	s.PayType = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetMasterNodeCount(v int32) *DescribeMultiZoneClusterResponseBody {
-	s.MasterNodeCount = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetInstanceName(v string) *DescribeMultiZoneClusterResponseBody {
-	s.InstanceName = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetVpcId(v string) *DescribeMultiZoneClusterResponseBody {
-	s.VpcId = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBody) SetAutoRenewal(v bool) *DescribeMultiZoneClusterResponseBody {
-	s.AutoRenewal = &v
+func (s *DescribeMultiZoneClusterResponseBody) SetCoreDiskSize(v int32) *DescribeMultiZoneClusterResponseBody {
+	s.CoreDiskSize = &v
 	return s
 }
 
@@ -6111,18 +6052,43 @@ func (s *DescribeMultiZoneClusterResponseBody) SetCoreDiskType(v string) *Descri
 	return s
 }
 
-func (s *DescribeMultiZoneClusterResponseBody) SetLogNodeCount(v int32) *DescribeMultiZoneClusterResponseBody {
-	s.LogNodeCount = &v
+func (s *DescribeMultiZoneClusterResponseBody) SetCoreInstanceType(v string) *DescribeMultiZoneClusterResponseBody {
+	s.CoreInstanceType = &v
 	return s
 }
 
-func (s *DescribeMultiZoneClusterResponseBody) SetLogDiskType(v string) *DescribeMultiZoneClusterResponseBody {
-	s.LogDiskType = &v
+func (s *DescribeMultiZoneClusterResponseBody) SetCoreNodeCount(v int32) *DescribeMultiZoneClusterResponseBody {
+	s.CoreNodeCount = &v
 	return s
 }
 
-func (s *DescribeMultiZoneClusterResponseBody) SetRegionId(v string) *DescribeMultiZoneClusterResponseBody {
-	s.RegionId = &v
+func (s *DescribeMultiZoneClusterResponseBody) SetCreatedTime(v string) *DescribeMultiZoneClusterResponseBody {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetCreatedTimeUTC(v string) *DescribeMultiZoneClusterResponseBody {
+	s.CreatedTimeUTC = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetDuration(v int32) *DescribeMultiZoneClusterResponseBody {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetEncryptionKey(v string) *DescribeMultiZoneClusterResponseBody {
+	s.EncryptionKey = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetEncryptionType(v string) *DescribeMultiZoneClusterResponseBody {
+	s.EncryptionType = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetEngine(v string) *DescribeMultiZoneClusterResponseBody {
+	s.Engine = &v
 	return s
 }
 
@@ -6131,8 +6097,226 @@ func (s *DescribeMultiZoneClusterResponseBody) SetExpireTime(v string) *Describe
 	return s
 }
 
-func (s *DescribeMultiZoneClusterResponseBody) SetCoreDiskSize(v int32) *DescribeMultiZoneClusterResponseBody {
-	s.CoreDiskSize = &v
+func (s *DescribeMultiZoneClusterResponseBody) SetExpireTimeUTC(v string) *DescribeMultiZoneClusterResponseBody {
+	s.ExpireTimeUTC = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetInstanceId(v string) *DescribeMultiZoneClusterResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetInstanceName(v string) *DescribeMultiZoneClusterResponseBody {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetIsDeletionProtection(v bool) *DescribeMultiZoneClusterResponseBody {
+	s.IsDeletionProtection = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetLogDiskCount(v string) *DescribeMultiZoneClusterResponseBody {
+	s.LogDiskCount = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetLogDiskSize(v int32) *DescribeMultiZoneClusterResponseBody {
+	s.LogDiskSize = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetLogDiskType(v string) *DescribeMultiZoneClusterResponseBody {
+	s.LogDiskType = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetLogInstanceType(v string) *DescribeMultiZoneClusterResponseBody {
+	s.LogInstanceType = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetLogNodeCount(v int32) *DescribeMultiZoneClusterResponseBody {
+	s.LogNodeCount = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetMaintainEndTime(v string) *DescribeMultiZoneClusterResponseBody {
+	s.MaintainEndTime = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetMaintainStartTime(v string) *DescribeMultiZoneClusterResponseBody {
+	s.MaintainStartTime = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetMajorVersion(v string) *DescribeMultiZoneClusterResponseBody {
+	s.MajorVersion = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetMasterDiskSize(v int32) *DescribeMultiZoneClusterResponseBody {
+	s.MasterDiskSize = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetMasterDiskType(v string) *DescribeMultiZoneClusterResponseBody {
+	s.MasterDiskType = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetMasterInstanceType(v string) *DescribeMultiZoneClusterResponseBody {
+	s.MasterInstanceType = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetMasterNodeCount(v int32) *DescribeMultiZoneClusterResponseBody {
+	s.MasterNodeCount = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetModuleId(v int32) *DescribeMultiZoneClusterResponseBody {
+	s.ModuleId = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetModuleStackVersion(v string) *DescribeMultiZoneClusterResponseBody {
+	s.ModuleStackVersion = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetMultiZoneCombination(v string) *DescribeMultiZoneClusterResponseBody {
+	s.MultiZoneCombination = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetMultiZoneInstanceModels(v *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModels) *DescribeMultiZoneClusterResponseBody {
+	s.MultiZoneInstanceModels = v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetNetworkType(v string) *DescribeMultiZoneClusterResponseBody {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetParentId(v string) *DescribeMultiZoneClusterResponseBody {
+	s.ParentId = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetPayType(v string) *DescribeMultiZoneClusterResponseBody {
+	s.PayType = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetPrimaryVSwitchIds(v string) *DescribeMultiZoneClusterResponseBody {
+	s.PrimaryVSwitchIds = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetPrimaryZoneId(v string) *DescribeMultiZoneClusterResponseBody {
+	s.PrimaryZoneId = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetRegionId(v string) *DescribeMultiZoneClusterResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetRequestId(v string) *DescribeMultiZoneClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetResourceGroupId(v string) *DescribeMultiZoneClusterResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetStandbyVSwitchIds(v string) *DescribeMultiZoneClusterResponseBody {
+	s.StandbyVSwitchIds = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetStandbyZoneId(v string) *DescribeMultiZoneClusterResponseBody {
+	s.StandbyZoneId = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetStatus(v string) *DescribeMultiZoneClusterResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetTags(v *DescribeMultiZoneClusterResponseBodyTags) *DescribeMultiZoneClusterResponseBody {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBody) SetVpcId(v string) *DescribeMultiZoneClusterResponseBody {
+	s.VpcId = &v
+	return s
+}
+
+type DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModels struct {
+	MultiZoneInstanceModel []*DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel `json:"MultiZoneInstanceModel,omitempty" xml:"MultiZoneInstanceModel,omitempty" type:"Repeated"`
+}
+
+func (s DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModels) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModels) SetMultiZoneInstanceModel(v []*DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModels {
+	s.MultiZoneInstanceModel = v
+	return s
+}
+
+type DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel struct {
+	InsName         *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
+	IsLatestVersion *bool   `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
+	MinorVersion    *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
+	Role            *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) SetInsName(v string) *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel {
+	s.InsName = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) SetIsLatestVersion(v bool) *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel {
+	s.IsLatestVersion = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) SetMinorVersion(v string) *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel {
+	s.MinorVersion = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) SetRole(v string) *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel {
+	s.Role = &v
+	return s
+}
+
+func (s *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) SetStatus(v string) *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel {
+	s.Status = &v
 	return s
 }
 
@@ -6173,64 +6357,6 @@ func (s *DescribeMultiZoneClusterResponseBodyTagsTag) SetKey(v string) *Describe
 
 func (s *DescribeMultiZoneClusterResponseBodyTagsTag) SetValue(v string) *DescribeMultiZoneClusterResponseBodyTagsTag {
 	s.Value = &v
-	return s
-}
-
-type DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModels struct {
-	MultiZoneInstanceModel []*DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel `json:"MultiZoneInstanceModel,omitempty" xml:"MultiZoneInstanceModel,omitempty" type:"Repeated"`
-}
-
-func (s DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModels) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModels) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModels) SetMultiZoneInstanceModel(v []*DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModels {
-	s.MultiZoneInstanceModel = v
-	return s
-}
-
-type DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel struct {
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	IsLatestVersion *bool   `json:"IsLatestVersion,omitempty" xml:"IsLatestVersion,omitempty"`
-	InsName         *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	Role            *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	MinorVersion    *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-}
-
-func (s DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) SetStatus(v string) *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) SetIsLatestVersion(v bool) *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel {
-	s.IsLatestVersion = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) SetInsName(v string) *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel {
-	s.InsName = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) SetRole(v string) *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel {
-	s.Role = &v
-	return s
-}
-
-func (s *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel) SetMinorVersion(v string) *DescribeMultiZoneClusterResponseBodyMultiZoneInstanceModelsMultiZoneInstanceModel {
-	s.MinorVersion = &v
 	return s
 }
 
@@ -6276,8 +6402,8 @@ func (s *DescribeRecoverableTimeRangeRequest) SetClusterId(v string) *DescribeRe
 
 type DescribeRecoverableTimeRangeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TimeEnd   *string `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
 	TimeBegin *string `json:"TimeBegin,omitempty" xml:"TimeBegin,omitempty"`
+	TimeEnd   *string `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
 }
 
 func (s DescribeRecoverableTimeRangeResponseBody) String() string {
@@ -6293,13 +6419,13 @@ func (s *DescribeRecoverableTimeRangeResponseBody) SetRequestId(v string) *Descr
 	return s
 }
 
-func (s *DescribeRecoverableTimeRangeResponseBody) SetTimeEnd(v string) *DescribeRecoverableTimeRangeResponseBody {
-	s.TimeEnd = &v
+func (s *DescribeRecoverableTimeRangeResponseBody) SetTimeBegin(v string) *DescribeRecoverableTimeRangeResponseBody {
+	s.TimeBegin = &v
 	return s
 }
 
-func (s *DescribeRecoverableTimeRangeResponseBody) SetTimeBegin(v string) *DescribeRecoverableTimeRangeResponseBody {
-	s.TimeBegin = &v
+func (s *DescribeRecoverableTimeRangeResponseBody) SetTimeEnd(v string) *DescribeRecoverableTimeRangeResponseBody {
+	s.TimeEnd = &v
 	return s
 }
 
@@ -6328,6 +6454,7 @@ func (s *DescribeRecoverableTimeRangeResponse) SetBody(v *DescribeRecoverableTim
 
 type DescribeRegionsRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	Engine         *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 }
 
 func (s DescribeRegionsRequest) String() string {
@@ -6343,9 +6470,14 @@ func (s *DescribeRegionsRequest) SetAcceptLanguage(v string) *DescribeRegionsReq
 	return s
 }
 
+func (s *DescribeRegionsRequest) SetEngine(v string) *DescribeRegionsRequest {
+	s.Engine = &v
+	return s
+}
+
 type DescribeRegionsResponseBody struct {
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Regions   *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -6356,13 +6488,13 @@ func (s DescribeRegionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsResponseBody {
-	s.RequestId = &v
+func (s *DescribeRegionsResponseBody) SetRegions(v *DescribeRegionsResponseBodyRegions) *DescribeRegionsResponseBody {
+	s.Regions = v
 	return s
 }
 
-func (s *DescribeRegionsResponseBody) SetRegions(v *DescribeRegionsResponseBodyRegions) *DescribeRegionsResponseBody {
-	s.Regions = v
+func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -6384,10 +6516,10 @@ func (s *DescribeRegionsResponseBodyRegions) SetRegion(v []*DescribeRegionsRespo
 }
 
 type DescribeRegionsResponseBodyRegionsRegion struct {
-	Zones          *DescribeRegionsResponseBodyRegionsRegionZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 	LocalName      *string                                        `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	RegionEndpoint *string                                        `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
 	RegionId       *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Zones          *DescribeRegionsResponseBodyRegionsRegionZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Struct"`
 }
 
 func (s DescribeRegionsResponseBodyRegionsRegion) String() string {
@@ -6396,11 +6528,6 @@ func (s DescribeRegionsResponseBodyRegionsRegion) String() string {
 
 func (s DescribeRegionsResponseBodyRegionsRegion) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeRegionsResponseBodyRegionsRegion) SetZones(v *DescribeRegionsResponseBodyRegionsRegionZones) *DescribeRegionsResponseBodyRegionsRegion {
-	s.Zones = v
-	return s
 }
 
 func (s *DescribeRegionsResponseBodyRegionsRegion) SetLocalName(v string) *DescribeRegionsResponseBodyRegionsRegion {
@@ -6415,6 +6542,11 @@ func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionEndpoint(v string) *
 
 func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionId(v string) *DescribeRegionsResponseBodyRegionsRegion {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeRegionsResponseBodyRegionsRegion) SetZones(v *DescribeRegionsResponseBodyRegionsRegionZones) *DescribeRegionsResponseBodyRegionsRegion {
+	s.Zones = v
 	return s
 }
 
@@ -6477,9 +6609,9 @@ func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *Descr
 
 type DescribeRestoreFullDetailsRequest struct {
 	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	RestoreRecordId *string `json:"RestoreRecordId,omitempty" xml:"RestoreRecordId,omitempty"`
 	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RestoreRecordId *string `json:"RestoreRecordId,omitempty" xml:"RestoreRecordId,omitempty"`
 }
 
 func (s DescribeRestoreFullDetailsRequest) String() string {
@@ -6495,11 +6627,6 @@ func (s *DescribeRestoreFullDetailsRequest) SetClusterId(v string) *DescribeRest
 	return s
 }
 
-func (s *DescribeRestoreFullDetailsRequest) SetRestoreRecordId(v string) *DescribeRestoreFullDetailsRequest {
-	s.RestoreRecordId = &v
-	return s
-}
-
 func (s *DescribeRestoreFullDetailsRequest) SetPageNumber(v int32) *DescribeRestoreFullDetailsRequest {
 	s.PageNumber = &v
 	return s
@@ -6510,9 +6637,14 @@ func (s *DescribeRestoreFullDetailsRequest) SetPageSize(v int32) *DescribeRestor
 	return s
 }
 
+func (s *DescribeRestoreFullDetailsRequest) SetRestoreRecordId(v string) *DescribeRestoreFullDetailsRequest {
+	s.RestoreRecordId = &v
+	return s
+}
+
 type DescribeRestoreFullDetailsResponseBody struct {
-	RestoreFull *DescribeRestoreFullDetailsResponseBodyRestoreFull `json:"RestoreFull,omitempty" xml:"RestoreFull,omitempty" type:"Struct"`
 	RequestId   *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RestoreFull *DescribeRestoreFullDetailsResponseBodyRestoreFull `json:"RestoreFull,omitempty" xml:"RestoreFull,omitempty" type:"Struct"`
 }
 
 func (s DescribeRestoreFullDetailsResponseBody) String() string {
@@ -6523,24 +6655,24 @@ func (s DescribeRestoreFullDetailsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRestoreFullDetailsResponseBody) SetRestoreFull(v *DescribeRestoreFullDetailsResponseBodyRestoreFull) *DescribeRestoreFullDetailsResponseBody {
-	s.RestoreFull = v
-	return s
-}
-
 func (s *DescribeRestoreFullDetailsResponseBody) SetRequestId(v string) *DescribeRestoreFullDetailsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *DescribeRestoreFullDetailsResponseBody) SetRestoreFull(v *DescribeRestoreFullDetailsResponseBodyRestoreFull) *DescribeRestoreFullDetailsResponseBody {
+	s.RestoreFull = v
+	return s
+}
+
 type DescribeRestoreFullDetailsResponseBodyRestoreFull struct {
-	Succeed            *int32                                                               `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
 	DataSize           *string                                                              `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	Speed              *string                                                              `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	RestoreFullDetails *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetails `json:"RestoreFullDetails,omitempty" xml:"RestoreFullDetails,omitempty" type:"Struct"`
-	PageSize           *int32                                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Fail               *int32                                                               `json:"Fail,omitempty" xml:"Fail,omitempty"`
 	PageNumber         *int32                                                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize           *int32                                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RestoreFullDetails *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetails `json:"RestoreFullDetails,omitempty" xml:"RestoreFullDetails,omitempty" type:"Struct"`
+	Speed              *string                                                              `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	Succeed            *int32                                                               `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
 	Total              *int64                                                               `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -6552,28 +6684,8 @@ func (s DescribeRestoreFullDetailsResponseBodyRestoreFull) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRestoreFullDetailsResponseBodyRestoreFull) SetSucceed(v int32) *DescribeRestoreFullDetailsResponseBodyRestoreFull {
-	s.Succeed = &v
-	return s
-}
-
 func (s *DescribeRestoreFullDetailsResponseBodyRestoreFull) SetDataSize(v string) *DescribeRestoreFullDetailsResponseBodyRestoreFull {
 	s.DataSize = &v
-	return s
-}
-
-func (s *DescribeRestoreFullDetailsResponseBodyRestoreFull) SetSpeed(v string) *DescribeRestoreFullDetailsResponseBodyRestoreFull {
-	s.Speed = &v
-	return s
-}
-
-func (s *DescribeRestoreFullDetailsResponseBodyRestoreFull) SetRestoreFullDetails(v *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetails) *DescribeRestoreFullDetailsResponseBodyRestoreFull {
-	s.RestoreFullDetails = v
-	return s
-}
-
-func (s *DescribeRestoreFullDetailsResponseBodyRestoreFull) SetPageSize(v int32) *DescribeRestoreFullDetailsResponseBodyRestoreFull {
-	s.PageSize = &v
 	return s
 }
 
@@ -6584,6 +6696,26 @@ func (s *DescribeRestoreFullDetailsResponseBodyRestoreFull) SetFail(v int32) *De
 
 func (s *DescribeRestoreFullDetailsResponseBodyRestoreFull) SetPageNumber(v int32) *DescribeRestoreFullDetailsResponseBodyRestoreFull {
 	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeRestoreFullDetailsResponseBodyRestoreFull) SetPageSize(v int32) *DescribeRestoreFullDetailsResponseBodyRestoreFull {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRestoreFullDetailsResponseBodyRestoreFull) SetRestoreFullDetails(v *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetails) *DescribeRestoreFullDetailsResponseBodyRestoreFull {
+	s.RestoreFullDetails = v
+	return s
+}
+
+func (s *DescribeRestoreFullDetailsResponseBodyRestoreFull) SetSpeed(v string) *DescribeRestoreFullDetailsResponseBodyRestoreFull {
+	s.Speed = &v
+	return s
+}
+
+func (s *DescribeRestoreFullDetailsResponseBodyRestoreFull) SetSucceed(v int32) *DescribeRestoreFullDetailsResponseBodyRestoreFull {
+	s.Succeed = &v
 	return s
 }
 
@@ -6610,13 +6742,13 @@ func (s *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetails) Se
 }
 
 type DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail struct {
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Process   *string `json:"Process,omitempty" xml:"Process,omitempty"`
 	DataSize  *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	Speed     *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Process   *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	Speed     *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
 	Table     *string `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
@@ -6628,13 +6760,18 @@ func (s DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsResto
 	return s.String()
 }
 
+func (s *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetDataSize(v string) *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
+	s.DataSize = &v
+	return s
+}
+
 func (s *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetEndTime(v string) *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
 	s.EndTime = &v
 	return s
 }
 
-func (s *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetStartTime(v string) *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
-	s.StartTime = &v
+func (s *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetMessage(v string) *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
+	s.Message = &v
 	return s
 }
 
@@ -6643,23 +6780,18 @@ func (s *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRest
 	return s
 }
 
-func (s *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetDataSize(v string) *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
-	s.DataSize = &v
-	return s
-}
-
 func (s *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetSpeed(v string) *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
 	s.Speed = &v
 	return s
 }
 
-func (s *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetState(v string) *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
-	s.State = &v
+func (s *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetStartTime(v string) *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
+	s.StartTime = &v
 	return s
 }
 
-func (s *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetMessage(v string) *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
-	s.Message = &v
+func (s *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetState(v string) *DescribeRestoreFullDetailsResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
+	s.State = &v
 	return s
 }
 
@@ -6739,12 +6871,12 @@ func (s *DescribeRestoreIncrDetailResponseBody) SetRestoreIncrDetail(v *Describe
 
 type DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail struct {
 	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Process        *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	RestoreStartTs *string `json:"RestoreStartTs,omitempty" xml:"RestoreStartTs,omitempty"`
-	State          *string `json:"State,omitempty" xml:"State,omitempty"`
-	RestoredTs     *string `json:"RestoredTs,omitempty" xml:"RestoredTs,omitempty"`
 	RestoreDelay   *string `json:"RestoreDelay,omitempty" xml:"RestoreDelay,omitempty"`
+	RestoreStartTs *string `json:"RestoreStartTs,omitempty" xml:"RestoreStartTs,omitempty"`
+	RestoredTs     *string `json:"RestoredTs,omitempty" xml:"RestoredTs,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	State          *string `json:"State,omitempty" xml:"State,omitempty"`
 }
 
 func (s DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail) String() string {
@@ -6760,13 +6892,13 @@ func (s *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail) SetEndTime(v st
 	return s
 }
 
-func (s *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail) SetStartTime(v string) *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail {
-	s.StartTime = &v
+func (s *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail) SetProcess(v string) *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail {
+	s.Process = &v
 	return s
 }
 
-func (s *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail) SetProcess(v string) *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail {
-	s.Process = &v
+func (s *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail) SetRestoreDelay(v string) *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail {
+	s.RestoreDelay = &v
 	return s
 }
 
@@ -6775,18 +6907,18 @@ func (s *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail) SetRestoreStart
 	return s
 }
 
-func (s *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail) SetState(v string) *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail {
-	s.State = &v
-	return s
-}
-
 func (s *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail) SetRestoredTs(v string) *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail {
 	s.RestoredTs = &v
 	return s
 }
 
-func (s *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail) SetRestoreDelay(v string) *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail {
-	s.RestoreDelay = &v
+func (s *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail) SetStartTime(v string) *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail) SetState(v string) *DescribeRestoreIncrDetailResponseBodyRestoreIncrDetail {
+	s.State = &v
 	return s
 }
 
@@ -6815,9 +6947,9 @@ func (s *DescribeRestoreIncrDetailResponse) SetBody(v *DescribeRestoreIncrDetail
 
 type DescribeRestoreSchemaDetailsRequest struct {
 	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	RestoreRecordId *string `json:"RestoreRecordId,omitempty" xml:"RestoreRecordId,omitempty"`
 	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RestoreRecordId *string `json:"RestoreRecordId,omitempty" xml:"RestoreRecordId,omitempty"`
 }
 
 func (s DescribeRestoreSchemaDetailsRequest) String() string {
@@ -6833,11 +6965,6 @@ func (s *DescribeRestoreSchemaDetailsRequest) SetClusterId(v string) *DescribeRe
 	return s
 }
 
-func (s *DescribeRestoreSchemaDetailsRequest) SetRestoreRecordId(v string) *DescribeRestoreSchemaDetailsRequest {
-	s.RestoreRecordId = &v
-	return s
-}
-
 func (s *DescribeRestoreSchemaDetailsRequest) SetPageNumber(v int32) *DescribeRestoreSchemaDetailsRequest {
 	s.PageNumber = &v
 	return s
@@ -6848,9 +6975,14 @@ func (s *DescribeRestoreSchemaDetailsRequest) SetPageSize(v int32) *DescribeRest
 	return s
 }
 
+func (s *DescribeRestoreSchemaDetailsRequest) SetRestoreRecordId(v string) *DescribeRestoreSchemaDetailsRequest {
+	s.RestoreRecordId = &v
+	return s
+}
+
 type DescribeRestoreSchemaDetailsResponseBody struct {
-	RestoreSchema *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema `json:"RestoreSchema,omitempty" xml:"RestoreSchema,omitempty" type:"Struct"`
 	RequestId     *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RestoreSchema *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema `json:"RestoreSchema,omitempty" xml:"RestoreSchema,omitempty" type:"Struct"`
 }
 
 func (s DescribeRestoreSchemaDetailsResponseBody) String() string {
@@ -6861,22 +6993,22 @@ func (s DescribeRestoreSchemaDetailsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRestoreSchemaDetailsResponseBody) SetRestoreSchema(v *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema) *DescribeRestoreSchemaDetailsResponseBody {
-	s.RestoreSchema = v
-	return s
-}
-
 func (s *DescribeRestoreSchemaDetailsResponseBody) SetRequestId(v string) *DescribeRestoreSchemaDetailsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *DescribeRestoreSchemaDetailsResponseBody) SetRestoreSchema(v *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema) *DescribeRestoreSchemaDetailsResponseBody {
+	s.RestoreSchema = v
+	return s
+}
+
 type DescribeRestoreSchemaDetailsResponseBodyRestoreSchema struct {
-	Succeed              *int32                                                                     `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
-	RestoreSchemaDetails *DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetails `json:"RestoreSchemaDetails,omitempty" xml:"RestoreSchemaDetails,omitempty" type:"Struct"`
-	PageSize             *int32                                                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber           *int32                                                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	Fail                 *int32                                                                     `json:"Fail,omitempty" xml:"Fail,omitempty"`
+	PageNumber           *int32                                                                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32                                                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RestoreSchemaDetails *DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetails `json:"RestoreSchemaDetails,omitempty" xml:"RestoreSchemaDetails,omitempty" type:"Struct"`
+	Succeed              *int32                                                                     `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
 	Total                *int64                                                                     `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -6888,18 +7020,8 @@ func (s DescribeRestoreSchemaDetailsResponseBodyRestoreSchema) GoString() string
 	return s.String()
 }
 
-func (s *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema) SetSucceed(v int32) *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema {
-	s.Succeed = &v
-	return s
-}
-
-func (s *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema) SetRestoreSchemaDetails(v *DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetails) *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema {
-	s.RestoreSchemaDetails = v
-	return s
-}
-
-func (s *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema) SetPageSize(v int32) *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema {
-	s.PageSize = &v
+func (s *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema) SetFail(v int32) *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema {
+	s.Fail = &v
 	return s
 }
 
@@ -6908,8 +7030,18 @@ func (s *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema) SetPageNumber(v 
 	return s
 }
 
-func (s *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema) SetFail(v int32) *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema {
-	s.Fail = &v
+func (s *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema) SetPageSize(v int32) *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema) SetRestoreSchemaDetails(v *DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetails) *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema {
+	s.RestoreSchemaDetails = v
+	return s
+}
+
+func (s *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema) SetSucceed(v int32) *DescribeRestoreSchemaDetailsResponseBodyRestoreSchema {
+	s.Succeed = &v
 	return s
 }
 
@@ -6937,9 +7069,9 @@ func (s *DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetai
 
 type DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail struct {
 	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	State     *string `json:"State,omitempty" xml:"State,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Table     *string `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
@@ -6956,6 +7088,11 @@ func (s *DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetai
 	return s
 }
 
+func (s *DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail) SetMessage(v string) *DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail {
+	s.Message = &v
+	return s
+}
+
 func (s *DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail) SetStartTime(v string) *DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail {
 	s.StartTime = &v
 	return s
@@ -6963,11 +7100,6 @@ func (s *DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetai
 
 func (s *DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail) SetState(v string) *DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail {
 	s.State = &v
-	return s
-}
-
-func (s *DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail) SetMessage(v string) *DescribeRestoreSchemaDetailsResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail {
-	s.Message = &v
 	return s
 }
 
@@ -7029,12 +7161,12 @@ func (s *DescribeRestoreSummaryRequest) SetPageSize(v int32) *DescribeRestoreSum
 }
 
 type DescribeRestoreSummaryResponseBody struct {
+	HasMoreRestoreRecord *int32                                      `json:"HasMoreRestoreRecord,omitempty" xml:"HasMoreRestoreRecord,omitempty"`
+	PageNumber           *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize             *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId            *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber           *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Total                *int32                                      `json:"Total,omitempty" xml:"Total,omitempty"`
-	HasMoreRestoreRecord *int32                                      `json:"HasMoreRestoreRecord,omitempty" xml:"HasMoreRestoreRecord,omitempty"`
 	Rescords             *DescribeRestoreSummaryResponseBodyRescords `json:"Rescords,omitempty" xml:"Rescords,omitempty" type:"Struct"`
+	Total                *int32                                      `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
 func (s DescribeRestoreSummaryResponseBody) String() string {
@@ -7043,6 +7175,16 @@ func (s DescribeRestoreSummaryResponseBody) String() string {
 
 func (s DescribeRestoreSummaryResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeRestoreSummaryResponseBody) SetHasMoreRestoreRecord(v int32) *DescribeRestoreSummaryResponseBody {
+	s.HasMoreRestoreRecord = &v
+	return s
+}
+
+func (s *DescribeRestoreSummaryResponseBody) SetPageNumber(v int32) *DescribeRestoreSummaryResponseBody {
+	s.PageNumber = &v
+	return s
 }
 
 func (s *DescribeRestoreSummaryResponseBody) SetPageSize(v int32) *DescribeRestoreSummaryResponseBody {
@@ -7055,23 +7197,13 @@ func (s *DescribeRestoreSummaryResponseBody) SetRequestId(v string) *DescribeRes
 	return s
 }
 
-func (s *DescribeRestoreSummaryResponseBody) SetPageNumber(v int32) *DescribeRestoreSummaryResponseBody {
-	s.PageNumber = &v
+func (s *DescribeRestoreSummaryResponseBody) SetRescords(v *DescribeRestoreSummaryResponseBodyRescords) *DescribeRestoreSummaryResponseBody {
+	s.Rescords = v
 	return s
 }
 
 func (s *DescribeRestoreSummaryResponseBody) SetTotal(v int32) *DescribeRestoreSummaryResponseBody {
 	s.Total = &v
-	return s
-}
-
-func (s *DescribeRestoreSummaryResponseBody) SetHasMoreRestoreRecord(v int32) *DescribeRestoreSummaryResponseBody {
-	s.HasMoreRestoreRecord = &v
-	return s
-}
-
-func (s *DescribeRestoreSummaryResponseBody) SetRescords(v *DescribeRestoreSummaryResponseBodyRescords) *DescribeRestoreSummaryResponseBody {
-	s.Rescords = v
 	return s
 }
 
@@ -7093,14 +7225,14 @@ func (s *DescribeRestoreSummaryResponseBodyRescords) SetRescord(v []*DescribeRes
 }
 
 type DescribeRestoreSummaryResponseBodyRescordsRescord struct {
-	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	FinishTime          *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
-	SchemaProcess       *string `json:"SchemaProcess,omitempty" xml:"SchemaProcess,omitempty"`
 	BulkLoadProcess     *string `json:"BulkLoadProcess,omitempty" xml:"BulkLoadProcess,omitempty"`
-	RecordId            *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
 	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	LogProcess          *string `json:"LogProcess,omitempty" xml:"LogProcess,omitempty"`
+	FinishTime          *string `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
 	HfileRestoreProcess *string `json:"HfileRestoreProcess,omitempty" xml:"HfileRestoreProcess,omitempty"`
+	LogProcess          *string `json:"LogProcess,omitempty" xml:"LogProcess,omitempty"`
+	RecordId            *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	SchemaProcess       *string `json:"SchemaProcess,omitempty" xml:"SchemaProcess,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeRestoreSummaryResponseBodyRescordsRescord) String() string {
@@ -7111,28 +7243,8 @@ func (s DescribeRestoreSummaryResponseBodyRescordsRescord) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRestoreSummaryResponseBodyRescordsRescord) SetStatus(v string) *DescribeRestoreSummaryResponseBodyRescordsRescord {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeRestoreSummaryResponseBodyRescordsRescord) SetFinishTime(v string) *DescribeRestoreSummaryResponseBodyRescordsRescord {
-	s.FinishTime = &v
-	return s
-}
-
-func (s *DescribeRestoreSummaryResponseBodyRescordsRescord) SetSchemaProcess(v string) *DescribeRestoreSummaryResponseBodyRescordsRescord {
-	s.SchemaProcess = &v
-	return s
-}
-
 func (s *DescribeRestoreSummaryResponseBodyRescordsRescord) SetBulkLoadProcess(v string) *DescribeRestoreSummaryResponseBodyRescordsRescord {
 	s.BulkLoadProcess = &v
-	return s
-}
-
-func (s *DescribeRestoreSummaryResponseBodyRescordsRescord) SetRecordId(v string) *DescribeRestoreSummaryResponseBodyRescordsRescord {
-	s.RecordId = &v
 	return s
 }
 
@@ -7141,13 +7253,33 @@ func (s *DescribeRestoreSummaryResponseBodyRescordsRescord) SetCreateTime(v stri
 	return s
 }
 
-func (s *DescribeRestoreSummaryResponseBodyRescordsRescord) SetLogProcess(v string) *DescribeRestoreSummaryResponseBodyRescordsRescord {
-	s.LogProcess = &v
+func (s *DescribeRestoreSummaryResponseBodyRescordsRescord) SetFinishTime(v string) *DescribeRestoreSummaryResponseBodyRescordsRescord {
+	s.FinishTime = &v
 	return s
 }
 
 func (s *DescribeRestoreSummaryResponseBodyRescordsRescord) SetHfileRestoreProcess(v string) *DescribeRestoreSummaryResponseBodyRescordsRescord {
 	s.HfileRestoreProcess = &v
+	return s
+}
+
+func (s *DescribeRestoreSummaryResponseBodyRescordsRescord) SetLogProcess(v string) *DescribeRestoreSummaryResponseBodyRescordsRescord {
+	s.LogProcess = &v
+	return s
+}
+
+func (s *DescribeRestoreSummaryResponseBodyRescordsRescord) SetRecordId(v string) *DescribeRestoreSummaryResponseBodyRescordsRescord {
+	s.RecordId = &v
+	return s
+}
+
+func (s *DescribeRestoreSummaryResponseBodyRescordsRescord) SetSchemaProcess(v string) *DescribeRestoreSummaryResponseBodyRescordsRescord {
+	s.SchemaProcess = &v
+	return s
+}
+
+func (s *DescribeRestoreSummaryResponseBodyRescordsRescord) SetStatus(v string) *DescribeRestoreSummaryResponseBodyRescordsRescord {
+	s.Status = &v
 	return s
 }
 
@@ -7198,12 +7330,12 @@ func (s *DescribeRestoreTablesRequest) SetRestoreRecordId(v string) *DescribeRes
 }
 
 type DescribeRestoreTablesResponseBody struct {
-	RestoreSchema     *DescribeRestoreTablesResponseBodyRestoreSchema     `json:"RestoreSchema,omitempty" xml:"RestoreSchema,omitempty" type:"Struct"`
-	RestoreFull       *DescribeRestoreTablesResponseBodyRestoreFull       `json:"RestoreFull,omitempty" xml:"RestoreFull,omitempty" type:"Struct"`
 	RequestId         *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tables            *DescribeRestoreTablesResponseBodyTables            `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
-	RestoreSummary    *DescribeRestoreTablesResponseBodyRestoreSummary    `json:"RestoreSummary,omitempty" xml:"RestoreSummary,omitempty" type:"Struct"`
+	RestoreFull       *DescribeRestoreTablesResponseBodyRestoreFull       `json:"RestoreFull,omitempty" xml:"RestoreFull,omitempty" type:"Struct"`
 	RestoreIncrDetail *DescribeRestoreTablesResponseBodyRestoreIncrDetail `json:"RestoreIncrDetail,omitempty" xml:"RestoreIncrDetail,omitempty" type:"Struct"`
+	RestoreSchema     *DescribeRestoreTablesResponseBodyRestoreSchema     `json:"RestoreSchema,omitempty" xml:"RestoreSchema,omitempty" type:"Struct"`
+	RestoreSummary    *DescribeRestoreTablesResponseBodyRestoreSummary    `json:"RestoreSummary,omitempty" xml:"RestoreSummary,omitempty" type:"Struct"`
+	Tables            *DescribeRestoreTablesResponseBodyTables            `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Struct"`
 }
 
 func (s DescribeRestoreTablesResponseBody) String() string {
@@ -7214,8 +7346,8 @@ func (s DescribeRestoreTablesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRestoreTablesResponseBody) SetRestoreSchema(v *DescribeRestoreTablesResponseBodyRestoreSchema) *DescribeRestoreTablesResponseBody {
-	s.RestoreSchema = v
+func (s *DescribeRestoreTablesResponseBody) SetRequestId(v string) *DescribeRestoreTablesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7224,13 +7356,13 @@ func (s *DescribeRestoreTablesResponseBody) SetRestoreFull(v *DescribeRestoreTab
 	return s
 }
 
-func (s *DescribeRestoreTablesResponseBody) SetRequestId(v string) *DescribeRestoreTablesResponseBody {
-	s.RequestId = &v
+func (s *DescribeRestoreTablesResponseBody) SetRestoreIncrDetail(v *DescribeRestoreTablesResponseBodyRestoreIncrDetail) *DescribeRestoreTablesResponseBody {
+	s.RestoreIncrDetail = v
 	return s
 }
 
-func (s *DescribeRestoreTablesResponseBody) SetTables(v *DescribeRestoreTablesResponseBodyTables) *DescribeRestoreTablesResponseBody {
-	s.Tables = v
+func (s *DescribeRestoreTablesResponseBody) SetRestoreSchema(v *DescribeRestoreTablesResponseBodyRestoreSchema) *DescribeRestoreTablesResponseBody {
+	s.RestoreSchema = v
 	return s
 }
 
@@ -7239,17 +7371,205 @@ func (s *DescribeRestoreTablesResponseBody) SetRestoreSummary(v *DescribeRestore
 	return s
 }
 
-func (s *DescribeRestoreTablesResponseBody) SetRestoreIncrDetail(v *DescribeRestoreTablesResponseBodyRestoreIncrDetail) *DescribeRestoreTablesResponseBody {
-	s.RestoreIncrDetail = v
+func (s *DescribeRestoreTablesResponseBody) SetTables(v *DescribeRestoreTablesResponseBodyTables) *DescribeRestoreTablesResponseBody {
+	s.Tables = v
+	return s
+}
+
+type DescribeRestoreTablesResponseBodyRestoreFull struct {
+	DataSize           *string                                                         `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	Fail               *int32                                                          `json:"Fail,omitempty" xml:"Fail,omitempty"`
+	PageNumber         *int32                                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize           *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RestoreFullDetails *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetails `json:"RestoreFullDetails,omitempty" xml:"RestoreFullDetails,omitempty" type:"Struct"`
+	Speed              *string                                                         `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	Succeed            *int32                                                          `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
+	Total              *int64                                                          `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeRestoreTablesResponseBodyRestoreFull) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRestoreTablesResponseBodyRestoreFull) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreFull) SetDataSize(v string) *DescribeRestoreTablesResponseBodyRestoreFull {
+	s.DataSize = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreFull) SetFail(v int32) *DescribeRestoreTablesResponseBodyRestoreFull {
+	s.Fail = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreFull) SetPageNumber(v int32) *DescribeRestoreTablesResponseBodyRestoreFull {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreFull) SetPageSize(v int32) *DescribeRestoreTablesResponseBodyRestoreFull {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreFull) SetRestoreFullDetails(v *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetails) *DescribeRestoreTablesResponseBodyRestoreFull {
+	s.RestoreFullDetails = v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreFull) SetSpeed(v string) *DescribeRestoreTablesResponseBodyRestoreFull {
+	s.Speed = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreFull) SetSucceed(v int32) *DescribeRestoreTablesResponseBodyRestoreFull {
+	s.Succeed = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreFull) SetTotal(v int64) *DescribeRestoreTablesResponseBodyRestoreFull {
+	s.Total = &v
+	return s
+}
+
+type DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetails struct {
+	RestoreFullDetail []*DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail `json:"RestoreFullDetail,omitempty" xml:"RestoreFullDetail,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetails) SetRestoreFullDetail(v []*DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetails {
+	s.RestoreFullDetail = v
+	return s
+}
+
+type DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail struct {
+	DataSize  *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Process   *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	Speed     *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	Table     *string `json:"Table,omitempty" xml:"Table,omitempty"`
+}
+
+func (s DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetDataSize(v string) *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
+	s.DataSize = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetEndTime(v string) *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetMessage(v string) *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetProcess(v string) *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
+	s.Process = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetSpeed(v string) *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
+	s.Speed = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetStartTime(v string) *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetState(v string) *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetTable(v string) *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
+	s.Table = &v
+	return s
+}
+
+type DescribeRestoreTablesResponseBodyRestoreIncrDetail struct {
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Process        *string `json:"Process,omitempty" xml:"Process,omitempty"`
+	RestoreDelay   *string `json:"RestoreDelay,omitempty" xml:"RestoreDelay,omitempty"`
+	RestoreStartTs *string `json:"RestoreStartTs,omitempty" xml:"RestoreStartTs,omitempty"`
+	RestoredTs     *string `json:"RestoredTs,omitempty" xml:"RestoredTs,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	State          *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s DescribeRestoreTablesResponseBodyRestoreIncrDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRestoreTablesResponseBodyRestoreIncrDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreIncrDetail) SetEndTime(v string) *DescribeRestoreTablesResponseBodyRestoreIncrDetail {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreIncrDetail) SetProcess(v string) *DescribeRestoreTablesResponseBodyRestoreIncrDetail {
+	s.Process = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreIncrDetail) SetRestoreDelay(v string) *DescribeRestoreTablesResponseBodyRestoreIncrDetail {
+	s.RestoreDelay = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreIncrDetail) SetRestoreStartTs(v string) *DescribeRestoreTablesResponseBodyRestoreIncrDetail {
+	s.RestoreStartTs = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreIncrDetail) SetRestoredTs(v string) *DescribeRestoreTablesResponseBodyRestoreIncrDetail {
+	s.RestoredTs = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreIncrDetail) SetStartTime(v string) *DescribeRestoreTablesResponseBodyRestoreIncrDetail {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreIncrDetail) SetState(v string) *DescribeRestoreTablesResponseBodyRestoreIncrDetail {
+	s.State = &v
 	return s
 }
 
 type DescribeRestoreTablesResponseBodyRestoreSchema struct {
-	Succeed              *int32                                                              `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
-	RestoreSchemaDetails *DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetails `json:"RestoreSchemaDetails,omitempty" xml:"RestoreSchemaDetails,omitempty" type:"Struct"`
-	PageSize             *int32                                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber           *int32                                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	Fail                 *int32                                                              `json:"Fail,omitempty" xml:"Fail,omitempty"`
+	PageNumber           *int32                                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32                                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RestoreSchemaDetails *DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetails `json:"RestoreSchemaDetails,omitempty" xml:"RestoreSchemaDetails,omitempty" type:"Struct"`
+	Succeed              *int32                                                              `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
 	Total                *int64                                                              `json:"Total,omitempty" xml:"Total,omitempty"`
 }
 
@@ -7261,18 +7581,8 @@ func (s DescribeRestoreTablesResponseBodyRestoreSchema) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRestoreTablesResponseBodyRestoreSchema) SetSucceed(v int32) *DescribeRestoreTablesResponseBodyRestoreSchema {
-	s.Succeed = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreSchema) SetRestoreSchemaDetails(v *DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetails) *DescribeRestoreTablesResponseBodyRestoreSchema {
-	s.RestoreSchemaDetails = v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreSchema) SetPageSize(v int32) *DescribeRestoreTablesResponseBodyRestoreSchema {
-	s.PageSize = &v
+func (s *DescribeRestoreTablesResponseBodyRestoreSchema) SetFail(v int32) *DescribeRestoreTablesResponseBodyRestoreSchema {
+	s.Fail = &v
 	return s
 }
 
@@ -7281,8 +7591,18 @@ func (s *DescribeRestoreTablesResponseBodyRestoreSchema) SetPageNumber(v int32) 
 	return s
 }
 
-func (s *DescribeRestoreTablesResponseBodyRestoreSchema) SetFail(v int32) *DescribeRestoreTablesResponseBodyRestoreSchema {
-	s.Fail = &v
+func (s *DescribeRestoreTablesResponseBodyRestoreSchema) SetPageSize(v int32) *DescribeRestoreTablesResponseBodyRestoreSchema {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreSchema) SetRestoreSchemaDetails(v *DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetails) *DescribeRestoreTablesResponseBodyRestoreSchema {
+	s.RestoreSchemaDetails = v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreSchema) SetSucceed(v int32) *DescribeRestoreTablesResponseBodyRestoreSchema {
+	s.Succeed = &v
 	return s
 }
 
@@ -7310,9 +7630,9 @@ func (s *DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetails) Set
 
 type DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail struct {
 	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	State     *string `json:"State,omitempty" xml:"State,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Table     *string `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 
@@ -7329,6 +7649,11 @@ func (s *DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetailsResto
 	return s
 }
 
+func (s *DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail) SetMessage(v string) *DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail {
+	s.Message = &v
+	return s
+}
+
 func (s *DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail) SetStartTime(v string) *DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail {
 	s.StartTime = &v
 	return s
@@ -7339,148 +7664,55 @@ func (s *DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetailsResto
 	return s
 }
 
-func (s *DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail) SetMessage(v string) *DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail {
-	s.Message = &v
-	return s
-}
-
 func (s *DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail) SetTable(v string) *DescribeRestoreTablesResponseBodyRestoreSchemaRestoreSchemaDetailsRestoreSchemaDetail {
 	s.Table = &v
 	return s
 }
 
-type DescribeRestoreTablesResponseBodyRestoreFull struct {
-	Succeed            *int32                                                          `json:"Succeed,omitempty" xml:"Succeed,omitempty"`
-	DataSize           *string                                                         `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	Speed              *string                                                         `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	RestoreFullDetails *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetails `json:"RestoreFullDetails,omitempty" xml:"RestoreFullDetails,omitempty" type:"Struct"`
-	PageSize           *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Fail               *int32                                                          `json:"Fail,omitempty" xml:"Fail,omitempty"`
-	PageNumber         *int32                                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Total              *int64                                                          `json:"Total,omitempty" xml:"Total,omitempty"`
+type DescribeRestoreTablesResponseBodyRestoreSummary struct {
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RecordId      *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
+	RestoreToDate *string `json:"RestoreToDate,omitempty" xml:"RestoreToDate,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	State         *string `json:"State,omitempty" xml:"State,omitempty"`
+	TargetCluster *string `json:"TargetCluster,omitempty" xml:"TargetCluster,omitempty"`
 }
 
-func (s DescribeRestoreTablesResponseBodyRestoreFull) String() string {
+func (s DescribeRestoreTablesResponseBodyRestoreSummary) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeRestoreTablesResponseBodyRestoreFull) GoString() string {
+func (s DescribeRestoreTablesResponseBodyRestoreSummary) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRestoreTablesResponseBodyRestoreFull) SetSucceed(v int32) *DescribeRestoreTablesResponseBodyRestoreFull {
-	s.Succeed = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreFull) SetDataSize(v string) *DescribeRestoreTablesResponseBodyRestoreFull {
-	s.DataSize = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreFull) SetSpeed(v string) *DescribeRestoreTablesResponseBodyRestoreFull {
-	s.Speed = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreFull) SetRestoreFullDetails(v *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetails) *DescribeRestoreTablesResponseBodyRestoreFull {
-	s.RestoreFullDetails = v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreFull) SetPageSize(v int32) *DescribeRestoreTablesResponseBodyRestoreFull {
-	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreFull) SetFail(v int32) *DescribeRestoreTablesResponseBodyRestoreFull {
-	s.Fail = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreFull) SetPageNumber(v int32) *DescribeRestoreTablesResponseBodyRestoreFull {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreFull) SetTotal(v int64) *DescribeRestoreTablesResponseBodyRestoreFull {
-	s.Total = &v
-	return s
-}
-
-type DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetails struct {
-	RestoreFullDetail []*DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail `json:"RestoreFullDetail,omitempty" xml:"RestoreFullDetail,omitempty" type:"Repeated"`
-}
-
-func (s DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetails) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetails) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetails) SetRestoreFullDetail(v []*DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetails {
-	s.RestoreFullDetail = v
-	return s
-}
-
-type DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail struct {
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Process   *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	DataSize  *string `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
-	Speed     *string `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	State     *string `json:"State,omitempty" xml:"State,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Table     *string `json:"Table,omitempty" xml:"Table,omitempty"`
-}
-
-func (s DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetEndTime(v string) *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
+func (s *DescribeRestoreTablesResponseBodyRestoreSummary) SetEndTime(v string) *DescribeRestoreTablesResponseBodyRestoreSummary {
 	s.EndTime = &v
 	return s
 }
 
-func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetStartTime(v string) *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
+func (s *DescribeRestoreTablesResponseBodyRestoreSummary) SetRecordId(v string) *DescribeRestoreTablesResponseBodyRestoreSummary {
+	s.RecordId = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreSummary) SetRestoreToDate(v string) *DescribeRestoreTablesResponseBodyRestoreSummary {
+	s.RestoreToDate = &v
+	return s
+}
+
+func (s *DescribeRestoreTablesResponseBodyRestoreSummary) SetStartTime(v string) *DescribeRestoreTablesResponseBodyRestoreSummary {
 	s.StartTime = &v
 	return s
 }
 
-func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetProcess(v string) *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
-	s.Process = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetDataSize(v string) *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
-	s.DataSize = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetSpeed(v string) *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
-	s.Speed = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetState(v string) *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
+func (s *DescribeRestoreTablesResponseBodyRestoreSummary) SetState(v string) *DescribeRestoreTablesResponseBodyRestoreSummary {
 	s.State = &v
 	return s
 }
 
-func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetMessage(v string) *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail) SetTable(v string) *DescribeRestoreTablesResponseBodyRestoreFullRestoreFullDetailsRestoreFullDetail {
-	s.Table = &v
+func (s *DescribeRestoreTablesResponseBodyRestoreSummary) SetTargetCluster(v string) *DescribeRestoreTablesResponseBodyRestoreSummary {
+	s.TargetCluster = &v
 	return s
 }
 
@@ -7498,106 +7730,6 @@ func (s DescribeRestoreTablesResponseBodyTables) GoString() string {
 
 func (s *DescribeRestoreTablesResponseBodyTables) SetTable(v []*string) *DescribeRestoreTablesResponseBodyTables {
 	s.Table = v
-	return s
-}
-
-type DescribeRestoreTablesResponseBodyRestoreSummary struct {
-	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State         *string `json:"State,omitempty" xml:"State,omitempty"`
-	RecordId      *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	RestoreToDate *string `json:"RestoreToDate,omitempty" xml:"RestoreToDate,omitempty"`
-	TargetCluster *string `json:"TargetCluster,omitempty" xml:"TargetCluster,omitempty"`
-}
-
-func (s DescribeRestoreTablesResponseBodyRestoreSummary) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRestoreTablesResponseBodyRestoreSummary) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreSummary) SetEndTime(v string) *DescribeRestoreTablesResponseBodyRestoreSummary {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreSummary) SetStartTime(v string) *DescribeRestoreTablesResponseBodyRestoreSummary {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreSummary) SetState(v string) *DescribeRestoreTablesResponseBodyRestoreSummary {
-	s.State = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreSummary) SetRecordId(v string) *DescribeRestoreTablesResponseBodyRestoreSummary {
-	s.RecordId = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreSummary) SetRestoreToDate(v string) *DescribeRestoreTablesResponseBodyRestoreSummary {
-	s.RestoreToDate = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreSummary) SetTargetCluster(v string) *DescribeRestoreTablesResponseBodyRestoreSummary {
-	s.TargetCluster = &v
-	return s
-}
-
-type DescribeRestoreTablesResponseBodyRestoreIncrDetail struct {
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Process        *string `json:"Process,omitempty" xml:"Process,omitempty"`
-	RestoreStartTs *string `json:"RestoreStartTs,omitempty" xml:"RestoreStartTs,omitempty"`
-	State          *string `json:"State,omitempty" xml:"State,omitempty"`
-	RestoredTs     *string `json:"RestoredTs,omitempty" xml:"RestoredTs,omitempty"`
-	RestoreDelay   *string `json:"RestoreDelay,omitempty" xml:"RestoreDelay,omitempty"`
-}
-
-func (s DescribeRestoreTablesResponseBodyRestoreIncrDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRestoreTablesResponseBodyRestoreIncrDetail) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreIncrDetail) SetEndTime(v string) *DescribeRestoreTablesResponseBodyRestoreIncrDetail {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreIncrDetail) SetStartTime(v string) *DescribeRestoreTablesResponseBodyRestoreIncrDetail {
-	s.StartTime = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreIncrDetail) SetProcess(v string) *DescribeRestoreTablesResponseBodyRestoreIncrDetail {
-	s.Process = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreIncrDetail) SetRestoreStartTs(v string) *DescribeRestoreTablesResponseBodyRestoreIncrDetail {
-	s.RestoreStartTs = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreIncrDetail) SetState(v string) *DescribeRestoreTablesResponseBodyRestoreIncrDetail {
-	s.State = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreIncrDetail) SetRestoredTs(v string) *DescribeRestoreTablesResponseBodyRestoreIncrDetail {
-	s.RestoredTs = &v
-	return s
-}
-
-func (s *DescribeRestoreTablesResponseBodyRestoreIncrDetail) SetRestoreDelay(v string) *DescribeRestoreTablesResponseBodyRestoreIncrDetail {
-	s.RestoreDelay = &v
 	return s
 }
 
@@ -7704,6 +7836,219 @@ func (s *DescribeSecurityGroupsResponse) SetBody(v *DescribeSecurityGroupsRespon
 	return s
 }
 
+type DescribeServerlessClusterRequest struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeServerlessClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServerlessClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServerlessClusterRequest) SetClusterId(v string) *DescribeServerlessClusterRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterRequest) SetZoneId(v string) *DescribeServerlessClusterRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeServerlessClusterResponseBody struct {
+	AutoRenew            *string `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	ClusterType          *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	CreateTime           *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CuSize               *string `json:"CuSize,omitempty" xml:"CuSize,omitempty"`
+	DiskSize             *string `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	ExpireTime           *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HaType               *string `json:"HaType,omitempty" xml:"HaType,omitempty"`
+	HasUser              *string `json:"HasUser,omitempty" xml:"HasUser,omitempty"`
+	InnerEndpoint        *string `json:"InnerEndpoint,omitempty" xml:"InnerEndpoint,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName         *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	IsDeletionProtection *string `json:"IsDeletionProtection,omitempty" xml:"IsDeletionProtection,omitempty"`
+	LockMode             *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
+	MainVersion          *string `json:"MainVersion,omitempty" xml:"MainVersion,omitempty"`
+	OuterEndpoint        *string `json:"OuterEndpoint,omitempty" xml:"OuterEndpoint,omitempty"`
+	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ReserverMaxQpsNum    *string `json:"ReserverMaxQpsNum,omitempty" xml:"ReserverMaxQpsNum,omitempty"`
+	ReserverMinQpsNum    *string `json:"ReserverMinQpsNum,omitempty" xml:"ReserverMinQpsNum,omitempty"`
+	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateStatus         *string `json:"UpdateStatus,omitempty" xml:"UpdateStatus,omitempty"`
+	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeServerlessClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServerlessClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetAutoRenew(v string) *DescribeServerlessClusterResponseBody {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetClusterType(v string) *DescribeServerlessClusterResponseBody {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetCreateTime(v string) *DescribeServerlessClusterResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetCuSize(v string) *DescribeServerlessClusterResponseBody {
+	s.CuSize = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetDiskSize(v string) *DescribeServerlessClusterResponseBody {
+	s.DiskSize = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetExpireTime(v string) *DescribeServerlessClusterResponseBody {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetHaType(v string) *DescribeServerlessClusterResponseBody {
+	s.HaType = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetHasUser(v string) *DescribeServerlessClusterResponseBody {
+	s.HasUser = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetInnerEndpoint(v string) *DescribeServerlessClusterResponseBody {
+	s.InnerEndpoint = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetInstanceId(v string) *DescribeServerlessClusterResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetInstanceName(v string) *DescribeServerlessClusterResponseBody {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetIsDeletionProtection(v string) *DescribeServerlessClusterResponseBody {
+	s.IsDeletionProtection = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetLockMode(v string) *DescribeServerlessClusterResponseBody {
+	s.LockMode = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetMainVersion(v string) *DescribeServerlessClusterResponseBody {
+	s.MainVersion = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetOuterEndpoint(v string) *DescribeServerlessClusterResponseBody {
+	s.OuterEndpoint = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetPayType(v string) *DescribeServerlessClusterResponseBody {
+	s.PayType = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetRegionId(v string) *DescribeServerlessClusterResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetRequestId(v string) *DescribeServerlessClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetReserverMaxQpsNum(v string) *DescribeServerlessClusterResponseBody {
+	s.ReserverMaxQpsNum = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetReserverMinQpsNum(v string) *DescribeServerlessClusterResponseBody {
+	s.ReserverMinQpsNum = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetResourceGroupId(v string) *DescribeServerlessClusterResponseBody {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetStatus(v string) *DescribeServerlessClusterResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetUpdateStatus(v string) *DescribeServerlessClusterResponseBody {
+	s.UpdateStatus = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetVSwitchId(v string) *DescribeServerlessClusterResponseBody {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetVpcId(v string) *DescribeServerlessClusterResponseBody {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponseBody) SetZoneId(v string) *DescribeServerlessClusterResponseBody {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeServerlessClusterResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeServerlessClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeServerlessClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServerlessClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServerlessClusterResponse) SetHeaders(v map[string]*string) *DescribeServerlessClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeServerlessClusterResponse) SetBody(v *DescribeServerlessClusterResponseBody) *DescribeServerlessClusterResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeSubDomainRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ZoneId   *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
@@ -7728,8 +8073,8 @@ func (s *DescribeSubDomainRequest) SetZoneId(v string) *DescribeSubDomainRequest
 }
 
 type DescribeSubDomainResponseBody struct {
-	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SubDomain *string `json:"SubDomain,omitempty" xml:"SubDomain,omitempty"`
 }
 
 func (s DescribeSubDomainResponseBody) String() string {
@@ -7740,13 +8085,13 @@ func (s DescribeSubDomainResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSubDomainResponseBody) SetSubDomain(v string) *DescribeSubDomainResponseBody {
-	s.SubDomain = &v
+func (s *DescribeSubDomainResponseBody) SetRequestId(v string) *DescribeSubDomainResponseBody {
+	s.RequestId = &v
 	return s
 }
 
-func (s *DescribeSubDomainResponseBody) SetRequestId(v string) *DescribeSubDomainResponseBody {
-	s.RequestId = &v
+func (s *DescribeSubDomainResponseBody) SetSubDomain(v string) *DescribeSubDomainResponseBody {
+	s.SubDomain = &v
 	return s
 }
 
@@ -7774,10 +8119,10 @@ func (s *DescribeSubDomainResponse) SetBody(v *DescribeSubDomainResponseBody) *D
 }
 
 type EnableHBaseueBackupRequest struct {
+	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ColdStorageSize  *int32  `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
 	HbaseueClusterId *string `json:"HbaseueClusterId,omitempty" xml:"HbaseueClusterId,omitempty"`
 	NodeCount        *int32  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	ColdStorageSize  *int32  `json:"ColdStorageSize,omitempty" xml:"ColdStorageSize,omitempty"`
-	ClientToken      *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 }
 
 func (s EnableHBaseueBackupRequest) String() string {
@@ -7786,6 +8131,16 @@ func (s EnableHBaseueBackupRequest) String() string {
 
 func (s EnableHBaseueBackupRequest) GoString() string {
 	return s.String()
+}
+
+func (s *EnableHBaseueBackupRequest) SetClientToken(v string) *EnableHBaseueBackupRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *EnableHBaseueBackupRequest) SetColdStorageSize(v int32) *EnableHBaseueBackupRequest {
+	s.ColdStorageSize = &v
+	return s
 }
 
 func (s *EnableHBaseueBackupRequest) SetHbaseueClusterId(v string) *EnableHBaseueBackupRequest {
@@ -7798,20 +8153,10 @@ func (s *EnableHBaseueBackupRequest) SetNodeCount(v int32) *EnableHBaseueBackupR
 	return s
 }
 
-func (s *EnableHBaseueBackupRequest) SetColdStorageSize(v int32) *EnableHBaseueBackupRequest {
-	s.ColdStorageSize = &v
-	return s
-}
-
-func (s *EnableHBaseueBackupRequest) SetClientToken(v string) *EnableHBaseueBackupRequest {
-	s.ClientToken = &v
-	return s
-}
-
 type EnableHBaseueBackupResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s EnableHBaseueBackupResponseBody) String() string {
@@ -7822,11 +8167,6 @@ func (s EnableHBaseueBackupResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *EnableHBaseueBackupResponseBody) SetRequestId(v string) *EnableHBaseueBackupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *EnableHBaseueBackupResponseBody) SetClusterId(v string) *EnableHBaseueBackupResponseBody {
 	s.ClusterId = &v
 	return s
@@ -7834,6 +8174,11 @@ func (s *EnableHBaseueBackupResponseBody) SetClusterId(v string) *EnableHBaseueB
 
 func (s *EnableHBaseueBackupResponseBody) SetOrderId(v string) *EnableHBaseueBackupResponseBody {
 	s.OrderId = &v
+	return s
+}
+
+func (s *EnableHBaseueBackupResponseBody) SetRequestId(v string) *EnableHBaseueBackupResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -7861,23 +8206,23 @@ func (s *EnableHBaseueBackupResponse) SetBody(v *EnableHBaseueBackupResponseBody
 }
 
 type EnableHBaseueModuleRequest struct {
-	ModuleClusterName  *string `json:"ModuleClusterName,omitempty" xml:"ModuleClusterName,omitempty"`
-	VpcId              *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId          *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	MasterInstanceType *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
+	AutoRenewPeriod    *int32  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	BdsId              *string `json:"BdsId,omitempty" xml:"BdsId,omitempty"`
+	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	CoreInstanceType   *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
-	DiskType           *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	DiskSize           *int32  `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
+	DiskType           *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
+	HbaseueClusterId   *string `json:"HbaseueClusterId,omitempty" xml:"HbaseueClusterId,omitempty"`
+	MasterInstanceType *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
+	ModuleClusterName  *string `json:"ModuleClusterName,omitempty" xml:"ModuleClusterName,omitempty"`
+	ModuleTypeName     *string `json:"ModuleTypeName,omitempty" xml:"ModuleTypeName,omitempty"`
 	NodeCount          *int32  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
 	PayType            *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	PeriodUnit         *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	Period             *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	AutoRenewPeriod    *int32  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	ClientToken        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	HbaseueClusterId   *string `json:"HbaseueClusterId,omitempty" xml:"HbaseueClusterId,omitempty"`
-	BdsId              *string `json:"BdsId,omitempty" xml:"BdsId,omitempty"`
-	ModuleTypeName     *string `json:"ModuleTypeName,omitempty" xml:"ModuleTypeName,omitempty"`
+	PeriodUnit         *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VpcId              *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchId          *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
 	ZoneId             *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
@@ -7889,23 +8234,18 @@ func (s EnableHBaseueModuleRequest) GoString() string {
 	return s.String()
 }
 
-func (s *EnableHBaseueModuleRequest) SetModuleClusterName(v string) *EnableHBaseueModuleRequest {
-	s.ModuleClusterName = &v
+func (s *EnableHBaseueModuleRequest) SetAutoRenewPeriod(v int32) *EnableHBaseueModuleRequest {
+	s.AutoRenewPeriod = &v
 	return s
 }
 
-func (s *EnableHBaseueModuleRequest) SetVpcId(v string) *EnableHBaseueModuleRequest {
-	s.VpcId = &v
+func (s *EnableHBaseueModuleRequest) SetBdsId(v string) *EnableHBaseueModuleRequest {
+	s.BdsId = &v
 	return s
 }
 
-func (s *EnableHBaseueModuleRequest) SetVswitchId(v string) *EnableHBaseueModuleRequest {
-	s.VswitchId = &v
-	return s
-}
-
-func (s *EnableHBaseueModuleRequest) SetMasterInstanceType(v string) *EnableHBaseueModuleRequest {
-	s.MasterInstanceType = &v
+func (s *EnableHBaseueModuleRequest) SetClientToken(v string) *EnableHBaseueModuleRequest {
+	s.ClientToken = &v
 	return s
 }
 
@@ -7914,13 +8254,33 @@ func (s *EnableHBaseueModuleRequest) SetCoreInstanceType(v string) *EnableHBaseu
 	return s
 }
 
+func (s *EnableHBaseueModuleRequest) SetDiskSize(v int32) *EnableHBaseueModuleRequest {
+	s.DiskSize = &v
+	return s
+}
+
 func (s *EnableHBaseueModuleRequest) SetDiskType(v string) *EnableHBaseueModuleRequest {
 	s.DiskType = &v
 	return s
 }
 
-func (s *EnableHBaseueModuleRequest) SetDiskSize(v int32) *EnableHBaseueModuleRequest {
-	s.DiskSize = &v
+func (s *EnableHBaseueModuleRequest) SetHbaseueClusterId(v string) *EnableHBaseueModuleRequest {
+	s.HbaseueClusterId = &v
+	return s
+}
+
+func (s *EnableHBaseueModuleRequest) SetMasterInstanceType(v string) *EnableHBaseueModuleRequest {
+	s.MasterInstanceType = &v
+	return s
+}
+
+func (s *EnableHBaseueModuleRequest) SetModuleClusterName(v string) *EnableHBaseueModuleRequest {
+	s.ModuleClusterName = &v
+	return s
+}
+
+func (s *EnableHBaseueModuleRequest) SetModuleTypeName(v string) *EnableHBaseueModuleRequest {
+	s.ModuleTypeName = &v
 	return s
 }
 
@@ -7934,43 +8294,28 @@ func (s *EnableHBaseueModuleRequest) SetPayType(v string) *EnableHBaseueModuleRe
 	return s
 }
 
-func (s *EnableHBaseueModuleRequest) SetPeriodUnit(v string) *EnableHBaseueModuleRequest {
-	s.PeriodUnit = &v
-	return s
-}
-
 func (s *EnableHBaseueModuleRequest) SetPeriod(v int32) *EnableHBaseueModuleRequest {
 	s.Period = &v
 	return s
 }
 
-func (s *EnableHBaseueModuleRequest) SetAutoRenewPeriod(v int32) *EnableHBaseueModuleRequest {
-	s.AutoRenewPeriod = &v
-	return s
-}
-
-func (s *EnableHBaseueModuleRequest) SetClientToken(v string) *EnableHBaseueModuleRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *EnableHBaseueModuleRequest) SetHbaseueClusterId(v string) *EnableHBaseueModuleRequest {
-	s.HbaseueClusterId = &v
-	return s
-}
-
-func (s *EnableHBaseueModuleRequest) SetBdsId(v string) *EnableHBaseueModuleRequest {
-	s.BdsId = &v
-	return s
-}
-
-func (s *EnableHBaseueModuleRequest) SetModuleTypeName(v string) *EnableHBaseueModuleRequest {
-	s.ModuleTypeName = &v
+func (s *EnableHBaseueModuleRequest) SetPeriodUnit(v string) *EnableHBaseueModuleRequest {
+	s.PeriodUnit = &v
 	return s
 }
 
 func (s *EnableHBaseueModuleRequest) SetRegionId(v string) *EnableHBaseueModuleRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *EnableHBaseueModuleRequest) SetVpcId(v string) *EnableHBaseueModuleRequest {
+	s.VpcId = &v
+	return s
+}
+
+func (s *EnableHBaseueModuleRequest) SetVswitchId(v string) *EnableHBaseueModuleRequest {
+	s.VswitchId = &v
 	return s
 }
 
@@ -7980,9 +8325,9 @@ func (s *EnableHBaseueModuleRequest) SetZoneId(v string) *EnableHBaseueModuleReq
 }
 
 type EnableHBaseueModuleResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s EnableHBaseueModuleResponseBody) String() string {
@@ -7993,11 +8338,6 @@ func (s EnableHBaseueModuleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *EnableHBaseueModuleResponseBody) SetRequestId(v string) *EnableHBaseueModuleResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *EnableHBaseueModuleResponseBody) SetClusterId(v string) *EnableHBaseueModuleResponseBody {
 	s.ClusterId = &v
 	return s
@@ -8005,6 +8345,11 @@ func (s *EnableHBaseueModuleResponseBody) SetClusterId(v string) *EnableHBaseueM
 
 func (s *EnableHBaseueModuleResponseBody) SetOrderId(v string) *EnableHBaseueModuleResponseBody {
 	s.OrderId = &v
+	return s
+}
+
+func (s *EnableHBaseueModuleResponseBody) SetRequestId(v string) *EnableHBaseueModuleResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8032,34 +8377,34 @@ func (s *EnableHBaseueModuleResponse) SetBody(v *EnableHBaseueModuleResponseBody
 }
 
 type EvaluateMultiZoneResourceRequest struct {
-	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	EngineVersion        *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	ArchVersion          *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
-	ClusterName          *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	MultiZoneCombination *string `json:"MultiZoneCombination,omitempty" xml:"MultiZoneCombination,omitempty"`
-	PrimaryZoneId        *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
-	PrimaryVSwitchId     *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
-	StandbyZoneId        *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
-	StandbyVSwitchId     *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
-	ArbiterZoneId        *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
 	ArbiterVSwitchId     *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
-	MasterInstanceType   *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
-	CoreInstanceType     *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
-	CoreDiskType         *string `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
-	CoreDiskSize         *int32  `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
-	CoreNodeCount        *int32  `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
-	LogInstanceType      *string `json:"LogInstanceType,omitempty" xml:"LogInstanceType,omitempty"`
-	LogDiskType          *string `json:"LogDiskType,omitempty" xml:"LogDiskType,omitempty"`
-	LogDiskSize          *int32  `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty"`
-	LogNodeCount         *int32  `json:"LogNodeCount,omitempty" xml:"LogNodeCount,omitempty"`
-	SecurityIPList       *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	PeriodUnit           *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	Period               *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	ArbiterZoneId        *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
+	ArchVersion          *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
 	AutoRenewPeriod      *int32  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClusterName          *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	CoreDiskSize         *int32  `json:"CoreDiskSize,omitempty" xml:"CoreDiskSize,omitempty"`
+	CoreDiskType         *string `json:"CoreDiskType,omitempty" xml:"CoreDiskType,omitempty"`
+	CoreInstanceType     *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	CoreNodeCount        *int32  `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
+	Engine               *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
+	EngineVersion        *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	LogDiskSize          *int32  `json:"LogDiskSize,omitempty" xml:"LogDiskSize,omitempty"`
+	LogDiskType          *string `json:"LogDiskType,omitempty" xml:"LogDiskType,omitempty"`
+	LogInstanceType      *string `json:"LogInstanceType,omitempty" xml:"LogInstanceType,omitempty"`
+	LogNodeCount         *int32  `json:"LogNodeCount,omitempty" xml:"LogNodeCount,omitempty"`
+	MasterInstanceType   *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
+	MultiZoneCombination *string `json:"MultiZoneCombination,omitempty" xml:"MultiZoneCombination,omitempty"`
+	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Period               *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit           *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PrimaryVSwitchId     *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
+	PrimaryZoneId        *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecurityIPList       *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
+	StandbyVSwitchId     *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
+	StandbyZoneId        *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
+	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s EvaluateMultiZoneResourceRequest) String() string {
@@ -8068,6 +8413,56 @@ func (s EvaluateMultiZoneResourceRequest) String() string {
 
 func (s EvaluateMultiZoneResourceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *EvaluateMultiZoneResourceRequest) SetArbiterVSwitchId(v string) *EvaluateMultiZoneResourceRequest {
+	s.ArbiterVSwitchId = &v
+	return s
+}
+
+func (s *EvaluateMultiZoneResourceRequest) SetArbiterZoneId(v string) *EvaluateMultiZoneResourceRequest {
+	s.ArbiterZoneId = &v
+	return s
+}
+
+func (s *EvaluateMultiZoneResourceRequest) SetArchVersion(v string) *EvaluateMultiZoneResourceRequest {
+	s.ArchVersion = &v
+	return s
+}
+
+func (s *EvaluateMultiZoneResourceRequest) SetAutoRenewPeriod(v int32) *EvaluateMultiZoneResourceRequest {
+	s.AutoRenewPeriod = &v
+	return s
+}
+
+func (s *EvaluateMultiZoneResourceRequest) SetClientToken(v string) *EvaluateMultiZoneResourceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *EvaluateMultiZoneResourceRequest) SetClusterName(v string) *EvaluateMultiZoneResourceRequest {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *EvaluateMultiZoneResourceRequest) SetCoreDiskSize(v int32) *EvaluateMultiZoneResourceRequest {
+	s.CoreDiskSize = &v
+	return s
+}
+
+func (s *EvaluateMultiZoneResourceRequest) SetCoreDiskType(v string) *EvaluateMultiZoneResourceRequest {
+	s.CoreDiskType = &v
+	return s
+}
+
+func (s *EvaluateMultiZoneResourceRequest) SetCoreInstanceType(v string) *EvaluateMultiZoneResourceRequest {
+	s.CoreInstanceType = &v
+	return s
+}
+
+func (s *EvaluateMultiZoneResourceRequest) SetCoreNodeCount(v int32) *EvaluateMultiZoneResourceRequest {
+	s.CoreNodeCount = &v
+	return s
 }
 
 func (s *EvaluateMultiZoneResourceRequest) SetEngine(v string) *EvaluateMultiZoneResourceRequest {
@@ -8080,88 +8475,8 @@ func (s *EvaluateMultiZoneResourceRequest) SetEngineVersion(v string) *EvaluateM
 	return s
 }
 
-func (s *EvaluateMultiZoneResourceRequest) SetArchVersion(v string) *EvaluateMultiZoneResourceRequest {
-	s.ArchVersion = &v
-	return s
-}
-
-func (s *EvaluateMultiZoneResourceRequest) SetClusterName(v string) *EvaluateMultiZoneResourceRequest {
-	s.ClusterName = &v
-	return s
-}
-
-func (s *EvaluateMultiZoneResourceRequest) SetRegionId(v string) *EvaluateMultiZoneResourceRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *EvaluateMultiZoneResourceRequest) SetVpcId(v string) *EvaluateMultiZoneResourceRequest {
-	s.VpcId = &v
-	return s
-}
-
-func (s *EvaluateMultiZoneResourceRequest) SetMultiZoneCombination(v string) *EvaluateMultiZoneResourceRequest {
-	s.MultiZoneCombination = &v
-	return s
-}
-
-func (s *EvaluateMultiZoneResourceRequest) SetPrimaryZoneId(v string) *EvaluateMultiZoneResourceRequest {
-	s.PrimaryZoneId = &v
-	return s
-}
-
-func (s *EvaluateMultiZoneResourceRequest) SetPrimaryVSwitchId(v string) *EvaluateMultiZoneResourceRequest {
-	s.PrimaryVSwitchId = &v
-	return s
-}
-
-func (s *EvaluateMultiZoneResourceRequest) SetStandbyZoneId(v string) *EvaluateMultiZoneResourceRequest {
-	s.StandbyZoneId = &v
-	return s
-}
-
-func (s *EvaluateMultiZoneResourceRequest) SetStandbyVSwitchId(v string) *EvaluateMultiZoneResourceRequest {
-	s.StandbyVSwitchId = &v
-	return s
-}
-
-func (s *EvaluateMultiZoneResourceRequest) SetArbiterZoneId(v string) *EvaluateMultiZoneResourceRequest {
-	s.ArbiterZoneId = &v
-	return s
-}
-
-func (s *EvaluateMultiZoneResourceRequest) SetArbiterVSwitchId(v string) *EvaluateMultiZoneResourceRequest {
-	s.ArbiterVSwitchId = &v
-	return s
-}
-
-func (s *EvaluateMultiZoneResourceRequest) SetMasterInstanceType(v string) *EvaluateMultiZoneResourceRequest {
-	s.MasterInstanceType = &v
-	return s
-}
-
-func (s *EvaluateMultiZoneResourceRequest) SetCoreInstanceType(v string) *EvaluateMultiZoneResourceRequest {
-	s.CoreInstanceType = &v
-	return s
-}
-
-func (s *EvaluateMultiZoneResourceRequest) SetCoreDiskType(v string) *EvaluateMultiZoneResourceRequest {
-	s.CoreDiskType = &v
-	return s
-}
-
-func (s *EvaluateMultiZoneResourceRequest) SetCoreDiskSize(v int32) *EvaluateMultiZoneResourceRequest {
-	s.CoreDiskSize = &v
-	return s
-}
-
-func (s *EvaluateMultiZoneResourceRequest) SetCoreNodeCount(v int32) *EvaluateMultiZoneResourceRequest {
-	s.CoreNodeCount = &v
-	return s
-}
-
-func (s *EvaluateMultiZoneResourceRequest) SetLogInstanceType(v string) *EvaluateMultiZoneResourceRequest {
-	s.LogInstanceType = &v
+func (s *EvaluateMultiZoneResourceRequest) SetLogDiskSize(v int32) *EvaluateMultiZoneResourceRequest {
+	s.LogDiskSize = &v
 	return s
 }
 
@@ -8170,8 +8485,8 @@ func (s *EvaluateMultiZoneResourceRequest) SetLogDiskType(v string) *EvaluateMul
 	return s
 }
 
-func (s *EvaluateMultiZoneResourceRequest) SetLogDiskSize(v int32) *EvaluateMultiZoneResourceRequest {
-	s.LogDiskSize = &v
+func (s *EvaluateMultiZoneResourceRequest) SetLogInstanceType(v string) *EvaluateMultiZoneResourceRequest {
+	s.LogInstanceType = &v
 	return s
 }
 
@@ -8180,8 +8495,13 @@ func (s *EvaluateMultiZoneResourceRequest) SetLogNodeCount(v int32) *EvaluateMul
 	return s
 }
 
-func (s *EvaluateMultiZoneResourceRequest) SetSecurityIPList(v string) *EvaluateMultiZoneResourceRequest {
-	s.SecurityIPList = &v
+func (s *EvaluateMultiZoneResourceRequest) SetMasterInstanceType(v string) *EvaluateMultiZoneResourceRequest {
+	s.MasterInstanceType = &v
+	return s
+}
+
+func (s *EvaluateMultiZoneResourceRequest) SetMultiZoneCombination(v string) *EvaluateMultiZoneResourceRequest {
+	s.MultiZoneCombination = &v
 	return s
 }
 
@@ -8190,23 +8510,48 @@ func (s *EvaluateMultiZoneResourceRequest) SetPayType(v string) *EvaluateMultiZo
 	return s
 }
 
-func (s *EvaluateMultiZoneResourceRequest) SetPeriodUnit(v string) *EvaluateMultiZoneResourceRequest {
-	s.PeriodUnit = &v
-	return s
-}
-
 func (s *EvaluateMultiZoneResourceRequest) SetPeriod(v int32) *EvaluateMultiZoneResourceRequest {
 	s.Period = &v
 	return s
 }
 
-func (s *EvaluateMultiZoneResourceRequest) SetAutoRenewPeriod(v int32) *EvaluateMultiZoneResourceRequest {
-	s.AutoRenewPeriod = &v
+func (s *EvaluateMultiZoneResourceRequest) SetPeriodUnit(v string) *EvaluateMultiZoneResourceRequest {
+	s.PeriodUnit = &v
 	return s
 }
 
-func (s *EvaluateMultiZoneResourceRequest) SetClientToken(v string) *EvaluateMultiZoneResourceRequest {
-	s.ClientToken = &v
+func (s *EvaluateMultiZoneResourceRequest) SetPrimaryVSwitchId(v string) *EvaluateMultiZoneResourceRequest {
+	s.PrimaryVSwitchId = &v
+	return s
+}
+
+func (s *EvaluateMultiZoneResourceRequest) SetPrimaryZoneId(v string) *EvaluateMultiZoneResourceRequest {
+	s.PrimaryZoneId = &v
+	return s
+}
+
+func (s *EvaluateMultiZoneResourceRequest) SetRegionId(v string) *EvaluateMultiZoneResourceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *EvaluateMultiZoneResourceRequest) SetSecurityIPList(v string) *EvaluateMultiZoneResourceRequest {
+	s.SecurityIPList = &v
+	return s
+}
+
+func (s *EvaluateMultiZoneResourceRequest) SetStandbyVSwitchId(v string) *EvaluateMultiZoneResourceRequest {
+	s.StandbyVSwitchId = &v
+	return s
+}
+
+func (s *EvaluateMultiZoneResourceRequest) SetStandbyZoneId(v string) *EvaluateMultiZoneResourceRequest {
+	s.StandbyZoneId = &v
+	return s
+}
+
+func (s *EvaluateMultiZoneResourceRequest) SetVpcId(v string) *EvaluateMultiZoneResourceRequest {
+	s.VpcId = &v
 	return s
 }
 
@@ -8280,9 +8625,9 @@ func (s *GetMultimodeCmsUrlRequest) SetRegionId(v string) *GetMultimodeCmsUrlReq
 }
 
 type GetMultimodeCmsUrlResponseBody struct {
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	MultimodCmsUrl *string `json:"MultimodCmsUrl,omitempty" xml:"MultimodCmsUrl,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetMultimodeCmsUrlResponseBody) String() string {
@@ -8293,11 +8638,6 @@ func (s GetMultimodeCmsUrlResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetMultimodeCmsUrlResponseBody) SetRequestId(v string) *GetMultimodeCmsUrlResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GetMultimodeCmsUrlResponseBody) SetClusterId(v string) *GetMultimodeCmsUrlResponseBody {
 	s.ClusterId = &v
 	return s
@@ -8305,6 +8645,11 @@ func (s *GetMultimodeCmsUrlResponseBody) SetClusterId(v string) *GetMultimodeCms
 
 func (s *GetMultimodeCmsUrlResponseBody) SetMultimodCmsUrl(v string) *GetMultimodeCmsUrlResponseBody {
 	s.MultimodCmsUrl = &v
+	return s
+}
+
+func (s *GetMultimodeCmsUrlResponseBody) SetRequestId(v string) *GetMultimodeCmsUrlResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -8389,9 +8734,9 @@ func (s *ListHBaseInstancesResponseBodyInstances) SetInstance(v []*ListHBaseInst
 }
 
 type ListHBaseInstancesResponseBodyInstancesInstance struct {
-	IsDefault    *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	IsDefault    *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 }
 
 func (s ListHBaseInstancesResponseBodyInstancesInstance) String() string {
@@ -8402,8 +8747,8 @@ func (s ListHBaseInstancesResponseBodyInstancesInstance) GoString() string {
 	return s.String()
 }
 
-func (s *ListHBaseInstancesResponseBodyInstancesInstance) SetIsDefault(v bool) *ListHBaseInstancesResponseBodyInstancesInstance {
-	s.IsDefault = &v
+func (s *ListHBaseInstancesResponseBodyInstancesInstance) SetInstanceId(v string) *ListHBaseInstancesResponseBodyInstancesInstance {
+	s.InstanceId = &v
 	return s
 }
 
@@ -8412,8 +8757,8 @@ func (s *ListHBaseInstancesResponseBodyInstancesInstance) SetInstanceName(v stri
 	return s
 }
 
-func (s *ListHBaseInstancesResponseBodyInstancesInstance) SetInstanceId(v string) *ListHBaseInstancesResponseBodyInstancesInstance {
-	s.InstanceId = &v
+func (s *ListHBaseInstancesResponseBodyInstancesInstance) SetIsDefault(v bool) *ListHBaseInstancesResponseBodyInstancesInstance {
+	s.IsDefault = &v
 	return s
 }
 
@@ -8442,8 +8787,8 @@ func (s *ListHBaseInstancesResponse) SetBody(v *ListHBaseInstancesResponseBody) 
 
 type ListInstanceServiceConfigHistoriesRequest struct {
 	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListInstanceServiceConfigHistoriesRequest) String() string {
@@ -8459,22 +8804,22 @@ func (s *ListInstanceServiceConfigHistoriesRequest) SetClusterId(v string) *List
 	return s
 }
 
-func (s *ListInstanceServiceConfigHistoriesRequest) SetPageSize(v int32) *ListInstanceServiceConfigHistoriesRequest {
-	s.PageSize = &v
-	return s
-}
-
 func (s *ListInstanceServiceConfigHistoriesRequest) SetPageNumber(v int32) *ListInstanceServiceConfigHistoriesRequest {
 	s.PageNumber = &v
 	return s
 }
 
+func (s *ListInstanceServiceConfigHistoriesRequest) SetPageSize(v int32) *ListInstanceServiceConfigHistoriesRequest {
+	s.PageSize = &v
+	return s
+}
+
 type ListInstanceServiceConfigHistoriesResponseBody struct {
-	TotalRecordCount     *int64                                                              `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	ConfigureHistoryList *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryList `json:"ConfigureHistoryList,omitempty" xml:"ConfigureHistoryList,omitempty" type:"Struct"`
+	PageNumber           *int32                                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageRecordCount      *int32                                                              `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	RequestId            *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber           *int32                                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	ConfigureHistoryList *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryList `json:"ConfigureHistoryList,omitempty" xml:"ConfigureHistoryList,omitempty" type:"Struct"`
+	TotalRecordCount     *int64                                                              `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s ListInstanceServiceConfigHistoriesResponseBody) String() string {
@@ -8485,8 +8830,13 @@ func (s ListInstanceServiceConfigHistoriesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListInstanceServiceConfigHistoriesResponseBody) SetTotalRecordCount(v int64) *ListInstanceServiceConfigHistoriesResponseBody {
-	s.TotalRecordCount = &v
+func (s *ListInstanceServiceConfigHistoriesResponseBody) SetConfigureHistoryList(v *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryList) *ListInstanceServiceConfigHistoriesResponseBody {
+	s.ConfigureHistoryList = v
+	return s
+}
+
+func (s *ListInstanceServiceConfigHistoriesResponseBody) SetPageNumber(v int32) *ListInstanceServiceConfigHistoriesResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -8500,13 +8850,8 @@ func (s *ListInstanceServiceConfigHistoriesResponseBody) SetRequestId(v string) 
 	return s
 }
 
-func (s *ListInstanceServiceConfigHistoriesResponseBody) SetPageNumber(v int32) *ListInstanceServiceConfigHistoriesResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListInstanceServiceConfigHistoriesResponseBody) SetConfigureHistoryList(v *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryList) *ListInstanceServiceConfigHistoriesResponseBody {
-	s.ConfigureHistoryList = v
+func (s *ListInstanceServiceConfigHistoriesResponseBody) SetTotalRecordCount(v int64) *ListInstanceServiceConfigHistoriesResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -8528,11 +8873,11 @@ func (s *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryList) Set
 }
 
 type ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfig struct {
-	Effective     *string `json:"Effective,omitempty" xml:"Effective,omitempty"`
-	OldValue      *string `json:"OldValue,omitempty" xml:"OldValue,omitempty"`
-	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ConfigureName *string `json:"ConfigureName,omitempty" xml:"ConfigureName,omitempty"`
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Effective     *string `json:"Effective,omitempty" xml:"Effective,omitempty"`
 	NewValue      *string `json:"NewValue,omitempty" xml:"NewValue,omitempty"`
+	OldValue      *string `json:"OldValue,omitempty" xml:"OldValue,omitempty"`
 }
 
 func (s ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfig) String() string {
@@ -8543,13 +8888,8 @@ func (s ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfig
 	return s.String()
 }
 
-func (s *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfig) SetEffective(v string) *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfig {
-	s.Effective = &v
-	return s
-}
-
-func (s *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfig) SetOldValue(v string) *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfig {
-	s.OldValue = &v
+func (s *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfig) SetConfigureName(v string) *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfig {
+	s.ConfigureName = &v
 	return s
 }
 
@@ -8558,13 +8898,18 @@ func (s *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfi
 	return s
 }
 
-func (s *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfig) SetConfigureName(v string) *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfig {
-	s.ConfigureName = &v
+func (s *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfig) SetEffective(v string) *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfig {
+	s.Effective = &v
 	return s
 }
 
 func (s *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfig) SetNewValue(v string) *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfig {
 	s.NewValue = &v
+	return s
+}
+
+func (s *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfig) SetOldValue(v string) *ListInstanceServiceConfigHistoriesResponseBodyConfigureHistoryListConfig {
+	s.OldValue = &v
 	return s
 }
 
@@ -8593,8 +8938,8 @@ func (s *ListInstanceServiceConfigHistoriesResponse) SetBody(v *ListInstanceServ
 
 type ListInstanceServiceConfigurationsRequest struct {
 	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListInstanceServiceConfigurationsRequest) String() string {
@@ -8610,22 +8955,22 @@ func (s *ListInstanceServiceConfigurationsRequest) SetClusterId(v string) *ListI
 	return s
 }
 
-func (s *ListInstanceServiceConfigurationsRequest) SetPageSize(v int32) *ListInstanceServiceConfigurationsRequest {
-	s.PageSize = &v
-	return s
-}
-
 func (s *ListInstanceServiceConfigurationsRequest) SetPageNumber(v int32) *ListInstanceServiceConfigurationsRequest {
 	s.PageNumber = &v
 	return s
 }
 
+func (s *ListInstanceServiceConfigurationsRequest) SetPageSize(v int32) *ListInstanceServiceConfigurationsRequest {
+	s.PageSize = &v
+	return s
+}
+
 type ListInstanceServiceConfigurationsResponseBody struct {
-	TotalRecordCount *int64                                                      `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
+	ConfigureList    *ListInstanceServiceConfigurationsResponseBodyConfigureList `json:"ConfigureList,omitempty" xml:"ConfigureList,omitempty" type:"Struct"`
+	PageNumber       *int32                                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageRecordCount  *int32                                                      `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
 	RequestId        *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber       *int32                                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	ConfigureList    *ListInstanceServiceConfigurationsResponseBodyConfigureList `json:"ConfigureList,omitempty" xml:"ConfigureList,omitempty" type:"Struct"`
+	TotalRecordCount *int64                                                      `json:"TotalRecordCount,omitempty" xml:"TotalRecordCount,omitempty"`
 }
 
 func (s ListInstanceServiceConfigurationsResponseBody) String() string {
@@ -8636,8 +8981,13 @@ func (s ListInstanceServiceConfigurationsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListInstanceServiceConfigurationsResponseBody) SetTotalRecordCount(v int64) *ListInstanceServiceConfigurationsResponseBody {
-	s.TotalRecordCount = &v
+func (s *ListInstanceServiceConfigurationsResponseBody) SetConfigureList(v *ListInstanceServiceConfigurationsResponseBodyConfigureList) *ListInstanceServiceConfigurationsResponseBody {
+	s.ConfigureList = v
+	return s
+}
+
+func (s *ListInstanceServiceConfigurationsResponseBody) SetPageNumber(v int32) *ListInstanceServiceConfigurationsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -8651,13 +9001,8 @@ func (s *ListInstanceServiceConfigurationsResponseBody) SetRequestId(v string) *
 	return s
 }
 
-func (s *ListInstanceServiceConfigurationsResponseBody) SetPageNumber(v int32) *ListInstanceServiceConfigurationsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListInstanceServiceConfigurationsResponseBody) SetConfigureList(v *ListInstanceServiceConfigurationsResponseBodyConfigureList) *ListInstanceServiceConfigurationsResponseBody {
-	s.ConfigureList = v
+func (s *ListInstanceServiceConfigurationsResponseBody) SetTotalRecordCount(v int64) *ListInstanceServiceConfigurationsResponseBody {
+	s.TotalRecordCount = &v
 	return s
 }
 
@@ -8679,13 +9024,13 @@ func (s *ListInstanceServiceConfigurationsResponseBodyConfigureList) SetConfig(v
 }
 
 type ListInstanceServiceConfigurationsResponseBodyConfigureListConfig struct {
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	RunningValue  *string `json:"RunningValue,omitempty" xml:"RunningValue,omitempty"`
-	ConfigureUnit *string `json:"ConfigureUnit,omitempty" xml:"ConfigureUnit,omitempty"`
 	ConfigureName *string `json:"ConfigureName,omitempty" xml:"ConfigureName,omitempty"`
-	ValueRange    *string `json:"ValueRange,omitempty" xml:"ValueRange,omitempty"`
+	ConfigureUnit *string `json:"ConfigureUnit,omitempty" xml:"ConfigureUnit,omitempty"`
 	DefaultValue  *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	NeedRestart   *string `json:"NeedRestart,omitempty" xml:"NeedRestart,omitempty"`
+	RunningValue  *string `json:"RunningValue,omitempty" xml:"RunningValue,omitempty"`
+	ValueRange    *string `json:"ValueRange,omitempty" xml:"ValueRange,omitempty"`
 }
 
 func (s ListInstanceServiceConfigurationsResponseBodyConfigureListConfig) String() string {
@@ -8696,13 +9041,8 @@ func (s ListInstanceServiceConfigurationsResponseBodyConfigureListConfig) GoStri
 	return s.String()
 }
 
-func (s *ListInstanceServiceConfigurationsResponseBodyConfigureListConfig) SetDescription(v string) *ListInstanceServiceConfigurationsResponseBodyConfigureListConfig {
-	s.Description = &v
-	return s
-}
-
-func (s *ListInstanceServiceConfigurationsResponseBodyConfigureListConfig) SetRunningValue(v string) *ListInstanceServiceConfigurationsResponseBodyConfigureListConfig {
-	s.RunningValue = &v
+func (s *ListInstanceServiceConfigurationsResponseBodyConfigureListConfig) SetConfigureName(v string) *ListInstanceServiceConfigurationsResponseBodyConfigureListConfig {
+	s.ConfigureName = &v
 	return s
 }
 
@@ -8711,23 +9051,28 @@ func (s *ListInstanceServiceConfigurationsResponseBodyConfigureListConfig) SetCo
 	return s
 }
 
-func (s *ListInstanceServiceConfigurationsResponseBodyConfigureListConfig) SetConfigureName(v string) *ListInstanceServiceConfigurationsResponseBodyConfigureListConfig {
-	s.ConfigureName = &v
-	return s
-}
-
-func (s *ListInstanceServiceConfigurationsResponseBodyConfigureListConfig) SetValueRange(v string) *ListInstanceServiceConfigurationsResponseBodyConfigureListConfig {
-	s.ValueRange = &v
-	return s
-}
-
 func (s *ListInstanceServiceConfigurationsResponseBodyConfigureListConfig) SetDefaultValue(v string) *ListInstanceServiceConfigurationsResponseBodyConfigureListConfig {
 	s.DefaultValue = &v
 	return s
 }
 
+func (s *ListInstanceServiceConfigurationsResponseBodyConfigureListConfig) SetDescription(v string) *ListInstanceServiceConfigurationsResponseBodyConfigureListConfig {
+	s.Description = &v
+	return s
+}
+
 func (s *ListInstanceServiceConfigurationsResponseBodyConfigureListConfig) SetNeedRestart(v string) *ListInstanceServiceConfigurationsResponseBodyConfigureListConfig {
 	s.NeedRestart = &v
+	return s
+}
+
+func (s *ListInstanceServiceConfigurationsResponseBodyConfigureListConfig) SetRunningValue(v string) *ListInstanceServiceConfigurationsResponseBodyConfigureListConfig {
+	s.RunningValue = &v
+	return s
+}
+
+func (s *ListInstanceServiceConfigurationsResponseBodyConfigureListConfig) SetValueRange(v string) *ListInstanceServiceConfigurationsResponseBodyConfigureListConfig {
+	s.ValueRange = &v
 	return s
 }
 
@@ -8755,8 +9100,8 @@ func (s *ListInstanceServiceConfigurationsResponse) SetBody(v *ListInstanceServi
 }
 
 type ListTagResourcesRequest struct {
-	RegionId   *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	NextToken  *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId   *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	Tag        []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
@@ -8769,13 +9114,13 @@ func (s ListTagResourcesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
-	s.RegionId = &v
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
 	return s
 }
 
-func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
-	s.NextToken = &v
+func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -8859,10 +9204,10 @@ func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagRe
 }
 
 type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
@@ -8873,23 +9218,23 @@ func (s ListTagResourcesResponseBodyTagResourcesTagResource) GoString() string {
 	return s.String()
 }
 
-func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
-	s.TagValue = &v
-	return s
-}
-
 func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceId(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
 	s.ResourceId = &v
 	return s
 }
 
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.ResourceType = &v
+	return s
+}
+
 func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagKey(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
 	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
+	s.TagValue = &v
 	return s
 }
 
@@ -8974,8 +9319,8 @@ func (s *ListTagsResponseBodyTags) SetTag(v []*ListTagsResponseBodyTagsTag) *Lis
 }
 
 type ListTagsResponseBodyTagsTag struct {
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListTagsResponseBodyTagsTag) String() string {
@@ -8986,13 +9331,13 @@ func (s ListTagsResponseBodyTagsTag) GoString() string {
 	return s.String()
 }
 
-func (s *ListTagsResponseBodyTagsTag) SetTagValue(v string) *ListTagsResponseBodyTagsTag {
-	s.TagValue = &v
+func (s *ListTagsResponseBodyTagsTag) SetTagKey(v string) *ListTagsResponseBodyTagsTag {
+	s.TagKey = &v
 	return s
 }
 
-func (s *ListTagsResponseBodyTagsTag) SetTagKey(v string) *ListTagsResponseBodyTagsTag {
-	s.TagKey = &v
+func (s *ListTagsResponseBodyTagsTag) SetTagValue(v string) *ListTagsResponseBodyTagsTag {
+	s.TagValue = &v
 	return s
 }
 
@@ -9021,10 +9366,10 @@ func (s *ListTagsResponse) SetBody(v *ListTagsResponseBody) *ListTagsResponse {
 
 type ModifyBackupPlanConfigRequest struct {
 	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Tables              *string `json:"Tables,omitempty" xml:"Tables,omitempty"`
 	FullBackupCycle     *string `json:"FullBackupCycle,omitempty" xml:"FullBackupCycle,omitempty"`
 	MinHFileBackupCount *string `json:"MinHFileBackupCount,omitempty" xml:"MinHFileBackupCount,omitempty"`
 	NextFullBackupDate  *string `json:"NextFullBackupDate,omitempty" xml:"NextFullBackupDate,omitempty"`
+	Tables              *string `json:"Tables,omitempty" xml:"Tables,omitempty"`
 }
 
 func (s ModifyBackupPlanConfigRequest) String() string {
@@ -9040,11 +9385,6 @@ func (s *ModifyBackupPlanConfigRequest) SetClusterId(v string) *ModifyBackupPlan
 	return s
 }
 
-func (s *ModifyBackupPlanConfigRequest) SetTables(v string) *ModifyBackupPlanConfigRequest {
-	s.Tables = &v
-	return s
-}
-
 func (s *ModifyBackupPlanConfigRequest) SetFullBackupCycle(v string) *ModifyBackupPlanConfigRequest {
 	s.FullBackupCycle = &v
 	return s
@@ -9057,6 +9397,11 @@ func (s *ModifyBackupPlanConfigRequest) SetMinHFileBackupCount(v string) *Modify
 
 func (s *ModifyBackupPlanConfigRequest) SetNextFullBackupDate(v string) *ModifyBackupPlanConfigRequest {
 	s.NextFullBackupDate = &v
+	return s
+}
+
+func (s *ModifyBackupPlanConfigRequest) SetTables(v string) *ModifyBackupPlanConfigRequest {
+	s.Tables = &v
 	return s
 }
 
@@ -9102,10 +9447,10 @@ func (s *ModifyBackupPlanConfigResponse) SetBody(v *ModifyBackupPlanConfigRespon
 
 type ModifyBackupPolicyRequest struct {
 	ClusterId                   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	PreferredBackupTime         *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	PreferredBackupEndTimeUTC   *string `json:"PreferredBackupEndTimeUTC,omitempty" xml:"PreferredBackupEndTimeUTC,omitempty"`
 	PreferredBackupPeriod       *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
 	PreferredBackupStartTimeUTC *string `json:"PreferredBackupStartTimeUTC,omitempty" xml:"PreferredBackupStartTimeUTC,omitempty"`
-	PreferredBackupEndTimeUTC   *string `json:"PreferredBackupEndTimeUTC,omitempty" xml:"PreferredBackupEndTimeUTC,omitempty"`
+	PreferredBackupTime         *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
 }
 
 func (s ModifyBackupPolicyRequest) String() string {
@@ -9121,8 +9466,8 @@ func (s *ModifyBackupPolicyRequest) SetClusterId(v string) *ModifyBackupPolicyRe
 	return s
 }
 
-func (s *ModifyBackupPolicyRequest) SetPreferredBackupTime(v string) *ModifyBackupPolicyRequest {
-	s.PreferredBackupTime = &v
+func (s *ModifyBackupPolicyRequest) SetPreferredBackupEndTimeUTC(v string) *ModifyBackupPolicyRequest {
+	s.PreferredBackupEndTimeUTC = &v
 	return s
 }
 
@@ -9136,8 +9481,8 @@ func (s *ModifyBackupPolicyRequest) SetPreferredBackupStartTimeUTC(v string) *Mo
 	return s
 }
 
-func (s *ModifyBackupPolicyRequest) SetPreferredBackupEndTimeUTC(v string) *ModifyBackupPolicyRequest {
-	s.PreferredBackupEndTimeUTC = &v
+func (s *ModifyBackupPolicyRequest) SetPreferredBackupTime(v string) *ModifyBackupPolicyRequest {
+	s.PreferredBackupTime = &v
 	return s
 }
 
@@ -9309,8 +9654,8 @@ func (s *ModifyDiskWarningLineResponse) SetBody(v *ModifyDiskWarningLineResponse
 
 type ModifyInstanceMaintainTimeRequest struct {
 	ClusterId         *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 	MaintainEndTime   *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 }
 
 func (s ModifyInstanceMaintainTimeRequest) String() string {
@@ -9326,13 +9671,13 @@ func (s *ModifyInstanceMaintainTimeRequest) SetClusterId(v string) *ModifyInstan
 	return s
 }
 
-func (s *ModifyInstanceMaintainTimeRequest) SetMaintainStartTime(v string) *ModifyInstanceMaintainTimeRequest {
-	s.MaintainStartTime = &v
+func (s *ModifyInstanceMaintainTimeRequest) SetMaintainEndTime(v string) *ModifyInstanceMaintainTimeRequest {
+	s.MaintainEndTime = &v
 	return s
 }
 
-func (s *ModifyInstanceMaintainTimeRequest) SetMaintainEndTime(v string) *ModifyInstanceMaintainTimeRequest {
-	s.MaintainEndTime = &v
+func (s *ModifyInstanceMaintainTimeRequest) SetMaintainStartTime(v string) *ModifyInstanceMaintainTimeRequest {
+	s.MaintainStartTime = &v
 	return s
 }
 
@@ -9378,10 +9723,10 @@ func (s *ModifyInstanceMaintainTimeResponse) SetBody(v *ModifyInstanceMaintainTi
 
 type ModifyInstanceNameRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ZoneId      *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ZoneId      *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ModifyInstanceNameRequest) String() string {
@@ -9397,16 +9742,6 @@ func (s *ModifyInstanceNameRequest) SetClientToken(v string) *ModifyInstanceName
 	return s
 }
 
-func (s *ModifyInstanceNameRequest) SetRegionId(v string) *ModifyInstanceNameRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ModifyInstanceNameRequest) SetZoneId(v string) *ModifyInstanceNameRequest {
-	s.ZoneId = &v
-	return s
-}
-
 func (s *ModifyInstanceNameRequest) SetClusterId(v string) *ModifyInstanceNameRequest {
 	s.ClusterId = &v
 	return s
@@ -9414,6 +9749,16 @@ func (s *ModifyInstanceNameRequest) SetClusterId(v string) *ModifyInstanceNameRe
 
 func (s *ModifyInstanceNameRequest) SetClusterName(v string) *ModifyInstanceNameRequest {
 	s.ClusterName = &v
+	return s
+}
+
+func (s *ModifyInstanceNameRequest) SetRegionId(v string) *ModifyInstanceNameRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyInstanceNameRequest) SetZoneId(v string) *ModifyInstanceNameRequest {
+	s.ZoneId = &v
 	return s
 }
 
@@ -9459,10 +9804,10 @@ func (s *ModifyInstanceNameResponse) SetBody(v *ModifyInstanceNameResponseBody) 
 
 type ModifyInstanceServiceConfigRequest struct {
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Restart        *bool   `json:"Restart,omitempty" xml:"Restart,omitempty"`
 	ConfigureName  *string `json:"ConfigureName,omitempty" xml:"ConfigureName,omitempty"`
 	ConfigureValue *string `json:"ConfigureValue,omitempty" xml:"ConfigureValue,omitempty"`
 	Parameters     *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
+	Restart        *bool   `json:"Restart,omitempty" xml:"Restart,omitempty"`
 }
 
 func (s ModifyInstanceServiceConfigRequest) String() string {
@@ -9478,11 +9823,6 @@ func (s *ModifyInstanceServiceConfigRequest) SetClusterId(v string) *ModifyInsta
 	return s
 }
 
-func (s *ModifyInstanceServiceConfigRequest) SetRestart(v bool) *ModifyInstanceServiceConfigRequest {
-	s.Restart = &v
-	return s
-}
-
 func (s *ModifyInstanceServiceConfigRequest) SetConfigureName(v string) *ModifyInstanceServiceConfigRequest {
 	s.ConfigureName = &v
 	return s
@@ -9495,6 +9835,11 @@ func (s *ModifyInstanceServiceConfigRequest) SetConfigureValue(v string) *Modify
 
 func (s *ModifyInstanceServiceConfigRequest) SetParameters(v string) *ModifyInstanceServiceConfigRequest {
 	s.Parameters = &v
+	return s
+}
+
+func (s *ModifyInstanceServiceConfigRequest) SetRestart(v bool) *ModifyInstanceServiceConfigRequest {
+	s.Restart = &v
 	return s
 }
 
@@ -9540,8 +9885,8 @@ func (s *ModifyInstanceServiceConfigResponse) SetBody(v *ModifyInstanceServiceCo
 
 type ModifyInstanceTypeRequest struct {
 	ClusterId          *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	MasterInstanceType *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
 	CoreInstanceType   *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
+	MasterInstanceType *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
 }
 
 func (s ModifyInstanceTypeRequest) String() string {
@@ -9557,19 +9902,19 @@ func (s *ModifyInstanceTypeRequest) SetClusterId(v string) *ModifyInstanceTypeRe
 	return s
 }
 
-func (s *ModifyInstanceTypeRequest) SetMasterInstanceType(v string) *ModifyInstanceTypeRequest {
-	s.MasterInstanceType = &v
-	return s
-}
-
 func (s *ModifyInstanceTypeRequest) SetCoreInstanceType(v string) *ModifyInstanceTypeRequest {
 	s.CoreInstanceType = &v
 	return s
 }
 
+func (s *ModifyInstanceTypeRequest) SetMasterInstanceType(v string) *ModifyInstanceTypeRequest {
+	s.MasterInstanceType = &v
+	return s
+}
+
 type ModifyInstanceTypeResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyInstanceTypeResponseBody) String() string {
@@ -9580,13 +9925,13 @@ func (s ModifyInstanceTypeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyInstanceTypeResponseBody) SetRequestId(v string) *ModifyInstanceTypeResponseBody {
-	s.RequestId = &v
+func (s *ModifyInstanceTypeResponseBody) SetOrderId(v string) *ModifyInstanceTypeResponseBody {
+	s.OrderId = &v
 	return s
 }
 
-func (s *ModifyInstanceTypeResponseBody) SetOrderId(v string) *ModifyInstanceTypeResponseBody {
-	s.OrderId = &v
+func (s *ModifyInstanceTypeResponseBody) SetRequestId(v string) *ModifyInstanceTypeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -9615,8 +9960,8 @@ func (s *ModifyInstanceTypeResponse) SetBody(v *ModifyInstanceTypeResponseBody) 
 
 type ModifyIpWhitelistRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	IpList    *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	IpList    *string `json:"IpList,omitempty" xml:"IpList,omitempty"`
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 }
 
@@ -9633,13 +9978,13 @@ func (s *ModifyIpWhitelistRequest) SetClusterId(v string) *ModifyIpWhitelistRequ
 	return s
 }
 
-func (s *ModifyIpWhitelistRequest) SetIpList(v string) *ModifyIpWhitelistRequest {
-	s.IpList = &v
+func (s *ModifyIpWhitelistRequest) SetGroupName(v string) *ModifyIpWhitelistRequest {
+	s.GroupName = &v
 	return s
 }
 
-func (s *ModifyIpWhitelistRequest) SetGroupName(v string) *ModifyIpWhitelistRequest {
-	s.GroupName = &v
+func (s *ModifyIpWhitelistRequest) SetIpList(v string) *ModifyIpWhitelistRequest {
+	s.IpList = &v
 	return s
 }
 
@@ -9690,9 +10035,9 @@ func (s *ModifyIpWhitelistResponse) SetBody(v *ModifyIpWhitelistResponseBody) *M
 
 type ModifyMultiZoneClusterNodeTypeRequest struct {
 	ClusterId          *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	MasterInstanceType *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
 	CoreInstanceType   *string `json:"CoreInstanceType,omitempty" xml:"CoreInstanceType,omitempty"`
 	LogInstanceType    *string `json:"LogInstanceType,omitempty" xml:"LogInstanceType,omitempty"`
+	MasterInstanceType *string `json:"MasterInstanceType,omitempty" xml:"MasterInstanceType,omitempty"`
 }
 
 func (s ModifyMultiZoneClusterNodeTypeRequest) String() string {
@@ -9708,11 +10053,6 @@ func (s *ModifyMultiZoneClusterNodeTypeRequest) SetClusterId(v string) *ModifyMu
 	return s
 }
 
-func (s *ModifyMultiZoneClusterNodeTypeRequest) SetMasterInstanceType(v string) *ModifyMultiZoneClusterNodeTypeRequest {
-	s.MasterInstanceType = &v
-	return s
-}
-
 func (s *ModifyMultiZoneClusterNodeTypeRequest) SetCoreInstanceType(v string) *ModifyMultiZoneClusterNodeTypeRequest {
 	s.CoreInstanceType = &v
 	return s
@@ -9723,9 +10063,14 @@ func (s *ModifyMultiZoneClusterNodeTypeRequest) SetLogInstanceType(v string) *Mo
 	return s
 }
 
+func (s *ModifyMultiZoneClusterNodeTypeRequest) SetMasterInstanceType(v string) *ModifyMultiZoneClusterNodeTypeRequest {
+	s.MasterInstanceType = &v
+	return s
+}
+
 type ModifyMultiZoneClusterNodeTypeResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyMultiZoneClusterNodeTypeResponseBody) String() string {
@@ -9736,13 +10081,13 @@ func (s ModifyMultiZoneClusterNodeTypeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyMultiZoneClusterNodeTypeResponseBody) SetRequestId(v string) *ModifyMultiZoneClusterNodeTypeResponseBody {
-	s.RequestId = &v
+func (s *ModifyMultiZoneClusterNodeTypeResponseBody) SetOrderId(v string) *ModifyMultiZoneClusterNodeTypeResponseBody {
+	s.OrderId = &v
 	return s
 }
 
-func (s *ModifyMultiZoneClusterNodeTypeResponseBody) SetOrderId(v string) *ModifyMultiZoneClusterNodeTypeResponseBody {
-	s.OrderId = &v
+func (s *ModifyMultiZoneClusterNodeTypeResponseBody) SetRequestId(v string) *ModifyMultiZoneClusterNodeTypeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -9833,9 +10178,9 @@ func (s *ModifySecurityGroupsResponse) SetBody(v *ModifySecurityGroupsResponseBo
 }
 
 type ModifyUIAccountPasswordRequest struct {
-	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	AccountName     *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	AccountPassword *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
+	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 }
 
 func (s ModifyUIAccountPasswordRequest) String() string {
@@ -9846,11 +10191,6 @@ func (s ModifyUIAccountPasswordRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyUIAccountPasswordRequest) SetClusterId(v string) *ModifyUIAccountPasswordRequest {
-	s.ClusterId = &v
-	return s
-}
-
 func (s *ModifyUIAccountPasswordRequest) SetAccountName(v string) *ModifyUIAccountPasswordRequest {
 	s.AccountName = &v
 	return s
@@ -9858,6 +10198,11 @@ func (s *ModifyUIAccountPasswordRequest) SetAccountName(v string) *ModifyUIAccou
 
 func (s *ModifyUIAccountPasswordRequest) SetAccountPassword(v string) *ModifyUIAccountPasswordRequest {
 	s.AccountPassword = &v
+	return s
+}
+
+func (s *ModifyUIAccountPasswordRequest) SetClusterId(v string) *ModifyUIAccountPasswordRequest {
+	s.ClusterId = &v
 	return s
 }
 
@@ -10096,11 +10441,11 @@ func (s *QueryHBaseHaDBRequest) SetBdsId(v string) *QueryHBaseHaDBRequest {
 }
 
 type QueryHBaseHaDBResponseBody struct {
-	TotalCount  *int64                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	ClusterList *QueryHBaseHaDBResponseBodyClusterList `json:"ClusterList,omitempty" xml:"ClusterList,omitempty" type:"Struct"`
+	PageNumber  *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize    *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber  *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	TotalCount  *int64                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QueryHBaseHaDBResponseBody) String() string {
@@ -10111,13 +10456,13 @@ func (s QueryHBaseHaDBResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryHBaseHaDBResponseBody) SetTotalCount(v int64) *QueryHBaseHaDBResponseBody {
-	s.TotalCount = &v
+func (s *QueryHBaseHaDBResponseBody) SetClusterList(v *QueryHBaseHaDBResponseBodyClusterList) *QueryHBaseHaDBResponseBody {
+	s.ClusterList = v
 	return s
 }
 
-func (s *QueryHBaseHaDBResponseBody) SetClusterList(v *QueryHBaseHaDBResponseBodyClusterList) *QueryHBaseHaDBResponseBody {
-	s.ClusterList = v
+func (s *QueryHBaseHaDBResponseBody) SetPageNumber(v int32) *QueryHBaseHaDBResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -10131,8 +10476,8 @@ func (s *QueryHBaseHaDBResponseBody) SetRequestId(v string) *QueryHBaseHaDBRespo
 	return s
 }
 
-func (s *QueryHBaseHaDBResponseBody) SetPageNumber(v int32) *QueryHBaseHaDBResponseBody {
-	s.PageNumber = &v
+func (s *QueryHBaseHaDBResponseBody) SetTotalCount(v int64) *QueryHBaseHaDBResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -10154,10 +10499,10 @@ func (s *QueryHBaseHaDBResponseBodyClusterList) SetCluster(v []*QueryHBaseHaDBRe
 }
 
 type QueryHBaseHaDBResponseBodyClusterListCluster struct {
-	HaName        *string                                                    `json:"HaName,omitempty" xml:"HaName,omitempty"`
-	BdsName       *string                                                    `json:"BdsName,omitempty" xml:"BdsName,omitempty"`
-	HaSlbConnList *QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnList `json:"HaSlbConnList,omitempty" xml:"HaSlbConnList,omitempty" type:"Struct"`
 	ActiveName    *string                                                    `json:"ActiveName,omitempty" xml:"ActiveName,omitempty"`
+	BdsName       *string                                                    `json:"BdsName,omitempty" xml:"BdsName,omitempty"`
+	HaName        *string                                                    `json:"HaName,omitempty" xml:"HaName,omitempty"`
+	HaSlbConnList *QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnList `json:"HaSlbConnList,omitempty" xml:"HaSlbConnList,omitempty" type:"Struct"`
 	StandbyName   *string                                                    `json:"StandbyName,omitempty" xml:"StandbyName,omitempty"`
 }
 
@@ -10169,8 +10514,8 @@ func (s QueryHBaseHaDBResponseBodyClusterListCluster) GoString() string {
 	return s.String()
 }
 
-func (s *QueryHBaseHaDBResponseBodyClusterListCluster) SetHaName(v string) *QueryHBaseHaDBResponseBodyClusterListCluster {
-	s.HaName = &v
+func (s *QueryHBaseHaDBResponseBodyClusterListCluster) SetActiveName(v string) *QueryHBaseHaDBResponseBodyClusterListCluster {
+	s.ActiveName = &v
 	return s
 }
 
@@ -10179,13 +10524,13 @@ func (s *QueryHBaseHaDBResponseBodyClusterListCluster) SetBdsName(v string) *Que
 	return s
 }
 
-func (s *QueryHBaseHaDBResponseBodyClusterListCluster) SetHaSlbConnList(v *QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnList) *QueryHBaseHaDBResponseBodyClusterListCluster {
-	s.HaSlbConnList = v
+func (s *QueryHBaseHaDBResponseBodyClusterListCluster) SetHaName(v string) *QueryHBaseHaDBResponseBodyClusterListCluster {
+	s.HaName = &v
 	return s
 }
 
-func (s *QueryHBaseHaDBResponseBodyClusterListCluster) SetActiveName(v string) *QueryHBaseHaDBResponseBodyClusterListCluster {
-	s.ActiveName = &v
+func (s *QueryHBaseHaDBResponseBodyClusterListCluster) SetHaSlbConnList(v *QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnList) *QueryHBaseHaDBResponseBodyClusterListCluster {
+	s.HaSlbConnList = v
 	return s
 }
 
@@ -10212,8 +10557,8 @@ func (s *QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnList) SetHaSlbConn
 }
 
 type QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnListHaSlbConn struct {
-	SlbConnAddr *string `json:"SlbConnAddr,omitempty" xml:"SlbConnAddr,omitempty"`
 	HbaseType   *string `json:"HbaseType,omitempty" xml:"HbaseType,omitempty"`
+	SlbConnAddr *string `json:"SlbConnAddr,omitempty" xml:"SlbConnAddr,omitempty"`
 	SlbType     *string `json:"SlbType,omitempty" xml:"SlbType,omitempty"`
 }
 
@@ -10225,13 +10570,13 @@ func (s QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnListHaSlbConn) GoSt
 	return s.String()
 }
 
-func (s *QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnListHaSlbConn) SetSlbConnAddr(v string) *QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnListHaSlbConn {
-	s.SlbConnAddr = &v
+func (s *QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnListHaSlbConn) SetHbaseType(v string) *QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnListHaSlbConn {
+	s.HbaseType = &v
 	return s
 }
 
-func (s *QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnListHaSlbConn) SetHbaseType(v string) *QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnListHaSlbConn {
-	s.HbaseType = &v
+func (s *QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnListHaSlbConn) SetSlbConnAddr(v string) *QueryHBaseHaDBResponseBodyClusterListClusterHaSlbConnListHaSlbConn {
+	s.SlbConnAddr = &v
 	return s
 }
 
@@ -10265,8 +10610,8 @@ func (s *QueryHBaseHaDBResponse) SetBody(v *QueryHBaseHaDBResponseBody) *QueryHB
 
 type QueryXpackRelateDBRequest struct {
 	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	RelateDbType  *string `json:"RelateDbType,omitempty" xml:"RelateDbType,omitempty"`
 	HasSingleNode *bool   `json:"HasSingleNode,omitempty" xml:"HasSingleNode,omitempty"`
+	RelateDbType  *string `json:"RelateDbType,omitempty" xml:"RelateDbType,omitempty"`
 }
 
 func (s QueryXpackRelateDBRequest) String() string {
@@ -10282,13 +10627,13 @@ func (s *QueryXpackRelateDBRequest) SetClusterId(v string) *QueryXpackRelateDBRe
 	return s
 }
 
-func (s *QueryXpackRelateDBRequest) SetRelateDbType(v string) *QueryXpackRelateDBRequest {
-	s.RelateDbType = &v
+func (s *QueryXpackRelateDBRequest) SetHasSingleNode(v bool) *QueryXpackRelateDBRequest {
+	s.HasSingleNode = &v
 	return s
 }
 
-func (s *QueryXpackRelateDBRequest) SetHasSingleNode(v bool) *QueryXpackRelateDBRequest {
-	s.HasSingleNode = &v
+func (s *QueryXpackRelateDBRequest) SetRelateDbType(v string) *QueryXpackRelateDBRequest {
+	s.RelateDbType = &v
 	return s
 }
 
@@ -10333,13 +10678,13 @@ func (s *QueryXpackRelateDBResponseBodyClusterList) SetCluster(v []*QueryXpackRe
 }
 
 type QueryXpackRelateDBResponseBodyClusterListCluster struct {
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	DBVersion   *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	IsRelated   *bool   `json:"IsRelated,omitempty" xml:"IsRelated,omitempty"`
+	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
 	DBType      *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
+	DBVersion   *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
+	IsRelated   *bool   `json:"IsRelated,omitempty" xml:"IsRelated,omitempty"`
 	LockMode    *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s QueryXpackRelateDBResponseBodyClusterListCluster) String() string {
@@ -10350,18 +10695,8 @@ func (s QueryXpackRelateDBResponseBodyClusterListCluster) GoString() string {
 	return s.String()
 }
 
-func (s *QueryXpackRelateDBResponseBodyClusterListCluster) SetStatus(v string) *QueryXpackRelateDBResponseBodyClusterListCluster {
-	s.Status = &v
-	return s
-}
-
-func (s *QueryXpackRelateDBResponseBodyClusterListCluster) SetDBVersion(v string) *QueryXpackRelateDBResponseBodyClusterListCluster {
-	s.DBVersion = &v
-	return s
-}
-
-func (s *QueryXpackRelateDBResponseBodyClusterListCluster) SetIsRelated(v bool) *QueryXpackRelateDBResponseBodyClusterListCluster {
-	s.IsRelated = &v
+func (s *QueryXpackRelateDBResponseBodyClusterListCluster) SetClusterId(v string) *QueryXpackRelateDBResponseBodyClusterListCluster {
+	s.ClusterId = &v
 	return s
 }
 
@@ -10375,13 +10710,23 @@ func (s *QueryXpackRelateDBResponseBodyClusterListCluster) SetDBType(v string) *
 	return s
 }
 
+func (s *QueryXpackRelateDBResponseBodyClusterListCluster) SetDBVersion(v string) *QueryXpackRelateDBResponseBodyClusterListCluster {
+	s.DBVersion = &v
+	return s
+}
+
+func (s *QueryXpackRelateDBResponseBodyClusterListCluster) SetIsRelated(v bool) *QueryXpackRelateDBResponseBodyClusterListCluster {
+	s.IsRelated = &v
+	return s
+}
+
 func (s *QueryXpackRelateDBResponseBodyClusterListCluster) SetLockMode(v string) *QueryXpackRelateDBResponseBodyClusterListCluster {
 	s.LockMode = &v
 	return s
 }
 
-func (s *QueryXpackRelateDBResponseBodyClusterListCluster) SetClusterId(v string) *QueryXpackRelateDBResponseBodyClusterListCluster {
-	s.ClusterId = &v
+func (s *QueryXpackRelateDBResponseBodyClusterListCluster) SetStatus(v string) *QueryXpackRelateDBResponseBodyClusterListCluster {
+	s.Status = &v
 	return s
 }
 
@@ -10410,26 +10755,26 @@ func (s *QueryXpackRelateDBResponse) SetBody(v *QueryXpackRelateDBResponseBody) 
 
 type RelateDbForHBaseHaRequest struct {
 	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	HaTables            *string `json:"HaTables,omitempty" xml:"HaTables,omitempty"`
-	HaActiveHdfsUri     *string `json:"HaActiveHdfsUri,omitempty" xml:"HaActiveHdfsUri,omitempty"`
-	HaActiveHbaseFsDir  *string `json:"HaActiveHbaseFsDir,omitempty" xml:"HaActiveHbaseFsDir,omitempty"`
-	HaActiveClusterKey  *string `json:"HaActiveClusterKey,omitempty" xml:"HaActiveClusterKey,omitempty"`
-	HaActiveVersion     *string `json:"HaActiveVersion,omitempty" xml:"HaActiveVersion,omitempty"`
-	HaActiveUser        *string `json:"HaActiveUser,omitempty" xml:"HaActiveUser,omitempty"`
-	HaActivePassword    *string `json:"HaActivePassword,omitempty" xml:"HaActivePassword,omitempty"`
-	HaStandbyHdfsUri    *string `json:"HaStandbyHdfsUri,omitempty" xml:"HaStandbyHdfsUri,omitempty"`
-	HaStandbyHbaseFsDir *string `json:"HaStandbyHbaseFsDir,omitempty" xml:"HaStandbyHbaseFsDir,omitempty"`
-	HaStandbyClusterKey *string `json:"HaStandbyClusterKey,omitempty" xml:"HaStandbyClusterKey,omitempty"`
-	HaStandbyVersion    *string `json:"HaStandbyVersion,omitempty" xml:"HaStandbyVersion,omitempty"`
-	HaStandbyUser       *string `json:"HaStandbyUser,omitempty" xml:"HaStandbyUser,omitempty"`
-	HaStandbyPassword   *string `json:"HaStandbyPassword,omitempty" xml:"HaStandbyPassword,omitempty"`
 	HaActive            *string `json:"HaActive,omitempty" xml:"HaActive,omitempty"`
-	HaStandby           *string `json:"HaStandby,omitempty" xml:"HaStandby,omitempty"`
+	HaActiveClusterKey  *string `json:"HaActiveClusterKey,omitempty" xml:"HaActiveClusterKey,omitempty"`
 	HaActiveDBType      *string `json:"HaActiveDBType,omitempty" xml:"HaActiveDBType,omitempty"`
+	HaActiveHbaseFsDir  *string `json:"HaActiveHbaseFsDir,omitempty" xml:"HaActiveHbaseFsDir,omitempty"`
+	HaActiveHdfsUri     *string `json:"HaActiveHdfsUri,omitempty" xml:"HaActiveHdfsUri,omitempty"`
+	HaActivePassword    *string `json:"HaActivePassword,omitempty" xml:"HaActivePassword,omitempty"`
+	HaActiveUser        *string `json:"HaActiveUser,omitempty" xml:"HaActiveUser,omitempty"`
+	HaActiveVersion     *string `json:"HaActiveVersion,omitempty" xml:"HaActiveVersion,omitempty"`
+	HaMigrateType       *string `json:"HaMigrateType,omitempty" xml:"HaMigrateType,omitempty"`
+	HaStandby           *string `json:"HaStandby,omitempty" xml:"HaStandby,omitempty"`
+	HaStandbyClusterKey *string `json:"HaStandbyClusterKey,omitempty" xml:"HaStandbyClusterKey,omitempty"`
 	HaStandbyDBType     *string `json:"HaStandbyDBType,omitempty" xml:"HaStandbyDBType,omitempty"`
+	HaStandbyHbaseFsDir *string `json:"HaStandbyHbaseFsDir,omitempty" xml:"HaStandbyHbaseFsDir,omitempty"`
+	HaStandbyHdfsUri    *string `json:"HaStandbyHdfsUri,omitempty" xml:"HaStandbyHdfsUri,omitempty"`
+	HaStandbyPassword   *string `json:"HaStandbyPassword,omitempty" xml:"HaStandbyPassword,omitempty"`
+	HaStandbyUser       *string `json:"HaStandbyUser,omitempty" xml:"HaStandbyUser,omitempty"`
+	HaStandbyVersion    *string `json:"HaStandbyVersion,omitempty" xml:"HaStandbyVersion,omitempty"`
+	HaTables            *string `json:"HaTables,omitempty" xml:"HaTables,omitempty"`
 	IsActiveStandard    *bool   `json:"IsActiveStandard,omitempty" xml:"IsActiveStandard,omitempty"`
 	IsStandbyStandard   *bool   `json:"IsStandbyStandard,omitempty" xml:"IsStandbyStandard,omitempty"`
-	HaMigrateType       *string `json:"HaMigrateType,omitempty" xml:"HaMigrateType,omitempty"`
 }
 
 func (s RelateDbForHBaseHaRequest) String() string {
@@ -10445,18 +10790,8 @@ func (s *RelateDbForHBaseHaRequest) SetClusterId(v string) *RelateDbForHBaseHaRe
 	return s
 }
 
-func (s *RelateDbForHBaseHaRequest) SetHaTables(v string) *RelateDbForHBaseHaRequest {
-	s.HaTables = &v
-	return s
-}
-
-func (s *RelateDbForHBaseHaRequest) SetHaActiveHdfsUri(v string) *RelateDbForHBaseHaRequest {
-	s.HaActiveHdfsUri = &v
-	return s
-}
-
-func (s *RelateDbForHBaseHaRequest) SetHaActiveHbaseFsDir(v string) *RelateDbForHBaseHaRequest {
-	s.HaActiveHbaseFsDir = &v
+func (s *RelateDbForHBaseHaRequest) SetHaActive(v string) *RelateDbForHBaseHaRequest {
+	s.HaActive = &v
 	return s
 }
 
@@ -10465,13 +10800,18 @@ func (s *RelateDbForHBaseHaRequest) SetHaActiveClusterKey(v string) *RelateDbFor
 	return s
 }
 
-func (s *RelateDbForHBaseHaRequest) SetHaActiveVersion(v string) *RelateDbForHBaseHaRequest {
-	s.HaActiveVersion = &v
+func (s *RelateDbForHBaseHaRequest) SetHaActiveDBType(v string) *RelateDbForHBaseHaRequest {
+	s.HaActiveDBType = &v
 	return s
 }
 
-func (s *RelateDbForHBaseHaRequest) SetHaActiveUser(v string) *RelateDbForHBaseHaRequest {
-	s.HaActiveUser = &v
+func (s *RelateDbForHBaseHaRequest) SetHaActiveHbaseFsDir(v string) *RelateDbForHBaseHaRequest {
+	s.HaActiveHbaseFsDir = &v
+	return s
+}
+
+func (s *RelateDbForHBaseHaRequest) SetHaActiveHdfsUri(v string) *RelateDbForHBaseHaRequest {
+	s.HaActiveHdfsUri = &v
 	return s
 }
 
@@ -10480,38 +10820,18 @@ func (s *RelateDbForHBaseHaRequest) SetHaActivePassword(v string) *RelateDbForHB
 	return s
 }
 
-func (s *RelateDbForHBaseHaRequest) SetHaStandbyHdfsUri(v string) *RelateDbForHBaseHaRequest {
-	s.HaStandbyHdfsUri = &v
+func (s *RelateDbForHBaseHaRequest) SetHaActiveUser(v string) *RelateDbForHBaseHaRequest {
+	s.HaActiveUser = &v
 	return s
 }
 
-func (s *RelateDbForHBaseHaRequest) SetHaStandbyHbaseFsDir(v string) *RelateDbForHBaseHaRequest {
-	s.HaStandbyHbaseFsDir = &v
+func (s *RelateDbForHBaseHaRequest) SetHaActiveVersion(v string) *RelateDbForHBaseHaRequest {
+	s.HaActiveVersion = &v
 	return s
 }
 
-func (s *RelateDbForHBaseHaRequest) SetHaStandbyClusterKey(v string) *RelateDbForHBaseHaRequest {
-	s.HaStandbyClusterKey = &v
-	return s
-}
-
-func (s *RelateDbForHBaseHaRequest) SetHaStandbyVersion(v string) *RelateDbForHBaseHaRequest {
-	s.HaStandbyVersion = &v
-	return s
-}
-
-func (s *RelateDbForHBaseHaRequest) SetHaStandbyUser(v string) *RelateDbForHBaseHaRequest {
-	s.HaStandbyUser = &v
-	return s
-}
-
-func (s *RelateDbForHBaseHaRequest) SetHaStandbyPassword(v string) *RelateDbForHBaseHaRequest {
-	s.HaStandbyPassword = &v
-	return s
-}
-
-func (s *RelateDbForHBaseHaRequest) SetHaActive(v string) *RelateDbForHBaseHaRequest {
-	s.HaActive = &v
+func (s *RelateDbForHBaseHaRequest) SetHaMigrateType(v string) *RelateDbForHBaseHaRequest {
+	s.HaMigrateType = &v
 	return s
 }
 
@@ -10520,13 +10840,43 @@ func (s *RelateDbForHBaseHaRequest) SetHaStandby(v string) *RelateDbForHBaseHaRe
 	return s
 }
 
-func (s *RelateDbForHBaseHaRequest) SetHaActiveDBType(v string) *RelateDbForHBaseHaRequest {
-	s.HaActiveDBType = &v
+func (s *RelateDbForHBaseHaRequest) SetHaStandbyClusterKey(v string) *RelateDbForHBaseHaRequest {
+	s.HaStandbyClusterKey = &v
 	return s
 }
 
 func (s *RelateDbForHBaseHaRequest) SetHaStandbyDBType(v string) *RelateDbForHBaseHaRequest {
 	s.HaStandbyDBType = &v
+	return s
+}
+
+func (s *RelateDbForHBaseHaRequest) SetHaStandbyHbaseFsDir(v string) *RelateDbForHBaseHaRequest {
+	s.HaStandbyHbaseFsDir = &v
+	return s
+}
+
+func (s *RelateDbForHBaseHaRequest) SetHaStandbyHdfsUri(v string) *RelateDbForHBaseHaRequest {
+	s.HaStandbyHdfsUri = &v
+	return s
+}
+
+func (s *RelateDbForHBaseHaRequest) SetHaStandbyPassword(v string) *RelateDbForHBaseHaRequest {
+	s.HaStandbyPassword = &v
+	return s
+}
+
+func (s *RelateDbForHBaseHaRequest) SetHaStandbyUser(v string) *RelateDbForHBaseHaRequest {
+	s.HaStandbyUser = &v
+	return s
+}
+
+func (s *RelateDbForHBaseHaRequest) SetHaStandbyVersion(v string) *RelateDbForHBaseHaRequest {
+	s.HaStandbyVersion = &v
+	return s
+}
+
+func (s *RelateDbForHBaseHaRequest) SetHaTables(v string) *RelateDbForHBaseHaRequest {
+	s.HaTables = &v
 	return s
 }
 
@@ -10537,11 +10887,6 @@ func (s *RelateDbForHBaseHaRequest) SetIsActiveStandard(v bool) *RelateDbForHBas
 
 func (s *RelateDbForHBaseHaRequest) SetIsStandbyStandard(v bool) *RelateDbForHBaseHaRequest {
 	s.IsStandbyStandard = &v
-	return s
-}
-
-func (s *RelateDbForHBaseHaRequest) SetHaMigrateType(v string) *RelateDbForHBaseHaRequest {
-	s.HaMigrateType = &v
 	return s
 }
 
@@ -10644,8 +10989,8 @@ func (s *ReleasePublicNetworkAddressResponse) SetBody(v *ReleasePublicNetworkAdd
 
 type RenewInstanceRequest struct {
 	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 	Duration     *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
 }
 
 func (s RenewInstanceRequest) String() string {
@@ -10661,19 +11006,19 @@ func (s *RenewInstanceRequest) SetClusterId(v string) *RenewInstanceRequest {
 	return s
 }
 
-func (s *RenewInstanceRequest) SetPricingCycle(v string) *RenewInstanceRequest {
-	s.PricingCycle = &v
-	return s
-}
-
 func (s *RenewInstanceRequest) SetDuration(v int32) *RenewInstanceRequest {
 	s.Duration = &v
 	return s
 }
 
+func (s *RenewInstanceRequest) SetPricingCycle(v string) *RenewInstanceRequest {
+	s.PricingCycle = &v
+	return s
+}
+
 type RenewInstanceResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OrderId   *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RenewInstanceResponseBody) String() string {
@@ -10684,13 +11029,13 @@ func (s RenewInstanceResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RenewInstanceResponseBody) SetRequestId(v string) *RenewInstanceResponseBody {
-	s.RequestId = &v
+func (s *RenewInstanceResponseBody) SetOrderId(v int64) *RenewInstanceResponseBody {
+	s.OrderId = &v
 	return s
 }
 
-func (s *RenewInstanceResponseBody) SetOrderId(v int64) *RenewInstanceResponseBody {
-	s.OrderId = &v
+func (s *RenewInstanceResponseBody) SetRequestId(v string) *RenewInstanceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10741,8 +11086,8 @@ func (s *ResizeColdStorageSizeRequest) SetColdStorageSize(v int32) *ResizeColdSt
 }
 
 type ResizeColdStorageSizeResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ResizeColdStorageSizeResponseBody) String() string {
@@ -10753,13 +11098,13 @@ func (s ResizeColdStorageSizeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ResizeColdStorageSizeResponseBody) SetRequestId(v string) *ResizeColdStorageSizeResponseBody {
-	s.RequestId = &v
+func (s *ResizeColdStorageSizeResponseBody) SetOrderId(v string) *ResizeColdStorageSizeResponseBody {
+	s.OrderId = &v
 	return s
 }
 
-func (s *ResizeColdStorageSizeResponseBody) SetOrderId(v string) *ResizeColdStorageSizeResponseBody {
-	s.OrderId = &v
+func (s *ResizeColdStorageSizeResponseBody) SetRequestId(v string) *ResizeColdStorageSizeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10810,8 +11155,8 @@ func (s *ResizeDiskSizeRequest) SetNodeDiskSize(v int32) *ResizeDiskSizeRequest 
 }
 
 type ResizeDiskSizeResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ResizeDiskSizeResponseBody) String() string {
@@ -10822,13 +11167,13 @@ func (s ResizeDiskSizeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ResizeDiskSizeResponseBody) SetRequestId(v string) *ResizeDiskSizeResponseBody {
-	s.RequestId = &v
+func (s *ResizeDiskSizeResponseBody) SetOrderId(v string) *ResizeDiskSizeResponseBody {
+	s.OrderId = &v
 	return s
 }
 
-func (s *ResizeDiskSizeResponseBody) SetOrderId(v string) *ResizeDiskSizeResponseBody {
-	s.OrderId = &v
+func (s *ResizeDiskSizeResponseBody) SetRequestId(v string) *ResizeDiskSizeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10885,8 +11230,8 @@ func (s *ResizeMultiZoneClusterDiskSizeRequest) SetLogDiskSize(v int32) *ResizeM
 }
 
 type ResizeMultiZoneClusterDiskSizeResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ResizeMultiZoneClusterDiskSizeResponseBody) String() string {
@@ -10897,13 +11242,13 @@ func (s ResizeMultiZoneClusterDiskSizeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ResizeMultiZoneClusterDiskSizeResponseBody) SetRequestId(v string) *ResizeMultiZoneClusterDiskSizeResponseBody {
-	s.RequestId = &v
+func (s *ResizeMultiZoneClusterDiskSizeResponseBody) SetOrderId(v string) *ResizeMultiZoneClusterDiskSizeResponseBody {
+	s.OrderId = &v
 	return s
 }
 
-func (s *ResizeMultiZoneClusterDiskSizeResponseBody) SetOrderId(v string) *ResizeMultiZoneClusterDiskSizeResponseBody {
-	s.OrderId = &v
+func (s *ResizeMultiZoneClusterDiskSizeResponseBody) SetRequestId(v string) *ResizeMultiZoneClusterDiskSizeResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -10931,14 +11276,14 @@ func (s *ResizeMultiZoneClusterDiskSizeResponse) SetBody(v *ResizeMultiZoneClust
 }
 
 type ResizeMultiZoneClusterNodeCountRequest struct {
-	ClusterId            *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	PrimaryVSwitchId     *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
-	StandbyVSwitchId     *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
 	ArbiterVSwitchId     *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
+	ClusterId            *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	CoreNodeCount        *int32  `json:"CoreNodeCount,omitempty" xml:"CoreNodeCount,omitempty"`
-	PrimaryCoreNodeCount *int32  `json:"PrimaryCoreNodeCount,omitempty" xml:"PrimaryCoreNodeCount,omitempty"`
-	StandbyCoreNodeCount *int32  `json:"StandbyCoreNodeCount,omitempty" xml:"StandbyCoreNodeCount,omitempty"`
 	LogNodeCount         *int32  `json:"LogNodeCount,omitempty" xml:"LogNodeCount,omitempty"`
+	PrimaryCoreNodeCount *int32  `json:"PrimaryCoreNodeCount,omitempty" xml:"PrimaryCoreNodeCount,omitempty"`
+	PrimaryVSwitchId     *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
+	StandbyCoreNodeCount *int32  `json:"StandbyCoreNodeCount,omitempty" xml:"StandbyCoreNodeCount,omitempty"`
+	StandbyVSwitchId     *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
 }
 
 func (s ResizeMultiZoneClusterNodeCountRequest) String() string {
@@ -10949,23 +11294,13 @@ func (s ResizeMultiZoneClusterNodeCountRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ResizeMultiZoneClusterNodeCountRequest) SetClusterId(v string) *ResizeMultiZoneClusterNodeCountRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *ResizeMultiZoneClusterNodeCountRequest) SetPrimaryVSwitchId(v string) *ResizeMultiZoneClusterNodeCountRequest {
-	s.PrimaryVSwitchId = &v
-	return s
-}
-
-func (s *ResizeMultiZoneClusterNodeCountRequest) SetStandbyVSwitchId(v string) *ResizeMultiZoneClusterNodeCountRequest {
-	s.StandbyVSwitchId = &v
-	return s
-}
-
 func (s *ResizeMultiZoneClusterNodeCountRequest) SetArbiterVSwitchId(v string) *ResizeMultiZoneClusterNodeCountRequest {
 	s.ArbiterVSwitchId = &v
+	return s
+}
+
+func (s *ResizeMultiZoneClusterNodeCountRequest) SetClusterId(v string) *ResizeMultiZoneClusterNodeCountRequest {
+	s.ClusterId = &v
 	return s
 }
 
@@ -10974,8 +11309,18 @@ func (s *ResizeMultiZoneClusterNodeCountRequest) SetCoreNodeCount(v int32) *Resi
 	return s
 }
 
+func (s *ResizeMultiZoneClusterNodeCountRequest) SetLogNodeCount(v int32) *ResizeMultiZoneClusterNodeCountRequest {
+	s.LogNodeCount = &v
+	return s
+}
+
 func (s *ResizeMultiZoneClusterNodeCountRequest) SetPrimaryCoreNodeCount(v int32) *ResizeMultiZoneClusterNodeCountRequest {
 	s.PrimaryCoreNodeCount = &v
+	return s
+}
+
+func (s *ResizeMultiZoneClusterNodeCountRequest) SetPrimaryVSwitchId(v string) *ResizeMultiZoneClusterNodeCountRequest {
+	s.PrimaryVSwitchId = &v
 	return s
 }
 
@@ -10984,14 +11329,14 @@ func (s *ResizeMultiZoneClusterNodeCountRequest) SetStandbyCoreNodeCount(v int32
 	return s
 }
 
-func (s *ResizeMultiZoneClusterNodeCountRequest) SetLogNodeCount(v int32) *ResizeMultiZoneClusterNodeCountRequest {
-	s.LogNodeCount = &v
+func (s *ResizeMultiZoneClusterNodeCountRequest) SetStandbyVSwitchId(v string) *ResizeMultiZoneClusterNodeCountRequest {
+	s.StandbyVSwitchId = &v
 	return s
 }
 
 type ResizeMultiZoneClusterNodeCountResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ResizeMultiZoneClusterNodeCountResponseBody) String() string {
@@ -11002,13 +11347,13 @@ func (s ResizeMultiZoneClusterNodeCountResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ResizeMultiZoneClusterNodeCountResponseBody) SetRequestId(v string) *ResizeMultiZoneClusterNodeCountResponseBody {
-	s.RequestId = &v
+func (s *ResizeMultiZoneClusterNodeCountResponseBody) SetOrderId(v string) *ResizeMultiZoneClusterNodeCountResponseBody {
+	s.OrderId = &v
 	return s
 }
 
-func (s *ResizeMultiZoneClusterNodeCountResponseBody) SetOrderId(v string) *ResizeMultiZoneClusterNodeCountResponseBody {
-	s.OrderId = &v
+func (s *ResizeMultiZoneClusterNodeCountResponseBody) SetRequestId(v string) *ResizeMultiZoneClusterNodeCountResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -11038,8 +11383,8 @@ func (s *ResizeMultiZoneClusterNodeCountResponse) SetBody(v *ResizeMultiZoneClus
 type ResizeNodeCountRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	NodeCount *int32  `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId    *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ResizeNodeCountRequest) String() string {
@@ -11060,19 +11405,19 @@ func (s *ResizeNodeCountRequest) SetNodeCount(v int32) *ResizeNodeCountRequest {
 	return s
 }
 
-func (s *ResizeNodeCountRequest) SetZoneId(v string) *ResizeNodeCountRequest {
-	s.ZoneId = &v
-	return s
-}
-
 func (s *ResizeNodeCountRequest) SetVSwitchId(v string) *ResizeNodeCountRequest {
 	s.VSwitchId = &v
 	return s
 }
 
+func (s *ResizeNodeCountRequest) SetZoneId(v string) *ResizeNodeCountRequest {
+	s.ZoneId = &v
+	return s
+}
+
 type ResizeNodeCountResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ResizeNodeCountResponseBody) String() string {
@@ -11083,13 +11428,13 @@ func (s ResizeNodeCountResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ResizeNodeCountResponseBody) SetRequestId(v string) *ResizeNodeCountResponseBody {
-	s.RequestId = &v
+func (s *ResizeNodeCountResponseBody) SetOrderId(v string) *ResizeNodeCountResponseBody {
+	s.OrderId = &v
 	return s
 }
 
-func (s *ResizeNodeCountResponseBody) SetOrderId(v string) *ResizeNodeCountResponseBody {
-	s.OrderId = &v
+func (s *ResizeNodeCountResponseBody) SetRequestId(v string) *ResizeNodeCountResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -11347,8 +11692,8 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UnTagResourcesRequest struct {
-	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	All        *bool     `json:"All,omitempty" xml:"All,omitempty"`
+	RegionId   *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	TagKey     []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
@@ -11361,13 +11706,13 @@ func (s UnTagResourcesRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UnTagResourcesRequest) SetRegionId(v string) *UnTagResourcesRequest {
-	s.RegionId = &v
+func (s *UnTagResourcesRequest) SetAll(v bool) *UnTagResourcesRequest {
+	s.All = &v
 	return s
 }
 
-func (s *UnTagResourcesRequest) SetAll(v bool) *UnTagResourcesRequest {
-	s.All = &v
+func (s *UnTagResourcesRequest) SetRegionId(v string) *UnTagResourcesRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -11492,11 +11837,11 @@ func (s *UpgradeMinorVersionResponse) SetBody(v *UpgradeMinorVersionResponseBody
 
 type UpgradeMultiZoneClusterRequest struct {
 	ClusterId         *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Components        *string `json:"Components,omitempty" xml:"Components,omitempty"`
+	RestartComponents *string `json:"RestartComponents,omitempty" xml:"RestartComponents,omitempty"`
 	RunMode           *string `json:"RunMode,omitempty" xml:"RunMode,omitempty"`
 	UpgradeInsName    *string `json:"UpgradeInsName,omitempty" xml:"UpgradeInsName,omitempty"`
-	Components        *string `json:"Components,omitempty" xml:"Components,omitempty"`
 	Versions          *string `json:"Versions,omitempty" xml:"Versions,omitempty"`
-	RestartComponents *string `json:"RestartComponents,omitempty" xml:"RestartComponents,omitempty"`
 }
 
 func (s UpgradeMultiZoneClusterRequest) String() string {
@@ -11512,6 +11857,16 @@ func (s *UpgradeMultiZoneClusterRequest) SetClusterId(v string) *UpgradeMultiZon
 	return s
 }
 
+func (s *UpgradeMultiZoneClusterRequest) SetComponents(v string) *UpgradeMultiZoneClusterRequest {
+	s.Components = &v
+	return s
+}
+
+func (s *UpgradeMultiZoneClusterRequest) SetRestartComponents(v string) *UpgradeMultiZoneClusterRequest {
+	s.RestartComponents = &v
+	return s
+}
+
 func (s *UpgradeMultiZoneClusterRequest) SetRunMode(v string) *UpgradeMultiZoneClusterRequest {
 	s.RunMode = &v
 	return s
@@ -11522,18 +11877,8 @@ func (s *UpgradeMultiZoneClusterRequest) SetUpgradeInsName(v string) *UpgradeMul
 	return s
 }
 
-func (s *UpgradeMultiZoneClusterRequest) SetComponents(v string) *UpgradeMultiZoneClusterRequest {
-	s.Components = &v
-	return s
-}
-
 func (s *UpgradeMultiZoneClusterRequest) SetVersions(v string) *UpgradeMultiZoneClusterRequest {
 	s.Versions = &v
-	return s
-}
-
-func (s *UpgradeMultiZoneClusterRequest) SetRestartComponents(v string) *UpgradeMultiZoneClusterRequest {
-	s.RestartComponents = &v
 	return s
 }
 
@@ -11749,11 +12094,35 @@ func (client *Client) AddUserHdfsInfoWithOptions(request *AddUserHdfsInfoRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtInfo)) {
+		query["ExtInfo"] = request.ExtInfo
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddUserHdfsInfo"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddUserHdfsInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddUserHdfsInfo"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11777,11 +12146,31 @@ func (client *Client) AllocatePublicNetworkAddressWithOptions(request *AllocateP
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AllocatePublicNetworkAddress"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AllocatePublicNetworkAddressResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AllocatePublicNetworkAddress"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11805,11 +12194,31 @@ func (client *Client) CheckComponentsVersionWithOptions(request *CheckComponents
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Components)) {
+		query["Components"] = request.Components
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckComponentsVersion"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CheckComponentsVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CheckComponentsVersion"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11833,11 +12242,27 @@ func (client *Client) CloseBackupWithOptions(request *CloseBackupRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CloseBackup"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CloseBackupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CloseBackup"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11861,11 +12286,39 @@ func (client *Client) ConvertInstanceWithOptions(request *ConvertInstanceRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		query["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PricingCycle)) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConvertInstance"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ConvertInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ConvertInstance"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11889,11 +12342,27 @@ func (client *Client) CreateBackupPlanWithOptions(request *CreateBackupPlanReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBackupPlan"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateBackupPlanResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateBackupPlan"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11917,11 +12386,107 @@ func (client *Client) CreateClusterWithOptions(request *CreateClusterRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoRenewPeriod)) {
+		query["AutoRenewPeriod"] = request.AutoRenewPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterName)) {
+		query["ClusterName"] = request.ClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ColdStorageSize)) {
+		query["ColdStorageSize"] = request.ColdStorageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreInstanceType)) {
+		query["CoreInstanceType"] = request.CoreInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskSize)) {
+		query["DiskSize"] = request.DiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskType)) {
+		query["DiskType"] = request.DiskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncryptionKey)) {
+		query["EncryptionKey"] = request.EncryptionKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineVersion)) {
+		query["EngineVersion"] = request.EngineVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterInstanceType)) {
+		query["MasterInstanceType"] = request.MasterInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeCount)) {
+		query["NodeCount"] = request.NodeCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityIPList)) {
+		query["SecurityIPList"] = request.SecurityIPList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCluster"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateClusterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateCluster"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11945,11 +12510,39 @@ func (client *Client) CreateGlobalResourceWithOptions(request *CreateGlobalResou
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
+		query["ResourceName"] = request.ResourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateGlobalResource"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateGlobalResourceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateGlobalResource"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11968,44 +12561,40 @@ func (client *Client) CreateGlobalResource(request *CreateGlobalResourceRequest)
 	return _result, _err
 }
 
-func (client *Client) CreateHbaseHaSlbWithOptions(request *CreateHbaseHaSlbRequest, runtime *util.RuntimeOptions) (_result *CreateHbaseHaSlbResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &CreateHbaseHaSlbResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateHbaseHaSlb"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateHbaseHaSlb(request *CreateHbaseHaSlbRequest) (_result *CreateHbaseHaSlbResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateHbaseHaSlbResponse{}
-	_body, _err := client.CreateHbaseHaSlbWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateHBaseSlbServerWithOptions(request *CreateHBaseSlbServerRequest, runtime *util.RuntimeOptions) (_result *CreateHBaseSlbServerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlbServer)) {
+		query["SlbServer"] = request.SlbServer
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHBaseSlbServer"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateHBaseSlbServerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateHBaseSlbServer"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12024,16 +12613,204 @@ func (client *Client) CreateHBaseSlbServer(request *CreateHBaseSlbServerRequest)
 	return _result, _err
 }
 
+func (client *Client) CreateHbaseHaSlbWithOptions(request *CreateHbaseHaSlbRequest, runtime *util.RuntimeOptions) (_result *CreateHbaseHaSlbResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BdsId)) {
+		query["BdsId"] = request.BdsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaId)) {
+		query["HaId"] = request.HaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaTypes)) {
+		query["HaTypes"] = request.HaTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HbaseType)) {
+		query["HbaseType"] = request.HbaseType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHbaseHaSlb"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateHbaseHaSlbResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateHbaseHaSlb(request *CreateHbaseHaSlbRequest) (_result *CreateHbaseHaSlbResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateHbaseHaSlbResponse{}
+	_body, _err := client.CreateHbaseHaSlbWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateMultiZoneClusterWithOptions(request *CreateMultiZoneClusterRequest, runtime *util.RuntimeOptions) (_result *CreateMultiZoneClusterResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArbiterVSwitchId)) {
+		query["ArbiterVSwitchId"] = request.ArbiterVSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArbiterZoneId)) {
+		query["ArbiterZoneId"] = request.ArbiterZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArchVersion)) {
+		query["ArchVersion"] = request.ArchVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenewPeriod)) {
+		query["AutoRenewPeriod"] = request.AutoRenewPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterName)) {
+		query["ClusterName"] = request.ClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreDiskSize)) {
+		query["CoreDiskSize"] = request.CoreDiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreDiskType)) {
+		query["CoreDiskType"] = request.CoreDiskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreInstanceType)) {
+		query["CoreInstanceType"] = request.CoreInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreNodeCount)) {
+		query["CoreNodeCount"] = request.CoreNodeCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineVersion)) {
+		query["EngineVersion"] = request.EngineVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogDiskSize)) {
+		query["LogDiskSize"] = request.LogDiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogDiskType)) {
+		query["LogDiskType"] = request.LogDiskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogInstanceType)) {
+		query["LogInstanceType"] = request.LogInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogNodeCount)) {
+		query["LogNodeCount"] = request.LogNodeCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterInstanceType)) {
+		query["MasterInstanceType"] = request.MasterInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiZoneCombination)) {
+		query["MultiZoneCombination"] = request.MultiZoneCombination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryVSwitchId)) {
+		query["PrimaryVSwitchId"] = request.PrimaryVSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryZoneId)) {
+		query["PrimaryZoneId"] = request.PrimaryZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityIPList)) {
+		query["SecurityIPList"] = request.SecurityIPList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StandbyVSwitchId)) {
+		query["StandbyVSwitchId"] = request.StandbyVSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StandbyZoneId)) {
+		query["StandbyZoneId"] = request.StandbyZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMultiZoneCluster"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateMultiZoneClusterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateMultiZoneCluster"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12057,11 +12834,47 @@ func (client *Client) CreateRestorePlanWithOptions(request *CreateRestorePlanReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RestoreAllTable)) {
+		query["RestoreAllTable"] = request.RestoreAllTable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RestoreByCopy)) {
+		query["RestoreByCopy"] = request.RestoreByCopy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RestoreToDate)) {
+		query["RestoreToDate"] = request.RestoreToDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tables)) {
+		query["Tables"] = request.Tables
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetClusterId)) {
+		query["TargetClusterId"] = request.TargetClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRestorePlan"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateRestorePlanResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateRestorePlan"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12085,11 +12898,95 @@ func (client *Client) CreateServerlessClusterWithOptions(request *CreateServerle
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoRenewPeriod)) {
+		query["AutoRenewPeriod"] = request.AutoRenewPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientType)) {
+		query["ClientType"] = request.ClientType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterName)) {
+		query["ClusterName"] = request.ClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskType)) {
+		query["DiskType"] = request.DiskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineVersion)) {
+		query["EngineVersion"] = request.EngineVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerlessCapability)) {
+		query["ServerlessCapability"] = request.ServerlessCapability
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerlessSpec)) {
+		query["ServerlessSpec"] = request.ServerlessSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerlessStorage)) {
+		query["ServerlessStorage"] = request.ServerlessStorage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateServerlessCluster"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateServerlessClusterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateServerlessCluster"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12113,11 +13010,35 @@ func (client *Client) DeleteGlobalResourceWithOptions(request *DeleteGlobalResou
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceName)) {
+		query["ResourceName"] = request.ResourceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGlobalResource"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteGlobalResourceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteGlobalResource"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12141,11 +13062,31 @@ func (client *Client) DeleteHBaseHaDBWithOptions(request *DeleteHBaseHaDBRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BdsId)) {
+		query["BdsId"] = request.BdsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaId)) {
+		query["HaId"] = request.HaId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHBaseHaDB"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteHBaseHaDBResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteHBaseHaDB"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12164,44 +13105,36 @@ func (client *Client) DeleteHBaseHaDB(request *DeleteHBaseHaDBRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) DeleteHbaseHaSlbWithOptions(request *DeleteHbaseHaSlbRequest, runtime *util.RuntimeOptions) (_result *DeleteHbaseHaSlbResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DeleteHbaseHaSlbResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteHbaseHaSlb"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteHbaseHaSlb(request *DeleteHbaseHaSlbRequest) (_result *DeleteHbaseHaSlbResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteHbaseHaSlbResponse{}
-	_body, _err := client.DeleteHbaseHaSlbWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteHBaseSlbServerWithOptions(request *DeleteHBaseSlbServerRequest, runtime *util.RuntimeOptions) (_result *DeleteHBaseSlbServerResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SlbServer)) {
+		query["SlbServer"] = request.SlbServer
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHBaseSlbServer"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteHBaseSlbServerResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteHBaseSlbServer"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12220,16 +13153,88 @@ func (client *Client) DeleteHBaseSlbServer(request *DeleteHBaseSlbServerRequest)
 	return _result, _err
 }
 
+func (client *Client) DeleteHbaseHaSlbWithOptions(request *DeleteHbaseHaSlbRequest, runtime *util.RuntimeOptions) (_result *DeleteHbaseHaSlbResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BdsId)) {
+		query["BdsId"] = request.BdsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaId)) {
+		query["HaId"] = request.HaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaTypes)) {
+		query["HaTypes"] = request.HaTypes
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHbaseHaSlb"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteHbaseHaSlbResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteHbaseHaSlb(request *DeleteHbaseHaSlbRequest) (_result *DeleteHbaseHaSlbResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteHbaseHaSlbResponse{}
+	_body, _err := client.DeleteHbaseHaSlbWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteInstanceWithOptions(request *DeleteInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImmediateDeleteFlag)) {
+		query["ImmediateDeleteFlag"] = request.ImmediateDeleteFlag
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstance"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteInstance"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12253,11 +13258,31 @@ func (client *Client) DeleteMultiZoneClusterWithOptions(request *DeleteMultiZone
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImmediateDeleteFlag)) {
+		query["ImmediateDeleteFlag"] = request.ImmediateDeleteFlag
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMultiZoneCluster"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteMultiZoneClusterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteMultiZoneCluster"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12281,11 +13306,35 @@ func (client *Client) DeleteServerlessClusterWithOptions(request *DeleteServerle
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteServerlessCluster"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteServerlessClusterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteServerlessCluster"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12309,11 +13358,31 @@ func (client *Client) DeleteUserHdfsInfoWithOptions(request *DeleteUserHdfsInfoR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NameService)) {
+		query["NameService"] = request.NameService
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteUserHdfsInfo"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteUserHdfsInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteUserHdfsInfo"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12337,11 +13406,51 @@ func (client *Client) DescribeAvailableResourceWithOptions(request *DescribeAvai
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreInstanceType)) {
+		query["CoreInstanceType"] = request.CoreInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskType)) {
+		query["DiskType"] = request.DiskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineVersion)) {
+		query["EngineVersion"] = request.EngineVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAvailableResource"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeAvailableResourceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAvailableResource"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12365,11 +13474,27 @@ func (client *Client) DescribeBackupPlanConfigWithOptions(request *DescribeBacku
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupPlanConfig"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBackupPlanConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupPlanConfig"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12393,11 +13518,27 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupPolicy"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBackupPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupPolicy"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12416,44 +13557,32 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 	return _result, _err
 }
 
-func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeBackupsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBackups"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result *DescribeBackupsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeBackupsResponse{}
-	_body, _err := client.DescribeBackupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeBackupStatusWithOptions(request *DescribeBackupStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupStatus"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBackupStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupStatus"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12477,11 +13606,35 @@ func (client *Client) DescribeBackupSummaryWithOptions(request *DescribeBackupSu
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupSummary"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBackupSummaryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupSummary"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12505,11 +13658,39 @@ func (client *Client) DescribeBackupTablesWithOptions(request *DescribeBackupTab
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupRecordId)) {
+		query["BackupRecordId"] = request.BackupRecordId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupTables"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBackupTablesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBackupTables"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12528,16 +13709,108 @@ func (client *Client) DescribeBackupTables(request *DescribeBackupTablesRequest)
 	return _result, _err
 }
 
+func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupId)) {
+		query["BackupId"] = request.BackupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTimeUTC)) {
+		query["EndTimeUTC"] = request.EndTimeUTC
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTimeUTC)) {
+		query["StartTimeUTC"] = request.StartTimeUTC
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackups"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeBackupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result *DescribeBackupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeBackupsResponse{}
+	_body, _err := client.DescribeBackupsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeClusterConnectionWithOptions(request *DescribeClusterConnectionRequest, runtime *util.RuntimeOptions) (_result *DescribeClusterConnectionResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClusterConnection"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeClusterConnectionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeClusterConnection"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12561,11 +13834,27 @@ func (client *Client) DescribeColdStorageWithOptions(request *DescribeColdStorag
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeColdStorage"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeColdStorageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeColdStorage"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12589,11 +13878,27 @@ func (client *Client) DescribeDBInstanceUsageWithOptions(request *DescribeDBInst
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBInstanceUsage"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDBInstanceUsageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDBInstanceUsage"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12617,11 +13922,35 @@ func (client *Client) DescribeDeletedInstancesWithOptions(request *DescribeDelet
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDeletedInstances"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDeletedInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDeletedInstances"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12645,11 +13974,27 @@ func (client *Client) DescribeDiskWarningLineWithOptions(request *DescribeDiskWa
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDiskWarningLine"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDiskWarningLineResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDiskWarningLine"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12673,11 +14018,27 @@ func (client *Client) DescribeEndpointsWithOptions(request *DescribeEndpointsReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEndpoints"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeEndpointsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeEndpoints"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12701,11 +14062,27 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstance"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstance"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12724,44 +14101,32 @@ func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &DescribeInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstances"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_result *DescribeInstancesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeInstancesResponse{}
-	_body, _err := client.DescribeInstancesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeInstanceTypeWithOptions(request *DescribeInstanceTypeRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceType"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceTypeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstanceType"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12780,16 +14145,104 @@ func (client *Client) DescribeInstanceType(request *DescribeInstanceTypeRequest)
 	return _result, _err
 }
 
+func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterName)) {
+		query["ClusterName"] = request.ClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbType)) {
+		query["DbType"] = request.DbType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstances"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_result *DescribeInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstancesResponse{}
+	_body, _err := client.DescribeInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeIpWhitelistWithOptions(request *DescribeIpWhitelistRequest, runtime *util.RuntimeOptions) (_result *DescribeIpWhitelistResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeIpWhitelist"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeIpWhitelistResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeIpWhitelist"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12813,11 +14266,27 @@ func (client *Client) DescribeMultiZoneAvailableRegionsWithOptions(request *Desc
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMultiZoneAvailableRegions"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeMultiZoneAvailableRegionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeMultiZoneAvailableRegions"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12841,11 +14310,35 @@ func (client *Client) DescribeMultiZoneAvailableResourceWithOptions(request *Des
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		query["ChargeType"] = request.ChargeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneCombination)) {
+		query["ZoneCombination"] = request.ZoneCombination
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMultiZoneAvailableResource"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeMultiZoneAvailableResourceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeMultiZoneAvailableResource"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12869,11 +14362,27 @@ func (client *Client) DescribeMultiZoneClusterWithOptions(request *DescribeMulti
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMultiZoneCluster"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeMultiZoneClusterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeMultiZoneCluster"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12897,11 +14406,27 @@ func (client *Client) DescribeRecoverableTimeRangeWithOptions(request *DescribeR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRecoverableTimeRange"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRecoverableTimeRangeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRecoverableTimeRange"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12925,11 +14450,31 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRegions"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRegions"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12953,11 +14498,39 @@ func (client *Client) DescribeRestoreFullDetailsWithOptions(request *DescribeRes
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RestoreRecordId)) {
+		query["RestoreRecordId"] = request.RestoreRecordId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRestoreFullDetails"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRestoreFullDetailsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRestoreFullDetails"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12981,11 +14554,31 @@ func (client *Client) DescribeRestoreIncrDetailWithOptions(request *DescribeRest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RestoreRecordId)) {
+		query["RestoreRecordId"] = request.RestoreRecordId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRestoreIncrDetail"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRestoreIncrDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRestoreIncrDetail"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13009,11 +14602,39 @@ func (client *Client) DescribeRestoreSchemaDetailsWithOptions(request *DescribeR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RestoreRecordId)) {
+		query["RestoreRecordId"] = request.RestoreRecordId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRestoreSchemaDetails"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRestoreSchemaDetailsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRestoreSchemaDetails"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13037,11 +14658,35 @@ func (client *Client) DescribeRestoreSummaryWithOptions(request *DescribeRestore
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRestoreSummary"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRestoreSummaryResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRestoreSummary"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13065,11 +14710,31 @@ func (client *Client) DescribeRestoreTablesWithOptions(request *DescribeRestoreT
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RestoreRecordId)) {
+		query["RestoreRecordId"] = request.RestoreRecordId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRestoreTables"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeRestoreTablesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRestoreTables"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13093,11 +14758,27 @@ func (client *Client) DescribeSecurityGroupsWithOptions(request *DescribeSecurit
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSecurityGroups"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSecurityGroupsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSecurityGroups"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13116,16 +14797,84 @@ func (client *Client) DescribeSecurityGroups(request *DescribeSecurityGroupsRequ
 	return _result, _err
 }
 
+func (client *Client) DescribeServerlessClusterWithOptions(request *DescribeServerlessClusterRequest, runtime *util.RuntimeOptions) (_result *DescribeServerlessClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeServerlessCluster"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeServerlessClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeServerlessCluster(request *DescribeServerlessClusterRequest) (_result *DescribeServerlessClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeServerlessClusterResponse{}
+	_body, _err := client.DescribeServerlessClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeSubDomainWithOptions(request *DescribeSubDomainRequest, runtime *util.RuntimeOptions) (_result *DescribeSubDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSubDomain"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSubDomainResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSubDomain"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13149,11 +14898,39 @@ func (client *Client) EnableHBaseueBackupWithOptions(request *EnableHBaseueBacku
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ColdStorageSize)) {
+		query["ColdStorageSize"] = request.ColdStorageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HbaseueClusterId)) {
+		query["HbaseueClusterId"] = request.HbaseueClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeCount)) {
+		query["NodeCount"] = request.NodeCount
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableHBaseueBackup"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &EnableHBaseueBackupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("EnableHBaseueBackup"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13177,11 +14954,95 @@ func (client *Client) EnableHBaseueModuleWithOptions(request *EnableHBaseueModul
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoRenewPeriod)) {
+		query["AutoRenewPeriod"] = request.AutoRenewPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BdsId)) {
+		query["BdsId"] = request.BdsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreInstanceType)) {
+		query["CoreInstanceType"] = request.CoreInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskSize)) {
+		query["DiskSize"] = request.DiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskType)) {
+		query["DiskType"] = request.DiskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HbaseueClusterId)) {
+		query["HbaseueClusterId"] = request.HbaseueClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterInstanceType)) {
+		query["MasterInstanceType"] = request.MasterInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleClusterName)) {
+		query["ModuleClusterName"] = request.ModuleClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleTypeName)) {
+		query["ModuleTypeName"] = request.ModuleTypeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeCount)) {
+		query["NodeCount"] = request.NodeCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VswitchId)) {
+		query["VswitchId"] = request.VswitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableHBaseueModule"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &EnableHBaseueModuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("EnableHBaseueModule"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13205,11 +15066,135 @@ func (client *Client) EvaluateMultiZoneResourceWithOptions(request *EvaluateMult
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArbiterVSwitchId)) {
+		query["ArbiterVSwitchId"] = request.ArbiterVSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArbiterZoneId)) {
+		query["ArbiterZoneId"] = request.ArbiterZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArchVersion)) {
+		query["ArchVersion"] = request.ArchVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenewPeriod)) {
+		query["AutoRenewPeriod"] = request.AutoRenewPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterName)) {
+		query["ClusterName"] = request.ClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreDiskSize)) {
+		query["CoreDiskSize"] = request.CoreDiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreDiskType)) {
+		query["CoreDiskType"] = request.CoreDiskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreInstanceType)) {
+		query["CoreInstanceType"] = request.CoreInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreNodeCount)) {
+		query["CoreNodeCount"] = request.CoreNodeCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Engine)) {
+		query["Engine"] = request.Engine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EngineVersion)) {
+		query["EngineVersion"] = request.EngineVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogDiskSize)) {
+		query["LogDiskSize"] = request.LogDiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogDiskType)) {
+		query["LogDiskType"] = request.LogDiskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogInstanceType)) {
+		query["LogInstanceType"] = request.LogInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogNodeCount)) {
+		query["LogNodeCount"] = request.LogNodeCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterInstanceType)) {
+		query["MasterInstanceType"] = request.MasterInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultiZoneCombination)) {
+		query["MultiZoneCombination"] = request.MultiZoneCombination
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryVSwitchId)) {
+		query["PrimaryVSwitchId"] = request.PrimaryVSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryZoneId)) {
+		query["PrimaryZoneId"] = request.PrimaryZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityIPList)) {
+		query["SecurityIPList"] = request.SecurityIPList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StandbyVSwitchId)) {
+		query["StandbyVSwitchId"] = request.StandbyVSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StandbyZoneId)) {
+		query["StandbyZoneId"] = request.StandbyZoneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EvaluateMultiZoneResource"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &EvaluateMultiZoneResourceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("EvaluateMultiZoneResource"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13233,11 +15218,31 @@ func (client *Client) GetMultimodeCmsUrlWithOptions(request *GetMultimodeCmsUrlR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMultimodeCmsUrl"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetMultimodeCmsUrlResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetMultimodeCmsUrl"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13261,11 +15266,27 @@ func (client *Client) ListHBaseInstancesWithOptions(request *ListHBaseInstancesR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHBaseInstances"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListHBaseInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListHBaseInstances"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13289,11 +15310,35 @@ func (client *Client) ListInstanceServiceConfigHistoriesWithOptions(request *Lis
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstanceServiceConfigHistories"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListInstanceServiceConfigHistoriesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListInstanceServiceConfigHistories"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13317,11 +15362,35 @@ func (client *Client) ListInstanceServiceConfigurationsWithOptions(request *List
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstanceServiceConfigurations"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListInstanceServiceConfigurationsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListInstanceServiceConfigurations"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13345,11 +15414,39 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTagResources"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13373,11 +15470,27 @@ func (client *Client) ListTagsWithOptions(request *ListTagsRequest, runtime *uti
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTags"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTags"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13401,11 +15514,43 @@ func (client *Client) ModifyBackupPlanConfigWithOptions(request *ModifyBackupPla
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FullBackupCycle)) {
+		query["FullBackupCycle"] = request.FullBackupCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MinHFileBackupCount)) {
+		query["MinHFileBackupCount"] = request.MinHFileBackupCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextFullBackupDate)) {
+		query["NextFullBackupDate"] = request.NextFullBackupDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tables)) {
+		query["Tables"] = request.Tables
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyBackupPlanConfig"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyBackupPlanConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyBackupPlanConfig"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13429,11 +15574,43 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreferredBackupEndTimeUTC)) {
+		query["PreferredBackupEndTimeUTC"] = request.PreferredBackupEndTimeUTC
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreferredBackupPeriod)) {
+		query["PreferredBackupPeriod"] = request.PreferredBackupPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreferredBackupStartTimeUTC)) {
+		query["PreferredBackupStartTimeUTC"] = request.PreferredBackupStartTimeUTC
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PreferredBackupTime)) {
+		query["PreferredBackupTime"] = request.PreferredBackupTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyBackupPolicy"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyBackupPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyBackupPolicy"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13457,11 +15634,31 @@ func (client *Client) ModifyClusterDeletionProtectionWithOptions(request *Modify
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protection)) {
+		query["Protection"] = request.Protection
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyClusterDeletionProtection"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyClusterDeletionProtectionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyClusterDeletionProtection"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13485,11 +15682,31 @@ func (client *Client) ModifyDiskWarningLineWithOptions(request *ModifyDiskWarnin
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WarningLine)) {
+		query["WarningLine"] = request.WarningLine
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDiskWarningLine"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyDiskWarningLineResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyDiskWarningLine"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13513,11 +15730,35 @@ func (client *Client) ModifyInstanceMaintainTimeWithOptions(request *ModifyInsta
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaintainEndTime)) {
+		query["MaintainEndTime"] = request.MaintainEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaintainStartTime)) {
+		query["MaintainStartTime"] = request.MaintainStartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstanceMaintainTime"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyInstanceMaintainTimeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyInstanceMaintainTime"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13541,11 +15782,43 @@ func (client *Client) ModifyInstanceNameWithOptions(request *ModifyInstanceNameR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterName)) {
+		query["ClusterName"] = request.ClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstanceName"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyInstanceNameResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyInstanceName"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13569,11 +15842,43 @@ func (client *Client) ModifyInstanceServiceConfigWithOptions(request *ModifyInst
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigureName)) {
+		query["ConfigureName"] = request.ConfigureName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigureValue)) {
+		query["ConfigureValue"] = request.ConfigureValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameters)) {
+		query["Parameters"] = request.Parameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Restart)) {
+		query["Restart"] = request.Restart
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstanceServiceConfig"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyInstanceServiceConfigResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyInstanceServiceConfig"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13597,11 +15902,35 @@ func (client *Client) ModifyInstanceTypeWithOptions(request *ModifyInstanceTypeR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreInstanceType)) {
+		query["CoreInstanceType"] = request.CoreInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterInstanceType)) {
+		query["MasterInstanceType"] = request.MasterInstanceType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstanceType"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyInstanceTypeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyInstanceType"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13625,11 +15954,39 @@ func (client *Client) ModifyIpWhitelistWithOptions(request *ModifyIpWhitelistReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpList)) {
+		query["IpList"] = request.IpList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpVersion)) {
+		query["IpVersion"] = request.IpVersion
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyIpWhitelist"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyIpWhitelistResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyIpWhitelist"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13653,11 +16010,39 @@ func (client *Client) ModifyMultiZoneClusterNodeTypeWithOptions(request *ModifyM
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreInstanceType)) {
+		query["CoreInstanceType"] = request.CoreInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogInstanceType)) {
+		query["LogInstanceType"] = request.LogInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterInstanceType)) {
+		query["MasterInstanceType"] = request.MasterInstanceType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyMultiZoneClusterNodeType"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyMultiZoneClusterNodeTypeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyMultiZoneClusterNodeType"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13681,11 +16066,31 @@ func (client *Client) ModifySecurityGroupsWithOptions(request *ModifySecurityGro
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupIds)) {
+		query["SecurityGroupIds"] = request.SecurityGroupIds
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifySecurityGroups"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifySecurityGroupsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifySecurityGroups"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13709,11 +16114,35 @@ func (client *Client) ModifyUIAccountPasswordWithOptions(request *ModifyUIAccoun
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccountPassword)) {
+		query["AccountPassword"] = request.AccountPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyUIAccountPassword"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyUIAccountPasswordResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyUIAccountPassword"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13737,11 +16166,31 @@ func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewResourceGroupId)) {
+		query["NewResourceGroupId"] = request.NewResourceGroupId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MoveResourceGroup"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &MoveResourceGroupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("MoveResourceGroup"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13765,11 +16214,27 @@ func (client *Client) OpenBackupWithOptions(request *OpenBackupRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OpenBackup"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &OpenBackupResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("OpenBackup"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13793,11 +16258,27 @@ func (client *Client) PurgeInstanceWithOptions(request *PurgeInstanceRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PurgeInstance"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &PurgeInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PurgeInstance"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13821,11 +16302,27 @@ func (client *Client) QueryHBaseHaDBWithOptions(request *QueryHBaseHaDBRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BdsId)) {
+		query["BdsId"] = request.BdsId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryHBaseHaDB"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryHBaseHaDBResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryHBaseHaDB"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13849,11 +16346,35 @@ func (client *Client) QueryXpackRelateDBWithOptions(request *QueryXpackRelateDBR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HasSingleNode)) {
+		query["HasSingleNode"] = request.HasSingleNode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelateDbType)) {
+		query["RelateDbType"] = request.RelateDbType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryXpackRelateDB"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryXpackRelateDBResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryXpackRelateDB"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13877,11 +16398,107 @@ func (client *Client) RelateDbForHBaseHaWithOptions(request *RelateDbForHBaseHaR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaActive)) {
+		query["HaActive"] = request.HaActive
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaActiveClusterKey)) {
+		query["HaActiveClusterKey"] = request.HaActiveClusterKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaActiveDBType)) {
+		query["HaActiveDBType"] = request.HaActiveDBType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaActiveHbaseFsDir)) {
+		query["HaActiveHbaseFsDir"] = request.HaActiveHbaseFsDir
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaActiveHdfsUri)) {
+		query["HaActiveHdfsUri"] = request.HaActiveHdfsUri
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaActivePassword)) {
+		query["HaActivePassword"] = request.HaActivePassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaActiveUser)) {
+		query["HaActiveUser"] = request.HaActiveUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaActiveVersion)) {
+		query["HaActiveVersion"] = request.HaActiveVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaMigrateType)) {
+		query["HaMigrateType"] = request.HaMigrateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaStandby)) {
+		query["HaStandby"] = request.HaStandby
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaStandbyClusterKey)) {
+		query["HaStandbyClusterKey"] = request.HaStandbyClusterKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaStandbyDBType)) {
+		query["HaStandbyDBType"] = request.HaStandbyDBType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaStandbyHbaseFsDir)) {
+		query["HaStandbyHbaseFsDir"] = request.HaStandbyHbaseFsDir
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaStandbyHdfsUri)) {
+		query["HaStandbyHdfsUri"] = request.HaStandbyHdfsUri
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaStandbyPassword)) {
+		query["HaStandbyPassword"] = request.HaStandbyPassword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaStandbyUser)) {
+		query["HaStandbyUser"] = request.HaStandbyUser
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaStandbyVersion)) {
+		query["HaStandbyVersion"] = request.HaStandbyVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaTables)) {
+		query["HaTables"] = request.HaTables
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsActiveStandard)) {
+		query["IsActiveStandard"] = request.IsActiveStandard
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsStandbyStandard)) {
+		query["IsStandbyStandard"] = request.IsStandbyStandard
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RelateDbForHBaseHa"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RelateDbForHBaseHaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RelateDbForHBaseHa"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13905,11 +16522,27 @@ func (client *Client) ReleasePublicNetworkAddressWithOptions(request *ReleasePub
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReleasePublicNetworkAddress"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ReleasePublicNetworkAddressResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ReleasePublicNetworkAddress"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13933,11 +16566,35 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		query["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PricingCycle)) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RenewInstance"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RenewInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RenewInstance"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13961,11 +16618,31 @@ func (client *Client) ResizeColdStorageSizeWithOptions(request *ResizeColdStorag
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ColdStorageSize)) {
+		query["ColdStorageSize"] = request.ColdStorageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResizeColdStorageSize"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ResizeColdStorageSizeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ResizeColdStorageSize"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13989,11 +16666,31 @@ func (client *Client) ResizeDiskSizeWithOptions(request *ResizeDiskSizeRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeDiskSize)) {
+		query["NodeDiskSize"] = request.NodeDiskSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResizeDiskSize"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ResizeDiskSizeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ResizeDiskSize"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14017,11 +16714,35 @@ func (client *Client) ResizeMultiZoneClusterDiskSizeWithOptions(request *ResizeM
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreDiskSize)) {
+		query["CoreDiskSize"] = request.CoreDiskSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogDiskSize)) {
+		query["LogDiskSize"] = request.LogDiskSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResizeMultiZoneClusterDiskSize"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ResizeMultiZoneClusterDiskSizeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ResizeMultiZoneClusterDiskSize"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14045,11 +16766,55 @@ func (client *Client) ResizeMultiZoneClusterNodeCountWithOptions(request *Resize
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ArbiterVSwitchId)) {
+		query["ArbiterVSwitchId"] = request.ArbiterVSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreNodeCount)) {
+		query["CoreNodeCount"] = request.CoreNodeCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogNodeCount)) {
+		query["LogNodeCount"] = request.LogNodeCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryCoreNodeCount)) {
+		query["PrimaryCoreNodeCount"] = request.PrimaryCoreNodeCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrimaryVSwitchId)) {
+		query["PrimaryVSwitchId"] = request.PrimaryVSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StandbyCoreNodeCount)) {
+		query["StandbyCoreNodeCount"] = request.StandbyCoreNodeCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StandbyVSwitchId)) {
+		query["StandbyVSwitchId"] = request.StandbyVSwitchId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResizeMultiZoneClusterNodeCount"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ResizeMultiZoneClusterNodeCountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ResizeMultiZoneClusterNodeCount"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14073,11 +16838,39 @@ func (client *Client) ResizeNodeCountWithOptions(request *ResizeNodeCountRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeCount)) {
+		query["NodeCount"] = request.NodeCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ResizeNodeCount"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ResizeNodeCountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ResizeNodeCount"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14101,11 +16894,31 @@ func (client *Client) RestartInstanceWithOptions(request *RestartInstanceRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Components)) {
+		query["Components"] = request.Components
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RestartInstance"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RestartInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RestartInstance"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14129,11 +16942,39 @@ func (client *Client) SwitchHbaseHaSlbWithOptions(request *SwitchHbaseHaSlbReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BdsId)) {
+		query["BdsId"] = request.BdsId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaId)) {
+		query["HaId"] = request.HaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HaTypes)) {
+		query["HaTypes"] = request.HaTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HbaseType)) {
+		query["HbaseType"] = request.HbaseType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SwitchHbaseHaSlb"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SwitchHbaseHaSlbResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SwitchHbaseHaSlb"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14157,11 +16998,35 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("TagResources"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14185,11 +17050,39 @@ func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnTagResources"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UnTagResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UnTagResources"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14213,11 +17106,31 @@ func (client *Client) UpgradeMinorVersionWithOptions(request *UpgradeMinorVersio
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Components)) {
+		query["Components"] = request.Components
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeMinorVersion"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpgradeMinorVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpgradeMinorVersion"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14241,11 +17154,47 @@ func (client *Client) UpgradeMultiZoneClusterWithOptions(request *UpgradeMultiZo
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Components)) {
+		query["Components"] = request.Components
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RestartComponents)) {
+		query["RestartComponents"] = request.RestartComponents
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RunMode)) {
+		query["RunMode"] = request.RunMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpgradeInsName)) {
+		query["UpgradeInsName"] = request.UpgradeInsName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Versions)) {
+		query["Versions"] = request.Versions
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeMultiZoneCluster"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpgradeMultiZoneClusterResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpgradeMultiZoneCluster"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14269,11 +17218,35 @@ func (client *Client) XpackRelateDBWithOptions(request *XpackRelateDBRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbClusterIds)) {
+		query["DbClusterIds"] = request.DbClusterIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelateDbType)) {
+		query["RelateDbType"] = request.RelateDbType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("XpackRelateDB"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &XpackRelateDBResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("XpackRelateDB"), tea.String("2019-01-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
