@@ -906,7 +906,7 @@ type CreateListenerRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// 监听默认动作
 	DefaultActions []*CreateListenerRequestDefaultActions `json:"DefaultActions,omitempty" xml:"DefaultActions,omitempty" type:"Repeated"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 是否开启Gzip压缩
 	GzipEnabled *bool `json:"GzipEnabled,omitempty" xml:"GzipEnabled,omitempty"`
@@ -1306,7 +1306,7 @@ type CreateLoadBalancerRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// 是否开启删除保护
 	DeletionProtectionEnabled *bool `json:"DeletionProtectionEnabled,omitempty" xml:"DeletionProtectionEnabled,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 计费相关配置信息
 	LoadBalancerBillingConfig *CreateLoadBalancerRequestLoadBalancerBillingConfig `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
@@ -1511,7 +1511,7 @@ func (s *CreateLoadBalancerResponse) SetBody(v *CreateLoadBalancerResponseBody) 
 type CreateRuleRequest struct {
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 监听标识
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
@@ -2243,7 +2243,7 @@ func (s *CreateRuleResponse) SetBody(v *CreateRuleResponseBody) *CreateRuleRespo
 type CreateRulesRequest struct {
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 监听标识
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
@@ -3059,7 +3059,7 @@ type CreateSecurityPolicyRequest struct {
 	Ciphers []*string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty" type:"Repeated"`
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 资源组id
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -3158,7 +3158,7 @@ func (s *CreateSecurityPolicyResponse) SetBody(v *CreateSecurityPolicyResponseBo
 type CreateServerGroupRequest struct {
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 健康检查配置
 	HealthCheckConfig *CreateServerGroupRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
@@ -3588,7 +3588,7 @@ func (s *DeleteHealthCheckTemplatesResponse) SetBody(v *DeleteHealthCheckTemplat
 type DeleteListenerRequest struct {
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 监听id
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
@@ -3668,7 +3668,7 @@ func (s *DeleteListenerResponse) SetBody(v *DeleteListenerResponseBody) *DeleteL
 type DeleteLoadBalancerRequest struct {
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 实例id
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
@@ -3748,7 +3748,7 @@ func (s *DeleteLoadBalancerResponse) SetBody(v *DeleteLoadBalancerResponseBody) 
 type DeleteRuleRequest struct {
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 转发规则标识
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
@@ -3828,7 +3828,7 @@ func (s *DeleteRuleResponse) SetBody(v *DeleteRuleResponseBody) *DeleteRuleRespo
 type DeleteRulesRequest struct {
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 同一个监听下的转发规则标识列表
 	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
@@ -3908,7 +3908,7 @@ func (s *DeleteRulesResponse) SetBody(v *DeleteRulesResponseBody) *DeleteRulesRe
 type DeleteSecurityPolicyRequest struct {
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 安全策略Id
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
@@ -4326,7 +4326,7 @@ func (s *DetachCommonBandwidthPackageFromLoadBalancerResponse) SetBody(v *Detach
 type DisableDeletionProtectionRequest struct {
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 实例id
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
@@ -4399,7 +4399,7 @@ func (s *DisableDeletionProtectionResponse) SetBody(v *DisableDeletionProtection
 type DisableLoadBalancerAccessLogRequest struct {
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 实例id
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
@@ -4664,7 +4664,7 @@ func (s *DissociateAdditionalCertificatesFromListenerResponse) SetBody(v *Dissoc
 type EnableDeletionProtectionRequest struct {
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 实例id
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
@@ -4737,7 +4737,7 @@ func (s *EnableDeletionProtectionResponse) SetBody(v *EnableDeletionProtectionRe
 type EnableLoadBalancerAccessLogRequest struct {
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 实例id
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
@@ -7384,6 +7384,8 @@ func (s *ListListenersResponseBody) SetTotalCount(v int32) *ListListenersRespons
 }
 
 type ListListenersResponseBodyListeners struct {
+	// 是否开启双向认证
+	CaEnabled *string `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
 	// 默认动作
 	DefaultActions []*ListListenersResponseBodyListenersDefaultActions `json:"DefaultActions,omitempty" xml:"DefaultActions,omitempty" type:"Repeated"`
 	// 是否开启Gzip压缩
@@ -7422,6 +7424,11 @@ func (s ListListenersResponseBodyListeners) String() string {
 
 func (s ListListenersResponseBodyListeners) GoString() string {
 	return s.String()
+}
+
+func (s *ListListenersResponseBodyListeners) SetCaEnabled(v string) *ListListenersResponseBodyListeners {
+	s.CaEnabled = &v
+	return s
 }
 
 func (s *ListListenersResponseBodyListeners) SetDefaultActions(v []*ListListenersResponseBodyListenersDefaultActions) *ListListenersResponseBodyListeners {
@@ -8421,7 +8428,10 @@ type ListRulesResponseBodyRulesRuleActions struct {
 	// 重定向动作配置
 	RedirectConfig *ListRulesResponseBodyRulesRuleActionsRedirectConfig `json:"RedirectConfig,omitempty" xml:"RedirectConfig,omitempty" type:"Struct"`
 	// 内部重定向动作配置
-	RewriteConfig *ListRulesResponseBodyRulesRuleActionsRewriteConfig `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
+	RewriteConfig      *ListRulesResponseBodyRulesRuleActionsRewriteConfig      `json:"RewriteConfig,omitempty" xml:"RewriteConfig,omitempty" type:"Struct"`
+	TrafficLimitConfig *ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig `json:"TrafficLimitConfig,omitempty" xml:"TrafficLimitConfig,omitempty" type:"Struct"`
+	// 流量镜像Action对应的配置，type为TrafficMirror时必填且有效
+	TrafficMirrorConfig *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig `json:"TrafficMirrorConfig,omitempty" xml:"TrafficMirrorConfig,omitempty" type:"Struct"`
 	// 转发规则动作类型
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -8461,6 +8471,16 @@ func (s *ListRulesResponseBodyRulesRuleActions) SetRedirectConfig(v *ListRulesRe
 
 func (s *ListRulesResponseBodyRulesRuleActions) SetRewriteConfig(v *ListRulesResponseBodyRulesRuleActionsRewriteConfig) *ListRulesResponseBodyRulesRuleActions {
 	s.RewriteConfig = v
+	return s
+}
+
+func (s *ListRulesResponseBodyRulesRuleActions) SetTrafficLimitConfig(v *ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig) *ListRulesResponseBodyRulesRuleActions {
+	s.TrafficLimitConfig = v
+	return s
+}
+
+func (s *ListRulesResponseBodyRulesRuleActions) SetTrafficMirrorConfig(v *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig) *ListRulesResponseBodyRulesRuleActions {
+	s.TrafficMirrorConfig = v
 	return s
 }
 
@@ -8651,6 +8671,82 @@ func (s *ListRulesResponseBodyRulesRuleActionsRewriteConfig) SetPath(v string) *
 
 func (s *ListRulesResponseBodyRulesRuleActionsRewriteConfig) SetQuery(v string) *ListRulesResponseBodyRulesRuleActionsRewriteConfig {
 	s.Query = &v
+	return s
+}
+
+type ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig struct {
+	QPS *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
+}
+
+func (s ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig) SetQPS(v int32) *ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig {
+	s.QPS = &v
+	return s
+}
+
+type ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig struct {
+	// TargetType为服务器组时必选，目标服务器组
+	MirrorGroupConfig *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig `json:"MirrorGroupConfig,omitempty" xml:"MirrorGroupConfig,omitempty" type:"Struct"`
+	// 流量镜像的目的，可以是服务器组
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig) SetMirrorGroupConfig(v *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig {
+	s.MirrorGroupConfig = v
+	return s
+}
+
+func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig) SetTargetType(v string) *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig {
+	s.TargetType = &v
+	return s
+}
+
+type ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig struct {
+	ServerGroupTuples []*ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
+}
+
+func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) SetServerGroupTuples(v []*ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig {
+	s.ServerGroupTuples = v
+	return s
+}
+
+type ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples struct {
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+}
+
+func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) GoString() string {
+	return s.String()
+}
+
+func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) SetServerGroupId(v string) *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples {
+	s.ServerGroupId = &v
 	return s
 }
 
@@ -10433,7 +10529,7 @@ type RemoveEntriesFromAclRequest struct {
 	AclId *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 条目列表
 	Entries []*string `json:"Entries,omitempty" xml:"Entries,omitempty" type:"Repeated"`
@@ -10518,7 +10614,7 @@ func (s *RemoveEntriesFromAclResponse) SetBody(v *RemoveEntriesFromAclResponseBo
 type RemoveServersFromServerGroupRequest struct {
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 后端服务器Id
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
@@ -10830,7 +10926,7 @@ func (s *ReplaceServersInServerGroupResponse) SetBody(v *ReplaceServersInServerG
 type StartListenerRequest struct {
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 监听id
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
@@ -10910,7 +11006,7 @@ func (s *StartListenerResponse) SetBody(v *StartListenerResponseBody) *StartList
 type StopListenerRequest struct {
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 监听id
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
@@ -11438,7 +11534,7 @@ type UpdateListenerAttributeRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// 监听默认动作
 	DefaultActions []*UpdateListenerAttributeRequestDefaultActions `json:"DefaultActions,omitempty" xml:"DefaultActions,omitempty" type:"Repeated"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 是否开启Gzip压缩
 	GzipEnabled *bool `json:"GzipEnabled,omitempty" xml:"GzipEnabled,omitempty"`
@@ -11815,7 +11911,7 @@ type UpdateListenerLogConfigRequest struct {
 	AccessLogTracingConfig *UpdateListenerLogConfigRequestAccessLogTracingConfig `json:"AccessLogTracingConfig,omitempty" xml:"AccessLogTracingConfig,omitempty" type:"Struct"`
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 监听标识
 	ListenerId *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
@@ -12063,7 +12159,7 @@ func (s *UpdateLoadBalancerAddressTypeConfigResponse) SetBody(v *UpdateLoadBalan
 type UpdateLoadBalancerAttributeRequest struct {
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 实例id
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
@@ -12182,7 +12278,7 @@ func (s *UpdateLoadBalancerAttributeResponse) SetBody(v *UpdateLoadBalancerAttri
 type UpdateLoadBalancerEditionRequest struct {
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 实例版本
 	LoadBalancerEdition *string `json:"LoadBalancerEdition,omitempty" xml:"LoadBalancerEdition,omitempty"`
@@ -12262,7 +12358,7 @@ func (s *UpdateLoadBalancerEditionResponse) SetBody(v *UpdateLoadBalancerEdition
 type UpdateLoadBalancerZonesRequest struct {
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 实例id
 	LoadBalancerId *string `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
@@ -12374,7 +12470,7 @@ func (s *UpdateLoadBalancerZonesResponse) SetBody(v *UpdateLoadBalancerZonesResp
 type UpdateRuleAttributeRequest struct {
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 转发规则优先级
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
@@ -13939,7 +14035,7 @@ type UpdateSecurityPolicyAttributeRequest struct {
 	Ciphers []*string `json:"Ciphers,omitempty" xml:"Ciphers,omitempty" type:"Repeated"`
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 安全策略id
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
@@ -14038,7 +14134,7 @@ func (s *UpdateSecurityPolicyAttributeResponse) SetBody(v *UpdateSecurityPolicyA
 type UpdateServerGroupAttributeRequest struct {
 	// 幂等标识
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	//  是否只预检此次请求
+	// 是否只预检此次请求
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 健康检查配置
 	HealthCheckConfig *UpdateServerGroupAttributeRequestHealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty" type:"Struct"`
