@@ -107,6 +107,7 @@ type BatchGetResponseBodyData struct {
 	Cursor            *string                            `json:"Cursor,omitempty" xml:"Cursor,omitempty"`
 	Length            *int64                             `json:"Length,omitempty" xml:"Length,omitempty"`
 	Records           []*BatchGetResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	AnchorTs          *int64                             `json:"__anchorTs__,omitempty" xml:"__anchorTs__,omitempty"`
 }
 
 func (s BatchGetResponseBodyData) String() string {
@@ -139,6 +140,11 @@ func (s *BatchGetResponseBodyData) SetLength(v int64) *BatchGetResponseBodyData 
 
 func (s *BatchGetResponseBodyData) SetRecords(v []*BatchGetResponseBodyDataRecords) *BatchGetResponseBodyData {
 	s.Records = v
+	return s
+}
+
+func (s *BatchGetResponseBodyData) SetAnchorTs(v int64) *BatchGetResponseBodyData {
+	s.AnchorTs = &v
 	return s
 }
 
