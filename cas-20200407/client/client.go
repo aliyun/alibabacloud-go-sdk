@@ -714,11 +714,11 @@ func (s *ListUserCertificateOrderRequest) SetStatus(v string) *ListUserCertifica
 }
 
 type ListUserCertificateOrderResponseBody struct {
-	CertificateOrderList *string `json:"CertificateOrderList,omitempty" xml:"CertificateOrderList,omitempty"`
-	CurrentPage          *int64  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ShowSize             *int64  `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
-	TotalCount           *int64  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	CertificateOrderList []*ListUserCertificateOrderResponseBodyCertificateOrderList `json:"CertificateOrderList,omitempty" xml:"CertificateOrderList,omitempty" type:"Repeated"`
+	CurrentPage          *int64                                                      `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	RequestId            *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ShowSize             *int64                                                      `json:"ShowSize,omitempty" xml:"ShowSize,omitempty"`
+	TotalCount           *int64                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListUserCertificateOrderResponseBody) String() string {
@@ -729,8 +729,8 @@ func (s ListUserCertificateOrderResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListUserCertificateOrderResponseBody) SetCertificateOrderList(v string) *ListUserCertificateOrderResponseBody {
-	s.CertificateOrderList = &v
+func (s *ListUserCertificateOrderResponseBody) SetCertificateOrderList(v []*ListUserCertificateOrderResponseBodyCertificateOrderList) *ListUserCertificateOrderResponseBody {
+	s.CertificateOrderList = v
 	return s
 }
 
@@ -751,6 +751,131 @@ func (s *ListUserCertificateOrderResponseBody) SetShowSize(v int64) *ListUserCer
 
 func (s *ListUserCertificateOrderResponseBody) SetTotalCount(v int64) *ListUserCertificateOrderResponseBody {
 	s.TotalCount = &v
+	return s
+}
+
+type ListUserCertificateOrderResponseBodyCertificateOrderList struct {
+	Algorithm       *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	AliyunOrderId   *int64  `json:"AliyunOrderId,omitempty" xml:"AliyunOrderId,omitempty"`
+	BuyDate         *int64  `json:"BuyDate,omitempty" xml:"BuyDate,omitempty"`
+	CertEndTime     *int64  `json:"CertEndTime,omitempty" xml:"CertEndTime,omitempty"`
+	CertStartTime   *int64  `json:"CertStartTime,omitempty" xml:"CertStartTime,omitempty"`
+	CertType        *string `json:"CertType,omitempty" xml:"CertType,omitempty"`
+	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	DomainCount     *int64  `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
+	DomainType      *string `json:"DomainType,omitempty" xml:"DomainType,omitempty"`
+	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OrderId         *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	PartnerOrderId  *string `json:"PartnerOrderId,omitempty" xml:"PartnerOrderId,omitempty"`
+	ProductCode     *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	ProductName     *string `json:"ProductName,omitempty" xml:"ProductName,omitempty"`
+	RootBrand       *string `json:"RootBrand,omitempty" xml:"RootBrand,omitempty"`
+	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TrusteeStatus   *string `json:"TrusteeStatus,omitempty" xml:"TrusteeStatus,omitempty"`
+	WildDomainCount *int64  `json:"WildDomainCount,omitempty" xml:"WildDomainCount,omitempty"`
+}
+
+func (s ListUserCertificateOrderResponseBodyCertificateOrderList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUserCertificateOrderResponseBodyCertificateOrderList) GoString() string {
+	return s.String()
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetAlgorithm(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.Algorithm = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetAliyunOrderId(v int64) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.AliyunOrderId = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetBuyDate(v int64) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.BuyDate = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetCertEndTime(v int64) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.CertEndTime = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetCertStartTime(v int64) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.CertStartTime = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetCertType(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.CertType = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetDomain(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.Domain = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetDomainCount(v int64) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.DomainCount = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetDomainType(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.DomainType = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetInstanceId(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetOrderId(v int64) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetPartnerOrderId(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.PartnerOrderId = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetProductCode(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetProductName(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.ProductName = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetRootBrand(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.RootBrand = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetSourceType(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.SourceType = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetStatus(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetTrusteeStatus(v string) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.TrusteeStatus = &v
+	return s
+}
+
+func (s *ListUserCertificateOrderResponseBodyCertificateOrderList) SetWildDomainCount(v int64) *ListUserCertificateOrderResponseBodyCertificateOrderList {
+	s.WildDomainCount = &v
 	return s
 }
 
