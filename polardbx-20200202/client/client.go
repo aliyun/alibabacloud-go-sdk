@@ -1149,8 +1149,6 @@ func (s *DeleteDBResponse) SetBody(v *DeleteDBResponseBody) *DeleteDBResponse {
 type DeleteDBInstanceRequest struct {
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 资源组ID
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 }
 
 func (s DeleteDBInstanceRequest) String() string {
@@ -1168,11 +1166,6 @@ func (s *DeleteDBInstanceRequest) SetDBInstanceName(v string) *DeleteDBInstanceR
 
 func (s *DeleteDBInstanceRequest) SetRegionId(v string) *DeleteDBInstanceRequest {
 	s.RegionId = &v
-	return s
-}
-
-func (s *DeleteDBInstanceRequest) SetResourceGroupId(v string) *DeleteDBInstanceRequest {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -6604,11 +6597,10 @@ func (s *ModifyDBInstanceClassResponse) SetBody(v *ModifyDBInstanceClassResponse
 }
 
 type ModifyDBInstanceConfigRequest struct {
-	ConfigName      *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
-	ConfigValue     *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	DBInstanceName  *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ConfigName     *string `json:"ConfigName,omitempty" xml:"ConfigName,omitempty"`
+	ConfigValue    *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s ModifyDBInstanceConfigRequest) String() string {
@@ -6636,11 +6628,6 @@ func (s *ModifyDBInstanceConfigRequest) SetDBInstanceName(v string) *ModifyDBIns
 
 func (s *ModifyDBInstanceConfigRequest) SetRegionId(v string) *ModifyDBInstanceConfigRequest {
 	s.RegionId = &v
-	return s
-}
-
-func (s *ModifyDBInstanceConfigRequest) SetResourceGroupId(v string) *ModifyDBInstanceConfigRequest {
-	s.ResourceGroupId = &v
 	return s
 }
 
@@ -7998,6 +7985,8 @@ func (s *UpdatePolarDBXInstanceNodeResponse) SetBody(v *UpdatePolarDBXInstanceNo
 type UpgradeDBInstanceKernelVersionRequest struct {
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 切换模式： 0:立刻执行，1：运维时间执行
+	SwitchMode *string `json:"SwitchMode,omitempty" xml:"SwitchMode,omitempty"`
 }
 
 func (s UpgradeDBInstanceKernelVersionRequest) String() string {
@@ -8015,6 +8004,11 @@ func (s *UpgradeDBInstanceKernelVersionRequest) SetDBInstanceName(v string) *Upg
 
 func (s *UpgradeDBInstanceKernelVersionRequest) SetRegionId(v string) *UpgradeDBInstanceKernelVersionRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpgradeDBInstanceKernelVersionRequest) SetSwitchMode(v string) *UpgradeDBInstanceKernelVersionRequest {
+	s.SwitchMode = &v
 	return s
 }
 
@@ -8898,10 +8892,6 @@ func (client *Client) DeleteDBInstanceWithOptions(request *DeleteDBInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -10673,10 +10663,6 @@ func (client *Client) ModifyDBInstanceConfigWithOptions(request *ModifyDBInstanc
 		query["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
-		query["ResourceGroupId"] = request.ResourceGroupId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -11503,6 +11489,10 @@ func (client *Client) UpgradeDBInstanceKernelVersionWithOptions(request *Upgrade
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SwitchMode)) {
+		query["SwitchMode"] = request.SwitchMode
 	}
 
 	req := &openapi.OpenApiRequest{
