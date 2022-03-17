@@ -1727,6 +1727,8 @@ func (s *CreateRuleRequestRuleActionsForwardGroupConfigServerGroupStickySession)
 type CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples struct {
 	// 服务器组标识
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// 权重
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples) String() string {
@@ -1739,6 +1741,11 @@ func (s CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples) GoStrin
 
 func (s *CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples) SetServerGroupId(v string) *CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples {
 	s.ServerGroupId = &v
+	return s
+}
+
+func (s *CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples) SetWeight(v int32) *CreateRuleRequestRuleActionsForwardGroupConfigServerGroupTuples {
+	s.Weight = &v
 	return s
 }
 
@@ -2484,6 +2491,8 @@ func (s *CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupStickySe
 type CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples struct {
 	// 服务器组标识
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// 权重
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples) String() string {
@@ -2496,6 +2505,11 @@ func (s CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples) G
 
 func (s *CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples) SetServerGroupId(v string) *CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples {
 	s.ServerGroupId = &v
+	return s
+}
+
+func (s *CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples) SetWeight(v int32) *CreateRulesRequestRulesRuleActionsForwardGroupConfigServerGroupTuples {
+	s.Weight = &v
 	return s
 }
 
@@ -7384,8 +7398,6 @@ func (s *ListListenersResponseBody) SetTotalCount(v int32) *ListListenersRespons
 }
 
 type ListListenersResponseBodyListeners struct {
-	// 是否开启双向认证
-	CaEnabled *string `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
 	// 默认动作
 	DefaultActions []*ListListenersResponseBodyListenersDefaultActions `json:"DefaultActions,omitempty" xml:"DefaultActions,omitempty" type:"Repeated"`
 	// 是否开启Gzip压缩
@@ -7424,11 +7436,6 @@ func (s ListListenersResponseBodyListeners) String() string {
 
 func (s ListListenersResponseBodyListeners) GoString() string {
 	return s.String()
-}
-
-func (s *ListListenersResponseBodyListeners) SetCaEnabled(v string) *ListListenersResponseBodyListeners {
-	s.CaEnabled = &v
-	return s
 }
 
 func (s *ListListenersResponseBodyListeners) SetDefaultActions(v []*ListListenersResponseBodyListenersDefaultActions) *ListListenersResponseBodyListeners {
@@ -8542,6 +8549,8 @@ func (s *ListRulesResponseBodyRulesRuleActionsForwardGroupConfig) SetServerGroup
 type ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples struct {
 	// 服务器组标识
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// 当ServerGroupTuple.N数量大于1时，可配置每个服务器组的权重
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples) String() string {
@@ -8554,6 +8563,11 @@ func (s ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples
 
 func (s *ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples) SetServerGroupId(v string) *ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples {
 	s.ServerGroupId = &v
+	return s
+}
+
+func (s *ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples) SetWeight(v int32) *ListRulesResponseBodyRulesRuleActionsForwardGroupConfigServerGroupTuples {
+	s.Weight = &v
 	return s
 }
 
@@ -8675,7 +8689,6 @@ func (s *ListRulesResponseBodyRulesRuleActionsRewriteConfig) SetQuery(v string) 
 }
 
 type ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig struct {
-	QPS *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
 }
 
 func (s ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig) String() string {
@@ -8686,16 +8699,7 @@ func (s ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig) GoString() stri
 	return s.String()
 }
 
-func (s *ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig) SetQPS(v int32) *ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig {
-	s.QPS = &v
-	return s
-}
-
 type ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig struct {
-	// TargetType为服务器组时必选，目标服务器组
-	MirrorGroupConfig *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig `json:"MirrorGroupConfig,omitempty" xml:"MirrorGroupConfig,omitempty" type:"Struct"`
-	// 流量镜像的目的，可以是服务器组
-	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
 }
 
 func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig) String() string {
@@ -8704,50 +8708,6 @@ func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig) String() strin
 
 func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig) GoString() string {
 	return s.String()
-}
-
-func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig) SetMirrorGroupConfig(v *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig {
-	s.MirrorGroupConfig = v
-	return s
-}
-
-func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig) SetTargetType(v string) *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig {
-	s.TargetType = &v
-	return s
-}
-
-type ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig struct {
-	ServerGroupTuples []*ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
-}
-
-func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) GoString() string {
-	return s.String()
-}
-
-func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) SetServerGroupTuples(v []*ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig {
-	s.ServerGroupTuples = v
-	return s
-}
-
-type ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples struct {
-	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-}
-
-func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) GoString() string {
-	return s.String()
-}
-
-func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) SetServerGroupId(v string) *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples {
-	s.ServerGroupId = &v
-	return s
 }
 
 type ListRulesResponseBodyRulesRuleConditions struct {
@@ -12686,6 +12646,8 @@ func (s *UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupStick
 type UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples struct {
 	// 服务器组标识
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// 权重
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples) String() string {
@@ -12698,6 +12660,11 @@ func (s UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples
 
 func (s *UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples) SetServerGroupId(v string) *UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples {
 	s.ServerGroupId = &v
+	return s
+}
+
+func (s *UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples) SetWeight(v int32) *UpdateRuleAttributeRequestRuleActionsForwardGroupConfigServerGroupTuples {
+	s.Weight = &v
 	return s
 }
 
