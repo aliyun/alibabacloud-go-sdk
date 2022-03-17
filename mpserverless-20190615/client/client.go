@@ -3846,6 +3846,7 @@ func (s *ListExtensionsResponse) SetBody(v *ListExtensionsResponseBody) *ListExt
 }
 
 type ListFileRequest struct {
+	FileId   *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	Keyword  *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -3858,6 +3859,11 @@ func (s ListFileRequest) String() string {
 
 func (s ListFileRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListFileRequest) SetFileId(v string) *ListFileRequest {
+	s.FileId = &v
+	return s
 }
 
 func (s *ListFileRequest) SetKeyword(v string) *ListFileRequest {
@@ -7663,7 +7669,10 @@ func (client *Client) CheckMpServerlessRoleExistsWithOptions(request *CheckMpSer
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["RoleName"] = request.RoleName
+	if !tea.BoolValue(util.IsUnset(request.RoleName)) {
+		query["RoleName"] = request.RoleName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -9453,6 +9462,10 @@ func (client *Client) ListFileWithOptions(request *ListFileRequest, runtime *uti
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FileId)) {
+		body["FileId"] = request.FileId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
 		body["Keyword"] = request.Keyword
 	}
