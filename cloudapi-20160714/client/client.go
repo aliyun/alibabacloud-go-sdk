@@ -16808,6 +16808,87 @@ func (s *DescribeZonesResponse) SetBody(v *DescribeZonesResponseBody) *DescribeZ
 	return s
 }
 
+type DetachPluginRequest struct {
+	ApiId         *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	PluginId      *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	StageName     *string `json:"StageName,omitempty" xml:"StageName,omitempty"`
+}
+
+func (s DetachPluginRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachPluginRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachPluginRequest) SetApiId(v string) *DetachPluginRequest {
+	s.ApiId = &v
+	return s
+}
+
+func (s *DetachPluginRequest) SetGroupId(v string) *DetachPluginRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DetachPluginRequest) SetPluginId(v string) *DetachPluginRequest {
+	s.PluginId = &v
+	return s
+}
+
+func (s *DetachPluginRequest) SetSecurityToken(v string) *DetachPluginRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DetachPluginRequest) SetStageName(v string) *DetachPluginRequest {
+	s.StageName = &v
+	return s
+}
+
+type DetachPluginResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DetachPluginResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachPluginResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetachPluginResponseBody) SetRequestId(v string) *DetachPluginResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DetachPluginResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DetachPluginResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetachPluginResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachPluginResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetachPluginResponse) SetHeaders(v map[string]*string) *DetachPluginResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetachPluginResponse) SetBody(v *DetachPluginResponseBody) *DetachPluginResponse {
+	s.Body = v
+	return s
+}
+
 type DryRunSwaggerRequest struct {
 	Data            *string                `json:"Data,omitempty" xml:"Data,omitempty"`
 	DataFormat      *string                `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
@@ -27054,6 +27135,66 @@ func (client *Client) DescribeZones(request *DescribeZonesRequest) (_result *Des
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeZonesResponse{}
 	_body, _err := client.DescribeZonesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetachPluginWithOptions(request *DetachPluginRequest, runtime *util.RuntimeOptions) (_result *DetachPluginResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PluginId)) {
+		query["PluginId"] = request.PluginId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StageName)) {
+		query["StageName"] = request.StageName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachPlugin"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetachPluginResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetachPlugin(request *DetachPluginRequest) (_result *DetachPluginResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetachPluginResponse{}
+	_body, _err := client.DetachPluginWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
