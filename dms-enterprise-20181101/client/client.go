@@ -12,6 +12,157 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AddLhMembersRequest struct {
+	Members    []*AddLhMembersRequestMembers `json:"Members,omitempty" xml:"Members,omitempty" type:"Repeated"`
+	ObjectId   *int64                        `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	ObjectType *int32                        `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	Tid        *int64                        `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s AddLhMembersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddLhMembersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddLhMembersRequest) SetMembers(v []*AddLhMembersRequestMembers) *AddLhMembersRequest {
+	s.Members = v
+	return s
+}
+
+func (s *AddLhMembersRequest) SetObjectId(v int64) *AddLhMembersRequest {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *AddLhMembersRequest) SetObjectType(v int32) *AddLhMembersRequest {
+	s.ObjectType = &v
+	return s
+}
+
+func (s *AddLhMembersRequest) SetTid(v int64) *AddLhMembersRequest {
+	s.Tid = &v
+	return s
+}
+
+type AddLhMembersRequestMembers struct {
+	Roles  []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	UserId *int64    `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s AddLhMembersRequestMembers) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddLhMembersRequestMembers) GoString() string {
+	return s.String()
+}
+
+func (s *AddLhMembersRequestMembers) SetRoles(v []*string) *AddLhMembersRequestMembers {
+	s.Roles = v
+	return s
+}
+
+func (s *AddLhMembersRequestMembers) SetUserId(v int64) *AddLhMembersRequestMembers {
+	s.UserId = &v
+	return s
+}
+
+type AddLhMembersShrinkRequest struct {
+	MembersShrink *string `json:"Members,omitempty" xml:"Members,omitempty"`
+	ObjectId      *int64  `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	ObjectType    *int32  `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	Tid           *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s AddLhMembersShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddLhMembersShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddLhMembersShrinkRequest) SetMembersShrink(v string) *AddLhMembersShrinkRequest {
+	s.MembersShrink = &v
+	return s
+}
+
+func (s *AddLhMembersShrinkRequest) SetObjectId(v int64) *AddLhMembersShrinkRequest {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *AddLhMembersShrinkRequest) SetObjectType(v int32) *AddLhMembersShrinkRequest {
+	s.ObjectType = &v
+	return s
+}
+
+func (s *AddLhMembersShrinkRequest) SetTid(v int64) *AddLhMembersShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type AddLhMembersResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddLhMembersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddLhMembersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddLhMembersResponseBody) SetErrorCode(v string) *AddLhMembersResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *AddLhMembersResponseBody) SetErrorMessage(v string) *AddLhMembersResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AddLhMembersResponseBody) SetRequestId(v string) *AddLhMembersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddLhMembersResponseBody) SetSuccess(v bool) *AddLhMembersResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddLhMembersResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddLhMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddLhMembersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddLhMembersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddLhMembersResponse) SetHeaders(v map[string]*string) *AddLhMembersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddLhMembersResponse) SetBody(v *AddLhMembersResponseBody) *AddLhMembersResponse {
+	s.Body = v
+	return s
+}
+
 type AddLogicTableRouteConfigRequest struct {
 	RouteExpr *string `json:"RouteExpr,omitempty" xml:"RouteExpr,omitempty"`
 	RouteKey  *string `json:"RouteKey,omitempty" xml:"RouteKey,omitempty"`
@@ -1577,6 +1728,135 @@ func (s *CreateFreeLockCorrectOrderResponse) SetBody(v *CreateFreeLockCorrectOrd
 	return s
 }
 
+type CreateLakeHouseSpaceRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DevDbId     *string `json:"DevDbId,omitempty" xml:"DevDbId,omitempty"`
+	DwDbType    *string `json:"DwDbType,omitempty" xml:"DwDbType,omitempty"`
+	Mode        *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	ProdDbId    *string `json:"ProdDbId,omitempty" xml:"ProdDbId,omitempty"`
+	SpaceConfig *string `json:"SpaceConfig,omitempty" xml:"SpaceConfig,omitempty"`
+	SpaceName   *string `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
+	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	UserId      *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s CreateLakeHouseSpaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLakeHouseSpaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLakeHouseSpaceRequest) SetDescription(v string) *CreateLakeHouseSpaceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateLakeHouseSpaceRequest) SetDevDbId(v string) *CreateLakeHouseSpaceRequest {
+	s.DevDbId = &v
+	return s
+}
+
+func (s *CreateLakeHouseSpaceRequest) SetDwDbType(v string) *CreateLakeHouseSpaceRequest {
+	s.DwDbType = &v
+	return s
+}
+
+func (s *CreateLakeHouseSpaceRequest) SetMode(v string) *CreateLakeHouseSpaceRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateLakeHouseSpaceRequest) SetProdDbId(v string) *CreateLakeHouseSpaceRequest {
+	s.ProdDbId = &v
+	return s
+}
+
+func (s *CreateLakeHouseSpaceRequest) SetSpaceConfig(v string) *CreateLakeHouseSpaceRequest {
+	s.SpaceConfig = &v
+	return s
+}
+
+func (s *CreateLakeHouseSpaceRequest) SetSpaceName(v string) *CreateLakeHouseSpaceRequest {
+	s.SpaceName = &v
+	return s
+}
+
+func (s *CreateLakeHouseSpaceRequest) SetTid(v int64) *CreateLakeHouseSpaceRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *CreateLakeHouseSpaceRequest) SetUserId(v int64) *CreateLakeHouseSpaceRequest {
+	s.UserId = &v
+	return s
+}
+
+type CreateLakeHouseSpaceResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SpaceId      *int64  `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateLakeHouseSpaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLakeHouseSpaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLakeHouseSpaceResponseBody) SetErrorCode(v string) *CreateLakeHouseSpaceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateLakeHouseSpaceResponseBody) SetErrorMessage(v string) *CreateLakeHouseSpaceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateLakeHouseSpaceResponseBody) SetRequestId(v string) *CreateLakeHouseSpaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateLakeHouseSpaceResponseBody) SetSpaceId(v int64) *CreateLakeHouseSpaceResponseBody {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *CreateLakeHouseSpaceResponseBody) SetSuccess(v bool) *CreateLakeHouseSpaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateLakeHouseSpaceResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateLakeHouseSpaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateLakeHouseSpaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLakeHouseSpaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLakeHouseSpaceResponse) SetHeaders(v map[string]*string) *CreateLakeHouseSpaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLakeHouseSpaceResponse) SetBody(v *CreateLakeHouseSpaceResponseBody) *CreateLakeHouseSpaceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateLogicDatabaseRequest struct {
 	Alias       *string  `json:"Alias,omitempty" xml:"Alias,omitempty"`
 	DatabaseIds []*int64 `json:"DatabaseIds,omitempty" xml:"DatabaseIds,omitempty" type:"Repeated"`
@@ -2356,6 +2636,147 @@ func (s *CreateSQLReviewOrderResponse) SetBody(v *CreateSQLReviewOrderResponseBo
 	return s
 }
 
+type CreateStandardGroupRequest struct {
+	DbType      *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s CreateStandardGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStandardGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStandardGroupRequest) SetDbType(v string) *CreateStandardGroupRequest {
+	s.DbType = &v
+	return s
+}
+
+func (s *CreateStandardGroupRequest) SetDescription(v string) *CreateStandardGroupRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateStandardGroupRequest) SetGroupName(v string) *CreateStandardGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateStandardGroupRequest) SetTid(v int64) *CreateStandardGroupRequest {
+	s.Tid = &v
+	return s
+}
+
+type CreateStandardGroupResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// Id of the request
+	RequestId     *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StandardGroup *CreateStandardGroupResponseBodyStandardGroup `json:"StandardGroup,omitempty" xml:"StandardGroup,omitempty" type:"Struct"`
+	Success       *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateStandardGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStandardGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStandardGroupResponseBody) SetErrorCode(v string) *CreateStandardGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateStandardGroupResponseBody) SetErrorMessage(v string) *CreateStandardGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateStandardGroupResponseBody) SetRequestId(v string) *CreateStandardGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateStandardGroupResponseBody) SetStandardGroup(v *CreateStandardGroupResponseBodyStandardGroup) *CreateStandardGroupResponseBody {
+	s.StandardGroup = v
+	return s
+}
+
+func (s *CreateStandardGroupResponseBody) SetSuccess(v bool) *CreateStandardGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateStandardGroupResponseBodyStandardGroup struct {
+	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupMode    *string `json:"GroupMode,omitempty" xml:"GroupMode,omitempty"`
+	GroupName    *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	LastMenderId *int64  `json:"LastMenderId,omitempty" xml:"LastMenderId,omitempty"`
+}
+
+func (s CreateStandardGroupResponseBodyStandardGroup) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStandardGroupResponseBodyStandardGroup) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStandardGroupResponseBodyStandardGroup) SetDbType(v string) *CreateStandardGroupResponseBodyStandardGroup {
+	s.DbType = &v
+	return s
+}
+
+func (s *CreateStandardGroupResponseBodyStandardGroup) SetDescription(v string) *CreateStandardGroupResponseBodyStandardGroup {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateStandardGroupResponseBodyStandardGroup) SetGroupMode(v string) *CreateStandardGroupResponseBodyStandardGroup {
+	s.GroupMode = &v
+	return s
+}
+
+func (s *CreateStandardGroupResponseBodyStandardGroup) SetGroupName(v string) *CreateStandardGroupResponseBodyStandardGroup {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateStandardGroupResponseBodyStandardGroup) SetLastMenderId(v int64) *CreateStandardGroupResponseBodyStandardGroup {
+	s.LastMenderId = &v
+	return s
+}
+
+type CreateStandardGroupResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateStandardGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateStandardGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStandardGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStandardGroupResponse) SetHeaders(v map[string]*string) *CreateStandardGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateStandardGroupResponse) SetBody(v *CreateStandardGroupResponseBody) *CreateStandardGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateStructSyncOrderRequest struct {
 	AttachmentKey   *string                            `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
 	Comment         *string                            `json:"Comment,omitempty" xml:"Comment,omitempty"`
@@ -2984,6 +3405,134 @@ func (s *DeleteInstanceResponse) SetHeaders(v map[string]*string) *DeleteInstanc
 }
 
 func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteLhMembersRequest struct {
+	MemberIds  []*int32 `json:"MemberIds,omitempty" xml:"MemberIds,omitempty" type:"Repeated"`
+	ObjectId   *int64   `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	ObjectType *int32   `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	Tid        *int64   `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s DeleteLhMembersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLhMembersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLhMembersRequest) SetMemberIds(v []*int32) *DeleteLhMembersRequest {
+	s.MemberIds = v
+	return s
+}
+
+func (s *DeleteLhMembersRequest) SetObjectId(v int64) *DeleteLhMembersRequest {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *DeleteLhMembersRequest) SetObjectType(v int32) *DeleteLhMembersRequest {
+	s.ObjectType = &v
+	return s
+}
+
+func (s *DeleteLhMembersRequest) SetTid(v int64) *DeleteLhMembersRequest {
+	s.Tid = &v
+	return s
+}
+
+type DeleteLhMembersShrinkRequest struct {
+	MemberIdsShrink *string `json:"MemberIds,omitempty" xml:"MemberIds,omitempty"`
+	ObjectId        *int64  `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	ObjectType      *int32  `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
+	Tid             *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s DeleteLhMembersShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLhMembersShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLhMembersShrinkRequest) SetMemberIdsShrink(v string) *DeleteLhMembersShrinkRequest {
+	s.MemberIdsShrink = &v
+	return s
+}
+
+func (s *DeleteLhMembersShrinkRequest) SetObjectId(v int64) *DeleteLhMembersShrinkRequest {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *DeleteLhMembersShrinkRequest) SetObjectType(v int32) *DeleteLhMembersShrinkRequest {
+	s.ObjectType = &v
+	return s
+}
+
+func (s *DeleteLhMembersShrinkRequest) SetTid(v int64) *DeleteLhMembersShrinkRequest {
+	s.Tid = &v
+	return s
+}
+
+type DeleteLhMembersResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteLhMembersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLhMembersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLhMembersResponseBody) SetErrorCode(v string) *DeleteLhMembersResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteLhMembersResponseBody) SetErrorMessage(v string) *DeleteLhMembersResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteLhMembersResponseBody) SetRequestId(v string) *DeleteLhMembersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteLhMembersResponseBody) SetSuccess(v bool) *DeleteLhMembersResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteLhMembersResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteLhMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteLhMembersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLhMembersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLhMembersResponse) SetHeaders(v map[string]*string) *DeleteLhMembersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLhMembersResponse) SetBody(v *DeleteLhMembersResponseBody) *DeleteLhMembersResponse {
 	s.Body = v
 	return s
 }
@@ -13299,6 +13848,381 @@ func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInsta
 	return s
 }
 
+type ListLhTaskFlowAndScenarioRequest struct {
+	SpaceId *int64 `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	UserId  *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListLhTaskFlowAndScenarioRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLhTaskFlowAndScenarioRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLhTaskFlowAndScenarioRequest) SetSpaceId(v int64) *ListLhTaskFlowAndScenarioRequest {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioRequest) SetTid(v int64) *ListLhTaskFlowAndScenarioRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioRequest) SetUserId(v int64) *ListLhTaskFlowAndScenarioRequest {
+	s.UserId = &v
+	return s
+}
+
+type ListLhTaskFlowAndScenarioResponseBody struct {
+	ErrorCode       *string                                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage    *string                                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RawDAGList      *ListLhTaskFlowAndScenarioResponseBodyRawDAGList      `json:"RawDAGList,omitempty" xml:"RawDAGList,omitempty" type:"Struct"`
+	RequestId       *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ScenarioDAGList *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList `json:"ScenarioDAGList,omitempty" xml:"ScenarioDAGList,omitempty" type:"Struct"`
+	Success         *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListLhTaskFlowAndScenarioResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLhTaskFlowAndScenarioResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBody) SetErrorCode(v string) *ListLhTaskFlowAndScenarioResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBody) SetErrorMessage(v string) *ListLhTaskFlowAndScenarioResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBody) SetRawDAGList(v *ListLhTaskFlowAndScenarioResponseBodyRawDAGList) *ListLhTaskFlowAndScenarioResponseBody {
+	s.RawDAGList = v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBody) SetRequestId(v string) *ListLhTaskFlowAndScenarioResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBody) SetScenarioDAGList(v *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList) *ListLhTaskFlowAndScenarioResponseBody {
+	s.ScenarioDAGList = v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBody) SetSuccess(v bool) *ListLhTaskFlowAndScenarioResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListLhTaskFlowAndScenarioResponseBodyRawDAGList struct {
+	Dag []*ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag `json:"dag,omitempty" xml:"dag,omitempty" type:"Repeated"`
+}
+
+func (s ListLhTaskFlowAndScenarioResponseBodyRawDAGList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLhTaskFlowAndScenarioResponseBodyRawDAGList) GoString() string {
+	return s.String()
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGList) SetDag(v []*ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) *ListLhTaskFlowAndScenarioResponseBodyRawDAGList {
+	s.Dag = v
+	return s
+}
+
+type ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag struct {
+	CanEdit              *bool   `json:"CanEdit,omitempty" xml:"CanEdit,omitempty"`
+	CreatorId            *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorNickName      *string `json:"CreatorNickName,omitempty" xml:"CreatorNickName,omitempty"`
+	DagOwnerNickName     *string `json:"DagOwnerNickName,omitempty" xml:"DagOwnerNickName,omitempty"`
+	DataFlowId           *int64  `json:"DataFlowId,omitempty" xml:"DataFlowId,omitempty"`
+	DemoId               *string `json:"DemoId,omitempty" xml:"DemoId,omitempty"`
+	DeployId             *int64  `json:"DeployId,omitempty" xml:"DeployId,omitempty"`
+	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsDeleted            *bool   `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	LatestInstanceStatus *int32  `json:"LatestInstanceStatus,omitempty" xml:"LatestInstanceStatus,omitempty"`
+	LatestInstanceTime   *int32  `json:"LatestInstanceTime,omitempty" xml:"LatestInstanceTime,omitempty"`
+	ScenarioId           *int64  `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
+	SpaceId              *int64  `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	Status               *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) GoString() string {
+	return s.String()
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) SetCanEdit(v bool) *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag {
+	s.CanEdit = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) SetCreatorId(v string) *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) SetCreatorNickName(v string) *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag {
+	s.CreatorNickName = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) SetDagOwnerNickName(v string) *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag {
+	s.DagOwnerNickName = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) SetDataFlowId(v int64) *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag {
+	s.DataFlowId = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) SetDemoId(v string) *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag {
+	s.DemoId = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) SetDeployId(v int64) *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag {
+	s.DeployId = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) SetId(v int64) *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag {
+	s.Id = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) SetIsDeleted(v bool) *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag {
+	s.IsDeleted = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) SetLatestInstanceStatus(v int32) *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag {
+	s.LatestInstanceStatus = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) SetLatestInstanceTime(v int32) *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag {
+	s.LatestInstanceTime = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) SetScenarioId(v int64) *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag {
+	s.ScenarioId = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) SetSpaceId(v int64) *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) SetStatus(v int32) *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag {
+	s.Status = &v
+	return s
+}
+
+type ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList struct {
+	DagList  *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagList  `json:"DagList,omitempty" xml:"DagList,omitempty" type:"Struct"`
+	Scenario *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario `json:"Scenario,omitempty" xml:"Scenario,omitempty" type:"Struct"`
+}
+
+func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList) GoString() string {
+	return s.String()
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList) SetDagList(v *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagList) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList {
+	s.DagList = v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList) SetScenario(v *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList {
+	s.Scenario = v
+	return s
+}
+
+type ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagList struct {
+	Dag []*ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag `json:"dag,omitempty" xml:"dag,omitempty" type:"Repeated"`
+}
+
+func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagList) GoString() string {
+	return s.String()
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagList) SetDag(v []*ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagList {
+	s.Dag = v
+	return s
+}
+
+type ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag struct {
+	CanEdit              *bool   `json:"CanEdit,omitempty" xml:"CanEdit,omitempty"`
+	CreatorId            *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorNickName      *string `json:"CreatorNickName,omitempty" xml:"CreatorNickName,omitempty"`
+	DagOwnerNickName     *string `json:"DagOwnerNickName,omitempty" xml:"DagOwnerNickName,omitempty"`
+	DataFlowId           *int64  `json:"DataFlowId,omitempty" xml:"DataFlowId,omitempty"`
+	DemoId               *string `json:"DemoId,omitempty" xml:"DemoId,omitempty"`
+	DeployId             *int64  `json:"DeployId,omitempty" xml:"DeployId,omitempty"`
+	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsDeleted            *bool   `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	LatestInstanceStatus *int32  `json:"LatestInstanceStatus,omitempty" xml:"LatestInstanceStatus,omitempty"`
+	LatestInstanceTime   *int32  `json:"LatestInstanceTime,omitempty" xml:"LatestInstanceTime,omitempty"`
+	ScenarioId           *int64  `json:"ScenarioId,omitempty" xml:"ScenarioId,omitempty"`
+	SpaceId              *int64  `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	Status               *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) GoString() string {
+	return s.String()
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetCanEdit(v bool) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+	s.CanEdit = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetCreatorId(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetCreatorNickName(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+	s.CreatorNickName = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetDagOwnerNickName(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+	s.DagOwnerNickName = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetDataFlowId(v int64) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+	s.DataFlowId = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetDemoId(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+	s.DemoId = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetDeployId(v int64) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+	s.DeployId = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetId(v int64) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+	s.Id = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetIsDeleted(v bool) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+	s.IsDeleted = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetLatestInstanceStatus(v int32) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+	s.LatestInstanceStatus = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetLatestInstanceTime(v int32) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+	s.LatestInstanceTime = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetScenarioId(v int64) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+	s.ScenarioId = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetSpaceId(v int64) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetStatus(v int32) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+	s.Status = &v
+	return s
+}
+
+type ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario struct {
+	CreatorId    *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ScenarioName *string `json:"ScenarioName,omitempty" xml:"ScenarioName,omitempty"`
+}
+
+func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario) GoString() string {
+	return s.String()
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario) SetCreatorId(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario) SetDescription(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario {
+	s.Description = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario) SetScenarioName(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario {
+	s.ScenarioName = &v
+	return s
+}
+
+type ListLhTaskFlowAndScenarioResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListLhTaskFlowAndScenarioResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListLhTaskFlowAndScenarioResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLhTaskFlowAndScenarioResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLhTaskFlowAndScenarioResponse) SetHeaders(v map[string]*string) *ListLhTaskFlowAndScenarioResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponse) SetBody(v *ListLhTaskFlowAndScenarioResponseBody) *ListLhTaskFlowAndScenarioResponse {
+	s.Body = v
+	return s
+}
+
 type ListLogicDatabasesRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -19250,6 +20174,68 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) AddLhMembersWithOptions(tmpReq *AddLhMembersRequest, runtime *util.RuntimeOptions) (_result *AddLhMembersResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddLhMembersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Members)) {
+		request.MembersShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Members, tea.String("Members"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MembersShrink)) {
+		query["Members"] = request.MembersShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectId)) {
+		query["ObjectId"] = request.ObjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectType)) {
+		query["ObjectType"] = request.ObjectType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddLhMembers"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddLhMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddLhMembers(request *AddLhMembersRequest) (_result *AddLhMembersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddLhMembersResponse{}
+	_body, _err := client.AddLhMembersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AddLogicTableRouteConfigWithOptions(request *AddLogicTableRouteConfigRequest, runtime *util.RuntimeOptions) (_result *AddLogicTableRouteConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19832,6 +20818,82 @@ func (client *Client) CreateFreeLockCorrectOrder(request *CreateFreeLockCorrectO
 	return _result, _err
 }
 
+func (client *Client) CreateLakeHouseSpaceWithOptions(request *CreateLakeHouseSpaceRequest, runtime *util.RuntimeOptions) (_result *CreateLakeHouseSpaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DevDbId)) {
+		query["DevDbId"] = request.DevDbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DwDbType)) {
+		query["DwDbType"] = request.DwDbType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProdDbId)) {
+		query["ProdDbId"] = request.ProdDbId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpaceConfig)) {
+		query["SpaceConfig"] = request.SpaceConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpaceName)) {
+		query["SpaceName"] = request.SpaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLakeHouseSpace"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateLakeHouseSpaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateLakeHouseSpace(request *CreateLakeHouseSpaceRequest) (_result *CreateLakeHouseSpaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLakeHouseSpaceResponse{}
+	_body, _err := client.CreateLakeHouseSpaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateLogicDatabaseWithOptions(tmpReq *CreateLogicDatabaseRequest, runtime *util.RuntimeOptions) (_result *CreateLogicDatabaseResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20208,6 +21270,62 @@ func (client *Client) CreateSQLReviewOrder(request *CreateSQLReviewOrderRequest)
 	return _result, _err
 }
 
+func (client *Client) CreateStandardGroupWithOptions(request *CreateStandardGroupRequest, runtime *util.RuntimeOptions) (_result *CreateStandardGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DbType)) {
+		query["DbType"] = request.DbType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateStandardGroup"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateStandardGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateStandardGroup(request *CreateStandardGroupRequest) (_result *CreateStandardGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateStandardGroupResponse{}
+	_body, _err := client.CreateStandardGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateStructSyncOrderWithOptions(tmpReq *CreateStructSyncOrderRequest, runtime *util.RuntimeOptions) (_result *CreateStructSyncOrderResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -20445,6 +21563,68 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteInstanceResponse{}
 	_body, _err := client.DeleteInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteLhMembersWithOptions(tmpReq *DeleteLhMembersRequest, runtime *util.RuntimeOptions) (_result *DeleteLhMembersResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeleteLhMembersShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.MemberIds)) {
+		request.MemberIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.MemberIds, tea.String("MemberIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MemberIdsShrink)) {
+		query["MemberIds"] = request.MemberIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectId)) {
+		query["ObjectId"] = request.ObjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectType)) {
+		query["ObjectType"] = request.ObjectType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLhMembers"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteLhMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteLhMembers(request *DeleteLhMembersRequest) (_result *DeleteLhMembersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteLhMembersResponse{}
+	_body, _err := client.DeleteLhMembersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23519,6 +24699,58 @@ func (client *Client) ListInstances(request *ListInstancesRequest) (_result *Lis
 	runtime := &util.RuntimeOptions{}
 	_result = &ListInstancesResponse{}
 	_body, _err := client.ListInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListLhTaskFlowAndScenarioWithOptions(request *ListLhTaskFlowAndScenarioRequest, runtime *util.RuntimeOptions) (_result *ListLhTaskFlowAndScenarioResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SpaceId)) {
+		query["SpaceId"] = request.SpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLhTaskFlowAndScenario"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListLhTaskFlowAndScenarioResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListLhTaskFlowAndScenario(request *ListLhTaskFlowAndScenarioRequest) (_result *ListLhTaskFlowAndScenarioResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLhTaskFlowAndScenarioResponse{}
+	_body, _err := client.ListLhTaskFlowAndScenarioWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
