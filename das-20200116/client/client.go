@@ -4106,11 +4106,11 @@ func (s *GetAsyncErrorRequestListByCodeRequest) SetStart(v int64) *GetAsyncError
 }
 
 type GetAsyncErrorRequestListByCodeResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int64                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetAsyncErrorRequestListByCodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAsyncErrorRequestListByCodeResponseBody) String() string {
@@ -4121,13 +4121,13 @@ func (s GetAsyncErrorRequestListByCodeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetAsyncErrorRequestListByCodeResponseBody) SetCode(v string) *GetAsyncErrorRequestListByCodeResponseBody {
+func (s *GetAsyncErrorRequestListByCodeResponseBody) SetCode(v int64) *GetAsyncErrorRequestListByCodeResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *GetAsyncErrorRequestListByCodeResponseBody) SetData(v string) *GetAsyncErrorRequestListByCodeResponseBody {
-	s.Data = &v
+func (s *GetAsyncErrorRequestListByCodeResponseBody) SetData(v *GetAsyncErrorRequestListByCodeResponseBodyData) *GetAsyncErrorRequestListByCodeResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -4141,8 +4141,84 @@ func (s *GetAsyncErrorRequestListByCodeResponseBody) SetRequestId(v string) *Get
 	return s
 }
 
-func (s *GetAsyncErrorRequestListByCodeResponseBody) SetSuccess(v string) *GetAsyncErrorRequestListByCodeResponseBody {
+func (s *GetAsyncErrorRequestListByCodeResponseBody) SetSuccess(v bool) *GetAsyncErrorRequestListByCodeResponseBody {
 	s.Success = &v
+	return s
+}
+
+type GetAsyncErrorRequestListByCodeResponseBodyData struct {
+	Complete  *bool                                                   `json:"complete,omitempty" xml:"complete,omitempty"`
+	Fail      *bool                                                   `json:"fail,omitempty" xml:"fail,omitempty"`
+	IsFinish  *bool                                                   `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
+	Result    []*GetAsyncErrorRequestListByCodeResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	ResultId  *string                                                 `json:"resultId,omitempty" xml:"resultId,omitempty"`
+	State     *string                                                 `json:"state,omitempty" xml:"state,omitempty"`
+	Timestamp *int64                                                  `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+}
+
+func (s GetAsyncErrorRequestListByCodeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncErrorRequestListByCodeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncErrorRequestListByCodeResponseBodyData) SetComplete(v bool) *GetAsyncErrorRequestListByCodeResponseBodyData {
+	s.Complete = &v
+	return s
+}
+
+func (s *GetAsyncErrorRequestListByCodeResponseBodyData) SetFail(v bool) *GetAsyncErrorRequestListByCodeResponseBodyData {
+	s.Fail = &v
+	return s
+}
+
+func (s *GetAsyncErrorRequestListByCodeResponseBodyData) SetIsFinish(v bool) *GetAsyncErrorRequestListByCodeResponseBodyData {
+	s.IsFinish = &v
+	return s
+}
+
+func (s *GetAsyncErrorRequestListByCodeResponseBodyData) SetResult(v []*GetAsyncErrorRequestListByCodeResponseBodyDataResult) *GetAsyncErrorRequestListByCodeResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *GetAsyncErrorRequestListByCodeResponseBodyData) SetResultId(v string) *GetAsyncErrorRequestListByCodeResponseBodyData {
+	s.ResultId = &v
+	return s
+}
+
+func (s *GetAsyncErrorRequestListByCodeResponseBodyData) SetState(v string) *GetAsyncErrorRequestListByCodeResponseBodyData {
+	s.State = &v
+	return s
+}
+
+func (s *GetAsyncErrorRequestListByCodeResponseBodyData) SetTimestamp(v int64) *GetAsyncErrorRequestListByCodeResponseBodyData {
+	s.Timestamp = &v
+	return s
+}
+
+type GetAsyncErrorRequestListByCodeResponseBodyDataResult struct {
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	SqlId      *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
+}
+
+func (s GetAsyncErrorRequestListByCodeResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncErrorRequestListByCodeResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncErrorRequestListByCodeResponseBodyDataResult) SetInstanceId(v string) *GetAsyncErrorRequestListByCodeResponseBodyDataResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetAsyncErrorRequestListByCodeResponseBodyDataResult) SetSqlId(v string) *GetAsyncErrorRequestListByCodeResponseBodyDataResult {
+	s.SqlId = &v
 	return s
 }
 
@@ -4170,13 +4246,11 @@ func (s *GetAsyncErrorRequestListByCodeResponse) SetBody(v *GetAsyncErrorRequest
 }
 
 type GetAsyncErrorRequestStatByCodeRequest struct {
-	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
-	DbName         *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	End            *string `json:"End,omitempty" xml:"End,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NodeId         *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	Role           *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Start          *string `json:"Start,omitempty" xml:"Start,omitempty"`
+	DbName     *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	End        *int64  `json:"End,omitempty" xml:"End,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	NodeId     *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	Start      *int64  `json:"Start,omitempty" xml:"Start,omitempty"`
 }
 
 func (s GetAsyncErrorRequestStatByCodeRequest) String() string {
@@ -4187,17 +4261,12 @@ func (s GetAsyncErrorRequestStatByCodeRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetAsyncErrorRequestStatByCodeRequest) SetConsoleContext(v string) *GetAsyncErrorRequestStatByCodeRequest {
-	s.ConsoleContext = &v
-	return s
-}
-
 func (s *GetAsyncErrorRequestStatByCodeRequest) SetDbName(v string) *GetAsyncErrorRequestStatByCodeRequest {
 	s.DbName = &v
 	return s
 }
 
-func (s *GetAsyncErrorRequestStatByCodeRequest) SetEnd(v string) *GetAsyncErrorRequestStatByCodeRequest {
+func (s *GetAsyncErrorRequestStatByCodeRequest) SetEnd(v int64) *GetAsyncErrorRequestStatByCodeRequest {
 	s.End = &v
 	return s
 }
@@ -4212,22 +4281,17 @@ func (s *GetAsyncErrorRequestStatByCodeRequest) SetNodeId(v string) *GetAsyncErr
 	return s
 }
 
-func (s *GetAsyncErrorRequestStatByCodeRequest) SetRole(v string) *GetAsyncErrorRequestStatByCodeRequest {
-	s.Role = &v
-	return s
-}
-
-func (s *GetAsyncErrorRequestStatByCodeRequest) SetStart(v string) *GetAsyncErrorRequestStatByCodeRequest {
+func (s *GetAsyncErrorRequestStatByCodeRequest) SetStart(v int64) *GetAsyncErrorRequestStatByCodeRequest {
 	s.Start = &v
 	return s
 }
 
 type GetAsyncErrorRequestStatByCodeResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int64                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetAsyncErrorRequestStatByCodeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAsyncErrorRequestStatByCodeResponseBody) String() string {
@@ -4238,13 +4302,13 @@ func (s GetAsyncErrorRequestStatByCodeResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetAsyncErrorRequestStatByCodeResponseBody) SetCode(v string) *GetAsyncErrorRequestStatByCodeResponseBody {
+func (s *GetAsyncErrorRequestStatByCodeResponseBody) SetCode(v int64) *GetAsyncErrorRequestStatByCodeResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *GetAsyncErrorRequestStatByCodeResponseBody) SetData(v string) *GetAsyncErrorRequestStatByCodeResponseBody {
-	s.Data = &v
+func (s *GetAsyncErrorRequestStatByCodeResponseBody) SetData(v *GetAsyncErrorRequestStatByCodeResponseBodyData) *GetAsyncErrorRequestStatByCodeResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -4258,8 +4322,90 @@ func (s *GetAsyncErrorRequestStatByCodeResponseBody) SetRequestId(v string) *Get
 	return s
 }
 
-func (s *GetAsyncErrorRequestStatByCodeResponseBody) SetSuccess(v string) *GetAsyncErrorRequestStatByCodeResponseBody {
+func (s *GetAsyncErrorRequestStatByCodeResponseBody) SetSuccess(v bool) *GetAsyncErrorRequestStatByCodeResponseBody {
 	s.Success = &v
+	return s
+}
+
+type GetAsyncErrorRequestStatByCodeResponseBodyData struct {
+	Complete  *bool                                                   `json:"complete,omitempty" xml:"complete,omitempty"`
+	Fail      *bool                                                   `json:"fail,omitempty" xml:"fail,omitempty"`
+	IsFinish  *bool                                                   `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
+	Result    []*GetAsyncErrorRequestStatByCodeResponseBodyDataResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	ResultId  *string                                                 `json:"resultId,omitempty" xml:"resultId,omitempty"`
+	State     *string                                                 `json:"state,omitempty" xml:"state,omitempty"`
+	Timestamp *int64                                                  `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+}
+
+func (s GetAsyncErrorRequestStatByCodeResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncErrorRequestStatByCodeResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncErrorRequestStatByCodeResponseBodyData) SetComplete(v bool) *GetAsyncErrorRequestStatByCodeResponseBodyData {
+	s.Complete = &v
+	return s
+}
+
+func (s *GetAsyncErrorRequestStatByCodeResponseBodyData) SetFail(v bool) *GetAsyncErrorRequestStatByCodeResponseBodyData {
+	s.Fail = &v
+	return s
+}
+
+func (s *GetAsyncErrorRequestStatByCodeResponseBodyData) SetIsFinish(v bool) *GetAsyncErrorRequestStatByCodeResponseBodyData {
+	s.IsFinish = &v
+	return s
+}
+
+func (s *GetAsyncErrorRequestStatByCodeResponseBodyData) SetResult(v []*GetAsyncErrorRequestStatByCodeResponseBodyDataResult) *GetAsyncErrorRequestStatByCodeResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *GetAsyncErrorRequestStatByCodeResponseBodyData) SetResultId(v string) *GetAsyncErrorRequestStatByCodeResponseBodyData {
+	s.ResultId = &v
+	return s
+}
+
+func (s *GetAsyncErrorRequestStatByCodeResponseBodyData) SetState(v string) *GetAsyncErrorRequestStatByCodeResponseBodyData {
+	s.State = &v
+	return s
+}
+
+func (s *GetAsyncErrorRequestStatByCodeResponseBodyData) SetTimestamp(v int64) *GetAsyncErrorRequestStatByCodeResponseBodyData {
+	s.Timestamp = &v
+	return s
+}
+
+type GetAsyncErrorRequestStatByCodeResponseBodyDataResult struct {
+	Count      *int32  `json:"count,omitempty" xml:"count,omitempty"`
+	ErrorCode  *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+}
+
+func (s GetAsyncErrorRequestStatByCodeResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncErrorRequestStatByCodeResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncErrorRequestStatByCodeResponseBodyDataResult) SetCount(v int32) *GetAsyncErrorRequestStatByCodeResponseBodyDataResult {
+	s.Count = &v
+	return s
+}
+
+func (s *GetAsyncErrorRequestStatByCodeResponseBodyDataResult) SetErrorCode(v string) *GetAsyncErrorRequestStatByCodeResponseBodyDataResult {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetAsyncErrorRequestStatByCodeResponseBodyDataResult) SetInstanceId(v string) *GetAsyncErrorRequestStatByCodeResponseBodyDataResult {
+	s.InstanceId = &v
 	return s
 }
 
@@ -4334,11 +4480,11 @@ func (s *GetAsyncErrorRequestStatResultRequest) SetStart(v int64) *GetAsyncError
 }
 
 type GetAsyncErrorRequestStatResultResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int64                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetAsyncErrorRequestStatResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetAsyncErrorRequestStatResultResponseBody) String() string {
@@ -4349,13 +4495,13 @@ func (s GetAsyncErrorRequestStatResultResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetAsyncErrorRequestStatResultResponseBody) SetCode(v string) *GetAsyncErrorRequestStatResultResponseBody {
+func (s *GetAsyncErrorRequestStatResultResponseBody) SetCode(v int64) *GetAsyncErrorRequestStatResultResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *GetAsyncErrorRequestStatResultResponseBody) SetData(v string) *GetAsyncErrorRequestStatResultResponseBody {
-	s.Data = &v
+func (s *GetAsyncErrorRequestStatResultResponseBody) SetData(v *GetAsyncErrorRequestStatResultResponseBodyData) *GetAsyncErrorRequestStatResultResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -4369,8 +4515,61 @@ func (s *GetAsyncErrorRequestStatResultResponseBody) SetRequestId(v string) *Get
 	return s
 }
 
-func (s *GetAsyncErrorRequestStatResultResponseBody) SetSuccess(v string) *GetAsyncErrorRequestStatResultResponseBody {
+func (s *GetAsyncErrorRequestStatResultResponseBody) SetSuccess(v bool) *GetAsyncErrorRequestStatResultResponseBody {
 	s.Success = &v
+	return s
+}
+
+type GetAsyncErrorRequestStatResultResponseBodyData struct {
+	Complete  *bool                         `json:"complete,omitempty" xml:"complete,omitempty"`
+	Fail      *bool                         `json:"fail,omitempty" xml:"fail,omitempty"`
+	IsFinish  *bool                         `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
+	Result    []map[string]*DataResultValue `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	ResultId  *string                       `json:"resultId,omitempty" xml:"resultId,omitempty"`
+	State     *string                       `json:"state,omitempty" xml:"state,omitempty"`
+	Timestamp *int64                        `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+}
+
+func (s GetAsyncErrorRequestStatResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAsyncErrorRequestStatResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetComplete(v bool) *GetAsyncErrorRequestStatResultResponseBodyData {
+	s.Complete = &v
+	return s
+}
+
+func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetFail(v bool) *GetAsyncErrorRequestStatResultResponseBodyData {
+	s.Fail = &v
+	return s
+}
+
+func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetIsFinish(v bool) *GetAsyncErrorRequestStatResultResponseBodyData {
+	s.IsFinish = &v
+	return s
+}
+
+func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetResult(v []map[string]*DataResultValue) *GetAsyncErrorRequestStatResultResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetResultId(v string) *GetAsyncErrorRequestStatResultResponseBodyData {
+	s.ResultId = &v
+	return s
+}
+
+func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetState(v string) *GetAsyncErrorRequestStatResultResponseBodyData {
+	s.State = &v
+	return s
+}
+
+func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetTimestamp(v int64) *GetAsyncErrorRequestStatResultResponseBodyData {
+	s.Timestamp = &v
 	return s
 }
 
@@ -4824,11 +5023,11 @@ func (s *GetDasProServiceUsageRequest) SetUserId(v string) *GetDasProServiceUsag
 }
 
 type GetDasProServiceUsageResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int64                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*GetDasProServiceUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetDasProServiceUsageResponseBody) String() string {
@@ -4839,13 +5038,13 @@ func (s GetDasProServiceUsageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetDasProServiceUsageResponseBody) SetCode(v string) *GetDasProServiceUsageResponseBody {
+func (s *GetDasProServiceUsageResponseBody) SetCode(v int64) *GetDasProServiceUsageResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *GetDasProServiceUsageResponseBody) SetData(v string) *GetDasProServiceUsageResponseBody {
-	s.Data = &v
+func (s *GetDasProServiceUsageResponseBody) SetData(v []*GetDasProServiceUsageResponseBodyData) *GetDasProServiceUsageResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -4859,8 +5058,127 @@ func (s *GetDasProServiceUsageResponseBody) SetRequestId(v string) *GetDasProSer
 	return s
 }
 
-func (s *GetDasProServiceUsageResponseBody) SetSuccess(v string) *GetDasProServiceUsageResponseBody {
+func (s *GetDasProServiceUsageResponseBody) SetSuccess(v bool) *GetDasProServiceUsageResponseBody {
 	s.Success = &v
+	return s
+}
+
+type GetDasProServiceUsageResponseBodyData struct {
+	CommodityInstanceId  *string  `json:"commodityInstanceId,omitempty" xml:"commodityInstanceId,omitempty"`
+	CustinsId            *int64   `json:"custinsId,omitempty" xml:"custinsId,omitempty"`
+	Engine               *string  `json:"engine,omitempty" xml:"engine,omitempty"`
+	ExpireTime           *int64   `json:"expireTime,omitempty" xml:"expireTime,omitempty"`
+	InstanceAlias        *string  `json:"instanceAlias,omitempty" xml:"instanceAlias,omitempty"`
+	InstanceId           *string  `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Ip                   *string  `json:"ip,omitempty" xml:"ip,omitempty"`
+	IsSpare              *bool    `json:"isSpare,omitempty" xml:"isSpare,omitempty"`
+	Port                 *int32   `json:"port,omitempty" xml:"port,omitempty"`
+	Region               *string  `json:"region,omitempty" xml:"region,omitempty"`
+	ServiceUnitId        *string  `json:"serviceUnitId,omitempty" xml:"serviceUnitId,omitempty"`
+	SqlRetention         *string  `json:"sqlRetention,omitempty" xml:"sqlRetention,omitempty"`
+	StartTime            *int64   `json:"startTime,omitempty" xml:"startTime,omitempty"`
+	StorageFreeQuotaInMB *float64 `json:"storageFreeQuotaInMB,omitempty" xml:"storageFreeQuotaInMB,omitempty"`
+	StorageUsed          *int64   `json:"storageUsed,omitempty" xml:"storageUsed,omitempty"`
+	UserId               *string  `json:"userId,omitempty" xml:"userId,omitempty"`
+	Uuid                 *string  `json:"uuid,omitempty" xml:"uuid,omitempty"`
+	VpcId                *string  `json:"vpcId,omitempty" xml:"vpcId,omitempty"`
+}
+
+func (s GetDasProServiceUsageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDasProServiceUsageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDasProServiceUsageResponseBodyData) SetCommodityInstanceId(v string) *GetDasProServiceUsageResponseBodyData {
+	s.CommodityInstanceId = &v
+	return s
+}
+
+func (s *GetDasProServiceUsageResponseBodyData) SetCustinsId(v int64) *GetDasProServiceUsageResponseBodyData {
+	s.CustinsId = &v
+	return s
+}
+
+func (s *GetDasProServiceUsageResponseBodyData) SetEngine(v string) *GetDasProServiceUsageResponseBodyData {
+	s.Engine = &v
+	return s
+}
+
+func (s *GetDasProServiceUsageResponseBodyData) SetExpireTime(v int64) *GetDasProServiceUsageResponseBodyData {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *GetDasProServiceUsageResponseBodyData) SetInstanceAlias(v string) *GetDasProServiceUsageResponseBodyData {
+	s.InstanceAlias = &v
+	return s
+}
+
+func (s *GetDasProServiceUsageResponseBodyData) SetInstanceId(v string) *GetDasProServiceUsageResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetDasProServiceUsageResponseBodyData) SetIp(v string) *GetDasProServiceUsageResponseBodyData {
+	s.Ip = &v
+	return s
+}
+
+func (s *GetDasProServiceUsageResponseBodyData) SetIsSpare(v bool) *GetDasProServiceUsageResponseBodyData {
+	s.IsSpare = &v
+	return s
+}
+
+func (s *GetDasProServiceUsageResponseBodyData) SetPort(v int32) *GetDasProServiceUsageResponseBodyData {
+	s.Port = &v
+	return s
+}
+
+func (s *GetDasProServiceUsageResponseBodyData) SetRegion(v string) *GetDasProServiceUsageResponseBodyData {
+	s.Region = &v
+	return s
+}
+
+func (s *GetDasProServiceUsageResponseBodyData) SetServiceUnitId(v string) *GetDasProServiceUsageResponseBodyData {
+	s.ServiceUnitId = &v
+	return s
+}
+
+func (s *GetDasProServiceUsageResponseBodyData) SetSqlRetention(v string) *GetDasProServiceUsageResponseBodyData {
+	s.SqlRetention = &v
+	return s
+}
+
+func (s *GetDasProServiceUsageResponseBodyData) SetStartTime(v int64) *GetDasProServiceUsageResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetDasProServiceUsageResponseBodyData) SetStorageFreeQuotaInMB(v float64) *GetDasProServiceUsageResponseBodyData {
+	s.StorageFreeQuotaInMB = &v
+	return s
+}
+
+func (s *GetDasProServiceUsageResponseBodyData) SetStorageUsed(v int64) *GetDasProServiceUsageResponseBodyData {
+	s.StorageUsed = &v
+	return s
+}
+
+func (s *GetDasProServiceUsageResponseBodyData) SetUserId(v string) *GetDasProServiceUsageResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetDasProServiceUsageResponseBodyData) SetUuid(v string) *GetDasProServiceUsageResponseBodyData {
+	s.Uuid = &v
+	return s
+}
+
+func (s *GetDasProServiceUsageResponseBodyData) SetVpcId(v string) *GetDasProServiceUsageResponseBodyData {
+	s.VpcId = &v
 	return s
 }
 
@@ -5117,11 +5435,11 @@ func (s *GetErrorRequestSampleRequest) SetStart(v int64) *GetErrorRequestSampleR
 }
 
 type GetErrorRequestSampleResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	Code      *int64                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*GetErrorRequestSampleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetErrorRequestSampleResponseBody) String() string {
@@ -5132,13 +5450,13 @@ func (s GetErrorRequestSampleResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetErrorRequestSampleResponseBody) SetCode(v string) *GetErrorRequestSampleResponseBody {
+func (s *GetErrorRequestSampleResponseBody) SetCode(v int64) *GetErrorRequestSampleResponseBody {
 	s.Code = &v
 	return s
 }
 
-func (s *GetErrorRequestSampleResponseBody) SetData(v string) *GetErrorRequestSampleResponseBody {
-	s.Data = &v
+func (s *GetErrorRequestSampleResponseBody) SetData(v []*GetErrorRequestSampleResponseBodyData) *GetErrorRequestSampleResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -5152,8 +5470,73 @@ func (s *GetErrorRequestSampleResponseBody) SetRequestId(v string) *GetErrorRequ
 	return s
 }
 
-func (s *GetErrorRequestSampleResponseBody) SetSuccess(v string) *GetErrorRequestSampleResponseBody {
+func (s *GetErrorRequestSampleResponseBody) SetSuccess(v bool) *GetErrorRequestSampleResponseBody {
 	s.Success = &v
+	return s
+}
+
+type GetErrorRequestSampleResponseBodyData struct {
+	Database   *string   `json:"database,omitempty" xml:"database,omitempty"`
+	ErrorCode  *string   `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	InstanceId *string   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	OriginHost *string   `json:"originHost,omitempty" xml:"originHost,omitempty"`
+	Sql        *string   `json:"sql,omitempty" xml:"sql,omitempty"`
+	SqlId      *string   `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
+	Tables     []*string `json:"tables,omitempty" xml:"tables,omitempty" type:"Repeated"`
+	Timestamp  *int64    `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	User       *string   `json:"user,omitempty" xml:"user,omitempty"`
+}
+
+func (s GetErrorRequestSampleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetErrorRequestSampleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetErrorRequestSampleResponseBodyData) SetDatabase(v string) *GetErrorRequestSampleResponseBodyData {
+	s.Database = &v
+	return s
+}
+
+func (s *GetErrorRequestSampleResponseBodyData) SetErrorCode(v string) *GetErrorRequestSampleResponseBodyData {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetErrorRequestSampleResponseBodyData) SetInstanceId(v string) *GetErrorRequestSampleResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetErrorRequestSampleResponseBodyData) SetOriginHost(v string) *GetErrorRequestSampleResponseBodyData {
+	s.OriginHost = &v
+	return s
+}
+
+func (s *GetErrorRequestSampleResponseBodyData) SetSql(v string) *GetErrorRequestSampleResponseBodyData {
+	s.Sql = &v
+	return s
+}
+
+func (s *GetErrorRequestSampleResponseBodyData) SetSqlId(v string) *GetErrorRequestSampleResponseBodyData {
+	s.SqlId = &v
+	return s
+}
+
+func (s *GetErrorRequestSampleResponseBodyData) SetTables(v []*string) *GetErrorRequestSampleResponseBodyData {
+	s.Tables = v
+	return s
+}
+
+func (s *GetErrorRequestSampleResponseBodyData) SetTimestamp(v int64) *GetErrorRequestSampleResponseBodyData {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *GetErrorRequestSampleResponseBodyData) SetUser(v string) *GetErrorRequestSampleResponseBodyData {
+	s.User = &v
 	return s
 }
 
@@ -8890,7 +9273,6 @@ func (s *GetRunningSqlConcurrencyControlRulesResponse) SetBody(v *GetRunningSqlC
 }
 
 type GetSqlAnalysisReportRequest struct {
-	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	ModuleNameList *string `json:"ModuleNameList,omitempty" xml:"ModuleNameList,omitempty"`
 	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
@@ -8901,11 +9283,6 @@ func (s GetSqlAnalysisReportRequest) String() string {
 
 func (s GetSqlAnalysisReportRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetSqlAnalysisReportRequest) SetConsoleContext(v string) *GetSqlAnalysisReportRequest {
-	s.ConsoleContext = &v
-	return s
 }
 
 func (s *GetSqlAnalysisReportRequest) SetModuleNameList(v string) *GetSqlAnalysisReportRequest {
@@ -9479,7 +9856,6 @@ func (s *GetSqlOptimizeAdviceResponse) SetBody(v *GetSqlOptimizeAdviceResponseBo
 }
 
 type QuerySqlAnalysisDataRequest struct {
-	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
 	PageNo         *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	SqlIdList      *string `json:"SqlIdList,omitempty" xml:"SqlIdList,omitempty"`
@@ -9495,11 +9871,6 @@ func (s QuerySqlAnalysisDataRequest) String() string {
 
 func (s QuerySqlAnalysisDataRequest) GoString() string {
 	return s.String()
-}
-
-func (s *QuerySqlAnalysisDataRequest) SetConsoleContext(v string) *QuerySqlAnalysisDataRequest {
-	s.ConsoleContext = &v
-	return s
 }
 
 func (s *QuerySqlAnalysisDataRequest) SetPageNo(v int32) *QuerySqlAnalysisDataRequest {
@@ -9605,12 +9976,12 @@ type QuerySqlAnalysisDataResponseBodyDataList struct {
 	AvgRowsExamined *int64   `json:"AvgRowsExamined,omitempty" xml:"AvgRowsExamined,omitempty"`
 	AvgRt           *float64 `json:"AvgRt,omitempty" xml:"AvgRt,omitempty"`
 	Cnt             *int64   `json:"Cnt,omitempty" xml:"Cnt,omitempty"`
-	CurrentEndTime  *int64   `json:"CurrentEndTime,omitempty" xml:"CurrentEndTime,omitempty"`
+	CntRate         *float64 `json:"CntRate,omitempty" xml:"CntRate,omitempty"`
 	DbName          *string  `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	ErrorCnt        *int64   `json:"ErrorCnt,omitempty" xml:"ErrorCnt,omitempty"`
 	FirstTime       *int64   `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
 	InstanceId      *string  `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxRowsExamined *int64   `json:"MaxRowsExamined,omitempty" xml:"MaxRowsExamined,omitempty"`
+	RtRate          *float64 `json:"RtRate,omitempty" xml:"RtRate,omitempty"`
 	Sql             *string  `json:"Sql,omitempty" xml:"Sql,omitempty"`
 	SqlId           *string  `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
 	SqlTextFeature  *string  `json:"SqlTextFeature,omitempty" xml:"SqlTextFeature,omitempty"`
@@ -9645,8 +10016,8 @@ func (s *QuerySqlAnalysisDataResponseBodyDataList) SetCnt(v int64) *QuerySqlAnal
 	return s
 }
 
-func (s *QuerySqlAnalysisDataResponseBodyDataList) SetCurrentEndTime(v int64) *QuerySqlAnalysisDataResponseBodyDataList {
-	s.CurrentEndTime = &v
+func (s *QuerySqlAnalysisDataResponseBodyDataList) SetCntRate(v float64) *QuerySqlAnalysisDataResponseBodyDataList {
+	s.CntRate = &v
 	return s
 }
 
@@ -9670,8 +10041,8 @@ func (s *QuerySqlAnalysisDataResponseBodyDataList) SetInstanceId(v string) *Quer
 	return s
 }
 
-func (s *QuerySqlAnalysisDataResponseBodyDataList) SetMaxRowsExamined(v int64) *QuerySqlAnalysisDataResponseBodyDataList {
-	s.MaxRowsExamined = &v
+func (s *QuerySqlAnalysisDataResponseBodyDataList) SetRtRate(v float64) *QuerySqlAnalysisDataResponseBodyDataList {
+	s.RtRate = &v
 	return s
 }
 
@@ -10500,6 +10871,35 @@ func (s *UpdateAutoResourceOptimizeConfigResponse) SetHeaders(v map[string]*stri
 
 func (s *UpdateAutoResourceOptimizeConfigResponse) SetBody(v *UpdateAutoResourceOptimizeConfigResponseBody) *UpdateAutoResourceOptimizeConfigResponse {
 	s.Body = v
+	return s
+}
+
+type DataResultValue struct {
+	SqlId      *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Count      *int32  `json:"count,omitempty" xml:"count,omitempty"`
+}
+
+func (s DataResultValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DataResultValue) GoString() string {
+	return s.String()
+}
+
+func (s *DataResultValue) SetSqlId(v string) *DataResultValue {
+	s.SqlId = &v
+	return s
+}
+
+func (s *DataResultValue) SetInstanceId(v string) *DataResultValue {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DataResultValue) SetCount(v int32) *DataResultValue {
+	s.Count = &v
 	return s
 }
 
@@ -11999,10 +12399,6 @@ func (client *Client) GetAsyncErrorRequestStatByCodeWithOptions(request *GetAsyn
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConsoleContext)) {
-		query["ConsoleContext"] = request.ConsoleContext
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.DbName)) {
 		query["DbName"] = request.DbName
 	}
@@ -12017,10 +12413,6 @@ func (client *Client) GetAsyncErrorRequestStatByCodeWithOptions(request *GetAsyn
 
 	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
 		query["NodeId"] = request.NodeId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Role)) {
-		query["Role"] = request.Role
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Start)) {
@@ -13435,10 +13827,6 @@ func (client *Client) GetSqlAnalysisReportWithOptions(request *GetSqlAnalysisRep
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConsoleContext)) {
-		query["ConsoleContext"] = request.ConsoleContext
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ModuleNameList)) {
 		query["ModuleNameList"] = request.ModuleNameList
 	}
@@ -13656,11 +14044,6 @@ func (client *Client) QuerySqlAnalysisDataWithOptions(request *QuerySqlAnalysisD
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConsoleContext)) {
-		query["ConsoleContext"] = request.ConsoleContext
-	}
-
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
 		body["PageNo"] = request.PageNo
@@ -13691,8 +14074,7 @@ func (client *Client) QuerySqlAnalysisDataWithOptions(request *QuerySqlAnalysisD
 	}
 
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("QuerySqlAnalysisData"),
