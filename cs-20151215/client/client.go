@@ -3497,8 +3497,6 @@ type DescribeClusterLogsResponseBody struct {
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
 	// 日志内容。
 	ClusterLog *string `json:"cluster_log,omitempty" xml:"cluster_log,omitempty"`
-	// 日志等级。
-	LogLevel *string `json:"log_level,omitempty" xml:"log_level,omitempty"`
 	// 日志创建时间。
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
 	// 日志更新时间。
@@ -3525,11 +3523,6 @@ func (s *DescribeClusterLogsResponseBody) SetClusterId(v string) *DescribeCluste
 
 func (s *DescribeClusterLogsResponseBody) SetClusterLog(v string) *DescribeClusterLogsResponseBody {
 	s.ClusterLog = &v
-	return s
-}
-
-func (s *DescribeClusterLogsResponseBody) SetLogLevel(v string) *DescribeClusterLogsResponseBody {
-	s.LogLevel = &v
 	return s
 }
 
@@ -5917,6 +5910,8 @@ type DescribeClustersV1Request struct {
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
 	// 集群标识。
 	Profile *string `json:"profile,omitempty" xml:"profile,omitempty"`
+	// 地域。
+	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
 }
 
 func (s DescribeClustersV1Request) String() string {
@@ -5954,6 +5949,11 @@ func (s *DescribeClustersV1Request) SetPageSize(v int64) *DescribeClustersV1Requ
 
 func (s *DescribeClustersV1Request) SetProfile(v string) *DescribeClustersV1Request {
 	s.Profile = &v
+	return s
+}
+
+func (s *DescribeClustersV1Request) SetRegionId(v string) *DescribeClustersV1Request {
+	s.RegionId = &v
 	return s
 }
 
@@ -14127,6 +14127,10 @@ func (client *Client) DescribeClustersV1WithOptions(request *DescribeClustersV1R
 
 	if !tea.BoolValue(util.IsUnset(request.Profile)) {
 		query["profile"] = request.Profile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["region_id"] = request.RegionId
 	}
 
 	req := &openapi.OpenApiRequest{
