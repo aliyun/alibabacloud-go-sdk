@@ -12,6 +12,243 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AddWebhookRequest struct {
+	AccessToken    *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// webhook描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 使用ssl认证
+	EnableSslVerification *bool `json:"enableSslVerification,omitempty" xml:"enableSslVerification,omitempty"`
+	// 合并请求事件
+	MergeRequestsEvents *bool `json:"mergeRequestsEvents,omitempty" xml:"mergeRequestsEvents,omitempty"`
+	// 评论事件
+	NoteEvents *bool `json:"noteEvents,omitempty" xml:"noteEvents,omitempty"`
+	// 分支推送事件
+	PushEvents  *bool   `json:"pushEvents,omitempty" xml:"pushEvents,omitempty"`
+	SecretToken *string `json:"secretToken,omitempty" xml:"secretToken,omitempty"`
+	// 标签推送事件
+	TagPushEvents *bool `json:"tagPushEvents,omitempty" xml:"tagPushEvents,omitempty"`
+	// hook url
+	Url *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s AddWebhookRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddWebhookRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddWebhookRequest) SetAccessToken(v string) *AddWebhookRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *AddWebhookRequest) SetOrganizationId(v string) *AddWebhookRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *AddWebhookRequest) SetDescription(v string) *AddWebhookRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *AddWebhookRequest) SetEnableSslVerification(v bool) *AddWebhookRequest {
+	s.EnableSslVerification = &v
+	return s
+}
+
+func (s *AddWebhookRequest) SetMergeRequestsEvents(v bool) *AddWebhookRequest {
+	s.MergeRequestsEvents = &v
+	return s
+}
+
+func (s *AddWebhookRequest) SetNoteEvents(v bool) *AddWebhookRequest {
+	s.NoteEvents = &v
+	return s
+}
+
+func (s *AddWebhookRequest) SetPushEvents(v bool) *AddWebhookRequest {
+	s.PushEvents = &v
+	return s
+}
+
+func (s *AddWebhookRequest) SetSecretToken(v string) *AddWebhookRequest {
+	s.SecretToken = &v
+	return s
+}
+
+func (s *AddWebhookRequest) SetTagPushEvents(v bool) *AddWebhookRequest {
+	s.TagPushEvents = &v
+	return s
+}
+
+func (s *AddWebhookRequest) SetUrl(v string) *AddWebhookRequest {
+	s.Url = &v
+	return s
+}
+
+type AddWebhookResponseBody struct {
+	ErrorCode    *string                       `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                       `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                       `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *AddWebhookResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                         `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s AddWebhookResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddWebhookResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddWebhookResponseBody) SetErrorCode(v string) *AddWebhookResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *AddWebhookResponseBody) SetErrorMessage(v string) *AddWebhookResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AddWebhookResponseBody) SetRequestId(v string) *AddWebhookResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddWebhookResponseBody) SetResult(v *AddWebhookResponseBodyResult) *AddWebhookResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *AddWebhookResponseBody) SetSuccess(v bool) *AddWebhookResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddWebhookResponseBodyResult struct {
+	EnableSslVerification *bool   `json:"EnableSslVerification,omitempty" xml:"EnableSslVerification,omitempty"`
+	BuildEvents           *bool   `json:"buildEvents,omitempty" xml:"buildEvents,omitempty"`
+	CreatedAt             *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Description           *string `json:"description,omitempty" xml:"description,omitempty"`
+	Id                    *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	IssuesEvents          *bool   `json:"issuesEvents,omitempty" xml:"issuesEvents,omitempty"`
+	LastTestResult        *string `json:"lastTestResult,omitempty" xml:"lastTestResult,omitempty"`
+	MergeRequestsEvents   *bool   `json:"mergeRequestsEvents,omitempty" xml:"mergeRequestsEvents,omitempty"`
+	NoteEvents            *bool   `json:"noteEvents,omitempty" xml:"noteEvents,omitempty"`
+	PushEvents            *bool   `json:"pushEvents,omitempty" xml:"pushEvents,omitempty"`
+	RepositoryId          *int64  `json:"repositoryId,omitempty" xml:"repositoryId,omitempty"`
+	SecretToken           *string `json:"secretToken,omitempty" xml:"secretToken,omitempty"`
+	TagPushEvents         *bool   `json:"tagPushEvents,omitempty" xml:"tagPushEvents,omitempty"`
+	Url                   *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s AddWebhookResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddWebhookResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *AddWebhookResponseBodyResult) SetEnableSslVerification(v bool) *AddWebhookResponseBodyResult {
+	s.EnableSslVerification = &v
+	return s
+}
+
+func (s *AddWebhookResponseBodyResult) SetBuildEvents(v bool) *AddWebhookResponseBodyResult {
+	s.BuildEvents = &v
+	return s
+}
+
+func (s *AddWebhookResponseBodyResult) SetCreatedAt(v string) *AddWebhookResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *AddWebhookResponseBodyResult) SetDescription(v string) *AddWebhookResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *AddWebhookResponseBodyResult) SetId(v int64) *AddWebhookResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *AddWebhookResponseBodyResult) SetIssuesEvents(v bool) *AddWebhookResponseBodyResult {
+	s.IssuesEvents = &v
+	return s
+}
+
+func (s *AddWebhookResponseBodyResult) SetLastTestResult(v string) *AddWebhookResponseBodyResult {
+	s.LastTestResult = &v
+	return s
+}
+
+func (s *AddWebhookResponseBodyResult) SetMergeRequestsEvents(v bool) *AddWebhookResponseBodyResult {
+	s.MergeRequestsEvents = &v
+	return s
+}
+
+func (s *AddWebhookResponseBodyResult) SetNoteEvents(v bool) *AddWebhookResponseBodyResult {
+	s.NoteEvents = &v
+	return s
+}
+
+func (s *AddWebhookResponseBodyResult) SetPushEvents(v bool) *AddWebhookResponseBodyResult {
+	s.PushEvents = &v
+	return s
+}
+
+func (s *AddWebhookResponseBodyResult) SetRepositoryId(v int64) *AddWebhookResponseBodyResult {
+	s.RepositoryId = &v
+	return s
+}
+
+func (s *AddWebhookResponseBodyResult) SetSecretToken(v string) *AddWebhookResponseBodyResult {
+	s.SecretToken = &v
+	return s
+}
+
+func (s *AddWebhookResponseBodyResult) SetTagPushEvents(v bool) *AddWebhookResponseBodyResult {
+	s.TagPushEvents = &v
+	return s
+}
+
+func (s *AddWebhookResponseBodyResult) SetUrl(v string) *AddWebhookResponseBodyResult {
+	s.Url = &v
+	return s
+}
+
+type AddWebhookResponse struct {
+	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddWebhookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddWebhookResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddWebhookResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddWebhookResponse) SetHeaders(v map[string]*string) *AddWebhookResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddWebhookResponse) SetBody(v *AddWebhookResponseBody) *AddWebhookResponse {
+	s.Body = v
+	return s
+}
+
 type CreateFlowTagRequest struct {
 	Color          *string `json:"color,omitempty" xml:"color,omitempty"`
 	FlowTagGroupId *int64  `json:"flowTagGroupId,omitempty" xml:"flowTagGroupId,omitempty"`
@@ -554,6 +791,554 @@ func (s *CreateProjectResponse) SetHeaders(v map[string]*string) *CreateProjectR
 }
 
 func (s *CreateProjectResponse) SetBody(v *CreateProjectResponseBody) *CreateProjectResponse {
+	s.Body = v
+	return s
+}
+
+type CreateRepositoryRequest struct {
+	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	// 代码库头像地址
+	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	// 代码库描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// gitignore模板类型
+	GitignoreType *string `json:"gitignoreType,omitempty" xml:"gitignoreType,omitempty"`
+	// 导入时使用的账号
+	ImportAccount *string `json:"importAccount,omitempty" xml:"importAccount,omitempty"`
+	// 使用使用demo库内容进行初始化
+	ImportDemoProject *bool `json:"importDemoProject,omitempty" xml:"importDemoProject,omitempty"`
+	// 导入代码库类型 (GIT: Git库, SVN: SVN库)
+	ImportRepoType *string `json:"importRepoType,omitempty" xml:"importRepoType,omitempty"`
+	// 导入SVN库的设置
+	ImportSvnRepoConfig *CreateRepositoryRequestImportSvnRepoConfig `json:"importSvnRepoConfig,omitempty" xml:"importSvnRepoConfig,omitempty" type:"Struct"`
+	// 导入时账号的token
+	ImportToken *string `json:"importToken,omitempty" xml:"importToken,omitempty"`
+	// import_token字段的传输格式，使用明文或rsa加密
+	ImportTokenEncrypted *string `json:"importTokenEncrypted,omitempty" xml:"importTokenEncrypted,omitempty"`
+	// 导入地址（http协议地址）
+	ImportUrl *string `json:"importUrl,omitempty" xml:"importUrl,omitempty"`
+	// 初始化标准智能化服务
+	InitStandardService *bool `json:"initStandardService,omitempty" xml:"initStandardService,omitempty"`
+	// 是否启用加密
+	IsCryptoEnabled *bool `json:"isCryptoEnabled,omitempty" xml:"isCryptoEnabled,omitempty"`
+	// 本地导入代码库的远程地址
+	LocalImportUrl *string `json:"localImportUrl,omitempty" xml:"localImportUrl,omitempty"`
+	// 代码库名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 代码库父路径id
+	NamespaceId *int64 `json:"namespaceId,omitempty" xml:"namespaceId,omitempty"`
+	// 代码库路径
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// 自动创建readme类型 (EMPTY: 仅创建README.md, USER_GUIDE: 包含新手引导)
+	ReadmeType       *string `json:"readmeType,omitempty" xml:"readmeType,omitempty"`
+	VisibilityLevel  *int32  `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+	CreateParentPath *bool   `json:"createParentPath,omitempty" xml:"createParentPath,omitempty"`
+	OrganizationId   *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	Sync             *bool   `json:"sync,omitempty" xml:"sync,omitempty"`
+}
+
+func (s CreateRepositoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRepositoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRepositoryRequest) SetAccessToken(v string) *CreateRepositoryRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetAvatarUrl(v string) *CreateRepositoryRequest {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetDescription(v string) *CreateRepositoryRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetGitignoreType(v string) *CreateRepositoryRequest {
+	s.GitignoreType = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetImportAccount(v string) *CreateRepositoryRequest {
+	s.ImportAccount = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetImportDemoProject(v bool) *CreateRepositoryRequest {
+	s.ImportDemoProject = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetImportRepoType(v string) *CreateRepositoryRequest {
+	s.ImportRepoType = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetImportSvnRepoConfig(v *CreateRepositoryRequestImportSvnRepoConfig) *CreateRepositoryRequest {
+	s.ImportSvnRepoConfig = v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetImportToken(v string) *CreateRepositoryRequest {
+	s.ImportToken = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetImportTokenEncrypted(v string) *CreateRepositoryRequest {
+	s.ImportTokenEncrypted = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetImportUrl(v string) *CreateRepositoryRequest {
+	s.ImportUrl = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetInitStandardService(v bool) *CreateRepositoryRequest {
+	s.InitStandardService = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetIsCryptoEnabled(v bool) *CreateRepositoryRequest {
+	s.IsCryptoEnabled = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetLocalImportUrl(v string) *CreateRepositoryRequest {
+	s.LocalImportUrl = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetName(v string) *CreateRepositoryRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetNamespaceId(v int64) *CreateRepositoryRequest {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetPath(v string) *CreateRepositoryRequest {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetReadmeType(v string) *CreateRepositoryRequest {
+	s.ReadmeType = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetVisibilityLevel(v int32) *CreateRepositoryRequest {
+	s.VisibilityLevel = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetCreateParentPath(v bool) *CreateRepositoryRequest {
+	s.CreateParentPath = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetOrganizationId(v string) *CreateRepositoryRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *CreateRepositoryRequest) SetSync(v bool) *CreateRepositoryRequest {
+	s.Sync = &v
+	return s
+}
+
+type CreateRepositoryRequestImportSvnRepoConfig struct {
+	// author 映射
+	AuthorMapping *string `json:"authorMapping,omitempty" xml:"authorMapping,omitempty"`
+	// 分支映射
+	BranchMapping *string `json:"branchMapping,omitempty" xml:"branchMapping,omitempty"`
+	// 不导入branch
+	NoBranches *bool `json:"noBranches,omitempty" xml:"noBranches,omitempty"`
+	// 不导入tag
+	NoTags *bool `json:"noTags,omitempty" xml:"noTags,omitempty"`
+	// svn密码
+	Password *string `json:"password,omitempty" xml:"password,omitempty"`
+	// 导入代码库目标path
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// 根目录映射trunk
+	RootIsTrunk *bool `json:"rootIsTrunk,omitempty" xml:"rootIsTrunk,omitempty"`
+	// 标准布局
+	StandardLayout *bool `json:"standardLayout,omitempty" xml:"standardLayout,omitempty"`
+	// svn仓库地址
+	SvnImportUrl *string `json:"svnImportUrl,omitempty" xml:"svnImportUrl,omitempty"`
+	// 标签映射
+	TagMapping *string `json:"tagMapping,omitempty" xml:"tagMapping,omitempty"`
+	// trunk映射
+	TrunkMapping *string `json:"trunkMapping,omitempty" xml:"trunkMapping,omitempty"`
+	// svn用户名
+	Username *string `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s CreateRepositoryRequestImportSvnRepoConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRepositoryRequestImportSvnRepoConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRepositoryRequestImportSvnRepoConfig) SetAuthorMapping(v string) *CreateRepositoryRequestImportSvnRepoConfig {
+	s.AuthorMapping = &v
+	return s
+}
+
+func (s *CreateRepositoryRequestImportSvnRepoConfig) SetBranchMapping(v string) *CreateRepositoryRequestImportSvnRepoConfig {
+	s.BranchMapping = &v
+	return s
+}
+
+func (s *CreateRepositoryRequestImportSvnRepoConfig) SetNoBranches(v bool) *CreateRepositoryRequestImportSvnRepoConfig {
+	s.NoBranches = &v
+	return s
+}
+
+func (s *CreateRepositoryRequestImportSvnRepoConfig) SetNoTags(v bool) *CreateRepositoryRequestImportSvnRepoConfig {
+	s.NoTags = &v
+	return s
+}
+
+func (s *CreateRepositoryRequestImportSvnRepoConfig) SetPassword(v string) *CreateRepositoryRequestImportSvnRepoConfig {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateRepositoryRequestImportSvnRepoConfig) SetPath(v string) *CreateRepositoryRequestImportSvnRepoConfig {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateRepositoryRequestImportSvnRepoConfig) SetRootIsTrunk(v bool) *CreateRepositoryRequestImportSvnRepoConfig {
+	s.RootIsTrunk = &v
+	return s
+}
+
+func (s *CreateRepositoryRequestImportSvnRepoConfig) SetStandardLayout(v bool) *CreateRepositoryRequestImportSvnRepoConfig {
+	s.StandardLayout = &v
+	return s
+}
+
+func (s *CreateRepositoryRequestImportSvnRepoConfig) SetSvnImportUrl(v string) *CreateRepositoryRequestImportSvnRepoConfig {
+	s.SvnImportUrl = &v
+	return s
+}
+
+func (s *CreateRepositoryRequestImportSvnRepoConfig) SetTagMapping(v string) *CreateRepositoryRequestImportSvnRepoConfig {
+	s.TagMapping = &v
+	return s
+}
+
+func (s *CreateRepositoryRequestImportSvnRepoConfig) SetTrunkMapping(v string) *CreateRepositoryRequestImportSvnRepoConfig {
+	s.TrunkMapping = &v
+	return s
+}
+
+func (s *CreateRepositoryRequestImportSvnRepoConfig) SetUsername(v string) *CreateRepositoryRequestImportSvnRepoConfig {
+	s.Username = &v
+	return s
+}
+
+type CreateRepositoryResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 请求ID
+	RequestId *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    *CreateRepositoryResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	// 调用是否成功
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateRepositoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRepositoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRepositoryResponseBody) SetErrorCode(v string) *CreateRepositoryResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBody) SetErrorMessage(v string) *CreateRepositoryResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBody) SetRequestId(v string) *CreateRepositoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBody) SetResult(v *CreateRepositoryResponseBodyResult) *CreateRepositoryResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *CreateRepositoryResponseBody) SetSuccess(v bool) *CreateRepositoryResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateRepositoryResponseBodyResult struct {
+	// 从SVN导入
+	ImportFromSvn *bool `json:"Import_from_svn,omitempty" xml:"Import_from_svn,omitempty"`
+	// 归档标识
+	Archived *bool `json:"archived,omitempty" xml:"archived,omitempty"`
+	// 代码库头像地址
+	AvatarUrl *string `json:"avatar_url,omitempty" xml:"avatar_url,omitempty"`
+	// 创建时间
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// 创建者id
+	CreatorId *int64 `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	// 默认分支
+	DefaultBranch *string `json:"defaultBranch,omitempty" xml:"defaultBranch,omitempty"`
+	// demo库标识
+	DemoProject *bool `json:"demoProject,omitempty" xml:"demoProject,omitempty"`
+	// 描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// http地址
+	HttpUrlToRepo *string `json:"httpUrlToRepo,omitempty" xml:"httpUrlToRepo,omitempty"`
+	// id
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// 最后活跃时间
+	LastActivityAt *string `json:"lastActivityAt,omitempty" xml:"lastActivityAt,omitempty"`
+	// 名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 名称（含父路径）
+	NameWithNamespace *string `json:"nameWithNamespace,omitempty" xml:"nameWithNamespace,omitempty"`
+	// 父路径信息
+	Namespace *CreateRepositoryResponseBodyResultNamespace `json:"namespace,omitempty" xml:"namespace,omitempty" type:"Struct"`
+	// 路径
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// 路径（含父路径）
+	PathWithNamespace *string `json:"pathWithNamespace,omitempty" xml:"pathWithNamespace,omitempty"`
+	// ssh地址
+	SshUrlToRepo *string `json:"sshUrlToRepo,omitempty" xml:"sshUrlToRepo,omitempty"`
+	// 可见性。0：私有，10：内部公开
+	VisibilityLevel *string `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+	// web url
+	WebUrl *string `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
+}
+
+func (s CreateRepositoryResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRepositoryResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRepositoryResponseBodyResult) SetImportFromSvn(v bool) *CreateRepositoryResponseBodyResult {
+	s.ImportFromSvn = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResult) SetArchived(v bool) *CreateRepositoryResponseBodyResult {
+	s.Archived = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResult) SetAvatarUrl(v string) *CreateRepositoryResponseBodyResult {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResult) SetCreatedAt(v string) *CreateRepositoryResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResult) SetCreatorId(v int64) *CreateRepositoryResponseBodyResult {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResult) SetDefaultBranch(v string) *CreateRepositoryResponseBodyResult {
+	s.DefaultBranch = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResult) SetDemoProject(v bool) *CreateRepositoryResponseBodyResult {
+	s.DemoProject = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResult) SetDescription(v string) *CreateRepositoryResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResult) SetHttpUrlToRepo(v string) *CreateRepositoryResponseBodyResult {
+	s.HttpUrlToRepo = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResult) SetId(v int64) *CreateRepositoryResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResult) SetLastActivityAt(v string) *CreateRepositoryResponseBodyResult {
+	s.LastActivityAt = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResult) SetName(v string) *CreateRepositoryResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResult) SetNameWithNamespace(v string) *CreateRepositoryResponseBodyResult {
+	s.NameWithNamespace = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResult) SetNamespace(v *CreateRepositoryResponseBodyResultNamespace) *CreateRepositoryResponseBodyResult {
+	s.Namespace = v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResult) SetPath(v string) *CreateRepositoryResponseBodyResult {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResult) SetPathWithNamespace(v string) *CreateRepositoryResponseBodyResult {
+	s.PathWithNamespace = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResult) SetSshUrlToRepo(v string) *CreateRepositoryResponseBodyResult {
+	s.SshUrlToRepo = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResult) SetVisibilityLevel(v string) *CreateRepositoryResponseBodyResult {
+	s.VisibilityLevel = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResult) SetWebUrl(v string) *CreateRepositoryResponseBodyResult {
+	s.WebUrl = &v
+	return s
+}
+
+type CreateRepositoryResponseBodyResultNamespace struct {
+	// 头像地址
+	Avatar *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	// 创建时间
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// 描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// id
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// 名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 归属者id
+	OwnerId *int64 `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	// 路径
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// 公开性
+	Public *bool `json:"public,omitempty" xml:"public,omitempty"`
+	// 更新时间
+	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// 可见性。0：私有，10：内部公开
+	VisibilityLevel *string `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+}
+
+func (s CreateRepositoryResponseBodyResultNamespace) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRepositoryResponseBodyResultNamespace) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRepositoryResponseBodyResultNamespace) SetAvatar(v string) *CreateRepositoryResponseBodyResultNamespace {
+	s.Avatar = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResultNamespace) SetCreatedAt(v string) *CreateRepositoryResponseBodyResultNamespace {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResultNamespace) SetDescription(v string) *CreateRepositoryResponseBodyResultNamespace {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResultNamespace) SetId(v int64) *CreateRepositoryResponseBodyResultNamespace {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResultNamespace) SetName(v string) *CreateRepositoryResponseBodyResultNamespace {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResultNamespace) SetOwnerId(v int64) *CreateRepositoryResponseBodyResultNamespace {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResultNamespace) SetPath(v string) *CreateRepositoryResponseBodyResultNamespace {
+	s.Path = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResultNamespace) SetPublic(v bool) *CreateRepositoryResponseBodyResultNamespace {
+	s.Public = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResultNamespace) SetUpdatedAt(v string) *CreateRepositoryResponseBodyResultNamespace {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *CreateRepositoryResponseBodyResultNamespace) SetVisibilityLevel(v string) *CreateRepositoryResponseBodyResultNamespace {
+	s.VisibilityLevel = &v
+	return s
+}
+
+type CreateRepositoryResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateRepositoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRepositoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRepositoryResponse) SetHeaders(v map[string]*string) *CreateRepositoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateRepositoryResponse) SetBody(v *CreateRepositoryResponseBody) *CreateRepositoryResponse {
 	s.Body = v
 	return s
 }
@@ -2120,6 +2905,140 @@ func (s *FrozenWorkspaceResponse) SetBody(v *FrozenWorkspaceResponseBody) *Froze
 	return s
 }
 
+type GetCodeupOrganizationRequest struct {
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+}
+
+func (s GetCodeupOrganizationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCodeupOrganizationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCodeupOrganizationRequest) SetAccessToken(v string) *GetCodeupOrganizationRequest {
+	s.AccessToken = &v
+	return s
+}
+
+type GetCodeupOrganizationResponseBody struct {
+	ErrorCode    *string                                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result       *GetCodeupOrganizationResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetCodeupOrganizationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCodeupOrganizationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCodeupOrganizationResponseBody) SetErrorCode(v string) *GetCodeupOrganizationResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetCodeupOrganizationResponseBody) SetErrorMessage(v string) *GetCodeupOrganizationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetCodeupOrganizationResponseBody) SetRequestId(v string) *GetCodeupOrganizationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCodeupOrganizationResponseBody) SetResult(v *GetCodeupOrganizationResponseBodyResult) *GetCodeupOrganizationResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetCodeupOrganizationResponseBody) SetSuccess(v bool) *GetCodeupOrganizationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCodeupOrganizationResponseBodyResult struct {
+	CreatedAt      *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	Id             *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	NamespaceId    *int64  `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	Path           *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	UpdatedAt      *string `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
+	UserRole       *string `json:"UserRole,omitempty" xml:"UserRole,omitempty"`
+}
+
+func (s GetCodeupOrganizationResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCodeupOrganizationResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetCodeupOrganizationResponseBodyResult) SetCreatedAt(v string) *GetCodeupOrganizationResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *GetCodeupOrganizationResponseBodyResult) SetId(v int64) *GetCodeupOrganizationResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *GetCodeupOrganizationResponseBodyResult) SetNamespaceId(v int64) *GetCodeupOrganizationResponseBodyResult {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *GetCodeupOrganizationResponseBodyResult) SetOrganizationId(v string) *GetCodeupOrganizationResponseBodyResult {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *GetCodeupOrganizationResponseBodyResult) SetPath(v string) *GetCodeupOrganizationResponseBodyResult {
+	s.Path = &v
+	return s
+}
+
+func (s *GetCodeupOrganizationResponseBodyResult) SetUpdatedAt(v string) *GetCodeupOrganizationResponseBodyResult {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *GetCodeupOrganizationResponseBodyResult) SetUserRole(v string) *GetCodeupOrganizationResponseBodyResult {
+	s.UserRole = &v
+	return s
+}
+
+type GetCodeupOrganizationResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetCodeupOrganizationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCodeupOrganizationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCodeupOrganizationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCodeupOrganizationResponse) SetHeaders(v map[string]*string) *GetCodeupOrganizationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCodeupOrganizationResponse) SetBody(v *GetCodeupOrganizationResponseBody) *GetCodeupOrganizationResponse {
+	s.Body = v
+	return s
+}
+
 type GetCustomFieldOptionRequest struct {
 	// 项目id
 	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
@@ -2277,6 +3196,241 @@ func (s *GetCustomFieldOptionResponse) SetHeaders(v map[string]*string) *GetCust
 }
 
 func (s *GetCustomFieldOptionResponse) SetBody(v *GetCustomFieldOptionResponseBody) *GetCustomFieldOptionResponse {
+	s.Body = v
+	return s
+}
+
+type GetFileLastCommitRequest struct {
+	// 个人访问令牌
+	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	// 文件路径
+	Filepath *string `json:"filepath,omitempty" xml:"filepath,omitempty"`
+	// 云效企业ID
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	// 分支名称、标签名称或Commit ID
+	Sha *string `json:"sha,omitempty" xml:"sha,omitempty"`
+}
+
+func (s GetFileLastCommitRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileLastCommitRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileLastCommitRequest) SetAccessToken(v string) *GetFileLastCommitRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *GetFileLastCommitRequest) SetFilepath(v string) *GetFileLastCommitRequest {
+	s.Filepath = &v
+	return s
+}
+
+func (s *GetFileLastCommitRequest) SetOrganizationId(v string) *GetFileLastCommitRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *GetFileLastCommitRequest) SetSha(v string) *GetFileLastCommitRequest {
+	s.Sha = &v
+	return s
+}
+
+type GetFileLastCommitResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 响应结果
+	Result *GetFileLastCommitResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	// 请求结果
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetFileLastCommitResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileLastCommitResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileLastCommitResponseBody) SetErrorCode(v string) *GetFileLastCommitResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetFileLastCommitResponseBody) SetErrorMessage(v string) *GetFileLastCommitResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetFileLastCommitResponseBody) SetRequestId(v string) *GetFileLastCommitResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFileLastCommitResponseBody) SetResult(v *GetFileLastCommitResponseBodyResult) *GetFileLastCommitResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetFileLastCommitResponseBody) SetSuccess(v bool) *GetFileLastCommitResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetFileLastCommitResponseBodyResult struct {
+	// 作者提交时间
+	AuthorDate *string `json:"AuthorDate,omitempty" xml:"AuthorDate,omitempty"`
+	// 提交者邮箱
+	AuthorEmail *string `json:"AuthorEmail,omitempty" xml:"AuthorEmail,omitempty"`
+	// 作者姓名
+	AuthorName *string `json:"AuthorName,omitempty" xml:"AuthorName,omitempty"`
+	// 提交者提交时间
+	CommittedDate *string `json:"CommittedDate,omitempty" xml:"CommittedDate,omitempty"`
+	// 提交者邮箱
+	CommitterEmail *string `json:"CommitterEmail,omitempty" xml:"CommitterEmail,omitempty"`
+	// 提交者姓名
+	CommitterName *string `json:"CommitterName,omitempty" xml:"CommitterName,omitempty"`
+	// 创建时间
+	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// Commit ID
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 提交内容
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 父提交ID
+	ParentIds []*string `json:"ParentIds,omitempty" xml:"ParentIds,omitempty" type:"Repeated"`
+	// Commit短ID
+	ShortId *string `json:"ShortId,omitempty" xml:"ShortId,omitempty"`
+	// 签名
+	Signature *GetFileLastCommitResponseBodyResultSignature `json:"Signature,omitempty" xml:"Signature,omitempty" type:"Struct"`
+	// 标题，提交的第一行内容
+	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
+}
+
+func (s GetFileLastCommitResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileLastCommitResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileLastCommitResponseBodyResult) SetAuthorDate(v string) *GetFileLastCommitResponseBodyResult {
+	s.AuthorDate = &v
+	return s
+}
+
+func (s *GetFileLastCommitResponseBodyResult) SetAuthorEmail(v string) *GetFileLastCommitResponseBodyResult {
+	s.AuthorEmail = &v
+	return s
+}
+
+func (s *GetFileLastCommitResponseBodyResult) SetAuthorName(v string) *GetFileLastCommitResponseBodyResult {
+	s.AuthorName = &v
+	return s
+}
+
+func (s *GetFileLastCommitResponseBodyResult) SetCommittedDate(v string) *GetFileLastCommitResponseBodyResult {
+	s.CommittedDate = &v
+	return s
+}
+
+func (s *GetFileLastCommitResponseBodyResult) SetCommitterEmail(v string) *GetFileLastCommitResponseBodyResult {
+	s.CommitterEmail = &v
+	return s
+}
+
+func (s *GetFileLastCommitResponseBodyResult) SetCommitterName(v string) *GetFileLastCommitResponseBodyResult {
+	s.CommitterName = &v
+	return s
+}
+
+func (s *GetFileLastCommitResponseBodyResult) SetCreatedAt(v string) *GetFileLastCommitResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *GetFileLastCommitResponseBodyResult) SetId(v string) *GetFileLastCommitResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *GetFileLastCommitResponseBodyResult) SetMessage(v string) *GetFileLastCommitResponseBodyResult {
+	s.Message = &v
+	return s
+}
+
+func (s *GetFileLastCommitResponseBodyResult) SetParentIds(v []*string) *GetFileLastCommitResponseBodyResult {
+	s.ParentIds = v
+	return s
+}
+
+func (s *GetFileLastCommitResponseBodyResult) SetShortId(v string) *GetFileLastCommitResponseBodyResult {
+	s.ShortId = &v
+	return s
+}
+
+func (s *GetFileLastCommitResponseBodyResult) SetSignature(v *GetFileLastCommitResponseBodyResultSignature) *GetFileLastCommitResponseBodyResult {
+	s.Signature = v
+	return s
+}
+
+func (s *GetFileLastCommitResponseBodyResult) SetTitle(v string) *GetFileLastCommitResponseBodyResult {
+	s.Title = &v
+	return s
+}
+
+type GetFileLastCommitResponseBodyResultSignature struct {
+	// GPG密钥ID
+	GpgKeyId *string `json:"GpgKeyId,omitempty" xml:"GpgKeyId,omitempty"`
+	// 验证状态
+	VerificationStatus *string `json:"VerificationStatus,omitempty" xml:"VerificationStatus,omitempty"`
+}
+
+func (s GetFileLastCommitResponseBodyResultSignature) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileLastCommitResponseBodyResultSignature) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileLastCommitResponseBodyResultSignature) SetGpgKeyId(v string) *GetFileLastCommitResponseBodyResultSignature {
+	s.GpgKeyId = &v
+	return s
+}
+
+func (s *GetFileLastCommitResponseBodyResultSignature) SetVerificationStatus(v string) *GetFileLastCommitResponseBodyResultSignature {
+	s.VerificationStatus = &v
+	return s
+}
+
+type GetFileLastCommitResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetFileLastCommitResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFileLastCommitResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileLastCommitResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileLastCommitResponse) SetHeaders(v map[string]*string) *GetFileLastCommitResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFileLastCommitResponse) SetBody(v *GetFileLastCommitResponseBody) *GetFileLastCommitResponse {
 	s.Body = v
 	return s
 }
@@ -4084,6 +5238,462 @@ func (s *GetProjectInfoResponse) SetHeaders(v map[string]*string) *GetProjectInf
 }
 
 func (s *GetProjectInfoResponse) SetBody(v *GetProjectInfoResponseBody) *GetProjectInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetProjectMemberRequest struct {
+	// accessToken（选填），使用AK方式调用时无需填accessToken
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// 企业ID
+	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
+	// 代码仓库Id
+	RepositoryId *int64 `json:"repositoryId,omitempty" xml:"repositoryId,omitempty"`
+	// 用户阿里云PK
+	UserAliyunPk *string `json:"userAliyunPk,omitempty" xml:"userAliyunPk,omitempty"`
+}
+
+func (s GetProjectMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectMemberRequest) SetAccessToken(v string) *GetProjectMemberRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *GetProjectMemberRequest) SetOrganizationId(v string) *GetProjectMemberRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *GetProjectMemberRequest) SetRepositoryId(v int64) *GetProjectMemberRequest {
+	s.RepositoryId = &v
+	return s
+}
+
+func (s *GetProjectMemberRequest) SetUserAliyunPk(v string) *GetProjectMemberRequest {
+	s.UserAliyunPk = &v
+	return s
+}
+
+type GetProjectMemberResponseBody struct {
+	ErrorCode    *string                             `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                             `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *GetProjectMemberResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *bool                               `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetProjectMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectMemberResponseBody) SetErrorCode(v string) *GetProjectMemberResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetProjectMemberResponseBody) SetErrorMessage(v string) *GetProjectMemberResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetProjectMemberResponseBody) SetRequestId(v string) *GetProjectMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetProjectMemberResponseBody) SetResult(v *GetProjectMemberResponseBodyResult) *GetProjectMemberResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetProjectMemberResponseBody) SetSuccess(v bool) *GetProjectMemberResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetProjectMemberResponseBodyResult struct {
+	AccessLevel  *int32  `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	AvatarUrl    *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	ExternUserId *string `json:"externUserId,omitempty" xml:"externUserId,omitempty"`
+	Id           *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name         *string `json:"name,omitempty" xml:"name,omitempty"`
+}
+
+func (s GetProjectMemberResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectMemberResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectMemberResponseBodyResult) SetAccessLevel(v int32) *GetProjectMemberResponseBodyResult {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *GetProjectMemberResponseBodyResult) SetAvatarUrl(v string) *GetProjectMemberResponseBodyResult {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *GetProjectMemberResponseBodyResult) SetExternUserId(v string) *GetProjectMemberResponseBodyResult {
+	s.ExternUserId = &v
+	return s
+}
+
+func (s *GetProjectMemberResponseBodyResult) SetId(v int64) *GetProjectMemberResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *GetProjectMemberResponseBodyResult) SetName(v string) *GetProjectMemberResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+type GetProjectMemberResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetProjectMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetProjectMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetProjectMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetProjectMemberResponse) SetHeaders(v map[string]*string) *GetProjectMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetProjectMemberResponse) SetBody(v *GetProjectMemberResponseBody) *GetProjectMemberResponse {
+	s.Body = v
+	return s
+}
+
+type GetRepositoryRequest struct {
+	// 个人访问令牌
+	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	// 代码库ID或路径
+	Identity *string `json:"identity,omitempty" xml:"identity,omitempty"`
+	// 企业ID
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s GetRepositoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepositoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepositoryRequest) SetAccessToken(v string) *GetRepositoryRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *GetRepositoryRequest) SetIdentity(v string) *GetRepositoryRequest {
+	s.Identity = &v
+	return s
+}
+
+func (s *GetRepositoryRequest) SetOrganizationId(v string) *GetRepositoryRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type GetRepositoryResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 代码库信息
+	Repository *GetRepositoryResponseBodyRepository `json:"repository,omitempty" xml:"repository,omitempty" type:"Struct"`
+	// 请求ID
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 请求是否成功
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s GetRepositoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepositoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepositoryResponseBody) SetErrorCode(v string) *GetRepositoryResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBody) SetErrorMessage(v string) *GetRepositoryResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBody) SetRepository(v *GetRepositoryResponseBodyRepository) *GetRepositoryResponseBody {
+	s.Repository = v
+	return s
+}
+
+func (s *GetRepositoryResponseBody) SetRequestId(v string) *GetRepositoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBody) SetSuccess(v bool) *GetRepositoryResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetRepositoryResponseBodyRepository struct {
+	// 归档标识
+	Archive *bool `json:"archive,omitempty" xml:"archive,omitempty"`
+	// 代码库头像地址
+	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	// 创建时间
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// 创建者ID
+	CreatorId *int64 `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
+	// 默认分支
+	DefaultBranch *string `json:"defaultBranch,omitempty" xml:"defaultBranch,omitempty"`
+	// DEMO库标识
+	DemoProjectStatus *bool `json:"demoProjectStatus,omitempty" xml:"demoProjectStatus,omitempty"`
+	// 描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// HTTP克隆地址
+	HttpUrlToRepository *string `json:"httpUrlToRepository,omitempty" xml:"httpUrlToRepository,omitempty"`
+	// 代码库ID
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// 最后活跃时间
+	LastActivityAt *string `json:"lastActivityAt,omitempty" xml:"lastActivityAt,omitempty"`
+	// 名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 名称（含父名称）
+	NameWithNamespace *string `json:"nameWithNamespace,omitempty" xml:"nameWithNamespace,omitempty"`
+	// 父空间
+	Namespace *GetRepositoryResponseBodyRepositoryNamespace `json:"namespace,omitempty" xml:"namespace,omitempty" type:"Struct"`
+	// 路径
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// 路径（含父路径）
+	PathWithNamespace *string `json:"pathWithNamespace,omitempty" xml:"pathWithNamespace,omitempty"`
+	// SSH克隆地址
+	SshUrlToRepository *string `json:"sshUrlToRepository,omitempty" xml:"sshUrlToRepository,omitempty"`
+	// 可见性。0：私有，10：内部公开
+	VisibilityLevel *int32 `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+	// 页面访问地址
+	WebUrl *string `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
+}
+
+func (s GetRepositoryResponseBodyRepository) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepositoryResponseBodyRepository) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepositoryResponseBodyRepository) SetArchive(v bool) *GetRepositoryResponseBodyRepository {
+	s.Archive = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepository) SetAvatarUrl(v string) *GetRepositoryResponseBodyRepository {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepository) SetCreatedAt(v string) *GetRepositoryResponseBodyRepository {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepository) SetCreatorId(v int64) *GetRepositoryResponseBodyRepository {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepository) SetDefaultBranch(v string) *GetRepositoryResponseBodyRepository {
+	s.DefaultBranch = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepository) SetDemoProjectStatus(v bool) *GetRepositoryResponseBodyRepository {
+	s.DemoProjectStatus = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepository) SetDescription(v string) *GetRepositoryResponseBodyRepository {
+	s.Description = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepository) SetHttpUrlToRepository(v string) *GetRepositoryResponseBodyRepository {
+	s.HttpUrlToRepository = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepository) SetId(v int64) *GetRepositoryResponseBodyRepository {
+	s.Id = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepository) SetLastActivityAt(v string) *GetRepositoryResponseBodyRepository {
+	s.LastActivityAt = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepository) SetName(v string) *GetRepositoryResponseBodyRepository {
+	s.Name = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepository) SetNameWithNamespace(v string) *GetRepositoryResponseBodyRepository {
+	s.NameWithNamespace = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepository) SetNamespace(v *GetRepositoryResponseBodyRepositoryNamespace) *GetRepositoryResponseBodyRepository {
+	s.Namespace = v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepository) SetPath(v string) *GetRepositoryResponseBodyRepository {
+	s.Path = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepository) SetPathWithNamespace(v string) *GetRepositoryResponseBodyRepository {
+	s.PathWithNamespace = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepository) SetSshUrlToRepository(v string) *GetRepositoryResponseBodyRepository {
+	s.SshUrlToRepository = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepository) SetVisibilityLevel(v int32) *GetRepositoryResponseBodyRepository {
+	s.VisibilityLevel = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepository) SetWebUrl(v string) *GetRepositoryResponseBodyRepository {
+	s.WebUrl = &v
+	return s
+}
+
+type GetRepositoryResponseBodyRepositoryNamespace struct {
+	// 头像地址
+	Avatar *string `json:"avatar,omitempty" xml:"avatar,omitempty"`
+	// 创建时间
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// 描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// id
+	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
+	// 名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 归属者ID
+	OwnerId *int64 `json:"ownerId,omitempty" xml:"ownerId,omitempty"`
+	// 路径
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// 更新时间
+	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// 可见性。0：私有，10：内部公开
+	VisibilityLevel *int32 `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+}
+
+func (s GetRepositoryResponseBodyRepositoryNamespace) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepositoryResponseBodyRepositoryNamespace) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepositoryResponseBodyRepositoryNamespace) SetAvatar(v string) *GetRepositoryResponseBodyRepositoryNamespace {
+	s.Avatar = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepositoryNamespace) SetCreatedAt(v string) *GetRepositoryResponseBodyRepositoryNamespace {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepositoryNamespace) SetDescription(v string) *GetRepositoryResponseBodyRepositoryNamespace {
+	s.Description = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepositoryNamespace) SetId(v int64) *GetRepositoryResponseBodyRepositoryNamespace {
+	s.Id = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepositoryNamespace) SetName(v string) *GetRepositoryResponseBodyRepositoryNamespace {
+	s.Name = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepositoryNamespace) SetOwnerId(v int64) *GetRepositoryResponseBodyRepositoryNamespace {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepositoryNamespace) SetPath(v string) *GetRepositoryResponseBodyRepositoryNamespace {
+	s.Path = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepositoryNamespace) SetUpdatedAt(v string) *GetRepositoryResponseBodyRepositoryNamespace {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *GetRepositoryResponseBodyRepositoryNamespace) SetVisibilityLevel(v int32) *GetRepositoryResponseBodyRepositoryNamespace {
+	s.VisibilityLevel = &v
+	return s
+}
+
+type GetRepositoryResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetRepositoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetRepositoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetRepositoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetRepositoryResponse) SetHeaders(v map[string]*string) *GetRepositoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetRepositoryResponse) SetBody(v *GetRepositoryResponseBody) *GetRepositoryResponse {
 	s.Body = v
 	return s
 }
@@ -8037,6 +9647,684 @@ func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProject
 	return s
 }
 
+type ListRepositoriesRequest struct {
+	// accessToken
+	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	// 是否列出归档项目
+	Archived *bool `json:"archived,omitempty" xml:"archived,omitempty"`
+	// 排序字段
+	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
+	// 企业ID
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	// 页码
+	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
+	// 每页大小
+	PerPage *int64 `json:"perPage,omitempty" xml:"perPage,omitempty"`
+	// 搜索关键字
+	Search *string `json:"search,omitempty" xml:"search,omitempty"`
+	// 排序方式 (desc: 降序, asc: 升序)
+	Sort *string `json:"sort,omitempty" xml:"sort,omitempty"`
+}
+
+func (s ListRepositoriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoriesRequest) SetAccessToken(v string) *ListRepositoriesRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ListRepositoriesRequest) SetArchived(v bool) *ListRepositoriesRequest {
+	s.Archived = &v
+	return s
+}
+
+func (s *ListRepositoriesRequest) SetOrderBy(v string) *ListRepositoriesRequest {
+	s.OrderBy = &v
+	return s
+}
+
+func (s *ListRepositoriesRequest) SetOrganizationId(v string) *ListRepositoriesRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListRepositoriesRequest) SetPage(v int64) *ListRepositoriesRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListRepositoriesRequest) SetPerPage(v int64) *ListRepositoriesRequest {
+	s.PerPage = &v
+	return s
+}
+
+func (s *ListRepositoriesRequest) SetSearch(v string) *ListRepositoriesRequest {
+	s.Search = &v
+	return s
+}
+
+func (s *ListRepositoriesRequest) SetSort(v string) *ListRepositoriesRequest {
+	s.Sort = &v
+	return s
+}
+
+type ListRepositoriesResponseBody struct {
+	// 错误码
+	ErrorCode *int32 `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 请求requestId
+	RequestId *string                               `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result    []*ListRepositoriesResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	// 调用是否成功
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 总数量
+	Total *int64 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListRepositoriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoriesResponseBody) SetErrorCode(v int32) *ListRepositoriesResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListRepositoriesResponseBody) SetErrorMessage(v string) *ListRepositoriesResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListRepositoriesResponseBody) SetRequestId(v string) *ListRepositoriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRepositoriesResponseBody) SetResult(v []*ListRepositoriesResponseBodyResult) *ListRepositoriesResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListRepositoriesResponseBody) SetSuccess(v bool) *ListRepositoriesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListRepositoriesResponseBody) SetTotal(v int64) *ListRepositoriesResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListRepositoriesResponseBodyResult struct {
+	// 代码库Id
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 当前用户在该代码库上的权限类型
+	AccessLevel *int32 `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	// 代码库是否归档
+	Archive *bool `json:"archive,omitempty" xml:"archive,omitempty"`
+	// 头像地址
+	AvatarUrl *string `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	// 创建时间
+	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	// 代码库描述
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 代码库导入状态
+	ImportStatus *string `json:"importStatus,omitempty" xml:"importStatus,omitempty"`
+	// 最后活跃时间
+	LastActivityAt *string `json:"lastActivityAt,omitempty" xml:"lastActivityAt,omitempty"`
+	// 代码库名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 代码库完整名称（含完整组名称）
+	NameWithNamespace *string `json:"nameWithNamespace,omitempty" xml:"nameWithNamespace,omitempty"`
+	// 上级路径的id
+	NamespaceId *int64 `json:"namespaceId,omitempty" xml:"namespaceId,omitempty"`
+	// 代码库路径
+	Path *string `json:"path,omitempty" xml:"path,omitempty"`
+	// 代码库完整路径（含完整组路径）
+	PathWithNamespace *string `json:"pathWithNamespace,omitempty" xml:"pathWithNamespace,omitempty"`
+	// 是否被收藏
+	Star *bool `json:"star,omitempty" xml:"star,omitempty"`
+	// 被收藏的数量
+	StarCount *int64 `json:"starCount,omitempty" xml:"starCount,omitempty"`
+	// 更新时间
+	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+	// 可见性;0标识私有的/10标识企业内公开
+	VisibilityLevel *string `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+	// 页面访问时的URL
+	WebUrl *string `json:"webUrl,omitempty" xml:"webUrl,omitempty"`
+}
+
+func (s ListRepositoriesResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoriesResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoriesResponseBodyResult) SetId(v int64) *ListRepositoriesResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListRepositoriesResponseBodyResult) SetAccessLevel(v int32) *ListRepositoriesResponseBodyResult {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *ListRepositoriesResponseBodyResult) SetArchive(v bool) *ListRepositoriesResponseBodyResult {
+	s.Archive = &v
+	return s
+}
+
+func (s *ListRepositoriesResponseBodyResult) SetAvatarUrl(v string) *ListRepositoriesResponseBodyResult {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *ListRepositoriesResponseBodyResult) SetCreatedAt(v string) *ListRepositoriesResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListRepositoriesResponseBodyResult) SetDescription(v string) *ListRepositoriesResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *ListRepositoriesResponseBodyResult) SetImportStatus(v string) *ListRepositoriesResponseBodyResult {
+	s.ImportStatus = &v
+	return s
+}
+
+func (s *ListRepositoriesResponseBodyResult) SetLastActivityAt(v string) *ListRepositoriesResponseBodyResult {
+	s.LastActivityAt = &v
+	return s
+}
+
+func (s *ListRepositoriesResponseBodyResult) SetName(v string) *ListRepositoriesResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *ListRepositoriesResponseBodyResult) SetNameWithNamespace(v string) *ListRepositoriesResponseBodyResult {
+	s.NameWithNamespace = &v
+	return s
+}
+
+func (s *ListRepositoriesResponseBodyResult) SetNamespaceId(v int64) *ListRepositoriesResponseBodyResult {
+	s.NamespaceId = &v
+	return s
+}
+
+func (s *ListRepositoriesResponseBodyResult) SetPath(v string) *ListRepositoriesResponseBodyResult {
+	s.Path = &v
+	return s
+}
+
+func (s *ListRepositoriesResponseBodyResult) SetPathWithNamespace(v string) *ListRepositoriesResponseBodyResult {
+	s.PathWithNamespace = &v
+	return s
+}
+
+func (s *ListRepositoriesResponseBodyResult) SetStar(v bool) *ListRepositoriesResponseBodyResult {
+	s.Star = &v
+	return s
+}
+
+func (s *ListRepositoriesResponseBodyResult) SetStarCount(v int64) *ListRepositoriesResponseBodyResult {
+	s.StarCount = &v
+	return s
+}
+
+func (s *ListRepositoriesResponseBodyResult) SetUpdatedAt(v string) *ListRepositoriesResponseBodyResult {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *ListRepositoriesResponseBodyResult) SetVisibilityLevel(v string) *ListRepositoriesResponseBodyResult {
+	s.VisibilityLevel = &v
+	return s
+}
+
+func (s *ListRepositoriesResponseBodyResult) SetWebUrl(v string) *ListRepositoriesResponseBodyResult {
+	s.WebUrl = &v
+	return s
+}
+
+type ListRepositoriesResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListRepositoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRepositoriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoriesResponse) SetHeaders(v map[string]*string) *ListRepositoriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRepositoriesResponse) SetBody(v *ListRepositoriesResponseBody) *ListRepositoriesResponse {
+	s.Body = v
+	return s
+}
+
+type ListRepositoryMemberWithInheritedRequest struct {
+	// accessToken
+	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	// 企业Id
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s ListRepositoryMemberWithInheritedRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryMemberWithInheritedRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryMemberWithInheritedRequest) SetAccessToken(v string) *ListRepositoryMemberWithInheritedRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ListRepositoryMemberWithInheritedRequest) SetOrganizationId(v string) *ListRepositoryMemberWithInheritedRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type ListRepositoryMemberWithInheritedResponseBody struct {
+	ErrorCode    *string                                                `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                                `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                                `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListRepositoryMemberWithInheritedResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                                                  `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s ListRepositoryMemberWithInheritedResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryMemberWithInheritedResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryMemberWithInheritedResponseBody) SetErrorCode(v string) *ListRepositoryMemberWithInheritedResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListRepositoryMemberWithInheritedResponseBody) SetErrorMessage(v string) *ListRepositoryMemberWithInheritedResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListRepositoryMemberWithInheritedResponseBody) SetRequestId(v string) *ListRepositoryMemberWithInheritedResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRepositoryMemberWithInheritedResponseBody) SetResult(v []*ListRepositoryMemberWithInheritedResponseBodyResult) *ListRepositoryMemberWithInheritedResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListRepositoryMemberWithInheritedResponseBody) SetSuccess(v bool) *ListRepositoryMemberWithInheritedResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListRepositoryMemberWithInheritedResponseBodyResult struct {
+	AccessLevel  *int32                                                        `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	AvatarUrl    *string                                                       `json:"avatarUrl,omitempty" xml:"avatarUrl,omitempty"`
+	Email        *string                                                       `json:"email,omitempty" xml:"email,omitempty"`
+	ExternUserId *string                                                       `json:"externUserId,omitempty" xml:"externUserId,omitempty"`
+	Id           *int64                                                        `json:"id,omitempty" xml:"id,omitempty"`
+	Inherited    *ListRepositoryMemberWithInheritedResponseBodyResultInherited `json:"inherited,omitempty" xml:"inherited,omitempty" type:"Struct"`
+	Name         *string                                                       `json:"name,omitempty" xml:"name,omitempty"`
+	State        *string                                                       `json:"state,omitempty" xml:"state,omitempty"`
+	Username     *string                                                       `json:"username,omitempty" xml:"username,omitempty"`
+}
+
+func (s ListRepositoryMemberWithInheritedResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryMemberWithInheritedResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryMemberWithInheritedResponseBodyResult) SetAccessLevel(v int32) *ListRepositoryMemberWithInheritedResponseBodyResult {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *ListRepositoryMemberWithInheritedResponseBodyResult) SetAvatarUrl(v string) *ListRepositoryMemberWithInheritedResponseBodyResult {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *ListRepositoryMemberWithInheritedResponseBodyResult) SetEmail(v string) *ListRepositoryMemberWithInheritedResponseBodyResult {
+	s.Email = &v
+	return s
+}
+
+func (s *ListRepositoryMemberWithInheritedResponseBodyResult) SetExternUserId(v string) *ListRepositoryMemberWithInheritedResponseBodyResult {
+	s.ExternUserId = &v
+	return s
+}
+
+func (s *ListRepositoryMemberWithInheritedResponseBodyResult) SetId(v int64) *ListRepositoryMemberWithInheritedResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListRepositoryMemberWithInheritedResponseBodyResult) SetInherited(v *ListRepositoryMemberWithInheritedResponseBodyResultInherited) *ListRepositoryMemberWithInheritedResponseBodyResult {
+	s.Inherited = v
+	return s
+}
+
+func (s *ListRepositoryMemberWithInheritedResponseBodyResult) SetName(v string) *ListRepositoryMemberWithInheritedResponseBodyResult {
+	s.Name = &v
+	return s
+}
+
+func (s *ListRepositoryMemberWithInheritedResponseBodyResult) SetState(v string) *ListRepositoryMemberWithInheritedResponseBodyResult {
+	s.State = &v
+	return s
+}
+
+func (s *ListRepositoryMemberWithInheritedResponseBodyResult) SetUsername(v string) *ListRepositoryMemberWithInheritedResponseBodyResult {
+	s.Username = &v
+	return s
+}
+
+type ListRepositoryMemberWithInheritedResponseBodyResultInherited struct {
+	Id                *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	Name              *string `json:"name,omitempty" xml:"name,omitempty"`
+	NameWithNamespace *string `json:"nameWithNamespace,omitempty" xml:"nameWithNamespace,omitempty"`
+	Path              *string `json:"path,omitempty" xml:"path,omitempty"`
+	PathWithNamespace *string `json:"pathWithNamespace,omitempty" xml:"pathWithNamespace,omitempty"`
+	Type              *string `json:"type,omitempty" xml:"type,omitempty"`
+	VisibilityLevel   *string `json:"visibilityLevel,omitempty" xml:"visibilityLevel,omitempty"`
+}
+
+func (s ListRepositoryMemberWithInheritedResponseBodyResultInherited) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryMemberWithInheritedResponseBodyResultInherited) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryMemberWithInheritedResponseBodyResultInherited) SetId(v int64) *ListRepositoryMemberWithInheritedResponseBodyResultInherited {
+	s.Id = &v
+	return s
+}
+
+func (s *ListRepositoryMemberWithInheritedResponseBodyResultInherited) SetName(v string) *ListRepositoryMemberWithInheritedResponseBodyResultInherited {
+	s.Name = &v
+	return s
+}
+
+func (s *ListRepositoryMemberWithInheritedResponseBodyResultInherited) SetNameWithNamespace(v string) *ListRepositoryMemberWithInheritedResponseBodyResultInherited {
+	s.NameWithNamespace = &v
+	return s
+}
+
+func (s *ListRepositoryMemberWithInheritedResponseBodyResultInherited) SetPath(v string) *ListRepositoryMemberWithInheritedResponseBodyResultInherited {
+	s.Path = &v
+	return s
+}
+
+func (s *ListRepositoryMemberWithInheritedResponseBodyResultInherited) SetPathWithNamespace(v string) *ListRepositoryMemberWithInheritedResponseBodyResultInherited {
+	s.PathWithNamespace = &v
+	return s
+}
+
+func (s *ListRepositoryMemberWithInheritedResponseBodyResultInherited) SetType(v string) *ListRepositoryMemberWithInheritedResponseBodyResultInherited {
+	s.Type = &v
+	return s
+}
+
+func (s *ListRepositoryMemberWithInheritedResponseBodyResultInherited) SetVisibilityLevel(v string) *ListRepositoryMemberWithInheritedResponseBodyResultInherited {
+	s.VisibilityLevel = &v
+	return s
+}
+
+type ListRepositoryMemberWithInheritedResponse struct {
+	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListRepositoryMemberWithInheritedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRepositoryMemberWithInheritedResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryMemberWithInheritedResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryMemberWithInheritedResponse) SetHeaders(v map[string]*string) *ListRepositoryMemberWithInheritedResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRepositoryMemberWithInheritedResponse) SetBody(v *ListRepositoryMemberWithInheritedResponseBody) *ListRepositoryMemberWithInheritedResponse {
+	s.Body = v
+	return s
+}
+
+type ListRepositoryWebhookRequest struct {
+	// accessToken
+	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	// 企业Id
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	// 页码
+	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
+	// 每页数据量
+	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
+}
+
+func (s ListRepositoryWebhookRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryWebhookRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryWebhookRequest) SetAccessToken(v string) *ListRepositoryWebhookRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *ListRepositoryWebhookRequest) SetOrganizationId(v string) *ListRepositoryWebhookRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *ListRepositoryWebhookRequest) SetPage(v int64) *ListRepositoryWebhookRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListRepositoryWebhookRequest) SetPageSize(v int64) *ListRepositoryWebhookRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListRepositoryWebhookResponseBody struct {
+	ErrorCode    *string                                    `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	ErrorMessage *string                                    `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                                    `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       []*ListRepositoryWebhookResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	Success      *bool                                      `json:"success,omitempty" xml:"success,omitempty"`
+	Total        *int64                                     `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListRepositoryWebhookResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryWebhookResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryWebhookResponseBody) SetErrorCode(v string) *ListRepositoryWebhookResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListRepositoryWebhookResponseBody) SetErrorMessage(v string) *ListRepositoryWebhookResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListRepositoryWebhookResponseBody) SetRequestId(v string) *ListRepositoryWebhookResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListRepositoryWebhookResponseBody) SetResult(v []*ListRepositoryWebhookResponseBodyResult) *ListRepositoryWebhookResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ListRepositoryWebhookResponseBody) SetSuccess(v bool) *ListRepositoryWebhookResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListRepositoryWebhookResponseBody) SetTotal(v int64) *ListRepositoryWebhookResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListRepositoryWebhookResponseBodyResult struct {
+	CreatedAt             *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
+	Description           *string `json:"description,omitempty" xml:"description,omitempty"`
+	EnableSslVerification *bool   `json:"enableSslVerification,omitempty" xml:"enableSslVerification,omitempty"`
+	Id                    *int64  `json:"id,omitempty" xml:"id,omitempty"`
+	LastTestResult        *string `json:"lastTestResult,omitempty" xml:"lastTestResult,omitempty"`
+	MergeRequestsEvents   *bool   `json:"mergeRequestsEvents,omitempty" xml:"mergeRequestsEvents,omitempty"`
+	NoteEvents            *bool   `json:"noteEvents,omitempty" xml:"noteEvents,omitempty"`
+	ProjectId             *int64  `json:"projectId,omitempty" xml:"projectId,omitempty"`
+	PushEvents            *bool   `json:"pushEvents,omitempty" xml:"pushEvents,omitempty"`
+	SecretToken           *string `json:"secretToken,omitempty" xml:"secretToken,omitempty"`
+	TagPushEvents         *bool   `json:"tagPushEvents,omitempty" xml:"tagPushEvents,omitempty"`
+	Url                   *string `json:"url,omitempty" xml:"url,omitempty"`
+}
+
+func (s ListRepositoryWebhookResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryWebhookResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryWebhookResponseBodyResult) SetCreatedAt(v string) *ListRepositoryWebhookResponseBodyResult {
+	s.CreatedAt = &v
+	return s
+}
+
+func (s *ListRepositoryWebhookResponseBodyResult) SetDescription(v string) *ListRepositoryWebhookResponseBodyResult {
+	s.Description = &v
+	return s
+}
+
+func (s *ListRepositoryWebhookResponseBodyResult) SetEnableSslVerification(v bool) *ListRepositoryWebhookResponseBodyResult {
+	s.EnableSslVerification = &v
+	return s
+}
+
+func (s *ListRepositoryWebhookResponseBodyResult) SetId(v int64) *ListRepositoryWebhookResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *ListRepositoryWebhookResponseBodyResult) SetLastTestResult(v string) *ListRepositoryWebhookResponseBodyResult {
+	s.LastTestResult = &v
+	return s
+}
+
+func (s *ListRepositoryWebhookResponseBodyResult) SetMergeRequestsEvents(v bool) *ListRepositoryWebhookResponseBodyResult {
+	s.MergeRequestsEvents = &v
+	return s
+}
+
+func (s *ListRepositoryWebhookResponseBodyResult) SetNoteEvents(v bool) *ListRepositoryWebhookResponseBodyResult {
+	s.NoteEvents = &v
+	return s
+}
+
+func (s *ListRepositoryWebhookResponseBodyResult) SetProjectId(v int64) *ListRepositoryWebhookResponseBodyResult {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListRepositoryWebhookResponseBodyResult) SetPushEvents(v bool) *ListRepositoryWebhookResponseBodyResult {
+	s.PushEvents = &v
+	return s
+}
+
+func (s *ListRepositoryWebhookResponseBodyResult) SetSecretToken(v string) *ListRepositoryWebhookResponseBodyResult {
+	s.SecretToken = &v
+	return s
+}
+
+func (s *ListRepositoryWebhookResponseBodyResult) SetTagPushEvents(v bool) *ListRepositoryWebhookResponseBodyResult {
+	s.TagPushEvents = &v
+	return s
+}
+
+func (s *ListRepositoryWebhookResponseBodyResult) SetUrl(v string) *ListRepositoryWebhookResponseBodyResult {
+	s.Url = &v
+	return s
+}
+
+type ListRepositoryWebhookResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListRepositoryWebhookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRepositoryWebhookResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRepositoryWebhookResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRepositoryWebhookResponse) SetHeaders(v map[string]*string) *ListRepositoryWebhookResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRepositoryWebhookResponse) SetBody(v *ListRepositoryWebhookResponseBody) *ListRepositoryWebhookResponse {
+	s.Body = v
+	return s
+}
+
 type ListResourceMembersResponseBody struct {
 	// 错误码
 	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
@@ -10821,6 +13109,132 @@ func (s *StopVMDeployOrderResponse) SetBody(v *StopVMDeployOrderResponseBody) *S
 	return s
 }
 
+type TriggerRepositoryMirrorSyncRequest struct {
+	// 个人访问令牌。 使用阿里云AK+SK或使用STS临时授权方式不需要传该字段
+	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	// 远程同步库克隆账号
+	Account *string `json:"account,omitempty" xml:"account,omitempty"`
+	// 企业标识，也称企业id，字符串形式，可在云效访问链接中获取，如 https://devops.aliyun.com/organization/
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+	// 远程同步库克隆令牌
+	Token *string `json:"token,omitempty" xml:"token,omitempty"`
+}
+
+func (s TriggerRepositoryMirrorSyncRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TriggerRepositoryMirrorSyncRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TriggerRepositoryMirrorSyncRequest) SetAccessToken(v string) *TriggerRepositoryMirrorSyncRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *TriggerRepositoryMirrorSyncRequest) SetAccount(v string) *TriggerRepositoryMirrorSyncRequest {
+	s.Account = &v
+	return s
+}
+
+func (s *TriggerRepositoryMirrorSyncRequest) SetOrganizationId(v string) *TriggerRepositoryMirrorSyncRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+func (s *TriggerRepositoryMirrorSyncRequest) SetToken(v string) *TriggerRepositoryMirrorSyncRequest {
+	s.Token = &v
+	return s
+}
+
+type TriggerRepositoryMirrorSyncResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 请求ID
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// 响应结果
+	Result *TriggerRepositoryMirrorSyncResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	// 请求结果
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s TriggerRepositoryMirrorSyncResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TriggerRepositoryMirrorSyncResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TriggerRepositoryMirrorSyncResponseBody) SetErrorCode(v string) *TriggerRepositoryMirrorSyncResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *TriggerRepositoryMirrorSyncResponseBody) SetErrorMessage(v string) *TriggerRepositoryMirrorSyncResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *TriggerRepositoryMirrorSyncResponseBody) SetRequestId(v string) *TriggerRepositoryMirrorSyncResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *TriggerRepositoryMirrorSyncResponseBody) SetResult(v *TriggerRepositoryMirrorSyncResponseBodyResult) *TriggerRepositoryMirrorSyncResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *TriggerRepositoryMirrorSyncResponseBody) SetSuccess(v bool) *TriggerRepositoryMirrorSyncResponseBody {
+	s.Success = &v
+	return s
+}
+
+type TriggerRepositoryMirrorSyncResponseBodyResult struct {
+	// 仓库同步触发结果
+	Result *bool `json:"result,omitempty" xml:"result,omitempty"`
+}
+
+func (s TriggerRepositoryMirrorSyncResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TriggerRepositoryMirrorSyncResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *TriggerRepositoryMirrorSyncResponseBodyResult) SetResult(v bool) *TriggerRepositoryMirrorSyncResponseBodyResult {
+	s.Result = &v
+	return s
+}
+
+type TriggerRepositoryMirrorSyncResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *TriggerRepositoryMirrorSyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TriggerRepositoryMirrorSyncResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TriggerRepositoryMirrorSyncResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TriggerRepositoryMirrorSyncResponse) SetHeaders(v map[string]*string) *TriggerRepositoryMirrorSyncResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TriggerRepositoryMirrorSyncResponse) SetBody(v *TriggerRepositoryMirrorSyncResponseBody) *TriggerRepositoryMirrorSyncResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateFlowTagRequest struct {
 	Color          *string `json:"color,omitempty" xml:"color,omitempty"`
 	FlowTagGroupId *int64  `json:"flowTagGroupId,omitempty" xml:"flowTagGroupId,omitempty"`
@@ -11874,6 +14288,91 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) AddWebhook(repositoryId *string, request *AddWebhookRequest) (_result *AddWebhookResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AddWebhookResponse{}
+	_body, _err := client.AddWebhookWithOptions(repositoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddWebhookWithOptions(repositoryId *string, request *AddWebhookRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddWebhookResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	repositoryId = openapiutil.GetEncodeParam(repositoryId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["AccessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSslVerification)) {
+		body["enableSslVerification"] = request.EnableSslVerification
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MergeRequestsEvents)) {
+		body["mergeRequestsEvents"] = request.MergeRequestsEvents
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NoteEvents)) {
+		body["noteEvents"] = request.NoteEvents
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PushEvents)) {
+		body["pushEvents"] = request.PushEvents
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretToken)) {
+		body["secretToken"] = request.SecretToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagPushEvents)) {
+		body["tagPushEvents"] = request.TagPushEvents
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		body["url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddWebhook"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(repositoryId) + "/webhooks/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddWebhookResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CreateFlowTag(organizationId *string, request *CreateFlowTagRequest) (_result *CreateFlowTagResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12110,6 +14609,138 @@ func (client *Client) CreateProjectWithOptions(organizationId *string, request *
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateRepository(request *CreateRepositoryRequest) (_result *CreateRepositoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateRepositoryResponse{}
+	_body, _err := client.CreateRepositoryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateRepositoryWithOptions(request *CreateRepositoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateRepositoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateParentPath)) {
+		query["createParentPath"] = request.CreateParentPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sync)) {
+		query["sync"] = request.Sync
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AvatarUrl)) {
+		body["avatarUrl"] = request.AvatarUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GitignoreType)) {
+		body["gitignoreType"] = request.GitignoreType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImportAccount)) {
+		body["importAccount"] = request.ImportAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImportDemoProject)) {
+		body["importDemoProject"] = request.ImportDemoProject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImportRepoType)) {
+		body["importRepoType"] = request.ImportRepoType
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ImportSvnRepoConfig))) {
+		body["importSvnRepoConfig"] = request.ImportSvnRepoConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImportToken)) {
+		body["importToken"] = request.ImportToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImportTokenEncrypted)) {
+		body["importTokenEncrypted"] = request.ImportTokenEncrypted
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImportUrl)) {
+		body["importUrl"] = request.ImportUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InitStandardService)) {
+		body["initStandardService"] = request.InitStandardService
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsCryptoEnabled)) {
+		body["isCryptoEnabled"] = request.IsCryptoEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocalImportUrl)) {
+		body["localImportUrl"] = request.LocalImportUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NamespaceId)) {
+		body["namespaceId"] = request.NamespaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Path)) {
+		body["path"] = request.Path
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReadmeType)) {
+		body["readmeType"] = request.ReadmeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VisibilityLevel)) {
+		body["visibilityLevel"] = request.VisibilityLevel
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateRepository"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateRepositoryResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -12813,6 +15444,53 @@ func (client *Client) FrozenWorkspaceWithOptions(workspaceId *string, headers ma
 	return _result, _err
 }
 
+func (client *Client) GetCodeupOrganization(identity *string, request *GetCodeupOrganizationRequest) (_result *GetCodeupOrganizationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetCodeupOrganizationResponse{}
+	_body, _err := client.GetCodeupOrganizationWithOptions(identity, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetCodeupOrganizationWithOptions(identity *string, request *GetCodeupOrganizationRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCodeupOrganizationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	identity = openapiutil.GetEncodeParam(identity)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["AccessToken"] = request.AccessToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCodeupOrganization"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/organization/" + tea.StringValue(identity)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCodeupOrganizationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) GetCustomFieldOption(organizationId *string, fieldId *string, request *GetCustomFieldOptionRequest) (_result *GetCustomFieldOptionResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -12861,6 +15539,65 @@ func (client *Client) GetCustomFieldOptionWithOptions(organizationId *string, fi
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetCustomFieldOptionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFileLastCommit(repositoryId *string, request *GetFileLastCommitRequest) (_result *GetFileLastCommitResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetFileLastCommitResponse{}
+	_body, _err := client.GetFileLastCommitWithOptions(repositoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFileLastCommitWithOptions(repositoryId *string, request *GetFileLastCommitRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFileLastCommitResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	repositoryId = openapiutil.GetEncodeParam(repositoryId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filepath)) {
+		query["filepath"] = request.Filepath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sha)) {
+		query["sha"] = request.Sha
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFileLastCommit"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(repositoryId) + "/files/lastCommit"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFileLastCommitResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -13239,6 +15976,118 @@ func (client *Client) GetProjectInfoWithOptions(organizationId *string, projectI
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetProjectInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetProjectMember(request *GetProjectMemberRequest) (_result *GetProjectMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetProjectMemberResponse{}
+	_body, _err := client.GetProjectMemberWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetProjectMemberWithOptions(request *GetProjectMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetProjectMemberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["AccessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["OrganizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RepositoryId)) {
+		query["repositoryId"] = request.RepositoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserAliyunPk)) {
+		query["userAliyunPk"] = request.UserAliyunPk
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetProjectMember"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/member/get"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetProjectMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetRepository(request *GetRepositoryRequest) (_result *GetRepositoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetRepositoryResponse{}
+	_body, _err := client.GetRepositoryWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetRepositoryWithOptions(request *GetRepositoryRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetRepositoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Identity)) {
+		query["identity"] = request.Identity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRepository"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/get"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetRepositoryResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -14179,6 +17028,190 @@ func (client *Client) ListProjectsWithOptions(organizationId *string, request *L
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListProjectsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRepositories(request *ListRepositoriesRequest) (_result *ListRepositoriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRepositoriesResponse{}
+	_body, _err := client.ListRepositoriesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRepositoriesWithOptions(request *ListRepositoriesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRepositoriesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Archived)) {
+		query["archived"] = request.Archived
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["orderBy"] = request.OrderBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PerPage)) {
+		query["perPage"] = request.PerPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Search)) {
+		query["search"] = request.Search
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["sort"] = request.Sort
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRepositories"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/list"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRepositoriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRepositoryMemberWithInherited(repositoryId *string, request *ListRepositoryMemberWithInheritedRequest) (_result *ListRepositoryMemberWithInheritedResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRepositoryMemberWithInheritedResponse{}
+	_body, _err := client.ListRepositoryMemberWithInheritedWithOptions(repositoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRepositoryMemberWithInheritedWithOptions(repositoryId *string, request *ListRepositoryMemberWithInheritedRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRepositoryMemberWithInheritedResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	repositoryId = openapiutil.GetEncodeParam(repositoryId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRepositoryMemberWithInherited"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(repositoryId) + "/members/list"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRepositoryMemberWithInheritedResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRepositoryWebhook(repositoryId *string, request *ListRepositoryWebhookRequest) (_result *ListRepositoryWebhookResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListRepositoryWebhookResponse{}
+	_body, _err := client.ListRepositoryWebhookWithOptions(repositoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListRepositoryWebhookWithOptions(repositoryId *string, request *ListRepositoryWebhookRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRepositoryWebhookResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	repositoryId = openapiutil.GetEncodeParam(repositoryId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["pageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRepositoryWebhook"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(repositoryId) + "/webhooks/list"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRepositoryWebhookResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -15227,6 +18260,65 @@ func (client *Client) StopVMDeployOrderWithOptions(organizationId *string, pipel
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopVMDeployOrderResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TriggerRepositoryMirrorSync(repositoryId *string, request *TriggerRepositoryMirrorSyncRequest) (_result *TriggerRepositoryMirrorSyncResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TriggerRepositoryMirrorSyncResponse{}
+	_body, _err := client.TriggerRepositoryMirrorSyncWithOptions(repositoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TriggerRepositoryMirrorSyncWithOptions(repositoryId *string, request *TriggerRepositoryMirrorSyncRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TriggerRepositoryMirrorSyncResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	repositoryId = openapiutil.GetEncodeParam(repositoryId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["accessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Account)) {
+		query["account"] = request.Account
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["token"] = request.Token
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TriggerRepositoryMirrorSync"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(repositoryId) + "/mirror"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TriggerRepositoryMirrorSyncResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
