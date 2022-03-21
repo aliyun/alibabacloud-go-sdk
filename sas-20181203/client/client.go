@@ -7166,6 +7166,7 @@ func (s *DescribeFieldStatisticsResponseBody) SetRequestId(v string) *DescribeFi
 
 type DescribeFieldStatisticsResponseBodyGroupedFields struct {
 	AliYunInstanceCount      *int32 `json:"AliYunInstanceCount,omitempty" xml:"AliYunInstanceCount,omitempty"`
+	AwsInstanceCount         *int32 `json:"AwsInstanceCount,omitempty" xml:"AwsInstanceCount,omitempty"`
 	ExposedInstanceCount     *int32 `json:"ExposedInstanceCount,omitempty" xml:"ExposedInstanceCount,omitempty"`
 	GeneralAssetCount        *int32 `json:"GeneralAssetCount,omitempty" xml:"GeneralAssetCount,omitempty"`
 	GroupCount               *int32 `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
@@ -7196,6 +7197,11 @@ func (s DescribeFieldStatisticsResponseBodyGroupedFields) GoString() string {
 
 func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetAliYunInstanceCount(v int32) *DescribeFieldStatisticsResponseBodyGroupedFields {
 	s.AliYunInstanceCount = &v
+	return s
+}
+
+func (s *DescribeFieldStatisticsResponseBodyGroupedFields) SetAwsInstanceCount(v int32) *DescribeFieldStatisticsResponseBodyGroupedFields {
+	s.AwsInstanceCount = &v
 	return s
 }
 
@@ -9885,14 +9891,14 @@ func (s *DescribeImageVulListResponseBodyVulRecordsExtendContentJson) SetRpmEnti
 }
 
 type DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList struct {
-	FullVersion *string `json:"FullVersion,omitempty" xml:"FullVersion,omitempty"`
-	Layer       *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
-	MatchDetail *string `json:"MatchDetail,omitempty" xml:"MatchDetail,omitempty"`
-	MatchList   *string `json:"MatchList,omitempty" xml:"MatchList,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Path        *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	UpdateCmd   *string `json:"UpdateCmd,omitempty" xml:"UpdateCmd,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	FullVersion *string   `json:"FullVersion,omitempty" xml:"FullVersion,omitempty"`
+	Layer       *string   `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	MatchDetail *string   `json:"MatchDetail,omitempty" xml:"MatchDetail,omitempty"`
+	MatchList   []*string `json:"MatchList,omitempty" xml:"MatchList,omitempty" type:"Repeated"`
+	Name        *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Path        *string   `json:"Path,omitempty" xml:"Path,omitempty"`
+	UpdateCmd   *string   `json:"UpdateCmd,omitempty" xml:"UpdateCmd,omitempty"`
+	Version     *string   `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList) String() string {
@@ -9918,8 +9924,8 @@ func (s *DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityLis
 	return s
 }
 
-func (s *DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList) SetMatchList(v string) *DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList {
-	s.MatchList = &v
+func (s *DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList) SetMatchList(v []*string) *DescribeImageVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList {
+	s.MatchList = v
 	return s
 }
 
@@ -10451,435 +10457,6 @@ func (s *DescribeInstanceStatisticsResponse) SetHeaders(v map[string]*string) *D
 }
 
 func (s *DescribeInstanceStatisticsResponse) SetBody(v *DescribeInstanceStatisticsResponseBody) *DescribeInstanceStatisticsResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeIpInfoRequest struct {
-	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	Ip    *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-}
-
-func (s DescribeIpInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeIpInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeIpInfoRequest) SetField(v string) *DescribeIpInfoRequest {
-	s.Field = &v
-	return s
-}
-
-func (s *DescribeIpInfoRequest) SetIp(v string) *DescribeIpInfoRequest {
-	s.Ip = &v
-	return s
-}
-
-type DescribeIpInfoResponseBody struct {
-	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	C2DayTrace              *string `json:"c2_day_trace,omitempty" xml:"c2_day_trace,omitempty"`
-	City                    *string `json:"city,omitempty" xml:"city,omitempty"`
-	Country                 *string `json:"country,omitempty" xml:"country,omitempty"`
-	DayCnt30dTor            *string `json:"day_cnt_30d_tor,omitempty" xml:"day_cnt_30d_tor,omitempty"`
-	DayCnt30dWebAttack      *string `json:"day_cnt_30d_web_attack,omitempty" xml:"day_cnt_30d_web_attack,omitempty"`
-	DayCnt7dTor             *string `json:"day_cnt_7d_tor,omitempty" xml:"day_cnt_7d_tor,omitempty"`
-	DayCnt7dWebAttack       *string `json:"day_cnt_7d_web_attack,omitempty" xml:"day_cnt_7d_web_attack,omitempty"`
-	Geo                     *string `json:"geo,omitempty" xml:"geo,omitempty"`
-	GmtFirstC2              *string `json:"gmt_first_c2,omitempty" xml:"gmt_first_c2,omitempty"`
-	GmtFirstMiningPool      *string `json:"gmt_first_mining_pool,omitempty" xml:"gmt_first_mining_pool,omitempty"`
-	GmtLastC2               *string `json:"gmt_last_c2,omitempty" xml:"gmt_last_c2,omitempty"`
-	GmtLastMaliciousLogin   *string `json:"gmt_last_malicious_login,omitempty" xml:"gmt_last_malicious_login,omitempty"`
-	GmtLastMaliciousSource  *string `json:"gmt_last_malicious_source,omitempty" xml:"gmt_last_malicious_source,omitempty"`
-	GmtLastMiningPool       *string `json:"gmt_last_mining_pool,omitempty" xml:"gmt_last_mining_pool,omitempty"`
-	GmtLastNat              *string `json:"gmt_last_nat,omitempty" xml:"gmt_last_nat,omitempty"`
-	GmtLastProxy            *string `json:"gmt_last_proxy,omitempty" xml:"gmt_last_proxy,omitempty"`
-	GmtLastTor              *string `json:"gmt_last_tor,omitempty" xml:"gmt_last_tor,omitempty"`
-	GmtLastWebAttack        *string `json:"gmt_last_web_attack,omitempty" xml:"gmt_last_web_attack,omitempty"`
-	IdcName                 *string `json:"idc_name,omitempty" xml:"idc_name,omitempty"`
-	Ip                      *string `json:"ip,omitempty" xml:"ip,omitempty"`
-	IsC2                    *string `json:"is_c2,omitempty" xml:"is_c2,omitempty"`
-	IsC21d                  *string `json:"is_c2_1d,omitempty" xml:"is_c2_1d,omitempty"`
-	IsC27d                  *string `json:"is_c2_7d,omitempty" xml:"is_c2_7d,omitempty"`
-	IsIdc                   *string `json:"is_idc,omitempty" xml:"is_idc,omitempty"`
-	IsMaliciousLogin        *string `json:"is_malicious_login,omitempty" xml:"is_malicious_login,omitempty"`
-	IsMaliciousLogin1d      *string `json:"is_malicious_login_1d,omitempty" xml:"is_malicious_login_1d,omitempty"`
-	IsMaliciousLogin7d      *string `json:"is_malicious_login_7d,omitempty" xml:"is_malicious_login_7d,omitempty"`
-	IsMaliciousSource       *string `json:"is_malicious_source,omitempty" xml:"is_malicious_source,omitempty"`
-	IsMaliciousSource1d     *string `json:"is_malicious_source_1d,omitempty" xml:"is_malicious_source_1d,omitempty"`
-	IsMaliciousSource30d    *string `json:"is_malicious_source_30d,omitempty" xml:"is_malicious_source_30d,omitempty"`
-	IsMaliciousSource7d     *string `json:"is_malicious_source_7d,omitempty" xml:"is_malicious_source_7d,omitempty"`
-	IsMiningPool            *string `json:"is_mining_pool,omitempty" xml:"is_mining_pool,omitempty"`
-	IsMiningPool1d          *string `json:"is_mining_pool_1d,omitempty" xml:"is_mining_pool_1d,omitempty"`
-	IsMiningPool7d          *string `json:"is_mining_pool_7d,omitempty" xml:"is_mining_pool_7d,omitempty"`
-	IsNat                   *string `json:"is_nat,omitempty" xml:"is_nat,omitempty"`
-	IsNat1d                 *string `json:"is_nat_1d,omitempty" xml:"is_nat_1d,omitempty"`
-	IsNat7d                 *string `json:"is_nat_7d,omitempty" xml:"is_nat_7d,omitempty"`
-	IsProxy                 *string `json:"is_proxy,omitempty" xml:"is_proxy,omitempty"`
-	IsProxy1d               *string `json:"is_proxy_1d,omitempty" xml:"is_proxy_1d,omitempty"`
-	IsProxy7d               *string `json:"is_proxy_7d,omitempty" xml:"is_proxy_7d,omitempty"`
-	IsTor                   *string `json:"is_tor,omitempty" xml:"is_tor,omitempty"`
-	IsTor1d                 *string `json:"is_tor_1d,omitempty" xml:"is_tor_1d,omitempty"`
-	IsTor7d                 *string `json:"is_tor_7d,omitempty" xml:"is_tor_7d,omitempty"`
-	IsWebAttack             *string `json:"is_web_attack,omitempty" xml:"is_web_attack,omitempty"`
-	IsWebAttack1d           *string `json:"is_web_attack_1d,omitempty" xml:"is_web_attack_1d,omitempty"`
-	IsWebAttack30d          *string `json:"is_web_attack_30d,omitempty" xml:"is_web_attack_30d,omitempty"`
-	IsWebAttack7d           *string `json:"is_web_attack_7d,omitempty" xml:"is_web_attack_7d,omitempty"`
-	Isp                     *string `json:"isp,omitempty" xml:"isp,omitempty"`
-	MaliciousLoginDayTrace  *string `json:"malicious_login_day_trace,omitempty" xml:"malicious_login_day_trace,omitempty"`
-	MaliciousScore          *string `json:"malicious_score,omitempty" xml:"malicious_score,omitempty"`
-	MaliciousSourceDayTrace *string `json:"malicious_source_day_trace,omitempty" xml:"malicious_source_day_trace,omitempty"`
-	MiningPoolDayTrace      *string `json:"mining_pool_day_trace,omitempty" xml:"mining_pool_day_trace,omitempty"`
-	NatDayTrace             *string `json:"nat_day_trace,omitempty" xml:"nat_day_trace,omitempty"`
-	Province                *string `json:"province,omitempty" xml:"province,omitempty"`
-	ProxyDayTrace           *string `json:"proxy_day_trace,omitempty" xml:"proxy_day_trace,omitempty"`
-	Rdns                    *string `json:"rdns,omitempty" xml:"rdns,omitempty"`
-	Tags                    *string `json:"tags,omitempty" xml:"tags,omitempty"`
-	TorDayTrace             *string `json:"tor_day_trace,omitempty" xml:"tor_day_trace,omitempty"`
-	TotalDayCntTor          *string `json:"total_day_cnt_tor,omitempty" xml:"total_day_cnt_tor,omitempty"`
-	TotalDayCntWebAttack    *string `json:"total_day_cnt_web_attack,omitempty" xml:"total_day_cnt_web_attack,omitempty"`
-	WebAttackDayTrace       *string `json:"web_attack_day_trace,omitempty" xml:"web_attack_day_trace,omitempty"`
-}
-
-func (s DescribeIpInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeIpInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeIpInfoResponseBody) SetRequestId(v string) *DescribeIpInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetC2DayTrace(v string) *DescribeIpInfoResponseBody {
-	s.C2DayTrace = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetCity(v string) *DescribeIpInfoResponseBody {
-	s.City = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetCountry(v string) *DescribeIpInfoResponseBody {
-	s.Country = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetDayCnt30dTor(v string) *DescribeIpInfoResponseBody {
-	s.DayCnt30dTor = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetDayCnt30dWebAttack(v string) *DescribeIpInfoResponseBody {
-	s.DayCnt30dWebAttack = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetDayCnt7dTor(v string) *DescribeIpInfoResponseBody {
-	s.DayCnt7dTor = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetDayCnt7dWebAttack(v string) *DescribeIpInfoResponseBody {
-	s.DayCnt7dWebAttack = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetGeo(v string) *DescribeIpInfoResponseBody {
-	s.Geo = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetGmtFirstC2(v string) *DescribeIpInfoResponseBody {
-	s.GmtFirstC2 = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetGmtFirstMiningPool(v string) *DescribeIpInfoResponseBody {
-	s.GmtFirstMiningPool = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetGmtLastC2(v string) *DescribeIpInfoResponseBody {
-	s.GmtLastC2 = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetGmtLastMaliciousLogin(v string) *DescribeIpInfoResponseBody {
-	s.GmtLastMaliciousLogin = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetGmtLastMaliciousSource(v string) *DescribeIpInfoResponseBody {
-	s.GmtLastMaliciousSource = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetGmtLastMiningPool(v string) *DescribeIpInfoResponseBody {
-	s.GmtLastMiningPool = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetGmtLastNat(v string) *DescribeIpInfoResponseBody {
-	s.GmtLastNat = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetGmtLastProxy(v string) *DescribeIpInfoResponseBody {
-	s.GmtLastProxy = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetGmtLastTor(v string) *DescribeIpInfoResponseBody {
-	s.GmtLastTor = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetGmtLastWebAttack(v string) *DescribeIpInfoResponseBody {
-	s.GmtLastWebAttack = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIdcName(v string) *DescribeIpInfoResponseBody {
-	s.IdcName = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIp(v string) *DescribeIpInfoResponseBody {
-	s.Ip = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsC2(v string) *DescribeIpInfoResponseBody {
-	s.IsC2 = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsC21d(v string) *DescribeIpInfoResponseBody {
-	s.IsC21d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsC27d(v string) *DescribeIpInfoResponseBody {
-	s.IsC27d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsIdc(v string) *DescribeIpInfoResponseBody {
-	s.IsIdc = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsMaliciousLogin(v string) *DescribeIpInfoResponseBody {
-	s.IsMaliciousLogin = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsMaliciousLogin1d(v string) *DescribeIpInfoResponseBody {
-	s.IsMaliciousLogin1d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsMaliciousLogin7d(v string) *DescribeIpInfoResponseBody {
-	s.IsMaliciousLogin7d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsMaliciousSource(v string) *DescribeIpInfoResponseBody {
-	s.IsMaliciousSource = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsMaliciousSource1d(v string) *DescribeIpInfoResponseBody {
-	s.IsMaliciousSource1d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsMaliciousSource30d(v string) *DescribeIpInfoResponseBody {
-	s.IsMaliciousSource30d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsMaliciousSource7d(v string) *DescribeIpInfoResponseBody {
-	s.IsMaliciousSource7d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsMiningPool(v string) *DescribeIpInfoResponseBody {
-	s.IsMiningPool = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsMiningPool1d(v string) *DescribeIpInfoResponseBody {
-	s.IsMiningPool1d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsMiningPool7d(v string) *DescribeIpInfoResponseBody {
-	s.IsMiningPool7d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsNat(v string) *DescribeIpInfoResponseBody {
-	s.IsNat = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsNat1d(v string) *DescribeIpInfoResponseBody {
-	s.IsNat1d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsNat7d(v string) *DescribeIpInfoResponseBody {
-	s.IsNat7d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsProxy(v string) *DescribeIpInfoResponseBody {
-	s.IsProxy = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsProxy1d(v string) *DescribeIpInfoResponseBody {
-	s.IsProxy1d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsProxy7d(v string) *DescribeIpInfoResponseBody {
-	s.IsProxy7d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsTor(v string) *DescribeIpInfoResponseBody {
-	s.IsTor = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsTor1d(v string) *DescribeIpInfoResponseBody {
-	s.IsTor1d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsTor7d(v string) *DescribeIpInfoResponseBody {
-	s.IsTor7d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsWebAttack(v string) *DescribeIpInfoResponseBody {
-	s.IsWebAttack = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsWebAttack1d(v string) *DescribeIpInfoResponseBody {
-	s.IsWebAttack1d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsWebAttack30d(v string) *DescribeIpInfoResponseBody {
-	s.IsWebAttack30d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsWebAttack7d(v string) *DescribeIpInfoResponseBody {
-	s.IsWebAttack7d = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetIsp(v string) *DescribeIpInfoResponseBody {
-	s.Isp = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetMaliciousLoginDayTrace(v string) *DescribeIpInfoResponseBody {
-	s.MaliciousLoginDayTrace = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetMaliciousScore(v string) *DescribeIpInfoResponseBody {
-	s.MaliciousScore = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetMaliciousSourceDayTrace(v string) *DescribeIpInfoResponseBody {
-	s.MaliciousSourceDayTrace = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetMiningPoolDayTrace(v string) *DescribeIpInfoResponseBody {
-	s.MiningPoolDayTrace = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetNatDayTrace(v string) *DescribeIpInfoResponseBody {
-	s.NatDayTrace = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetProvince(v string) *DescribeIpInfoResponseBody {
-	s.Province = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetProxyDayTrace(v string) *DescribeIpInfoResponseBody {
-	s.ProxyDayTrace = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetRdns(v string) *DescribeIpInfoResponseBody {
-	s.Rdns = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetTags(v string) *DescribeIpInfoResponseBody {
-	s.Tags = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetTorDayTrace(v string) *DescribeIpInfoResponseBody {
-	s.TorDayTrace = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetTotalDayCntTor(v string) *DescribeIpInfoResponseBody {
-	s.TotalDayCntTor = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetTotalDayCntWebAttack(v string) *DescribeIpInfoResponseBody {
-	s.TotalDayCntWebAttack = &v
-	return s
-}
-
-func (s *DescribeIpInfoResponseBody) SetWebAttackDayTrace(v string) *DescribeIpInfoResponseBody {
-	s.WebAttackDayTrace = &v
-	return s
-}
-
-type DescribeIpInfoResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeIpInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeIpInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeIpInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeIpInfoResponse) SetHeaders(v map[string]*string) *DescribeIpInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeIpInfoResponse) SetBody(v *DescribeIpInfoResponseBody) *DescribeIpInfoResponse {
 	s.Body = v
 	return s
 }
@@ -18525,75 +18102,6 @@ func (s *DescribeVersionConfigResponse) SetHeaders(v map[string]*string) *Descri
 }
 
 func (s *DescribeVersionConfigResponse) SetBody(v *DescribeVersionConfigResponseBody) *DescribeVersionConfigResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeVolDingdingMessageRequest struct {
-	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-}
-
-func (s DescribeVolDingdingMessageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVolDingdingMessageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVolDingdingMessageRequest) SetLang(v string) *DescribeVolDingdingMessageRequest {
-	s.Lang = &v
-	return s
-}
-
-func (s *DescribeVolDingdingMessageRequest) SetSourceIp(v string) *DescribeVolDingdingMessageRequest {
-	s.SourceIp = &v
-	return s
-}
-
-type DescribeVolDingdingMessageResponseBody struct {
-	DingdingUrl *string `json:"DingdingUrl,omitempty" xml:"DingdingUrl,omitempty"`
-	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeVolDingdingMessageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVolDingdingMessageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVolDingdingMessageResponseBody) SetDingdingUrl(v string) *DescribeVolDingdingMessageResponseBody {
-	s.DingdingUrl = &v
-	return s
-}
-
-func (s *DescribeVolDingdingMessageResponseBody) SetRequestId(v string) *DescribeVolDingdingMessageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeVolDingdingMessageResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVolDingdingMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeVolDingdingMessageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVolDingdingMessageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVolDingdingMessageResponse) SetHeaders(v map[string]*string) *DescribeVolDingdingMessageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeVolDingdingMessageResponse) SetBody(v *DescribeVolDingdingMessageResponseBody) *DescribeVolDingdingMessageResponse {
 	s.Body = v
 	return s
 }
@@ -28867,54 +28375,6 @@ func (client *Client) DescribeInstanceStatistics(request *DescribeInstanceStatis
 	return _result, _err
 }
 
-func (client *Client) DescribeIpInfoWithOptions(request *DescribeIpInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeIpInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Field)) {
-		query["Field"] = request.Field
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Ip)) {
-		query["Ip"] = request.Ip
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeIpInfo"),
-		Version:     tea.String("2018-12-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeIpInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeIpInfo(request *DescribeIpInfoRequest) (_result *DescribeIpInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeIpInfoResponse{}
-	_body, _err := client.DescribeIpInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeLogstoreStorageWithOptions(request *DescribeLogstoreStorageRequest, runtime *util.RuntimeOptions) (_result *DescribeLogstoreStorageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31454,54 +30914,6 @@ func (client *Client) DescribeVersionConfig(request *DescribeVersionConfigReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVersionConfigResponse{}
 	_body, _err := client.DescribeVersionConfigWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeVolDingdingMessageWithOptions(request *DescribeVolDingdingMessageRequest, runtime *util.RuntimeOptions) (_result *DescribeVolDingdingMessageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Lang)) {
-		query["Lang"] = request.Lang
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
-		query["SourceIp"] = request.SourceIp
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeVolDingdingMessage"),
-		Version:     tea.String("2018-12-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeVolDingdingMessageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeVolDingdingMessage(request *DescribeVolDingdingMessageRequest) (_result *DescribeVolDingdingMessageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeVolDingdingMessageResponse{}
-	_body, _err := client.DescribeVolDingdingMessageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
