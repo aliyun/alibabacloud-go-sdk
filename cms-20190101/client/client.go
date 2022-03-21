@@ -12159,7 +12159,6 @@ type DescribeMetricRuleListRequest struct {
 	AlertState  *string `json:"AlertState,omitempty" xml:"AlertState,omitempty"`
 	Dimensions  *string `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
 	EnableState *bool   `json:"EnableState,omitempty" xml:"EnableState,omitempty"`
-	GroupBy     *string `json:"GroupBy,omitempty" xml:"GroupBy,omitempty"`
 	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	MetricName  *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	Namespace   *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
@@ -12190,11 +12189,6 @@ func (s *DescribeMetricRuleListRequest) SetDimensions(v string) *DescribeMetricR
 
 func (s *DescribeMetricRuleListRequest) SetEnableState(v bool) *DescribeMetricRuleListRequest {
 	s.EnableState = &v
-	return s
-}
-
-func (s *DescribeMetricRuleListRequest) SetGroupBy(v string) *DescribeMetricRuleListRequest {
-	s.GroupBy = &v
 	return s
 }
 
@@ -12736,9 +12730,10 @@ func (s *DescribeMetricRuleTargetsResponseBodyTargets) SetTarget(v []*DescribeMe
 }
 
 type DescribeMetricRuleTargetsResponseBodyTargetsTarget struct {
-	Arn   *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Arn        *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	JsonParams *string `json:"JsonParams,omitempty" xml:"JsonParams,omitempty"`
+	Level      *string `json:"Level,omitempty" xml:"Level,omitempty"`
 }
 
 func (s DescribeMetricRuleTargetsResponseBodyTargetsTarget) String() string {
@@ -12756,6 +12751,11 @@ func (s *DescribeMetricRuleTargetsResponseBodyTargetsTarget) SetArn(v string) *D
 
 func (s *DescribeMetricRuleTargetsResponseBodyTargetsTarget) SetId(v string) *DescribeMetricRuleTargetsResponseBodyTargetsTarget {
 	s.Id = &v
+	return s
+}
+
+func (s *DescribeMetricRuleTargetsResponseBodyTargetsTarget) SetJsonParams(v string) *DescribeMetricRuleTargetsResponseBodyTargetsTarget {
+	s.JsonParams = &v
 	return s
 }
 
@@ -16964,6 +16964,7 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	FailureRate     *float32 `json:"failure_rate,omitempty" xml:"failure_rate,omitempty"`
 	Header          *string  `json:"header,omitempty" xml:"header,omitempty"`
 	HttpMethod      *string  `json:"http_method,omitempty" xml:"http_method,omitempty"`
+	IsBase64Encode  *string  `json:"isBase64Encode,omitempty" xml:"isBase64Encode,omitempty"`
 	MatchRule       *int32   `json:"match_rule,omitempty" xml:"match_rule,omitempty"`
 	Password        *string  `json:"password,omitempty" xml:"password,omitempty"`
 	PingNum         *int32   `json:"ping_num,omitempty" xml:"ping_num,omitempty"`
@@ -17032,6 +17033,11 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetHead
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetHttpMethod(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
 	s.HttpMethod = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetIsBase64Encode(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.IsBase64Encode = &v
 	return s
 }
 
@@ -22651,13 +22657,14 @@ func (s *PutEventRuleTargetsRequestMnsParameters) SetRegion(v string) *PutEventR
 }
 
 type PutEventRuleTargetsRequestOpenApiParameters struct {
-	Action  *string `json:"Action,omitempty" xml:"Action,omitempty"`
-	Arn     *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	Id      *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Product *string `json:"Product,omitempty" xml:"Product,omitempty"`
-	Region  *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Role    *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	Action     *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	Arn        *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	JsonParams *string `json:"JsonParams,omitempty" xml:"JsonParams,omitempty"`
+	Product    *string `json:"Product,omitempty" xml:"Product,omitempty"`
+	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Role       *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	Version    *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s PutEventRuleTargetsRequestOpenApiParameters) String() string {
@@ -22680,6 +22687,11 @@ func (s *PutEventRuleTargetsRequestOpenApiParameters) SetArn(v string) *PutEvent
 
 func (s *PutEventRuleTargetsRequestOpenApiParameters) SetId(v string) *PutEventRuleTargetsRequestOpenApiParameters {
 	s.Id = &v
+	return s
+}
+
+func (s *PutEventRuleTargetsRequestOpenApiParameters) SetJsonParams(v string) *PutEventRuleTargetsRequestOpenApiParameters {
+	s.JsonParams = &v
 	return s
 }
 
@@ -23986,9 +23998,10 @@ func (s *PutMetricRuleTargetsRequest) SetTargets(v []*PutMetricRuleTargetsReques
 }
 
 type PutMetricRuleTargetsRequestTargets struct {
-	Arn   *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	Id    *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Arn        *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	JsonParams *string `json:"JsonParams,omitempty" xml:"JsonParams,omitempty"`
+	Level      *string `json:"Level,omitempty" xml:"Level,omitempty"`
 }
 
 func (s PutMetricRuleTargetsRequestTargets) String() string {
@@ -24006,6 +24019,11 @@ func (s *PutMetricRuleTargetsRequestTargets) SetArn(v string) *PutMetricRuleTarg
 
 func (s *PutMetricRuleTargetsRequestTargets) SetId(v string) *PutMetricRuleTargetsRequestTargets {
 	s.Id = &v
+	return s
+}
+
+func (s *PutMetricRuleTargetsRequestTargets) SetJsonParams(v string) *PutMetricRuleTargetsRequestTargets {
+	s.JsonParams = &v
 	return s
 }
 
@@ -29332,10 +29350,6 @@ func (client *Client) DescribeMetricRuleListWithOptions(request *DescribeMetricR
 
 	if !tea.BoolValue(util.IsUnset(request.EnableState)) {
 		query["EnableState"] = request.EnableState
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.GroupBy)) {
-		query["GroupBy"] = request.GroupBy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
