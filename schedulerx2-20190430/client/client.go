@@ -310,15 +310,18 @@ func (s *BatchEnableJobsResponse) SetBody(v *BatchEnableJobsResponseBody) *Batch
 }
 
 type CreateAppGroupRequest struct {
-	AlarmJson       *string `json:"AlarmJson,omitempty" xml:"AlarmJson,omitempty"`
-	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	MaxJobs         *int32  `json:"MaxJobs,omitempty" xml:"MaxJobs,omitempty"`
-	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NamespaceName   *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
-	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	AlarmJson           *string `json:"AlarmJson,omitempty" xml:"AlarmJson,omitempty"`
+	AppKey              *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	AppName             *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId             *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	MaxJobs             *int32  `json:"MaxJobs,omitempty" xml:"MaxJobs,omitempty"`
+	MonitorConfigJson   *string `json:"MonitorConfigJson,omitempty" xml:"MonitorConfigJson,omitempty"`
+	MonitorContactsJson *string `json:"MonitorContactsJson,omitempty" xml:"MonitorContactsJson,omitempty"`
+	Namespace           *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NamespaceName       *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
+	NamespaceSource     *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s CreateAppGroupRequest) String() string {
@@ -331,6 +334,11 @@ func (s CreateAppGroupRequest) GoString() string {
 
 func (s *CreateAppGroupRequest) SetAlarmJson(v string) *CreateAppGroupRequest {
 	s.AlarmJson = &v
+	return s
+}
+
+func (s *CreateAppGroupRequest) SetAppKey(v string) *CreateAppGroupRequest {
+	s.AppKey = &v
 	return s
 }
 
@@ -351,6 +359,16 @@ func (s *CreateAppGroupRequest) SetGroupId(v string) *CreateAppGroupRequest {
 
 func (s *CreateAppGroupRequest) SetMaxJobs(v int32) *CreateAppGroupRequest {
 	s.MaxJobs = &v
+	return s
+}
+
+func (s *CreateAppGroupRequest) SetMonitorConfigJson(v string) *CreateAppGroupRequest {
+	s.MonitorConfigJson = &v
+	return s
+}
+
+func (s *CreateAppGroupRequest) SetMonitorContactsJson(v string) *CreateAppGroupRequest {
+	s.MonitorContactsJson = &v
 	return s
 }
 
@@ -416,7 +434,8 @@ func (s *CreateAppGroupResponseBody) SetSuccess(v bool) *CreateAppGroupResponseB
 }
 
 type CreateAppGroupResponseBodyData struct {
-	AppGroupId *int64 `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
+	AppGroupId *int64  `json:"AppGroupId,omitempty" xml:"AppGroupId,omitempty"`
+	AppKey     *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 }
 
 func (s CreateAppGroupResponseBodyData) String() string {
@@ -429,6 +448,11 @@ func (s CreateAppGroupResponseBodyData) GoString() string {
 
 func (s *CreateAppGroupResponseBodyData) SetAppGroupId(v int64) *CreateAppGroupResponseBodyData {
 	s.AppGroupId = &v
+	return s
+}
+
+func (s *CreateAppGroupResponseBodyData) SetAppKey(v string) *CreateAppGroupResponseBodyData {
+	s.AppKey = &v
 	return s
 }
 
@@ -770,6 +794,123 @@ func (s *CreateJobResponse) SetHeaders(v map[string]*string) *CreateJobResponse 
 }
 
 func (s *CreateJobResponse) SetBody(v *CreateJobResponseBody) *CreateJobResponse {
+	s.Body = v
+	return s
+}
+
+type CreateNamespaceRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Uid         *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
+}
+
+func (s CreateNamespaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNamespaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNamespaceRequest) SetDescription(v string) *CreateNamespaceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateNamespaceRequest) SetName(v string) *CreateNamespaceRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateNamespaceRequest) SetRegionId(v string) *CreateNamespaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateNamespaceRequest) SetUid(v string) *CreateNamespaceRequest {
+	s.Uid = &v
+	return s
+}
+
+type CreateNamespaceResponseBody struct {
+	Code    *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *CreateNamespaceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateNamespaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNamespaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNamespaceResponseBody) SetCode(v int32) *CreateNamespaceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateNamespaceResponseBody) SetData(v *CreateNamespaceResponseBodyData) *CreateNamespaceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateNamespaceResponseBody) SetMessage(v string) *CreateNamespaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateNamespaceResponseBody) SetRequestId(v string) *CreateNamespaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateNamespaceResponseBody) SetSuccess(v bool) *CreateNamespaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateNamespaceResponseBodyData struct {
+	NamespaceUid *string `json:"NamespaceUid,omitempty" xml:"NamespaceUid,omitempty"`
+}
+
+func (s CreateNamespaceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNamespaceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNamespaceResponseBodyData) SetNamespaceUid(v string) *CreateNamespaceResponseBodyData {
+	s.NamespaceUid = &v
+	return s
+}
+
+type CreateNamespaceResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateNamespaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNamespaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNamespaceResponse) SetHeaders(v map[string]*string) *CreateNamespaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateNamespaceResponse) SetBody(v *CreateNamespaceResponseBody) *CreateNamespaceResponse {
 	s.Body = v
 	return s
 }
@@ -1876,6 +2017,7 @@ func (s *ExecuteWorkflowResponse) SetBody(v *ExecuteWorkflowResponseBody) *Execu
 type GetJobInfoRequest struct {
 	GroupId         *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	JobId           *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobName         *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
 	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	NamespaceSource *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -1896,6 +2038,11 @@ func (s *GetJobInfoRequest) SetGroupId(v string) *GetJobInfoRequest {
 
 func (s *GetJobInfoRequest) SetJobId(v int64) *GetJobInfoRequest {
 	s.JobId = &v
+	return s
+}
+
+func (s *GetJobInfoRequest) SetJobName(v string) *GetJobInfoRequest {
+	s.JobName = &v
 	return s
 }
 
@@ -1979,6 +2126,7 @@ type GetJobInfoResponseBodyDataJobConfigInfo struct {
 	Description     *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
 	ExecuteMode     *string                                                `json:"ExecuteMode,omitempty" xml:"ExecuteMode,omitempty"`
 	JarUrl          *string                                                `json:"JarUrl,omitempty" xml:"JarUrl,omitempty"`
+	JobId           *int64                                                 `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	JobMonitorInfo  *GetJobInfoResponseBodyDataJobConfigInfoJobMonitorInfo `json:"JobMonitorInfo,omitempty" xml:"JobMonitorInfo,omitempty" type:"Struct"`
 	MapTaskXAttrs   *GetJobInfoResponseBodyDataJobConfigInfoMapTaskXAttrs  `json:"MapTaskXAttrs,omitempty" xml:"MapTaskXAttrs,omitempty" type:"Struct"`
 	MaxAttempt      *int32                                                 `json:"MaxAttempt,omitempty" xml:"MaxAttempt,omitempty"`
@@ -2024,6 +2172,11 @@ func (s *GetJobInfoResponseBodyDataJobConfigInfo) SetExecuteMode(v string) *GetJ
 
 func (s *GetJobInfoResponseBodyDataJobConfigInfo) SetJarUrl(v string) *GetJobInfoResponseBodyDataJobConfigInfo {
 	s.JarUrl = &v
+	return s
+}
+
+func (s *GetJobInfoResponseBodyDataJobConfigInfo) SetJobId(v int64) *GetJobInfoResponseBodyDataJobConfigInfo {
+	s.JobId = &v
 	return s
 }
 
@@ -4878,6 +5031,62 @@ func (client *Client) CreateJob(request *CreateJobRequest) (_result *CreateJobRe
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateJobResponse{}
 	_body, _err := client.CreateJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest, runtime *util.RuntimeOptions) (_result *CreateNamespaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uid)) {
+		query["Uid"] = request.Uid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateNamespace"),
+		Version:     tea.String("2019-04-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result *CreateNamespaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateNamespaceResponse{}
+	_body, _err := client.CreateNamespaceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
