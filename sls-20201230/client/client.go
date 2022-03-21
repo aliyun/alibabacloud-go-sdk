@@ -1119,7 +1119,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		return _err
 	}
 
-	client.Spi = interfaceSPI.Client
+	client.Spi = interfaceSPI
 	client.EndpointRule = tea.String("central")
 	client.EndpointMap = map[string]*string{
 		"ap-southeast-1": tea.String("sls.ap-southeast-1.aliyuncs.com"),

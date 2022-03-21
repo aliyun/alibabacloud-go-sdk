@@ -1,3 +1,6 @@
+2022-03-21 Version: v1.0.1
+- Generated golang 2020-12-30 for Sls.
+
 2022-03-11 Version: v1.0.0
 - Generated golang 2020-12-30 for Sls.
 
