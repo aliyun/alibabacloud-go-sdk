@@ -26771,6 +26771,7 @@ func (s *ListManualDagInstancesResponse) SetBody(v *ListManualDagInstancesRespon
 }
 
 type ListMetaDBRequest struct {
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	DataSourceType *string `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
 	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -26783,6 +26784,11 @@ func (s ListMetaDBRequest) String() string {
 
 func (s ListMetaDBRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListMetaDBRequest) SetClusterId(v string) *ListMetaDBRequest {
+	s.ClusterId = &v
+	return s
 }
 
 func (s *ListMetaDBRequest) SetDataSourceType(v string) *ListMetaDBRequest {
@@ -35842,6 +35848,7 @@ type UpdateQualityRuleRequest struct {
 	ExpectValue       *string `json:"ExpectValue,omitempty" xml:"ExpectValue,omitempty"`
 	Id                *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	MethodName        *string `json:"MethodName,omitempty" xml:"MethodName,omitempty"`
+	OpenSwitch        *bool   `json:"OpenSwitch,omitempty" xml:"OpenSwitch,omitempty"`
 	Operator          *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	PredictType       *int32  `json:"PredictType,omitempty" xml:"PredictType,omitempty"`
 	ProjectName       *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
@@ -35900,6 +35907,11 @@ func (s *UpdateQualityRuleRequest) SetId(v int64) *UpdateQualityRuleRequest {
 
 func (s *UpdateQualityRuleRequest) SetMethodName(v string) *UpdateQualityRuleRequest {
 	s.MethodName = &v
+	return s
+}
+
+func (s *UpdateQualityRuleRequest) SetOpenSwitch(v bool) *UpdateQualityRuleRequest {
+	s.OpenSwitch = &v
 	return s
 }
 
@@ -49417,6 +49429,10 @@ func (client *Client) UpdateQualityRuleWithOptions(request *UpdateQualityRuleReq
 
 	if !tea.BoolValue(util.IsUnset(request.MethodName)) {
 		body["MethodName"] = request.MethodName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenSwitch)) {
+		body["OpenSwitch"] = request.OpenSwitch
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Operator)) {
