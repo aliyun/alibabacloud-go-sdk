@@ -1125,10 +1125,11 @@ func (s *CreateAppResponse) SetBody(v *CreateAppResponseBody) *CreateAppResponse
 }
 
 type CreateBackendRequest struct {
-	BackendName   *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
-	BackendType   *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	BackendName                        *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
+	BackendType                        *string `json:"BackendType,omitempty" xml:"BackendType,omitempty"`
+	CreateEventBridgeServiceLinkedRole *bool   `json:"CreateEventBridgeServiceLinkedRole,omitempty" xml:"CreateEventBridgeServiceLinkedRole,omitempty"`
+	Description                        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	SecurityToken                      *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s CreateBackendRequest) String() string {
@@ -1146,6 +1147,11 @@ func (s *CreateBackendRequest) SetBackendName(v string) *CreateBackendRequest {
 
 func (s *CreateBackendRequest) SetBackendType(v string) *CreateBackendRequest {
 	s.BackendType = &v
+	return s
+}
+
+func (s *CreateBackendRequest) SetCreateEventBridgeServiceLinkedRole(v bool) *CreateBackendRequest {
+	s.CreateEventBridgeServiceLinkedRole = &v
 	return s
 }
 
@@ -4514,6 +4520,7 @@ type DescribeApiResponseBodyServiceConfig struct {
 	AoneAppName           *string                                                    `json:"AoneAppName,omitempty" xml:"AoneAppName,omitempty"`
 	ContentTypeCatagory   *string                                                    `json:"ContentTypeCatagory,omitempty" xml:"ContentTypeCatagory,omitempty"`
 	ContentTypeValue      *string                                                    `json:"ContentTypeValue,omitempty" xml:"ContentTypeValue,omitempty"`
+	EventBridgeConfig     *DescribeApiResponseBodyServiceConfigEventBridgeConfig     `json:"EventBridgeConfig,omitempty" xml:"EventBridgeConfig,omitempty" type:"Struct"`
 	FunctionComputeConfig *DescribeApiResponseBodyServiceConfigFunctionComputeConfig `json:"FunctionComputeConfig,omitempty" xml:"FunctionComputeConfig,omitempty" type:"Struct"`
 	Mock                  *string                                                    `json:"Mock,omitempty" xml:"Mock,omitempty"`
 	MockHeaders           *DescribeApiResponseBodyServiceConfigMockHeaders           `json:"MockHeaders,omitempty" xml:"MockHeaders,omitempty" type:"Struct"`
@@ -4549,6 +4556,11 @@ func (s *DescribeApiResponseBodyServiceConfig) SetContentTypeCatagory(v string) 
 
 func (s *DescribeApiResponseBodyServiceConfig) SetContentTypeValue(v string) *DescribeApiResponseBodyServiceConfig {
 	s.ContentTypeValue = &v
+	return s
+}
+
+func (s *DescribeApiResponseBodyServiceConfig) SetEventBridgeConfig(v *DescribeApiResponseBodyServiceConfigEventBridgeConfig) *DescribeApiResponseBodyServiceConfig {
+	s.EventBridgeConfig = v
 	return s
 }
 
@@ -4614,6 +4626,41 @@ func (s *DescribeApiResponseBodyServiceConfig) SetServiceVpcEnable(v string) *De
 
 func (s *DescribeApiResponseBodyServiceConfig) SetVpcConfig(v *DescribeApiResponseBodyServiceConfigVpcConfig) *DescribeApiResponseBodyServiceConfig {
 	s.VpcConfig = v
+	return s
+}
+
+type DescribeApiResponseBodyServiceConfigEventBridgeConfig struct {
+	EventBridgeRegionId *string `json:"EventBridgeRegionId,omitempty" xml:"EventBridgeRegionId,omitempty"`
+	EventBus            *string `json:"EventBus,omitempty" xml:"EventBus,omitempty"`
+	EventSource         *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
+	RoleArn             *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+}
+
+func (s DescribeApiResponseBodyServiceConfigEventBridgeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApiResponseBodyServiceConfigEventBridgeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApiResponseBodyServiceConfigEventBridgeConfig) SetEventBridgeRegionId(v string) *DescribeApiResponseBodyServiceConfigEventBridgeConfig {
+	s.EventBridgeRegionId = &v
+	return s
+}
+
+func (s *DescribeApiResponseBodyServiceConfigEventBridgeConfig) SetEventBus(v string) *DescribeApiResponseBodyServiceConfigEventBridgeConfig {
+	s.EventBus = &v
+	return s
+}
+
+func (s *DescribeApiResponseBodyServiceConfigEventBridgeConfig) SetEventSource(v string) *DescribeApiResponseBodyServiceConfigEventBridgeConfig {
+	s.EventSource = &v
+	return s
+}
+
+func (s *DescribeApiResponseBodyServiceConfigEventBridgeConfig) SetRoleArn(v string) *DescribeApiResponseBodyServiceConfigEventBridgeConfig {
+	s.RoleArn = &v
 	return s
 }
 
@@ -7211,6 +7258,7 @@ func (s *DescribeApiHistoryResponseBodyResultDescriptionsResultDescription) SetT
 type DescribeApiHistoryResponseBodyServiceConfig struct {
 	ContentTypeCatagory   *string                                                           `json:"ContentTypeCatagory,omitempty" xml:"ContentTypeCatagory,omitempty"`
 	ContentTypeValue      *string                                                           `json:"ContentTypeValue,omitempty" xml:"ContentTypeValue,omitempty"`
+	EventBridgeConfig     *DescribeApiHistoryResponseBodyServiceConfigEventBridgeConfig     `json:"EventBridgeConfig,omitempty" xml:"EventBridgeConfig,omitempty" type:"Struct"`
 	FunctionComputeConfig *DescribeApiHistoryResponseBodyServiceConfigFunctionComputeConfig `json:"FunctionComputeConfig,omitempty" xml:"FunctionComputeConfig,omitempty" type:"Struct"`
 	Mock                  *string                                                           `json:"Mock,omitempty" xml:"Mock,omitempty"`
 	MockHeaders           *DescribeApiHistoryResponseBodyServiceConfigMockHeaders           `json:"MockHeaders,omitempty" xml:"MockHeaders,omitempty" type:"Struct"`
@@ -7242,6 +7290,11 @@ func (s *DescribeApiHistoryResponseBodyServiceConfig) SetContentTypeCatagory(v s
 
 func (s *DescribeApiHistoryResponseBodyServiceConfig) SetContentTypeValue(v string) *DescribeApiHistoryResponseBodyServiceConfig {
 	s.ContentTypeValue = &v
+	return s
+}
+
+func (s *DescribeApiHistoryResponseBodyServiceConfig) SetEventBridgeConfig(v *DescribeApiHistoryResponseBodyServiceConfigEventBridgeConfig) *DescribeApiHistoryResponseBodyServiceConfig {
+	s.EventBridgeConfig = v
 	return s
 }
 
@@ -7312,6 +7365,41 @@ func (s *DescribeApiHistoryResponseBodyServiceConfig) SetVpcConfig(v *DescribeAp
 
 func (s *DescribeApiHistoryResponseBodyServiceConfig) SetVpcId(v string) *DescribeApiHistoryResponseBodyServiceConfig {
 	s.VpcId = &v
+	return s
+}
+
+type DescribeApiHistoryResponseBodyServiceConfigEventBridgeConfig struct {
+	EventBridgeRegionId *string `json:"EventBridgeRegionId,omitempty" xml:"EventBridgeRegionId,omitempty"`
+	EventBus            *string `json:"EventBus,omitempty" xml:"EventBus,omitempty"`
+	EventSource         *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
+	RoleArn             *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+}
+
+func (s DescribeApiHistoryResponseBodyServiceConfigEventBridgeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeApiHistoryResponseBodyServiceConfigEventBridgeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeApiHistoryResponseBodyServiceConfigEventBridgeConfig) SetEventBridgeRegionId(v string) *DescribeApiHistoryResponseBodyServiceConfigEventBridgeConfig {
+	s.EventBridgeRegionId = &v
+	return s
+}
+
+func (s *DescribeApiHistoryResponseBodyServiceConfigEventBridgeConfig) SetEventBus(v string) *DescribeApiHistoryResponseBodyServiceConfigEventBridgeConfig {
+	s.EventBus = &v
+	return s
+}
+
+func (s *DescribeApiHistoryResponseBodyServiceConfigEventBridgeConfig) SetEventSource(v string) *DescribeApiHistoryResponseBodyServiceConfigEventBridgeConfig {
+	s.EventSource = &v
+	return s
+}
+
+func (s *DescribeApiHistoryResponseBodyServiceConfigEventBridgeConfig) SetRoleArn(v string) *DescribeApiHistoryResponseBodyServiceConfigEventBridgeConfig {
+	s.RoleArn = &v
 	return s
 }
 
@@ -11155,6 +11243,7 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModels) SetStageName(v
 }
 
 type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig struct {
+	EventBridgeConfig     *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEventBridgeConfig     `json:"EventBridgeConfig,omitempty" xml:"EventBridgeConfig,omitempty" type:"Struct"`
 	FunctionComputeConfig *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig `json:"FunctionComputeConfig,omitempty" xml:"FunctionComputeConfig,omitempty" type:"Struct"`
 	OssConfig             *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigOssConfig             `json:"OssConfig,omitempty" xml:"OssConfig,omitempty" type:"Struct"`
 	ServiceAddress        *string                                                                                    `json:"ServiceAddress,omitempty" xml:"ServiceAddress,omitempty"`
@@ -11168,6 +11257,11 @@ func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) St
 
 func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) SetEventBridgeConfig(v *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEventBridgeConfig) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig {
+	s.EventBridgeConfig = v
+	return s
 }
 
 func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) SetFunctionComputeConfig(v *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigFunctionComputeConfig) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig {
@@ -11192,6 +11286,41 @@ func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) S
 
 func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig) SetVpcConfig(v *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigVpcConfig) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfig {
 	s.VpcConfig = v
+	return s
+}
+
+type DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEventBridgeConfig struct {
+	EventBridgeRegionId *string `json:"EventBridgeRegionId,omitempty" xml:"EventBridgeRegionId,omitempty"`
+	EventBus            *string `json:"EventBus,omitempty" xml:"EventBus,omitempty"`
+	EventSource         *string `json:"EventSource,omitempty" xml:"EventSource,omitempty"`
+	RoleArn             *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEventBridgeConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEventBridgeConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEventBridgeConfig) SetEventBridgeRegionId(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEventBridgeConfig {
+	s.EventBridgeRegionId = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEventBridgeConfig) SetEventBus(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEventBridgeConfig {
+	s.EventBus = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEventBridgeConfig) SetEventSource(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEventBridgeConfig {
+	s.EventSource = &v
+	return s
+}
+
+func (s *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEventBridgeConfig) SetRoleArn(v string) *DescribeBackendInfoResponseBodyBackendInfoBackendModelsBackendConfigEventBridgeConfig {
+	s.RoleArn = &v
 	return s
 }
 
@@ -22230,6 +22359,10 @@ func (client *Client) CreateBackendWithOptions(request *CreateBackendRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.BackendType)) {
 		query["BackendType"] = request.BackendType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateEventBridgeServiceLinkedRole)) {
+		query["CreateEventBridgeServiceLinkedRole"] = request.CreateEventBridgeServiceLinkedRole
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
