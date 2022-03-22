@@ -3845,6 +3845,163 @@ func (s *DescribeDcdnDomainBpsDataResponse) SetBody(v *DescribeDcdnDomainBpsData
 	return s
 }
 
+type DescribeDcdnDomainBpsDataByLayerRequest struct {
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval       *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
+	Layer          *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDcdnDomainBpsDataByLayerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainBpsDataByLayerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainBpsDataByLayerRequest) SetDomainName(v string) *DescribeDcdnDomainBpsDataByLayerRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainBpsDataByLayerRequest) SetEndTime(v string) *DescribeDcdnDomainBpsDataByLayerRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainBpsDataByLayerRequest) SetInterval(v string) *DescribeDcdnDomainBpsDataByLayerRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainBpsDataByLayerRequest) SetIspNameEn(v string) *DescribeDcdnDomainBpsDataByLayerRequest {
+	s.IspNameEn = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainBpsDataByLayerRequest) SetLayer(v string) *DescribeDcdnDomainBpsDataByLayerRequest {
+	s.Layer = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainBpsDataByLayerRequest) SetLocationNameEn(v string) *DescribeDcdnDomainBpsDataByLayerRequest {
+	s.LocationNameEn = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainBpsDataByLayerRequest) SetOwnerId(v int64) *DescribeDcdnDomainBpsDataByLayerRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainBpsDataByLayerRequest) SetStartTime(v string) *DescribeDcdnDomainBpsDataByLayerRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDcdnDomainBpsDataByLayerResponseBody struct {
+	BpsDataInterval *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataInterval `json:"BpsDataInterval,omitempty" xml:"BpsDataInterval,omitempty" type:"Struct"`
+	DataInterval    *string                                                      `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	RequestId       *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDcdnDomainBpsDataByLayerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainBpsDataByLayerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainBpsDataByLayerResponseBody) SetBpsDataInterval(v *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataInterval) *DescribeDcdnDomainBpsDataByLayerResponseBody {
+	s.BpsDataInterval = v
+	return s
+}
+
+func (s *DescribeDcdnDomainBpsDataByLayerResponseBody) SetDataInterval(v string) *DescribeDcdnDomainBpsDataByLayerResponseBody {
+	s.DataInterval = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainBpsDataByLayerResponseBody) SetRequestId(v string) *DescribeDcdnDomainBpsDataByLayerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataInterval struct {
+	DataModule []*DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataInterval) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataInterval) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataInterval) SetDataModule(v []*DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataInterval {
+	s.DataModule = v
+	return s
+}
+
+type DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule struct {
+	TimeStamp    *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TrafficValue *string `json:"TrafficValue,omitempty" xml:"TrafficValue,omitempty"`
+	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) SetTimeStamp(v string) *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) SetTrafficValue(v string) *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule {
+	s.TrafficValue = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule) SetValue(v string) *DescribeDcdnDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule {
+	s.Value = &v
+	return s
+}
+
+type DescribeDcdnDomainBpsDataByLayerResponse struct {
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDcdnDomainBpsDataByLayerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnDomainBpsDataByLayerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainBpsDataByLayerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainBpsDataByLayerResponse) SetHeaders(v map[string]*string) *DescribeDcdnDomainBpsDataByLayerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnDomainBpsDataByLayerResponse) SetBody(v *DescribeDcdnDomainBpsDataByLayerResponseBody) *DescribeDcdnDomainBpsDataByLayerResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDcdnDomainByCertificateRequest struct {
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SSLPub  *string `json:"SSLPub,omitempty" xml:"SSLPub,omitempty"`
@@ -5213,6 +5370,163 @@ func (s *DescribeDcdnDomainHttpCodeDataResponse) SetHeaders(v map[string]*string
 }
 
 func (s *DescribeDcdnDomainHttpCodeDataResponse) SetBody(v *DescribeDcdnDomainHttpCodeDataResponseBody) *DescribeDcdnDomainHttpCodeDataResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDcdnDomainHttpCodeDataByLayerRequest struct {
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval       *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
+	Layer          *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDcdnDomainHttpCodeDataByLayerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainHttpCodeDataByLayerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainHttpCodeDataByLayerRequest) SetDomainName(v string) *DescribeDcdnDomainHttpCodeDataByLayerRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainHttpCodeDataByLayerRequest) SetEndTime(v string) *DescribeDcdnDomainHttpCodeDataByLayerRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainHttpCodeDataByLayerRequest) SetInterval(v string) *DescribeDcdnDomainHttpCodeDataByLayerRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainHttpCodeDataByLayerRequest) SetIspNameEn(v string) *DescribeDcdnDomainHttpCodeDataByLayerRequest {
+	s.IspNameEn = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainHttpCodeDataByLayerRequest) SetLayer(v string) *DescribeDcdnDomainHttpCodeDataByLayerRequest {
+	s.Layer = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainHttpCodeDataByLayerRequest) SetLocationNameEn(v string) *DescribeDcdnDomainHttpCodeDataByLayerRequest {
+	s.LocationNameEn = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainHttpCodeDataByLayerRequest) SetOwnerId(v int64) *DescribeDcdnDomainHttpCodeDataByLayerRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainHttpCodeDataByLayerRequest) SetStartTime(v string) *DescribeDcdnDomainHttpCodeDataByLayerRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDcdnDomainHttpCodeDataByLayerResponseBody struct {
+	DataInterval         *string                                                                `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	HttpCodeDataInterval *DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataInterval `json:"HttpCodeDataInterval,omitempty" xml:"HttpCodeDataInterval,omitempty" type:"Struct"`
+	RequestId            *string                                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDcdnDomainHttpCodeDataByLayerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainHttpCodeDataByLayerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainHttpCodeDataByLayerResponseBody) SetDataInterval(v string) *DescribeDcdnDomainHttpCodeDataByLayerResponseBody {
+	s.DataInterval = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainHttpCodeDataByLayerResponseBody) SetHttpCodeDataInterval(v *DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataInterval) *DescribeDcdnDomainHttpCodeDataByLayerResponseBody {
+	s.HttpCodeDataInterval = v
+	return s
+}
+
+func (s *DescribeDcdnDomainHttpCodeDataByLayerResponseBody) SetRequestId(v string) *DescribeDcdnDomainHttpCodeDataByLayerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataInterval struct {
+	DataModule []*DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataInterval) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataInterval) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataInterval) SetDataModule(v []*DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule) *DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataInterval {
+	s.DataModule = v
+	return s
+}
+
+type DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule struct {
+	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	TotalValue *string `json:"TotalValue,omitempty" xml:"TotalValue,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule) SetTimeStamp(v string) *DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule) SetTotalValue(v string) *DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule {
+	s.TotalValue = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule) SetValue(v string) *DescribeDcdnDomainHttpCodeDataByLayerResponseBodyHttpCodeDataIntervalDataModule {
+	s.Value = &v
+	return s
+}
+
+type DescribeDcdnDomainHttpCodeDataByLayerResponse struct {
+	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDcdnDomainHttpCodeDataByLayerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnDomainHttpCodeDataByLayerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainHttpCodeDataByLayerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainHttpCodeDataByLayerResponse) SetHeaders(v map[string]*string) *DescribeDcdnDomainHttpCodeDataByLayerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnDomainHttpCodeDataByLayerResponse) SetBody(v *DescribeDcdnDomainHttpCodeDataByLayerResponseBody) *DescribeDcdnDomainHttpCodeDataByLayerResponse {
 	s.Body = v
 	return s
 }
@@ -6990,6 +7304,211 @@ func (s *DescribeDcdnDomainQpsDataResponse) SetHeaders(v map[string]*string) *De
 }
 
 func (s *DescribeDcdnDomainQpsDataResponse) SetBody(v *DescribeDcdnDomainQpsDataResponseBody) *DescribeDcdnDomainQpsDataResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDcdnDomainQpsDataByLayerRequest struct {
+	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Interval       *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	IspNameEn      *string `json:"IspNameEn,omitempty" xml:"IspNameEn,omitempty"`
+	Layer          *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	LocationNameEn *string `json:"LocationNameEn,omitempty" xml:"LocationNameEn,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDcdnDomainQpsDataByLayerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainQpsDataByLayerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerRequest) SetDomainName(v string) *DescribeDcdnDomainQpsDataByLayerRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerRequest) SetEndTime(v string) *DescribeDcdnDomainQpsDataByLayerRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerRequest) SetInterval(v string) *DescribeDcdnDomainQpsDataByLayerRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerRequest) SetIspNameEn(v string) *DescribeDcdnDomainQpsDataByLayerRequest {
+	s.IspNameEn = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerRequest) SetLayer(v string) *DescribeDcdnDomainQpsDataByLayerRequest {
+	s.Layer = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerRequest) SetLocationNameEn(v string) *DescribeDcdnDomainQpsDataByLayerRequest {
+	s.LocationNameEn = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerRequest) SetOwnerId(v int64) *DescribeDcdnDomainQpsDataByLayerRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerRequest) SetStartTime(v string) *DescribeDcdnDomainQpsDataByLayerRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDcdnDomainQpsDataByLayerResponseBody struct {
+	DataInterval    *string                                                      `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
+	DomainName      *string                                                      `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime         *string                                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Layer           *string                                                      `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	QpsDataInterval *DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataInterval `json:"QpsDataInterval,omitempty" xml:"QpsDataInterval,omitempty" type:"Struct"`
+	RequestId       *string                                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime       *string                                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDcdnDomainQpsDataByLayerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainQpsDataByLayerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerResponseBody) SetDataInterval(v string) *DescribeDcdnDomainQpsDataByLayerResponseBody {
+	s.DataInterval = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerResponseBody) SetDomainName(v string) *DescribeDcdnDomainQpsDataByLayerResponseBody {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerResponseBody) SetEndTime(v string) *DescribeDcdnDomainQpsDataByLayerResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerResponseBody) SetLayer(v string) *DescribeDcdnDomainQpsDataByLayerResponseBody {
+	s.Layer = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerResponseBody) SetQpsDataInterval(v *DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataInterval) *DescribeDcdnDomainQpsDataByLayerResponseBody {
+	s.QpsDataInterval = v
+	return s
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerResponseBody) SetRequestId(v string) *DescribeDcdnDomainQpsDataByLayerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerResponseBody) SetStartTime(v string) *DescribeDcdnDomainQpsDataByLayerResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataInterval struct {
+	DataModule []*DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataInterval) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataInterval) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataInterval) SetDataModule(v []*DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule) *DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataInterval {
+	s.DataModule = v
+	return s
+}
+
+type DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule struct {
+	AccDomesticValue *string `json:"AccDomesticValue,omitempty" xml:"AccDomesticValue,omitempty"`
+	AccOverseasValue *string `json:"AccOverseasValue,omitempty" xml:"AccOverseasValue,omitempty"`
+	AccValue         *string `json:"AccValue,omitempty" xml:"AccValue,omitempty"`
+	DomesticValue    *string `json:"DomesticValue,omitempty" xml:"DomesticValue,omitempty"`
+	OverseasValue    *string `json:"OverseasValue,omitempty" xml:"OverseasValue,omitempty"`
+	TimeStamp        *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+	Value            *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule) SetAccDomesticValue(v string) *DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule {
+	s.AccDomesticValue = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule) SetAccOverseasValue(v string) *DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule {
+	s.AccOverseasValue = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule) SetAccValue(v string) *DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule {
+	s.AccValue = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule) SetDomesticValue(v string) *DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule {
+	s.DomesticValue = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule) SetOverseasValue(v string) *DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule {
+	s.OverseasValue = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule) SetTimeStamp(v string) *DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule {
+	s.TimeStamp = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule) SetValue(v string) *DescribeDcdnDomainQpsDataByLayerResponseBodyQpsDataIntervalDataModule {
+	s.Value = &v
+	return s
+}
+
+type DescribeDcdnDomainQpsDataByLayerResponse struct {
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDcdnDomainQpsDataByLayerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnDomainQpsDataByLayerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainQpsDataByLayerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerResponse) SetHeaders(v map[string]*string) *DescribeDcdnDomainQpsDataByLayerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnDomainQpsDataByLayerResponse) SetBody(v *DescribeDcdnDomainQpsDataByLayerResponseBody) *DescribeDcdnDomainQpsDataByLayerResponse {
 	s.Body = v
 	return s
 }
@@ -17037,6 +17556,7 @@ func (s *OpenDcdnServiceResponse) SetBody(v *OpenDcdnServiceResponseBody) *OpenD
 
 type PreloadDcdnObjectCachesRequest struct {
 	Area          *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	L2Preload     *bool   `json:"L2Preload,omitempty" xml:"L2Preload,omitempty"`
 	ObjectPath    *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -17052,6 +17572,11 @@ func (s PreloadDcdnObjectCachesRequest) GoString() string {
 
 func (s *PreloadDcdnObjectCachesRequest) SetArea(v string) *PreloadDcdnObjectCachesRequest {
 	s.Area = &v
+	return s
+}
+
+func (s *PreloadDcdnObjectCachesRequest) SetL2Preload(v bool) *PreloadDcdnObjectCachesRequest {
+	s.L2Preload = &v
 	return s
 }
 
@@ -21749,6 +22274,78 @@ func (client *Client) DescribeDcdnDomainBpsData(request *DescribeDcdnDomainBpsDa
 	return _result, _err
 }
 
+func (client *Client) DescribeDcdnDomainBpsDataByLayerWithOptions(request *DescribeDcdnDomainBpsDataByLayerRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnDomainBpsDataByLayerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Layer)) {
+		query["Layer"] = request.Layer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnDomainBpsDataByLayer"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnDomainBpsDataByLayerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnDomainBpsDataByLayer(request *DescribeDcdnDomainBpsDataByLayerRequest) (_result *DescribeDcdnDomainBpsDataByLayerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnDomainBpsDataByLayerResponse{}
+	_body, _err := client.DescribeDcdnDomainBpsDataByLayerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeDcdnDomainByCertificateWithOptions(request *DescribeDcdnDomainByCertificateRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnDomainByCertificateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22194,6 +22791,78 @@ func (client *Client) DescribeDcdnDomainHttpCodeData(request *DescribeDcdnDomain
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDcdnDomainHttpCodeDataResponse{}
 	_body, _err := client.DescribeDcdnDomainHttpCodeDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnDomainHttpCodeDataByLayerWithOptions(request *DescribeDcdnDomainHttpCodeDataByLayerRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnDomainHttpCodeDataByLayerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Layer)) {
+		query["Layer"] = request.Layer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnDomainHttpCodeDataByLayer"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnDomainHttpCodeDataByLayerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnDomainHttpCodeDataByLayer(request *DescribeDcdnDomainHttpCodeDataByLayerRequest) (_result *DescribeDcdnDomainHttpCodeDataByLayerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnDomainHttpCodeDataByLayerResponse{}
+	_body, _err := client.DescribeDcdnDomainHttpCodeDataByLayerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22814,6 +23483,78 @@ func (client *Client) DescribeDcdnDomainQpsData(request *DescribeDcdnDomainQpsDa
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDcdnDomainQpsDataResponse{}
 	_body, _err := client.DescribeDcdnDomainQpsDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnDomainQpsDataByLayerWithOptions(request *DescribeDcdnDomainQpsDataByLayerRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnDomainQpsDataByLayerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspNameEn)) {
+		query["IspNameEn"] = request.IspNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Layer)) {
+		query["Layer"] = request.Layer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LocationNameEn)) {
+		query["LocationNameEn"] = request.LocationNameEn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnDomainQpsDataByLayer"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnDomainQpsDataByLayerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnDomainQpsDataByLayer(request *DescribeDcdnDomainQpsDataByLayerRequest) (_result *DescribeDcdnDomainQpsDataByLayerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnDomainQpsDataByLayerResponse{}
+	_body, _err := client.DescribeDcdnDomainQpsDataByLayerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26701,6 +27442,10 @@ func (client *Client) PreloadDcdnObjectCachesWithOptions(request *PreloadDcdnObj
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Area)) {
 		query["Area"] = request.Area
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.L2Preload)) {
+		query["L2Preload"] = request.L2Preload
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ObjectPath)) {
