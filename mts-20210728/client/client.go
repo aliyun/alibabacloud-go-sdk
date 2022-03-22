@@ -309,202 +309,6 @@ func (s *QueryCopyrightExtractResponse) SetBody(v *QueryCopyrightExtractResponse
 	return s
 }
 
-type QueryImageCopyrightRequest struct {
-	// 创建时间起始
-	CreateTimeEnd *int64 `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	// 创建时间截止
-	CreateTimeStart *int64 `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
-	// 任务ID
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 页偏移
-	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// 每页数量
-	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s QueryImageCopyrightRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryImageCopyrightRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryImageCopyrightRequest) SetCreateTimeEnd(v int64) *QueryImageCopyrightRequest {
-	s.CreateTimeEnd = &v
-	return s
-}
-
-func (s *QueryImageCopyrightRequest) SetCreateTimeStart(v int64) *QueryImageCopyrightRequest {
-	s.CreateTimeStart = &v
-	return s
-}
-
-func (s *QueryImageCopyrightRequest) SetJobId(v string) *QueryImageCopyrightRequest {
-	s.JobId = &v
-	return s
-}
-
-func (s *QueryImageCopyrightRequest) SetPageNumber(v int64) *QueryImageCopyrightRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *QueryImageCopyrightRequest) SetPageSize(v int64) *QueryImageCopyrightRequest {
-	s.PageSize = &v
-	return s
-}
-
-type QueryImageCopyrightResponseBody struct {
-	// 返回数据
-	Data []*QueryImageCopyrightResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// 返回信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 请求id
-	RequestID *string `json:"RequestID,omitempty" xml:"RequestID,omitempty"`
-	// 状态码
-	StatusCode *int64 `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
-}
-
-func (s QueryImageCopyrightResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryImageCopyrightResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryImageCopyrightResponseBody) SetData(v []*QueryImageCopyrightResponseBodyData) *QueryImageCopyrightResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *QueryImageCopyrightResponseBody) SetMessage(v string) *QueryImageCopyrightResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryImageCopyrightResponseBody) SetRequestID(v string) *QueryImageCopyrightResponseBody {
-	s.RequestID = &v
-	return s
-}
-
-func (s *QueryImageCopyrightResponseBody) SetStatusCode(v int64) *QueryImageCopyrightResponseBody {
-	s.StatusCode = &v
-	return s
-}
-
-type QueryImageCopyrightResponseBodyData struct {
-	// 创建时间
-	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// 最后修改时间
-	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// 水印图片输入oss地址
-	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
-	// 任务id
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 水印强度
-	Level *int64 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// 水印信息
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// 水印信息id
-	MessageId *int64 `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// 加完水印后的输出oss地址
-	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// 任务状态
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// 用户自定义数据
-	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// uid
-	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s QueryImageCopyrightResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryImageCopyrightResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *QueryImageCopyrightResponseBodyData) SetGmtCreate(v int64) *QueryImageCopyrightResponseBodyData {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *QueryImageCopyrightResponseBodyData) SetGmtModified(v int64) *QueryImageCopyrightResponseBodyData {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *QueryImageCopyrightResponseBodyData) SetInput(v string) *QueryImageCopyrightResponseBodyData {
-	s.Input = &v
-	return s
-}
-
-func (s *QueryImageCopyrightResponseBodyData) SetJobId(v string) *QueryImageCopyrightResponseBodyData {
-	s.JobId = &v
-	return s
-}
-
-func (s *QueryImageCopyrightResponseBodyData) SetLevel(v int64) *QueryImageCopyrightResponseBodyData {
-	s.Level = &v
-	return s
-}
-
-func (s *QueryImageCopyrightResponseBodyData) SetMessage(v string) *QueryImageCopyrightResponseBodyData {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryImageCopyrightResponseBodyData) SetMessageId(v int64) *QueryImageCopyrightResponseBodyData {
-	s.MessageId = &v
-	return s
-}
-
-func (s *QueryImageCopyrightResponseBodyData) SetOutput(v string) *QueryImageCopyrightResponseBodyData {
-	s.Output = &v
-	return s
-}
-
-func (s *QueryImageCopyrightResponseBodyData) SetStatus(v string) *QueryImageCopyrightResponseBodyData {
-	s.Status = &v
-	return s
-}
-
-func (s *QueryImageCopyrightResponseBodyData) SetUserData(v string) *QueryImageCopyrightResponseBodyData {
-	s.UserData = &v
-	return s
-}
-
-func (s *QueryImageCopyrightResponseBodyData) SetUserId(v int64) *QueryImageCopyrightResponseBodyData {
-	s.UserId = &v
-	return s
-}
-
-type QueryImageCopyrightResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryImageCopyrightResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryImageCopyrightResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryImageCopyrightResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryImageCopyrightResponse) SetHeaders(v map[string]*string) *QueryImageCopyrightResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryImageCopyrightResponse) SetBody(v *QueryImageCopyrightResponseBody) *QueryImageCopyrightResponse {
-	s.Body = v
-	return s
-}
-
 type QueryTraceAbRequest struct {
 	// 任务id
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
@@ -1386,6 +1190,8 @@ func (s *SubmitImageCopyrightResponse) SetBody(v *SubmitImageCopyrightResponseBo
 type SubmitTraceAbRequest struct {
 	// 任务结果回调
 	CallBack *string `json:"CallBack,omitempty" xml:"CallBack,omitempty"`
+	// 密钥base64串
+	CipherBase64ed *string `json:"CipherBase64ed,omitempty" xml:"CipherBase64ed,omitempty"`
 	// 溯源水印ab流处理视频输入
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	// 水印强度
@@ -1412,6 +1218,11 @@ func (s SubmitTraceAbRequest) GoString() string {
 
 func (s *SubmitTraceAbRequest) SetCallBack(v string) *SubmitTraceAbRequest {
 	s.CallBack = &v
+	return s
+}
+
+func (s *SubmitTraceAbRequest) SetCipherBase64ed(v string) *SubmitTraceAbRequest {
+	s.CipherBase64ed = &v
 	return s
 }
 
@@ -1976,68 +1787,6 @@ func (client *Client) QueryCopyrightExtractWithOptions(request *QueryCopyrightEx
 	return _result, _err
 }
 
-func (client *Client) QueryImageCopyright(request *QueryImageCopyrightRequest) (_result *QueryImageCopyrightResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &QueryImageCopyrightResponse{}
-	_body, _err := client.QueryImageCopyrightWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) QueryImageCopyrightWithOptions(request *QueryImageCopyrightRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *QueryImageCopyrightResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CreateTimeEnd)) {
-		body["CreateTimeEnd"] = request.CreateTimeEnd
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CreateTimeStart)) {
-		body["CreateTimeStart"] = request.CreateTimeStart
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.JobId)) {
-		body["JobId"] = request.JobId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		body["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		body["PageSize"] = request.PageSize
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryImageCopyright"),
-		Version:     tea.String("2021-07-28"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/queryImageCopyright"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &QueryImageCopyrightResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
 func (client *Client) QueryTraceAb(request *QueryTraceAbRequest) (_result *QueryTraceAbResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -2426,6 +2175,10 @@ func (client *Client) SubmitTraceAbWithOptions(request *SubmitTraceAbRequest, he
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CallBack)) {
 		body["CallBack"] = request.CallBack
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CipherBase64ed)) {
+		body["CipherBase64ed"] = request.CipherBase64ed
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Input)) {
