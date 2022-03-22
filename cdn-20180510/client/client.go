@@ -18929,6 +18929,7 @@ func (s *PublishStagingConfigToProductionResponse) SetBody(v *PublishStagingConf
 
 type PushObjectCacheRequest struct {
 	Area          *string `json:"Area,omitempty" xml:"Area,omitempty"`
+	L2Preload     *bool   `json:"L2Preload,omitempty" xml:"L2Preload,omitempty"`
 	ObjectPath    *string `json:"ObjectPath,omitempty" xml:"ObjectPath,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -18944,6 +18945,11 @@ func (s PushObjectCacheRequest) GoString() string {
 
 func (s *PushObjectCacheRequest) SetArea(v string) *PushObjectCacheRequest {
 	s.Area = &v
+	return s
+}
+
+func (s *PushObjectCacheRequest) SetL2Preload(v bool) *PushObjectCacheRequest {
+	s.L2Preload = &v
 	return s
 }
 
@@ -28464,6 +28470,10 @@ func (client *Client) PushObjectCacheWithOptions(request *PushObjectCacheRequest
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Area)) {
 		query["Area"] = request.Area
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.L2Preload)) {
+		query["L2Preload"] = request.L2Preload
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ObjectPath)) {
