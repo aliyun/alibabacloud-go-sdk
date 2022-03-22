@@ -2001,19 +2001,20 @@ func (s *ListSnapshotResponseBody) SetTotalCount(v int32) *ListSnapshotResponseB
 }
 
 type ListSnapshotResponseBodySnapshots struct {
-	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	CreationTime     *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	LastModifiedTime *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
-	Progress         *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	RemainTime       *int32  `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
-	RetentionDays    *int32  `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
-	SnapshotId       *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	SnapshotName     *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
-	SnapshotType     *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
-	SourceFsId       *string `json:"SourceFsId,omitempty" xml:"SourceFsId,omitempty"`
-	SourceFsSize     *int32  `json:"SourceFsSize,omitempty" xml:"SourceFsSize,omitempty"`
-	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Category            *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	CreationTime        *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	LastModifiedTime    *string `json:"LastModifiedTime,omitempty" xml:"LastModifiedTime,omitempty"`
+	Progress            *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	RemainTime          *int32  `json:"RemainTime,omitempty" xml:"RemainTime,omitempty"`
+	RetentionDays       *int32  `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	SnapshotId          *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SnapshotName        *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	SnapshotType        *string `json:"SnapshotType,omitempty" xml:"SnapshotType,omitempty"`
+	SourceFsId          *string `json:"SourceFsId,omitempty" xml:"SourceFsId,omitempty"`
+	SourceFsSize        *int32  `json:"SourceFsSize,omitempty" xml:"SourceFsSize,omitempty"`
+	SourceFsStripeWidth *int32  `json:"SourceFsStripeWidth,omitempty" xml:"SourceFsStripeWidth,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListSnapshotResponseBodySnapshots) String() string {
@@ -2081,6 +2082,11 @@ func (s *ListSnapshotResponseBodySnapshots) SetSourceFsId(v string) *ListSnapsho
 
 func (s *ListSnapshotResponseBodySnapshots) SetSourceFsSize(v int32) *ListSnapshotResponseBodySnapshots {
 	s.SourceFsSize = &v
+	return s
+}
+
+func (s *ListSnapshotResponseBodySnapshots) SetSourceFsStripeWidth(v int32) *ListSnapshotResponseBodySnapshots {
+	s.SourceFsStripeWidth = &v
 	return s
 }
 
