@@ -1941,7 +1941,7 @@ type DeleteShardingNodeRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	ShardCount           *string `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
+	ShardCount           *int32  `json:"ShardCount,omitempty" xml:"ShardCount,omitempty"`
 }
 
 func (s DeleteShardingNodeRequest) String() string {
@@ -1987,7 +1987,7 @@ func (s *DeleteShardingNodeRequest) SetSecurityToken(v string) *DeleteShardingNo
 	return s
 }
 
-func (s *DeleteShardingNodeRequest) SetShardCount(v string) *DeleteShardingNodeRequest {
+func (s *DeleteShardingNodeRequest) SetShardCount(v int32) *DeleteShardingNodeRequest {
 	s.ShardCount = &v
 	return s
 }
