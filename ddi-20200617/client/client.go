@@ -4311,7 +4311,8 @@ func (s *ListFlowResponse) SetBody(v *ListFlowResponseBody) *ListFlowResponse {
 
 type ListFlowJobsRequest struct {
 	// 是否为临时查询。用于过滤作业。
-	Adhoc *bool `json:"Adhoc,omitempty" xml:"Adhoc,omitempty"`
+	Adhoc     *bool   `json:"Adhoc,omitempty" xml:"Adhoc,omitempty"`
+	ExactName *string `json:"ExactName,omitempty" xml:"ExactName,omitempty"`
 	// 作业ID。您可以调用ListFlowJob查看作业ID。
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// 作业名称。
@@ -4338,6 +4339,11 @@ func (s ListFlowJobsRequest) GoString() string {
 
 func (s *ListFlowJobsRequest) SetAdhoc(v bool) *ListFlowJobsRequest {
 	s.Adhoc = &v
+	return s
+}
+
+func (s *ListFlowJobsRequest) SetExactName(v string) *ListFlowJobsRequest {
+	s.ExactName = &v
 	return s
 }
 
@@ -7175,6 +7181,10 @@ func (client *Client) ListFlowJobsWithOptions(request *ListFlowJobsRequest, runt
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Adhoc)) {
 		query["Adhoc"] = request.Adhoc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExactName)) {
+		query["ExactName"] = request.ExactName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
