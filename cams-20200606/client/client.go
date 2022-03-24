@@ -12,6 +12,143 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CheckChatappContactsRequest struct {
+	// 通道类型
+	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// 需要查询的用户列表，JSON格式，单次调用最多查询10个。注意：用户号码必须加国家码
+	Contacts *string `json:"Contacts,omitempty" xml:"Contacts,omitempty"`
+	// 发送号码
+	From                 *string `json:"From,omitempty" xml:"From,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s CheckChatappContactsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckChatappContactsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckChatappContactsRequest) SetChannelType(v string) *CheckChatappContactsRequest {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *CheckChatappContactsRequest) SetContacts(v string) *CheckChatappContactsRequest {
+	s.Contacts = &v
+	return s
+}
+
+func (s *CheckChatappContactsRequest) SetFrom(v string) *CheckChatappContactsRequest {
+	s.From = &v
+	return s
+}
+
+func (s *CheckChatappContactsRequest) SetOwnerId(v int64) *CheckChatappContactsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CheckChatappContactsRequest) SetResourceOwnerAccount(v string) *CheckChatappContactsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CheckChatappContactsRequest) SetResourceOwnerId(v int64) *CheckChatappContactsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type CheckChatappContactsResponseBody struct {
+	// 返回结果 OK 为正常
+	Code *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []*CheckChatappContactsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// 提示信息，当返回异常时有值
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CheckChatappContactsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckChatappContactsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckChatappContactsResponseBody) SetCode(v string) *CheckChatappContactsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CheckChatappContactsResponseBody) SetData(v []*CheckChatappContactsResponseBodyData) *CheckChatappContactsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CheckChatappContactsResponseBody) SetMessage(v string) *CheckChatappContactsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CheckChatappContactsResponseBody) SetRequestId(v string) *CheckChatappContactsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CheckChatappContactsResponseBodyData struct {
+	// 号码
+	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
+	// 状态
+	// 有效账号为"valid"，无法账号为"invalid"，查询失败返回"failed"
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CheckChatappContactsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckChatappContactsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CheckChatappContactsResponseBodyData) SetPhoneNumber(v string) *CheckChatappContactsResponseBodyData {
+	s.PhoneNumber = &v
+	return s
+}
+
+func (s *CheckChatappContactsResponseBodyData) SetStatus(v string) *CheckChatappContactsResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type CheckChatappContactsResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CheckChatappContactsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckChatappContactsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckChatappContactsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckChatappContactsResponse) SetHeaders(v map[string]*string) *CheckChatappContactsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckChatappContactsResponse) SetBody(v *CheckChatappContactsResponseBody) *CheckChatappContactsResponse {
+	s.Body = v
+	return s
+}
+
 type CheckContactsRequest struct {
 	ChannelType          *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
 	Contacts             *string `json:"Contacts,omitempty" xml:"Contacts,omitempty"`
@@ -631,6 +768,165 @@ func (s *ListChatappTemplateResponse) SetBody(v *ListChatappTemplateResponseBody
 	return s
 }
 
+type SendChatappMessageRequest struct {
+	// 通道类型 whatsapp/viber/line
+	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
+	// 消息内容
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// 发送方
+	From *string `json:"From,omitempty" xml:"From,omitempty"`
+	// 语言
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	// 消息类型
+	MessageType *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// 当发送模板消息时，模板中包含按钮类型是QUICK_REPLY时有效，在快速回复的时候会再上行
+	Payload              *string `json:"Payload,omitempty" xml:"Payload,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	// 模板编码
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	// 模板参数
+	TemplateParams *string `json:"TemplateParams,omitempty" xml:"TemplateParams,omitempty"`
+	// 接收号码
+	To *string `json:"To,omitempty" xml:"To,omitempty"`
+	// 消息大类
+	// template--模板
+	// message--非模板
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s SendChatappMessageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendChatappMessageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendChatappMessageRequest) SetChannelType(v string) *SendChatappMessageRequest {
+	s.ChannelType = &v
+	return s
+}
+
+func (s *SendChatappMessageRequest) SetContent(v string) *SendChatappMessageRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *SendChatappMessageRequest) SetFrom(v string) *SendChatappMessageRequest {
+	s.From = &v
+	return s
+}
+
+func (s *SendChatappMessageRequest) SetLanguage(v string) *SendChatappMessageRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *SendChatappMessageRequest) SetMessageType(v string) *SendChatappMessageRequest {
+	s.MessageType = &v
+	return s
+}
+
+func (s *SendChatappMessageRequest) SetOwnerId(v int64) *SendChatappMessageRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *SendChatappMessageRequest) SetPayload(v string) *SendChatappMessageRequest {
+	s.Payload = &v
+	return s
+}
+
+func (s *SendChatappMessageRequest) SetResourceOwnerAccount(v string) *SendChatappMessageRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *SendChatappMessageRequest) SetResourceOwnerId(v int64) *SendChatappMessageRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *SendChatappMessageRequest) SetTemplateCode(v string) *SendChatappMessageRequest {
+	s.TemplateCode = &v
+	return s
+}
+
+func (s *SendChatappMessageRequest) SetTemplateParams(v string) *SendChatappMessageRequest {
+	s.TemplateParams = &v
+	return s
+}
+
+func (s *SendChatappMessageRequest) SetTo(v string) *SendChatappMessageRequest {
+	s.To = &v
+	return s
+}
+
+func (s *SendChatappMessageRequest) SetType(v string) *SendChatappMessageRequest {
+	s.Type = &v
+	return s
+}
+
+type SendChatappMessageResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SendChatappMessageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendChatappMessageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendChatappMessageResponseBody) SetCode(v string) *SendChatappMessageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SendChatappMessageResponseBody) SetData(v string) *SendChatappMessageResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *SendChatappMessageResponseBody) SetMessage(v string) *SendChatappMessageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SendChatappMessageResponseBody) SetRequestId(v string) *SendChatappMessageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SendChatappMessageResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SendChatappMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendChatappMessageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendChatappMessageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendChatappMessageResponse) SetHeaders(v map[string]*string) *SendChatappMessageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendChatappMessageResponse) SetBody(v *SendChatappMessageResponseBody) *SendChatappMessageResponse {
+	s.Body = v
+	return s
+}
+
 type SendMessageRequest struct {
 	Caption              *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
 	ChannelType          *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
@@ -865,6 +1161,70 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CheckChatappContactsWithOptions(request *CheckChatappContactsRequest, runtime *util.RuntimeOptions) (_result *CheckChatappContactsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelType)) {
+		query["ChannelType"] = request.ChannelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Contacts)) {
+		query["Contacts"] = request.Contacts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckChatappContacts"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckChatappContactsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckChatappContacts(request *CheckChatappContactsRequest) (_result *CheckChatappContactsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckChatappContactsResponse{}
+	_body, _err := client.CheckChatappContactsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1191,6 +1551,98 @@ func (client *Client) ListChatappTemplate(request *ListChatappTemplateRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListChatappTemplateResponse{}
 	_body, _err := client.ListChatappTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendChatappMessageWithOptions(request *SendChatappMessageRequest, runtime *util.RuntimeOptions) (_result *SendChatappMessageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChannelType)) {
+		query["ChannelType"] = request.ChannelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageType)) {
+		query["MessageType"] = request.MessageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Payload)) {
+		query["Payload"] = request.Payload
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
+		query["TemplateCode"] = request.TemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateParams)) {
+		query["TemplateParams"] = request.TemplateParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.To)) {
+		query["To"] = request.To
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendChatappMessage"),
+		Version:     tea.String("2020-06-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendChatappMessageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendChatappMessage(request *SendChatappMessageRequest) (_result *SendChatappMessageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendChatappMessageResponse{}
+	_body, _err := client.SendChatappMessageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
