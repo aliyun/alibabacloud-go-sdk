@@ -3108,6 +3108,99 @@ func (s *DescribeFlowResponse) SetBody(v *DescribeFlowResponseBody) *DescribeFlo
 	return s
 }
 
+type DescribeFlowCategoryTreeRequest struct {
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Mode       *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	ProjectId  *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeFlowCategoryTreeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFlowCategoryTreeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFlowCategoryTreeRequest) SetCategoryId(v string) *DescribeFlowCategoryTreeRequest {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *DescribeFlowCategoryTreeRequest) SetKeyword(v string) *DescribeFlowCategoryTreeRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *DescribeFlowCategoryTreeRequest) SetMode(v string) *DescribeFlowCategoryTreeRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *DescribeFlowCategoryTreeRequest) SetProjectId(v string) *DescribeFlowCategoryTreeRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DescribeFlowCategoryTreeRequest) SetRegionId(v string) *DescribeFlowCategoryTreeRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeFlowCategoryTreeRequest) SetType(v string) *DescribeFlowCategoryTreeRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeFlowCategoryTreeResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeFlowCategoryTreeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFlowCategoryTreeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFlowCategoryTreeResponseBody) SetData(v string) *DescribeFlowCategoryTreeResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DescribeFlowCategoryTreeResponseBody) SetRequestId(v string) *DescribeFlowCategoryTreeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeFlowCategoryTreeResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeFlowCategoryTreeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeFlowCategoryTreeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFlowCategoryTreeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFlowCategoryTreeResponse) SetHeaders(v map[string]*string) *DescribeFlowCategoryTreeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeFlowCategoryTreeResponse) SetBody(v *DescribeFlowCategoryTreeResponseBody) *DescribeFlowCategoryTreeResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeFlowJobRequest struct {
 	// 作业ID。您可以调用ListFlowJob查看作业ID。
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -4305,6 +4398,359 @@ func (s *ListFlowResponse) SetHeaders(v map[string]*string) *ListFlowResponse {
 }
 
 func (s *ListFlowResponse) SetBody(v *ListFlowResponseBody) *ListFlowResponse {
+	s.Body = v
+	return s
+}
+
+type ListFlowJobHistoryRequest struct {
+	// 作业ID。您可以调用ListFlowJob查看作业ID。
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 作业实例ID。您可以调用DescribeFlowJob查看作业实例ID。
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 作业的类型，可能的取值有：SPARK，SPARK_STREAMING，ZEPPELIN
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// 当前页码。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页查询时每页行数。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 项目ID。您可以调用ListFlowProject查看项目的ID。
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 地域ID。您可以调用DescribeRegions查看最新的阿里云地域列表。
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 状态列表。取值如下：SUBMITTED, RUNNING, SUCCESS, FAILED, KILL_FAILED, KILL_SUCCESS
+	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
+	// 查询的时间范围参数，参数列表：type: range，from: 开始时间（long型时间戳），to: 结束时间（long型时间戳）
+	TimeRange *string `json:"TimeRange,omitempty" xml:"TimeRange,omitempty"`
+}
+
+func (s ListFlowJobHistoryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlowJobHistoryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlowJobHistoryRequest) SetId(v string) *ListFlowJobHistoryRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryRequest) SetInstanceId(v string) *ListFlowJobHistoryRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryRequest) SetJobType(v string) *ListFlowJobHistoryRequest {
+	s.JobType = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryRequest) SetPageNumber(v int32) *ListFlowJobHistoryRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryRequest) SetPageSize(v int32) *ListFlowJobHistoryRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryRequest) SetProjectId(v string) *ListFlowJobHistoryRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryRequest) SetRegionId(v string) *ListFlowJobHistoryRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryRequest) SetStatusList(v []*string) *ListFlowJobHistoryRequest {
+	s.StatusList = v
+	return s
+}
+
+func (s *ListFlowJobHistoryRequest) SetTimeRange(v string) *ListFlowJobHistoryRequest {
+	s.TimeRange = &v
+	return s
+}
+
+type ListFlowJobHistoryResponseBody struct {
+	// 作业实例列表。
+	NodeInstances *ListFlowJobHistoryResponseBodyNodeInstances `json:"NodeInstances,omitempty" xml:"NodeInstances,omitempty" type:"Struct"`
+	// 当前页码。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页查询时设置的每页行数。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 记录总数。
+	Total *int32 `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListFlowJobHistoryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlowJobHistoryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlowJobHistoryResponseBody) SetNodeInstances(v *ListFlowJobHistoryResponseBodyNodeInstances) *ListFlowJobHistoryResponseBody {
+	s.NodeInstances = v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBody) SetPageNumber(v int32) *ListFlowJobHistoryResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBody) SetPageSize(v int32) *ListFlowJobHistoryResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBody) SetRequestId(v string) *ListFlowJobHistoryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBody) SetTotal(v int32) *ListFlowJobHistoryResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListFlowJobHistoryResponseBodyNodeInstances struct {
+	NodeInstance []*ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance `json:"NodeInstance,omitempty" xml:"NodeInstance,omitempty" type:"Repeated"`
+}
+
+func (s ListFlowJobHistoryResponseBodyNodeInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlowJobHistoryResponseBodyNodeInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstances) SetNodeInstance(v []*ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) *ListFlowJobHistoryResponseBodyNodeInstances {
+	s.NodeInstance = v
+	return s
+}
+
+type ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance struct {
+	// 集群ID。
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// 运行结束时间。
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 环境变量设置。
+	EnvConf *string `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
+	// 启动器的application的ID。
+	ExternalId *string `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
+	// 外部信息。例如，运行作业的错误诊断信息。
+	ExternalInfo *string `json:"ExternalInfo,omitempty" xml:"ExternalInfo,omitempty"`
+	// 实例对应的Container的状态：SUBMITTED, RUNNING, SUCCESS, FAIL, KILL_FAIL, KILL_SUCCESS
+	ExternalStatus *string `json:"ExternalStatus,omitempty" xml:"ExternalStatus,omitempty"`
+	// 失败策略，可能的取值：CONTINUE（提过本次作业），STOP（停止作业）
+	FailAct *string `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
+	// 创建时间。
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// 创建时间。
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// 保留参数。
+	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	// 作业实例ID。
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 作业ID。
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	// 作业名称。
+	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// 作业内容。
+	JobParams *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
+	// 作业类型。
+	JobType *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	// 最大重试次数。
+	MaxRetry *int32 `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
+	// 保留参数。
+	NodeName *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	// 参数设置。
+	ParamConf *string `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
+	// 项目ID。
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	// 重试次数。
+	Retries *int32 `json:"Retries,omitempty" xml:"Retries,omitempty"`
+	// 重试间隔 0-300（秒）。
+	RetryInterval *int64 `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
+	// 运行配置，取值如下：priority（优先级），userName（任务的Linux提交用户），memory（内存，单位为MB），cores（核数）
+	RunConf *string `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
+	// 运行开始时间。
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// 实例的执行状态：PREP：准备启动，SUBMITTING：提交中，RUNNING：运行中DONE：已完成，OK：执行成功，FAILED：执行失败，KILLED：已终止，KILL_FAILED：终止失败，START_RETRY：开始重试
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 节点类型：JOB：作业，CLUSTER：集群，START：开始，END：结束
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 是否结束。
+	Pending *bool `json:"pending,omitempty" xml:"pending,omitempty"`
+}
+
+func (s ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetClusterId(v string) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetEndTime(v int64) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetEnvConf(v string) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.EnvConf = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetExternalId(v string) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.ExternalId = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetExternalInfo(v string) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.ExternalInfo = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetExternalStatus(v string) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.ExternalStatus = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetFailAct(v string) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.FailAct = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetGmtCreate(v int64) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetGmtModified(v int64) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetHostName(v string) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.HostName = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetId(v string) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.Id = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetJobId(v string) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.JobId = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetJobName(v string) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.JobName = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetJobParams(v string) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.JobParams = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetJobType(v string) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.JobType = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetMaxRetry(v int32) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.MaxRetry = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetNodeName(v string) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.NodeName = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetParamConf(v string) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.ParamConf = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetProjectId(v string) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetRetries(v int32) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.Retries = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetRetryInterval(v int64) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.RetryInterval = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetRunConf(v string) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.RunConf = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetStartTime(v int64) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetStatus(v string) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.Status = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetType(v string) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.Type = &v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance) SetPending(v bool) *ListFlowJobHistoryResponseBodyNodeInstancesNodeInstance {
+	s.Pending = &v
+	return s
+}
+
+type ListFlowJobHistoryResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListFlowJobHistoryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListFlowJobHistoryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFlowJobHistoryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListFlowJobHistoryResponse) SetHeaders(v map[string]*string) *ListFlowJobHistoryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListFlowJobHistoryResponse) SetBody(v *ListFlowJobHistoryResponseBody) *ListFlowJobHistoryResponse {
 	s.Body = v
 	return s
 }
@@ -6841,6 +7287,70 @@ func (client *Client) DescribeFlow(request *DescribeFlowRequest) (_result *Descr
 	return _result, _err
 }
 
+func (client *Client) DescribeFlowCategoryTreeWithOptions(request *DescribeFlowCategoryTreeRequest, runtime *util.RuntimeOptions) (_result *DescribeFlowCategoryTreeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeFlowCategoryTree"),
+		Version:     tea.String("2020-06-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeFlowCategoryTreeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeFlowCategoryTree(request *DescribeFlowCategoryTreeRequest) (_result *DescribeFlowCategoryTreeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeFlowCategoryTreeResponse{}
+	_body, _err := client.DescribeFlowCategoryTreeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeFlowJobWithOptions(request *DescribeFlowJobRequest, runtime *util.RuntimeOptions) (_result *DescribeFlowJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7166,6 +7676,82 @@ func (client *Client) ListFlow(request *ListFlowRequest) (_result *ListFlowRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &ListFlowResponse{}
 	_body, _err := client.ListFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListFlowJobHistoryWithOptions(request *ListFlowJobHistoryRequest, runtime *util.RuntimeOptions) (_result *ListFlowJobHistoryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobType)) {
+		query["JobType"] = request.JobType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusList)) {
+		query["StatusList"] = request.StatusList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeRange)) {
+		query["TimeRange"] = request.TimeRange
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListFlowJobHistory"),
+		Version:     tea.String("2020-06-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListFlowJobHistoryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListFlowJobHistory(request *ListFlowJobHistoryRequest) (_result *ListFlowJobHistoryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListFlowJobHistoryResponse{}
+	_body, _err := client.ListFlowJobHistoryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
