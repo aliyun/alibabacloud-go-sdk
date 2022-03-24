@@ -461,6 +461,93 @@ func (s *ChangeColumnSecLevelResponse) SetBody(v *ChangeColumnSecLevelResponseBo
 	return s
 }
 
+type ChangeLhDagOwnerRequest struct {
+	DagId       *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	OwnerUserId *int64 `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	Tid         *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ChangeLhDagOwnerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeLhDagOwnerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeLhDagOwnerRequest) SetDagId(v int64) *ChangeLhDagOwnerRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *ChangeLhDagOwnerRequest) SetOwnerUserId(v int64) *ChangeLhDagOwnerRequest {
+	s.OwnerUserId = &v
+	return s
+}
+
+func (s *ChangeLhDagOwnerRequest) SetTid(v int64) *ChangeLhDagOwnerRequest {
+	s.Tid = &v
+	return s
+}
+
+type ChangeLhDagOwnerResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ChangeLhDagOwnerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeLhDagOwnerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeLhDagOwnerResponseBody) SetErrorCode(v string) *ChangeLhDagOwnerResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ChangeLhDagOwnerResponseBody) SetErrorMessage(v string) *ChangeLhDagOwnerResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ChangeLhDagOwnerResponseBody) SetRequestId(v string) *ChangeLhDagOwnerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ChangeLhDagOwnerResponseBody) SetSuccess(v bool) *ChangeLhDagOwnerResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ChangeLhDagOwnerResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ChangeLhDagOwnerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChangeLhDagOwnerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeLhDagOwnerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeLhDagOwnerResponse) SetHeaders(v map[string]*string) *ChangeLhDagOwnerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeLhDagOwnerResponse) SetBody(v *ChangeLhDagOwnerResponseBody) *ChangeLhDagOwnerResponse {
+	s.Body = v
+	return s
+}
+
 type CloseOrderRequest struct {
 	CloseReason *string `json:"CloseReason,omitempty" xml:"CloseReason,omitempty"`
 	OrderId     *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
@@ -1037,205 +1124,6 @@ func (s *CreateDataCronClearOrderResponse) SetHeaders(v map[string]*string) *Cre
 }
 
 func (s *CreateDataCronClearOrderResponse) SetBody(v *CreateDataCronClearOrderResponseBody) *CreateDataCronClearOrderResponse {
-	s.Body = v
-	return s
-}
-
-type CreateDataExportOrderRequest struct {
-	AttachmentKey   *string                            `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
-	Comment         *string                            `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	Param           *CreateDataExportOrderRequestParam `json:"Param,omitempty" xml:"Param,omitempty" type:"Struct"`
-	RelatedUserList []*int64                           `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty" type:"Repeated"`
-	Tid             *int64                             `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s CreateDataExportOrderRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDataExportOrderRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDataExportOrderRequest) SetAttachmentKey(v string) *CreateDataExportOrderRequest {
-	s.AttachmentKey = &v
-	return s
-}
-
-func (s *CreateDataExportOrderRequest) SetComment(v string) *CreateDataExportOrderRequest {
-	s.Comment = &v
-	return s
-}
-
-func (s *CreateDataExportOrderRequest) SetParam(v *CreateDataExportOrderRequestParam) *CreateDataExportOrderRequest {
-	s.Param = v
-	return s
-}
-
-func (s *CreateDataExportOrderRequest) SetRelatedUserList(v []*int64) *CreateDataExportOrderRequest {
-	s.RelatedUserList = v
-	return s
-}
-
-func (s *CreateDataExportOrderRequest) SetTid(v int64) *CreateDataExportOrderRequest {
-	s.Tid = &v
-	return s
-}
-
-type CreateDataExportOrderRequestParam struct {
-	Classify   *string                                        `json:"Classify,omitempty" xml:"Classify,omitempty"`
-	DbItemList []*CreateDataExportOrderRequestParamDbItemList `json:"DbItemList,omitempty" xml:"DbItemList,omitempty" type:"Repeated"`
-	ExecSQL    *string                                        `json:"ExecSQL,omitempty" xml:"ExecSQL,omitempty"`
-}
-
-func (s CreateDataExportOrderRequestParam) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDataExportOrderRequestParam) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDataExportOrderRequestParam) SetClassify(v string) *CreateDataExportOrderRequestParam {
-	s.Classify = &v
-	return s
-}
-
-func (s *CreateDataExportOrderRequestParam) SetDbItemList(v []*CreateDataExportOrderRequestParamDbItemList) *CreateDataExportOrderRequestParam {
-	s.DbItemList = v
-	return s
-}
-
-func (s *CreateDataExportOrderRequestParam) SetExecSQL(v string) *CreateDataExportOrderRequestParam {
-	s.ExecSQL = &v
-	return s
-}
-
-type CreateDataExportOrderRequestParamDbItemList struct {
-	DbId  *int64 `json:"DbId,omitempty" xml:"DbId,omitempty"`
-	Logic *bool  `json:"Logic,omitempty" xml:"Logic,omitempty"`
-}
-
-func (s CreateDataExportOrderRequestParamDbItemList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDataExportOrderRequestParamDbItemList) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDataExportOrderRequestParamDbItemList) SetDbId(v int64) *CreateDataExportOrderRequestParamDbItemList {
-	s.DbId = &v
-	return s
-}
-
-func (s *CreateDataExportOrderRequestParamDbItemList) SetLogic(v bool) *CreateDataExportOrderRequestParamDbItemList {
-	s.Logic = &v
-	return s
-}
-
-type CreateDataExportOrderShrinkRequest struct {
-	AttachmentKey         *string `json:"AttachmentKey,omitempty" xml:"AttachmentKey,omitempty"`
-	Comment               *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	ParamShrink           *string `json:"Param,omitempty" xml:"Param,omitempty"`
-	RelatedUserListShrink *string `json:"RelatedUserList,omitempty" xml:"RelatedUserList,omitempty"`
-	Tid                   *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-}
-
-func (s CreateDataExportOrderShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDataExportOrderShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDataExportOrderShrinkRequest) SetAttachmentKey(v string) *CreateDataExportOrderShrinkRequest {
-	s.AttachmentKey = &v
-	return s
-}
-
-func (s *CreateDataExportOrderShrinkRequest) SetComment(v string) *CreateDataExportOrderShrinkRequest {
-	s.Comment = &v
-	return s
-}
-
-func (s *CreateDataExportOrderShrinkRequest) SetParamShrink(v string) *CreateDataExportOrderShrinkRequest {
-	s.ParamShrink = &v
-	return s
-}
-
-func (s *CreateDataExportOrderShrinkRequest) SetRelatedUserListShrink(v string) *CreateDataExportOrderShrinkRequest {
-	s.RelatedUserListShrink = &v
-	return s
-}
-
-func (s *CreateDataExportOrderShrinkRequest) SetTid(v int64) *CreateDataExportOrderShrinkRequest {
-	s.Tid = &v
-	return s
-}
-
-type CreateDataExportOrderResponseBody struct {
-	CreateOrderResult []*int64 `json:"CreateOrderResult,omitempty" xml:"CreateOrderResult,omitempty" type:"Repeated"`
-	ErrorCode         *string  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	ErrorMessage      *string  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateDataExportOrderResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDataExportOrderResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDataExportOrderResponseBody) SetCreateOrderResult(v []*int64) *CreateDataExportOrderResponseBody {
-	s.CreateOrderResult = v
-	return s
-}
-
-func (s *CreateDataExportOrderResponseBody) SetErrorCode(v string) *CreateDataExportOrderResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *CreateDataExportOrderResponseBody) SetErrorMessage(v string) *CreateDataExportOrderResponseBody {
-	s.ErrorMessage = &v
-	return s
-}
-
-func (s *CreateDataExportOrderResponseBody) SetRequestId(v string) *CreateDataExportOrderResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateDataExportOrderResponseBody) SetSuccess(v bool) *CreateDataExportOrderResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateDataExportOrderResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDataExportOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateDataExportOrderResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDataExportOrderResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDataExportOrderResponse) SetHeaders(v map[string]*string) *CreateDataExportOrderResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateDataExportOrderResponse) SetBody(v *CreateDataExportOrderResponseBody) *CreateDataExportOrderResponse {
 	s.Body = v
 	return s
 }
@@ -13925,7 +13813,7 @@ func (s *ListLhTaskFlowAndScenarioResponseBody) SetSuccess(v bool) *ListLhTaskFl
 }
 
 type ListLhTaskFlowAndScenarioResponseBodyRawDAGList struct {
-	Dag []*ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag `json:"dag,omitempty" xml:"dag,omitempty" type:"Repeated"`
+	Dag []*ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag `json:"Dag,omitempty" xml:"Dag,omitempty" type:"Repeated"`
 }
 
 func (s ListLhTaskFlowAndScenarioResponseBodyRawDAGList) String() string {
@@ -14037,8 +13925,7 @@ func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) SetStatus(v int32) 
 }
 
 type ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList struct {
-	DagList  *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagList  `json:"DagList,omitempty" xml:"DagList,omitempty" type:"Struct"`
-	Scenario *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario `json:"Scenario,omitempty" xml:"Scenario,omitempty" type:"Struct"`
+	ScenarioDAG []*ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAG `json:"ScenarioDAG,omitempty" xml:"ScenarioDAG,omitempty" type:"Repeated"`
 }
 
 func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList) String() string {
@@ -14049,34 +13936,52 @@ func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList) GoString() string 
 	return s.String()
 }
 
-func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList) SetDagList(v *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagList) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList {
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList) SetScenarioDAG(v []*ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAG) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList {
+	s.ScenarioDAG = v
+	return s
+}
+
+type ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAG struct {
+	DagList  *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagList  `json:"DagList,omitempty" xml:"DagList,omitempty" type:"Struct"`
+	Scenario *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGScenario `json:"Scenario,omitempty" xml:"Scenario,omitempty" type:"Struct"`
+}
+
+func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAG) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAG) GoString() string {
+	return s.String()
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAG) SetDagList(v *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagList) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAG {
 	s.DagList = v
 	return s
 }
 
-func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList) SetScenario(v *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGList {
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAG) SetScenario(v *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGScenario) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAG {
 	s.Scenario = v
 	return s
 }
 
-type ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagList struct {
-	Dag []*ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag `json:"dag,omitempty" xml:"dag,omitempty" type:"Repeated"`
+type ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagList struct {
+	Dag []*ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag `json:"Dag,omitempty" xml:"Dag,omitempty" type:"Repeated"`
 }
 
-func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagList) String() string {
+func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagList) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagList) GoString() string {
+func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagList) GoString() string {
 	return s.String()
 }
 
-func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagList) SetDag(v []*ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagList {
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagList) SetDag(v []*ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagList {
 	s.Dag = v
 	return s
 }
 
-type ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag struct {
+type ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag struct {
 	CanEdit              *bool   `json:"CanEdit,omitempty" xml:"CanEdit,omitempty"`
 	CreatorId            *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	CreatorNickName      *string `json:"CreatorNickName,omitempty" xml:"CreatorNickName,omitempty"`
@@ -14093,109 +13998,109 @@ type ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag struct {
 	Status               *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
-func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) String() string {
+func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) GoString() string {
+func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag) GoString() string {
 	return s.String()
 }
 
-func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetCanEdit(v bool) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag) SetCanEdit(v bool) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag {
 	s.CanEdit = &v
 	return s
 }
 
-func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetCreatorId(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag) SetCreatorId(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag {
 	s.CreatorId = &v
 	return s
 }
 
-func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetCreatorNickName(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag) SetCreatorNickName(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag {
 	s.CreatorNickName = &v
 	return s
 }
 
-func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetDagOwnerNickName(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag) SetDagOwnerNickName(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag {
 	s.DagOwnerNickName = &v
 	return s
 }
 
-func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetDataFlowId(v int64) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag) SetDataFlowId(v int64) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag {
 	s.DataFlowId = &v
 	return s
 }
 
-func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetDemoId(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag) SetDemoId(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag {
 	s.DemoId = &v
 	return s
 }
 
-func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetDeployId(v int64) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag) SetDeployId(v int64) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag {
 	s.DeployId = &v
 	return s
 }
 
-func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetId(v int64) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag) SetId(v int64) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag {
 	s.Id = &v
 	return s
 }
 
-func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetIsDeleted(v bool) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag) SetIsDeleted(v bool) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag {
 	s.IsDeleted = &v
 	return s
 }
 
-func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetLatestInstanceStatus(v int32) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag) SetLatestInstanceStatus(v int32) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag {
 	s.LatestInstanceStatus = &v
 	return s
 }
 
-func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetLatestInstanceTime(v int32) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag) SetLatestInstanceTime(v int32) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag {
 	s.LatestInstanceTime = &v
 	return s
 }
 
-func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetScenarioId(v int64) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag) SetScenarioId(v int64) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag {
 	s.ScenarioId = &v
 	return s
 }
 
-func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetSpaceId(v int64) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag) SetSpaceId(v int64) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag {
 	s.SpaceId = &v
 	return s
 }
 
-func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag) SetStatus(v int32) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListDagListDag {
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag) SetStatus(v int32) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag {
 	s.Status = &v
 	return s
 }
 
-type ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario struct {
+type ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGScenario struct {
 	CreatorId    *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	ScenarioName *string `json:"ScenarioName,omitempty" xml:"ScenarioName,omitempty"`
 }
 
-func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario) String() string {
+func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGScenario) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario) GoString() string {
+func (s ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGScenario) GoString() string {
 	return s.String()
 }
 
-func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario) SetCreatorId(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario {
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGScenario) SetCreatorId(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGScenario {
 	s.CreatorId = &v
 	return s
 }
 
-func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario) SetDescription(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario {
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGScenario) SetDescription(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGScenario {
 	s.Description = &v
 	return s
 }
 
-func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario) SetScenarioName(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenario {
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGScenario) SetScenarioName(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGScenario {
 	s.ScenarioName = &v
 	return s
 }
@@ -18206,6 +18111,99 @@ func (s *PauseDataCorrectSQLJobResponse) SetBody(v *PauseDataCorrectSQLJobRespon
 	return s
 }
 
+type ReDeployLhDagVersionRequest struct {
+	DagId      *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	DagVersion *int64 `json:"DagVersion,omitempty" xml:"DagVersion,omitempty"`
+	Tid        *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ReDeployLhDagVersionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReDeployLhDagVersionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReDeployLhDagVersionRequest) SetDagId(v int64) *ReDeployLhDagVersionRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *ReDeployLhDagVersionRequest) SetDagVersion(v int64) *ReDeployLhDagVersionRequest {
+	s.DagVersion = &v
+	return s
+}
+
+func (s *ReDeployLhDagVersionRequest) SetTid(v int64) *ReDeployLhDagVersionRequest {
+	s.Tid = &v
+	return s
+}
+
+type ReDeployLhDagVersionResponseBody struct {
+	DeployId     *int64  `json:"DeployId,omitempty" xml:"DeployId,omitempty"`
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ReDeployLhDagVersionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReDeployLhDagVersionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReDeployLhDagVersionResponseBody) SetDeployId(v int64) *ReDeployLhDagVersionResponseBody {
+	s.DeployId = &v
+	return s
+}
+
+func (s *ReDeployLhDagVersionResponseBody) SetErrorCode(v string) *ReDeployLhDagVersionResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ReDeployLhDagVersionResponseBody) SetErrorMessage(v string) *ReDeployLhDagVersionResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ReDeployLhDagVersionResponseBody) SetRequestId(v string) *ReDeployLhDagVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ReDeployLhDagVersionResponseBody) SetSuccess(v bool) *ReDeployLhDagVersionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ReDeployLhDagVersionResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ReDeployLhDagVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReDeployLhDagVersionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReDeployLhDagVersionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReDeployLhDagVersionResponse) SetHeaders(v map[string]*string) *ReDeployLhDagVersionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReDeployLhDagVersionResponse) SetBody(v *ReDeployLhDagVersionResponseBody) *ReDeployLhDagVersionResponse {
+	s.Body = v
+	return s
+}
+
 type RegisterInstanceRequest struct {
 	DataLinkName     *string `json:"DataLinkName,omitempty" xml:"DataLinkName,omitempty"`
 	DatabasePassword *string `json:"DatabasePassword,omitempty" xml:"DatabasePassword,omitempty"`
@@ -20416,6 +20414,58 @@ func (client *Client) ChangeColumnSecLevel(request *ChangeColumnSecLevelRequest)
 	return _result, _err
 }
 
+func (client *Client) ChangeLhDagOwnerWithOptions(request *ChangeLhDagOwnerRequest, runtime *util.RuntimeOptions) (_result *ChangeLhDagOwnerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerUserId)) {
+		query["OwnerUserId"] = request.OwnerUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeLhDagOwner"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeLhDagOwnerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChangeLhDagOwner(request *ChangeLhDagOwnerRequest) (_result *ChangeLhDagOwnerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeLhDagOwnerResponse{}
+	_body, _err := client.ChangeLhDagOwnerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CloseOrderWithOptions(request *CloseOrderRequest, runtime *util.RuntimeOptions) (_result *CloseOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20601,76 +20651,6 @@ func (client *Client) CreateDataCronClearOrder(request *CreateDataCronClearOrder
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDataCronClearOrderResponse{}
 	_body, _err := client.CreateDataCronClearOrderWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateDataExportOrderWithOptions(tmpReq *CreateDataExportOrderRequest, runtime *util.RuntimeOptions) (_result *CreateDataExportOrderResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &CreateDataExportOrderShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Param))) {
-		request.ParamShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Param), tea.String("Param"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.RelatedUserList)) {
-		request.RelatedUserListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RelatedUserList, tea.String("RelatedUserList"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AttachmentKey)) {
-		query["AttachmentKey"] = request.AttachmentKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Comment)) {
-		query["Comment"] = request.Comment
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ParamShrink)) {
-		query["Param"] = request.ParamShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RelatedUserListShrink)) {
-		query["RelatedUserList"] = request.RelatedUserListShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tid)) {
-		query["Tid"] = request.Tid
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateDataExportOrder"),
-		Version:     tea.String("2018-11-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateDataExportOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateDataExportOrder(request *CreateDataExportOrderRequest) (_result *CreateDataExportOrderResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateDataExportOrderResponse{}
-	_body, _err := client.CreateDataExportOrderWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25937,6 +25917,58 @@ func (client *Client) PauseDataCorrectSQLJob(request *PauseDataCorrectSQLJobRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &PauseDataCorrectSQLJobResponse{}
 	_body, _err := client.PauseDataCorrectSQLJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReDeployLhDagVersionWithOptions(request *ReDeployLhDagVersionRequest, runtime *util.RuntimeOptions) (_result *ReDeployLhDagVersionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagVersion)) {
+		query["DagVersion"] = request.DagVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReDeployLhDagVersion"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReDeployLhDagVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReDeployLhDagVersion(request *ReDeployLhDagVersionRequest) (_result *ReDeployLhDagVersionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReDeployLhDagVersionResponse{}
+	_body, _err := client.ReDeployLhDagVersionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
