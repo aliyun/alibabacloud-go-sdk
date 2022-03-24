@@ -3743,7 +3743,7 @@ type DescribeBackupsResponseBodyItems struct {
 	BackupId        *string `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
 	BackupMethod    *string `json:"BackupMethod,omitempty" xml:"BackupMethod,omitempty"`
 	BackupSetInfo   *string `json:"BackupSetInfo,omitempty" xml:"BackupSetInfo,omitempty"`
-	BackupSize      *int32  `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
+	BackupSize      *int64  `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
 	BackupStartTime *string `json:"BackupStartTime,omitempty" xml:"BackupStartTime,omitempty"`
 	BackupStatus    *string `json:"BackupStatus,omitempty" xml:"BackupStatus,omitempty"`
 	BackupType      *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
@@ -3778,7 +3778,7 @@ func (s *DescribeBackupsResponseBodyItems) SetBackupSetInfo(v string) *DescribeB
 	return s
 }
 
-func (s *DescribeBackupsResponseBodyItems) SetBackupSize(v int32) *DescribeBackupsResponseBodyItems {
+func (s *DescribeBackupsResponseBodyItems) SetBackupSize(v int64) *DescribeBackupsResponseBodyItems {
 	s.BackupSize = &v
 	return s
 }
