@@ -8831,8 +8831,9 @@ func (s *DescribeDynamicTagRuleListResponse) SetBody(v *DescribeDynamicTagRuleLi
 }
 
 type DescribeEventRuleAttributeRequest struct {
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RuleName    *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	SilenceTime *string `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
 }
 
 func (s DescribeEventRuleAttributeRequest) String() string {
@@ -8850,6 +8851,11 @@ func (s *DescribeEventRuleAttributeRequest) SetRegionId(v string) *DescribeEvent
 
 func (s *DescribeEventRuleAttributeRequest) SetRuleName(v string) *DescribeEventRuleAttributeRequest {
 	s.RuleName = &v
+	return s
+}
+
+func (s *DescribeEventRuleAttributeRequest) SetSilenceTime(v string) *DescribeEventRuleAttributeRequest {
+	s.SilenceTime = &v
 	return s
 }
 
@@ -12297,27 +12303,28 @@ func (s *DescribeMetricRuleListResponseBodyAlarms) SetAlarm(v []*DescribeMetricR
 }
 
 type DescribeMetricRuleListResponseBodyAlarmsAlarm struct {
-	AlertState          *string                                                   `json:"AlertState,omitempty" xml:"AlertState,omitempty"`
-	ContactGroups       *string                                                   `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
-	Dimensions          *string                                                   `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
-	EffectiveInterval   *string                                                   `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
-	EnableState         *bool                                                     `json:"EnableState,omitempty" xml:"EnableState,omitempty"`
-	Escalations         *DescribeMetricRuleListResponseBodyAlarmsAlarmEscalations `json:"Escalations,omitempty" xml:"Escalations,omitempty" type:"Struct"`
-	GroupId             *string                                                   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	GroupName           *string                                                   `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	Labels              *DescribeMetricRuleListResponseBodyAlarmsAlarmLabels      `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Struct"`
-	MailSubject         *string                                                   `json:"MailSubject,omitempty" xml:"MailSubject,omitempty"`
-	MetricName          *string                                                   `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	Namespace           *string                                                   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NoDataPolicy        *string                                                   `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
-	NoEffectiveInterval *string                                                   `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
-	Period              *string                                                   `json:"Period,omitempty" xml:"Period,omitempty"`
-	Resources           *string                                                   `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	RuleId              *string                                                   `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleName            *string                                                   `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	SilenceTime         *int32                                                    `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	SourceType          *string                                                   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Webhook             *string                                                   `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
+	AlertState          *string                                                           `json:"AlertState,omitempty" xml:"AlertState,omitempty"`
+	CompositeExpression *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression `json:"CompositeExpression,omitempty" xml:"CompositeExpression,omitempty" type:"Struct"`
+	ContactGroups       *string                                                           `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
+	Dimensions          *string                                                           `json:"Dimensions,omitempty" xml:"Dimensions,omitempty"`
+	EffectiveInterval   *string                                                           `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
+	EnableState         *bool                                                             `json:"EnableState,omitempty" xml:"EnableState,omitempty"`
+	Escalations         *DescribeMetricRuleListResponseBodyAlarmsAlarmEscalations         `json:"Escalations,omitempty" xml:"Escalations,omitempty" type:"Struct"`
+	GroupId             *string                                                           `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	GroupName           *string                                                           `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Labels              *DescribeMetricRuleListResponseBodyAlarmsAlarmLabels              `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Struct"`
+	MailSubject         *string                                                           `json:"MailSubject,omitempty" xml:"MailSubject,omitempty"`
+	MetricName          *string                                                           `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Namespace           *string                                                           `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NoDataPolicy        *string                                                           `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
+	NoEffectiveInterval *string                                                           `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
+	Period              *string                                                           `json:"Period,omitempty" xml:"Period,omitempty"`
+	Resources           *string                                                           `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	RuleId              *string                                                           `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName            *string                                                           `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	SilenceTime         *int32                                                            `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	SourceType          *string                                                           `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Webhook             *string                                                           `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
 func (s DescribeMetricRuleListResponseBodyAlarmsAlarm) String() string {
@@ -12330,6 +12337,11 @@ func (s DescribeMetricRuleListResponseBodyAlarmsAlarm) GoString() string {
 
 func (s *DescribeMetricRuleListResponseBodyAlarmsAlarm) SetAlertState(v string) *DescribeMetricRuleListResponseBodyAlarmsAlarm {
 	s.AlertState = &v
+	return s
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarm) SetCompositeExpression(v *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression) *DescribeMetricRuleListResponseBodyAlarmsAlarm {
+	s.CompositeExpression = v
 	return s
 }
 
@@ -12430,6 +12442,105 @@ func (s *DescribeMetricRuleListResponseBodyAlarmsAlarm) SetSourceType(v string) 
 
 func (s *DescribeMetricRuleListResponseBodyAlarmsAlarm) SetWebhook(v string) *DescribeMetricRuleListResponseBodyAlarmsAlarm {
 	s.Webhook = &v
+	return s
+}
+
+type DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression struct {
+	ExpressionList     *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionList `json:"ExpressionList,omitempty" xml:"ExpressionList,omitempty" type:"Struct"`
+	ExpressionListJoin *string                                                                         `json:"ExpressionListJoin,omitempty" xml:"ExpressionListJoin,omitempty"`
+	ExpressionRaw      *string                                                                         `json:"ExpressionRaw,omitempty" xml:"ExpressionRaw,omitempty"`
+	Level              *string                                                                         `json:"Level,omitempty" xml:"Level,omitempty"`
+	Times              *int32                                                                          `json:"Times,omitempty" xml:"Times,omitempty"`
+}
+
+func (s DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression) SetExpressionList(v *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionList) *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression {
+	s.ExpressionList = v
+	return s
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression) SetExpressionListJoin(v string) *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression {
+	s.ExpressionListJoin = &v
+	return s
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression) SetExpressionRaw(v string) *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression {
+	s.ExpressionRaw = &v
+	return s
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression) SetLevel(v string) *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression) SetTimes(v int32) *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpression {
+	s.Times = &v
+	return s
+}
+
+type DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionList struct {
+	ExpressionList []*DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionListExpressionList `json:"ExpressionList,omitempty" xml:"ExpressionList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionList) SetExpressionList(v []*DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionListExpressionList) *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionList {
+	s.ExpressionList = v
+	return s
+}
+
+type DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionListExpressionList struct {
+	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	MetricName         *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Period             *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionListExpressionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionListExpressionList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionListExpressionList) SetComparisonOperator(v string) *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionListExpressionList {
+	s.ComparisonOperator = &v
+	return s
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionListExpressionList) SetMetricName(v string) *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionListExpressionList {
+	s.MetricName = &v
+	return s
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionListExpressionList) SetPeriod(v int32) *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionListExpressionList {
+	s.Period = &v
+	return s
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionListExpressionList) SetStatistics(v string) *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionListExpressionList {
+	s.Statistics = &v
+	return s
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionListExpressionList) SetThreshold(v string) *DescribeMetricRuleListResponseBodyAlarmsAlarmCompositeExpressionExpressionListExpressionList {
+	s.Threshold = &v
 	return s
 }
 
@@ -13135,6 +13246,8 @@ type DescribeMetricRuleTemplateListRequest struct {
 	History    *bool   `json:"History,omitempty" xml:"History,omitempty"`
 	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Order      *bool   `json:"Order,omitempty" xml:"Order,omitempty"`
+	OrderBy    *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -13161,6 +13274,16 @@ func (s *DescribeMetricRuleTemplateListRequest) SetKeyword(v string) *DescribeMe
 
 func (s *DescribeMetricRuleTemplateListRequest) SetName(v string) *DescribeMetricRuleTemplateListRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribeMetricRuleTemplateListRequest) SetOrder(v bool) *DescribeMetricRuleTemplateListRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *DescribeMetricRuleTemplateListRequest) SetOrderBy(v string) *DescribeMetricRuleTemplateListRequest {
+	s.OrderBy = &v
 	return s
 }
 
@@ -24392,22 +24515,23 @@ func (s *PutMonitoringConfigResponse) SetBody(v *PutMonitoringConfigResponseBody
 }
 
 type PutResourceMetricRuleRequest struct {
-	Escalations         *PutResourceMetricRuleRequestEscalations `json:"Escalations,omitempty" xml:"Escalations,omitempty" type:"Struct"`
-	ContactGroups       *string                                  `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
-	EffectiveInterval   *string                                  `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
-	EmailSubject        *string                                  `json:"EmailSubject,omitempty" xml:"EmailSubject,omitempty"`
-	Interval            *string                                  `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	Labels              []*PutResourceMetricRuleRequestLabels    `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	MetricName          *string                                  `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	Namespace           *string                                  `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NoDataPolicy        *string                                  `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
-	NoEffectiveInterval *string                                  `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
-	Period              *string                                  `json:"Period,omitempty" xml:"Period,omitempty"`
-	Resources           *string                                  `json:"Resources,omitempty" xml:"Resources,omitempty"`
-	RuleId              *string                                  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	RuleName            *string                                  `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	SilenceTime         *int32                                   `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
-	Webhook             *string                                  `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
+	Escalations         *PutResourceMetricRuleRequestEscalations         `json:"Escalations,omitempty" xml:"Escalations,omitempty" type:"Struct"`
+	CompositeExpression *PutResourceMetricRuleRequestCompositeExpression `json:"CompositeExpression,omitempty" xml:"CompositeExpression,omitempty" type:"Struct"`
+	ContactGroups       *string                                          `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
+	EffectiveInterval   *string                                          `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
+	EmailSubject        *string                                          `json:"EmailSubject,omitempty" xml:"EmailSubject,omitempty"`
+	Interval            *string                                          `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Labels              []*PutResourceMetricRuleRequestLabels            `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	MetricName          *string                                          `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Namespace           *string                                          `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NoDataPolicy        *string                                          `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
+	NoEffectiveInterval *string                                          `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
+	Period              *string                                          `json:"Period,omitempty" xml:"Period,omitempty"`
+	Resources           *string                                          `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	RuleId              *string                                          `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName            *string                                          `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	SilenceTime         *int32                                           `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	Webhook             *string                                          `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
 }
 
 func (s PutResourceMetricRuleRequest) String() string {
@@ -24420,6 +24544,11 @@ func (s PutResourceMetricRuleRequest) GoString() string {
 
 func (s *PutResourceMetricRuleRequest) SetEscalations(v *PutResourceMetricRuleRequestEscalations) *PutResourceMetricRuleRequest {
 	s.Escalations = v
+	return s
+}
+
+func (s *PutResourceMetricRuleRequest) SetCompositeExpression(v *PutResourceMetricRuleRequestCompositeExpression) *PutResourceMetricRuleRequest {
+	s.CompositeExpression = v
 	return s
 }
 
@@ -24632,6 +24761,88 @@ func (s *PutResourceMetricRuleRequestEscalationsWarn) SetTimes(v int32) *PutReso
 	return s
 }
 
+type PutResourceMetricRuleRequestCompositeExpression struct {
+	ExpressionList     []*PutResourceMetricRuleRequestCompositeExpressionExpressionList `json:"ExpressionList,omitempty" xml:"ExpressionList,omitempty" type:"Repeated"`
+	ExpressionListJoin *string                                                          `json:"ExpressionListJoin,omitempty" xml:"ExpressionListJoin,omitempty"`
+	ExpressionRaw      *string                                                          `json:"ExpressionRaw,omitempty" xml:"ExpressionRaw,omitempty"`
+	Level              *string                                                          `json:"Level,omitempty" xml:"Level,omitempty"`
+	Times              *int32                                                           `json:"Times,omitempty" xml:"Times,omitempty"`
+}
+
+func (s PutResourceMetricRuleRequestCompositeExpression) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutResourceMetricRuleRequestCompositeExpression) GoString() string {
+	return s.String()
+}
+
+func (s *PutResourceMetricRuleRequestCompositeExpression) SetExpressionList(v []*PutResourceMetricRuleRequestCompositeExpressionExpressionList) *PutResourceMetricRuleRequestCompositeExpression {
+	s.ExpressionList = v
+	return s
+}
+
+func (s *PutResourceMetricRuleRequestCompositeExpression) SetExpressionListJoin(v string) *PutResourceMetricRuleRequestCompositeExpression {
+	s.ExpressionListJoin = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleRequestCompositeExpression) SetExpressionRaw(v string) *PutResourceMetricRuleRequestCompositeExpression {
+	s.ExpressionRaw = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleRequestCompositeExpression) SetLevel(v string) *PutResourceMetricRuleRequestCompositeExpression {
+	s.Level = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleRequestCompositeExpression) SetTimes(v int32) *PutResourceMetricRuleRequestCompositeExpression {
+	s.Times = &v
+	return s
+}
+
+type PutResourceMetricRuleRequestCompositeExpressionExpressionList struct {
+	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	MetricName         *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Period             *int64  `json:"Period,omitempty" xml:"Period,omitempty"`
+	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+}
+
+func (s PutResourceMetricRuleRequestCompositeExpressionExpressionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutResourceMetricRuleRequestCompositeExpressionExpressionList) GoString() string {
+	return s.String()
+}
+
+func (s *PutResourceMetricRuleRequestCompositeExpressionExpressionList) SetComparisonOperator(v string) *PutResourceMetricRuleRequestCompositeExpressionExpressionList {
+	s.ComparisonOperator = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleRequestCompositeExpressionExpressionList) SetMetricName(v string) *PutResourceMetricRuleRequestCompositeExpressionExpressionList {
+	s.MetricName = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleRequestCompositeExpressionExpressionList) SetPeriod(v int64) *PutResourceMetricRuleRequestCompositeExpressionExpressionList {
+	s.Period = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleRequestCompositeExpressionExpressionList) SetStatistics(v string) *PutResourceMetricRuleRequestCompositeExpressionExpressionList {
+	s.Statistics = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleRequestCompositeExpressionExpressionList) SetThreshold(v string) *PutResourceMetricRuleRequestCompositeExpressionExpressionList {
+	s.Threshold = &v
+	return s
+}
+
 type PutResourceMetricRuleRequestLabels struct {
 	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
@@ -24651,6 +24862,276 @@ func (s *PutResourceMetricRuleRequestLabels) SetKey(v string) *PutResourceMetric
 }
 
 func (s *PutResourceMetricRuleRequestLabels) SetValue(v string) *PutResourceMetricRuleRequestLabels {
+	s.Value = &v
+	return s
+}
+
+type PutResourceMetricRuleShrinkRequest struct {
+	Escalations               *PutResourceMetricRuleShrinkRequestEscalations `json:"Escalations,omitempty" xml:"Escalations,omitempty" type:"Struct"`
+	CompositeExpressionShrink *string                                        `json:"CompositeExpression,omitempty" xml:"CompositeExpression,omitempty"`
+	ContactGroups             *string                                        `json:"ContactGroups,omitempty" xml:"ContactGroups,omitempty"`
+	EffectiveInterval         *string                                        `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
+	EmailSubject              *string                                        `json:"EmailSubject,omitempty" xml:"EmailSubject,omitempty"`
+	Interval                  *string                                        `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Labels                    []*PutResourceMetricRuleShrinkRequestLabels    `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	MetricName                *string                                        `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Namespace                 *string                                        `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NoDataPolicy              *string                                        `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
+	NoEffectiveInterval       *string                                        `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
+	Period                    *string                                        `json:"Period,omitempty" xml:"Period,omitempty"`
+	Resources                 *string                                        `json:"Resources,omitempty" xml:"Resources,omitempty"`
+	RuleId                    *string                                        `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName                  *string                                        `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	SilenceTime               *int32                                         `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
+	Webhook                   *string                                        `json:"Webhook,omitempty" xml:"Webhook,omitempty"`
+}
+
+func (s PutResourceMetricRuleShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutResourceMetricRuleShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PutResourceMetricRuleShrinkRequest) SetEscalations(v *PutResourceMetricRuleShrinkRequestEscalations) *PutResourceMetricRuleShrinkRequest {
+	s.Escalations = v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequest) SetCompositeExpressionShrink(v string) *PutResourceMetricRuleShrinkRequest {
+	s.CompositeExpressionShrink = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequest) SetContactGroups(v string) *PutResourceMetricRuleShrinkRequest {
+	s.ContactGroups = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequest) SetEffectiveInterval(v string) *PutResourceMetricRuleShrinkRequest {
+	s.EffectiveInterval = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequest) SetEmailSubject(v string) *PutResourceMetricRuleShrinkRequest {
+	s.EmailSubject = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequest) SetInterval(v string) *PutResourceMetricRuleShrinkRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequest) SetLabels(v []*PutResourceMetricRuleShrinkRequestLabels) *PutResourceMetricRuleShrinkRequest {
+	s.Labels = v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequest) SetMetricName(v string) *PutResourceMetricRuleShrinkRequest {
+	s.MetricName = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequest) SetNamespace(v string) *PutResourceMetricRuleShrinkRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequest) SetNoDataPolicy(v string) *PutResourceMetricRuleShrinkRequest {
+	s.NoDataPolicy = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequest) SetNoEffectiveInterval(v string) *PutResourceMetricRuleShrinkRequest {
+	s.NoEffectiveInterval = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequest) SetPeriod(v string) *PutResourceMetricRuleShrinkRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequest) SetResources(v string) *PutResourceMetricRuleShrinkRequest {
+	s.Resources = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequest) SetRuleId(v string) *PutResourceMetricRuleShrinkRequest {
+	s.RuleId = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequest) SetRuleName(v string) *PutResourceMetricRuleShrinkRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequest) SetSilenceTime(v int32) *PutResourceMetricRuleShrinkRequest {
+	s.SilenceTime = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequest) SetWebhook(v string) *PutResourceMetricRuleShrinkRequest {
+	s.Webhook = &v
+	return s
+}
+
+type PutResourceMetricRuleShrinkRequestEscalations struct {
+	Critical *PutResourceMetricRuleShrinkRequestEscalationsCritical `json:"Critical,omitempty" xml:"Critical,omitempty" require:"true" type:"Struct"`
+	Info     *PutResourceMetricRuleShrinkRequestEscalationsInfo     `json:"Info,omitempty" xml:"Info,omitempty" require:"true" type:"Struct"`
+	Warn     *PutResourceMetricRuleShrinkRequestEscalationsWarn     `json:"Warn,omitempty" xml:"Warn,omitempty" require:"true" type:"Struct"`
+}
+
+func (s PutResourceMetricRuleShrinkRequestEscalations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutResourceMetricRuleShrinkRequestEscalations) GoString() string {
+	return s.String()
+}
+
+func (s *PutResourceMetricRuleShrinkRequestEscalations) SetCritical(v *PutResourceMetricRuleShrinkRequestEscalationsCritical) *PutResourceMetricRuleShrinkRequestEscalations {
+	s.Critical = v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequestEscalations) SetInfo(v *PutResourceMetricRuleShrinkRequestEscalationsInfo) *PutResourceMetricRuleShrinkRequestEscalations {
+	s.Info = v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequestEscalations) SetWarn(v *PutResourceMetricRuleShrinkRequestEscalationsWarn) *PutResourceMetricRuleShrinkRequestEscalations {
+	s.Warn = v
+	return s
+}
+
+type PutResourceMetricRuleShrinkRequestEscalationsCritical struct {
+	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Times              *int32  `json:"Times,omitempty" xml:"Times,omitempty"`
+}
+
+func (s PutResourceMetricRuleShrinkRequestEscalationsCritical) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutResourceMetricRuleShrinkRequestEscalationsCritical) GoString() string {
+	return s.String()
+}
+
+func (s *PutResourceMetricRuleShrinkRequestEscalationsCritical) SetComparisonOperator(v string) *PutResourceMetricRuleShrinkRequestEscalationsCritical {
+	s.ComparisonOperator = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequestEscalationsCritical) SetStatistics(v string) *PutResourceMetricRuleShrinkRequestEscalationsCritical {
+	s.Statistics = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequestEscalationsCritical) SetThreshold(v string) *PutResourceMetricRuleShrinkRequestEscalationsCritical {
+	s.Threshold = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequestEscalationsCritical) SetTimes(v int32) *PutResourceMetricRuleShrinkRequestEscalationsCritical {
+	s.Times = &v
+	return s
+}
+
+type PutResourceMetricRuleShrinkRequestEscalationsInfo struct {
+	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Times              *int32  `json:"Times,omitempty" xml:"Times,omitempty"`
+}
+
+func (s PutResourceMetricRuleShrinkRequestEscalationsInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutResourceMetricRuleShrinkRequestEscalationsInfo) GoString() string {
+	return s.String()
+}
+
+func (s *PutResourceMetricRuleShrinkRequestEscalationsInfo) SetComparisonOperator(v string) *PutResourceMetricRuleShrinkRequestEscalationsInfo {
+	s.ComparisonOperator = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequestEscalationsInfo) SetStatistics(v string) *PutResourceMetricRuleShrinkRequestEscalationsInfo {
+	s.Statistics = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequestEscalationsInfo) SetThreshold(v string) *PutResourceMetricRuleShrinkRequestEscalationsInfo {
+	s.Threshold = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequestEscalationsInfo) SetTimes(v int32) *PutResourceMetricRuleShrinkRequestEscalationsInfo {
+	s.Times = &v
+	return s
+}
+
+type PutResourceMetricRuleShrinkRequestEscalationsWarn struct {
+	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
+	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
+	Times              *int32  `json:"Times,omitempty" xml:"Times,omitempty"`
+}
+
+func (s PutResourceMetricRuleShrinkRequestEscalationsWarn) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutResourceMetricRuleShrinkRequestEscalationsWarn) GoString() string {
+	return s.String()
+}
+
+func (s *PutResourceMetricRuleShrinkRequestEscalationsWarn) SetComparisonOperator(v string) *PutResourceMetricRuleShrinkRequestEscalationsWarn {
+	s.ComparisonOperator = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequestEscalationsWarn) SetStatistics(v string) *PutResourceMetricRuleShrinkRequestEscalationsWarn {
+	s.Statistics = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequestEscalationsWarn) SetThreshold(v string) *PutResourceMetricRuleShrinkRequestEscalationsWarn {
+	s.Threshold = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequestEscalationsWarn) SetTimes(v int32) *PutResourceMetricRuleShrinkRequestEscalationsWarn {
+	s.Times = &v
+	return s
+}
+
+type PutResourceMetricRuleShrinkRequestLabels struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s PutResourceMetricRuleShrinkRequestLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutResourceMetricRuleShrinkRequestLabels) GoString() string {
+	return s.String()
+}
+
+func (s *PutResourceMetricRuleShrinkRequestLabels) SetKey(v string) *PutResourceMetricRuleShrinkRequestLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequestLabels) SetValue(v string) *PutResourceMetricRuleShrinkRequestLabels {
 	s.Value = &v
 	return s
 }
@@ -28564,6 +29045,10 @@ func (client *Client) DescribeEventRuleAttributeWithOptions(request *DescribeEve
 		query["RuleName"] = request.RuleName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SilenceTime)) {
+		query["SilenceTime"] = request.SilenceTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29522,6 +30007,14 @@ func (client *Client) DescribeMetricRuleTemplateListWithOptions(request *Describ
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["OrderBy"] = request.OrderBy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
@@ -33265,12 +33758,22 @@ func (client *Client) PutMonitoringConfig(request *PutMonitoringConfigRequest) (
 	return _result, _err
 }
 
-func (client *Client) PutResourceMetricRuleWithOptions(request *PutResourceMetricRuleRequest, runtime *util.RuntimeOptions) (_result *PutResourceMetricRuleResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) PutResourceMetricRuleWithOptions(tmpReq *PutResourceMetricRuleRequest, runtime *util.RuntimeOptions) (_result *PutResourceMetricRuleResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &PutResourceMetricRuleShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CompositeExpression))) {
+		request.CompositeExpressionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CompositeExpression), tea.String("CompositeExpression"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CompositeExpressionShrink)) {
+		query["CompositeExpression"] = request.CompositeExpressionShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ContactGroups)) {
 		query["ContactGroups"] = request.ContactGroups
 	}
