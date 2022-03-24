@@ -30,73 +30,6 @@ func (s *OtsDetail) SetTableNames(v []*string) *OtsDetail {
 	return s
 }
 
-type Rule struct {
-	// backup type
-	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// copy target region id
-	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
-	// retention for remote replication
-	DestinationRetention *int64 `json:"DestinationRetention,omitempty" xml:"DestinationRetention,omitempty"`
-	// disable the rule or not
-	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// copy to other region
-	DoCopy *bool `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
-	// retention of backup
-	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	// rule name
-	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// schedule setting
-	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-}
-
-func (s Rule) String() string {
-	return tea.Prettify(s)
-}
-
-func (s Rule) GoString() string {
-	return s.String()
-}
-
-func (s *Rule) SetBackupType(v string) *Rule {
-	s.BackupType = &v
-	return s
-}
-
-func (s *Rule) SetDestinationRegionId(v string) *Rule {
-	s.DestinationRegionId = &v
-	return s
-}
-
-func (s *Rule) SetDestinationRetention(v int64) *Rule {
-	s.DestinationRetention = &v
-	return s
-}
-
-func (s *Rule) SetDisabled(v bool) *Rule {
-	s.Disabled = &v
-	return s
-}
-
-func (s *Rule) SetDoCopy(v bool) *Rule {
-	s.DoCopy = &v
-	return s
-}
-
-func (s *Rule) SetRetention(v int64) *Rule {
-	s.Retention = &v
-	return s
-}
-
-func (s *Rule) SetRuleName(v string) *Rule {
-	s.RuleName = &v
-	return s
-}
-
-func (s *Rule) SetSchedule(v string) *Rule {
-	s.Schedule = &v
-	return s
-}
-
 type CancelBackupJobRequest struct {
 	JobId   *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
@@ -259,26 +192,112 @@ func (s *CancelRestoreJobResponse) SetBody(v *CancelRestoreJobResponseBody) *Can
 	return s
 }
 
+type ChangeResourceGroupRequest struct {
+	NewResourceGroupId *string `json:"NewResourceGroupId,omitempty" xml:"NewResourceGroupId,omitempty"`
+	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ChangeResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupRequest) SetNewResourceGroupId(v string) *ChangeResourceGroupRequest {
+	s.NewResourceGroupId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceId(v string) *ChangeResourceGroupRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupRequest) SetResourceType(v string) *ChangeResourceGroupRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type ChangeResourceGroupResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ChangeResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponseBody) SetCode(v string) *ChangeResourceGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponseBody) SetMessage(v string) *ChangeResourceGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponseBody) SetRequestId(v string) *ChangeResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ChangeResourceGroupResponseBody) SetSuccess(v bool) *ChangeResourceGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ChangeResourceGroupResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChangeResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeResourceGroupResponse) SetHeaders(v map[string]*string) *ChangeResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody) *ChangeResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
 type CreateBackupPlanRequest struct {
-	BackupType      *string    `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	Bucket          *string    `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	CreateTime      *int64     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Exclude         *string    `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	FileSystemId    *string    `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	Include         *string    `json:"Include,omitempty" xml:"Include,omitempty"`
-	InstanceGroupId *string    `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
-	InstanceId      *string    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName    *string    `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Options         *string    `json:"Options,omitempty" xml:"Options,omitempty"`
-	OtsDetail       *OtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
-	Path            []*string  `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
-	PlanName        *string    `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	Prefix          *string    `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	Retention       *int64     `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	Schedule        *string    `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	SourceType      *string    `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SpeedLimit      *string    `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
-	VaultId         *string    `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	BackupType   *string    `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	Bucket       *string    `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	CreateTime   *int64     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Exclude      *string    `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	FileSystemId *string    `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	Include      *string    `json:"Include,omitempty" xml:"Include,omitempty"`
+	InstanceId   *string    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string    `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Options      *string    `json:"Options,omitempty" xml:"Options,omitempty"`
+	OtsDetail    *OtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
+	Path         []*string  `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
+	PlanName     *string    `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	Prefix       *string    `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	Retention    *int64     `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	Schedule     *string    `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	SourceType   *string    `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SpeedLimit   *string    `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
+	VaultId      *string    `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s CreateBackupPlanRequest) String() string {
@@ -316,11 +335,6 @@ func (s *CreateBackupPlanRequest) SetFileSystemId(v string) *CreateBackupPlanReq
 
 func (s *CreateBackupPlanRequest) SetInclude(v string) *CreateBackupPlanRequest {
 	s.Include = &v
-	return s
-}
-
-func (s *CreateBackupPlanRequest) SetInstanceGroupId(v string) *CreateBackupPlanRequest {
-	s.InstanceGroupId = &v
 	return s
 }
 
@@ -391,7 +405,6 @@ type CreateBackupPlanShrinkRequest struct {
 	Exclude         *string   `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
 	FileSystemId    *string   `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	Include         *string   `json:"Include,omitempty" xml:"Include,omitempty"`
-	InstanceGroupId *string   `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
 	InstanceId      *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName    *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	Options         *string   `json:"Options,omitempty" xml:"Options,omitempty"`
@@ -441,11 +454,6 @@ func (s *CreateBackupPlanShrinkRequest) SetFileSystemId(v string) *CreateBackupP
 
 func (s *CreateBackupPlanShrinkRequest) SetInclude(v string) *CreateBackupPlanShrinkRequest {
 	s.Include = &v
-	return s
-}
-
-func (s *CreateBackupPlanShrinkRequest) SetInstanceGroupId(v string) *CreateBackupPlanShrinkRequest {
-	s.InstanceGroupId = &v
 	return s
 }
 
@@ -713,6 +721,7 @@ type CreateRestoreJobRequest struct {
 	TargetPrefix       *string                           `json:"TargetPrefix,omitempty" xml:"TargetPrefix,omitempty"`
 	TargetTableName    *string                           `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
 	TargetTime         *int64                            `json:"TargetTime,omitempty" xml:"TargetTime,omitempty"`
+	UdmDetail          map[string]interface{}            `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty"`
 	VaultId            *string                           `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -804,6 +813,11 @@ func (s *CreateRestoreJobRequest) SetTargetTime(v int64) *CreateRestoreJobReques
 	return s
 }
 
+func (s *CreateRestoreJobRequest) SetUdmDetail(v map[string]interface{}) *CreateRestoreJobRequest {
+	s.UdmDetail = v
+	return s
+}
+
 func (s *CreateRestoreJobRequest) SetVaultId(v string) *CreateRestoreJobRequest {
 	s.VaultId = &v
 	return s
@@ -828,6 +842,148 @@ func (s *CreateRestoreJobRequestOtsDetail) SetBatchChannelCount(v int32) *Create
 }
 
 func (s *CreateRestoreJobRequestOtsDetail) SetOverwriteExisting(v bool) *CreateRestoreJobRequestOtsDetail {
+	s.OverwriteExisting = &v
+	return s
+}
+
+type CreateRestoreJobShrinkRequest struct {
+	Exclude            *string                                 `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	Include            *string                                 `json:"Include,omitempty" xml:"Include,omitempty"`
+	OtsDetail          *CreateRestoreJobShrinkRequestOtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty" type:"Struct"`
+	RestoreType        *string                                 `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
+	SnapshotHash       *string                                 `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
+	SnapshotId         *string                                 `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SourceType         *string                                 `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	TargetBucket       *string                                 `json:"TargetBucket,omitempty" xml:"TargetBucket,omitempty"`
+	TargetCreateTime   *int64                                  `json:"TargetCreateTime,omitempty" xml:"TargetCreateTime,omitempty"`
+	TargetFileSystemId *string                                 `json:"TargetFileSystemId,omitempty" xml:"TargetFileSystemId,omitempty"`
+	TargetInstanceId   *string                                 `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	TargetInstanceName *string                                 `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
+	TargetPath         *string                                 `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	TargetPrefix       *string                                 `json:"TargetPrefix,omitempty" xml:"TargetPrefix,omitempty"`
+	TargetTableName    *string                                 `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
+	TargetTime         *int64                                  `json:"TargetTime,omitempty" xml:"TargetTime,omitempty"`
+	UdmDetailShrink    *string                                 `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty"`
+	VaultId            *string                                 `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s CreateRestoreJobShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRestoreJobShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetExclude(v string) *CreateRestoreJobShrinkRequest {
+	s.Exclude = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetInclude(v string) *CreateRestoreJobShrinkRequest {
+	s.Include = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetOtsDetail(v *CreateRestoreJobShrinkRequestOtsDetail) *CreateRestoreJobShrinkRequest {
+	s.OtsDetail = v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetRestoreType(v string) *CreateRestoreJobShrinkRequest {
+	s.RestoreType = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetSnapshotHash(v string) *CreateRestoreJobShrinkRequest {
+	s.SnapshotHash = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetSnapshotId(v string) *CreateRestoreJobShrinkRequest {
+	s.SnapshotId = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetSourceType(v string) *CreateRestoreJobShrinkRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetTargetBucket(v string) *CreateRestoreJobShrinkRequest {
+	s.TargetBucket = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetTargetCreateTime(v int64) *CreateRestoreJobShrinkRequest {
+	s.TargetCreateTime = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetTargetFileSystemId(v string) *CreateRestoreJobShrinkRequest {
+	s.TargetFileSystemId = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetTargetInstanceId(v string) *CreateRestoreJobShrinkRequest {
+	s.TargetInstanceId = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetTargetInstanceName(v string) *CreateRestoreJobShrinkRequest {
+	s.TargetInstanceName = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetTargetPath(v string) *CreateRestoreJobShrinkRequest {
+	s.TargetPath = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetTargetPrefix(v string) *CreateRestoreJobShrinkRequest {
+	s.TargetPrefix = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetTargetTableName(v string) *CreateRestoreJobShrinkRequest {
+	s.TargetTableName = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetTargetTime(v int64) *CreateRestoreJobShrinkRequest {
+	s.TargetTime = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetUdmDetailShrink(v string) *CreateRestoreJobShrinkRequest {
+	s.UdmDetailShrink = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetVaultId(v string) *CreateRestoreJobShrinkRequest {
+	s.VaultId = &v
+	return s
+}
+
+type CreateRestoreJobShrinkRequestOtsDetail struct {
+	BatchChannelCount *int32 `json:"BatchChannelCount,omitempty" xml:"BatchChannelCount,omitempty"`
+	OverwriteExisting *bool  `json:"OverwriteExisting,omitempty" xml:"OverwriteExisting,omitempty"`
+}
+
+func (s CreateRestoreJobShrinkRequestOtsDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateRestoreJobShrinkRequestOtsDetail) GoString() string {
+	return s.String()
+}
+
+func (s *CreateRestoreJobShrinkRequestOtsDetail) SetBatchChannelCount(v int32) *CreateRestoreJobShrinkRequestOtsDetail {
+	s.BatchChannelCount = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequestOtsDetail) SetOverwriteExisting(v bool) *CreateRestoreJobShrinkRequestOtsDetail {
 	s.OverwriteExisting = &v
 	return s
 }
@@ -3565,45 +3721,46 @@ func (s *DescribeRestoreJobs2ResponseBodyRestoreJobs) SetRestoreJob(v []*Describ
 }
 
 type DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob struct {
-	ActualBytes        *int64  `json:"ActualBytes,omitempty" xml:"ActualBytes,omitempty"`
-	ActualItems        *int64  `json:"ActualItems,omitempty" xml:"ActualItems,omitempty"`
-	BytesDone          *int64  `json:"BytesDone,omitempty" xml:"BytesDone,omitempty"`
-	BytesTotal         *int64  `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
-	ClusterId          *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	CompleteTime       *int64  `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
-	CreatedTime        *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	ErrorFile          *string `json:"ErrorFile,omitempty" xml:"ErrorFile,omitempty"`
-	ErrorMessage       *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	Exclude            *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	ExpireTime         *int64  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	Include            *string `json:"Include,omitempty" xml:"Include,omitempty"`
-	ItemsDone          *int64  `json:"ItemsDone,omitempty" xml:"ItemsDone,omitempty"`
-	ItemsTotal         *int64  `json:"ItemsTotal,omitempty" xml:"ItemsTotal,omitempty"`
-	Options            *string `json:"Options,omitempty" xml:"Options,omitempty"`
-	ParentId           *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	Progress           *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	RestoreId          *string `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
-	RestoreType        *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
-	SnapshotHash       *string `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
-	SnapshotId         *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	SourceType         *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Speed              *int64  `json:"Speed,omitempty" xml:"Speed,omitempty"`
-	StartTime          *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	TargetBucket       *string `json:"TargetBucket,omitempty" xml:"TargetBucket,omitempty"`
-	TargetClientId     *string `json:"TargetClientId,omitempty" xml:"TargetClientId,omitempty"`
-	TargetCreateTime   *int64  `json:"TargetCreateTime,omitempty" xml:"TargetCreateTime,omitempty"`
-	TargetDataSourceId *string `json:"TargetDataSourceId,omitempty" xml:"TargetDataSourceId,omitempty"`
-	TargetFileSystemId *string `json:"TargetFileSystemId,omitempty" xml:"TargetFileSystemId,omitempty"`
-	TargetInstanceId   *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
-	TargetPath         *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	TargetPrefix       *string `json:"TargetPrefix,omitempty" xml:"TargetPrefix,omitempty"`
-	TargetTableName    *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
-	TargetTime         *int64  `json:"TargetTime,omitempty" xml:"TargetTime,omitempty"`
-	UdmDetail          *string `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty"`
-	UpdatedTime        *int64  `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
-	VaultId            *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	ActualBytes        *int64                                                          `json:"ActualBytes,omitempty" xml:"ActualBytes,omitempty"`
+	ActualItems        *int64                                                          `json:"ActualItems,omitempty" xml:"ActualItems,omitempty"`
+	BytesDone          *int64                                                          `json:"BytesDone,omitempty" xml:"BytesDone,omitempty"`
+	BytesTotal         *int64                                                          `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
+	ClusterId          *string                                                         `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CompleteTime       *int64                                                          `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	CreatedTime        *int64                                                          `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	ErrorFile          *string                                                         `json:"ErrorFile,omitempty" xml:"ErrorFile,omitempty"`
+	ErrorMessage       *string                                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Exclude            *string                                                         `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	ExpireTime         *int64                                                          `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	Include            *string                                                         `json:"Include,omitempty" xml:"Include,omitempty"`
+	ItemsDone          *int64                                                          `json:"ItemsDone,omitempty" xml:"ItemsDone,omitempty"`
+	ItemsTotal         *int64                                                          `json:"ItemsTotal,omitempty" xml:"ItemsTotal,omitempty"`
+	Options            *string                                                         `json:"Options,omitempty" xml:"Options,omitempty"`
+	OtsDetail          *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobOtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty" type:"Struct"`
+	ParentId           *string                                                         `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
+	Progress           *int32                                                          `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	RestoreId          *string                                                         `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
+	RestoreType        *string                                                         `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
+	SnapshotHash       *string                                                         `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
+	SnapshotId         *string                                                         `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SourceType         *string                                                         `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Speed              *int64                                                          `json:"Speed,omitempty" xml:"Speed,omitempty"`
+	StartTime          *int64                                                          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status             *string                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	TargetBucket       *string                                                         `json:"TargetBucket,omitempty" xml:"TargetBucket,omitempty"`
+	TargetClientId     *string                                                         `json:"TargetClientId,omitempty" xml:"TargetClientId,omitempty"`
+	TargetCreateTime   *int64                                                          `json:"TargetCreateTime,omitempty" xml:"TargetCreateTime,omitempty"`
+	TargetDataSourceId *string                                                         `json:"TargetDataSourceId,omitempty" xml:"TargetDataSourceId,omitempty"`
+	TargetFileSystemId *string                                                         `json:"TargetFileSystemId,omitempty" xml:"TargetFileSystemId,omitempty"`
+	TargetInstanceId   *string                                                         `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	TargetInstanceName *string                                                         `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
+	TargetPath         *string                                                         `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	TargetPrefix       *string                                                         `json:"TargetPrefix,omitempty" xml:"TargetPrefix,omitempty"`
+	TargetTableName    *string                                                         `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
+	TargetTime         *int64                                                          `json:"TargetTime,omitempty" xml:"TargetTime,omitempty"`
+	UdmDetail          *string                                                         `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty"`
+	UpdatedTime        *int64                                                          `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	VaultId            *string                                                         `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) String() string {
@@ -3686,6 +3843,11 @@ func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetItemsTotal(v 
 
 func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetOptions(v string) *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob {
 	s.Options = &v
+	return s
+}
+
+func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetOtsDetail(v *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobOtsDetail) *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob {
+	s.OtsDetail = v
 	return s
 }
 
@@ -3806,6 +3968,29 @@ func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetUpdatedTime(v
 
 func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetVaultId(v string) *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob {
 	s.VaultId = &v
+	return s
+}
+
+type DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobOtsDetail struct {
+	BatchChannelCount *int32 `json:"BatchChannelCount,omitempty" xml:"BatchChannelCount,omitempty"`
+	OverwriteExisting *bool  `json:"OverwriteExisting,omitempty" xml:"OverwriteExisting,omitempty"`
+}
+
+func (s DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobOtsDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobOtsDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobOtsDetail) SetBatchChannelCount(v int32) *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobOtsDetail {
+	s.BatchChannelCount = &v
+	return s
+}
+
+func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobOtsDetail) SetOverwriteExisting(v bool) *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobOtsDetail {
+	s.OverwriteExisting = &v
 	return s
 }
 
@@ -3957,6 +4142,450 @@ func (s *DescribeTaskResponse) SetHeaders(v map[string]*string) *DescribeTaskRes
 }
 
 func (s *DescribeTaskResponse) SetBody(v *DescribeTaskResponseBody) *DescribeTaskResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeUdmSnapshotsRequest struct {
+	DiskId      *string                `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	EndTime     *int64                 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId  *string                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobId       *string                `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	SnapshotIds map[string]interface{} `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty"`
+	SourceType  *string                `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	StartTime   *int64                 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	UdmRegionId *string                `json:"UdmRegionId,omitempty" xml:"UdmRegionId,omitempty"`
+}
+
+func (s DescribeUdmSnapshotsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUdmSnapshotsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUdmSnapshotsRequest) SetDiskId(v string) *DescribeUdmSnapshotsRequest {
+	s.DiskId = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsRequest) SetEndTime(v int64) *DescribeUdmSnapshotsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsRequest) SetInstanceId(v string) *DescribeUdmSnapshotsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsRequest) SetJobId(v string) *DescribeUdmSnapshotsRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsRequest) SetSnapshotIds(v map[string]interface{}) *DescribeUdmSnapshotsRequest {
+	s.SnapshotIds = v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsRequest) SetSourceType(v string) *DescribeUdmSnapshotsRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsRequest) SetStartTime(v int64) *DescribeUdmSnapshotsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsRequest) SetUdmRegionId(v string) *DescribeUdmSnapshotsRequest {
+	s.UdmRegionId = &v
+	return s
+}
+
+type DescribeUdmSnapshotsShrinkRequest struct {
+	DiskId            *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	EndTime           *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobId             *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	SnapshotIdsShrink *string `json:"SnapshotIds,omitempty" xml:"SnapshotIds,omitempty"`
+	SourceType        *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	StartTime         *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	UdmRegionId       *string `json:"UdmRegionId,omitempty" xml:"UdmRegionId,omitempty"`
+}
+
+func (s DescribeUdmSnapshotsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUdmSnapshotsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUdmSnapshotsShrinkRequest) SetDiskId(v string) *DescribeUdmSnapshotsShrinkRequest {
+	s.DiskId = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsShrinkRequest) SetEndTime(v int64) *DescribeUdmSnapshotsShrinkRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsShrinkRequest) SetInstanceId(v string) *DescribeUdmSnapshotsShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsShrinkRequest) SetJobId(v string) *DescribeUdmSnapshotsShrinkRequest {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsShrinkRequest) SetSnapshotIdsShrink(v string) *DescribeUdmSnapshotsShrinkRequest {
+	s.SnapshotIdsShrink = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsShrinkRequest) SetSourceType(v string) *DescribeUdmSnapshotsShrinkRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsShrinkRequest) SetStartTime(v int64) *DescribeUdmSnapshotsShrinkRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsShrinkRequest) SetUdmRegionId(v string) *DescribeUdmSnapshotsShrinkRequest {
+	s.UdmRegionId = &v
+	return s
+}
+
+type DescribeUdmSnapshotsResponseBody struct {
+	Code       *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Snapshots  []*DescribeUdmSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
+	Success    *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeUdmSnapshotsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUdmSnapshotsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUdmSnapshotsResponseBody) SetCode(v string) *DescribeUdmSnapshotsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBody) SetMessage(v string) *DescribeUdmSnapshotsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBody) SetRequestId(v string) *DescribeUdmSnapshotsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBody) SetSnapshots(v []*DescribeUdmSnapshotsResponseBodySnapshots) *DescribeUdmSnapshotsResponseBody {
+	s.Snapshots = v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBody) SetSuccess(v bool) *DescribeUdmSnapshotsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBody) SetTotalCount(v int64) *DescribeUdmSnapshotsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeUdmSnapshotsResponseBodySnapshots struct {
+	ActualBytes        *string                                          `json:"ActualBytes,omitempty" xml:"ActualBytes,omitempty"`
+	BackupType         *string                                          `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	BytesTotal         *int64                                           `json:"BytesTotal,omitempty" xml:"BytesTotal,omitempty"`
+	CompleteTime       *int64                                           `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
+	CreateTime         *int64                                           `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreatedTime        *int64                                           `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Detail             *DescribeUdmSnapshotsResponseBodySnapshotsDetail `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
+	DiskId             *string                                          `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	InstanceId         *string                                          `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobId              *string                                          `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	NativeSnapshotId   *string                                          `json:"NativeSnapshotId,omitempty" xml:"NativeSnapshotId,omitempty"`
+	NativeSnapshotInfo *string                                          `json:"NativeSnapshotInfo,omitempty" xml:"NativeSnapshotInfo,omitempty"`
+	ParentSnapshotHash *string                                          `json:"ParentSnapshotHash,omitempty" xml:"ParentSnapshotHash,omitempty"`
+	Prefix             *string                                          `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	RealSnapshotTime   *int64                                           `json:"RealSnapshotTime,omitempty" xml:"RealSnapshotTime,omitempty"`
+	Retention          *int64                                           `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	SnapshotHash       *string                                          `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
+	SnapshotId         *string                                          `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SourceType         *string                                          `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	StartTime          *int64                                           `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status             *string                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdatedTime        *int64                                           `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+}
+
+func (s DescribeUdmSnapshotsResponseBodySnapshots) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUdmSnapshotsResponseBodySnapshots) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetActualBytes(v string) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.ActualBytes = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetBackupType(v string) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.BackupType = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetBytesTotal(v int64) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.BytesTotal = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetCompleteTime(v int64) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.CompleteTime = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetCreateTime(v int64) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetCreatedTime(v int64) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetDetail(v *DescribeUdmSnapshotsResponseBodySnapshotsDetail) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.Detail = v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetDiskId(v string) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.DiskId = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetInstanceId(v string) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetJobId(v string) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetNativeSnapshotId(v string) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.NativeSnapshotId = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetNativeSnapshotInfo(v string) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.NativeSnapshotInfo = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetParentSnapshotHash(v string) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.ParentSnapshotHash = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetPrefix(v string) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.Prefix = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetRealSnapshotTime(v int64) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.RealSnapshotTime = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetRetention(v int64) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.Retention = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetSnapshotHash(v string) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.SnapshotHash = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetSnapshotId(v string) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.SnapshotId = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetSourceType(v string) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.SourceType = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetStartTime(v int64) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetStatus(v string) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshots) SetUpdatedTime(v int64) *DescribeUdmSnapshotsResponseBodySnapshots {
+	s.UpdatedTime = &v
+	return s
+}
+
+type DescribeUdmSnapshotsResponseBodySnapshotsDetail struct {
+	ConsistentLevel                *string                `json:"ConsistentLevel,omitempty" xml:"ConsistentLevel,omitempty"`
+	ContainOsDisk                  *bool                  `json:"ContainOsDisk,omitempty" xml:"ContainOsDisk,omitempty"`
+	DiskDevName                    *string                `json:"DiskDevName,omitempty" xml:"DiskDevName,omitempty"`
+	DiskHbrSnapshotIdWithDeviceMap map[string]interface{} `json:"DiskHbrSnapshotIdWithDeviceMap,omitempty" xml:"DiskHbrSnapshotIdWithDeviceMap,omitempty"`
+	DiskIdList                     []*string              `json:"DiskIdList,omitempty" xml:"DiskIdList,omitempty" type:"Repeated"`
+	DowngradeReason                *string                `json:"DowngradeReason,omitempty" xml:"DowngradeReason,omitempty"`
+	InstanceIdWithDiskIdListMap    map[string]interface{} `json:"InstanceIdWithDiskIdListMap,omitempty" xml:"InstanceIdWithDiskIdListMap,omitempty"`
+	InstanceName                   *string                `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	NativeSnapshotIdList           []*string              `json:"NativeSnapshotIdList,omitempty" xml:"NativeSnapshotIdList,omitempty" type:"Repeated"`
+	OsDiskId                       *string                `json:"OsDiskId,omitempty" xml:"OsDiskId,omitempty"`
+	OsName                         *string                `json:"OsName,omitempty" xml:"OsName,omitempty"`
+	OsNameEn                       *string                `json:"OsNameEn,omitempty" xml:"OsNameEn,omitempty"`
+	OsType                         *string                `json:"OsType,omitempty" xml:"OsType,omitempty"`
+	Platform                       *string                `json:"Platform,omitempty" xml:"Platform,omitempty"`
+	SnapshotGroupId                *string                `json:"SnapshotGroupId,omitempty" xml:"SnapshotGroupId,omitempty"`
+	SystemDisk                     *bool                  `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty"`
+	VmName                         *string                `json:"VmName,omitempty" xml:"VmName,omitempty"`
+}
+
+func (s DescribeUdmSnapshotsResponseBodySnapshotsDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUdmSnapshotsResponseBodySnapshotsDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetConsistentLevel(v string) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
+	s.ConsistentLevel = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetContainOsDisk(v bool) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
+	s.ContainOsDisk = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetDiskDevName(v string) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
+	s.DiskDevName = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetDiskHbrSnapshotIdWithDeviceMap(v map[string]interface{}) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
+	s.DiskHbrSnapshotIdWithDeviceMap = v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetDiskIdList(v []*string) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
+	s.DiskIdList = v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetDowngradeReason(v string) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
+	s.DowngradeReason = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetInstanceIdWithDiskIdListMap(v map[string]interface{}) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
+	s.InstanceIdWithDiskIdListMap = v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetInstanceName(v string) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetNativeSnapshotIdList(v []*string) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
+	s.NativeSnapshotIdList = v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetOsDiskId(v string) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
+	s.OsDiskId = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetOsName(v string) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
+	s.OsName = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetOsNameEn(v string) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
+	s.OsNameEn = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetOsType(v string) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
+	s.OsType = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetPlatform(v string) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
+	s.Platform = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetSnapshotGroupId(v string) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
+	s.SnapshotGroupId = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetSystemDisk(v bool) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
+	s.SystemDisk = &v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetVmName(v string) *DescribeUdmSnapshotsResponseBodySnapshotsDetail {
+	s.VmName = &v
+	return s
+}
+
+type DescribeUdmSnapshotsResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeUdmSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeUdmSnapshotsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUdmSnapshotsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUdmSnapshotsResponse) SetHeaders(v map[string]*string) *DescribeUdmSnapshotsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponse) SetBody(v *DescribeUdmSnapshotsResponseBody) *DescribeUdmSnapshotsResponse {
 	s.Body = v
 	return s
 }
@@ -4233,7 +4862,6 @@ type DescribeVaultsResponseBodyVaultsVault struct {
 	Dedup                     *bool                                                      `json:"Dedup,omitempty" xml:"Dedup,omitempty"`
 	Description               *string                                                    `json:"Description,omitempty" xml:"Description,omitempty"`
 	EncryptType               *string                                                    `json:"EncryptType,omitempty" xml:"EncryptType,omitempty"`
-	Endpoint                  *DescribeVaultsResponseBodyVaultsVaultEndpoint             `json:"Endpoint,omitempty" xml:"Endpoint,omitempty" type:"Struct"`
 	IndexAvailable            *bool                                                      `json:"IndexAvailable,omitempty" xml:"IndexAvailable,omitempty"`
 	IndexLevel                *string                                                    `json:"IndexLevel,omitempty" xml:"IndexLevel,omitempty"`
 	IndexUpdateTime           *int64                                                     `json:"IndexUpdateTime,omitempty" xml:"IndexUpdateTime,omitempty"`
@@ -4312,11 +4940,6 @@ func (s *DescribeVaultsResponseBodyVaultsVault) SetDescription(v string) *Descri
 
 func (s *DescribeVaultsResponseBodyVaultsVault) SetEncryptType(v string) *DescribeVaultsResponseBodyVaultsVault {
 	s.EncryptType = &v
-	return s
-}
-
-func (s *DescribeVaultsResponseBodyVaultsVault) SetEndpoint(v *DescribeVaultsResponseBodyVaultsVaultEndpoint) *DescribeVaultsResponseBodyVaultsVault {
-	s.Endpoint = v
 	return s
 }
 
@@ -4536,35 +5159,6 @@ func (s *DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics) SetOts(v int
 
 func (s *DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics) SetSqlServer(v int32) *DescribeVaultsResponseBodyVaultsVaultBackupPlanStatistics {
 	s.SqlServer = &v
-	return s
-}
-
-type DescribeVaultsResponseBodyVaultsVaultEndpoint struct {
-	Classic *string `json:"Classic,omitempty" xml:"Classic,omitempty"`
-	Pub     *string `json:"Pub,omitempty" xml:"Pub,omitempty"`
-	Vpc     *string `json:"Vpc,omitempty" xml:"Vpc,omitempty"`
-}
-
-func (s DescribeVaultsResponseBodyVaultsVaultEndpoint) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVaultsResponseBodyVaultsVaultEndpoint) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVaultsResponseBodyVaultsVaultEndpoint) SetClassic(v string) *DescribeVaultsResponseBodyVaultsVaultEndpoint {
-	s.Classic = &v
-	return s
-}
-
-func (s *DescribeVaultsResponseBodyVaultsVaultEndpoint) SetPub(v string) *DescribeVaultsResponseBodyVaultsVaultEndpoint {
-	s.Pub = &v
-	return s
-}
-
-func (s *DescribeVaultsResponseBodyVaultsVaultEndpoint) SetVpc(v string) *DescribeVaultsResponseBodyVaultsVaultEndpoint {
-	s.Vpc = &v
 	return s
 }
 
@@ -5456,8 +6050,10 @@ type SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot struct {
 	CreateTime         *int64                                                       `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CreatedTime        *int64                                                       `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	ErrorFile          *string                                                      `json:"ErrorFile,omitempty" xml:"ErrorFile,omitempty"`
+	ExpireTime         *int64                                                       `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	FileSystemId       *string                                                      `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
 	InstanceId         *string                                                      `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName       *string                                                      `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	ItemsDone          *int64                                                       `json:"ItemsDone,omitempty" xml:"ItemsDone,omitempty"`
 	ItemsTotal         *int64                                                       `json:"ItemsTotal,omitempty" xml:"ItemsTotal,omitempty"`
 	JobId              *string                                                      `json:"JobId,omitempty" xml:"JobId,omitempty"`
@@ -5465,12 +6061,15 @@ type SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot struct {
 	Path               *string                                                      `json:"Path,omitempty" xml:"Path,omitempty"`
 	Paths              *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshotPaths `json:"Paths,omitempty" xml:"Paths,omitempty" type:"Struct"`
 	Prefix             *string                                                      `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	RangeEnd           *int64                                                       `json:"RangeEnd,omitempty" xml:"RangeEnd,omitempty"`
+	RangeStart         *int64                                                       `json:"RangeStart,omitempty" xml:"RangeStart,omitempty"`
 	Retention          *int64                                                       `json:"Retention,omitempty" xml:"Retention,omitempty"`
 	SnapshotHash       *string                                                      `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
 	SnapshotId         *string                                                      `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
 	SourceType         *string                                                      `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	StartTime          *int64                                                       `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Status             *string                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	TableName          *string                                                      `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	UpdatedTime        *int64                                                       `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
 	VaultId            *string                                                      `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
@@ -5538,6 +6137,11 @@ func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetErrorFile(v 
 	return s
 }
 
+func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetExpireTime(v int64) *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot {
+	s.ExpireTime = &v
+	return s
+}
+
 func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetFileSystemId(v string) *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot {
 	s.FileSystemId = &v
 	return s
@@ -5545,6 +6149,11 @@ func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetFileSystemId
 
 func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetInstanceId(v string) *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetInstanceName(v string) *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot {
+	s.InstanceName = &v
 	return s
 }
 
@@ -5583,6 +6192,16 @@ func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetPrefix(v str
 	return s
 }
 
+func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetRangeEnd(v int64) *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot {
+	s.RangeEnd = &v
+	return s
+}
+
+func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetRangeStart(v int64) *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot {
+	s.RangeStart = &v
+	return s
+}
+
 func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetRetention(v int64) *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot {
 	s.Retention = &v
 	return s
@@ -5610,6 +6229,11 @@ func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetStartTime(v 
 
 func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetStatus(v string) *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot {
 	s.Status = &v
+	return s
+}
+
+func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot) SetTableName(v string) *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshot {
+	s.TableName = &v
 	return s
 }
 
@@ -6450,7 +7074,42 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = tea.String("")
+	client.EndpointRule = tea.String("regional")
+	client.EndpointMap = map[string]*string{
+		"ap-northeast-2-pop":          tea.String("hbr.aliyuncs.com"),
+		"cn-beijing-finance-1":        tea.String("hbr.aliyuncs.com"),
+		"cn-beijing-finance-pop":      tea.String("hbr.aliyuncs.com"),
+		"cn-beijing-gov-1":            tea.String("hbr.aliyuncs.com"),
+		"cn-beijing-nu16-b01":         tea.String("hbr.aliyuncs.com"),
+		"cn-edge-1":                   tea.String("hbr.aliyuncs.com"),
+		"cn-fujian":                   tea.String("hbr.aliyuncs.com"),
+		"cn-haidian-cm12-c01":         tea.String("hbr.aliyuncs.com"),
+		"cn-hangzhou-bj-b01":          tea.String("hbr.aliyuncs.com"),
+		"cn-hangzhou-internal-prod-1": tea.String("hbr.aliyuncs.com"),
+		"cn-hangzhou-internal-test-1": tea.String("hbr.aliyuncs.com"),
+		"cn-hangzhou-internal-test-2": tea.String("hbr.aliyuncs.com"),
+		"cn-hangzhou-internal-test-3": tea.String("hbr.aliyuncs.com"),
+		"cn-hangzhou-test-306":        tea.String("hbr.aliyuncs.com"),
+		"cn-hongkong-finance-pop":     tea.String("hbr.aliyuncs.com"),
+		"cn-huhehaote-nebula-1":       tea.String("hbr.aliyuncs.com"),
+		"cn-qingdao-nebula":           tea.String("hbr.aliyuncs.com"),
+		"cn-shanghai-et15-b01":        tea.String("hbr.aliyuncs.com"),
+		"cn-shanghai-et2-b01":         tea.String("hbr.aliyuncs.com"),
+		"cn-shanghai-inner":           tea.String("hbr.aliyuncs.com"),
+		"cn-shanghai-internal-test-1": tea.String("hbr.aliyuncs.com"),
+		"cn-shenzhen-inner":           tea.String("hbr.aliyuncs.com"),
+		"cn-shenzhen-st4-d01":         tea.String("hbr.aliyuncs.com"),
+		"cn-shenzhen-su18-b01":        tea.String("hbr.aliyuncs.com"),
+		"cn-wuhan":                    tea.String("hbr.aliyuncs.com"),
+		"cn-wulanchabu":               tea.String("hbr.aliyuncs.com"),
+		"cn-yushanfang":               tea.String("hbr.aliyuncs.com"),
+		"cn-zhangbei":                 tea.String("hbr.aliyuncs.com"),
+		"cn-zhangbei-na61-b01":        tea.String("hbr.aliyuncs.com"),
+		"cn-zhangjiakou-na62-a01":     tea.String("hbr.aliyuncs.com"),
+		"cn-zhengzhou-nebula-1":       tea.String("hbr.aliyuncs.com"),
+		"eu-west-1-oxs":               tea.String("hbr.aliyuncs.com"),
+		"rus-west-1-pop":              tea.String("hbr.aliyuncs.com"),
+	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -6578,6 +7237,58 @@ func (client *Client) CancelRestoreJob(request *CancelRestoreJobRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ChangeResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NewResourceGroupId)) {
+		body["NewResourceGroupId"] = request.NewResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		body["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeResourceGroup"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (_result *ChangeResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeResourceGroupResponse{}
+	_body, _err := client.ChangeResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateBackupPlanWithOptions(tmpReq *CreateBackupPlanRequest, runtime *util.RuntimeOptions) (_result *CreateBackupPlanResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -6604,10 +7315,6 @@ func (client *Client) CreateBackupPlanWithOptions(tmpReq *CreateBackupPlanReques
 
 	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
 		query["FileSystemId"] = request.FileSystemId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceGroupId)) {
-		query["InstanceGroupId"] = request.InstanceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PlanName)) {
@@ -6770,11 +7477,17 @@ func (client *Client) CreateReplicationVault(request *CreateReplicationVaultRequ
 	return _result, _err
 }
 
-func (client *Client) CreateRestoreJobWithOptions(request *CreateRestoreJobRequest, runtime *util.RuntimeOptions) (_result *CreateRestoreJobResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateRestoreJobWithOptions(tmpReq *CreateRestoreJobRequest, runtime *util.RuntimeOptions) (_result *CreateRestoreJobResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateRestoreJobShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.UdmDetail)) {
+		request.UdmDetailShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UdmDetail, tea.String("UdmDetail"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.RestoreType)) {
 		query["RestoreType"] = request.RestoreType
@@ -6818,6 +7531,10 @@ func (client *Client) CreateRestoreJobWithOptions(request *CreateRestoreJobReque
 
 	if !tea.BoolValue(util.IsUnset(request.TargetTime)) {
 		query["TargetTime"] = request.TargetTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UdmDetailShrink)) {
+		query["UdmDetail"] = request.UdmDetailShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
@@ -7670,6 +8387,86 @@ func (client *Client) DescribeTask(request *DescribeTaskRequest) (_result *Descr
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTaskResponse{}
 	_body, _err := client.DescribeTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeUdmSnapshotsWithOptions(tmpReq *DescribeUdmSnapshotsRequest, runtime *util.RuntimeOptions) (_result *DescribeUdmSnapshotsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribeUdmSnapshotsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SnapshotIds)) {
+		request.SnapshotIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SnapshotIds, tea.String("SnapshotIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiskId)) {
+		query["DiskId"] = request.DiskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UdmRegionId)) {
+		query["UdmRegionId"] = request.UdmRegionId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SnapshotIdsShrink)) {
+		body["SnapshotIds"] = request.SnapshotIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUdmSnapshots"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUdmSnapshotsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUdmSnapshots(request *DescribeUdmSnapshotsRequest) (_result *DescribeUdmSnapshotsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUdmSnapshotsResponse{}
+	_body, _err := client.DescribeUdmSnapshotsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
