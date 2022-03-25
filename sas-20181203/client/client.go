@@ -7395,24 +7395,31 @@ func (s *DescribeGroupedContainerInstancesResponseBody) SetRequestId(v string) *
 }
 
 type DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList struct {
-	AlarmCount        *int32  `json:"AlarmCount,omitempty" xml:"AlarmCount,omitempty"`
-	AppName           *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	ClusterId         *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName       *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	ClusterType       *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CusterState       *string `json:"CusterState,omitempty" xml:"CusterState,omitempty"`
-	HostIp            *string `json:"HostIp,omitempty" xml:"HostIp,omitempty"`
-	InstanceCount     *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Pod               *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
-	PodIp             *string `json:"PodIp,omitempty" xml:"PodIp,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RiskInstanceCount *int32  `json:"RiskInstanceCount,omitempty" xml:"RiskInstanceCount,omitempty"`
-	RiskLevel         *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	RiskStatus        *string `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
-	VulCount          *int32  `json:"VulCount,omitempty" xml:"VulCount,omitempty"`
+	AlarmCount         *int32  `json:"AlarmCount,omitempty" xml:"AlarmCount,omitempty"`
+	AppName            *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ClusterId          *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName        *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	ClusterType        *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	CreateTime         *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CusterState        *string `json:"CusterState,omitempty" xml:"CusterState,omitempty"`
+	HcCount            *int32  `json:"HcCount,omitempty" xml:"HcCount,omitempty"`
+	HostIp             *string `json:"HostIp,omitempty" xml:"HostIp,omitempty"`
+	Image              *string `json:"Image,omitempty" xml:"Image,omitempty"`
+	ImageDigest        *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
+	ImageRepoName      *string `json:"ImageRepoName,omitempty" xml:"ImageRepoName,omitempty"`
+	ImageRepoNamespace *string `json:"ImageRepoNamespace,omitempty" xml:"ImageRepoNamespace,omitempty"`
+	ImageRepoTag       *string `json:"ImageRepoTag,omitempty" xml:"ImageRepoTag,omitempty"`
+	ImageUuid          *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
+	InstanceCount      *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Namespace          *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Pod                *string `json:"Pod,omitempty" xml:"Pod,omitempty"`
+	PodIp              *string `json:"PodIp,omitempty" xml:"PodIp,omitempty"`
+	RegionId           *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RiskInstanceCount  *int32  `json:"RiskInstanceCount,omitempty" xml:"RiskInstanceCount,omitempty"`
+	RiskLevel          *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	RiskStatus         *string `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
+	VulCount           *int32  `json:"VulCount,omitempty" xml:"VulCount,omitempty"`
 }
 
 func (s DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList) String() string {
@@ -7458,8 +7465,43 @@ func (s *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceLi
 	return s
 }
 
+func (s *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList) SetHcCount(v int32) *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList {
+	s.HcCount = &v
+	return s
+}
+
 func (s *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList) SetHostIp(v string) *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList {
 	s.HostIp = &v
+	return s
+}
+
+func (s *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList) SetImage(v string) *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList {
+	s.Image = &v
+	return s
+}
+
+func (s *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList) SetImageDigest(v string) *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList {
+	s.ImageDigest = &v
+	return s
+}
+
+func (s *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList) SetImageRepoName(v string) *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList {
+	s.ImageRepoName = &v
+	return s
+}
+
+func (s *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList) SetImageRepoNamespace(v string) *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList {
+	s.ImageRepoNamespace = &v
+	return s
+}
+
+func (s *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList) SetImageRepoTag(v string) *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList {
+	s.ImageRepoTag = &v
+	return s
+}
+
+func (s *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList) SetImageUuid(v string) *DescribeGroupedContainerInstancesResponseBodyGroupedContainerInstanceList {
+	s.ImageUuid = &v
 	return s
 }
 
