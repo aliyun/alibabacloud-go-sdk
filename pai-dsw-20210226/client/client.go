@@ -5802,8 +5802,9 @@ type UpdateV3InstanceByUserResponseBody struct {
 	// 请求Id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// 成功标志
-	Success     *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	Success     *bool     `json:"Success,omitempty" xml:"Success,omitempty"`
+	UserSet     []*string `json:"UserSet,omitempty" xml:"UserSet,omitempty" type:"Repeated"`
+	WorkspaceId *string   `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s UpdateV3InstanceByUserResponseBody) String() string {
@@ -5841,6 +5842,11 @@ func (s *UpdateV3InstanceByUserResponseBody) SetRequestId(v string) *UpdateV3Ins
 
 func (s *UpdateV3InstanceByUserResponseBody) SetSuccess(v bool) *UpdateV3InstanceByUserResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *UpdateV3InstanceByUserResponseBody) SetUserSet(v []*string) *UpdateV3InstanceByUserResponseBody {
+	s.UserSet = v
 	return s
 }
 
