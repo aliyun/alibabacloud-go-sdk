@@ -1546,93 +1546,6 @@ func (s *Vpc) SetVpcName(v string) *Vpc {
 	return s
 }
 
-type CreateImageRequest struct {
-	// 镜像描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 实例名称
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 镜像名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 镜像仓库
-	Repository *string `json:"Repository,omitempty" xml:"Repository,omitempty"`
-}
-
-func (s CreateImageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateImageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateImageRequest) SetDescription(v string) *CreateImageRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateImageRequest) SetInstanceId(v string) *CreateImageRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *CreateImageRequest) SetName(v string) *CreateImageRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateImageRequest) SetRepository(v string) *CreateImageRequest {
-	s.Repository = &v
-	return s
-}
-
-type CreateImageResponseBody struct {
-	// 保存的镜像Id
-	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateImageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateImageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateImageResponseBody) SetImageId(v string) *CreateImageResponseBody {
-	s.ImageId = &v
-	return s
-}
-
-func (s *CreateImageResponseBody) SetRequestId(v string) *CreateImageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateImageResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateImageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateImageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateImageResponse) SetHeaders(v map[string]*string) *CreateImageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateImageResponse) SetBody(v *CreateImageResponseBody) *CreateImageResponse {
-	s.Body = v
-	return s
-}
-
 type CreateInstanceRequest struct {
 	DatasetList []*Dataset `json:"DatasetList,omitempty" xml:"DatasetList,omitempty" type:"Repeated"`
 	// 实例规格
@@ -1839,6 +1752,79 @@ func (s *CreateInstanceShutdownTimerResponse) SetBody(v *CreateInstanceShutdownT
 	return s
 }
 
+type CreateInstanceShutdownTimerV2Request struct {
+	// 定时关机设定时间
+	DueTime *string `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
+	// 距离定时关机时间段
+	RemainingTimeInMs *int64 `json:"RemainingTimeInMs,omitempty" xml:"RemainingTimeInMs,omitempty"`
+}
+
+func (s CreateInstanceShutdownTimerV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceShutdownTimerV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceShutdownTimerV2Request) SetDueTime(v string) *CreateInstanceShutdownTimerV2Request {
+	s.DueTime = &v
+	return s
+}
+
+func (s *CreateInstanceShutdownTimerV2Request) SetRemainingTimeInMs(v int64) *CreateInstanceShutdownTimerV2Request {
+	s.RemainingTimeInMs = &v
+	return s
+}
+
+type CreateInstanceShutdownTimerV2ResponseBody struct {
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateInstanceShutdownTimerV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceShutdownTimerV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceShutdownTimerV2ResponseBody) SetInstanceId(v string) *CreateInstanceShutdownTimerV2ResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateInstanceShutdownTimerV2ResponseBody) SetRequestId(v string) *CreateInstanceShutdownTimerV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateInstanceShutdownTimerV2Response struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateInstanceShutdownTimerV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateInstanceShutdownTimerV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceShutdownTimerV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceShutdownTimerV2Response) SetHeaders(v map[string]*string) *CreateInstanceShutdownTimerV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateInstanceShutdownTimerV2Response) SetBody(v *CreateInstanceShutdownTimerV2ResponseBody) *CreateInstanceShutdownTimerV2Response {
+	s.Body = v
+	return s
+}
+
 type CreateInstanceSnapshotRequest struct {
 	// 实例快照描述
 	InstanceSnapshotDescription *string `json:"InstanceSnapshotDescription,omitempty" xml:"InstanceSnapshotDescription,omitempty"`
@@ -1922,6 +1908,272 @@ func (s *CreateInstanceSnapshotResponse) SetHeaders(v map[string]*string) *Creat
 }
 
 func (s *CreateInstanceSnapshotResponse) SetBody(v *CreateInstanceSnapshotResponseBody) *CreateInstanceSnapshotResponse {
+	s.Body = v
+	return s
+}
+
+type CreateInstanceSnapshotV2Request struct {
+	// 镜像地址
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// 实例快照描述
+	SnapshotDescription *string `json:"SnapshotDescription,omitempty" xml:"SnapshotDescription,omitempty"`
+	// 实例快照名称
+	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+}
+
+func (s CreateInstanceSnapshotV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceSnapshotV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceSnapshotV2Request) SetImageUrl(v string) *CreateInstanceSnapshotV2Request {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *CreateInstanceSnapshotV2Request) SetSnapshotDescription(v string) *CreateInstanceSnapshotV2Request {
+	s.SnapshotDescription = &v
+	return s
+}
+
+func (s *CreateInstanceSnapshotV2Request) SetSnapshotName(v string) *CreateInstanceSnapshotV2Request {
+	s.SnapshotName = &v
+	return s
+}
+
+type CreateInstanceSnapshotV2ResponseBody struct {
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 实例快照Id
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+}
+
+func (s CreateInstanceSnapshotV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceSnapshotV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceSnapshotV2ResponseBody) SetInstanceId(v string) *CreateInstanceSnapshotV2ResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateInstanceSnapshotV2ResponseBody) SetRequestId(v string) *CreateInstanceSnapshotV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateInstanceSnapshotV2ResponseBody) SetSnapshotId(v string) *CreateInstanceSnapshotV2ResponseBody {
+	s.SnapshotId = &v
+	return s
+}
+
+type CreateInstanceSnapshotV2Response struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateInstanceSnapshotV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateInstanceSnapshotV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceSnapshotV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceSnapshotV2Response) SetHeaders(v map[string]*string) *CreateInstanceSnapshotV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateInstanceSnapshotV2Response) SetBody(v *CreateInstanceSnapshotV2ResponseBody) *CreateInstanceSnapshotV2Response {
+	s.Body = v
+	return s
+}
+
+type CreateInstanceV2Request struct {
+	// 工作空间内是否他人可见
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// 数据集集合
+	Datasets []*CreateInstanceV2RequestDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	// 实例对应的Ecs规格
+	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// 环境变量
+	EnvironmentVariables map[string]*string `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
+	// 镜像Id
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// 镜像地址
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// user vpc配置
+	UserVpc *CreateInstanceV2RequestUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	// 工作空间Id
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s CreateInstanceV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceV2Request) SetAccessibility(v string) *CreateInstanceV2Request {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *CreateInstanceV2Request) SetDatasets(v []*CreateInstanceV2RequestDatasets) *CreateInstanceV2Request {
+	s.Datasets = v
+	return s
+}
+
+func (s *CreateInstanceV2Request) SetEcsSpec(v string) *CreateInstanceV2Request {
+	s.EcsSpec = &v
+	return s
+}
+
+func (s *CreateInstanceV2Request) SetEnvironmentVariables(v map[string]*string) *CreateInstanceV2Request {
+	s.EnvironmentVariables = v
+	return s
+}
+
+func (s *CreateInstanceV2Request) SetImageId(v string) *CreateInstanceV2Request {
+	s.ImageId = &v
+	return s
+}
+
+func (s *CreateInstanceV2Request) SetImageUrl(v string) *CreateInstanceV2Request {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *CreateInstanceV2Request) SetInstanceName(v string) *CreateInstanceV2Request {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *CreateInstanceV2Request) SetUserVpc(v *CreateInstanceV2RequestUserVpc) *CreateInstanceV2Request {
+	s.UserVpc = v
+	return s
+}
+
+func (s *CreateInstanceV2Request) SetWorkspaceId(v string) *CreateInstanceV2Request {
+	s.WorkspaceId = &v
+	return s
+}
+
+type CreateInstanceV2RequestDatasets struct {
+	// 数据集Id
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// 容器内挂载路径
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+}
+
+func (s CreateInstanceV2RequestDatasets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceV2RequestDatasets) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceV2RequestDatasets) SetDatasetId(v string) *CreateInstanceV2RequestDatasets {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *CreateInstanceV2RequestDatasets) SetMountPath(v string) *CreateInstanceV2RequestDatasets {
+	s.MountPath = &v
+	return s
+}
+
+type CreateInstanceV2RequestUserVpc struct {
+	// Security Group Id
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// VSwitch Id
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// Vpc Id
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s CreateInstanceV2RequestUserVpc) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceV2RequestUserVpc) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceV2RequestUserVpc) SetSecurityGroupId(v string) *CreateInstanceV2RequestUserVpc {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *CreateInstanceV2RequestUserVpc) SetVSwitchId(v string) *CreateInstanceV2RequestUserVpc {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *CreateInstanceV2RequestUserVpc) SetVpcId(v string) *CreateInstanceV2RequestUserVpc {
+	s.VpcId = &v
+	return s
+}
+
+type CreateInstanceV2ResponseBody struct {
+	// 工作空间Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateInstanceV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceV2ResponseBody) SetInstanceId(v string) *CreateInstanceV2ResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateInstanceV2ResponseBody) SetRequestId(v string) *CreateInstanceV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateInstanceV2Response struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateInstanceV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateInstanceV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateInstanceV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *CreateInstanceV2Response) SetHeaders(v map[string]*string) *CreateInstanceV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateInstanceV2Response) SetBody(v *CreateInstanceV2ResponseBody) *CreateInstanceV2Response {
 	s.Body = v
 	return s
 }
@@ -2022,6 +2274,54 @@ func (s *DeleteInstanceShutdownTimerResponse) SetBody(v *DeleteInstanceShutdownT
 	return s
 }
 
+type DeleteInstanceShutdownTimerV2ResponseBody struct {
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteInstanceShutdownTimerV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceShutdownTimerV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceShutdownTimerV2ResponseBody) SetInstanceId(v string) *DeleteInstanceShutdownTimerV2ResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteInstanceShutdownTimerV2ResponseBody) SetRequestId(v string) *DeleteInstanceShutdownTimerV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteInstanceShutdownTimerV2Response struct {
+	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteInstanceShutdownTimerV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteInstanceShutdownTimerV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceShutdownTimerV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceShutdownTimerV2Response) SetHeaders(v map[string]*string) *DeleteInstanceShutdownTimerV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteInstanceShutdownTimerV2Response) SetBody(v *DeleteInstanceShutdownTimerV2ResponseBody) *DeleteInstanceShutdownTimerV2Response {
+	s.Body = v
+	return s
+}
+
 type DeleteInstanceSnapshotResponseBody struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -2073,6 +2373,173 @@ func (s *DeleteInstanceSnapshotResponse) SetHeaders(v map[string]*string) *Delet
 }
 
 func (s *DeleteInstanceSnapshotResponse) SetBody(v *DeleteInstanceSnapshotResponseBody) *DeleteInstanceSnapshotResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteInstanceSnapshotV2ResponseBody struct {
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 实例快照Id
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+}
+
+func (s DeleteInstanceSnapshotV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceSnapshotV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceSnapshotV2ResponseBody) SetInstanceId(v string) *DeleteInstanceSnapshotV2ResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteInstanceSnapshotV2ResponseBody) SetRequestId(v string) *DeleteInstanceSnapshotV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteInstanceSnapshotV2ResponseBody) SetSnapshotId(v string) *DeleteInstanceSnapshotV2ResponseBody {
+	s.SnapshotId = &v
+	return s
+}
+
+type DeleteInstanceSnapshotV2Response struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteInstanceSnapshotV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteInstanceSnapshotV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceSnapshotV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceSnapshotV2Response) SetHeaders(v map[string]*string) *DeleteInstanceSnapshotV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteInstanceSnapshotV2Response) SetBody(v *DeleteInstanceSnapshotV2ResponseBody) *DeleteInstanceSnapshotV2Response {
+	s.Body = v
+	return s
+}
+
+type DeleteInstanceV2ResponseBody struct {
+	// 工作空间Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteInstanceV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceV2ResponseBody) SetInstanceId(v string) *DeleteInstanceV2ResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DeleteInstanceV2ResponseBody) SetRequestId(v string) *DeleteInstanceV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteInstanceV2Response struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteInstanceV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteInstanceV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstanceV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstanceV2Response) SetHeaders(v map[string]*string) *DeleteInstanceV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteInstanceV2Response) SetBody(v *DeleteInstanceV2ResponseBody) *DeleteInstanceV2Response {
+	s.Body = v
+	return s
+}
+
+type FoobarResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s FoobarResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FoobarResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *FoobarResponseBody) SetRequestId(v string) *FoobarResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type FoobarResponse struct {
+	Headers map[string]*string  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *FoobarResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s FoobarResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s FoobarResponse) GoString() string {
+	return s.String()
+}
+
+func (s *FoobarResponse) SetHeaders(v map[string]*string) *FoobarResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *FoobarResponse) SetBody(v *FoobarResponseBody) *FoobarResponse {
+	s.Body = v
+	return s
+}
+
+type Foobar1Response struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    interface{}        `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s Foobar1Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Foobar1Response) GoString() string {
+	return s.String()
+}
+
+func (s *Foobar1Response) SetHeaders(v map[string]*string) *Foobar1Response {
+	s.Headers = v
+	return s
+}
+
+func (s *Foobar1Response) SetBody(v interface{}) *Foobar1Response {
 	s.Body = v
 	return s
 }
@@ -2365,53 +2832,6 @@ func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceRe
 	return s
 }
 
-type GetInstanceImageResponseBody struct {
-	Image *Image `json:"Image,omitempty" xml:"Image,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetInstanceImageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetInstanceImageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetInstanceImageResponseBody) SetImage(v *Image) *GetInstanceImageResponseBody {
-	s.Image = v
-	return s
-}
-
-func (s *GetInstanceImageResponseBody) SetRequestId(v string) *GetInstanceImageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetInstanceImageResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetInstanceImageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetInstanceImageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetInstanceImageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetInstanceImageResponse) SetHeaders(v map[string]*string) *GetInstanceImageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetInstanceImageResponse) SetBody(v *GetInstanceImageResponseBody) *GetInstanceImageResponse {
-	s.Body = v
-	return s
-}
-
 type GetInstanceShutdownTimerResponseBody struct {
 	// 任务创建时间(GMT)
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
@@ -2477,6 +2897,82 @@ func (s *GetInstanceShutdownTimerResponse) SetHeaders(v map[string]*string) *Get
 }
 
 func (s *GetInstanceShutdownTimerResponse) SetBody(v *GetInstanceShutdownTimerResponseBody) *GetInstanceShutdownTimerResponse {
+	s.Body = v
+	return s
+}
+
+type GetInstanceShutdownTimerV2ResponseBody struct {
+	// 设定关机时间
+	DueTime *string `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
+	// 创建时间
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// 修改时间
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 剩余关机时间（ms）
+	RemainingTimeInMs *int64 `json:"RemainingTimeInMs,omitempty" xml:"RemainingTimeInMs,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetInstanceShutdownTimerV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceShutdownTimerV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceShutdownTimerV2ResponseBody) SetDueTime(v string) *GetInstanceShutdownTimerV2ResponseBody {
+	s.DueTime = &v
+	return s
+}
+
+func (s *GetInstanceShutdownTimerV2ResponseBody) SetGmtCreateTime(v string) *GetInstanceShutdownTimerV2ResponseBody {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetInstanceShutdownTimerV2ResponseBody) SetGmtModifiedTime(v string) *GetInstanceShutdownTimerV2ResponseBody {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *GetInstanceShutdownTimerV2ResponseBody) SetInstanceId(v string) *GetInstanceShutdownTimerV2ResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceShutdownTimerV2ResponseBody) SetRemainingTimeInMs(v int64) *GetInstanceShutdownTimerV2ResponseBody {
+	s.RemainingTimeInMs = &v
+	return s
+}
+
+func (s *GetInstanceShutdownTimerV2ResponseBody) SetRequestId(v string) *GetInstanceShutdownTimerV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetInstanceShutdownTimerV2Response struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetInstanceShutdownTimerV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetInstanceShutdownTimerV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceShutdownTimerV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceShutdownTimerV2Response) SetHeaders(v map[string]*string) *GetInstanceShutdownTimerV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *GetInstanceShutdownTimerV2Response) SetBody(v *GetInstanceShutdownTimerV2ResponseBody) *GetInstanceShutdownTimerV2Response {
 	s.Body = v
 	return s
 }
@@ -2585,245 +3081,499 @@ func (s *GetInstanceSnapshotResponse) SetBody(v *GetInstanceSnapshotResponseBody
 	return s
 }
 
-type GetInstanceTypeResponseBody struct {
-	// cpu核数
-	CpuCoreCount *int64 `json:"CpuCoreCount,omitempty" xml:"CpuCoreCount,omitempty"`
-	// 折扣
-	Discount *float32 `json:"Discount,omitempty" xml:"Discount,omitempty"`
-	// 国内价格
-	DomesticPrice *float32 `json:"DomesticPrice,omitempty" xml:"DomesticPrice,omitempty"`
-	// GPU卡数
-	GPUAmount *int64 `json:"GPUAmount,omitempty" xml:"GPUAmount,omitempty"`
-	// GPU卡型
-	GPUSpec *string `json:"GPUSpec,omitempty" xml:"GPUSpec,omitempty"`
-	// 实例接收带宽
-	InstanceBandwidthRx *int64 `json:"InstanceBandwidthRx,omitempty" xml:"InstanceBandwidthRx,omitempty"`
-	// 实例发送带宽
-	InstanceBandwidthTx *int64 `json:"InstanceBandwidthTx,omitempty" xml:"InstanceBandwidthTx,omitempty"`
-	// 实例每秒发包数
-	InstancePpsRx *int64 `json:"InstancePpsRx,omitempty" xml:"InstancePpsRx,omitempty"`
-	// 实例每秒收包数
-	InstancePpsTx *int64 `json:"InstancePpsTx,omitempty" xml:"InstancePpsTx,omitempty"`
-	// 规格族
-	InstanceTypeFamily *string `json:"InstanceTypeFamily,omitempty" xml:"InstanceTypeFamily,omitempty"`
-	// 实例类型id
-	InstanceTypeId *string `json:"InstanceTypeId,omitempty" xml:"InstanceTypeId,omitempty"`
-	// 是否国际站用户
-	International *bool `json:"International,omitempty" xml:"International,omitempty"`
-	// 存储盘容量
-	LocalStorageCapacity *int64 `json:"LocalStorageCapacity,omitempty" xml:"LocalStorageCapacity,omitempty"`
-	// 内存容量
-	MemorySize *float32 `json:"MemorySize,omitempty" xml:"MemorySize,omitempty"`
-	// 价格
-	Price *float32 `json:"Price,omitempty" xml:"Price,omitempty"`
-	// 价格（人民币）
-	PriceCNY *float32 `json:"PriceCNY,omitempty" xml:"PriceCNY,omitempty"`
-	// 价格（美元）
-	PriceUSD *float32 `json:"PriceUSD,omitempty" xml:"PriceUSD,omitempty"`
-	// Id of the request
+type GetInstanceSnapshotV2ResponseBody struct {
+	// 实例快照创建时间
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// 实例快照修改时间
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// 实例快照的镜像Id
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// 实例快照的镜像地址
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 实例快照错误代码
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// 实例快照错误消息
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// 请求Id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 系统盘存储类型
-	SystemDiskCategory *string `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
-	// 系统盘容量
-	SystemDiskSize *int64 `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	// 实例快照Id
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// 实例快照名称
+	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	// 实例快照状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
-func (s GetInstanceTypeResponseBody) String() string {
+func (s GetInstanceSnapshotV2ResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetInstanceTypeResponseBody) GoString() string {
+func (s GetInstanceSnapshotV2ResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetInstanceTypeResponseBody) SetCpuCoreCount(v int64) *GetInstanceTypeResponseBody {
-	s.CpuCoreCount = &v
+func (s *GetInstanceSnapshotV2ResponseBody) SetGmtCreateTime(v string) *GetInstanceSnapshotV2ResponseBody {
+	s.GmtCreateTime = &v
 	return s
 }
 
-func (s *GetInstanceTypeResponseBody) SetDiscount(v float32) *GetInstanceTypeResponseBody {
-	s.Discount = &v
+func (s *GetInstanceSnapshotV2ResponseBody) SetGmtModifiedTime(v string) *GetInstanceSnapshotV2ResponseBody {
+	s.GmtModifiedTime = &v
 	return s
 }
 
-func (s *GetInstanceTypeResponseBody) SetDomesticPrice(v float32) *GetInstanceTypeResponseBody {
-	s.DomesticPrice = &v
+func (s *GetInstanceSnapshotV2ResponseBody) SetImageId(v string) *GetInstanceSnapshotV2ResponseBody {
+	s.ImageId = &v
 	return s
 }
 
-func (s *GetInstanceTypeResponseBody) SetGPUAmount(v int64) *GetInstanceTypeResponseBody {
-	s.GPUAmount = &v
+func (s *GetInstanceSnapshotV2ResponseBody) SetImageUrl(v string) *GetInstanceSnapshotV2ResponseBody {
+	s.ImageUrl = &v
 	return s
 }
 
-func (s *GetInstanceTypeResponseBody) SetGPUSpec(v string) *GetInstanceTypeResponseBody {
-	s.GPUSpec = &v
+func (s *GetInstanceSnapshotV2ResponseBody) SetInstanceId(v string) *GetInstanceSnapshotV2ResponseBody {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *GetInstanceTypeResponseBody) SetInstanceBandwidthRx(v int64) *GetInstanceTypeResponseBody {
-	s.InstanceBandwidthRx = &v
+func (s *GetInstanceSnapshotV2ResponseBody) SetReasonCode(v string) *GetInstanceSnapshotV2ResponseBody {
+	s.ReasonCode = &v
 	return s
 }
 
-func (s *GetInstanceTypeResponseBody) SetInstanceBandwidthTx(v int64) *GetInstanceTypeResponseBody {
-	s.InstanceBandwidthTx = &v
+func (s *GetInstanceSnapshotV2ResponseBody) SetReasonMessage(v string) *GetInstanceSnapshotV2ResponseBody {
+	s.ReasonMessage = &v
 	return s
 }
 
-func (s *GetInstanceTypeResponseBody) SetInstancePpsRx(v int64) *GetInstanceTypeResponseBody {
-	s.InstancePpsRx = &v
-	return s
-}
-
-func (s *GetInstanceTypeResponseBody) SetInstancePpsTx(v int64) *GetInstanceTypeResponseBody {
-	s.InstancePpsTx = &v
-	return s
-}
-
-func (s *GetInstanceTypeResponseBody) SetInstanceTypeFamily(v string) *GetInstanceTypeResponseBody {
-	s.InstanceTypeFamily = &v
-	return s
-}
-
-func (s *GetInstanceTypeResponseBody) SetInstanceTypeId(v string) *GetInstanceTypeResponseBody {
-	s.InstanceTypeId = &v
-	return s
-}
-
-func (s *GetInstanceTypeResponseBody) SetInternational(v bool) *GetInstanceTypeResponseBody {
-	s.International = &v
-	return s
-}
-
-func (s *GetInstanceTypeResponseBody) SetLocalStorageCapacity(v int64) *GetInstanceTypeResponseBody {
-	s.LocalStorageCapacity = &v
-	return s
-}
-
-func (s *GetInstanceTypeResponseBody) SetMemorySize(v float32) *GetInstanceTypeResponseBody {
-	s.MemorySize = &v
-	return s
-}
-
-func (s *GetInstanceTypeResponseBody) SetPrice(v float32) *GetInstanceTypeResponseBody {
-	s.Price = &v
-	return s
-}
-
-func (s *GetInstanceTypeResponseBody) SetPriceCNY(v float32) *GetInstanceTypeResponseBody {
-	s.PriceCNY = &v
-	return s
-}
-
-func (s *GetInstanceTypeResponseBody) SetPriceUSD(v float32) *GetInstanceTypeResponseBody {
-	s.PriceUSD = &v
-	return s
-}
-
-func (s *GetInstanceTypeResponseBody) SetRequestId(v string) *GetInstanceTypeResponseBody {
+func (s *GetInstanceSnapshotV2ResponseBody) SetRequestId(v string) *GetInstanceSnapshotV2ResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetInstanceTypeResponseBody) SetResourceType(v string) *GetInstanceTypeResponseBody {
-	s.ResourceType = &v
+func (s *GetInstanceSnapshotV2ResponseBody) SetSnapshotId(v string) *GetInstanceSnapshotV2ResponseBody {
+	s.SnapshotId = &v
 	return s
 }
 
-func (s *GetInstanceTypeResponseBody) SetSystemDiskCategory(v string) *GetInstanceTypeResponseBody {
-	s.SystemDiskCategory = &v
+func (s *GetInstanceSnapshotV2ResponseBody) SetSnapshotName(v string) *GetInstanceSnapshotV2ResponseBody {
+	s.SnapshotName = &v
 	return s
 }
 
-func (s *GetInstanceTypeResponseBody) SetSystemDiskSize(v int64) *GetInstanceTypeResponseBody {
-	s.SystemDiskSize = &v
+func (s *GetInstanceSnapshotV2ResponseBody) SetStatus(v string) *GetInstanceSnapshotV2ResponseBody {
+	s.Status = &v
 	return s
 }
 
-type GetInstanceTypeResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetInstanceTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type GetInstanceSnapshotV2Response struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetInstanceSnapshotV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s GetInstanceTypeResponse) String() string {
+func (s GetInstanceSnapshotV2Response) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetInstanceTypeResponse) GoString() string {
+func (s GetInstanceSnapshotV2Response) GoString() string {
 	return s.String()
 }
 
-func (s *GetInstanceTypeResponse) SetHeaders(v map[string]*string) *GetInstanceTypeResponse {
+func (s *GetInstanceSnapshotV2Response) SetHeaders(v map[string]*string) *GetInstanceSnapshotV2Response {
 	s.Headers = v
 	return s
 }
 
-func (s *GetInstanceTypeResponse) SetBody(v *GetInstanceTypeResponseBody) *GetInstanceTypeResponse {
+func (s *GetInstanceSnapshotV2Response) SetBody(v *GetInstanceSnapshotV2ResponseBody) *GetInstanceSnapshotV2Response {
 	s.Body = v
 	return s
 }
 
-type GetInstanceUrlResponseBody struct {
-	// webide的链接
-	Ide *string `json:"Ide,omitempty" xml:"Ide,omitempty"`
-	// jupyterlab的链接
-	Lab *string `json:"Lab,omitempty" xml:"Lab,omitempty"`
-	// Id of the request
+type GetInstanceV2ResponseBody struct {
+	// 实例计算类型
+	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// 工作空间内是否他人可见
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// 累计运行时间（ms）
+	AccumulatedRunningTimeInMs *int64 `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
+	// 数据集集合
+	Datasets []*GetInstanceV2ResponseBodyDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	// 实例对应的Ecs规格
+	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// 环境变量
+	EnvironmentVariables map[string]*string `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
+	// 实例创建时间
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// 实例修改时间
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// 镜像Id
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// 镜像名称
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// 镜像地址
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// 定时关机任务
+	InstanceShutdownTimer *GetInstanceV2ResponseBodyInstanceShutdownTimer `json:"InstanceShutdownTimer,omitempty" xml:"InstanceShutdownTimer,omitempty" type:"Struct"`
+	// 实例Url
+	InstanceUrl *string `json:"InstanceUrl,omitempty" xml:"InstanceUrl,omitempty"`
+	// Jupyterlab Url
+	JupyterlabUrl *string `json:"JupyterlabUrl,omitempty" xml:"JupyterlabUrl,omitempty"`
+	// 最新保存的用户镜像
+	LatestSnapshot *GetInstanceV2ResponseBodyLatestSnapshot `json:"LatestSnapshot,omitempty" xml:"LatestSnapshot,omitempty" type:"Struct"`
+	// 支付类型
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// 实例错误代码
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// 实例错误原因
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// 请求Id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// terminal终端的链接
-	Terminal *string `json:"Terminal,omitempty" xml:"Terminal,omitempty"`
+	// 实例状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// terminal url
+	TerminalUrl *string `json:"TerminalUrl,omitempty" xml:"TerminalUrl,omitempty"`
+	// 用户Id
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// user vpc配置
+	UserVpc *GetInstanceV2ResponseBodyUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	// web ide url
+	WebIDEUrl *string `json:"WebIDEUrl,omitempty" xml:"WebIDEUrl,omitempty"`
+	// 工作空间Id
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// 工作空间名称
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
 }
 
-func (s GetInstanceUrlResponseBody) String() string {
+func (s GetInstanceV2ResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetInstanceUrlResponseBody) GoString() string {
+func (s GetInstanceV2ResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetInstanceUrlResponseBody) SetIde(v string) *GetInstanceUrlResponseBody {
-	s.Ide = &v
+func (s *GetInstanceV2ResponseBody) SetAcceleratorType(v string) *GetInstanceV2ResponseBody {
+	s.AcceleratorType = &v
 	return s
 }
 
-func (s *GetInstanceUrlResponseBody) SetLab(v string) *GetInstanceUrlResponseBody {
-	s.Lab = &v
+func (s *GetInstanceV2ResponseBody) SetAccessibility(v string) *GetInstanceV2ResponseBody {
+	s.Accessibility = &v
 	return s
 }
 
-func (s *GetInstanceUrlResponseBody) SetRequestId(v string) *GetInstanceUrlResponseBody {
+func (s *GetInstanceV2ResponseBody) SetAccumulatedRunningTimeInMs(v int64) *GetInstanceV2ResponseBody {
+	s.AccumulatedRunningTimeInMs = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetDatasets(v []*GetInstanceV2ResponseBodyDatasets) *GetInstanceV2ResponseBody {
+	s.Datasets = v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetEcsSpec(v string) *GetInstanceV2ResponseBody {
+	s.EcsSpec = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetEnvironmentVariables(v map[string]*string) *GetInstanceV2ResponseBody {
+	s.EnvironmentVariables = v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetGmtCreateTime(v string) *GetInstanceV2ResponseBody {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetGmtModifiedTime(v string) *GetInstanceV2ResponseBody {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetImageId(v string) *GetInstanceV2ResponseBody {
+	s.ImageId = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetImageName(v string) *GetInstanceV2ResponseBody {
+	s.ImageName = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetImageUrl(v string) *GetInstanceV2ResponseBody {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetInstanceId(v string) *GetInstanceV2ResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetInstanceName(v string) *GetInstanceV2ResponseBody {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetInstanceShutdownTimer(v *GetInstanceV2ResponseBodyInstanceShutdownTimer) *GetInstanceV2ResponseBody {
+	s.InstanceShutdownTimer = v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetInstanceUrl(v string) *GetInstanceV2ResponseBody {
+	s.InstanceUrl = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetJupyterlabUrl(v string) *GetInstanceV2ResponseBody {
+	s.JupyterlabUrl = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetLatestSnapshot(v *GetInstanceV2ResponseBodyLatestSnapshot) *GetInstanceV2ResponseBody {
+	s.LatestSnapshot = v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetPaymentType(v string) *GetInstanceV2ResponseBody {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetReasonCode(v string) *GetInstanceV2ResponseBody {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetReasonMessage(v string) *GetInstanceV2ResponseBody {
+	s.ReasonMessage = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetRequestId(v string) *GetInstanceV2ResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetInstanceUrlResponseBody) SetTerminal(v string) *GetInstanceUrlResponseBody {
-	s.Terminal = &v
+func (s *GetInstanceV2ResponseBody) SetStatus(v string) *GetInstanceV2ResponseBody {
+	s.Status = &v
 	return s
 }
 
-type GetInstanceUrlResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetInstanceUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+func (s *GetInstanceV2ResponseBody) SetTerminalUrl(v string) *GetInstanceV2ResponseBody {
+	s.TerminalUrl = &v
+	return s
 }
 
-func (s GetInstanceUrlResponse) String() string {
+func (s *GetInstanceV2ResponseBody) SetUserId(v string) *GetInstanceV2ResponseBody {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetUserVpc(v *GetInstanceV2ResponseBodyUserVpc) *GetInstanceV2ResponseBody {
+	s.UserVpc = v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetWebIDEUrl(v string) *GetInstanceV2ResponseBody {
+	s.WebIDEUrl = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetWorkspaceId(v string) *GetInstanceV2ResponseBody {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBody) SetWorkspaceName(v string) *GetInstanceV2ResponseBody {
+	s.WorkspaceName = &v
+	return s
+}
+
+type GetInstanceV2ResponseBodyDatasets struct {
+	// 数据集Id
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// 容器内挂载路径
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+}
+
+func (s GetInstanceV2ResponseBodyDatasets) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetInstanceUrlResponse) GoString() string {
+func (s GetInstanceV2ResponseBodyDatasets) GoString() string {
 	return s.String()
 }
 
-func (s *GetInstanceUrlResponse) SetHeaders(v map[string]*string) *GetInstanceUrlResponse {
+func (s *GetInstanceV2ResponseBodyDatasets) SetDatasetId(v string) *GetInstanceV2ResponseBodyDatasets {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBodyDatasets) SetMountPath(v string) *GetInstanceV2ResponseBodyDatasets {
+	s.MountPath = &v
+	return s
+}
+
+type GetInstanceV2ResponseBodyInstanceShutdownTimer struct {
+	// 设定关机时间
+	DueTime *string `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
+	// 创建时间
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// 修改时间
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 剩余关机时间（ms）
+	RemainingTimeInMs *int64 `json:"RemainingTimeInMs,omitempty" xml:"RemainingTimeInMs,omitempty"`
+}
+
+func (s GetInstanceV2ResponseBodyInstanceShutdownTimer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceV2ResponseBodyInstanceShutdownTimer) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceV2ResponseBodyInstanceShutdownTimer) SetDueTime(v string) *GetInstanceV2ResponseBodyInstanceShutdownTimer {
+	s.DueTime = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBodyInstanceShutdownTimer) SetGmtCreateTime(v string) *GetInstanceV2ResponseBodyInstanceShutdownTimer {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBodyInstanceShutdownTimer) SetGmtModifiedTime(v string) *GetInstanceV2ResponseBodyInstanceShutdownTimer {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBodyInstanceShutdownTimer) SetInstanceId(v string) *GetInstanceV2ResponseBodyInstanceShutdownTimer {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBodyInstanceShutdownTimer) SetRemainingTimeInMs(v int64) *GetInstanceV2ResponseBodyInstanceShutdownTimer {
+	s.RemainingTimeInMs = &v
+	return s
+}
+
+type GetInstanceV2ResponseBodyLatestSnapshot struct {
+	// 快照创建时间
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// 快照修改时间
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// 镜像Id
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// 镜像名称
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// 镜像Url
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// 镜像仓库Url
+	RepositoryUrl *string `json:"RepositoryUrl,omitempty" xml:"RepositoryUrl,omitempty"`
+}
+
+func (s GetInstanceV2ResponseBodyLatestSnapshot) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceV2ResponseBodyLatestSnapshot) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceV2ResponseBodyLatestSnapshot) SetGmtCreateTime(v string) *GetInstanceV2ResponseBodyLatestSnapshot {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBodyLatestSnapshot) SetGmtModifiedTime(v string) *GetInstanceV2ResponseBodyLatestSnapshot {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBodyLatestSnapshot) SetImageId(v string) *GetInstanceV2ResponseBodyLatestSnapshot {
+	s.ImageId = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBodyLatestSnapshot) SetImageName(v string) *GetInstanceV2ResponseBodyLatestSnapshot {
+	s.ImageName = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBodyLatestSnapshot) SetImageUrl(v string) *GetInstanceV2ResponseBodyLatestSnapshot {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBodyLatestSnapshot) SetRepositoryUrl(v string) *GetInstanceV2ResponseBodyLatestSnapshot {
+	s.RepositoryUrl = &v
+	return s
+}
+
+type GetInstanceV2ResponseBodyUserVpc struct {
+	// Security Group Id
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// VSwitch Id
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// Vpc Id
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s GetInstanceV2ResponseBodyUserVpc) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceV2ResponseBodyUserVpc) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceV2ResponseBodyUserVpc) SetSecurityGroupId(v string) *GetInstanceV2ResponseBodyUserVpc {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBodyUserVpc) SetVSwitchId(v string) *GetInstanceV2ResponseBodyUserVpc {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *GetInstanceV2ResponseBodyUserVpc) SetVpcId(v string) *GetInstanceV2ResponseBodyUserVpc {
+	s.VpcId = &v
+	return s
+}
+
+type GetInstanceV2Response struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetInstanceV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetInstanceV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetInstanceV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *GetInstanceV2Response) SetHeaders(v map[string]*string) *GetInstanceV2Response {
 	s.Headers = v
 	return s
 }
 
-func (s *GetInstanceUrlResponse) SetBody(v *GetInstanceUrlResponseBody) *GetInstanceUrlResponse {
+func (s *GetInstanceV2Response) SetBody(v *GetInstanceV2ResponseBody) *GetInstanceV2Response {
 	s.Body = v
 	return s
 }
@@ -2894,587 +3644,50 @@ func (s *GetInstancesStatisticsResponse) SetBody(v *GetInstancesStatisticsRespon
 	return s
 }
 
-type GetUserConfigResponseBody struct {
-	// 当前版本
-	CurrentFeatureVersion *string `json:"CurrentFeatureVersion,omitempty" xml:"CurrentFeatureVersion,omitempty"`
-	// 是否启用v2功能
-	EnableEmrCluster *bool `json:"EnableEmrCluster,omitempty" xml:"EnableEmrCluster,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 是否显示特价版功能
-	UseOnSaleVersion *bool `json:"UseOnSaleVersion,omitempty" xml:"UseOnSaleVersion,omitempty"`
-	// 是否使用团队版功能（v21）
-	UseV21Feature *bool `json:"UseV21Feature,omitempty" xml:"UseV21Feature,omitempty"`
-}
-
-func (s GetUserConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserConfigResponseBody) SetCurrentFeatureVersion(v string) *GetUserConfigResponseBody {
-	s.CurrentFeatureVersion = &v
-	return s
-}
-
-func (s *GetUserConfigResponseBody) SetEnableEmrCluster(v bool) *GetUserConfigResponseBody {
-	s.EnableEmrCluster = &v
-	return s
-}
-
-func (s *GetUserConfigResponseBody) SetRequestId(v string) *GetUserConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetUserConfigResponseBody) SetUseOnSaleVersion(v bool) *GetUserConfigResponseBody {
-	s.UseOnSaleVersion = &v
-	return s
-}
-
-func (s *GetUserConfigResponseBody) SetUseV21Feature(v bool) *GetUserConfigResponseBody {
-	s.UseV21Feature = &v
-	return s
-}
-
-type GetUserConfigResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetUserConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserConfigResponse) SetHeaders(v map[string]*string) *GetUserConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetUserConfigResponse) SetBody(v *GetUserConfigResponseBody) *GetUserConfigResponse {
-	s.Body = v
-	return s
-}
-
-type GetUserResourceAuthorizationStatusResponseBody struct {
-	// 现金账户余额
-	AccountBalance *float32 `json:"AccountBalance,omitempty" xml:"AccountBalance,omitempty"`
-	// 金额是否充足
+type GetUserConfigV2ResponseBody struct {
+	// 用户账号金额是否充足
 	AccountSufficient *bool `json:"AccountSufficient,omitempty" xml:"AccountSufficient,omitempty"`
-	// 充值页面
-	AccountTopUpPage *string `json:"AccountTopUpPage,omitempty" xml:"AccountTopUpPage,omitempty"`
-	// 授权开通页面
-	AllAuthorizationPage *string `json:"AllAuthorizationPage,omitempty" xml:"AllAuthorizationPage,omitempty"`
-	// 购买页
-	BuyPage *string `json:"BuyPage,omitempty" xml:"BuyPage,omitempty"`
-	// 代金券金额
-	CouponBalance *float32 `json:"CouponBalance,omitempty" xml:"CouponBalance,omitempty"`
-	// 当前版本
-	CurrentFeatureVersion *string `json:"CurrentFeatureVersion,omitempty" xml:"CurrentFeatureVersion,omitempty"`
-	// 是否禁止金额验证
-	DisableBalanceCheck *bool `json:"DisableBalanceCheck,omitempty" xml:"DisableBalanceCheck,omitempty"`
-	// dsw默认角色授权页面
-	DswDefaultAuthorizationPage *string `json:"DswDefaultAuthorizationPage,omitempty" xml:"DswDefaultAuthorizationPage,omitempty"`
-	// 环境
-	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// ess开通页面
-	EssConsolePage *string `json:"EssConsolePage,omitempty" xml:"EssConsolePage,omitempty"`
-	// ess是否开通
-	EssServiceAvailable *bool `json:"EssServiceAvailable,omitempty" xml:"EssServiceAvailable,omitempty"`
-	// 是否通过购买验证
-	HasAllAuthorization *bool `json:"HasAllAuthorization,omitempty" xml:"HasAllAuthorization,omitempty"`
-	// 是否通过授权验证
-	HasDswDefaultAuthorization *bool `json:"HasDswDefaultAuthorization,omitempty" xml:"HasDswDefaultAuthorization,omitempty"`
-	// 是否国际站账号
-	International *bool `json:"International,omitempty" xml:"International,omitempty"`
-	// 是否子账号登录
-	IsSubUser *bool `json:"IsSubUser,omitempty" xml:"IsSubUser,omitempty"`
-	// nas控制台
-	NasConsolePage *string `json:"NasConsolePage,omitempty" xml:"NasConsolePage,omitempty"`
-	// 是否实名认证
-	RealNameVerified *bool `json:"RealNameVerified,omitempty" xml:"RealNameVerified,omitempty"`
-	// 实名认证页面
-	RealNameVerifiedPage *string `json:"RealNameVerifiedPage,omitempty" xml:"RealNameVerifiedPage,omitempty"`
-	// 地区
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// Id of the request
+	// 请求Id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 子账号授权开通页面
-	SubUserAuthorizationPage *string `json:"SubUserAuthorizationPage,omitempty" xml:"SubUserAuthorizationPage,omitempty"`
-	// 子账号是否授权通过
-	SubUserAuthorized *bool `json:"SubUserAuthorized,omitempty" xml:"SubUserAuthorized,omitempty"`
-	// 总金额
-	TotalBalance *float32 `json:"TotalBalance,omitempty" xml:"TotalBalance,omitempty"`
 }
 
-func (s GetUserResourceAuthorizationStatusResponseBody) String() string {
+func (s GetUserConfigV2ResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetUserResourceAuthorizationStatusResponseBody) GoString() string {
+func (s GetUserConfigV2ResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetAccountBalance(v float32) *GetUserResourceAuthorizationStatusResponseBody {
-	s.AccountBalance = &v
-	return s
-}
-
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetAccountSufficient(v bool) *GetUserResourceAuthorizationStatusResponseBody {
+func (s *GetUserConfigV2ResponseBody) SetAccountSufficient(v bool) *GetUserConfigV2ResponseBody {
 	s.AccountSufficient = &v
 	return s
 }
 
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetAccountTopUpPage(v string) *GetUserResourceAuthorizationStatusResponseBody {
-	s.AccountTopUpPage = &v
-	return s
-}
-
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetAllAuthorizationPage(v string) *GetUserResourceAuthorizationStatusResponseBody {
-	s.AllAuthorizationPage = &v
-	return s
-}
-
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetBuyPage(v string) *GetUserResourceAuthorizationStatusResponseBody {
-	s.BuyPage = &v
-	return s
-}
-
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetCouponBalance(v float32) *GetUserResourceAuthorizationStatusResponseBody {
-	s.CouponBalance = &v
-	return s
-}
-
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetCurrentFeatureVersion(v string) *GetUserResourceAuthorizationStatusResponseBody {
-	s.CurrentFeatureVersion = &v
-	return s
-}
-
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetDisableBalanceCheck(v bool) *GetUserResourceAuthorizationStatusResponseBody {
-	s.DisableBalanceCheck = &v
-	return s
-}
-
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetDswDefaultAuthorizationPage(v string) *GetUserResourceAuthorizationStatusResponseBody {
-	s.DswDefaultAuthorizationPage = &v
-	return s
-}
-
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetEnv(v string) *GetUserResourceAuthorizationStatusResponseBody {
-	s.Env = &v
-	return s
-}
-
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetEssConsolePage(v string) *GetUserResourceAuthorizationStatusResponseBody {
-	s.EssConsolePage = &v
-	return s
-}
-
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetEssServiceAvailable(v bool) *GetUserResourceAuthorizationStatusResponseBody {
-	s.EssServiceAvailable = &v
-	return s
-}
-
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetHasAllAuthorization(v bool) *GetUserResourceAuthorizationStatusResponseBody {
-	s.HasAllAuthorization = &v
-	return s
-}
-
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetHasDswDefaultAuthorization(v bool) *GetUserResourceAuthorizationStatusResponseBody {
-	s.HasDswDefaultAuthorization = &v
-	return s
-}
-
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetInternational(v bool) *GetUserResourceAuthorizationStatusResponseBody {
-	s.International = &v
-	return s
-}
-
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetIsSubUser(v bool) *GetUserResourceAuthorizationStatusResponseBody {
-	s.IsSubUser = &v
-	return s
-}
-
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetNasConsolePage(v string) *GetUserResourceAuthorizationStatusResponseBody {
-	s.NasConsolePage = &v
-	return s
-}
-
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetRealNameVerified(v bool) *GetUserResourceAuthorizationStatusResponseBody {
-	s.RealNameVerified = &v
-	return s
-}
-
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetRealNameVerifiedPage(v string) *GetUserResourceAuthorizationStatusResponseBody {
-	s.RealNameVerifiedPage = &v
-	return s
-}
-
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetRegion(v string) *GetUserResourceAuthorizationStatusResponseBody {
-	s.Region = &v
-	return s
-}
-
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetRequestId(v string) *GetUserResourceAuthorizationStatusResponseBody {
+func (s *GetUserConfigV2ResponseBody) SetRequestId(v string) *GetUserConfigV2ResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetSubUserAuthorizationPage(v string) *GetUserResourceAuthorizationStatusResponseBody {
-	s.SubUserAuthorizationPage = &v
-	return s
+type GetUserConfigV2Response struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetUserConfigV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetSubUserAuthorized(v bool) *GetUserResourceAuthorizationStatusResponseBody {
-	s.SubUserAuthorized = &v
-	return s
-}
-
-func (s *GetUserResourceAuthorizationStatusResponseBody) SetTotalBalance(v float32) *GetUserResourceAuthorizationStatusResponseBody {
-	s.TotalBalance = &v
-	return s
-}
-
-type GetUserResourceAuthorizationStatusResponse struct {
-	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserResourceAuthorizationStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetUserResourceAuthorizationStatusResponse) String() string {
+func (s GetUserConfigV2Response) String() string {
 	return tea.Prettify(s)
 }
 
-func (s GetUserResourceAuthorizationStatusResponse) GoString() string {
+func (s GetUserConfigV2Response) GoString() string {
 	return s.String()
 }
 
-func (s *GetUserResourceAuthorizationStatusResponse) SetHeaders(v map[string]*string) *GetUserResourceAuthorizationStatusResponse {
+func (s *GetUserConfigV2Response) SetHeaders(v map[string]*string) *GetUserConfigV2Response {
 	s.Headers = v
 	return s
 }
 
-func (s *GetUserResourceAuthorizationStatusResponse) SetBody(v *GetUserResourceAuthorizationStatusResponseBody) *GetUserResourceAuthorizationStatusResponse {
-	s.Body = v
-	return s
-}
-
-type GetUserResourceStatusResponseBody struct {
-	// 现金账户余额
-	AccountBalance *float32 `json:"AccountBalance,omitempty" xml:"AccountBalance,omitempty"`
-	// 金额是否充足
-	AccountSufficient *bool `json:"AccountSufficient,omitempty" xml:"AccountSufficient,omitempty"`
-	// 充值页面
-	AccountTopUpPage *string `json:"AccountTopUpPage,omitempty" xml:"AccountTopUpPage,omitempty"`
-	// 授权页面
-	AllAuthorizationPage *string `json:"AllAuthorizationPage,omitempty" xml:"AllAuthorizationPage,omitempty"`
-	// 代金券余额
-	CouponBalance *float32 `json:"CouponBalance,omitempty" xml:"CouponBalance,omitempty"`
-	// 环境
-	Env *string `json:"Env,omitempty" xml:"Env,omitempty"`
-	// 是否通过购买条件验证
-	HasAllAuthorization *bool `json:"HasAllAuthorization,omitempty" xml:"HasAllAuthorization,omitempty"`
-	// 是否国际站账号
-	International *bool `json:"International,omitempty" xml:"International,omitempty"`
-	// 是否实名验证
-	RealNameVerified *bool `json:"RealNameVerified,omitempty" xml:"RealNameVerified,omitempty"`
-	// 实名验证页面
-	RealNameVerifiedPage *string `json:"RealNameVerifiedPage,omitempty" xml:"RealNameVerifiedPage,omitempty"`
-	// 地区
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 总余额
-	TotalBalance *float32 `json:"TotalBalance,omitempty" xml:"TotalBalance,omitempty"`
-}
-
-func (s GetUserResourceStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserResourceStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserResourceStatusResponseBody) SetAccountBalance(v float32) *GetUserResourceStatusResponseBody {
-	s.AccountBalance = &v
-	return s
-}
-
-func (s *GetUserResourceStatusResponseBody) SetAccountSufficient(v bool) *GetUserResourceStatusResponseBody {
-	s.AccountSufficient = &v
-	return s
-}
-
-func (s *GetUserResourceStatusResponseBody) SetAccountTopUpPage(v string) *GetUserResourceStatusResponseBody {
-	s.AccountTopUpPage = &v
-	return s
-}
-
-func (s *GetUserResourceStatusResponseBody) SetAllAuthorizationPage(v string) *GetUserResourceStatusResponseBody {
-	s.AllAuthorizationPage = &v
-	return s
-}
-
-func (s *GetUserResourceStatusResponseBody) SetCouponBalance(v float32) *GetUserResourceStatusResponseBody {
-	s.CouponBalance = &v
-	return s
-}
-
-func (s *GetUserResourceStatusResponseBody) SetEnv(v string) *GetUserResourceStatusResponseBody {
-	s.Env = &v
-	return s
-}
-
-func (s *GetUserResourceStatusResponseBody) SetHasAllAuthorization(v bool) *GetUserResourceStatusResponseBody {
-	s.HasAllAuthorization = &v
-	return s
-}
-
-func (s *GetUserResourceStatusResponseBody) SetInternational(v bool) *GetUserResourceStatusResponseBody {
-	s.International = &v
-	return s
-}
-
-func (s *GetUserResourceStatusResponseBody) SetRealNameVerified(v bool) *GetUserResourceStatusResponseBody {
-	s.RealNameVerified = &v
-	return s
-}
-
-func (s *GetUserResourceStatusResponseBody) SetRealNameVerifiedPage(v string) *GetUserResourceStatusResponseBody {
-	s.RealNameVerifiedPage = &v
-	return s
-}
-
-func (s *GetUserResourceStatusResponseBody) SetRegion(v string) *GetUserResourceStatusResponseBody {
-	s.Region = &v
-	return s
-}
-
-func (s *GetUserResourceStatusResponseBody) SetRequestId(v string) *GetUserResourceStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetUserResourceStatusResponseBody) SetTotalBalance(v float32) *GetUserResourceStatusResponseBody {
-	s.TotalBalance = &v
-	return s
-}
-
-type GetUserResourceStatusResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserResourceStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetUserResourceStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserResourceStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserResourceStatusResponse) SetHeaders(v map[string]*string) *GetUserResourceStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetUserResourceStatusResponse) SetBody(v *GetUserResourceStatusResponseBody) *GetUserResourceStatusResponse {
-	s.Body = v
-	return s
-}
-
-type GetUserSpecialVersionGpuResourceInfoRequest struct {
-	// 付费类型
-	PayType *int64 `json:"PayType,omitempty" xml:"PayType,omitempty"`
-}
-
-func (s GetUserSpecialVersionGpuResourceInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserSpecialVersionGpuResourceInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserSpecialVersionGpuResourceInfoRequest) SetPayType(v int64) *GetUserSpecialVersionGpuResourceInfoRequest {
-	s.PayType = &v
-	return s
-}
-
-type GetUserSpecialVersionGpuResourceInfoResponseBody struct {
-	GpuAvailableQuota *int64 `json:"GpuAvailableQuota,omitempty" xml:"GpuAvailableQuota,omitempty"`
-	GpuTotalQuota     *int64 `json:"GpuTotalQuota,omitempty" xml:"GpuTotalQuota,omitempty"`
-	// Id of the request
-	RequestId *string         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Resources []*ResourceInfo `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-}
-
-func (s GetUserSpecialVersionGpuResourceInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserSpecialVersionGpuResourceInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserSpecialVersionGpuResourceInfoResponseBody) SetGpuAvailableQuota(v int64) *GetUserSpecialVersionGpuResourceInfoResponseBody {
-	s.GpuAvailableQuota = &v
-	return s
-}
-
-func (s *GetUserSpecialVersionGpuResourceInfoResponseBody) SetGpuTotalQuota(v int64) *GetUserSpecialVersionGpuResourceInfoResponseBody {
-	s.GpuTotalQuota = &v
-	return s
-}
-
-func (s *GetUserSpecialVersionGpuResourceInfoResponseBody) SetRequestId(v string) *GetUserSpecialVersionGpuResourceInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetUserSpecialVersionGpuResourceInfoResponseBody) SetResources(v []*ResourceInfo) *GetUserSpecialVersionGpuResourceInfoResponseBody {
-	s.Resources = v
-	return s
-}
-
-type GetUserSpecialVersionGpuResourceInfoResponse struct {
-	Headers map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetUserSpecialVersionGpuResourceInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetUserSpecialVersionGpuResourceInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetUserSpecialVersionGpuResourceInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetUserSpecialVersionGpuResourceInfoResponse) SetHeaders(v map[string]*string) *GetUserSpecialVersionGpuResourceInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetUserSpecialVersionGpuResourceInfoResponse) SetBody(v *GetUserSpecialVersionGpuResourceInfoResponseBody) *GetUserSpecialVersionGpuResourceInfoResponse {
-	s.Body = v
-	return s
-}
-
-type ListConfigsResponseBody struct {
-	Configs []*Config `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListConfigsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListConfigsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListConfigsResponseBody) SetConfigs(v []*Config) *ListConfigsResponseBody {
-	s.Configs = v
-	return s
-}
-
-func (s *ListConfigsResponseBody) SetRequestId(v string) *ListConfigsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListConfigsResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListConfigsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListConfigsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListConfigsResponse) SetHeaders(v map[string]*string) *ListConfigsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListConfigsResponse) SetBody(v *ListConfigsResponseBody) *ListConfigsResponse {
-	s.Body = v
-	return s
-}
-
-type ListDatasetsRequest struct {
-	// 工作空间Id
-	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-}
-
-func (s ListDatasetsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDatasetsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDatasetsRequest) SetWorkspaceId(v string) *ListDatasetsRequest {
-	s.WorkspaceId = &v
-	return s
-}
-
-type ListDatasetsResponseBody struct {
-	Datasets []*Dataset `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListDatasetsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDatasetsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDatasetsResponseBody) SetDatasets(v []*Dataset) *ListDatasetsResponseBody {
-	s.Datasets = v
-	return s
-}
-
-func (s *ListDatasetsResponseBody) SetRequestId(v string) *ListDatasetsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListDatasetsResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDatasetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDatasetsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDatasetsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListDatasetsResponse) SetHeaders(v map[string]*string) *ListDatasetsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDatasetsResponse) SetBody(v *ListDatasetsResponseBody) *ListDatasetsResponse {
+func (s *GetUserConfigV2Response) SetBody(v *GetUserConfigV2ResponseBody) *GetUserConfigV2Response {
 	s.Body = v
 	return s
 }
@@ -3548,6 +3761,188 @@ func (s *ListEcsSpecsResponse) SetHeaders(v map[string]*string) *ListEcsSpecsRes
 }
 
 func (s *ListEcsSpecsResponse) SetBody(v *ListEcsSpecsResponseBody) *ListEcsSpecsResponse {
+	s.Body = v
+	return s
+}
+
+type ListEcsSpecsV2Request struct {
+	// 加速类型
+	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// 排序顺序
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// 页数
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 每页大小
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 排序字段
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+}
+
+func (s ListEcsSpecsV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEcsSpecsV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *ListEcsSpecsV2Request) SetAcceleratorType(v string) *ListEcsSpecsV2Request {
+	s.AcceleratorType = &v
+	return s
+}
+
+func (s *ListEcsSpecsV2Request) SetOrder(v string) *ListEcsSpecsV2Request {
+	s.Order = &v
+	return s
+}
+
+func (s *ListEcsSpecsV2Request) SetPageNumber(v int64) *ListEcsSpecsV2Request {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListEcsSpecsV2Request) SetPageSize(v int64) *ListEcsSpecsV2Request {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListEcsSpecsV2Request) SetSortBy(v string) *ListEcsSpecsV2Request {
+	s.SortBy = &v
+	return s
+}
+
+type ListEcsSpecsV2ResponseBody struct {
+	// 本分页中请求的实例列表
+	EcsSpecs []*ListEcsSpecsV2ResponseBodyEcsSpecs `json:"EcsSpecs,omitempty" xml:"EcsSpecs,omitempty" type:"Repeated"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 实例总数
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListEcsSpecsV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEcsSpecsV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEcsSpecsV2ResponseBody) SetEcsSpecs(v []*ListEcsSpecsV2ResponseBodyEcsSpecs) *ListEcsSpecsV2ResponseBody {
+	s.EcsSpecs = v
+	return s
+}
+
+func (s *ListEcsSpecsV2ResponseBody) SetRequestId(v string) *ListEcsSpecsV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListEcsSpecsV2ResponseBody) SetTotalCount(v int64) *ListEcsSpecsV2ResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListEcsSpecsV2ResponseBodyEcsSpecs struct {
+	// 资源类型
+	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// CPU核数
+	CPU *int64 `json:"CPU,omitempty" xml:"CPU,omitempty"`
+	// 货币单位
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// GPU卡数
+	GPU *int64 `json:"GPU,omitempty" xml:"GPU,omitempty"`
+	// 显卡类型
+	GPUType *string `json:"GPUType,omitempty" xml:"GPUType,omitempty"`
+	// 实例接收带宽
+	InstanceBandwidthRx *int64 `json:"InstanceBandwidthRx,omitempty" xml:"InstanceBandwidthRx,omitempty"`
+	// 实例规格
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// 内存大小(GB)
+	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	// 价格
+	Price *float64 `json:"Price,omitempty" xml:"Price,omitempty"`
+	// 系统盘大小(GB)
+	SystemDiskCapacity *int64 `json:"SystemDiskCapacity,omitempty" xml:"SystemDiskCapacity,omitempty"`
+}
+
+func (s ListEcsSpecsV2ResponseBodyEcsSpecs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEcsSpecsV2ResponseBodyEcsSpecs) GoString() string {
+	return s.String()
+}
+
+func (s *ListEcsSpecsV2ResponseBodyEcsSpecs) SetAcceleratorType(v string) *ListEcsSpecsV2ResponseBodyEcsSpecs {
+	s.AcceleratorType = &v
+	return s
+}
+
+func (s *ListEcsSpecsV2ResponseBodyEcsSpecs) SetCPU(v int64) *ListEcsSpecsV2ResponseBodyEcsSpecs {
+	s.CPU = &v
+	return s
+}
+
+func (s *ListEcsSpecsV2ResponseBodyEcsSpecs) SetCurrency(v string) *ListEcsSpecsV2ResponseBodyEcsSpecs {
+	s.Currency = &v
+	return s
+}
+
+func (s *ListEcsSpecsV2ResponseBodyEcsSpecs) SetGPU(v int64) *ListEcsSpecsV2ResponseBodyEcsSpecs {
+	s.GPU = &v
+	return s
+}
+
+func (s *ListEcsSpecsV2ResponseBodyEcsSpecs) SetGPUType(v string) *ListEcsSpecsV2ResponseBodyEcsSpecs {
+	s.GPUType = &v
+	return s
+}
+
+func (s *ListEcsSpecsV2ResponseBodyEcsSpecs) SetInstanceBandwidthRx(v int64) *ListEcsSpecsV2ResponseBodyEcsSpecs {
+	s.InstanceBandwidthRx = &v
+	return s
+}
+
+func (s *ListEcsSpecsV2ResponseBodyEcsSpecs) SetInstanceType(v string) *ListEcsSpecsV2ResponseBodyEcsSpecs {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ListEcsSpecsV2ResponseBodyEcsSpecs) SetMemory(v float32) *ListEcsSpecsV2ResponseBodyEcsSpecs {
+	s.Memory = &v
+	return s
+}
+
+func (s *ListEcsSpecsV2ResponseBodyEcsSpecs) SetPrice(v float64) *ListEcsSpecsV2ResponseBodyEcsSpecs {
+	s.Price = &v
+	return s
+}
+
+func (s *ListEcsSpecsV2ResponseBodyEcsSpecs) SetSystemDiskCapacity(v int64) *ListEcsSpecsV2ResponseBodyEcsSpecs {
+	s.SystemDiskCapacity = &v
+	return s
+}
+
+type ListEcsSpecsV2Response struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListEcsSpecsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEcsSpecsV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEcsSpecsV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *ListEcsSpecsV2Response) SetHeaders(v map[string]*string) *ListEcsSpecsV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEcsSpecsV2Response) SetBody(v *ListEcsSpecsV2ResponseBody) *ListEcsSpecsV2Response {
 	s.Body = v
 	return s
 }
@@ -3646,6 +4041,177 @@ func (s *ListImagesResponse) SetBody(v *ListImagesResponseBody) *ListImagesRespo
 	return s
 }
 
+type ListInstanceSnapshotV2Request struct {
+	Order      *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SortBy     *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+}
+
+func (s ListInstanceSnapshotV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceSnapshotV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceSnapshotV2Request) SetOrder(v string) *ListInstanceSnapshotV2Request {
+	s.Order = &v
+	return s
+}
+
+func (s *ListInstanceSnapshotV2Request) SetPageNumber(v int64) *ListInstanceSnapshotV2Request {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInstanceSnapshotV2Request) SetPageSize(v int64) *ListInstanceSnapshotV2Request {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstanceSnapshotV2Request) SetSortBy(v string) *ListInstanceSnapshotV2Request {
+	s.SortBy = &v
+	return s
+}
+
+type ListInstanceSnapshotV2ResponseBody struct {
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 本分页中请求的实例镜像列表
+	Snapshots []*ListInstanceSnapshotV2ResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Repeated"`
+	// 实例总数
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListInstanceSnapshotV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceSnapshotV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceSnapshotV2ResponseBody) SetRequestId(v string) *ListInstanceSnapshotV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInstanceSnapshotV2ResponseBody) SetSnapshots(v []*ListInstanceSnapshotV2ResponseBodySnapshots) *ListInstanceSnapshotV2ResponseBody {
+	s.Snapshots = v
+	return s
+}
+
+func (s *ListInstanceSnapshotV2ResponseBody) SetTotalCount(v int64) *ListInstanceSnapshotV2ResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListInstanceSnapshotV2ResponseBodySnapshots struct {
+	// 实例快照创建时间
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// 实例快照修改时间
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// 实例快照的镜像Id
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// 实例快照的镜像地址
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 实例快照错误代码
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// 实例快照错误消息
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// 实例快照Id
+	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	// 实例快照名称
+	SnapshotName *string `json:"SnapshotName,omitempty" xml:"SnapshotName,omitempty"`
+	// 实例快照状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListInstanceSnapshotV2ResponseBodySnapshots) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceSnapshotV2ResponseBodySnapshots) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceSnapshotV2ResponseBodySnapshots) SetGmtCreateTime(v string) *ListInstanceSnapshotV2ResponseBodySnapshots {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *ListInstanceSnapshotV2ResponseBodySnapshots) SetGmtModifiedTime(v string) *ListInstanceSnapshotV2ResponseBodySnapshots {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *ListInstanceSnapshotV2ResponseBodySnapshots) SetImageId(v string) *ListInstanceSnapshotV2ResponseBodySnapshots {
+	s.ImageId = &v
+	return s
+}
+
+func (s *ListInstanceSnapshotV2ResponseBodySnapshots) SetImageUrl(v string) *ListInstanceSnapshotV2ResponseBodySnapshots {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *ListInstanceSnapshotV2ResponseBodySnapshots) SetInstanceId(v string) *ListInstanceSnapshotV2ResponseBodySnapshots {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstanceSnapshotV2ResponseBodySnapshots) SetReasonCode(v string) *ListInstanceSnapshotV2ResponseBodySnapshots {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *ListInstanceSnapshotV2ResponseBodySnapshots) SetReasonMessage(v string) *ListInstanceSnapshotV2ResponseBodySnapshots {
+	s.ReasonMessage = &v
+	return s
+}
+
+func (s *ListInstanceSnapshotV2ResponseBodySnapshots) SetSnapshotId(v string) *ListInstanceSnapshotV2ResponseBodySnapshots {
+	s.SnapshotId = &v
+	return s
+}
+
+func (s *ListInstanceSnapshotV2ResponseBodySnapshots) SetSnapshotName(v string) *ListInstanceSnapshotV2ResponseBodySnapshots {
+	s.SnapshotName = &v
+	return s
+}
+
+func (s *ListInstanceSnapshotV2ResponseBodySnapshots) SetStatus(v string) *ListInstanceSnapshotV2ResponseBodySnapshots {
+	s.Status = &v
+	return s
+}
+
+type ListInstanceSnapshotV2Response struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListInstanceSnapshotV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListInstanceSnapshotV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceSnapshotV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceSnapshotV2Response) SetHeaders(v map[string]*string) *ListInstanceSnapshotV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstanceSnapshotV2Response) SetBody(v *ListInstanceSnapshotV2ResponseBody) *ListInstanceSnapshotV2Response {
+	s.Body = v
+	return s
+}
+
 type ListInstanceSnapshotsResponseBody struct {
 	// 镜像快照列表
 	InstanceSnapshots []*InstanceSnapshot `json:"InstanceSnapshots,omitempty" xml:"InstanceSnapshots,omitempty" type:"Repeated"`
@@ -3694,67 +4260,68 @@ func (s *ListInstanceSnapshotsResponse) SetBody(v *ListInstanceSnapshotsResponse
 	return s
 }
 
-type ListInstanceTypesRequest struct {
-	// AcceleratorType
-	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+type ListInstanceStatisticsV2Request struct {
+	// 工作空间列表
+	WorkspaceIds *string `json:"WorkspaceIds,omitempty" xml:"WorkspaceIds,omitempty"`
 }
 
-func (s ListInstanceTypesRequest) String() string {
+func (s ListInstanceStatisticsV2Request) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListInstanceTypesRequest) GoString() string {
+func (s ListInstanceStatisticsV2Request) GoString() string {
 	return s.String()
 }
 
-func (s *ListInstanceTypesRequest) SetAcceleratorType(v string) *ListInstanceTypesRequest {
-	s.AcceleratorType = &v
+func (s *ListInstanceStatisticsV2Request) SetWorkspaceIds(v string) *ListInstanceStatisticsV2Request {
+	s.WorkspaceIds = &v
 	return s
 }
 
-type ListInstanceTypesResponseBody struct {
-	InstanceTypes []*InstanceType `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	// Id of the request
+type ListInstanceStatisticsV2ResponseBody struct {
+	// 请求Id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 统计信息
+	Statistics map[string]map[string]interface{} `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
 }
 
-func (s ListInstanceTypesResponseBody) String() string {
+func (s ListInstanceStatisticsV2ResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListInstanceTypesResponseBody) GoString() string {
+func (s ListInstanceStatisticsV2ResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListInstanceTypesResponseBody) SetInstanceTypes(v []*InstanceType) *ListInstanceTypesResponseBody {
-	s.InstanceTypes = v
-	return s
-}
-
-func (s *ListInstanceTypesResponseBody) SetRequestId(v string) *ListInstanceTypesResponseBody {
+func (s *ListInstanceStatisticsV2ResponseBody) SetRequestId(v string) *ListInstanceStatisticsV2ResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type ListInstanceTypesResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListInstanceTypesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+func (s *ListInstanceStatisticsV2ResponseBody) SetStatistics(v map[string]map[string]interface{}) *ListInstanceStatisticsV2ResponseBody {
+	s.Statistics = v
+	return s
 }
 
-func (s ListInstanceTypesResponse) String() string {
+type ListInstanceStatisticsV2Response struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListInstanceStatisticsV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListInstanceStatisticsV2Response) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListInstanceTypesResponse) GoString() string {
+func (s ListInstanceStatisticsV2Response) GoString() string {
 	return s.String()
 }
 
-func (s *ListInstanceTypesResponse) SetHeaders(v map[string]*string) *ListInstanceTypesResponse {
+func (s *ListInstanceStatisticsV2Response) SetHeaders(v map[string]*string) *ListInstanceStatisticsV2Response {
 	s.Headers = v
 	return s
 }
 
-func (s *ListInstanceTypesResponse) SetBody(v *ListInstanceTypesResponseBody) *ListInstanceTypesResponse {
+func (s *ListInstanceStatisticsV2Response) SetBody(v *ListInstanceStatisticsV2ResponseBody) *ListInstanceStatisticsV2Response {
 	s.Body = v
 	return s
 }
@@ -3960,441 +4527,473 @@ func (s *ListInstancesStatusResponse) SetBody(v *ListInstancesStatusResponseBody
 	return s
 }
 
-type ListNamespacesResponseBody struct {
-	// 命名空间列表
-	Namespaces []*ImageNamespace `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
-	// Id of the request
+type ListInstancesV2Request struct {
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// 排列顺序
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// 页码
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页数量大小
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 排序字段
+	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
+	// 实例状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 工作空间Id
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s ListInstancesV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesV2Request) SetInstanceName(v string) *ListInstancesV2Request {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ListInstancesV2Request) SetOrder(v string) *ListInstancesV2Request {
+	s.Order = &v
+	return s
+}
+
+func (s *ListInstancesV2Request) SetPageNumber(v int64) *ListInstancesV2Request {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListInstancesV2Request) SetPageSize(v int64) *ListInstancesV2Request {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListInstancesV2Request) SetSortBy(v string) *ListInstancesV2Request {
+	s.SortBy = &v
+	return s
+}
+
+func (s *ListInstancesV2Request) SetStatus(v string) *ListInstancesV2Request {
+	s.Status = &v
+	return s
+}
+
+func (s *ListInstancesV2Request) SetWorkspaceId(v string) *ListInstancesV2Request {
+	s.WorkspaceId = &v
+	return s
+}
+
+type ListInstancesV2ResponseBody struct {
+	// 本分页中请求的实例列表
+	Instances []*ListInstancesV2ResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	// 请求Id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 实例总数
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
-func (s ListNamespacesResponseBody) String() string {
+func (s ListInstancesV2ResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListNamespacesResponseBody) GoString() string {
+func (s ListInstancesV2ResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListNamespacesResponseBody) SetNamespaces(v []*ImageNamespace) *ListNamespacesResponseBody {
-	s.Namespaces = v
+func (s *ListInstancesV2ResponseBody) SetInstances(v []*ListInstancesV2ResponseBodyInstances) *ListInstancesV2ResponseBody {
+	s.Instances = v
 	return s
 }
 
-func (s *ListNamespacesResponseBody) SetRequestId(v string) *ListNamespacesResponseBody {
+func (s *ListInstancesV2ResponseBody) SetRequestId(v string) *ListInstancesV2ResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type ListNamespacesResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListNamespacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+func (s *ListInstancesV2ResponseBody) SetTotalCount(v int64) *ListInstancesV2ResponseBody {
+	s.TotalCount = &v
+	return s
 }
 
-func (s ListNamespacesResponse) String() string {
+type ListInstancesV2ResponseBodyInstances struct {
+	// 实例计算类型
+	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// 工作空间内是否他人可见
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// 累计运行时间（ms）
+	AccumulatedRunningTimeInMs *int64 `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
+	// 数据集集合
+	Datasets []*ListInstancesV2ResponseBodyInstancesDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	// 实例对应的Ecs规格
+	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// 环境变量
+	EnvironmentVariables map[string]*string `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
+	// 实例创建时间
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// 实例修改时间
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// 镜像Id
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// 镜像名称
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// 镜像地址
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// 定时关机任务
+	InstanceShutdownTimer *ListInstancesV2ResponseBodyInstancesInstanceShutdownTimer `json:"InstanceShutdownTimer,omitempty" xml:"InstanceShutdownTimer,omitempty" type:"Struct"`
+	// 实例Url
+	InstanceUrl *string `json:"InstanceUrl,omitempty" xml:"InstanceUrl,omitempty"`
+	// Jupyterlab Url
+	JupyterlabUrl *string `json:"JupyterlabUrl,omitempty" xml:"JupyterlabUrl,omitempty"`
+	// 最新保存的用户镜像
+	LatestSnapshot *ListInstancesV2ResponseBodyInstancesLatestSnapshot `json:"LatestSnapshot,omitempty" xml:"LatestSnapshot,omitempty" type:"Struct"`
+	// 支付类型
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// 实例错误代码
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// 实例错误原因
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// 实例状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// terminal url
+	TerminalUrl *string `json:"TerminalUrl,omitempty" xml:"TerminalUrl,omitempty"`
+	// 用户Id
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// user vpc配置
+	UserVpc *ListInstancesV2ResponseBodyInstancesUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	// web ide url
+	WebIDEUrl *string `json:"WebIDEUrl,omitempty" xml:"WebIDEUrl,omitempty"`
+	// 工作空间Id
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// 工作空间名称
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+}
+
+func (s ListInstancesV2ResponseBodyInstances) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListNamespacesResponse) GoString() string {
+func (s ListInstancesV2ResponseBodyInstances) GoString() string {
 	return s.String()
 }
 
-func (s *ListNamespacesResponse) SetHeaders(v map[string]*string) *ListNamespacesResponse {
-	s.Headers = v
+func (s *ListInstancesV2ResponseBodyInstances) SetAcceleratorType(v string) *ListInstancesV2ResponseBodyInstances {
+	s.AcceleratorType = &v
 	return s
 }
 
-func (s *ListNamespacesResponse) SetBody(v *ListNamespacesResponseBody) *ListNamespacesResponse {
-	s.Body = v
+func (s *ListInstancesV2ResponseBodyInstances) SetAccessibility(v string) *ListInstancesV2ResponseBodyInstances {
+	s.Accessibility = &v
 	return s
 }
 
-type ListNasesResponseBody struct {
-	// nas文件系统列表
-	Nases []*Nas `json:"Nases,omitempty" xml:"Nases,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+func (s *ListInstancesV2ResponseBodyInstances) SetAccumulatedRunningTimeInMs(v int64) *ListInstancesV2ResponseBodyInstances {
+	s.AccumulatedRunningTimeInMs = &v
+	return s
 }
 
-func (s ListNasesResponseBody) String() string {
+func (s *ListInstancesV2ResponseBodyInstances) SetDatasets(v []*ListInstancesV2ResponseBodyInstancesDatasets) *ListInstancesV2ResponseBodyInstances {
+	s.Datasets = v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetEcsSpec(v string) *ListInstancesV2ResponseBodyInstances {
+	s.EcsSpec = &v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetEnvironmentVariables(v map[string]*string) *ListInstancesV2ResponseBodyInstances {
+	s.EnvironmentVariables = v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetGmtCreateTime(v string) *ListInstancesV2ResponseBodyInstances {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetGmtModifiedTime(v string) *ListInstancesV2ResponseBodyInstances {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetImageId(v string) *ListInstancesV2ResponseBodyInstances {
+	s.ImageId = &v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetImageName(v string) *ListInstancesV2ResponseBodyInstances {
+	s.ImageName = &v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetImageUrl(v string) *ListInstancesV2ResponseBodyInstances {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetInstanceId(v string) *ListInstancesV2ResponseBodyInstances {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetInstanceName(v string) *ListInstancesV2ResponseBodyInstances {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetInstanceShutdownTimer(v *ListInstancesV2ResponseBodyInstancesInstanceShutdownTimer) *ListInstancesV2ResponseBodyInstances {
+	s.InstanceShutdownTimer = v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetInstanceUrl(v string) *ListInstancesV2ResponseBodyInstances {
+	s.InstanceUrl = &v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetJupyterlabUrl(v string) *ListInstancesV2ResponseBodyInstances {
+	s.JupyterlabUrl = &v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetLatestSnapshot(v *ListInstancesV2ResponseBodyInstancesLatestSnapshot) *ListInstancesV2ResponseBodyInstances {
+	s.LatestSnapshot = v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetPaymentType(v string) *ListInstancesV2ResponseBodyInstances {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetReasonCode(v string) *ListInstancesV2ResponseBodyInstances {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetReasonMessage(v string) *ListInstancesV2ResponseBodyInstances {
+	s.ReasonMessage = &v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetStatus(v string) *ListInstancesV2ResponseBodyInstances {
+	s.Status = &v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetTerminalUrl(v string) *ListInstancesV2ResponseBodyInstances {
+	s.TerminalUrl = &v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetUserId(v string) *ListInstancesV2ResponseBodyInstances {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetUserVpc(v *ListInstancesV2ResponseBodyInstancesUserVpc) *ListInstancesV2ResponseBodyInstances {
+	s.UserVpc = v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetWebIDEUrl(v string) *ListInstancesV2ResponseBodyInstances {
+	s.WebIDEUrl = &v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetWorkspaceId(v string) *ListInstancesV2ResponseBodyInstances {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstances) SetWorkspaceName(v string) *ListInstancesV2ResponseBodyInstances {
+	s.WorkspaceName = &v
+	return s
+}
+
+type ListInstancesV2ResponseBodyInstancesDatasets struct {
+	// 数据集Id
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// 容器内挂载路径
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+}
+
+func (s ListInstancesV2ResponseBodyInstancesDatasets) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListNasesResponseBody) GoString() string {
+func (s ListInstancesV2ResponseBodyInstancesDatasets) GoString() string {
 	return s.String()
 }
 
-func (s *ListNasesResponseBody) SetNases(v []*Nas) *ListNasesResponseBody {
-	s.Nases = v
+func (s *ListInstancesV2ResponseBodyInstancesDatasets) SetDatasetId(v string) *ListInstancesV2ResponseBodyInstancesDatasets {
+	s.DatasetId = &v
 	return s
 }
 
-func (s *ListNasesResponseBody) SetRequestId(v string) *ListNasesResponseBody {
-	s.RequestId = &v
+func (s *ListInstancesV2ResponseBodyInstancesDatasets) SetMountPath(v string) *ListInstancesV2ResponseBodyInstancesDatasets {
+	s.MountPath = &v
 	return s
 }
 
-type ListNasesResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListNasesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+type ListInstancesV2ResponseBodyInstancesInstanceShutdownTimer struct {
+	// 设定关机时间
+	DueTime *string `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
+	// 创建时间
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// 修改时间
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 剩余关机时间（ms）
+	RemainingTimeInMs *int64 `json:"RemainingTimeInMs,omitempty" xml:"RemainingTimeInMs,omitempty"`
 }
 
-func (s ListNasesResponse) String() string {
+func (s ListInstancesV2ResponseBodyInstancesInstanceShutdownTimer) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListNasesResponse) GoString() string {
+func (s ListInstancesV2ResponseBodyInstancesInstanceShutdownTimer) GoString() string {
 	return s.String()
 }
 
-func (s *ListNasesResponse) SetHeaders(v map[string]*string) *ListNasesResponse {
-	s.Headers = v
+func (s *ListInstancesV2ResponseBodyInstancesInstanceShutdownTimer) SetDueTime(v string) *ListInstancesV2ResponseBodyInstancesInstanceShutdownTimer {
+	s.DueTime = &v
 	return s
 }
 
-func (s *ListNasesResponse) SetBody(v *ListNasesResponseBody) *ListNasesResponse {
-	s.Body = v
+func (s *ListInstancesV2ResponseBodyInstancesInstanceShutdownTimer) SetGmtCreateTime(v string) *ListInstancesV2ResponseBodyInstancesInstanceShutdownTimer {
+	s.GmtCreateTime = &v
 	return s
 }
 
-type ListNetworkSecurityGroupsResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// security groups
-	SecurityGroups []*SecurityGroup `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
+func (s *ListInstancesV2ResponseBodyInstancesInstanceShutdownTimer) SetGmtModifiedTime(v string) *ListInstancesV2ResponseBodyInstancesInstanceShutdownTimer {
+	s.GmtModifiedTime = &v
+	return s
 }
 
-func (s ListNetworkSecurityGroupsResponseBody) String() string {
+func (s *ListInstancesV2ResponseBodyInstancesInstanceShutdownTimer) SetInstanceId(v string) *ListInstancesV2ResponseBodyInstancesInstanceShutdownTimer {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstancesInstanceShutdownTimer) SetRemainingTimeInMs(v int64) *ListInstancesV2ResponseBodyInstancesInstanceShutdownTimer {
+	s.RemainingTimeInMs = &v
+	return s
+}
+
+type ListInstancesV2ResponseBodyInstancesLatestSnapshot struct {
+	// 快照创建时间
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// 快照修改时间
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// 镜像Id
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// 镜像名称
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// 镜像Url
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// 镜像仓库Url
+	RepositoryUrl *string `json:"RepositoryUrl,omitempty" xml:"RepositoryUrl,omitempty"`
+}
+
+func (s ListInstancesV2ResponseBodyInstancesLatestSnapshot) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListNetworkSecurityGroupsResponseBody) GoString() string {
+func (s ListInstancesV2ResponseBodyInstancesLatestSnapshot) GoString() string {
 	return s.String()
 }
 
-func (s *ListNetworkSecurityGroupsResponseBody) SetRequestId(v string) *ListNetworkSecurityGroupsResponseBody {
-	s.RequestId = &v
+func (s *ListInstancesV2ResponseBodyInstancesLatestSnapshot) SetGmtCreateTime(v string) *ListInstancesV2ResponseBodyInstancesLatestSnapshot {
+	s.GmtCreateTime = &v
 	return s
 }
 
-func (s *ListNetworkSecurityGroupsResponseBody) SetSecurityGroups(v []*SecurityGroup) *ListNetworkSecurityGroupsResponseBody {
-	s.SecurityGroups = v
+func (s *ListInstancesV2ResponseBodyInstancesLatestSnapshot) SetGmtModifiedTime(v string) *ListInstancesV2ResponseBodyInstancesLatestSnapshot {
+	s.GmtModifiedTime = &v
 	return s
 }
 
-type ListNetworkSecurityGroupsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListNetworkSecurityGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+func (s *ListInstancesV2ResponseBodyInstancesLatestSnapshot) SetImageId(v string) *ListInstancesV2ResponseBodyInstancesLatestSnapshot {
+	s.ImageId = &v
+	return s
 }
 
-func (s ListNetworkSecurityGroupsResponse) String() string {
+func (s *ListInstancesV2ResponseBodyInstancesLatestSnapshot) SetImageName(v string) *ListInstancesV2ResponseBodyInstancesLatestSnapshot {
+	s.ImageName = &v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstancesLatestSnapshot) SetImageUrl(v string) *ListInstancesV2ResponseBodyInstancesLatestSnapshot {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *ListInstancesV2ResponseBodyInstancesLatestSnapshot) SetRepositoryUrl(v string) *ListInstancesV2ResponseBodyInstancesLatestSnapshot {
+	s.RepositoryUrl = &v
+	return s
+}
+
+type ListInstancesV2ResponseBodyInstancesUserVpc struct {
+	// Security Group Id
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// VSwitch Id
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// Vpc Id
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s ListInstancesV2ResponseBodyInstancesUserVpc) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListNetworkSecurityGroupsResponse) GoString() string {
+func (s ListInstancesV2ResponseBodyInstancesUserVpc) GoString() string {
 	return s.String()
 }
 
-func (s *ListNetworkSecurityGroupsResponse) SetHeaders(v map[string]*string) *ListNetworkSecurityGroupsResponse {
-	s.Headers = v
+func (s *ListInstancesV2ResponseBodyInstancesUserVpc) SetSecurityGroupId(v string) *ListInstancesV2ResponseBodyInstancesUserVpc {
+	s.SecurityGroupId = &v
 	return s
 }
 
-func (s *ListNetworkSecurityGroupsResponse) SetBody(v *ListNetworkSecurityGroupsResponseBody) *ListNetworkSecurityGroupsResponse {
-	s.Body = v
+func (s *ListInstancesV2ResponseBodyInstancesUserVpc) SetVSwitchId(v string) *ListInstancesV2ResponseBodyInstancesUserVpc {
+	s.VSwitchId = &v
 	return s
 }
 
-type ListNetworkVSwitchesResponseBody struct {
-	// Id of the request
-	RequestId *string    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VSwitches []*VSwitch `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
-}
-
-func (s ListNetworkVSwitchesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListNetworkVSwitchesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListNetworkVSwitchesResponseBody) SetRequestId(v string) *ListNetworkVSwitchesResponseBody {
-	s.RequestId = &v
+func (s *ListInstancesV2ResponseBodyInstancesUserVpc) SetVpcId(v string) *ListInstancesV2ResponseBodyInstancesUserVpc {
+	s.VpcId = &v
 	return s
 }
 
-func (s *ListNetworkVSwitchesResponseBody) SetVSwitches(v []*VSwitch) *ListNetworkVSwitchesResponseBody {
-	s.VSwitches = v
-	return s
-}
-
-type ListNetworkVSwitchesResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListNetworkVSwitchesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListNetworkVSwitchesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListNetworkVSwitchesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListNetworkVSwitchesResponse) SetHeaders(v map[string]*string) *ListNetworkVSwitchesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListNetworkVSwitchesResponse) SetBody(v *ListNetworkVSwitchesResponseBody) *ListNetworkVSwitchesResponse {
-	s.Body = v
-	return s
-}
-
-type ListNetworkVpcsResponseBody struct {
-	// RequestId
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// vpc列表
-	Vpcs []*Vpc `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Repeated"`
-}
-
-func (s ListNetworkVpcsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListNetworkVpcsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListNetworkVpcsResponseBody) SetRequestId(v string) *ListNetworkVpcsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListNetworkVpcsResponseBody) SetVpcs(v []*Vpc) *ListNetworkVpcsResponseBody {
-	s.Vpcs = v
-	return s
-}
-
-type ListNetworkVpcsResponse struct {
+type ListInstancesV2Response struct {
 	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListNetworkVpcsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Body    *ListInstancesV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s ListNetworkVpcsResponse) String() string {
+func (s ListInstancesV2Response) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListNetworkVpcsResponse) GoString() string {
+func (s ListInstancesV2Response) GoString() string {
 	return s.String()
 }
 
-func (s *ListNetworkVpcsResponse) SetHeaders(v map[string]*string) *ListNetworkVpcsResponse {
+func (s *ListInstancesV2Response) SetHeaders(v map[string]*string) *ListInstancesV2Response {
 	s.Headers = v
 	return s
 }
 
-func (s *ListNetworkVpcsResponse) SetBody(v *ListNetworkVpcsResponseBody) *ListNetworkVpcsResponse {
-	s.Body = v
-	return s
-}
-
-type ListRegionsResponseBody struct {
-	Regions []*Region `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListRegionsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRegionsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListRegionsResponseBody) SetRegions(v []*Region) *ListRegionsResponseBody {
-	s.Regions = v
-	return s
-}
-
-func (s *ListRegionsResponseBody) SetRequestId(v string) *ListRegionsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListRegionsResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListRegionsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRegionsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListRegionsResponse) SetHeaders(v map[string]*string) *ListRegionsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsResponse {
-	s.Body = v
-	return s
-}
-
-type ListRepositoriesResponseBody struct {
-	Repositories []*ImageRepository `json:"Repositories,omitempty" xml:"Repositories,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListRepositoriesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRepositoriesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListRepositoriesResponseBody) SetRepositories(v []*ImageRepository) *ListRepositoriesResponseBody {
-	s.Repositories = v
-	return s
-}
-
-func (s *ListRepositoriesResponseBody) SetRequestId(v string) *ListRepositoriesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListRepositoriesResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRepositoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListRepositoriesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListRepositoriesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListRepositoriesResponse) SetHeaders(v map[string]*string) *ListRepositoriesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListRepositoriesResponse) SetBody(v *ListRepositoriesResponseBody) *ListRepositoriesResponse {
-	s.Body = v
-	return s
-}
-
-type ListUserClustersResponseBody struct {
-	Clusters []*Cluster `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListUserClustersResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserClustersResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserClustersResponseBody) SetClusters(v []*Cluster) *ListUserClustersResponseBody {
-	s.Clusters = v
-	return s
-}
-
-func (s *ListUserClustersResponseBody) SetRequestId(v string) *ListUserClustersResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListUserClustersResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListUserClustersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListUserClustersResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserClustersResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserClustersResponse) SetHeaders(v map[string]*string) *ListUserClustersResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListUserClustersResponse) SetBody(v *ListUserClustersResponseBody) *ListUserClustersResponse {
-	s.Body = v
-	return s
-}
-
-type ListUserWorkNodesRequest struct {
-	// 集群id
-	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-}
-
-func (s ListUserWorkNodesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserWorkNodesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserWorkNodesRequest) SetClusterId(v string) *ListUserWorkNodesRequest {
-	s.ClusterId = &v
-	return s
-}
-
-type ListUserWorkNodesResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListUserWorkNodesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserWorkNodesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserWorkNodesResponseBody) SetRequestId(v string) *ListUserWorkNodesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListUserWorkNodesResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListUserWorkNodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListUserWorkNodesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListUserWorkNodesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListUserWorkNodesResponse) SetHeaders(v map[string]*string) *ListUserWorkNodesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListUserWorkNodesResponse) SetBody(v *ListUserWorkNodesResponseBody) *ListUserWorkNodesResponse {
+func (s *ListInstancesV2Response) SetBody(v *ListInstancesV2ResponseBody) *ListInstancesV2Response {
 	s.Body = v
 	return s
 }
@@ -4443,6 +5042,54 @@ func (s *StartInstanceResponse) SetHeaders(v map[string]*string) *StartInstanceR
 }
 
 func (s *StartInstanceResponse) SetBody(v *StartInstanceResponseBody) *StartInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type StartInstanceV2ResponseBody struct {
+	// 工作空间Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartInstanceV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartInstanceV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartInstanceV2ResponseBody) SetInstanceId(v string) *StartInstanceV2ResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *StartInstanceV2ResponseBody) SetRequestId(v string) *StartInstanceV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartInstanceV2Response struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StartInstanceV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartInstanceV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartInstanceV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *StartInstanceV2Response) SetHeaders(v map[string]*string) *StartInstanceV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *StartInstanceV2Response) SetBody(v *StartInstanceV2ResponseBody) *StartInstanceV2Response {
 	s.Body = v
 	return s
 }
@@ -4509,6 +5156,71 @@ func (s *StopInstanceResponse) SetHeaders(v map[string]*string) *StopInstanceRes
 }
 
 func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type StopInstanceV2Request struct {
+	SaveImage *bool `json:"SaveImage,omitempty" xml:"SaveImage,omitempty"`
+}
+
+func (s StopInstanceV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopInstanceV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *StopInstanceV2Request) SetSaveImage(v bool) *StopInstanceV2Request {
+	s.SaveImage = &v
+	return s
+}
+
+type StopInstanceV2ResponseBody struct {
+	// 工作空间Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopInstanceV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopInstanceV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopInstanceV2ResponseBody) SetInstanceId(v string) *StopInstanceV2ResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *StopInstanceV2ResponseBody) SetRequestId(v string) *StopInstanceV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopInstanceV2Response struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StopInstanceV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopInstanceV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopInstanceV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *StopInstanceV2Response) SetHeaders(v map[string]*string) *StopInstanceV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *StopInstanceV2Response) SetBody(v *StopInstanceV2ResponseBody) *StopInstanceV2Response {
 	s.Body = v
 	return s
 }
@@ -4652,6 +5364,514 @@ func (s *UpdateInstanceSnapshotResponse) SetBody(v *UpdateInstanceSnapshotRespon
 	return s
 }
 
+type UpdateInstanceV2Request struct {
+	// 实例计算类型
+	AcceleratorType *string `json:"AcceleratorType,omitempty" xml:"AcceleratorType,omitempty"`
+	// 工作空间内是否他人可见
+	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
+	// 累计运行时间（ms）
+	AccumulatedRunningTimeInMs *int64 `json:"AccumulatedRunningTimeInMs,omitempty" xml:"AccumulatedRunningTimeInMs,omitempty"`
+	// 数据集集合
+	Datasets []*UpdateInstanceV2RequestDatasets `json:"Datasets,omitempty" xml:"Datasets,omitempty" type:"Repeated"`
+	// 实例对应的Ecs规格
+	EcsSpec *string `json:"EcsSpec,omitempty" xml:"EcsSpec,omitempty"`
+	// 环境变量
+	EnvironmentVariables map[string]*string `json:"EnvironmentVariables,omitempty" xml:"EnvironmentVariables,omitempty"`
+	// 实例创建时间
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// 实例修改时间
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// 镜像Id
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// 镜像名称
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// 镜像地址
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 实例名称
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// 定时关机任务
+	InstanceShutdownTimer *UpdateInstanceV2RequestInstanceShutdownTimer `json:"InstanceShutdownTimer,omitempty" xml:"InstanceShutdownTimer,omitempty" type:"Struct"`
+	// 实例Url
+	InstanceUrl *string `json:"InstanceUrl,omitempty" xml:"InstanceUrl,omitempty"`
+	// Jupyterlab Url
+	JupyterlabUrl *string `json:"JupyterlabUrl,omitempty" xml:"JupyterlabUrl,omitempty"`
+	// 最新保存的用户镜像
+	LatestSnapshot *UpdateInstanceV2RequestLatestSnapshot `json:"LatestSnapshot,omitempty" xml:"LatestSnapshot,omitempty" type:"Struct"`
+	// 支付类型
+	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	// 实例错误代码
+	ReasonCode *string `json:"ReasonCode,omitempty" xml:"ReasonCode,omitempty"`
+	// 实例错误原因
+	ReasonMessage *string `json:"ReasonMessage,omitempty" xml:"ReasonMessage,omitempty"`
+	// 实例状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// terminal url
+	TerminalUrl *string `json:"TerminalUrl,omitempty" xml:"TerminalUrl,omitempty"`
+	// 用户Id
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// user vpc配置
+	UserVpc *UpdateInstanceV2RequestUserVpc `json:"UserVpc,omitempty" xml:"UserVpc,omitempty" type:"Struct"`
+	// web ide url
+	WebIDEUrl *string `json:"WebIDEUrl,omitempty" xml:"WebIDEUrl,omitempty"`
+	// 工作空间Id
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+	// 工作空间名称
+	WorkspaceName *string `json:"WorkspaceName,omitempty" xml:"WorkspaceName,omitempty"`
+}
+
+func (s UpdateInstanceV2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceV2Request) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceV2Request) SetAcceleratorType(v string) *UpdateInstanceV2Request {
+	s.AcceleratorType = &v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetAccessibility(v string) *UpdateInstanceV2Request {
+	s.Accessibility = &v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetAccumulatedRunningTimeInMs(v int64) *UpdateInstanceV2Request {
+	s.AccumulatedRunningTimeInMs = &v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetDatasets(v []*UpdateInstanceV2RequestDatasets) *UpdateInstanceV2Request {
+	s.Datasets = v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetEcsSpec(v string) *UpdateInstanceV2Request {
+	s.EcsSpec = &v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetEnvironmentVariables(v map[string]*string) *UpdateInstanceV2Request {
+	s.EnvironmentVariables = v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetGmtCreateTime(v string) *UpdateInstanceV2Request {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetGmtModifiedTime(v string) *UpdateInstanceV2Request {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetImageId(v string) *UpdateInstanceV2Request {
+	s.ImageId = &v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetImageName(v string) *UpdateInstanceV2Request {
+	s.ImageName = &v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetImageUrl(v string) *UpdateInstanceV2Request {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetInstanceId(v string) *UpdateInstanceV2Request {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetInstanceName(v string) *UpdateInstanceV2Request {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetInstanceShutdownTimer(v *UpdateInstanceV2RequestInstanceShutdownTimer) *UpdateInstanceV2Request {
+	s.InstanceShutdownTimer = v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetInstanceUrl(v string) *UpdateInstanceV2Request {
+	s.InstanceUrl = &v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetJupyterlabUrl(v string) *UpdateInstanceV2Request {
+	s.JupyterlabUrl = &v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetLatestSnapshot(v *UpdateInstanceV2RequestLatestSnapshot) *UpdateInstanceV2Request {
+	s.LatestSnapshot = v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetPaymentType(v string) *UpdateInstanceV2Request {
+	s.PaymentType = &v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetReasonCode(v string) *UpdateInstanceV2Request {
+	s.ReasonCode = &v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetReasonMessage(v string) *UpdateInstanceV2Request {
+	s.ReasonMessage = &v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetStatus(v string) *UpdateInstanceV2Request {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetTerminalUrl(v string) *UpdateInstanceV2Request {
+	s.TerminalUrl = &v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetUserId(v string) *UpdateInstanceV2Request {
+	s.UserId = &v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetUserVpc(v *UpdateInstanceV2RequestUserVpc) *UpdateInstanceV2Request {
+	s.UserVpc = v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetWebIDEUrl(v string) *UpdateInstanceV2Request {
+	s.WebIDEUrl = &v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetWorkspaceId(v string) *UpdateInstanceV2Request {
+	s.WorkspaceId = &v
+	return s
+}
+
+func (s *UpdateInstanceV2Request) SetWorkspaceName(v string) *UpdateInstanceV2Request {
+	s.WorkspaceName = &v
+	return s
+}
+
+type UpdateInstanceV2RequestDatasets struct {
+	// 数据集Id
+	DatasetId *string `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
+	// 容器内挂载路径
+	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
+}
+
+func (s UpdateInstanceV2RequestDatasets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceV2RequestDatasets) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceV2RequestDatasets) SetDatasetId(v string) *UpdateInstanceV2RequestDatasets {
+	s.DatasetId = &v
+	return s
+}
+
+func (s *UpdateInstanceV2RequestDatasets) SetMountPath(v string) *UpdateInstanceV2RequestDatasets {
+	s.MountPath = &v
+	return s
+}
+
+type UpdateInstanceV2RequestInstanceShutdownTimer struct {
+	// 设定关机时间
+	DueTime *string `json:"DueTime,omitempty" xml:"DueTime,omitempty"`
+	// 创建时间
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// 修改时间
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// 实例Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 剩余关机时间（ms）
+	RemainingTimeInMs *int64 `json:"RemainingTimeInMs,omitempty" xml:"RemainingTimeInMs,omitempty"`
+}
+
+func (s UpdateInstanceV2RequestInstanceShutdownTimer) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceV2RequestInstanceShutdownTimer) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceV2RequestInstanceShutdownTimer) SetDueTime(v string) *UpdateInstanceV2RequestInstanceShutdownTimer {
+	s.DueTime = &v
+	return s
+}
+
+func (s *UpdateInstanceV2RequestInstanceShutdownTimer) SetGmtCreateTime(v string) *UpdateInstanceV2RequestInstanceShutdownTimer {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *UpdateInstanceV2RequestInstanceShutdownTimer) SetGmtModifiedTime(v string) *UpdateInstanceV2RequestInstanceShutdownTimer {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *UpdateInstanceV2RequestInstanceShutdownTimer) SetInstanceId(v string) *UpdateInstanceV2RequestInstanceShutdownTimer {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateInstanceV2RequestInstanceShutdownTimer) SetRemainingTimeInMs(v int64) *UpdateInstanceV2RequestInstanceShutdownTimer {
+	s.RemainingTimeInMs = &v
+	return s
+}
+
+type UpdateInstanceV2RequestLatestSnapshot struct {
+	// 快照创建时间
+	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
+	// 快照修改时间
+	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
+	// 镜像Id
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// 镜像名称
+	ImageName *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	// 镜像Url
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+	// 镜像仓库Url
+	RepositoryUrl *string `json:"RepositoryUrl,omitempty" xml:"RepositoryUrl,omitempty"`
+}
+
+func (s UpdateInstanceV2RequestLatestSnapshot) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceV2RequestLatestSnapshot) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceV2RequestLatestSnapshot) SetGmtCreateTime(v string) *UpdateInstanceV2RequestLatestSnapshot {
+	s.GmtCreateTime = &v
+	return s
+}
+
+func (s *UpdateInstanceV2RequestLatestSnapshot) SetGmtModifiedTime(v string) *UpdateInstanceV2RequestLatestSnapshot {
+	s.GmtModifiedTime = &v
+	return s
+}
+
+func (s *UpdateInstanceV2RequestLatestSnapshot) SetImageId(v string) *UpdateInstanceV2RequestLatestSnapshot {
+	s.ImageId = &v
+	return s
+}
+
+func (s *UpdateInstanceV2RequestLatestSnapshot) SetImageName(v string) *UpdateInstanceV2RequestLatestSnapshot {
+	s.ImageName = &v
+	return s
+}
+
+func (s *UpdateInstanceV2RequestLatestSnapshot) SetImageUrl(v string) *UpdateInstanceV2RequestLatestSnapshot {
+	s.ImageUrl = &v
+	return s
+}
+
+func (s *UpdateInstanceV2RequestLatestSnapshot) SetRepositoryUrl(v string) *UpdateInstanceV2RequestLatestSnapshot {
+	s.RepositoryUrl = &v
+	return s
+}
+
+type UpdateInstanceV2RequestUserVpc struct {
+	// Security Group Id
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// VSwitch Id
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// Vpc Id
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s UpdateInstanceV2RequestUserVpc) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceV2RequestUserVpc) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceV2RequestUserVpc) SetSecurityGroupId(v string) *UpdateInstanceV2RequestUserVpc {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *UpdateInstanceV2RequestUserVpc) SetVSwitchId(v string) *UpdateInstanceV2RequestUserVpc {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *UpdateInstanceV2RequestUserVpc) SetVpcId(v string) *UpdateInstanceV2RequestUserVpc {
+	s.VpcId = &v
+	return s
+}
+
+type UpdateInstanceV2ResponseBody struct {
+	// 工作空间Id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateInstanceV2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceV2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceV2ResponseBody) SetInstanceId(v string) *UpdateInstanceV2ResponseBody {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateInstanceV2ResponseBody) SetRequestId(v string) *UpdateInstanceV2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateInstanceV2Response struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateInstanceV2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateInstanceV2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInstanceV2Response) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInstanceV2Response) SetHeaders(v map[string]*string) *UpdateInstanceV2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateInstanceV2Response) SetBody(v *UpdateInstanceV2ResponseBody) *UpdateInstanceV2Response {
+	s.Body = v
+	return s
+}
+
+type UpdateV3InstanceByUserRequest struct {
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s UpdateV3InstanceByUserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateV3InstanceByUserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateV3InstanceByUserRequest) SetUserId(v string) *UpdateV3InstanceByUserRequest {
+	s.UserId = &v
+	return s
+}
+
+func (s *UpdateV3InstanceByUserRequest) SetWorkspaceId(v string) *UpdateV3InstanceByUserRequest {
+	s.WorkspaceId = &v
+	return s
+}
+
+type UpdateV3InstanceByUserResponseBody struct {
+	// 状态码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// http状态码
+	HttpStatusCode *int32   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	IdList         []*int64 `json:"IdList,omitempty" xml:"IdList,omitempty" type:"Repeated"`
+	// 说明
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 成功标志
+	Success     *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
+}
+
+func (s UpdateV3InstanceByUserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateV3InstanceByUserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateV3InstanceByUserResponseBody) SetCode(v string) *UpdateV3InstanceByUserResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateV3InstanceByUserResponseBody) SetHttpStatusCode(v int32) *UpdateV3InstanceByUserResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateV3InstanceByUserResponseBody) SetIdList(v []*int64) *UpdateV3InstanceByUserResponseBody {
+	s.IdList = v
+	return s
+}
+
+func (s *UpdateV3InstanceByUserResponseBody) SetMessage(v string) *UpdateV3InstanceByUserResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateV3InstanceByUserResponseBody) SetRequestId(v string) *UpdateV3InstanceByUserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateV3InstanceByUserResponseBody) SetSuccess(v bool) *UpdateV3InstanceByUserResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpdateV3InstanceByUserResponseBody) SetWorkspaceId(v string) *UpdateV3InstanceByUserResponseBody {
+	s.WorkspaceId = &v
+	return s
+}
+
+type UpdateV3InstanceByUserResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateV3InstanceByUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateV3InstanceByUserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateV3InstanceByUserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateV3InstanceByUserResponse) SetHeaders(v map[string]*string) *UpdateV3InstanceByUserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateV3InstanceByUserResponse) SetBody(v *UpdateV3InstanceByUserResponseBody) *UpdateV3InstanceByUserResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -4696,53 +5916,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 		return _result, _err
 	}
 	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateImage(request *CreateImageRequest) (_result *CreateImageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &CreateImageResponse{}
-	_body, _err := client.CreateImageWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateImageWithOptions(request *CreateImageRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateImageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Description)) {
-		body["Description"] = request.Description
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		body["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		body["Name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Repository)) {
-		body["Repository"] = request.Repository
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
-	}
-	_result = &CreateImageResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateImage"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/images"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
 	return _result, _err
 }
 
@@ -4812,8 +5985,19 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstance"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateInstance"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/instances/"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4852,8 +6036,70 @@ func (client *Client) CreateInstanceShutdownTimerWithOptions(InstanceId *string,
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstanceShutdownTimer"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(InstanceId) + "/shutdownTimer"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateInstanceShutdownTimerResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateInstanceShutdownTimer"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/instances/"+tea.StringValue(InstanceId)+"/shutdownTimer"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateInstanceShutdownTimerV2(InstanceId *string, request *CreateInstanceShutdownTimerV2Request) (_result *CreateInstanceShutdownTimerV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateInstanceShutdownTimerV2Response{}
+	_body, _err := client.CreateInstanceShutdownTimerV2WithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateInstanceShutdownTimerV2WithOptions(InstanceId *string, request *CreateInstanceShutdownTimerV2Request, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInstanceShutdownTimerV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DueTime)) {
+		body["DueTime"] = request.DueTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemainingTimeInMs)) {
+		body["RemainingTimeInMs"] = request.RemainingTimeInMs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstanceShutdownTimerV2"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId) + "/shutdowntimer"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateInstanceShutdownTimerV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4896,8 +6142,152 @@ func (client *Client) CreateInstanceSnapshotWithOptions(InstanceId *string, requ
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstanceSnapshot"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(InstanceId) + "/snapshots"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &CreateInstanceSnapshotResponse{}
-	_body, _err := client.DoROARequest(tea.String("CreateInstanceSnapshot"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("/api/v1/instances/"+tea.StringValue(InstanceId)+"/snapshots"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateInstanceSnapshotV2(InstanceId *string, request *CreateInstanceSnapshotV2Request) (_result *CreateInstanceSnapshotV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateInstanceSnapshotV2Response{}
+	_body, _err := client.CreateInstanceSnapshotV2WithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateInstanceSnapshotV2WithOptions(InstanceId *string, request *CreateInstanceSnapshotV2Request, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInstanceSnapshotV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotDescription)) {
+		body["SnapshotDescription"] = request.SnapshotDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnapshotName)) {
+		body["SnapshotName"] = request.SnapshotName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstanceSnapshotV2"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId) + "/snapshots"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateInstanceSnapshotV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateInstanceV2(request *CreateInstanceV2Request) (_result *CreateInstanceV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateInstanceV2Response{}
+	_body, _err := client.CreateInstanceV2WithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateInstanceV2WithOptions(request *CreateInstanceV2Request, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateInstanceV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
+		body["Accessibility"] = request.Accessibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Datasets)) {
+		body["Datasets"] = request.Datasets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcsSpec)) {
+		body["EcsSpec"] = request.EcsSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentVariables)) {
+		body["EnvironmentVariables"] = request.EnvironmentVariables
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.UserVpc))) {
+		body["UserVpc"] = request.UserVpc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstanceV2"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instances"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateInstanceV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4922,8 +6312,19 @@ func (client *Client) DeleteInstanceWithOptions(InstanceId *string, headers map[
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstance"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(InstanceId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteInstance"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v1/instances/"+tea.StringValue(InstanceId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4948,8 +6349,56 @@ func (client *Client) DeleteInstanceShutdownTimerWithOptions(InstanceId *string,
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstanceShutdownTimer"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(InstanceId) + "/shutdownTimer"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteInstanceShutdownTimerResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteInstanceShutdownTimer"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v1/instances/"+tea.StringValue(InstanceId)+"/shutdownTimer"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteInstanceShutdownTimerV2(InstanceId *string) (_result *DeleteInstanceShutdownTimerV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteInstanceShutdownTimerV2Response{}
+	_body, _err := client.DeleteInstanceShutdownTimerV2WithOptions(InstanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteInstanceShutdownTimerV2WithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceShutdownTimerV2Response, _err error) {
+	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstanceShutdownTimerV2"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId) + "/shutdowntimer"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteInstanceShutdownTimerV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4975,8 +6424,166 @@ func (client *Client) DeleteInstanceSnapshotWithOptions(InstanceId *string, Inst
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstanceSnapshot"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(InstanceId) + "/snapshots/" + tea.StringValue(InstanceSnapshotId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DeleteInstanceSnapshotResponse{}
-	_body, _err := client.DoROARequest(tea.String("DeleteInstanceSnapshot"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("DELETE"), tea.String("AK"), tea.String("/api/v1/instances/"+tea.StringValue(InstanceId)+"/snapshots/"+tea.StringValue(InstanceSnapshotId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteInstanceSnapshotV2(InstanceId *string, SnapshotId *string) (_result *DeleteInstanceSnapshotV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteInstanceSnapshotV2Response{}
+	_body, _err := client.DeleteInstanceSnapshotV2WithOptions(InstanceId, SnapshotId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteInstanceSnapshotV2WithOptions(InstanceId *string, SnapshotId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceSnapshotV2Response, _err error) {
+	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+	SnapshotId = openapiutil.GetEncodeParam(SnapshotId)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstanceSnapshotV2"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId) + "/snapshots/" + tea.StringValue(SnapshotId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteInstanceSnapshotV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteInstanceV2(InstanceId *string) (_result *DeleteInstanceV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteInstanceV2Response{}
+	_body, _err := client.DeleteInstanceV2WithOptions(InstanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteInstanceV2WithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteInstanceV2Response, _err error) {
+	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstanceV2"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteInstanceV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) Foobar() (_result *FoobarResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &FoobarResponse{}
+	_body, _err := client.FoobarWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) FoobarWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *FoobarResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Foobar"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/foobar"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &FoobarResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) Foobar1() (_result *Foobar1Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &Foobar1Response{}
+	_body, _err := client.Foobar1WithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) Foobar1WithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *Foobar1Response, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Foobar1"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/foobar1"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("any"),
+	}
+	_result = &Foobar1Response{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5000,8 +6607,19 @@ func (client *Client) GetAuthorizationWithOptions(headers map[string]*string, ru
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAuthorization"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/authorization"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetAuthorizationResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetAuthorization"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/authorization"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5035,8 +6653,19 @@ func (client *Client) GetDashboardStatisticsWithOptions(request *GetDashboardSta
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDashboardStatistics"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/statistics/dashboard"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetDashboardStatisticsResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetDashboardStatistics"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/statistics/dashboard"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5061,34 +6690,19 @@ func (client *Client) GetInstanceWithOptions(InstanceId *string, headers map[str
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInstance"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(InstanceId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetInstance"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/instances/"+tea.StringValue(InstanceId)), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetInstanceImage(InstanceId *string) (_result *GetInstanceImageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetInstanceImageResponse{}
-	_body, _err := client.GetInstanceImageWithOptions(InstanceId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetInstanceImageWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceImageResponse, _err error) {
-	InstanceId = openapiutil.GetEncodeParam(InstanceId)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &GetInstanceImageResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetInstanceImage"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/instances/"+tea.StringValue(InstanceId)+"/image"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5113,8 +6727,56 @@ func (client *Client) GetInstanceShutdownTimerWithOptions(InstanceId *string, he
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInstanceShutdownTimer"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(InstanceId) + "/shutdownTimer"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetInstanceShutdownTimerResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetInstanceShutdownTimer"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/instances/"+tea.StringValue(InstanceId)+"/shutdownTimer"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetInstanceShutdownTimerV2(InstanceId *string) (_result *GetInstanceShutdownTimerV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetInstanceShutdownTimerV2Response{}
+	_body, _err := client.GetInstanceShutdownTimerV2WithOptions(InstanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetInstanceShutdownTimerV2WithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceShutdownTimerV2Response, _err error) {
+	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInstanceShutdownTimerV2"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId) + "/shutdowntimer"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetInstanceShutdownTimerV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5140,8 +6802,19 @@ func (client *Client) GetInstanceSnapshotWithOptions(InstanceId *string, Instanc
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInstanceSnapshot"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(InstanceId) + "/snapshots/" + tea.StringValue(InstanceSnapshotId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetInstanceSnapshotResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetInstanceSnapshot"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/instances/"+tea.StringValue(InstanceId)+"/snapshots/"+tea.StringValue(InstanceSnapshotId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5149,11 +6822,11 @@ func (client *Client) GetInstanceSnapshotWithOptions(InstanceId *string, Instanc
 	return _result, _err
 }
 
-func (client *Client) GetInstanceType(InstanceTypeId *string) (_result *GetInstanceTypeResponse, _err error) {
+func (client *Client) GetInstanceSnapshotV2(InstanceId *string, SnapshotId *string) (_result *GetInstanceSnapshotV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetInstanceTypeResponse{}
-	_body, _err := client.GetInstanceTypeWithOptions(InstanceTypeId, headers, runtime)
+	_result = &GetInstanceSnapshotV2Response{}
+	_body, _err := client.GetInstanceSnapshotV2WithOptions(InstanceId, SnapshotId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5161,13 +6834,25 @@ func (client *Client) GetInstanceType(InstanceTypeId *string) (_result *GetInsta
 	return _result, _err
 }
 
-func (client *Client) GetInstanceTypeWithOptions(InstanceTypeId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceTypeResponse, _err error) {
-	InstanceTypeId = openapiutil.GetEncodeParam(InstanceTypeId)
+func (client *Client) GetInstanceSnapshotV2WithOptions(InstanceId *string, SnapshotId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceSnapshotV2Response, _err error) {
+	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+	SnapshotId = openapiutil.GetEncodeParam(SnapshotId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	_result = &GetInstanceTypeResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetInstanceType"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/instanceTypes/"+tea.StringValue(InstanceTypeId)), tea.String("json"), req, runtime)
+	params := &openapi.Params{
+		Action:      tea.String("GetInstanceSnapshotV2"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId) + "/snapshots/" + tea.StringValue(SnapshotId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetInstanceSnapshotV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5175,11 +6860,11 @@ func (client *Client) GetInstanceTypeWithOptions(InstanceTypeId *string, headers
 	return _result, _err
 }
 
-func (client *Client) GetInstanceUrl(InstanceId *string) (_result *GetInstanceUrlResponse, _err error) {
+func (client *Client) GetInstanceV2(InstanceId *string) (_result *GetInstanceV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetInstanceUrlResponse{}
-	_body, _err := client.GetInstanceUrlWithOptions(InstanceId, headers, runtime)
+	_result = &GetInstanceV2Response{}
+	_body, _err := client.GetInstanceV2WithOptions(InstanceId, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5187,13 +6872,24 @@ func (client *Client) GetInstanceUrl(InstanceId *string) (_result *GetInstanceUr
 	return _result, _err
 }
 
-func (client *Client) GetInstanceUrlWithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceUrlResponse, _err error) {
+func (client *Client) GetInstanceV2WithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetInstanceV2Response, _err error) {
 	InstanceId = openapiutil.GetEncodeParam(InstanceId)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	_result = &GetInstanceUrlResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetInstanceUrl"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/instances/"+tea.StringValue(InstanceId)+"/url"), tea.String("json"), req, runtime)
+	params := &openapi.Params{
+		Action:      tea.String("GetInstanceV2"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetInstanceV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5227,8 +6923,19 @@ func (client *Client) GetInstancesStatisticsWithOptions(request *GetInstancesSta
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("GetInstancesStatistics"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/statistics/instances"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetInstancesStatisticsResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetInstancesStatistics"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/statistics/instances"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5236,11 +6943,11 @@ func (client *Client) GetInstancesStatisticsWithOptions(request *GetInstancesSta
 	return _result, _err
 }
 
-func (client *Client) GetUserConfig() (_result *GetUserConfigResponse, _err error) {
+func (client *Client) GetUserConfigV2() (_result *GetUserConfigV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &GetUserConfigResponse{}
-	_body, _err := client.GetUserConfigWithOptions(headers, runtime)
+	_result = &GetUserConfigV2Response{}
+	_body, _err := client.GetUserConfigV2WithOptions(headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5248,157 +6955,23 @@ func (client *Client) GetUserConfig() (_result *GetUserConfigResponse, _err erro
 	return _result, _err
 }
 
-func (client *Client) GetUserConfigWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetUserConfigResponse, _err error) {
+func (client *Client) GetUserConfigV2WithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetUserConfigV2Response, _err error) {
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
-	_result = &GetUserConfigResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetUserConfig"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/users/config"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
+	params := &openapi.Params{
+		Action:      tea.String("GetUserConfigV2"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/userconfig"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
 	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetUserResourceAuthorizationStatus() (_result *GetUserResourceAuthorizationStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetUserResourceAuthorizationStatusResponse{}
-	_body, _err := client.GetUserResourceAuthorizationStatusWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetUserResourceAuthorizationStatusWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetUserResourceAuthorizationStatusResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &GetUserResourceAuthorizationStatusResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetUserResourceAuthorizationStatus"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/users/resourceAuthorizationStatus"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetUserResourceStatus() (_result *GetUserResourceStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetUserResourceStatusResponse{}
-	_body, _err := client.GetUserResourceStatusWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetUserResourceStatusWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetUserResourceStatusResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &GetUserResourceStatusResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetUserResourceStatus"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/users/resourceStatus"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetUserSpecialVersionGpuResourceInfo(request *GetUserSpecialVersionGpuResourceInfoRequest) (_result *GetUserSpecialVersionGpuResourceInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &GetUserSpecialVersionGpuResourceInfoResponse{}
-	_body, _err := client.GetUserSpecialVersionGpuResourceInfoWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetUserSpecialVersionGpuResourceInfoWithOptions(request *GetUserSpecialVersionGpuResourceInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetUserSpecialVersionGpuResourceInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.PayType)) {
-		query["PayType"] = request.PayType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &GetUserSpecialVersionGpuResourceInfoResponse{}
-	_body, _err := client.DoROARequest(tea.String("GetUserSpecialVersionGpuResourceInfo"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/users/specialVersionGpuResourceInfo"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListConfigs() (_result *ListConfigsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListConfigsResponse{}
-	_body, _err := client.ListConfigsWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListConfigsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListConfigsResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &ListConfigsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListConfigs"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/configs"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDatasets(request *ListDatasetsRequest) (_result *ListDatasetsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListDatasetsResponse{}
-	_body, _err := client.ListDatasetsWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListDatasetsWithOptions(request *ListDatasetsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDatasetsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
-		query["WorkspaceId"] = request.WorkspaceId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-		Query:   openapiutil.Query(query),
-	}
-	_result = &ListDatasetsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListDatasets"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/datasets"), tea.String("json"), req, runtime)
+	_result = &GetUserConfigV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5432,8 +7005,81 @@ func (client *Client) ListEcsSpecsWithOptions(request *ListEcsSpecsRequest, head
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEcsSpecs"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/ecsSpecs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListEcsSpecsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListEcsSpecs"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/ecsSpecs"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEcsSpecsV2(request *ListEcsSpecsV2Request) (_result *ListEcsSpecsV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListEcsSpecsV2Response{}
+	_body, _err := client.ListEcsSpecsV2WithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListEcsSpecsV2WithOptions(request *ListEcsSpecsV2Request, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEcsSpecsV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceleratorType)) {
+		query["AcceleratorType"] = request.AcceleratorType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEcsSpecsV2"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/ecsspecs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEcsSpecsV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5483,8 +7129,78 @@ func (client *Client) ListImagesWithOptions(request *ListImagesRequest, headers 
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListImages"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/images"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListImagesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListImages"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/images"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListInstanceSnapshotV2(InstanceId *string, request *ListInstanceSnapshotV2Request) (_result *ListInstanceSnapshotV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListInstanceSnapshotV2Response{}
+	_body, _err := client.ListInstanceSnapshotV2WithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListInstanceSnapshotV2WithOptions(InstanceId *string, request *ListInstanceSnapshotV2Request, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstanceSnapshotV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstanceSnapshotV2"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId) + "/snapshots"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInstanceSnapshotV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5509,8 +7225,19 @@ func (client *Client) ListInstanceSnapshotsWithOptions(InstanceId *string, heade
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstanceSnapshots"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(InstanceId) + "/snapshots"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListInstanceSnapshotsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListInstanceSnapshots"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/instances/"+tea.StringValue(InstanceId)+"/snapshots"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5518,11 +7245,11 @@ func (client *Client) ListInstanceSnapshotsWithOptions(InstanceId *string, heade
 	return _result, _err
 }
 
-func (client *Client) ListInstanceTypes(request *ListInstanceTypesRequest) (_result *ListInstanceTypesResponse, _err error) {
+func (client *Client) ListInstanceStatisticsV2(request *ListInstanceStatisticsV2Request) (_result *ListInstanceStatisticsV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListInstanceTypesResponse{}
-	_body, _err := client.ListInstanceTypesWithOptions(request, headers, runtime)
+	_result = &ListInstanceStatisticsV2Response{}
+	_body, _err := client.ListInstanceStatisticsV2WithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5530,22 +7257,33 @@ func (client *Client) ListInstanceTypes(request *ListInstanceTypesRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) ListInstanceTypesWithOptions(request *ListInstanceTypesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstanceTypesResponse, _err error) {
+func (client *Client) ListInstanceStatisticsV2WithOptions(request *ListInstanceStatisticsV2Request, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstanceStatisticsV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AcceleratorType)) {
-		query["AcceleratorType"] = request.AcceleratorType
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceIds)) {
+		query["WorkspaceIds"] = request.WorkspaceIds
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	_result = &ListInstanceTypesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListInstanceTypes"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/instanceTypes"), tea.String("json"), req, runtime)
+	params := &openapi.Params{
+		Action:      tea.String("ListInstanceStatisticsV2"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instancestatistics"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInstanceStatisticsV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5607,8 +7345,19 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstances"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListInstancesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListInstances"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/instances"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5642,8 +7391,19 @@ func (client *Client) ListInstancesStatusWithOptions(request *ListInstancesStatu
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstancesStatus"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/statuses/instances"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListInstancesStatusResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListInstancesStatus"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/statuses/instances"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5651,11 +7411,11 @@ func (client *Client) ListInstancesStatusWithOptions(request *ListInstancesStatu
 	return _result, _err
 }
 
-func (client *Client) ListNamespaces() (_result *ListNamespacesResponse, _err error) {
+func (client *Client) ListInstancesV2(request *ListInstancesV2Request) (_result *ListInstancesV2Response, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &ListNamespacesResponse{}
-	_body, _err := client.ListNamespacesWithOptions(headers, runtime)
+	_result = &ListInstancesV2Response{}
+	_body, _err := client.ListInstancesV2WithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5663,225 +7423,57 @@ func (client *Client) ListNamespaces() (_result *ListNamespacesResponse, _err er
 	return _result, _err
 }
 
-func (client *Client) ListNamespacesWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListNamespacesResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &ListNamespacesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListNamespaces"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/imageRegistry/namespaces"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListNases() (_result *ListNasesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListNasesResponse{}
-	_body, _err := client.ListNasesWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListNasesWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListNasesResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &ListNasesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListNases"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/nases"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListNetworkSecurityGroups(VpcId *string) (_result *ListNetworkSecurityGroupsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListNetworkSecurityGroupsResponse{}
-	_body, _err := client.ListNetworkSecurityGroupsWithOptions(VpcId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListNetworkSecurityGroupsWithOptions(VpcId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListNetworkSecurityGroupsResponse, _err error) {
-	VpcId = openapiutil.GetEncodeParam(VpcId)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &ListNetworkSecurityGroupsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListNetworkSecurityGroups"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/network/vpcs/"+tea.StringValue(VpcId)+"/securityGroups"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListNetworkVSwitches(VpcId *string) (_result *ListNetworkVSwitchesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListNetworkVSwitchesResponse{}
-	_body, _err := client.ListNetworkVSwitchesWithOptions(VpcId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListNetworkVSwitchesWithOptions(VpcId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListNetworkVSwitchesResponse, _err error) {
-	VpcId = openapiutil.GetEncodeParam(VpcId)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &ListNetworkVSwitchesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListNetworkVSwitches"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/network/vpcs/"+tea.StringValue(VpcId)+"/vSwitches"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListNetworkVpcs() (_result *ListNetworkVpcsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListNetworkVpcsResponse{}
-	_body, _err := client.ListNetworkVpcsWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListNetworkVpcsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListNetworkVpcsResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &ListNetworkVpcsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListNetworkVpcs"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/network/vpcs"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListRegions() (_result *ListRegionsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListRegionsResponse{}
-	_body, _err := client.ListRegionsWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListRegionsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRegionsResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &ListRegionsResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListRegions"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/configs/regions"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListRepositories(Namespace *string) (_result *ListRepositoriesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListRepositoriesResponse{}
-	_body, _err := client.ListRepositoriesWithOptions(Namespace, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListRepositoriesWithOptions(Namespace *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListRepositoriesResponse, _err error) {
-	Namespace = openapiutil.GetEncodeParam(Namespace)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &ListRepositoriesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListRepositories"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/imageRegistry/namespaces/"+tea.StringValue(Namespace)+"/repositories"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListUserClusters() (_result *ListUserClustersResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListUserClustersResponse{}
-	_body, _err := client.ListUserClustersWithOptions(headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListUserClustersWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListUserClustersResponse, _err error) {
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	_result = &ListUserClustersResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListUserClusters"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/users/clusters"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListUserWorkNodes(request *ListUserWorkNodesRequest) (_result *ListUserWorkNodesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &ListUserWorkNodesResponse{}
-	_body, _err := client.ListUserWorkNodesWithOptions(request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListUserWorkNodesWithOptions(request *ListUserWorkNodesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListUserWorkNodesResponse, _err error) {
+func (client *Client) ListInstancesV2WithOptions(request *ListInstancesV2Request, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstancesV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		query["ClusterId"] = request.ClusterId
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
-	_result = &ListUserWorkNodesResponse{}
-	_body, _err := client.DoROARequest(tea.String("ListUserWorkNodes"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("/api/v1/users/workerNodes"), tea.String("json"), req, runtime)
+	params := &openapi.Params{
+		Action:      tea.String("ListInstancesV2"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instances"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInstancesV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5906,8 +7498,56 @@ func (client *Client) StartInstanceWithOptions(InstanceId *string, headers map[s
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StartInstance"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(InstanceId) + "/start"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &StartInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("StartInstance"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v1/instances/"+tea.StringValue(InstanceId)+"/start"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartInstanceV2(InstanceId *string) (_result *StartInstanceV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartInstanceV2Response{}
+	_body, _err := client.StartInstanceV2WithOptions(InstanceId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartInstanceV2WithOptions(InstanceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartInstanceV2Response, _err error) {
+	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartInstanceV2"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId) + "/start"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartInstanceV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5942,8 +7582,66 @@ func (client *Client) StopInstanceWithOptions(InstanceId *string, request *StopI
 		Headers: headers,
 		Query:   openapiutil.Query(query),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("StopInstance"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(InstanceId) + "/stop"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &StopInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("StopInstance"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v1/instances/"+tea.StringValue(InstanceId)+"/stop"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopInstanceV2(InstanceId *string, request *StopInstanceV2Request) (_result *StopInstanceV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopInstanceV2Response{}
+	_body, _err := client.StopInstanceV2WithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopInstanceV2WithOptions(InstanceId *string, request *StopInstanceV2Request, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopInstanceV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SaveImage)) {
+		body["SaveImage"] = request.SaveImage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopInstanceV2"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId) + "/stop"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopInstanceV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -5978,8 +7676,19 @@ func (client *Client) UpdateInstanceWithOptions(InstanceId *string, request *Upd
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateInstance"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(InstanceId)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateInstanceResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateInstance"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v1/instances/"+tea.StringValue(InstanceId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6015,8 +7724,220 @@ func (client *Client) UpdateInstanceSnapshotWithOptions(InstanceId *string, Inst
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
 	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateInstanceSnapshot"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/" + tea.StringValue(InstanceId) + "/snapshots/" + tea.StringValue(InstanceSnapshotId)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &UpdateInstanceSnapshotResponse{}
-	_body, _err := client.DoROARequest(tea.String("UpdateInstanceSnapshot"), tea.String("2021-02-26"), tea.String("HTTPS"), tea.String("PUT"), tea.String("AK"), tea.String("/api/v1/instances/"+tea.StringValue(InstanceId)+"/snapshots/"+tea.StringValue(InstanceSnapshotId)), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateInstanceV2(InstanceId *string, request *UpdateInstanceV2Request) (_result *UpdateInstanceV2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateInstanceV2Response{}
+	_body, _err := client.UpdateInstanceV2WithOptions(InstanceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateInstanceV2WithOptions(InstanceId *string, request *UpdateInstanceV2Request, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateInstanceV2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	InstanceId = openapiutil.GetEncodeParam(InstanceId)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceleratorType)) {
+		body["AcceleratorType"] = request.AcceleratorType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Accessibility)) {
+		body["Accessibility"] = request.Accessibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccumulatedRunningTimeInMs)) {
+		body["AccumulatedRunningTimeInMs"] = request.AccumulatedRunningTimeInMs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Datasets)) {
+		body["Datasets"] = request.Datasets
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcsSpec)) {
+		body["EcsSpec"] = request.EcsSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnvironmentVariables)) {
+		body["EnvironmentVariables"] = request.EnvironmentVariables
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtCreateTime)) {
+		body["GmtCreateTime"] = request.GmtCreateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GmtModifiedTime)) {
+		body["GmtModifiedTime"] = request.GmtModifiedTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		body["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageName)) {
+		body["ImageName"] = request.ImageName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.InstanceShutdownTimer))) {
+		body["InstanceShutdownTimer"] = request.InstanceShutdownTimer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceUrl)) {
+		body["InstanceUrl"] = request.InstanceUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JupyterlabUrl)) {
+		body["JupyterlabUrl"] = request.JupyterlabUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.LatestSnapshot))) {
+		body["LatestSnapshot"] = request.LatestSnapshot
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaymentType)) {
+		body["PaymentType"] = request.PaymentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReasonCode)) {
+		body["ReasonCode"] = request.ReasonCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReasonMessage)) {
+		body["ReasonMessage"] = request.ReasonMessage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TerminalUrl)) {
+		body["TerminalUrl"] = request.TerminalUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		body["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.UserVpc))) {
+		body["UserVpc"] = request.UserVpc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WebIDEUrl)) {
+		body["WebIDEUrl"] = request.WebIDEUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		body["WorkspaceId"] = request.WorkspaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceName)) {
+		body["WorkspaceName"] = request.WorkspaceName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateInstanceV2"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/instances/" + tea.StringValue(InstanceId)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateInstanceV2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateV3InstanceByUser(request *UpdateV3InstanceByUserRequest) (_result *UpdateV3InstanceByUserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateV3InstanceByUserResponse{}
+	_body, _err := client.UpdateV3InstanceByUserWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateV3InstanceByUserWithOptions(request *UpdateV3InstanceByUserRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateV3InstanceByUserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WorkspaceId)) {
+		query["WorkspaceId"] = request.WorkspaceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateV3InstanceByUser"),
+		Version:     tea.String("2021-02-26"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/instances/migrate/user"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateV3InstanceByUserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
