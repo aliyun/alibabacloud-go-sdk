@@ -1,3 +1,6 @@
+2022-03-25 Version: v1.1.0
+- Public go sdk.
+
 2022-03-24 Version: v0.0.1
 - Initialize go sdk.
 

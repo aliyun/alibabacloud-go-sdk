@@ -30,6 +30,73 @@ func (s *OtsDetail) SetTableNames(v []*string) *OtsDetail {
 	return s
 }
 
+type Rule struct {
+	// backup type
+	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// copy target region id
+	DestinationRegionId *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
+	// retention for remote replication
+	DestinationRetention *int64 `json:"DestinationRetention,omitempty" xml:"DestinationRetention,omitempty"`
+	// disable the rule or not
+	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	// copy to other region
+	DoCopy *bool `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
+	// retention of backup
+	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	// rule name
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// schedule setting
+	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+}
+
+func (s Rule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Rule) GoString() string {
+	return s.String()
+}
+
+func (s *Rule) SetBackupType(v string) *Rule {
+	s.BackupType = &v
+	return s
+}
+
+func (s *Rule) SetDestinationRegionId(v string) *Rule {
+	s.DestinationRegionId = &v
+	return s
+}
+
+func (s *Rule) SetDestinationRetention(v int64) *Rule {
+	s.DestinationRetention = &v
+	return s
+}
+
+func (s *Rule) SetDisabled(v bool) *Rule {
+	s.Disabled = &v
+	return s
+}
+
+func (s *Rule) SetDoCopy(v bool) *Rule {
+	s.DoCopy = &v
+	return s
+}
+
+func (s *Rule) SetRetention(v int64) *Rule {
+	s.Retention = &v
+	return s
+}
+
+func (s *Rule) SetRuleName(v string) *Rule {
+	s.RuleName = &v
+	return s
+}
+
+func (s *Rule) SetSchedule(v string) *Rule {
+	s.Schedule = &v
+	return s
+}
+
 type CancelBackupJobRequest struct {
 	JobId   *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
