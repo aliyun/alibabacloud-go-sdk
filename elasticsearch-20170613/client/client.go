@@ -12395,6 +12395,258 @@ func (s *ListInstanceResponse) SetBody(v *ListInstanceResponseBody) *ListInstanc
 	return s
 }
 
+type ListInstanceHistoryEventsRequest struct {
+	Body                  []*ListInstanceHistoryEventsRequestBody `json:"body,omitempty" xml:"body,omitempty" type:"Repeated"`
+	EventCreateEndTime    *string                                 `json:"eventCreateEndTime,omitempty" xml:"eventCreateEndTime,omitempty"`
+	EventCreateStartTime  *string                                 `json:"eventCreateStartTime,omitempty" xml:"eventCreateStartTime,omitempty"`
+	EventExecuteEndTime   *string                                 `json:"eventExecuteEndTime,omitempty" xml:"eventExecuteEndTime,omitempty"`
+	EventExecuteStartTime *string                                 `json:"eventExecuteStartTime,omitempty" xml:"eventExecuteStartTime,omitempty"`
+	EventFinashEndTime    *string                                 `json:"eventFinashEndTime,omitempty" xml:"eventFinashEndTime,omitempty"`
+	EventFinashStartTime  *string                                 `json:"eventFinashStartTime,omitempty" xml:"eventFinashStartTime,omitempty"`
+	EventLevel            *string                                 `json:"eventLevel,omitempty" xml:"eventLevel,omitempty"`
+	EventType             *string                                 `json:"eventType,omitempty" xml:"eventType,omitempty"`
+	InstanceId            *string                                 `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	NodeIP                *string                                 `json:"nodeIP,omitempty" xml:"nodeIP,omitempty"`
+}
+
+func (s ListInstanceHistoryEventsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceHistoryEventsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetBody(v []*ListInstanceHistoryEventsRequestBody) *ListInstanceHistoryEventsRequest {
+	s.Body = v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetEventCreateEndTime(v string) *ListInstanceHistoryEventsRequest {
+	s.EventCreateEndTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetEventCreateStartTime(v string) *ListInstanceHistoryEventsRequest {
+	s.EventCreateStartTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetEventExecuteEndTime(v string) *ListInstanceHistoryEventsRequest {
+	s.EventExecuteEndTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetEventExecuteStartTime(v string) *ListInstanceHistoryEventsRequest {
+	s.EventExecuteStartTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetEventFinashEndTime(v string) *ListInstanceHistoryEventsRequest {
+	s.EventFinashEndTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetEventFinashStartTime(v string) *ListInstanceHistoryEventsRequest {
+	s.EventFinashStartTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetEventLevel(v string) *ListInstanceHistoryEventsRequest {
+	s.EventLevel = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetEventType(v string) *ListInstanceHistoryEventsRequest {
+	s.EventType = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetInstanceId(v string) *ListInstanceHistoryEventsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequest) SetNodeIP(v string) *ListInstanceHistoryEventsRequest {
+	s.NodeIP = &v
+	return s
+}
+
+type ListInstanceHistoryEventsRequestBody struct {
+	Desc      *bool   `json:"desc,omitempty" xml:"desc,omitempty"`
+	SortField *string `json:"sortField,omitempty" xml:"sortField,omitempty"`
+}
+
+func (s ListInstanceHistoryEventsRequestBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceHistoryEventsRequestBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceHistoryEventsRequestBody) SetDesc(v bool) *ListInstanceHistoryEventsRequestBody {
+	s.Desc = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsRequestBody) SetSortField(v string) *ListInstanceHistoryEventsRequestBody {
+	s.SortField = &v
+	return s
+}
+
+type ListInstanceHistoryEventsResponseBody struct {
+	Headers   *ListInstanceHistoryEventsResponseBodyHeaders  `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    []*ListInstanceHistoryEventsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+}
+
+func (s ListInstanceHistoryEventsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceHistoryEventsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceHistoryEventsResponseBody) SetHeaders(v *ListInstanceHistoryEventsResponseBodyHeaders) *ListInstanceHistoryEventsResponseBody {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBody) SetRequestId(v string) *ListInstanceHistoryEventsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBody) SetResult(v []*ListInstanceHistoryEventsResponseBodyResult) *ListInstanceHistoryEventsResponseBody {
+	s.Result = v
+	return s
+}
+
+type ListInstanceHistoryEventsResponseBodyHeaders struct {
+	XTotalCount   *int64 `json:"X-Total-Count,omitempty" xml:"X-Total-Count,omitempty"`
+	XTotalFailed  *int64 `json:"X-Total-Failed,omitempty" xml:"X-Total-Failed,omitempty"`
+	XTotalSuccess *int64 `json:"X-Total-Success,omitempty" xml:"X-Total-Success,omitempty"`
+}
+
+func (s ListInstanceHistoryEventsResponseBodyHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceHistoryEventsResponseBodyHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyHeaders) SetXTotalCount(v int64) *ListInstanceHistoryEventsResponseBodyHeaders {
+	s.XTotalCount = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyHeaders) SetXTotalFailed(v int64) *ListInstanceHistoryEventsResponseBodyHeaders {
+	s.XTotalFailed = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyHeaders) SetXTotalSuccess(v int64) *ListInstanceHistoryEventsResponseBodyHeaders {
+	s.XTotalSuccess = &v
+	return s
+}
+
+type ListInstanceHistoryEventsResponseBodyResult struct {
+	ActionList       []*string `json:"actionList,omitempty" xml:"actionList,omitempty" type:"Repeated"`
+	EventCreateTime  *string   `json:"eventCreateTime,omitempty" xml:"eventCreateTime,omitempty"`
+	EventCycleStatus *string   `json:"eventCycleStatus,omitempty" xml:"eventCycleStatus,omitempty"`
+	EventExecuteTime *string   `json:"eventExecuteTime,omitempty" xml:"eventExecuteTime,omitempty"`
+	EventFinashTime  *string   `json:"eventFinashTime,omitempty" xml:"eventFinashTime,omitempty"`
+	EventLevel       *string   `json:"eventLevel,omitempty" xml:"eventLevel,omitempty"`
+	EventType        *string   `json:"eventType,omitempty" xml:"eventType,omitempty"`
+	InstanceId       *string   `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	NodeIP           *string   `json:"nodeIP,omitempty" xml:"nodeIP,omitempty"`
+	RegionId         *string   `json:"regionId,omitempty" xml:"regionId,omitempty"`
+}
+
+func (s ListInstanceHistoryEventsResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceHistoryEventsResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyResult) SetActionList(v []*string) *ListInstanceHistoryEventsResponseBodyResult {
+	s.ActionList = v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyResult) SetEventCreateTime(v string) *ListInstanceHistoryEventsResponseBodyResult {
+	s.EventCreateTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyResult) SetEventCycleStatus(v string) *ListInstanceHistoryEventsResponseBodyResult {
+	s.EventCycleStatus = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyResult) SetEventExecuteTime(v string) *ListInstanceHistoryEventsResponseBodyResult {
+	s.EventExecuteTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyResult) SetEventFinashTime(v string) *ListInstanceHistoryEventsResponseBodyResult {
+	s.EventFinashTime = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyResult) SetEventLevel(v string) *ListInstanceHistoryEventsResponseBodyResult {
+	s.EventLevel = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyResult) SetEventType(v string) *ListInstanceHistoryEventsResponseBodyResult {
+	s.EventType = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyResult) SetInstanceId(v string) *ListInstanceHistoryEventsResponseBodyResult {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyResult) SetNodeIP(v string) *ListInstanceHistoryEventsResponseBodyResult {
+	s.NodeIP = &v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponseBodyResult) SetRegionId(v string) *ListInstanceHistoryEventsResponseBodyResult {
+	s.RegionId = &v
+	return s
+}
+
+type ListInstanceHistoryEventsResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListInstanceHistoryEventsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListInstanceHistoryEventsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstanceHistoryEventsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstanceHistoryEventsResponse) SetHeaders(v map[string]*string) *ListInstanceHistoryEventsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstanceHistoryEventsResponse) SetBody(v *ListInstanceHistoryEventsResponseBody) *ListInstanceHistoryEventsResponse {
+	s.Body = v
+	return s
+}
+
 type ListInstanceIndicesRequest struct {
 	All         *bool   `json:"all,omitempty" xml:"all,omitempty"`
 	IsManaged   *bool   `json:"isManaged,omitempty" xml:"isManaged,omitempty"`
@@ -14866,6 +15118,8 @@ type ModifyWhiteIpsRequestWhiteIpGroup struct {
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
 	// 白名单组中的IP列表。如果选填了whiteIpGroup参数，则该参数必填。
 	Ips []*string `json:"ips,omitempty" xml:"ips,omitempty" type:"Repeated"`
+	// ip白名单的类型
+	WhiteIpType *string `json:"whiteIpType,omitempty" xml:"whiteIpType,omitempty"`
 }
 
 func (s ModifyWhiteIpsRequestWhiteIpGroup) String() string {
@@ -14883,6 +15137,11 @@ func (s *ModifyWhiteIpsRequestWhiteIpGroup) SetGroupName(v string) *ModifyWhiteI
 
 func (s *ModifyWhiteIpsRequestWhiteIpGroup) SetIps(v []*string) *ModifyWhiteIpsRequestWhiteIpGroup {
 	s.Ips = v
+	return s
+}
+
+func (s *ModifyWhiteIpsRequestWhiteIpGroup) SetWhiteIpType(v string) *ModifyWhiteIpsRequestWhiteIpGroup {
+	s.WhiteIpType = &v
 	return s
 }
 
@@ -22158,7 +22417,7 @@ func (client *Client) CapacityPlanWithOptions(request *CapacityPlanRequest, head
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/openapi/assist/actions/capacity-plan"),
 		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
+		AuthType:    tea.String("Anonymous"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
@@ -26382,6 +26641,89 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, head
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListInstanceHistoryEvents(request *ListInstanceHistoryEventsRequest) (_result *ListInstanceHistoryEventsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListInstanceHistoryEventsResponse{}
+	_body, _err := client.ListInstanceHistoryEventsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListInstanceHistoryEventsWithOptions(request *ListInstanceHistoryEventsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListInstanceHistoryEventsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EventCreateEndTime)) {
+		query["eventCreateEndTime"] = request.EventCreateEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventCreateStartTime)) {
+		query["eventCreateStartTime"] = request.EventCreateStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventExecuteEndTime)) {
+		query["eventExecuteEndTime"] = request.EventExecuteEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventExecuteStartTime)) {
+		query["eventExecuteStartTime"] = request.EventExecuteStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventFinashEndTime)) {
+		query["eventFinashEndTime"] = request.EventFinashEndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventFinashStartTime)) {
+		query["eventFinashStartTime"] = request.EventFinashStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventLevel)) {
+		query["eventLevel"] = request.EventLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventType)) {
+		query["eventType"] = request.EventType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["instanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeIP)) {
+		query["nodeIP"] = request.NodeIP
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    util.ToArray(request.Body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstanceHistoryEvents"),
+		Version:     tea.String("2017-06-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/openapi/events"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInstanceHistoryEventsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
