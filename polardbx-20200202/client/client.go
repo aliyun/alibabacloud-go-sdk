@@ -580,12 +580,14 @@ func (s *CreateBackupResponse) SetBody(v *CreateBackupResponseBody) *CreateBacku
 }
 
 type CreateDBRequest struct {
-	AccountName             *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	AccountPrivilege        *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
-	Charset                 *string `json:"Charset,omitempty" xml:"Charset,omitempty"`
-	DBInstanceName          *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	DbDescription           *string `json:"DbDescription,omitempty" xml:"DbDescription,omitempty"`
-	DbName                  *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	AccountName      *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
+	Charset          *string `json:"Charset,omitempty" xml:"Charset,omitempty"`
+	DBInstanceName   *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DbDescription    *string `json:"DbDescription,omitempty" xml:"DbDescription,omitempty"`
+	DbName           *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// drds/auto 用来区分所建库为自动拆分模式，还是手动拆分模式
+	Mode                    *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SecurityAccountName     *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
 	SecurityAccountPassword *string `json:"SecurityAccountPassword,omitempty" xml:"SecurityAccountPassword,omitempty"`
@@ -626,6 +628,11 @@ func (s *CreateDBRequest) SetDbDescription(v string) *CreateDBRequest {
 
 func (s *CreateDBRequest) SetDbName(v string) *CreateDBRequest {
 	s.DbName = &v
+	return s
+}
+
+func (s *CreateDBRequest) SetMode(v string) *CreateDBRequest {
+	s.Mode = &v
 	return s
 }
 
@@ -8540,6 +8547,10 @@ func (client *Client) CreateDBWithOptions(request *CreateDBRequest, runtime *uti
 
 	if !tea.BoolValue(util.IsUnset(request.DbName)) {
 		query["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
