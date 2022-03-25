@@ -5494,6 +5494,797 @@ func (s *SaveOpenJMeterSceneResponse) SetBody(v *SaveOpenJMeterSceneResponseBody
 	return s
 }
 
+type SavePtsSceneRequest struct {
+	// 场景详细信息
+	Scene *SavePtsSceneRequestScene `json:"Scene,omitempty" xml:"Scene,omitempty" type:"Struct"`
+}
+
+func (s SavePtsSceneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SavePtsSceneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SavePtsSceneRequest) SetScene(v *SavePtsSceneRequestScene) *SavePtsSceneRequest {
+	s.Scene = v
+	return s
+}
+
+type SavePtsSceneRequestScene struct {
+	// 高级设置
+	AdvanceSetting *SavePtsSceneRequestSceneAdvanceSetting `json:"AdvanceSetting,omitempty" xml:"AdvanceSetting,omitempty" type:"Struct"`
+	// 文件参数
+	FileParameterList []*SavePtsSceneRequestSceneFileParameterList `json:"FileParameterList,omitempty" xml:"FileParameterList,omitempty" type:"Repeated"`
+	// 全局自定义参数
+	GlobalParameterList []*SavePtsSceneRequestSceneGlobalParameterList `json:"GlobalParameterList,omitempty" xml:"GlobalParameterList,omitempty" type:"Repeated"`
+	// 施压配置
+	LoadConfig *SavePtsSceneRequestSceneLoadConfig `json:"LoadConfig,omitempty" xml:"LoadConfig,omitempty" type:"Struct"`
+	// 链路配置
+	RelationList []*SavePtsSceneRequestSceneRelationList `json:"RelationList,omitempty" xml:"RelationList,omitempty" type:"Repeated"`
+	// 场景ID，不传为新建，传递为修改
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// 场景名
+	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+}
+
+func (s SavePtsSceneRequestScene) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SavePtsSceneRequestScene) GoString() string {
+	return s.String()
+}
+
+func (s *SavePtsSceneRequestScene) SetAdvanceSetting(v *SavePtsSceneRequestSceneAdvanceSetting) *SavePtsSceneRequestScene {
+	s.AdvanceSetting = v
+	return s
+}
+
+func (s *SavePtsSceneRequestScene) SetFileParameterList(v []*SavePtsSceneRequestSceneFileParameterList) *SavePtsSceneRequestScene {
+	s.FileParameterList = v
+	return s
+}
+
+func (s *SavePtsSceneRequestScene) SetGlobalParameterList(v []*SavePtsSceneRequestSceneGlobalParameterList) *SavePtsSceneRequestScene {
+	s.GlobalParameterList = v
+	return s
+}
+
+func (s *SavePtsSceneRequestScene) SetLoadConfig(v *SavePtsSceneRequestSceneLoadConfig) *SavePtsSceneRequestScene {
+	s.LoadConfig = v
+	return s
+}
+
+func (s *SavePtsSceneRequestScene) SetRelationList(v []*SavePtsSceneRequestSceneRelationList) *SavePtsSceneRequestScene {
+	s.RelationList = v
+	return s
+}
+
+func (s *SavePtsSceneRequestScene) SetSceneId(v string) *SavePtsSceneRequestScene {
+	s.SceneId = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestScene) SetSceneName(v string) *SavePtsSceneRequestScene {
+	s.SceneName = &v
+	return s
+}
+
+type SavePtsSceneRequestSceneAdvanceSetting struct {
+	// 超时时间，单位秒
+	ConnectionTimeoutInSecond *int32 `json:"ConnectionTimeoutInSecond,omitempty" xml:"ConnectionTimeoutInSecond,omitempty"`
+	// 域名绑定IP关系
+	DomainBindingList []*SavePtsSceneRequestSceneAdvanceSettingDomainBindingList `json:"DomainBindingList,omitempty" xml:"DomainBindingList,omitempty" type:"Repeated"`
+	// 日志采样率，[1,50]，且是10的倍数
+	LogRate *int32 `json:"LogRate,omitempty" xml:"LogRate,omitempty"`
+	// 新增成功状态码，多个用英文逗号隔开
+	SuccessCode *string `json:"SuccessCode,omitempty" xml:"SuccessCode,omitempty"`
+}
+
+func (s SavePtsSceneRequestSceneAdvanceSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SavePtsSceneRequestSceneAdvanceSetting) GoString() string {
+	return s.String()
+}
+
+func (s *SavePtsSceneRequestSceneAdvanceSetting) SetConnectionTimeoutInSecond(v int32) *SavePtsSceneRequestSceneAdvanceSetting {
+	s.ConnectionTimeoutInSecond = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneAdvanceSetting) SetDomainBindingList(v []*SavePtsSceneRequestSceneAdvanceSettingDomainBindingList) *SavePtsSceneRequestSceneAdvanceSetting {
+	s.DomainBindingList = v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneAdvanceSetting) SetLogRate(v int32) *SavePtsSceneRequestSceneAdvanceSetting {
+	s.LogRate = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneAdvanceSetting) SetSuccessCode(v string) *SavePtsSceneRequestSceneAdvanceSetting {
+	s.SuccessCode = &v
+	return s
+}
+
+type SavePtsSceneRequestSceneAdvanceSettingDomainBindingList struct {
+	// 域名
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// 对应的IP
+	Ips []*string `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
+}
+
+func (s SavePtsSceneRequestSceneAdvanceSettingDomainBindingList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SavePtsSceneRequestSceneAdvanceSettingDomainBindingList) GoString() string {
+	return s.String()
+}
+
+func (s *SavePtsSceneRequestSceneAdvanceSettingDomainBindingList) SetDomain(v string) *SavePtsSceneRequestSceneAdvanceSettingDomainBindingList {
+	s.Domain = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneAdvanceSettingDomainBindingList) SetIps(v []*string) *SavePtsSceneRequestSceneAdvanceSettingDomainBindingList {
+	s.Ips = v
+	return s
+}
+
+type SavePtsSceneRequestSceneFileParameterList struct {
+	// 文件名
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// 文件的oss地址，必须是公网可访问的
+	FileOssAddress *string `json:"FileOssAddress,omitempty" xml:"FileOssAddress,omitempty"`
+}
+
+func (s SavePtsSceneRequestSceneFileParameterList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SavePtsSceneRequestSceneFileParameterList) GoString() string {
+	return s.String()
+}
+
+func (s *SavePtsSceneRequestSceneFileParameterList) SetFileName(v string) *SavePtsSceneRequestSceneFileParameterList {
+	s.FileName = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneFileParameterList) SetFileOssAddress(v string) *SavePtsSceneRequestSceneFileParameterList {
+	s.FileOssAddress = &v
+	return s
+}
+
+type SavePtsSceneRequestSceneGlobalParameterList struct {
+	// 参数名
+	ParamName *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	// 全局参数值，不可参数化
+	ParamValue *string `json:"ParamValue,omitempty" xml:"ParamValue,omitempty"`
+}
+
+func (s SavePtsSceneRequestSceneGlobalParameterList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SavePtsSceneRequestSceneGlobalParameterList) GoString() string {
+	return s.String()
+}
+
+func (s *SavePtsSceneRequestSceneGlobalParameterList) SetParamName(v string) *SavePtsSceneRequestSceneGlobalParameterList {
+	s.ParamName = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneGlobalParameterList) SetParamValue(v string) *SavePtsSceneRequestSceneGlobalParameterList {
+	s.ParamValue = &v
+	return s
+}
+
+type SavePtsSceneRequestSceneLoadConfig struct {
+	// 指定机器数，并发必须大于250(RPS大于2000)才能使用，最大扩展机器数不能超过 最大并发/250(最大RPS/2000)
+	AgentCount *int32 `json:"AgentCount,omitempty" xml:"AgentCount,omitempty"`
+	// API的起始、最大RPS值设置，在RPS模式下使用
+	ApiLoadConfigList []*SavePtsSceneRequestSceneLoadConfigApiLoadConfigList `json:"ApiLoadConfigList,omitempty" xml:"ApiLoadConfigList,omitempty" type:"Repeated"`
+	// 是否自动递增，只有在并发模式下有效，即 testMode=concurrency_mode 时
+	AutoStep *bool `json:"AutoStep,omitempty" xml:"AutoStep,omitempty"`
+	// 场景施压量级配置信息
+	Configuration *SavePtsSceneRequestSceneLoadConfigConfiguration `json:"Configuration,omitempty" xml:"Configuration,omitempty" type:"Struct"`
+	// 递增百分比，取值范围[10,100]，且是整十倍；只有在并发模式且是自动递增模式下有效，即 testMode=concurrency_mode 且 autoStep=true 时
+	Increment *int32 `json:"Increment,omitempty" xml:"Increment,omitempty"`
+	// 单量级持续时长，单位分钟，一定是小于施压时长 maxRunningTime
+	KeepTime *int32 `json:"KeepTime,omitempty" xml:"KeepTime,omitempty"`
+	// 施压时长，单位分钟，[1-1440]
+	MaxRunningTime *int32 `json:"MaxRunningTime,omitempty" xml:"MaxRunningTime,omitempty"`
+	// 链路的起始、最大并发值设置，在并发模式下使用
+	RelationLoadConfigList []*SavePtsSceneRequestSceneLoadConfigRelationLoadConfigList `json:"RelationLoadConfigList,omitempty" xml:"RelationLoadConfigList,omitempty" type:"Repeated"`
+	// 施压模式，并发模式(concurrency_mode) 和RPS模式(tps_mode)
+	TestMode *string `json:"TestMode,omitempty" xml:"TestMode,omitempty"`
+	// VPC配置
+	VpcLoadConfig *SavePtsSceneRequestSceneLoadConfigVpcLoadConfig `json:"VpcLoadConfig,omitempty" xml:"VpcLoadConfig,omitempty" type:"Struct"`
+}
+
+func (s SavePtsSceneRequestSceneLoadConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SavePtsSceneRequestSceneLoadConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfig) SetAgentCount(v int32) *SavePtsSceneRequestSceneLoadConfig {
+	s.AgentCount = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfig) SetApiLoadConfigList(v []*SavePtsSceneRequestSceneLoadConfigApiLoadConfigList) *SavePtsSceneRequestSceneLoadConfig {
+	s.ApiLoadConfigList = v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfig) SetAutoStep(v bool) *SavePtsSceneRequestSceneLoadConfig {
+	s.AutoStep = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfig) SetConfiguration(v *SavePtsSceneRequestSceneLoadConfigConfiguration) *SavePtsSceneRequestSceneLoadConfig {
+	s.Configuration = v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfig) SetIncrement(v int32) *SavePtsSceneRequestSceneLoadConfig {
+	s.Increment = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfig) SetKeepTime(v int32) *SavePtsSceneRequestSceneLoadConfig {
+	s.KeepTime = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfig) SetMaxRunningTime(v int32) *SavePtsSceneRequestSceneLoadConfig {
+	s.MaxRunningTime = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfig) SetRelationLoadConfigList(v []*SavePtsSceneRequestSceneLoadConfigRelationLoadConfigList) *SavePtsSceneRequestSceneLoadConfig {
+	s.RelationLoadConfigList = v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfig) SetTestMode(v string) *SavePtsSceneRequestSceneLoadConfig {
+	s.TestMode = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfig) SetVpcLoadConfig(v *SavePtsSceneRequestSceneLoadConfigVpcLoadConfig) *SavePtsSceneRequestSceneLoadConfig {
+	s.VpcLoadConfig = v
+	return s
+}
+
+type SavePtsSceneRequestSceneLoadConfigApiLoadConfigList struct {
+	// apiId
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// 起始RPS值
+	RpsBegin *int32 `json:"RpsBegin,omitempty" xml:"RpsBegin,omitempty"`
+	// 最大RPS值
+	RpsLimit *int32 `json:"RpsLimit,omitempty" xml:"RpsLimit,omitempty"`
+}
+
+func (s SavePtsSceneRequestSceneLoadConfigApiLoadConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SavePtsSceneRequestSceneLoadConfigApiLoadConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfigApiLoadConfigList) SetApiId(v string) *SavePtsSceneRequestSceneLoadConfigApiLoadConfigList {
+	s.ApiId = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfigApiLoadConfigList) SetRpsBegin(v int32) *SavePtsSceneRequestSceneLoadConfigApiLoadConfigList {
+	s.RpsBegin = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfigApiLoadConfigList) SetRpsLimit(v int32) *SavePtsSceneRequestSceneLoadConfigApiLoadConfigList {
+	s.RpsLimit = &v
+	return s
+}
+
+type SavePtsSceneRequestSceneLoadConfigConfiguration struct {
+	// 所有链路的起始并发总值，均分给每个链路，在并发模式下使用，若不设置该值，则relationLoadConfig必须填写
+	AllConcurrencyBegin *int32 `json:"AllConcurrencyBegin,omitempty" xml:"AllConcurrencyBegin,omitempty"`
+	// 所有链路的最大并发总值，均分给每个链路，在并发模式下使用，若不设置该值，则relationLoadConfig必须填写
+	AllConcurrencyLimit *int32 `json:"AllConcurrencyLimit,omitempty" xml:"AllConcurrencyLimit,omitempty"`
+	// 所有API的起始RPS总值，均分给每个API，在RPS模式下使用，若不设置该值，则apiLoadConfig必须填写
+	AllRpsBegin *int32 `json:"AllRpsBegin,omitempty" xml:"AllRpsBegin,omitempty"`
+	// 所有API的最大RPS总值，均分给每个API，在RPS模式下使用，若不设置该值，则apiLoadConfig必须填写
+	AllRpsLimit *int32 `json:"AllRpsLimit,omitempty" xml:"AllRpsLimit,omitempty"`
+}
+
+func (s SavePtsSceneRequestSceneLoadConfigConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SavePtsSceneRequestSceneLoadConfigConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfigConfiguration) SetAllConcurrencyBegin(v int32) *SavePtsSceneRequestSceneLoadConfigConfiguration {
+	s.AllConcurrencyBegin = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfigConfiguration) SetAllConcurrencyLimit(v int32) *SavePtsSceneRequestSceneLoadConfigConfiguration {
+	s.AllConcurrencyLimit = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfigConfiguration) SetAllRpsBegin(v int32) *SavePtsSceneRequestSceneLoadConfigConfiguration {
+	s.AllRpsBegin = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfigConfiguration) SetAllRpsLimit(v int32) *SavePtsSceneRequestSceneLoadConfigConfiguration {
+	s.AllRpsLimit = &v
+	return s
+}
+
+type SavePtsSceneRequestSceneLoadConfigRelationLoadConfigList struct {
+	// concurrencyBegin
+	ConcurrencyBegin *int32 `json:"ConcurrencyBegin,omitempty" xml:"ConcurrencyBegin,omitempty"`
+	// 最大并发
+	ConcurrencyLimit *int32 `json:"ConcurrencyLimit,omitempty" xml:"ConcurrencyLimit,omitempty"`
+	// 链路id
+	RelationId *string `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
+}
+
+func (s SavePtsSceneRequestSceneLoadConfigRelationLoadConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SavePtsSceneRequestSceneLoadConfigRelationLoadConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfigRelationLoadConfigList) SetConcurrencyBegin(v int32) *SavePtsSceneRequestSceneLoadConfigRelationLoadConfigList {
+	s.ConcurrencyBegin = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfigRelationLoadConfigList) SetConcurrencyLimit(v int32) *SavePtsSceneRequestSceneLoadConfigRelationLoadConfigList {
+	s.ConcurrencyLimit = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfigRelationLoadConfigList) SetRelationId(v string) *SavePtsSceneRequestSceneLoadConfigRelationLoadConfigList {
+	s.RelationId = &v
+	return s
+}
+
+type SavePtsSceneRequestSceneLoadConfigVpcLoadConfig struct {
+	// regionId
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 安全组的Id
+	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	// 交换机的Id
+	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	// vpcId
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s SavePtsSceneRequestSceneLoadConfigVpcLoadConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SavePtsSceneRequestSceneLoadConfigVpcLoadConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfigVpcLoadConfig) SetRegionId(v string) *SavePtsSceneRequestSceneLoadConfigVpcLoadConfig {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfigVpcLoadConfig) SetSecurityGroupId(v string) *SavePtsSceneRequestSceneLoadConfigVpcLoadConfig {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfigVpcLoadConfig) SetVSwitchId(v string) *SavePtsSceneRequestSceneLoadConfigVpcLoadConfig {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfigVpcLoadConfig) SetVpcId(v string) *SavePtsSceneRequestSceneLoadConfigVpcLoadConfig {
+	s.VpcId = &v
+	return s
+}
+
+type SavePtsSceneRequestSceneRelationList struct {
+	// 链路下的API信息
+	ApiList []*SavePtsSceneRequestSceneRelationListApiList `json:"ApiList,omitempty" xml:"ApiList,omitempty" type:"Repeated"`
+	// 链路中的文件参数配置信息
+	FileParameterExplainList []*SavePtsSceneRequestSceneRelationListFileParameterExplainList `json:"FileParameterExplainList,omitempty" xml:"FileParameterExplainList,omitempty" type:"Repeated"`
+	// 链路id
+	RelationId *string `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
+	// 链路名
+	RelationName *string `json:"RelationName,omitempty" xml:"RelationName,omitempty"`
+}
+
+func (s SavePtsSceneRequestSceneRelationList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SavePtsSceneRequestSceneRelationList) GoString() string {
+	return s.String()
+}
+
+func (s *SavePtsSceneRequestSceneRelationList) SetApiList(v []*SavePtsSceneRequestSceneRelationListApiList) *SavePtsSceneRequestSceneRelationList {
+	s.ApiList = v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationList) SetFileParameterExplainList(v []*SavePtsSceneRequestSceneRelationListFileParameterExplainList) *SavePtsSceneRequestSceneRelationList {
+	s.FileParameterExplainList = v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationList) SetRelationId(v string) *SavePtsSceneRequestSceneRelationList {
+	s.RelationId = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationList) SetRelationName(v string) *SavePtsSceneRequestSceneRelationList {
+	s.RelationName = &v
+	return s
+}
+
+type SavePtsSceneRequestSceneRelationListApiList struct {
+	// API的id
+	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	// API名
+	ApiName *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	// 请求body
+	Body *SavePtsSceneRequestSceneRelationListApiListBody `json:"Body,omitempty" xml:"Body,omitempty" type:"Struct"`
+	// 检查点
+	CheckPointList []*SavePtsSceneRequestSceneRelationListApiListCheckPointList `json:"CheckPointList,omitempty" xml:"CheckPointList,omitempty" type:"Repeated"`
+	// 出参
+	ExportList []*SavePtsSceneRequestSceneRelationListApiListExportList `json:"ExportList,omitempty" xml:"ExportList,omitempty" type:"Repeated"`
+	// headerList
+	HeaderList []*SavePtsSceneRequestSceneRelationListApiListHeaderList `json:"HeaderList,omitempty" xml:"HeaderList,omitempty" type:"Repeated"`
+	// 请求方法
+	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	// 重定向次数，只能是0（允许重定向）或者10（不允许重定向）
+	RedirectCountLimit *int32 `json:"RedirectCountLimit,omitempty" xml:"RedirectCountLimit,omitempty"`
+	// API超时时间，单位秒，默认5s，范围[1-60]
+	TimeoutInSecond *int32 `json:"TimeoutInSecond,omitempty" xml:"TimeoutInSecond,omitempty"`
+	// 压测URL
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s SavePtsSceneRequestSceneRelationListApiList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SavePtsSceneRequestSceneRelationListApiList) GoString() string {
+	return s.String()
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiList) SetApiId(v string) *SavePtsSceneRequestSceneRelationListApiList {
+	s.ApiId = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiList) SetApiName(v string) *SavePtsSceneRequestSceneRelationListApiList {
+	s.ApiName = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiList) SetBody(v *SavePtsSceneRequestSceneRelationListApiListBody) *SavePtsSceneRequestSceneRelationListApiList {
+	s.Body = v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiList) SetCheckPointList(v []*SavePtsSceneRequestSceneRelationListApiListCheckPointList) *SavePtsSceneRequestSceneRelationListApiList {
+	s.CheckPointList = v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiList) SetExportList(v []*SavePtsSceneRequestSceneRelationListApiListExportList) *SavePtsSceneRequestSceneRelationListApiList {
+	s.ExportList = v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiList) SetHeaderList(v []*SavePtsSceneRequestSceneRelationListApiListHeaderList) *SavePtsSceneRequestSceneRelationListApiList {
+	s.HeaderList = v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiList) SetMethod(v string) *SavePtsSceneRequestSceneRelationListApiList {
+	s.Method = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiList) SetRedirectCountLimit(v int32) *SavePtsSceneRequestSceneRelationListApiList {
+	s.RedirectCountLimit = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiList) SetTimeoutInSecond(v int32) *SavePtsSceneRequestSceneRelationListApiList {
+	s.TimeoutInSecond = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiList) SetUrl(v string) *SavePtsSceneRequestSceneRelationListApiList {
+	s.Url = &v
+	return s
+}
+
+type SavePtsSceneRequestSceneRelationListApiListBody struct {
+	// body 的实际内容 形式 {"key1":"value2","key2":"value2"}
+	BodyValue *string `json:"BodyValue,omitempty" xml:"BodyValue,omitempty"`
+	// body 类型，默认 application/x-www-form-urlencoded
+	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
+}
+
+func (s SavePtsSceneRequestSceneRelationListApiListBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SavePtsSceneRequestSceneRelationListApiListBody) GoString() string {
+	return s.String()
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiListBody) SetBodyValue(v string) *SavePtsSceneRequestSceneRelationListApiListBody {
+	s.BodyValue = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiListBody) SetContentType(v string) *SavePtsSceneRequestSceneRelationListApiListBody {
+	s.ContentType = &v
+	return s
+}
+
+type SavePtsSceneRequestSceneRelationListApiListCheckPointList struct {
+	// 检查对象 type=HEADER 时，表示header中的字段，type=EXPORTED_PARAM ，表示出参名
+	CheckPoint *string `json:"CheckPoint,omitempty" xml:"CheckPoint,omitempty"`
+	// 检查点类型 响应body(BODY_TEXT)，响应header(HEADER)， 响应状态码(STATUS_CODE) ，出参（EXPORTED_PARAM）
+	CheckType *string `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
+	// 检查内容，即期望值
+	ExpectValue *string `json:"ExpectValue,omitempty" xml:"ExpectValue,omitempty"`
+	// 检查条件 CheckPointOperator 中
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+}
+
+func (s SavePtsSceneRequestSceneRelationListApiListCheckPointList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SavePtsSceneRequestSceneRelationListApiListCheckPointList) GoString() string {
+	return s.String()
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiListCheckPointList) SetCheckPoint(v string) *SavePtsSceneRequestSceneRelationListApiListCheckPointList {
+	s.CheckPoint = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiListCheckPointList) SetCheckType(v string) *SavePtsSceneRequestSceneRelationListApiListCheckPointList {
+	s.CheckType = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiListCheckPointList) SetExpectValue(v string) *SavePtsSceneRequestSceneRelationListApiListCheckPointList {
+	s.ExpectValue = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiListCheckPointList) SetOperator(v string) *SavePtsSceneRequestSceneRelationListApiListCheckPointList {
+	s.Operator = &v
+	return s
+}
+
+type SavePtsSceneRequestSceneRelationListApiListExportList struct {
+	// 第几个匹配项，可以是数字 或 random（ BODY_TEXT情况下才需要count）
+	Count *string `json:"Count,omitempty" xml:"Count,omitempty"`
+	// 出参名
+	ExportName *string `json:"ExportName,omitempty" xml:"ExportName,omitempty"`
+	// 出参来源 请求体(BODY_TEXT)，请求体(BODY_JSON)，请求头(HEADER)，响应状态码(STATUS_CODE)
+	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
+	// 出参的解析表达式
+	ExportValue *string `json:"ExportValue,omitempty" xml:"ExportValue,omitempty"`
+}
+
+func (s SavePtsSceneRequestSceneRelationListApiListExportList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SavePtsSceneRequestSceneRelationListApiListExportList) GoString() string {
+	return s.String()
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiListExportList) SetCount(v string) *SavePtsSceneRequestSceneRelationListApiListExportList {
+	s.Count = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiListExportList) SetExportName(v string) *SavePtsSceneRequestSceneRelationListApiListExportList {
+	s.ExportName = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiListExportList) SetExportType(v string) *SavePtsSceneRequestSceneRelationListApiListExportList {
+	s.ExportType = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiListExportList) SetExportValue(v string) *SavePtsSceneRequestSceneRelationListApiListExportList {
+	s.ExportValue = &v
+	return s
+}
+
+type SavePtsSceneRequestSceneRelationListApiListHeaderList struct {
+	// header参数名
+	HeaderName *string `json:"HeaderName,omitempty" xml:"HeaderName,omitempty"`
+	// 参数对应的值
+	HeaderValue *string `json:"HeaderValue,omitempty" xml:"HeaderValue,omitempty"`
+}
+
+func (s SavePtsSceneRequestSceneRelationListApiListHeaderList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SavePtsSceneRequestSceneRelationListApiListHeaderList) GoString() string {
+	return s.String()
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiListHeaderList) SetHeaderName(v string) *SavePtsSceneRequestSceneRelationListApiListHeaderList {
+	s.HeaderName = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationListApiListHeaderList) SetHeaderValue(v string) *SavePtsSceneRequestSceneRelationListApiListHeaderList {
+	s.HeaderValue = &v
+	return s
+}
+
+type SavePtsSceneRequestSceneRelationListFileParameterExplainList struct {
+	// 是否作为基准文件
+	BaseFile *bool `json:"BaseFile,omitempty" xml:"BaseFile,omitempty"`
+	// 文件是否轮询一次
+	CycleOnce *bool `json:"CycleOnce,omitempty" xml:"CycleOnce,omitempty"`
+	// 文件名
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// 文件使用的参数列名
+	FileParamName *string `json:"FileParamName,omitempty" xml:"FileParamName,omitempty"`
+}
+
+func (s SavePtsSceneRequestSceneRelationListFileParameterExplainList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SavePtsSceneRequestSceneRelationListFileParameterExplainList) GoString() string {
+	return s.String()
+}
+
+func (s *SavePtsSceneRequestSceneRelationListFileParameterExplainList) SetBaseFile(v bool) *SavePtsSceneRequestSceneRelationListFileParameterExplainList {
+	s.BaseFile = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationListFileParameterExplainList) SetCycleOnce(v bool) *SavePtsSceneRequestSceneRelationListFileParameterExplainList {
+	s.CycleOnce = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationListFileParameterExplainList) SetFileName(v string) *SavePtsSceneRequestSceneRelationListFileParameterExplainList {
+	s.FileName = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneRelationListFileParameterExplainList) SetFileParamName(v string) *SavePtsSceneRequestSceneRelationListFileParameterExplainList {
+	s.FileParamName = &v
+	return s
+}
+
+type SavePtsSceneShrinkRequest struct {
+	// 场景详细信息
+	SceneShrink *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
+}
+
+func (s SavePtsSceneShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SavePtsSceneShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SavePtsSceneShrinkRequest) SetSceneShrink(v string) *SavePtsSceneShrinkRequest {
+	s.SceneShrink = &v
+	return s
+}
+
+type SavePtsSceneResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 场景ID
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	Success *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SavePtsSceneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SavePtsSceneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SavePtsSceneResponseBody) SetCode(v string) *SavePtsSceneResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SavePtsSceneResponseBody) SetHttpStatusCode(v int32) *SavePtsSceneResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *SavePtsSceneResponseBody) SetMessage(v string) *SavePtsSceneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SavePtsSceneResponseBody) SetRequestId(v string) *SavePtsSceneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SavePtsSceneResponseBody) SetSceneId(v string) *SavePtsSceneResponseBody {
+	s.SceneId = &v
+	return s
+}
+
+func (s *SavePtsSceneResponseBody) SetSuccess(v bool) *SavePtsSceneResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SavePtsSceneResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SavePtsSceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SavePtsSceneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SavePtsSceneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SavePtsSceneResponse) SetHeaders(v map[string]*string) *SavePtsSceneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SavePtsSceneResponse) SetBody(v *SavePtsSceneResponseBody) *SavePtsSceneResponse {
+	s.Body = v
+	return s
+}
+
 type StartDebugPtsSceneRequest struct {
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 }
@@ -7624,6 +8415,56 @@ func (client *Client) SaveOpenJMeterScene(request *SaveOpenJMeterSceneRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &SaveOpenJMeterSceneResponse{}
 	_body, _err := client.SaveOpenJMeterSceneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SavePtsSceneWithOptions(tmpReq *SavePtsSceneRequest, runtime *util.RuntimeOptions) (_result *SavePtsSceneResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &SavePtsSceneShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Scene))) {
+		request.SceneShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Scene), tea.String("Scene"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SceneShrink)) {
+		query["Scene"] = request.SceneShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SavePtsScene"),
+		Version:     tea.String("2020-10-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SavePtsSceneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SavePtsScene(request *SavePtsSceneRequest) (_result *SavePtsSceneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SavePtsSceneResponse{}
+	_body, _err := client.SavePtsSceneWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
