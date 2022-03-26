@@ -7,6 +7,7 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
@@ -47,9 +48,9 @@ func (s *AssumeRoleRequest) SetRoleSessionName(v string) *AssumeRoleRequest {
 }
 
 type AssumeRoleResponseBody struct {
-	RequestId       *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AssumedRoleUser *AssumeRoleResponseBodyAssumedRoleUser `json:"AssumedRoleUser,omitempty" xml:"AssumedRoleUser,omitempty" type:"Struct"`
 	Credentials     *AssumeRoleResponseBodyCredentials     `json:"Credentials,omitempty" xml:"Credentials,omitempty" type:"Struct"`
+	RequestId       *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AssumeRoleResponseBody) String() string {
@@ -58,11 +59,6 @@ func (s AssumeRoleResponseBody) String() string {
 
 func (s AssumeRoleResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *AssumeRoleResponseBody) SetRequestId(v string) *AssumeRoleResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *AssumeRoleResponseBody) SetAssumedRoleUser(v *AssumeRoleResponseBodyAssumedRoleUser) *AssumeRoleResponseBody {
@@ -75,9 +71,14 @@ func (s *AssumeRoleResponseBody) SetCredentials(v *AssumeRoleResponseBodyCredent
 	return s
 }
 
+func (s *AssumeRoleResponseBody) SetRequestId(v string) *AssumeRoleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type AssumeRoleResponseBodyAssumedRoleUser struct {
-	AssumedRoleId *string `json:"AssumedRoleId,omitempty" xml:"AssumedRoleId,omitempty"`
 	Arn           *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	AssumedRoleId *string `json:"AssumedRoleId,omitempty" xml:"AssumedRoleId,omitempty"`
 }
 
 func (s AssumeRoleResponseBodyAssumedRoleUser) String() string {
@@ -88,21 +89,21 @@ func (s AssumeRoleResponseBodyAssumedRoleUser) GoString() string {
 	return s.String()
 }
 
-func (s *AssumeRoleResponseBodyAssumedRoleUser) SetAssumedRoleId(v string) *AssumeRoleResponseBodyAssumedRoleUser {
-	s.AssumedRoleId = &v
-	return s
-}
-
 func (s *AssumeRoleResponseBodyAssumedRoleUser) SetArn(v string) *AssumeRoleResponseBodyAssumedRoleUser {
 	s.Arn = &v
 	return s
 }
 
+func (s *AssumeRoleResponseBodyAssumedRoleUser) SetAssumedRoleId(v string) *AssumeRoleResponseBodyAssumedRoleUser {
+	s.AssumedRoleId = &v
+	return s
+}
+
 type AssumeRoleResponseBodyCredentials struct {
-	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	Expiration      *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
 	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	Expiration      *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s AssumeRoleResponseBodyCredentials) String() string {
@@ -113,13 +114,8 @@ func (s AssumeRoleResponseBodyCredentials) GoString() string {
 	return s.String()
 }
 
-func (s *AssumeRoleResponseBodyCredentials) SetSecurityToken(v string) *AssumeRoleResponseBodyCredentials {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *AssumeRoleResponseBodyCredentials) SetExpiration(v string) *AssumeRoleResponseBodyCredentials {
-	s.Expiration = &v
+func (s *AssumeRoleResponseBodyCredentials) SetAccessKeyId(v string) *AssumeRoleResponseBodyCredentials {
+	s.AccessKeyId = &v
 	return s
 }
 
@@ -128,8 +124,13 @@ func (s *AssumeRoleResponseBodyCredentials) SetAccessKeySecret(v string) *Assume
 	return s
 }
 
-func (s *AssumeRoleResponseBodyCredentials) SetAccessKeyId(v string) *AssumeRoleResponseBodyCredentials {
-	s.AccessKeyId = &v
+func (s *AssumeRoleResponseBodyCredentials) SetExpiration(v string) *AssumeRoleResponseBodyCredentials {
+	s.Expiration = &v
+	return s
+}
+
+func (s *AssumeRoleResponseBodyCredentials) SetSecurityToken(v string) *AssumeRoleResponseBodyCredentials {
+	s.SecurityToken = &v
 	return s
 }
 
@@ -157,16 +158,16 @@ func (s *AssumeRoleResponse) SetBody(v *AssumeRoleResponseBody) *AssumeRoleRespo
 }
 
 type AssumeRoleWithOIDCRequest struct {
+	// Session过期时间，单位为秒。
+	DurationSeconds *int64 `json:"DurationSeconds,omitempty" xml:"DurationSeconds,omitempty"`
 	// OIDC Provider的ARN
 	OIDCProviderArn *string `json:"OIDCProviderArn,omitempty" xml:"OIDCProviderArn,omitempty"`
-	// 需要扮演的角色的ARN
-	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	// OIDC的ID Token，需输入原始Token，无需Base64解码
 	OIDCToken *string `json:"OIDCToken,omitempty" xml:"OIDCToken,omitempty"`
 	// 权限策略。 生成STS Token时可以指定一个额外的权限策略，以进一步限制STS Token的权限。若不指定则返回的Token拥有指定角色的所有权限。
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// Session过期时间，单位为秒。
-	DurationSeconds *int64 `json:"DurationSeconds,omitempty" xml:"DurationSeconds,omitempty"`
+	// 需要扮演的角色的ARN
+	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	// 用户自定义参数。此参数用来区分不同的令牌，可用于用户级别的访问审计。
 	RoleSessionName *string `json:"RoleSessionName,omitempty" xml:"RoleSessionName,omitempty"`
 }
@@ -179,13 +180,13 @@ func (s AssumeRoleWithOIDCRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AssumeRoleWithOIDCRequest) SetOIDCProviderArn(v string) *AssumeRoleWithOIDCRequest {
-	s.OIDCProviderArn = &v
+func (s *AssumeRoleWithOIDCRequest) SetDurationSeconds(v int64) *AssumeRoleWithOIDCRequest {
+	s.DurationSeconds = &v
 	return s
 }
 
-func (s *AssumeRoleWithOIDCRequest) SetRoleArn(v string) *AssumeRoleWithOIDCRequest {
-	s.RoleArn = &v
+func (s *AssumeRoleWithOIDCRequest) SetOIDCProviderArn(v string) *AssumeRoleWithOIDCRequest {
+	s.OIDCProviderArn = &v
 	return s
 }
 
@@ -199,8 +200,8 @@ func (s *AssumeRoleWithOIDCRequest) SetPolicy(v string) *AssumeRoleWithOIDCReque
 	return s
 }
 
-func (s *AssumeRoleWithOIDCRequest) SetDurationSeconds(v int64) *AssumeRoleWithOIDCRequest {
-	s.DurationSeconds = &v
+func (s *AssumeRoleWithOIDCRequest) SetRoleArn(v string) *AssumeRoleWithOIDCRequest {
+	s.RoleArn = &v
 	return s
 }
 
@@ -210,10 +211,10 @@ func (s *AssumeRoleWithOIDCRequest) SetRoleSessionName(v string) *AssumeRoleWith
 }
 
 type AssumeRoleWithOIDCResponseBody struct {
-	RequestId       *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	OIDCTokenInfo   *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo   `json:"OIDCTokenInfo,omitempty" xml:"OIDCTokenInfo,omitempty" type:"Struct"`
 	AssumedRoleUser *AssumeRoleWithOIDCResponseBodyAssumedRoleUser `json:"AssumedRoleUser,omitempty" xml:"AssumedRoleUser,omitempty" type:"Struct"`
 	Credentials     *AssumeRoleWithOIDCResponseBodyCredentials     `json:"Credentials,omitempty" xml:"Credentials,omitempty" type:"Struct"`
+	OIDCTokenInfo   *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo   `json:"OIDCTokenInfo,omitempty" xml:"OIDCTokenInfo,omitempty" type:"Struct"`
+	RequestId       *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AssumeRoleWithOIDCResponseBody) String() string {
@@ -222,16 +223,6 @@ func (s AssumeRoleWithOIDCResponseBody) String() string {
 
 func (s AssumeRoleWithOIDCResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *AssumeRoleWithOIDCResponseBody) SetRequestId(v string) *AssumeRoleWithOIDCResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AssumeRoleWithOIDCResponseBody) SetOIDCTokenInfo(v *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo) *AssumeRoleWithOIDCResponseBody {
-	s.OIDCTokenInfo = v
-	return s
 }
 
 func (s *AssumeRoleWithOIDCResponseBody) SetAssumedRoleUser(v *AssumeRoleWithOIDCResponseBodyAssumedRoleUser) *AssumeRoleWithOIDCResponseBody {
@@ -244,38 +235,19 @@ func (s *AssumeRoleWithOIDCResponseBody) SetCredentials(v *AssumeRoleWithOIDCRes
 	return s
 }
 
-type AssumeRoleWithOIDCResponseBodyOIDCTokenInfo struct {
-	Subject   *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	Issuer    *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	ClientIds *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
-}
-
-func (s AssumeRoleWithOIDCResponseBodyOIDCTokenInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AssumeRoleWithOIDCResponseBodyOIDCTokenInfo) GoString() string {
-	return s.String()
-}
-
-func (s *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo) SetSubject(v string) *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo {
-	s.Subject = &v
+func (s *AssumeRoleWithOIDCResponseBody) SetOIDCTokenInfo(v *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo) *AssumeRoleWithOIDCResponseBody {
+	s.OIDCTokenInfo = v
 	return s
 }
 
-func (s *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo) SetIssuer(v string) *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo {
-	s.Issuer = &v
-	return s
-}
-
-func (s *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo) SetClientIds(v string) *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo {
-	s.ClientIds = &v
+func (s *AssumeRoleWithOIDCResponseBody) SetRequestId(v string) *AssumeRoleWithOIDCResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 type AssumeRoleWithOIDCResponseBodyAssumedRoleUser struct {
-	AssumedRoleId *string `json:"AssumedRoleId,omitempty" xml:"AssumedRoleId,omitempty"`
 	Arn           *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	AssumedRoleId *string `json:"AssumedRoleId,omitempty" xml:"AssumedRoleId,omitempty"`
 }
 
 func (s AssumeRoleWithOIDCResponseBodyAssumedRoleUser) String() string {
@@ -286,21 +258,21 @@ func (s AssumeRoleWithOIDCResponseBodyAssumedRoleUser) GoString() string {
 	return s.String()
 }
 
-func (s *AssumeRoleWithOIDCResponseBodyAssumedRoleUser) SetAssumedRoleId(v string) *AssumeRoleWithOIDCResponseBodyAssumedRoleUser {
-	s.AssumedRoleId = &v
-	return s
-}
-
 func (s *AssumeRoleWithOIDCResponseBodyAssumedRoleUser) SetArn(v string) *AssumeRoleWithOIDCResponseBodyAssumedRoleUser {
 	s.Arn = &v
 	return s
 }
 
+func (s *AssumeRoleWithOIDCResponseBodyAssumedRoleUser) SetAssumedRoleId(v string) *AssumeRoleWithOIDCResponseBodyAssumedRoleUser {
+	s.AssumedRoleId = &v
+	return s
+}
+
 type AssumeRoleWithOIDCResponseBodyCredentials struct {
-	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	Expiration      *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
 	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	Expiration      *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s AssumeRoleWithOIDCResponseBodyCredentials) String() string {
@@ -311,13 +283,8 @@ func (s AssumeRoleWithOIDCResponseBodyCredentials) GoString() string {
 	return s.String()
 }
 
-func (s *AssumeRoleWithOIDCResponseBodyCredentials) SetSecurityToken(v string) *AssumeRoleWithOIDCResponseBodyCredentials {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *AssumeRoleWithOIDCResponseBodyCredentials) SetExpiration(v string) *AssumeRoleWithOIDCResponseBodyCredentials {
-	s.Expiration = &v
+func (s *AssumeRoleWithOIDCResponseBodyCredentials) SetAccessKeyId(v string) *AssumeRoleWithOIDCResponseBodyCredentials {
+	s.AccessKeyId = &v
 	return s
 }
 
@@ -326,8 +293,42 @@ func (s *AssumeRoleWithOIDCResponseBodyCredentials) SetAccessKeySecret(v string)
 	return s
 }
 
-func (s *AssumeRoleWithOIDCResponseBodyCredentials) SetAccessKeyId(v string) *AssumeRoleWithOIDCResponseBodyCredentials {
-	s.AccessKeyId = &v
+func (s *AssumeRoleWithOIDCResponseBodyCredentials) SetExpiration(v string) *AssumeRoleWithOIDCResponseBodyCredentials {
+	s.Expiration = &v
+	return s
+}
+
+func (s *AssumeRoleWithOIDCResponseBodyCredentials) SetSecurityToken(v string) *AssumeRoleWithOIDCResponseBodyCredentials {
+	s.SecurityToken = &v
+	return s
+}
+
+type AssumeRoleWithOIDCResponseBodyOIDCTokenInfo struct {
+	ClientIds *string `json:"ClientIds,omitempty" xml:"ClientIds,omitempty"`
+	Issuer    *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	Subject   *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+}
+
+func (s AssumeRoleWithOIDCResponseBodyOIDCTokenInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssumeRoleWithOIDCResponseBodyOIDCTokenInfo) GoString() string {
+	return s.String()
+}
+
+func (s *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo) SetClientIds(v string) *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo {
+	s.ClientIds = &v
+	return s
+}
+
+func (s *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo) SetIssuer(v string) *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo {
+	s.Issuer = &v
+	return s
+}
+
+func (s *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo) SetSubject(v string) *AssumeRoleWithOIDCResponseBodyOIDCTokenInfo {
+	s.Subject = &v
 	return s
 }
 
@@ -355,11 +356,11 @@ func (s *AssumeRoleWithOIDCResponse) SetBody(v *AssumeRoleWithOIDCResponseBody) 
 }
 
 type AssumeRoleWithSAMLRequest struct {
-	SAMLProviderArn *string `json:"SAMLProviderArn,omitempty" xml:"SAMLProviderArn,omitempty"`
+	DurationSeconds *int64  `json:"DurationSeconds,omitempty" xml:"DurationSeconds,omitempty"`
+	Policy          *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	RoleArn         *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
 	SAMLAssertion   *string `json:"SAMLAssertion,omitempty" xml:"SAMLAssertion,omitempty"`
-	Policy          *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	DurationSeconds *int64  `json:"DurationSeconds,omitempty" xml:"DurationSeconds,omitempty"`
+	SAMLProviderArn *string `json:"SAMLProviderArn,omitempty" xml:"SAMLProviderArn,omitempty"`
 }
 
 func (s AssumeRoleWithSAMLRequest) String() string {
@@ -370,8 +371,13 @@ func (s AssumeRoleWithSAMLRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AssumeRoleWithSAMLRequest) SetSAMLProviderArn(v string) *AssumeRoleWithSAMLRequest {
-	s.SAMLProviderArn = &v
+func (s *AssumeRoleWithSAMLRequest) SetDurationSeconds(v int64) *AssumeRoleWithSAMLRequest {
+	s.DurationSeconds = &v
+	return s
+}
+
+func (s *AssumeRoleWithSAMLRequest) SetPolicy(v string) *AssumeRoleWithSAMLRequest {
+	s.Policy = &v
 	return s
 }
 
@@ -385,21 +391,16 @@ func (s *AssumeRoleWithSAMLRequest) SetSAMLAssertion(v string) *AssumeRoleWithSA
 	return s
 }
 
-func (s *AssumeRoleWithSAMLRequest) SetPolicy(v string) *AssumeRoleWithSAMLRequest {
-	s.Policy = &v
-	return s
-}
-
-func (s *AssumeRoleWithSAMLRequest) SetDurationSeconds(v int64) *AssumeRoleWithSAMLRequest {
-	s.DurationSeconds = &v
+func (s *AssumeRoleWithSAMLRequest) SetSAMLProviderArn(v string) *AssumeRoleWithSAMLRequest {
+	s.SAMLProviderArn = &v
 	return s
 }
 
 type AssumeRoleWithSAMLResponseBody struct {
-	RequestId         *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SAMLAssertionInfo *AssumeRoleWithSAMLResponseBodySAMLAssertionInfo `json:"SAMLAssertionInfo,omitempty" xml:"SAMLAssertionInfo,omitempty" type:"Struct"`
 	AssumedRoleUser   *AssumeRoleWithSAMLResponseBodyAssumedRoleUser   `json:"AssumedRoleUser,omitempty" xml:"AssumedRoleUser,omitempty" type:"Struct"`
 	Credentials       *AssumeRoleWithSAMLResponseBodyCredentials       `json:"Credentials,omitempty" xml:"Credentials,omitempty" type:"Struct"`
+	RequestId         *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SAMLAssertionInfo *AssumeRoleWithSAMLResponseBodySAMLAssertionInfo `json:"SAMLAssertionInfo,omitempty" xml:"SAMLAssertionInfo,omitempty" type:"Struct"`
 }
 
 func (s AssumeRoleWithSAMLResponseBody) String() string {
@@ -408,16 +409,6 @@ func (s AssumeRoleWithSAMLResponseBody) String() string {
 
 func (s AssumeRoleWithSAMLResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *AssumeRoleWithSAMLResponseBody) SetRequestId(v string) *AssumeRoleWithSAMLResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AssumeRoleWithSAMLResponseBody) SetSAMLAssertionInfo(v *AssumeRoleWithSAMLResponseBodySAMLAssertionInfo) *AssumeRoleWithSAMLResponseBody {
-	s.SAMLAssertionInfo = v
-	return s
 }
 
 func (s *AssumeRoleWithSAMLResponseBody) SetAssumedRoleUser(v *AssumeRoleWithSAMLResponseBodyAssumedRoleUser) *AssumeRoleWithSAMLResponseBody {
@@ -430,11 +421,79 @@ func (s *AssumeRoleWithSAMLResponseBody) SetCredentials(v *AssumeRoleWithSAMLRes
 	return s
 }
 
+func (s *AssumeRoleWithSAMLResponseBody) SetRequestId(v string) *AssumeRoleWithSAMLResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AssumeRoleWithSAMLResponseBody) SetSAMLAssertionInfo(v *AssumeRoleWithSAMLResponseBodySAMLAssertionInfo) *AssumeRoleWithSAMLResponseBody {
+	s.SAMLAssertionInfo = v
+	return s
+}
+
+type AssumeRoleWithSAMLResponseBodyAssumedRoleUser struct {
+	Arn           *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	AssumedRoleId *string `json:"AssumedRoleId,omitempty" xml:"AssumedRoleId,omitempty"`
+}
+
+func (s AssumeRoleWithSAMLResponseBodyAssumedRoleUser) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssumeRoleWithSAMLResponseBodyAssumedRoleUser) GoString() string {
+	return s.String()
+}
+
+func (s *AssumeRoleWithSAMLResponseBodyAssumedRoleUser) SetArn(v string) *AssumeRoleWithSAMLResponseBodyAssumedRoleUser {
+	s.Arn = &v
+	return s
+}
+
+func (s *AssumeRoleWithSAMLResponseBodyAssumedRoleUser) SetAssumedRoleId(v string) *AssumeRoleWithSAMLResponseBodyAssumedRoleUser {
+	s.AssumedRoleId = &v
+	return s
+}
+
+type AssumeRoleWithSAMLResponseBodyCredentials struct {
+	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
+	Expiration      *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
+	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s AssumeRoleWithSAMLResponseBodyCredentials) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssumeRoleWithSAMLResponseBodyCredentials) GoString() string {
+	return s.String()
+}
+
+func (s *AssumeRoleWithSAMLResponseBodyCredentials) SetAccessKeyId(v string) *AssumeRoleWithSAMLResponseBodyCredentials {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *AssumeRoleWithSAMLResponseBodyCredentials) SetAccessKeySecret(v string) *AssumeRoleWithSAMLResponseBodyCredentials {
+	s.AccessKeySecret = &v
+	return s
+}
+
+func (s *AssumeRoleWithSAMLResponseBodyCredentials) SetExpiration(v string) *AssumeRoleWithSAMLResponseBodyCredentials {
+	s.Expiration = &v
+	return s
+}
+
+func (s *AssumeRoleWithSAMLResponseBodyCredentials) SetSecurityToken(v string) *AssumeRoleWithSAMLResponseBodyCredentials {
+	s.SecurityToken = &v
+	return s
+}
+
 type AssumeRoleWithSAMLResponseBodySAMLAssertionInfo struct {
-	SubjectType *string `json:"SubjectType,omitempty" xml:"SubjectType,omitempty"`
-	Subject     *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
 	Issuer      *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
 	Recipient   *string `json:"Recipient,omitempty" xml:"Recipient,omitempty"`
+	Subject     *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	SubjectType *string `json:"SubjectType,omitempty" xml:"SubjectType,omitempty"`
 }
 
 func (s AssumeRoleWithSAMLResponseBodySAMLAssertionInfo) String() string {
@@ -443,16 +502,6 @@ func (s AssumeRoleWithSAMLResponseBodySAMLAssertionInfo) String() string {
 
 func (s AssumeRoleWithSAMLResponseBodySAMLAssertionInfo) GoString() string {
 	return s.String()
-}
-
-func (s *AssumeRoleWithSAMLResponseBodySAMLAssertionInfo) SetSubjectType(v string) *AssumeRoleWithSAMLResponseBodySAMLAssertionInfo {
-	s.SubjectType = &v
-	return s
-}
-
-func (s *AssumeRoleWithSAMLResponseBodySAMLAssertionInfo) SetSubject(v string) *AssumeRoleWithSAMLResponseBodySAMLAssertionInfo {
-	s.Subject = &v
-	return s
 }
 
 func (s *AssumeRoleWithSAMLResponseBodySAMLAssertionInfo) SetIssuer(v string) *AssumeRoleWithSAMLResponseBodySAMLAssertionInfo {
@@ -465,61 +514,13 @@ func (s *AssumeRoleWithSAMLResponseBodySAMLAssertionInfo) SetRecipient(v string)
 	return s
 }
 
-type AssumeRoleWithSAMLResponseBodyAssumedRoleUser struct {
-	AssumedRoleId *string `json:"AssumedRoleId,omitempty" xml:"AssumedRoleId,omitempty"`
-	Arn           *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-}
-
-func (s AssumeRoleWithSAMLResponseBodyAssumedRoleUser) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AssumeRoleWithSAMLResponseBodyAssumedRoleUser) GoString() string {
-	return s.String()
-}
-
-func (s *AssumeRoleWithSAMLResponseBodyAssumedRoleUser) SetAssumedRoleId(v string) *AssumeRoleWithSAMLResponseBodyAssumedRoleUser {
-	s.AssumedRoleId = &v
+func (s *AssumeRoleWithSAMLResponseBodySAMLAssertionInfo) SetSubject(v string) *AssumeRoleWithSAMLResponseBodySAMLAssertionInfo {
+	s.Subject = &v
 	return s
 }
 
-func (s *AssumeRoleWithSAMLResponseBodyAssumedRoleUser) SetArn(v string) *AssumeRoleWithSAMLResponseBodyAssumedRoleUser {
-	s.Arn = &v
-	return s
-}
-
-type AssumeRoleWithSAMLResponseBodyCredentials struct {
-	SecurityToken   *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	Expiration      *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
-	AccessKeyId     *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-}
-
-func (s AssumeRoleWithSAMLResponseBodyCredentials) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AssumeRoleWithSAMLResponseBodyCredentials) GoString() string {
-	return s.String()
-}
-
-func (s *AssumeRoleWithSAMLResponseBodyCredentials) SetSecurityToken(v string) *AssumeRoleWithSAMLResponseBodyCredentials {
-	s.SecurityToken = &v
-	return s
-}
-
-func (s *AssumeRoleWithSAMLResponseBodyCredentials) SetExpiration(v string) *AssumeRoleWithSAMLResponseBodyCredentials {
-	s.Expiration = &v
-	return s
-}
-
-func (s *AssumeRoleWithSAMLResponseBodyCredentials) SetAccessKeySecret(v string) *AssumeRoleWithSAMLResponseBodyCredentials {
-	s.AccessKeySecret = &v
-	return s
-}
-
-func (s *AssumeRoleWithSAMLResponseBodyCredentials) SetAccessKeyId(v string) *AssumeRoleWithSAMLResponseBodyCredentials {
-	s.AccessKeyId = &v
+func (s *AssumeRoleWithSAMLResponseBodySAMLAssertionInfo) SetSubjectType(v string) *AssumeRoleWithSAMLResponseBodySAMLAssertionInfo {
+	s.SubjectType = &v
 	return s
 }
 
@@ -547,13 +548,13 @@ func (s *AssumeRoleWithSAMLResponse) SetBody(v *AssumeRoleWithSAMLResponseBody) 
 }
 
 type GetCallerIdentityResponseBody struct {
-	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
 	AccountId    *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PrincipalId  *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	Arn          *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	IdentityType *string `json:"IdentityType,omitempty" xml:"IdentityType,omitempty"`
+	PrincipalId  *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RoleId       *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s GetCallerIdentityResponseBody) String() string {
@@ -564,28 +565,8 @@ func (s GetCallerIdentityResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetCallerIdentityResponseBody) SetIdentityType(v string) *GetCallerIdentityResponseBody {
-	s.IdentityType = &v
-	return s
-}
-
 func (s *GetCallerIdentityResponseBody) SetAccountId(v string) *GetCallerIdentityResponseBody {
 	s.AccountId = &v
-	return s
-}
-
-func (s *GetCallerIdentityResponseBody) SetRequestId(v string) *GetCallerIdentityResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetCallerIdentityResponseBody) SetPrincipalId(v string) *GetCallerIdentityResponseBody {
-	s.PrincipalId = &v
-	return s
-}
-
-func (s *GetCallerIdentityResponseBody) SetUserId(v string) *GetCallerIdentityResponseBody {
-	s.UserId = &v
 	return s
 }
 
@@ -594,8 +575,28 @@ func (s *GetCallerIdentityResponseBody) SetArn(v string) *GetCallerIdentityRespo
 	return s
 }
 
+func (s *GetCallerIdentityResponseBody) SetIdentityType(v string) *GetCallerIdentityResponseBody {
+	s.IdentityType = &v
+	return s
+}
+
+func (s *GetCallerIdentityResponseBody) SetPrincipalId(v string) *GetCallerIdentityResponseBody {
+	s.PrincipalId = &v
+	return s
+}
+
+func (s *GetCallerIdentityResponseBody) SetRequestId(v string) *GetCallerIdentityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 func (s *GetCallerIdentityResponseBody) SetRoleId(v string) *GetCallerIdentityResponseBody {
 	s.RoleId = &v
+	return s
+}
+
+func (s *GetCallerIdentityResponseBody) SetUserId(v string) *GetCallerIdentityResponseBody {
+	s.UserId = &v
 	return s
 }
 
@@ -711,11 +712,39 @@ func (client *Client) AssumeRoleWithOptions(request *AssumeRoleRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DurationSeconds)) {
+		query["DurationSeconds"] = request.DurationSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleArn)) {
+		query["RoleArn"] = request.RoleArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleSessionName)) {
+		query["RoleSessionName"] = request.RoleSessionName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssumeRole"),
+		Version:     tea.String("2015-04-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AssumeRoleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AssumeRole"), tea.String("2015-04-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -739,11 +768,47 @@ func (client *Client) AssumeRoleWithOIDCWithOptions(request *AssumeRoleWithOIDCR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DurationSeconds)) {
+		query["DurationSeconds"] = request.DurationSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OIDCProviderArn)) {
+		query["OIDCProviderArn"] = request.OIDCProviderArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OIDCToken)) {
+		query["OIDCToken"] = request.OIDCToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleArn)) {
+		query["RoleArn"] = request.RoleArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleSessionName)) {
+		query["RoleSessionName"] = request.RoleSessionName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssumeRoleWithOIDC"),
+		Version:     tea.String("2015-04-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AssumeRoleWithOIDCResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AssumeRoleWithOIDC"), tea.String("2015-04-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -767,11 +832,43 @@ func (client *Client) AssumeRoleWithSAMLWithOptions(request *AssumeRoleWithSAMLR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DurationSeconds)) {
+		query["DurationSeconds"] = request.DurationSeconds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Policy)) {
+		query["Policy"] = request.Policy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleArn)) {
+		query["RoleArn"] = request.RoleArn
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SAMLAssertion)) {
+		query["SAMLAssertion"] = request.SAMLAssertion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SAMLProviderArn)) {
+		query["SAMLProviderArn"] = request.SAMLProviderArn
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssumeRoleWithSAML"),
+		Version:     tea.String("2015-04-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AssumeRoleWithSAMLResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AssumeRoleWithSAML"), tea.String("2015-04-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -792,8 +889,19 @@ func (client *Client) AssumeRoleWithSAML(request *AssumeRoleWithSAMLRequest) (_r
 
 func (client *Client) GetCallerIdentityWithOptions(runtime *util.RuntimeOptions) (_result *GetCallerIdentityResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetCallerIdentity"),
+		Version:     tea.String("2015-04-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetCallerIdentityResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetCallerIdentity"), tea.String("2015-04-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
