@@ -3310,12 +3310,18 @@ func (s *StartMPUTaskRequestBackgrounds) SetZOrder(v int32) *StartMPUTaskRequest
 }
 
 type StartMPUTaskRequestClockWidgets struct {
-	FontColor *int32   `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	FontSize  *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	FontType  *int32   `json:"FontType,omitempty" xml:"FontType,omitempty"`
-	X         *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y         *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder    *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	Alpha          *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	BorderColor    *int64   `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
+	BorderWidth    *int32   `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	Box            *bool    `json:"Box,omitempty" xml:"Box,omitempty"`
+	BoxBorderWidth *int32   `json:"BoxBorderWidth,omitempty" xml:"BoxBorderWidth,omitempty"`
+	BoxColor       *int64   `json:"BoxColor,omitempty" xml:"BoxColor,omitempty"`
+	FontColor      *int32   `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	FontSize       *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	FontType       *int32   `json:"FontType,omitempty" xml:"FontType,omitempty"`
+	X              *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y              *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	ZOrder         *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s StartMPUTaskRequestClockWidgets) String() string {
@@ -3324,6 +3330,36 @@ func (s StartMPUTaskRequestClockWidgets) String() string {
 
 func (s StartMPUTaskRequestClockWidgets) GoString() string {
 	return s.String()
+}
+
+func (s *StartMPUTaskRequestClockWidgets) SetAlpha(v float32) *StartMPUTaskRequestClockWidgets {
+	s.Alpha = &v
+	return s
+}
+
+func (s *StartMPUTaskRequestClockWidgets) SetBorderColor(v int64) *StartMPUTaskRequestClockWidgets {
+	s.BorderColor = &v
+	return s
+}
+
+func (s *StartMPUTaskRequestClockWidgets) SetBorderWidth(v int32) *StartMPUTaskRequestClockWidgets {
+	s.BorderWidth = &v
+	return s
+}
+
+func (s *StartMPUTaskRequestClockWidgets) SetBox(v bool) *StartMPUTaskRequestClockWidgets {
+	s.Box = &v
+	return s
+}
+
+func (s *StartMPUTaskRequestClockWidgets) SetBoxBorderWidth(v int32) *StartMPUTaskRequestClockWidgets {
+	s.BoxBorderWidth = &v
+	return s
+}
+
+func (s *StartMPUTaskRequestClockWidgets) SetBoxColor(v int64) *StartMPUTaskRequestClockWidgets {
+	s.BoxColor = &v
+	return s
 }
 
 func (s *StartMPUTaskRequestClockWidgets) SetFontColor(v int32) *StartMPUTaskRequestClockWidgets {
@@ -3474,13 +3510,19 @@ func (s *StartMPUTaskRequestUserPanesImages) SetZOrder(v int32) *StartMPUTaskReq
 }
 
 type StartMPUTaskRequestUserPanesTexts struct {
-	FontColor *int32   `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	FontSize  *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	FontType  *int32   `json:"FontType,omitempty" xml:"FontType,omitempty"`
-	Text      *string  `json:"Text,omitempty" xml:"Text,omitempty"`
-	X         *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y         *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder    *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	Alpha          *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	BorderColor    *int64   `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
+	BorderWidth    *int32   `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	Box            *bool    `json:"Box,omitempty" xml:"Box,omitempty"`
+	BoxBorderWidth *int32   `json:"BoxBorderWidth,omitempty" xml:"BoxBorderWidth,omitempty"`
+	BoxColor       *int64   `json:"BoxColor,omitempty" xml:"BoxColor,omitempty"`
+	FontColor      *int32   `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	FontSize       *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	FontType       *int32   `json:"FontType,omitempty" xml:"FontType,omitempty"`
+	Text           *string  `json:"Text,omitempty" xml:"Text,omitempty"`
+	X              *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y              *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	ZOrder         *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s StartMPUTaskRequestUserPanesTexts) String() string {
@@ -3489,6 +3531,36 @@ func (s StartMPUTaskRequestUserPanesTexts) String() string {
 
 func (s StartMPUTaskRequestUserPanesTexts) GoString() string {
 	return s.String()
+}
+
+func (s *StartMPUTaskRequestUserPanesTexts) SetAlpha(v float32) *StartMPUTaskRequestUserPanesTexts {
+	s.Alpha = &v
+	return s
+}
+
+func (s *StartMPUTaskRequestUserPanesTexts) SetBorderColor(v int64) *StartMPUTaskRequestUserPanesTexts {
+	s.BorderColor = &v
+	return s
+}
+
+func (s *StartMPUTaskRequestUserPanesTexts) SetBorderWidth(v int32) *StartMPUTaskRequestUserPanesTexts {
+	s.BorderWidth = &v
+	return s
+}
+
+func (s *StartMPUTaskRequestUserPanesTexts) SetBox(v bool) *StartMPUTaskRequestUserPanesTexts {
+	s.Box = &v
+	return s
+}
+
+func (s *StartMPUTaskRequestUserPanesTexts) SetBoxBorderWidth(v int32) *StartMPUTaskRequestUserPanesTexts {
+	s.BoxBorderWidth = &v
+	return s
+}
+
+func (s *StartMPUTaskRequestUserPanesTexts) SetBoxColor(v int64) *StartMPUTaskRequestUserPanesTexts {
+	s.BoxColor = &v
+	return s
 }
 
 func (s *StartMPUTaskRequestUserPanesTexts) SetFontColor(v int32) *StartMPUTaskRequestUserPanesTexts {
@@ -4377,12 +4449,18 @@ func (s *UpdateMPUTaskRequestBackgrounds) SetZOrder(v int32) *UpdateMPUTaskReque
 }
 
 type UpdateMPUTaskRequestClockWidgets struct {
-	FontColor *int32   `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	FontSize  *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	FontType  *int32   `json:"FontType,omitempty" xml:"FontType,omitempty"`
-	X         *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y         *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder    *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	Alpha          *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	BorderColor    *int64   `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
+	BorderWidth    *int32   `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	Box            *bool    `json:"Box,omitempty" xml:"Box,omitempty"`
+	BoxBorderWidth *int32   `json:"BoxBorderWidth,omitempty" xml:"BoxBorderWidth,omitempty"`
+	BoxColor       *int64   `json:"BoxColor,omitempty" xml:"BoxColor,omitempty"`
+	FontColor      *int32   `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	FontSize       *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	FontType       *int32   `json:"FontType,omitempty" xml:"FontType,omitempty"`
+	X              *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y              *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	ZOrder         *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s UpdateMPUTaskRequestClockWidgets) String() string {
@@ -4391,6 +4469,36 @@ func (s UpdateMPUTaskRequestClockWidgets) String() string {
 
 func (s UpdateMPUTaskRequestClockWidgets) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateMPUTaskRequestClockWidgets) SetAlpha(v float32) *UpdateMPUTaskRequestClockWidgets {
+	s.Alpha = &v
+	return s
+}
+
+func (s *UpdateMPUTaskRequestClockWidgets) SetBorderColor(v int64) *UpdateMPUTaskRequestClockWidgets {
+	s.BorderColor = &v
+	return s
+}
+
+func (s *UpdateMPUTaskRequestClockWidgets) SetBorderWidth(v int32) *UpdateMPUTaskRequestClockWidgets {
+	s.BorderWidth = &v
+	return s
+}
+
+func (s *UpdateMPUTaskRequestClockWidgets) SetBox(v bool) *UpdateMPUTaskRequestClockWidgets {
+	s.Box = &v
+	return s
+}
+
+func (s *UpdateMPUTaskRequestClockWidgets) SetBoxBorderWidth(v int32) *UpdateMPUTaskRequestClockWidgets {
+	s.BoxBorderWidth = &v
+	return s
+}
+
+func (s *UpdateMPUTaskRequestClockWidgets) SetBoxColor(v int64) *UpdateMPUTaskRequestClockWidgets {
+	s.BoxColor = &v
+	return s
 }
 
 func (s *UpdateMPUTaskRequestClockWidgets) SetFontColor(v int32) *UpdateMPUTaskRequestClockWidgets {
@@ -4524,13 +4632,19 @@ func (s *UpdateMPUTaskRequestUserPanesImages) SetZOrder(v int32) *UpdateMPUTaskR
 }
 
 type UpdateMPUTaskRequestUserPanesTexts struct {
-	FontColor *int32   `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
-	FontSize  *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	FontType  *int32   `json:"FontType,omitempty" xml:"FontType,omitempty"`
-	Text      *string  `json:"Text,omitempty" xml:"Text,omitempty"`
-	X         *float32 `json:"X,omitempty" xml:"X,omitempty"`
-	Y         *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
-	ZOrder    *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
+	Alpha          *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	BorderColor    *int64   `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
+	BorderWidth    *int32   `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	Box            *bool    `json:"Box,omitempty" xml:"Box,omitempty"`
+	BoxBorderWidth *int32   `json:"BoxBorderWidth,omitempty" xml:"BoxBorderWidth,omitempty"`
+	BoxColor       *int64   `json:"BoxColor,omitempty" xml:"BoxColor,omitempty"`
+	FontColor      *int32   `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	FontSize       *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	FontType       *int32   `json:"FontType,omitempty" xml:"FontType,omitempty"`
+	Text           *string  `json:"Text,omitempty" xml:"Text,omitempty"`
+	X              *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y              *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	ZOrder         *int32   `json:"ZOrder,omitempty" xml:"ZOrder,omitempty"`
 }
 
 func (s UpdateMPUTaskRequestUserPanesTexts) String() string {
@@ -4539,6 +4653,36 @@ func (s UpdateMPUTaskRequestUserPanesTexts) String() string {
 
 func (s UpdateMPUTaskRequestUserPanesTexts) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateMPUTaskRequestUserPanesTexts) SetAlpha(v float32) *UpdateMPUTaskRequestUserPanesTexts {
+	s.Alpha = &v
+	return s
+}
+
+func (s *UpdateMPUTaskRequestUserPanesTexts) SetBorderColor(v int64) *UpdateMPUTaskRequestUserPanesTexts {
+	s.BorderColor = &v
+	return s
+}
+
+func (s *UpdateMPUTaskRequestUserPanesTexts) SetBorderWidth(v int32) *UpdateMPUTaskRequestUserPanesTexts {
+	s.BorderWidth = &v
+	return s
+}
+
+func (s *UpdateMPUTaskRequestUserPanesTexts) SetBox(v bool) *UpdateMPUTaskRequestUserPanesTexts {
+	s.Box = &v
+	return s
+}
+
+func (s *UpdateMPUTaskRequestUserPanesTexts) SetBoxBorderWidth(v int32) *UpdateMPUTaskRequestUserPanesTexts {
+	s.BoxBorderWidth = &v
+	return s
+}
+
+func (s *UpdateMPUTaskRequestUserPanesTexts) SetBoxColor(v int64) *UpdateMPUTaskRequestUserPanesTexts {
+	s.BoxColor = &v
+	return s
 }
 
 func (s *UpdateMPUTaskRequestUserPanesTexts) SetFontColor(v int32) *UpdateMPUTaskRequestUserPanesTexts {
