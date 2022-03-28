@@ -14725,6 +14725,75 @@ func (s *DescribeDcdnUserBillTypeResponse) SetBody(v *DescribeDcdnUserBillTypeRe
 	return s
 }
 
+type DescribeDcdnUserCertificateExpireCountRequest struct {
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DescribeDcdnUserCertificateExpireCountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnUserCertificateExpireCountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnUserCertificateExpireCountRequest) SetOwnerId(v int64) *DescribeDcdnUserCertificateExpireCountRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DescribeDcdnUserCertificateExpireCountResponseBody struct {
+	ExpireWithin30DaysCount *int32  `json:"ExpireWithin30DaysCount,omitempty" xml:"ExpireWithin30DaysCount,omitempty"`
+	ExpiredCount            *int32  `json:"ExpiredCount,omitempty" xml:"ExpiredCount,omitempty"`
+	RequestId               *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDcdnUserCertificateExpireCountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnUserCertificateExpireCountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnUserCertificateExpireCountResponseBody) SetExpireWithin30DaysCount(v int32) *DescribeDcdnUserCertificateExpireCountResponseBody {
+	s.ExpireWithin30DaysCount = &v
+	return s
+}
+
+func (s *DescribeDcdnUserCertificateExpireCountResponseBody) SetExpiredCount(v int32) *DescribeDcdnUserCertificateExpireCountResponseBody {
+	s.ExpiredCount = &v
+	return s
+}
+
+func (s *DescribeDcdnUserCertificateExpireCountResponseBody) SetRequestId(v string) *DescribeDcdnUserCertificateExpireCountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDcdnUserCertificateExpireCountResponse struct {
+	Headers map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDcdnUserCertificateExpireCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnUserCertificateExpireCountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnUserCertificateExpireCountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnUserCertificateExpireCountResponse) SetHeaders(v map[string]*string) *DescribeDcdnUserCertificateExpireCountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnUserCertificateExpireCountResponse) SetBody(v *DescribeDcdnUserCertificateExpireCountResponseBody) *DescribeDcdnUserCertificateExpireCountResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDcdnUserDomainsRequest struct {
 	ChangeEndTime    *string                              `json:"ChangeEndTime,omitempty" xml:"ChangeEndTime,omitempty"`
 	ChangeStartTime  *string                              `json:"ChangeStartTime,omitempty" xml:"ChangeStartTime,omitempty"`
@@ -26135,6 +26204,50 @@ func (client *Client) DescribeDcdnUserBillType(request *DescribeDcdnUserBillType
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDcdnUserBillTypeResponse{}
 	_body, _err := client.DescribeDcdnUserBillTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnUserCertificateExpireCountWithOptions(request *DescribeDcdnUserCertificateExpireCountRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnUserCertificateExpireCountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnUserCertificateExpireCount"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnUserCertificateExpireCountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnUserCertificateExpireCount(request *DescribeDcdnUserCertificateExpireCountRequest) (_result *DescribeDcdnUserCertificateExpireCountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnUserCertificateExpireCountResponse{}
+	_body, _err := client.DescribeDcdnUserCertificateExpireCountWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
