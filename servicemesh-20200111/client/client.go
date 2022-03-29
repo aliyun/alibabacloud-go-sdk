@@ -220,6 +220,852 @@ func (s *CreateASMGatewayResponse) SetBody(v *CreateASMGatewayResponseBody) *Cre
 	return s
 }
 
+type CreateGatewaySecretRequest struct {
+	Cert             *string `json:"Cert,omitempty" xml:"Cert,omitempty"`
+	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	Key              *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	SecretName       *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	ServiceMeshId    *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s CreateGatewaySecretRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewaySecretRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewaySecretRequest) SetCert(v string) *CreateGatewaySecretRequest {
+	s.Cert = &v
+	return s
+}
+
+func (s *CreateGatewaySecretRequest) SetIstioGatewayName(v string) *CreateGatewaySecretRequest {
+	s.IstioGatewayName = &v
+	return s
+}
+
+func (s *CreateGatewaySecretRequest) SetKey(v string) *CreateGatewaySecretRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateGatewaySecretRequest) SetSecretName(v string) *CreateGatewaySecretRequest {
+	s.SecretName = &v
+	return s
+}
+
+func (s *CreateGatewaySecretRequest) SetServiceMeshId(v string) *CreateGatewaySecretRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type CreateGatewaySecretResponseBody struct {
+	RequestId          *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecretCreateRecord map[string]*SecretCreateRecordValue `json:"SecretCreateRecord,omitempty" xml:"SecretCreateRecord,omitempty"`
+}
+
+func (s CreateGatewaySecretResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewaySecretResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewaySecretResponseBody) SetRequestId(v string) *CreateGatewaySecretResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateGatewaySecretResponseBody) SetSecretCreateRecord(v map[string]*SecretCreateRecordValue) *CreateGatewaySecretResponseBody {
+	s.SecretCreateRecord = v
+	return s
+}
+
+type CreateGatewaySecretResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateGatewaySecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateGatewaySecretResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGatewaySecretResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGatewaySecretResponse) SetHeaders(v map[string]*string) *CreateGatewaySecretResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateGatewaySecretResponse) SetBody(v *CreateGatewaySecretResponseBody) *CreateGatewaySecretResponse {
+	s.Body = v
+	return s
+}
+
+type CreateIstioGatewayDomainsRequest struct {
+	Credential       *string `json:"Credential,omitempty" xml:"Credential,omitempty"`
+	ForceHttps       *bool   `json:"ForceHttps,omitempty" xml:"ForceHttps,omitempty"`
+	Hosts            *string `json:"Hosts,omitempty" xml:"Hosts,omitempty"`
+	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	Number           *int32  `json:"Number,omitempty" xml:"Number,omitempty"`
+	PortName         *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
+	Protocol         *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	ServiceMeshId    *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s CreateIstioGatewayDomainsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayDomainsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayDomainsRequest) SetCredential(v string) *CreateIstioGatewayDomainsRequest {
+	s.Credential = &v
+	return s
+}
+
+func (s *CreateIstioGatewayDomainsRequest) SetForceHttps(v bool) *CreateIstioGatewayDomainsRequest {
+	s.ForceHttps = &v
+	return s
+}
+
+func (s *CreateIstioGatewayDomainsRequest) SetHosts(v string) *CreateIstioGatewayDomainsRequest {
+	s.Hosts = &v
+	return s
+}
+
+func (s *CreateIstioGatewayDomainsRequest) SetIstioGatewayName(v string) *CreateIstioGatewayDomainsRequest {
+	s.IstioGatewayName = &v
+	return s
+}
+
+func (s *CreateIstioGatewayDomainsRequest) SetNumber(v int32) *CreateIstioGatewayDomainsRequest {
+	s.Number = &v
+	return s
+}
+
+func (s *CreateIstioGatewayDomainsRequest) SetPortName(v string) *CreateIstioGatewayDomainsRequest {
+	s.PortName = &v
+	return s
+}
+
+func (s *CreateIstioGatewayDomainsRequest) SetProtocol(v string) *CreateIstioGatewayDomainsRequest {
+	s.Protocol = &v
+	return s
+}
+
+func (s *CreateIstioGatewayDomainsRequest) SetServiceMeshId(v string) *CreateIstioGatewayDomainsRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type CreateIstioGatewayDomainsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateIstioGatewayDomainsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayDomainsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayDomainsResponseBody) SetRequestId(v string) *CreateIstioGatewayDomainsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateIstioGatewayDomainsResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateIstioGatewayDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateIstioGatewayDomainsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayDomainsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayDomainsResponse) SetHeaders(v map[string]*string) *CreateIstioGatewayDomainsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateIstioGatewayDomainsResponse) SetBody(v *CreateIstioGatewayDomainsResponseBody) *CreateIstioGatewayDomainsResponse {
+	s.Body = v
+	return s
+}
+
+type CreateIstioGatewayRoutesRequest struct {
+	Description      *string                                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	GatewayRoute     *CreateIstioGatewayRoutesRequestGatewayRoute `json:"GatewayRoute,omitempty" xml:"GatewayRoute,omitempty" type:"Struct"`
+	IstioGatewayName *string                                      `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	Priority         *int32                                       `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ServiceMeshId    *string                                      `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	Status           *int32                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateIstioGatewayRoutesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesRequest) SetDescription(v string) *CreateIstioGatewayRoutesRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequest) SetGatewayRoute(v *CreateIstioGatewayRoutesRequestGatewayRoute) *CreateIstioGatewayRoutesRequest {
+	s.GatewayRoute = v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequest) SetIstioGatewayName(v string) *CreateIstioGatewayRoutesRequest {
+	s.IstioGatewayName = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequest) SetPriority(v int32) *CreateIstioGatewayRoutesRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequest) SetServiceMeshId(v string) *CreateIstioGatewayRoutesRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequest) SetStatus(v int32) *CreateIstioGatewayRoutesRequest {
+	s.Status = &v
+	return s
+}
+
+type CreateIstioGatewayRoutesRequestGatewayRoute struct {
+	HTTPAdvancedOptions *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions `json:"HTTPAdvancedOptions,omitempty" xml:"HTTPAdvancedOptions,omitempty" type:"Struct"`
+	MatchRequest        *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest        `json:"MatchRequest,omitempty" xml:"MatchRequest,omitempty" type:"Struct"`
+	RouteDestinations   []*CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinations `json:"RouteDestinations,omitempty" xml:"RouteDestinations,omitempty" type:"Repeated"`
+	RouteName           *string                                                         `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	RouteType           *string                                                         `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRoute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRoute) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRoute) SetHTTPAdvancedOptions(v *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) *CreateIstioGatewayRoutesRequestGatewayRoute {
+	s.HTTPAdvancedOptions = v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRoute) SetMatchRequest(v *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest) *CreateIstioGatewayRoutesRequestGatewayRoute {
+	s.MatchRequest = v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRoute) SetRouteDestinations(v []*CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinations) *CreateIstioGatewayRoutesRequestGatewayRoute {
+	s.RouteDestinations = v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRoute) SetRouteName(v string) *CreateIstioGatewayRoutesRequestGatewayRoute {
+	s.RouteName = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRoute) SetRouteType(v string) *CreateIstioGatewayRoutesRequestGatewayRoute {
+	s.RouteType = &v
+	return s
+}
+
+type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions struct {
+	Delegate         *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate         `json:"Delegate,omitempty" xml:"Delegate,omitempty" type:"Struct"`
+	Fault            *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault            `json:"Fault,omitempty" xml:"Fault,omitempty" type:"Struct"`
+	HTTPRedirect     *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect     `json:"HTTPRedirect,omitempty" xml:"HTTPRedirect,omitempty" type:"Struct"`
+	Mirror           *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror           `json:"Mirror,omitempty" xml:"Mirror,omitempty" type:"Struct"`
+	MirrorPercentage *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPercentage `json:"MirrorPercentage,omitempty" xml:"MirrorPercentage,omitempty" type:"Struct"`
+	Retries          *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries          `json:"Retries,omitempty" xml:"Retries,omitempty" type:"Struct"`
+	Rewrite          *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite          `json:"Rewrite,omitempty" xml:"Rewrite,omitempty" type:"Struct"`
+	Timeout          *string                                                                         `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) SetDelegate(v *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions {
+	s.Delegate = v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) SetFault(v *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions {
+	s.Fault = v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) SetHTTPRedirect(v *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions {
+	s.HTTPRedirect = v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) SetMirror(v *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions {
+	s.Mirror = v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) SetMirrorPercentage(v *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPercentage) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions {
+	s.MirrorPercentage = v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) SetRetries(v *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions {
+	s.Retries = v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) SetRewrite(v *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions {
+	s.Rewrite = v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) SetTimeout(v string) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions {
+	s.Timeout = &v
+	return s
+}
+
+type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate struct {
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate) SetName(v string) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate) SetNamespace(v string) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate {
+	s.Namespace = &v
+	return s
+}
+
+type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault struct {
+	Abort *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort `json:"Abort,omitempty" xml:"Abort,omitempty" type:"Struct"`
+	Delay *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay `json:"Delay,omitempty" xml:"Delay,omitempty" type:"Struct"`
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault) SetAbort(v *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault {
+	s.Abort = v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault) SetDelay(v *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault {
+	s.Delay = v
+	return s
+}
+
+type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort struct {
+	HttpStatus *int32                                                                              `json:"HttpStatus,omitempty" xml:"HttpStatus,omitempty"`
+	Percentage *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPercentage `json:"Percentage,omitempty" xml:"Percentage,omitempty" type:"Struct"`
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort) SetHttpStatus(v int32) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort {
+	s.HttpStatus = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort) SetPercentage(v *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPercentage) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort {
+	s.Percentage = v
+	return s
+}
+
+type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPercentage struct {
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPercentage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPercentage) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPercentage) SetValue(v float32) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPercentage {
+	s.Value = &v
+	return s
+}
+
+type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay struct {
+	FixedDelay *string                                                                             `json:"FixedDelay,omitempty" xml:"FixedDelay,omitempty"`
+	Percentage *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPercentage `json:"Percentage,omitempty" xml:"Percentage,omitempty" type:"Struct"`
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay) SetFixedDelay(v string) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay {
+	s.FixedDelay = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay) SetPercentage(v *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPercentage) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay {
+	s.Percentage = v
+	return s
+}
+
+type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPercentage struct {
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPercentage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPercentage) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPercentage) SetValue(v float32) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPercentage {
+	s.Value = &v
+	return s
+}
+
+type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect struct {
+	Authority    *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
+	RedirectCode *int32  `json:"RedirectCode,omitempty" xml:"RedirectCode,omitempty"`
+	Uri          *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect) SetAuthority(v string) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect {
+	s.Authority = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect) SetRedirectCode(v int32) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect {
+	s.RedirectCode = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect) SetUri(v string) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect {
+	s.Uri = &v
+	return s
+}
+
+type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror struct {
+	Host   *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Subset *string `json:"Subset,omitempty" xml:"Subset,omitempty"`
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror) SetHost(v string) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror {
+	s.Host = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror) SetSubset(v string) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror {
+	s.Subset = &v
+	return s
+}
+
+type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPercentage struct {
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPercentage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPercentage) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPercentage) SetValue(v float32) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPercentage {
+	s.Value = &v
+	return s
+}
+
+type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries struct {
+	Attempts              *int32                                                                                      `json:"Attempts,omitempty" xml:"Attempts,omitempty"`
+	PerTryTimeout         *string                                                                                     `json:"PerTryTimeout,omitempty" xml:"PerTryTimeout,omitempty"`
+	RetryOn               *string                                                                                     `json:"RetryOn,omitempty" xml:"RetryOn,omitempty"`
+	RetryRemoteLocalities *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetryRemoteLocalities `json:"RetryRemoteLocalities,omitempty" xml:"RetryRemoteLocalities,omitempty" type:"Struct"`
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries) SetAttempts(v int32) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries {
+	s.Attempts = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries) SetPerTryTimeout(v string) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries {
+	s.PerTryTimeout = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries) SetRetryOn(v string) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries {
+	s.RetryOn = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries) SetRetryRemoteLocalities(v *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetryRemoteLocalities) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries {
+	s.RetryRemoteLocalities = v
+	return s
+}
+
+type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetryRemoteLocalities struct {
+	Value *bool `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetryRemoteLocalities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetryRemoteLocalities) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetryRemoteLocalities) SetValue(v bool) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetryRemoteLocalities {
+	s.Value = &v
+	return s
+}
+
+type CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite struct {
+	Authority *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
+	Uri       *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite) SetAuthority(v string) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite {
+	s.Authority = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite) SetUri(v string) *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite {
+	s.Uri = &v
+	return s
+}
+
+type CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest struct {
+	Headers            []*CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders            `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
+	Ports              []*int32                                                                     `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	TLSMatchAttributes []*CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes `json:"TLSMatchAttributes,omitempty" xml:"TLSMatchAttributes,omitempty" type:"Repeated"`
+	URI                *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI                  `json:"URI,omitempty" xml:"URI,omitempty" type:"Struct"`
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest) SetHeaders(v []*CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders) *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest) SetPorts(v []*int32) *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest {
+	s.Ports = v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest) SetTLSMatchAttributes(v []*CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes) *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest {
+	s.TLSMatchAttributes = v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest) SetURI(v *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI) *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest {
+	s.URI = v
+	return s
+}
+
+type CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders struct {
+	MatchingContent *string `json:"MatchingContent,omitempty" xml:"MatchingContent,omitempty"`
+	MatchingMode    *string `json:"MatchingMode,omitempty" xml:"MatchingMode,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders) SetMatchingContent(v string) *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders {
+	s.MatchingContent = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders) SetMatchingMode(v string) *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders {
+	s.MatchingMode = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders) SetName(v string) *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders {
+	s.Name = &v
+	return s
+}
+
+type CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes struct {
+	SNIHosts []*string `json:"SNIHosts,omitempty" xml:"SNIHosts,omitempty" type:"Repeated"`
+	TLSPort  *int32    `json:"TLSPort,omitempty" xml:"TLSPort,omitempty"`
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes) SetSNIHosts(v []*string) *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes {
+	s.SNIHosts = v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes) SetTLSPort(v int32) *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes {
+	s.TLSPort = &v
+	return s
+}
+
+type CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI struct {
+	MatchingContent *string `json:"MatchingContent,omitempty" xml:"MatchingContent,omitempty"`
+	MatchingMode    *string `json:"MatchingMode,omitempty" xml:"MatchingMode,omitempty"`
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI) SetMatchingContent(v string) *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI {
+	s.MatchingContent = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI) SetMatchingMode(v string) *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI {
+	s.MatchingMode = &v
+	return s
+}
+
+type CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinations struct {
+	Destination *CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination `json:"Destination,omitempty" xml:"Destination,omitempty" type:"Struct"`
+	Weight      *int32                                                                   `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinations) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinations) SetDestination(v *CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination) *CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinations {
+	s.Destination = v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinations) SetWeight(v int32) *CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinations {
+	s.Weight = &v
+	return s
+}
+
+type CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination struct {
+	Host   *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Subset *string `json:"Subset,omitempty" xml:"Subset,omitempty"`
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination) SetHost(v string) *CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination {
+	s.Host = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination) SetSubset(v string) *CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination {
+	s.Subset = &v
+	return s
+}
+
+type CreateIstioGatewayRoutesShrinkRequest struct {
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GatewayRouteShrink *string `json:"GatewayRoute,omitempty" xml:"GatewayRoute,omitempty"`
+	IstioGatewayName   *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	Priority           *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ServiceMeshId      *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CreateIstioGatewayRoutesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesShrinkRequest) SetDescription(v string) *CreateIstioGatewayRoutesShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesShrinkRequest) SetGatewayRouteShrink(v string) *CreateIstioGatewayRoutesShrinkRequest {
+	s.GatewayRouteShrink = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesShrinkRequest) SetIstioGatewayName(v string) *CreateIstioGatewayRoutesShrinkRequest {
+	s.IstioGatewayName = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesShrinkRequest) SetPriority(v int32) *CreateIstioGatewayRoutesShrinkRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesShrinkRequest) SetServiceMeshId(v string) *CreateIstioGatewayRoutesShrinkRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesShrinkRequest) SetStatus(v int32) *CreateIstioGatewayRoutesShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+type CreateIstioGatewayRoutesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateIstioGatewayRoutesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesResponseBody) SetRequestId(v string) *CreateIstioGatewayRoutesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateIstioGatewayRoutesResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateIstioGatewayRoutesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateIstioGatewayRoutesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIstioGatewayRoutesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIstioGatewayRoutesResponse) SetHeaders(v map[string]*string) *CreateIstioGatewayRoutesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesResponse) SetBody(v *CreateIstioGatewayRoutesResponseBody) *CreateIstioGatewayRoutesResponse {
+	s.Body = v
+	return s
+}
+
 type CreateServiceMeshRequest struct {
 	AccessLogEnabled           *bool    `json:"AccessLogEnabled,omitempty" xml:"AccessLogEnabled,omitempty"`
 	AccessLogFile              *string  `json:"AccessLogFile,omitempty" xml:"AccessLogFile,omitempty"`
@@ -669,6 +1515,225 @@ func (s *CreateServiceMeshResponse) SetHeaders(v map[string]*string) *CreateServ
 }
 
 func (s *CreateServiceMeshResponse) SetBody(v *CreateServiceMeshResponseBody) *CreateServiceMeshResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteGatewayRouteRequest struct {
+	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	RouteName        *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	ServiceMeshId    *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s DeleteGatewayRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayRouteRequest) SetIstioGatewayName(v string) *DeleteGatewayRouteRequest {
+	s.IstioGatewayName = &v
+	return s
+}
+
+func (s *DeleteGatewayRouteRequest) SetRouteName(v string) *DeleteGatewayRouteRequest {
+	s.RouteName = &v
+	return s
+}
+
+func (s *DeleteGatewayRouteRequest) SetServiceMeshId(v string) *DeleteGatewayRouteRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type DeleteGatewayRouteResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteGatewayRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayRouteResponseBody) SetRequestId(v string) *DeleteGatewayRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteGatewayRouteResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteGatewayRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteGatewayRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewayRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewayRouteResponse) SetHeaders(v map[string]*string) *DeleteGatewayRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGatewayRouteResponse) SetBody(v *DeleteGatewayRouteResponseBody) *DeleteGatewayRouteResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteGatewaySecretRequest struct {
+	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	SecretName       *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	ServiceMeshId    *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s DeleteGatewaySecretRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewaySecretRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewaySecretRequest) SetIstioGatewayName(v string) *DeleteGatewaySecretRequest {
+	s.IstioGatewayName = &v
+	return s
+}
+
+func (s *DeleteGatewaySecretRequest) SetSecretName(v string) *DeleteGatewaySecretRequest {
+	s.SecretName = &v
+	return s
+}
+
+func (s *DeleteGatewaySecretRequest) SetServiceMeshId(v string) *DeleteGatewaySecretRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type DeleteGatewaySecretResponseBody struct {
+	RequestId          *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecretDeleteRecord map[string]*SecretDeleteRecordValue `json:"SecretDeleteRecord,omitempty" xml:"SecretDeleteRecord,omitempty"`
+}
+
+func (s DeleteGatewaySecretResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewaySecretResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewaySecretResponseBody) SetRequestId(v string) *DeleteGatewaySecretResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteGatewaySecretResponseBody) SetSecretDeleteRecord(v map[string]*SecretDeleteRecordValue) *DeleteGatewaySecretResponseBody {
+	s.SecretDeleteRecord = v
+	return s
+}
+
+type DeleteGatewaySecretResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteGatewaySecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteGatewaySecretResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteGatewaySecretResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteGatewaySecretResponse) SetHeaders(v map[string]*string) *DeleteGatewaySecretResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteGatewaySecretResponse) SetBody(v *DeleteGatewaySecretResponseBody) *DeleteGatewaySecretResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteIstioGatewayDomainsRequest struct {
+	Hosts            *string `json:"Hosts,omitempty" xml:"Hosts,omitempty"`
+	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	PortName         *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
+	ServiceMeshId    *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s DeleteIstioGatewayDomainsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIstioGatewayDomainsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIstioGatewayDomainsRequest) SetHosts(v string) *DeleteIstioGatewayDomainsRequest {
+	s.Hosts = &v
+	return s
+}
+
+func (s *DeleteIstioGatewayDomainsRequest) SetIstioGatewayName(v string) *DeleteIstioGatewayDomainsRequest {
+	s.IstioGatewayName = &v
+	return s
+}
+
+func (s *DeleteIstioGatewayDomainsRequest) SetPortName(v string) *DeleteIstioGatewayDomainsRequest {
+	s.PortName = &v
+	return s
+}
+
+func (s *DeleteIstioGatewayDomainsRequest) SetServiceMeshId(v string) *DeleteIstioGatewayDomainsRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type DeleteIstioGatewayDomainsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteIstioGatewayDomainsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIstioGatewayDomainsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIstioGatewayDomainsResponseBody) SetRequestId(v string) *DeleteIstioGatewayDomainsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteIstioGatewayDomainsResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteIstioGatewayDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteIstioGatewayDomainsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIstioGatewayDomainsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIstioGatewayDomainsResponse) SetHeaders(v map[string]*string) *DeleteIstioGatewayDomainsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteIstioGatewayDomainsResponse) SetBody(v *DeleteIstioGatewayDomainsResponseBody) *DeleteIstioGatewayDomainsResponse {
 	s.Body = v
 	return s
 }
@@ -1476,6 +2541,128 @@ func (s *DescribeCrTemplatesResponse) SetBody(v *DescribeCrTemplatesResponseBody
 	return s
 }
 
+type DescribeGatewaySecretDetailsRequest struct {
+	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	ServiceMeshId    *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s DescribeGatewaySecretDetailsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGatewaySecretDetailsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGatewaySecretDetailsRequest) SetIstioGatewayName(v string) *DescribeGatewaySecretDetailsRequest {
+	s.IstioGatewayName = &v
+	return s
+}
+
+func (s *DescribeGatewaySecretDetailsRequest) SetServiceMeshId(v string) *DescribeGatewaySecretDetailsRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type DescribeGatewaySecretDetailsResponseBody struct {
+	GatewaySecretDetails []*DescribeGatewaySecretDetailsResponseBodyGatewaySecretDetails `json:"GatewaySecretDetails,omitempty" xml:"GatewaySecretDetails,omitempty" type:"Repeated"`
+	RequestId            *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeGatewaySecretDetailsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGatewaySecretDetailsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGatewaySecretDetailsResponseBody) SetGatewaySecretDetails(v []*DescribeGatewaySecretDetailsResponseBodyGatewaySecretDetails) *DescribeGatewaySecretDetailsResponseBody {
+	s.GatewaySecretDetails = v
+	return s
+}
+
+func (s *DescribeGatewaySecretDetailsResponseBody) SetRequestId(v string) *DescribeGatewaySecretDetailsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeGatewaySecretDetailsResponseBodyGatewaySecretDetails struct {
+	ExpiredTime *string `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	GatewayName *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
+	IssueTime   *string `json:"IssueTime,omitempty" xml:"IssueTime,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	SNI         *string `json:"SNI,omitempty" xml:"SNI,omitempty"`
+	SecretName  *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	State       *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s DescribeGatewaySecretDetailsResponseBodyGatewaySecretDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGatewaySecretDetailsResponseBodyGatewaySecretDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGatewaySecretDetailsResponseBodyGatewaySecretDetails) SetExpiredTime(v string) *DescribeGatewaySecretDetailsResponseBodyGatewaySecretDetails {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *DescribeGatewaySecretDetailsResponseBodyGatewaySecretDetails) SetGatewayName(v string) *DescribeGatewaySecretDetailsResponseBodyGatewaySecretDetails {
+	s.GatewayName = &v
+	return s
+}
+
+func (s *DescribeGatewaySecretDetailsResponseBodyGatewaySecretDetails) SetIssueTime(v string) *DescribeGatewaySecretDetailsResponseBodyGatewaySecretDetails {
+	s.IssueTime = &v
+	return s
+}
+
+func (s *DescribeGatewaySecretDetailsResponseBodyGatewaySecretDetails) SetMessage(v string) *DescribeGatewaySecretDetailsResponseBodyGatewaySecretDetails {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeGatewaySecretDetailsResponseBodyGatewaySecretDetails) SetSNI(v string) *DescribeGatewaySecretDetailsResponseBodyGatewaySecretDetails {
+	s.SNI = &v
+	return s
+}
+
+func (s *DescribeGatewaySecretDetailsResponseBodyGatewaySecretDetails) SetSecretName(v string) *DescribeGatewaySecretDetailsResponseBodyGatewaySecretDetails {
+	s.SecretName = &v
+	return s
+}
+
+func (s *DescribeGatewaySecretDetailsResponseBodyGatewaySecretDetails) SetState(v string) *DescribeGatewaySecretDetailsResponseBodyGatewaySecretDetails {
+	s.State = &v
+	return s
+}
+
+type DescribeGatewaySecretDetailsResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeGatewaySecretDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeGatewaySecretDetailsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeGatewaySecretDetailsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeGatewaySecretDetailsResponse) SetHeaders(v map[string]*string) *DescribeGatewaySecretDetailsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeGatewaySecretDetailsResponse) SetBody(v *DescribeGatewaySecretDetailsResponseBody) *DescribeGatewaySecretDetailsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeGuestClusterAccessLogDashboardsRequest struct {
 	K8sClusterId *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
 }
@@ -1938,6 +3125,1136 @@ func (s *DescribeIngressGatewaysResponse) SetBody(v *DescribeIngressGatewaysResp
 	return s
 }
 
+type DescribeIstioGatewayDomainsRequest struct {
+	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	ServiceMeshId    *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s DescribeIstioGatewayDomainsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayDomainsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayDomainsRequest) SetIstioGatewayName(v string) *DescribeIstioGatewayDomainsRequest {
+	s.IstioGatewayName = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayDomainsRequest) SetServiceMeshId(v string) *DescribeIstioGatewayDomainsRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type DescribeIstioGatewayDomainsResponseBody struct {
+	GatewaySecretDetails []*DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails `json:"GatewaySecretDetails,omitempty" xml:"GatewaySecretDetails,omitempty" type:"Repeated"`
+	RequestId            *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeIstioGatewayDomainsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayDomainsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayDomainsResponseBody) SetGatewaySecretDetails(v []*DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails) *DescribeIstioGatewayDomainsResponseBody {
+	s.GatewaySecretDetails = v
+	return s
+}
+
+func (s *DescribeIstioGatewayDomainsResponseBody) SetRequestId(v string) *DescribeIstioGatewayDomainsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails struct {
+	CredentialName *string   `json:"CredentialName,omitempty" xml:"CredentialName,omitempty"`
+	Detail         *string   `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	Domains        []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	PortName       *string   `json:"PortName,omitempty" xml:"PortName,omitempty"`
+	Protocol       *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+}
+
+func (s DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails) SetCredentialName(v string) *DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails {
+	s.CredentialName = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails) SetDetail(v string) *DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails {
+	s.Detail = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails) SetDomains(v []*string) *DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails {
+	s.Domains = v
+	return s
+}
+
+func (s *DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails) SetPortName(v string) *DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails {
+	s.PortName = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails) SetProtocol(v string) *DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails {
+	s.Protocol = &v
+	return s
+}
+
+type DescribeIstioGatewayDomainsResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeIstioGatewayDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeIstioGatewayDomainsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayDomainsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayDomainsResponse) SetHeaders(v map[string]*string) *DescribeIstioGatewayDomainsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeIstioGatewayDomainsResponse) SetBody(v *DescribeIstioGatewayDomainsResponseBody) *DescribeIstioGatewayDomainsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailRequest struct {
+	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	RouteName        *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	ServiceMeshId    *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s DescribeIstioGatewayRouteDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailRequest) SetIstioGatewayName(v string) *DescribeIstioGatewayRouteDetailRequest {
+	s.IstioGatewayName = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailRequest) SetRouteName(v string) *DescribeIstioGatewayRouteDetailRequest {
+	s.RouteName = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailRequest) SetServiceMeshId(v string) *DescribeIstioGatewayRouteDetailRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBody struct {
+	Description *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	Priority    *int32                                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RequestId   *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RouteDetail *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail `json:"RouteDetail,omitempty" xml:"RouteDetail,omitempty" type:"Struct"`
+	Status      *int32                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBody) SetDescription(v string) *DescribeIstioGatewayRouteDetailResponseBody {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBody) SetPriority(v int32) *DescribeIstioGatewayRouteDetailResponseBody {
+	s.Priority = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBody) SetRequestId(v string) *DescribeIstioGatewayRouteDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBody) SetRouteDetail(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail) *DescribeIstioGatewayRouteDetailResponseBody {
+	s.RouteDetail = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBody) SetStatus(v int32) *DescribeIstioGatewayRouteDetailResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetail struct {
+	HTTPAdvancedOptions *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions `json:"HTTPAdvancedOptions,omitempty" xml:"HTTPAdvancedOptions,omitempty" type:"Struct"`
+	MatchRequest        *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest        `json:"MatchRequest,omitempty" xml:"MatchRequest,omitempty" type:"Struct"`
+	RouteDestinations   []*DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations `json:"RouteDestinations,omitempty" xml:"RouteDestinations,omitempty" type:"Repeated"`
+	RouteName           *string                                                                    `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	RouteType           *string                                                                    `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail) SetHTTPAdvancedOptions(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail {
+	s.HTTPAdvancedOptions = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail) SetMatchRequest(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail {
+	s.MatchRequest = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail) SetRouteDestinations(v []*DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail {
+	s.RouteDestinations = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail) SetRouteName(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail {
+	s.RouteName = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail) SetRouteType(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail {
+	s.RouteType = &v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions struct {
+	Delegate         *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsDelegate         `json:"Delegate,omitempty" xml:"Delegate,omitempty" type:"Struct"`
+	Fault            *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFault            `json:"Fault,omitempty" xml:"Fault,omitempty" type:"Struct"`
+	HTTPRedirect     *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsHTTPRedirect     `json:"HTTPRedirect,omitempty" xml:"HTTPRedirect,omitempty" type:"Struct"`
+	Mirror           *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsMirror           `json:"Mirror,omitempty" xml:"Mirror,omitempty" type:"Struct"`
+	MirrorPercentage *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsMirrorPercentage `json:"MirrorPercentage,omitempty" xml:"MirrorPercentage,omitempty" type:"Struct"`
+	Retries          *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetries          `json:"Retries,omitempty" xml:"Retries,omitempty" type:"Struct"`
+	Rewrite          *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRewrite          `json:"Rewrite,omitempty" xml:"Rewrite,omitempty" type:"Struct"`
+	Timeout          *string                                                                                    `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions) SetDelegate(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsDelegate) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions {
+	s.Delegate = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions) SetFault(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFault) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions {
+	s.Fault = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions) SetHTTPRedirect(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsHTTPRedirect) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions {
+	s.HTTPRedirect = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions) SetMirror(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsMirror) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions {
+	s.Mirror = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions) SetMirrorPercentage(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsMirrorPercentage) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions {
+	s.MirrorPercentage = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions) SetRetries(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetries) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions {
+	s.Retries = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions) SetRewrite(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRewrite) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions {
+	s.Rewrite = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions) SetTimeout(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptions {
+	s.Timeout = &v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsDelegate struct {
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsDelegate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsDelegate) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsDelegate) SetName(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsDelegate {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsDelegate) SetNamespace(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsDelegate {
+	s.Namespace = &v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFault struct {
+	Abort *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbort `json:"Abort,omitempty" xml:"Abort,omitempty" type:"Struct"`
+	Delay *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelay `json:"Delay,omitempty" xml:"Delay,omitempty" type:"Struct"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFault) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFault) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFault) SetAbort(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbort) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFault {
+	s.Abort = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFault) SetDelay(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelay) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFault {
+	s.Delay = v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbort struct {
+	HttpStatus *int32                                                                                         `json:"HttpStatus,omitempty" xml:"HttpStatus,omitempty"`
+	Percentage *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbortPercentage `json:"Percentage,omitempty" xml:"Percentage,omitempty" type:"Struct"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbort) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbort) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbort) SetHttpStatus(v int32) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbort {
+	s.HttpStatus = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbort) SetPercentage(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbortPercentage) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbort {
+	s.Percentage = v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbortPercentage struct {
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbortPercentage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbortPercentage) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbortPercentage) SetValue(v float32) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultAbortPercentage {
+	s.Value = &v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelay struct {
+	ExponentialDelay *string                                                                                        `json:"ExponentialDelay,omitempty" xml:"ExponentialDelay,omitempty"`
+	FixedDelay       *string                                                                                        `json:"FixedDelay,omitempty" xml:"FixedDelay,omitempty"`
+	Percentage       *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelayPercentage `json:"Percentage,omitempty" xml:"Percentage,omitempty" type:"Struct"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelay) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelay) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelay) SetExponentialDelay(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelay {
+	s.ExponentialDelay = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelay) SetFixedDelay(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelay {
+	s.FixedDelay = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelay) SetPercentage(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelayPercentage) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelay {
+	s.Percentage = v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelayPercentage struct {
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelayPercentage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelayPercentage) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelayPercentage) SetValue(v float32) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsFaultDelayPercentage {
+	s.Value = &v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsHTTPRedirect struct {
+	Authority    *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
+	RedirectCode *int32  `json:"RedirectCode,omitempty" xml:"RedirectCode,omitempty"`
+	Uri          *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsHTTPRedirect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsHTTPRedirect) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsHTTPRedirect) SetAuthority(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsHTTPRedirect {
+	s.Authority = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsHTTPRedirect) SetRedirectCode(v int32) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsHTTPRedirect {
+	s.RedirectCode = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsHTTPRedirect) SetUri(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsHTTPRedirect {
+	s.Uri = &v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsMirror struct {
+	Host   *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Subset *string `json:"Subset,omitempty" xml:"Subset,omitempty"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsMirror) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsMirror) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsMirror) SetHost(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsMirror {
+	s.Host = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsMirror) SetSubset(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsMirror {
+	s.Subset = &v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsMirrorPercentage struct {
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsMirrorPercentage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsMirrorPercentage) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsMirrorPercentage) SetValue(v float32) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsMirrorPercentage {
+	s.Value = &v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetries struct {
+	Attempts              *int32                                                                                                 `json:"Attempts,omitempty" xml:"Attempts,omitempty"`
+	PerTryTimeout         *string                                                                                                `json:"PerTryTimeout,omitempty" xml:"PerTryTimeout,omitempty"`
+	RetryOn               *string                                                                                                `json:"RetryOn,omitempty" xml:"RetryOn,omitempty"`
+	RetryRemoteLocalities *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetriesRetryRemoteLocalities `json:"RetryRemoteLocalities,omitempty" xml:"RetryRemoteLocalities,omitempty" type:"Struct"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetries) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetries) SetAttempts(v int32) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetries {
+	s.Attempts = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetries) SetPerTryTimeout(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetries {
+	s.PerTryTimeout = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetries) SetRetryOn(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetries {
+	s.RetryOn = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetries) SetRetryRemoteLocalities(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetriesRetryRemoteLocalities) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetries {
+	s.RetryRemoteLocalities = v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetriesRetryRemoteLocalities struct {
+	Value *bool `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetriesRetryRemoteLocalities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetriesRetryRemoteLocalities) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetriesRetryRemoteLocalities) SetValue(v bool) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRetriesRetryRemoteLocalities {
+	s.Value = &v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRewrite struct {
+	Authority *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
+	Uri       *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRewrite) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRewrite) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRewrite) SetAuthority(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRewrite {
+	s.Authority = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRewrite) SetUri(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailHTTPAdvancedOptionsRewrite {
+	s.Uri = &v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest struct {
+	Headers            []*DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestHeaders            `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
+	Ports              []*int32                                                                                `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	TLSMatchAttributes []*DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestTLSMatchAttributes `json:"TLSMatchAttributes,omitempty" xml:"TLSMatchAttributes,omitempty" type:"Repeated"`
+	URI                *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestURI                  `json:"URI,omitempty" xml:"URI,omitempty" type:"Struct"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest) SetHeaders(v []*DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestHeaders) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest) SetPorts(v []*int32) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest {
+	s.Ports = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest) SetTLSMatchAttributes(v []*DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestTLSMatchAttributes) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest {
+	s.TLSMatchAttributes = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest) SetURI(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestURI) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequest {
+	s.URI = v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestHeaders struct {
+	MatchingContent *string `json:"MatchingContent,omitempty" xml:"MatchingContent,omitempty"`
+	MatchingMode    *string `json:"MatchingMode,omitempty" xml:"MatchingMode,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestHeaders) SetMatchingContent(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestHeaders {
+	s.MatchingContent = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestHeaders) SetMatchingMode(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestHeaders {
+	s.MatchingMode = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestHeaders) SetName(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestHeaders {
+	s.Name = &v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestTLSMatchAttributes struct {
+	SNIHosts []*string `json:"SNIHosts,omitempty" xml:"SNIHosts,omitempty" type:"Repeated"`
+	TLSPort  *int32    `json:"TLSPort,omitempty" xml:"TLSPort,omitempty"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestTLSMatchAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestTLSMatchAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestTLSMatchAttributes) SetSNIHosts(v []*string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestTLSMatchAttributes {
+	s.SNIHosts = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestTLSMatchAttributes) SetTLSPort(v int32) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestTLSMatchAttributes {
+	s.TLSPort = &v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestURI struct {
+	MatchingContent *string `json:"MatchingContent,omitempty" xml:"MatchingContent,omitempty"`
+	MatchingMode    *string `json:"MatchingMode,omitempty" xml:"MatchingMode,omitempty"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestURI) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestURI) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestURI) SetMatchingContent(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestURI {
+	s.MatchingContent = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestURI) SetMatchingMode(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailMatchRequestURI {
+	s.MatchingMode = &v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations struct {
+	Destination *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestination `json:"Destination,omitempty" xml:"Destination,omitempty" type:"Struct"`
+	Headers     *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeaders     `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Struct"`
+	Weight      *int32                                                                              `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations) SetDestination(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestination) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations {
+	s.Destination = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations) SetHeaders(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeaders) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations) SetWeight(v int32) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinations {
+	s.Weight = &v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestination struct {
+	Host   *string                                                                                 `json:"Host,omitempty" xml:"Host,omitempty"`
+	Port   *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestinationPort `json:"Port,omitempty" xml:"Port,omitempty" type:"Struct"`
+	Subset *string                                                                                 `json:"Subset,omitempty" xml:"Subset,omitempty"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestination) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestination) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestination) SetHost(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestination {
+	s.Host = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestination) SetPort(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestinationPort) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestination {
+	s.Port = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestination) SetSubset(v string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestination {
+	s.Subset = &v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestinationPort struct {
+	Number *int32 `json:"Number,omitempty" xml:"Number,omitempty"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestinationPort) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestinationPort) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestinationPort) SetNumber(v int32) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsDestinationPort {
+	s.Number = &v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeaders struct {
+	Request  *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersRequest  `json:"Request,omitempty" xml:"Request,omitempty" type:"Struct"`
+	Response *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersResponse `json:"Response,omitempty" xml:"Response,omitempty" type:"Struct"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeaders) SetRequest(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersRequest) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeaders {
+	s.Request = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeaders) SetResponse(v *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersResponse) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeaders {
+	s.Response = v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersRequest struct {
+	Add    map[string]interface{} `json:"Add,omitempty" xml:"Add,omitempty"`
+	Remove []*string              `json:"Remove,omitempty" xml:"Remove,omitempty" type:"Repeated"`
+	Set    map[string]*string     `json:"Set,omitempty" xml:"Set,omitempty"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersRequest) SetAdd(v map[string]interface{}) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersRequest {
+	s.Add = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersRequest) SetRemove(v []*string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersRequest {
+	s.Remove = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersRequest) SetSet(v map[string]*string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersRequest {
+	s.Set = v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersResponse struct {
+	Add    map[string]interface{} `json:"Add,omitempty" xml:"Add,omitempty"`
+	Remove []*string              `json:"Remove,omitempty" xml:"Remove,omitempty" type:"Repeated"`
+	Set    map[string]interface{} `json:"Set,omitempty" xml:"Set,omitempty"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersResponse) SetAdd(v map[string]interface{}) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersResponse {
+	s.Add = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersResponse) SetRemove(v []*string) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersResponse {
+	s.Remove = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersResponse) SetSet(v map[string]interface{}) *DescribeIstioGatewayRouteDetailResponseBodyRouteDetailRouteDestinationsHeadersResponse {
+	s.Set = v
+	return s
+}
+
+type DescribeIstioGatewayRouteDetailResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeIstioGatewayRouteDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeIstioGatewayRouteDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRouteDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponse) SetHeaders(v map[string]*string) *DescribeIstioGatewayRouteDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponse) SetBody(v *DescribeIstioGatewayRouteDetailResponseBody) *DescribeIstioGatewayRouteDetailResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeIstioGatewayRoutesRequest struct {
+	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	ServiceMeshId    *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s DescribeIstioGatewayRoutesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRoutesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRoutesRequest) SetIstioGatewayName(v string) *DescribeIstioGatewayRoutesRequest {
+	s.IstioGatewayName = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRoutesRequest) SetServiceMeshId(v string) *DescribeIstioGatewayRoutesRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type DescribeIstioGatewayRoutesResponseBody struct {
+	ManagementRoutes []*DescribeIstioGatewayRoutesResponseBodyManagementRoutes `json:"ManagementRoutes,omitempty" xml:"ManagementRoutes,omitempty" type:"Repeated"`
+	RequestId        *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeIstioGatewayRoutesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRoutesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRoutesResponseBody) SetManagementRoutes(v []*DescribeIstioGatewayRoutesResponseBodyManagementRoutes) *DescribeIstioGatewayRoutesResponseBody {
+	s.ManagementRoutes = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRoutesResponseBody) SetRequestId(v string) *DescribeIstioGatewayRoutesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeIstioGatewayRoutesResponseBodyManagementRoutes struct {
+	ASMGatewayName *string `json:"ASMGatewayName,omitempty" xml:"ASMGatewayName,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Priority       *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RouteName      *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	RoutePath      *string `json:"RoutePath,omitempty" xml:"RoutePath,omitempty"`
+	Status         *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeIstioGatewayRoutesResponseBodyManagementRoutes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRoutesResponseBodyManagementRoutes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRoutesResponseBodyManagementRoutes) SetASMGatewayName(v string) *DescribeIstioGatewayRoutesResponseBodyManagementRoutes {
+	s.ASMGatewayName = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRoutesResponseBodyManagementRoutes) SetDescription(v string) *DescribeIstioGatewayRoutesResponseBodyManagementRoutes {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRoutesResponseBodyManagementRoutes) SetPriority(v int32) *DescribeIstioGatewayRoutesResponseBodyManagementRoutes {
+	s.Priority = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRoutesResponseBodyManagementRoutes) SetRouteName(v string) *DescribeIstioGatewayRoutesResponseBodyManagementRoutes {
+	s.RouteName = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRoutesResponseBodyManagementRoutes) SetRoutePath(v string) *DescribeIstioGatewayRoutesResponseBodyManagementRoutes {
+	s.RoutePath = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRoutesResponseBodyManagementRoutes) SetStatus(v int32) *DescribeIstioGatewayRoutesResponseBodyManagementRoutes {
+	s.Status = &v
+	return s
+}
+
+type DescribeIstioGatewayRoutesResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeIstioGatewayRoutesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeIstioGatewayRoutesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIstioGatewayRoutesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIstioGatewayRoutesResponse) SetHeaders(v map[string]*string) *DescribeIstioGatewayRoutesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeIstioGatewayRoutesResponse) SetBody(v *DescribeIstioGatewayRoutesResponseBody) *DescribeIstioGatewayRoutesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeManagedServicesRequest struct {
+	GuestCluster  *string `json:"GuestCluster,omitempty" xml:"GuestCluster,omitempty"`
+	Limit         *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Marker        *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
+	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s DescribeManagedServicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeManagedServicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeManagedServicesRequest) SetGuestCluster(v string) *DescribeManagedServicesRequest {
+	s.GuestCluster = &v
+	return s
+}
+
+func (s *DescribeManagedServicesRequest) SetLimit(v int64) *DescribeManagedServicesRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *DescribeManagedServicesRequest) SetMarker(v string) *DescribeManagedServicesRequest {
+	s.Marker = &v
+	return s
+}
+
+func (s *DescribeManagedServicesRequest) SetNamespace(v string) *DescribeManagedServicesRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeManagedServicesRequest) SetServiceMeshId(v string) *DescribeManagedServicesRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type DescribeManagedServicesResponseBody struct {
+	ManagedServiceInfo []*DescribeManagedServicesResponseBodyManagedServiceInfo `json:"ManagedServiceInfo,omitempty" xml:"ManagedServiceInfo,omitempty" type:"Repeated"`
+	Mark               *string                                                  `json:"Mark,omitempty" xml:"Mark,omitempty"`
+	RequestId          *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeManagedServicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeManagedServicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeManagedServicesResponseBody) SetManagedServiceInfo(v []*DescribeManagedServicesResponseBodyManagedServiceInfo) *DescribeManagedServicesResponseBody {
+	s.ManagedServiceInfo = v
+	return s
+}
+
+func (s *DescribeManagedServicesResponseBody) SetMark(v string) *DescribeManagedServicesResponseBody {
+	s.Mark = &v
+	return s
+}
+
+func (s *DescribeManagedServicesResponseBody) SetRequestId(v string) *DescribeManagedServicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeManagedServicesResponseBodyManagedServiceInfo struct {
+	CreateTime          *string                                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeploymentInstances []*DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances `json:"DeploymentInstances,omitempty" xml:"DeploymentInstances,omitempty" type:"Repeated"`
+	Message             *string                                                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	Selector            map[string]*string                                                          `json:"Selector,omitempty" xml:"Selector,omitempty"`
+	ServiceName         *string                                                                     `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	SidecarInjectStatus *string                                                                     `json:"SidecarInjectStatus,omitempty" xml:"SidecarInjectStatus,omitempty"`
+}
+
+func (s DescribeManagedServicesResponseBodyManagedServiceInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeManagedServicesResponseBodyManagedServiceInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeManagedServicesResponseBodyManagedServiceInfo) SetCreateTime(v string) *DescribeManagedServicesResponseBodyManagedServiceInfo {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeManagedServicesResponseBodyManagedServiceInfo) SetDeploymentInstances(v []*DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances) *DescribeManagedServicesResponseBodyManagedServiceInfo {
+	s.DeploymentInstances = v
+	return s
+}
+
+func (s *DescribeManagedServicesResponseBodyManagedServiceInfo) SetMessage(v string) *DescribeManagedServicesResponseBodyManagedServiceInfo {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeManagedServicesResponseBodyManagedServiceInfo) SetSelector(v map[string]*string) *DescribeManagedServicesResponseBodyManagedServiceInfo {
+	s.Selector = v
+	return s
+}
+
+func (s *DescribeManagedServicesResponseBodyManagedServiceInfo) SetServiceName(v string) *DescribeManagedServicesResponseBodyManagedServiceInfo {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *DescribeManagedServicesResponseBodyManagedServiceInfo) SetSidecarInjectStatus(v string) *DescribeManagedServicesResponseBodyManagedServiceInfo {
+	s.SidecarInjectStatus = &v
+	return s
+}
+
+type DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances struct {
+	ReadyReplicas *int32  `json:"ReadyReplicas,omitempty" xml:"ReadyReplicas,omitempty"`
+	Replicas      *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances) SetReadyReplicas(v int32) *DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances {
+	s.ReadyReplicas = &v
+	return s
+}
+
+func (s *DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances) SetReplicas(v int32) *DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances {
+	s.Replicas = &v
+	return s
+}
+
+func (s *DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances) SetVersion(v string) *DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances {
+	s.Version = &v
+	return s
+}
+
+type DescribeManagedServicesResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeManagedServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeManagedServicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeManagedServicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeManagedServicesResponse) SetHeaders(v map[string]*string) *DescribeManagedServicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeManagedServicesResponse) SetBody(v *DescribeManagedServicesResponseBody) *DescribeManagedServicesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeNamespaceScopeSidecarConfigRequest struct {
 	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
@@ -2366,6 +4683,232 @@ func (s *DescribeReusableSlbResponse) SetBody(v *DescribeReusableSlbResponseBody
 	return s
 }
 
+type DescribeServiceAccessDetailRequest struct {
+	GuestCluster  *string `json:"GuestCluster,omitempty" xml:"GuestCluster,omitempty"`
+	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	ServiceName   *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+}
+
+func (s DescribeServiceAccessDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceAccessDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceAccessDetailRequest) SetGuestCluster(v string) *DescribeServiceAccessDetailRequest {
+	s.GuestCluster = &v
+	return s
+}
+
+func (s *DescribeServiceAccessDetailRequest) SetNamespace(v string) *DescribeServiceAccessDetailRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeServiceAccessDetailRequest) SetServiceMeshId(v string) *DescribeServiceAccessDetailRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *DescribeServiceAccessDetailRequest) SetServiceName(v string) *DescribeServiceAccessDetailRequest {
+	s.ServiceName = &v
+	return s
+}
+
+type DescribeServiceAccessDetailResponseBody struct {
+	AccessDetail *DescribeServiceAccessDetailResponseBodyAccessDetail `json:"AccessDetail,omitempty" xml:"AccessDetail,omitempty" type:"Struct"`
+	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeServiceAccessDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceAccessDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceAccessDetailResponseBody) SetAccessDetail(v *DescribeServiceAccessDetailResponseBodyAccessDetail) *DescribeServiceAccessDetailResponseBody {
+	s.AccessDetail = v
+	return s
+}
+
+func (s *DescribeServiceAccessDetailResponseBody) SetRequestId(v string) *DescribeServiceAccessDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeServiceAccessDetailResponseBodyAccessDetail struct {
+	ClusterIP *string `json:"ClusterIP,omitempty" xml:"ClusterIP,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Ports     *string `json:"Ports,omitempty" xml:"Ports,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeServiceAccessDetailResponseBodyAccessDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceAccessDetailResponseBodyAccessDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceAccessDetailResponseBodyAccessDetail) SetClusterIP(v string) *DescribeServiceAccessDetailResponseBodyAccessDetail {
+	s.ClusterIP = &v
+	return s
+}
+
+func (s *DescribeServiceAccessDetailResponseBodyAccessDetail) SetName(v string) *DescribeServiceAccessDetailResponseBodyAccessDetail {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeServiceAccessDetailResponseBodyAccessDetail) SetPorts(v string) *DescribeServiceAccessDetailResponseBodyAccessDetail {
+	s.Ports = &v
+	return s
+}
+
+func (s *DescribeServiceAccessDetailResponseBodyAccessDetail) SetType(v string) *DescribeServiceAccessDetailResponseBodyAccessDetail {
+	s.Type = &v
+	return s
+}
+
+type DescribeServiceAccessDetailResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeServiceAccessDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeServiceAccessDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceAccessDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceAccessDetailResponse) SetHeaders(v map[string]*string) *DescribeServiceAccessDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeServiceAccessDetailResponse) SetBody(v *DescribeServiceAccessDetailResponseBody) *DescribeServiceAccessDetailResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeServiceManagedResourceRequest struct {
+	GuestCluster  *string `json:"GuestCluster,omitempty" xml:"GuestCluster,omitempty"`
+	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	ServiceName   *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+}
+
+func (s DescribeServiceManagedResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceManagedResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceManagedResourceRequest) SetGuestCluster(v string) *DescribeServiceManagedResourceRequest {
+	s.GuestCluster = &v
+	return s
+}
+
+func (s *DescribeServiceManagedResourceRequest) SetNamespace(v string) *DescribeServiceManagedResourceRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeServiceManagedResourceRequest) SetServiceMeshId(v string) *DescribeServiceManagedResourceRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *DescribeServiceManagedResourceRequest) SetServiceName(v string) *DescribeServiceManagedResourceRequest {
+	s.ServiceName = &v
+	return s
+}
+
+type DescribeServiceManagedResourceResponseBody struct {
+	ManagedResource *DescribeServiceManagedResourceResponseBodyManagedResource `json:"ManagedResource,omitempty" xml:"ManagedResource,omitempty" type:"Struct"`
+	RequestId       *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeServiceManagedResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceManagedResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceManagedResourceResponseBody) SetManagedResource(v *DescribeServiceManagedResourceResponseBodyManagedResource) *DescribeServiceManagedResourceResponseBody {
+	s.ManagedResource = v
+	return s
+}
+
+func (s *DescribeServiceManagedResourceResponseBody) SetRequestId(v string) *DescribeServiceManagedResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeServiceManagedResourceResponseBodyManagedResource struct {
+	DestinationRules  []*string `json:"DestinationRules,omitempty" xml:"DestinationRules,omitempty" type:"Repeated"`
+	LocalRateLimiters []*string `json:"LocalRateLimiters,omitempty" xml:"LocalRateLimiters,omitempty" type:"Repeated"`
+	VirtualServices   []*string `json:"VirtualServices,omitempty" xml:"VirtualServices,omitempty" type:"Repeated"`
+}
+
+func (s DescribeServiceManagedResourceResponseBodyManagedResource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceManagedResourceResponseBodyManagedResource) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceManagedResourceResponseBodyManagedResource) SetDestinationRules(v []*string) *DescribeServiceManagedResourceResponseBodyManagedResource {
+	s.DestinationRules = v
+	return s
+}
+
+func (s *DescribeServiceManagedResourceResponseBodyManagedResource) SetLocalRateLimiters(v []*string) *DescribeServiceManagedResourceResponseBodyManagedResource {
+	s.LocalRateLimiters = v
+	return s
+}
+
+func (s *DescribeServiceManagedResourceResponseBodyManagedResource) SetVirtualServices(v []*string) *DescribeServiceManagedResourceResponseBodyManagedResource {
+	s.VirtualServices = v
+	return s
+}
+
+type DescribeServiceManagedResourceResponse struct {
+	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeServiceManagedResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeServiceManagedResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceManagedResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceManagedResourceResponse) SetHeaders(v map[string]*string) *DescribeServiceManagedResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeServiceManagedResourceResponse) SetBody(v *DescribeServiceManagedResourceResponseBody) *DescribeServiceManagedResourceResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeServiceMeshAdditionalStatusRequest struct {
 	CheckMode     *string `json:"CheckMode,omitempty" xml:"CheckMode,omitempty"`
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
@@ -2472,6 +5015,8 @@ func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus) SetSgStat
 }
 
 type DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus struct {
+	PayType                   *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Reused                    *bool   `json:"Reused,omitempty" xml:"Reused,omitempty"`
 	SLBBackEndServerNumStatus *string `json:"SLBBackEndServerNumStatus,omitempty" xml:"SLBBackEndServerNumStatus,omitempty"`
 	SLBExistStatus            *string `json:"SLBExistStatus,omitempty" xml:"SLBExistStatus,omitempty"`
 }
@@ -2482,6 +5027,16 @@ func (s DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoa
 
 func (s DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus) SetPayType(v string) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus {
+	s.PayType = &v
+	return s
+}
+
+func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus) SetReused(v bool) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus {
+	s.Reused = &v
+	return s
 }
 
 func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus) SetSLBBackEndServerNumStatus(v string) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus {
@@ -2495,6 +5050,8 @@ func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLo
 }
 
 type DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus struct {
+	PayType                   *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	Reused                    *bool   `json:"Reused,omitempty" xml:"Reused,omitempty"`
 	SLBBackEndServerNumStatus *string `json:"SLBBackEndServerNumStatus,omitempty" xml:"SLBBackEndServerNumStatus,omitempty"`
 	SLBExistStatus            *string `json:"SLBExistStatus,omitempty" xml:"SLBExistStatus,omitempty"`
 }
@@ -2505,6 +5062,16 @@ func (s DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBal
 
 func (s DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus) SetPayType(v string) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus {
+	s.PayType = &v
+	return s
+}
+
+func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus) SetReused(v bool) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus {
+	s.Reused = &v
+	return s
 }
 
 func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus) SetSLBBackEndServerNumStatus(v string) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus {
@@ -4454,6 +7021,81 @@ func (s *DescribeServiceMeshProxyStatusResponse) SetBody(v *DescribeServiceMeshP
 	return s
 }
 
+type DescribeServiceMeshServiceLabelRequest struct {
+	ServiceMeshId     *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	ServiceNames      *string `json:"ServiceNames,omitempty" xml:"ServiceNames,omitempty"`
+	ServiceNamespaces *string `json:"ServiceNamespaces,omitempty" xml:"ServiceNamespaces,omitempty"`
+}
+
+func (s DescribeServiceMeshServiceLabelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceMeshServiceLabelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceMeshServiceLabelRequest) SetServiceMeshId(v string) *DescribeServiceMeshServiceLabelRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *DescribeServiceMeshServiceLabelRequest) SetServiceNames(v string) *DescribeServiceMeshServiceLabelRequest {
+	s.ServiceNames = &v
+	return s
+}
+
+func (s *DescribeServiceMeshServiceLabelRequest) SetServiceNamespaces(v string) *DescribeServiceMeshServiceLabelRequest {
+	s.ServiceNamespaces = &v
+	return s
+}
+
+type DescribeServiceMeshServiceLabelResponseBody struct {
+	RequestId     *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceLabels map[string]*ServiceLabelsValue `json:"ServiceLabels,omitempty" xml:"ServiceLabels,omitempty"`
+}
+
+func (s DescribeServiceMeshServiceLabelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceMeshServiceLabelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceMeshServiceLabelResponseBody) SetRequestId(v string) *DescribeServiceMeshServiceLabelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeServiceMeshServiceLabelResponseBody) SetServiceLabels(v map[string]*ServiceLabelsValue) *DescribeServiceMeshServiceLabelResponseBody {
+	s.ServiceLabels = v
+	return s
+}
+
+type DescribeServiceMeshServiceLabelResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeServiceMeshServiceLabelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeServiceMeshServiceLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceMeshServiceLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceMeshServiceLabelResponse) SetHeaders(v map[string]*string) *DescribeServiceMeshServiceLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeServiceMeshServiceLabelResponse) SetBody(v *DescribeServiceMeshServiceLabelResponseBody) *DescribeServiceMeshServiceLabelResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeServiceMeshUpgradeStatusRequest struct {
 	AllIstioGatewayFullNames *string `json:"AllIstioGatewayFullNames,omitempty" xml:"AllIstioGatewayFullNames,omitempty"`
 	GuestClusterIds          *string `json:"GuestClusterIds,omitempty" xml:"GuestClusterIds,omitempty"`
@@ -5506,6 +8148,187 @@ func (s *DescribeVSwitchesResponse) SetBody(v *DescribeVSwitchesResponseBody) *D
 	return s
 }
 
+type DescribeVersionManagementRequest struct {
+	GuestCluster  *string `json:"GuestCluster,omitempty" xml:"GuestCluster,omitempty"`
+	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	ServiceName   *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+}
+
+func (s DescribeVersionManagementRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVersionManagementRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVersionManagementRequest) SetGuestCluster(v string) *DescribeVersionManagementRequest {
+	s.GuestCluster = &v
+	return s
+}
+
+func (s *DescribeVersionManagementRequest) SetNamespace(v string) *DescribeVersionManagementRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeVersionManagementRequest) SetServiceMeshId(v string) *DescribeVersionManagementRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *DescribeVersionManagementRequest) SetServiceName(v string) *DescribeVersionManagementRequest {
+	s.ServiceName = &v
+	return s
+}
+
+type DescribeVersionManagementResponseBody struct {
+	RequestId      *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	VersionDetails []*DescribeVersionManagementResponseBodyVersionDetails `json:"VersionDetails,omitempty" xml:"VersionDetails,omitempty" type:"Repeated"`
+}
+
+func (s DescribeVersionManagementResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVersionManagementResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVersionManagementResponseBody) SetRequestId(v string) *DescribeVersionManagementResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeVersionManagementResponseBody) SetVersionDetails(v []*DescribeVersionManagementResponseBodyVersionDetails) *DescribeVersionManagementResponseBody {
+	s.VersionDetails = v
+	return s
+}
+
+type DescribeVersionManagementResponseBodyVersionDetails struct {
+	CreateTime     *string                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	DeploymentName *string                                                            `json:"DeploymentName,omitempty" xml:"DeploymentName,omitempty"`
+	Images         []*string                                                          `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	Inject         *bool                                                              `json:"Inject,omitempty" xml:"Inject,omitempty"`
+	PodInstances   []*DescribeVersionManagementResponseBodyVersionDetailsPodInstances `json:"PodInstances,omitempty" xml:"PodInstances,omitempty" type:"Repeated"`
+	ReadyReplicas  *int32                                                             `json:"ReadyReplicas,omitempty" xml:"ReadyReplicas,omitempty"`
+	Replicas       *int32                                                             `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	Version        *string                                                            `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s DescribeVersionManagementResponseBodyVersionDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVersionManagementResponseBodyVersionDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVersionManagementResponseBodyVersionDetails) SetCreateTime(v string) *DescribeVersionManagementResponseBodyVersionDetails {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeVersionManagementResponseBodyVersionDetails) SetDeploymentName(v string) *DescribeVersionManagementResponseBodyVersionDetails {
+	s.DeploymentName = &v
+	return s
+}
+
+func (s *DescribeVersionManagementResponseBodyVersionDetails) SetImages(v []*string) *DescribeVersionManagementResponseBodyVersionDetails {
+	s.Images = v
+	return s
+}
+
+func (s *DescribeVersionManagementResponseBodyVersionDetails) SetInject(v bool) *DescribeVersionManagementResponseBodyVersionDetails {
+	s.Inject = &v
+	return s
+}
+
+func (s *DescribeVersionManagementResponseBodyVersionDetails) SetPodInstances(v []*DescribeVersionManagementResponseBodyVersionDetailsPodInstances) *DescribeVersionManagementResponseBodyVersionDetails {
+	s.PodInstances = v
+	return s
+}
+
+func (s *DescribeVersionManagementResponseBodyVersionDetails) SetReadyReplicas(v int32) *DescribeVersionManagementResponseBodyVersionDetails {
+	s.ReadyReplicas = &v
+	return s
+}
+
+func (s *DescribeVersionManagementResponseBodyVersionDetails) SetReplicas(v int32) *DescribeVersionManagementResponseBodyVersionDetails {
+	s.Replicas = &v
+	return s
+}
+
+func (s *DescribeVersionManagementResponseBodyVersionDetails) SetVersion(v string) *DescribeVersionManagementResponseBodyVersionDetails {
+	s.Version = &v
+	return s
+}
+
+type DescribeVersionManagementResponseBodyVersionDetailsPodInstances struct {
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Namespace  *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NodeIp     *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
+	PodIP      *string `json:"PodIP,omitempty" xml:"PodIP,omitempty"`
+	PodName    *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
+}
+
+func (s DescribeVersionManagementResponseBodyVersionDetailsPodInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVersionManagementResponseBodyVersionDetailsPodInstances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVersionManagementResponseBodyVersionDetailsPodInstances) SetCreateTime(v string) *DescribeVersionManagementResponseBodyVersionDetailsPodInstances {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeVersionManagementResponseBodyVersionDetailsPodInstances) SetNamespace(v string) *DescribeVersionManagementResponseBodyVersionDetailsPodInstances {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeVersionManagementResponseBodyVersionDetailsPodInstances) SetNodeIp(v string) *DescribeVersionManagementResponseBodyVersionDetailsPodInstances {
+	s.NodeIp = &v
+	return s
+}
+
+func (s *DescribeVersionManagementResponseBodyVersionDetailsPodInstances) SetPodIP(v string) *DescribeVersionManagementResponseBodyVersionDetailsPodInstances {
+	s.PodIP = &v
+	return s
+}
+
+func (s *DescribeVersionManagementResponseBodyVersionDetailsPodInstances) SetPodName(v string) *DescribeVersionManagementResponseBodyVersionDetailsPodInstances {
+	s.PodName = &v
+	return s
+}
+
+type DescribeVersionManagementResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeVersionManagementResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeVersionManagementResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeVersionManagementResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeVersionManagementResponse) SetHeaders(v map[string]*string) *DescribeVersionManagementResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeVersionManagementResponse) SetBody(v *DescribeVersionManagementResponseBody) *DescribeVersionManagementResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeVersionsResponseBody struct {
 	RequestId   *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VersionInfo []*DescribeVersionsResponseBodyVersionInfo `json:"VersionInfo,omitempty" xml:"VersionInfo,omitempty" type:"Repeated"`
@@ -6194,6 +9017,76 @@ func (s *GetVmMetaResponse) SetBody(v *GetVmMetaResponseBody) *GetVmMetaResponse
 	return s
 }
 
+type ListDashboardRequest struct {
+	K8sClusterId  *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s ListDashboardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDashboardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDashboardRequest) SetK8sClusterId(v string) *ListDashboardRequest {
+	s.K8sClusterId = &v
+	return s
+}
+
+func (s *ListDashboardRequest) SetServiceMeshId(v string) *ListDashboardRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type ListDashboardResponseBody struct {
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDashboardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDashboardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDashboardResponseBody) SetData(v string) *ListDashboardResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ListDashboardResponseBody) SetRequestId(v string) *ListDashboardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDashboardResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDashboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDashboardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDashboardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDashboardResponse) SetHeaders(v map[string]*string) *ListDashboardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDashboardResponse) SetBody(v *ListDashboardResponseBody) *ListDashboardResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyServiceMeshNameRequest struct {
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
@@ -6678,6 +9571,852 @@ func (s *UpdateASMGatewayImportedServicesResponse) SetBody(v *UpdateASMGatewayIm
 	return s
 }
 
+type UpdateInjectedProxyConfigRequest struct {
+	DeploymentNames *string `json:"DeploymentNames,omitempty" xml:"DeploymentNames,omitempty"`
+	GuestCluster    *string `json:"GuestCluster,omitempty" xml:"GuestCluster,omitempty"`
+	LimitCPUs       *string `json:"LimitCPUs,omitempty" xml:"LimitCPUs,omitempty"`
+	LimitMemories   *string `json:"LimitMemories,omitempty" xml:"LimitMemories,omitempty"`
+	Namespace       *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RequestCPUs     *string `json:"RequestCPUs,omitempty" xml:"RequestCPUs,omitempty"`
+	RequestMemories *string `json:"RequestMemories,omitempty" xml:"RequestMemories,omitempty"`
+	ServiceMeshId   *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s UpdateInjectedProxyConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInjectedProxyConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInjectedProxyConfigRequest) SetDeploymentNames(v string) *UpdateInjectedProxyConfigRequest {
+	s.DeploymentNames = &v
+	return s
+}
+
+func (s *UpdateInjectedProxyConfigRequest) SetGuestCluster(v string) *UpdateInjectedProxyConfigRequest {
+	s.GuestCluster = &v
+	return s
+}
+
+func (s *UpdateInjectedProxyConfigRequest) SetLimitCPUs(v string) *UpdateInjectedProxyConfigRequest {
+	s.LimitCPUs = &v
+	return s
+}
+
+func (s *UpdateInjectedProxyConfigRequest) SetLimitMemories(v string) *UpdateInjectedProxyConfigRequest {
+	s.LimitMemories = &v
+	return s
+}
+
+func (s *UpdateInjectedProxyConfigRequest) SetNamespace(v string) *UpdateInjectedProxyConfigRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateInjectedProxyConfigRequest) SetRequestCPUs(v string) *UpdateInjectedProxyConfigRequest {
+	s.RequestCPUs = &v
+	return s
+}
+
+func (s *UpdateInjectedProxyConfigRequest) SetRequestMemories(v string) *UpdateInjectedProxyConfigRequest {
+	s.RequestMemories = &v
+	return s
+}
+
+func (s *UpdateInjectedProxyConfigRequest) SetServiceMeshId(v string) *UpdateInjectedProxyConfigRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type UpdateInjectedProxyConfigResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateInjectedProxyConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInjectedProxyConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInjectedProxyConfigResponseBody) SetRequestId(v string) *UpdateInjectedProxyConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateInjectedProxyConfigResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateInjectedProxyConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateInjectedProxyConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateInjectedProxyConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateInjectedProxyConfigResponse) SetHeaders(v map[string]*string) *UpdateInjectedProxyConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateInjectedProxyConfigResponse) SetBody(v *UpdateInjectedProxyConfigResponseBody) *UpdateInjectedProxyConfigResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateIstioGatewayRoutesRequest struct {
+	Description      *string                                      `json:"Description,omitempty" xml:"Description,omitempty"`
+	GatewayRoute     *UpdateIstioGatewayRoutesRequestGatewayRoute `json:"GatewayRoute,omitempty" xml:"GatewayRoute,omitempty" type:"Struct"`
+	IstioGatewayName *string                                      `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	Priority         *int32                                       `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ServiceMeshId    *string                                      `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	Status           *int32                                       `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateIstioGatewayRoutesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesRequest) SetDescription(v string) *UpdateIstioGatewayRoutesRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequest) SetGatewayRoute(v *UpdateIstioGatewayRoutesRequestGatewayRoute) *UpdateIstioGatewayRoutesRequest {
+	s.GatewayRoute = v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequest) SetIstioGatewayName(v string) *UpdateIstioGatewayRoutesRequest {
+	s.IstioGatewayName = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequest) SetPriority(v int32) *UpdateIstioGatewayRoutesRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequest) SetServiceMeshId(v string) *UpdateIstioGatewayRoutesRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequest) SetStatus(v int32) *UpdateIstioGatewayRoutesRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateIstioGatewayRoutesRequestGatewayRoute struct {
+	HTTPAdvancedOptions *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions `json:"HTTPAdvancedOptions,omitempty" xml:"HTTPAdvancedOptions,omitempty" type:"Struct"`
+	MatchRequest        *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest        `json:"MatchRequest,omitempty" xml:"MatchRequest,omitempty" type:"Struct"`
+	RouteDestinations   []*UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinations `json:"RouteDestinations,omitempty" xml:"RouteDestinations,omitempty" type:"Repeated"`
+	RouteName           *string                                                         `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	RouteType           *string                                                         `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRoute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRoute) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRoute) SetHTTPAdvancedOptions(v *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) *UpdateIstioGatewayRoutesRequestGatewayRoute {
+	s.HTTPAdvancedOptions = v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRoute) SetMatchRequest(v *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest) *UpdateIstioGatewayRoutesRequestGatewayRoute {
+	s.MatchRequest = v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRoute) SetRouteDestinations(v []*UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinations) *UpdateIstioGatewayRoutesRequestGatewayRoute {
+	s.RouteDestinations = v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRoute) SetRouteName(v string) *UpdateIstioGatewayRoutesRequestGatewayRoute {
+	s.RouteName = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRoute) SetRouteType(v string) *UpdateIstioGatewayRoutesRequestGatewayRoute {
+	s.RouteType = &v
+	return s
+}
+
+type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions struct {
+	Delegate         *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate         `json:"Delegate,omitempty" xml:"Delegate,omitempty" type:"Struct"`
+	Fault            *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault            `json:"Fault,omitempty" xml:"Fault,omitempty" type:"Struct"`
+	HTTPRedirect     *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect     `json:"HTTPRedirect,omitempty" xml:"HTTPRedirect,omitempty" type:"Struct"`
+	Mirror           *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror           `json:"Mirror,omitempty" xml:"Mirror,omitempty" type:"Struct"`
+	MirrorPercentage *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPercentage `json:"MirrorPercentage,omitempty" xml:"MirrorPercentage,omitempty" type:"Struct"`
+	Retries          *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries          `json:"Retries,omitempty" xml:"Retries,omitempty" type:"Struct"`
+	Rewrite          *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite          `json:"Rewrite,omitempty" xml:"Rewrite,omitempty" type:"Struct"`
+	Timeout          *string                                                                         `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) SetDelegate(v *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions {
+	s.Delegate = v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) SetFault(v *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions {
+	s.Fault = v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) SetHTTPRedirect(v *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions {
+	s.HTTPRedirect = v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) SetMirror(v *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions {
+	s.Mirror = v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) SetMirrorPercentage(v *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPercentage) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions {
+	s.MirrorPercentage = v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) SetRetries(v *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions {
+	s.Retries = v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) SetRewrite(v *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions {
+	s.Rewrite = v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions) SetTimeout(v string) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions {
+	s.Timeout = &v
+	return s
+}
+
+type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate struct {
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate) SetName(v string) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate) SetNamespace(v string) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsDelegate {
+	s.Namespace = &v
+	return s
+}
+
+type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault struct {
+	Abort *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort `json:"Abort,omitempty" xml:"Abort,omitempty" type:"Struct"`
+	Delay *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay `json:"Delay,omitempty" xml:"Delay,omitempty" type:"Struct"`
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault) SetAbort(v *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault {
+	s.Abort = v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault) SetDelay(v *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFault {
+	s.Delay = v
+	return s
+}
+
+type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort struct {
+	HttpStatus *int32                                                                              `json:"HttpStatus,omitempty" xml:"HttpStatus,omitempty"`
+	Percentage *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPercentage `json:"Percentage,omitempty" xml:"Percentage,omitempty" type:"Struct"`
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort) SetHttpStatus(v int32) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort {
+	s.HttpStatus = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort) SetPercentage(v *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPercentage) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbort {
+	s.Percentage = v
+	return s
+}
+
+type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPercentage struct {
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPercentage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPercentage) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPercentage) SetValue(v float32) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultAbortPercentage {
+	s.Value = &v
+	return s
+}
+
+type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay struct {
+	FixedDelay *string                                                                             `json:"FixedDelay,omitempty" xml:"FixedDelay,omitempty"`
+	Percentage *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPercentage `json:"Percentage,omitempty" xml:"Percentage,omitempty" type:"Struct"`
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay) SetFixedDelay(v string) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay {
+	s.FixedDelay = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay) SetPercentage(v *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPercentage) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelay {
+	s.Percentage = v
+	return s
+}
+
+type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPercentage struct {
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPercentage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPercentage) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPercentage) SetValue(v float32) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsFaultDelayPercentage {
+	s.Value = &v
+	return s
+}
+
+type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect struct {
+	Authority    *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
+	RedirectCode *int32  `json:"RedirectCode,omitempty" xml:"RedirectCode,omitempty"`
+	Uri          *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect) SetAuthority(v string) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect {
+	s.Authority = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect) SetRedirectCode(v int32) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect {
+	s.RedirectCode = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect) SetUri(v string) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsHTTPRedirect {
+	s.Uri = &v
+	return s
+}
+
+type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror struct {
+	Host   *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Subset *string `json:"Subset,omitempty" xml:"Subset,omitempty"`
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror) SetHost(v string) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror {
+	s.Host = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror) SetSubset(v string) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirror {
+	s.Subset = &v
+	return s
+}
+
+type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPercentage struct {
+	Value *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPercentage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPercentage) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPercentage) SetValue(v float32) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsMirrorPercentage {
+	s.Value = &v
+	return s
+}
+
+type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries struct {
+	Attempts              *int32                                                                                      `json:"Attempts,omitempty" xml:"Attempts,omitempty"`
+	PerTryTimeout         *string                                                                                     `json:"PerTryTimeout,omitempty" xml:"PerTryTimeout,omitempty"`
+	RetryOn               *string                                                                                     `json:"RetryOn,omitempty" xml:"RetryOn,omitempty"`
+	RetryRemoteLocalities *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetryRemoteLocalities `json:"RetryRemoteLocalities,omitempty" xml:"RetryRemoteLocalities,omitempty" type:"Struct"`
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries) SetAttempts(v int32) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries {
+	s.Attempts = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries) SetPerTryTimeout(v string) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries {
+	s.PerTryTimeout = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries) SetRetryOn(v string) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries {
+	s.RetryOn = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries) SetRetryRemoteLocalities(v *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetryRemoteLocalities) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetries {
+	s.RetryRemoteLocalities = v
+	return s
+}
+
+type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetryRemoteLocalities struct {
+	Value *bool `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetryRemoteLocalities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetryRemoteLocalities) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetryRemoteLocalities) SetValue(v bool) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRetriesRetryRemoteLocalities {
+	s.Value = &v
+	return s
+}
+
+type UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite struct {
+	Authority *string `json:"Authority,omitempty" xml:"Authority,omitempty"`
+	Uri       *string `json:"Uri,omitempty" xml:"Uri,omitempty"`
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite) SetAuthority(v string) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite {
+	s.Authority = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite) SetUri(v string) *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptionsRewrite {
+	s.Uri = &v
+	return s
+}
+
+type UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest struct {
+	Headers            []*UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders            `json:"Headers,omitempty" xml:"Headers,omitempty" type:"Repeated"`
+	Ports              []*int32                                                                     `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
+	TLSMatchAttributes []*UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes `json:"TLSMatchAttributes,omitempty" xml:"TLSMatchAttributes,omitempty" type:"Repeated"`
+	URI                *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI                  `json:"URI,omitempty" xml:"URI,omitempty" type:"Struct"`
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest) SetHeaders(v []*UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders) *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest) SetPorts(v []*int32) *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest {
+	s.Ports = v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest) SetTLSMatchAttributes(v []*UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes) *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest {
+	s.TLSMatchAttributes = v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest) SetURI(v *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI) *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest {
+	s.URI = v
+	return s
+}
+
+type UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders struct {
+	MatchingContent *string `json:"MatchingContent,omitempty" xml:"MatchingContent,omitempty"`
+	MatchingMode    *string `json:"MatchingMode,omitempty" xml:"MatchingMode,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders) SetMatchingContent(v string) *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders {
+	s.MatchingContent = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders) SetMatchingMode(v string) *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders {
+	s.MatchingMode = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders) SetName(v string) *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestHeaders {
+	s.Name = &v
+	return s
+}
+
+type UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes struct {
+	SNIHosts []*string `json:"SNIHosts,omitempty" xml:"SNIHosts,omitempty" type:"Repeated"`
+	TLSPort  *int32    `json:"TLSPort,omitempty" xml:"TLSPort,omitempty"`
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes) SetSNIHosts(v []*string) *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes {
+	s.SNIHosts = v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes) SetTLSPort(v int32) *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestTLSMatchAttributes {
+	s.TLSPort = &v
+	return s
+}
+
+type UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI struct {
+	MatchingContent *string `json:"MatchingContent,omitempty" xml:"MatchingContent,omitempty"`
+	MatchingMode    *string `json:"MatchingMode,omitempty" xml:"MatchingMode,omitempty"`
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI) SetMatchingContent(v string) *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI {
+	s.MatchingContent = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI) SetMatchingMode(v string) *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequestURI {
+	s.MatchingMode = &v
+	return s
+}
+
+type UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinations struct {
+	Destination *UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination `json:"Destination,omitempty" xml:"Destination,omitempty" type:"Struct"`
+	Weight      *int32                                                                   `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinations) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinations) SetDestination(v *UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination) *UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinations {
+	s.Destination = v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinations) SetWeight(v int32) *UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinations {
+	s.Weight = &v
+	return s
+}
+
+type UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination struct {
+	Host   *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Subset *string `json:"Subset,omitempty" xml:"Subset,omitempty"`
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination) SetHost(v string) *UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination {
+	s.Host = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination) SetSubset(v string) *UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinationsDestination {
+	s.Subset = &v
+	return s
+}
+
+type UpdateIstioGatewayRoutesShrinkRequest struct {
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GatewayRouteShrink *string `json:"GatewayRoute,omitempty" xml:"GatewayRoute,omitempty"`
+	IstioGatewayName   *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	Priority           *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ServiceMeshId      *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	Status             *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateIstioGatewayRoutesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesShrinkRequest) SetDescription(v string) *UpdateIstioGatewayRoutesShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesShrinkRequest) SetGatewayRouteShrink(v string) *UpdateIstioGatewayRoutesShrinkRequest {
+	s.GatewayRouteShrink = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesShrinkRequest) SetIstioGatewayName(v string) *UpdateIstioGatewayRoutesShrinkRequest {
+	s.IstioGatewayName = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesShrinkRequest) SetPriority(v int32) *UpdateIstioGatewayRoutesShrinkRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesShrinkRequest) SetServiceMeshId(v string) *UpdateIstioGatewayRoutesShrinkRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesShrinkRequest) SetStatus(v int32) *UpdateIstioGatewayRoutesShrinkRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateIstioGatewayRoutesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateIstioGatewayRoutesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesResponseBody) SetRequestId(v string) *UpdateIstioGatewayRoutesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateIstioGatewayRoutesResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateIstioGatewayRoutesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateIstioGatewayRoutesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioGatewayRoutesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioGatewayRoutesResponse) SetHeaders(v map[string]*string) *UpdateIstioGatewayRoutesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesResponse) SetBody(v *UpdateIstioGatewayRoutesResponseBody) *UpdateIstioGatewayRoutesResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateIstioRouteAdditionalStatusRequest struct {
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	Priority         *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RouteName        *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
+	ServiceMeshId    *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateIstioRouteAdditionalStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioRouteAdditionalStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioRouteAdditionalStatusRequest) SetDescription(v string) *UpdateIstioRouteAdditionalStatusRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateIstioRouteAdditionalStatusRequest) SetIstioGatewayName(v string) *UpdateIstioRouteAdditionalStatusRequest {
+	s.IstioGatewayName = &v
+	return s
+}
+
+func (s *UpdateIstioRouteAdditionalStatusRequest) SetPriority(v int32) *UpdateIstioRouteAdditionalStatusRequest {
+	s.Priority = &v
+	return s
+}
+
+func (s *UpdateIstioRouteAdditionalStatusRequest) SetRouteName(v string) *UpdateIstioRouteAdditionalStatusRequest {
+	s.RouteName = &v
+	return s
+}
+
+func (s *UpdateIstioRouteAdditionalStatusRequest) SetServiceMeshId(v string) *UpdateIstioRouteAdditionalStatusRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *UpdateIstioRouteAdditionalStatusRequest) SetStatus(v int32) *UpdateIstioRouteAdditionalStatusRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateIstioRouteAdditionalStatusResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateIstioRouteAdditionalStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioRouteAdditionalStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioRouteAdditionalStatusResponseBody) SetRequestId(v string) *UpdateIstioRouteAdditionalStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateIstioRouteAdditionalStatusResponse struct {
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateIstioRouteAdditionalStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateIstioRouteAdditionalStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateIstioRouteAdditionalStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateIstioRouteAdditionalStatusResponse) SetHeaders(v map[string]*string) *UpdateIstioRouteAdditionalStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateIstioRouteAdditionalStatusResponse) SetBody(v *UpdateIstioRouteAdditionalStatusResponseBody) *UpdateIstioRouteAdditionalStatusResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateMeshFeatureRequest struct {
 	AccessLogEnabled               *bool    `json:"AccessLogEnabled,omitempty" xml:"AccessLogEnabled,omitempty"`
 	AccessLogFile                  *string  `json:"AccessLogFile,omitempty" xml:"AccessLogFile,omitempty"`
@@ -6720,11 +10459,16 @@ type UpdateMeshFeatureRequest struct {
 	MultiBufferEnabled             *bool    `json:"MultiBufferEnabled,omitempty" xml:"MultiBufferEnabled,omitempty"`
 	MultiBufferPollDelay           *string  `json:"MultiBufferPollDelay,omitempty" xml:"MultiBufferPollDelay,omitempty"`
 	MysqlFilterEnabled             *bool    `json:"MysqlFilterEnabled,omitempty" xml:"MysqlFilterEnabled,omitempty"`
+	OPAInjectorCPULimit            *string  `json:"OPAInjectorCPULimit,omitempty" xml:"OPAInjectorCPULimit,omitempty"`
+	OPAInjectorCPURequirement      *string  `json:"OPAInjectorCPURequirement,omitempty" xml:"OPAInjectorCPURequirement,omitempty"`
+	OPAInjectorMemoryLimit         *string  `json:"OPAInjectorMemoryLimit,omitempty" xml:"OPAInjectorMemoryLimit,omitempty"`
+	OPAInjectorMemoryRequirement   *string  `json:"OPAInjectorMemoryRequirement,omitempty" xml:"OPAInjectorMemoryRequirement,omitempty"`
 	OPALimitCPU                    *string  `json:"OPALimitCPU,omitempty" xml:"OPALimitCPU,omitempty"`
 	OPALimitMemory                 *string  `json:"OPALimitMemory,omitempty" xml:"OPALimitMemory,omitempty"`
 	OPALogLevel                    *string  `json:"OPALogLevel,omitempty" xml:"OPALogLevel,omitempty"`
 	OPARequestCPU                  *string  `json:"OPARequestCPU,omitempty" xml:"OPARequestCPU,omitempty"`
 	OPARequestMemory               *string  `json:"OPARequestMemory,omitempty" xml:"OPARequestMemory,omitempty"`
+	OPAScopeInjected               *bool    `json:"OPAScopeInjected,omitempty" xml:"OPAScopeInjected,omitempty"`
 	OpaEnabled                     *bool    `json:"OpaEnabled,omitempty" xml:"OpaEnabled,omitempty"`
 	OpenAgentPolicy                *bool    `json:"OpenAgentPolicy,omitempty" xml:"OpenAgentPolicy,omitempty"`
 	OutboundTrafficPolicy          *string  `json:"OutboundTrafficPolicy,omitempty" xml:"OutboundTrafficPolicy,omitempty"`
@@ -6965,6 +10709,26 @@ func (s *UpdateMeshFeatureRequest) SetMysqlFilterEnabled(v bool) *UpdateMeshFeat
 	return s
 }
 
+func (s *UpdateMeshFeatureRequest) SetOPAInjectorCPULimit(v string) *UpdateMeshFeatureRequest {
+	s.OPAInjectorCPULimit = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetOPAInjectorCPURequirement(v string) *UpdateMeshFeatureRequest {
+	s.OPAInjectorCPURequirement = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetOPAInjectorMemoryLimit(v string) *UpdateMeshFeatureRequest {
+	s.OPAInjectorMemoryLimit = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetOPAInjectorMemoryRequirement(v string) *UpdateMeshFeatureRequest {
+	s.OPAInjectorMemoryRequirement = &v
+	return s
+}
+
 func (s *UpdateMeshFeatureRequest) SetOPALimitCPU(v string) *UpdateMeshFeatureRequest {
 	s.OPALimitCPU = &v
 	return s
@@ -6987,6 +10751,11 @@ func (s *UpdateMeshFeatureRequest) SetOPARequestCPU(v string) *UpdateMeshFeature
 
 func (s *UpdateMeshFeatureRequest) SetOPARequestMemory(v string) *UpdateMeshFeatureRequest {
 	s.OPARequestMemory = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetOPAScopeInjected(v bool) *UpdateMeshFeatureRequest {
+	s.OPAScopeInjected = &v
 	return s
 }
 
@@ -7320,6 +11089,186 @@ func (s *UpdateNamespaceScopeSidecarConfigResponse) SetBody(v *UpdateNamespaceSc
 	return s
 }
 
+type UpdateServiceSidecarInjectRequest struct {
+	GuestCluster  *string `json:"GuestCluster,omitempty" xml:"GuestCluster,omitempty"`
+	Inject        *bool   `json:"Inject,omitempty" xml:"Inject,omitempty"`
+	LimitCPU      *string `json:"LimitCPU,omitempty" xml:"LimitCPU,omitempty"`
+	LimitMemory   *string `json:"LimitMemory,omitempty" xml:"LimitMemory,omitempty"`
+	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RequestCPU    *string `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
+	RequestMemory *string `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	ServiceName   *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+}
+
+func (s UpdateServiceSidecarInjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceSidecarInjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceSidecarInjectRequest) SetGuestCluster(v string) *UpdateServiceSidecarInjectRequest {
+	s.GuestCluster = &v
+	return s
+}
+
+func (s *UpdateServiceSidecarInjectRequest) SetInject(v bool) *UpdateServiceSidecarInjectRequest {
+	s.Inject = &v
+	return s
+}
+
+func (s *UpdateServiceSidecarInjectRequest) SetLimitCPU(v string) *UpdateServiceSidecarInjectRequest {
+	s.LimitCPU = &v
+	return s
+}
+
+func (s *UpdateServiceSidecarInjectRequest) SetLimitMemory(v string) *UpdateServiceSidecarInjectRequest {
+	s.LimitMemory = &v
+	return s
+}
+
+func (s *UpdateServiceSidecarInjectRequest) SetNamespace(v string) *UpdateServiceSidecarInjectRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateServiceSidecarInjectRequest) SetRequestCPU(v string) *UpdateServiceSidecarInjectRequest {
+	s.RequestCPU = &v
+	return s
+}
+
+func (s *UpdateServiceSidecarInjectRequest) SetRequestMemory(v string) *UpdateServiceSidecarInjectRequest {
+	s.RequestMemory = &v
+	return s
+}
+
+func (s *UpdateServiceSidecarInjectRequest) SetServiceMeshId(v string) *UpdateServiceSidecarInjectRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *UpdateServiceSidecarInjectRequest) SetServiceName(v string) *UpdateServiceSidecarInjectRequest {
+	s.ServiceName = &v
+	return s
+}
+
+type UpdateServiceSidecarInjectResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateServiceSidecarInjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceSidecarInjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceSidecarInjectResponseBody) SetRequestId(v string) *UpdateServiceSidecarInjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateServiceSidecarInjectResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateServiceSidecarInjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateServiceSidecarInjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceSidecarInjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceSidecarInjectResponse) SetHeaders(v map[string]*string) *UpdateServiceSidecarInjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateServiceSidecarInjectResponse) SetBody(v *UpdateServiceSidecarInjectResponseBody) *UpdateServiceSidecarInjectResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateUnlabeledServiceManagedResourceRequest struct {
+	GuestCluster  *string `json:"GuestCluster,omitempty" xml:"GuestCluster,omitempty"`
+	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	ServiceName   *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+}
+
+func (s UpdateUnlabeledServiceManagedResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUnlabeledServiceManagedResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUnlabeledServiceManagedResourceRequest) SetGuestCluster(v string) *UpdateUnlabeledServiceManagedResourceRequest {
+	s.GuestCluster = &v
+	return s
+}
+
+func (s *UpdateUnlabeledServiceManagedResourceRequest) SetNamespace(v string) *UpdateUnlabeledServiceManagedResourceRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateUnlabeledServiceManagedResourceRequest) SetServiceMeshId(v string) *UpdateUnlabeledServiceManagedResourceRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+func (s *UpdateUnlabeledServiceManagedResourceRequest) SetServiceName(v string) *UpdateUnlabeledServiceManagedResourceRequest {
+	s.ServiceName = &v
+	return s
+}
+
+type UpdateUnlabeledServiceManagedResourceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateUnlabeledServiceManagedResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUnlabeledServiceManagedResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUnlabeledServiceManagedResourceResponseBody) SetRequestId(v string) *UpdateUnlabeledServiceManagedResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateUnlabeledServiceManagedResourceResponse struct {
+	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateUnlabeledServiceManagedResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateUnlabeledServiceManagedResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUnlabeledServiceManagedResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUnlabeledServiceManagedResourceResponse) SetHeaders(v map[string]*string) *UpdateUnlabeledServiceManagedResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateUnlabeledServiceManagedResourceResponse) SetBody(v *UpdateUnlabeledServiceManagedResourceResponseBody) *UpdateUnlabeledServiceManagedResourceResponse {
+	s.Body = v
+	return s
+}
+
 type UpgradeMeshEditionPartiallyRequest struct {
 	ASMGatewayContinue    *bool   `json:"ASMGatewayContinue,omitempty" xml:"ASMGatewayContinue,omitempty"`
 	ServiceMeshId         *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
@@ -7452,6 +11401,64 @@ func (s *UpgradeMeshVersionResponse) SetBody(v *UpgradeMeshVersionResponseBody) 
 	return s
 }
 
+type SecretCreateRecordValue struct {
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s SecretCreateRecordValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SecretCreateRecordValue) GoString() string {
+	return s.String()
+}
+
+func (s *SecretCreateRecordValue) SetState(v string) *SecretCreateRecordValue {
+	s.State = &v
+	return s
+}
+
+func (s *SecretCreateRecordValue) SetClusterId(v string) *SecretCreateRecordValue {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *SecretCreateRecordValue) SetMessage(v string) *SecretCreateRecordValue {
+	s.Message = &v
+	return s
+}
+
+type SecretDeleteRecordValue struct {
+	State     *string `json:"State,omitempty" xml:"State,omitempty"`
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+}
+
+func (s SecretDeleteRecordValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SecretDeleteRecordValue) GoString() string {
+	return s.String()
+}
+
+func (s *SecretDeleteRecordValue) SetState(v string) *SecretDeleteRecordValue {
+	s.State = &v
+	return s
+}
+
+func (s *SecretDeleteRecordValue) SetClusterId(v string) *SecretDeleteRecordValue {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *SecretDeleteRecordValue) SetMessage(v string) *SecretDeleteRecordValue {
+	s.Message = &v
+	return s
+}
+
 type CCMVersionsValue struct {
 	QueryState              *string `json:"QueryState,omitempty" xml:"QueryState,omitempty"`
 	Version                 *string `json:"Version,omitempty" xml:"Version,omitempty"`
@@ -7542,6 +11549,29 @@ func (s *ClusterStatusLogtailStatusRecordValueAccessLogDashboards) SetTitle(v st
 
 func (s *ClusterStatusLogtailStatusRecordValueAccessLogDashboards) SetUrl(v string) *ClusterStatusLogtailStatusRecordValueAccessLogDashboards {
 	s.Url = &v
+	return s
+}
+
+type ServiceLabelsValue struct {
+	Labels  map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
+	Success *bool              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ServiceLabelsValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ServiceLabelsValue) GoString() string {
+	return s.String()
+}
+
+func (s *ServiceLabelsValue) SetLabels(v map[string]*string) *ServiceLabelsValue {
+	s.Labels = v
+	return s
+}
+
+func (s *ServiceLabelsValue) SetSuccess(v bool) *ServiceLabelsValue {
+	s.Success = &v
 	return s
 }
 
@@ -7785,6 +11815,208 @@ func (client *Client) CreateASMGateway(request *CreateASMGatewayRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateASMGatewayResponse{}
 	_body, _err := client.CreateASMGatewayWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateGatewaySecretWithOptions(request *CreateGatewaySecretRequest, runtime *util.RuntimeOptions) (_result *CreateGatewaySecretResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cert)) {
+		body["Cert"] = request.Cert
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IstioGatewayName)) {
+		body["IstioGatewayName"] = request.IstioGatewayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		body["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
+		body["SecretName"] = request.SecretName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateGatewaySecret"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateGatewaySecretResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateGatewaySecret(request *CreateGatewaySecretRequest) (_result *CreateGatewaySecretResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateGatewaySecretResponse{}
+	_body, _err := client.CreateGatewaySecretWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateIstioGatewayDomainsWithOptions(request *CreateIstioGatewayDomainsRequest, runtime *util.RuntimeOptions) (_result *CreateIstioGatewayDomainsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Credential)) {
+		body["Credential"] = request.Credential
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceHttps)) {
+		body["ForceHttps"] = request.ForceHttps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Hosts)) {
+		body["Hosts"] = request.Hosts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IstioGatewayName)) {
+		body["IstioGatewayName"] = request.IstioGatewayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Number)) {
+		body["Number"] = request.Number
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PortName)) {
+		body["PortName"] = request.PortName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
+		body["Protocol"] = request.Protocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIstioGatewayDomains"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateIstioGatewayDomainsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateIstioGatewayDomains(request *CreateIstioGatewayDomainsRequest) (_result *CreateIstioGatewayDomainsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateIstioGatewayDomainsResponse{}
+	_body, _err := client.CreateIstioGatewayDomainsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateIstioGatewayRoutesWithOptions(tmpReq *CreateIstioGatewayRoutesRequest, runtime *util.RuntimeOptions) (_result *CreateIstioGatewayRoutesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateIstioGatewayRoutesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.GatewayRoute))) {
+		request.GatewayRouteShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.GatewayRoute), tea.String("GatewayRoute"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayRouteShrink)) {
+		body["GatewayRoute"] = request.GatewayRouteShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IstioGatewayName)) {
+		body["IstioGatewayName"] = request.IstioGatewayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		body["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIstioGatewayRoutes"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateIstioGatewayRoutesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateIstioGatewayRoutes(request *CreateIstioGatewayRoutesRequest) (_result *CreateIstioGatewayRoutesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateIstioGatewayRoutesResponse{}
+	_body, _err := client.CreateIstioGatewayRoutesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8089,6 +12321,166 @@ func (client *Client) CreateServiceMesh(request *CreateServiceMeshRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateServiceMeshResponse{}
 	_body, _err := client.CreateServiceMeshWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteGatewayRouteWithOptions(request *DeleteGatewayRouteRequest, runtime *util.RuntimeOptions) (_result *DeleteGatewayRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IstioGatewayName)) {
+		body["IstioGatewayName"] = request.IstioGatewayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteName)) {
+		body["RouteName"] = request.RouteName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGatewayRoute"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGatewayRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteGatewayRoute(request *DeleteGatewayRouteRequest) (_result *DeleteGatewayRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteGatewayRouteResponse{}
+	_body, _err := client.DeleteGatewayRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteGatewaySecretWithOptions(request *DeleteGatewaySecretRequest, runtime *util.RuntimeOptions) (_result *DeleteGatewaySecretResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IstioGatewayName)) {
+		body["IstioGatewayName"] = request.IstioGatewayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
+		body["SecretName"] = request.SecretName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteGatewaySecret"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteGatewaySecretResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteGatewaySecret(request *DeleteGatewaySecretRequest) (_result *DeleteGatewaySecretResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteGatewaySecretResponse{}
+	_body, _err := client.DeleteGatewaySecretWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteIstioGatewayDomainsWithOptions(request *DeleteIstioGatewayDomainsRequest, runtime *util.RuntimeOptions) (_result *DeleteIstioGatewayDomainsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Hosts)) {
+		body["Hosts"] = request.Hosts
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IstioGatewayName)) {
+		body["IstioGatewayName"] = request.IstioGatewayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PortName)) {
+		body["PortName"] = request.PortName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIstioGatewayDomains"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteIstioGatewayDomainsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteIstioGatewayDomains(request *DeleteIstioGatewayDomainsRequest) (_result *DeleteIstioGatewayDomainsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteIstioGatewayDomainsResponse{}
+	_body, _err := client.DeleteIstioGatewayDomainsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8524,6 +12916,54 @@ func (client *Client) DescribeCrTemplates(request *DescribeCrTemplatesRequest) (
 	return _result, _err
 }
 
+func (client *Client) DescribeGatewaySecretDetailsWithOptions(request *DescribeGatewaySecretDetailsRequest, runtime *util.RuntimeOptions) (_result *DescribeGatewaySecretDetailsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IstioGatewayName)) {
+		body["IstioGatewayName"] = request.IstioGatewayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeGatewaySecretDetails"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeGatewaySecretDetailsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeGatewaySecretDetails(request *DescribeGatewaySecretDetailsRequest) (_result *DescribeGatewaySecretDetailsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeGatewaySecretDetailsResponse{}
+	_body, _err := client.DescribeGatewaySecretDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeGuestClusterAccessLogDashboardsWithOptions(request *DescribeGuestClusterAccessLogDashboardsRequest, runtime *util.RuntimeOptions) (_result *DescribeGuestClusterAccessLogDashboardsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8760,6 +13200,214 @@ func (client *Client) DescribeIngressGateways(request *DescribeIngressGatewaysRe
 	return _result, _err
 }
 
+func (client *Client) DescribeIstioGatewayDomainsWithOptions(request *DescribeIstioGatewayDomainsRequest, runtime *util.RuntimeOptions) (_result *DescribeIstioGatewayDomainsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IstioGatewayName)) {
+		body["IstioGatewayName"] = request.IstioGatewayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeIstioGatewayDomains"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeIstioGatewayDomainsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeIstioGatewayDomains(request *DescribeIstioGatewayDomainsRequest) (_result *DescribeIstioGatewayDomainsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeIstioGatewayDomainsResponse{}
+	_body, _err := client.DescribeIstioGatewayDomainsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeIstioGatewayRouteDetailWithOptions(request *DescribeIstioGatewayRouteDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeIstioGatewayRouteDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IstioGatewayName)) {
+		body["IstioGatewayName"] = request.IstioGatewayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteName)) {
+		body["RouteName"] = request.RouteName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeIstioGatewayRouteDetail"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeIstioGatewayRouteDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeIstioGatewayRouteDetail(request *DescribeIstioGatewayRouteDetailRequest) (_result *DescribeIstioGatewayRouteDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeIstioGatewayRouteDetailResponse{}
+	_body, _err := client.DescribeIstioGatewayRouteDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeIstioGatewayRoutesWithOptions(request *DescribeIstioGatewayRoutesRequest, runtime *util.RuntimeOptions) (_result *DescribeIstioGatewayRoutesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IstioGatewayName)) {
+		body["IstioGatewayName"] = request.IstioGatewayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeIstioGatewayRoutes"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeIstioGatewayRoutesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeIstioGatewayRoutes(request *DescribeIstioGatewayRoutesRequest) (_result *DescribeIstioGatewayRoutesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeIstioGatewayRoutesResponse{}
+	_body, _err := client.DescribeIstioGatewayRoutesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeManagedServicesWithOptions(request *DescribeManagedServicesRequest, runtime *util.RuntimeOptions) (_result *DescribeManagedServicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GuestCluster)) {
+		body["GuestCluster"] = request.GuestCluster
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		body["Marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeManagedServices"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeManagedServicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeManagedServices(request *DescribeManagedServicesRequest) (_result *DescribeManagedServicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeManagedServicesResponse{}
+	_body, _err := client.DescribeManagedServicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeNamespaceScopeSidecarConfigWithOptions(request *DescribeNamespaceScopeSidecarConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeNamespaceScopeSidecarConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8893,6 +13541,118 @@ func (client *Client) DescribeReusableSlb(request *DescribeReusableSlbRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeReusableSlbResponse{}
 	_body, _err := client.DescribeReusableSlbWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeServiceAccessDetailWithOptions(request *DescribeServiceAccessDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeServiceAccessDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GuestCluster)) {
+		body["GuestCluster"] = request.GuestCluster
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		body["ServiceName"] = request.ServiceName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeServiceAccessDetail"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeServiceAccessDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeServiceAccessDetail(request *DescribeServiceAccessDetailRequest) (_result *DescribeServiceAccessDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeServiceAccessDetailResponse{}
+	_body, _err := client.DescribeServiceAccessDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeServiceManagedResourceWithOptions(request *DescribeServiceManagedResourceRequest, runtime *util.RuntimeOptions) (_result *DescribeServiceManagedResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GuestCluster)) {
+		body["GuestCluster"] = request.GuestCluster
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		body["ServiceName"] = request.ServiceName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeServiceManagedResource"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeServiceManagedResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeServiceManagedResource(request *DescribeServiceManagedResourceRequest) (_result *DescribeServiceManagedResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeServiceManagedResourceResponse{}
+	_body, _err := client.DescribeServiceManagedResourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9165,6 +13925,58 @@ func (client *Client) DescribeServiceMeshProxyStatus(request *DescribeServiceMes
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeServiceMeshProxyStatusResponse{}
 	_body, _err := client.DescribeServiceMeshProxyStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeServiceMeshServiceLabelWithOptions(request *DescribeServiceMeshServiceLabelRequest, runtime *util.RuntimeOptions) (_result *DescribeServiceMeshServiceLabelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceNames)) {
+		body["ServiceNames"] = request.ServiceNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceNamespaces)) {
+		body["ServiceNamespaces"] = request.ServiceNamespaces
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeServiceMeshServiceLabel"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeServiceMeshServiceLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeServiceMeshServiceLabel(request *DescribeServiceMeshServiceLabelRequest) (_result *DescribeServiceMeshServiceLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeServiceMeshServiceLabelResponse{}
+	_body, _err := client.DescribeServiceMeshServiceLabelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9483,6 +14295,62 @@ func (client *Client) DescribeVSwitches(request *DescribeVSwitchesRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DescribeVersionManagementWithOptions(request *DescribeVersionManagementRequest, runtime *util.RuntimeOptions) (_result *DescribeVersionManagementResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GuestCluster)) {
+		body["GuestCluster"] = request.GuestCluster
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		body["ServiceName"] = request.ServiceName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeVersionManagement"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeVersionManagementResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeVersionManagement(request *DescribeVersionManagementRequest) (_result *DescribeVersionManagementResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeVersionManagementResponse{}
+	_body, _err := client.DescribeVersionManagementWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeVersionsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeVersionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
 	params := &openapi.Params{
@@ -9781,6 +14649,54 @@ func (client *Client) GetVmMeta(request *GetVmMetaRequest) (_result *GetVmMetaRe
 	runtime := &util.RuntimeOptions{}
 	_result = &GetVmMetaResponse{}
 	_body, _err := client.GetVmMetaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDashboardWithOptions(request *ListDashboardRequest, runtime *util.RuntimeOptions) (_result *ListDashboardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.K8sClusterId)) {
+		query["K8sClusterId"] = request.K8sClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		query["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDashboard"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDashboardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDashboard(request *ListDashboardRequest) (_result *ListDashboardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDashboardResponse{}
+	_body, _err := client.ListDashboardWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10136,6 +15052,214 @@ func (client *Client) UpdateASMGatewayImportedServices(request *UpdateASMGateway
 	return _result, _err
 }
 
+func (client *Client) UpdateInjectedProxyConfigWithOptions(request *UpdateInjectedProxyConfigRequest, runtime *util.RuntimeOptions) (_result *UpdateInjectedProxyConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeploymentNames)) {
+		body["DeploymentNames"] = request.DeploymentNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GuestCluster)) {
+		body["GuestCluster"] = request.GuestCluster
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LimitCPUs)) {
+		body["LimitCPUs"] = request.LimitCPUs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LimitMemories)) {
+		body["LimitMemories"] = request.LimitMemories
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestCPUs)) {
+		body["RequestCPUs"] = request.RequestCPUs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestMemories)) {
+		body["RequestMemories"] = request.RequestMemories
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateInjectedProxyConfig"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateInjectedProxyConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateInjectedProxyConfig(request *UpdateInjectedProxyConfigRequest) (_result *UpdateInjectedProxyConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateInjectedProxyConfigResponse{}
+	_body, _err := client.UpdateInjectedProxyConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateIstioGatewayRoutesWithOptions(tmpReq *UpdateIstioGatewayRoutesRequest, runtime *util.RuntimeOptions) (_result *UpdateIstioGatewayRoutesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateIstioGatewayRoutesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.GatewayRoute))) {
+		request.GatewayRouteShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.GatewayRoute), tea.String("GatewayRoute"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayRouteShrink)) {
+		body["GatewayRoute"] = request.GatewayRouteShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IstioGatewayName)) {
+		body["IstioGatewayName"] = request.IstioGatewayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		body["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIstioGatewayRoutes"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateIstioGatewayRoutesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateIstioGatewayRoutes(request *UpdateIstioGatewayRoutesRequest) (_result *UpdateIstioGatewayRoutesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateIstioGatewayRoutesResponse{}
+	_body, _err := client.UpdateIstioGatewayRoutesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateIstioRouteAdditionalStatusWithOptions(request *UpdateIstioRouteAdditionalStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateIstioRouteAdditionalStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Priority)) {
+		query["Priority"] = request.Priority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteName)) {
+		query["RouteName"] = request.RouteName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IstioGatewayName)) {
+		body["IstioGatewayName"] = request.IstioGatewayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateIstioRouteAdditionalStatus"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateIstioRouteAdditionalStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateIstioRouteAdditionalStatus(request *UpdateIstioRouteAdditionalStatusRequest) (_result *UpdateIstioRouteAdditionalStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateIstioRouteAdditionalStatusResponse{}
+	_body, _err := client.UpdateIstioRouteAdditionalStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureRequest, runtime *util.RuntimeOptions) (_result *UpdateMeshFeatureResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10306,6 +15430,22 @@ func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureReq
 		body["MysqlFilterEnabled"] = request.MysqlFilterEnabled
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OPAInjectorCPULimit)) {
+		body["OPAInjectorCPULimit"] = request.OPAInjectorCPULimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OPAInjectorCPURequirement)) {
+		body["OPAInjectorCPURequirement"] = request.OPAInjectorCPURequirement
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OPAInjectorMemoryLimit)) {
+		body["OPAInjectorMemoryLimit"] = request.OPAInjectorMemoryLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OPAInjectorMemoryRequirement)) {
+		body["OPAInjectorMemoryRequirement"] = request.OPAInjectorMemoryRequirement
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OPALimitCPU)) {
 		body["OPALimitCPU"] = request.OPALimitCPU
 	}
@@ -10324,6 +15464,10 @@ func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureReq
 
 	if !tea.BoolValue(util.IsUnset(request.OPARequestMemory)) {
 		body["OPARequestMemory"] = request.OPARequestMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OPAScopeInjected)) {
+		body["OPAScopeInjected"] = request.OPAScopeInjected
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OpaEnabled)) {
@@ -10569,6 +15713,138 @@ func (client *Client) UpdateNamespaceScopeSidecarConfig(request *UpdateNamespace
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateNamespaceScopeSidecarConfigResponse{}
 	_body, _err := client.UpdateNamespaceScopeSidecarConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateServiceSidecarInjectWithOptions(request *UpdateServiceSidecarInjectRequest, runtime *util.RuntimeOptions) (_result *UpdateServiceSidecarInjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GuestCluster)) {
+		body["GuestCluster"] = request.GuestCluster
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Inject)) {
+		body["Inject"] = request.Inject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LimitCPU)) {
+		body["LimitCPU"] = request.LimitCPU
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LimitMemory)) {
+		body["LimitMemory"] = request.LimitMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestCPU)) {
+		body["RequestCPU"] = request.RequestCPU
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestMemory)) {
+		body["RequestMemory"] = request.RequestMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		body["ServiceName"] = request.ServiceName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateServiceSidecarInject"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateServiceSidecarInjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateServiceSidecarInject(request *UpdateServiceSidecarInjectRequest) (_result *UpdateServiceSidecarInjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateServiceSidecarInjectResponse{}
+	_body, _err := client.UpdateServiceSidecarInjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateUnlabeledServiceManagedResourceWithOptions(request *UpdateUnlabeledServiceManagedResourceRequest, runtime *util.RuntimeOptions) (_result *UpdateUnlabeledServiceManagedResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GuestCluster)) {
+		body["GuestCluster"] = request.GuestCluster
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
+		body["ServiceName"] = request.ServiceName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateUnlabeledServiceManagedResource"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateUnlabeledServiceManagedResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateUnlabeledServiceManagedResource(request *UpdateUnlabeledServiceManagedResourceRequest) (_result *UpdateUnlabeledServiceManagedResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateUnlabeledServiceManagedResourceResponse{}
+	_body, _err := client.UpdateUnlabeledServiceManagedResourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
