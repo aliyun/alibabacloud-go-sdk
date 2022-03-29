@@ -7,14 +7,15 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
 type BindAliasRequest struct {
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	AppKey    *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 	DeviceId  *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 }
 
 func (s BindAliasRequest) String() string {
@@ -25,6 +26,11 @@ func (s BindAliasRequest) GoString() string {
 	return s.String()
 }
 
+func (s *BindAliasRequest) SetAliasName(v string) *BindAliasRequest {
+	s.AliasName = &v
+	return s
+}
+
 func (s *BindAliasRequest) SetAppKey(v int64) *BindAliasRequest {
 	s.AppKey = &v
 	return s
@@ -32,11 +38,6 @@ func (s *BindAliasRequest) SetAppKey(v int64) *BindAliasRequest {
 
 func (s *BindAliasRequest) SetDeviceId(v string) *BindAliasRequest {
 	s.DeviceId = &v
-	return s
-}
-
-func (s *BindAliasRequest) SetAliasName(v string) *BindAliasRequest {
-	s.AliasName = &v
 	return s
 }
 
@@ -305,11 +306,11 @@ func (s *CheckCertificateRequest) SetAppKey(v int64) *CheckCertificateRequest {
 }
 
 type CheckCertificateResponseBody struct {
-	RequestId           *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Android             *bool                                            `json:"Android,omitempty" xml:"Android,omitempty"`
+	DevelopmentCertInfo *CheckCertificateResponseBodyDevelopmentCertInfo `json:"DevelopmentCertInfo,omitempty" xml:"DevelopmentCertInfo,omitempty" type:"Struct"`
 	IOS                 *bool                                            `json:"IOS,omitempty" xml:"IOS,omitempty"`
 	ProductionCertInfo  *CheckCertificateResponseBodyProductionCertInfo  `json:"ProductionCertInfo,omitempty" xml:"ProductionCertInfo,omitempty" type:"Struct"`
-	DevelopmentCertInfo *CheckCertificateResponseBodyDevelopmentCertInfo `json:"DevelopmentCertInfo,omitempty" xml:"DevelopmentCertInfo,omitempty" type:"Struct"`
+	RequestId           *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckCertificateResponseBody) String() string {
@@ -320,13 +321,13 @@ func (s CheckCertificateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CheckCertificateResponseBody) SetRequestId(v string) *CheckCertificateResponseBody {
-	s.RequestId = &v
+func (s *CheckCertificateResponseBody) SetAndroid(v bool) *CheckCertificateResponseBody {
+	s.Android = &v
 	return s
 }
 
-func (s *CheckCertificateResponseBody) SetAndroid(v bool) *CheckCertificateResponseBody {
-	s.Android = &v
+func (s *CheckCertificateResponseBody) SetDevelopmentCertInfo(v *CheckCertificateResponseBodyDevelopmentCertInfo) *CheckCertificateResponseBody {
+	s.DevelopmentCertInfo = v
 	return s
 }
 
@@ -340,37 +341,14 @@ func (s *CheckCertificateResponseBody) SetProductionCertInfo(v *CheckCertificate
 	return s
 }
 
-func (s *CheckCertificateResponseBody) SetDevelopmentCertInfo(v *CheckCertificateResponseBodyDevelopmentCertInfo) *CheckCertificateResponseBody {
-	s.DevelopmentCertInfo = v
-	return s
-}
-
-type CheckCertificateResponseBodyProductionCertInfo struct {
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	ExipreTime *int64  `json:"ExipreTime,omitempty" xml:"ExipreTime,omitempty"`
-}
-
-func (s CheckCertificateResponseBodyProductionCertInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckCertificateResponseBodyProductionCertInfo) GoString() string {
-	return s.String()
-}
-
-func (s *CheckCertificateResponseBodyProductionCertInfo) SetStatus(v string) *CheckCertificateResponseBodyProductionCertInfo {
-	s.Status = &v
-	return s
-}
-
-func (s *CheckCertificateResponseBodyProductionCertInfo) SetExipreTime(v int64) *CheckCertificateResponseBodyProductionCertInfo {
-	s.ExipreTime = &v
+func (s *CheckCertificateResponseBody) SetRequestId(v string) *CheckCertificateResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 type CheckCertificateResponseBodyDevelopmentCertInfo struct {
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	ExipreTime *int64  `json:"ExipreTime,omitempty" xml:"ExipreTime,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s CheckCertificateResponseBodyDevelopmentCertInfo) String() string {
@@ -381,13 +359,36 @@ func (s CheckCertificateResponseBodyDevelopmentCertInfo) GoString() string {
 	return s.String()
 }
 
+func (s *CheckCertificateResponseBodyDevelopmentCertInfo) SetExipreTime(v int64) *CheckCertificateResponseBodyDevelopmentCertInfo {
+	s.ExipreTime = &v
+	return s
+}
+
 func (s *CheckCertificateResponseBodyDevelopmentCertInfo) SetStatus(v string) *CheckCertificateResponseBodyDevelopmentCertInfo {
 	s.Status = &v
 	return s
 }
 
-func (s *CheckCertificateResponseBodyDevelopmentCertInfo) SetExipreTime(v int64) *CheckCertificateResponseBodyDevelopmentCertInfo {
+type CheckCertificateResponseBodyProductionCertInfo struct {
+	ExipreTime *int64  `json:"ExipreTime,omitempty" xml:"ExipreTime,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s CheckCertificateResponseBodyProductionCertInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckCertificateResponseBodyProductionCertInfo) GoString() string {
+	return s.String()
+}
+
+func (s *CheckCertificateResponseBodyProductionCertInfo) SetExipreTime(v int64) *CheckCertificateResponseBodyProductionCertInfo {
 	s.ExipreTime = &v
+	return s
+}
+
+func (s *CheckCertificateResponseBodyProductionCertInfo) SetStatus(v string) *CheckCertificateResponseBodyProductionCertInfo {
+	s.Status = &v
 	return s
 }
 
@@ -507,8 +508,8 @@ func (s *CheckDevicesRequest) SetDeviceIds(v string) *CheckDevicesRequest {
 }
 
 type CheckDevicesResponseBody struct {
-	RequestId        *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DeviceCheckInfos *CheckDevicesResponseBodyDeviceCheckInfos `json:"DeviceCheckInfos,omitempty" xml:"DeviceCheckInfos,omitempty" type:"Struct"`
+	RequestId        *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CheckDevicesResponseBody) String() string {
@@ -519,13 +520,13 @@ func (s CheckDevicesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CheckDevicesResponseBody) SetRequestId(v string) *CheckDevicesResponseBody {
-	s.RequestId = &v
+func (s *CheckDevicesResponseBody) SetDeviceCheckInfos(v *CheckDevicesResponseBodyDeviceCheckInfos) *CheckDevicesResponseBody {
+	s.DeviceCheckInfos = v
 	return s
 }
 
-func (s *CheckDevicesResponseBody) SetDeviceCheckInfos(v *CheckDevicesResponseBodyDeviceCheckInfos) *CheckDevicesResponseBody {
-	s.DeviceCheckInfos = v
+func (s *CheckDevicesResponseBody) SetRequestId(v string) *CheckDevicesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -547,8 +548,8 @@ func (s *CheckDevicesResponseBodyDeviceCheckInfos) SetDeviceCheckInfo(v []*Check
 }
 
 type CheckDevicesResponseBodyDeviceCheckInfosDeviceCheckInfo struct {
-	DeviceId  *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	Available *bool   `json:"Available,omitempty" xml:"Available,omitempty"`
+	DeviceId  *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 }
 
 func (s CheckDevicesResponseBodyDeviceCheckInfosDeviceCheckInfo) String() string {
@@ -559,13 +560,13 @@ func (s CheckDevicesResponseBodyDeviceCheckInfosDeviceCheckInfo) GoString() stri
 	return s.String()
 }
 
-func (s *CheckDevicesResponseBodyDeviceCheckInfosDeviceCheckInfo) SetDeviceId(v string) *CheckDevicesResponseBodyDeviceCheckInfosDeviceCheckInfo {
-	s.DeviceId = &v
+func (s *CheckDevicesResponseBodyDeviceCheckInfosDeviceCheckInfo) SetAvailable(v bool) *CheckDevicesResponseBodyDeviceCheckInfosDeviceCheckInfo {
+	s.Available = &v
 	return s
 }
 
-func (s *CheckDevicesResponseBodyDeviceCheckInfosDeviceCheckInfo) SetAvailable(v bool) *CheckDevicesResponseBodyDeviceCheckInfosDeviceCheckInfo {
-	s.Available = &v
+func (s *CheckDevicesResponseBodyDeviceCheckInfosDeviceCheckInfo) SetDeviceId(v string) *CheckDevicesResponseBodyDeviceCheckInfosDeviceCheckInfo {
+	s.DeviceId = &v
 	return s
 }
 
@@ -783,8 +784,8 @@ func (s *ListSummaryAppsResponseBodySummaryAppInfos) SetSummaryAppInfo(v []*List
 }
 
 type ListSummaryAppsResponseBodySummaryAppInfosSummaryAppInfo struct {
-	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	AppKey  *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 }
 
 func (s ListSummaryAppsResponseBodySummaryAppInfosSummaryAppInfo) String() string {
@@ -795,13 +796,13 @@ func (s ListSummaryAppsResponseBodySummaryAppInfosSummaryAppInfo) GoString() str
 	return s.String()
 }
 
-func (s *ListSummaryAppsResponseBodySummaryAppInfosSummaryAppInfo) SetAppName(v string) *ListSummaryAppsResponseBodySummaryAppInfosSummaryAppInfo {
-	s.AppName = &v
+func (s *ListSummaryAppsResponseBodySummaryAppInfosSummaryAppInfo) SetAppKey(v int64) *ListSummaryAppsResponseBodySummaryAppInfosSummaryAppInfo {
+	s.AppKey = &v
 	return s
 }
 
-func (s *ListSummaryAppsResponseBodySummaryAppInfosSummaryAppInfo) SetAppKey(v int64) *ListSummaryAppsResponseBodySummaryAppInfosSummaryAppInfo {
-	s.AppKey = &v
+func (s *ListSummaryAppsResponseBodySummaryAppInfosSummaryAppInfo) SetAppName(v string) *ListSummaryAppsResponseBodySummaryAppInfosSummaryAppInfo {
+	s.AppName = &v
 	return s
 }
 
@@ -949,61 +950,61 @@ func (s *MassPushRequest) SetPushTask(v []*MassPushRequestPushTask) *MassPushReq
 }
 
 type MassPushRequestPushTask struct {
-	JobKey                           *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
-	IOSSilentNotification            *bool   `json:"iOSSilentNotification,omitempty" xml:"iOSSilentNotification,omitempty"`
-	StoreOffline                     *bool   `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
-	IOSSubtitle                      *string `json:"iOSSubtitle,omitempty" xml:"iOSSubtitle,omitempty"`
-	AndroidNotificationHuaweiChannel *string `json:"AndroidNotificationHuaweiChannel,omitempty" xml:"AndroidNotificationHuaweiChannel,omitempty"`
-	AndroidNotificationChannel       *string `json:"AndroidNotificationChannel,omitempty" xml:"AndroidNotificationChannel,omitempty"`
-	IOSApnsEnv                       *string `json:"iOSApnsEnv,omitempty" xml:"iOSApnsEnv,omitempty"`
-	IOSBadgeAutoIncrement            *bool   `json:"iOSBadgeAutoIncrement,omitempty" xml:"iOSBadgeAutoIncrement,omitempty"`
-	AndroidXiaoMiNotifyTitle         *string `json:"AndroidXiaoMiNotifyTitle,omitempty" xml:"AndroidXiaoMiNotifyTitle,omitempty"`
-	AndroidNotificationXiaomiChannel *string `json:"AndroidNotificationXiaomiChannel,omitempty" xml:"AndroidNotificationXiaomiChannel,omitempty"`
-	AndroidXiaoMiActivity            *string `json:"AndroidXiaoMiActivity,omitempty" xml:"AndroidXiaoMiActivity,omitempty"`
-	AndroidPopupTitle                *string `json:"AndroidPopupTitle,omitempty" xml:"AndroidPopupTitle,omitempty"`
-	IOSRemindBody                    *string `json:"iOSRemindBody,omitempty" xml:"iOSRemindBody,omitempty"`
-	AndroidNotifyType                *string `json:"AndroidNotifyType,omitempty" xml:"AndroidNotifyType,omitempty"`
-	AndroidOpenUrl                   *string `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
-	AndroidBigTitle                  *string `json:"AndroidBigTitle,omitempty" xml:"AndroidBigTitle,omitempty"`
-	ExpireTime                       *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	AndroidOpenType                  *string `json:"AndroidOpenType,omitempty" xml:"AndroidOpenType,omitempty"`
-	AndroidExtParameters             *string `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
-	AndroidXiaoMiNotifyBody          *string `json:"AndroidXiaoMiNotifyBody,omitempty" xml:"AndroidXiaoMiNotifyBody,omitempty"`
-	AndroidXiaomiBigPictureUrl       *string `json:"AndroidXiaomiBigPictureUrl,omitempty" xml:"AndroidXiaomiBigPictureUrl,omitempty"`
-	TargetValue                      *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
-	IOSMusic                         *string `json:"iOSMusic,omitempty" xml:"iOSMusic,omitempty"`
-	IOSRemind                        *bool   `json:"iOSRemind,omitempty" xml:"iOSRemind,omitempty"`
-	IOSBadge                         *int32  `json:"iOSBadge,omitempty" xml:"iOSBadge,omitempty"`
-	Title                            *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	AndroidMusic                     *string `json:"AndroidMusic,omitempty" xml:"AndroidMusic,omitempty"`
-	IOSNotificationCollapseId        *string `json:"iOSNotificationCollapseId,omitempty" xml:"iOSNotificationCollapseId,omitempty"`
-	AndroidRenderStyle               *string `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
-	IOSNotificationCategory          *string `json:"iOSNotificationCategory,omitempty" xml:"iOSNotificationCategory,omitempty"`
-	IOSNotificationThreadId          *string `json:"iOSNotificationThreadId,omitempty" xml:"iOSNotificationThreadId,omitempty"`
 	AndroidActivity                  *string `json:"AndroidActivity,omitempty" xml:"AndroidActivity,omitempty"`
 	AndroidBigBody                   *string `json:"AndroidBigBody,omitempty" xml:"AndroidBigBody,omitempty"`
-	IOSMutableContent                *bool   `json:"iOSMutableContent,omitempty" xml:"iOSMutableContent,omitempty"`
-	Target                           *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	AndroidNotificationNotifyId      *int32  `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
-	AndroidNotificationVivoChannel   *string `json:"AndroidNotificationVivoChannel,omitempty" xml:"AndroidNotificationVivoChannel,omitempty"`
-	AndroidPopupActivity             *string `json:"AndroidPopupActivity,omitempty" xml:"AndroidPopupActivity,omitempty"`
-	DeviceType                       *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	AndroidRemind                    *bool   `json:"AndroidRemind,omitempty" xml:"AndroidRemind,omitempty"`
-	AndroidPopupBody                 *string `json:"AndroidPopupBody,omitempty" xml:"AndroidPopupBody,omitempty"`
-	IOSExtParameters                 *string `json:"iOSExtParameters,omitempty" xml:"iOSExtParameters,omitempty"`
-	Body                             *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	AndroidBigPictureUrl             *string `json:"AndroidBigPictureUrl,omitempty" xml:"AndroidBigPictureUrl,omitempty"`
+	AndroidBigTitle                  *string `json:"AndroidBigTitle,omitempty" xml:"AndroidBigTitle,omitempty"`
+	AndroidExtParameters             *string `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
+	AndroidImageUrl                  *string `json:"AndroidImageUrl,omitempty" xml:"AndroidImageUrl,omitempty"`
+	AndroidInboxBody                 *string `json:"AndroidInboxBody,omitempty" xml:"AndroidInboxBody,omitempty"`
+	AndroidMessageHuaweiCategory     *string `json:"AndroidMessageHuaweiCategory,omitempty" xml:"AndroidMessageHuaweiCategory,omitempty"`
+	AndroidMessageHuaweiUrgency      *string `json:"AndroidMessageHuaweiUrgency,omitempty" xml:"AndroidMessageHuaweiUrgency,omitempty"`
+	AndroidMusic                     *string `json:"AndroidMusic,omitempty" xml:"AndroidMusic,omitempty"`
 	AndroidNotificationBarPriority   *int32  `json:"AndroidNotificationBarPriority,omitempty" xml:"AndroidNotificationBarPriority,omitempty"`
 	AndroidNotificationBarType       *int32  `json:"AndroidNotificationBarType,omitempty" xml:"AndroidNotificationBarType,omitempty"`
-	PushType                         *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	SendSpeed                        *int32  `json:"SendSpeed,omitempty" xml:"SendSpeed,omitempty"`
-	PushTime                         *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
-	AndroidBigPictureUrl             *string `json:"AndroidBigPictureUrl,omitempty" xml:"AndroidBigPictureUrl,omitempty"`
-	AndroidInboxBody                 *string `json:"AndroidInboxBody,omitempty" xml:"AndroidInboxBody,omitempty"`
-	AndroidImageUrl                  *string `json:"AndroidImageUrl,omitempty" xml:"AndroidImageUrl,omitempty"`
+	AndroidNotificationChannel       *string `json:"AndroidNotificationChannel,omitempty" xml:"AndroidNotificationChannel,omitempty"`
+	AndroidNotificationHuaweiChannel *string `json:"AndroidNotificationHuaweiChannel,omitempty" xml:"AndroidNotificationHuaweiChannel,omitempty"`
+	AndroidNotificationNotifyId      *int32  `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
+	AndroidNotificationVivoChannel   *string `json:"AndroidNotificationVivoChannel,omitempty" xml:"AndroidNotificationVivoChannel,omitempty"`
+	AndroidNotificationXiaomiChannel *string `json:"AndroidNotificationXiaomiChannel,omitempty" xml:"AndroidNotificationXiaomiChannel,omitempty"`
+	AndroidNotifyType                *string `json:"AndroidNotifyType,omitempty" xml:"AndroidNotifyType,omitempty"`
+	AndroidOpenType                  *string `json:"AndroidOpenType,omitempty" xml:"AndroidOpenType,omitempty"`
+	AndroidOpenUrl                   *string `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
+	AndroidPopupActivity             *string `json:"AndroidPopupActivity,omitempty" xml:"AndroidPopupActivity,omitempty"`
+	AndroidPopupBody                 *string `json:"AndroidPopupBody,omitempty" xml:"AndroidPopupBody,omitempty"`
+	AndroidPopupTitle                *string `json:"AndroidPopupTitle,omitempty" xml:"AndroidPopupTitle,omitempty"`
+	AndroidRemind                    *bool   `json:"AndroidRemind,omitempty" xml:"AndroidRemind,omitempty"`
+	AndroidRenderStyle               *string `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
+	AndroidXiaoMiActivity            *string `json:"AndroidXiaoMiActivity,omitempty" xml:"AndroidXiaoMiActivity,omitempty"`
+	AndroidXiaoMiNotifyBody          *string `json:"AndroidXiaoMiNotifyBody,omitempty" xml:"AndroidXiaoMiNotifyBody,omitempty"`
+	AndroidXiaoMiNotifyTitle         *string `json:"AndroidXiaoMiNotifyTitle,omitempty" xml:"AndroidXiaoMiNotifyTitle,omitempty"`
+	AndroidXiaomiBigPictureUrl       *string `json:"AndroidXiaomiBigPictureUrl,omitempty" xml:"AndroidXiaomiBigPictureUrl,omitempty"`
 	AndroidXiaomiImageUrl            *string `json:"AndroidXiaomiImageUrl,omitempty" xml:"AndroidXiaomiImageUrl,omitempty"`
-	AndroidMessageHuaweiUrgency      *string `json:"AndroidMessageHuaweiUrgency,omitempty" xml:"AndroidMessageHuaweiUrgency,omitempty"`
-	AndroidMessageHuaweiCategory     *string `json:"AndroidMessageHuaweiCategory,omitempty" xml:"AndroidMessageHuaweiCategory,omitempty"`
+	Body                             *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	DeviceType                       *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	ExpireTime                       *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	JobKey                           *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
+	PushTime                         *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
+	PushType                         *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
 	SendChannels                     *string `json:"SendChannels,omitempty" xml:"SendChannels,omitempty"`
+	SendSpeed                        *int32  `json:"SendSpeed,omitempty" xml:"SendSpeed,omitempty"`
+	StoreOffline                     *bool   `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
+	Target                           *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	TargetValue                      *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
+	Title                            *string `json:"Title,omitempty" xml:"Title,omitempty"`
+	IOSApnsEnv                       *string `json:"iOSApnsEnv,omitempty" xml:"iOSApnsEnv,omitempty"`
+	IOSBadge                         *int32  `json:"iOSBadge,omitempty" xml:"iOSBadge,omitempty"`
+	IOSBadgeAutoIncrement            *bool   `json:"iOSBadgeAutoIncrement,omitempty" xml:"iOSBadgeAutoIncrement,omitempty"`
+	IOSExtParameters                 *string `json:"iOSExtParameters,omitempty" xml:"iOSExtParameters,omitempty"`
+	IOSMusic                         *string `json:"iOSMusic,omitempty" xml:"iOSMusic,omitempty"`
+	IOSMutableContent                *bool   `json:"iOSMutableContent,omitempty" xml:"iOSMutableContent,omitempty"`
+	IOSNotificationCategory          *string `json:"iOSNotificationCategory,omitempty" xml:"iOSNotificationCategory,omitempty"`
+	IOSNotificationCollapseId        *string `json:"iOSNotificationCollapseId,omitempty" xml:"iOSNotificationCollapseId,omitempty"`
+	IOSNotificationThreadId          *string `json:"iOSNotificationThreadId,omitempty" xml:"iOSNotificationThreadId,omitempty"`
+	IOSRemind                        *bool   `json:"iOSRemind,omitempty" xml:"iOSRemind,omitempty"`
+	IOSRemindBody                    *string `json:"iOSRemindBody,omitempty" xml:"iOSRemindBody,omitempty"`
+	IOSSilentNotification            *bool   `json:"iOSSilentNotification,omitempty" xml:"iOSSilentNotification,omitempty"`
+	IOSSubtitle                      *string `json:"iOSSubtitle,omitempty" xml:"iOSSubtitle,omitempty"`
 }
 
 func (s MassPushRequestPushTask) String() string {
@@ -1012,161 +1013,6 @@ func (s MassPushRequestPushTask) String() string {
 
 func (s MassPushRequestPushTask) GoString() string {
 	return s.String()
-}
-
-func (s *MassPushRequestPushTask) SetJobKey(v string) *MassPushRequestPushTask {
-	s.JobKey = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetIOSSilentNotification(v bool) *MassPushRequestPushTask {
-	s.IOSSilentNotification = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetStoreOffline(v bool) *MassPushRequestPushTask {
-	s.StoreOffline = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetIOSSubtitle(v string) *MassPushRequestPushTask {
-	s.IOSSubtitle = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidNotificationHuaweiChannel(v string) *MassPushRequestPushTask {
-	s.AndroidNotificationHuaweiChannel = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidNotificationChannel(v string) *MassPushRequestPushTask {
-	s.AndroidNotificationChannel = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetIOSApnsEnv(v string) *MassPushRequestPushTask {
-	s.IOSApnsEnv = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetIOSBadgeAutoIncrement(v bool) *MassPushRequestPushTask {
-	s.IOSBadgeAutoIncrement = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidXiaoMiNotifyTitle(v string) *MassPushRequestPushTask {
-	s.AndroidXiaoMiNotifyTitle = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidNotificationXiaomiChannel(v string) *MassPushRequestPushTask {
-	s.AndroidNotificationXiaomiChannel = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidXiaoMiActivity(v string) *MassPushRequestPushTask {
-	s.AndroidXiaoMiActivity = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidPopupTitle(v string) *MassPushRequestPushTask {
-	s.AndroidPopupTitle = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetIOSRemindBody(v string) *MassPushRequestPushTask {
-	s.IOSRemindBody = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidNotifyType(v string) *MassPushRequestPushTask {
-	s.AndroidNotifyType = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidOpenUrl(v string) *MassPushRequestPushTask {
-	s.AndroidOpenUrl = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidBigTitle(v string) *MassPushRequestPushTask {
-	s.AndroidBigTitle = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetExpireTime(v string) *MassPushRequestPushTask {
-	s.ExpireTime = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidOpenType(v string) *MassPushRequestPushTask {
-	s.AndroidOpenType = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidExtParameters(v string) *MassPushRequestPushTask {
-	s.AndroidExtParameters = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidXiaoMiNotifyBody(v string) *MassPushRequestPushTask {
-	s.AndroidXiaoMiNotifyBody = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidXiaomiBigPictureUrl(v string) *MassPushRequestPushTask {
-	s.AndroidXiaomiBigPictureUrl = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetTargetValue(v string) *MassPushRequestPushTask {
-	s.TargetValue = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetIOSMusic(v string) *MassPushRequestPushTask {
-	s.IOSMusic = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetIOSRemind(v bool) *MassPushRequestPushTask {
-	s.IOSRemind = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetIOSBadge(v int32) *MassPushRequestPushTask {
-	s.IOSBadge = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetTitle(v string) *MassPushRequestPushTask {
-	s.Title = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidMusic(v string) *MassPushRequestPushTask {
-	s.AndroidMusic = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetIOSNotificationCollapseId(v string) *MassPushRequestPushTask {
-	s.IOSNotificationCollapseId = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetAndroidRenderStyle(v string) *MassPushRequestPushTask {
-	s.AndroidRenderStyle = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetIOSNotificationCategory(v string) *MassPushRequestPushTask {
-	s.IOSNotificationCategory = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetIOSNotificationThreadId(v string) *MassPushRequestPushTask {
-	s.IOSNotificationThreadId = &v
-	return s
 }
 
 func (s *MassPushRequestPushTask) SetAndroidActivity(v string) *MassPushRequestPushTask {
@@ -1179,53 +1025,43 @@ func (s *MassPushRequestPushTask) SetAndroidBigBody(v string) *MassPushRequestPu
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetIOSMutableContent(v bool) *MassPushRequestPushTask {
-	s.IOSMutableContent = &v
+func (s *MassPushRequestPushTask) SetAndroidBigPictureUrl(v string) *MassPushRequestPushTask {
+	s.AndroidBigPictureUrl = &v
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetTarget(v string) *MassPushRequestPushTask {
-	s.Target = &v
+func (s *MassPushRequestPushTask) SetAndroidBigTitle(v string) *MassPushRequestPushTask {
+	s.AndroidBigTitle = &v
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetAndroidNotificationNotifyId(v int32) *MassPushRequestPushTask {
-	s.AndroidNotificationNotifyId = &v
+func (s *MassPushRequestPushTask) SetAndroidExtParameters(v string) *MassPushRequestPushTask {
+	s.AndroidExtParameters = &v
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetAndroidNotificationVivoChannel(v string) *MassPushRequestPushTask {
-	s.AndroidNotificationVivoChannel = &v
+func (s *MassPushRequestPushTask) SetAndroidImageUrl(v string) *MassPushRequestPushTask {
+	s.AndroidImageUrl = &v
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetAndroidPopupActivity(v string) *MassPushRequestPushTask {
-	s.AndroidPopupActivity = &v
+func (s *MassPushRequestPushTask) SetAndroidInboxBody(v string) *MassPushRequestPushTask {
+	s.AndroidInboxBody = &v
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetDeviceType(v string) *MassPushRequestPushTask {
-	s.DeviceType = &v
+func (s *MassPushRequestPushTask) SetAndroidMessageHuaweiCategory(v string) *MassPushRequestPushTask {
+	s.AndroidMessageHuaweiCategory = &v
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetAndroidRemind(v bool) *MassPushRequestPushTask {
-	s.AndroidRemind = &v
+func (s *MassPushRequestPushTask) SetAndroidMessageHuaweiUrgency(v string) *MassPushRequestPushTask {
+	s.AndroidMessageHuaweiUrgency = &v
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetAndroidPopupBody(v string) *MassPushRequestPushTask {
-	s.AndroidPopupBody = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetIOSExtParameters(v string) *MassPushRequestPushTask {
-	s.IOSExtParameters = &v
-	return s
-}
-
-func (s *MassPushRequestPushTask) SetBody(v string) *MassPushRequestPushTask {
-	s.Body = &v
+func (s *MassPushRequestPushTask) SetAndroidMusic(v string) *MassPushRequestPushTask {
+	s.AndroidMusic = &v
 	return s
 }
 
@@ -1239,33 +1075,88 @@ func (s *MassPushRequestPushTask) SetAndroidNotificationBarType(v int32) *MassPu
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetPushType(v string) *MassPushRequestPushTask {
-	s.PushType = &v
+func (s *MassPushRequestPushTask) SetAndroidNotificationChannel(v string) *MassPushRequestPushTask {
+	s.AndroidNotificationChannel = &v
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetSendSpeed(v int32) *MassPushRequestPushTask {
-	s.SendSpeed = &v
+func (s *MassPushRequestPushTask) SetAndroidNotificationHuaweiChannel(v string) *MassPushRequestPushTask {
+	s.AndroidNotificationHuaweiChannel = &v
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetPushTime(v string) *MassPushRequestPushTask {
-	s.PushTime = &v
+func (s *MassPushRequestPushTask) SetAndroidNotificationNotifyId(v int32) *MassPushRequestPushTask {
+	s.AndroidNotificationNotifyId = &v
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetAndroidBigPictureUrl(v string) *MassPushRequestPushTask {
-	s.AndroidBigPictureUrl = &v
+func (s *MassPushRequestPushTask) SetAndroidNotificationVivoChannel(v string) *MassPushRequestPushTask {
+	s.AndroidNotificationVivoChannel = &v
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetAndroidInboxBody(v string) *MassPushRequestPushTask {
-	s.AndroidInboxBody = &v
+func (s *MassPushRequestPushTask) SetAndroidNotificationXiaomiChannel(v string) *MassPushRequestPushTask {
+	s.AndroidNotificationXiaomiChannel = &v
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetAndroidImageUrl(v string) *MassPushRequestPushTask {
-	s.AndroidImageUrl = &v
+func (s *MassPushRequestPushTask) SetAndroidNotifyType(v string) *MassPushRequestPushTask {
+	s.AndroidNotifyType = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidOpenType(v string) *MassPushRequestPushTask {
+	s.AndroidOpenType = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidOpenUrl(v string) *MassPushRequestPushTask {
+	s.AndroidOpenUrl = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidPopupActivity(v string) *MassPushRequestPushTask {
+	s.AndroidPopupActivity = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidPopupBody(v string) *MassPushRequestPushTask {
+	s.AndroidPopupBody = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidPopupTitle(v string) *MassPushRequestPushTask {
+	s.AndroidPopupTitle = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidRemind(v bool) *MassPushRequestPushTask {
+	s.AndroidRemind = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidRenderStyle(v string) *MassPushRequestPushTask {
+	s.AndroidRenderStyle = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidXiaoMiActivity(v string) *MassPushRequestPushTask {
+	s.AndroidXiaoMiActivity = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidXiaoMiNotifyBody(v string) *MassPushRequestPushTask {
+	s.AndroidXiaoMiNotifyBody = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidXiaoMiNotifyTitle(v string) *MassPushRequestPushTask {
+	s.AndroidXiaoMiNotifyTitle = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetAndroidXiaomiBigPictureUrl(v string) *MassPushRequestPushTask {
+	s.AndroidXiaomiBigPictureUrl = &v
 	return s
 }
 
@@ -1274,13 +1165,33 @@ func (s *MassPushRequestPushTask) SetAndroidXiaomiImageUrl(v string) *MassPushRe
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetAndroidMessageHuaweiUrgency(v string) *MassPushRequestPushTask {
-	s.AndroidMessageHuaweiUrgency = &v
+func (s *MassPushRequestPushTask) SetBody(v string) *MassPushRequestPushTask {
+	s.Body = &v
 	return s
 }
 
-func (s *MassPushRequestPushTask) SetAndroidMessageHuaweiCategory(v string) *MassPushRequestPushTask {
-	s.AndroidMessageHuaweiCategory = &v
+func (s *MassPushRequestPushTask) SetDeviceType(v string) *MassPushRequestPushTask {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetExpireTime(v string) *MassPushRequestPushTask {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetJobKey(v string) *MassPushRequestPushTask {
+	s.JobKey = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetPushTime(v string) *MassPushRequestPushTask {
+	s.PushTime = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetPushType(v string) *MassPushRequestPushTask {
+	s.PushType = &v
 	return s
 }
 
@@ -1289,9 +1200,99 @@ func (s *MassPushRequestPushTask) SetSendChannels(v string) *MassPushRequestPush
 	return s
 }
 
+func (s *MassPushRequestPushTask) SetSendSpeed(v int32) *MassPushRequestPushTask {
+	s.SendSpeed = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetStoreOffline(v bool) *MassPushRequestPushTask {
+	s.StoreOffline = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetTarget(v string) *MassPushRequestPushTask {
+	s.Target = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetTargetValue(v string) *MassPushRequestPushTask {
+	s.TargetValue = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetTitle(v string) *MassPushRequestPushTask {
+	s.Title = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSApnsEnv(v string) *MassPushRequestPushTask {
+	s.IOSApnsEnv = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSBadge(v int32) *MassPushRequestPushTask {
+	s.IOSBadge = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSBadgeAutoIncrement(v bool) *MassPushRequestPushTask {
+	s.IOSBadgeAutoIncrement = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSExtParameters(v string) *MassPushRequestPushTask {
+	s.IOSExtParameters = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSMusic(v string) *MassPushRequestPushTask {
+	s.IOSMusic = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSMutableContent(v bool) *MassPushRequestPushTask {
+	s.IOSMutableContent = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSNotificationCategory(v string) *MassPushRequestPushTask {
+	s.IOSNotificationCategory = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSNotificationCollapseId(v string) *MassPushRequestPushTask {
+	s.IOSNotificationCollapseId = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSNotificationThreadId(v string) *MassPushRequestPushTask {
+	s.IOSNotificationThreadId = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSRemind(v bool) *MassPushRequestPushTask {
+	s.IOSRemind = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSRemindBody(v string) *MassPushRequestPushTask {
+	s.IOSRemindBody = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSSilentNotification(v bool) *MassPushRequestPushTask {
+	s.IOSSilentNotification = &v
+	return s
+}
+
+func (s *MassPushRequestPushTask) SetIOSSubtitle(v string) *MassPushRequestPushTask {
+	s.IOSSubtitle = &v
+	return s
+}
+
 type MassPushResponseBody struct {
-	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	MessageIds *MassPushResponseBodyMessageIds `json:"MessageIds,omitempty" xml:"MessageIds,omitempty" type:"Struct"`
+	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s MassPushResponseBody) String() string {
@@ -1302,13 +1303,13 @@ func (s MassPushResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *MassPushResponseBody) SetRequestId(v string) *MassPushResponseBody {
-	s.RequestId = &v
+func (s *MassPushResponseBody) SetMessageIds(v *MassPushResponseBodyMessageIds) *MassPushResponseBody {
+	s.MessageIds = v
 	return s
 }
 
-func (s *MassPushResponseBody) SetMessageIds(v *MassPushResponseBodyMessageIds) *MassPushResponseBody {
-	s.MessageIds = v
+func (s *MassPushResponseBody) SetRequestId(v string) *MassPushResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -1353,67 +1354,67 @@ func (s *MassPushResponse) SetBody(v *MassPushResponseBody) *MassPushResponse {
 }
 
 type PushRequest struct {
+	AndroidActivity                  *string `json:"AndroidActivity,omitempty" xml:"AndroidActivity,omitempty"`
+	AndroidBigBody                   *string `json:"AndroidBigBody,omitempty" xml:"AndroidBigBody,omitempty"`
+	AndroidBigPictureUrl             *string `json:"AndroidBigPictureUrl,omitempty" xml:"AndroidBigPictureUrl,omitempty"`
+	AndroidBigTitle                  *string `json:"AndroidBigTitle,omitempty" xml:"AndroidBigTitle,omitempty"`
+	AndroidExtParameters             *string `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
+	AndroidImageUrl                  *string `json:"AndroidImageUrl,omitempty" xml:"AndroidImageUrl,omitempty"`
+	AndroidInboxBody                 *string `json:"AndroidInboxBody,omitempty" xml:"AndroidInboxBody,omitempty"`
+	AndroidMessageHuaweiCategory     *string `json:"AndroidMessageHuaweiCategory,omitempty" xml:"AndroidMessageHuaweiCategory,omitempty"`
+	AndroidMessageHuaweiUrgency      *string `json:"AndroidMessageHuaweiUrgency,omitempty" xml:"AndroidMessageHuaweiUrgency,omitempty"`
+	AndroidMusic                     *string `json:"AndroidMusic,omitempty" xml:"AndroidMusic,omitempty"`
+	AndroidNotificationBarPriority   *int32  `json:"AndroidNotificationBarPriority,omitempty" xml:"AndroidNotificationBarPriority,omitempty"`
+	AndroidNotificationBarType       *int32  `json:"AndroidNotificationBarType,omitempty" xml:"AndroidNotificationBarType,omitempty"`
+	AndroidNotificationChannel       *string `json:"AndroidNotificationChannel,omitempty" xml:"AndroidNotificationChannel,omitempty"`
+	AndroidNotificationHuaweiChannel *string `json:"AndroidNotificationHuaweiChannel,omitempty" xml:"AndroidNotificationHuaweiChannel,omitempty"`
+	AndroidNotificationNotifyId      *int32  `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
+	AndroidNotificationVivoChannel   *string `json:"AndroidNotificationVivoChannel,omitempty" xml:"AndroidNotificationVivoChannel,omitempty"`
+	AndroidNotificationXiaomiChannel *string `json:"AndroidNotificationXiaomiChannel,omitempty" xml:"AndroidNotificationXiaomiChannel,omitempty"`
+	AndroidNotifyType                *string `json:"AndroidNotifyType,omitempty" xml:"AndroidNotifyType,omitempty"`
+	AndroidOpenType                  *string `json:"AndroidOpenType,omitempty" xml:"AndroidOpenType,omitempty"`
+	AndroidOpenUrl                   *string `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
+	AndroidPopupActivity             *string `json:"AndroidPopupActivity,omitempty" xml:"AndroidPopupActivity,omitempty"`
+	AndroidPopupBody                 *string `json:"AndroidPopupBody,omitempty" xml:"AndroidPopupBody,omitempty"`
+	AndroidPopupTitle                *string `json:"AndroidPopupTitle,omitempty" xml:"AndroidPopupTitle,omitempty"`
+	AndroidRemind                    *bool   `json:"AndroidRemind,omitempty" xml:"AndroidRemind,omitempty"`
+	AndroidRenderStyle               *int32  `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
+	AndroidXiaoMiActivity            *string `json:"AndroidXiaoMiActivity,omitempty" xml:"AndroidXiaoMiActivity,omitempty"`
+	AndroidXiaoMiNotifyBody          *string `json:"AndroidXiaoMiNotifyBody,omitempty" xml:"AndroidXiaoMiNotifyBody,omitempty"`
+	AndroidXiaoMiNotifyTitle         *string `json:"AndroidXiaoMiNotifyTitle,omitempty" xml:"AndroidXiaoMiNotifyTitle,omitempty"`
+	AndroidXiaomiBigPictureUrl       *string `json:"AndroidXiaomiBigPictureUrl,omitempty" xml:"AndroidXiaomiBigPictureUrl,omitempty"`
+	AndroidXiaomiImageUrl            *string `json:"AndroidXiaomiImageUrl,omitempty" xml:"AndroidXiaomiImageUrl,omitempty"`
 	AppKey                           *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	PushType                         *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	Body                             *string `json:"Body,omitempty" xml:"Body,omitempty"`
 	DeviceType                       *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	ExpireTime                       *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	JobKey                           *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
+	PushTime                         *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
+	PushType                         *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	SendChannels                     *string `json:"SendChannels,omitempty" xml:"SendChannels,omitempty"`
+	SendSpeed                        *int32  `json:"SendSpeed,omitempty" xml:"SendSpeed,omitempty"`
+	SmsDelaySecs                     *int32  `json:"SmsDelaySecs,omitempty" xml:"SmsDelaySecs,omitempty"`
+	SmsParams                        *string `json:"SmsParams,omitempty" xml:"SmsParams,omitempty"`
+	SmsSendPolicy                    *int32  `json:"SmsSendPolicy,omitempty" xml:"SmsSendPolicy,omitempty"`
+	SmsSignName                      *string `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
+	SmsTemplateName                  *string `json:"SmsTemplateName,omitempty" xml:"SmsTemplateName,omitempty"`
+	StoreOffline                     *bool   `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
 	Target                           *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	TargetValue                      *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
 	Title                            *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Body                             *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	JobKey                           *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
-	SendSpeed                        *int32  `json:"SendSpeed,omitempty" xml:"SendSpeed,omitempty"`
-	StoreOffline                     *bool   `json:"StoreOffline,omitempty" xml:"StoreOffline,omitempty"`
-	PushTime                         *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
-	ExpireTime                       *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	IOSApnsEnv                       *string `json:"iOSApnsEnv,omitempty" xml:"iOSApnsEnv,omitempty"`
-	IOSRemind                        *bool   `json:"iOSRemind,omitempty" xml:"iOSRemind,omitempty"`
-	IOSRemindBody                    *string `json:"iOSRemindBody,omitempty" xml:"iOSRemindBody,omitempty"`
 	IOSBadge                         *int32  `json:"iOSBadge,omitempty" xml:"iOSBadge,omitempty"`
 	IOSBadgeAutoIncrement            *bool   `json:"iOSBadgeAutoIncrement,omitempty" xml:"iOSBadgeAutoIncrement,omitempty"`
-	IOSSilentNotification            *bool   `json:"iOSSilentNotification,omitempty" xml:"iOSSilentNotification,omitempty"`
-	IOSMusic                         *string `json:"iOSMusic,omitempty" xml:"iOSMusic,omitempty"`
-	IOSSubtitle                      *string `json:"iOSSubtitle,omitempty" xml:"iOSSubtitle,omitempty"`
-	IOSNotificationCategory          *string `json:"iOSNotificationCategory,omitempty" xml:"iOSNotificationCategory,omitempty"`
-	IOSMutableContent                *bool   `json:"iOSMutableContent,omitempty" xml:"iOSMutableContent,omitempty"`
 	IOSExtParameters                 *string `json:"iOSExtParameters,omitempty" xml:"iOSExtParameters,omitempty"`
-	AndroidNotifyType                *string `json:"AndroidNotifyType,omitempty" xml:"AndroidNotifyType,omitempty"`
-	AndroidOpenType                  *string `json:"AndroidOpenType,omitempty" xml:"AndroidOpenType,omitempty"`
-	AndroidActivity                  *string `json:"AndroidActivity,omitempty" xml:"AndroidActivity,omitempty"`
-	AndroidMusic                     *string `json:"AndroidMusic,omitempty" xml:"AndroidMusic,omitempty"`
-	AndroidOpenUrl                   *string `json:"AndroidOpenUrl,omitempty" xml:"AndroidOpenUrl,omitempty"`
-	AndroidXiaoMiActivity            *string `json:"AndroidXiaoMiActivity,omitempty" xml:"AndroidXiaoMiActivity,omitempty"`
-	AndroidXiaoMiNotifyTitle         *string `json:"AndroidXiaoMiNotifyTitle,omitempty" xml:"AndroidXiaoMiNotifyTitle,omitempty"`
-	AndroidXiaoMiNotifyBody          *string `json:"AndroidXiaoMiNotifyBody,omitempty" xml:"AndroidXiaoMiNotifyBody,omitempty"`
-	AndroidPopupActivity             *string `json:"AndroidPopupActivity,omitempty" xml:"AndroidPopupActivity,omitempty"`
-	AndroidPopupTitle                *string `json:"AndroidPopupTitle,omitempty" xml:"AndroidPopupTitle,omitempty"`
-	AndroidPopupBody                 *string `json:"AndroidPopupBody,omitempty" xml:"AndroidPopupBody,omitempty"`
-	AndroidNotificationBarType       *int32  `json:"AndroidNotificationBarType,omitempty" xml:"AndroidNotificationBarType,omitempty"`
-	AndroidNotificationBarPriority   *int32  `json:"AndroidNotificationBarPriority,omitempty" xml:"AndroidNotificationBarPriority,omitempty"`
-	AndroidExtParameters             *string `json:"AndroidExtParameters,omitempty" xml:"AndroidExtParameters,omitempty"`
-	AndroidRemind                    *bool   `json:"AndroidRemind,omitempty" xml:"AndroidRemind,omitempty"`
-	AndroidNotificationChannel       *string `json:"AndroidNotificationChannel,omitempty" xml:"AndroidNotificationChannel,omitempty"`
-	AndroidNotificationXiaomiChannel *string `json:"AndroidNotificationXiaomiChannel,omitempty" xml:"AndroidNotificationXiaomiChannel,omitempty"`
-	SmsTemplateName                  *string `json:"SmsTemplateName,omitempty" xml:"SmsTemplateName,omitempty"`
-	SmsSignName                      *string `json:"SmsSignName,omitempty" xml:"SmsSignName,omitempty"`
-	SmsParams                        *string `json:"SmsParams,omitempty" xml:"SmsParams,omitempty"`
-	SmsDelaySecs                     *int32  `json:"SmsDelaySecs,omitempty" xml:"SmsDelaySecs,omitempty"`
-	SmsSendPolicy                    *int32  `json:"SmsSendPolicy,omitempty" xml:"SmsSendPolicy,omitempty"`
-	AndroidNotificationVivoChannel   *string `json:"AndroidNotificationVivoChannel,omitempty" xml:"AndroidNotificationVivoChannel,omitempty"`
-	AndroidNotificationHuaweiChannel *string `json:"AndroidNotificationHuaweiChannel,omitempty" xml:"AndroidNotificationHuaweiChannel,omitempty"`
-	AndroidNotificationNotifyId      *int32  `json:"AndroidNotificationNotifyId,omitempty" xml:"AndroidNotificationNotifyId,omitempty"`
+	IOSMusic                         *string `json:"iOSMusic,omitempty" xml:"iOSMusic,omitempty"`
+	IOSMutableContent                *bool   `json:"iOSMutableContent,omitempty" xml:"iOSMutableContent,omitempty"`
+	IOSNotificationCategory          *string `json:"iOSNotificationCategory,omitempty" xml:"iOSNotificationCategory,omitempty"`
 	IOSNotificationCollapseId        *string `json:"iOSNotificationCollapseId,omitempty" xml:"iOSNotificationCollapseId,omitempty"`
-	AndroidRenderStyle               *int32  `json:"AndroidRenderStyle,omitempty" xml:"AndroidRenderStyle,omitempty"`
-	AndroidBigTitle                  *string `json:"AndroidBigTitle,omitempty" xml:"AndroidBigTitle,omitempty"`
-	AndroidBigBody                   *string `json:"AndroidBigBody,omitempty" xml:"AndroidBigBody,omitempty"`
-	AndroidXiaomiBigPictureUrl       *string `json:"AndroidXiaomiBigPictureUrl,omitempty" xml:"AndroidXiaomiBigPictureUrl,omitempty"`
 	IOSNotificationThreadId          *string `json:"iOSNotificationThreadId,omitempty" xml:"iOSNotificationThreadId,omitempty"`
-	AndroidBigPictureUrl             *string `json:"AndroidBigPictureUrl,omitempty" xml:"AndroidBigPictureUrl,omitempty"`
-	AndroidInboxBody                 *string `json:"AndroidInboxBody,omitempty" xml:"AndroidInboxBody,omitempty"`
-	AndroidImageUrl                  *string `json:"AndroidImageUrl,omitempty" xml:"AndroidImageUrl,omitempty"`
-	AndroidXiaomiImageUrl            *string `json:"AndroidXiaomiImageUrl,omitempty" xml:"AndroidXiaomiImageUrl,omitempty"`
-	AndroidMessageHuaweiUrgency      *string `json:"AndroidMessageHuaweiUrgency,omitempty" xml:"AndroidMessageHuaweiUrgency,omitempty"`
-	AndroidMessageHuaweiCategory     *string `json:"AndroidMessageHuaweiCategory,omitempty" xml:"AndroidMessageHuaweiCategory,omitempty"`
-	SendChannels                     *string `json:"SendChannels,omitempty" xml:"SendChannels,omitempty"`
+	IOSRemind                        *bool   `json:"iOSRemind,omitempty" xml:"iOSRemind,omitempty"`
+	IOSRemindBody                    *string `json:"iOSRemindBody,omitempty" xml:"iOSRemindBody,omitempty"`
+	IOSSilentNotification            *bool   `json:"iOSSilentNotification,omitempty" xml:"iOSSilentNotification,omitempty"`
+	IOSSubtitle                      *string `json:"iOSSubtitle,omitempty" xml:"iOSSubtitle,omitempty"`
 }
 
 func (s PushRequest) String() string {
@@ -1424,8 +1425,183 @@ func (s PushRequest) GoString() string {
 	return s.String()
 }
 
+func (s *PushRequest) SetAndroidActivity(v string) *PushRequest {
+	s.AndroidActivity = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidBigBody(v string) *PushRequest {
+	s.AndroidBigBody = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidBigPictureUrl(v string) *PushRequest {
+	s.AndroidBigPictureUrl = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidBigTitle(v string) *PushRequest {
+	s.AndroidBigTitle = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidExtParameters(v string) *PushRequest {
+	s.AndroidExtParameters = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidImageUrl(v string) *PushRequest {
+	s.AndroidImageUrl = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidInboxBody(v string) *PushRequest {
+	s.AndroidInboxBody = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidMessageHuaweiCategory(v string) *PushRequest {
+	s.AndroidMessageHuaweiCategory = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidMessageHuaweiUrgency(v string) *PushRequest {
+	s.AndroidMessageHuaweiUrgency = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidMusic(v string) *PushRequest {
+	s.AndroidMusic = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidNotificationBarPriority(v int32) *PushRequest {
+	s.AndroidNotificationBarPriority = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidNotificationBarType(v int32) *PushRequest {
+	s.AndroidNotificationBarType = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidNotificationChannel(v string) *PushRequest {
+	s.AndroidNotificationChannel = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidNotificationHuaweiChannel(v string) *PushRequest {
+	s.AndroidNotificationHuaweiChannel = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidNotificationNotifyId(v int32) *PushRequest {
+	s.AndroidNotificationNotifyId = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidNotificationVivoChannel(v string) *PushRequest {
+	s.AndroidNotificationVivoChannel = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidNotificationXiaomiChannel(v string) *PushRequest {
+	s.AndroidNotificationXiaomiChannel = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidNotifyType(v string) *PushRequest {
+	s.AndroidNotifyType = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidOpenType(v string) *PushRequest {
+	s.AndroidOpenType = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidOpenUrl(v string) *PushRequest {
+	s.AndroidOpenUrl = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidPopupActivity(v string) *PushRequest {
+	s.AndroidPopupActivity = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidPopupBody(v string) *PushRequest {
+	s.AndroidPopupBody = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidPopupTitle(v string) *PushRequest {
+	s.AndroidPopupTitle = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidRemind(v bool) *PushRequest {
+	s.AndroidRemind = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidRenderStyle(v int32) *PushRequest {
+	s.AndroidRenderStyle = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidXiaoMiActivity(v string) *PushRequest {
+	s.AndroidXiaoMiActivity = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidXiaoMiNotifyBody(v string) *PushRequest {
+	s.AndroidXiaoMiNotifyBody = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidXiaoMiNotifyTitle(v string) *PushRequest {
+	s.AndroidXiaoMiNotifyTitle = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidXiaomiBigPictureUrl(v string) *PushRequest {
+	s.AndroidXiaomiBigPictureUrl = &v
+	return s
+}
+
+func (s *PushRequest) SetAndroidXiaomiImageUrl(v string) *PushRequest {
+	s.AndroidXiaomiImageUrl = &v
+	return s
+}
+
 func (s *PushRequest) SetAppKey(v int64) *PushRequest {
 	s.AppKey = &v
+	return s
+}
+
+func (s *PushRequest) SetBody(v string) *PushRequest {
+	s.Body = &v
+	return s
+}
+
+func (s *PushRequest) SetDeviceType(v string) *PushRequest {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *PushRequest) SetExpireTime(v string) *PushRequest {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *PushRequest) SetJobKey(v string) *PushRequest {
+	s.JobKey = &v
+	return s
+}
+
+func (s *PushRequest) SetPushTime(v string) *PushRequest {
+	s.PushTime = &v
 	return s
 }
 
@@ -1434,8 +1610,43 @@ func (s *PushRequest) SetPushType(v string) *PushRequest {
 	return s
 }
 
-func (s *PushRequest) SetDeviceType(v string) *PushRequest {
-	s.DeviceType = &v
+func (s *PushRequest) SetSendChannels(v string) *PushRequest {
+	s.SendChannels = &v
+	return s
+}
+
+func (s *PushRequest) SetSendSpeed(v int32) *PushRequest {
+	s.SendSpeed = &v
+	return s
+}
+
+func (s *PushRequest) SetSmsDelaySecs(v int32) *PushRequest {
+	s.SmsDelaySecs = &v
+	return s
+}
+
+func (s *PushRequest) SetSmsParams(v string) *PushRequest {
+	s.SmsParams = &v
+	return s
+}
+
+func (s *PushRequest) SetSmsSendPolicy(v int32) *PushRequest {
+	s.SmsSendPolicy = &v
+	return s
+}
+
+func (s *PushRequest) SetSmsSignName(v string) *PushRequest {
+	s.SmsSignName = &v
+	return s
+}
+
+func (s *PushRequest) SetSmsTemplateName(v string) *PushRequest {
+	s.SmsTemplateName = &v
+	return s
+}
+
+func (s *PushRequest) SetStoreOffline(v bool) *PushRequest {
+	s.StoreOffline = &v
 	return s
 }
 
@@ -1454,48 +1665,8 @@ func (s *PushRequest) SetTitle(v string) *PushRequest {
 	return s
 }
 
-func (s *PushRequest) SetBody(v string) *PushRequest {
-	s.Body = &v
-	return s
-}
-
-func (s *PushRequest) SetJobKey(v string) *PushRequest {
-	s.JobKey = &v
-	return s
-}
-
-func (s *PushRequest) SetSendSpeed(v int32) *PushRequest {
-	s.SendSpeed = &v
-	return s
-}
-
-func (s *PushRequest) SetStoreOffline(v bool) *PushRequest {
-	s.StoreOffline = &v
-	return s
-}
-
-func (s *PushRequest) SetPushTime(v string) *PushRequest {
-	s.PushTime = &v
-	return s
-}
-
-func (s *PushRequest) SetExpireTime(v string) *PushRequest {
-	s.ExpireTime = &v
-	return s
-}
-
 func (s *PushRequest) SetIOSApnsEnv(v string) *PushRequest {
 	s.IOSApnsEnv = &v
-	return s
-}
-
-func (s *PushRequest) SetIOSRemind(v bool) *PushRequest {
-	s.IOSRemind = &v
-	return s
-}
-
-func (s *PushRequest) SetIOSRemindBody(v string) *PushRequest {
-	s.IOSRemindBody = &v
 	return s
 }
 
@@ -1509,8 +1680,8 @@ func (s *PushRequest) SetIOSBadgeAutoIncrement(v bool) *PushRequest {
 	return s
 }
 
-func (s *PushRequest) SetIOSSilentNotification(v bool) *PushRequest {
-	s.IOSSilentNotification = &v
+func (s *PushRequest) SetIOSExtParameters(v string) *PushRequest {
+	s.IOSExtParameters = &v
 	return s
 }
 
@@ -1519,8 +1690,8 @@ func (s *PushRequest) SetIOSMusic(v string) *PushRequest {
 	return s
 }
 
-func (s *PushRequest) SetIOSSubtitle(v string) *PushRequest {
-	s.IOSSubtitle = &v
+func (s *PushRequest) SetIOSMutableContent(v bool) *PushRequest {
+	s.IOSMutableContent = &v
 	return s
 }
 
@@ -1529,163 +1700,8 @@ func (s *PushRequest) SetIOSNotificationCategory(v string) *PushRequest {
 	return s
 }
 
-func (s *PushRequest) SetIOSMutableContent(v bool) *PushRequest {
-	s.IOSMutableContent = &v
-	return s
-}
-
-func (s *PushRequest) SetIOSExtParameters(v string) *PushRequest {
-	s.IOSExtParameters = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidNotifyType(v string) *PushRequest {
-	s.AndroidNotifyType = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidOpenType(v string) *PushRequest {
-	s.AndroidOpenType = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidActivity(v string) *PushRequest {
-	s.AndroidActivity = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidMusic(v string) *PushRequest {
-	s.AndroidMusic = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidOpenUrl(v string) *PushRequest {
-	s.AndroidOpenUrl = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidXiaoMiActivity(v string) *PushRequest {
-	s.AndroidXiaoMiActivity = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidXiaoMiNotifyTitle(v string) *PushRequest {
-	s.AndroidXiaoMiNotifyTitle = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidXiaoMiNotifyBody(v string) *PushRequest {
-	s.AndroidXiaoMiNotifyBody = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidPopupActivity(v string) *PushRequest {
-	s.AndroidPopupActivity = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidPopupTitle(v string) *PushRequest {
-	s.AndroidPopupTitle = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidPopupBody(v string) *PushRequest {
-	s.AndroidPopupBody = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidNotificationBarType(v int32) *PushRequest {
-	s.AndroidNotificationBarType = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidNotificationBarPriority(v int32) *PushRequest {
-	s.AndroidNotificationBarPriority = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidExtParameters(v string) *PushRequest {
-	s.AndroidExtParameters = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidRemind(v bool) *PushRequest {
-	s.AndroidRemind = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidNotificationChannel(v string) *PushRequest {
-	s.AndroidNotificationChannel = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidNotificationXiaomiChannel(v string) *PushRequest {
-	s.AndroidNotificationXiaomiChannel = &v
-	return s
-}
-
-func (s *PushRequest) SetSmsTemplateName(v string) *PushRequest {
-	s.SmsTemplateName = &v
-	return s
-}
-
-func (s *PushRequest) SetSmsSignName(v string) *PushRequest {
-	s.SmsSignName = &v
-	return s
-}
-
-func (s *PushRequest) SetSmsParams(v string) *PushRequest {
-	s.SmsParams = &v
-	return s
-}
-
-func (s *PushRequest) SetSmsDelaySecs(v int32) *PushRequest {
-	s.SmsDelaySecs = &v
-	return s
-}
-
-func (s *PushRequest) SetSmsSendPolicy(v int32) *PushRequest {
-	s.SmsSendPolicy = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidNotificationVivoChannel(v string) *PushRequest {
-	s.AndroidNotificationVivoChannel = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidNotificationHuaweiChannel(v string) *PushRequest {
-	s.AndroidNotificationHuaweiChannel = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidNotificationNotifyId(v int32) *PushRequest {
-	s.AndroidNotificationNotifyId = &v
-	return s
-}
-
 func (s *PushRequest) SetIOSNotificationCollapseId(v string) *PushRequest {
 	s.IOSNotificationCollapseId = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidRenderStyle(v int32) *PushRequest {
-	s.AndroidRenderStyle = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidBigTitle(v string) *PushRequest {
-	s.AndroidBigTitle = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidBigBody(v string) *PushRequest {
-	s.AndroidBigBody = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidXiaomiBigPictureUrl(v string) *PushRequest {
-	s.AndroidXiaomiBigPictureUrl = &v
 	return s
 }
 
@@ -1694,38 +1710,23 @@ func (s *PushRequest) SetIOSNotificationThreadId(v string) *PushRequest {
 	return s
 }
 
-func (s *PushRequest) SetAndroidBigPictureUrl(v string) *PushRequest {
-	s.AndroidBigPictureUrl = &v
+func (s *PushRequest) SetIOSRemind(v bool) *PushRequest {
+	s.IOSRemind = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidInboxBody(v string) *PushRequest {
-	s.AndroidInboxBody = &v
+func (s *PushRequest) SetIOSRemindBody(v string) *PushRequest {
+	s.IOSRemindBody = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidImageUrl(v string) *PushRequest {
-	s.AndroidImageUrl = &v
+func (s *PushRequest) SetIOSSilentNotification(v bool) *PushRequest {
+	s.IOSSilentNotification = &v
 	return s
 }
 
-func (s *PushRequest) SetAndroidXiaomiImageUrl(v string) *PushRequest {
-	s.AndroidXiaomiImageUrl = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidMessageHuaweiUrgency(v string) *PushRequest {
-	s.AndroidMessageHuaweiUrgency = &v
-	return s
-}
-
-func (s *PushRequest) SetAndroidMessageHuaweiCategory(v string) *PushRequest {
-	s.AndroidMessageHuaweiCategory = &v
-	return s
-}
-
-func (s *PushRequest) SetSendChannels(v string) *PushRequest {
-	s.SendChannels = &v
+func (s *PushRequest) SetIOSSubtitle(v string) *PushRequest {
+	s.IOSSubtitle = &v
 	return s
 }
 
@@ -1777,11 +1778,11 @@ func (s *PushResponse) SetBody(v *PushResponseBody) *PushResponse {
 
 type PushMessageToAndroidRequest struct {
 	AppKey      *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	Body        *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	JobKey      *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
 	Target      *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	TargetValue *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
 	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Body        *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	JobKey      *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
 }
 
 func (s PushMessageToAndroidRequest) String() string {
@@ -1797,6 +1798,16 @@ func (s *PushMessageToAndroidRequest) SetAppKey(v int64) *PushMessageToAndroidRe
 	return s
 }
 
+func (s *PushMessageToAndroidRequest) SetBody(v string) *PushMessageToAndroidRequest {
+	s.Body = &v
+	return s
+}
+
+func (s *PushMessageToAndroidRequest) SetJobKey(v string) *PushMessageToAndroidRequest {
+	s.JobKey = &v
+	return s
+}
+
 func (s *PushMessageToAndroidRequest) SetTarget(v string) *PushMessageToAndroidRequest {
 	s.Target = &v
 	return s
@@ -1809,16 +1820,6 @@ func (s *PushMessageToAndroidRequest) SetTargetValue(v string) *PushMessageToAnd
 
 func (s *PushMessageToAndroidRequest) SetTitle(v string) *PushMessageToAndroidRequest {
 	s.Title = &v
-	return s
-}
-
-func (s *PushMessageToAndroidRequest) SetBody(v string) *PushMessageToAndroidRequest {
-	s.Body = &v
-	return s
-}
-
-func (s *PushMessageToAndroidRequest) SetJobKey(v string) *PushMessageToAndroidRequest {
-	s.JobKey = &v
 	return s
 }
 
@@ -1870,11 +1871,11 @@ func (s *PushMessageToAndroidResponse) SetBody(v *PushMessageToAndroidResponseBo
 
 type PushMessageToiOSRequest struct {
 	AppKey      *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	Body        *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	JobKey      *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
 	Target      *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	TargetValue *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
 	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Body        *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	JobKey      *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
 }
 
 func (s PushMessageToiOSRequest) String() string {
@@ -1890,6 +1891,16 @@ func (s *PushMessageToiOSRequest) SetAppKey(v int64) *PushMessageToiOSRequest {
 	return s
 }
 
+func (s *PushMessageToiOSRequest) SetBody(v string) *PushMessageToiOSRequest {
+	s.Body = &v
+	return s
+}
+
+func (s *PushMessageToiOSRequest) SetJobKey(v string) *PushMessageToiOSRequest {
+	s.JobKey = &v
+	return s
+}
+
 func (s *PushMessageToiOSRequest) SetTarget(v string) *PushMessageToiOSRequest {
 	s.Target = &v
 	return s
@@ -1902,16 +1913,6 @@ func (s *PushMessageToiOSRequest) SetTargetValue(v string) *PushMessageToiOSRequ
 
 func (s *PushMessageToiOSRequest) SetTitle(v string) *PushMessageToiOSRequest {
 	s.Title = &v
-	return s
-}
-
-func (s *PushMessageToiOSRequest) SetBody(v string) *PushMessageToiOSRequest {
-	s.Body = &v
-	return s
-}
-
-func (s *PushMessageToiOSRequest) SetJobKey(v string) *PushMessageToiOSRequest {
-	s.JobKey = &v
 	return s
 }
 
@@ -1963,12 +1964,12 @@ func (s *PushMessageToiOSResponse) SetBody(v *PushMessageToiOSResponseBody) *Pus
 
 type PushNoticeToAndroidRequest struct {
 	AppKey        *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	Body          *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	ExtParameters *string `json:"ExtParameters,omitempty" xml:"ExtParameters,omitempty"`
+	JobKey        *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
 	Target        *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	TargetValue   *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
 	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Body          *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	JobKey        *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
-	ExtParameters *string `json:"ExtParameters,omitempty" xml:"ExtParameters,omitempty"`
 }
 
 func (s PushNoticeToAndroidRequest) String() string {
@@ -1984,6 +1985,21 @@ func (s *PushNoticeToAndroidRequest) SetAppKey(v int64) *PushNoticeToAndroidRequ
 	return s
 }
 
+func (s *PushNoticeToAndroidRequest) SetBody(v string) *PushNoticeToAndroidRequest {
+	s.Body = &v
+	return s
+}
+
+func (s *PushNoticeToAndroidRequest) SetExtParameters(v string) *PushNoticeToAndroidRequest {
+	s.ExtParameters = &v
+	return s
+}
+
+func (s *PushNoticeToAndroidRequest) SetJobKey(v string) *PushNoticeToAndroidRequest {
+	s.JobKey = &v
+	return s
+}
+
 func (s *PushNoticeToAndroidRequest) SetTarget(v string) *PushNoticeToAndroidRequest {
 	s.Target = &v
 	return s
@@ -1996,21 +2012,6 @@ func (s *PushNoticeToAndroidRequest) SetTargetValue(v string) *PushNoticeToAndro
 
 func (s *PushNoticeToAndroidRequest) SetTitle(v string) *PushNoticeToAndroidRequest {
 	s.Title = &v
-	return s
-}
-
-func (s *PushNoticeToAndroidRequest) SetBody(v string) *PushNoticeToAndroidRequest {
-	s.Body = &v
-	return s
-}
-
-func (s *PushNoticeToAndroidRequest) SetJobKey(v string) *PushNoticeToAndroidRequest {
-	s.JobKey = &v
-	return s
-}
-
-func (s *PushNoticeToAndroidRequest) SetExtParameters(v string) *PushNoticeToAndroidRequest {
-	s.ExtParameters = &v
 	return s
 }
 
@@ -2061,14 +2062,14 @@ func (s *PushNoticeToAndroidResponse) SetBody(v *PushNoticeToAndroidResponseBody
 }
 
 type PushNoticeToiOSRequest struct {
+	ApnsEnv       *string `json:"ApnsEnv,omitempty" xml:"ApnsEnv,omitempty"`
 	AppKey        *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	Body          *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	ExtParameters *string `json:"ExtParameters,omitempty" xml:"ExtParameters,omitempty"`
+	JobKey        *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
 	Target        *string `json:"Target,omitempty" xml:"Target,omitempty"`
 	TargetValue   *string `json:"TargetValue,omitempty" xml:"TargetValue,omitempty"`
-	ApnsEnv       *string `json:"ApnsEnv,omitempty" xml:"ApnsEnv,omitempty"`
 	Title         *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Body          *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	JobKey        *string `json:"JobKey,omitempty" xml:"JobKey,omitempty"`
-	ExtParameters *string `json:"ExtParameters,omitempty" xml:"ExtParameters,omitempty"`
 }
 
 func (s PushNoticeToiOSRequest) String() string {
@@ -2079,8 +2080,28 @@ func (s PushNoticeToiOSRequest) GoString() string {
 	return s.String()
 }
 
+func (s *PushNoticeToiOSRequest) SetApnsEnv(v string) *PushNoticeToiOSRequest {
+	s.ApnsEnv = &v
+	return s
+}
+
 func (s *PushNoticeToiOSRequest) SetAppKey(v int64) *PushNoticeToiOSRequest {
 	s.AppKey = &v
+	return s
+}
+
+func (s *PushNoticeToiOSRequest) SetBody(v string) *PushNoticeToiOSRequest {
+	s.Body = &v
+	return s
+}
+
+func (s *PushNoticeToiOSRequest) SetExtParameters(v string) *PushNoticeToiOSRequest {
+	s.ExtParameters = &v
+	return s
+}
+
+func (s *PushNoticeToiOSRequest) SetJobKey(v string) *PushNoticeToiOSRequest {
+	s.JobKey = &v
 	return s
 }
 
@@ -2094,28 +2115,8 @@ func (s *PushNoticeToiOSRequest) SetTargetValue(v string) *PushNoticeToiOSReques
 	return s
 }
 
-func (s *PushNoticeToiOSRequest) SetApnsEnv(v string) *PushNoticeToiOSRequest {
-	s.ApnsEnv = &v
-	return s
-}
-
 func (s *PushNoticeToiOSRequest) SetTitle(v string) *PushNoticeToiOSRequest {
 	s.Title = &v
-	return s
-}
-
-func (s *PushNoticeToiOSRequest) SetBody(v string) *PushNoticeToiOSRequest {
-	s.Body = &v
-	return s
-}
-
-func (s *PushNoticeToiOSRequest) SetJobKey(v string) *PushNoticeToiOSRequest {
-	s.JobKey = &v
-	return s
-}
-
-func (s *PushNoticeToiOSRequest) SetExtParameters(v string) *PushNoticeToiOSRequest {
-	s.ExtParameters = &v
 	return s
 }
 
@@ -2189,8 +2190,8 @@ func (s *QueryAliasesRequest) SetDeviceId(v string) *QueryAliasesRequest {
 }
 
 type QueryAliasesResponseBody struct {
-	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AliasInfos *QueryAliasesResponseBodyAliasInfos `json:"AliasInfos,omitempty" xml:"AliasInfos,omitempty" type:"Struct"`
+	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryAliasesResponseBody) String() string {
@@ -2201,13 +2202,13 @@ func (s QueryAliasesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryAliasesResponseBody) SetRequestId(v string) *QueryAliasesResponseBody {
-	s.RequestId = &v
+func (s *QueryAliasesResponseBody) SetAliasInfos(v *QueryAliasesResponseBodyAliasInfos) *QueryAliasesResponseBody {
+	s.AliasInfos = v
 	return s
 }
 
-func (s *QueryAliasesResponseBody) SetAliasInfos(v *QueryAliasesResponseBodyAliasInfos) *QueryAliasesResponseBody {
-	s.AliasInfos = v
+func (s *QueryAliasesResponseBody) SetRequestId(v string) *QueryAliasesResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2367,8 +2368,8 @@ func (s *QueryDeviceInfoRequest) SetDeviceId(v string) *QueryDeviceInfoRequest {
 }
 
 type QueryDeviceInfoResponseBody struct {
-	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DeviceInfo *QueryDeviceInfoResponseBodyDeviceInfo `json:"DeviceInfo,omitempty" xml:"DeviceInfo,omitempty" type:"Struct"`
+	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryDeviceInfoResponseBody) String() string {
@@ -2379,27 +2380,27 @@ func (s QueryDeviceInfoResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryDeviceInfoResponseBody) SetRequestId(v string) *QueryDeviceInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *QueryDeviceInfoResponseBody) SetDeviceInfo(v *QueryDeviceInfoResponseBodyDeviceInfo) *QueryDeviceInfoResponseBody {
 	s.DeviceInfo = v
 	return s
 }
 
+func (s *QueryDeviceInfoResponseBody) SetRequestId(v string) *QueryDeviceInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type QueryDeviceInfoResponseBodyDeviceInfo struct {
 	Account        *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	Alias          *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	DeviceId       *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceToken    *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
+	DeviceType     *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
 	LastOnlineTime *string `json:"LastOnlineTime,omitempty" xml:"LastOnlineTime,omitempty"`
+	Online         *bool   `json:"Online,omitempty" xml:"Online,omitempty"`
 	PhoneNumber    *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
 	PushEnabled    *bool   `json:"PushEnabled,omitempty" xml:"PushEnabled,omitempty"`
-	DeviceType     *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	DeviceId       *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	Online         *bool   `json:"Online,omitempty" xml:"Online,omitempty"`
 	Tags           *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	DeviceToken    *string `json:"DeviceToken,omitempty" xml:"DeviceToken,omitempty"`
-	Alias          *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
 }
 
 func (s QueryDeviceInfoResponseBodyDeviceInfo) String() string {
@@ -2415,8 +2416,33 @@ func (s *QueryDeviceInfoResponseBodyDeviceInfo) SetAccount(v string) *QueryDevic
 	return s
 }
 
+func (s *QueryDeviceInfoResponseBodyDeviceInfo) SetAlias(v string) *QueryDeviceInfoResponseBodyDeviceInfo {
+	s.Alias = &v
+	return s
+}
+
+func (s *QueryDeviceInfoResponseBodyDeviceInfo) SetDeviceId(v string) *QueryDeviceInfoResponseBodyDeviceInfo {
+	s.DeviceId = &v
+	return s
+}
+
+func (s *QueryDeviceInfoResponseBodyDeviceInfo) SetDeviceToken(v string) *QueryDeviceInfoResponseBodyDeviceInfo {
+	s.DeviceToken = &v
+	return s
+}
+
+func (s *QueryDeviceInfoResponseBodyDeviceInfo) SetDeviceType(v string) *QueryDeviceInfoResponseBodyDeviceInfo {
+	s.DeviceType = &v
+	return s
+}
+
 func (s *QueryDeviceInfoResponseBodyDeviceInfo) SetLastOnlineTime(v string) *QueryDeviceInfoResponseBodyDeviceInfo {
 	s.LastOnlineTime = &v
+	return s
+}
+
+func (s *QueryDeviceInfoResponseBodyDeviceInfo) SetOnline(v bool) *QueryDeviceInfoResponseBodyDeviceInfo {
+	s.Online = &v
 	return s
 }
 
@@ -2430,33 +2456,8 @@ func (s *QueryDeviceInfoResponseBodyDeviceInfo) SetPushEnabled(v bool) *QueryDev
 	return s
 }
 
-func (s *QueryDeviceInfoResponseBodyDeviceInfo) SetDeviceType(v string) *QueryDeviceInfoResponseBodyDeviceInfo {
-	s.DeviceType = &v
-	return s
-}
-
-func (s *QueryDeviceInfoResponseBodyDeviceInfo) SetDeviceId(v string) *QueryDeviceInfoResponseBodyDeviceInfo {
-	s.DeviceId = &v
-	return s
-}
-
-func (s *QueryDeviceInfoResponseBodyDeviceInfo) SetOnline(v bool) *QueryDeviceInfoResponseBodyDeviceInfo {
-	s.Online = &v
-	return s
-}
-
 func (s *QueryDeviceInfoResponseBodyDeviceInfo) SetTags(v string) *QueryDeviceInfoResponseBodyDeviceInfo {
 	s.Tags = &v
-	return s
-}
-
-func (s *QueryDeviceInfoResponseBodyDeviceInfo) SetDeviceToken(v string) *QueryDeviceInfoResponseBodyDeviceInfo {
-	s.DeviceToken = &v
-	return s
-}
-
-func (s *QueryDeviceInfoResponseBodyDeviceInfo) SetAlias(v string) *QueryDeviceInfoResponseBodyDeviceInfo {
-	s.Alias = &v
 	return s
 }
 
@@ -2483,9 +2484,142 @@ func (s *QueryDeviceInfoResponse) SetBody(v *QueryDeviceInfoResponseBody) *Query
 	return s
 }
 
+type QueryDeviceStatRequest struct {
+	AppKey     *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	QueryType  *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s QueryDeviceStatRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceStatRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceStatRequest) SetAppKey(v int64) *QueryDeviceStatRequest {
+	s.AppKey = &v
+	return s
+}
+
+func (s *QueryDeviceStatRequest) SetDeviceType(v string) *QueryDeviceStatRequest {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *QueryDeviceStatRequest) SetEndTime(v string) *QueryDeviceStatRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QueryDeviceStatRequest) SetQueryType(v string) *QueryDeviceStatRequest {
+	s.QueryType = &v
+	return s
+}
+
+func (s *QueryDeviceStatRequest) SetStartTime(v string) *QueryDeviceStatRequest {
+	s.StartTime = &v
+	return s
+}
+
+type QueryDeviceStatResponseBody struct {
+	AppDeviceStats *QueryDeviceStatResponseBodyAppDeviceStats `json:"AppDeviceStats,omitempty" xml:"AppDeviceStats,omitempty" type:"Struct"`
+	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s QueryDeviceStatResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceStatResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceStatResponseBody) SetAppDeviceStats(v *QueryDeviceStatResponseBodyAppDeviceStats) *QueryDeviceStatResponseBody {
+	s.AppDeviceStats = v
+	return s
+}
+
+func (s *QueryDeviceStatResponseBody) SetRequestId(v string) *QueryDeviceStatResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type QueryDeviceStatResponseBodyAppDeviceStats struct {
+	AppDeviceStat []*QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat `json:"AppDeviceStat,omitempty" xml:"AppDeviceStat,omitempty" type:"Repeated"`
+}
+
+func (s QueryDeviceStatResponseBodyAppDeviceStats) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceStatResponseBodyAppDeviceStats) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceStatResponseBodyAppDeviceStats) SetAppDeviceStat(v []*QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) *QueryDeviceStatResponseBodyAppDeviceStats {
+	s.AppDeviceStat = v
+	return s
+}
+
+type QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat struct {
+	Count      *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	Time       *string `json:"Time,omitempty" xml:"Time,omitempty"`
+}
+
+func (s QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) SetCount(v int64) *QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat {
+	s.Count = &v
+	return s
+}
+
+func (s *QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) SetDeviceType(v string) *QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat {
+	s.DeviceType = &v
+	return s
+}
+
+func (s *QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) SetTime(v string) *QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat {
+	s.Time = &v
+	return s
+}
+
+type QueryDeviceStatResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryDeviceStatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryDeviceStatResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryDeviceStatResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryDeviceStatResponse) SetHeaders(v map[string]*string) *QueryDeviceStatResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryDeviceStatResponse) SetBody(v *QueryDeviceStatResponseBody) *QueryDeviceStatResponse {
+	s.Body = v
+	return s
+}
+
 type QueryDevicesByAccountRequest struct {
-	AppKey  *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
+	AppKey  *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 }
 
 func (s QueryDevicesByAccountRequest) String() string {
@@ -2496,19 +2630,19 @@ func (s QueryDevicesByAccountRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryDevicesByAccountRequest) SetAppKey(v int64) *QueryDevicesByAccountRequest {
-	s.AppKey = &v
-	return s
-}
-
 func (s *QueryDevicesByAccountRequest) SetAccount(v string) *QueryDevicesByAccountRequest {
 	s.Account = &v
 	return s
 }
 
+func (s *QueryDevicesByAccountRequest) SetAppKey(v int64) *QueryDevicesByAccountRequest {
+	s.AppKey = &v
+	return s
+}
+
 type QueryDevicesByAccountResponseBody struct {
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DeviceIds *QueryDevicesByAccountResponseBodyDeviceIds `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Struct"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryDevicesByAccountResponseBody) String() string {
@@ -2519,13 +2653,13 @@ func (s QueryDevicesByAccountResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryDevicesByAccountResponseBody) SetRequestId(v string) *QueryDevicesByAccountResponseBody {
-	s.RequestId = &v
+func (s *QueryDevicesByAccountResponseBody) SetDeviceIds(v *QueryDevicesByAccountResponseBodyDeviceIds) *QueryDevicesByAccountResponseBody {
+	s.DeviceIds = v
 	return s
 }
 
-func (s *QueryDevicesByAccountResponseBody) SetDeviceIds(v *QueryDevicesByAccountResponseBodyDeviceIds) *QueryDevicesByAccountResponseBody {
-	s.DeviceIds = v
+func (s *QueryDevicesByAccountResponseBody) SetRequestId(v string) *QueryDevicesByAccountResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2570,8 +2704,8 @@ func (s *QueryDevicesByAccountResponse) SetBody(v *QueryDevicesByAccountResponse
 }
 
 type QueryDevicesByAliasRequest struct {
-	AppKey *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 	Alias  *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	AppKey *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 }
 
 func (s QueryDevicesByAliasRequest) String() string {
@@ -2582,19 +2716,19 @@ func (s QueryDevicesByAliasRequest) GoString() string {
 	return s.String()
 }
 
-func (s *QueryDevicesByAliasRequest) SetAppKey(v int64) *QueryDevicesByAliasRequest {
-	s.AppKey = &v
-	return s
-}
-
 func (s *QueryDevicesByAliasRequest) SetAlias(v string) *QueryDevicesByAliasRequest {
 	s.Alias = &v
 	return s
 }
 
+func (s *QueryDevicesByAliasRequest) SetAppKey(v int64) *QueryDevicesByAliasRequest {
+	s.AppKey = &v
+	return s
+}
+
 type QueryDevicesByAliasResponseBody struct {
-	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	DeviceIds *QueryDevicesByAliasResponseBodyDeviceIds `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty" type:"Struct"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryDevicesByAliasResponseBody) String() string {
@@ -2605,13 +2739,13 @@ func (s QueryDevicesByAliasResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryDevicesByAliasResponseBody) SetRequestId(v string) *QueryDevicesByAliasResponseBody {
-	s.RequestId = &v
+func (s *QueryDevicesByAliasResponseBody) SetDeviceIds(v *QueryDevicesByAliasResponseBodyDeviceIds) *QueryDevicesByAliasResponseBody {
+	s.DeviceIds = v
 	return s
 }
 
-func (s *QueryDevicesByAliasResponseBody) SetDeviceIds(v *QueryDevicesByAliasResponseBodyDeviceIds) *QueryDevicesByAliasResponseBody {
-	s.DeviceIds = v
+func (s *QueryDevicesByAliasResponseBody) SetRequestId(v string) *QueryDevicesByAliasResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2655,150 +2789,17 @@ func (s *QueryDevicesByAliasResponse) SetBody(v *QueryDevicesByAliasResponseBody
 	return s
 }
 
-type QueryDeviceStatRequest struct {
-	AppKey     *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	QueryType  *string `json:"QueryType,omitempty" xml:"QueryType,omitempty"`
-}
-
-func (s QueryDeviceStatRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryDeviceStatRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryDeviceStatRequest) SetAppKey(v int64) *QueryDeviceStatRequest {
-	s.AppKey = &v
-	return s
-}
-
-func (s *QueryDeviceStatRequest) SetStartTime(v string) *QueryDeviceStatRequest {
-	s.StartTime = &v
-	return s
-}
-
-func (s *QueryDeviceStatRequest) SetEndTime(v string) *QueryDeviceStatRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *QueryDeviceStatRequest) SetDeviceType(v string) *QueryDeviceStatRequest {
-	s.DeviceType = &v
-	return s
-}
-
-func (s *QueryDeviceStatRequest) SetQueryType(v string) *QueryDeviceStatRequest {
-	s.QueryType = &v
-	return s
-}
-
-type QueryDeviceStatResponseBody struct {
-	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	AppDeviceStats *QueryDeviceStatResponseBodyAppDeviceStats `json:"AppDeviceStats,omitempty" xml:"AppDeviceStats,omitempty" type:"Struct"`
-}
-
-func (s QueryDeviceStatResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryDeviceStatResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryDeviceStatResponseBody) SetRequestId(v string) *QueryDeviceStatResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *QueryDeviceStatResponseBody) SetAppDeviceStats(v *QueryDeviceStatResponseBodyAppDeviceStats) *QueryDeviceStatResponseBody {
-	s.AppDeviceStats = v
-	return s
-}
-
-type QueryDeviceStatResponseBodyAppDeviceStats struct {
-	AppDeviceStat []*QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat `json:"AppDeviceStat,omitempty" xml:"AppDeviceStat,omitempty" type:"Repeated"`
-}
-
-func (s QueryDeviceStatResponseBodyAppDeviceStats) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryDeviceStatResponseBodyAppDeviceStats) GoString() string {
-	return s.String()
-}
-
-func (s *QueryDeviceStatResponseBodyAppDeviceStats) SetAppDeviceStat(v []*QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) *QueryDeviceStatResponseBodyAppDeviceStats {
-	s.AppDeviceStat = v
-	return s
-}
-
-type QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat struct {
-	Time       *string `json:"Time,omitempty" xml:"Time,omitempty"`
-	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	Count      *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
-}
-
-func (s QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) GoString() string {
-	return s.String()
-}
-
-func (s *QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) SetTime(v string) *QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat {
-	s.Time = &v
-	return s
-}
-
-func (s *QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) SetDeviceType(v string) *QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat {
-	s.DeviceType = &v
-	return s
-}
-
-func (s *QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) SetCount(v int64) *QueryDeviceStatResponseBodyAppDeviceStatsAppDeviceStat {
-	s.Count = &v
-	return s
-}
-
-type QueryDeviceStatResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryDeviceStatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryDeviceStatResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryDeviceStatResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryDeviceStatResponse) SetHeaders(v map[string]*string) *QueryDeviceStatResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryDeviceStatResponse) SetBody(v *QueryDeviceStatResponseBody) *QueryDeviceStatResponse {
-	s.Body = v
-	return s
-}
-
 type QueryPushRecordsRequest struct {
 	AppKey    *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	PushType  *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	Target    *string `json:"Target,omitempty" xml:"Target,omitempty"`
-	Source    *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	Keyword   *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Page      *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PushType  *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	Source    *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Target    *string `json:"Target,omitempty" xml:"Target,omitempty"`
 }
 
 func (s QueryPushRecordsRequest) String() string {
@@ -2814,28 +2815,8 @@ func (s *QueryPushRecordsRequest) SetAppKey(v int64) *QueryPushRecordsRequest {
 	return s
 }
 
-func (s *QueryPushRecordsRequest) SetStartTime(v string) *QueryPushRecordsRequest {
-	s.StartTime = &v
-	return s
-}
-
 func (s *QueryPushRecordsRequest) SetEndTime(v string) *QueryPushRecordsRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *QueryPushRecordsRequest) SetPushType(v string) *QueryPushRecordsRequest {
-	s.PushType = &v
-	return s
-}
-
-func (s *QueryPushRecordsRequest) SetTarget(v string) *QueryPushRecordsRequest {
-	s.Target = &v
-	return s
-}
-
-func (s *QueryPushRecordsRequest) SetSource(v string) *QueryPushRecordsRequest {
-	s.Source = &v
 	return s
 }
 
@@ -2849,23 +2830,43 @@ func (s *QueryPushRecordsRequest) SetNextToken(v string) *QueryPushRecordsReques
 	return s
 }
 
-func (s *QueryPushRecordsRequest) SetPageSize(v int32) *QueryPushRecordsRequest {
-	s.PageSize = &v
-	return s
-}
-
 func (s *QueryPushRecordsRequest) SetPage(v int32) *QueryPushRecordsRequest {
 	s.Page = &v
 	return s
 }
 
+func (s *QueryPushRecordsRequest) SetPageSize(v int32) *QueryPushRecordsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryPushRecordsRequest) SetPushType(v string) *QueryPushRecordsRequest {
+	s.PushType = &v
+	return s
+}
+
+func (s *QueryPushRecordsRequest) SetSource(v string) *QueryPushRecordsRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *QueryPushRecordsRequest) SetStartTime(v string) *QueryPushRecordsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QueryPushRecordsRequest) SetTarget(v string) *QueryPushRecordsRequest {
+	s.Target = &v
+	return s
+}
+
 type QueryPushRecordsResponseBody struct {
 	NextToken *string                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Page      *int32                                 `json:"Page,omitempty" xml:"Page,omitempty"`
 	PageSize  *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PushInfos *QueryPushRecordsResponseBodyPushInfos `json:"PushInfos,omitempty" xml:"PushInfos,omitempty" type:"Struct"`
 	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Total     *int32                                 `json:"Total,omitempty" xml:"Total,omitempty"`
-	Page      *int32                                 `json:"Page,omitempty" xml:"Page,omitempty"`
-	PushInfos *QueryPushRecordsResponseBodyPushInfos `json:"PushInfos,omitempty" xml:"PushInfos,omitempty" type:"Struct"`
 }
 
 func (s QueryPushRecordsResponseBody) String() string {
@@ -2881,8 +2882,18 @@ func (s *QueryPushRecordsResponseBody) SetNextToken(v string) *QueryPushRecordsR
 	return s
 }
 
+func (s *QueryPushRecordsResponseBody) SetPage(v int32) *QueryPushRecordsResponseBody {
+	s.Page = &v
+	return s
+}
+
 func (s *QueryPushRecordsResponseBody) SetPageSize(v int32) *QueryPushRecordsResponseBody {
 	s.PageSize = &v
+	return s
+}
+
+func (s *QueryPushRecordsResponseBody) SetPushInfos(v *QueryPushRecordsResponseBodyPushInfos) *QueryPushRecordsResponseBody {
+	s.PushInfos = v
 	return s
 }
 
@@ -2893,16 +2904,6 @@ func (s *QueryPushRecordsResponseBody) SetRequestId(v string) *QueryPushRecordsR
 
 func (s *QueryPushRecordsResponseBody) SetTotal(v int32) *QueryPushRecordsResponseBody {
 	s.Total = &v
-	return s
-}
-
-func (s *QueryPushRecordsResponseBody) SetPage(v int32) *QueryPushRecordsResponseBody {
-	s.Page = &v
-	return s
-}
-
-func (s *QueryPushRecordsResponseBody) SetPushInfos(v *QueryPushRecordsResponseBodyPushInfos) *QueryPushRecordsResponseBody {
-	s.PushInfos = v
 	return s
 }
 
@@ -2924,16 +2925,16 @@ func (s *QueryPushRecordsResponseBodyPushInfos) SetPushInfo(v []*QueryPushRecord
 }
 
 type QueryPushRecordsResponseBodyPushInfosPushInfo struct {
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	MessageId  *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 	AppKey     *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	PushType   *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
 	Body       *string `json:"Body,omitempty" xml:"Body,omitempty"`
-	Title      *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Source     *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	MessageId  *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 	PushTime   *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
+	PushType   *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
+	Source     *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Target     *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	Title      *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
 func (s QueryPushRecordsResponseBodyPushInfosPushInfo) String() string {
@@ -2944,28 +2945,8 @@ func (s QueryPushRecordsResponseBodyPushInfosPushInfo) GoString() string {
 	return s.String()
 }
 
-func (s *QueryPushRecordsResponseBodyPushInfosPushInfo) SetStatus(v string) *QueryPushRecordsResponseBodyPushInfosPushInfo {
-	s.Status = &v
-	return s
-}
-
-func (s *QueryPushRecordsResponseBodyPushInfosPushInfo) SetMessageId(v string) *QueryPushRecordsResponseBodyPushInfosPushInfo {
-	s.MessageId = &v
-	return s
-}
-
 func (s *QueryPushRecordsResponseBodyPushInfosPushInfo) SetAppKey(v int64) *QueryPushRecordsResponseBodyPushInfosPushInfo {
 	s.AppKey = &v
-	return s
-}
-
-func (s *QueryPushRecordsResponseBodyPushInfosPushInfo) SetDeviceType(v string) *QueryPushRecordsResponseBodyPushInfosPushInfo {
-	s.DeviceType = &v
-	return s
-}
-
-func (s *QueryPushRecordsResponseBodyPushInfosPushInfo) SetPushType(v string) *QueryPushRecordsResponseBodyPushInfosPushInfo {
-	s.PushType = &v
 	return s
 }
 
@@ -2974,13 +2955,13 @@ func (s *QueryPushRecordsResponseBodyPushInfosPushInfo) SetBody(v string) *Query
 	return s
 }
 
-func (s *QueryPushRecordsResponseBodyPushInfosPushInfo) SetTitle(v string) *QueryPushRecordsResponseBodyPushInfosPushInfo {
-	s.Title = &v
+func (s *QueryPushRecordsResponseBodyPushInfosPushInfo) SetDeviceType(v string) *QueryPushRecordsResponseBodyPushInfosPushInfo {
+	s.DeviceType = &v
 	return s
 }
 
-func (s *QueryPushRecordsResponseBodyPushInfosPushInfo) SetSource(v string) *QueryPushRecordsResponseBodyPushInfosPushInfo {
-	s.Source = &v
+func (s *QueryPushRecordsResponseBodyPushInfosPushInfo) SetMessageId(v string) *QueryPushRecordsResponseBodyPushInfosPushInfo {
+	s.MessageId = &v
 	return s
 }
 
@@ -2989,8 +2970,28 @@ func (s *QueryPushRecordsResponseBodyPushInfosPushInfo) SetPushTime(v string) *Q
 	return s
 }
 
+func (s *QueryPushRecordsResponseBodyPushInfosPushInfo) SetPushType(v string) *QueryPushRecordsResponseBodyPushInfosPushInfo {
+	s.PushType = &v
+	return s
+}
+
+func (s *QueryPushRecordsResponseBodyPushInfosPushInfo) SetSource(v string) *QueryPushRecordsResponseBodyPushInfosPushInfo {
+	s.Source = &v
+	return s
+}
+
+func (s *QueryPushRecordsResponseBodyPushInfosPushInfo) SetStatus(v string) *QueryPushRecordsResponseBodyPushInfosPushInfo {
+	s.Status = &v
+	return s
+}
+
 func (s *QueryPushRecordsResponseBodyPushInfosPushInfo) SetTarget(v string) *QueryPushRecordsResponseBodyPushInfosPushInfo {
 	s.Target = &v
+	return s
+}
+
+func (s *QueryPushRecordsResponseBodyPushInfosPushInfo) SetTitle(v string) *QueryPushRecordsResponseBodyPushInfosPushInfo {
+	s.Title = &v
 	return s
 }
 
@@ -3019,9 +3020,9 @@ func (s *QueryPushRecordsResponse) SetBody(v *QueryPushRecordsResponseBody) *Que
 
 type QueryPushStatByAppRequest struct {
 	AppKey      *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s QueryPushStatByAppRequest) String() string {
@@ -3037,11 +3038,6 @@ func (s *QueryPushStatByAppRequest) SetAppKey(v int64) *QueryPushStatByAppReques
 	return s
 }
 
-func (s *QueryPushStatByAppRequest) SetStartTime(v string) *QueryPushStatByAppRequest {
-	s.StartTime = &v
-	return s
-}
-
 func (s *QueryPushStatByAppRequest) SetEndTime(v string) *QueryPushStatByAppRequest {
 	s.EndTime = &v
 	return s
@@ -3052,9 +3048,14 @@ func (s *QueryPushStatByAppRequest) SetGranularity(v string) *QueryPushStatByApp
 	return s
 }
 
+func (s *QueryPushStatByAppRequest) SetStartTime(v string) *QueryPushStatByAppRequest {
+	s.StartTime = &v
+	return s
+}
+
 type QueryPushStatByAppResponseBody struct {
-	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AppPushStats *QueryPushStatByAppResponseBodyAppPushStats `json:"AppPushStats,omitempty" xml:"AppPushStats,omitempty" type:"Struct"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryPushStatByAppResponseBody) String() string {
@@ -3065,13 +3066,13 @@ func (s QueryPushStatByAppResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryPushStatByAppResponseBody) SetRequestId(v string) *QueryPushStatByAppResponseBody {
-	s.RequestId = &v
+func (s *QueryPushStatByAppResponseBody) SetAppPushStats(v *QueryPushStatByAppResponseBodyAppPushStats) *QueryPushStatByAppResponseBody {
+	s.AppPushStats = v
 	return s
 }
 
-func (s *QueryPushStatByAppResponseBody) SetAppPushStats(v *QueryPushStatByAppResponseBodyAppPushStats) *QueryPushStatByAppResponseBody {
-	s.AppPushStats = v
+func (s *QueryPushStatByAppResponseBody) SetRequestId(v string) *QueryPushStatByAppResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3093,17 +3094,17 @@ func (s *QueryPushStatByAppResponseBodyAppPushStats) SetAppPushStat(v []*QueryPu
 }
 
 type QueryPushStatByAppResponseBodyAppPushStatsAppPushStat struct {
-	Time                   *string `json:"Time,omitempty" xml:"Time,omitempty"`
+	AcceptCount            *int64  `json:"AcceptCount,omitempty" xml:"AcceptCount,omitempty"`
 	DeletedCount           *int64  `json:"DeletedCount,omitempty" xml:"DeletedCount,omitempty"`
 	OpenedCount            *int64  `json:"OpenedCount,omitempty" xml:"OpenedCount,omitempty"`
-	SmsReceiveSuccessCount *int64  `json:"SmsReceiveSuccessCount,omitempty" xml:"SmsReceiveSuccessCount,omitempty"`
-	SmsSkipCount           *int64  `json:"SmsSkipCount,omitempty" xml:"SmsSkipCount,omitempty"`
-	SmsReceiveFailedCount  *int64  `json:"SmsReceiveFailedCount,omitempty" xml:"SmsReceiveFailedCount,omitempty"`
-	SmsFailedCount         *int64  `json:"SmsFailedCount,omitempty" xml:"SmsFailedCount,omitempty"`
 	ReceivedCount          *int64  `json:"ReceivedCount,omitempty" xml:"ReceivedCount,omitempty"`
 	SentCount              *int64  `json:"SentCount,omitempty" xml:"SentCount,omitempty"`
+	SmsFailedCount         *int64  `json:"SmsFailedCount,omitempty" xml:"SmsFailedCount,omitempty"`
+	SmsReceiveFailedCount  *int64  `json:"SmsReceiveFailedCount,omitempty" xml:"SmsReceiveFailedCount,omitempty"`
+	SmsReceiveSuccessCount *int64  `json:"SmsReceiveSuccessCount,omitempty" xml:"SmsReceiveSuccessCount,omitempty"`
 	SmsSentCount           *int64  `json:"SmsSentCount,omitempty" xml:"SmsSentCount,omitempty"`
-	AcceptCount            *int64  `json:"AcceptCount,omitempty" xml:"AcceptCount,omitempty"`
+	SmsSkipCount           *int64  `json:"SmsSkipCount,omitempty" xml:"SmsSkipCount,omitempty"`
+	Time                   *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s QueryPushStatByAppResponseBodyAppPushStatsAppPushStat) String() string {
@@ -3114,8 +3115,8 @@ func (s QueryPushStatByAppResponseBodyAppPushStatsAppPushStat) GoString() string
 	return s.String()
 }
 
-func (s *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat) SetTime(v string) *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat {
-	s.Time = &v
+func (s *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat) SetAcceptCount(v int64) *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat {
+	s.AcceptCount = &v
 	return s
 }
 
@@ -3129,26 +3130,6 @@ func (s *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat) SetOpenedCount(v
 	return s
 }
 
-func (s *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat) SetSmsReceiveSuccessCount(v int64) *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat {
-	s.SmsReceiveSuccessCount = &v
-	return s
-}
-
-func (s *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat) SetSmsSkipCount(v int64) *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat {
-	s.SmsSkipCount = &v
-	return s
-}
-
-func (s *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat) SetSmsReceiveFailedCount(v int64) *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat {
-	s.SmsReceiveFailedCount = &v
-	return s
-}
-
-func (s *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat) SetSmsFailedCount(v int64) *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat {
-	s.SmsFailedCount = &v
-	return s
-}
-
 func (s *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat) SetReceivedCount(v int64) *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat {
 	s.ReceivedCount = &v
 	return s
@@ -3159,13 +3140,33 @@ func (s *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat) SetSentCount(v i
 	return s
 }
 
+func (s *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat) SetSmsFailedCount(v int64) *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat {
+	s.SmsFailedCount = &v
+	return s
+}
+
+func (s *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat) SetSmsReceiveFailedCount(v int64) *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat {
+	s.SmsReceiveFailedCount = &v
+	return s
+}
+
+func (s *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat) SetSmsReceiveSuccessCount(v int64) *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat {
+	s.SmsReceiveSuccessCount = &v
+	return s
+}
+
 func (s *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat) SetSmsSentCount(v int64) *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat {
 	s.SmsSentCount = &v
 	return s
 }
 
-func (s *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat) SetAcceptCount(v int64) *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat {
-	s.AcceptCount = &v
+func (s *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat) SetSmsSkipCount(v int64) *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat {
+	s.SmsSkipCount = &v
+	return s
+}
+
+func (s *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat) SetTime(v string) *QueryPushStatByAppResponseBodyAppPushStatsAppPushStat {
+	s.Time = &v
 	return s
 }
 
@@ -3216,8 +3217,8 @@ func (s *QueryPushStatByMsgRequest) SetMessageId(v int64) *QueryPushStatByMsgReq
 }
 
 type QueryPushStatByMsgResponseBody struct {
-	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PushStats *QueryPushStatByMsgResponseBodyPushStats `json:"PushStats,omitempty" xml:"PushStats,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryPushStatByMsgResponseBody) String() string {
@@ -3228,13 +3229,13 @@ func (s QueryPushStatByMsgResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryPushStatByMsgResponseBody) SetRequestId(v string) *QueryPushStatByMsgResponseBody {
-	s.RequestId = &v
+func (s *QueryPushStatByMsgResponseBody) SetPushStats(v *QueryPushStatByMsgResponseBodyPushStats) *QueryPushStatByMsgResponseBody {
+	s.PushStats = v
 	return s
 }
 
-func (s *QueryPushStatByMsgResponseBody) SetPushStats(v *QueryPushStatByMsgResponseBodyPushStats) *QueryPushStatByMsgResponseBody {
-	s.PushStats = v
+func (s *QueryPushStatByMsgResponseBody) SetRequestId(v string) *QueryPushStatByMsgResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3256,17 +3257,17 @@ func (s *QueryPushStatByMsgResponseBodyPushStats) SetPushStat(v []*QueryPushStat
 }
 
 type QueryPushStatByMsgResponseBodyPushStatsPushStat struct {
-	MessageId              *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+	AcceptCount            *int64  `json:"AcceptCount,omitempty" xml:"AcceptCount,omitempty"`
 	DeletedCount           *int64  `json:"DeletedCount,omitempty" xml:"DeletedCount,omitempty"`
+	MessageId              *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 	OpenedCount            *int64  `json:"OpenedCount,omitempty" xml:"OpenedCount,omitempty"`
-	SmsReceiveSuccessCount *int64  `json:"SmsReceiveSuccessCount,omitempty" xml:"SmsReceiveSuccessCount,omitempty"`
-	SmsSkipCount           *int64  `json:"SmsSkipCount,omitempty" xml:"SmsSkipCount,omitempty"`
-	SmsReceiveFailedCount  *int64  `json:"SmsReceiveFailedCount,omitempty" xml:"SmsReceiveFailedCount,omitempty"`
-	SmsFailedCount         *int64  `json:"SmsFailedCount,omitempty" xml:"SmsFailedCount,omitempty"`
 	ReceivedCount          *int64  `json:"ReceivedCount,omitempty" xml:"ReceivedCount,omitempty"`
 	SentCount              *int64  `json:"SentCount,omitempty" xml:"SentCount,omitempty"`
+	SmsFailedCount         *int64  `json:"SmsFailedCount,omitempty" xml:"SmsFailedCount,omitempty"`
+	SmsReceiveFailedCount  *int64  `json:"SmsReceiveFailedCount,omitempty" xml:"SmsReceiveFailedCount,omitempty"`
+	SmsReceiveSuccessCount *int64  `json:"SmsReceiveSuccessCount,omitempty" xml:"SmsReceiveSuccessCount,omitempty"`
 	SmsSentCount           *int64  `json:"SmsSentCount,omitempty" xml:"SmsSentCount,omitempty"`
-	AcceptCount            *int64  `json:"AcceptCount,omitempty" xml:"AcceptCount,omitempty"`
+	SmsSkipCount           *int64  `json:"SmsSkipCount,omitempty" xml:"SmsSkipCount,omitempty"`
 }
 
 func (s QueryPushStatByMsgResponseBodyPushStatsPushStat) String() string {
@@ -3277,8 +3278,8 @@ func (s QueryPushStatByMsgResponseBodyPushStatsPushStat) GoString() string {
 	return s.String()
 }
 
-func (s *QueryPushStatByMsgResponseBodyPushStatsPushStat) SetMessageId(v string) *QueryPushStatByMsgResponseBodyPushStatsPushStat {
-	s.MessageId = &v
+func (s *QueryPushStatByMsgResponseBodyPushStatsPushStat) SetAcceptCount(v int64) *QueryPushStatByMsgResponseBodyPushStatsPushStat {
+	s.AcceptCount = &v
 	return s
 }
 
@@ -3287,28 +3288,13 @@ func (s *QueryPushStatByMsgResponseBodyPushStatsPushStat) SetDeletedCount(v int6
 	return s
 }
 
+func (s *QueryPushStatByMsgResponseBodyPushStatsPushStat) SetMessageId(v string) *QueryPushStatByMsgResponseBodyPushStatsPushStat {
+	s.MessageId = &v
+	return s
+}
+
 func (s *QueryPushStatByMsgResponseBodyPushStatsPushStat) SetOpenedCount(v int64) *QueryPushStatByMsgResponseBodyPushStatsPushStat {
 	s.OpenedCount = &v
-	return s
-}
-
-func (s *QueryPushStatByMsgResponseBodyPushStatsPushStat) SetSmsReceiveSuccessCount(v int64) *QueryPushStatByMsgResponseBodyPushStatsPushStat {
-	s.SmsReceiveSuccessCount = &v
-	return s
-}
-
-func (s *QueryPushStatByMsgResponseBodyPushStatsPushStat) SetSmsSkipCount(v int64) *QueryPushStatByMsgResponseBodyPushStatsPushStat {
-	s.SmsSkipCount = &v
-	return s
-}
-
-func (s *QueryPushStatByMsgResponseBodyPushStatsPushStat) SetSmsReceiveFailedCount(v int64) *QueryPushStatByMsgResponseBodyPushStatsPushStat {
-	s.SmsReceiveFailedCount = &v
-	return s
-}
-
-func (s *QueryPushStatByMsgResponseBodyPushStatsPushStat) SetSmsFailedCount(v int64) *QueryPushStatByMsgResponseBodyPushStatsPushStat {
-	s.SmsFailedCount = &v
 	return s
 }
 
@@ -3322,13 +3308,28 @@ func (s *QueryPushStatByMsgResponseBodyPushStatsPushStat) SetSentCount(v int64) 
 	return s
 }
 
+func (s *QueryPushStatByMsgResponseBodyPushStatsPushStat) SetSmsFailedCount(v int64) *QueryPushStatByMsgResponseBodyPushStatsPushStat {
+	s.SmsFailedCount = &v
+	return s
+}
+
+func (s *QueryPushStatByMsgResponseBodyPushStatsPushStat) SetSmsReceiveFailedCount(v int64) *QueryPushStatByMsgResponseBodyPushStatsPushStat {
+	s.SmsReceiveFailedCount = &v
+	return s
+}
+
+func (s *QueryPushStatByMsgResponseBodyPushStatsPushStat) SetSmsReceiveSuccessCount(v int64) *QueryPushStatByMsgResponseBodyPushStatsPushStat {
+	s.SmsReceiveSuccessCount = &v
+	return s
+}
+
 func (s *QueryPushStatByMsgResponseBodyPushStatsPushStat) SetSmsSentCount(v int64) *QueryPushStatByMsgResponseBodyPushStatsPushStat {
 	s.SmsSentCount = &v
 	return s
 }
 
-func (s *QueryPushStatByMsgResponseBodyPushStatsPushStat) SetAcceptCount(v int64) *QueryPushStatByMsgResponseBodyPushStatsPushStat {
-	s.AcceptCount = &v
+func (s *QueryPushStatByMsgResponseBodyPushStatsPushStat) SetSmsSkipCount(v int64) *QueryPushStatByMsgResponseBodyPushStatsPushStat {
+	s.SmsSkipCount = &v
 	return s
 }
 
@@ -3466,9 +3467,9 @@ func (s *QueryTagsResponse) SetBody(v *QueryTagsResponseBody) *QueryTagsResponse
 
 type QueryUniqueDeviceStatRequest struct {
 	AppKey      *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Granularity *string `json:"Granularity,omitempty" xml:"Granularity,omitempty"`
+	StartTime   *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s QueryUniqueDeviceStatRequest) String() string {
@@ -3484,11 +3485,6 @@ func (s *QueryUniqueDeviceStatRequest) SetAppKey(v int64) *QueryUniqueDeviceStat
 	return s
 }
 
-func (s *QueryUniqueDeviceStatRequest) SetStartTime(v string) *QueryUniqueDeviceStatRequest {
-	s.StartTime = &v
-	return s
-}
-
 func (s *QueryUniqueDeviceStatRequest) SetEndTime(v string) *QueryUniqueDeviceStatRequest {
 	s.EndTime = &v
 	return s
@@ -3499,9 +3495,14 @@ func (s *QueryUniqueDeviceStatRequest) SetGranularity(v string) *QueryUniqueDevi
 	return s
 }
 
+func (s *QueryUniqueDeviceStatRequest) SetStartTime(v string) *QueryUniqueDeviceStatRequest {
+	s.StartTime = &v
+	return s
+}
+
 type QueryUniqueDeviceStatResponseBody struct {
-	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	AppDeviceStats *QueryUniqueDeviceStatResponseBodyAppDeviceStats `json:"AppDeviceStats,omitempty" xml:"AppDeviceStats,omitempty" type:"Struct"`
+	RequestId      *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s QueryUniqueDeviceStatResponseBody) String() string {
@@ -3512,13 +3513,13 @@ func (s QueryUniqueDeviceStatResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *QueryUniqueDeviceStatResponseBody) SetRequestId(v string) *QueryUniqueDeviceStatResponseBody {
-	s.RequestId = &v
+func (s *QueryUniqueDeviceStatResponseBody) SetAppDeviceStats(v *QueryUniqueDeviceStatResponseBodyAppDeviceStats) *QueryUniqueDeviceStatResponseBody {
+	s.AppDeviceStats = v
 	return s
 }
 
-func (s *QueryUniqueDeviceStatResponseBody) SetAppDeviceStats(v *QueryUniqueDeviceStatResponseBodyAppDeviceStats) *QueryUniqueDeviceStatResponseBody {
-	s.AppDeviceStats = v
+func (s *QueryUniqueDeviceStatResponseBody) SetRequestId(v string) *QueryUniqueDeviceStatResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3540,8 +3541,8 @@ func (s *QueryUniqueDeviceStatResponseBodyAppDeviceStats) SetAppDeviceStat(v []*
 }
 
 type QueryUniqueDeviceStatResponseBodyAppDeviceStatsAppDeviceStat struct {
-	Time  *string `json:"Time,omitempty" xml:"Time,omitempty"`
 	Count *int64  `json:"Count,omitempty" xml:"Count,omitempty"`
+	Time  *string `json:"Time,omitempty" xml:"Time,omitempty"`
 }
 
 func (s QueryUniqueDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) String() string {
@@ -3552,13 +3553,13 @@ func (s QueryUniqueDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) GoString()
 	return s.String()
 }
 
-func (s *QueryUniqueDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) SetTime(v string) *QueryUniqueDeviceStatResponseBodyAppDeviceStatsAppDeviceStat {
-	s.Time = &v
+func (s *QueryUniqueDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) SetCount(v int64) *QueryUniqueDeviceStatResponseBodyAppDeviceStatsAppDeviceStat {
+	s.Count = &v
 	return s
 }
 
-func (s *QueryUniqueDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) SetCount(v int64) *QueryUniqueDeviceStatResponseBodyAppDeviceStatsAppDeviceStat {
-	s.Count = &v
+func (s *QueryUniqueDeviceStatResponseBodyAppDeviceStatsAppDeviceStat) SetTime(v string) *QueryUniqueDeviceStatResponseBodyAppDeviceStatsAppDeviceStat {
+	s.Time = &v
 	return s
 }
 
@@ -3649,9 +3650,9 @@ func (s *RemoveTagResponse) SetBody(v *RemoveTagResponseBody) *RemoveTagResponse
 }
 
 type UnbindAliasRequest struct {
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	AppKey    *int64  `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 	DeviceId  *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
 	UnbindAll *bool   `json:"UnbindAll,omitempty" xml:"UnbindAll,omitempty"`
 }
 
@@ -3663,6 +3664,11 @@ func (s UnbindAliasRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UnbindAliasRequest) SetAliasName(v string) *UnbindAliasRequest {
+	s.AliasName = &v
+	return s
+}
+
 func (s *UnbindAliasRequest) SetAppKey(v int64) *UnbindAliasRequest {
 	s.AppKey = &v
 	return s
@@ -3670,11 +3676,6 @@ func (s *UnbindAliasRequest) SetAppKey(v int64) *UnbindAliasRequest {
 
 func (s *UnbindAliasRequest) SetDeviceId(v string) *UnbindAliasRequest {
 	s.DeviceId = &v
-	return s
-}
-
-func (s *UnbindAliasRequest) SetAliasName(v string) *UnbindAliasRequest {
-	s.AliasName = &v
 	return s
 }
 
@@ -3969,11 +3970,35 @@ func (client *Client) BindAliasWithOptions(request *BindAliasRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliasName)) {
+		query["AliasName"] = request.AliasName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindAlias"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &BindAliasResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BindAlias"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3997,11 +4022,35 @@ func (client *Client) BindPhoneWithOptions(request *BindPhoneRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumber)) {
+		query["PhoneNumber"] = request.PhoneNumber
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindPhone"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &BindPhoneResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BindPhone"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4025,11 +4074,39 @@ func (client *Client) BindTagWithOptions(request *BindTagRequest, runtime *util.
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientKey)) {
+		query["ClientKey"] = request.ClientKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyType)) {
+		query["KeyType"] = request.KeyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagName)) {
+		query["TagName"] = request.TagName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindTag"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &BindTagResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("BindTag"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4053,11 +4130,31 @@ func (client *Client) CancelPushWithOptions(request *CancelPushRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageId)) {
+		query["MessageId"] = request.MessageId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelPush"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CancelPushResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CancelPush"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4081,11 +4178,27 @@ func (client *Client) CheckCertificateWithOptions(request *CheckCertificateReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckCertificate"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CheckCertificateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CheckCertificate"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4109,11 +4222,31 @@ func (client *Client) CheckDeviceWithOptions(request *CheckDeviceRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckDevice"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CheckDeviceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CheckDevice"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4137,11 +4270,31 @@ func (client *Client) CheckDevicesWithOptions(request *CheckDevicesRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceIds)) {
+		query["DeviceIds"] = request.DeviceIds
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckDevices"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CheckDevicesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CheckDevices"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4165,11 +4318,31 @@ func (client *Client) CompleteContinuouslyPushWithOptions(request *CompleteConti
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageId)) {
+		query["MessageId"] = request.MessageId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CompleteContinuouslyPush"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CompleteContinuouslyPushResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CompleteContinuouslyPush"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4193,11 +4366,39 @@ func (client *Client) ContinuouslyPushWithOptions(request *ContinuouslyPushReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageId)) {
+		query["MessageId"] = request.MessageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Target)) {
+		query["Target"] = request.Target
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetValue)) {
+		query["TargetValue"] = request.TargetValue
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ContinuouslyPush"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ContinuouslyPushResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ContinuouslyPush"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4218,8 +4419,19 @@ func (client *Client) ContinuouslyPush(request *ContinuouslyPushRequest) (_resul
 
 func (client *Client) ListSummaryAppsWithOptions(runtime *util.RuntimeOptions) (_result *ListSummaryAppsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("ListSummaryApps"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &ListSummaryAppsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListSummaryApps"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4243,11 +4455,27 @@ func (client *Client) ListTagsWithOptions(request *ListTagsRequest, runtime *uti
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTags"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListTagsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListTags"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4271,11 +4499,33 @@ func (client *Client) MassPushWithOptions(request *MassPushRequest, runtime *uti
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PushTask)) {
+		body["PushTask"] = request.PushTask
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MassPush"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &MassPushResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("MassPush"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4299,11 +4549,267 @@ func (client *Client) PushWithOptions(request *PushRequest, runtime *util.Runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AndroidActivity)) {
+		query["AndroidActivity"] = request.AndroidActivity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidBigBody)) {
+		query["AndroidBigBody"] = request.AndroidBigBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidBigPictureUrl)) {
+		query["AndroidBigPictureUrl"] = request.AndroidBigPictureUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidBigTitle)) {
+		query["AndroidBigTitle"] = request.AndroidBigTitle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidExtParameters)) {
+		query["AndroidExtParameters"] = request.AndroidExtParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidImageUrl)) {
+		query["AndroidImageUrl"] = request.AndroidImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidInboxBody)) {
+		query["AndroidInboxBody"] = request.AndroidInboxBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidMessageHuaweiCategory)) {
+		query["AndroidMessageHuaweiCategory"] = request.AndroidMessageHuaweiCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidMessageHuaweiUrgency)) {
+		query["AndroidMessageHuaweiUrgency"] = request.AndroidMessageHuaweiUrgency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidMusic)) {
+		query["AndroidMusic"] = request.AndroidMusic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidNotificationBarPriority)) {
+		query["AndroidNotificationBarPriority"] = request.AndroidNotificationBarPriority
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidNotificationBarType)) {
+		query["AndroidNotificationBarType"] = request.AndroidNotificationBarType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidNotificationChannel)) {
+		query["AndroidNotificationChannel"] = request.AndroidNotificationChannel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidNotificationHuaweiChannel)) {
+		query["AndroidNotificationHuaweiChannel"] = request.AndroidNotificationHuaweiChannel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidNotificationNotifyId)) {
+		query["AndroidNotificationNotifyId"] = request.AndroidNotificationNotifyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidNotificationVivoChannel)) {
+		query["AndroidNotificationVivoChannel"] = request.AndroidNotificationVivoChannel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidNotificationXiaomiChannel)) {
+		query["AndroidNotificationXiaomiChannel"] = request.AndroidNotificationXiaomiChannel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidNotifyType)) {
+		query["AndroidNotifyType"] = request.AndroidNotifyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidOpenType)) {
+		query["AndroidOpenType"] = request.AndroidOpenType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidOpenUrl)) {
+		query["AndroidOpenUrl"] = request.AndroidOpenUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidPopupActivity)) {
+		query["AndroidPopupActivity"] = request.AndroidPopupActivity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidPopupBody)) {
+		query["AndroidPopupBody"] = request.AndroidPopupBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidPopupTitle)) {
+		query["AndroidPopupTitle"] = request.AndroidPopupTitle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidRemind)) {
+		query["AndroidRemind"] = request.AndroidRemind
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidRenderStyle)) {
+		query["AndroidRenderStyle"] = request.AndroidRenderStyle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidXiaoMiActivity)) {
+		query["AndroidXiaoMiActivity"] = request.AndroidXiaoMiActivity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidXiaoMiNotifyBody)) {
+		query["AndroidXiaoMiNotifyBody"] = request.AndroidXiaoMiNotifyBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidXiaoMiNotifyTitle)) {
+		query["AndroidXiaoMiNotifyTitle"] = request.AndroidXiaoMiNotifyTitle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidXiaomiBigPictureUrl)) {
+		query["AndroidXiaomiBigPictureUrl"] = request.AndroidXiaomiBigPictureUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AndroidXiaomiImageUrl)) {
+		query["AndroidXiaomiImageUrl"] = request.AndroidXiaomiImageUrl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Body)) {
+		query["Body"] = request.Body
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceType)) {
+		query["DeviceType"] = request.DeviceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpireTime)) {
+		query["ExpireTime"] = request.ExpireTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobKey)) {
+		query["JobKey"] = request.JobKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PushTime)) {
+		query["PushTime"] = request.PushTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PushType)) {
+		query["PushType"] = request.PushType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SendChannels)) {
+		query["SendChannels"] = request.SendChannels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SendSpeed)) {
+		query["SendSpeed"] = request.SendSpeed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmsDelaySecs)) {
+		query["SmsDelaySecs"] = request.SmsDelaySecs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmsParams)) {
+		query["SmsParams"] = request.SmsParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmsSendPolicy)) {
+		query["SmsSendPolicy"] = request.SmsSendPolicy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmsSignName)) {
+		query["SmsSignName"] = request.SmsSignName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmsTemplateName)) {
+		query["SmsTemplateName"] = request.SmsTemplateName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StoreOffline)) {
+		query["StoreOffline"] = request.StoreOffline
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Target)) {
+		query["Target"] = request.Target
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetValue)) {
+		query["TargetValue"] = request.TargetValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IOSApnsEnv)) {
+		query["iOSApnsEnv"] = request.IOSApnsEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IOSBadge)) {
+		query["iOSBadge"] = request.IOSBadge
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IOSBadgeAutoIncrement)) {
+		query["iOSBadgeAutoIncrement"] = request.IOSBadgeAutoIncrement
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IOSExtParameters)) {
+		query["iOSExtParameters"] = request.IOSExtParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IOSMusic)) {
+		query["iOSMusic"] = request.IOSMusic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IOSMutableContent)) {
+		query["iOSMutableContent"] = request.IOSMutableContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IOSNotificationCategory)) {
+		query["iOSNotificationCategory"] = request.IOSNotificationCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IOSNotificationCollapseId)) {
+		query["iOSNotificationCollapseId"] = request.IOSNotificationCollapseId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IOSNotificationThreadId)) {
+		query["iOSNotificationThreadId"] = request.IOSNotificationThreadId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IOSRemind)) {
+		query["iOSRemind"] = request.IOSRemind
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IOSRemindBody)) {
+		query["iOSRemindBody"] = request.IOSRemindBody
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IOSSilentNotification)) {
+		query["iOSSilentNotification"] = request.IOSSilentNotification
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IOSSubtitle)) {
+		query["iOSSubtitle"] = request.IOSSubtitle
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Push"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &PushResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("Push"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4327,11 +4833,47 @@ func (client *Client) PushMessageToAndroidWithOptions(request *PushMessageToAndr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Body)) {
+		query["Body"] = request.Body
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobKey)) {
+		query["JobKey"] = request.JobKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Target)) {
+		query["Target"] = request.Target
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetValue)) {
+		query["TargetValue"] = request.TargetValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PushMessageToAndroid"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &PushMessageToAndroidResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PushMessageToAndroid"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4355,11 +4897,47 @@ func (client *Client) PushMessageToiOSWithOptions(request *PushMessageToiOSReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Body)) {
+		query["Body"] = request.Body
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobKey)) {
+		query["JobKey"] = request.JobKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Target)) {
+		query["Target"] = request.Target
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetValue)) {
+		query["TargetValue"] = request.TargetValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PushMessageToiOS"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &PushMessageToiOSResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PushMessageToiOS"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4383,11 +4961,51 @@ func (client *Client) PushNoticeToAndroidWithOptions(request *PushNoticeToAndroi
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Body)) {
+		query["Body"] = request.Body
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtParameters)) {
+		query["ExtParameters"] = request.ExtParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobKey)) {
+		query["JobKey"] = request.JobKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Target)) {
+		query["Target"] = request.Target
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetValue)) {
+		query["TargetValue"] = request.TargetValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PushNoticeToAndroid"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &PushNoticeToAndroidResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PushNoticeToAndroid"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4411,11 +5029,55 @@ func (client *Client) PushNoticeToiOSWithOptions(request *PushNoticeToiOSRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApnsEnv)) {
+		query["ApnsEnv"] = request.ApnsEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Body)) {
+		query["Body"] = request.Body
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtParameters)) {
+		query["ExtParameters"] = request.ExtParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobKey)) {
+		query["JobKey"] = request.JobKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Target)) {
+		query["Target"] = request.Target
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetValue)) {
+		query["TargetValue"] = request.TargetValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Title)) {
+		query["Title"] = request.Title
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PushNoticeToiOS"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &PushNoticeToiOSResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PushNoticeToiOS"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4439,11 +5101,31 @@ func (client *Client) QueryAliasesWithOptions(request *QueryAliasesRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAliases"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryAliasesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryAliases"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4467,11 +5149,35 @@ func (client *Client) QueryDeviceCountWithOptions(request *QueryDeviceCountReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Target)) {
+		query["Target"] = request.Target
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetValue)) {
+		query["TargetValue"] = request.TargetValue
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDeviceCount"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryDeviceCountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryDeviceCount"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4495,11 +5201,31 @@ func (client *Client) QueryDeviceInfoWithOptions(request *QueryDeviceInfoRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDeviceInfo"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryDeviceInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryDeviceInfo"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4518,16 +5244,96 @@ func (client *Client) QueryDeviceInfo(request *QueryDeviceInfoRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) QueryDeviceStatWithOptions(request *QueryDeviceStatRequest, runtime *util.RuntimeOptions) (_result *QueryDeviceStatResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceType)) {
+		query["DeviceType"] = request.DeviceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryType)) {
+		query["QueryType"] = request.QueryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDeviceStat"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryDeviceStatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryDeviceStat(request *QueryDeviceStatRequest) (_result *QueryDeviceStatResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryDeviceStatResponse{}
+	_body, _err := client.QueryDeviceStatWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryDevicesByAccountWithOptions(request *QueryDevicesByAccountRequest, runtime *util.RuntimeOptions) (_result *QueryDevicesByAccountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Account)) {
+		query["Account"] = request.Account
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDevicesByAccount"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryDevicesByAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryDevicesByAccount"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4551,11 +5357,31 @@ func (client *Client) QueryDevicesByAliasWithOptions(request *QueryDevicesByAlia
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Alias)) {
+		query["Alias"] = request.Alias
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDevicesByAlias"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryDevicesByAliasResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryDevicesByAlias"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4574,44 +5400,68 @@ func (client *Client) QueryDevicesByAlias(request *QueryDevicesByAliasRequest) (
 	return _result, _err
 }
 
-func (client *Client) QueryDeviceStatWithOptions(request *QueryDeviceStatRequest, runtime *util.RuntimeOptions) (_result *QueryDeviceStatResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &QueryDeviceStatResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryDeviceStat"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryDeviceStat(request *QueryDeviceStatRequest) (_result *QueryDeviceStatResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryDeviceStatResponse{}
-	_body, _err := client.QueryDeviceStatWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) QueryPushRecordsWithOptions(request *QueryPushRecordsRequest, runtime *util.RuntimeOptions) (_result *QueryPushRecordsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PushType)) {
+		query["PushType"] = request.PushType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Target)) {
+		query["Target"] = request.Target
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryPushRecords"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryPushRecordsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryPushRecords"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4635,11 +5485,39 @@ func (client *Client) QueryPushStatByAppWithOptions(request *QueryPushStatByAppR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Granularity)) {
+		query["Granularity"] = request.Granularity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryPushStatByApp"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryPushStatByAppResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryPushStatByApp"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4663,11 +5541,31 @@ func (client *Client) QueryPushStatByMsgWithOptions(request *QueryPushStatByMsgR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageId)) {
+		query["MessageId"] = request.MessageId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryPushStatByMsg"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryPushStatByMsgResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryPushStatByMsg"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4691,11 +5589,35 @@ func (client *Client) QueryTagsWithOptions(request *QueryTagsRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientKey)) {
+		query["ClientKey"] = request.ClientKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyType)) {
+		query["KeyType"] = request.KeyType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryTags"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryTagsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryTags"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4719,11 +5641,39 @@ func (client *Client) QueryUniqueDeviceStatWithOptions(request *QueryUniqueDevic
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Granularity)) {
+		query["Granularity"] = request.Granularity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryUniqueDeviceStat"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryUniqueDeviceStatResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryUniqueDeviceStat"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4747,11 +5697,31 @@ func (client *Client) RemoveTagWithOptions(request *RemoveTagRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagName)) {
+		query["TagName"] = request.TagName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveTag"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RemoveTagResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RemoveTag"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4775,11 +5745,39 @@ func (client *Client) UnbindAliasWithOptions(request *UnbindAliasRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliasName)) {
+		query["AliasName"] = request.AliasName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnbindAll)) {
+		query["UnbindAll"] = request.UnbindAll
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnbindAlias"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UnbindAliasResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UnbindAlias"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4803,11 +5801,31 @@ func (client *Client) UnbindPhoneWithOptions(request *UnbindPhoneRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
+		query["DeviceId"] = request.DeviceId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnbindPhone"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UnbindPhoneResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UnbindPhone"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4831,11 +5849,39 @@ func (client *Client) UnbindTagWithOptions(request *UnbindTagRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientKey)) {
+		query["ClientKey"] = request.ClientKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyType)) {
+		query["KeyType"] = request.KeyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagName)) {
+		query["TagName"] = request.TagName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnbindTag"),
+		Version:     tea.String("2016-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UnbindTagResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UnbindTag"), tea.String("2016-08-01"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
