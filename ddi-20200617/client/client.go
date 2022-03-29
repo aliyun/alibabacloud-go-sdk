@@ -3497,6 +3497,291 @@ func (s *DescribeFlowJobResponse) SetBody(v *DescribeFlowJobResponseBody) *Descr
 	return s
 }
 
+type DescribeFlowNodeInstanceRequest struct {
+	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeFlowNodeInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFlowNodeInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFlowNodeInstanceRequest) SetId(v string) *DescribeFlowNodeInstanceRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceRequest) SetProjectId(v string) *DescribeFlowNodeInstanceRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceRequest) SetRegionId(v string) *DescribeFlowNodeInstanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeFlowNodeInstanceResponseBody struct {
+	Adhoc            *bool   `json:"Adhoc,omitempty" xml:"Adhoc,omitempty"`
+	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName      *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	Duration         *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	EndTime          *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EnvConf          *string `json:"EnvConf,omitempty" xml:"EnvConf,omitempty"`
+	ExternalChildIds *string `json:"ExternalChildIds,omitempty" xml:"ExternalChildIds,omitempty"`
+	ExternalId       *string `json:"ExternalId,omitempty" xml:"ExternalId,omitempty"`
+	ExternalInfo     *string `json:"ExternalInfo,omitempty" xml:"ExternalInfo,omitempty"`
+	ExternalStatus   *string `json:"ExternalStatus,omitempty" xml:"ExternalStatus,omitempty"`
+	ExternalSubId    *string `json:"ExternalSubId,omitempty" xml:"ExternalSubId,omitempty"`
+	FailAct          *string `json:"FailAct,omitempty" xml:"FailAct,omitempty"`
+	FlowId           *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	FlowInstanceId   *string `json:"FlowInstanceId,omitempty" xml:"FlowInstanceId,omitempty"`
+	GmtCreate        *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified      *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	HostName         *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	JobId            *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	JobName          *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobParams        *string `json:"JobParams,omitempty" xml:"JobParams,omitempty"`
+	JobType          *string `json:"JobType,omitempty" xml:"JobType,omitempty"`
+	MaxRetry         *string `json:"MaxRetry,omitempty" xml:"MaxRetry,omitempty"`
+	Mode             *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	MonitorConf      *string `json:"MonitorConf,omitempty" xml:"MonitorConf,omitempty"`
+	NodeName         *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	ParamConf        *string `json:"ParamConf,omitempty" xml:"ParamConf,omitempty"`
+	Pending          *bool   `json:"Pending,omitempty" xml:"Pending,omitempty"`
+	ProjectId        *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Retries          *int32  `json:"Retries,omitempty" xml:"Retries,omitempty"`
+	RetryInterval    *string `json:"RetryInterval,omitempty" xml:"RetryInterval,omitempty"`
+	RetryPolicy      *string `json:"RetryPolicy,omitempty" xml:"RetryPolicy,omitempty"`
+	RunConf          *string `json:"RunConf,omitempty" xml:"RunConf,omitempty"`
+	StartTime        *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeFlowNodeInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFlowNodeInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetAdhoc(v bool) *DescribeFlowNodeInstanceResponseBody {
+	s.Adhoc = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetClusterId(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetClusterName(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetDuration(v int64) *DescribeFlowNodeInstanceResponseBody {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetEndTime(v int64) *DescribeFlowNodeInstanceResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetEnvConf(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.EnvConf = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetExternalChildIds(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.ExternalChildIds = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetExternalId(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.ExternalId = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetExternalInfo(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.ExternalInfo = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetExternalStatus(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.ExternalStatus = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetExternalSubId(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.ExternalSubId = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetFailAct(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.FailAct = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetFlowId(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.FlowId = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetFlowInstanceId(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.FlowInstanceId = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetGmtCreate(v int64) *DescribeFlowNodeInstanceResponseBody {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetGmtModified(v int64) *DescribeFlowNodeInstanceResponseBody {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetHostName(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.HostName = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetId(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetJobId(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetJobName(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.JobName = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetJobParams(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.JobParams = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetJobType(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.JobType = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetMaxRetry(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.MaxRetry = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetMode(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.Mode = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetMonitorConf(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.MonitorConf = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetNodeName(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.NodeName = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetParamConf(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.ParamConf = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetPending(v bool) *DescribeFlowNodeInstanceResponseBody {
+	s.Pending = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetProjectId(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetRequestId(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetRetries(v int32) *DescribeFlowNodeInstanceResponseBody {
+	s.Retries = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetRetryInterval(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.RetryInterval = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetRetryPolicy(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.RetryPolicy = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetRunConf(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.RunConf = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetStartTime(v int64) *DescribeFlowNodeInstanceResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetStatus(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponseBody) SetType(v string) *DescribeFlowNodeInstanceResponseBody {
+	s.Type = &v
+	return s
+}
+
+type DescribeFlowNodeInstanceResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeFlowNodeInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeFlowNodeInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFlowNodeInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFlowNodeInstanceResponse) SetHeaders(v map[string]*string) *DescribeFlowNodeInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeFlowNodeInstanceResponse) SetBody(v *DescribeFlowNodeInstanceResponseBody) *DescribeFlowNodeInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeFlowProjectRequest struct {
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -7396,6 +7681,58 @@ func (client *Client) DescribeFlowJob(request *DescribeFlowJobRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFlowJobResponse{}
 	_body, _err := client.DescribeFlowJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeFlowNodeInstanceWithOptions(request *DescribeFlowNodeInstanceRequest, runtime *util.RuntimeOptions) (_result *DescribeFlowNodeInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeFlowNodeInstance"),
+		Version:     tea.String("2020-06-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeFlowNodeInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeFlowNodeInstance(request *DescribeFlowNodeInstanceRequest) (_result *DescribeFlowNodeInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeFlowNodeInstanceResponse{}
+	_body, _err := client.DescribeFlowNodeInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
