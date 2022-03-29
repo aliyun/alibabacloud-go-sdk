@@ -967,6 +967,8 @@ type CreateFunctionInstanceRequest struct {
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
 	// 模型类型
 	ModelType *string `json:"modelType,omitempty" xml:"modelType,omitempty"`
+	// 使用参数
+	UsageParameters []*CreateFunctionInstanceRequestUsageParameters `json:"usageParameters,omitempty" xml:"usageParameters,omitempty" type:"Repeated"`
 }
 
 func (s CreateFunctionInstanceRequest) String() string {
@@ -1007,6 +1009,11 @@ func (s *CreateFunctionInstanceRequest) SetModelType(v string) *CreateFunctionIn
 	return s
 }
 
+func (s *CreateFunctionInstanceRequest) SetUsageParameters(v []*CreateFunctionInstanceRequestUsageParameters) *CreateFunctionInstanceRequest {
+	s.UsageParameters = v
+	return s
+}
+
 type CreateFunctionInstanceRequestCreateParameters struct {
 	// 参数名称
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -1028,6 +1035,31 @@ func (s *CreateFunctionInstanceRequestCreateParameters) SetName(v string) *Creat
 }
 
 func (s *CreateFunctionInstanceRequestCreateParameters) SetValue(v string) *CreateFunctionInstanceRequestCreateParameters {
+	s.Value = &v
+	return s
+}
+
+type CreateFunctionInstanceRequestUsageParameters struct {
+	// 参数名称
+	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 参数值
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s CreateFunctionInstanceRequestUsageParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFunctionInstanceRequestUsageParameters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFunctionInstanceRequestUsageParameters) SetName(v string) *CreateFunctionInstanceRequestUsageParameters {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateFunctionInstanceRequestUsageParameters) SetValue(v string) *CreateFunctionInstanceRequestUsageParameters {
 	s.Value = &v
 	return s
 }
@@ -1860,6 +1892,76 @@ func (s *DeleteFunctionInstanceResponse) SetHeaders(v map[string]*string) *Delet
 }
 
 func (s *DeleteFunctionInstanceResponse) SetBody(v *DeleteFunctionInstanceResponseBody) *DeleteFunctionInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteFunctionTaskResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpCode  *int64  `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Latency   *int64  `json:"Latency,omitempty" xml:"Latency,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DeleteFunctionTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFunctionTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFunctionTaskResponseBody) SetCode(v string) *DeleteFunctionTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteFunctionTaskResponseBody) SetHttpCode(v int64) *DeleteFunctionTaskResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *DeleteFunctionTaskResponseBody) SetLatency(v int64) *DeleteFunctionTaskResponseBody {
+	s.Latency = &v
+	return s
+}
+
+func (s *DeleteFunctionTaskResponseBody) SetMessage(v string) *DeleteFunctionTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteFunctionTaskResponseBody) SetRequestId(v string) *DeleteFunctionTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteFunctionTaskResponseBody) SetStatus(v string) *DeleteFunctionTaskResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DeleteFunctionTaskResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteFunctionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteFunctionTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteFunctionTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteFunctionTaskResponse) SetHeaders(v map[string]*string) *DeleteFunctionTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteFunctionTaskResponse) SetBody(v *DeleteFunctionTaskResponseBody) *DeleteFunctionTaskResponse {
 	s.Body = v
 	return s
 }
@@ -4678,6 +4780,7 @@ type GetFunctionInstanceResponseBodyResult struct {
 	Source           *string                                                  `json:"Source,omitempty" xml:"Source,omitempty"`
 	Status           *string                                                  `json:"Status,omitempty" xml:"Status,omitempty"`
 	Task             *GetFunctionInstanceResponseBodyResultTask               `json:"Task,omitempty" xml:"Task,omitempty" type:"Struct"`
+	UsageParameters  []*GetFunctionInstanceResponseBodyResultUsageParameters  `json:"UsageParameters,omitempty" xml:"UsageParameters,omitempty" type:"Repeated"`
 	VersionId        *int64                                                   `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
@@ -4751,6 +4854,11 @@ func (s *GetFunctionInstanceResponseBodyResult) SetStatus(v string) *GetFunction
 
 func (s *GetFunctionInstanceResponseBodyResult) SetTask(v *GetFunctionInstanceResponseBodyResultTask) *GetFunctionInstanceResponseBodyResult {
 	s.Task = v
+	return s
+}
+
+func (s *GetFunctionInstanceResponseBodyResult) SetUsageParameters(v []*GetFunctionInstanceResponseBodyResultUsageParameters) *GetFunctionInstanceResponseBodyResult {
+	s.UsageParameters = v
 	return s
 }
 
@@ -4834,6 +4942,29 @@ func (s *GetFunctionInstanceResponseBodyResultTask) SetLastRunTime(v int64) *Get
 	return s
 }
 
+type GetFunctionInstanceResponseBodyResultUsageParameters struct {
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetFunctionInstanceResponseBodyResultUsageParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFunctionInstanceResponseBodyResultUsageParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetFunctionInstanceResponseBodyResultUsageParameters) SetName(v string) *GetFunctionInstanceResponseBodyResultUsageParameters {
+	s.Name = &v
+	return s
+}
+
+func (s *GetFunctionInstanceResponseBodyResultUsageParameters) SetValue(v string) *GetFunctionInstanceResponseBodyResultUsageParameters {
+	s.Value = &v
+	return s
+}
+
 type GetFunctionInstanceResponse struct {
 	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	Body    *GetFunctionInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
@@ -4853,6 +4984,141 @@ func (s *GetFunctionInstanceResponse) SetHeaders(v map[string]*string) *GetFunct
 }
 
 func (s *GetFunctionInstanceResponse) SetBody(v *GetFunctionInstanceResponseBody) *GetFunctionInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type GetFunctionTaskResponseBody struct {
+	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpCode  *int64                             `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
+	Latency   *int64                             `json:"Latency,omitempty" xml:"Latency,omitempty"`
+	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *GetFunctionTaskResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Status    *string                            `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetFunctionTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFunctionTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFunctionTaskResponseBody) SetCode(v string) *GetFunctionTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetFunctionTaskResponseBody) SetHttpCode(v int64) *GetFunctionTaskResponseBody {
+	s.HttpCode = &v
+	return s
+}
+
+func (s *GetFunctionTaskResponseBody) SetLatency(v int64) *GetFunctionTaskResponseBody {
+	s.Latency = &v
+	return s
+}
+
+func (s *GetFunctionTaskResponseBody) SetMessage(v string) *GetFunctionTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetFunctionTaskResponseBody) SetRequestId(v string) *GetFunctionTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFunctionTaskResponseBody) SetResult(v *GetFunctionTaskResponseBodyResult) *GetFunctionTaskResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *GetFunctionTaskResponseBody) SetStatus(v string) *GetFunctionTaskResponseBody {
+	s.Status = &v
+	return s
+}
+
+type GetFunctionTaskResponseBodyResult struct {
+	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExtendInfo   *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	Generation   *string `json:"Generation,omitempty" xml:"Generation,omitempty"`
+	Progress     *int64  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	RunId        *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
+	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetFunctionTaskResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFunctionTaskResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetFunctionTaskResponseBodyResult) SetEndTime(v int64) *GetFunctionTaskResponseBodyResult {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetFunctionTaskResponseBodyResult) SetExtendInfo(v string) *GetFunctionTaskResponseBodyResult {
+	s.ExtendInfo = &v
+	return s
+}
+
+func (s *GetFunctionTaskResponseBodyResult) SetFunctionName(v string) *GetFunctionTaskResponseBodyResult {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *GetFunctionTaskResponseBodyResult) SetGeneration(v string) *GetFunctionTaskResponseBodyResult {
+	s.Generation = &v
+	return s
+}
+
+func (s *GetFunctionTaskResponseBodyResult) SetProgress(v int64) *GetFunctionTaskResponseBodyResult {
+	s.Progress = &v
+	return s
+}
+
+func (s *GetFunctionTaskResponseBodyResult) SetRunId(v string) *GetFunctionTaskResponseBodyResult {
+	s.RunId = &v
+	return s
+}
+
+func (s *GetFunctionTaskResponseBodyResult) SetStartTime(v int64) *GetFunctionTaskResponseBodyResult {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetFunctionTaskResponseBodyResult) SetStatus(v string) *GetFunctionTaskResponseBodyResult {
+	s.Status = &v
+	return s
+}
+
+type GetFunctionTaskResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetFunctionTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFunctionTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFunctionTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFunctionTaskResponse) SetHeaders(v map[string]*string) *GetFunctionTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFunctionTaskResponse) SetBody(v *GetFunctionTaskResponseBody) *GetFunctionTaskResponse {
 	s.Body = v
 	return s
 }
@@ -7253,6 +7519,7 @@ type ListFunctionInstancesResponseBodyResult struct {
 	ModelType        *string                                                    `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 	Source           *string                                                    `json:"Source,omitempty" xml:"Source,omitempty"`
 	Status           *string                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	UsageParameters  []*ListFunctionInstancesResponseBodyResultUsageParameters  `json:"UsageParameters,omitempty" xml:"UsageParameters,omitempty" type:"Repeated"`
 	VersionId        *int64                                                     `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
@@ -7324,6 +7591,11 @@ func (s *ListFunctionInstancesResponseBodyResult) SetStatus(v string) *ListFunct
 	return s
 }
 
+func (s *ListFunctionInstancesResponseBodyResult) SetUsageParameters(v []*ListFunctionInstancesResponseBodyResultUsageParameters) *ListFunctionInstancesResponseBodyResult {
+	s.UsageParameters = v
+	return s
+}
+
 func (s *ListFunctionInstancesResponseBodyResult) SetVersionId(v int64) *ListFunctionInstancesResponseBodyResult {
 	s.VersionId = &v
 	return s
@@ -7377,6 +7649,29 @@ func (s *ListFunctionInstancesResponseBodyResultCreateParameters) SetName(v stri
 }
 
 func (s *ListFunctionInstancesResponseBodyResultCreateParameters) SetValue(v string) *ListFunctionInstancesResponseBodyResultCreateParameters {
+	s.Value = &v
+	return s
+}
+
+type ListFunctionInstancesResponseBodyResultUsageParameters struct {
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListFunctionInstancesResponseBodyResultUsageParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFunctionInstancesResponseBodyResultUsageParameters) GoString() string {
+	return s.String()
+}
+
+func (s *ListFunctionInstancesResponseBodyResultUsageParameters) SetName(v string) *ListFunctionInstancesResponseBodyResultUsageParameters {
+	s.Name = &v
+	return s
+}
+
+func (s *ListFunctionInstancesResponseBodyResultUsageParameters) SetValue(v string) *ListFunctionInstancesResponseBodyResultUsageParameters {
 	s.Value = &v
 	return s
 }
@@ -7508,6 +7803,7 @@ type ListFunctionTasksResponseBodyResult struct {
 	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	ExtendInfo   *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
 	FunctionName *string `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	Generation   *string `json:"Generation,omitempty" xml:"Generation,omitempty"`
 	Progress     *int64  `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	RunId        *string `json:"RunId,omitempty" xml:"RunId,omitempty"`
 	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
@@ -7534,6 +7830,11 @@ func (s *ListFunctionTasksResponseBodyResult) SetExtendInfo(v string) *ListFunct
 
 func (s *ListFunctionTasksResponseBodyResult) SetFunctionName(v string) *ListFunctionTasksResponseBodyResult {
 	s.FunctionName = &v
+	return s
+}
+
+func (s *ListFunctionTasksResponseBodyResult) SetGeneration(v string) *ListFunctionTasksResponseBodyResult {
+	s.Generation = &v
 	return s
 }
 
@@ -8093,6 +8394,23 @@ func (s *ListModelsResponse) SetHeaders(v map[string]*string) *ListModelsRespons
 
 func (s *ListModelsResponse) SetBody(v *ListModelsResponseBody) *ListModelsResponse {
 	s.Body = v
+	return s
+}
+
+type ListProceedingsRequest struct {
+	FilterFinished *bool `json:"filterFinished,omitempty" xml:"filterFinished,omitempty"`
+}
+
+func (s ListProceedingsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListProceedingsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListProceedingsRequest) SetFilterFinished(v bool) *ListProceedingsRequest {
+	s.FilterFinished = &v
 	return s
 }
 
@@ -12435,6 +12753,8 @@ type UpdateFunctionInstanceRequest struct {
 	Cron *string `json:"cron,omitempty" xml:"cron,omitempty"`
 	// 实例描述
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 使用参数
+	UsageParameters []*UpdateFunctionInstanceRequestUsageParameters `json:"usageParameters,omitempty" xml:"usageParameters,omitempty" type:"Repeated"`
 }
 
 func (s UpdateFunctionInstanceRequest) String() string {
@@ -12460,6 +12780,11 @@ func (s *UpdateFunctionInstanceRequest) SetDescription(v string) *UpdateFunction
 	return s
 }
 
+func (s *UpdateFunctionInstanceRequest) SetUsageParameters(v []*UpdateFunctionInstanceRequestUsageParameters) *UpdateFunctionInstanceRequest {
+	s.UsageParameters = v
+	return s
+}
+
 type UpdateFunctionInstanceRequestCreateParameters struct {
 	// 参数名称
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -12481,6 +12806,29 @@ func (s *UpdateFunctionInstanceRequestCreateParameters) SetName(v string) *Updat
 }
 
 func (s *UpdateFunctionInstanceRequestCreateParameters) SetValue(v string) *UpdateFunctionInstanceRequestCreateParameters {
+	s.Value = &v
+	return s
+}
+
+type UpdateFunctionInstanceRequestUsageParameters struct {
+	Name  *string `json:"name,omitempty" xml:"name,omitempty"`
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s UpdateFunctionInstanceRequestUsageParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateFunctionInstanceRequestUsageParameters) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateFunctionInstanceRequestUsageParameters) SetName(v string) *UpdateFunctionInstanceRequestUsageParameters {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateFunctionInstanceRequestUsageParameters) SetValue(v string) *UpdateFunctionInstanceRequestUsageParameters {
 	s.Value = &v
 	return s
 }
@@ -13293,6 +13641,10 @@ func (client *Client) CreateFunctionInstanceWithOptions(appGroupIdentity *string
 		body["modelType"] = request.ModelType
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UsageParameters)) {
+		body["usageParameters"] = request.UsageParameters
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Body:    openapiutil.ParseToMap(body),
@@ -13822,6 +14174,46 @@ func (client *Client) DeleteFunctionInstanceWithOptions(appGroupIdentity *string
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteFunctionInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteFunctionTask(appGroupIdentity *string, functionName *string, instanceName *string, generation *string) (_result *DeleteFunctionTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteFunctionTaskResponse{}
+	_body, _err := client.DeleteFunctionTaskWithOptions(appGroupIdentity, functionName, instanceName, generation, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteFunctionTaskWithOptions(appGroupIdentity *string, functionName *string, instanceName *string, generation *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteFunctionTaskResponse, _err error) {
+	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
+	functionName = openapiutil.GetEncodeParam(functionName)
+	instanceName = openapiutil.GetEncodeParam(instanceName)
+	generation = openapiutil.GetEncodeParam(generation)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteFunctionTask"),
+		Version:     tea.String("2017-12-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/functions/" + tea.StringValue(functionName) + "/instances/" + tea.StringValue(instanceName) + "/tasks/" + tea.StringValue(generation)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteFunctionTaskResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -15031,6 +15423,46 @@ func (client *Client) GetFunctionInstanceWithOptions(appGroupIdentity *string, f
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetFunctionInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFunctionTask(appGroupIdentity *string, functionName *string, instanceName *string, generation *string) (_result *GetFunctionTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetFunctionTaskResponse{}
+	_body, _err := client.GetFunctionTaskWithOptions(appGroupIdentity, functionName, instanceName, generation, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFunctionTaskWithOptions(appGroupIdentity *string, functionName *string, instanceName *string, generation *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetFunctionTaskResponse, _err error) {
+	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
+	functionName = openapiutil.GetEncodeParam(functionName)
+	instanceName = openapiutil.GetEncodeParam(instanceName)
+	generation = openapiutil.GetEncodeParam(generation)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFunctionTask"),
+		Version:     tea.String("2017-12-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/v4/openapi/app-groups/" + tea.StringValue(appGroupIdentity) + "/functions/" + tea.StringValue(functionName) + "/instances/" + tea.StringValue(instanceName) + "/tasks/" + tea.StringValue(generation)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFunctionTaskResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -16458,11 +16890,11 @@ func (client *Client) ListModelsWithOptions(appGroupIdentity *string, request *L
 	return _result, _err
 }
 
-func (client *Client) ListProceedings(appGroupIdentity *string) (_result *ListProceedingsResponse, _err error) {
+func (client *Client) ListProceedings(appGroupIdentity *string, request *ListProceedingsRequest) (_result *ListProceedingsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &ListProceedingsResponse{}
-	_body, _err := client.ListProceedingsWithOptions(appGroupIdentity, headers, runtime)
+	_body, _err := client.ListProceedingsWithOptions(appGroupIdentity, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -16470,10 +16902,20 @@ func (client *Client) ListProceedings(appGroupIdentity *string) (_result *ListPr
 	return _result, _err
 }
 
-func (client *Client) ListProceedingsWithOptions(appGroupIdentity *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProceedingsResponse, _err error) {
+func (client *Client) ListProceedingsWithOptions(appGroupIdentity *string, request *ListProceedingsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListProceedingsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
 	appGroupIdentity = openapiutil.GetEncodeParam(appGroupIdentity)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FilterFinished)) {
+		query["filterFinished"] = request.FilterFinished
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("ListProceedings"),
@@ -18681,6 +19123,10 @@ func (client *Client) UpdateFunctionInstanceWithOptions(appGroupIdentity *string
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UsageParameters)) {
+		body["usageParameters"] = request.UsageParameters
 	}
 
 	req := &openapi.OpenApiRequest{
