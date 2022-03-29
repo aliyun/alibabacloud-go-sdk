@@ -1303,6 +1303,7 @@ func (s *AppendEntityMemberResponse) SetBody(v *AppendEntityMemberResponseBody) 
 }
 
 type AssociateRequest struct {
+	AgentKey     *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId   *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Perspective  []*string `json:"Perspective,omitempty" xml:"Perspective,omitempty" type:"Repeated"`
 	RecommendNum *int32    `json:"RecommendNum,omitempty" xml:"RecommendNum,omitempty"`
@@ -1316,6 +1317,11 @@ func (s AssociateRequest) String() string {
 
 func (s AssociateRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AssociateRequest) SetAgentKey(v string) *AssociateRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *AssociateRequest) SetInstanceId(v string) *AssociateRequest {
@@ -1419,6 +1425,7 @@ func (s *AssociateResponse) SetBody(v *AssociateResponseBody) *AssociateResponse
 }
 
 type ChatRequest struct {
+	AgentKey    *string   `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
 	InstanceId  *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IntentName  *string   `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
 	KnowledgeId *string   `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
@@ -1437,6 +1444,11 @@ func (s ChatRequest) String() string {
 
 func (s ChatRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ChatRequest) SetAgentKey(v string) *ChatRequest {
+	s.AgentKey = &v
+	return s
 }
 
 func (s *ChatRequest) SetInstanceId(v string) *ChatRequest {
@@ -7347,8 +7359,10 @@ func (s *QueryEntitiesResponse) SetBody(v *QueryEntitiesResponseBody) *QueryEnti
 
 type QueryIntentsRequest struct {
 	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	DialogId   *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	DialogId *int64  `json:"DialogId,omitempty" xml:"DialogId,omitempty"`
+	// 机器人实例 ID
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -7369,6 +7383,11 @@ func (s *QueryIntentsRequest) SetAgentKey(v string) *QueryIntentsRequest {
 
 func (s *QueryIntentsRequest) SetDialogId(v int64) *QueryIntentsRequest {
 	s.DialogId = &v
+	return s
+}
+
+func (s *QueryIntentsRequest) SetInstanceId(v string) *QueryIntentsRequest {
+	s.InstanceId = &v
 	return s
 }
 
@@ -9566,6 +9585,10 @@ func (client *Client) AssociateWithOptions(request *AssociateRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -9626,6 +9649,10 @@ func (client *Client) ChatWithOptions(request *ChatRequest, runtime *util.Runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -12404,6 +12431,10 @@ func (client *Client) QueryIntentsWithOptions(request *QueryIntentsRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.DialogId)) {
 		query["DialogId"] = request.DialogId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IntentName)) {
