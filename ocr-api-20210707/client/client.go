@@ -8354,7 +8354,7 @@ func (client *Client) RecognizeMultiLanguageWithOptions(tmpReq *RecognizeMultiLa
 	req := &openapi.OpenApiRequest{
 		Query:  openapiutil.Query(query),
 		Body:   request.Body,
-		Stream: request.Body,
+		Stream: tmpReq.Body,
 	}
 	params := &openapi.Params{
 		Action:      tea.String("RecognizeMultiLanguage"),
