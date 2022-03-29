@@ -12,6 +12,94 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type BucketInfo struct {
+	// Bucket读写权限类型： public-read-write：公共读写 public-read：公共读 private：私有（默认值）
+	BucketAcl *string `json:"BucketAcl,omitempty" xml:"BucketAcl,omitempty"`
+	// Bucket名称。 3~50 个字符，只允许小写字母、数字、短横线（-），且不能以短横线开头或结尾。
+	BucketName *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
+	// 备注。 1-128个字符或汉字，UTF-8编码。
+	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	// Bucket创建时间。 （格式：yyyy-mm-ddThh:mm:ss.timezone, 例如 2011-12-01T12:27:13.000Z）
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 指定Bucket的数据容灾类型。 取值范围： LRS（默认值）。本地冗余LRS ZRS 同城冗余ZRS采用多可用区（AZ）机制。
+	DataRedundancyType *string `json:"DataRedundancyType,omitempty" xml:"DataRedundancyType,omitempty"`
+	// Bucket的调度类型： node：节点(同城) area：区域(多城市) global：全局(全国)
+	DispatcherType *string `json:"DispatcherType,omitempty" xml:"DispatcherType,omitempty"`
+	// 访问域名，边缘存储取值： eos.aliyuncs.com
+	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
+	// 节点区域id，如果为空表示全局
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// Bucket修改时间。 （格式：yyyy-mm-ddThh:mm:ss.timezone, 例如 2011-12-01T12:27:13.000Z）
+	ModifyTime *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	// 指定Bucket的资源类型。 取值范围： general：通用 national-network：国网
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// Bucket存储类型，支持Standard
+	StorageClass *string `json:"StorageClass,omitempty" xml:"StorageClass,omitempty"`
+}
+
+func (s BucketInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BucketInfo) GoString() string {
+	return s.String()
+}
+
+func (s *BucketInfo) SetBucketAcl(v string) *BucketInfo {
+	s.BucketAcl = &v
+	return s
+}
+
+func (s *BucketInfo) SetBucketName(v string) *BucketInfo {
+	s.BucketName = &v
+	return s
+}
+
+func (s *BucketInfo) SetComment(v string) *BucketInfo {
+	s.Comment = &v
+	return s
+}
+
+func (s *BucketInfo) SetCreateTime(v string) *BucketInfo {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *BucketInfo) SetDataRedundancyType(v string) *BucketInfo {
+	s.DataRedundancyType = &v
+	return s
+}
+
+func (s *BucketInfo) SetDispatcherType(v string) *BucketInfo {
+	s.DispatcherType = &v
+	return s
+}
+
+func (s *BucketInfo) SetEndpoint(v string) *BucketInfo {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *BucketInfo) SetEnsRegionId(v string) *BucketInfo {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *BucketInfo) SetModifyTime(v string) *BucketInfo {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *BucketInfo) SetResourceType(v string) *BucketInfo {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *BucketInfo) SetStorageClass(v string) *BucketInfo {
+	s.StorageClass = &v
+	return s
+}
+
 type DataDisk struct {
 	// 数据盘
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
@@ -1438,229 +1526,6 @@ func (s *CheckQuotaResponse) SetBody(v *CheckQuotaResponseBody) *CheckQuotaRespo
 	return s
 }
 
-type ConfigureSecurityGroupPermissionsRequest struct {
-	AuthorizePermissions []*ConfigureSecurityGroupPermissionsRequestAuthorizePermissions `json:"AuthorizePermissions,omitempty" xml:"AuthorizePermissions,omitempty" type:"Repeated"`
-	RevokePermissions    []*ConfigureSecurityGroupPermissionsRequestRevokePermissions    `json:"RevokePermissions,omitempty" xml:"RevokePermissions,omitempty" type:"Repeated"`
-	SecurityGroupId      *string                                                         `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-}
-
-func (s ConfigureSecurityGroupPermissionsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigureSecurityGroupPermissionsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigureSecurityGroupPermissionsRequest) SetAuthorizePermissions(v []*ConfigureSecurityGroupPermissionsRequestAuthorizePermissions) *ConfigureSecurityGroupPermissionsRequest {
-	s.AuthorizePermissions = v
-	return s
-}
-
-func (s *ConfigureSecurityGroupPermissionsRequest) SetRevokePermissions(v []*ConfigureSecurityGroupPermissionsRequestRevokePermissions) *ConfigureSecurityGroupPermissionsRequest {
-	s.RevokePermissions = v
-	return s
-}
-
-func (s *ConfigureSecurityGroupPermissionsRequest) SetSecurityGroupId(v string) *ConfigureSecurityGroupPermissionsRequest {
-	s.SecurityGroupId = &v
-	return s
-}
-
-type ConfigureSecurityGroupPermissionsRequestAuthorizePermissions struct {
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestCidrIp      *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
-	Direction       *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	IpProtocol      *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	Policy          *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	PortRange       *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	Priority        *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	SourceCidrIp    *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
-	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
-}
-
-func (s ConfigureSecurityGroupPermissionsRequestAuthorizePermissions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigureSecurityGroupPermissionsRequestAuthorizePermissions) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigureSecurityGroupPermissionsRequestAuthorizePermissions) SetDescription(v string) *ConfigureSecurityGroupPermissionsRequestAuthorizePermissions {
-	s.Description = &v
-	return s
-}
-
-func (s *ConfigureSecurityGroupPermissionsRequestAuthorizePermissions) SetDestCidrIp(v string) *ConfigureSecurityGroupPermissionsRequestAuthorizePermissions {
-	s.DestCidrIp = &v
-	return s
-}
-
-func (s *ConfigureSecurityGroupPermissionsRequestAuthorizePermissions) SetDirection(v string) *ConfigureSecurityGroupPermissionsRequestAuthorizePermissions {
-	s.Direction = &v
-	return s
-}
-
-func (s *ConfigureSecurityGroupPermissionsRequestAuthorizePermissions) SetIpProtocol(v string) *ConfigureSecurityGroupPermissionsRequestAuthorizePermissions {
-	s.IpProtocol = &v
-	return s
-}
-
-func (s *ConfigureSecurityGroupPermissionsRequestAuthorizePermissions) SetPolicy(v string) *ConfigureSecurityGroupPermissionsRequestAuthorizePermissions {
-	s.Policy = &v
-	return s
-}
-
-func (s *ConfigureSecurityGroupPermissionsRequestAuthorizePermissions) SetPortRange(v string) *ConfigureSecurityGroupPermissionsRequestAuthorizePermissions {
-	s.PortRange = &v
-	return s
-}
-
-func (s *ConfigureSecurityGroupPermissionsRequestAuthorizePermissions) SetPriority(v int32) *ConfigureSecurityGroupPermissionsRequestAuthorizePermissions {
-	s.Priority = &v
-	return s
-}
-
-func (s *ConfigureSecurityGroupPermissionsRequestAuthorizePermissions) SetSourceCidrIp(v string) *ConfigureSecurityGroupPermissionsRequestAuthorizePermissions {
-	s.SourceCidrIp = &v
-	return s
-}
-
-func (s *ConfigureSecurityGroupPermissionsRequestAuthorizePermissions) SetSourcePortRange(v string) *ConfigureSecurityGroupPermissionsRequestAuthorizePermissions {
-	s.SourcePortRange = &v
-	return s
-}
-
-type ConfigureSecurityGroupPermissionsRequestRevokePermissions struct {
-	DestCidrIp      *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
-	Direction       *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	IpProtocol      *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	Policy          *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	PortRange       *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	Priority        *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	SourceCidrIp    *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
-	SourcePortRange *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
-}
-
-func (s ConfigureSecurityGroupPermissionsRequestRevokePermissions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigureSecurityGroupPermissionsRequestRevokePermissions) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigureSecurityGroupPermissionsRequestRevokePermissions) SetDestCidrIp(v string) *ConfigureSecurityGroupPermissionsRequestRevokePermissions {
-	s.DestCidrIp = &v
-	return s
-}
-
-func (s *ConfigureSecurityGroupPermissionsRequestRevokePermissions) SetDirection(v string) *ConfigureSecurityGroupPermissionsRequestRevokePermissions {
-	s.Direction = &v
-	return s
-}
-
-func (s *ConfigureSecurityGroupPermissionsRequestRevokePermissions) SetIpProtocol(v string) *ConfigureSecurityGroupPermissionsRequestRevokePermissions {
-	s.IpProtocol = &v
-	return s
-}
-
-func (s *ConfigureSecurityGroupPermissionsRequestRevokePermissions) SetPolicy(v string) *ConfigureSecurityGroupPermissionsRequestRevokePermissions {
-	s.Policy = &v
-	return s
-}
-
-func (s *ConfigureSecurityGroupPermissionsRequestRevokePermissions) SetPortRange(v string) *ConfigureSecurityGroupPermissionsRequestRevokePermissions {
-	s.PortRange = &v
-	return s
-}
-
-func (s *ConfigureSecurityGroupPermissionsRequestRevokePermissions) SetPriority(v int32) *ConfigureSecurityGroupPermissionsRequestRevokePermissions {
-	s.Priority = &v
-	return s
-}
-
-func (s *ConfigureSecurityGroupPermissionsRequestRevokePermissions) SetSourceCidrIp(v string) *ConfigureSecurityGroupPermissionsRequestRevokePermissions {
-	s.SourceCidrIp = &v
-	return s
-}
-
-func (s *ConfigureSecurityGroupPermissionsRequestRevokePermissions) SetSourcePortRange(v string) *ConfigureSecurityGroupPermissionsRequestRevokePermissions {
-	s.SourcePortRange = &v
-	return s
-}
-
-type ConfigureSecurityGroupPermissionsShrinkRequest struct {
-	AuthorizePermissionsShrink *string `json:"AuthorizePermissions,omitempty" xml:"AuthorizePermissions,omitempty"`
-	RevokePermissionsShrink    *string `json:"RevokePermissions,omitempty" xml:"RevokePermissions,omitempty"`
-	SecurityGroupId            *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-}
-
-func (s ConfigureSecurityGroupPermissionsShrinkRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigureSecurityGroupPermissionsShrinkRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigureSecurityGroupPermissionsShrinkRequest) SetAuthorizePermissionsShrink(v string) *ConfigureSecurityGroupPermissionsShrinkRequest {
-	s.AuthorizePermissionsShrink = &v
-	return s
-}
-
-func (s *ConfigureSecurityGroupPermissionsShrinkRequest) SetRevokePermissionsShrink(v string) *ConfigureSecurityGroupPermissionsShrinkRequest {
-	s.RevokePermissionsShrink = &v
-	return s
-}
-
-func (s *ConfigureSecurityGroupPermissionsShrinkRequest) SetSecurityGroupId(v string) *ConfigureSecurityGroupPermissionsShrinkRequest {
-	s.SecurityGroupId = &v
-	return s
-}
-
-type ConfigureSecurityGroupPermissionsResponseBody struct {
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ConfigureSecurityGroupPermissionsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigureSecurityGroupPermissionsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigureSecurityGroupPermissionsResponseBody) SetRequestId(v string) *ConfigureSecurityGroupPermissionsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ConfigureSecurityGroupPermissionsResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ConfigureSecurityGroupPermissionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ConfigureSecurityGroupPermissionsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigureSecurityGroupPermissionsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigureSecurityGroupPermissionsResponse) SetHeaders(v map[string]*string) *ConfigureSecurityGroupPermissionsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ConfigureSecurityGroupPermissionsResponse) SetBody(v *ConfigureSecurityGroupPermissionsResponseBody) *ConfigureSecurityGroupPermissionsResponse {
-	s.Body = v
-	return s
-}
-
 type CreateApplicationRequest struct {
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	Timeout  *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
@@ -1824,158 +1689,6 @@ func (s *CreateDiskResponse) SetBody(v *CreateDiskResponseBody) *CreateDiskRespo
 	return s
 }
 
-type CreateDiskBuyOrderRequest struct {
-	// 创建订单的订单详情
-	OrderDetails *string `json:"OrderDetails,omitempty" xml:"OrderDetails,omitempty"`
-}
-
-func (s CreateDiskBuyOrderRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDiskBuyOrderRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDiskBuyOrderRequest) SetOrderDetails(v string) *CreateDiskBuyOrderRequest {
-	s.OrderDetails = &v
-	return s
-}
-
-type CreateDiskBuyOrderResponseBody struct {
-	// 订单id
-	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateDiskBuyOrderResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDiskBuyOrderResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDiskBuyOrderResponseBody) SetOrderId(v string) *CreateDiskBuyOrderResponseBody {
-	s.OrderId = &v
-	return s
-}
-
-func (s *CreateDiskBuyOrderResponseBody) SetRequestId(v string) *CreateDiskBuyOrderResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateDiskBuyOrderResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDiskBuyOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateDiskBuyOrderResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDiskBuyOrderResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDiskBuyOrderResponse) SetHeaders(v map[string]*string) *CreateDiskBuyOrderResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateDiskBuyOrderResponse) SetBody(v *CreateDiskBuyOrderResponseBody) *CreateDiskBuyOrderResponse {
-	s.Body = v
-	return s
-}
-
-type CreateEPInstanceRequest struct {
-	EPNInstanceName         *string `json:"EPNInstanceName,omitempty" xml:"EPNInstanceName,omitempty"`
-	EPNInstanceType         *string `json:"EPNInstanceType,omitempty" xml:"EPNInstanceType,omitempty"`
-	InternetChargeType      *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	InternetMaxBandwidthOut *int32  `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	NetworkingModel         *string `json:"NetworkingModel,omitempty" xml:"NetworkingModel,omitempty"`
-}
-
-func (s CreateEPInstanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEPInstanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEPInstanceRequest) SetEPNInstanceName(v string) *CreateEPInstanceRequest {
-	s.EPNInstanceName = &v
-	return s
-}
-
-func (s *CreateEPInstanceRequest) SetEPNInstanceType(v string) *CreateEPInstanceRequest {
-	s.EPNInstanceType = &v
-	return s
-}
-
-func (s *CreateEPInstanceRequest) SetInternetChargeType(v string) *CreateEPInstanceRequest {
-	s.InternetChargeType = &v
-	return s
-}
-
-func (s *CreateEPInstanceRequest) SetInternetMaxBandwidthOut(v int32) *CreateEPInstanceRequest {
-	s.InternetMaxBandwidthOut = &v
-	return s
-}
-
-func (s *CreateEPInstanceRequest) SetNetworkingModel(v string) *CreateEPInstanceRequest {
-	s.NetworkingModel = &v
-	return s
-}
-
-type CreateEPInstanceResponseBody struct {
-	EPNInstanceId *string `json:"EPNInstanceId,omitempty" xml:"EPNInstanceId,omitempty"`
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateEPInstanceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEPInstanceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEPInstanceResponseBody) SetEPNInstanceId(v string) *CreateEPInstanceResponseBody {
-	s.EPNInstanceId = &v
-	return s
-}
-
-func (s *CreateEPInstanceResponseBody) SetRequestId(v string) *CreateEPInstanceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateEPInstanceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateEPInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateEPInstanceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateEPInstanceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateEPInstanceResponse) SetHeaders(v map[string]*string) *CreateEPInstanceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateEPInstanceResponse) SetBody(v *CreateEPInstanceResponseBody) *CreateEPInstanceResponse {
-	s.Body = v
-	return s
-}
-
 type CreateEipInstanceRequest struct {
 	// EIP的带宽峰值
 	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
@@ -2073,70 +1786,6 @@ func (s *CreateEipInstanceResponse) SetHeaders(v map[string]*string) *CreateEipI
 }
 
 func (s *CreateEipInstanceResponse) SetBody(v *CreateEipInstanceResponseBody) *CreateEipInstanceResponse {
-	s.Body = v
-	return s
-}
-
-type CreateElbBuyOrderRequest struct {
-	OrderDetails *string `json:"OrderDetails,omitempty" xml:"OrderDetails,omitempty"`
-}
-
-func (s CreateElbBuyOrderRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateElbBuyOrderRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateElbBuyOrderRequest) SetOrderDetails(v string) *CreateElbBuyOrderRequest {
-	s.OrderDetails = &v
-	return s
-}
-
-type CreateElbBuyOrderResponseBody struct {
-	LoadBalancerIds []*string `json:"LoadBalancerIds,omitempty" xml:"LoadBalancerIds,omitempty" type:"Repeated"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateElbBuyOrderResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateElbBuyOrderResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateElbBuyOrderResponseBody) SetLoadBalancerIds(v []*string) *CreateElbBuyOrderResponseBody {
-	s.LoadBalancerIds = v
-	return s
-}
-
-func (s *CreateElbBuyOrderResponseBody) SetRequestId(v string) *CreateElbBuyOrderResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateElbBuyOrderResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateElbBuyOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateElbBuyOrderResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateElbBuyOrderResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateElbBuyOrderResponse) SetHeaders(v map[string]*string) *CreateElbBuyOrderResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateElbBuyOrderResponse) SetBody(v *CreateElbBuyOrderResponseBody) *CreateElbBuyOrderResponse {
 	s.Body = v
 	return s
 }
@@ -7224,6 +6873,8 @@ type DescribeEnsEipAddressesRequest struct {
 	AssociatedInstanceType *string `json:"AssociatedInstanceType,omitempty" xml:"AssociatedInstanceType,omitempty"`
 	// 要查询的EIP的IP地址。  最多支持输入50个EIP的IP地址，IP地址之间用逗号（,）分隔。
 	EipAddress *string `json:"EipAddress,omitempty" xml:"EipAddress,omitempty"`
+	// ENS节点ID
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	// 列表的页码，默认值为1。
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// 分页查询时每页的行数，最大值为100，默认值为10。
@@ -7255,6 +6906,11 @@ func (s *DescribeEnsEipAddressesRequest) SetAssociatedInstanceType(v string) *De
 
 func (s *DescribeEnsEipAddressesRequest) SetEipAddress(v string) *DescribeEnsEipAddressesRequest {
 	s.EipAddress = &v
+	return s
+}
+
+func (s *DescribeEnsEipAddressesRequest) SetEnsRegionId(v string) *DescribeEnsEipAddressesRequest {
+	s.EnsRegionId = &v
 	return s
 }
 
@@ -10592,7 +10248,6 @@ type DescribeInstancesRequest struct {
 	SecurityGroupId      *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	Version              *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeInstancesRequest) String() string {
@@ -10680,11 +10335,6 @@ func (s *DescribeInstancesRequest) SetStatus(v string) *DescribeInstancesRequest
 
 func (s *DescribeInstancesRequest) SetVSwitchId(v string) *DescribeInstancesRequest {
 	s.VSwitchId = &v
-	return s
-}
-
-func (s *DescribeInstancesRequest) SetVersion(v string) *DescribeInstancesRequest {
-	s.Version = &v
 	return s
 }
 
@@ -12974,9 +12624,10 @@ type DescribeNetworkAttributeResponseBody struct {
 	NetworkId      *string                                             `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 	NetworkName    *string                                             `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
 	// Id of the request
-	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status     *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
-	VSwitchIds *DescribeNetworkAttributeResponseBodyVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
+	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RouterTableId *string                                         `json:"RouterTableId,omitempty" xml:"RouterTableId,omitempty"`
+	Status        *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	VSwitchIds    *DescribeNetworkAttributeResponseBodyVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
 }
 
 func (s DescribeNetworkAttributeResponseBody) String() string {
@@ -13024,6 +12675,11 @@ func (s *DescribeNetworkAttributeResponseBody) SetNetworkName(v string) *Describ
 
 func (s *DescribeNetworkAttributeResponseBody) SetRequestId(v string) *DescribeNetworkAttributeResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeNetworkAttributeResponseBody) SetRouterTableId(v string) *DescribeNetworkAttributeResponseBody {
+	s.RouterTableId = &v
 	return s
 }
 
@@ -13411,14 +13067,15 @@ func (s *DescribeNetworksResponseBodyNetworks) SetNetwork(v []*DescribeNetworksR
 }
 
 type DescribeNetworksResponseBodyNetworksNetwork struct {
-	CidrBlock   *string                                                `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	CreatedTime *string                                                `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	Description *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnsRegionId *string                                                `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	NetworkId   *string                                                `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
-	NetworkName *string                                                `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
-	Status      *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	VSwitchIds  *DescribeNetworksResponseBodyNetworksNetworkVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
+	CidrBlock     *string                                                `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	CreatedTime   *string                                                `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description   *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnsRegionId   *string                                                `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	NetworkId     *string                                                `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	NetworkName   *string                                                `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
+	RouterTableId *string                                                `json:"RouterTableId,omitempty" xml:"RouterTableId,omitempty"`
+	Status        *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+	VSwitchIds    *DescribeNetworksResponseBodyNetworksNetworkVSwitchIds `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Struct"`
 }
 
 func (s DescribeNetworksResponseBodyNetworksNetwork) String() string {
@@ -13456,6 +13113,11 @@ func (s *DescribeNetworksResponseBodyNetworksNetwork) SetNetworkId(v string) *De
 
 func (s *DescribeNetworksResponseBodyNetworksNetwork) SetNetworkName(v string) *DescribeNetworksResponseBodyNetworksNetwork {
 	s.NetworkName = &v
+	return s
+}
+
+func (s *DescribeNetworksResponseBodyNetworksNetwork) SetRouterTableId(v string) *DescribeNetworksResponseBodyNetworksNetwork {
+	s.RouterTableId = &v
 	return s
 }
 
@@ -13633,14 +13295,24 @@ func (s *DescribePrePaidInstanceStockResponse) SetBody(v *DescribePrePaidInstanc
 }
 
 type DescribePriceRequest struct {
-	DataDisk           []*DescribePriceRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	SystemDisk         *DescribePriceRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	EnsRegionId        *string                         `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	InstanceType       *string                         `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InternetChargeType *string                         `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	Period             *int32                          `json:"Period,omitempty" xml:"Period,omitempty"`
-	Quantity           *int32                          `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	Version            *string                         `json:"Version,omitempty" xml:"Version,omitempty"`
+	DataDisk   []*DescribePriceRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	SystemDisk *DescribePriceRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	// 如果DataDisk.1.Size为空且此字段不为空时的则以此字段为准
+	DataDisks []*DescribePriceRequestDataDisks `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	// 节点ID。
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// 实列规格。
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// 带宽计费方式
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// 购买资源的时长，如果不指定PeriodUnit，则默认按月购买。目前只支持按Days和Month。如果PeriodUnit=Day时，Period仅可以3。如果PeriodUnit=Monthc时，则Period可以为1-9,12。
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// 查询云服务器ENS不同计费周期的价格。取值范围：
+	// Month（默认）：按月计费的价格单位。
+	// Day：按天计费的价格单位。
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// 数量。
+	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
 }
 
 func (s DescribePriceRequest) String() string {
@@ -13658,6 +13330,11 @@ func (s *DescribePriceRequest) SetDataDisk(v []*DescribePriceRequestDataDisk) *D
 
 func (s *DescribePriceRequest) SetSystemDisk(v *DescribePriceRequestSystemDisk) *DescribePriceRequest {
 	s.SystemDisk = v
+	return s
+}
+
+func (s *DescribePriceRequest) SetDataDisks(v []*DescribePriceRequestDataDisks) *DescribePriceRequest {
+	s.DataDisks = v
 	return s
 }
 
@@ -13681,17 +13358,18 @@ func (s *DescribePriceRequest) SetPeriod(v int32) *DescribePriceRequest {
 	return s
 }
 
+func (s *DescribePriceRequest) SetPeriodUnit(v string) *DescribePriceRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
 func (s *DescribePriceRequest) SetQuantity(v int32) *DescribePriceRequest {
 	s.Quantity = &v
 	return s
 }
 
-func (s *DescribePriceRequest) SetVersion(v string) *DescribePriceRequest {
-	s.Version = &v
-	return s
-}
-
 type DescribePriceRequestDataDisk struct {
+	// 数据盘大小，单位GB。如果此字段不为空，则以此段为准。
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -13709,6 +13387,7 @@ func (s *DescribePriceRequestDataDisk) SetSize(v int32) *DescribePriceRequestDat
 }
 
 type DescribePriceRequestSystemDisk struct {
+	// 系统盘大小，单位：GB
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
 }
 
@@ -13721,6 +13400,140 @@ func (s DescribePriceRequestSystemDisk) GoString() string {
 }
 
 func (s *DescribePriceRequestSystemDisk) SetSize(v int32) *DescribePriceRequestSystemDisk {
+	s.Size = &v
+	return s
+}
+
+type DescribePriceRequestDataDisks struct {
+	// 磁盘类型
+	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Size     *int64  `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s DescribePriceRequestDataDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceRequestDataDisks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceRequestDataDisks) SetCategory(v string) *DescribePriceRequestDataDisks {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribePriceRequestDataDisks) SetSize(v int64) *DescribePriceRequestDataDisks {
+	s.Size = &v
+	return s
+}
+
+type DescribePriceShrinkRequest struct {
+	DataDisk   []*DescribePriceShrinkRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	SystemDisk *DescribePriceShrinkRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	// 如果DataDisk.1.Size为空且此字段不为空时的则以此字段为准
+	DataDisksShrink *string `json:"DataDisks,omitempty" xml:"DataDisks,omitempty"`
+	// 节点ID。
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	// 实列规格。
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// 带宽计费方式
+	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	// 购买资源的时长，如果不指定PeriodUnit，则默认按月购买。目前只支持按Days和Month。如果PeriodUnit=Day时，Period仅可以3。如果PeriodUnit=Monthc时，则Period可以为1-9,12。
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// 查询云服务器ENS不同计费周期的价格。取值范围：
+	// Month（默认）：按月计费的价格单位。
+	// Day：按天计费的价格单位。
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// 数量。
+	Quantity *int32 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+}
+
+func (s DescribePriceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceShrinkRequest) SetDataDisk(v []*DescribePriceShrinkRequestDataDisk) *DescribePriceShrinkRequest {
+	s.DataDisk = v
+	return s
+}
+
+func (s *DescribePriceShrinkRequest) SetSystemDisk(v *DescribePriceShrinkRequestSystemDisk) *DescribePriceShrinkRequest {
+	s.SystemDisk = v
+	return s
+}
+
+func (s *DescribePriceShrinkRequest) SetDataDisksShrink(v string) *DescribePriceShrinkRequest {
+	s.DataDisksShrink = &v
+	return s
+}
+
+func (s *DescribePriceShrinkRequest) SetEnsRegionId(v string) *DescribePriceShrinkRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribePriceShrinkRequest) SetInstanceType(v string) *DescribePriceShrinkRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribePriceShrinkRequest) SetInternetChargeType(v string) *DescribePriceShrinkRequest {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *DescribePriceShrinkRequest) SetPeriod(v int32) *DescribePriceShrinkRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *DescribePriceShrinkRequest) SetPeriodUnit(v string) *DescribePriceShrinkRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *DescribePriceShrinkRequest) SetQuantity(v int32) *DescribePriceShrinkRequest {
+	s.Quantity = &v
+	return s
+}
+
+type DescribePriceShrinkRequestDataDisk struct {
+	// 数据盘大小，单位GB。如果此字段不为空，则以此段为准。
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s DescribePriceShrinkRequestDataDisk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceShrinkRequestDataDisk) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceShrinkRequestDataDisk) SetSize(v int32) *DescribePriceShrinkRequestDataDisk {
+	s.Size = &v
+	return s
+}
+
+type DescribePriceShrinkRequestSystemDisk struct {
+	// 系统盘大小，单位：GB
+	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
+}
+
+func (s DescribePriceShrinkRequestSystemDisk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePriceShrinkRequestSystemDisk) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePriceShrinkRequestSystemDisk) SetSize(v int32) *DescribePriceShrinkRequestSystemDisk {
 	s.Size = &v
 	return s
 }
@@ -15253,9 +15066,10 @@ func (s *DistApplicationDataResponse) SetBody(v *DistApplicationDataResponseBody
 }
 
 type ExportBillDetailDataRequest struct {
-	EndDate   *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// 结束时间UTC格式
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// 开始时间，UTC格式
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ExportBillDetailDataRequest) String() string {
@@ -15276,13 +15090,10 @@ func (s *ExportBillDetailDataRequest) SetStartDate(v string) *ExportBillDetailDa
 	return s
 }
 
-func (s *ExportBillDetailDataRequest) SetVersion(v string) *ExportBillDetailDataRequest {
-	s.Version = &v
-	return s
-}
-
 type ExportBillDetailDataResponseBody struct {
-	FilePath  *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// 文件下载地址
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// 请求ID，公共字段
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -15333,7 +15144,6 @@ type ExportImageRequest struct {
 	OSSPrefix   *string `json:"OSSPrefix,omitempty" xml:"OSSPrefix,omitempty"`
 	OSSRegionId *string `json:"OSSRegionId,omitempty" xml:"OSSRegionId,omitempty"`
 	RoleName    *string `json:"RoleName,omitempty" xml:"RoleName,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ExportImageRequest) String() string {
@@ -15366,11 +15176,6 @@ func (s *ExportImageRequest) SetOSSRegionId(v string) *ExportImageRequest {
 
 func (s *ExportImageRequest) SetRoleName(v string) *ExportImageRequest {
 	s.RoleName = &v
-	return s
-}
-
-func (s *ExportImageRequest) SetVersion(v string) *ExportImageRequest {
-	s.Version = &v
 	return s
 }
 
@@ -15421,9 +15226,10 @@ func (s *ExportImageResponse) SetBody(v *ExportImageResponseBody) *ExportImageRe
 }
 
 type ExportMeasurementDataRequest struct {
-	EndDate   *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// 结束时间，UTC格式
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// 开始时间，UTC格式
 	StartDate *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s ExportMeasurementDataRequest) String() string {
@@ -15444,13 +15250,10 @@ func (s *ExportMeasurementDataRequest) SetStartDate(v string) *ExportMeasurement
 	return s
 }
 
-func (s *ExportMeasurementDataRequest) SetVersion(v string) *ExportMeasurementDataRequest {
-	s.Version = &v
-	return s
-}
-
 type ExportMeasurementDataResponseBody struct {
-	FilePath  *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// 文件下载地址
+	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// 请求ID，公共字段
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -16987,6 +16790,72 @@ func (s *ModifyNetworkAttributeResponse) SetHeaders(v map[string]*string) *Modif
 }
 
 func (s *ModifyNetworkAttributeResponse) SetBody(v *ModifyNetworkAttributeResponseBody) *ModifyNetworkAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyPrepayInstanceSpecRequest struct {
+	// 变配实例id
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 更新的配置
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+}
+
+func (s ModifyPrepayInstanceSpecRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPrepayInstanceSpecRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPrepayInstanceSpecRequest) SetInstanceId(v string) *ModifyPrepayInstanceSpecRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyPrepayInstanceSpecRequest) SetInstanceType(v string) *ModifyPrepayInstanceSpecRequest {
+	s.InstanceType = &v
+	return s
+}
+
+type ModifyPrepayInstanceSpecResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyPrepayInstanceSpecResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPrepayInstanceSpecResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPrepayInstanceSpecResponseBody) SetRequestId(v string) *ModifyPrepayInstanceSpecResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyPrepayInstanceSpecResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyPrepayInstanceSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyPrepayInstanceSpecResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyPrepayInstanceSpecResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyPrepayInstanceSpecResponse) SetHeaders(v map[string]*string) *ModifyPrepayInstanceSpecResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyPrepayInstanceSpecResponse) SetBody(v *ModifyPrepayInstanceSpecResponseBody) *ModifyPrepayInstanceSpecResponse {
 	s.Body = v
 	return s
 }
@@ -18940,6 +18809,10 @@ type RunInstancesRequest struct {
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// 购买资源的时长，单位为：月
 	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// 查询云服务器ENS不同计费周期的价格。取值范围：
+	// Month（默认）：按月计费的价格单位。
+	// Day：按天计费的价格单位。
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// 私网ip
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	// 调度层级
@@ -19050,6 +18923,11 @@ func (s *RunInstancesRequest) SetPassword(v string) *RunInstancesRequest {
 
 func (s *RunInstancesRequest) SetPeriod(v int64) *RunInstancesRequest {
 	s.Period = &v
+	return s
+}
+
+func (s *RunInstancesRequest) SetPeriodUnit(v string) *RunInstancesRequest {
+	s.PeriodUnit = &v
 	return s
 }
 
@@ -19173,6 +19051,10 @@ type RunInstancesShrinkRequest struct {
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// 购买资源的时长，单位为：月
 	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// 查询云服务器ENS不同计费周期的价格。取值范围：
+	// Month（默认）：按月计费的价格单位。
+	// Day：按天计费的价格单位。
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// 私网ip
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	// 调度层级
@@ -19283,6 +19165,11 @@ func (s *RunInstancesShrinkRequest) SetPassword(v string) *RunInstancesShrinkReq
 
 func (s *RunInstancesShrinkRequest) SetPeriod(v int64) *RunInstancesShrinkRequest {
 	s.Period = &v
+	return s
+}
+
+func (s *RunInstancesShrinkRequest) SetPeriodUnit(v string) *RunInstancesShrinkRequest {
+	s.PeriodUnit = &v
 	return s
 }
 
@@ -21836,68 +21723,6 @@ func (client *Client) CheckQuota(request *CheckQuotaRequest) (_result *CheckQuot
 	return _result, _err
 }
 
-func (client *Client) ConfigureSecurityGroupPermissionsWithOptions(tmpReq *ConfigureSecurityGroupPermissionsRequest, runtime *util.RuntimeOptions) (_result *ConfigureSecurityGroupPermissionsResponse, _err error) {
-	_err = util.ValidateModel(tmpReq)
-	if _err != nil {
-		return _result, _err
-	}
-	request := &ConfigureSecurityGroupPermissionsShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.AuthorizePermissions)) {
-		request.AuthorizePermissionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AuthorizePermissions, tea.String("AuthorizePermissions"), tea.String("json"))
-	}
-
-	if !tea.BoolValue(util.IsUnset(tmpReq.RevokePermissions)) {
-		request.RevokePermissionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RevokePermissions, tea.String("RevokePermissions"), tea.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AuthorizePermissionsShrink)) {
-		query["AuthorizePermissions"] = request.AuthorizePermissionsShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RevokePermissionsShrink)) {
-		query["RevokePermissions"] = request.RevokePermissionsShrink
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
-		query["SecurityGroupId"] = request.SecurityGroupId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ConfigureSecurityGroupPermissions"),
-		Version:     tea.String("2017-11-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ConfigureSecurityGroupPermissionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ConfigureSecurityGroupPermissions(request *ConfigureSecurityGroupPermissionsRequest) (_result *ConfigureSecurityGroupPermissionsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ConfigureSecurityGroupPermissionsResponse{}
-	_body, _err := client.ConfigureSecurityGroupPermissionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateApplicationWithOptions(request *CreateApplicationRequest, runtime *util.RuntimeOptions) (_result *CreateApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22002,110 +21827,6 @@ func (client *Client) CreateDisk(request *CreateDiskRequest) (_result *CreateDis
 	return _result, _err
 }
 
-func (client *Client) CreateDiskBuyOrderWithOptions(request *CreateDiskBuyOrderRequest, runtime *util.RuntimeOptions) (_result *CreateDiskBuyOrderResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OrderDetails)) {
-		query["OrderDetails"] = request.OrderDetails
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateDiskBuyOrder"),
-		Version:     tea.String("2017-11-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateDiskBuyOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateDiskBuyOrder(request *CreateDiskBuyOrderRequest) (_result *CreateDiskBuyOrderResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateDiskBuyOrderResponse{}
-	_body, _err := client.CreateDiskBuyOrderWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateEPInstanceWithOptions(request *CreateEPInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateEPInstanceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.EPNInstanceName)) {
-		query["EPNInstanceName"] = request.EPNInstanceName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EPNInstanceType)) {
-		query["EPNInstanceType"] = request.EPNInstanceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InternetChargeType)) {
-		query["InternetChargeType"] = request.InternetChargeType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InternetMaxBandwidthOut)) {
-		query["InternetMaxBandwidthOut"] = request.InternetMaxBandwidthOut
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NetworkingModel)) {
-		query["NetworkingModel"] = request.NetworkingModel
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateEPInstance"),
-		Version:     tea.String("2017-11-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateEPInstanceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateEPInstance(request *CreateEPInstanceRequest) (_result *CreateEPInstanceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateEPInstanceResponse{}
-	_body, _err := client.CreateEPInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateEipInstanceWithOptions(request *CreateEipInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateEipInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22163,50 +21884,6 @@ func (client *Client) CreateEipInstance(request *CreateEipInstanceRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateEipInstanceResponse{}
 	_body, _err := client.CreateEipInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateElbBuyOrderWithOptions(request *CreateElbBuyOrderRequest, runtime *util.RuntimeOptions) (_result *CreateElbBuyOrderResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OrderDetails)) {
-		query["OrderDetails"] = request.OrderDetails
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateElbBuyOrder"),
-		Version:     tea.String("2017-11-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateElbBuyOrderResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateElbBuyOrder(request *CreateElbBuyOrderRequest) (_result *CreateElbBuyOrderResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateElbBuyOrderResponse{}
-	_body, _err := client.CreateElbBuyOrderWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24556,6 +24233,10 @@ func (client *Client) DescribeEnsEipAddressesWithOptions(request *DescribeEnsEip
 		query["EipAddress"] = request.EipAddress
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -25832,10 +25513,6 @@ func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesReq
 		query["VSwitchId"] = request.VSwitchId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26522,12 +26199,22 @@ func (client *Client) DescribePrePaidInstanceStock(request *DescribePrePaidInsta
 	return _result, _err
 }
 
-func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, runtime *util.RuntimeOptions) (_result *DescribePriceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DescribePriceWithOptions(tmpReq *DescribePriceRequest, runtime *util.RuntimeOptions) (_result *DescribePriceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &DescribePriceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DataDisks)) {
+		request.DataDisksShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataDisks, tea.String("DataDisks"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataDisksShrink)) {
+		query["DataDisks"] = request.DataDisksShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
 		query["EnsRegionId"] = request.EnsRegionId
 	}
@@ -26544,12 +26231,12 @@ func (client *Client) DescribePriceWithOptions(request *DescribePriceRequest, ru
 		query["Period"] = request.Period
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Quantity)) {
-		query["Quantity"] = request.Quantity
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
+	if !tea.BoolValue(util.IsUnset(request.Quantity)) {
+		query["Quantity"] = request.Quantity
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DataDisk)) {
@@ -27088,10 +26775,6 @@ func (client *Client) ExportBillDetailDataWithOptions(request *ExportBillDetailD
 		query["StartDate"] = request.StartDate
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27152,10 +26835,6 @@ func (client *Client) ExportImageWithOptions(request *ExportImageRequest, runtim
 		query["RoleName"] = request.RoleName
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -27202,10 +26881,6 @@ func (client *Client) ExportMeasurementDataWithOptions(request *ExportMeasuremen
 
 	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
 		query["StartDate"] = request.StartDate
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -28133,6 +27808,54 @@ func (client *Client) ModifyNetworkAttribute(request *ModifyNetworkAttributeRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyNetworkAttributeResponse{}
 	_body, _err := client.ModifyNetworkAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyPrepayInstanceSpecWithOptions(request *ModifyPrepayInstanceSpecRequest, runtime *util.RuntimeOptions) (_result *ModifyPrepayInstanceSpecResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyPrepayInstanceSpec"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyPrepayInstanceSpecResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyPrepayInstanceSpec(request *ModifyPrepayInstanceSpecRequest) (_result *ModifyPrepayInstanceSpecResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyPrepayInstanceSpecResponse{}
+	_body, _err := client.ModifyPrepayInstanceSpecWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29394,6 +29117,10 @@ func (client *Client) RunInstancesWithOptions(tmpReq *RunInstancesRequest, runti
 
 	if !tea.BoolValue(util.IsUnset(request.Period)) {
 		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PrivateIpAddress)) {
