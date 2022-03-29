@@ -12,87 +12,6 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
-type AddDeviceRequest struct {
-	Config   *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	GroupId  *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-}
-
-func (s AddDeviceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddDeviceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddDeviceRequest) SetConfig(v string) *AddDeviceRequest {
-	s.Config = &v
-	return s
-}
-
-func (s *AddDeviceRequest) SetGroupId(v string) *AddDeviceRequest {
-	s.GroupId = &v
-	return s
-}
-
-func (s *AddDeviceRequest) SetOwnerId(v int64) *AddDeviceRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *AddDeviceRequest) SetProtocol(v string) *AddDeviceRequest {
-	s.Protocol = &v
-	return s
-}
-
-type AddDeviceResponseBody struct {
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s AddDeviceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddDeviceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddDeviceResponseBody) SetId(v string) *AddDeviceResponseBody {
-	s.Id = &v
-	return s
-}
-
-func (s *AddDeviceResponseBody) SetRequestId(v string) *AddDeviceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type AddDeviceResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddDeviceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddDeviceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddDeviceResponse) SetHeaders(v map[string]*string) *AddDeviceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddDeviceResponse) SetBody(v *AddDeviceResponseBody) *AddDeviceResponse {
-	s.Body = v
-	return s
-}
-
 type AddRegisteredDeviceRequest struct {
 	Dsn          *string `json:"Dsn,omitempty" xml:"Dsn,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -3724,93 +3643,6 @@ func (s *CreateDeviceAlarmResponse) SetBody(v *CreateDeviceAlarmResponseBody) *C
 	return s
 }
 
-type CreateDeviceSnapshotRequest struct {
-	DeviceId       *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	Mode           *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SnapshotConfig *string `json:"SnapshotConfig,omitempty" xml:"SnapshotConfig,omitempty"`
-	StreamId       *string `json:"StreamId,omitempty" xml:"StreamId,omitempty"`
-}
-
-func (s CreateDeviceSnapshotRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDeviceSnapshotRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDeviceSnapshotRequest) SetDeviceId(v string) *CreateDeviceSnapshotRequest {
-	s.DeviceId = &v
-	return s
-}
-
-func (s *CreateDeviceSnapshotRequest) SetMode(v string) *CreateDeviceSnapshotRequest {
-	s.Mode = &v
-	return s
-}
-
-func (s *CreateDeviceSnapshotRequest) SetOwnerId(v int64) *CreateDeviceSnapshotRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateDeviceSnapshotRequest) SetSnapshotConfig(v string) *CreateDeviceSnapshotRequest {
-	s.SnapshotConfig = &v
-	return s
-}
-
-func (s *CreateDeviceSnapshotRequest) SetStreamId(v string) *CreateDeviceSnapshotRequest {
-	s.StreamId = &v
-	return s
-}
-
-type CreateDeviceSnapshotResponseBody struct {
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateDeviceSnapshotResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDeviceSnapshotResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDeviceSnapshotResponseBody) SetId(v string) *CreateDeviceSnapshotResponseBody {
-	s.Id = &v
-	return s
-}
-
-func (s *CreateDeviceSnapshotResponseBody) SetRequestId(v string) *CreateDeviceSnapshotResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateDeviceSnapshotResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDeviceSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateDeviceSnapshotResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateDeviceSnapshotResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateDeviceSnapshotResponse) SetHeaders(v map[string]*string) *CreateDeviceSnapshotResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateDeviceSnapshotResponse) SetBody(v *CreateDeviceSnapshotResponseBody) *CreateDeviceSnapshotResponse {
-	s.Body = v
-	return s
-}
-
 type CreateDirectoryRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -6471,7 +6303,10 @@ func (s *DescribeClusterDevicesResponseBodyDevicesPodInfos) SetStatus(v string) 
 type DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork struct {
 	ContainerPorts *string `json:"ContainerPorts,omitempty" xml:"ContainerPorts,omitempty"`
 	ExternalIp     *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	ExternalIsp    *string `json:"ExternalIsp,omitempty" xml:"ExternalIsp,omitempty"`
 	ExternalPorts  *string `json:"ExternalPorts,omitempty" xml:"ExternalPorts,omitempty"`
+	OutgoingIp     *string `json:"OutgoingIp,omitempty" xml:"OutgoingIp,omitempty"`
+	OutgoingIsp    *string `json:"OutgoingIsp,omitempty" xml:"OutgoingIsp,omitempty"`
 }
 
 func (s DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork) String() string {
@@ -6492,8 +6327,23 @@ func (s *DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork) SetExternalIp
 	return s
 }
 
+func (s *DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork) SetExternalIsp(v string) *DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork {
+	s.ExternalIsp = &v
+	return s
+}
+
 func (s *DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork) SetExternalPorts(v string) *DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork {
 	s.ExternalPorts = &v
+	return s
+}
+
+func (s *DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork) SetOutgoingIp(v string) *DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork {
+	s.OutgoingIp = &v
+	return s
+}
+
+func (s *DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork) SetOutgoingIsp(v string) *DescribeClusterDevicesResponseBodyDevicesPodInfosNetwork {
+	s.OutgoingIsp = &v
 	return s
 }
 
@@ -10524,7 +10374,10 @@ func (s *DescribeRenderingDevicesResponseBodyDevicesPodInfos) SetStatus(v string
 type DescribeRenderingDevicesResponseBodyDevicesPodInfosNetwork struct {
 	ContainerPorts *string `json:"ContainerPorts,omitempty" xml:"ContainerPorts,omitempty"`
 	ExternalIp     *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	ExternalIsp    *string `json:"ExternalIsp,omitempty" xml:"ExternalIsp,omitempty"`
 	ExternalPorts  *string `json:"ExternalPorts,omitempty" xml:"ExternalPorts,omitempty"`
+	OutgoingIp     *string `json:"OutgoingIp,omitempty" xml:"OutgoingIp,omitempty"`
+	OutgoingIsp    *string `json:"OutgoingIsp,omitempty" xml:"OutgoingIsp,omitempty"`
 }
 
 func (s DescribeRenderingDevicesResponseBodyDevicesPodInfosNetwork) String() string {
@@ -10545,8 +10398,23 @@ func (s *DescribeRenderingDevicesResponseBodyDevicesPodInfosNetwork) SetExternal
 	return s
 }
 
+func (s *DescribeRenderingDevicesResponseBodyDevicesPodInfosNetwork) SetExternalIsp(v string) *DescribeRenderingDevicesResponseBodyDevicesPodInfosNetwork {
+	s.ExternalIsp = &v
+	return s
+}
+
 func (s *DescribeRenderingDevicesResponseBodyDevicesPodInfosNetwork) SetExternalPorts(v string) *DescribeRenderingDevicesResponseBodyDevicesPodInfosNetwork {
 	s.ExternalPorts = &v
+	return s
+}
+
+func (s *DescribeRenderingDevicesResponseBodyDevicesPodInfosNetwork) SetOutgoingIp(v string) *DescribeRenderingDevicesResponseBodyDevicesPodInfosNetwork {
+	s.OutgoingIp = &v
+	return s
+}
+
+func (s *DescribeRenderingDevicesResponseBodyDevicesPodInfosNetwork) SetOutgoingIsp(v string) *DescribeRenderingDevicesResponseBodyDevicesPodInfosNetwork {
+	s.OutgoingIsp = &v
 	return s
 }
 
@@ -11764,6 +11632,140 @@ func (s *DescribeTemplatesResponse) SetHeaders(v map[string]*string) *DescribeTe
 }
 
 func (s *DescribeTemplatesResponse) SetBody(v *DescribeTemplatesResponseBody) *DescribeTemplatesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeUserDevicesRequest struct {
+	EnsInstanceIds *string `json:"EnsInstanceIds,omitempty" xml:"EnsInstanceIds,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ServerName     *string `json:"ServerName,omitempty" xml:"ServerName,omitempty"`
+}
+
+func (s DescribeUserDevicesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserDevicesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserDevicesRequest) SetEnsInstanceIds(v string) *DescribeUserDevicesRequest {
+	s.EnsInstanceIds = &v
+	return s
+}
+
+func (s *DescribeUserDevicesRequest) SetOwnerId(v int64) *DescribeUserDevicesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeUserDevicesRequest) SetServerName(v string) *DescribeUserDevicesRequest {
+	s.ServerName = &v
+	return s
+}
+
+type DescribeUserDevicesResponseBody struct {
+	List      []*DescribeUserDevicesResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeUserDevicesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserDevicesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserDevicesResponseBody) SetList(v []*DescribeUserDevicesResponseBodyList) *DescribeUserDevicesResponseBody {
+	s.List = v
+	return s
+}
+
+func (s *DescribeUserDevicesResponseBody) SetRequestId(v string) *DescribeUserDevicesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeUserDevicesResponseBodyList struct {
+	AliUid        *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	EdgeNodeName  *string `json:"EdgeNodeName,omitempty" xml:"EdgeNodeName,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MacAddress    *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
+	MatrixId      *string `json:"MatrixId,omitempty" xml:"MatrixId,omitempty"`
+	Server        *string `json:"Server,omitempty" xml:"Server,omitempty"`
+	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeUserDevicesResponseBodyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserDevicesResponseBodyList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserDevicesResponseBodyList) SetAliUid(v string) *DescribeUserDevicesResponseBodyList {
+	s.AliUid = &v
+	return s
+}
+
+func (s *DescribeUserDevicesResponseBodyList) SetEdgeNodeName(v string) *DescribeUserDevicesResponseBodyList {
+	s.EdgeNodeName = &v
+	return s
+}
+
+func (s *DescribeUserDevicesResponseBodyList) SetInstanceId(v string) *DescribeUserDevicesResponseBodyList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeUserDevicesResponseBodyList) SetMacAddress(v string) *DescribeUserDevicesResponseBodyList {
+	s.MacAddress = &v
+	return s
+}
+
+func (s *DescribeUserDevicesResponseBodyList) SetMatrixId(v string) *DescribeUserDevicesResponseBodyList {
+	s.MatrixId = &v
+	return s
+}
+
+func (s *DescribeUserDevicesResponseBodyList) SetServer(v string) *DescribeUserDevicesResponseBodyList {
+	s.Server = &v
+	return s
+}
+
+func (s *DescribeUserDevicesResponseBodyList) SetSpecification(v string) *DescribeUserDevicesResponseBodyList {
+	s.Specification = &v
+	return s
+}
+
+func (s *DescribeUserDevicesResponseBodyList) SetStatus(v string) *DescribeUserDevicesResponseBodyList {
+	s.Status = &v
+	return s
+}
+
+type DescribeUserDevicesResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeUserDevicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeUserDevicesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserDevicesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserDevicesResponse) SetHeaders(v map[string]*string) *DescribeUserDevicesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUserDevicesResponse) SetBody(v *DescribeUserDevicesResponseBody) *DescribeUserDevicesResponse {
 	s.Body = v
 	return s
 }
@@ -16535,310 +16537,6 @@ func (s *ListBucketsResponse) SetBody(v *ListBucketsResponseBody) *ListBucketsRe
 	return s
 }
 
-type ListDeviceChannelsRequest struct {
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNum  *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s ListDeviceChannelsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDeviceChannelsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDeviceChannelsRequest) SetDeviceId(v string) *ListDeviceChannelsRequest {
-	s.DeviceId = &v
-	return s
-}
-
-func (s *ListDeviceChannelsRequest) SetOwnerId(v int64) *ListDeviceChannelsRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ListDeviceChannelsRequest) SetPageNum(v int64) *ListDeviceChannelsRequest {
-	s.PageNum = &v
-	return s
-}
-
-func (s *ListDeviceChannelsRequest) SetPageSize(v int64) *ListDeviceChannelsRequest {
-	s.PageSize = &v
-	return s
-}
-
-type ListDeviceChannelsResponseBody struct {
-	Channels   []*ListDeviceChannelsResponseBodyChannels `json:"Channels,omitempty" xml:"Channels,omitempty" type:"Repeated"`
-	PageCount  *int64                                    `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	PageNum    *int64                                    `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize   *int64                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListDeviceChannelsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDeviceChannelsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDeviceChannelsResponseBody) SetChannels(v []*ListDeviceChannelsResponseBodyChannels) *ListDeviceChannelsResponseBody {
-	s.Channels = v
-	return s
-}
-
-func (s *ListDeviceChannelsResponseBody) SetPageCount(v int64) *ListDeviceChannelsResponseBody {
-	s.PageCount = &v
-	return s
-}
-
-func (s *ListDeviceChannelsResponseBody) SetPageNum(v int64) *ListDeviceChannelsResponseBody {
-	s.PageNum = &v
-	return s
-}
-
-func (s *ListDeviceChannelsResponseBody) SetPageSize(v int64) *ListDeviceChannelsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListDeviceChannelsResponseBody) SetRequestId(v string) *ListDeviceChannelsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListDeviceChannelsResponseBody) SetTotalCount(v int64) *ListDeviceChannelsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListDeviceChannelsResponseBodyChannels struct {
-	ChannelId    *int64  `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	DeviceId     *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	DeviceStatus *string `json:"DeviceStatus,omitempty" xml:"DeviceStatus,omitempty"`
-	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Params       *string `json:"Params,omitempty" xml:"Params,omitempty"`
-}
-
-func (s ListDeviceChannelsResponseBodyChannels) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDeviceChannelsResponseBodyChannels) GoString() string {
-	return s.String()
-}
-
-func (s *ListDeviceChannelsResponseBodyChannels) SetChannelId(v int64) *ListDeviceChannelsResponseBodyChannels {
-	s.ChannelId = &v
-	return s
-}
-
-func (s *ListDeviceChannelsResponseBodyChannels) SetDeviceId(v string) *ListDeviceChannelsResponseBodyChannels {
-	s.DeviceId = &v
-	return s
-}
-
-func (s *ListDeviceChannelsResponseBodyChannels) SetDeviceStatus(v string) *ListDeviceChannelsResponseBodyChannels {
-	s.DeviceStatus = &v
-	return s
-}
-
-func (s *ListDeviceChannelsResponseBodyChannels) SetName(v string) *ListDeviceChannelsResponseBodyChannels {
-	s.Name = &v
-	return s
-}
-
-func (s *ListDeviceChannelsResponseBodyChannels) SetParams(v string) *ListDeviceChannelsResponseBodyChannels {
-	s.Params = &v
-	return s
-}
-
-type ListDeviceChannelsResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDeviceChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDeviceChannelsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDeviceChannelsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListDeviceChannelsResponse) SetHeaders(v map[string]*string) *ListDeviceChannelsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDeviceChannelsResponse) SetBody(v *ListDeviceChannelsResponseBody) *ListDeviceChannelsResponse {
-	s.Body = v
-	return s
-}
-
-type ListDeviceRecordsRequest struct {
-	DeviceId       *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNum        *int64  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize       *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	SearchCriteria *string `json:"SearchCriteria,omitempty" xml:"SearchCriteria,omitempty"`
-	StreamId       *string `json:"StreamId,omitempty" xml:"StreamId,omitempty"`
-}
-
-func (s ListDeviceRecordsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDeviceRecordsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDeviceRecordsRequest) SetDeviceId(v string) *ListDeviceRecordsRequest {
-	s.DeviceId = &v
-	return s
-}
-
-func (s *ListDeviceRecordsRequest) SetOwnerId(v int64) *ListDeviceRecordsRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ListDeviceRecordsRequest) SetPageNum(v int64) *ListDeviceRecordsRequest {
-	s.PageNum = &v
-	return s
-}
-
-func (s *ListDeviceRecordsRequest) SetPageSize(v int64) *ListDeviceRecordsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListDeviceRecordsRequest) SetSearchCriteria(v string) *ListDeviceRecordsRequest {
-	s.SearchCriteria = &v
-	return s
-}
-
-func (s *ListDeviceRecordsRequest) SetStreamId(v string) *ListDeviceRecordsRequest {
-	s.StreamId = &v
-	return s
-}
-
-type ListDeviceRecordsResponseBody struct {
-	PageCount  *int64                                  `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	PageNum    *int64                                  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize   *int64                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Records    []*ListDeviceRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int64                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListDeviceRecordsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDeviceRecordsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDeviceRecordsResponseBody) SetPageCount(v int64) *ListDeviceRecordsResponseBody {
-	s.PageCount = &v
-	return s
-}
-
-func (s *ListDeviceRecordsResponseBody) SetPageNum(v int64) *ListDeviceRecordsResponseBody {
-	s.PageNum = &v
-	return s
-}
-
-func (s *ListDeviceRecordsResponseBody) SetPageSize(v int64) *ListDeviceRecordsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListDeviceRecordsResponseBody) SetRecords(v []*ListDeviceRecordsResponseBodyRecords) *ListDeviceRecordsResponseBody {
-	s.Records = v
-	return s
-}
-
-func (s *ListDeviceRecordsResponseBody) SetRequestId(v string) *ListDeviceRecordsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListDeviceRecordsResponseBody) SetTotalCount(v int64) *ListDeviceRecordsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListDeviceRecordsResponseBodyRecords struct {
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FileSize   *int64  `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	Filename   *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
-	RecordType *string `json:"RecordType,omitempty" xml:"RecordType,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s ListDeviceRecordsResponseBodyRecords) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDeviceRecordsResponseBodyRecords) GoString() string {
-	return s.String()
-}
-
-func (s *ListDeviceRecordsResponseBodyRecords) SetEndTime(v string) *ListDeviceRecordsResponseBodyRecords {
-	s.EndTime = &v
-	return s
-}
-
-func (s *ListDeviceRecordsResponseBodyRecords) SetFileSize(v int64) *ListDeviceRecordsResponseBodyRecords {
-	s.FileSize = &v
-	return s
-}
-
-func (s *ListDeviceRecordsResponseBodyRecords) SetFilename(v string) *ListDeviceRecordsResponseBodyRecords {
-	s.Filename = &v
-	return s
-}
-
-func (s *ListDeviceRecordsResponseBodyRecords) SetRecordType(v string) *ListDeviceRecordsResponseBodyRecords {
-	s.RecordType = &v
-	return s
-}
-
-func (s *ListDeviceRecordsResponseBodyRecords) SetStartTime(v string) *ListDeviceRecordsResponseBodyRecords {
-	s.StartTime = &v
-	return s
-}
-
-type ListDeviceRecordsResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDeviceRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDeviceRecordsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDeviceRecordsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListDeviceRecordsResponse) SetHeaders(v map[string]*string) *ListDeviceRecordsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDeviceRecordsResponse) SetBody(v *ListDeviceRecordsResponseBody) *ListDeviceRecordsResponse {
-	s.Body = v
-	return s
-}
-
 type ListObjectsRequest struct {
 	BucketName        *string `json:"BucketName,omitempty" xml:"BucketName,omitempty"`
 	ContinuationToken *string `json:"ContinuationToken,omitempty" xml:"ContinuationToken,omitempty"`
@@ -19845,75 +19543,6 @@ func (s *SyncCatalogsResponse) SetBody(v *SyncCatalogsResponseBody) *SyncCatalog
 	return s
 }
 
-type SyncDeviceChannelsRequest struct {
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s SyncDeviceChannelsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SyncDeviceChannelsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SyncDeviceChannelsRequest) SetDeviceId(v string) *SyncDeviceChannelsRequest {
-	s.DeviceId = &v
-	return s
-}
-
-func (s *SyncDeviceChannelsRequest) SetOwnerId(v int64) *SyncDeviceChannelsRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type SyncDeviceChannelsResponseBody struct {
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SyncDeviceChannelsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SyncDeviceChannelsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SyncDeviceChannelsResponseBody) SetId(v string) *SyncDeviceChannelsResponseBody {
-	s.Id = &v
-	return s
-}
-
-func (s *SyncDeviceChannelsResponseBody) SetRequestId(v string) *SyncDeviceChannelsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SyncDeviceChannelsResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SyncDeviceChannelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SyncDeviceChannelsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SyncDeviceChannelsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SyncDeviceChannelsResponse) SetHeaders(v map[string]*string) *SyncDeviceChannelsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SyncDeviceChannelsResponse) SetBody(v *SyncDeviceChannelsResponseBody) *SyncDeviceChannelsResponse {
-	s.Body = v
-	return s
-}
-
 type UnbindDirectoryRequest struct {
 	DeviceId    *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
@@ -20916,111 +20545,6 @@ func (s *UpgradeRenderingDevicesImageResponse) SetBody(v *UpgradeRenderingDevice
 	return s
 }
 
-type UploadDeviceRecordRequest struct {
-	DeviceId       *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	SearchCriteria *string `json:"SearchCriteria,omitempty" xml:"SearchCriteria,omitempty"`
-	StreamId       *string `json:"StreamId,omitempty" xml:"StreamId,omitempty"`
-	UploadId       *string `json:"UploadId,omitempty" xml:"UploadId,omitempty"`
-	UploadMode     *string `json:"UploadMode,omitempty" xml:"UploadMode,omitempty"`
-	UploadParams   *string `json:"UploadParams,omitempty" xml:"UploadParams,omitempty"`
-	UploadType     *string `json:"UploadType,omitempty" xml:"UploadType,omitempty"`
-}
-
-func (s UploadDeviceRecordRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UploadDeviceRecordRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UploadDeviceRecordRequest) SetDeviceId(v string) *UploadDeviceRecordRequest {
-	s.DeviceId = &v
-	return s
-}
-
-func (s *UploadDeviceRecordRequest) SetOwnerId(v int64) *UploadDeviceRecordRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *UploadDeviceRecordRequest) SetSearchCriteria(v string) *UploadDeviceRecordRequest {
-	s.SearchCriteria = &v
-	return s
-}
-
-func (s *UploadDeviceRecordRequest) SetStreamId(v string) *UploadDeviceRecordRequest {
-	s.StreamId = &v
-	return s
-}
-
-func (s *UploadDeviceRecordRequest) SetUploadId(v string) *UploadDeviceRecordRequest {
-	s.UploadId = &v
-	return s
-}
-
-func (s *UploadDeviceRecordRequest) SetUploadMode(v string) *UploadDeviceRecordRequest {
-	s.UploadMode = &v
-	return s
-}
-
-func (s *UploadDeviceRecordRequest) SetUploadParams(v string) *UploadDeviceRecordRequest {
-	s.UploadParams = &v
-	return s
-}
-
-func (s *UploadDeviceRecordRequest) SetUploadType(v string) *UploadDeviceRecordRequest {
-	s.UploadType = &v
-	return s
-}
-
-type UploadDeviceRecordResponseBody struct {
-	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UploadDeviceRecordResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UploadDeviceRecordResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UploadDeviceRecordResponseBody) SetId(v string) *UploadDeviceRecordResponseBody {
-	s.Id = &v
-	return s
-}
-
-func (s *UploadDeviceRecordResponseBody) SetRequestId(v string) *UploadDeviceRecordResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UploadDeviceRecordResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UploadDeviceRecordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UploadDeviceRecordResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UploadDeviceRecordResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UploadDeviceRecordResponse) SetHeaders(v map[string]*string) *UploadDeviceRecordResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UploadDeviceRecordResponse) SetBody(v *UploadDeviceRecordResponseBody) *UploadDeviceRecordResponse {
-	s.Body = v
-	return s
-}
-
 type Client struct {
 	openapi.Client
 }
@@ -21061,62 +20585,6 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) AddDeviceWithOptions(request *AddDeviceRequest, runtime *util.RuntimeOptions) (_result *AddDeviceResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Config)) {
-		query["Config"] = request.Config
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
-		query["GroupId"] = request.GroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Protocol)) {
-		query["Protocol"] = request.Protocol
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AddDevice"),
-		Version:     tea.String("2018-12-12"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &AddDeviceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AddDevice(request *AddDeviceRequest) (_result *AddDeviceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AddDeviceResponse{}
-	_body, _err := client.AddDeviceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23157,66 +22625,6 @@ func (client *Client) CreateDeviceAlarm(request *CreateDeviceAlarmRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDeviceAlarmResponse{}
 	_body, _err := client.CreateDeviceAlarmWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateDeviceSnapshotWithOptions(request *CreateDeviceSnapshotRequest, runtime *util.RuntimeOptions) (_result *CreateDeviceSnapshotResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
-		query["DeviceId"] = request.DeviceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Mode)) {
-		query["Mode"] = request.Mode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SnapshotConfig)) {
-		query["SnapshotConfig"] = request.SnapshotConfig
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StreamId)) {
-		query["StreamId"] = request.StreamId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateDeviceSnapshot"),
-		Version:     tea.String("2018-12-12"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateDeviceSnapshotResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateDeviceSnapshot(request *CreateDeviceSnapshotRequest) (_result *CreateDeviceSnapshotResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateDeviceSnapshotResponse{}
-	_body, _err := client.CreateDeviceSnapshotWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26432,6 +25840,58 @@ func (client *Client) DescribeTemplates(request *DescribeTemplatesRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DescribeUserDevicesWithOptions(request *DescribeUserDevicesRequest, runtime *util.RuntimeOptions) (_result *DescribeUserDevicesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnsInstanceIds)) {
+		query["EnsInstanceIds"] = request.EnsInstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerName)) {
+		query["ServerName"] = request.ServerName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserDevices"),
+		Version:     tea.String("2018-12-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUserDevicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUserDevices(request *DescribeUserDevicesRequest) (_result *DescribeUserDevicesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUserDevicesResponse{}
+	_body, _err := client.DescribeUserDevicesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeVodStreamURLWithOptions(request *DescribeVodStreamURLRequest, runtime *util.RuntimeOptions) (_result *DescribeVodStreamURLResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28329,126 +27789,6 @@ func (client *Client) ListBuckets(request *ListBucketsRequest) (_result *ListBuc
 	runtime := &util.RuntimeOptions{}
 	_result = &ListBucketsResponse{}
 	_body, _err := client.ListBucketsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListDeviceChannelsWithOptions(request *ListDeviceChannelsRequest, runtime *util.RuntimeOptions) (_result *ListDeviceChannelsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
-		query["DeviceId"] = request.DeviceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
-		query["PageNum"] = request.PageNum
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListDeviceChannels"),
-		Version:     tea.String("2018-12-12"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListDeviceChannelsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDeviceChannels(request *ListDeviceChannelsRequest) (_result *ListDeviceChannelsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListDeviceChannelsResponse{}
-	_body, _err := client.ListDeviceChannelsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListDeviceRecordsWithOptions(request *ListDeviceRecordsRequest, runtime *util.RuntimeOptions) (_result *ListDeviceRecordsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
-		query["DeviceId"] = request.DeviceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
-		query["PageNum"] = request.PageNum
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SearchCriteria)) {
-		query["SearchCriteria"] = request.SearchCriteria
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StreamId)) {
-		query["StreamId"] = request.StreamId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListDeviceRecords"),
-		Version:     tea.String("2018-12-12"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListDeviceRecordsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDeviceRecords(request *ListDeviceRecordsRequest) (_result *ListDeviceRecordsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListDeviceRecordsResponse{}
-	_body, _err := client.ListDeviceRecordsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30485,54 +29825,6 @@ func (client *Client) SyncCatalogs(request *SyncCatalogsRequest) (_result *SyncC
 	return _result, _err
 }
 
-func (client *Client) SyncDeviceChannelsWithOptions(request *SyncDeviceChannelsRequest, runtime *util.RuntimeOptions) (_result *SyncDeviceChannelsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
-		query["DeviceId"] = request.DeviceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SyncDeviceChannels"),
-		Version:     tea.String("2018-12-12"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SyncDeviceChannelsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SyncDeviceChannels(request *SyncDeviceChannelsRequest) (_result *SyncDeviceChannelsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SyncDeviceChannelsResponse{}
-	_body, _err := client.SyncDeviceChannelsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) UnbindDirectoryWithOptions(request *UnbindDirectoryRequest, runtime *util.RuntimeOptions) (_result *UnbindDirectoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31246,78 +30538,6 @@ func (client *Client) UpgradeRenderingDevicesImage(request *UpgradeRenderingDevi
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeRenderingDevicesImageResponse{}
 	_body, _err := client.UpgradeRenderingDevicesImageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UploadDeviceRecordWithOptions(request *UploadDeviceRecordRequest, runtime *util.RuntimeOptions) (_result *UploadDeviceRecordResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
-		query["DeviceId"] = request.DeviceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SearchCriteria)) {
-		query["SearchCriteria"] = request.SearchCriteria
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StreamId)) {
-		query["StreamId"] = request.StreamId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UploadId)) {
-		query["UploadId"] = request.UploadId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UploadMode)) {
-		query["UploadMode"] = request.UploadMode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UploadParams)) {
-		query["UploadParams"] = request.UploadParams
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UploadType)) {
-		query["UploadType"] = request.UploadType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UploadDeviceRecord"),
-		Version:     tea.String("2018-12-12"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UploadDeviceRecordResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UploadDeviceRecord(request *UploadDeviceRecordRequest) (_result *UploadDeviceRecordResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UploadDeviceRecordResponse{}
-	_body, _err := client.UploadDeviceRecordWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
