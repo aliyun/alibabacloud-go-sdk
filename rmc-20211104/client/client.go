@@ -7,15 +7,187 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type ListResourceRelationshipsRequest struct {
+	MaxResults         *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken          *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Scene              *string   `json:"Scene,omitempty" xml:"Scene,omitempty"`
+	SourceRegionId     *string   `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
+	SourceResourceId   []*string `json:"SourceResourceId,omitempty" xml:"SourceResourceId,omitempty" type:"Repeated"`
+	SourceResourceType *string   `json:"SourceResourceType,omitempty" xml:"SourceResourceType,omitempty"`
+	TargetResourceType []*string `json:"TargetResourceType,omitempty" xml:"TargetResourceType,omitempty" type:"Repeated"`
+}
+
+func (s ListResourceRelationshipsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceRelationshipsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceRelationshipsRequest) SetMaxResults(v int32) *ListResourceRelationshipsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsRequest) SetNextToken(v string) *ListResourceRelationshipsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsRequest) SetScene(v string) *ListResourceRelationshipsRequest {
+	s.Scene = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsRequest) SetSourceRegionId(v string) *ListResourceRelationshipsRequest {
+	s.SourceRegionId = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsRequest) SetSourceResourceId(v []*string) *ListResourceRelationshipsRequest {
+	s.SourceResourceId = v
+	return s
+}
+
+func (s *ListResourceRelationshipsRequest) SetSourceResourceType(v string) *ListResourceRelationshipsRequest {
+	s.SourceResourceType = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsRequest) SetTargetResourceType(v []*string) *ListResourceRelationshipsRequest {
+	s.TargetResourceType = v
+	return s
+}
+
+type ListResourceRelationshipsResponseBody struct {
+	MaxResults            *int32                                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken             *string                                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId             *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceRelationships []*ListResourceRelationshipsResponseBodyResourceRelationships `json:"ResourceRelationships,omitempty" xml:"ResourceRelationships,omitempty" type:"Repeated"`
+}
+
+func (s ListResourceRelationshipsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceRelationshipsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceRelationshipsResponseBody) SetMaxResults(v int32) *ListResourceRelationshipsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponseBody) SetNextToken(v string) *ListResourceRelationshipsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponseBody) SetRequestId(v string) *ListResourceRelationshipsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponseBody) SetResourceRelationships(v []*ListResourceRelationshipsResponseBodyResourceRelationships) *ListResourceRelationshipsResponseBody {
+	s.ResourceRelationships = v
+	return s
+}
+
+type ListResourceRelationshipsResponseBodyResourceRelationships struct {
+	AccountId          *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	RelationshipType   *string `json:"RelationshipType,omitempty" xml:"RelationshipType,omitempty"`
+	SourceRegionId     *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
+	SourceResourceId   *string `json:"SourceResourceId,omitempty" xml:"SourceResourceId,omitempty"`
+	SourceResourceType *string `json:"SourceResourceType,omitempty" xml:"SourceResourceType,omitempty"`
+	TargetRegionId     *string `json:"TargetRegionId,omitempty" xml:"TargetRegionId,omitempty"`
+	TargetResourceId   *string `json:"TargetResourceId,omitempty" xml:"TargetResourceId,omitempty"`
+	TargetResourceType *string `json:"TargetResourceType,omitempty" xml:"TargetResourceType,omitempty"`
+}
+
+func (s ListResourceRelationshipsResponseBodyResourceRelationships) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceRelationshipsResponseBodyResourceRelationships) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceRelationshipsResponseBodyResourceRelationships) SetAccountId(v string) *ListResourceRelationshipsResponseBodyResourceRelationships {
+	s.AccountId = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponseBodyResourceRelationships) SetRelationshipType(v string) *ListResourceRelationshipsResponseBodyResourceRelationships {
+	s.RelationshipType = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponseBodyResourceRelationships) SetSourceRegionId(v string) *ListResourceRelationshipsResponseBodyResourceRelationships {
+	s.SourceRegionId = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponseBodyResourceRelationships) SetSourceResourceId(v string) *ListResourceRelationshipsResponseBodyResourceRelationships {
+	s.SourceResourceId = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponseBodyResourceRelationships) SetSourceResourceType(v string) *ListResourceRelationshipsResponseBodyResourceRelationships {
+	s.SourceResourceType = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponseBodyResourceRelationships) SetTargetRegionId(v string) *ListResourceRelationshipsResponseBodyResourceRelationships {
+	s.TargetRegionId = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponseBodyResourceRelationships) SetTargetResourceId(v string) *ListResourceRelationshipsResponseBodyResourceRelationships {
+	s.TargetResourceId = &v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponseBodyResourceRelationships) SetTargetResourceType(v string) *ListResourceRelationshipsResponseBodyResourceRelationships {
+	s.TargetResourceType = &v
+	return s
+}
+
+type ListResourceRelationshipsResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListResourceRelationshipsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListResourceRelationshipsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListResourceRelationshipsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListResourceRelationshipsResponse) SetHeaders(v map[string]*string) *ListResourceRelationshipsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListResourceRelationshipsResponse) SetBody(v *ListResourceRelationshipsResponseBody) *ListResourceRelationshipsResponse {
+	s.Body = v
+	return s
+}
+
 type SearchResourcesRequest struct {
-	Filter          []*SearchResourcesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	MaxResults      *int32                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken       *string                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	ResourceGroupId *string                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Filter          []*SearchResourcesRequestFilter      `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
+	MaxResults      *int32                               `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken       *string                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	ResourceGroupId *string                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SortCriterion   *SearchResourcesRequestSortCriterion `json:"SortCriterion,omitempty" xml:"SortCriterion,omitempty" type:"Struct"`
 }
 
 func (s SearchResourcesRequest) String() string {
@@ -46,6 +218,11 @@ func (s *SearchResourcesRequest) SetResourceGroupId(v string) *SearchResourcesRe
 	return s
 }
 
+func (s *SearchResourcesRequest) SetSortCriterion(v *SearchResourcesRequestSortCriterion) *SearchResourcesRequest {
+	s.SortCriterion = v
+	return s
+}
+
 type SearchResourcesRequestFilter struct {
 	Key       *string   `json:"Key,omitempty" xml:"Key,omitempty"`
 	MatchType *string   `json:"MatchType,omitempty" xml:"MatchType,omitempty"`
@@ -72,6 +249,29 @@ func (s *SearchResourcesRequestFilter) SetMatchType(v string) *SearchResourcesRe
 
 func (s *SearchResourcesRequestFilter) SetValue(v []*string) *SearchResourcesRequestFilter {
 	s.Value = v
+	return s
+}
+
+type SearchResourcesRequestSortCriterion struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+}
+
+func (s SearchResourcesRequestSortCriterion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchResourcesRequestSortCriterion) GoString() string {
+	return s.String()
+}
+
+func (s *SearchResourcesRequestSortCriterion) SetKey(v string) *SearchResourcesRequestSortCriterion {
+	s.Key = &v
+	return s
+}
+
+func (s *SearchResourcesRequestSortCriterion) SetOrder(v string) *SearchResourcesRequestSortCriterion {
+	s.Order = &v
 	return s
 }
 
@@ -309,16 +509,116 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) ListResourceRelationshipsWithOptions(request *ListResourceRelationshipsRequest, runtime *util.RuntimeOptions) (_result *ListResourceRelationshipsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scene)) {
+		query["Scene"] = request.Scene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceRegionId)) {
+		query["SourceRegionId"] = request.SourceRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceResourceId)) {
+		query["SourceResourceId"] = request.SourceResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceResourceType)) {
+		query["SourceResourceType"] = request.SourceResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetResourceType)) {
+		query["TargetResourceType"] = request.TargetResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListResourceRelationships"),
+		Version:     tea.String("2021-11-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListResourceRelationshipsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListResourceRelationships(request *ListResourceRelationshipsRequest) (_result *ListResourceRelationshipsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListResourceRelationshipsResponse{}
+	_body, _err := client.ListResourceRelationshipsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SearchResourcesWithOptions(request *SearchResourcesRequest, runtime *util.RuntimeOptions) (_result *SearchResourcesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SortCriterion))) {
+		query["SortCriterion"] = request.SortCriterion
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchResources"),
+		Version:     tea.String("2021-11-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SearchResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SearchResources"), tea.String("2021-11-04"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
