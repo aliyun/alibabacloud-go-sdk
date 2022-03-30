@@ -15,7 +15,6 @@ import (
 type ListResourceRelationshipsRequest struct {
 	MaxResults         *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken          *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	Scene              *string   `json:"Scene,omitempty" xml:"Scene,omitempty"`
 	SourceRegionId     *string   `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	SourceResourceId   []*string `json:"SourceResourceId,omitempty" xml:"SourceResourceId,omitempty" type:"Repeated"`
 	SourceResourceType *string   `json:"SourceResourceType,omitempty" xml:"SourceResourceType,omitempty"`
@@ -37,11 +36,6 @@ func (s *ListResourceRelationshipsRequest) SetMaxResults(v int32) *ListResourceR
 
 func (s *ListResourceRelationshipsRequest) SetNextToken(v string) *ListResourceRelationshipsRequest {
 	s.NextToken = &v
-	return s
-}
-
-func (s *ListResourceRelationshipsRequest) SetScene(v string) *ListResourceRelationshipsRequest {
-	s.Scene = &v
 	return s
 }
 
@@ -521,10 +515,6 @@ func (client *Client) ListResourceRelationshipsWithOptions(request *ListResource
 
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
 		query["NextToken"] = request.NextToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Scene)) {
-		query["Scene"] = request.Scene
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SourceRegionId)) {
