@@ -333,6 +333,75 @@ func (s *BatchAddDcdnDomainResponse) SetBody(v *BatchAddDcdnDomainResponseBody) 
 	return s
 }
 
+type BatchCreateDcdnWafRulesRequest struct {
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PolicyId    *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RuleConfigs *string `json:"RuleConfigs,omitempty" xml:"RuleConfigs,omitempty"`
+}
+
+func (s BatchCreateDcdnWafRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateDcdnWafRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateDcdnWafRulesRequest) SetOwnerId(v int64) *BatchCreateDcdnWafRulesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *BatchCreateDcdnWafRulesRequest) SetPolicyId(v int64) *BatchCreateDcdnWafRulesRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *BatchCreateDcdnWafRulesRequest) SetRuleConfigs(v string) *BatchCreateDcdnWafRulesRequest {
+	s.RuleConfigs = &v
+	return s
+}
+
+type BatchCreateDcdnWafRulesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BatchCreateDcdnWafRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateDcdnWafRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateDcdnWafRulesResponseBody) SetRequestId(v string) *BatchCreateDcdnWafRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BatchCreateDcdnWafRulesResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BatchCreateDcdnWafRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchCreateDcdnWafRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateDcdnWafRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateDcdnWafRulesResponse) SetHeaders(v map[string]*string) *BatchCreateDcdnWafRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchCreateDcdnWafRulesResponse) SetBody(v *BatchCreateDcdnWafRulesResponseBody) *BatchCreateDcdnWafRulesResponse {
+	s.Body = v
+	return s
+}
+
 type BatchDeleteDcdnDomainConfigsRequest struct {
 	DomainNames   *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
 	FunctionNames *string `json:"FunctionNames,omitempty" xml:"FunctionNames,omitempty"`
@@ -410,6 +479,69 @@ func (s *BatchDeleteDcdnDomainConfigsResponse) SetHeaders(v map[string]*string) 
 }
 
 func (s *BatchDeleteDcdnDomainConfigsResponse) SetBody(v *BatchDeleteDcdnDomainConfigsResponseBody) *BatchDeleteDcdnDomainConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type BatchDeleteDcdnWafRulesRequest struct {
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RuleIds *string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty"`
+}
+
+func (s BatchDeleteDcdnWafRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteDcdnWafRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteDcdnWafRulesRequest) SetOwnerId(v int64) *BatchDeleteDcdnWafRulesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *BatchDeleteDcdnWafRulesRequest) SetRuleIds(v string) *BatchDeleteDcdnWafRulesRequest {
+	s.RuleIds = &v
+	return s
+}
+
+type BatchDeleteDcdnWafRulesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BatchDeleteDcdnWafRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteDcdnWafRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteDcdnWafRulesResponseBody) SetRequestId(v string) *BatchDeleteDcdnWafRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BatchDeleteDcdnWafRulesResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BatchDeleteDcdnWafRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchDeleteDcdnWafRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchDeleteDcdnWafRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchDeleteDcdnWafRulesResponse) SetHeaders(v map[string]*string) *BatchDeleteDcdnWafRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchDeleteDcdnWafRulesResponse) SetBody(v *BatchDeleteDcdnWafRulesResponseBody) *BatchDeleteDcdnWafRulesResponse {
 	s.Body = v
 	return s
 }
@@ -677,6 +809,75 @@ func (s *BatchSetDcdnIpaDomainConfigsResponse) SetHeaders(v map[string]*string) 
 }
 
 func (s *BatchSetDcdnIpaDomainConfigsResponse) SetBody(v *BatchSetDcdnIpaDomainConfigsResponseBody) *BatchSetDcdnIpaDomainConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type BatchSetDcdnWafDomainConfigsRequest struct {
+	DefenseStatus *string `json:"DefenseStatus,omitempty" xml:"DefenseStatus,omitempty"`
+	DomainNames   *string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s BatchSetDcdnWafDomainConfigsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchSetDcdnWafDomainConfigsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchSetDcdnWafDomainConfigsRequest) SetDefenseStatus(v string) *BatchSetDcdnWafDomainConfigsRequest {
+	s.DefenseStatus = &v
+	return s
+}
+
+func (s *BatchSetDcdnWafDomainConfigsRequest) SetDomainNames(v string) *BatchSetDcdnWafDomainConfigsRequest {
+	s.DomainNames = &v
+	return s
+}
+
+func (s *BatchSetDcdnWafDomainConfigsRequest) SetOwnerId(v int64) *BatchSetDcdnWafDomainConfigsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type BatchSetDcdnWafDomainConfigsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s BatchSetDcdnWafDomainConfigsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchSetDcdnWafDomainConfigsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchSetDcdnWafDomainConfigsResponseBody) SetRequestId(v string) *BatchSetDcdnWafDomainConfigsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type BatchSetDcdnWafDomainConfigsResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BatchSetDcdnWafDomainConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchSetDcdnWafDomainConfigsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchSetDcdnWafDomainConfigsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchSetDcdnWafDomainConfigsResponse) SetHeaders(v map[string]*string) *BatchSetDcdnWafDomainConfigsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchSetDcdnWafDomainConfigsResponse) SetBody(v *BatchSetDcdnWafDomainConfigsResponseBody) *BatchSetDcdnWafDomainConfigsResponse {
 	s.Body = v
 	return s
 }
@@ -1418,6 +1619,93 @@ func (s *CreateDcdnSubTaskResponse) SetHeaders(v map[string]*string) *CreateDcdn
 }
 
 func (s *CreateDcdnSubTaskResponse) SetBody(v *CreateDcdnSubTaskResponseBody) *CreateDcdnSubTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDcdnWafPolicyRequest struct {
+	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PolicyName   *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyStatus *string `json:"PolicyStatus,omitempty" xml:"PolicyStatus,omitempty"`
+	PolicyType   *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s CreateDcdnWafPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDcdnWafPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDcdnWafPolicyRequest) SetDefenseScene(v string) *CreateDcdnWafPolicyRequest {
+	s.DefenseScene = &v
+	return s
+}
+
+func (s *CreateDcdnWafPolicyRequest) SetOwnerId(v int64) *CreateDcdnWafPolicyRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateDcdnWafPolicyRequest) SetPolicyName(v string) *CreateDcdnWafPolicyRequest {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *CreateDcdnWafPolicyRequest) SetPolicyStatus(v string) *CreateDcdnWafPolicyRequest {
+	s.PolicyStatus = &v
+	return s
+}
+
+func (s *CreateDcdnWafPolicyRequest) SetPolicyType(v string) *CreateDcdnWafPolicyRequest {
+	s.PolicyType = &v
+	return s
+}
+
+type CreateDcdnWafPolicyResponseBody struct {
+	PolicyId  *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateDcdnWafPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDcdnWafPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDcdnWafPolicyResponseBody) SetPolicyId(v int64) *CreateDcdnWafPolicyResponseBody {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *CreateDcdnWafPolicyResponseBody) SetRequestId(v string) *CreateDcdnWafPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateDcdnWafPolicyResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateDcdnWafPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDcdnWafPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDcdnWafPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDcdnWafPolicyResponse) SetHeaders(v map[string]*string) *CreateDcdnWafPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDcdnWafPolicyResponse) SetBody(v *CreateDcdnWafPolicyResponseBody) *CreateDcdnWafPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -2202,6 +2490,69 @@ func (s *DeleteDcdnSubTaskResponse) SetHeaders(v map[string]*string) *DeleteDcdn
 }
 
 func (s *DeleteDcdnSubTaskResponse) SetBody(v *DeleteDcdnSubTaskResponseBody) *DeleteDcdnSubTaskResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDcdnWafPolicyRequest struct {
+	OwnerId  *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+}
+
+func (s DeleteDcdnWafPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDcdnWafPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDcdnWafPolicyRequest) SetOwnerId(v int64) *DeleteDcdnWafPolicyRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteDcdnWafPolicyRequest) SetPolicyId(v int64) *DeleteDcdnWafPolicyRequest {
+	s.PolicyId = &v
+	return s
+}
+
+type DeleteDcdnWafPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteDcdnWafPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDcdnWafPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDcdnWafPolicyResponseBody) SetRequestId(v string) *DeleteDcdnWafPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteDcdnWafPolicyResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteDcdnWafPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDcdnWafPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDcdnWafPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDcdnWafPolicyResponse) SetHeaders(v map[string]*string) *DeleteDcdnWafPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDcdnWafPolicyResponse) SetBody(v *DeleteDcdnWafPolicyResponseBody) *DeleteDcdnWafPolicyResponse {
 	s.Body = v
 	return s
 }
@@ -16436,6 +16787,1475 @@ func (s *DescribeDcdnWafDomainResponse) SetBody(v *DescribeDcdnWafDomainResponse
 	return s
 }
 
+type DescribeDcdnWafDomainDetailRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DescribeDcdnWafDomainDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafDomainDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafDomainDetailRequest) SetDomainName(v string) *DescribeDcdnWafDomainDetailRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDcdnWafDomainDetailRequest) SetOwnerId(v int64) *DescribeDcdnWafDomainDetailRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DescribeDcdnWafDomainDetailResponseBody struct {
+	Domain    *DescribeDcdnWafDomainDetailResponseBodyDomain `json:"Domain,omitempty" xml:"Domain,omitempty" type:"Struct"`
+	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDcdnWafDomainDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafDomainDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafDomainDetailResponseBody) SetDomain(v *DescribeDcdnWafDomainDetailResponseBodyDomain) *DescribeDcdnWafDomainDetailResponseBody {
+	s.Domain = v
+	return s
+}
+
+func (s *DescribeDcdnWafDomainDetailResponseBody) SetRequestId(v string) *DescribeDcdnWafDomainDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDcdnWafDomainDetailResponseBodyDomain struct {
+	DefenseScenes []*DescribeDcdnWafDomainDetailResponseBodyDomainDefenseScenes `json:"DefenseScenes,omitempty" xml:"DefenseScenes,omitempty" type:"Repeated"`
+	DomainName    *string                                                       `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+}
+
+func (s DescribeDcdnWafDomainDetailResponseBodyDomain) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafDomainDetailResponseBodyDomain) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafDomainDetailResponseBodyDomain) SetDefenseScenes(v []*DescribeDcdnWafDomainDetailResponseBodyDomainDefenseScenes) *DescribeDcdnWafDomainDetailResponseBodyDomain {
+	s.DefenseScenes = v
+	return s
+}
+
+func (s *DescribeDcdnWafDomainDetailResponseBodyDomain) SetDomainName(v string) *DescribeDcdnWafDomainDetailResponseBodyDomain {
+	s.DomainName = &v
+	return s
+}
+
+type DescribeDcdnWafDomainDetailResponseBodyDomainDefenseScenes struct {
+	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+	PolicyId     *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+}
+
+func (s DescribeDcdnWafDomainDetailResponseBodyDomainDefenseScenes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafDomainDetailResponseBodyDomainDefenseScenes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafDomainDetailResponseBodyDomainDefenseScenes) SetDefenseScene(v string) *DescribeDcdnWafDomainDetailResponseBodyDomainDefenseScenes {
+	s.DefenseScene = &v
+	return s
+}
+
+func (s *DescribeDcdnWafDomainDetailResponseBodyDomainDefenseScenes) SetPolicyId(v int64) *DescribeDcdnWafDomainDetailResponseBodyDomainDefenseScenes {
+	s.PolicyId = &v
+	return s
+}
+
+type DescribeDcdnWafDomainDetailResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDcdnWafDomainDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnWafDomainDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafDomainDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafDomainDetailResponse) SetHeaders(v map[string]*string) *DescribeDcdnWafDomainDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnWafDomainDetailResponse) SetBody(v *DescribeDcdnWafDomainDetailResponseBody) *DescribeDcdnWafDomainDetailResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDcdnWafDomainsRequest struct {
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryArgs  *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
+}
+
+func (s DescribeDcdnWafDomainsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafDomainsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafDomainsRequest) SetOwnerId(v int64) *DescribeDcdnWafDomainsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafDomainsRequest) SetPageNumber(v int32) *DescribeDcdnWafDomainsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDcdnWafDomainsRequest) SetPageSize(v int32) *DescribeDcdnWafDomainsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDcdnWafDomainsRequest) SetQueryArgs(v string) *DescribeDcdnWafDomainsRequest {
+	s.QueryArgs = &v
+	return s
+}
+
+type DescribeDcdnWafDomainsResponseBody struct {
+	Domains    []*DescribeDcdnWafDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	PageNumber *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDcdnWafDomainsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafDomainsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafDomainsResponseBody) SetDomains(v []*DescribeDcdnWafDomainsResponseBodyDomains) *DescribeDcdnWafDomainsResponseBody {
+	s.Domains = v
+	return s
+}
+
+func (s *DescribeDcdnWafDomainsResponseBody) SetPageNumber(v int32) *DescribeDcdnWafDomainsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDcdnWafDomainsResponseBody) SetPageSize(v int32) *DescribeDcdnWafDomainsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDcdnWafDomainsResponseBody) SetRequestId(v string) *DescribeDcdnWafDomainsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafDomainsResponseBody) SetTotalCount(v int32) *DescribeDcdnWafDomainsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDcdnWafDomainsResponseBodyDomains struct {
+	DomainName  *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	PolicyCount *int32  `json:"PolicyCount,omitempty" xml:"PolicyCount,omitempty"`
+}
+
+func (s DescribeDcdnWafDomainsResponseBodyDomains) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafDomainsResponseBodyDomains) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafDomainsResponseBodyDomains) SetDomainName(v string) *DescribeDcdnWafDomainsResponseBodyDomains {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDcdnWafDomainsResponseBodyDomains) SetPolicyCount(v int32) *DescribeDcdnWafDomainsResponseBodyDomains {
+	s.PolicyCount = &v
+	return s
+}
+
+type DescribeDcdnWafDomainsResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDcdnWafDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnWafDomainsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafDomainsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafDomainsResponse) SetHeaders(v map[string]*string) *DescribeDcdnWafDomainsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnWafDomainsResponse) SetBody(v *DescribeDcdnWafDomainsResponseBody) *DescribeDcdnWafDomainsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDcdnWafFilterInfoRequest struct {
+	DefenseScenes *string `json:"DefenseScenes,omitempty" xml:"DefenseScenes,omitempty"`
+	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DescribeDcdnWafFilterInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafFilterInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafFilterInfoRequest) SetDefenseScenes(v string) *DescribeDcdnWafFilterInfoRequest {
+	s.DefenseScenes = &v
+	return s
+}
+
+func (s *DescribeDcdnWafFilterInfoRequest) SetLanguage(v string) *DescribeDcdnWafFilterInfoRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *DescribeDcdnWafFilterInfoRequest) SetOwnerId(v int64) *DescribeDcdnWafFilterInfoRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DescribeDcdnWafFilterInfoResponseBody struct {
+	Content   []*DescribeDcdnWafFilterInfoResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Repeated"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDcdnWafFilterInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafFilterInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafFilterInfoResponseBody) SetContent(v []*DescribeDcdnWafFilterInfoResponseBodyContent) *DescribeDcdnWafFilterInfoResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *DescribeDcdnWafFilterInfoResponseBody) SetRequestId(v string) *DescribeDcdnWafFilterInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDcdnWafFilterInfoResponseBodyContent struct {
+	DefenseScene *string                                               `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+	Fields       []*DescribeDcdnWafFilterInfoResponseBodyContentFields `json:"Fields,omitempty" xml:"Fields,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDcdnWafFilterInfoResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafFilterInfoResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafFilterInfoResponseBodyContent) SetDefenseScene(v string) *DescribeDcdnWafFilterInfoResponseBodyContent {
+	s.DefenseScene = &v
+	return s
+}
+
+func (s *DescribeDcdnWafFilterInfoResponseBodyContent) SetFields(v []*DescribeDcdnWafFilterInfoResponseBodyContentFields) *DescribeDcdnWafFilterInfoResponseBodyContent {
+	s.Fields = v
+	return s
+}
+
+type DescribeDcdnWafFilterInfoResponseBodyContentFields struct {
+	ExtendField   *string                                                            `json:"ExtendField,omitempty" xml:"ExtendField,omitempty"`
+	LogicalSymbol []*DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol `json:"LogicalSymbol,omitempty" xml:"LogicalSymbol,omitempty" type:"Repeated"`
+	MatchField    *string                                                            `json:"MatchField,omitempty" xml:"MatchField,omitempty"`
+}
+
+func (s DescribeDcdnWafFilterInfoResponseBodyContentFields) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafFilterInfoResponseBodyContentFields) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafFilterInfoResponseBodyContentFields) SetExtendField(v string) *DescribeDcdnWafFilterInfoResponseBodyContentFields {
+	s.ExtendField = &v
+	return s
+}
+
+func (s *DescribeDcdnWafFilterInfoResponseBodyContentFields) SetLogicalSymbol(v []*DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol) *DescribeDcdnWafFilterInfoResponseBodyContentFields {
+	s.LogicalSymbol = v
+	return s
+}
+
+func (s *DescribeDcdnWafFilterInfoResponseBodyContentFields) SetMatchField(v string) *DescribeDcdnWafFilterInfoResponseBodyContentFields {
+	s.MatchField = &v
+	return s
+}
+
+type DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol struct {
+	Description *string                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	MaxLength   *int32                                                                 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
+	Regexp      *DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbolRegexp `json:"Regexp,omitempty" xml:"Regexp,omitempty" type:"Struct"`
+	Symbol      *string                                                                `json:"Symbol,omitempty" xml:"Symbol,omitempty"`
+	Tip         *string                                                                `json:"Tip,omitempty" xml:"Tip,omitempty"`
+	Type        *string                                                                `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol) SetDescription(v string) *DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol) SetMaxLength(v int32) *DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol {
+	s.MaxLength = &v
+	return s
+}
+
+func (s *DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol) SetRegexp(v *DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbolRegexp) *DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol {
+	s.Regexp = v
+	return s
+}
+
+func (s *DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol) SetSymbol(v string) *DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol {
+	s.Symbol = &v
+	return s
+}
+
+func (s *DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol) SetTip(v string) *DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol {
+	s.Tip = &v
+	return s
+}
+
+func (s *DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol) SetType(v string) *DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbol {
+	s.Type = &v
+	return s
+}
+
+type DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbolRegexp struct {
+	ErrMsg  *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	Pattern *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+}
+
+func (s DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbolRegexp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbolRegexp) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbolRegexp) SetErrMsg(v string) *DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbolRegexp {
+	s.ErrMsg = &v
+	return s
+}
+
+func (s *DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbolRegexp) SetPattern(v string) *DescribeDcdnWafFilterInfoResponseBodyContentFieldsLogicalSymbolRegexp {
+	s.Pattern = &v
+	return s
+}
+
+type DescribeDcdnWafFilterInfoResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDcdnWafFilterInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnWafFilterInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafFilterInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafFilterInfoResponse) SetHeaders(v map[string]*string) *DescribeDcdnWafFilterInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnWafFilterInfoResponse) SetBody(v *DescribeDcdnWafFilterInfoResponseBody) *DescribeDcdnWafFilterInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDcdnWafPoliciesRequest struct {
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryArgs  *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
+}
+
+func (s DescribeDcdnWafPoliciesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafPoliciesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafPoliciesRequest) SetOwnerId(v int64) *DescribeDcdnWafPoliciesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPoliciesRequest) SetPageNumber(v int32) *DescribeDcdnWafPoliciesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPoliciesRequest) SetPageSize(v int32) *DescribeDcdnWafPoliciesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPoliciesRequest) SetQueryArgs(v string) *DescribeDcdnWafPoliciesRequest {
+	s.QueryArgs = &v
+	return s
+}
+
+type DescribeDcdnWafPoliciesResponseBody struct {
+	PageNumber *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Policies   []*DescribeDcdnWafPoliciesResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDcdnWafPoliciesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafPoliciesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafPoliciesResponseBody) SetPageNumber(v int32) *DescribeDcdnWafPoliciesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPoliciesResponseBody) SetPageSize(v int32) *DescribeDcdnWafPoliciesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPoliciesResponseBody) SetPolicies(v []*DescribeDcdnWafPoliciesResponseBodyPolicies) *DescribeDcdnWafPoliciesResponseBody {
+	s.Policies = v
+	return s
+}
+
+func (s *DescribeDcdnWafPoliciesResponseBody) SetRequestId(v string) *DescribeDcdnWafPoliciesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPoliciesResponseBody) SetTotalCount(v int32) *DescribeDcdnWafPoliciesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDcdnWafPoliciesResponseBodyPolicies struct {
+	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+	DomainCount  *int32  `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
+	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	PolicyId     *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName   *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyStatus *string `json:"PolicyStatus,omitempty" xml:"PolicyStatus,omitempty"`
+	PolicyType   *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	RuleCount    *int64  `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
+}
+
+func (s DescribeDcdnWafPoliciesResponseBodyPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafPoliciesResponseBodyPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafPoliciesResponseBodyPolicies) SetDefenseScene(v string) *DescribeDcdnWafPoliciesResponseBodyPolicies {
+	s.DefenseScene = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPoliciesResponseBodyPolicies) SetDomainCount(v int32) *DescribeDcdnWafPoliciesResponseBodyPolicies {
+	s.DomainCount = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPoliciesResponseBodyPolicies) SetGmtModified(v string) *DescribeDcdnWafPoliciesResponseBodyPolicies {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPoliciesResponseBodyPolicies) SetPolicyId(v int64) *DescribeDcdnWafPoliciesResponseBodyPolicies {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPoliciesResponseBodyPolicies) SetPolicyName(v string) *DescribeDcdnWafPoliciesResponseBodyPolicies {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPoliciesResponseBodyPolicies) SetPolicyStatus(v string) *DescribeDcdnWafPoliciesResponseBodyPolicies {
+	s.PolicyStatus = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPoliciesResponseBodyPolicies) SetPolicyType(v string) *DescribeDcdnWafPoliciesResponseBodyPolicies {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPoliciesResponseBodyPolicies) SetRuleCount(v int64) *DescribeDcdnWafPoliciesResponseBodyPolicies {
+	s.RuleCount = &v
+	return s
+}
+
+type DescribeDcdnWafPoliciesResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDcdnWafPoliciesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnWafPoliciesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafPoliciesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafPoliciesResponse) SetHeaders(v map[string]*string) *DescribeDcdnWafPoliciesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnWafPoliciesResponse) SetBody(v *DescribeDcdnWafPoliciesResponseBody) *DescribeDcdnWafPoliciesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDcdnWafPolicyRequest struct {
+	OwnerId  *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PolicyId *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+}
+
+func (s DescribeDcdnWafPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafPolicyRequest) SetOwnerId(v int64) *DescribeDcdnWafPolicyRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyRequest) SetPolicyId(v int64) *DescribeDcdnWafPolicyRequest {
+	s.PolicyId = &v
+	return s
+}
+
+type DescribeDcdnWafPolicyResponseBody struct {
+	Policy    *DescribeDcdnWafPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDcdnWafPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafPolicyResponseBody) SetPolicy(v *DescribeDcdnWafPolicyResponseBodyPolicy) *DescribeDcdnWafPolicyResponseBody {
+	s.Policy = v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyResponseBody) SetRequestId(v string) *DescribeDcdnWafPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDcdnWafPolicyResponseBodyPolicy struct {
+	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+	DomainCount  *int32  `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
+	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	PolicyId     *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName   *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyStatus *string `json:"PolicyStatus,omitempty" xml:"PolicyStatus,omitempty"`
+	PolicyType   *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+	RuleCount    *int64  `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
+}
+
+func (s DescribeDcdnWafPolicyResponseBodyPolicy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafPolicyResponseBodyPolicy) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafPolicyResponseBodyPolicy) SetDefenseScene(v string) *DescribeDcdnWafPolicyResponseBodyPolicy {
+	s.DefenseScene = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyResponseBodyPolicy) SetDomainCount(v int32) *DescribeDcdnWafPolicyResponseBodyPolicy {
+	s.DomainCount = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyResponseBodyPolicy) SetGmtModified(v string) *DescribeDcdnWafPolicyResponseBodyPolicy {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyResponseBodyPolicy) SetPolicyId(v int64) *DescribeDcdnWafPolicyResponseBodyPolicy {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyResponseBodyPolicy) SetPolicyName(v string) *DescribeDcdnWafPolicyResponseBodyPolicy {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyResponseBodyPolicy) SetPolicyStatus(v string) *DescribeDcdnWafPolicyResponseBodyPolicy {
+	s.PolicyStatus = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyResponseBodyPolicy) SetPolicyType(v string) *DescribeDcdnWafPolicyResponseBodyPolicy {
+	s.PolicyType = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyResponseBodyPolicy) SetRuleCount(v int64) *DescribeDcdnWafPolicyResponseBodyPolicy {
+	s.RuleCount = &v
+	return s
+}
+
+type DescribeDcdnWafPolicyResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDcdnWafPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnWafPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafPolicyResponse) SetHeaders(v map[string]*string) *DescribeDcdnWafPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyResponse) SetBody(v *DescribeDcdnWafPolicyResponseBody) *DescribeDcdnWafPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDcdnWafPolicyDomainsRequest struct {
+	OwnerId    *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PolicyId   *int64 `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+}
+
+func (s DescribeDcdnWafPolicyDomainsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafPolicyDomainsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafPolicyDomainsRequest) SetOwnerId(v int64) *DescribeDcdnWafPolicyDomainsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyDomainsRequest) SetPageNumber(v int32) *DescribeDcdnWafPolicyDomainsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyDomainsRequest) SetPageSize(v int32) *DescribeDcdnWafPolicyDomainsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyDomainsRequest) SetPolicyId(v int64) *DescribeDcdnWafPolicyDomainsRequest {
+	s.PolicyId = &v
+	return s
+}
+
+type DescribeDcdnWafPolicyDomainsResponseBody struct {
+	Domains    []*DescribeDcdnWafPolicyDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	PageNumber *int32                                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDcdnWafPolicyDomainsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafPolicyDomainsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafPolicyDomainsResponseBody) SetDomains(v []*DescribeDcdnWafPolicyDomainsResponseBodyDomains) *DescribeDcdnWafPolicyDomainsResponseBody {
+	s.Domains = v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyDomainsResponseBody) SetPageNumber(v int32) *DescribeDcdnWafPolicyDomainsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyDomainsResponseBody) SetPageSize(v int32) *DescribeDcdnWafPolicyDomainsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyDomainsResponseBody) SetRequestId(v string) *DescribeDcdnWafPolicyDomainsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyDomainsResponseBody) SetTotalCount(v int32) *DescribeDcdnWafPolicyDomainsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDcdnWafPolicyDomainsResponseBodyDomains struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+}
+
+func (s DescribeDcdnWafPolicyDomainsResponseBodyDomains) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafPolicyDomainsResponseBodyDomains) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafPolicyDomainsResponseBodyDomains) SetDomainName(v string) *DescribeDcdnWafPolicyDomainsResponseBodyDomains {
+	s.DomainName = &v
+	return s
+}
+
+type DescribeDcdnWafPolicyDomainsResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDcdnWafPolicyDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnWafPolicyDomainsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafPolicyDomainsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafPolicyDomainsResponse) SetHeaders(v map[string]*string) *DescribeDcdnWafPolicyDomainsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyDomainsResponse) SetBody(v *DescribeDcdnWafPolicyDomainsResponseBody) *DescribeDcdnWafPolicyDomainsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDcdnWafPolicyValidDomainsRequest struct {
+	DefenseScene   *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+	DomainNameLike *string `json:"DomainNameLike,omitempty" xml:"DomainNameLike,omitempty"`
+	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeDcdnWafPolicyValidDomainsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafPolicyValidDomainsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafPolicyValidDomainsRequest) SetDefenseScene(v string) *DescribeDcdnWafPolicyValidDomainsRequest {
+	s.DefenseScene = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyValidDomainsRequest) SetDomainNameLike(v string) *DescribeDcdnWafPolicyValidDomainsRequest {
+	s.DomainNameLike = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyValidDomainsRequest) SetOwnerId(v int64) *DescribeDcdnWafPolicyValidDomainsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyValidDomainsRequest) SetPageNumber(v int32) *DescribeDcdnWafPolicyValidDomainsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyValidDomainsRequest) SetPageSize(v int32) *DescribeDcdnWafPolicyValidDomainsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeDcdnWafPolicyValidDomainsResponseBody struct {
+	Domains    []*DescribeDcdnWafPolicyValidDomainsResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	PageNumber *int32                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDcdnWafPolicyValidDomainsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafPolicyValidDomainsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafPolicyValidDomainsResponseBody) SetDomains(v []*DescribeDcdnWafPolicyValidDomainsResponseBodyDomains) *DescribeDcdnWafPolicyValidDomainsResponseBody {
+	s.Domains = v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyValidDomainsResponseBody) SetPageNumber(v int32) *DescribeDcdnWafPolicyValidDomainsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyValidDomainsResponseBody) SetPageSize(v int32) *DescribeDcdnWafPolicyValidDomainsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyValidDomainsResponseBody) SetRequestId(v string) *DescribeDcdnWafPolicyValidDomainsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyValidDomainsResponseBody) SetTotalCount(v int32) *DescribeDcdnWafPolicyValidDomainsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDcdnWafPolicyValidDomainsResponseBodyDomains struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	PolicyId   *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
+}
+
+func (s DescribeDcdnWafPolicyValidDomainsResponseBodyDomains) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafPolicyValidDomainsResponseBodyDomains) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafPolicyValidDomainsResponseBodyDomains) SetDomainName(v string) *DescribeDcdnWafPolicyValidDomainsResponseBodyDomains {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyValidDomainsResponseBodyDomains) SetPolicyId(v int64) *DescribeDcdnWafPolicyValidDomainsResponseBodyDomains {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyValidDomainsResponseBodyDomains) SetPolicyName(v string) *DescribeDcdnWafPolicyValidDomainsResponseBodyDomains {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyValidDomainsResponseBodyDomains) SetPolicyType(v string) *DescribeDcdnWafPolicyValidDomainsResponseBodyDomains {
+	s.PolicyType = &v
+	return s
+}
+
+type DescribeDcdnWafPolicyValidDomainsResponse struct {
+	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDcdnWafPolicyValidDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnWafPolicyValidDomainsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafPolicyValidDomainsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafPolicyValidDomainsResponse) SetHeaders(v map[string]*string) *DescribeDcdnWafPolicyValidDomainsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnWafPolicyValidDomainsResponse) SetBody(v *DescribeDcdnWafPolicyValidDomainsResponseBody) *DescribeDcdnWafPolicyValidDomainsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDcdnWafRuleRequest struct {
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RuleId  *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DescribeDcdnWafRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafRuleRequest) SetOwnerId(v int64) *DescribeDcdnWafRuleRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafRuleRequest) SetRuleId(v int64) *DescribeDcdnWafRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+type DescribeDcdnWafRuleResponseBody struct {
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rule      *DescribeDcdnWafRuleResponseBodyRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Struct"`
+}
+
+func (s DescribeDcdnWafRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafRuleResponseBody) SetRequestId(v string) *DescribeDcdnWafRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafRuleResponseBody) SetRule(v *DescribeDcdnWafRuleResponseBodyRule) *DescribeDcdnWafRuleResponseBody {
+	s.Rule = v
+	return s
+}
+
+type DescribeDcdnWafRuleResponseBodyRule struct {
+	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	PolicyId     *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RuleConfig   *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
+	RuleId       *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName     *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleStatus   *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
+}
+
+func (s DescribeDcdnWafRuleResponseBodyRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafRuleResponseBodyRule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafRuleResponseBodyRule) SetDefenseScene(v string) *DescribeDcdnWafRuleResponseBodyRule {
+	s.DefenseScene = &v
+	return s
+}
+
+func (s *DescribeDcdnWafRuleResponseBodyRule) SetGmtModified(v string) *DescribeDcdnWafRuleResponseBodyRule {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeDcdnWafRuleResponseBodyRule) SetPolicyId(v int64) *DescribeDcdnWafRuleResponseBodyRule {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafRuleResponseBodyRule) SetRuleConfig(v string) *DescribeDcdnWafRuleResponseBodyRule {
+	s.RuleConfig = &v
+	return s
+}
+
+func (s *DescribeDcdnWafRuleResponseBodyRule) SetRuleId(v int64) *DescribeDcdnWafRuleResponseBodyRule {
+	s.RuleId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafRuleResponseBodyRule) SetRuleName(v string) *DescribeDcdnWafRuleResponseBodyRule {
+	s.RuleName = &v
+	return s
+}
+
+func (s *DescribeDcdnWafRuleResponseBodyRule) SetRuleStatus(v string) *DescribeDcdnWafRuleResponseBodyRule {
+	s.RuleStatus = &v
+	return s
+}
+
+type DescribeDcdnWafRuleResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDcdnWafRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnWafRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafRuleResponse) SetHeaders(v map[string]*string) *DescribeDcdnWafRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnWafRuleResponse) SetBody(v *DescribeDcdnWafRuleResponseBody) *DescribeDcdnWafRuleResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDcdnWafRulesRequest struct {
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryArgs  *string `json:"QueryArgs,omitempty" xml:"QueryArgs,omitempty"`
+}
+
+func (s DescribeDcdnWafRulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafRulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafRulesRequest) SetOwnerId(v int64) *DescribeDcdnWafRulesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafRulesRequest) SetPageNumber(v int32) *DescribeDcdnWafRulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDcdnWafRulesRequest) SetPageSize(v int32) *DescribeDcdnWafRulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDcdnWafRulesRequest) SetQueryArgs(v string) *DescribeDcdnWafRulesRequest {
+	s.QueryArgs = &v
+	return s
+}
+
+type DescribeDcdnWafRulesResponseBody struct {
+	PageNumber *int32                                   `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Rules      []*DescribeDcdnWafRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	TotalCount *int32                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDcdnWafRulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafRulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafRulesResponseBody) SetPageNumber(v int32) *DescribeDcdnWafRulesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDcdnWafRulesResponseBody) SetPageSize(v int32) *DescribeDcdnWafRulesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDcdnWafRulesResponseBody) SetRequestId(v string) *DescribeDcdnWafRulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafRulesResponseBody) SetRules(v []*DescribeDcdnWafRulesResponseBodyRules) *DescribeDcdnWafRulesResponseBody {
+	s.Rules = v
+	return s
+}
+
+func (s *DescribeDcdnWafRulesResponseBody) SetTotalCount(v int32) *DescribeDcdnWafRulesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDcdnWafRulesResponseBodyRules struct {
+	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+	GmtModified  *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	PolicyId     *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RuleConfig   *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
+	RuleId       *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName     *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleStatus   *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
+}
+
+func (s DescribeDcdnWafRulesResponseBodyRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafRulesResponseBodyRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafRulesResponseBodyRules) SetDefenseScene(v string) *DescribeDcdnWafRulesResponseBodyRules {
+	s.DefenseScene = &v
+	return s
+}
+
+func (s *DescribeDcdnWafRulesResponseBodyRules) SetGmtModified(v string) *DescribeDcdnWafRulesResponseBodyRules {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeDcdnWafRulesResponseBodyRules) SetPolicyId(v int64) *DescribeDcdnWafRulesResponseBodyRules {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafRulesResponseBodyRules) SetRuleConfig(v string) *DescribeDcdnWafRulesResponseBodyRules {
+	s.RuleConfig = &v
+	return s
+}
+
+func (s *DescribeDcdnWafRulesResponseBodyRules) SetRuleId(v int64) *DescribeDcdnWafRulesResponseBodyRules {
+	s.RuleId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafRulesResponseBodyRules) SetRuleName(v string) *DescribeDcdnWafRulesResponseBodyRules {
+	s.RuleName = &v
+	return s
+}
+
+func (s *DescribeDcdnWafRulesResponseBodyRules) SetRuleStatus(v string) *DescribeDcdnWafRulesResponseBodyRules {
+	s.RuleStatus = &v
+	return s
+}
+
+type DescribeDcdnWafRulesResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDcdnWafRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnWafRulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafRulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafRulesResponse) SetHeaders(v map[string]*string) *DescribeDcdnWafRulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnWafRulesResponse) SetBody(v *DescribeDcdnWafRulesResponseBody) *DescribeDcdnWafRulesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDcdnWafScenesRequest struct {
+	DefenseScenes *string `json:"DefenseScenes,omitempty" xml:"DefenseScenes,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DescribeDcdnWafScenesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafScenesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafScenesRequest) SetDefenseScenes(v string) *DescribeDcdnWafScenesRequest {
+	s.DefenseScenes = &v
+	return s
+}
+
+func (s *DescribeDcdnWafScenesRequest) SetOwnerId(v int64) *DescribeDcdnWafScenesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DescribeDcdnWafScenesResponseBody struct {
+	DefenseScenes []*DescribeDcdnWafScenesResponseBodyDefenseScenes `json:"DefenseScenes,omitempty" xml:"DefenseScenes,omitempty" type:"Repeated"`
+	RequestId     *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDcdnWafScenesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafScenesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafScenesResponseBody) SetDefenseScenes(v []*DescribeDcdnWafScenesResponseBodyDefenseScenes) *DescribeDcdnWafScenesResponseBody {
+	s.DefenseScenes = v
+	return s
+}
+
+func (s *DescribeDcdnWafScenesResponseBody) SetRequestId(v string) *DescribeDcdnWafScenesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDcdnWafScenesResponseBodyDefenseScenes struct {
+	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+	PolicyCount  *int32  `json:"PolicyCount,omitempty" xml:"PolicyCount,omitempty"`
+	RuleCount    *int32  `json:"RuleCount,omitempty" xml:"RuleCount,omitempty"`
+}
+
+func (s DescribeDcdnWafScenesResponseBodyDefenseScenes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafScenesResponseBodyDefenseScenes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafScenesResponseBodyDefenseScenes) SetDefenseScene(v string) *DescribeDcdnWafScenesResponseBodyDefenseScenes {
+	s.DefenseScene = &v
+	return s
+}
+
+func (s *DescribeDcdnWafScenesResponseBodyDefenseScenes) SetPolicyCount(v int32) *DescribeDcdnWafScenesResponseBodyDefenseScenes {
+	s.PolicyCount = &v
+	return s
+}
+
+func (s *DescribeDcdnWafScenesResponseBodyDefenseScenes) SetRuleCount(v int32) *DescribeDcdnWafScenesResponseBodyDefenseScenes {
+	s.RuleCount = &v
+	return s
+}
+
+type DescribeDcdnWafScenesResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDcdnWafScenesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnWafScenesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafScenesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafScenesResponse) SetHeaders(v map[string]*string) *DescribeDcdnWafScenesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnWafScenesResponse) SetBody(v *DescribeDcdnWafScenesResponseBody) *DescribeDcdnWafScenesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDcdnWafSpecInfoRequest struct {
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DescribeDcdnWafSpecInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafSpecInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafSpecInfoRequest) SetOwnerId(v int64) *DescribeDcdnWafSpecInfoRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DescribeDcdnWafSpecInfoResponseBody struct {
+	Edition   *string                                         `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SpecInfos []*DescribeDcdnWafSpecInfoResponseBodySpecInfos `json:"SpecInfos,omitempty" xml:"SpecInfos,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDcdnWafSpecInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafSpecInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafSpecInfoResponseBody) SetEdition(v string) *DescribeDcdnWafSpecInfoResponseBody {
+	s.Edition = &v
+	return s
+}
+
+func (s *DescribeDcdnWafSpecInfoResponseBody) SetRequestId(v string) *DescribeDcdnWafSpecInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafSpecInfoResponseBody) SetSpecInfos(v []*DescribeDcdnWafSpecInfoResponseBodySpecInfos) *DescribeDcdnWafSpecInfoResponseBody {
+	s.SpecInfos = v
+	return s
+}
+
+type DescribeDcdnWafSpecInfoResponseBodySpecInfos struct {
+	Configs      []*DescribeDcdnWafSpecInfoResponseBodySpecInfosConfigs `json:"Configs,omitempty" xml:"Configs,omitempty" type:"Repeated"`
+	DefenseScene *string                                                `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
+}
+
+func (s DescribeDcdnWafSpecInfoResponseBodySpecInfos) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafSpecInfoResponseBodySpecInfos) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafSpecInfoResponseBodySpecInfos) SetConfigs(v []*DescribeDcdnWafSpecInfoResponseBodySpecInfosConfigs) *DescribeDcdnWafSpecInfoResponseBodySpecInfos {
+	s.Configs = v
+	return s
+}
+
+func (s *DescribeDcdnWafSpecInfoResponseBodySpecInfos) SetDefenseScene(v string) *DescribeDcdnWafSpecInfoResponseBodySpecInfos {
+	s.DefenseScene = &v
+	return s
+}
+
+type DescribeDcdnWafSpecInfoResponseBodySpecInfosConfigs struct {
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Expr   *string `json:"Expr,omitempty" xml:"Expr,omitempty"`
+	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDcdnWafSpecInfoResponseBodySpecInfosConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafSpecInfoResponseBodySpecInfosConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafSpecInfoResponseBodySpecInfosConfigs) SetConfig(v string) *DescribeDcdnWafSpecInfoResponseBodySpecInfosConfigs {
+	s.Config = &v
+	return s
+}
+
+func (s *DescribeDcdnWafSpecInfoResponseBodySpecInfosConfigs) SetExpr(v string) *DescribeDcdnWafSpecInfoResponseBodySpecInfosConfigs {
+	s.Expr = &v
+	return s
+}
+
+func (s *DescribeDcdnWafSpecInfoResponseBodySpecInfosConfigs) SetValue(v string) *DescribeDcdnWafSpecInfoResponseBodySpecInfosConfigs {
+	s.Value = &v
+	return s
+}
+
+type DescribeDcdnWafSpecInfoResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDcdnWafSpecInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnWafSpecInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafSpecInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafSpecInfoResponse) SetHeaders(v map[string]*string) *DescribeDcdnWafSpecInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnWafSpecInfoResponse) SetBody(v *DescribeDcdnWafSpecInfoResponseBody) *DescribeDcdnWafSpecInfoResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDcdnsecServiceRequest struct {
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -17642,6 +19462,237 @@ func (s *ModifyDCdnDomainSchdmByPropertyResponse) SetHeaders(v map[string]*strin
 }
 
 func (s *ModifyDCdnDomainSchdmByPropertyResponse) SetBody(v *ModifyDCdnDomainSchdmByPropertyResponseBody) *ModifyDCdnDomainSchdmByPropertyResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyDcdnWafPolicyRequest struct {
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PolicyId     *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName   *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	PolicyStatus *string `json:"PolicyStatus,omitempty" xml:"PolicyStatus,omitempty"`
+}
+
+func (s ModifyDcdnWafPolicyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDcdnWafPolicyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDcdnWafPolicyRequest) SetOwnerId(v int64) *ModifyDcdnWafPolicyRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDcdnWafPolicyRequest) SetPolicyId(v int64) *ModifyDcdnWafPolicyRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ModifyDcdnWafPolicyRequest) SetPolicyName(v string) *ModifyDcdnWafPolicyRequest {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *ModifyDcdnWafPolicyRequest) SetPolicyStatus(v string) *ModifyDcdnWafPolicyRequest {
+	s.PolicyStatus = &v
+	return s
+}
+
+type ModifyDcdnWafPolicyResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDcdnWafPolicyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDcdnWafPolicyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDcdnWafPolicyResponseBody) SetRequestId(v string) *ModifyDcdnWafPolicyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDcdnWafPolicyResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyDcdnWafPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyDcdnWafPolicyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDcdnWafPolicyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDcdnWafPolicyResponse) SetHeaders(v map[string]*string) *ModifyDcdnWafPolicyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDcdnWafPolicyResponse) SetBody(v *ModifyDcdnWafPolicyResponseBody) *ModifyDcdnWafPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyDcdnWafPolicyDomainsRequest struct {
+	BindDomains   *string `json:"BindDomains,omitempty" xml:"BindDomains,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PolicyId      *int64  `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	UnbindDomains *string `json:"UnbindDomains,omitempty" xml:"UnbindDomains,omitempty"`
+}
+
+func (s ModifyDcdnWafPolicyDomainsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDcdnWafPolicyDomainsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDcdnWafPolicyDomainsRequest) SetBindDomains(v string) *ModifyDcdnWafPolicyDomainsRequest {
+	s.BindDomains = &v
+	return s
+}
+
+func (s *ModifyDcdnWafPolicyDomainsRequest) SetOwnerId(v int64) *ModifyDcdnWafPolicyDomainsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDcdnWafPolicyDomainsRequest) SetPolicyId(v int64) *ModifyDcdnWafPolicyDomainsRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ModifyDcdnWafPolicyDomainsRequest) SetUnbindDomains(v string) *ModifyDcdnWafPolicyDomainsRequest {
+	s.UnbindDomains = &v
+	return s
+}
+
+type ModifyDcdnWafPolicyDomainsResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDcdnWafPolicyDomainsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDcdnWafPolicyDomainsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDcdnWafPolicyDomainsResponseBody) SetRequestId(v string) *ModifyDcdnWafPolicyDomainsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDcdnWafPolicyDomainsResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyDcdnWafPolicyDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyDcdnWafPolicyDomainsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDcdnWafPolicyDomainsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDcdnWafPolicyDomainsResponse) SetHeaders(v map[string]*string) *ModifyDcdnWafPolicyDomainsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDcdnWafPolicyDomainsResponse) SetBody(v *ModifyDcdnWafPolicyDomainsResponseBody) *ModifyDcdnWafPolicyDomainsResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyDcdnWafRuleRequest struct {
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
+	RuleId     *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	RuleName   *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	RuleStatus *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
+}
+
+func (s ModifyDcdnWafRuleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDcdnWafRuleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDcdnWafRuleRequest) SetOwnerId(v int64) *ModifyDcdnWafRuleRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyDcdnWafRuleRequest) SetRuleConfig(v string) *ModifyDcdnWafRuleRequest {
+	s.RuleConfig = &v
+	return s
+}
+
+func (s *ModifyDcdnWafRuleRequest) SetRuleId(v int64) *ModifyDcdnWafRuleRequest {
+	s.RuleId = &v
+	return s
+}
+
+func (s *ModifyDcdnWafRuleRequest) SetRuleName(v string) *ModifyDcdnWafRuleRequest {
+	s.RuleName = &v
+	return s
+}
+
+func (s *ModifyDcdnWafRuleRequest) SetRuleStatus(v string) *ModifyDcdnWafRuleRequest {
+	s.RuleStatus = &v
+	return s
+}
+
+type ModifyDcdnWafRuleResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDcdnWafRuleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDcdnWafRuleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDcdnWafRuleResponseBody) SetRequestId(v string) *ModifyDcdnWafRuleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDcdnWafRuleResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyDcdnWafRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyDcdnWafRuleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDcdnWafRuleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDcdnWafRuleResponse) SetHeaders(v map[string]*string) *ModifyDcdnWafRuleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDcdnWafRuleResponse) SetBody(v *ModifyDcdnWafRuleResponseBody) *ModifyDcdnWafRuleResponse {
 	s.Body = v
 	return s
 }
@@ -20415,6 +22466,60 @@ func (client *Client) BatchAddDcdnDomain(request *BatchAddDcdnDomainRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) BatchCreateDcdnWafRulesWithOptions(request *BatchCreateDcdnWafRulesRequest, runtime *util.RuntimeOptions) (_result *BatchCreateDcdnWafRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		body["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleConfigs)) {
+		body["RuleConfigs"] = request.RuleConfigs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchCreateDcdnWafRules"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchCreateDcdnWafRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchCreateDcdnWafRules(request *BatchCreateDcdnWafRulesRequest) (_result *BatchCreateDcdnWafRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchCreateDcdnWafRulesResponse{}
+	_body, _err := client.BatchCreateDcdnWafRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) BatchDeleteDcdnDomainConfigsWithOptions(request *BatchDeleteDcdnDomainConfigsRequest, runtime *util.RuntimeOptions) (_result *BatchDeleteDcdnDomainConfigsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20468,6 +22573,56 @@ func (client *Client) BatchDeleteDcdnDomainConfigs(request *BatchDeleteDcdnDomai
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchDeleteDcdnDomainConfigsResponse{}
 	_body, _err := client.BatchDeleteDcdnDomainConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchDeleteDcdnWafRulesWithOptions(request *BatchDeleteDcdnWafRulesRequest, runtime *util.RuntimeOptions) (_result *BatchDeleteDcdnWafRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RuleIds)) {
+		body["RuleIds"] = request.RuleIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchDeleteDcdnWafRules"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchDeleteDcdnWafRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchDeleteDcdnWafRules(request *BatchDeleteDcdnWafRulesRequest) (_result *BatchDeleteDcdnWafRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchDeleteDcdnWafRulesResponse{}
+	_body, _err := client.BatchDeleteDcdnWafRulesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20664,6 +22819,60 @@ func (client *Client) BatchSetDcdnIpaDomainConfigs(request *BatchSetDcdnIpaDomai
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchSetDcdnIpaDomainConfigsResponse{}
 	_body, _err := client.BatchSetDcdnIpaDomainConfigsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchSetDcdnWafDomainConfigsWithOptions(request *BatchSetDcdnWafDomainConfigsRequest, runtime *util.RuntimeOptions) (_result *BatchSetDcdnWafDomainConfigsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefenseStatus)) {
+		body["DefenseStatus"] = request.DefenseStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainNames)) {
+		body["DomainNames"] = request.DomainNames
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchSetDcdnWafDomainConfigs"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchSetDcdnWafDomainConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchSetDcdnWafDomainConfigs(request *BatchSetDcdnWafDomainConfigsRequest) (_result *BatchSetDcdnWafDomainConfigsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchSetDcdnWafDomainConfigsResponse{}
+	_body, _err := client.BatchSetDcdnWafDomainConfigsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21136,6 +23345,68 @@ func (client *Client) CreateDcdnSubTask(request *CreateDcdnSubTaskRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDcdnSubTaskResponse{}
 	_body, _err := client.CreateDcdnSubTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDcdnWafPolicyWithOptions(request *CreateDcdnWafPolicyRequest, runtime *util.RuntimeOptions) (_result *CreateDcdnWafPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefenseScene)) {
+		body["DefenseScene"] = request.DefenseScene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		body["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyStatus)) {
+		body["PolicyStatus"] = request.PolicyStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyType)) {
+		body["PolicyType"] = request.PolicyType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDcdnWafPolicy"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDcdnWafPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDcdnWafPolicy(request *CreateDcdnWafPolicyRequest) (_result *CreateDcdnWafPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDcdnWafPolicyResponse{}
+	_body, _err := client.CreateDcdnWafPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21674,6 +23945,56 @@ func (client *Client) DeleteDcdnSubTask(request *DeleteDcdnSubTaskRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDcdnSubTaskResponse{}
 	_body, _err := client.DeleteDcdnSubTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDcdnWafPolicyWithOptions(request *DeleteDcdnWafPolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteDcdnWafPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		body["PolicyId"] = request.PolicyId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDcdnWafPolicy"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDcdnWafPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDcdnWafPolicy(request *DeleteDcdnWafPolicyRequest) (_result *DeleteDcdnWafPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDcdnWafPolicyResponse{}
+	_body, _err := client.DeleteDcdnWafPolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26985,6 +29306,578 @@ func (client *Client) DescribeDcdnWafDomain(request *DescribeDcdnWafDomainReques
 	return _result, _err
 }
 
+func (client *Client) DescribeDcdnWafDomainDetailWithOptions(request *DescribeDcdnWafDomainDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnWafDomainDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnWafDomainDetail"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnWafDomainDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafDomainDetail(request *DescribeDcdnWafDomainDetailRequest) (_result *DescribeDcdnWafDomainDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnWafDomainDetailResponse{}
+	_body, _err := client.DescribeDcdnWafDomainDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafDomainsWithOptions(request *DescribeDcdnWafDomainsRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnWafDomainsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryArgs)) {
+		query["QueryArgs"] = request.QueryArgs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnWafDomains"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnWafDomainsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafDomains(request *DescribeDcdnWafDomainsRequest) (_result *DescribeDcdnWafDomainsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnWafDomainsResponse{}
+	_body, _err := client.DescribeDcdnWafDomainsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafFilterInfoWithOptions(request *DescribeDcdnWafFilterInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnWafFilterInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefenseScenes)) {
+		query["DefenseScenes"] = request.DefenseScenes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnWafFilterInfo"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnWafFilterInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafFilterInfo(request *DescribeDcdnWafFilterInfoRequest) (_result *DescribeDcdnWafFilterInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnWafFilterInfoResponse{}
+	_body, _err := client.DescribeDcdnWafFilterInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafPoliciesWithOptions(request *DescribeDcdnWafPoliciesRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnWafPoliciesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryArgs)) {
+		query["QueryArgs"] = request.QueryArgs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnWafPolicies"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnWafPoliciesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafPolicies(request *DescribeDcdnWafPoliciesRequest) (_result *DescribeDcdnWafPoliciesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnWafPoliciesResponse{}
+	_body, _err := client.DescribeDcdnWafPoliciesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafPolicyWithOptions(request *DescribeDcdnWafPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnWafPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnWafPolicy"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnWafPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafPolicy(request *DescribeDcdnWafPolicyRequest) (_result *DescribeDcdnWafPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnWafPolicyResponse{}
+	_body, _err := client.DescribeDcdnWafPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafPolicyDomainsWithOptions(request *DescribeDcdnWafPolicyDomainsRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnWafPolicyDomainsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		query["PolicyId"] = request.PolicyId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnWafPolicyDomains"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnWafPolicyDomainsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafPolicyDomains(request *DescribeDcdnWafPolicyDomainsRequest) (_result *DescribeDcdnWafPolicyDomainsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnWafPolicyDomainsResponse{}
+	_body, _err := client.DescribeDcdnWafPolicyDomainsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafPolicyValidDomainsWithOptions(request *DescribeDcdnWafPolicyValidDomainsRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnWafPolicyValidDomainsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefenseScene)) {
+		query["DefenseScene"] = request.DefenseScene
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DomainNameLike)) {
+		query["DomainNameLike"] = request.DomainNameLike
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnWafPolicyValidDomains"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnWafPolicyValidDomainsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafPolicyValidDomains(request *DescribeDcdnWafPolicyValidDomainsRequest) (_result *DescribeDcdnWafPolicyValidDomainsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnWafPolicyValidDomainsResponse{}
+	_body, _err := client.DescribeDcdnWafPolicyValidDomainsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafRuleWithOptions(request *DescribeDcdnWafRuleRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnWafRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnWafRule"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnWafRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafRule(request *DescribeDcdnWafRuleRequest) (_result *DescribeDcdnWafRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnWafRuleResponse{}
+	_body, _err := client.DescribeDcdnWafRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafRulesWithOptions(request *DescribeDcdnWafRulesRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnWafRulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryArgs)) {
+		query["QueryArgs"] = request.QueryArgs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnWafRules"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnWafRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafRules(request *DescribeDcdnWafRulesRequest) (_result *DescribeDcdnWafRulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnWafRulesResponse{}
+	_body, _err := client.DescribeDcdnWafRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafScenesWithOptions(request *DescribeDcdnWafScenesRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnWafScenesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DefenseScenes)) {
+		query["DefenseScenes"] = request.DefenseScenes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnWafScenes"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnWafScenesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafScenes(request *DescribeDcdnWafScenesRequest) (_result *DescribeDcdnWafScenesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnWafScenesResponse{}
+	_body, _err := client.DescribeDcdnWafScenesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafSpecInfoWithOptions(request *DescribeDcdnWafSpecInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnWafSpecInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnWafSpecInfo"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnWafSpecInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafSpecInfo(request *DescribeDcdnWafSpecInfoRequest) (_result *DescribeDcdnWafSpecInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnWafSpecInfoResponse{}
+	_body, _err := client.DescribeDcdnWafSpecInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeDcdnsecServiceWithOptions(request *DescribeDcdnsecServiceRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnsecServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27630,6 +30523,184 @@ func (client *Client) ModifyDCdnDomainSchdmByProperty(request *ModifyDCdnDomainS
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDCdnDomainSchdmByPropertyResponse{}
 	_body, _err := client.ModifyDCdnDomainSchdmByPropertyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyDcdnWafPolicyWithOptions(request *ModifyDcdnWafPolicyRequest, runtime *util.RuntimeOptions) (_result *ModifyDcdnWafPolicyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		body["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		body["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyStatus)) {
+		body["PolicyStatus"] = request.PolicyStatus
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDcdnWafPolicy"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDcdnWafPolicyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDcdnWafPolicy(request *ModifyDcdnWafPolicyRequest) (_result *ModifyDcdnWafPolicyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDcdnWafPolicyResponse{}
+	_body, _err := client.ModifyDcdnWafPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyDcdnWafPolicyDomainsWithOptions(request *ModifyDcdnWafPolicyDomainsRequest, runtime *util.RuntimeOptions) (_result *ModifyDcdnWafPolicyDomainsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BindDomains)) {
+		body["BindDomains"] = request.BindDomains
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		body["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnbindDomains)) {
+		body["UnbindDomains"] = request.UnbindDomains
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDcdnWafPolicyDomains"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDcdnWafPolicyDomainsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDcdnWafPolicyDomains(request *ModifyDcdnWafPolicyDomainsRequest) (_result *ModifyDcdnWafPolicyDomainsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDcdnWafPolicyDomainsResponse{}
+	_body, _err := client.ModifyDcdnWafPolicyDomainsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyDcdnWafRuleWithOptions(request *ModifyDcdnWafRuleRequest, runtime *util.RuntimeOptions) (_result *ModifyDcdnWafRuleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RuleConfig)) {
+		body["RuleConfig"] = request.RuleConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		body["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleName)) {
+		body["RuleName"] = request.RuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RuleStatus)) {
+		body["RuleStatus"] = request.RuleStatus
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDcdnWafRule"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDcdnWafRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDcdnWafRule(request *ModifyDcdnWafRuleRequest) (_result *ModifyDcdnWafRuleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDcdnWafRuleResponse{}
+	_body, _err := client.ModifyDcdnWafRuleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
