@@ -1625,7 +1625,6 @@ type CreateLakeHouseSpaceRequest struct {
 	SpaceConfig *string `json:"SpaceConfig,omitempty" xml:"SpaceConfig,omitempty"`
 	SpaceName   *string `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
 	Tid         *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	UserId      *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s CreateLakeHouseSpaceRequest) String() string {
@@ -1673,11 +1672,6 @@ func (s *CreateLakeHouseSpaceRequest) SetSpaceName(v string) *CreateLakeHouseSpa
 
 func (s *CreateLakeHouseSpaceRequest) SetTid(v int64) *CreateLakeHouseSpaceRequest {
 	s.Tid = &v
-	return s
-}
-
-func (s *CreateLakeHouseSpaceRequest) SetUserId(v int64) *CreateLakeHouseSpaceRequest {
-	s.UserId = &v
 	return s
 }
 
@@ -3297,6 +3291,87 @@ func (s *DeleteInstanceResponse) SetBody(v *DeleteInstanceResponseBody) *DeleteI
 	return s
 }
 
+type DeleteLakeHouseSpaceRequest struct {
+	SpaceId *int64 `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	Tid     *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s DeleteLakeHouseSpaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLakeHouseSpaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLakeHouseSpaceRequest) SetSpaceId(v int64) *DeleteLakeHouseSpaceRequest {
+	s.SpaceId = &v
+	return s
+}
+
+func (s *DeleteLakeHouseSpaceRequest) SetTid(v int64) *DeleteLakeHouseSpaceRequest {
+	s.Tid = &v
+	return s
+}
+
+type DeleteLakeHouseSpaceResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteLakeHouseSpaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLakeHouseSpaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLakeHouseSpaceResponseBody) SetErrorCode(v string) *DeleteLakeHouseSpaceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteLakeHouseSpaceResponseBody) SetErrorMessage(v string) *DeleteLakeHouseSpaceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteLakeHouseSpaceResponseBody) SetRequestId(v string) *DeleteLakeHouseSpaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteLakeHouseSpaceResponseBody) SetSuccess(v bool) *DeleteLakeHouseSpaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteLakeHouseSpaceResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteLakeHouseSpaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteLakeHouseSpaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLakeHouseSpaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLakeHouseSpaceResponse) SetHeaders(v map[string]*string) *DeleteLakeHouseSpaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLakeHouseSpaceResponse) SetBody(v *DeleteLakeHouseSpaceResponseBody) *DeleteLakeHouseSpaceResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteLhMembersRequest struct {
 	MemberIds  []*int32 `json:"MemberIds,omitempty" xml:"MemberIds,omitempty" type:"Repeated"`
 	ObjectId   *int64   `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
@@ -3754,6 +3829,87 @@ func (s *DeleteProxyAccessResponse) SetHeaders(v map[string]*string) *DeleteProx
 }
 
 func (s *DeleteProxyAccessResponse) SetBody(v *DeleteProxyAccessResponseBody) *DeleteProxyAccessResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteTaskFlowRequest struct {
+	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s DeleteTaskFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTaskFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTaskFlowRequest) SetDagId(v int64) *DeleteTaskFlowRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *DeleteTaskFlowRequest) SetTid(v int64) *DeleteTaskFlowRequest {
+	s.Tid = &v
+	return s
+}
+
+type DeleteTaskFlowResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteTaskFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTaskFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTaskFlowResponseBody) SetErrorCode(v string) *DeleteTaskFlowResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DeleteTaskFlowResponseBody) SetErrorMessage(v string) *DeleteTaskFlowResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteTaskFlowResponseBody) SetRequestId(v string) *DeleteTaskFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteTaskFlowResponseBody) SetSuccess(v bool) *DeleteTaskFlowResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteTaskFlowResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteTaskFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteTaskFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTaskFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTaskFlowResponse) SetHeaders(v map[string]*string) *DeleteTaskFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTaskFlowResponse) SetBody(v *DeleteTaskFlowResponseBody) *DeleteTaskFlowResponse {
 	s.Body = v
 	return s
 }
@@ -6847,6 +7003,170 @@ func (s *GetInstanceResponse) SetHeaders(v map[string]*string) *GetInstanceRespo
 }
 
 func (s *GetInstanceResponse) SetBody(v *GetInstanceResponseBody) *GetInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type GetLhSpaceByNameRequest struct {
+	SpaceName *string `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
+	Tid       *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetLhSpaceByNameRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLhSpaceByNameRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLhSpaceByNameRequest) SetSpaceName(v string) *GetLhSpaceByNameRequest {
+	s.SpaceName = &v
+	return s
+}
+
+func (s *GetLhSpaceByNameRequest) SetTid(v int64) *GetLhSpaceByNameRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetLhSpaceByNameResponseBody struct {
+	ErrorCode      *string                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	LakehouseSpace *GetLhSpaceByNameResponseBodyLakehouseSpace `json:"LakehouseSpace,omitempty" xml:"LakehouseSpace,omitempty" type:"Struct"`
+	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetLhSpaceByNameResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLhSpaceByNameResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetLhSpaceByNameResponseBody) SetErrorCode(v string) *GetLhSpaceByNameResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetLhSpaceByNameResponseBody) SetErrorMessage(v string) *GetLhSpaceByNameResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetLhSpaceByNameResponseBody) SetLakehouseSpace(v *GetLhSpaceByNameResponseBodyLakehouseSpace) *GetLhSpaceByNameResponseBody {
+	s.LakehouseSpace = v
+	return s
+}
+
+func (s *GetLhSpaceByNameResponseBody) SetRequestId(v string) *GetLhSpaceByNameResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetLhSpaceByNameResponseBody) SetSuccess(v bool) *GetLhSpaceByNameResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetLhSpaceByNameResponseBodyLakehouseSpace struct {
+	CreatorId   *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	DbType      *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DevDbId     *int32  `json:"DevDbId,omitempty" xml:"DevDbId,omitempty"`
+	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsDeleted   *bool   `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
+	Mode        *int32  `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	ProdDbId    *int32  `json:"ProdDbId,omitempty" xml:"ProdDbId,omitempty"`
+	SpaceConfig *string `json:"SpaceConfig,omitempty" xml:"SpaceConfig,omitempty"`
+	SpaceName   *string `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
+	TenantId    *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+}
+
+func (s GetLhSpaceByNameResponseBodyLakehouseSpace) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLhSpaceByNameResponseBodyLakehouseSpace) GoString() string {
+	return s.String()
+}
+
+func (s *GetLhSpaceByNameResponseBodyLakehouseSpace) SetCreatorId(v string) *GetLhSpaceByNameResponseBodyLakehouseSpace {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *GetLhSpaceByNameResponseBodyLakehouseSpace) SetDbType(v string) *GetLhSpaceByNameResponseBodyLakehouseSpace {
+	s.DbType = &v
+	return s
+}
+
+func (s *GetLhSpaceByNameResponseBodyLakehouseSpace) SetDescription(v string) *GetLhSpaceByNameResponseBodyLakehouseSpace {
+	s.Description = &v
+	return s
+}
+
+func (s *GetLhSpaceByNameResponseBodyLakehouseSpace) SetDevDbId(v int32) *GetLhSpaceByNameResponseBodyLakehouseSpace {
+	s.DevDbId = &v
+	return s
+}
+
+func (s *GetLhSpaceByNameResponseBodyLakehouseSpace) SetId(v int64) *GetLhSpaceByNameResponseBodyLakehouseSpace {
+	s.Id = &v
+	return s
+}
+
+func (s *GetLhSpaceByNameResponseBodyLakehouseSpace) SetIsDeleted(v bool) *GetLhSpaceByNameResponseBodyLakehouseSpace {
+	s.IsDeleted = &v
+	return s
+}
+
+func (s *GetLhSpaceByNameResponseBodyLakehouseSpace) SetMode(v int32) *GetLhSpaceByNameResponseBodyLakehouseSpace {
+	s.Mode = &v
+	return s
+}
+
+func (s *GetLhSpaceByNameResponseBodyLakehouseSpace) SetProdDbId(v int32) *GetLhSpaceByNameResponseBodyLakehouseSpace {
+	s.ProdDbId = &v
+	return s
+}
+
+func (s *GetLhSpaceByNameResponseBodyLakehouseSpace) SetSpaceConfig(v string) *GetLhSpaceByNameResponseBodyLakehouseSpace {
+	s.SpaceConfig = &v
+	return s
+}
+
+func (s *GetLhSpaceByNameResponseBodyLakehouseSpace) SetSpaceName(v string) *GetLhSpaceByNameResponseBodyLakehouseSpace {
+	s.SpaceName = &v
+	return s
+}
+
+func (s *GetLhSpaceByNameResponseBodyLakehouseSpace) SetTenantId(v string) *GetLhSpaceByNameResponseBodyLakehouseSpace {
+	s.TenantId = &v
+	return s
+}
+
+type GetLhSpaceByNameResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetLhSpaceByNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLhSpaceByNameResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLhSpaceByNameResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLhSpaceByNameResponse) SetHeaders(v map[string]*string) *GetLhSpaceByNameResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLhSpaceByNameResponse) SetBody(v *GetLhSpaceByNameResponseBody) *GetLhSpaceByNameResponse {
 	s.Body = v
 	return s
 }
@@ -10326,6 +10646,181 @@ func (s *GetTableTopologyResponse) SetHeaders(v map[string]*string) *GetTableTop
 }
 
 func (s *GetTableTopologyResponse) SetBody(v *GetTableTopologyResponseBody) *GetTableTopologyResponse {
+	s.Body = v
+	return s
+}
+
+type GetTaskInstanceRelationRequest struct {
+	DagId         *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	DagInstanceId *int64 `json:"DagInstanceId,omitempty" xml:"DagInstanceId,omitempty"`
+	Tid           *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s GetTaskInstanceRelationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceRelationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceRelationRequest) SetDagId(v int64) *GetTaskInstanceRelationRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *GetTaskInstanceRelationRequest) SetDagInstanceId(v int64) *GetTaskInstanceRelationRequest {
+	s.DagInstanceId = &v
+	return s
+}
+
+func (s *GetTaskInstanceRelationRequest) SetTid(v int64) *GetTaskInstanceRelationRequest {
+	s.Tid = &v
+	return s
+}
+
+type GetTaskInstanceRelationResponseBody struct {
+	ErrorCode    *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	NodeList     *GetTaskInstanceRelationResponseBodyNodeList `json:"NodeList,omitempty" xml:"NodeList,omitempty" type:"Struct"`
+	RequestId    *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetTaskInstanceRelationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceRelationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceRelationResponseBody) SetErrorCode(v string) *GetTaskInstanceRelationResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetTaskInstanceRelationResponseBody) SetErrorMessage(v string) *GetTaskInstanceRelationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetTaskInstanceRelationResponseBody) SetNodeList(v *GetTaskInstanceRelationResponseBodyNodeList) *GetTaskInstanceRelationResponseBody {
+	s.NodeList = v
+	return s
+}
+
+func (s *GetTaskInstanceRelationResponseBody) SetRequestId(v string) *GetTaskInstanceRelationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetTaskInstanceRelationResponseBody) SetSuccess(v bool) *GetTaskInstanceRelationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetTaskInstanceRelationResponseBodyNodeList struct {
+	Node []*GetTaskInstanceRelationResponseBodyNodeListNode `json:"Node,omitempty" xml:"Node,omitempty" type:"Repeated"`
+}
+
+func (s GetTaskInstanceRelationResponseBodyNodeList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceRelationResponseBodyNodeList) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceRelationResponseBodyNodeList) SetNode(v []*GetTaskInstanceRelationResponseBodyNodeListNode) *GetTaskInstanceRelationResponseBodyNodeList {
+	s.Node = v
+	return s
+}
+
+type GetTaskInstanceRelationResponseBodyNodeListNode struct {
+	BusinessTime *string `json:"BusinessTime,omitempty" xml:"BusinessTime,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExecuteTime  *int64  `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	NodeId       *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
+	NodeName     *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodeType     *int32  `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetTaskInstanceRelationResponseBodyNodeListNode) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceRelationResponseBodyNodeListNode) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceRelationResponseBodyNodeListNode) SetBusinessTime(v string) *GetTaskInstanceRelationResponseBodyNodeListNode {
+	s.BusinessTime = &v
+	return s
+}
+
+func (s *GetTaskInstanceRelationResponseBodyNodeListNode) SetEndTime(v string) *GetTaskInstanceRelationResponseBodyNodeListNode {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetTaskInstanceRelationResponseBodyNodeListNode) SetExecuteTime(v int64) *GetTaskInstanceRelationResponseBodyNodeListNode {
+	s.ExecuteTime = &v
+	return s
+}
+
+func (s *GetTaskInstanceRelationResponseBodyNodeListNode) SetId(v int64) *GetTaskInstanceRelationResponseBodyNodeListNode {
+	s.Id = &v
+	return s
+}
+
+func (s *GetTaskInstanceRelationResponseBodyNodeListNode) SetMessage(v string) *GetTaskInstanceRelationResponseBodyNodeListNode {
+	s.Message = &v
+	return s
+}
+
+func (s *GetTaskInstanceRelationResponseBodyNodeListNode) SetNodeId(v int64) *GetTaskInstanceRelationResponseBodyNodeListNode {
+	s.NodeId = &v
+	return s
+}
+
+func (s *GetTaskInstanceRelationResponseBodyNodeListNode) SetNodeName(v string) *GetTaskInstanceRelationResponseBodyNodeListNode {
+	s.NodeName = &v
+	return s
+}
+
+func (s *GetTaskInstanceRelationResponseBodyNodeListNode) SetNodeType(v int32) *GetTaskInstanceRelationResponseBodyNodeListNode {
+	s.NodeType = &v
+	return s
+}
+
+func (s *GetTaskInstanceRelationResponseBodyNodeListNode) SetStatus(v int32) *GetTaskInstanceRelationResponseBodyNodeListNode {
+	s.Status = &v
+	return s
+}
+
+type GetTaskInstanceRelationResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetTaskInstanceRelationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetTaskInstanceRelationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTaskInstanceRelationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetTaskInstanceRelationResponse) SetHeaders(v map[string]*string) *GetTaskInstanceRelationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetTaskInstanceRelationResponse) SetBody(v *GetTaskInstanceRelationResponseBody) *GetTaskInstanceRelationResponse {
 	s.Body = v
 	return s
 }
@@ -16767,6 +17262,386 @@ func (s *ListTablesResponse) SetBody(v *ListTablesResponseBody) *ListTablesRespo
 	return s
 }
 
+type ListTaskFlowRequest struct {
+	DagId         *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	DagInstanceId *int64 `json:"DagInstanceId,omitempty" xml:"DagInstanceId,omitempty"`
+	Tid           *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListTaskFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowRequest) SetDagId(v int64) *ListTaskFlowRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *ListTaskFlowRequest) SetDagInstanceId(v int64) *ListTaskFlowRequest {
+	s.DagInstanceId = &v
+	return s
+}
+
+func (s *ListTaskFlowRequest) SetTid(v int64) *ListTaskFlowRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListTaskFlowResponseBody struct {
+	ErrorCode    *string                               `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskFlowList *ListTaskFlowResponseBodyTaskFlowList `json:"TaskFlowList,omitempty" xml:"TaskFlowList,omitempty" type:"Struct"`
+}
+
+func (s ListTaskFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowResponseBody) SetErrorCode(v string) *ListTaskFlowResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListTaskFlowResponseBody) SetErrorMessage(v string) *ListTaskFlowResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListTaskFlowResponseBody) SetRequestId(v string) *ListTaskFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTaskFlowResponseBody) SetSuccess(v bool) *ListTaskFlowResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListTaskFlowResponseBody) SetTaskFlowList(v *ListTaskFlowResponseBodyTaskFlowList) *ListTaskFlowResponseBody {
+	s.TaskFlowList = v
+	return s
+}
+
+type ListTaskFlowResponseBodyTaskFlowList struct {
+	DAGInstance []*ListTaskFlowResponseBodyTaskFlowListDAGInstance `json:"DAGInstance,omitempty" xml:"DAGInstance,omitempty" type:"Repeated"`
+}
+
+func (s ListTaskFlowResponseBodyTaskFlowList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowResponseBodyTaskFlowList) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowResponseBodyTaskFlowList) SetDAGInstance(v []*ListTaskFlowResponseBodyTaskFlowListDAGInstance) *ListTaskFlowResponseBodyTaskFlowList {
+	s.DAGInstance = v
+	return s
+}
+
+type ListTaskFlowResponseBodyTaskFlowListDAGInstance struct {
+	CreatorId            *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
+	CreatorNickName      *string `json:"CreatorNickName,omitempty" xml:"CreatorNickName,omitempty"`
+	DagOwnerNickName     *string `json:"DagOwnerNickName,omitempty" xml:"DagOwnerNickName,omitempty"`
+	DeployId             *int64  `json:"DeployId,omitempty" xml:"DeployId,omitempty"`
+	Id                   *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	LatestInstanceStatus *int32  `json:"LatestInstanceStatus,omitempty" xml:"LatestInstanceStatus,omitempty"`
+	LatestInstanceTime   *string `json:"LatestInstanceTime,omitempty" xml:"LatestInstanceTime,omitempty"`
+	Status               *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListTaskFlowResponseBodyTaskFlowListDAGInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowResponseBodyTaskFlowListDAGInstance) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowResponseBodyTaskFlowListDAGInstance) SetCreatorId(v string) *ListTaskFlowResponseBodyTaskFlowListDAGInstance {
+	s.CreatorId = &v
+	return s
+}
+
+func (s *ListTaskFlowResponseBodyTaskFlowListDAGInstance) SetCreatorNickName(v string) *ListTaskFlowResponseBodyTaskFlowListDAGInstance {
+	s.CreatorNickName = &v
+	return s
+}
+
+func (s *ListTaskFlowResponseBodyTaskFlowListDAGInstance) SetDagOwnerNickName(v string) *ListTaskFlowResponseBodyTaskFlowListDAGInstance {
+	s.DagOwnerNickName = &v
+	return s
+}
+
+func (s *ListTaskFlowResponseBodyTaskFlowListDAGInstance) SetDeployId(v int64) *ListTaskFlowResponseBodyTaskFlowListDAGInstance {
+	s.DeployId = &v
+	return s
+}
+
+func (s *ListTaskFlowResponseBodyTaskFlowListDAGInstance) SetId(v int64) *ListTaskFlowResponseBodyTaskFlowListDAGInstance {
+	s.Id = &v
+	return s
+}
+
+func (s *ListTaskFlowResponseBodyTaskFlowListDAGInstance) SetLatestInstanceStatus(v int32) *ListTaskFlowResponseBodyTaskFlowListDAGInstance {
+	s.LatestInstanceStatus = &v
+	return s
+}
+
+func (s *ListTaskFlowResponseBodyTaskFlowListDAGInstance) SetLatestInstanceTime(v string) *ListTaskFlowResponseBodyTaskFlowListDAGInstance {
+	s.LatestInstanceTime = &v
+	return s
+}
+
+func (s *ListTaskFlowResponseBodyTaskFlowListDAGInstance) SetStatus(v int32) *ListTaskFlowResponseBodyTaskFlowListDAGInstance {
+	s.Status = &v
+	return s
+}
+
+type ListTaskFlowResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListTaskFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTaskFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowResponse) SetHeaders(v map[string]*string) *ListTaskFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTaskFlowResponse) SetBody(v *ListTaskFlowResponseBody) *ListTaskFlowResponse {
+	s.Body = v
+	return s
+}
+
+type ListTaskFlowInstanceRequest struct {
+	DagId          *int64  `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	PageIndex      *int32  `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartTimeBegin *string `json:"StartTimeBegin,omitempty" xml:"StartTimeBegin,omitempty"`
+	StartTimeEnd   *string `json:"StartTimeEnd,omitempty" xml:"StartTimeEnd,omitempty"`
+	Tid            *int64  `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	TriggerType    *int32  `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+}
+
+func (s ListTaskFlowInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowInstanceRequest) SetDagId(v int64) *ListTaskFlowInstanceRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *ListTaskFlowInstanceRequest) SetPageIndex(v int32) *ListTaskFlowInstanceRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListTaskFlowInstanceRequest) SetPageSize(v int32) *ListTaskFlowInstanceRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListTaskFlowInstanceRequest) SetStartTimeBegin(v string) *ListTaskFlowInstanceRequest {
+	s.StartTimeBegin = &v
+	return s
+}
+
+func (s *ListTaskFlowInstanceRequest) SetStartTimeEnd(v string) *ListTaskFlowInstanceRequest {
+	s.StartTimeEnd = &v
+	return s
+}
+
+func (s *ListTaskFlowInstanceRequest) SetTid(v int64) *ListTaskFlowInstanceRequest {
+	s.Tid = &v
+	return s
+}
+
+func (s *ListTaskFlowInstanceRequest) SetTriggerType(v int32) *ListTaskFlowInstanceRequest {
+	s.TriggerType = &v
+	return s
+}
+
+type ListTaskFlowInstanceResponseBody struct {
+	DAGInstanceList *ListTaskFlowInstanceResponseBodyDAGInstanceList `json:"DAGInstanceList,omitempty" xml:"DAGInstanceList,omitempty" type:"Struct"`
+	ErrorCode       *string                                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage    *string                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId       *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success         *bool                                            `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount      *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListTaskFlowInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowInstanceResponseBody) SetDAGInstanceList(v *ListTaskFlowInstanceResponseBodyDAGInstanceList) *ListTaskFlowInstanceResponseBody {
+	s.DAGInstanceList = v
+	return s
+}
+
+func (s *ListTaskFlowInstanceResponseBody) SetErrorCode(v string) *ListTaskFlowInstanceResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListTaskFlowInstanceResponseBody) SetErrorMessage(v string) *ListTaskFlowInstanceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListTaskFlowInstanceResponseBody) SetRequestId(v string) *ListTaskFlowInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTaskFlowInstanceResponseBody) SetSuccess(v bool) *ListTaskFlowInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListTaskFlowInstanceResponseBody) SetTotalCount(v int32) *ListTaskFlowInstanceResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTaskFlowInstanceResponseBodyDAGInstanceList struct {
+	DAGInstance []*ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance `json:"DAGInstance,omitempty" xml:"DAGInstance,omitempty" type:"Repeated"`
+}
+
+func (s ListTaskFlowInstanceResponseBodyDAGInstanceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowInstanceResponseBodyDAGInstanceList) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowInstanceResponseBodyDAGInstanceList) SetDAGInstance(v []*ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance) *ListTaskFlowInstanceResponseBodyDAGInstanceList {
+	s.DAGInstance = v
+	return s
+}
+
+type ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance struct {
+	BusinessTime *string `json:"BusinessTime,omitempty" xml:"BusinessTime,omitempty"`
+	DagId        *string `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	DagName      *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	HistoryDagId *int64  `json:"HistoryDagId,omitempty" xml:"HistoryDagId,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	OwnerName    *string `json:"OwnerName,omitempty" xml:"OwnerName,omitempty"`
+	Status       *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TriggerType  *int32  `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
+}
+
+func (s ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance) SetBusinessTime(v string) *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance {
+	s.BusinessTime = &v
+	return s
+}
+
+func (s *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance) SetDagId(v string) *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance {
+	s.DagId = &v
+	return s
+}
+
+func (s *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance) SetDagName(v string) *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance {
+	s.DagName = &v
+	return s
+}
+
+func (s *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance) SetEndTime(v string) *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance) SetHistoryDagId(v int64) *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance {
+	s.HistoryDagId = &v
+	return s
+}
+
+func (s *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance) SetId(v int64) *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance {
+	s.Id = &v
+	return s
+}
+
+func (s *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance) SetMessage(v string) *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance {
+	s.Message = &v
+	return s
+}
+
+func (s *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance) SetOwnerName(v string) *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance {
+	s.OwnerName = &v
+	return s
+}
+
+func (s *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance) SetStatus(v int32) *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance) SetTriggerType(v int32) *ListTaskFlowInstanceResponseBodyDAGInstanceListDAGInstance {
+	s.TriggerType = &v
+	return s
+}
+
+type ListTaskFlowInstanceResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListTaskFlowInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTaskFlowInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTaskFlowInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTaskFlowInstanceResponse) SetHeaders(v map[string]*string) *ListTaskFlowInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTaskFlowInstanceResponse) SetBody(v *ListTaskFlowInstanceResponseBody) *ListTaskFlowInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type ListUserPermissionsRequest struct {
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
 	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
@@ -20836,10 +21711,6 @@ func (client *Client) CreateLakeHouseSpaceWithOptions(request *CreateLakeHouseSp
 		query["Tid"] = request.Tid
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		query["UserId"] = request.UserId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -21550,6 +22421,54 @@ func (client *Client) DeleteInstance(request *DeleteInstanceRequest) (_result *D
 	return _result, _err
 }
 
+func (client *Client) DeleteLakeHouseSpaceWithOptions(request *DeleteLakeHouseSpaceRequest, runtime *util.RuntimeOptions) (_result *DeleteLakeHouseSpaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SpaceId)) {
+		query["SpaceId"] = request.SpaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLakeHouseSpace"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteLakeHouseSpaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteLakeHouseSpace(request *DeleteLakeHouseSpaceRequest) (_result *DeleteLakeHouseSpaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteLakeHouseSpaceResponse{}
+	_body, _err := client.DeleteLakeHouseSpaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteLhMembersWithOptions(tmpReq *DeleteLhMembersRequest, runtime *util.RuntimeOptions) (_result *DeleteLhMembersResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -21801,6 +22720,54 @@ func (client *Client) DeleteProxyAccess(request *DeleteProxyAccessRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteProxyAccessResponse{}
 	_body, _err := client.DeleteProxyAccessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteTaskFlowWithOptions(request *DeleteTaskFlowRequest, runtime *util.RuntimeOptions) (_result *DeleteTaskFlowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTaskFlow"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTaskFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteTaskFlow(request *DeleteTaskFlowRequest) (_result *DeleteTaskFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteTaskFlowResponse{}
+	_body, _err := client.DeleteTaskFlowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22850,6 +23817,54 @@ func (client *Client) GetInstance(request *GetInstanceRequest) (_result *GetInst
 	return _result, _err
 }
 
+func (client *Client) GetLhSpaceByNameWithOptions(request *GetLhSpaceByNameRequest, runtime *util.RuntimeOptions) (_result *GetLhSpaceByNameResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SpaceName)) {
+		query["SpaceName"] = request.SpaceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLhSpaceByName"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLhSpaceByNameResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLhSpaceByName(request *GetLhSpaceByNameRequest) (_result *GetLhSpaceByNameResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetLhSpaceByNameResponse{}
+	_body, _err := client.GetLhSpaceByNameWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetLogicDatabaseWithOptions(request *GetLogicDatabaseRequest, runtime *util.RuntimeOptions) (_result *GetLogicDatabaseResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23699,6 +24714,58 @@ func (client *Client) GetTableTopology(request *GetTableTopologyRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &GetTableTopologyResponse{}
 	_body, _err := client.GetTableTopologyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetTaskInstanceRelationWithOptions(request *GetTaskInstanceRelationRequest, runtime *util.RuntimeOptions) (_result *GetTaskInstanceRelationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagInstanceId)) {
+		query["DagInstanceId"] = request.DagInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetTaskInstanceRelation"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetTaskInstanceRelationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetTaskInstanceRelation(request *GetTaskInstanceRelationRequest) (_result *GetTaskInstanceRelationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetTaskInstanceRelationResponse{}
+	_body, _err := client.GetTaskInstanceRelationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25525,6 +26592,126 @@ func (client *Client) ListTables(request *ListTablesRequest) (_result *ListTable
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTablesResponse{}
 	_body, _err := client.ListTablesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTaskFlowWithOptions(request *ListTaskFlowRequest, runtime *util.RuntimeOptions) (_result *ListTaskFlowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DagInstanceId)) {
+		query["DagInstanceId"] = request.DagInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTaskFlow"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTaskFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTaskFlow(request *ListTaskFlowRequest) (_result *ListTaskFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTaskFlowResponse{}
+	_body, _err := client.ListTaskFlowWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTaskFlowInstanceWithOptions(request *ListTaskFlowInstanceRequest, runtime *util.RuntimeOptions) (_result *ListTaskFlowInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTimeBegin)) {
+		query["StartTimeBegin"] = request.StartTimeBegin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTimeEnd)) {
+		query["StartTimeEnd"] = request.StartTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TriggerType)) {
+		query["TriggerType"] = request.TriggerType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTaskFlowInstance"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTaskFlowInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTaskFlowInstance(request *ListTaskFlowInstanceRequest) (_result *ListTaskFlowInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTaskFlowInstanceResponse{}
+	_body, _err := client.ListTaskFlowInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
