@@ -15337,6 +15337,98 @@ func (s *DescribeIpInfoResponse) SetBody(v *DescribeIpInfoResponseBody) *Describ
 	return s
 }
 
+type DescribeIpStatusRequest struct {
+	Ips     *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DescribeIpStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpStatusRequest) SetIps(v string) *DescribeIpStatusRequest {
+	s.Ips = &v
+	return s
+}
+
+func (s *DescribeIpStatusRequest) SetOwnerId(v int64) *DescribeIpStatusRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DescribeIpStatusResponseBody struct {
+	IpStatus  []*DescribeIpStatusResponseBodyIpStatus `json:"IpStatus,omitempty" xml:"IpStatus,omitempty" type:"Repeated"`
+	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeIpStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpStatusResponseBody) SetIpStatus(v []*DescribeIpStatusResponseBodyIpStatus) *DescribeIpStatusResponseBody {
+	s.IpStatus = v
+	return s
+}
+
+func (s *DescribeIpStatusResponseBody) SetRequestId(v string) *DescribeIpStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeIpStatusResponseBodyIpStatus struct {
+	Ip     *string `json:"ip,omitempty" xml:"ip,omitempty"`
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s DescribeIpStatusResponseBodyIpStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpStatusResponseBodyIpStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpStatusResponseBodyIpStatus) SetIp(v string) *DescribeIpStatusResponseBodyIpStatus {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeIpStatusResponseBodyIpStatus) SetStatus(v string) *DescribeIpStatusResponseBodyIpStatus {
+	s.Status = &v
+	return s
+}
+
+type DescribeIpStatusResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeIpStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeIpStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpStatusResponse) SetHeaders(v map[string]*string) *DescribeIpStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeIpStatusResponse) SetBody(v *DescribeIpStatusResponseBody) *DescribeIpStatusResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeL2VipsByDomainRequest struct {
 	DomainName    *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -18566,75 +18658,6 @@ func (s *ModifyCdnDomainSchdmByPropertyResponse) SetHeaders(v map[string]*string
 }
 
 func (s *ModifyCdnDomainSchdmByPropertyResponse) SetBody(v *ModifyCdnDomainSchdmByPropertyResponseBody) *ModifyCdnDomainSchdmByPropertyResponse {
-	s.Body = v
-	return s
-}
-
-type ModifyDomainCustomLogConfigRequest struct {
-	ConfigId   *string `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s ModifyDomainCustomLogConfigRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyDomainCustomLogConfigRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyDomainCustomLogConfigRequest) SetConfigId(v string) *ModifyDomainCustomLogConfigRequest {
-	s.ConfigId = &v
-	return s
-}
-
-func (s *ModifyDomainCustomLogConfigRequest) SetDomainName(v string) *ModifyDomainCustomLogConfigRequest {
-	s.DomainName = &v
-	return s
-}
-
-func (s *ModifyDomainCustomLogConfigRequest) SetOwnerId(v int64) *ModifyDomainCustomLogConfigRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type ModifyDomainCustomLogConfigResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ModifyDomainCustomLogConfigResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyDomainCustomLogConfigResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyDomainCustomLogConfigResponseBody) SetRequestId(v string) *ModifyDomainCustomLogConfigResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ModifyDomainCustomLogConfigResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyDomainCustomLogConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ModifyDomainCustomLogConfigResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyDomainCustomLogConfigResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyDomainCustomLogConfigResponse) SetHeaders(v map[string]*string) *ModifyDomainCustomLogConfigResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyDomainCustomLogConfigResponse) SetBody(v *ModifyDomainCustomLogConfigResponseBody) *ModifyDomainCustomLogConfigResponse {
 	s.Body = v
 	return s
 }
@@ -26890,6 +26913,46 @@ func (client *Client) DescribeIpInfo(request *DescribeIpInfoRequest) (_result *D
 	return _result, _err
 }
 
+func (client *Client) DescribeIpStatusWithOptions(request *DescribeIpStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeIpStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeIpStatus"),
+		Version:     tea.String("2018-05-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeIpStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeIpStatus(request *DescribeIpStatusRequest) (_result *DescribeIpStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeIpStatusResponse{}
+	_body, _err := client.DescribeIpStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeL2VipsByDomainWithOptions(request *DescribeL2VipsByDomainRequest, runtime *util.RuntimeOptions) (_result *DescribeL2VipsByDomainResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28231,46 +28294,6 @@ func (client *Client) ModifyCdnDomainSchdmByProperty(request *ModifyCdnDomainSch
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyCdnDomainSchdmByPropertyResponse{}
 	_body, _err := client.ModifyCdnDomainSchdmByPropertyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ModifyDomainCustomLogConfigWithOptions(request *ModifyDomainCustomLogConfigRequest, runtime *util.RuntimeOptions) (_result *ModifyDomainCustomLogConfigResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyDomainCustomLogConfig"),
-		Version:     tea.String("2018-05-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ModifyDomainCustomLogConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ModifyDomainCustomLogConfig(request *ModifyDomainCustomLogConfigRequest) (_result *ModifyDomainCustomLogConfigResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyDomainCustomLogConfigResponse{}
-	_body, _err := client.ModifyDomainCustomLogConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
