@@ -1466,6 +1466,8 @@ func (s *SubmitTraceExtractResponse) SetBody(v *SubmitTraceExtractResponseBody) 
 }
 
 type SubmitTracemuRequest struct {
+	// 密钥服务器uri
+	KeyUri *string `json:"KeyUri,omitempty" xml:"KeyUri,omitempty"`
 	// ab流处理后的媒体id
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	// m3u8文件输出oss地址
@@ -1480,6 +1482,11 @@ func (s SubmitTracemuRequest) String() string {
 
 func (s SubmitTracemuRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SubmitTracemuRequest) SetKeyUri(v string) *SubmitTracemuRequest {
+	s.KeyUri = &v
+	return s
 }
 
 func (s *SubmitTracemuRequest) SetMediaId(v string) *SubmitTracemuRequest {
@@ -2309,6 +2316,10 @@ func (client *Client) SubmitTracemuWithOptions(request *SubmitTracemuRequest, he
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeyUri)) {
+		body["KeyUri"] = request.KeyUri
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
 		body["MediaId"] = request.MediaId
 	}
