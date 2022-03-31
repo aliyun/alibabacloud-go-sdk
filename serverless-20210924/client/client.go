@@ -220,6 +220,8 @@ func (s *ApplicationTrigger) SetPaths(v []*string) *ApplicationTrigger {
 type Environment struct {
 	// A time representing the server time when this object was created. Clients may not set this value. Populated by the system. Read-only.
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// Date and time at which a deletion is requested by the user. Null when the resource has not been requested for deletion. This field is set by the server, not directly settable by a client. Populated by the system. Read-only.
+	DeletionTime *string `json:"deletionTime,omitempty" xml:"deletionTime,omitempty"`
 	// Human-readable description of the resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
@@ -246,6 +248,11 @@ func (s Environment) GoString() string {
 
 func (s *Environment) SetCreatedTime(v string) *Environment {
 	s.CreatedTime = &v
+	return s
+}
+
+func (s *Environment) SetDeletionTime(v string) *Environment {
+	s.DeletionTime = &v
 	return s
 }
 
@@ -673,6 +680,8 @@ func (s *ReleasePipelineStages) SetName(v string) *ReleasePipelineStages {
 type Service struct {
 	// A time representing the server time when this object was created. Clients may not set this value. Populated by the system. Read-only.
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// Date and time at which a deletion is requested by the user. Null when the resource has not been requested for deletion. This field is set by the server, not directly settable by a client. Populated by the system. Read-only.
+	DeletionTime *string `json:"deletionTime,omitempty" xml:"deletionTime,omitempty"`
 	// Human-readable description of the resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
@@ -699,6 +708,11 @@ func (s Service) GoString() string {
 
 func (s *Service) SetCreatedTime(v string) *Service {
 	s.CreatedTime = &v
+	return s
+}
+
+func (s *Service) SetDeletionTime(v string) *Service {
+	s.DeletionTime = &v
 	return s
 }
 
@@ -889,6 +903,45 @@ func (s *ServiceStatus) SetPhase(v string) *ServiceStatus {
 	return s
 }
 
+type Status struct {
+	// A machine-readable description of why this operation is in the failure status. If this value is empty there is no information available.
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// A human-readable description of the status of this operation.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// ID of the request. May be null.
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// Whether the operation is successful.
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s Status) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Status) GoString() string {
+	return s.String()
+}
+
+func (s *Status) SetCode(v string) *Status {
+	s.Code = &v
+	return s
+}
+
+func (s *Status) SetMessage(v string) *Status {
+	s.Message = &v
+	return s
+}
+
+func (s *Status) SetRequestId(v string) *Status {
+	s.RequestId = &v
+	return s
+}
+
+func (s *Status) SetSuccess(v bool) *Status {
+	s.Success = &v
+	return s
+}
+
 type StsCredentials struct {
 	// Access key ID
 	AccessKeyId *string `json:"accessKeyId,omitempty" xml:"accessKeyId,omitempty"`
@@ -938,6 +991,8 @@ func (s *StsCredentials) SetToken(v string) *StsCredentials {
 type Template struct {
 	// A time representing the server time when this object was created. Clients may not set this value. Populated by the system. Read-only.
 	CreatedTime *string `json:"createdTime,omitempty" xml:"createdTime,omitempty"`
+	// Date and time at which a deletion is requested by the user. Null when the resource has not been requested for deletion. This field is set by the server, not directly settable by a client. Populated by the system. Read-only.
+	DeletionTime *string `json:"deletionTime,omitempty" xml:"deletionTime,omitempty"`
 	// Human-readable description of the resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
@@ -966,6 +1021,11 @@ func (s Template) GoString() string {
 
 func (s *Template) SetCreatedTime(v string) *Template {
 	s.CreatedTime = &v
+	return s
+}
+
+func (s *Template) SetDeletionTime(v string) *Template {
+	s.DeletionTime = &v
 	return s
 }
 
@@ -1268,6 +1328,47 @@ func (s *DeleteApplicationResponse) SetHeaders(v map[string]*string) *DeleteAppl
 
 func (s *DeleteApplicationResponse) SetBody(v string) *DeleteApplicationResponse {
 	s.Body = &v
+	return s
+}
+
+type DeleteTemplateRequest struct {
+	// The major version of the template. "1" by default.
+	Version *int32 `json:"version,omitempty" xml:"version,omitempty"`
+}
+
+func (s DeleteTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTemplateRequest) SetVersion(v int32) *DeleteTemplateRequest {
+	s.Version = &v
+	return s
+}
+
+type DeleteTemplateResponse struct {
+	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *Status            `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTemplateResponse) SetHeaders(v map[string]*string) *DeleteTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTemplateResponse) SetBody(v *Status) *DeleteTemplateResponse {
+	s.Body = v
 	return s
 }
 
@@ -1950,6 +2051,53 @@ func (client *Client) DeleteApplicationWithOptions(name *string, headers map[str
 		BodyType:    tea.String("string"),
 	}
 	_result = &DeleteApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteTemplate(name *string, request *DeleteTemplateRequest) (_result *DeleteTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteTemplateResponse{}
+	_body, _err := client.DeleteTemplateWithOptions(name, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteTemplateWithOptions(name *string, request *DeleteTemplateRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	name = openapiutil.GetEncodeParam(name)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Version)) {
+		query["version"] = request.Version
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTemplate"),
+		Version:     tea.String("2021-09-24"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/apis/serverlessdeployment/v1/templates/" + tea.StringValue(name)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTemplateResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
