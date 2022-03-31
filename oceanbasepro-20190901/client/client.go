@@ -120,17 +120,19 @@ type CreateInstanceRequest struct {
 	AutoRenewPeriod *int64 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
 	// 实例的付费方式。取值范围：  PrePay：包年包月。选择该类付费方式时，您必须确认自己的账号支持余额支付/信用支付，否则将返回 InvalidPayMethod的错误提示。 PostPay（默认）：按量付费。其默认按小时来计费
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// 存储空间大小，单位GB。  存储空间的限制根据集群规格不同而不同，具体如下：  - 8C32GB：100GB~10000GB  - 14C70GB：200GB~1000GB  - 30C180GB：400GB~10000GB  - 62C400G：800GB-10000GB。  各套餐的存储空间默认值为其最小值。
+	// 存储空间大小，单位GB。  存储空间的限制根据集群规格不同而不同，具体如下：  - 8C32GB：100GB~10000GB  - 14C70GB：200GB~10000GB  - 30C180GB：400GB~10000GB  - 62C400G：800GB-10000GB。  各套餐的存储空间默认值为其最小值。
 	DiskSize *int64 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
 	// 集群规格信息。  当前支持四种套餐：  - 8C32GB：8核 32GB  - 14C70GB（默认）：14核 70GB  - 30C180GB：30核 180GB  - 62C400GB：62核 400GB
 	InstanceClass *string `json:"InstanceClass,omitempty" xml:"InstanceClass,omitempty"`
+	// 集群名称。
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// 购买资源的时长，单位由PeriodUnit指定。当参数InstanceChargeType取值为PrePaid时才生效且为必选值。一旦指定了DedicatedHostId，则取值范围不能超过专有宿主机的订阅时长。取值范围：  PeriodUnit=Week时，Period取值：{“1”, “2”, “3”, “4”}。 PeriodUnit=Month时，Period取值：{“1”, “2”, “3”, “4”, “5”, “6”, “7”, “8”, “9”, “12”, “24”, “36”, ”48”, ”60”}。
 	Period *int64 `json:"Period,omitempty" xml:"Period,omitempty"`
 	// 购买资源的时长。  包年包月取值范围： Month。 默认值：包年包月为Month，按量计费，默认周期为Hour。
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// 实例所在的企业资源组ID
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Oceanbase集群的系列  - normal（默认）：高可用版本  - basic：基础版本
+	// Oceanbase集群的系列  - normal（默认）：高可用版本  - basic：基础版本（API暂不支持，请页面购买）
 	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
 	// 实例所属的可用区ID。更多详情，请参见DescribeZones获取可用区列表。
 	Zones *string `json:"Zones,omitempty" xml:"Zones,omitempty"`
@@ -169,6 +171,11 @@ func (s *CreateInstanceRequest) SetInstanceClass(v string) *CreateInstanceReques
 	return s
 }
 
+func (s *CreateInstanceRequest) SetInstanceName(v string) *CreateInstanceRequest {
+	s.InstanceName = &v
+	return s
+}
+
 func (s *CreateInstanceRequest) SetPeriod(v int64) *CreateInstanceRequest {
 	s.Period = &v
 	return s
@@ -195,6 +202,7 @@ func (s *CreateInstanceRequest) SetZones(v string) *CreateInstanceRequest {
 }
 
 type CreateInstanceResponseBody struct {
+	// 返回数据
 	Data []*CreateInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -225,8 +233,6 @@ type CreateInstanceResponseBodyData struct {
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
 	// 资源组ID
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// 订单成交价
-	TradePrice *float32 `json:"TradePrice,omitempty" xml:"TradePrice,omitempty"`
 }
 
 func (s CreateInstanceResponseBodyData) String() string {
@@ -249,11 +255,6 @@ func (s *CreateInstanceResponseBodyData) SetOrderId(v string) *CreateInstanceRes
 
 func (s *CreateInstanceResponseBodyData) SetResourceGroupId(v string) *CreateInstanceResponseBodyData {
 	s.ResourceGroupId = &v
-	return s
-}
-
-func (s *CreateInstanceResponseBodyData) SetTradePrice(v float32) *CreateInstanceResponseBodyData {
-	s.TradePrice = &v
 	return s
 }
 
@@ -394,8 +395,7 @@ func (s *CreateSecurityIpGroupResponse) SetBody(v *CreateSecurityIpGroupResponse
 
 type CreateTenantRequest struct {
 	// 字符集。 详细参见：DescribeCharset。
-	Charset     *string `json:"Charset,omitempty" xml:"Charset,omitempty"`
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Charset *string `json:"Charset,omitempty" xml:"Charset,omitempty"`
 	// 租户的CPU大小，单位：核数（Cores）
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// 租户描述信息。
@@ -430,11 +430,6 @@ func (s CreateTenantRequest) GoString() string {
 
 func (s *CreateTenantRequest) SetCharset(v string) *CreateTenantRequest {
 	s.Charset = &v
-	return s
-}
-
-func (s *CreateTenantRequest) SetClientToken(v string) *CreateTenantRequest {
-	s.ClientToken = &v
 	return s
 }
 
@@ -621,7 +616,6 @@ func (s *CreateTenantReadOnlyConnectionResponse) SetBody(v *CreateTenantReadOnly
 }
 
 type CreateTenantUserRequest struct {
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// 数据库描述信息。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Oceanbase集群ID。
@@ -644,11 +638,6 @@ func (s CreateTenantUserRequest) String() string {
 
 func (s CreateTenantUserRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateTenantUserRequest) SetClientToken(v string) *CreateTenantUserRequest {
-	s.ClientToken = &v
-	return s
 }
 
 func (s *CreateTenantUserRequest) SetDescription(v string) *CreateTenantUserRequest {
@@ -869,6 +858,71 @@ func (s *DeleteDatabasesResponse) SetHeaders(v map[string]*string) *DeleteDataba
 }
 
 func (s *DeleteDatabasesResponse) SetBody(v *DeleteDatabasesResponseBody) *DeleteDatabasesResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteInstancesRequest struct {
+	// 集群删除后的备份保留策略。取值如下： - receive_all：保留全部备份集; - delete_all：删除全部备份集； - receive_last：保留最后一个备份集。 默认值为delete_all。
+	BackupRetainMode *string `json:"BackupRetainMode,omitempty" xml:"BackupRetainMode,omitempty"`
+	// 要删除的集群ID。格式为son数组的字符串。
+	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
+}
+
+func (s DeleteInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstancesRequest) SetBackupRetainMode(v string) *DeleteInstancesRequest {
+	s.BackupRetainMode = &v
+	return s
+}
+
+func (s *DeleteInstancesRequest) SetInstanceIds(v string) *DeleteInstancesRequest {
+	s.InstanceIds = &v
+	return s
+}
+
+type DeleteInstancesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstancesResponseBody) SetRequestId(v string) *DeleteInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteInstancesResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteInstancesResponse) SetHeaders(v map[string]*string) *DeleteInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteInstancesResponse) SetBody(v *DeleteInstancesResponseBody) *DeleteInstancesResponse {
 	s.Body = v
 	return s
 }
@@ -1911,12 +1965,14 @@ func (s *DescribeDatabasesResponseBody) SetTotalCount(v int32) *DescribeDatabase
 }
 
 type DescribeDatabasesResponseBodyDatabases struct {
+	// 创建时间
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// 实际数据大小
 	DataSize *float64 `json:"DataSize,omitempty" xml:"DataSize,omitempty"`
 	// 数据库名称。
 	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
-	DbType       *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
+	// 数据库类型
+	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	// 数据库的描述信息。
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// 数据库的编码。目前支持utf8mb4、gbk等编码。
@@ -1924,7 +1980,8 @@ type DescribeDatabasesResponseBodyDatabases struct {
 	// 所需容量
 	RequiredSize *float64 `json:"RequiredSize,omitempty" xml:"RequiredSize,omitempty"`
 	// 数据库的状态。 - ONLINE: 运行中 - DELETING: 删除中
-	Status *string                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 数据库表信息
 	Tables []*DescribeDatabasesResponseBodyDatabasesTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 	// 租户ID。
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
@@ -1996,6 +2053,7 @@ func (s *DescribeDatabasesResponseBodyDatabases) SetUsers(v []*DescribeDatabases
 }
 
 type DescribeDatabasesResponseBodyDatabasesTables struct {
+	// 数据库表名
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -2151,6 +2209,8 @@ type DescribeInstanceResponseBodyInstance struct {
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
 	// OBServer版本是否为最新版本。
 	IsLatestObVersion *bool `json:"IsLatestObVersion,omitempty" xml:"IsLatestObVersion,omitempty"`
+	// 是否使用可信ecs
+	IsTrustEcs *bool `json:"IsTrustEcs,omitempty" xml:"IsTrustEcs,omitempty"`
 	// 集群的每天例行维护时间，UTC时间。
 	MaintainTime *string `json:"MaintainTime,omitempty" xml:"MaintainTime,omitempty"`
 	// OBServer 详细版本信息。
@@ -2237,6 +2297,11 @@ func (s *DescribeInstanceResponseBodyInstance) SetInstanceName(v string) *Descri
 
 func (s *DescribeInstanceResponseBodyInstance) SetIsLatestObVersion(v bool) *DescribeInstanceResponseBodyInstance {
 	s.IsLatestObVersion = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyInstance) SetIsTrustEcs(v bool) *DescribeInstanceResponseBodyInstance {
+	s.IsTrustEcs = &v
 	return s
 }
 
@@ -3180,7 +3245,8 @@ type DescribeInstancesResponseBodyInstances struct {
 	UsedDiskSize *int64 `json:"UsedDiskSize,omitempty" xml:"UsedDiskSize,omitempty"`
 	// Observer版本信息。
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	VpcId   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// vpcId
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s DescribeInstancesResponseBodyInstances) String() string {
@@ -3476,8 +3542,7 @@ func (s *DescribeInstancesResponse) SetBody(v *DescribeInstancesResponseBody) *D
 
 type DescribeNodeMetricsRequest struct {
 	// 参数历史查看的结束时间。
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FuzzyName *bool   `json:"FuzzyName,omitempty" xml:"FuzzyName,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// Oceanbase集群ID。
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 监控指标
@@ -3506,11 +3571,6 @@ func (s DescribeNodeMetricsRequest) GoString() string {
 
 func (s *DescribeNodeMetricsRequest) SetEndTime(v string) *DescribeNodeMetricsRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeNodeMetricsRequest) SetFuzzyName(v bool) *DescribeNodeMetricsRequest {
-	s.FuzzyName = &v
 	return s
 }
 
@@ -4315,9 +4375,11 @@ func (s *DescribeSQLDetailsResponse) SetBody(v *DescribeSQLDetailsResponseBody) 
 
 type DescribeSQLHistoryListRequest struct {
 	// 参数历史查看的结束时间。
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 页码
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 每页数量
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// SQLID
 	SQLId *string `json:"SQLId,omitempty" xml:"SQLId,omitempty"`
 	// 参数历史查看的起始时间。
@@ -4391,8 +4453,9 @@ func (s *DescribeSQLHistoryListResponseBody) SetSQLHistoryList(v *DescribeSQLHis
 
 type DescribeSQLHistoryListResponseBodySQLHistoryList struct {
 	// 数量
-	Count *int64                                                  `json:"Count,omitempty" xml:"Count,omitempty"`
-	List  []*DescribeSQLHistoryListResponseBodySQLHistoryListList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
+	// 列表
+	List []*DescribeSQLHistoryListResponseBodySQLHistoryListList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
 }
 
 func (s DescribeSQLHistoryListResponseBodySQLHistoryList) String() string {
@@ -4439,7 +4502,8 @@ type DescribeSQLHistoryListResponseBodySQLHistoryListList struct {
 	// 平均响应时间
 	ElapsedTime *float32 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
 	// 结束时间
-	EndTime          *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 结束时间（零时区）
 	EndTimeUTCString *string `json:"EndTimeUTCString,omitempty" xml:"EndTimeUTCString,omitempty"`
 	// 等待事件
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
@@ -4764,13 +4828,13 @@ func (s *DescribeSQLPlansResponseBody) SetSQLPlans(v []*DescribeSQLPlansResponse
 
 type DescribeSQLPlansResponseBodySQLPlans struct {
 	// 平均执行时间 (ms)
-	AvgExecutionMS     *float32 `json:"AvgExecutionMS,omitempty" xml:"AvgExecutionMS,omitempty"`
-	AvgExecutionTimeMS *int64   `json:"AvgExecutionTimeMS,omitempty" xml:"AvgExecutionTimeMS,omitempty"`
+	AvgExecutionMS *float32 `json:"AvgExecutionMS,omitempty" xml:"AvgExecutionMS,omitempty"`
+	// 平均执行时间
+	AvgExecutionTimeMS *int64 `json:"AvgExecutionTimeMS,omitempty" xml:"AvgExecutionTimeMS,omitempty"`
 	// 首次加载时间
 	FirstLoadTime *int64 `json:"FirstLoadTime,omitempty" xml:"FirstLoadTime,omitempty"`
 	// 首次加载时间(零时区)
 	FirstLoadTimeUTCString *string `json:"FirstLoadTimeUTCString,omitempty" xml:"FirstLoadTimeUTCString,omitempty"`
-	ForcedOutlineId        *int64  `json:"ForcedOutlineId,omitempty" xml:"ForcedOutlineId,omitempty"`
 	// 命中次数
 	HitCount *int32 `json:"HitCount,omitempty" xml:"HitCount,omitempty"`
 	// 合并版本
@@ -4822,11 +4886,6 @@ func (s *DescribeSQLPlansResponseBodySQLPlans) SetFirstLoadTime(v int64) *Descri
 
 func (s *DescribeSQLPlansResponseBodySQLPlans) SetFirstLoadTimeUTCString(v string) *DescribeSQLPlansResponseBodySQLPlans {
 	s.FirstLoadTimeUTCString = &v
-	return s
-}
-
-func (s *DescribeSQLPlansResponseBodySQLPlans) SetForcedOutlineId(v int64) *DescribeSQLPlansResponseBodySQLPlans {
-	s.ForcedOutlineId = &v
 	return s
 }
 
@@ -5922,6 +5981,275 @@ func (s *DescribeSlowSQLListResponse) SetBody(v *DescribeSlowSQLListResponseBody
 	return s
 }
 
+type DescribeSqlAuditsRequest struct {
+	// 客户端IP
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// 数据库
+	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 执行耗时最大值
+	ExecuteTimeMax *int64 `json:"ExecuteTimeMax,omitempty" xml:"ExecuteTimeMax,omitempty"`
+	// 执行耗时最小值
+	ExecuteTimeMin *int64  `json:"ExecuteTimeMin,omitempty" xml:"ExecuteTimeMin,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 返回的SQL文本是否需要脱敏
+	NeedMasking *bool `json:"NeedMasking,omitempty" xml:"NeedMasking,omitempty"`
+	// 节点，用逗号分隔
+	NodeIp *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
+	// 操作类型，用逗号分隔
+	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
+	// 分页页码
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页大小
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 扫描记录数最大值
+	ScanRowsMax *int64 `json:"ScanRowsMax,omitempty" xml:"ScanRowsMax,omitempty"`
+	// 扫描记录数最小值
+	ScanRowsMin *int64 `json:"ScanRowsMin,omitempty" xml:"ScanRowsMin,omitempty"`
+	// 关键词
+	SearchKeyWord *string `json:"SearchKeyWord,omitempty" xml:"SearchKeyWord,omitempty"`
+	// 关键词关系 and/or
+	SearchKeyWordMethod *string `json:"SearchKeyWordMethod,omitempty" xml:"SearchKeyWordMethod,omitempty"`
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TenantId  *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	// 用户名
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeSqlAuditsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlAuditsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlAuditsRequest) SetClientIp(v string) *DescribeSqlAuditsRequest {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsRequest) SetDbName(v string) *DescribeSqlAuditsRequest {
+	s.DbName = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsRequest) SetEndTime(v string) *DescribeSqlAuditsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsRequest) SetExecuteTimeMax(v int64) *DescribeSqlAuditsRequest {
+	s.ExecuteTimeMax = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsRequest) SetExecuteTimeMin(v int64) *DescribeSqlAuditsRequest {
+	s.ExecuteTimeMin = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsRequest) SetInstanceId(v string) *DescribeSqlAuditsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsRequest) SetNeedMasking(v bool) *DescribeSqlAuditsRequest {
+	s.NeedMasking = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsRequest) SetNodeIp(v string) *DescribeSqlAuditsRequest {
+	s.NodeIp = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsRequest) SetOperatorType(v string) *DescribeSqlAuditsRequest {
+	s.OperatorType = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsRequest) SetPageNumber(v int64) *DescribeSqlAuditsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsRequest) SetPageSize(v int64) *DescribeSqlAuditsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsRequest) SetScanRowsMax(v int64) *DescribeSqlAuditsRequest {
+	s.ScanRowsMax = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsRequest) SetScanRowsMin(v int64) *DescribeSqlAuditsRequest {
+	s.ScanRowsMin = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsRequest) SetSearchKeyWord(v string) *DescribeSqlAuditsRequest {
+	s.SearchKeyWord = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsRequest) SetSearchKeyWordMethod(v string) *DescribeSqlAuditsRequest {
+	s.SearchKeyWordMethod = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsRequest) SetStartTime(v string) *DescribeSqlAuditsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsRequest) SetTenantId(v string) *DescribeSqlAuditsRequest {
+	s.TenantId = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsRequest) SetUserName(v string) *DescribeSqlAuditsRequest {
+	s.UserName = &v
+	return s
+}
+
+type DescribeSqlAuditsResponseBody struct {
+	Data []*DescribeSqlAuditsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 总数
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeSqlAuditsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlAuditsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlAuditsResponseBody) SetData(v []*DescribeSqlAuditsResponseBodyData) *DescribeSqlAuditsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeSqlAuditsResponseBody) SetRequestId(v string) *DescribeSqlAuditsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsResponseBody) SetTotalCount(v int64) *DescribeSqlAuditsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeSqlAuditsResponseBodyData struct {
+	// 更新行数
+	AffectedRows *int64 `json:"AffectedRows,omitempty" xml:"AffectedRows,omitempty"`
+	// 客户端IP
+	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	// 数据库
+	DataBaseName *string `json:"DataBaseName,omitempty" xml:"DataBaseName,omitempty"`
+	// 执行耗时 (返回的毫秒，无需转换)
+	ExecuteTime *float64 `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	Key         *int64   `json:"Key,omitempty" xml:"Key,omitempty"`
+	// 操作类型
+	OperatorType *string `json:"OperatorType,omitempty" xml:"OperatorType,omitempty"`
+	// 扫描行数
+	ScanRows *int64 `json:"ScanRows,omitempty" xml:"ScanRows,omitempty"`
+	// SQLID
+	SqlId *string `json:"SqlId,omitempty" xml:"SqlId,omitempty"`
+	// SQL语句(数据已经过脱敏)
+	SqlText *string `json:"SqlText,omitempty" xml:"SqlText,omitempty"`
+	// 用户
+	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s DescribeSqlAuditsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlAuditsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlAuditsResponseBodyData) SetAffectedRows(v int64) *DescribeSqlAuditsResponseBodyData {
+	s.AffectedRows = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsResponseBodyData) SetClientIp(v string) *DescribeSqlAuditsResponseBodyData {
+	s.ClientIp = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsResponseBodyData) SetDataBaseName(v string) *DescribeSqlAuditsResponseBodyData {
+	s.DataBaseName = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsResponseBodyData) SetExecuteTime(v float64) *DescribeSqlAuditsResponseBodyData {
+	s.ExecuteTime = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsResponseBodyData) SetKey(v int64) *DescribeSqlAuditsResponseBodyData {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsResponseBodyData) SetOperatorType(v string) *DescribeSqlAuditsResponseBodyData {
+	s.OperatorType = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsResponseBodyData) SetScanRows(v int64) *DescribeSqlAuditsResponseBodyData {
+	s.ScanRows = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsResponseBodyData) SetSqlId(v string) *DescribeSqlAuditsResponseBodyData {
+	s.SqlId = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsResponseBodyData) SetSqlText(v string) *DescribeSqlAuditsResponseBodyData {
+	s.SqlText = &v
+	return s
+}
+
+func (s *DescribeSqlAuditsResponseBodyData) SetUserName(v string) *DescribeSqlAuditsResponseBodyData {
+	s.UserName = &v
+	return s
+}
+
+type DescribeSqlAuditsResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeSqlAuditsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSqlAuditsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSqlAuditsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSqlAuditsResponse) SetHeaders(v map[string]*string) *DescribeSqlAuditsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSqlAuditsResponse) SetBody(v *DescribeSqlAuditsResponseBody) *DescribeSqlAuditsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeTenantRequest struct {
 	// Oceanbase集群ID。
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -6368,8 +6696,7 @@ func (s *DescribeTenantResponse) SetBody(v *DescribeTenantResponseBody) *Describ
 
 type DescribeTenantMetricsRequest struct {
 	// 参数历史查看的结束时间。
-	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	FuzzyName *bool   `json:"FuzzyName,omitempty" xml:"FuzzyName,omitempty"`
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// Oceanbase集群ID。
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 监控指标
@@ -6398,11 +6725,6 @@ func (s DescribeTenantMetricsRequest) GoString() string {
 
 func (s *DescribeTenantMetricsRequest) SetEndTime(v string) *DescribeTenantMetricsRequest {
 	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeTenantMetricsRequest) SetFuzzyName(v bool) *DescribeTenantMetricsRequest {
-	s.FuzzyName = &v
 	return s
 }
 
@@ -6451,7 +6773,8 @@ type DescribeTenantMetricsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// 租户指标信息。
 	TenantMetrics *string `json:"TenantMetrics,omitempty" xml:"TenantMetrics,omitempty"`
-	TotalCount    *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// 总数量
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeTenantMetricsResponseBody) String() string {
@@ -8103,6 +8426,79 @@ func (s *ModifyDatabaseUserRolesResponse) SetBody(v *ModifyDatabaseUserRolesResp
 	return s
 }
 
+type ModifyInstanceNameRequest struct {
+	// Oceanbase集群ID。
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Oceanbase集群名称。 长度为1~20个英文或中文字符。如果没有指定该参数，默认值为集群的InstanceId。
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+}
+
+func (s ModifyInstanceNameRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceNameRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceNameRequest) SetInstanceId(v string) *ModifyInstanceNameRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ModifyInstanceNameRequest) SetInstanceName(v string) *ModifyInstanceNameRequest {
+	s.InstanceName = &v
+	return s
+}
+
+type ModifyInstanceNameResponseBody struct {
+	// Oceanbase集群名称。
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// 请求ID。
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyInstanceNameResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceNameResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceNameResponseBody) SetInstanceName(v string) *ModifyInstanceNameResponseBody {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *ModifyInstanceNameResponseBody) SetRequestId(v string) *ModifyInstanceNameResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyInstanceNameResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyInstanceNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyInstanceNameResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyInstanceNameResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyInstanceNameResponse) SetHeaders(v map[string]*string) *ModifyInstanceNameResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyInstanceNameResponse) SetBody(v *ModifyInstanceNameResponseBody) *ModifyInstanceNameResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyParametersRequest struct {
 	// 参数类型。 当前支持集群（CLUSTER)和租户（TENANT）
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
@@ -9067,6 +9463,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 		body["InstanceClass"] = request.InstanceClass
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		body["InstanceName"] = request.InstanceName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Period)) {
 		body["Period"] = request.Period
 	}
@@ -9181,10 +9581,6 @@ func (client *Client) CreateTenantWithOptions(request *CreateTenantRequest, runt
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Charset)) {
 		body["Charset"] = request.Charset
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
-		body["ClientToken"] = request.ClientToken
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Cpu)) {
@@ -9327,10 +9723,6 @@ func (client *Client) CreateTenantUserWithOptions(request *CreateTenantUserReque
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
-		body["ClientToken"] = request.ClientToken
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		body["Description"] = request.Description
 	}
@@ -9438,6 +9830,54 @@ func (client *Client) DeleteDatabases(request *DeleteDatabasesRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteDatabasesResponse{}
 	_body, _err := client.DeleteDatabasesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteInstancesWithOptions(request *DeleteInstancesRequest, runtime *util.RuntimeOptions) (_result *DeleteInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupRetainMode)) {
+		body["BackupRetainMode"] = request.BackupRetainMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		body["InstanceIds"] = request.InstanceIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteInstances"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteInstances(request *DeleteInstancesRequest) (_result *DeleteInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteInstancesResponse{}
+	_body, _err := client.DeleteInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10177,10 +10617,6 @@ func (client *Client) DescribeNodeMetricsWithOptions(request *DescribeNodeMetric
 		body["EndTime"] = request.EndTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.FuzzyName)) {
-		body["FuzzyName"] = request.FuzzyName
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
 	}
@@ -10857,6 +11293,118 @@ func (client *Client) DescribeSlowSQLList(request *DescribeSlowSQLListRequest) (
 	return _result, _err
 }
 
+func (client *Client) DescribeSqlAuditsWithOptions(request *DescribeSqlAuditsRequest, runtime *util.RuntimeOptions) (_result *DescribeSqlAuditsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientIp)) {
+		body["ClientIp"] = request.ClientIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DbName)) {
+		body["DbName"] = request.DbName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecuteTimeMax)) {
+		body["ExecuteTimeMax"] = request.ExecuteTimeMax
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExecuteTimeMin)) {
+		body["ExecuteTimeMin"] = request.ExecuteTimeMin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedMasking)) {
+		body["NeedMasking"] = request.NeedMasking
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NodeIp)) {
+		body["NodeIp"] = request.NodeIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperatorType)) {
+		body["OperatorType"] = request.OperatorType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScanRowsMax)) {
+		body["ScanRowsMax"] = request.ScanRowsMax
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScanRowsMin)) {
+		body["ScanRowsMin"] = request.ScanRowsMin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKeyWord)) {
+		body["SearchKeyWord"] = request.SearchKeyWord
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKeyWordMethod)) {
+		body["SearchKeyWordMethod"] = request.SearchKeyWordMethod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		body["TenantId"] = request.TenantId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		body["UserName"] = request.UserName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSqlAudits"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSqlAuditsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSqlAudits(request *DescribeSqlAuditsRequest) (_result *DescribeSqlAuditsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSqlAuditsResponse{}
+	_body, _err := client.DescribeSqlAuditsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeTenantWithOptions(request *DescribeTenantRequest, runtime *util.RuntimeOptions) (_result *DescribeTenantResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -10913,10 +11461,6 @@ func (client *Client) DescribeTenantMetricsWithOptions(request *DescribeTenantMe
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
 		body["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FuzzyName)) {
-		body["FuzzyName"] = request.FuzzyName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
@@ -11486,6 +12030,54 @@ func (client *Client) ModifyDatabaseUserRoles(request *ModifyDatabaseUserRolesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDatabaseUserRolesResponse{}
 	_body, _err := client.ModifyDatabaseUserRolesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyInstanceNameWithOptions(request *ModifyInstanceNameRequest, runtime *util.RuntimeOptions) (_result *ModifyInstanceNameResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		body["InstanceName"] = request.InstanceName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstanceName"),
+		Version:     tea.String("2019-09-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyInstanceNameResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyInstanceName(request *ModifyInstanceNameRequest) (_result *ModifyInstanceNameResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyInstanceNameResponse{}
+	_body, _err := client.ModifyInstanceNameWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
