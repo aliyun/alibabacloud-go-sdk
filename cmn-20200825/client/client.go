@@ -18355,6 +18355,8 @@ func (s *ListDevicesShrinkRequest) SetVendor(v []*string) *ListDevicesShrinkRequ
 }
 
 type ListDevicesResponseBody struct {
+	// 每页数量。
+	AmountUsed *int32 `json:"AmountUsed,omitempty" xml:"AmountUsed,omitempty"`
 	// 数组，返回示例目录。
 	Devices []*ListDevicesResponseBodyDevices `json:"Devices,omitempty" xml:"Devices,omitempty" type:"Repeated"`
 	// 每页数量。
@@ -18373,6 +18375,11 @@ func (s ListDevicesResponseBody) String() string {
 
 func (s ListDevicesResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *ListDevicesResponseBody) SetAmountUsed(v int32) *ListDevicesResponseBody {
+	s.AmountUsed = &v
+	return s
 }
 
 func (s *ListDevicesResponseBody) SetDevices(v []*ListDevicesResponseBodyDevices) *ListDevicesResponseBody {
@@ -18642,6 +18649,8 @@ type ListEventDefinitionsRequest struct {
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	// 事件项名称
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// 事件类型
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 本次读取的最大数据记录数量
@@ -18665,6 +18674,11 @@ func (s *ListEventDefinitionsRequest) SetEventId(v string) *ListEventDefinitions
 
 func (s *ListEventDefinitionsRequest) SetEventName(v string) *ListEventDefinitionsRequest {
 	s.EventName = &v
+	return s
+}
+
+func (s *ListEventDefinitionsRequest) SetEventType(v string) *ListEventDefinitionsRequest {
+	s.EventType = &v
 	return s
 }
 
@@ -20423,6 +20437,7 @@ type ListLinksRequest struct {
 	IpB *string `json:"IpB,omitempty" xml:"IpB,omitempty"`
 	// 链路名称
 	LinkName *string `json:"LinkName,omitempty" xml:"LinkName,omitempty"`
+	LinkNo   *string `json:"LinkNo,omitempty" xml:"LinkNo,omitempty"`
 	// 链路状态
 	LinkStatus *string `json:"LinkStatus,omitempty" xml:"LinkStatus,omitempty"`
 	// 链路类型（单端、双端）
@@ -20467,6 +20482,11 @@ func (s *ListLinksRequest) SetIpB(v string) *ListLinksRequest {
 
 func (s *ListLinksRequest) SetLinkName(v string) *ListLinksRequest {
 	s.LinkName = &v
+	return s
+}
+
+func (s *ListLinksRequest) SetLinkNo(v string) *ListLinksRequest {
+	s.LinkNo = &v
 	return s
 }
 
