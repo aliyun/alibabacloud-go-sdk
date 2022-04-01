@@ -76,10 +76,11 @@ func (s *ActivateOfficeSiteResponse) SetBody(v *ActivateOfficeSiteResponseBody) 
 }
 
 type AddUserToDesktopGroupRequest struct {
-	ClientToken    *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DesktopGroupId *string   `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	EndUserIds     []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ClientToken     *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DesktopGroupId  *string   `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	DesktopGroupIds []*string `json:"DesktopGroupIds,omitempty" xml:"DesktopGroupIds,omitempty" type:"Repeated"`
+	EndUserIds      []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	RegionId        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s AddUserToDesktopGroupRequest) String() string {
@@ -97,6 +98,11 @@ func (s *AddUserToDesktopGroupRequest) SetClientToken(v string) *AddUserToDeskto
 
 func (s *AddUserToDesktopGroupRequest) SetDesktopGroupId(v string) *AddUserToDesktopGroupRequest {
 	s.DesktopGroupId = &v
+	return s
+}
+
+func (s *AddUserToDesktopGroupRequest) SetDesktopGroupIds(v []*string) *AddUserToDesktopGroupRequest {
+	s.DesktopGroupIds = v
 	return s
 }
 
@@ -4266,26 +4272,28 @@ func (s *DescribeClientEventsResponseBody) SetRequestId(v string) *DescribeClien
 }
 
 type DescribeClientEventsResponseBodyEvents struct {
-	AliUid         *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	BytesReceived  *string `json:"BytesReceived,omitempty" xml:"BytesReceived,omitempty"`
-	BytesSend      *string `json:"BytesSend,omitempty" xml:"BytesSend,omitempty"`
-	ClientIp       *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	ClientOS       *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
-	ClientVersion  *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
-	DesktopId      *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
-	DesktopIp      *string `json:"DesktopIp,omitempty" xml:"DesktopIp,omitempty"`
-	DesktopName    *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	DirectoryId    *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	DirectoryType  *string `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
-	EndUserId      *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	EventId        *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	EventTime      *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
-	EventType      *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	OfficeSiteId   *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	OfficeSiteName *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	OfficeSiteType *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	AliUid           *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	BytesReceived    *string `json:"BytesReceived,omitempty" xml:"BytesReceived,omitempty"`
+	BytesSend        *string `json:"BytesSend,omitempty" xml:"BytesSend,omitempty"`
+	ClientIp         *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
+	ClientOS         *string `json:"ClientOS,omitempty" xml:"ClientOS,omitempty"`
+	ClientVersion    *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	DesktopGroupId   *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
+	DesktopId        *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	DesktopIp        *string `json:"DesktopIp,omitempty" xml:"DesktopIp,omitempty"`
+	DesktopName      *string `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	DirectoryId      *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	DirectoryType    *string `json:"DirectoryType,omitempty" xml:"DirectoryType,omitempty"`
+	EndUserId        *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	EventId          *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventTime        *string `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
+	EventType        *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	OfficeSiteId     *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	OfficeSiteName   *string `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
+	OfficeSiteType   *string `json:"OfficeSiteType,omitempty" xml:"OfficeSiteType,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeClientEventsResponseBodyEvents) String() string {
@@ -4323,6 +4331,16 @@ func (s *DescribeClientEventsResponseBodyEvents) SetClientOS(v string) *Describe
 
 func (s *DescribeClientEventsResponseBodyEvents) SetClientVersion(v string) *DescribeClientEventsResponseBodyEvents {
 	s.ClientVersion = &v
+	return s
+}
+
+func (s *DescribeClientEventsResponseBodyEvents) SetDesktopGroupId(v string) *DescribeClientEventsResponseBodyEvents {
+	s.DesktopGroupId = &v
+	return s
+}
+
+func (s *DescribeClientEventsResponseBodyEvents) SetDesktopGroupName(v string) *DescribeClientEventsResponseBodyEvents {
+	s.DesktopGroupName = &v
 	return s
 }
 
@@ -4420,17 +4438,19 @@ func (s *DescribeClientEventsResponse) SetBody(v *DescribeClientEventsResponseBo
 }
 
 type DescribeDesktopGroupsRequest struct {
-	DesktopGroupId   *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	DesktopGroupName *string `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
-	MaxResults       *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken        *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OfficeSiteId     *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	OwnType          *int64  `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
-	Period           *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	PeriodUnit       *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	PolicyGroupId    *string `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status           *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	DesktopGroupId     *string   `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	DesktopGroupName   *string   `json:"DesktopGroupName,omitempty" xml:"DesktopGroupName,omitempty"`
+	EndUserIds         []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	ExcludedEndUserIds []*string `json:"ExcludedEndUserIds,omitempty" xml:"ExcludedEndUserIds,omitempty" type:"Repeated"`
+	MaxResults         *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken          *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OfficeSiteId       *string   `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	OwnType            *int64    `json:"OwnType,omitempty" xml:"OwnType,omitempty"`
+	Period             *int32    `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit         *string   `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	PolicyGroupId      *string   `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	RegionId           *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status             *int32    `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDesktopGroupsRequest) String() string {
@@ -4448,6 +4468,16 @@ func (s *DescribeDesktopGroupsRequest) SetDesktopGroupId(v string) *DescribeDesk
 
 func (s *DescribeDesktopGroupsRequest) SetDesktopGroupName(v string) *DescribeDesktopGroupsRequest {
 	s.DesktopGroupName = &v
+	return s
+}
+
+func (s *DescribeDesktopGroupsRequest) SetEndUserIds(v []*string) *DescribeDesktopGroupsRequest {
+	s.EndUserIds = v
+	return s
+}
+
+func (s *DescribeDesktopGroupsRequest) SetExcludedEndUserIds(v []*string) *DescribeDesktopGroupsRequest {
+	s.ExcludedEndUserIds = v
 	return s
 }
 
@@ -16420,9 +16450,10 @@ func (s *RebuildDesktopsResponse) SetBody(v *RebuildDesktopsResponseBody) *Rebui
 }
 
 type RemoveUserFromDesktopGroupRequest struct {
-	DesktopGroupId *string   `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	EndUserIds     []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
-	RegionId       *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	DesktopGroupId  *string   `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
+	DesktopGroupIds []*string `json:"DesktopGroupIds,omitempty" xml:"DesktopGroupIds,omitempty" type:"Repeated"`
+	EndUserIds      []*string `json:"EndUserIds,omitempty" xml:"EndUserIds,omitempty" type:"Repeated"`
+	RegionId        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
 func (s RemoveUserFromDesktopGroupRequest) String() string {
@@ -16435,6 +16466,11 @@ func (s RemoveUserFromDesktopGroupRequest) GoString() string {
 
 func (s *RemoveUserFromDesktopGroupRequest) SetDesktopGroupId(v string) *RemoveUserFromDesktopGroupRequest {
 	s.DesktopGroupId = &v
+	return s
+}
+
+func (s *RemoveUserFromDesktopGroupRequest) SetDesktopGroupIds(v []*string) *RemoveUserFromDesktopGroupRequest {
+	s.DesktopGroupIds = v
 	return s
 }
 
@@ -17027,192 +17063,6 @@ func (s *SendVerifyCodeResponse) SetHeaders(v map[string]*string) *SendVerifyCod
 }
 
 func (s *SendVerifyCodeResponse) SetBody(v *SendVerifyCodeResponseBody) *SendVerifyCodeResponse {
-	s.Body = v
-	return s
-}
-
-type SetDesktopGroupTimerRequest struct {
-	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	Force          *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResetType      *int32  `json:"ResetType,omitempty" xml:"ResetType,omitempty"`
-	TimerType      *int32  `json:"TimerType,omitempty" xml:"TimerType,omitempty"`
-}
-
-func (s SetDesktopGroupTimerRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDesktopGroupTimerRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SetDesktopGroupTimerRequest) SetCronExpression(v string) *SetDesktopGroupTimerRequest {
-	s.CronExpression = &v
-	return s
-}
-
-func (s *SetDesktopGroupTimerRequest) SetDesktopGroupId(v string) *SetDesktopGroupTimerRequest {
-	s.DesktopGroupId = &v
-	return s
-}
-
-func (s *SetDesktopGroupTimerRequest) SetForce(v bool) *SetDesktopGroupTimerRequest {
-	s.Force = &v
-	return s
-}
-
-func (s *SetDesktopGroupTimerRequest) SetRegionId(v string) *SetDesktopGroupTimerRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *SetDesktopGroupTimerRequest) SetResetType(v int32) *SetDesktopGroupTimerRequest {
-	s.ResetType = &v
-	return s
-}
-
-func (s *SetDesktopGroupTimerRequest) SetTimerType(v int32) *SetDesktopGroupTimerRequest {
-	s.TimerType = &v
-	return s
-}
-
-type SetDesktopGroupTimerResponseBody struct {
-	DesktopGroupId *string   `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	OrderIds       []*string `json:"OrderIds,omitempty" xml:"OrderIds,omitempty" type:"Repeated"`
-	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SetDesktopGroupTimerResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDesktopGroupTimerResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SetDesktopGroupTimerResponseBody) SetDesktopGroupId(v string) *SetDesktopGroupTimerResponseBody {
-	s.DesktopGroupId = &v
-	return s
-}
-
-func (s *SetDesktopGroupTimerResponseBody) SetOrderIds(v []*string) *SetDesktopGroupTimerResponseBody {
-	s.OrderIds = v
-	return s
-}
-
-func (s *SetDesktopGroupTimerResponseBody) SetRequestId(v string) *SetDesktopGroupTimerResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SetDesktopGroupTimerResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetDesktopGroupTimerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SetDesktopGroupTimerResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDesktopGroupTimerResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SetDesktopGroupTimerResponse) SetHeaders(v map[string]*string) *SetDesktopGroupTimerResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SetDesktopGroupTimerResponse) SetBody(v *SetDesktopGroupTimerResponseBody) *SetDesktopGroupTimerResponse {
-	s.Body = v
-	return s
-}
-
-type SetDesktopGroupTimerStatusRequest struct {
-	DesktopGroupId *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Status         *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
-	TimerType      *int32  `json:"TimerType,omitempty" xml:"TimerType,omitempty"`
-}
-
-func (s SetDesktopGroupTimerStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDesktopGroupTimerStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SetDesktopGroupTimerStatusRequest) SetDesktopGroupId(v string) *SetDesktopGroupTimerStatusRequest {
-	s.DesktopGroupId = &v
-	return s
-}
-
-func (s *SetDesktopGroupTimerStatusRequest) SetRegionId(v string) *SetDesktopGroupTimerStatusRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *SetDesktopGroupTimerStatusRequest) SetStatus(v int32) *SetDesktopGroupTimerStatusRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *SetDesktopGroupTimerStatusRequest) SetTimerType(v int32) *SetDesktopGroupTimerStatusRequest {
-	s.TimerType = &v
-	return s
-}
-
-type SetDesktopGroupTimerStatusResponseBody struct {
-	DesktopGroupId *string   `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
-	OrderIds       []*string `json:"OrderIds,omitempty" xml:"OrderIds,omitempty" type:"Repeated"`
-	RequestId      *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SetDesktopGroupTimerStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDesktopGroupTimerStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SetDesktopGroupTimerStatusResponseBody) SetDesktopGroupId(v string) *SetDesktopGroupTimerStatusResponseBody {
-	s.DesktopGroupId = &v
-	return s
-}
-
-func (s *SetDesktopGroupTimerStatusResponseBody) SetOrderIds(v []*string) *SetDesktopGroupTimerStatusResponseBody {
-	s.OrderIds = v
-	return s
-}
-
-func (s *SetDesktopGroupTimerStatusResponseBody) SetRequestId(v string) *SetDesktopGroupTimerStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SetDesktopGroupTimerStatusResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SetDesktopGroupTimerStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SetDesktopGroupTimerStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDesktopGroupTimerStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SetDesktopGroupTimerStatusResponse) SetHeaders(v map[string]*string) *SetDesktopGroupTimerStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SetDesktopGroupTimerStatusResponse) SetBody(v *SetDesktopGroupTimerStatusResponseBody) *SetDesktopGroupTimerStatusResponse {
 	s.Body = v
 	return s
 }
@@ -18388,6 +18238,10 @@ func (client *Client) AddUserToDesktopGroupWithOptions(request *AddUserToDesktop
 
 	if !tea.BoolValue(util.IsUnset(request.DesktopGroupId)) {
 		query["DesktopGroupId"] = request.DesktopGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DesktopGroupIds)) {
+		query["DesktopGroupIds"] = request.DesktopGroupIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EndUserIds)) {
@@ -20980,6 +20834,14 @@ func (client *Client) DescribeDesktopGroupsWithOptions(request *DescribeDesktopG
 
 	if !tea.BoolValue(util.IsUnset(request.DesktopGroupName)) {
 		query["DesktopGroupName"] = request.DesktopGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserIds)) {
+		query["EndUserIds"] = request.EndUserIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludedEndUserIds)) {
+		query["ExcludedEndUserIds"] = request.ExcludedEndUserIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
@@ -25946,6 +25808,10 @@ func (client *Client) RemoveUserFromDesktopGroupWithOptions(request *RemoveUserF
 		query["DesktopGroupId"] = request.DesktopGroupId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DesktopGroupIds)) {
+		query["DesktopGroupIds"] = request.DesktopGroupIds
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EndUserIds)) {
 		query["EndUserIds"] = request.EndUserIds
 	}
@@ -26373,126 +26239,6 @@ func (client *Client) SendVerifyCode(request *SendVerifyCodeRequest) (_result *S
 	runtime := &util.RuntimeOptions{}
 	_result = &SendVerifyCodeResponse{}
 	_body, _err := client.SendVerifyCodeWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SetDesktopGroupTimerWithOptions(request *SetDesktopGroupTimerRequest, runtime *util.RuntimeOptions) (_result *SetDesktopGroupTimerResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CronExpression)) {
-		query["CronExpression"] = request.CronExpression
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DesktopGroupId)) {
-		query["DesktopGroupId"] = request.DesktopGroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Force)) {
-		query["Force"] = request.Force
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResetType)) {
-		query["ResetType"] = request.ResetType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TimerType)) {
-		query["TimerType"] = request.TimerType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetDesktopGroupTimer"),
-		Version:     tea.String("2020-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SetDesktopGroupTimerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SetDesktopGroupTimer(request *SetDesktopGroupTimerRequest) (_result *SetDesktopGroupTimerResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SetDesktopGroupTimerResponse{}
-	_body, _err := client.SetDesktopGroupTimerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SetDesktopGroupTimerStatusWithOptions(request *SetDesktopGroupTimerStatusRequest, runtime *util.RuntimeOptions) (_result *SetDesktopGroupTimerStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DesktopGroupId)) {
-		query["DesktopGroupId"] = request.DesktopGroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Status)) {
-		query["Status"] = request.Status
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TimerType)) {
-		query["TimerType"] = request.TimerType
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetDesktopGroupTimerStatus"),
-		Version:     tea.String("2020-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SetDesktopGroupTimerStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SetDesktopGroupTimerStatus(request *SetDesktopGroupTimerStatusRequest) (_result *SetDesktopGroupTimerStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SetDesktopGroupTimerStatusResponse{}
-	_body, _err := client.SetDesktopGroupTimerStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
