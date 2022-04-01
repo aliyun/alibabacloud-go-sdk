@@ -30,6 +30,38 @@ func (s *AccelerationInfo) SetStatus(v string) *AccelerationInfo {
 	return s
 }
 
+type AsyncConfigMeta struct {
+	// 异步配置所属函数名称。
+	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
+	// 异步配置所属服务版本/别名。
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+	// 异步配置所属服务名称。
+	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
+}
+
+func (s AsyncConfigMeta) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AsyncConfigMeta) GoString() string {
+	return s.String()
+}
+
+func (s *AsyncConfigMeta) SetFunctionName(v string) *AsyncConfigMeta {
+	s.FunctionName = &v
+	return s
+}
+
+func (s *AsyncConfigMeta) SetQualifier(v string) *AsyncConfigMeta {
+	s.Qualifier = &v
+	return s
+}
+
+func (s *AsyncConfigMeta) SetServiceName(v string) *AsyncConfigMeta {
+	s.ServiceName = &v
+	return s
+}
+
 type CertConfig struct {
 	// 证书名称
 	CertName *string `json:"certName,omitempty" xml:"certName,omitempty"`
@@ -63,10 +95,6 @@ func (s *CertConfig) SetPrivateKey(v string) *CertConfig {
 }
 
 type Code struct {
-	// codeCheckSum
-	CodeCheckSum *string `json:"codeCheckSum,omitempty" xml:"codeCheckSum,omitempty"`
-	// error
-	Err *string `json:"err,omitempty" xml:"err,omitempty"`
 	// 函数代码包的OSS bucket name
 	OssBucketName *string `json:"ossBucketName,omitempty" xml:"ossBucketName,omitempty"`
 	// 函数代码包的OSS对象名
@@ -81,16 +109,6 @@ func (s Code) String() string {
 
 func (s Code) GoString() string {
 	return s.String()
-}
-
-func (s *Code) SetCodeCheckSum(v string) *Code {
-	s.CodeCheckSum = &v
-	return s
-}
-
-func (s *Code) SetErr(v string) *Code {
-	s.Err = &v
-	return s
 }
 
 func (s *Code) SetOssBucketName(v string) *Code {
@@ -829,29 +847,33 @@ func (s *ScheduledActions) SetTarget(v int64) *ScheduledActions {
 }
 
 type StatefulAsyncInvocation struct {
-	// alreadyRetriedTimes
+	// 异步任务调用失败后的已重试次数。
 	AlreadyRetriedTimes *int64 `json:"alreadyRetriedTimes,omitempty" xml:"alreadyRetriedTimes,omitempty"`
-	// destinationStatus
+	// 异步任务的目的状态。
 	DestinationStatus *string `json:"destinationStatus,omitempty" xml:"destinationStatus,omitempty"`
-	// endTime
+	// 异步任务的结束时间。
 	EndTime *int64 `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// functionName
+	// 异步任务事件列表。
+	Events []*StatefulAsyncInvocationEvent `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	// 异步任务所属的函数的名称。
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// invocationErrorMessage
+	// 异步任务的执行实例ID。
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// 异步任务的错误消息。
 	InvocationErrorMessage *string `json:"invocationErrorMessage,omitempty" xml:"invocationErrorMessage,omitempty"`
-	// invocationId
+	// 异步任务ID。
 	InvocationId *string `json:"invocationId,omitempty" xml:"invocationId,omitempty"`
-	// invocationPayload
+	// 异步任务的任务触发事件。
 	InvocationPayload *string `json:"invocationPayload,omitempty" xml:"invocationPayload,omitempty"`
-	// qualifier
+	// 异步任务所属的服务的别名或版本。
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-	// requestId
+	// 异步任务的请求ID。
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// serviceName
+	// 异步任务所属的服务的名称。
 	ServiceName *string `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
-	// startedTime
+	// 异步任务的开始时间。
 	StartedTime *int64 `json:"startedTime,omitempty" xml:"startedTime,omitempty"`
-	// status
+	// 异步任务的执行状态。      Enqueued：异步消息已入队，等待处理。      Succeeded：调用执行成功。      Failed：调用执行失败。      Running：调用执行中。      Stopped：调用执行终止。      Stopping：执行停止中。      Invalid：您的执行因函数被删除等原因处于无效状态（任务未被执行）。      Expired：您为任务配置了最长排队等待的期限。该任务因为超期被丢弃（任务未被执行）。      Retrying：异步调用因执行错误重试中。
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 
@@ -878,8 +900,18 @@ func (s *StatefulAsyncInvocation) SetEndTime(v int64) *StatefulAsyncInvocation {
 	return s
 }
 
+func (s *StatefulAsyncInvocation) SetEvents(v []*StatefulAsyncInvocationEvent) *StatefulAsyncInvocation {
+	s.Events = v
+	return s
+}
+
 func (s *StatefulAsyncInvocation) SetFunctionName(v string) *StatefulAsyncInvocation {
 	s.FunctionName = &v
+	return s
+}
+
+func (s *StatefulAsyncInvocation) SetInstanceId(v string) *StatefulAsyncInvocation {
+	s.InstanceId = &v
 	return s
 }
 
@@ -920,6 +952,45 @@ func (s *StatefulAsyncInvocation) SetStartedTime(v int64) *StatefulAsyncInvocati
 
 func (s *StatefulAsyncInvocation) SetStatus(v string) *StatefulAsyncInvocation {
 	s.Status = &v
+	return s
+}
+
+type StatefulAsyncInvocationEvent struct {
+	// 事件详细数据。
+	EventDetail *string `json:"eventDetail,omitempty" xml:"eventDetail,omitempty"`
+	// 事件ID。
+	EventId *int64 `json:"eventId,omitempty" xml:"eventId,omitempty"`
+	// 事件执行状态。
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// 事件时间。
+	Timestamp *int64 `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+}
+
+func (s StatefulAsyncInvocationEvent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StatefulAsyncInvocationEvent) GoString() string {
+	return s.String()
+}
+
+func (s *StatefulAsyncInvocationEvent) SetEventDetail(v string) *StatefulAsyncInvocationEvent {
+	s.EventDetail = &v
+	return s
+}
+
+func (s *StatefulAsyncInvocationEvent) SetEventId(v int64) *StatefulAsyncInvocationEvent {
+	s.EventId = &v
+	return s
+}
+
+func (s *StatefulAsyncInvocationEvent) SetStatus(v string) *StatefulAsyncInvocationEvent {
+	s.Status = &v
+	return s
+}
+
+func (s *StatefulAsyncInvocationEvent) SetTimestamp(v int64) *StatefulAsyncInvocationEvent {
+	s.Timestamp = &v
 	return s
 }
 
@@ -1054,13 +1125,10 @@ func (s *VPCConfig) SetVpcId(v string) *VPCConfig {
 }
 
 type CreateAliasHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s CreateAliasHeaders) String() string {
@@ -1081,23 +1149,8 @@ func (s *CreateAliasHeaders) SetXFcAccountId(v string) *CreateAliasHeaders {
 	return s
 }
 
-func (s *CreateAliasHeaders) SetXFcCodeChecksum(v string) *CreateAliasHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *CreateAliasHeaders) SetXFcDate(v string) *CreateAliasHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *CreateAliasHeaders) SetXFcInvocationType(v string) *CreateAliasHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *CreateAliasHeaders) SetXFcLogType(v string) *CreateAliasHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -1222,13 +1275,10 @@ func (s *CreateAliasResponse) SetBody(v *CreateAliasResponseBody) *CreateAliasRe
 }
 
 type CreateCustomDomainHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s CreateCustomDomainHeaders) String() string {
@@ -1249,23 +1299,8 @@ func (s *CreateCustomDomainHeaders) SetXFcAccountId(v string) *CreateCustomDomai
 	return s
 }
 
-func (s *CreateCustomDomainHeaders) SetXFcCodeChecksum(v string) *CreateCustomDomainHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *CreateCustomDomainHeaders) SetXFcDate(v string) *CreateCustomDomainHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *CreateCustomDomainHeaders) SetXFcInvocationType(v string) *CreateCustomDomainHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *CreateCustomDomainHeaders) SetXFcLogType(v string) *CreateCustomDomainHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -1393,13 +1428,11 @@ func (s *CreateCustomDomainResponse) SetBody(v *CreateCustomDomainResponseBody) 
 }
 
 type CreateFunctionHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders   map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId    *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate         *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId      *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s CreateFunctionHeaders) String() string {
@@ -1427,16 +1460,6 @@ func (s *CreateFunctionHeaders) SetXFcCodeChecksum(v string) *CreateFunctionHead
 
 func (s *CreateFunctionHeaders) SetXFcDate(v string) *CreateFunctionHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *CreateFunctionHeaders) SetXFcInvocationType(v string) *CreateFunctionHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *CreateFunctionHeaders) SetXFcLogType(v string) *CreateFunctionHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -1759,13 +1782,10 @@ func (s *CreateFunctionResponse) SetBody(v *CreateFunctionResponseBody) *CreateF
 }
 
 type CreateLayerVersionHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s CreateLayerVersionHeaders) String() string {
@@ -1786,23 +1806,8 @@ func (s *CreateLayerVersionHeaders) SetXFcAccountId(v string) *CreateLayerVersio
 	return s
 }
 
-func (s *CreateLayerVersionHeaders) SetXFcCodeChecksum(v string) *CreateLayerVersionHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *CreateLayerVersionHeaders) SetXFcDate(v string) *CreateLayerVersionHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *CreateLayerVersionHeaders) SetXFcInvocationType(v string) *CreateLayerVersionHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *CreateLayerVersionHeaders) SetXFcLogType(v string) *CreateLayerVersionHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -1935,13 +1940,10 @@ func (s *CreateLayerVersionResponse) SetBody(v *CreateLayerVersionResponseBody) 
 }
 
 type CreateServiceHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s CreateServiceHeaders) String() string {
@@ -1962,23 +1964,8 @@ func (s *CreateServiceHeaders) SetXFcAccountId(v string) *CreateServiceHeaders {
 	return s
 }
 
-func (s *CreateServiceHeaders) SetXFcCodeChecksum(v string) *CreateServiceHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *CreateServiceHeaders) SetXFcDate(v string) *CreateServiceHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *CreateServiceHeaders) SetXFcInvocationType(v string) *CreateServiceHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *CreateServiceHeaders) SetXFcLogType(v string) *CreateServiceHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -2158,13 +2145,10 @@ func (s *CreateServiceResponse) SetBody(v *CreateServiceResponseBody) *CreateSer
 }
 
 type CreateTriggerHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s CreateTriggerHeaders) String() string {
@@ -2185,23 +2169,8 @@ func (s *CreateTriggerHeaders) SetXFcAccountId(v string) *CreateTriggerHeaders {
 	return s
 }
 
-func (s *CreateTriggerHeaders) SetXFcCodeChecksum(v string) *CreateTriggerHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *CreateTriggerHeaders) SetXFcDate(v string) *CreateTriggerHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *CreateTriggerHeaders) SetXFcInvocationType(v string) *CreateTriggerHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *CreateTriggerHeaders) SetXFcLogType(v string) *CreateTriggerHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -2379,13 +2348,10 @@ func (s *CreateTriggerResponse) SetBody(v *CreateTriggerResponseBody) *CreateTri
 }
 
 type CreateVpcBindingHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s CreateVpcBindingHeaders) String() string {
@@ -2406,23 +2372,8 @@ func (s *CreateVpcBindingHeaders) SetXFcAccountId(v string) *CreateVpcBindingHea
 	return s
 }
 
-func (s *CreateVpcBindingHeaders) SetXFcCodeChecksum(v string) *CreateVpcBindingHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *CreateVpcBindingHeaders) SetXFcDate(v string) *CreateVpcBindingHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *CreateVpcBindingHeaders) SetXFcInvocationType(v string) *CreateVpcBindingHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *CreateVpcBindingHeaders) SetXFcLogType(v string) *CreateVpcBindingHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -2466,14 +2417,11 @@ func (s *CreateVpcBindingResponse) SetHeaders(v map[string]*string) *CreateVpcBi
 }
 
 type DeleteAliasHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	IfMatch           *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	IfMatch       *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteAliasHeaders) String() string {
@@ -2499,23 +2447,8 @@ func (s *DeleteAliasHeaders) SetXFcAccountId(v string) *DeleteAliasHeaders {
 	return s
 }
 
-func (s *DeleteAliasHeaders) SetXFcCodeChecksum(v string) *DeleteAliasHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *DeleteAliasHeaders) SetXFcDate(v string) *DeleteAliasHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *DeleteAliasHeaders) SetXFcInvocationType(v string) *DeleteAliasHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *DeleteAliasHeaders) SetXFcLogType(v string) *DeleteAliasHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -2542,13 +2475,10 @@ func (s *DeleteAliasResponse) SetHeaders(v map[string]*string) *DeleteAliasRespo
 }
 
 type DeleteCustomDomainHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteCustomDomainHeaders) String() string {
@@ -2569,23 +2499,8 @@ func (s *DeleteCustomDomainHeaders) SetXFcAccountId(v string) *DeleteCustomDomai
 	return s
 }
 
-func (s *DeleteCustomDomainHeaders) SetXFcCodeChecksum(v string) *DeleteCustomDomainHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *DeleteCustomDomainHeaders) SetXFcDate(v string) *DeleteCustomDomainHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *DeleteCustomDomainHeaders) SetXFcInvocationType(v string) *DeleteCustomDomainHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *DeleteCustomDomainHeaders) SetXFcLogType(v string) *DeleteCustomDomainHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -2614,13 +2529,10 @@ func (s *DeleteCustomDomainResponse) SetHeaders(v map[string]*string) *DeleteCus
 type DeleteFunctionHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
-	IfMatch           *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	XFcAccountId      *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	IfMatch      *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate      *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId   *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteFunctionHeaders) String() string {
@@ -2646,23 +2558,8 @@ func (s *DeleteFunctionHeaders) SetXFcAccountId(v string) *DeleteFunctionHeaders
 	return s
 }
 
-func (s *DeleteFunctionHeaders) SetXFcCodeChecksum(v string) *DeleteFunctionHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *DeleteFunctionHeaders) SetXFcDate(v string) *DeleteFunctionHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *DeleteFunctionHeaders) SetXFcInvocationType(v string) *DeleteFunctionHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *DeleteFunctionHeaders) SetXFcLogType(v string) *DeleteFunctionHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -2689,13 +2586,10 @@ func (s *DeleteFunctionResponse) SetHeaders(v map[string]*string) *DeleteFunctio
 }
 
 type DeleteFunctionAsyncInvokeConfigHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteFunctionAsyncInvokeConfigHeaders) String() string {
@@ -2716,23 +2610,8 @@ func (s *DeleteFunctionAsyncInvokeConfigHeaders) SetXFcAccountId(v string) *Dele
 	return s
 }
 
-func (s *DeleteFunctionAsyncInvokeConfigHeaders) SetXFcCodeChecksum(v string) *DeleteFunctionAsyncInvokeConfigHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *DeleteFunctionAsyncInvokeConfigHeaders) SetXFcDate(v string) *DeleteFunctionAsyncInvokeConfigHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *DeleteFunctionAsyncInvokeConfigHeaders) SetXFcInvocationType(v string) *DeleteFunctionAsyncInvokeConfigHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *DeleteFunctionAsyncInvokeConfigHeaders) SetXFcLogType(v string) *DeleteFunctionAsyncInvokeConfigHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -2777,14 +2656,11 @@ func (s *DeleteFunctionAsyncInvokeConfigResponse) SetHeaders(v map[string]*strin
 }
 
 type DeleteFunctionOnDemandConfigHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	IfMatch           *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	IfMatch       *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteFunctionOnDemandConfigHeaders) String() string {
@@ -2810,23 +2686,8 @@ func (s *DeleteFunctionOnDemandConfigHeaders) SetXFcAccountId(v string) *DeleteF
 	return s
 }
 
-func (s *DeleteFunctionOnDemandConfigHeaders) SetXFcCodeChecksum(v string) *DeleteFunctionOnDemandConfigHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *DeleteFunctionOnDemandConfigHeaders) SetXFcDate(v string) *DeleteFunctionOnDemandConfigHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *DeleteFunctionOnDemandConfigHeaders) SetXFcInvocationType(v string) *DeleteFunctionOnDemandConfigHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *DeleteFunctionOnDemandConfigHeaders) SetXFcLogType(v string) *DeleteFunctionOnDemandConfigHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -2870,13 +2731,10 @@ func (s *DeleteFunctionOnDemandConfigResponse) SetHeaders(v map[string]*string) 
 }
 
 type DeleteLayerVersionHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteLayerVersionHeaders) String() string {
@@ -2897,23 +2755,8 @@ func (s *DeleteLayerVersionHeaders) SetXFcAccountId(v string) *DeleteLayerVersio
 	return s
 }
 
-func (s *DeleteLayerVersionHeaders) SetXFcCodeChecksum(v string) *DeleteLayerVersionHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *DeleteLayerVersionHeaders) SetXFcDate(v string) *DeleteLayerVersionHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *DeleteLayerVersionHeaders) SetXFcInvocationType(v string) *DeleteLayerVersionHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *DeleteLayerVersionHeaders) SetXFcLogType(v string) *DeleteLayerVersionHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -2942,13 +2785,10 @@ func (s *DeleteLayerVersionResponse) SetHeaders(v map[string]*string) *DeleteLay
 type DeleteServiceHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
-	IfMatch           *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	XFcAccountId      *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	IfMatch      *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate      *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId   *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteServiceHeaders) String() string {
@@ -2974,23 +2814,8 @@ func (s *DeleteServiceHeaders) SetXFcAccountId(v string) *DeleteServiceHeaders {
 	return s
 }
 
-func (s *DeleteServiceHeaders) SetXFcCodeChecksum(v string) *DeleteServiceHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *DeleteServiceHeaders) SetXFcDate(v string) *DeleteServiceHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *DeleteServiceHeaders) SetXFcInvocationType(v string) *DeleteServiceHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *DeleteServiceHeaders) SetXFcLogType(v string) *DeleteServiceHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -3017,13 +2842,10 @@ func (s *DeleteServiceResponse) SetHeaders(v map[string]*string) *DeleteServiceR
 }
 
 type DeleteServiceVersionHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteServiceVersionHeaders) String() string {
@@ -3044,23 +2866,8 @@ func (s *DeleteServiceVersionHeaders) SetXFcAccountId(v string) *DeleteServiceVe
 	return s
 }
 
-func (s *DeleteServiceVersionHeaders) SetXFcCodeChecksum(v string) *DeleteServiceVersionHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *DeleteServiceVersionHeaders) SetXFcDate(v string) *DeleteServiceVersionHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *DeleteServiceVersionHeaders) SetXFcInvocationType(v string) *DeleteServiceVersionHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *DeleteServiceVersionHeaders) SetXFcLogType(v string) *DeleteServiceVersionHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -3089,13 +2896,10 @@ func (s *DeleteServiceVersionResponse) SetHeaders(v map[string]*string) *DeleteS
 type DeleteTriggerHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
-	IfMatch           *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	XFcAccountId      *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	IfMatch      *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate      *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId   *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteTriggerHeaders) String() string {
@@ -3121,23 +2925,8 @@ func (s *DeleteTriggerHeaders) SetXFcAccountId(v string) *DeleteTriggerHeaders {
 	return s
 }
 
-func (s *DeleteTriggerHeaders) SetXFcCodeChecksum(v string) *DeleteTriggerHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *DeleteTriggerHeaders) SetXFcDate(v string) *DeleteTriggerHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *DeleteTriggerHeaders) SetXFcInvocationType(v string) *DeleteTriggerHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *DeleteTriggerHeaders) SetXFcLogType(v string) *DeleteTriggerHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -3164,13 +2953,10 @@ func (s *DeleteTriggerResponse) SetHeaders(v map[string]*string) *DeleteTriggerR
 }
 
 type DeleteVpcBindingHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeleteVpcBindingHeaders) String() string {
@@ -3191,23 +2977,8 @@ func (s *DeleteVpcBindingHeaders) SetXFcAccountId(v string) *DeleteVpcBindingHea
 	return s
 }
 
-func (s *DeleteVpcBindingHeaders) SetXFcCodeChecksum(v string) *DeleteVpcBindingHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *DeleteVpcBindingHeaders) SetXFcDate(v string) *DeleteVpcBindingHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *DeleteVpcBindingHeaders) SetXFcInvocationType(v string) *DeleteVpcBindingHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *DeleteVpcBindingHeaders) SetXFcLogType(v string) *DeleteVpcBindingHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -3234,13 +3005,10 @@ func (s *DeleteVpcBindingResponse) SetHeaders(v map[string]*string) *DeleteVpcBi
 }
 
 type DeregisterEventSourceHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s DeregisterEventSourceHeaders) String() string {
@@ -3261,23 +3029,8 @@ func (s *DeregisterEventSourceHeaders) SetXFcAccountId(v string) *DeregisterEven
 	return s
 }
 
-func (s *DeregisterEventSourceHeaders) SetXFcCodeChecksum(v string) *DeregisterEventSourceHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *DeregisterEventSourceHeaders) SetXFcDate(v string) *DeregisterEventSourceHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *DeregisterEventSourceHeaders) SetXFcInvocationType(v string) *DeregisterEventSourceHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *DeregisterEventSourceHeaders) SetXFcLogType(v string) *DeregisterEventSourceHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -3322,13 +3075,10 @@ func (s *DeregisterEventSourceResponse) SetHeaders(v map[string]*string) *Deregi
 }
 
 type GetAccountSettingsHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s GetAccountSettingsHeaders) String() string {
@@ -3349,23 +3099,8 @@ func (s *GetAccountSettingsHeaders) SetXFcAccountId(v string) *GetAccountSetting
 	return s
 }
 
-func (s *GetAccountSettingsHeaders) SetXFcCodeChecksum(v string) *GetAccountSettingsHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *GetAccountSettingsHeaders) SetXFcDate(v string) *GetAccountSettingsHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *GetAccountSettingsHeaders) SetXFcInvocationType(v string) *GetAccountSettingsHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *GetAccountSettingsHeaders) SetXFcLogType(v string) *GetAccountSettingsHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -3416,13 +3151,10 @@ func (s *GetAccountSettingsResponse) SetBody(v *GetAccountSettingsResponseBody) 
 }
 
 type GetAliasHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s GetAliasHeaders) String() string {
@@ -3443,23 +3175,8 @@ func (s *GetAliasHeaders) SetXFcAccountId(v string) *GetAliasHeaders {
 	return s
 }
 
-func (s *GetAliasHeaders) SetXFcCodeChecksum(v string) *GetAliasHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *GetAliasHeaders) SetXFcDate(v string) *GetAliasHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *GetAliasHeaders) SetXFcInvocationType(v string) *GetAliasHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *GetAliasHeaders) SetXFcLogType(v string) *GetAliasHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -3545,13 +3262,10 @@ func (s *GetAliasResponse) SetBody(v *GetAliasResponseBody) *GetAliasResponse {
 }
 
 type GetCustomDomainHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s GetCustomDomainHeaders) String() string {
@@ -3572,23 +3286,8 @@ func (s *GetCustomDomainHeaders) SetXFcAccountId(v string) *GetCustomDomainHeade
 	return s
 }
 
-func (s *GetCustomDomainHeaders) SetXFcCodeChecksum(v string) *GetCustomDomainHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *GetCustomDomainHeaders) SetXFcDate(v string) *GetCustomDomainHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *GetCustomDomainHeaders) SetXFcInvocationType(v string) *GetCustomDomainHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *GetCustomDomainHeaders) SetXFcLogType(v string) *GetCustomDomainHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -3681,13 +3380,10 @@ func (s *GetCustomDomainResponse) SetBody(v *GetCustomDomainResponseBody) *GetCu
 }
 
 type GetFunctionHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s GetFunctionHeaders) String() string {
@@ -3708,23 +3404,8 @@ func (s *GetFunctionHeaders) SetXFcAccountId(v string) *GetFunctionHeaders {
 	return s
 }
 
-func (s *GetFunctionHeaders) SetXFcCodeChecksum(v string) *GetFunctionHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *GetFunctionHeaders) SetXFcDate(v string) *GetFunctionHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *GetFunctionHeaders) SetXFcInvocationType(v string) *GetFunctionHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *GetFunctionHeaders) SetXFcLogType(v string) *GetFunctionHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -3935,13 +3616,10 @@ func (s *GetFunctionResponse) SetBody(v *GetFunctionResponseBody) *GetFunctionRe
 }
 
 type GetFunctionAsyncInvokeConfigHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s GetFunctionAsyncInvokeConfigHeaders) String() string {
@@ -3962,23 +3640,8 @@ func (s *GetFunctionAsyncInvokeConfigHeaders) SetXFcAccountId(v string) *GetFunc
 	return s
 }
 
-func (s *GetFunctionAsyncInvokeConfigHeaders) SetXFcCodeChecksum(v string) *GetFunctionAsyncInvokeConfigHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *GetFunctionAsyncInvokeConfigHeaders) SetXFcDate(v string) *GetFunctionAsyncInvokeConfigHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *GetFunctionAsyncInvokeConfigHeaders) SetXFcInvocationType(v string) *GetFunctionAsyncInvokeConfigHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *GetFunctionAsyncInvokeConfigHeaders) SetXFcLogType(v string) *GetFunctionAsyncInvokeConfigHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -4101,13 +3764,10 @@ func (s *GetFunctionAsyncInvokeConfigResponse) SetBody(v *GetFunctionAsyncInvoke
 }
 
 type GetFunctionCodeHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s GetFunctionCodeHeaders) String() string {
@@ -4128,23 +3788,8 @@ func (s *GetFunctionCodeHeaders) SetXFcAccountId(v string) *GetFunctionCodeHeade
 	return s
 }
 
-func (s *GetFunctionCodeHeaders) SetXFcCodeChecksum(v string) *GetFunctionCodeHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *GetFunctionCodeHeaders) SetXFcDate(v string) *GetFunctionCodeHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *GetFunctionCodeHeaders) SetXFcInvocationType(v string) *GetFunctionCodeHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *GetFunctionCodeHeaders) SetXFcLogType(v string) *GetFunctionCodeHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -4220,13 +3865,10 @@ func (s *GetFunctionCodeResponse) SetBody(v *GetFunctionCodeResponseBody) *GetFu
 }
 
 type GetFunctionOnDemandConfigHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s GetFunctionOnDemandConfigHeaders) String() string {
@@ -4247,23 +3889,8 @@ func (s *GetFunctionOnDemandConfigHeaders) SetXFcAccountId(v string) *GetFunctio
 	return s
 }
 
-func (s *GetFunctionOnDemandConfigHeaders) SetXFcCodeChecksum(v string) *GetFunctionOnDemandConfigHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *GetFunctionOnDemandConfigHeaders) SetXFcDate(v string) *GetFunctionOnDemandConfigHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *GetFunctionOnDemandConfigHeaders) SetXFcInvocationType(v string) *GetFunctionOnDemandConfigHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *GetFunctionOnDemandConfigHeaders) SetXFcLogType(v string) *GetFunctionOnDemandConfigHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -4337,13 +3964,10 @@ func (s *GetFunctionOnDemandConfigResponse) SetBody(v *GetFunctionOnDemandConfig
 }
 
 type GetLayerVersionHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s GetLayerVersionHeaders) String() string {
@@ -4364,23 +3988,8 @@ func (s *GetLayerVersionHeaders) SetXFcAccountId(v string) *GetLayerVersionHeade
 	return s
 }
 
-func (s *GetLayerVersionHeaders) SetXFcCodeChecksum(v string) *GetLayerVersionHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *GetLayerVersionHeaders) SetXFcDate(v string) *GetLayerVersionHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *GetLayerVersionHeaders) SetXFcInvocationType(v string) *GetLayerVersionHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *GetLayerVersionHeaders) SetXFcLogType(v string) *GetLayerVersionHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -4412,161 +4021,11 @@ func (s *GetLayerVersionResponse) SetBody(v *Layer) *GetLayerVersionResponse {
 	return s
 }
 
-type GetLayerVersionByArnHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
-}
-
-func (s GetLayerVersionByArnHeaders) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLayerVersionByArnHeaders) GoString() string {
-	return s.String()
-}
-
-func (s *GetLayerVersionByArnHeaders) SetCommonHeaders(v map[string]*string) *GetLayerVersionByArnHeaders {
-	s.CommonHeaders = v
-	return s
-}
-
-func (s *GetLayerVersionByArnHeaders) SetXFcAccountId(v string) *GetLayerVersionByArnHeaders {
-	s.XFcAccountId = &v
-	return s
-}
-
-func (s *GetLayerVersionByArnHeaders) SetXFcCodeChecksum(v string) *GetLayerVersionByArnHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
-func (s *GetLayerVersionByArnHeaders) SetXFcDate(v string) *GetLayerVersionByArnHeaders {
-	s.XFcDate = &v
-	return s
-}
-
-func (s *GetLayerVersionByArnHeaders) SetXFcInvocationType(v string) *GetLayerVersionByArnHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *GetLayerVersionByArnHeaders) SetXFcLogType(v string) *GetLayerVersionByArnHeaders {
-	s.XFcLogType = &v
-	return s
-}
-
-func (s *GetLayerVersionByArnHeaders) SetXFcTraceId(v string) *GetLayerVersionByArnHeaders {
-	s.XFcTraceId = &v
-	return s
-}
-
-type GetLayerVersionByArnResponseBody struct {
-	Acl               *int32              `json:"acl,omitempty" xml:"acl,omitempty"`
-	Arn               *string             `json:"arn,omitempty" xml:"arn,omitempty"`
-	Code              *OutputCodeLocation `json:"code,omitempty" xml:"code,omitempty"`
-	CodeChecksum      *string             `json:"codeChecksum,omitempty" xml:"codeChecksum,omitempty"`
-	Codesize          *int64              `json:"codesize,omitempty" xml:"codesize,omitempty"`
-	CompatibleRuntime []*string           `json:"compatibleRuntime,omitempty" xml:"compatibleRuntime,omitempty" type:"Repeated"`
-	CreateTime        *string             `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	Description       *string             `json:"description,omitempty" xml:"description,omitempty"`
-	LayerName         *string             `json:"layerName,omitempty" xml:"layerName,omitempty"`
-	Version           *int32              `json:"version,omitempty" xml:"version,omitempty"`
-}
-
-func (s GetLayerVersionByArnResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLayerVersionByArnResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetLayerVersionByArnResponseBody) SetAcl(v int32) *GetLayerVersionByArnResponseBody {
-	s.Acl = &v
-	return s
-}
-
-func (s *GetLayerVersionByArnResponseBody) SetArn(v string) *GetLayerVersionByArnResponseBody {
-	s.Arn = &v
-	return s
-}
-
-func (s *GetLayerVersionByArnResponseBody) SetCode(v *OutputCodeLocation) *GetLayerVersionByArnResponseBody {
-	s.Code = v
-	return s
-}
-
-func (s *GetLayerVersionByArnResponseBody) SetCodeChecksum(v string) *GetLayerVersionByArnResponseBody {
-	s.CodeChecksum = &v
-	return s
-}
-
-func (s *GetLayerVersionByArnResponseBody) SetCodesize(v int64) *GetLayerVersionByArnResponseBody {
-	s.Codesize = &v
-	return s
-}
-
-func (s *GetLayerVersionByArnResponseBody) SetCompatibleRuntime(v []*string) *GetLayerVersionByArnResponseBody {
-	s.CompatibleRuntime = v
-	return s
-}
-
-func (s *GetLayerVersionByArnResponseBody) SetCreateTime(v string) *GetLayerVersionByArnResponseBody {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *GetLayerVersionByArnResponseBody) SetDescription(v string) *GetLayerVersionByArnResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *GetLayerVersionByArnResponseBody) SetLayerName(v string) *GetLayerVersionByArnResponseBody {
-	s.LayerName = &v
-	return s
-}
-
-func (s *GetLayerVersionByArnResponseBody) SetVersion(v int32) *GetLayerVersionByArnResponseBody {
-	s.Version = &v
-	return s
-}
-
-type GetLayerVersionByArnResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetLayerVersionByArnResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetLayerVersionByArnResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetLayerVersionByArnResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetLayerVersionByArnResponse) SetHeaders(v map[string]*string) *GetLayerVersionByArnResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetLayerVersionByArnResponse) SetBody(v *GetLayerVersionByArnResponseBody) *GetLayerVersionByArnResponse {
-	s.Body = v
-	return s
-}
-
 type GetProvisionConfigHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s GetProvisionConfigHeaders) String() string {
@@ -4587,23 +4046,8 @@ func (s *GetProvisionConfigHeaders) SetXFcAccountId(v string) *GetProvisionConfi
 	return s
 }
 
-func (s *GetProvisionConfigHeaders) SetXFcCodeChecksum(v string) *GetProvisionConfigHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *GetProvisionConfigHeaders) SetXFcDate(v string) *GetProvisionConfigHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *GetProvisionConfigHeaders) SetXFcInvocationType(v string) *GetProvisionConfigHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *GetProvisionConfigHeaders) SetXFcLogType(v string) *GetProvisionConfigHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -4707,13 +4151,10 @@ func (s *GetProvisionConfigResponse) SetBody(v *GetProvisionConfigResponseBody) 
 }
 
 type GetResourceTagsHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s GetResourceTagsHeaders) String() string {
@@ -4734,23 +4175,8 @@ func (s *GetResourceTagsHeaders) SetXFcAccountId(v string) *GetResourceTagsHeade
 	return s
 }
 
-func (s *GetResourceTagsHeaders) SetXFcCodeChecksum(v string) *GetResourceTagsHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *GetResourceTagsHeaders) SetXFcDate(v string) *GetResourceTagsHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *GetResourceTagsHeaders) SetXFcInvocationType(v string) *GetResourceTagsHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *GetResourceTagsHeaders) SetXFcLogType(v string) *GetResourceTagsHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -4826,13 +4252,10 @@ func (s *GetResourceTagsResponse) SetBody(v *GetResourceTagsResponseBody) *GetRe
 }
 
 type GetServiceHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s GetServiceHeaders) String() string {
@@ -4853,23 +4276,8 @@ func (s *GetServiceHeaders) SetXFcAccountId(v string) *GetServiceHeaders {
 	return s
 }
 
-func (s *GetServiceHeaders) SetXFcCodeChecksum(v string) *GetServiceHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *GetServiceHeaders) SetXFcDate(v string) *GetServiceHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *GetServiceHeaders) SetXFcInvocationType(v string) *GetServiceHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *GetServiceHeaders) SetXFcLogType(v string) *GetServiceHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -5097,13 +4505,10 @@ func (s *GetStatefulAsyncInvocationResponse) SetBody(v *StatefulAsyncInvocation)
 }
 
 type GetTriggerHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s GetTriggerHeaders) String() string {
@@ -5124,23 +4529,8 @@ func (s *GetTriggerHeaders) SetXFcAccountId(v string) *GetTriggerHeaders {
 	return s
 }
 
-func (s *GetTriggerHeaders) SetXFcCodeChecksum(v string) *GetTriggerHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *GetTriggerHeaders) SetXFcDate(v string) *GetTriggerHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *GetTriggerHeaders) SetXFcInvocationType(v string) *GetTriggerHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *GetTriggerHeaders) SetXFcLogType(v string) *GetTriggerHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -5259,10 +4649,9 @@ func (s *GetTriggerResponse) SetBody(v *GetTriggerResponseBody) *GetTriggerRespo
 }
 
 type InvokeFunctionHeaders struct {
-	CommonHeaders   map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId    *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate         *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
 	// 调用方式:Sync或者Async，默认值：Sync
 	XFcInvocationType *string `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
 	// 请求返回日志类型, Tail 为返回函数日志最后 4KB 数据，None 或空值则返回不带有日志，默认为 None
@@ -5286,11 +4675,6 @@ func (s *InvokeFunctionHeaders) SetCommonHeaders(v map[string]*string) *InvokeFu
 
 func (s *InvokeFunctionHeaders) SetXFcAccountId(v string) *InvokeFunctionHeaders {
 	s.XFcAccountId = &v
-	return s
-}
-
-func (s *InvokeFunctionHeaders) SetXFcCodeChecksum(v string) *InvokeFunctionHeaders {
-	s.XFcCodeChecksum = &v
 	return s
 }
 
@@ -5368,13 +4752,10 @@ func (s *InvokeFunctionResponse) SetBody(v []byte) *InvokeFunctionResponse {
 }
 
 type ListAliasesHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListAliasesHeaders) String() string {
@@ -5395,23 +4776,8 @@ func (s *ListAliasesHeaders) SetXFcAccountId(v string) *ListAliasesHeaders {
 	return s
 }
 
-func (s *ListAliasesHeaders) SetXFcCodeChecksum(v string) *ListAliasesHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *ListAliasesHeaders) SetXFcDate(v string) *ListAliasesHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *ListAliasesHeaders) SetXFcInvocationType(v string) *ListAliasesHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *ListAliasesHeaders) SetXFcLogType(v string) *ListAliasesHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -5561,13 +4927,10 @@ func (s *ListAliasesResponse) SetBody(v *ListAliasesResponseBody) *ListAliasesRe
 }
 
 type ListCustomDomainsHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListCustomDomainsHeaders) String() string {
@@ -5588,23 +4951,8 @@ func (s *ListCustomDomainsHeaders) SetXFcAccountId(v string) *ListCustomDomainsH
 	return s
 }
 
-func (s *ListCustomDomainsHeaders) SetXFcCodeChecksum(v string) *ListCustomDomainsHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *ListCustomDomainsHeaders) SetXFcDate(v string) *ListCustomDomainsHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *ListCustomDomainsHeaders) SetXFcInvocationType(v string) *ListCustomDomainsHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *ListCustomDomainsHeaders) SetXFcLogType(v string) *ListCustomDomainsHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -5754,13 +5102,10 @@ func (s *ListCustomDomainsResponse) SetBody(v *ListCustomDomainsResponseBody) *L
 }
 
 type ListEventSourcesHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListEventSourcesHeaders) String() string {
@@ -5781,23 +5126,8 @@ func (s *ListEventSourcesHeaders) SetXFcAccountId(v string) *ListEventSourcesHea
 	return s
 }
 
-func (s *ListEventSourcesHeaders) SetXFcCodeChecksum(v string) *ListEventSourcesHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *ListEventSourcesHeaders) SetXFcDate(v string) *ListEventSourcesHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *ListEventSourcesHeaders) SetXFcInvocationType(v string) *ListEventSourcesHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *ListEventSourcesHeaders) SetXFcLogType(v string) *ListEventSourcesHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -6089,13 +5419,10 @@ func (s *ListFunctionAsyncInvokeConfigsResponse) SetBody(v *ListFunctionAsyncInv
 }
 
 type ListFunctionsHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListFunctionsHeaders) String() string {
@@ -6116,23 +5443,8 @@ func (s *ListFunctionsHeaders) SetXFcAccountId(v string) *ListFunctionsHeaders {
 	return s
 }
 
-func (s *ListFunctionsHeaders) SetXFcCodeChecksum(v string) *ListFunctionsHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *ListFunctionsHeaders) SetXFcDate(v string) *ListFunctionsHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *ListFunctionsHeaders) SetXFcInvocationType(v string) *ListFunctionsHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *ListFunctionsHeaders) SetXFcLogType(v string) *ListFunctionsHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -6381,132 +5693,11 @@ func (s *ListFunctionsResponse) SetBody(v *ListFunctionsResponseBody) *ListFunct
 	return s
 }
 
-type ListInstancesHeaders struct {
+type ListLayerVersionsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-}
-
-func (s ListInstancesHeaders) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListInstancesHeaders) GoString() string {
-	return s.String()
-}
-
-func (s *ListInstancesHeaders) SetCommonHeaders(v map[string]*string) *ListInstancesHeaders {
-	s.CommonHeaders = v
-	return s
-}
-
-func (s *ListInstancesHeaders) SetXFcAccountId(v string) *ListInstancesHeaders {
-	s.XFcAccountId = &v
-	return s
-}
-
-type ListInstancesRequest struct {
-	// 限定此次返回资源的数量。如果不设定，默认返回20，最大不能超过100。返回结果可能小于指定的数量，但不会多于指定的数量
-	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
-	// 用来返回更多结果。第一次查询不需要提供这个参数，后续查询的token从返回结果中获取
-	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// service版本, 可以是versionId或者aliasName
-	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
-}
-
-func (s ListInstancesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListInstancesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListInstancesRequest) SetLimit(v int32) *ListInstancesRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *ListInstancesRequest) SetNextToken(v string) *ListInstancesRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListInstancesRequest) SetQualifier(v string) *ListInstancesRequest {
-	s.Qualifier = &v
-	return s
-}
-
-type ListInstancesResponseBody struct {
-	Instances []*ListInstancesResponseBodyInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
-}
-
-func (s ListInstancesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListInstancesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListInstancesResponseBody) SetInstances(v []*ListInstancesResponseBodyInstances) *ListInstancesResponseBody {
-	s.Instances = v
-	return s
-}
-
-type ListInstancesResponseBodyInstances struct {
-	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	VersionId  *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
-}
-
-func (s ListInstancesResponseBodyInstances) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListInstancesResponseBodyInstances) GoString() string {
-	return s.String()
-}
-
-func (s *ListInstancesResponseBodyInstances) SetInstanceId(v string) *ListInstancesResponseBodyInstances {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyInstances) SetVersionId(v string) *ListInstancesResponseBodyInstances {
-	s.VersionId = &v
-	return s
-}
-
-type ListInstancesResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListInstancesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListInstancesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListInstancesResponse) SetHeaders(v map[string]*string) *ListInstancesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInstancesResponse {
-	s.Body = v
-	return s
-}
-
-type ListLayerVersionsHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListLayerVersionsHeaders) String() string {
@@ -6527,23 +5718,8 @@ func (s *ListLayerVersionsHeaders) SetXFcAccountId(v string) *ListLayerVersionsH
 	return s
 }
 
-func (s *ListLayerVersionsHeaders) SetXFcCodeChecksum(v string) *ListLayerVersionsHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *ListLayerVersionsHeaders) SetXFcDate(v string) *ListLayerVersionsHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *ListLayerVersionsHeaders) SetXFcInvocationType(v string) *ListLayerVersionsHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *ListLayerVersionsHeaders) SetXFcLogType(v string) *ListLayerVersionsHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -6626,13 +5802,10 @@ func (s *ListLayerVersionsResponse) SetBody(v *ListLayerVersionsResponseBody) *L
 }
 
 type ListLayersHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListLayersHeaders) String() string {
@@ -6653,23 +5826,8 @@ func (s *ListLayersHeaders) SetXFcAccountId(v string) *ListLayersHeaders {
 	return s
 }
 
-func (s *ListLayersHeaders) SetXFcCodeChecksum(v string) *ListLayersHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *ListLayersHeaders) SetXFcDate(v string) *ListLayersHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *ListLayersHeaders) SetXFcInvocationType(v string) *ListLayersHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *ListLayersHeaders) SetXFcLogType(v string) *ListLayersHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -6766,13 +5924,10 @@ func (s *ListLayersResponse) SetBody(v *ListLayersResponseBody) *ListLayersRespo
 }
 
 type ListOnDemandConfigsHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListOnDemandConfigsHeaders) String() string {
@@ -6793,23 +5948,8 @@ func (s *ListOnDemandConfigsHeaders) SetXFcAccountId(v string) *ListOnDemandConf
 	return s
 }
 
-func (s *ListOnDemandConfigsHeaders) SetXFcCodeChecksum(v string) *ListOnDemandConfigsHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *ListOnDemandConfigsHeaders) SetXFcDate(v string) *ListOnDemandConfigsHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *ListOnDemandConfigsHeaders) SetXFcInvocationType(v string) *ListOnDemandConfigsHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *ListOnDemandConfigsHeaders) SetXFcLogType(v string) *ListOnDemandConfigsHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -6906,13 +6046,10 @@ func (s *ListOnDemandConfigsResponse) SetBody(v *ListOnDemandConfigsResponseBody
 }
 
 type ListProvisionConfigsHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListProvisionConfigsHeaders) String() string {
@@ -6933,23 +6070,8 @@ func (s *ListProvisionConfigsHeaders) SetXFcAccountId(v string) *ListProvisionCo
 	return s
 }
 
-func (s *ListProvisionConfigsHeaders) SetXFcCodeChecksum(v string) *ListProvisionConfigsHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *ListProvisionConfigsHeaders) SetXFcDate(v string) *ListProvisionConfigsHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *ListProvisionConfigsHeaders) SetXFcInvocationType(v string) *ListProvisionConfigsHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *ListProvisionConfigsHeaders) SetXFcLogType(v string) *ListProvisionConfigsHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -7099,13 +6221,10 @@ func (s *ListProvisionConfigsResponse) SetBody(v *ListProvisionConfigsResponseBo
 }
 
 type ListReservedCapacitiesHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListReservedCapacitiesHeaders) String() string {
@@ -7126,23 +6245,8 @@ func (s *ListReservedCapacitiesHeaders) SetXFcAccountId(v string) *ListReservedC
 	return s
 }
 
-func (s *ListReservedCapacitiesHeaders) SetXFcCodeChecksum(v string) *ListReservedCapacitiesHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *ListReservedCapacitiesHeaders) SetXFcDate(v string) *ListReservedCapacitiesHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *ListReservedCapacitiesHeaders) SetXFcInvocationType(v string) *ListReservedCapacitiesHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *ListReservedCapacitiesHeaders) SetXFcLogType(v string) *ListReservedCapacitiesHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -7223,13 +6327,10 @@ func (s *ListReservedCapacitiesResponse) SetBody(v *ListReservedCapacitiesRespon
 }
 
 type ListServiceVersionsHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListServiceVersionsHeaders) String() string {
@@ -7250,23 +6351,8 @@ func (s *ListServiceVersionsHeaders) SetXFcAccountId(v string) *ListServiceVersi
 	return s
 }
 
-func (s *ListServiceVersionsHeaders) SetXFcCodeChecksum(v string) *ListServiceVersionsHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *ListServiceVersionsHeaders) SetXFcDate(v string) *ListServiceVersionsHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *ListServiceVersionsHeaders) SetXFcInvocationType(v string) *ListServiceVersionsHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *ListServiceVersionsHeaders) SetXFcLogType(v string) *ListServiceVersionsHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -7409,13 +6495,10 @@ func (s *ListServiceVersionsResponse) SetBody(v *ListServiceVersionsResponseBody
 }
 
 type ListServicesHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListServicesHeaders) String() string {
@@ -7436,23 +6519,8 @@ func (s *ListServicesHeaders) SetXFcAccountId(v string) *ListServicesHeaders {
 	return s
 }
 
-func (s *ListServicesHeaders) SetXFcCodeChecksum(v string) *ListServicesHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *ListServicesHeaders) SetXFcDate(v string) *ListServicesHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *ListServicesHeaders) SetXFcInvocationType(v string) *ListServicesHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *ListServicesHeaders) SetXFcLogType(v string) *ListServicesHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -7632,6 +6700,117 @@ func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListService
 	return s
 }
 
+type ListStatefulAsyncInvocationFunctionsHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	// 您的阿里云账号（主账号）ID。
+	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	// 发起API调用的日期，用于对请求签名。格式为yyyy-mm-ddhh:mm:ss。
+	XFcDate *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	// 用于链路追踪的ID。
+	XFcTraceId *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+}
+
+func (s ListStatefulAsyncInvocationFunctionsHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStatefulAsyncInvocationFunctionsHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListStatefulAsyncInvocationFunctionsHeaders) SetCommonHeaders(v map[string]*string) *ListStatefulAsyncInvocationFunctionsHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListStatefulAsyncInvocationFunctionsHeaders) SetXFcAccountId(v string) *ListStatefulAsyncInvocationFunctionsHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ListStatefulAsyncInvocationFunctionsHeaders) SetXFcDate(v string) *ListStatefulAsyncInvocationFunctionsHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ListStatefulAsyncInvocationFunctionsHeaders) SetXFcTraceId(v string) *ListStatefulAsyncInvocationFunctionsHeaders {
+	s.XFcTraceId = &v
+	return s
+}
+
+type ListStatefulAsyncInvocationFunctionsRequest struct {
+	// 限定此次返回资源的数量。如果不设定，默认返回20，最大不能超过100。返回结果可以小于指定的数量，但不会多于指定的数量。
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// 用来标记当前开始读取的位置，置空表示从头开始。第一次查询不需要提供这个参数，后续查询的Token从前一次查询的返回结果中获取。
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+}
+
+func (s ListStatefulAsyncInvocationFunctionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStatefulAsyncInvocationFunctionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListStatefulAsyncInvocationFunctionsRequest) SetLimit(v int32) *ListStatefulAsyncInvocationFunctionsRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListStatefulAsyncInvocationFunctionsRequest) SetNextToken(v string) *ListStatefulAsyncInvocationFunctionsRequest {
+	s.NextToken = &v
+	return s
+}
+
+type ListStatefulAsyncInvocationFunctionsResponseBody struct {
+	// 返回的实际数据列表。
+	Data []*AsyncConfigMeta `json:"data,omitempty" xml:"data,omitempty" type:"Repeated"`
+	// 用来表示当前调用返回读取到的位置，空代表数据已经读取完毕。
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+}
+
+func (s ListStatefulAsyncInvocationFunctionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStatefulAsyncInvocationFunctionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListStatefulAsyncInvocationFunctionsResponseBody) SetData(v []*AsyncConfigMeta) *ListStatefulAsyncInvocationFunctionsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListStatefulAsyncInvocationFunctionsResponseBody) SetNextToken(v string) *ListStatefulAsyncInvocationFunctionsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+type ListStatefulAsyncInvocationFunctionsResponse struct {
+	Headers map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListStatefulAsyncInvocationFunctionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListStatefulAsyncInvocationFunctionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStatefulAsyncInvocationFunctionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListStatefulAsyncInvocationFunctionsResponse) SetHeaders(v map[string]*string) *ListStatefulAsyncInvocationFunctionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListStatefulAsyncInvocationFunctionsResponse) SetBody(v *ListStatefulAsyncInvocationFunctionsResponseBody) *ListStatefulAsyncInvocationFunctionsResponse {
+	s.Body = v
+	return s
+}
+
 type ListStatefulAsyncInvocationsHeaders struct {
 	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
@@ -7797,13 +6976,10 @@ func (s *ListStatefulAsyncInvocationsResponse) SetBody(v *ListStatefulAsyncInvoc
 }
 
 type ListTaggedResourcesHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListTaggedResourcesHeaders) String() string {
@@ -7824,23 +7000,8 @@ func (s *ListTaggedResourcesHeaders) SetXFcAccountId(v string) *ListTaggedResour
 	return s
 }
 
-func (s *ListTaggedResourcesHeaders) SetXFcCodeChecksum(v string) *ListTaggedResourcesHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *ListTaggedResourcesHeaders) SetXFcDate(v string) *ListTaggedResourcesHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *ListTaggedResourcesHeaders) SetXFcInvocationType(v string) *ListTaggedResourcesHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *ListTaggedResourcesHeaders) SetXFcLogType(v string) *ListTaggedResourcesHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -7919,13 +7080,10 @@ func (s *ListTaggedResourcesResponse) SetBody(v *ListTaggedResourcesResponseBody
 }
 
 type ListTriggersHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListTriggersHeaders) String() string {
@@ -7946,23 +7104,8 @@ func (s *ListTriggersHeaders) SetXFcAccountId(v string) *ListTriggersHeaders {
 	return s
 }
 
-func (s *ListTriggersHeaders) SetXFcCodeChecksum(v string) *ListTriggersHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *ListTriggersHeaders) SetXFcDate(v string) *ListTriggersHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *ListTriggersHeaders) SetXFcInvocationType(v string) *ListTriggersHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *ListTriggersHeaders) SetXFcLogType(v string) *ListTriggersHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -8145,13 +7288,10 @@ func (s *ListTriggersResponse) SetBody(v *ListTriggersResponseBody) *ListTrigger
 }
 
 type ListVpcBindingsHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListVpcBindingsHeaders) String() string {
@@ -8172,23 +7312,8 @@ func (s *ListVpcBindingsHeaders) SetXFcAccountId(v string) *ListVpcBindingsHeade
 	return s
 }
 
-func (s *ListVpcBindingsHeaders) SetXFcCodeChecksum(v string) *ListVpcBindingsHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *ListVpcBindingsHeaders) SetXFcDate(v string) *ListVpcBindingsHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *ListVpcBindingsHeaders) SetXFcInvocationType(v string) *ListVpcBindingsHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *ListVpcBindingsHeaders) SetXFcLogType(v string) *ListVpcBindingsHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -8237,155 +7362,12 @@ func (s *ListVpcBindingsResponse) SetBody(v *ListVpcBindingsResponseBody) *ListV
 	return s
 }
 
-type PermanentDeleteLayerVersionHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
-}
-
-func (s PermanentDeleteLayerVersionHeaders) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PermanentDeleteLayerVersionHeaders) GoString() string {
-	return s.String()
-}
-
-func (s *PermanentDeleteLayerVersionHeaders) SetCommonHeaders(v map[string]*string) *PermanentDeleteLayerVersionHeaders {
-	s.CommonHeaders = v
-	return s
-}
-
-func (s *PermanentDeleteLayerVersionHeaders) SetXFcAccountId(v string) *PermanentDeleteLayerVersionHeaders {
-	s.XFcAccountId = &v
-	return s
-}
-
-func (s *PermanentDeleteLayerVersionHeaders) SetXFcCodeChecksum(v string) *PermanentDeleteLayerVersionHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
-func (s *PermanentDeleteLayerVersionHeaders) SetXFcDate(v string) *PermanentDeleteLayerVersionHeaders {
-	s.XFcDate = &v
-	return s
-}
-
-func (s *PermanentDeleteLayerVersionHeaders) SetXFcInvocationType(v string) *PermanentDeleteLayerVersionHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *PermanentDeleteLayerVersionHeaders) SetXFcLogType(v string) *PermanentDeleteLayerVersionHeaders {
-	s.XFcLogType = &v
-	return s
-}
-
-func (s *PermanentDeleteLayerVersionHeaders) SetXFcTraceId(v string) *PermanentDeleteLayerVersionHeaders {
-	s.XFcTraceId = &v
-	return s
-}
-
-type PermanentDeleteLayerVersionResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-}
-
-func (s PermanentDeleteLayerVersionResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PermanentDeleteLayerVersionResponse) GoString() string {
-	return s.String()
-}
-
-func (s *PermanentDeleteLayerVersionResponse) SetHeaders(v map[string]*string) *PermanentDeleteLayerVersionResponse {
-	s.Headers = v
-	return s
-}
-
-type PublishLayerAsPublicHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
-}
-
-func (s PublishLayerAsPublicHeaders) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishLayerAsPublicHeaders) GoString() string {
-	return s.String()
-}
-
-func (s *PublishLayerAsPublicHeaders) SetCommonHeaders(v map[string]*string) *PublishLayerAsPublicHeaders {
-	s.CommonHeaders = v
-	return s
-}
-
-func (s *PublishLayerAsPublicHeaders) SetXFcAccountId(v string) *PublishLayerAsPublicHeaders {
-	s.XFcAccountId = &v
-	return s
-}
-
-func (s *PublishLayerAsPublicHeaders) SetXFcCodeChecksum(v string) *PublishLayerAsPublicHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
-func (s *PublishLayerAsPublicHeaders) SetXFcDate(v string) *PublishLayerAsPublicHeaders {
-	s.XFcDate = &v
-	return s
-}
-
-func (s *PublishLayerAsPublicHeaders) SetXFcInvocationType(v string) *PublishLayerAsPublicHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *PublishLayerAsPublicHeaders) SetXFcLogType(v string) *PublishLayerAsPublicHeaders {
-	s.XFcLogType = &v
-	return s
-}
-
-func (s *PublishLayerAsPublicHeaders) SetXFcTraceId(v string) *PublishLayerAsPublicHeaders {
-	s.XFcTraceId = &v
-	return s
-}
-
-type PublishLayerAsPublicResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-}
-
-func (s PublishLayerAsPublicResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s PublishLayerAsPublicResponse) GoString() string {
-	return s.String()
-}
-
-func (s *PublishLayerAsPublicResponse) SetHeaders(v map[string]*string) *PublishLayerAsPublicResponse {
-	s.Headers = v
-	return s
-}
-
 type PublishServiceVersionHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	IfMatch           *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	IfMatch       *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s PublishServiceVersionHeaders) String() string {
@@ -8411,23 +7393,8 @@ func (s *PublishServiceVersionHeaders) SetXFcAccountId(v string) *PublishService
 	return s
 }
 
-func (s *PublishServiceVersionHeaders) SetXFcCodeChecksum(v string) *PublishServiceVersionHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *PublishServiceVersionHeaders) SetXFcDate(v string) *PublishServiceVersionHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *PublishServiceVersionHeaders) SetXFcInvocationType(v string) *PublishServiceVersionHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *PublishServiceVersionHeaders) SetXFcLogType(v string) *PublishServiceVersionHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -8517,13 +7484,10 @@ func (s *PublishServiceVersionResponse) SetBody(v *PublishServiceVersionResponse
 }
 
 type PutFunctionAsyncInvokeConfigHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s PutFunctionAsyncInvokeConfigHeaders) String() string {
@@ -8544,23 +7508,8 @@ func (s *PutFunctionAsyncInvokeConfigHeaders) SetXFcAccountId(v string) *PutFunc
 	return s
 }
 
-func (s *PutFunctionAsyncInvokeConfigHeaders) SetXFcCodeChecksum(v string) *PutFunctionAsyncInvokeConfigHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *PutFunctionAsyncInvokeConfigHeaders) SetXFcDate(v string) *PutFunctionAsyncInvokeConfigHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *PutFunctionAsyncInvokeConfigHeaders) SetXFcInvocationType(v string) *PutFunctionAsyncInvokeConfigHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *PutFunctionAsyncInvokeConfigHeaders) SetXFcLogType(v string) *PutFunctionAsyncInvokeConfigHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -8709,14 +7658,11 @@ func (s *PutFunctionAsyncInvokeConfigResponse) SetBody(v *PutFunctionAsyncInvoke
 }
 
 type PutFunctionOnDemandConfigHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	IfMatch           *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	IfMatch       *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s PutFunctionOnDemandConfigHeaders) String() string {
@@ -8742,23 +7688,8 @@ func (s *PutFunctionOnDemandConfigHeaders) SetXFcAccountId(v string) *PutFunctio
 	return s
 }
 
-func (s *PutFunctionOnDemandConfigHeaders) SetXFcCodeChecksum(v string) *PutFunctionOnDemandConfigHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *PutFunctionOnDemandConfigHeaders) SetXFcDate(v string) *PutFunctionOnDemandConfigHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *PutFunctionOnDemandConfigHeaders) SetXFcInvocationType(v string) *PutFunctionOnDemandConfigHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *PutFunctionOnDemandConfigHeaders) SetXFcLogType(v string) *PutFunctionOnDemandConfigHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -8837,13 +7768,10 @@ func (s *PutFunctionOnDemandConfigResponse) SetBody(v *PutFunctionOnDemandConfig
 }
 
 type PutProvisionConfigHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s PutProvisionConfigHeaders) String() string {
@@ -8864,23 +7792,8 @@ func (s *PutProvisionConfigHeaders) SetXFcAccountId(v string) *PutProvisionConfi
 	return s
 }
 
-func (s *PutProvisionConfigHeaders) SetXFcCodeChecksum(v string) *PutProvisionConfigHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *PutProvisionConfigHeaders) SetXFcDate(v string) *PutProvisionConfigHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *PutProvisionConfigHeaders) SetXFcInvocationType(v string) *PutProvisionConfigHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *PutProvisionConfigHeaders) SetXFcLogType(v string) *PutProvisionConfigHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -8998,13 +7911,10 @@ func (s *PutProvisionConfigResponse) SetBody(v *PutProvisionConfigResponseBody) 
 }
 
 type RegisterEventSourceHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s RegisterEventSourceHeaders) String() string {
@@ -9025,23 +7935,8 @@ func (s *RegisterEventSourceHeaders) SetXFcAccountId(v string) *RegisterEventSou
 	return s
 }
 
-func (s *RegisterEventSourceHeaders) SetXFcCodeChecksum(v string) *RegisterEventSourceHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *RegisterEventSourceHeaders) SetXFcDate(v string) *RegisterEventSourceHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *RegisterEventSourceHeaders) SetXFcInvocationType(v string) *RegisterEventSourceHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *RegisterEventSourceHeaders) SetXFcLogType(v string) *RegisterEventSourceHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -9124,13 +8019,10 @@ func (s *RegisterEventSourceResponse) SetBody(v *RegisterEventSourceResponseBody
 }
 
 type StopStatefulAsyncInvocationHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s StopStatefulAsyncInvocationHeaders) String() string {
@@ -9151,23 +8043,8 @@ func (s *StopStatefulAsyncInvocationHeaders) SetXFcAccountId(v string) *StopStat
 	return s
 }
 
-func (s *StopStatefulAsyncInvocationHeaders) SetXFcCodeChecksum(v string) *StopStatefulAsyncInvocationHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *StopStatefulAsyncInvocationHeaders) SetXFcDate(v string) *StopStatefulAsyncInvocationHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *StopStatefulAsyncInvocationHeaders) SetXFcInvocationType(v string) *StopStatefulAsyncInvocationHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *StopStatefulAsyncInvocationHeaders) SetXFcLogType(v string) *StopStatefulAsyncInvocationHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -9211,13 +8088,10 @@ func (s *StopStatefulAsyncInvocationResponse) SetHeaders(v map[string]*string) *
 }
 
 type TagResourceHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s TagResourceHeaders) String() string {
@@ -9238,23 +8112,8 @@ func (s *TagResourceHeaders) SetXFcAccountId(v string) *TagResourceHeaders {
 	return s
 }
 
-func (s *TagResourceHeaders) SetXFcCodeChecksum(v string) *TagResourceHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *TagResourceHeaders) SetXFcDate(v string) *TagResourceHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *TagResourceHeaders) SetXFcInvocationType(v string) *TagResourceHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *TagResourceHeaders) SetXFcLogType(v string) *TagResourceHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -9304,13 +8163,10 @@ func (s *TagResourceResponse) SetHeaders(v map[string]*string) *TagResourceRespo
 }
 
 type UntagResourceHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s UntagResourceHeaders) String() string {
@@ -9331,23 +8187,8 @@ func (s *UntagResourceHeaders) SetXFcAccountId(v string) *UntagResourceHeaders {
 	return s
 }
 
-func (s *UntagResourceHeaders) SetXFcCodeChecksum(v string) *UntagResourceHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *UntagResourceHeaders) SetXFcDate(v string) *UntagResourceHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *UntagResourceHeaders) SetXFcInvocationType(v string) *UntagResourceHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *UntagResourceHeaders) SetXFcLogType(v string) *UntagResourceHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -9406,14 +8247,11 @@ func (s *UntagResourceResponse) SetHeaders(v map[string]*string) *UntagResourceR
 }
 
 type UpdateAliasHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	IfMatch           *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	IfMatch       *string            `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s UpdateAliasHeaders) String() string {
@@ -9439,23 +8277,8 @@ func (s *UpdateAliasHeaders) SetXFcAccountId(v string) *UpdateAliasHeaders {
 	return s
 }
 
-func (s *UpdateAliasHeaders) SetXFcCodeChecksum(v string) *UpdateAliasHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *UpdateAliasHeaders) SetXFcDate(v string) *UpdateAliasHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *UpdateAliasHeaders) SetXFcInvocationType(v string) *UpdateAliasHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *UpdateAliasHeaders) SetXFcLogType(v string) *UpdateAliasHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -9573,13 +8396,10 @@ func (s *UpdateAliasResponse) SetBody(v *UpdateAliasResponseBody) *UpdateAliasRe
 }
 
 type UpdateCustomDomainHeaders struct {
-	CommonHeaders     map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
-	XFcAccountId      *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string            `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string            `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string            `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s UpdateCustomDomainHeaders) String() string {
@@ -9600,23 +8420,8 @@ func (s *UpdateCustomDomainHeaders) SetXFcAccountId(v string) *UpdateCustomDomai
 	return s
 }
 
-func (s *UpdateCustomDomainHeaders) SetXFcCodeChecksum(v string) *UpdateCustomDomainHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *UpdateCustomDomainHeaders) SetXFcDate(v string) *UpdateCustomDomainHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *UpdateCustomDomainHeaders) SetXFcInvocationType(v string) *UpdateCustomDomainHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *UpdateCustomDomainHeaders) SetXFcLogType(v string) *UpdateCustomDomainHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -9739,13 +8544,11 @@ func (s *UpdateCustomDomainResponse) SetBody(v *UpdateCustomDomainResponseBody) 
 type UpdateFunctionHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
-	IfMatch           *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	XFcAccountId      *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	IfMatch         *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId    *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcCodeChecksum *string `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
+	XFcDate         *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId      *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s UpdateFunctionHeaders) String() string {
@@ -9778,16 +8581,6 @@ func (s *UpdateFunctionHeaders) SetXFcCodeChecksum(v string) *UpdateFunctionHead
 
 func (s *UpdateFunctionHeaders) SetXFcDate(v string) *UpdateFunctionHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *UpdateFunctionHeaders) SetXFcInvocationType(v string) *UpdateFunctionHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *UpdateFunctionHeaders) SetXFcLogType(v string) *UpdateFunctionHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -10100,13 +8893,10 @@ func (s *UpdateFunctionResponse) SetBody(v *UpdateFunctionResponseBody) *UpdateF
 type UpdateServiceHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
-	IfMatch           *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	XFcAccountId      *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	IfMatch      *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate      *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId   *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s UpdateServiceHeaders) String() string {
@@ -10132,23 +8922,8 @@ func (s *UpdateServiceHeaders) SetXFcAccountId(v string) *UpdateServiceHeaders {
 	return s
 }
 
-func (s *UpdateServiceHeaders) SetXFcCodeChecksum(v string) *UpdateServiceHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *UpdateServiceHeaders) SetXFcDate(v string) *UpdateServiceHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *UpdateServiceHeaders) SetXFcInvocationType(v string) *UpdateServiceHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *UpdateServiceHeaders) SetXFcLogType(v string) *UpdateServiceHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -10323,13 +9098,10 @@ func (s *UpdateServiceResponse) SetBody(v *UpdateServiceResponseBody) *UpdateSer
 type UpdateTriggerHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	// 用于确保实际更改的资源和期望更改的资源是一致的，该值来自Create，Get和Update API的响应
-	IfMatch           *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
-	XFcAccountId      *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcCodeChecksum   *string `json:"X-Fc-Code-Checksum,omitempty" xml:"X-Fc-Code-Checksum,omitempty"`
-	XFcDate           *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcInvocationType *string `json:"X-Fc-Invocation-Type,omitempty" xml:"X-Fc-Invocation-Type,omitempty"`
-	XFcLogType        *string `json:"X-Fc-Log-Type,omitempty" xml:"X-Fc-Log-Type,omitempty"`
-	XFcTraceId        *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
+	IfMatch      *string `json:"If-Match,omitempty" xml:"If-Match,omitempty"`
+	XFcAccountId *string `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate      *string `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId   *string `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s UpdateTriggerHeaders) String() string {
@@ -10355,23 +9127,8 @@ func (s *UpdateTriggerHeaders) SetXFcAccountId(v string) *UpdateTriggerHeaders {
 	return s
 }
 
-func (s *UpdateTriggerHeaders) SetXFcCodeChecksum(v string) *UpdateTriggerHeaders {
-	s.XFcCodeChecksum = &v
-	return s
-}
-
 func (s *UpdateTriggerHeaders) SetXFcDate(v string) *UpdateTriggerHeaders {
 	s.XFcDate = &v
-	return s
-}
-
-func (s *UpdateTriggerHeaders) SetXFcInvocationType(v string) *UpdateTriggerHeaders {
-	s.XFcInvocationType = &v
-	return s
-}
-
-func (s *UpdateTriggerHeaders) SetXFcLogType(v string) *UpdateTriggerHeaders {
-	s.XFcLogType = &v
 	return s
 }
 
@@ -10641,20 +9398,8 @@ func (client *Client) CreateAliasWithOptions(serviceName *string, request *Creat
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -10728,20 +9473,8 @@ func (client *Client) CreateCustomDomainWithOptions(request *CreateCustomDomainR
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -10880,14 +9613,6 @@ func (client *Client) CreateFunctionWithOptions(serviceName *string, request *Cr
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
 		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
 	}
@@ -10956,20 +9681,8 @@ func (client *Client) CreateLayerVersionWithOptions(layerName *string, request *
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -11059,20 +9772,8 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, he
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -11160,20 +9861,8 @@ func (client *Client) CreateTriggerWithOptions(serviceName *string, functionName
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -11236,20 +9925,8 @@ func (client *Client) CreateVpcBindingWithOptions(serviceName *string, request *
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -11308,20 +9985,8 @@ func (client *Client) DeleteAliasWithOptions(serviceName *string, aliasName *str
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -11374,20 +10039,8 @@ func (client *Client) DeleteCustomDomainWithOptions(domainName *string, headers 
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -11445,20 +10098,8 @@ func (client *Client) DeleteFunctionWithOptions(serviceName *string, functionNam
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -11521,20 +10162,8 @@ func (client *Client) DeleteFunctionAsyncInvokeConfigWithOptions(serviceName *st
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -11602,20 +10231,8 @@ func (client *Client) DeleteFunctionOnDemandConfigWithOptions(serviceName *strin
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -11670,20 +10287,8 @@ func (client *Client) DeleteLayerVersionWithOptions(layerName *string, version *
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -11740,20 +10345,8 @@ func (client *Client) DeleteServiceWithOptions(serviceName *string, headers *Del
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -11807,20 +10400,8 @@ func (client *Client) DeleteServiceVersionWithOptions(serviceName *string, versi
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -11879,20 +10460,8 @@ func (client *Client) DeleteTriggerWithOptions(serviceName *string, functionName
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -11946,20 +10515,8 @@ func (client *Client) DeleteVpcBindingWithOptions(serviceName *string, vpcId *st
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -12023,20 +10580,8 @@ func (client *Client) DeregisterEventSourceWithOptions(serviceName *string, func
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -12089,20 +10634,8 @@ func (client *Client) GetAccountSettingsWithOptions(headers *GetAccountSettingsH
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -12156,20 +10689,8 @@ func (client *Client) GetAliasWithOptions(serviceName *string, aliasName *string
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -12222,20 +10743,8 @@ func (client *Client) GetCustomDomainWithOptions(domainName *string, headers *Ge
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -12298,20 +10807,8 @@ func (client *Client) GetFunctionWithOptions(serviceName *string, functionName *
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -12375,20 +10872,8 @@ func (client *Client) GetFunctionAsyncInvokeConfigWithOptions(serviceName *strin
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -12452,20 +10937,8 @@ func (client *Client) GetFunctionCodeWithOptions(serviceName *string, functionNa
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -12529,20 +11002,8 @@ func (client *Client) GetFunctionOnDemandConfigWithOptions(serviceName *string, 
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -12597,20 +11058,8 @@ func (client *Client) GetLayerVersionWithOptions(layerName *string, version *str
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -12632,72 +11081,6 @@ func (client *Client) GetLayerVersionWithOptions(layerName *string, version *str
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetLayerVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetLayerVersionByArn(arn *string) (_result *GetLayerVersionByArnResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := &GetLayerVersionByArnHeaders{}
-	_result = &GetLayerVersionByArnResponse{}
-	_body, _err := client.GetLayerVersionByArnWithOptions(arn, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetLayerVersionByArnWithOptions(arn *string, headers *GetLayerVersionByArnHeaders, runtime *util.RuntimeOptions) (_result *GetLayerVersionByArnResponse, _err error) {
-	arn = openapiutil.GetEncodeParam(arn)
-	realHeaders := make(map[string]*string)
-	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
-		realHeaders = headers.CommonHeaders
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
-		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
-		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
-		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: realHeaders,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetLayerVersionByArn"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/layerarn/" + tea.StringValue(arn)),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetLayerVersionByArnResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -12739,20 +11122,8 @@ func (client *Client) GetProvisionConfigWithOptions(serviceName *string, functio
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -12814,20 +11185,8 @@ func (client *Client) GetResourceTagsWithOptions(request *GetResourceTagsRequest
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -12890,20 +11249,8 @@ func (client *Client) GetServiceWithOptions(serviceName *string, request *GetSer
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -13037,20 +11384,8 @@ func (client *Client) GetTriggerWithOptions(serviceName *string, functionName *s
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -13111,10 +11446,6 @@ func (client *Client) InvokeFunctionWithOptions(serviceName *string, functionNam
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
@@ -13206,20 +11537,8 @@ func (client *Client) ListAliasesWithOptions(serviceName *string, request *ListA
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -13293,20 +11612,8 @@ func (client *Client) ListCustomDomainsWithOptions(request *ListCustomDomainsReq
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -13370,20 +11677,8 @@ func (client *Client) ListEventSourcesWithOptions(serviceName *string, functionN
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -13543,20 +11838,8 @@ func (client *Client) ListFunctionsWithOptions(serviceName *string, request *Lis
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -13579,71 +11862,6 @@ func (client *Client) ListFunctionsWithOptions(serviceName *string, request *Lis
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListFunctionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListInstances(serviceName *string, functionName *string, request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := &ListInstancesHeaders{}
-	_result = &ListInstancesResponse{}
-	_body, _err := client.ListInstancesWithOptions(serviceName, functionName, request, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListInstancesWithOptions(serviceName *string, functionName *string, request *ListInstancesRequest, headers *ListInstancesHeaders, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	serviceName = openapiutil.GetEncodeParam(serviceName)
-	functionName = openapiutil.GetEncodeParam(functionName)
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Limit)) {
-		query["limit"] = request.Limit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
-		query["nextToken"] = request.NextToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
-		query["qualifier"] = request.Qualifier
-	}
-
-	realHeaders := make(map[string]*string)
-	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
-		realHeaders = headers.CommonHeaders
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
-		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: realHeaders,
-		Query:   openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListInstances"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/instances"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListInstancesResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -13688,20 +11906,8 @@ func (client *Client) ListLayerVersionsWithOptions(layerName *string, request *L
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -13775,20 +11981,8 @@ func (client *Client) ListLayersWithOptions(request *ListLayersRequest, headers 
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -13862,20 +12056,8 @@ func (client *Client) ListOnDemandConfigsWithOptions(request *ListOnDemandConfig
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -13949,20 +12131,8 @@ func (client *Client) ListProvisionConfigsWithOptions(request *ListProvisionConf
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -14028,20 +12198,8 @@ func (client *Client) ListReservedCapacitiesWithOptions(request *ListReservedCap
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -14116,20 +12274,8 @@ func (client *Client) ListServiceVersionsWithOptions(serviceName *string, reques
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -14203,20 +12349,8 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, head
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -14239,6 +12373,73 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, head
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListServicesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListStatefulAsyncInvocationFunctions(request *ListStatefulAsyncInvocationFunctionsRequest) (_result *ListStatefulAsyncInvocationFunctionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListStatefulAsyncInvocationFunctionsHeaders{}
+	_result = &ListStatefulAsyncInvocationFunctionsResponse{}
+	_body, _err := client.ListStatefulAsyncInvocationFunctionsWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListStatefulAsyncInvocationFunctionsWithOptions(request *ListStatefulAsyncInvocationFunctionsRequest, headers *ListStatefulAsyncInvocationFunctionsHeaders, runtime *util.RuntimeOptions) (_result *ListStatefulAsyncInvocationFunctionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["nextToken"] = request.NextToken
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListStatefulAsyncInvocationFunctions"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/stateful-async-invocation-functions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListStatefulAsyncInvocationFunctionsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -14391,20 +12592,8 @@ func (client *Client) ListTaggedResourcesWithOptions(request *ListTaggedResource
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -14480,20 +12669,8 @@ func (client *Client) ListTriggersWithOptions(serviceName *string, functionName 
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -14547,20 +12724,8 @@ func (client *Client) ListVpcBindingsWithOptions(serviceName *string, headers *L
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -14582,141 +12747,6 @@ func (client *Client) ListVpcBindingsWithOptions(serviceName *string, headers *L
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListVpcBindingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) PermanentDeleteLayerVersion(userID *string, layerName *string, version *string) (_result *PermanentDeleteLayerVersionResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := &PermanentDeleteLayerVersionHeaders{}
-	_result = &PermanentDeleteLayerVersionResponse{}
-	_body, _err := client.PermanentDeleteLayerVersionWithOptions(userID, layerName, version, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) PermanentDeleteLayerVersionWithOptions(userID *string, layerName *string, version *string, headers *PermanentDeleteLayerVersionHeaders, runtime *util.RuntimeOptions) (_result *PermanentDeleteLayerVersionResponse, _err error) {
-	userID = openapiutil.GetEncodeParam(userID)
-	layerName = openapiutil.GetEncodeParam(layerName)
-	version = openapiutil.GetEncodeParam(version)
-	realHeaders := make(map[string]*string)
-	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
-		realHeaders = headers.CommonHeaders
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
-		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
-		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
-		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: realHeaders,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("PermanentDeleteLayerVersion"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/adminlayers/" + tea.StringValue(userID) + "/" + tea.StringValue(layerName) + "/versions/" + tea.StringValue(version)),
-		Method:      tea.String("DELETE"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &PermanentDeleteLayerVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) PublishLayerAsPublic(layerName *string, version *string) (_result *PublishLayerAsPublicResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := &PublishLayerAsPublicHeaders{}
-	_result = &PublishLayerAsPublicResponse{}
-	_body, _err := client.PublishLayerAsPublicWithOptions(layerName, version, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) PublishLayerAsPublicWithOptions(layerName *string, version *string, headers *PublishLayerAsPublicHeaders, runtime *util.RuntimeOptions) (_result *PublishLayerAsPublicResponse, _err error) {
-	layerName = openapiutil.GetEncodeParam(layerName)
-	version = openapiutil.GetEncodeParam(version)
-	realHeaders := make(map[string]*string)
-	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
-		realHeaders = headers.CommonHeaders
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
-		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
-		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
-		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
-	}
-
-	req := &openapi.OpenApiRequest{
-		Headers: realHeaders,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("PublishLayerAsPublic"),
-		Version:     tea.String("2021-04-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/2021-04-06/layers/" + tea.StringValue(layerName) + "/versions/" + tea.StringValue(version)),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("none"),
-	}
-	_result = &PublishLayerAsPublicResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -14761,20 +12791,8 @@ func (client *Client) PublishServiceVersionWithOptions(serviceName *string, requ
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -14855,20 +12873,8 @@ func (client *Client) PutFunctionAsyncInvokeConfigWithOptions(serviceName *strin
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -14942,20 +12948,8 @@ func (client *Client) PutFunctionOnDemandConfigWithOptions(serviceName *string, 
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -15033,20 +13027,8 @@ func (client *Client) PutProvisionConfigWithOptions(serviceName *string, functio
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -15116,20 +13098,8 @@ func (client *Client) RegisterEventSourceWithOptions(serviceName *string, functi
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -15195,20 +13165,8 @@ func (client *Client) StopStatefulAsyncInvocationWithOptions(serviceName *string
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -15274,20 +13232,8 @@ func (client *Client) TagResourceWithOptions(request *TagResourceRequest, header
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -15357,20 +13303,8 @@ func (client *Client) UntagResourceWithOptions(request *UntagResourceRequest, he
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -15446,20 +13380,8 @@ func (client *Client) UpdateAliasWithOptions(serviceName *string, aliasName *str
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -15530,20 +13452,8 @@ func (client *Client) UpdateCustomDomainWithOptions(domainName *string, request 
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -15683,14 +13593,6 @@ func (client *Client) UpdateFunctionWithOptions(serviceName *string, functionNam
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
 		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
 	}
@@ -15779,20 +13681,8 @@ func (client *Client) UpdateServiceWithOptions(serviceName *string, request *Upd
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
@@ -15873,20 +13763,8 @@ func (client *Client) UpdateTriggerWithOptions(serviceName *string, functionName
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
 	}
 
-	if !tea.BoolValue(util.IsUnset(headers.XFcCodeChecksum)) {
-		realHeaders["X-Fc-Code-Checksum"] = util.ToJSONString(headers.XFcCodeChecksum)
-	}
-
 	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
 		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcInvocationType)) {
-		realHeaders["X-Fc-Invocation-Type"] = util.ToJSONString(headers.XFcInvocationType)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcLogType)) {
-		realHeaders["X-Fc-Log-Type"] = util.ToJSONString(headers.XFcLogType)
 	}
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
