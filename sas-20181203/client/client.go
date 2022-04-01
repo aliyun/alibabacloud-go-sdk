@@ -5302,104 +5302,6 @@ func (s *DescribeCriteriaResponse) SetBody(v *DescribeCriteriaResponseBody) *Des
 	return s
 }
 
-type DescribeDialogMessagesRequest struct {
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-}
-
-func (s DescribeDialogMessagesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDialogMessagesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDialogMessagesRequest) SetSourceIp(v string) *DescribeDialogMessagesRequest {
-	s.SourceIp = &v
-	return s
-}
-
-type DescribeDialogMessagesResponseBody struct {
-	DialogList []*DescribeDialogMessagesResponseBodyDialogList `json:"DialogList,omitempty" xml:"DialogList,omitempty" type:"Repeated"`
-	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DescribeDialogMessagesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDialogMessagesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDialogMessagesResponseBody) SetDialogList(v []*DescribeDialogMessagesResponseBodyDialogList) *DescribeDialogMessagesResponseBody {
-	s.DialogList = v
-	return s
-}
-
-func (s *DescribeDialogMessagesResponseBody) SetRequestId(v string) *DescribeDialogMessagesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeDialogMessagesResponseBody) SetTotalCount(v int32) *DescribeDialogMessagesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type DescribeDialogMessagesResponseBodyDialogList struct {
-	DialogKey *string `json:"DialogKey,omitempty" xml:"DialogKey,omitempty"`
-	ID        *int64  `json:"ID,omitempty" xml:"ID,omitempty"`
-	Params    *string `json:"Params,omitempty" xml:"Params,omitempty"`
-}
-
-func (s DescribeDialogMessagesResponseBodyDialogList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDialogMessagesResponseBodyDialogList) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDialogMessagesResponseBodyDialogList) SetDialogKey(v string) *DescribeDialogMessagesResponseBodyDialogList {
-	s.DialogKey = &v
-	return s
-}
-
-func (s *DescribeDialogMessagesResponseBodyDialogList) SetID(v int64) *DescribeDialogMessagesResponseBodyDialogList {
-	s.ID = &v
-	return s
-}
-
-func (s *DescribeDialogMessagesResponseBodyDialogList) SetParams(v string) *DescribeDialogMessagesResponseBodyDialogList {
-	s.Params = &v
-	return s
-}
-
-type DescribeDialogMessagesResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDialogMessagesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDialogMessagesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDialogMessagesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDialogMessagesResponse) SetHeaders(v map[string]*string) *DescribeDialogMessagesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDialogMessagesResponse) SetBody(v *DescribeDialogMessagesResponseBody) *DescribeDialogMessagesResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeDingTalkRequest struct {
 	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -10503,6 +10405,187 @@ func (s *DescribeInstanceStatisticsResponse) SetBody(v *DescribeInstanceStatisti
 	return s
 }
 
+type DescribeLoginBaseConfigsRequest struct {
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Target      *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeLoginBaseConfigsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoginBaseConfigsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoginBaseConfigsRequest) SetCurrentPage(v int32) *DescribeLoginBaseConfigsRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeLoginBaseConfigsRequest) SetPageSize(v int32) *DescribeLoginBaseConfigsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeLoginBaseConfigsRequest) SetTarget(v string) *DescribeLoginBaseConfigsRequest {
+	s.Target = &v
+	return s
+}
+
+func (s *DescribeLoginBaseConfigsRequest) SetType(v string) *DescribeLoginBaseConfigsRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeLoginBaseConfigsResponseBody struct {
+	BaseConfigs []*DescribeLoginBaseConfigsResponseBodyBaseConfigs `json:"BaseConfigs,omitempty" xml:"BaseConfigs,omitempty" type:"Repeated"`
+	CurrentPage *int32                                             `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeLoginBaseConfigsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoginBaseConfigsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoginBaseConfigsResponseBody) SetBaseConfigs(v []*DescribeLoginBaseConfigsResponseBodyBaseConfigs) *DescribeLoginBaseConfigsResponseBody {
+	s.BaseConfigs = v
+	return s
+}
+
+func (s *DescribeLoginBaseConfigsResponseBody) SetCurrentPage(v int32) *DescribeLoginBaseConfigsResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeLoginBaseConfigsResponseBody) SetPageSize(v int32) *DescribeLoginBaseConfigsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeLoginBaseConfigsResponseBody) SetRequestId(v string) *DescribeLoginBaseConfigsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLoginBaseConfigsResponseBody) SetTotalCount(v int32) *DescribeLoginBaseConfigsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeLoginBaseConfigsResponseBodyBaseConfigs struct {
+	Account    *string                                                      `json:"Account,omitempty" xml:"Account,omitempty"`
+	EndTime    *string                                                      `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Ip         *string                                                      `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	Location   *string                                                      `json:"Location,omitempty" xml:"Location,omitempty"`
+	StartTime  *string                                                      `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TargetList []*DescribeLoginBaseConfigsResponseBodyBaseConfigsTargetList `json:"TargetList,omitempty" xml:"TargetList,omitempty" type:"Repeated"`
+	TotalCount *int32                                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	UuidCount  *int32                                                       `json:"UuidCount,omitempty" xml:"UuidCount,omitempty"`
+}
+
+func (s DescribeLoginBaseConfigsResponseBodyBaseConfigs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoginBaseConfigsResponseBodyBaseConfigs) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoginBaseConfigsResponseBodyBaseConfigs) SetAccount(v string) *DescribeLoginBaseConfigsResponseBodyBaseConfigs {
+	s.Account = &v
+	return s
+}
+
+func (s *DescribeLoginBaseConfigsResponseBodyBaseConfigs) SetEndTime(v string) *DescribeLoginBaseConfigsResponseBodyBaseConfigs {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeLoginBaseConfigsResponseBodyBaseConfigs) SetIp(v string) *DescribeLoginBaseConfigsResponseBodyBaseConfigs {
+	s.Ip = &v
+	return s
+}
+
+func (s *DescribeLoginBaseConfigsResponseBodyBaseConfigs) SetLocation(v string) *DescribeLoginBaseConfigsResponseBodyBaseConfigs {
+	s.Location = &v
+	return s
+}
+
+func (s *DescribeLoginBaseConfigsResponseBodyBaseConfigs) SetStartTime(v string) *DescribeLoginBaseConfigsResponseBodyBaseConfigs {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeLoginBaseConfigsResponseBodyBaseConfigs) SetTargetList(v []*DescribeLoginBaseConfigsResponseBodyBaseConfigsTargetList) *DescribeLoginBaseConfigsResponseBodyBaseConfigs {
+	s.TargetList = v
+	return s
+}
+
+func (s *DescribeLoginBaseConfigsResponseBodyBaseConfigs) SetTotalCount(v int32) *DescribeLoginBaseConfigsResponseBodyBaseConfigs {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeLoginBaseConfigsResponseBodyBaseConfigs) SetUuidCount(v int32) *DescribeLoginBaseConfigsResponseBodyBaseConfigs {
+	s.UuidCount = &v
+	return s
+}
+
+type DescribeLoginBaseConfigsResponseBodyBaseConfigsTargetList struct {
+	Target     *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+}
+
+func (s DescribeLoginBaseConfigsResponseBodyBaseConfigsTargetList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoginBaseConfigsResponseBodyBaseConfigsTargetList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoginBaseConfigsResponseBodyBaseConfigsTargetList) SetTarget(v string) *DescribeLoginBaseConfigsResponseBodyBaseConfigsTargetList {
+	s.Target = &v
+	return s
+}
+
+func (s *DescribeLoginBaseConfigsResponseBodyBaseConfigsTargetList) SetTargetType(v string) *DescribeLoginBaseConfigsResponseBodyBaseConfigsTargetList {
+	s.TargetType = &v
+	return s
+}
+
+type DescribeLoginBaseConfigsResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeLoginBaseConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeLoginBaseConfigsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLoginBaseConfigsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLoginBaseConfigsResponse) SetHeaders(v map[string]*string) *DescribeLoginBaseConfigsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLoginBaseConfigsResponse) SetBody(v *DescribeLoginBaseConfigsResponseBody) *DescribeLoginBaseConfigsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeLogstoreStorageRequest struct {
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -14054,8 +14137,8 @@ func (s *DescribeRiskCheckResultResponseBodyList) SetType(v string) *DescribeRis
 }
 
 type DescribeRiskCheckResultResponseBodyListRiskItemResources struct {
-	ContentResource *string `json:"ContentResource,omitempty" xml:"ContentResource,omitempty"`
-	ResourceName    *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ContentResource map[string]*string `json:"ContentResource,omitempty" xml:"ContentResource,omitempty"`
+	ResourceName    *string            `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 }
 
 func (s DescribeRiskCheckResultResponseBodyListRiskItemResources) String() string {
@@ -14066,8 +14149,8 @@ func (s DescribeRiskCheckResultResponseBodyListRiskItemResources) GoString() str
 	return s.String()
 }
 
-func (s *DescribeRiskCheckResultResponseBodyListRiskItemResources) SetContentResource(v string) *DescribeRiskCheckResultResponseBodyListRiskItemResources {
-	s.ContentResource = &v
+func (s *DescribeRiskCheckResultResponseBodyListRiskItemResources) SetContentResource(v map[string]*string) *DescribeRiskCheckResultResponseBodyListRiskItemResources {
+	s.ContentResource = v
 	return s
 }
 
@@ -26612,50 +26695,6 @@ func (client *Client) DescribeCriteria(request *DescribeCriteriaRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) DescribeDialogMessagesWithOptions(request *DescribeDialogMessagesRequest, runtime *util.RuntimeOptions) (_result *DescribeDialogMessagesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
-		query["SourceIp"] = request.SourceIp
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDialogMessages"),
-		Version:     tea.String("2018-12-03"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeDialogMessagesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeDialogMessages(request *DescribeDialogMessagesRequest) (_result *DescribeDialogMessagesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDialogMessagesResponse{}
-	_body, _err := client.DescribeDialogMessagesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeDingTalkWithOptions(request *DescribeDingTalkRequest, runtime *util.RuntimeOptions) (_result *DescribeDingTalkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28410,6 +28449,62 @@ func (client *Client) DescribeInstanceStatistics(request *DescribeInstanceStatis
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceStatisticsResponse{}
 	_body, _err := client.DescribeInstanceStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeLoginBaseConfigsWithOptions(request *DescribeLoginBaseConfigsRequest, runtime *util.RuntimeOptions) (_result *DescribeLoginBaseConfigsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Target)) {
+		query["Target"] = request.Target
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLoginBaseConfigs"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeLoginBaseConfigsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLoginBaseConfigs(request *DescribeLoginBaseConfigsRequest) (_result *DescribeLoginBaseConfigsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLoginBaseConfigsResponse{}
+	_body, _err := client.DescribeLoginBaseConfigsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
