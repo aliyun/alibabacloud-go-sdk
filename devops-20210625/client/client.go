@@ -12,6 +12,167 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AddRepositoryMemberRequest struct {
+	// Codeup访问令牌，使用AK/SK方式访问可以不用填AccessToken
+	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
+	// 成员权限
+	AccessLevel *int32 `json:"accessLevel,omitempty" xml:"accessLevel,omitempty"`
+	// 需要添加为代码库成员的用户阿里云ID。支持多个，以","分割
+	AliyunPks *string `json:"aliyunPks,omitempty" xml:"aliyunPks,omitempty"`
+	// 企业ID
+	OrganizationId *string `json:"organizationId,omitempty" xml:"organizationId,omitempty"`
+}
+
+func (s AddRepositoryMemberRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRepositoryMemberRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddRepositoryMemberRequest) SetAccessToken(v string) *AddRepositoryMemberRequest {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *AddRepositoryMemberRequest) SetAccessLevel(v int32) *AddRepositoryMemberRequest {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *AddRepositoryMemberRequest) SetAliyunPks(v string) *AddRepositoryMemberRequest {
+	s.AliyunPks = &v
+	return s
+}
+
+func (s *AddRepositoryMemberRequest) SetOrganizationId(v string) *AddRepositoryMemberRequest {
+	s.OrganizationId = &v
+	return s
+}
+
+type AddRepositoryMemberResponseBody struct {
+	// 错误码
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// 错误信息
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 返回结果
+	Result []*AddRepositoryMemberResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// 请求状态
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddRepositoryMemberResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRepositoryMemberResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddRepositoryMemberResponseBody) SetErrorCode(v string) *AddRepositoryMemberResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *AddRepositoryMemberResponseBody) SetErrorMessage(v string) *AddRepositoryMemberResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AddRepositoryMemberResponseBody) SetRequestId(v string) *AddRepositoryMemberResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddRepositoryMemberResponseBody) SetResult(v []*AddRepositoryMemberResponseBodyResult) *AddRepositoryMemberResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *AddRepositoryMemberResponseBody) SetSuccess(v bool) *AddRepositoryMemberResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddRepositoryMemberResponseBodyResult struct {
+	// 权限类型
+	AccessLevel *int32 `json:"AccessLevel,omitempty" xml:"AccessLevel,omitempty"`
+	// 头像地址
+	AvatarUrl *string `json:"AvatarUrl,omitempty" xml:"AvatarUrl,omitempty"`
+	// 邮箱
+	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	// 云效用户ID
+	ExternUserId *string `json:"ExternUserId,omitempty" xml:"ExternUserId,omitempty"`
+	// Codeup用户Id
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 状态
+	State *string `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s AddRepositoryMemberResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRepositoryMemberResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *AddRepositoryMemberResponseBodyResult) SetAccessLevel(v int32) *AddRepositoryMemberResponseBodyResult {
+	s.AccessLevel = &v
+	return s
+}
+
+func (s *AddRepositoryMemberResponseBodyResult) SetAvatarUrl(v string) *AddRepositoryMemberResponseBodyResult {
+	s.AvatarUrl = &v
+	return s
+}
+
+func (s *AddRepositoryMemberResponseBodyResult) SetEmail(v string) *AddRepositoryMemberResponseBodyResult {
+	s.Email = &v
+	return s
+}
+
+func (s *AddRepositoryMemberResponseBodyResult) SetExternUserId(v string) *AddRepositoryMemberResponseBodyResult {
+	s.ExternUserId = &v
+	return s
+}
+
+func (s *AddRepositoryMemberResponseBodyResult) SetId(v int64) *AddRepositoryMemberResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *AddRepositoryMemberResponseBodyResult) SetState(v string) *AddRepositoryMemberResponseBodyResult {
+	s.State = &v
+	return s
+}
+
+type AddRepositoryMemberResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AddRepositoryMemberResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddRepositoryMemberResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddRepositoryMemberResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddRepositoryMemberResponse) SetHeaders(v map[string]*string) *AddRepositoryMemberResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddRepositoryMemberResponse) SetBody(v *AddRepositoryMemberResponseBody) *AddRepositoryMemberResponse {
+	s.Body = v
+	return s
+}
+
 type AddWebhookRequest struct {
 	AccessToken    *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
 	OrganizationId *string `json:"OrganizationId,omitempty" xml:"OrganizationId,omitempty"`
@@ -132,12 +293,10 @@ func (s *AddWebhookResponseBody) SetSuccess(v bool) *AddWebhookResponseBody {
 }
 
 type AddWebhookResponseBodyResult struct {
-	EnableSslVerification *bool   `json:"EnableSslVerification,omitempty" xml:"EnableSslVerification,omitempty"`
-	BuildEvents           *bool   `json:"buildEvents,omitempty" xml:"buildEvents,omitempty"`
 	CreatedAt             *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
 	Description           *string `json:"description,omitempty" xml:"description,omitempty"`
+	EnableSslVerification *bool   `json:"enableSslVerification,omitempty" xml:"enableSslVerification,omitempty"`
 	Id                    *int64  `json:"id,omitempty" xml:"id,omitempty"`
-	IssuesEvents          *bool   `json:"issuesEvents,omitempty" xml:"issuesEvents,omitempty"`
 	LastTestResult        *string `json:"lastTestResult,omitempty" xml:"lastTestResult,omitempty"`
 	MergeRequestsEvents   *bool   `json:"mergeRequestsEvents,omitempty" xml:"mergeRequestsEvents,omitempty"`
 	NoteEvents            *bool   `json:"noteEvents,omitempty" xml:"noteEvents,omitempty"`
@@ -156,16 +315,6 @@ func (s AddWebhookResponseBodyResult) GoString() string {
 	return s.String()
 }
 
-func (s *AddWebhookResponseBodyResult) SetEnableSslVerification(v bool) *AddWebhookResponseBodyResult {
-	s.EnableSslVerification = &v
-	return s
-}
-
-func (s *AddWebhookResponseBodyResult) SetBuildEvents(v bool) *AddWebhookResponseBodyResult {
-	s.BuildEvents = &v
-	return s
-}
-
 func (s *AddWebhookResponseBodyResult) SetCreatedAt(v string) *AddWebhookResponseBodyResult {
 	s.CreatedAt = &v
 	return s
@@ -176,13 +325,13 @@ func (s *AddWebhookResponseBodyResult) SetDescription(v string) *AddWebhookRespo
 	return s
 }
 
-func (s *AddWebhookResponseBodyResult) SetId(v int64) *AddWebhookResponseBodyResult {
-	s.Id = &v
+func (s *AddWebhookResponseBodyResult) SetEnableSslVerification(v bool) *AddWebhookResponseBodyResult {
+	s.EnableSslVerification = &v
 	return s
 }
 
-func (s *AddWebhookResponseBodyResult) SetIssuesEvents(v bool) *AddWebhookResponseBodyResult {
-	s.IssuesEvents = &v
+func (s *AddWebhookResponseBodyResult) SetId(v int64) *AddWebhookResponseBodyResult {
+	s.Id = &v
 	return s
 }
 
@@ -809,8 +958,6 @@ type CreateRepositoryRequest struct {
 	ImportDemoProject *bool `json:"importDemoProject,omitempty" xml:"importDemoProject,omitempty"`
 	// 导入代码库类型 (GIT: Git库, SVN: SVN库)
 	ImportRepoType *string `json:"importRepoType,omitempty" xml:"importRepoType,omitempty"`
-	// 导入SVN库的设置
-	ImportSvnRepoConfig *CreateRepositoryRequestImportSvnRepoConfig `json:"importSvnRepoConfig,omitempty" xml:"importSvnRepoConfig,omitempty" type:"Struct"`
 	// 导入时账号的token
 	ImportToken *string `json:"importToken,omitempty" xml:"importToken,omitempty"`
 	// import_token字段的传输格式，使用明文或rsa加密
@@ -877,11 +1024,6 @@ func (s *CreateRepositoryRequest) SetImportDemoProject(v bool) *CreateRepository
 
 func (s *CreateRepositoryRequest) SetImportRepoType(v string) *CreateRepositoryRequest {
 	s.ImportRepoType = &v
-	return s
-}
-
-func (s *CreateRepositoryRequest) SetImportSvnRepoConfig(v *CreateRepositoryRequestImportSvnRepoConfig) *CreateRepositoryRequest {
-	s.ImportSvnRepoConfig = v
 	return s
 }
 
@@ -952,101 +1094,6 @@ func (s *CreateRepositoryRequest) SetOrganizationId(v string) *CreateRepositoryR
 
 func (s *CreateRepositoryRequest) SetSync(v bool) *CreateRepositoryRequest {
 	s.Sync = &v
-	return s
-}
-
-type CreateRepositoryRequestImportSvnRepoConfig struct {
-	// author 映射
-	AuthorMapping *string `json:"authorMapping,omitempty" xml:"authorMapping,omitempty"`
-	// 分支映射
-	BranchMapping *string `json:"branchMapping,omitempty" xml:"branchMapping,omitempty"`
-	// 不导入branch
-	NoBranches *bool `json:"noBranches,omitempty" xml:"noBranches,omitempty"`
-	// 不导入tag
-	NoTags *bool `json:"noTags,omitempty" xml:"noTags,omitempty"`
-	// svn密码
-	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// 导入代码库目标path
-	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// 根目录映射trunk
-	RootIsTrunk *bool `json:"rootIsTrunk,omitempty" xml:"rootIsTrunk,omitempty"`
-	// 标准布局
-	StandardLayout *bool `json:"standardLayout,omitempty" xml:"standardLayout,omitempty"`
-	// svn仓库地址
-	SvnImportUrl *string `json:"svnImportUrl,omitempty" xml:"svnImportUrl,omitempty"`
-	// 标签映射
-	TagMapping *string `json:"tagMapping,omitempty" xml:"tagMapping,omitempty"`
-	// trunk映射
-	TrunkMapping *string `json:"trunkMapping,omitempty" xml:"trunkMapping,omitempty"`
-	// svn用户名
-	Username *string `json:"username,omitempty" xml:"username,omitempty"`
-}
-
-func (s CreateRepositoryRequestImportSvnRepoConfig) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRepositoryRequestImportSvnRepoConfig) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRepositoryRequestImportSvnRepoConfig) SetAuthorMapping(v string) *CreateRepositoryRequestImportSvnRepoConfig {
-	s.AuthorMapping = &v
-	return s
-}
-
-func (s *CreateRepositoryRequestImportSvnRepoConfig) SetBranchMapping(v string) *CreateRepositoryRequestImportSvnRepoConfig {
-	s.BranchMapping = &v
-	return s
-}
-
-func (s *CreateRepositoryRequestImportSvnRepoConfig) SetNoBranches(v bool) *CreateRepositoryRequestImportSvnRepoConfig {
-	s.NoBranches = &v
-	return s
-}
-
-func (s *CreateRepositoryRequestImportSvnRepoConfig) SetNoTags(v bool) *CreateRepositoryRequestImportSvnRepoConfig {
-	s.NoTags = &v
-	return s
-}
-
-func (s *CreateRepositoryRequestImportSvnRepoConfig) SetPassword(v string) *CreateRepositoryRequestImportSvnRepoConfig {
-	s.Password = &v
-	return s
-}
-
-func (s *CreateRepositoryRequestImportSvnRepoConfig) SetPath(v string) *CreateRepositoryRequestImportSvnRepoConfig {
-	s.Path = &v
-	return s
-}
-
-func (s *CreateRepositoryRequestImportSvnRepoConfig) SetRootIsTrunk(v bool) *CreateRepositoryRequestImportSvnRepoConfig {
-	s.RootIsTrunk = &v
-	return s
-}
-
-func (s *CreateRepositoryRequestImportSvnRepoConfig) SetStandardLayout(v bool) *CreateRepositoryRequestImportSvnRepoConfig {
-	s.StandardLayout = &v
-	return s
-}
-
-func (s *CreateRepositoryRequestImportSvnRepoConfig) SetSvnImportUrl(v string) *CreateRepositoryRequestImportSvnRepoConfig {
-	s.SvnImportUrl = &v
-	return s
-}
-
-func (s *CreateRepositoryRequestImportSvnRepoConfig) SetTagMapping(v string) *CreateRepositoryRequestImportSvnRepoConfig {
-	s.TagMapping = &v
-	return s
-}
-
-func (s *CreateRepositoryRequestImportSvnRepoConfig) SetTrunkMapping(v string) *CreateRepositoryRequestImportSvnRepoConfig {
-	s.TrunkMapping = &v
-	return s
-}
-
-func (s *CreateRepositoryRequestImportSvnRepoConfig) SetUsername(v string) *CreateRepositoryRequestImportSvnRepoConfig {
-	s.Username = &v
 	return s
 }
 
@@ -14288,6 +14335,67 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) AddRepositoryMember(repositoryId *string, request *AddRepositoryMemberRequest) (_result *AddRepositoryMemberResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &AddRepositoryMemberResponse{}
+	_body, _err := client.AddRepositoryMemberWithOptions(repositoryId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddRepositoryMemberWithOptions(repositoryId *string, request *AddRepositoryMemberRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *AddRepositoryMemberResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	repositoryId = openapiutil.GetEncodeParam(repositoryId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessToken)) {
+		query["AccessToken"] = request.AccessToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrganizationId)) {
+		query["organizationId"] = request.OrganizationId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessLevel)) {
+		body["accessLevel"] = request.AccessLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AliyunPks)) {
+		body["aliyunPks"] = request.AliyunPks
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddRepositoryMember"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/repository/" + tea.StringValue(repositoryId) + "/members"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddRepositoryMemberResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) AddWebhook(repositoryId *string, request *AddWebhookRequest) (_result *AddWebhookResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -14674,10 +14782,6 @@ func (client *Client) CreateRepositoryWithOptions(request *CreateRepositoryReque
 
 	if !tea.BoolValue(util.IsUnset(request.ImportRepoType)) {
 		body["importRepoType"] = request.ImportRepoType
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ImportSvnRepoConfig))) {
-		body["importSvnRepoConfig"] = request.ImportSvnRepoConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ImportToken)) {
