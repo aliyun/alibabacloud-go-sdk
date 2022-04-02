@@ -1187,6 +1187,7 @@ type CreateClusterRequest struct {
 	ComputeSpotStrategy   *string                                  `json:"ComputeSpotStrategy,omitempty" xml:"ComputeSpotStrategy,omitempty"`
 	DeployMode            *string                                  `json:"DeployMode,omitempty" xml:"DeployMode,omitempty"`
 	Description           *string                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	Domain                *string                                  `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	EcsChargeType         *string                                  `json:"EcsChargeType,omitempty" xml:"EcsChargeType,omitempty"`
 	EhpcVersion           *string                                  `json:"EhpcVersion,omitempty" xml:"EhpcVersion,omitempty"`
 	HaEnable              *bool                                    `json:"HaEnable,omitempty" xml:"HaEnable,omitempty"`
@@ -1217,6 +1218,7 @@ type CreateClusterRequest struct {
 	SystemDiskType        *string                                  `json:"SystemDiskType,omitempty" xml:"SystemDiskType,omitempty"`
 	VSwitchId             *string                                  `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VolumeId              *string                                  `json:"VolumeId,omitempty" xml:"VolumeId,omitempty"`
+	VolumeMountOption     *string                                  `json:"VolumeMountOption,omitempty" xml:"VolumeMountOption,omitempty"`
 	VolumeMountpoint      *string                                  `json:"VolumeMountpoint,omitempty" xml:"VolumeMountpoint,omitempty"`
 	VolumeProtocol        *string                                  `json:"VolumeProtocol,omitempty" xml:"VolumeProtocol,omitempty"`
 	VolumeType            *string                                  `json:"VolumeType,omitempty" xml:"VolumeType,omitempty"`
@@ -1301,6 +1303,11 @@ func (s *CreateClusterRequest) SetDeployMode(v string) *CreateClusterRequest {
 
 func (s *CreateClusterRequest) SetDescription(v string) *CreateClusterRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateClusterRequest) SetDomain(v string) *CreateClusterRequest {
+	s.Domain = &v
 	return s
 }
 
@@ -1454,6 +1461,11 @@ func (s *CreateClusterRequest) SetVolumeId(v string) *CreateClusterRequest {
 	return s
 }
 
+func (s *CreateClusterRequest) SetVolumeMountOption(v string) *CreateClusterRequest {
+	s.VolumeMountOption = &v
+	return s
+}
+
 func (s *CreateClusterRequest) SetVolumeMountpoint(v string) *CreateClusterRequest {
 	s.VolumeMountpoint = &v
 	return s
@@ -1588,15 +1600,16 @@ func (s *CreateClusterRequestEcsOrderManager) SetInstanceType(v string) *CreateC
 }
 
 type CreateClusterRequestAdditionalVolumes struct {
-	JobQueue         *string                                       `json:"JobQueue,omitempty" xml:"JobQueue,omitempty"`
-	LocalDirectory   *string                                       `json:"LocalDirectory,omitempty" xml:"LocalDirectory,omitempty"`
-	Location         *string                                       `json:"Location,omitempty" xml:"Location,omitempty"`
-	RemoteDirectory  *string                                       `json:"RemoteDirectory,omitempty" xml:"RemoteDirectory,omitempty"`
-	Roles            []*CreateClusterRequestAdditionalVolumesRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
-	VolumeId         *string                                       `json:"VolumeId,omitempty" xml:"VolumeId,omitempty"`
-	VolumeMountpoint *string                                       `json:"VolumeMountpoint,omitempty" xml:"VolumeMountpoint,omitempty"`
-	VolumeProtocol   *string                                       `json:"VolumeProtocol,omitempty" xml:"VolumeProtocol,omitempty"`
-	VolumeType       *string                                       `json:"VolumeType,omitempty" xml:"VolumeType,omitempty"`
+	JobQueue          *string                                       `json:"JobQueue,omitempty" xml:"JobQueue,omitempty"`
+	LocalDirectory    *string                                       `json:"LocalDirectory,omitempty" xml:"LocalDirectory,omitempty"`
+	Location          *string                                       `json:"Location,omitempty" xml:"Location,omitempty"`
+	RemoteDirectory   *string                                       `json:"RemoteDirectory,omitempty" xml:"RemoteDirectory,omitempty"`
+	Roles             []*CreateClusterRequestAdditionalVolumesRoles `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	VolumeId          *string                                       `json:"VolumeId,omitempty" xml:"VolumeId,omitempty"`
+	VolumeMountOption *string                                       `json:"VolumeMountOption,omitempty" xml:"VolumeMountOption,omitempty"`
+	VolumeMountpoint  *string                                       `json:"VolumeMountpoint,omitempty" xml:"VolumeMountpoint,omitempty"`
+	VolumeProtocol    *string                                       `json:"VolumeProtocol,omitempty" xml:"VolumeProtocol,omitempty"`
+	VolumeType        *string                                       `json:"VolumeType,omitempty" xml:"VolumeType,omitempty"`
 }
 
 func (s CreateClusterRequestAdditionalVolumes) String() string {
@@ -1634,6 +1647,11 @@ func (s *CreateClusterRequestAdditionalVolumes) SetRoles(v []*CreateClusterReque
 
 func (s *CreateClusterRequestAdditionalVolumes) SetVolumeId(v string) *CreateClusterRequestAdditionalVolumes {
 	s.VolumeId = &v
+	return s
+}
+
+func (s *CreateClusterRequestAdditionalVolumes) SetVolumeMountOption(v string) *CreateClusterRequestAdditionalVolumes {
+	s.VolumeMountOption = &v
 	return s
 }
 
@@ -2350,6 +2368,7 @@ func (s *CreateHybridClusterRequestApplication) SetTag(v string) *CreateHybridCl
 
 type CreateHybridClusterRequestNodes struct {
 	AccountType   *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
+	Dir           *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
 	HostName      *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	IpAddress     *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
 	Role          *string `json:"Role,omitempty" xml:"Role,omitempty"`
@@ -2366,6 +2385,11 @@ func (s CreateHybridClusterRequestNodes) GoString() string {
 
 func (s *CreateHybridClusterRequestNodes) SetAccountType(v string) *CreateHybridClusterRequestNodes {
 	s.AccountType = &v
+	return s
+}
+
+func (s *CreateHybridClusterRequestNodes) SetDir(v string) *CreateHybridClusterRequestNodes {
+	s.Dir = &v
 	return s
 }
 
@@ -4262,6 +4286,94 @@ func (s *DescribeContainerAppResponse) SetHeaders(v map[string]*string) *Describ
 }
 
 func (s *DescribeContainerAppResponse) SetBody(v *DescribeContainerAppResponseBody) *DescribeContainerAppResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDeployProcessRequest struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	HostName  *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Role      *string `json:"Role,omitempty" xml:"Role,omitempty"`
+}
+
+func (s DescribeDeployProcessRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeployProcessRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeployProcessRequest) SetClusterId(v string) *DescribeDeployProcessRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeDeployProcessRequest) SetHostName(v string) *DescribeDeployProcessRequest {
+	s.HostName = &v
+	return s
+}
+
+func (s *DescribeDeployProcessRequest) SetRegionId(v string) *DescribeDeployProcessRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDeployProcessRequest) SetRole(v string) *DescribeDeployProcessRequest {
+	s.Role = &v
+	return s
+}
+
+type DescribeDeployProcessResponseBody struct {
+	DeployProcess *string `json:"DeployProcess,omitempty" xml:"DeployProcess,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeDeployProcessResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeployProcessResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeployProcessResponseBody) SetDeployProcess(v string) *DescribeDeployProcessResponseBody {
+	s.DeployProcess = &v
+	return s
+}
+
+func (s *DescribeDeployProcessResponseBody) SetRequestId(v string) *DescribeDeployProcessResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDeployProcessResponseBody) SetSuccess(v string) *DescribeDeployProcessResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeDeployProcessResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDeployProcessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDeployProcessResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDeployProcessResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDeployProcessResponse) SetHeaders(v map[string]*string) *DescribeDeployProcessResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDeployProcessResponse) SetBody(v *DescribeDeployProcessResponseBody) *DescribeDeployProcessResponse {
 	s.Body = v
 	return s
 }
@@ -6275,7 +6387,9 @@ type GetAutoScaleConfigResponseBodyQueuesQueueInfo struct {
 	InstanceType       *string                                                     `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	InstanceTypes      *GetAutoScaleConfigResponseBodyQueuesQueueInfoInstanceTypes `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Struct"`
 	MaxNodesInQueue    *int32                                                      `json:"MaxNodesInQueue,omitempty" xml:"MaxNodesInQueue,omitempty"`
+	MaxNodesPerCycle   *int64                                                      `json:"MaxNodesPerCycle,omitempty" xml:"MaxNodesPerCycle,omitempty"`
 	MinNodesInQueue    *int32                                                      `json:"MinNodesInQueue,omitempty" xml:"MinNodesInQueue,omitempty"`
+	MinNodesPerCycle   *int64                                                      `json:"MinNodesPerCycle,omitempty" xml:"MinNodesPerCycle,omitempty"`
 	QueueImageId       *string                                                     `json:"QueueImageId,omitempty" xml:"QueueImageId,omitempty"`
 	QueueName          *string                                                     `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 	ResourceGroupId    *string                                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -6334,8 +6448,18 @@ func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfo) SetMaxNodesInQueue(v int
 	return s
 }
 
+func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfo) SetMaxNodesPerCycle(v int64) *GetAutoScaleConfigResponseBodyQueuesQueueInfo {
+	s.MaxNodesPerCycle = &v
+	return s
+}
+
 func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfo) SetMinNodesInQueue(v int32) *GetAutoScaleConfigResponseBodyQueuesQueueInfo {
 	s.MinNodesInQueue = &v
+	return s
+}
+
+func (s *GetAutoScaleConfigResponseBodyQueuesQueueInfo) SetMinNodesPerCycle(v int64) *GetAutoScaleConfigResponseBodyQueuesQueueInfo {
+	s.MinNodesPerCycle = &v
 	return s
 }
 
@@ -7232,6 +7356,451 @@ func (s *GetIfEcsTypeSupportHtConfigResponse) SetHeaders(v map[string]*string) *
 }
 
 func (s *GetIfEcsTypeSupportHtConfigResponse) SetBody(v *GetIfEcsTypeSupportHtConfigResponseBody) *GetIfEcsTypeSupportHtConfigResponse {
+	s.Body = v
+	return s
+}
+
+type GetPostScriptsRequest struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetPostScriptsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPostScriptsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetPostScriptsRequest) SetClusterId(v string) *GetPostScriptsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetPostScriptsRequest) SetRegionId(v string) *GetPostScriptsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetPostScriptsResponseBody struct {
+	PostInstallScripts []*GetPostScriptsResponseBodyPostInstallScripts `json:"PostInstallScripts,omitempty" xml:"PostInstallScripts,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetPostScriptsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPostScriptsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetPostScriptsResponseBody) SetPostInstallScripts(v []*GetPostScriptsResponseBodyPostInstallScripts) *GetPostScriptsResponseBody {
+	s.PostInstallScripts = v
+	return s
+}
+
+func (s *GetPostScriptsResponseBody) SetRequestId(v string) *GetPostScriptsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetPostScriptsResponseBodyPostInstallScripts struct {
+	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
+	Url  *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s GetPostScriptsResponseBodyPostInstallScripts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPostScriptsResponseBodyPostInstallScripts) GoString() string {
+	return s.String()
+}
+
+func (s *GetPostScriptsResponseBodyPostInstallScripts) SetArgs(v string) *GetPostScriptsResponseBodyPostInstallScripts {
+	s.Args = &v
+	return s
+}
+
+func (s *GetPostScriptsResponseBodyPostInstallScripts) SetUrl(v string) *GetPostScriptsResponseBodyPostInstallScripts {
+	s.Url = &v
+	return s
+}
+
+type GetPostScriptsResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetPostScriptsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetPostScriptsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetPostScriptsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetPostScriptsResponse) SetHeaders(v map[string]*string) *GetPostScriptsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetPostScriptsResponse) SetBody(v *GetPostScriptsResponseBody) *GetPostScriptsResponse {
+	s.Body = v
+	return s
+}
+
+type GetQueueConfRequest struct {
+	ClusterId *string                      `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Queues    []*GetQueueConfRequestQueues `json:"Queues,omitempty" xml:"Queues,omitempty" type:"Repeated"`
+}
+
+func (s GetQueueConfRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQueueConfRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetQueueConfRequest) SetClusterId(v string) *GetQueueConfRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetQueueConfRequest) SetQueues(v []*GetQueueConfRequestQueues) *GetQueueConfRequest {
+	s.Queues = v
+	return s
+}
+
+type GetQueueConfRequestQueues struct {
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+}
+
+func (s GetQueueConfRequestQueues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQueueConfRequestQueues) GoString() string {
+	return s.String()
+}
+
+func (s *GetQueueConfRequestQueues) SetQueueName(v string) *GetQueueConfRequestQueues {
+	s.QueueName = &v
+	return s
+}
+
+type GetQueueConfResponseBody struct {
+	QueuesConf []*GetQueueConfResponseBodyQueuesConf `json:"QueuesConf,omitempty" xml:"QueuesConf,omitempty" type:"Repeated"`
+	RequestId  *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *string                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetQueueConfResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQueueConfResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetQueueConfResponseBody) SetQueuesConf(v []*GetQueueConfResponseBodyQueuesConf) *GetQueueConfResponseBody {
+	s.QueuesConf = v
+	return s
+}
+
+func (s *GetQueueConfResponseBody) SetRequestId(v string) *GetQueueConfResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBody) SetSuccess(v string) *GetQueueConfResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetQueueConfResponseBodyQueuesConf struct {
+	DataDisks                  []*GetQueueConfResponseBodyQueuesConfDataDisks     `json:"DataDisks,omitempty" xml:"DataDisks,omitempty" type:"Repeated"`
+	EnableAutoGrow             *bool                                              `json:"EnableAutoGrow,omitempty" xml:"EnableAutoGrow,omitempty"`
+	EnableAutoShrink           *bool                                              `json:"EnableAutoShrink,omitempty" xml:"EnableAutoShrink,omitempty"`
+	GrowIntervallnMinutes      *int64                                             `json:"GrowIntervallnMinutes,omitempty" xml:"GrowIntervallnMinutes,omitempty"`
+	GrowTimeoutInMinutes       *int64                                             `json:"GrowTimeoutInMinutes,omitempty" xml:"GrowTimeoutInMinutes,omitempty"`
+	HostNamePrefix             *string                                            `json:"HostNamePrefix,omitempty" xml:"HostNamePrefix,omitempty"`
+	HostNameSuffix             *string                                            `json:"HostNameSuffix,omitempty" xml:"HostNameSuffix,omitempty"`
+	ImageId                    *string                                            `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	ImageType                  *string                                            `json:"ImageType,omitempty" xml:"ImageType,omitempty"`
+	InstanceTypes              []*GetQueueConfResponseBodyQueuesConfInstanceTypes `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	InternetChargeType         *string                                            `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	InternetMaxBandwidthOut    *int64                                             `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
+	MaxNodes                   *int64                                             `json:"MaxNodes,omitempty" xml:"MaxNodes,omitempty"`
+	MinNodes                   *int64                                             `json:"MinNodes,omitempty" xml:"MinNodes,omitempty"`
+	OsTag                      *string                                            `json:"OsTag,omitempty" xml:"OsTag,omitempty"`
+	QueueName                  *string                                            `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	RegionId                   *string                                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId            *string                                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityGroupId            *string                                            `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	ShrinkIntervallnMinutes    *int64                                             `json:"ShrinkIntervallnMinutes,omitempty" xml:"ShrinkIntervallnMinutes,omitempty"`
+	ShrinkidleTimes            *int64                                             `json:"ShrinkidleTimes,omitempty" xml:"ShrinkidleTimes,omitempty"`
+	SystemDiskCategory         *string                                            `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
+	SystemDiskPerformanceLevel *string                                            `json:"SystemDiskPerformanceLevel,omitempty" xml:"SystemDiskPerformanceLevel,omitempty"`
+	SystemDiskSize             *int64                                             `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
+	Zones                      []*GetQueueConfResponseBodyQueuesConfZones         `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+}
+
+func (s GetQueueConfResponseBodyQueuesConf) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQueueConfResponseBodyQueuesConf) GoString() string {
+	return s.String()
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetDataDisks(v []*GetQueueConfResponseBodyQueuesConfDataDisks) *GetQueueConfResponseBodyQueuesConf {
+	s.DataDisks = v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetEnableAutoGrow(v bool) *GetQueueConfResponseBodyQueuesConf {
+	s.EnableAutoGrow = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetEnableAutoShrink(v bool) *GetQueueConfResponseBodyQueuesConf {
+	s.EnableAutoShrink = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetGrowIntervallnMinutes(v int64) *GetQueueConfResponseBodyQueuesConf {
+	s.GrowIntervallnMinutes = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetGrowTimeoutInMinutes(v int64) *GetQueueConfResponseBodyQueuesConf {
+	s.GrowTimeoutInMinutes = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetHostNamePrefix(v string) *GetQueueConfResponseBodyQueuesConf {
+	s.HostNamePrefix = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetHostNameSuffix(v string) *GetQueueConfResponseBodyQueuesConf {
+	s.HostNameSuffix = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetImageId(v string) *GetQueueConfResponseBodyQueuesConf {
+	s.ImageId = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetImageType(v string) *GetQueueConfResponseBodyQueuesConf {
+	s.ImageType = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetInstanceTypes(v []*GetQueueConfResponseBodyQueuesConfInstanceTypes) *GetQueueConfResponseBodyQueuesConf {
+	s.InstanceTypes = v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetInternetChargeType(v string) *GetQueueConfResponseBodyQueuesConf {
+	s.InternetChargeType = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetInternetMaxBandwidthOut(v int64) *GetQueueConfResponseBodyQueuesConf {
+	s.InternetMaxBandwidthOut = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetMaxNodes(v int64) *GetQueueConfResponseBodyQueuesConf {
+	s.MaxNodes = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetMinNodes(v int64) *GetQueueConfResponseBodyQueuesConf {
+	s.MinNodes = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetOsTag(v string) *GetQueueConfResponseBodyQueuesConf {
+	s.OsTag = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetQueueName(v string) *GetQueueConfResponseBodyQueuesConf {
+	s.QueueName = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetRegionId(v string) *GetQueueConfResponseBodyQueuesConf {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetResourceGroupId(v string) *GetQueueConfResponseBodyQueuesConf {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetSecurityGroupId(v string) *GetQueueConfResponseBodyQueuesConf {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetShrinkIntervallnMinutes(v int64) *GetQueueConfResponseBodyQueuesConf {
+	s.ShrinkIntervallnMinutes = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetShrinkidleTimes(v int64) *GetQueueConfResponseBodyQueuesConf {
+	s.ShrinkidleTimes = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetSystemDiskCategory(v string) *GetQueueConfResponseBodyQueuesConf {
+	s.SystemDiskCategory = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetSystemDiskPerformanceLevel(v string) *GetQueueConfResponseBodyQueuesConf {
+	s.SystemDiskPerformanceLevel = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetSystemDiskSize(v int64) *GetQueueConfResponseBodyQueuesConf {
+	s.SystemDiskSize = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConf) SetZones(v []*GetQueueConfResponseBodyQueuesConfZones) *GetQueueConfResponseBodyQueuesConf {
+	s.Zones = v
+	return s
+}
+
+type GetQueueConfResponseBodyQueuesConfDataDisks struct {
+	DataDiskCategory           *string `json:"DataDiskCategory,omitempty" xml:"DataDiskCategory,omitempty"`
+	DataDiskDeleteWithInstance *bool   `json:"DataDiskDeleteWithInstance,omitempty" xml:"DataDiskDeleteWithInstance,omitempty"`
+	DataDiskEncrypted          *bool   `json:"DataDiskEncrypted,omitempty" xml:"DataDiskEncrypted,omitempty"`
+	DataDiskKMSKeyId           *string `json:"DataDiskKMSKeyId,omitempty" xml:"DataDiskKMSKeyId,omitempty"`
+	DataDiskPerformanceLevel   *string `json:"DataDiskPerformanceLevel,omitempty" xml:"DataDiskPerformanceLevel,omitempty"`
+	DataDiskSize               *int64  `json:"DataDiskSize,omitempty" xml:"DataDiskSize,omitempty"`
+}
+
+func (s GetQueueConfResponseBodyQueuesConfDataDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQueueConfResponseBodyQueuesConfDataDisks) GoString() string {
+	return s.String()
+}
+
+func (s *GetQueueConfResponseBodyQueuesConfDataDisks) SetDataDiskCategory(v string) *GetQueueConfResponseBodyQueuesConfDataDisks {
+	s.DataDiskCategory = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConfDataDisks) SetDataDiskDeleteWithInstance(v bool) *GetQueueConfResponseBodyQueuesConfDataDisks {
+	s.DataDiskDeleteWithInstance = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConfDataDisks) SetDataDiskEncrypted(v bool) *GetQueueConfResponseBodyQueuesConfDataDisks {
+	s.DataDiskEncrypted = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConfDataDisks) SetDataDiskKMSKeyId(v string) *GetQueueConfResponseBodyQueuesConfDataDisks {
+	s.DataDiskKMSKeyId = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConfDataDisks) SetDataDiskPerformanceLevel(v string) *GetQueueConfResponseBodyQueuesConfDataDisks {
+	s.DataDiskPerformanceLevel = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConfDataDisks) SetDataDiskSize(v int64) *GetQueueConfResponseBodyQueuesConfDataDisks {
+	s.DataDiskSize = &v
+	return s
+}
+
+type GetQueueConfResponseBodyQueuesConfInstanceTypes struct {
+	InstanceType   *string  `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	SpotPriceLimit *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
+	SpotStrategy   *string  `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
+}
+
+func (s GetQueueConfResponseBodyQueuesConfInstanceTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQueueConfResponseBodyQueuesConfInstanceTypes) GoString() string {
+	return s.String()
+}
+
+func (s *GetQueueConfResponseBodyQueuesConfInstanceTypes) SetInstanceType(v string) *GetQueueConfResponseBodyQueuesConfInstanceTypes {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConfInstanceTypes) SetSpotPriceLimit(v float32) *GetQueueConfResponseBodyQueuesConfInstanceTypes {
+	s.SpotPriceLimit = &v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConfInstanceTypes) SetSpotStrategy(v string) *GetQueueConfResponseBodyQueuesConfInstanceTypes {
+	s.SpotStrategy = &v
+	return s
+}
+
+type GetQueueConfResponseBodyQueuesConfZones struct {
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	ZoneId     *string   `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s GetQueueConfResponseBodyQueuesConfZones) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQueueConfResponseBodyQueuesConfZones) GoString() string {
+	return s.String()
+}
+
+func (s *GetQueueConfResponseBodyQueuesConfZones) SetVSwitchIds(v []*string) *GetQueueConfResponseBodyQueuesConfZones {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *GetQueueConfResponseBodyQueuesConfZones) SetZoneId(v string) *GetQueueConfResponseBodyQueuesConfZones {
+	s.ZoneId = &v
+	return s
+}
+
+type GetQueueConfResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetQueueConfResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetQueueConfResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetQueueConfResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetQueueConfResponse) SetHeaders(v map[string]*string) *GetQueueConfResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetQueueConfResponse) SetBody(v *GetQueueConfResponseBody) *GetQueueConfResponse {
 	s.Body = v
 	return s
 }
@@ -11259,6 +11828,307 @@ func (s *ListJobsResponse) SetBody(v *ListJobsResponseBody) *ListJobsResponse {
 	return s
 }
 
+type ListJobsWithFiltersRequest struct {
+	ClusterId       *string   `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CreateTimeEnd   *string   `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
+	CreateTimeStart *string   `json:"CreateTimeStart,omitempty" xml:"CreateTimeStart,omitempty"`
+	ExecuteOrder    *string   `json:"ExecuteOrder,omitempty" xml:"ExecuteOrder,omitempty"`
+	JobName         *string   `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	JobStatus       *string   `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
+	Nodes           []*string `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	PageNumber      *int64    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int64    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PendOrder       *string   `json:"PendOrder,omitempty" xml:"PendOrder,omitempty"`
+	Queues          []*string `json:"Queues,omitempty" xml:"Queues,omitempty" type:"Repeated"`
+	RegionId        *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SubmitOrder     *string   `json:"SubmitOrder,omitempty" xml:"SubmitOrder,omitempty"`
+	Users           []*string `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+}
+
+func (s ListJobsWithFiltersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsWithFiltersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsWithFiltersRequest) SetClusterId(v string) *ListJobsWithFiltersRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersRequest) SetCreateTimeEnd(v string) *ListJobsWithFiltersRequest {
+	s.CreateTimeEnd = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersRequest) SetCreateTimeStart(v string) *ListJobsWithFiltersRequest {
+	s.CreateTimeStart = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersRequest) SetExecuteOrder(v string) *ListJobsWithFiltersRequest {
+	s.ExecuteOrder = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersRequest) SetJobName(v string) *ListJobsWithFiltersRequest {
+	s.JobName = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersRequest) SetJobStatus(v string) *ListJobsWithFiltersRequest {
+	s.JobStatus = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersRequest) SetNodes(v []*string) *ListJobsWithFiltersRequest {
+	s.Nodes = v
+	return s
+}
+
+func (s *ListJobsWithFiltersRequest) SetPageNumber(v int64) *ListJobsWithFiltersRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersRequest) SetPageSize(v int64) *ListJobsWithFiltersRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersRequest) SetPendOrder(v string) *ListJobsWithFiltersRequest {
+	s.PendOrder = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersRequest) SetQueues(v []*string) *ListJobsWithFiltersRequest {
+	s.Queues = v
+	return s
+}
+
+func (s *ListJobsWithFiltersRequest) SetRegionId(v string) *ListJobsWithFiltersRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersRequest) SetSubmitOrder(v string) *ListJobsWithFiltersRequest {
+	s.SubmitOrder = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersRequest) SetUsers(v []*string) *ListJobsWithFiltersRequest {
+	s.Users = v
+	return s
+}
+
+type ListJobsWithFiltersResponseBody struct {
+	// Jobs
+	Jobs []*ListJobsWithFiltersResponseBodyJobs `json:"Jobs,omitempty" xml:"Jobs,omitempty" type:"Repeated"`
+	// PageNumber
+	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// PageSize
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Success
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListJobsWithFiltersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsWithFiltersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsWithFiltersResponseBody) SetJobs(v []*ListJobsWithFiltersResponseBodyJobs) *ListJobsWithFiltersResponseBody {
+	s.Jobs = v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponseBody) SetPageNumber(v int64) *ListJobsWithFiltersResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponseBody) SetPageSize(v int64) *ListJobsWithFiltersResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponseBody) SetRequestId(v string) *ListJobsWithFiltersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponseBody) SetSuccess(v bool) *ListJobsWithFiltersResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponseBody) SetTotalCount(v int32) *ListJobsWithFiltersResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListJobsWithFiltersResponseBodyJobs struct {
+	ArrayRequest   *string                                       `json:"ArrayRequest,omitempty" xml:"ArrayRequest,omitempty"`
+	Comment        *string                                       `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	Id             *string                                       `json:"Id,omitempty" xml:"Id,omitempty"`
+	LastModifyTime *string                                       `json:"LastModifyTime,omitempty" xml:"LastModifyTime,omitempty"`
+	Name           *string                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	NodeList       *string                                       `json:"NodeList,omitempty" xml:"NodeList,omitempty"`
+	Owner          *string                                       `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Priority       *string                                       `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	Queue          *string                                       `json:"Queue,omitempty" xml:"Queue,omitempty"`
+	Resources      *ListJobsWithFiltersResponseBodyJobsResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Struct"`
+	ShellPath      *string                                       `json:"ShellPath,omitempty" xml:"ShellPath,omitempty"`
+	StartTime      *string                                       `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	State          *string                                       `json:"State,omitempty" xml:"State,omitempty"`
+	Stderr         *string                                       `json:"Stderr,omitempty" xml:"Stderr,omitempty"`
+	Stdout         *string                                       `json:"Stdout,omitempty" xml:"Stdout,omitempty"`
+	SubmitTime     *string                                       `json:"SubmitTime,omitempty" xml:"SubmitTime,omitempty"`
+}
+
+func (s ListJobsWithFiltersResponseBodyJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsWithFiltersResponseBodyJobs) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsWithFiltersResponseBodyJobs) SetArrayRequest(v string) *ListJobsWithFiltersResponseBodyJobs {
+	s.ArrayRequest = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponseBodyJobs) SetComment(v string) *ListJobsWithFiltersResponseBodyJobs {
+	s.Comment = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponseBodyJobs) SetId(v string) *ListJobsWithFiltersResponseBodyJobs {
+	s.Id = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponseBodyJobs) SetLastModifyTime(v string) *ListJobsWithFiltersResponseBodyJobs {
+	s.LastModifyTime = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponseBodyJobs) SetName(v string) *ListJobsWithFiltersResponseBodyJobs {
+	s.Name = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponseBodyJobs) SetNodeList(v string) *ListJobsWithFiltersResponseBodyJobs {
+	s.NodeList = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponseBodyJobs) SetOwner(v string) *ListJobsWithFiltersResponseBodyJobs {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponseBodyJobs) SetPriority(v string) *ListJobsWithFiltersResponseBodyJobs {
+	s.Priority = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponseBodyJobs) SetQueue(v string) *ListJobsWithFiltersResponseBodyJobs {
+	s.Queue = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponseBodyJobs) SetResources(v *ListJobsWithFiltersResponseBodyJobsResources) *ListJobsWithFiltersResponseBodyJobs {
+	s.Resources = v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponseBodyJobs) SetShellPath(v string) *ListJobsWithFiltersResponseBodyJobs {
+	s.ShellPath = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponseBodyJobs) SetStartTime(v string) *ListJobsWithFiltersResponseBodyJobs {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponseBodyJobs) SetState(v string) *ListJobsWithFiltersResponseBodyJobs {
+	s.State = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponseBodyJobs) SetStderr(v string) *ListJobsWithFiltersResponseBodyJobs {
+	s.Stderr = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponseBodyJobs) SetStdout(v string) *ListJobsWithFiltersResponseBodyJobs {
+	s.Stdout = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponseBodyJobs) SetSubmitTime(v string) *ListJobsWithFiltersResponseBodyJobs {
+	s.SubmitTime = &v
+	return s
+}
+
+type ListJobsWithFiltersResponseBodyJobsResources struct {
+	Cores *int64 `json:"Cores,omitempty" xml:"Cores,omitempty"`
+	Nodes *int64 `json:"Nodes,omitempty" xml:"Nodes,omitempty"`
+}
+
+func (s ListJobsWithFiltersResponseBodyJobsResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsWithFiltersResponseBodyJobsResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsWithFiltersResponseBodyJobsResources) SetCores(v int64) *ListJobsWithFiltersResponseBodyJobsResources {
+	s.Cores = &v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponseBodyJobsResources) SetNodes(v int64) *ListJobsWithFiltersResponseBodyJobsResources {
+	s.Nodes = &v
+	return s
+}
+
+type ListJobsWithFiltersResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListJobsWithFiltersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListJobsWithFiltersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListJobsWithFiltersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListJobsWithFiltersResponse) SetHeaders(v map[string]*string) *ListJobsWithFiltersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListJobsWithFiltersResponse) SetBody(v *ListJobsWithFiltersResponseBody) *ListJobsWithFiltersResponse {
+	s.Body = v
+	return s
+}
+
 type ListNodesRequest struct {
 	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	Filter           *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
@@ -14743,7 +15613,9 @@ type SetAutoScaleConfigRequestQueues struct {
 	InstanceType       *string                                         `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	InstanceTypes      []*SetAutoScaleConfigRequestQueuesInstanceTypes `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
 	MaxNodesInQueue    *int32                                          `json:"MaxNodesInQueue,omitempty" xml:"MaxNodesInQueue,omitempty"`
+	MaxNodesPerCycle   *int64                                          `json:"MaxNodesPerCycle,omitempty" xml:"MaxNodesPerCycle,omitempty"`
 	MinNodesInQueue    *int32                                          `json:"MinNodesInQueue,omitempty" xml:"MinNodesInQueue,omitempty"`
+	MinNodesPerCycle   *int64                                          `json:"MinNodesPerCycle,omitempty" xml:"MinNodesPerCycle,omitempty"`
 	QueueImageId       *string                                         `json:"QueueImageId,omitempty" xml:"QueueImageId,omitempty"`
 	QueueName          *string                                         `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
 	SpotPriceLimit     *float32                                        `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
@@ -14801,8 +15673,18 @@ func (s *SetAutoScaleConfigRequestQueues) SetMaxNodesInQueue(v int32) *SetAutoSc
 	return s
 }
 
+func (s *SetAutoScaleConfigRequestQueues) SetMaxNodesPerCycle(v int64) *SetAutoScaleConfigRequestQueues {
+	s.MaxNodesPerCycle = &v
+	return s
+}
+
 func (s *SetAutoScaleConfigRequestQueues) SetMinNodesInQueue(v int32) *SetAutoScaleConfigRequestQueues {
 	s.MinNodesInQueue = &v
+	return s
+}
+
+func (s *SetAutoScaleConfigRequestQueues) SetMinNodesPerCycle(v int64) *SetAutoScaleConfigRequestQueues {
+	s.MinNodesPerCycle = &v
 	return s
 }
 
@@ -15190,6 +16072,99 @@ func (s *SetGWSInstanceUserResponse) SetHeaders(v map[string]*string) *SetGWSIns
 }
 
 func (s *SetGWSInstanceUserResponse) SetBody(v *SetGWSInstanceUserResponseBody) *SetGWSInstanceUserResponse {
+	s.Body = v
+	return s
+}
+
+type SetPostScriptsRequest struct {
+	ClusterId          *string                                    `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	PostInstallScripts []*SetPostScriptsRequestPostInstallScripts `json:"PostInstallScripts,omitempty" xml:"PostInstallScripts,omitempty" type:"Repeated"`
+	RegionId           *string                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s SetPostScriptsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPostScriptsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetPostScriptsRequest) SetClusterId(v string) *SetPostScriptsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *SetPostScriptsRequest) SetPostInstallScripts(v []*SetPostScriptsRequestPostInstallScripts) *SetPostScriptsRequest {
+	s.PostInstallScripts = v
+	return s
+}
+
+func (s *SetPostScriptsRequest) SetRegionId(v string) *SetPostScriptsRequest {
+	s.RegionId = &v
+	return s
+}
+
+type SetPostScriptsRequestPostInstallScripts struct {
+	Args *string `json:"Args,omitempty" xml:"Args,omitempty"`
+	Url  *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s SetPostScriptsRequestPostInstallScripts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPostScriptsRequestPostInstallScripts) GoString() string {
+	return s.String()
+}
+
+func (s *SetPostScriptsRequestPostInstallScripts) SetArgs(v string) *SetPostScriptsRequestPostInstallScripts {
+	s.Args = &v
+	return s
+}
+
+func (s *SetPostScriptsRequestPostInstallScripts) SetUrl(v string) *SetPostScriptsRequestPostInstallScripts {
+	s.Url = &v
+	return s
+}
+
+type SetPostScriptsResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetPostScriptsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPostScriptsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetPostScriptsResponseBody) SetRequestId(v string) *SetPostScriptsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetPostScriptsResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SetPostScriptsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetPostScriptsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetPostScriptsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetPostScriptsResponse) SetHeaders(v map[string]*string) *SetPostScriptsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetPostScriptsResponse) SetBody(v *SetPostScriptsResponseBody) *SetPostScriptsResponse {
 	s.Body = v
 	return s
 }
@@ -17955,6 +18930,46 @@ func (client *Client) DescribeContainerApp(request *DescribeContainerAppRequest)
 	return _result, _err
 }
 
+func (client *Client) DescribeDeployProcessWithOptions(request *DescribeDeployProcessRequest, runtime *util.RuntimeOptions) (_result *DescribeDeployProcessResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDeployProcess"),
+		Version:     tea.String("2018-04-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDeployProcessResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDeployProcess(request *DescribeDeployProcessRequest) (_result *DescribeDeployProcessResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDeployProcessResponse{}
+	_body, _err := client.DescribeDeployProcessWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeGWSClusterPolicyWithOptions(request *DescribeGWSClusterPolicyRequest, runtime *util.RuntimeOptions) (_result *DescribeGWSClusterPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18720,6 +19735,86 @@ func (client *Client) GetIfEcsTypeSupportHtConfig(request *GetIfEcsTypeSupportHt
 	runtime := &util.RuntimeOptions{}
 	_result = &GetIfEcsTypeSupportHtConfigResponse{}
 	_body, _err := client.GetIfEcsTypeSupportHtConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetPostScriptsWithOptions(request *GetPostScriptsRequest, runtime *util.RuntimeOptions) (_result *GetPostScriptsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPostScripts"),
+		Version:     tea.String("2018-04-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetPostScriptsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetPostScripts(request *GetPostScriptsRequest) (_result *GetPostScriptsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetPostScriptsResponse{}
+	_body, _err := client.GetPostScriptsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetQueueConfWithOptions(request *GetQueueConfRequest, runtime *util.RuntimeOptions) (_result *GetQueueConfResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetQueueConf"),
+		Version:     tea.String("2018-04-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetQueueConfResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetQueueConf(request *GetQueueConfRequest) (_result *GetQueueConfResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetQueueConfResponse{}
+	_body, _err := client.GetQueueConfWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19633,6 +20728,46 @@ func (client *Client) ListJobs(request *ListJobsRequest) (_result *ListJobsRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &ListJobsResponse{}
 	_body, _err := client.ListJobsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListJobsWithFiltersWithOptions(request *ListJobsWithFiltersRequest, runtime *util.RuntimeOptions) (_result *ListJobsWithFiltersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListJobsWithFilters"),
+		Version:     tea.String("2018-04-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListJobsWithFiltersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListJobsWithFilters(request *ListJobsWithFiltersRequest) (_result *ListJobsWithFiltersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListJobsWithFiltersResponse{}
+	_body, _err := client.ListJobsWithFiltersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20767,6 +21902,46 @@ func (client *Client) SetGWSInstanceUser(request *SetGWSInstanceUserRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &SetGWSInstanceUserResponse{}
 	_body, _err := client.SetGWSInstanceUserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetPostScriptsWithOptions(request *SetPostScriptsRequest, runtime *util.RuntimeOptions) (_result *SetPostScriptsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetPostScripts"),
+		Version:     tea.String("2018-04-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetPostScriptsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetPostScripts(request *SetPostScriptsRequest) (_result *SetPostScriptsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetPostScriptsResponse{}
+	_body, _err := client.SetPostScriptsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
