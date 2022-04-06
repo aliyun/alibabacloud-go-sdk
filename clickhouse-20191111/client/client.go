@@ -1112,6 +1112,7 @@ type CreateBackupPolicyRequest struct {
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
 	PreferredBackupTime   *string `json:"PreferredBackupTime,omitempty" xml:"PreferredBackupTime,omitempty"`
+	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
@@ -1151,6 +1152,11 @@ func (s *CreateBackupPolicyRequest) SetPreferredBackupPeriod(v string) *CreateBa
 
 func (s *CreateBackupPolicyRequest) SetPreferredBackupTime(v string) *CreateBackupPolicyRequest {
 	s.PreferredBackupTime = &v
+	return s
+}
+
+func (s *CreateBackupPolicyRequest) SetRegionId(v string) *CreateBackupPolicyRequest {
+	s.RegionId = &v
 	return s
 }
 
@@ -1224,6 +1230,7 @@ type CreateDBInstanceRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SourceDBClusterId    *string `json:"SourceDBClusterId,omitempty" xml:"SourceDBClusterId,omitempty"`
 	UsedTime             *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
 	VPCId                *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
 	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
@@ -1330,6 +1337,11 @@ func (s *CreateDBInstanceRequest) SetResourceOwnerAccount(v string) *CreateDBIns
 
 func (s *CreateDBInstanceRequest) SetResourceOwnerId(v int64) *CreateDBInstanceRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateDBInstanceRequest) SetSourceDBClusterId(v string) *CreateDBInstanceRequest {
+	s.SourceDBClusterId = &v
 	return s
 }
 
@@ -4228,6 +4240,7 @@ type DescribeDBClusterAttributeResponseBodyDBCluster struct {
 	SupportBackup          *int32                                                         `json:"SupportBackup,omitempty" xml:"SupportBackup,omitempty"`
 	SupportHttpsPort       *bool                                                          `json:"SupportHttpsPort,omitempty" xml:"SupportHttpsPort,omitempty"`
 	SupportMysqlPort       *bool                                                          `json:"SupportMysqlPort,omitempty" xml:"SupportMysqlPort,omitempty"`
+	SupportOss             *int32                                                         `json:"SupportOss,omitempty" xml:"SupportOss,omitempty"`
 	Tags                   *DescribeDBClusterAttributeResponseBodyDBClusterTags           `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 	VSwitchId              *string                                                        `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VpcCloudInstanceId     *string                                                        `json:"VpcCloudInstanceId,omitempty" xml:"VpcCloudInstanceId,omitempty"`
@@ -4416,6 +4429,11 @@ func (s *DescribeDBClusterAttributeResponseBodyDBCluster) SetSupportHttpsPort(v 
 
 func (s *DescribeDBClusterAttributeResponseBodyDBCluster) SetSupportMysqlPort(v bool) *DescribeDBClusterAttributeResponseBodyDBCluster {
 	s.SupportMysqlPort = &v
+	return s
+}
+
+func (s *DescribeDBClusterAttributeResponseBodyDBCluster) SetSupportOss(v int32) *DescribeDBClusterAttributeResponseBodyDBCluster {
+	s.SupportOss = &v
 	return s
 }
 
@@ -7798,8 +7816,6 @@ type DescribeSchemasRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SchemaName           *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	TableName            *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DescribeSchemasRequest) String() string {
@@ -7832,16 +7848,6 @@ func (s *DescribeSchemasRequest) SetResourceOwnerAccount(v string) *DescribeSche
 
 func (s *DescribeSchemasRequest) SetResourceOwnerId(v int64) *DescribeSchemasRequest {
 	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *DescribeSchemasRequest) SetSchemaName(v string) *DescribeSchemasRequest {
-	s.SchemaName = &v
-	return s
-}
-
-func (s *DescribeSchemasRequest) SetTableName(v string) *DescribeSchemasRequest {
-	s.TableName = &v
 	return s
 }
 
@@ -8697,7 +8703,6 @@ func (s *DescribeSynDbsResponseBody) SetSynDbs(v []*DescribeSynDbsResponseBodySy
 type DescribeSynDbsResponseBodySynDbs struct {
 	ErrorMsg    *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
 	RdsId       *string `json:"RdsId,omitempty" xml:"RdsId,omitempty"`
-	RdsPassword *string `json:"RdsPassword,omitempty" xml:"RdsPassword,omitempty"`
 	RdsUserName *string `json:"RdsUserName,omitempty" xml:"RdsUserName,omitempty"`
 	RdsVpcUrl   *string `json:"RdsVpcUrl,omitempty" xml:"RdsVpcUrl,omitempty"`
 	SynDb       *string `json:"SynDb,omitempty" xml:"SynDb,omitempty"`
@@ -8719,11 +8724,6 @@ func (s *DescribeSynDbsResponseBodySynDbs) SetErrorMsg(v string) *DescribeSynDbs
 
 func (s *DescribeSynDbsResponseBodySynDbs) SetRdsId(v string) *DescribeSynDbsResponseBodySynDbs {
 	s.RdsId = &v
-	return s
-}
-
-func (s *DescribeSynDbsResponseBodySynDbs) SetRdsPassword(v string) *DescribeSynDbsResponseBodySynDbs {
-	s.RdsPassword = &v
 	return s
 }
 
@@ -8777,7 +8777,6 @@ type DescribeTablesRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SchemaName           *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	TableName            *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
 func (s DescribeTablesRequest) String() string {
@@ -8815,11 +8814,6 @@ func (s *DescribeTablesRequest) SetResourceOwnerId(v int64) *DescribeTablesReque
 
 func (s *DescribeTablesRequest) SetSchemaName(v string) *DescribeTablesRequest {
 	s.SchemaName = &v
-	return s
-}
-
-func (s *DescribeTablesRequest) SetTableName(v string) *DescribeTablesRequest {
-	s.TableName = &v
 	return s
 }
 
@@ -11840,6 +11834,10 @@ func (client *Client) CreateBackupPolicyWithOptions(request *CreateBackupPolicyR
 		query["PreferredBackupTime"] = request.PreferredBackupTime
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
@@ -11962,6 +11960,10 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceDBClusterId)) {
+		query["SourceDBClusterId"] = request.SourceDBClusterId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UsedTime)) {
@@ -14656,14 +14658,6 @@ func (client *Client) DescribeSchemasWithOptions(request *DescribeSchemasRequest
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SchemaName)) {
-		query["SchemaName"] = request.SchemaName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TableName)) {
-		query["TableName"] = request.TableName
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15010,10 +15004,6 @@ func (client *Client) DescribeTablesWithOptions(request *DescribeTablesRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.SchemaName)) {
 		query["SchemaName"] = request.SchemaName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TableName)) {
-		query["TableName"] = request.TableName
 	}
 
 	req := &openapi.OpenApiRequest{
