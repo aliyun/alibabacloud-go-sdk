@@ -312,6 +312,8 @@ type CreateIstioGatewayDomainsRequest struct {
 	ForceHttps       *bool   `json:"ForceHttps,omitempty" xml:"ForceHttps,omitempty"`
 	Hosts            *string `json:"Hosts,omitempty" xml:"Hosts,omitempty"`
 	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	Limit            *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Namespace        *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	Number           *int32  `json:"Number,omitempty" xml:"Number,omitempty"`
 	PortName         *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
 	Protocol         *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
@@ -343,6 +345,16 @@ func (s *CreateIstioGatewayDomainsRequest) SetHosts(v string) *CreateIstioGatewa
 
 func (s *CreateIstioGatewayDomainsRequest) SetIstioGatewayName(v string) *CreateIstioGatewayDomainsRequest {
 	s.IstioGatewayName = &v
+	return s
+}
+
+func (s *CreateIstioGatewayDomainsRequest) SetLimit(v string) *CreateIstioGatewayDomainsRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *CreateIstioGatewayDomainsRequest) SetNamespace(v string) *CreateIstioGatewayDomainsRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -456,6 +468,7 @@ func (s *CreateIstioGatewayRoutesRequest) SetStatus(v int32) *CreateIstioGateway
 type CreateIstioGatewayRoutesRequestGatewayRoute struct {
 	HTTPAdvancedOptions *CreateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions `json:"HTTPAdvancedOptions,omitempty" xml:"HTTPAdvancedOptions,omitempty" type:"Struct"`
 	MatchRequest        *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest        `json:"MatchRequest,omitempty" xml:"MatchRequest,omitempty" type:"Struct"`
+	Namespace           *string                                                         `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	RouteDestinations   []*CreateIstioGatewayRoutesRequestGatewayRouteRouteDestinations `json:"RouteDestinations,omitempty" xml:"RouteDestinations,omitempty" type:"Repeated"`
 	RouteName           *string                                                         `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
 	RouteType           *string                                                         `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
@@ -476,6 +489,11 @@ func (s *CreateIstioGatewayRoutesRequestGatewayRoute) SetHTTPAdvancedOptions(v *
 
 func (s *CreateIstioGatewayRoutesRequestGatewayRoute) SetMatchRequest(v *CreateIstioGatewayRoutesRequestGatewayRouteMatchRequest) *CreateIstioGatewayRoutesRequestGatewayRoute {
 	s.MatchRequest = v
+	return s
+}
+
+func (s *CreateIstioGatewayRoutesRequestGatewayRoute) SetNamespace(v string) *CreateIstioGatewayRoutesRequestGatewayRoute {
+	s.Namespace = &v
 	return s
 }
 
@@ -1666,6 +1684,8 @@ func (s *DeleteGatewaySecretResponse) SetBody(v *DeleteGatewaySecretResponseBody
 type DeleteIstioGatewayDomainsRequest struct {
 	Hosts            *string `json:"Hosts,omitempty" xml:"Hosts,omitempty"`
 	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	Limit            *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Namespace        *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	PortName         *string `json:"PortName,omitempty" xml:"PortName,omitempty"`
 	ServiceMeshId    *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
@@ -1685,6 +1705,16 @@ func (s *DeleteIstioGatewayDomainsRequest) SetHosts(v string) *DeleteIstioGatewa
 
 func (s *DeleteIstioGatewayDomainsRequest) SetIstioGatewayName(v string) *DeleteIstioGatewayDomainsRequest {
 	s.IstioGatewayName = &v
+	return s
+}
+
+func (s *DeleteIstioGatewayDomainsRequest) SetLimit(v string) *DeleteIstioGatewayDomainsRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *DeleteIstioGatewayDomainsRequest) SetNamespace(v string) *DeleteIstioGatewayDomainsRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -3127,6 +3157,8 @@ func (s *DescribeIngressGatewaysResponse) SetBody(v *DescribeIngressGatewaysResp
 
 type DescribeIstioGatewayDomainsRequest struct {
 	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
+	Limit            *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Namespace        *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	ServiceMeshId    *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -3140,6 +3172,16 @@ func (s DescribeIstioGatewayDomainsRequest) GoString() string {
 
 func (s *DescribeIstioGatewayDomainsRequest) SetIstioGatewayName(v string) *DescribeIstioGatewayDomainsRequest {
 	s.IstioGatewayName = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayDomainsRequest) SetLimit(v string) *DescribeIstioGatewayDomainsRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayDomainsRequest) SetNamespace(v string) *DescribeIstioGatewayDomainsRequest {
+	s.Namespace = &v
 	return s
 }
 
@@ -3175,6 +3217,7 @@ type DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails struct {
 	CredentialName *string   `json:"CredentialName,omitempty" xml:"CredentialName,omitempty"`
 	Detail         *string   `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	Domains        []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
+	Namespace      *string   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	PortName       *string   `json:"PortName,omitempty" xml:"PortName,omitempty"`
 	Protocol       *string   `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
@@ -3199,6 +3242,11 @@ func (s *DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails) SetDetail(
 
 func (s *DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails) SetDomains(v []*string) *DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails {
 	s.Domains = v
+	return s
+}
+
+func (s *DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails) SetNamespace(v string) *DescribeIstioGatewayDomainsResponseBodyGatewaySecretDetails {
+	s.Namespace = &v
 	return s
 }
 
@@ -3266,6 +3314,7 @@ func (s *DescribeIstioGatewayRouteDetailRequest) SetServiceMeshId(v string) *Des
 
 type DescribeIstioGatewayRouteDetailResponseBody struct {
 	Description *string                                                 `json:"Description,omitempty" xml:"Description,omitempty"`
+	Namespace   *string                                                 `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	Priority    *int32                                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	RequestId   *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	RouteDetail *DescribeIstioGatewayRouteDetailResponseBodyRouteDetail `json:"RouteDetail,omitempty" xml:"RouteDetail,omitempty" type:"Struct"`
@@ -3282,6 +3331,11 @@ func (s DescribeIstioGatewayRouteDetailResponseBody) GoString() string {
 
 func (s *DescribeIstioGatewayRouteDetailResponseBody) SetDescription(v string) *DescribeIstioGatewayRouteDetailResponseBody {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRouteDetailResponseBody) SetNamespace(v string) *DescribeIstioGatewayRouteDetailResponseBody {
+	s.Namespace = &v
 	return s
 }
 
@@ -4019,6 +4073,7 @@ func (s *DescribeIstioGatewayRoutesResponseBody) SetRequestId(v string) *Describ
 type DescribeIstioGatewayRoutesResponseBodyManagementRoutes struct {
 	ASMGatewayName *string `json:"ASMGatewayName,omitempty" xml:"ASMGatewayName,omitempty"`
 	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Namespace      *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	Priority       *int32  `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	RouteName      *string `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
 	RoutePath      *string `json:"RoutePath,omitempty" xml:"RoutePath,omitempty"`
@@ -4040,6 +4095,11 @@ func (s *DescribeIstioGatewayRoutesResponseBodyManagementRoutes) SetASMGatewayNa
 
 func (s *DescribeIstioGatewayRoutesResponseBodyManagementRoutes) SetDescription(v string) *DescribeIstioGatewayRoutesResponseBodyManagementRoutes {
 	s.Description = &v
+	return s
+}
+
+func (s *DescribeIstioGatewayRoutesResponseBodyManagementRoutes) SetNamespace(v string) *DescribeIstioGatewayRoutesResponseBodyManagementRoutes {
+	s.Namespace = &v
 	return s
 }
 
@@ -5108,6 +5168,8 @@ func (s *DescribeServiceMeshAdditionalStatusResponse) SetBody(v *DescribeService
 }
 
 type DescribeServiceMeshClustersRequest struct {
+	Limit         *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Offset        *int64  `json:"Offset,omitempty" xml:"Offset,omitempty"`
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
 }
 
@@ -5117,6 +5179,16 @@ func (s DescribeServiceMeshClustersRequest) String() string {
 
 func (s DescribeServiceMeshClustersRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeServiceMeshClustersRequest) SetLimit(v int64) *DescribeServiceMeshClustersRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *DescribeServiceMeshClustersRequest) SetOffset(v int64) *DescribeServiceMeshClustersRequest {
+	s.Offset = &v
+	return s
 }
 
 func (s *DescribeServiceMeshClustersRequest) SetServiceMeshId(v string) *DescribeServiceMeshClustersRequest {
@@ -9743,6 +9815,7 @@ func (s *UpdateIstioGatewayRoutesRequest) SetStatus(v int32) *UpdateIstioGateway
 type UpdateIstioGatewayRoutesRequestGatewayRoute struct {
 	HTTPAdvancedOptions *UpdateIstioGatewayRoutesRequestGatewayRouteHTTPAdvancedOptions `json:"HTTPAdvancedOptions,omitempty" xml:"HTTPAdvancedOptions,omitempty" type:"Struct"`
 	MatchRequest        *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest        `json:"MatchRequest,omitempty" xml:"MatchRequest,omitempty" type:"Struct"`
+	Namespace           *string                                                         `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	RouteDestinations   []*UpdateIstioGatewayRoutesRequestGatewayRouteRouteDestinations `json:"RouteDestinations,omitempty" xml:"RouteDestinations,omitempty" type:"Repeated"`
 	RouteName           *string                                                         `json:"RouteName,omitempty" xml:"RouteName,omitempty"`
 	RouteType           *string                                                         `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
@@ -9763,6 +9836,11 @@ func (s *UpdateIstioGatewayRoutesRequestGatewayRoute) SetHTTPAdvancedOptions(v *
 
 func (s *UpdateIstioGatewayRoutesRequestGatewayRoute) SetMatchRequest(v *UpdateIstioGatewayRoutesRequestGatewayRouteMatchRequest) *UpdateIstioGatewayRoutesRequestGatewayRoute {
 	s.MatchRequest = v
+	return s
+}
+
+func (s *UpdateIstioGatewayRoutesRequestGatewayRoute) SetNamespace(v string) *UpdateIstioGatewayRoutesRequestGatewayRoute {
+	s.Namespace = &v
 	return s
 }
 
@@ -10451,6 +10529,7 @@ type UpdateMeshFeatureRequest struct {
 	AuditProject                   *string  `json:"AuditProject,omitempty" xml:"AuditProject,omitempty"`
 	AutoInjectionPolicyEnabled     *bool    `json:"AutoInjectionPolicyEnabled,omitempty" xml:"AutoInjectionPolicyEnabled,omitempty"`
 	CRAggregationEnabled           *bool    `json:"CRAggregationEnabled,omitempty" xml:"CRAggregationEnabled,omitempty"`
+	CanaryUpgradeEnabled           *bool    `json:"CanaryUpgradeEnabled,omitempty" xml:"CanaryUpgradeEnabled,omitempty"`
 	ClusterSpec                    *string  `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
 	CniEnabled                     *bool    `json:"CniEnabled,omitempty" xml:"CniEnabled,omitempty"`
 	CniExcludeNamespaces           *string  `json:"CniExcludeNamespaces,omitempty" xml:"CniExcludeNamespaces,omitempty"`
@@ -10574,6 +10653,11 @@ func (s *UpdateMeshFeatureRequest) SetAutoInjectionPolicyEnabled(v bool) *Update
 
 func (s *UpdateMeshFeatureRequest) SetCRAggregationEnabled(v bool) *UpdateMeshFeatureRequest {
 	s.CRAggregationEnabled = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetCanaryUpgradeEnabled(v bool) *UpdateMeshFeatureRequest {
+	s.CanaryUpgradeEnabled = &v
 	return s
 }
 
@@ -11927,6 +12011,14 @@ func (client *Client) CreateIstioGatewayDomainsWithOptions(request *CreateIstioG
 		body["IstioGatewayName"] = request.IstioGatewayName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Number)) {
 		body["Number"] = request.Number
 	}
@@ -12467,6 +12559,14 @@ func (client *Client) DeleteIstioGatewayDomainsWithOptions(request *DeleteIstioG
 
 	if !tea.BoolValue(util.IsUnset(request.IstioGatewayName)) {
 		body["IstioGatewayName"] = request.IstioGatewayName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PortName)) {
@@ -13233,6 +13333,14 @@ func (client *Client) DescribeIstioGatewayDomainsWithOptions(request *DescribeIs
 		body["IstioGatewayName"] = request.IstioGatewayName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		body["Namespace"] = request.Namespace
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
 		body["ServiceMeshId"] = request.ServiceMeshId
 	}
@@ -13741,8 +13849,18 @@ func (client *Client) DescribeServiceMeshClustersWithOptions(request *DescribeSe
 		query["ServiceMeshId"] = request.ServiceMeshId
 	}
 
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		body["Offset"] = request.Offset
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DescribeServiceMeshClusters"),
@@ -15327,6 +15445,10 @@ func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureReq
 
 	if !tea.BoolValue(util.IsUnset(request.CRAggregationEnabled)) {
 		body["CRAggregationEnabled"] = request.CRAggregationEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CanaryUpgradeEnabled)) {
+		body["CanaryUpgradeEnabled"] = request.CanaryUpgradeEnabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterSpec)) {
