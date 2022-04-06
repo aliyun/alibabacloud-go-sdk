@@ -310,7 +310,6 @@ func (s *BatchEnableJobsResponse) SetBody(v *BatchEnableJobsResponseBody) *Batch
 }
 
 type CreateAppGroupRequest struct {
-	AlarmJson           *string `json:"AlarmJson,omitempty" xml:"AlarmJson,omitempty"`
 	AppKey              *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 	AppName             *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	Description         *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -322,6 +321,7 @@ type CreateAppGroupRequest struct {
 	NamespaceName       *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
 	NamespaceSource     *string `json:"NamespaceSource,omitempty" xml:"NamespaceSource,omitempty"`
 	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ScheduleBusyWorkers *bool   `json:"ScheduleBusyWorkers,omitempty" xml:"ScheduleBusyWorkers,omitempty"`
 }
 
 func (s CreateAppGroupRequest) String() string {
@@ -330,11 +330,6 @@ func (s CreateAppGroupRequest) String() string {
 
 func (s CreateAppGroupRequest) GoString() string {
 	return s.String()
-}
-
-func (s *CreateAppGroupRequest) SetAlarmJson(v string) *CreateAppGroupRequest {
-	s.AlarmJson = &v
-	return s
 }
 
 func (s *CreateAppGroupRequest) SetAppKey(v string) *CreateAppGroupRequest {
@@ -389,6 +384,11 @@ func (s *CreateAppGroupRequest) SetNamespaceSource(v string) *CreateAppGroupRequ
 
 func (s *CreateAppGroupRequest) SetRegionId(v string) *CreateAppGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateAppGroupRequest) SetScheduleBusyWorkers(v bool) *CreateAppGroupRequest {
+	s.ScheduleBusyWorkers = &v
 	return s
 }
 
@@ -802,6 +802,7 @@ type CreateNamespaceRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Source      *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	Uid         *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 
@@ -825,6 +826,11 @@ func (s *CreateNamespaceRequest) SetName(v string) *CreateNamespaceRequest {
 
 func (s *CreateNamespaceRequest) SetRegionId(v string) *CreateNamespaceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateNamespaceRequest) SetSource(v string) *CreateNamespaceRequest {
+	s.Source = &v
 	return s
 }
 
@@ -5054,6 +5060,10 @@ func (client *Client) CreateNamespaceWithOptions(request *CreateNamespaceRequest
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Uid)) {
