@@ -7073,9 +7073,9 @@ func (s *GetLhSpaceByNameResponseBody) SetSuccess(v bool) *GetLhSpaceByNameRespo
 
 type GetLhSpaceByNameResponseBodyLakehouseSpace struct {
 	CreatorId   *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
-	DbType      *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DevDbId     *int32  `json:"DevDbId,omitempty" xml:"DevDbId,omitempty"`
+	DwDbType    *string `json:"DwDbType,omitempty" xml:"DwDbType,omitempty"`
 	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	IsDeleted   *bool   `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
 	Mode        *int32  `json:"Mode,omitempty" xml:"Mode,omitempty"`
@@ -7098,11 +7098,6 @@ func (s *GetLhSpaceByNameResponseBodyLakehouseSpace) SetCreatorId(v string) *Get
 	return s
 }
 
-func (s *GetLhSpaceByNameResponseBodyLakehouseSpace) SetDbType(v string) *GetLhSpaceByNameResponseBodyLakehouseSpace {
-	s.DbType = &v
-	return s
-}
-
 func (s *GetLhSpaceByNameResponseBodyLakehouseSpace) SetDescription(v string) *GetLhSpaceByNameResponseBodyLakehouseSpace {
 	s.Description = &v
 	return s
@@ -7110,6 +7105,11 @@ func (s *GetLhSpaceByNameResponseBodyLakehouseSpace) SetDescription(v string) *G
 
 func (s *GetLhSpaceByNameResponseBodyLakehouseSpace) SetDevDbId(v int32) *GetLhSpaceByNameResponseBodyLakehouseSpace {
 	s.DevDbId = &v
+	return s
+}
+
+func (s *GetLhSpaceByNameResponseBodyLakehouseSpace) SetDwDbType(v string) *GetLhSpaceByNameResponseBodyLakehouseSpace {
+	s.DwDbType = &v
 	return s
 }
 
@@ -14328,6 +14328,8 @@ type ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag struct {
 	CanEdit              *bool   `json:"CanEdit,omitempty" xml:"CanEdit,omitempty"`
 	CreatorId            *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	CreatorNickName      *string `json:"CreatorNickName,omitempty" xml:"CreatorNickName,omitempty"`
+	DagName              *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
+	DagOwnerId           *string `json:"DagOwnerId,omitempty" xml:"DagOwnerId,omitempty"`
 	DagOwnerNickName     *string `json:"DagOwnerNickName,omitempty" xml:"DagOwnerNickName,omitempty"`
 	DataFlowId           *int64  `json:"DataFlowId,omitempty" xml:"DataFlowId,omitempty"`
 	DemoId               *string `json:"DemoId,omitempty" xml:"DemoId,omitempty"`
@@ -14361,6 +14363,16 @@ func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) SetCreatorId(v stri
 
 func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) SetCreatorNickName(v string) *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag {
 	s.CreatorNickName = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) SetDagName(v string) *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag {
+	s.DagName = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag) SetDagOwnerId(v string) *ListLhTaskFlowAndScenarioResponseBodyRawDAGListDag {
+	s.DagOwnerId = &v
 	return s
 }
 
@@ -14480,6 +14492,8 @@ type ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag s
 	CanEdit              *bool   `json:"CanEdit,omitempty" xml:"CanEdit,omitempty"`
 	CreatorId            *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	CreatorNickName      *string `json:"CreatorNickName,omitempty" xml:"CreatorNickName,omitempty"`
+	DagName              *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
+	DagOwnerId           *string `json:"DagOwnerId,omitempty" xml:"DagOwnerId,omitempty"`
 	DagOwnerNickName     *string `json:"DagOwnerNickName,omitempty" xml:"DagOwnerNickName,omitempty"`
 	DataFlowId           *int64  `json:"DataFlowId,omitempty" xml:"DataFlowId,omitempty"`
 	DemoId               *string `json:"DemoId,omitempty" xml:"DemoId,omitempty"`
@@ -14513,6 +14527,16 @@ func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListD
 
 func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag) SetCreatorNickName(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag {
 	s.CreatorNickName = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag) SetDagName(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag {
+	s.DagName = &v
+	return s
+}
+
+func (s *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag) SetDagOwnerId(v string) *ListLhTaskFlowAndScenarioResponseBodyScenarioDAGListScenarioDAGDagListDag {
+	s.DagOwnerId = &v
 	return s
 }
 
