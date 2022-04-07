@@ -21109,6 +21109,116 @@ func (s *InstallBackupClientResponse) SetBody(v *InstallBackupClientResponseBody
 	return s
 }
 
+type InstallCloudMonitorRequest struct {
+	// 非阿里云主机安装云监控插件时所需要的AccessKey
+	AgentAccessKey *string `json:"AgentAccessKey,omitempty" xml:"AgentAccessKey,omitempty"`
+	// 非阿里云主机安装云监控插件时所需要的AccessSecret
+	AgentSecretKey *string `json:"AgentSecretKey,omitempty" xml:"AgentSecretKey,omitempty"`
+	// 云监控版本
+	ArgusVersion *string `json:"ArgusVersion,omitempty" xml:"ArgusVersion,omitempty"`
+	// 实例 instanceId
+	InstanceIdList []*string `json:"InstanceIdList,omitempty" xml:"InstanceIdList,omitempty" type:"Repeated"`
+	// uuid 列表
+	UuidList []*string `json:"UuidList,omitempty" xml:"UuidList,omitempty" type:"Repeated"`
+}
+
+func (s InstallCloudMonitorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallCloudMonitorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InstallCloudMonitorRequest) SetAgentAccessKey(v string) *InstallCloudMonitorRequest {
+	s.AgentAccessKey = &v
+	return s
+}
+
+func (s *InstallCloudMonitorRequest) SetAgentSecretKey(v string) *InstallCloudMonitorRequest {
+	s.AgentSecretKey = &v
+	return s
+}
+
+func (s *InstallCloudMonitorRequest) SetArgusVersion(v string) *InstallCloudMonitorRequest {
+	s.ArgusVersion = &v
+	return s
+}
+
+func (s *InstallCloudMonitorRequest) SetInstanceIdList(v []*string) *InstallCloudMonitorRequest {
+	s.InstanceIdList = v
+	return s
+}
+
+func (s *InstallCloudMonitorRequest) SetUuidList(v []*string) *InstallCloudMonitorRequest {
+	s.UuidList = v
+	return s
+}
+
+type InstallCloudMonitorResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s InstallCloudMonitorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallCloudMonitorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InstallCloudMonitorResponseBody) SetCode(v string) *InstallCloudMonitorResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InstallCloudMonitorResponseBody) SetHttpStatusCode(v int32) *InstallCloudMonitorResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *InstallCloudMonitorResponseBody) SetMessage(v string) *InstallCloudMonitorResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InstallCloudMonitorResponseBody) SetRequestId(v string) *InstallCloudMonitorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InstallCloudMonitorResponseBody) SetSuccess(v bool) *InstallCloudMonitorResponseBody {
+	s.Success = &v
+	return s
+}
+
+type InstallCloudMonitorResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *InstallCloudMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InstallCloudMonitorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallCloudMonitorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InstallCloudMonitorResponse) SetHeaders(v map[string]*string) *InstallCloudMonitorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InstallCloudMonitorResponse) SetBody(v *InstallCloudMonitorResponseBody) *InstallCloudMonitorResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyAntiBruteForceRuleRequest struct {
 	DefaultRule     *bool     `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty"`
 	FailCount       *int32    `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
@@ -32174,6 +32284,66 @@ func (client *Client) InstallBackupClient(request *InstallBackupClientRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &InstallBackupClientResponse{}
 	_body, _err := client.InstallBackupClientWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InstallCloudMonitorWithOptions(request *InstallCloudMonitorRequest, runtime *util.RuntimeOptions) (_result *InstallCloudMonitorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentAccessKey)) {
+		query["AgentAccessKey"] = request.AgentAccessKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AgentSecretKey)) {
+		query["AgentSecretKey"] = request.AgentSecretKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ArgusVersion)) {
+		query["ArgusVersion"] = request.ArgusVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIdList)) {
+		query["InstanceIdList"] = request.InstanceIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UuidList)) {
+		query["UuidList"] = request.UuidList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InstallCloudMonitor"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InstallCloudMonitorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InstallCloudMonitor(request *InstallCloudMonitorRequest) (_result *InstallCloudMonitorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InstallCloudMonitorResponse{}
+	_body, _err := client.InstallCloudMonitorWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
