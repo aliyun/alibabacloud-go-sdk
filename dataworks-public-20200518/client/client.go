@@ -37088,6 +37088,89 @@ func (s *UpdateUdfFileResponse) SetBody(v *UpdateUdfFileResponseBody) *UpdateUdf
 	return s
 }
 
+type UpdateWorkbenchEventResultRequest struct {
+	CheckResult    *string `json:"CheckResult,omitempty" xml:"CheckResult,omitempty"`
+	CheckResultTip *string `json:"CheckResultTip,omitempty" xml:"CheckResultTip,omitempty"`
+	ExtensionCode  *string `json:"ExtensionCode,omitempty" xml:"ExtensionCode,omitempty"`
+	MessageId      *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
+}
+
+func (s UpdateWorkbenchEventResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkbenchEventResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkbenchEventResultRequest) SetCheckResult(v string) *UpdateWorkbenchEventResultRequest {
+	s.CheckResult = &v
+	return s
+}
+
+func (s *UpdateWorkbenchEventResultRequest) SetCheckResultTip(v string) *UpdateWorkbenchEventResultRequest {
+	s.CheckResultTip = &v
+	return s
+}
+
+func (s *UpdateWorkbenchEventResultRequest) SetExtensionCode(v string) *UpdateWorkbenchEventResultRequest {
+	s.ExtensionCode = &v
+	return s
+}
+
+func (s *UpdateWorkbenchEventResultRequest) SetMessageId(v string) *UpdateWorkbenchEventResultRequest {
+	s.MessageId = &v
+	return s
+}
+
+type UpdateWorkbenchEventResultResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 成功标识
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateWorkbenchEventResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkbenchEventResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkbenchEventResultResponseBody) SetRequestId(v string) *UpdateWorkbenchEventResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateWorkbenchEventResultResponseBody) SetSuccess(v bool) *UpdateWorkbenchEventResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateWorkbenchEventResultResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateWorkbenchEventResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateWorkbenchEventResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateWorkbenchEventResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateWorkbenchEventResultResponse) SetHeaders(v map[string]*string) *UpdateWorkbenchEventResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateWorkbenchEventResultResponse) SetBody(v *UpdateWorkbenchEventResultResponseBody) *UpdateWorkbenchEventResultResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -50042,6 +50125,62 @@ func (client *Client) UpdateUdfFile(request *UpdateUdfFileRequest) (_result *Upd
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateUdfFileResponse{}
 	_body, _err := client.UpdateUdfFileWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateWorkbenchEventResultWithOptions(request *UpdateWorkbenchEventResultRequest, runtime *util.RuntimeOptions) (_result *UpdateWorkbenchEventResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckResult)) {
+		query["CheckResult"] = request.CheckResult
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckResultTip)) {
+		query["CheckResultTip"] = request.CheckResultTip
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtensionCode)) {
+		query["ExtensionCode"] = request.ExtensionCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageId)) {
+		query["MessageId"] = request.MessageId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateWorkbenchEventResult"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateWorkbenchEventResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateWorkbenchEventResult(request *UpdateWorkbenchEventResultRequest) (_result *UpdateWorkbenchEventResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateWorkbenchEventResultResponse{}
+	_body, _err := client.UpdateWorkbenchEventResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
