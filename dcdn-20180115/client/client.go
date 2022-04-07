@@ -18135,6 +18135,99 @@ func (s *DescribeDcdnWafScenesResponse) SetBody(v *DescribeDcdnWafScenesResponse
 	return s
 }
 
+type DescribeDcdnWafServiceRequest struct {
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeDcdnWafServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafServiceRequest) SetOwnerId(v int64) *DescribeDcdnWafServiceRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafServiceRequest) SetSecurityToken(v string) *DescribeDcdnWafServiceRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeDcdnWafServiceResponseBody struct {
+	Edition            *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
+	OpeningTime        *string `json:"OpeningTime,omitempty" xml:"OpeningTime,omitempty"`
+	RequestBillingType *string `json:"RequestBillingType,omitempty" xml:"RequestBillingType,omitempty"`
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RuleBillingType    *string `json:"RuleBillingType,omitempty" xml:"RuleBillingType,omitempty"`
+	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDcdnWafServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafServiceResponseBody) SetEdition(v string) *DescribeDcdnWafServiceResponseBody {
+	s.Edition = &v
+	return s
+}
+
+func (s *DescribeDcdnWafServiceResponseBody) SetOpeningTime(v string) *DescribeDcdnWafServiceResponseBody {
+	s.OpeningTime = &v
+	return s
+}
+
+func (s *DescribeDcdnWafServiceResponseBody) SetRequestBillingType(v string) *DescribeDcdnWafServiceResponseBody {
+	s.RequestBillingType = &v
+	return s
+}
+
+func (s *DescribeDcdnWafServiceResponseBody) SetRequestId(v string) *DescribeDcdnWafServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDcdnWafServiceResponseBody) SetRuleBillingType(v string) *DescribeDcdnWafServiceResponseBody {
+	s.RuleBillingType = &v
+	return s
+}
+
+func (s *DescribeDcdnWafServiceResponseBody) SetStatus(v string) *DescribeDcdnWafServiceResponseBody {
+	s.Status = &v
+	return s
+}
+
+type DescribeDcdnWafServiceResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDcdnWafServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnWafServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnWafServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnWafServiceResponse) SetHeaders(v map[string]*string) *DescribeDcdnWafServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnWafServiceResponse) SetBody(v *DescribeDcdnWafServiceResponseBody) *DescribeDcdnWafServiceResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDcdnWafSpecInfoRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -29827,6 +29920,54 @@ func (client *Client) DescribeDcdnWafScenes(request *DescribeDcdnWafScenesReques
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDcdnWafScenesResponse{}
 	_body, _err := client.DescribeDcdnWafScenesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafServiceWithOptions(request *DescribeDcdnWafServiceRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnWafServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnWafService"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnWafServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnWafService(request *DescribeDcdnWafServiceRequest) (_result *DescribeDcdnWafServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnWafServiceResponse{}
+	_body, _err := client.DescribeDcdnWafServiceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
