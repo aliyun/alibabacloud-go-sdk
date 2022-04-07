@@ -2571,6 +2571,151 @@ func (s *DescribeCrTemplatesResponse) SetBody(v *DescribeCrTemplatesResponseBody
 	return s
 }
 
+type DescribeEipResourcesRequest struct {
+	PageNum       *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s DescribeEipResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEipResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEipResourcesRequest) SetPageNum(v int32) *DescribeEipResourcesRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *DescribeEipResourcesRequest) SetPageSize(v int32) *DescribeEipResourcesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeEipResourcesRequest) SetServiceMeshId(v string) *DescribeEipResourcesRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type DescribeEipResourcesResponseBody struct {
+	EipList    []*DescribeEipResourcesResponseBodyEipList  `json:"EipList,omitempty" xml:"EipList,omitempty" type:"Repeated"`
+	PageResult *DescribeEipResourcesResponseBodyPageResult `json:"PageResult,omitempty" xml:"PageResult,omitempty" type:"Struct"`
+	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeEipResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEipResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEipResourcesResponseBody) SetEipList(v []*DescribeEipResourcesResponseBodyEipList) *DescribeEipResourcesResponseBody {
+	s.EipList = v
+	return s
+}
+
+func (s *DescribeEipResourcesResponseBody) SetPageResult(v *DescribeEipResourcesResponseBodyPageResult) *DescribeEipResourcesResponseBody {
+	s.PageResult = v
+	return s
+}
+
+func (s *DescribeEipResourcesResponseBody) SetRequestId(v string) *DescribeEipResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeEipResourcesResponseBodyEipList struct {
+	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	IpAddress    *string `json:"IpAddress,omitempty" xml:"IpAddress,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeEipResourcesResponseBodyEipList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEipResourcesResponseBodyEipList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEipResourcesResponseBodyEipList) SetAllocationId(v string) *DescribeEipResourcesResponseBodyEipList {
+	s.AllocationId = &v
+	return s
+}
+
+func (s *DescribeEipResourcesResponseBodyEipList) SetInstanceType(v string) *DescribeEipResourcesResponseBodyEipList {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeEipResourcesResponseBodyEipList) SetIpAddress(v string) *DescribeEipResourcesResponseBodyEipList {
+	s.IpAddress = &v
+	return s
+}
+
+func (s *DescribeEipResourcesResponseBodyEipList) SetStatus(v string) *DescribeEipResourcesResponseBodyEipList {
+	s.Status = &v
+	return s
+}
+
+type DescribeEipResourcesResponseBodyPageResult struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeEipResourcesResponseBodyPageResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEipResourcesResponseBodyPageResult) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEipResourcesResponseBodyPageResult) SetPageNumber(v int32) *DescribeEipResourcesResponseBodyPageResult {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeEipResourcesResponseBodyPageResult) SetPageSize(v int32) *DescribeEipResourcesResponseBodyPageResult {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeEipResourcesResponseBodyPageResult) SetTotalCount(v int32) *DescribeEipResourcesResponseBodyPageResult {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeEipResourcesResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeEipResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeEipResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEipResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEipResourcesResponse) SetHeaders(v map[string]*string) *DescribeEipResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEipResourcesResponse) SetBody(v *DescribeEipResourcesResponseBody) *DescribeEipResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeGatewaySecretDetailsRequest struct {
 	IstioGatewayName *string `json:"IstioGatewayName,omitempty" xml:"IstioGatewayName,omitempty"`
 	ServiceMeshId    *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
@@ -9182,6 +9327,75 @@ func (s *ListDashboardResponse) SetBody(v *ListDashboardResponseBody) *ListDashb
 	return s
 }
 
+type ModifyApiServerEipResourceRequest struct {
+	ApiServerEipId *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
+	Operation      *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
+	ServiceMeshId  *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s ModifyApiServerEipResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApiServerEipResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApiServerEipResourceRequest) SetApiServerEipId(v string) *ModifyApiServerEipResourceRequest {
+	s.ApiServerEipId = &v
+	return s
+}
+
+func (s *ModifyApiServerEipResourceRequest) SetOperation(v string) *ModifyApiServerEipResourceRequest {
+	s.Operation = &v
+	return s
+}
+
+func (s *ModifyApiServerEipResourceRequest) SetServiceMeshId(v string) *ModifyApiServerEipResourceRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type ModifyApiServerEipResourceResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyApiServerEipResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApiServerEipResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApiServerEipResourceResponseBody) SetRequestId(v string) *ModifyApiServerEipResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyApiServerEipResourceResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyApiServerEipResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyApiServerEipResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApiServerEipResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApiServerEipResourceResponse) SetHeaders(v map[string]*string) *ModifyApiServerEipResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyApiServerEipResourceResponse) SetBody(v *ModifyApiServerEipResourceResponseBody) *ModifyApiServerEipResourceResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyServiceMeshNameRequest struct {
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
@@ -13039,6 +13253,58 @@ func (client *Client) DescribeCrTemplates(request *DescribeCrTemplatesRequest) (
 	return _result, _err
 }
 
+func (client *Client) DescribeEipResourcesWithOptions(request *DescribeEipResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeEipResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		body["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEipResources"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeEipResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEipResources(request *DescribeEipResourcesRequest) (_result *DescribeEipResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEipResourcesResponse{}
+	_body, _err := client.DescribeEipResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeGatewaySecretDetailsWithOptions(request *DescribeGatewaySecretDetailsRequest, runtime *util.RuntimeOptions) (_result *DescribeGatewaySecretDetailsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14838,6 +15104,58 @@ func (client *Client) ListDashboard(request *ListDashboardRequest) (_result *Lis
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDashboardResponse{}
 	_body, _err := client.ListDashboardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyApiServerEipResourceWithOptions(request *ModifyApiServerEipResourceRequest, runtime *util.RuntimeOptions) (_result *ModifyApiServerEipResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiServerEipId)) {
+		body["ApiServerEipId"] = request.ApiServerEipId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Operation)) {
+		body["Operation"] = request.Operation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyApiServerEipResource"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyApiServerEipResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyApiServerEipResource(request *ModifyApiServerEipResourceRequest) (_result *ModifyApiServerEipResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyApiServerEipResourceResponse{}
+	_body, _err := client.ModifyApiServerEipResourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
