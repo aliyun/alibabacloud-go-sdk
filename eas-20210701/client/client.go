@@ -25,6 +25,8 @@ type Instance struct {
 	InstancePort *int32 `json:"InstancePort,omitempty" xml:"InstancePort,omitempty"`
 	// 实例上一次退出的状态
 	LastState []map[string]interface{} `json:"LastState,omitempty" xml:"LastState,omitempty" type:"Repeated"`
+	// 实例的命名空间
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// 实例已经启动完成的进程数
 	ReadyProcesses *int32 `json:"ReadyProcesses,omitempty" xml:"ReadyProcesses,omitempty"`
 	// 实例当前状态的标识
@@ -74,6 +76,11 @@ func (s *Instance) SetInstancePort(v int32) *Instance {
 
 func (s *Instance) SetLastState(v []map[string]interface{}) *Instance {
 	s.LastState = v
+	return s
+}
+
+func (s *Instance) SetNamespace(v string) *Instance {
+	s.Namespace = &v
 	return s
 }
 
@@ -667,7 +674,7 @@ type CreateResourceResponseBody struct {
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// 资源组ID
-	ResourceID *string `json:"ResourceID,omitempty" xml:"ResourceID,omitempty"`
+	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// 资源组名称
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 }
@@ -695,8 +702,8 @@ func (s *CreateResourceResponseBody) SetRequestId(v string) *CreateResourceRespo
 	return s
 }
 
-func (s *CreateResourceResponseBody) SetResourceID(v string) *CreateResourceResponseBody {
-	s.ResourceID = &v
+func (s *CreateResourceResponseBody) SetResourceId(v string) *CreateResourceResponseBody {
+	s.ResourceId = &v
 	return s
 }
 
@@ -1731,6 +1738,72 @@ func (s *DeleteServiceMirrorResponse) SetBody(v *DeleteServiceMirrorResponseBody
 	return s
 }
 
+type DescribeRegionsResponseBody struct {
+	// 可用地域列表
+	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeRegionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponseBody) SetRegions(v []*DescribeRegionsResponseBodyRegions) *DescribeRegionsResponseBody {
+	s.Regions = v
+	return s
+}
+
+func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeRegionsResponseBodyRegions struct {
+	// 地域Id
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeRegionsResponseBodyRegions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponseBodyRegions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponseBodyRegions) SetRegionId(v string) *DescribeRegionsResponseBodyRegions {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeRegionsResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRegionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRegionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeResourceResponseBody struct {
 	ClusterId             *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	CpuCount              *int32  `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
@@ -2024,6 +2097,7 @@ func (s *DescribeServiceResponse) SetBody(v *Service) *DescribeServiceResponse {
 }
 
 type DescribeServiceAutoScalerResponseBody struct {
+	CurrentValues map[string]interface{} `json:"CurrentValues,omitempty" xml:"CurrentValues,omitempty"`
 	// 服务最大实例数
 	MaxReplica *int32 `json:"MaxReplica,omitempty" xml:"MaxReplica,omitempty"`
 	// 服务最小实例数
@@ -2042,6 +2116,11 @@ func (s DescribeServiceAutoScalerResponseBody) String() string {
 
 func (s DescribeServiceAutoScalerResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeServiceAutoScalerResponseBody) SetCurrentValues(v map[string]interface{}) *DescribeServiceAutoScalerResponseBody {
+	s.CurrentValues = v
+	return s
 }
 
 func (s *DescribeServiceAutoScalerResponseBody) SetMaxReplica(v int32) *DescribeServiceAutoScalerResponseBody {
@@ -2128,6 +2207,7 @@ func (s *DescribeServiceCronScalerResponseBody) SetServiceName(v string) *Descri
 }
 
 type DescribeServiceCronScalerResponseBodyScaleJobs struct {
+	CreateTime    *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	LastProbeTime *string `json:"LastProbeTime,omitempty" xml:"LastProbeTime,omitempty"`
 	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -2142,6 +2222,11 @@ func (s DescribeServiceCronScalerResponseBodyScaleJobs) String() string {
 
 func (s DescribeServiceCronScalerResponseBodyScaleJobs) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeServiceCronScalerResponseBodyScaleJobs) SetCreateTime(v string) *DescribeServiceCronScalerResponseBodyScaleJobs {
+	s.CreateTime = &v
+	return s
 }
 
 func (s *DescribeServiceCronScalerResponseBodyScaleJobs) SetLastProbeTime(v string) *DescribeServiceCronScalerResponseBodyScaleJobs {
@@ -4465,6 +4550,42 @@ func (client *Client) DeleteServiceMirrorWithOptions(ClusterId *string, ServiceN
 		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteServiceMirrorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeRegionsResponse{}
+	_body, _err := client.DescribeRegionsWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeRegionsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRegions"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/regions"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRegionsResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
