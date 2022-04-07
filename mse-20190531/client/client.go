@@ -951,6 +951,7 @@ type AddGatewayRouteRequest struct {
 	DirectResponseJSON *AddGatewayRouteRequestDirectResponseJSON `json:"DirectResponseJSON,omitempty" xml:"DirectResponseJSON,omitempty" type:"Struct"`
 	DomainId           *int64                                    `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	DomainIdListJSON   *string                                   `json:"DomainIdListJSON,omitempty" xml:"DomainIdListJSON,omitempty"`
+	EnableWaf          *bool                                     `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
 	GatewayId          *int64                                    `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayUniqueId    *string                                   `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Name               *string                                   `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -990,6 +991,11 @@ func (s *AddGatewayRouteRequest) SetDomainId(v int64) *AddGatewayRouteRequest {
 
 func (s *AddGatewayRouteRequest) SetDomainIdListJSON(v string) *AddGatewayRouteRequest {
 	s.DomainIdListJSON = &v
+	return s
+}
+
+func (s *AddGatewayRouteRequest) SetEnableWaf(v bool) *AddGatewayRouteRequest {
+	s.EnableWaf = &v
 	return s
 }
 
@@ -1261,6 +1267,7 @@ type AddGatewayRouteShrinkRequest struct {
 	DirectResponseJSONShrink *string `json:"DirectResponseJSON,omitempty" xml:"DirectResponseJSON,omitempty"`
 	DomainId                 *int64  `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	DomainIdListJSON         *string `json:"DomainIdListJSON,omitempty" xml:"DomainIdListJSON,omitempty"`
+	EnableWaf                *bool   `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
 	GatewayId                *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayUniqueId          *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -1300,6 +1307,11 @@ func (s *AddGatewayRouteShrinkRequest) SetDomainId(v int64) *AddGatewayRouteShri
 
 func (s *AddGatewayRouteShrinkRequest) SetDomainIdListJSON(v string) *AddGatewayRouteShrinkRequest {
 	s.DomainIdListJSON = &v
+	return s
+}
+
+func (s *AddGatewayRouteShrinkRequest) SetEnableWaf(v bool) *AddGatewayRouteShrinkRequest {
+	s.EnableWaf = &v
 	return s
 }
 
@@ -6984,6 +6996,140 @@ func (s *ExportNacosConfigResponse) SetBody(v *ExportNacosConfigResponseBody) *E
 	return s
 }
 
+type GetAppMessageQueueRouteRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s GetAppMessageQueueRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppMessageQueueRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppMessageQueueRouteRequest) SetAcceptLanguage(v string) *GetAppMessageQueueRouteRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *GetAppMessageQueueRouteRequest) SetAppId(v string) *GetAppMessageQueueRouteRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetAppMessageQueueRouteRequest) SetRegion(v string) *GetAppMessageQueueRouteRequest {
+	s.Region = &v
+	return s
+}
+
+type GetAppMessageQueueRouteResponseBody struct {
+	Code           *int32                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *GetAppMessageQueueRouteResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAppMessageQueueRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppMessageQueueRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppMessageQueueRouteResponseBody) SetCode(v int32) *GetAppMessageQueueRouteResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAppMessageQueueRouteResponseBody) SetData(v *GetAppMessageQueueRouteResponseBodyData) *GetAppMessageQueueRouteResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAppMessageQueueRouteResponseBody) SetHttpStatusCode(v int32) *GetAppMessageQueueRouteResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetAppMessageQueueRouteResponseBody) SetMessage(v string) *GetAppMessageQueueRouteResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAppMessageQueueRouteResponseBody) SetRequestId(v string) *GetAppMessageQueueRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAppMessageQueueRouteResponseBody) SetSuccess(v bool) *GetAppMessageQueueRouteResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAppMessageQueueRouteResponseBodyData struct {
+	AppId  *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Enable *bool     `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Region *string   `json:"Region,omitempty" xml:"Region,omitempty"`
+	Tags   []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s GetAppMessageQueueRouteResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppMessageQueueRouteResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppMessageQueueRouteResponseBodyData) SetAppId(v string) *GetAppMessageQueueRouteResponseBodyData {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetAppMessageQueueRouteResponseBodyData) SetEnable(v bool) *GetAppMessageQueueRouteResponseBodyData {
+	s.Enable = &v
+	return s
+}
+
+func (s *GetAppMessageQueueRouteResponseBodyData) SetRegion(v string) *GetAppMessageQueueRouteResponseBodyData {
+	s.Region = &v
+	return s
+}
+
+func (s *GetAppMessageQueueRouteResponseBodyData) SetTags(v []*string) *GetAppMessageQueueRouteResponseBodyData {
+	s.Tags = v
+	return s
+}
+
+type GetAppMessageQueueRouteResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetAppMessageQueueRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAppMessageQueueRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppMessageQueueRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppMessageQueueRouteResponse) SetHeaders(v map[string]*string) *GetAppMessageQueueRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAppMessageQueueRouteResponse) SetBody(v *GetAppMessageQueueRouteResponseBody) *GetAppMessageQueueRouteResponse {
+	s.Body = v
+	return s
+}
+
 type GetBlackWhiteListRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
@@ -7985,6 +8131,7 @@ type GetGatewayRouteDetailResponseBodyData struct {
 	DomainIdList       []*int64                                              `json:"DomainIdList,omitempty" xml:"DomainIdList,omitempty" type:"Repeated"`
 	DomainName         *string                                               `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	DomainNameList     []*string                                             `json:"DomainNameList,omitempty" xml:"DomainNameList,omitempty" type:"Repeated"`
+	EnableWaf          *bool                                                 `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
 	GatewayId          *int64                                                `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayUniqueId    *string                                               `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	GmtCreate          *string                                               `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
@@ -8054,6 +8201,11 @@ func (s *GetGatewayRouteDetailResponseBodyData) SetDomainName(v string) *GetGate
 
 func (s *GetGatewayRouteDetailResponseBodyData) SetDomainNameList(v []*string) *GetGatewayRouteDetailResponseBodyData {
 	s.DomainNameList = v
+	return s
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetEnableWaf(v bool) *GetGatewayRouteDetailResponseBodyData {
+	s.EnableWaf = &v
 	return s
 }
 
@@ -13658,6 +13810,7 @@ type ListGatewayResponseBodyDataResult struct {
 	GmtCreate       *string                                         `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified     *string                                         `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	Id              *int64                                          `json:"Id,omitempty" xml:"Id,omitempty"`
+	InitConfig      *ListGatewayResponseBodyDataResultInitConfig    `json:"InitConfig,omitempty" xml:"InitConfig,omitempty" type:"Struct"`
 	InstanceId      *string                                         `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InternetSlb     []*ListGatewayResponseBodyDataResultInternetSlb `json:"InternetSlb,omitempty" xml:"InternetSlb,omitempty" type:"Repeated"`
 	LatestVersion   *string                                         `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
@@ -13733,6 +13886,11 @@ func (s *ListGatewayResponseBodyDataResult) SetId(v int64) *ListGatewayResponseB
 	return s
 }
 
+func (s *ListGatewayResponseBodyDataResult) SetInitConfig(v *ListGatewayResponseBodyDataResultInitConfig) *ListGatewayResponseBodyDataResult {
+	s.InitConfig = v
+	return s
+}
+
 func (s *ListGatewayResponseBodyDataResult) SetInstanceId(v string) *ListGatewayResponseBodyDataResult {
 	s.InstanceId = &v
 	return s
@@ -13805,6 +13963,29 @@ func (s *ListGatewayResponseBodyDataResult) SetUpgrade(v bool) *ListGatewayRespo
 
 func (s *ListGatewayResponseBodyDataResult) SetVswitch2(v string) *ListGatewayResponseBodyDataResult {
 	s.Vswitch2 = &v
+	return s
+}
+
+type ListGatewayResponseBodyDataResultInitConfig struct {
+	EnableWaf  *bool `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
+	SupportWaf *bool `json:"SupportWaf,omitempty" xml:"SupportWaf,omitempty"`
+}
+
+func (s ListGatewayResponseBodyDataResultInitConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGatewayResponseBodyDataResultInitConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListGatewayResponseBodyDataResultInitConfig) SetEnableWaf(v bool) *ListGatewayResponseBodyDataResultInitConfig {
+	s.EnableWaf = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyDataResultInitConfig) SetSupportWaf(v bool) *ListGatewayResponseBodyDataResultInitConfig {
+	s.SupportWaf = &v
 	return s
 }
 
@@ -14401,6 +14582,7 @@ type ListGatewayRouteResponseBodyDataResult struct {
 	DomainIdList       []*int64                                               `json:"DomainIdList,omitempty" xml:"DomainIdList,omitempty" type:"Repeated"`
 	DomainName         *string                                                `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	DomainNameList     []*string                                              `json:"DomainNameList,omitempty" xml:"DomainNameList,omitempty" type:"Repeated"`
+	EnableWaf          *string                                                `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
 	GatewayId          *int64                                                 `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayUniqueId    *string                                                `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	GmtCreate          *string                                                `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
@@ -14467,6 +14649,11 @@ func (s *ListGatewayRouteResponseBodyDataResult) SetDomainName(v string) *ListGa
 
 func (s *ListGatewayRouteResponseBodyDataResult) SetDomainNameList(v []*string) *ListGatewayRouteResponseBodyDataResult {
 	s.DomainNameList = v
+	return s
+}
+
+func (s *ListGatewayRouteResponseBodyDataResult) SetEnableWaf(v string) *ListGatewayRouteResponseBodyDataResult {
+	s.EnableWaf = &v
 	return s
 }
 
@@ -15037,6 +15224,7 @@ type ListGatewayServiceResponseBodyDataResult struct {
 	GmtCreate             *string                                             `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified           *string                                             `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	GroupName             *string                                             `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	HealehStatus          *string                                             `json:"HealehStatus,omitempty" xml:"HealehStatus,omitempty"`
 	Id                    *int64                                              `json:"Id,omitempty" xml:"Id,omitempty"`
 	Ips                   []*string                                           `json:"Ips,omitempty" xml:"Ips,omitempty" type:"Repeated"`
 	MetaInfo              *string                                             `json:"MetaInfo,omitempty" xml:"MetaInfo,omitempty"`
@@ -15080,6 +15268,11 @@ func (s *ListGatewayServiceResponseBodyDataResult) SetGmtModified(v string) *Lis
 
 func (s *ListGatewayServiceResponseBodyDataResult) SetGroupName(v string) *ListGatewayServiceResponseBodyDataResult {
 	s.GroupName = &v
+	return s
+}
+
+func (s *ListGatewayServiceResponseBodyDataResult) SetHealehStatus(v string) *ListGatewayServiceResponseBodyDataResult {
+	s.HealehStatus = &v
 	return s
 }
 
@@ -20863,6 +21056,7 @@ type UpdateGatewayRouteRequest struct {
 	DestinationType    *string                                      `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	DirectResponseJSON *UpdateGatewayRouteRequestDirectResponseJSON `json:"DirectResponseJSON,omitempty" xml:"DirectResponseJSON,omitempty" type:"Struct"`
 	DomainIdListJSON   *string                                      `json:"DomainIdListJSON,omitempty" xml:"DomainIdListJSON,omitempty"`
+	EnableWaf          *bool                                        `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
 	GatewayId          *int64                                       `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayUniqueId    *string                                      `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Id                 *int64                                       `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -20898,6 +21092,11 @@ func (s *UpdateGatewayRouteRequest) SetDirectResponseJSON(v *UpdateGatewayRouteR
 
 func (s *UpdateGatewayRouteRequest) SetDomainIdListJSON(v string) *UpdateGatewayRouteRequest {
 	s.DomainIdListJSON = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteRequest) SetEnableWaf(v bool) *UpdateGatewayRouteRequest {
+	s.EnableWaf = &v
 	return s
 }
 
@@ -21173,6 +21372,7 @@ type UpdateGatewayRouteShrinkRequest struct {
 	DestinationType          *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	DirectResponseJSONShrink *string `json:"DirectResponseJSON,omitempty" xml:"DirectResponseJSON,omitempty"`
 	DomainIdListJSON         *string `json:"DomainIdListJSON,omitempty" xml:"DomainIdListJSON,omitempty"`
+	EnableWaf                *bool   `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
 	GatewayId                *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
 	GatewayUniqueId          *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
 	Id                       *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -21208,6 +21408,11 @@ func (s *UpdateGatewayRouteShrinkRequest) SetDirectResponseJSONShrink(v string) 
 
 func (s *UpdateGatewayRouteShrinkRequest) SetDomainIdListJSON(v string) *UpdateGatewayRouteShrinkRequest {
 	s.DomainIdListJSON = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteShrinkRequest) SetEnableWaf(v bool) *UpdateGatewayRouteShrinkRequest {
+	s.EnableWaf = &v
 	return s
 }
 
@@ -22128,6 +22333,746 @@ func (s *UpdateGatewayRouteTimeoutResponse) SetBody(v *UpdateGatewayRouteTimeout
 	return s
 }
 
+type UpdateGatewayRouteWafStatusRequest struct {
+	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	EnableWaf       *bool   `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	RouteId         *int64  `json:"RouteId,omitempty" xml:"RouteId,omitempty"`
+}
+
+func (s UpdateGatewayRouteWafStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteWafStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteWafStatusRequest) SetAcceptLanguage(v string) *UpdateGatewayRouteWafStatusRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusRequest) SetEnableWaf(v bool) *UpdateGatewayRouteWafStatusRequest {
+	s.EnableWaf = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusRequest) SetGatewayUniqueId(v string) *UpdateGatewayRouteWafStatusRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusRequest) SetRouteId(v int64) *UpdateGatewayRouteWafStatusRequest {
+	s.RouteId = &v
+	return s
+}
+
+type UpdateGatewayRouteWafStatusResponseBody struct {
+	Code           *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *UpdateGatewayRouteWafStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBody) SetCode(v int32) *UpdateGatewayRouteWafStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBody) SetData(v *UpdateGatewayRouteWafStatusResponseBodyData) *UpdateGatewayRouteWafStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBody) SetHttpStatusCode(v int32) *UpdateGatewayRouteWafStatusResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBody) SetMessage(v string) *UpdateGatewayRouteWafStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBody) SetRequestId(v string) *UpdateGatewayRouteWafStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBody) SetSuccess(v bool) *UpdateGatewayRouteWafStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateGatewayRouteWafStatusResponseBodyData struct {
+	Cors               *UpdateGatewayRouteWafStatusResponseBodyDataCors            `json:"Cors,omitempty" xml:"Cors,omitempty" type:"Struct"`
+	DefaultServiceId   *int64                                                      `json:"DefaultServiceId,omitempty" xml:"DefaultServiceId,omitempty"`
+	DefaultServiceName *string                                                     `json:"DefaultServiceName,omitempty" xml:"DefaultServiceName,omitempty"`
+	DestinationType    *string                                                     `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
+	DirectResponse     *UpdateGatewayRouteWafStatusResponseBodyDataDirectResponse  `json:"DirectResponse,omitempty" xml:"DirectResponse,omitempty" type:"Struct"`
+	DomainId           *int64                                                      `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
+	DomainIdList       []*int64                                                    `json:"DomainIdList,omitempty" xml:"DomainIdList,omitempty" type:"Repeated"`
+	DomainName         *string                                                     `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	DomainNameList     []*string                                                   `json:"DomainNameList,omitempty" xml:"DomainNameList,omitempty" type:"Repeated"`
+	EnableWaf          *bool                                                       `json:"EnableWaf,omitempty" xml:"EnableWaf,omitempty"`
+	GatewayId          *int64                                                      `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId    *string                                                     `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	GmtCreate          *string                                                     `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified        *string                                                     `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	HTTPRewrite        *UpdateGatewayRouteWafStatusResponseBodyDataHTTPRewrite     `json:"HTTPRewrite,omitempty" xml:"HTTPRewrite,omitempty" type:"Struct"`
+	HeaderOp           *UpdateGatewayRouteWafStatusResponseBodyDataHeaderOp        `json:"HeaderOp,omitempty" xml:"HeaderOp,omitempty" type:"Struct"`
+	Id                 *int64                                                      `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name               *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
+	Predicates         *string                                                     `json:"Predicates,omitempty" xml:"Predicates,omitempty"`
+	Redirect           *UpdateGatewayRouteWafStatusResponseBodyDataRedirect        `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
+	Retry              *UpdateGatewayRouteWafStatusResponseBodyDataRetry           `json:"Retry,omitempty" xml:"Retry,omitempty" type:"Struct"`
+	RouteOrder         *int32                                                      `json:"RouteOrder,omitempty" xml:"RouteOrder,omitempty"`
+	RoutePredicates    *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicates `json:"RoutePredicates,omitempty" xml:"RoutePredicates,omitempty" type:"Struct"`
+	RouteServices      []*UpdateGatewayRouteWafStatusResponseBodyDataRouteServices `json:"RouteServices,omitempty" xml:"RouteServices,omitempty" type:"Repeated"`
+	Services           *string                                                     `json:"Services,omitempty" xml:"Services,omitempty"`
+	Status             *int32                                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	Timeout            *UpdateGatewayRouteWafStatusResponseBodyDataTimeout         `json:"Timeout,omitempty" xml:"Timeout,omitempty" type:"Struct"`
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetCors(v *UpdateGatewayRouteWafStatusResponseBodyDataCors) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.Cors = v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetDefaultServiceId(v int64) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.DefaultServiceId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetDefaultServiceName(v string) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.DefaultServiceName = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetDestinationType(v string) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.DestinationType = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetDirectResponse(v *UpdateGatewayRouteWafStatusResponseBodyDataDirectResponse) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.DirectResponse = v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetDomainId(v int64) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.DomainId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetDomainIdList(v []*int64) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.DomainIdList = v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetDomainName(v string) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.DomainName = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetDomainNameList(v []*string) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.DomainNameList = v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetEnableWaf(v bool) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.EnableWaf = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetGatewayId(v int64) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetGatewayUniqueId(v string) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetGmtCreate(v string) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetGmtModified(v string) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetHTTPRewrite(v *UpdateGatewayRouteWafStatusResponseBodyDataHTTPRewrite) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.HTTPRewrite = v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetHeaderOp(v *UpdateGatewayRouteWafStatusResponseBodyDataHeaderOp) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.HeaderOp = v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetId(v int64) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetName(v string) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetPredicates(v string) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.Predicates = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetRedirect(v *UpdateGatewayRouteWafStatusResponseBodyDataRedirect) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.Redirect = v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetRetry(v *UpdateGatewayRouteWafStatusResponseBodyDataRetry) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.Retry = v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetRouteOrder(v int32) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.RouteOrder = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetRoutePredicates(v *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicates) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.RoutePredicates = v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetRouteServices(v []*UpdateGatewayRouteWafStatusResponseBodyDataRouteServices) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.RouteServices = v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetServices(v string) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.Services = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetStatus(v int32) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyData) SetTimeout(v *UpdateGatewayRouteWafStatusResponseBodyDataTimeout) *UpdateGatewayRouteWafStatusResponseBodyData {
+	s.Timeout = v
+	return s
+}
+
+type UpdateGatewayRouteWafStatusResponseBodyDataCors struct {
+	AllowCredentials *bool   `json:"AllowCredentials,omitempty" xml:"AllowCredentials,omitempty"`
+	AllowHeaders     *string `json:"AllowHeaders,omitempty" xml:"AllowHeaders,omitempty"`
+	AllowMethods     *string `json:"AllowMethods,omitempty" xml:"AllowMethods,omitempty"`
+	AllowOrigins     *string `json:"AllowOrigins,omitempty" xml:"AllowOrigins,omitempty"`
+	ExposeHeaders    *string `json:"ExposeHeaders,omitempty" xml:"ExposeHeaders,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TimeUnit         *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
+	UnitNum          *int64  `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataCors) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataCors) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataCors) SetAllowCredentials(v bool) *UpdateGatewayRouteWafStatusResponseBodyDataCors {
+	s.AllowCredentials = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataCors) SetAllowHeaders(v string) *UpdateGatewayRouteWafStatusResponseBodyDataCors {
+	s.AllowHeaders = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataCors) SetAllowMethods(v string) *UpdateGatewayRouteWafStatusResponseBodyDataCors {
+	s.AllowMethods = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataCors) SetAllowOrigins(v string) *UpdateGatewayRouteWafStatusResponseBodyDataCors {
+	s.AllowOrigins = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataCors) SetExposeHeaders(v string) *UpdateGatewayRouteWafStatusResponseBodyDataCors {
+	s.ExposeHeaders = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataCors) SetStatus(v string) *UpdateGatewayRouteWafStatusResponseBodyDataCors {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataCors) SetTimeUnit(v string) *UpdateGatewayRouteWafStatusResponseBodyDataCors {
+	s.TimeUnit = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataCors) SetUnitNum(v int64) *UpdateGatewayRouteWafStatusResponseBodyDataCors {
+	s.UnitNum = &v
+	return s
+}
+
+type UpdateGatewayRouteWafStatusResponseBodyDataDirectResponse struct {
+	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
+	Code *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataDirectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataDirectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataDirectResponse) SetBody(v string) *UpdateGatewayRouteWafStatusResponseBodyDataDirectResponse {
+	s.Body = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataDirectResponse) SetCode(v int32) *UpdateGatewayRouteWafStatusResponseBodyDataDirectResponse {
+	s.Code = &v
+	return s
+}
+
+type UpdateGatewayRouteWafStatusResponseBodyDataHTTPRewrite struct {
+	Host         *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Path         *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	PathType     *string `json:"PathType,omitempty" xml:"PathType,omitempty"`
+	Pattern      *string `json:"Pattern,omitempty" xml:"Pattern,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Substitution *string `json:"Substitution,omitempty" xml:"Substitution,omitempty"`
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataHTTPRewrite) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataHTTPRewrite) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataHTTPRewrite) SetHost(v string) *UpdateGatewayRouteWafStatusResponseBodyDataHTTPRewrite {
+	s.Host = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataHTTPRewrite) SetPath(v string) *UpdateGatewayRouteWafStatusResponseBodyDataHTTPRewrite {
+	s.Path = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataHTTPRewrite) SetPathType(v string) *UpdateGatewayRouteWafStatusResponseBodyDataHTTPRewrite {
+	s.PathType = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataHTTPRewrite) SetPattern(v string) *UpdateGatewayRouteWafStatusResponseBodyDataHTTPRewrite {
+	s.Pattern = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataHTTPRewrite) SetStatus(v string) *UpdateGatewayRouteWafStatusResponseBodyDataHTTPRewrite {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataHTTPRewrite) SetSubstitution(v string) *UpdateGatewayRouteWafStatusResponseBodyDataHTTPRewrite {
+	s.Substitution = &v
+	return s
+}
+
+type UpdateGatewayRouteWafStatusResponseBodyDataHeaderOp struct {
+	HeaderOpItems []*UpdateGatewayRouteWafStatusResponseBodyDataHeaderOpHeaderOpItems `json:"HeaderOpItems,omitempty" xml:"HeaderOpItems,omitempty" type:"Repeated"`
+	Status        *string                                                             `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataHeaderOp) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataHeaderOp) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataHeaderOp) SetHeaderOpItems(v []*UpdateGatewayRouteWafStatusResponseBodyDataHeaderOpHeaderOpItems) *UpdateGatewayRouteWafStatusResponseBodyDataHeaderOp {
+	s.HeaderOpItems = v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataHeaderOp) SetStatus(v string) *UpdateGatewayRouteWafStatusResponseBodyDataHeaderOp {
+	s.Status = &v
+	return s
+}
+
+type UpdateGatewayRouteWafStatusResponseBodyDataHeaderOpHeaderOpItems struct {
+	DirectionType *string `json:"DirectionType,omitempty" xml:"DirectionType,omitempty"`
+	Key           *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	OpType        *string `json:"OpType,omitempty" xml:"OpType,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataHeaderOpHeaderOpItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataHeaderOpHeaderOpItems) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataHeaderOpHeaderOpItems) SetDirectionType(v string) *UpdateGatewayRouteWafStatusResponseBodyDataHeaderOpHeaderOpItems {
+	s.DirectionType = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataHeaderOpHeaderOpItems) SetKey(v string) *UpdateGatewayRouteWafStatusResponseBodyDataHeaderOpHeaderOpItems {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataHeaderOpHeaderOpItems) SetOpType(v string) *UpdateGatewayRouteWafStatusResponseBodyDataHeaderOpHeaderOpItems {
+	s.OpType = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataHeaderOpHeaderOpItems) SetValue(v string) *UpdateGatewayRouteWafStatusResponseBodyDataHeaderOpHeaderOpItems {
+	s.Value = &v
+	return s
+}
+
+type UpdateGatewayRouteWafStatusResponseBodyDataRedirect struct {
+	Code *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataRedirect) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataRedirect) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRedirect) SetCode(v int32) *UpdateGatewayRouteWafStatusResponseBodyDataRedirect {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRedirect) SetHost(v string) *UpdateGatewayRouteWafStatusResponseBodyDataRedirect {
+	s.Host = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRedirect) SetPath(v string) *UpdateGatewayRouteWafStatusResponseBodyDataRedirect {
+	s.Path = &v
+	return s
+}
+
+type UpdateGatewayRouteWafStatusResponseBodyDataRetry struct {
+	Attempts  *int32    `json:"Attempts,omitempty" xml:"Attempts,omitempty"`
+	HttpCodes []*string `json:"HttpCodes,omitempty" xml:"HttpCodes,omitempty" type:"Repeated"`
+	RetryOn   []*string `json:"RetryOn,omitempty" xml:"RetryOn,omitempty" type:"Repeated"`
+	Status    *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataRetry) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataRetry) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRetry) SetAttempts(v int32) *UpdateGatewayRouteWafStatusResponseBodyDataRetry {
+	s.Attempts = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRetry) SetHttpCodes(v []*string) *UpdateGatewayRouteWafStatusResponseBodyDataRetry {
+	s.HttpCodes = v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRetry) SetRetryOn(v []*string) *UpdateGatewayRouteWafStatusResponseBodyDataRetry {
+	s.RetryOn = v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRetry) SetStatus(v string) *UpdateGatewayRouteWafStatusResponseBodyDataRetry {
+	s.Status = &v
+	return s
+}
+
+type UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicates struct {
+	HeaderPredicates []*UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesHeaderPredicates `json:"HeaderPredicates,omitempty" xml:"HeaderPredicates,omitempty" type:"Repeated"`
+	MethodPredicates []*string                                                                     `json:"MethodPredicates,omitempty" xml:"MethodPredicates,omitempty" type:"Repeated"`
+	PathPredicates   *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesPathPredicates     `json:"PathPredicates,omitempty" xml:"PathPredicates,omitempty" type:"Struct"`
+	QueryPredicates  []*UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesQueryPredicates  `json:"QueryPredicates,omitempty" xml:"QueryPredicates,omitempty" type:"Repeated"`
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicates) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicates) SetHeaderPredicates(v []*UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesHeaderPredicates) *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicates {
+	s.HeaderPredicates = v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicates) SetMethodPredicates(v []*string) *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicates {
+	s.MethodPredicates = v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicates) SetPathPredicates(v *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesPathPredicates) *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicates {
+	s.PathPredicates = v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicates) SetQueryPredicates(v []*UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesQueryPredicates) *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicates {
+	s.QueryPredicates = v
+	return s
+}
+
+type UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesHeaderPredicates struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesHeaderPredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesHeaderPredicates) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesHeaderPredicates) SetKey(v string) *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesHeaderPredicates {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesHeaderPredicates) SetType(v string) *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesHeaderPredicates {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesHeaderPredicates) SetValue(v string) *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesHeaderPredicates {
+	s.Value = &v
+	return s
+}
+
+type UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesPathPredicates struct {
+	IgnoreCase *bool   `json:"IgnoreCase,omitempty" xml:"IgnoreCase,omitempty"`
+	Path       *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesPathPredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesPathPredicates) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesPathPredicates) SetIgnoreCase(v bool) *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesPathPredicates {
+	s.IgnoreCase = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesPathPredicates) SetPath(v string) *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesPathPredicates {
+	s.Path = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesPathPredicates) SetType(v string) *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesPathPredicates {
+	s.Type = &v
+	return s
+}
+
+type UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesQueryPredicates struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Type  *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesQueryPredicates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesQueryPredicates) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesQueryPredicates) SetKey(v string) *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesQueryPredicates {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesQueryPredicates) SetType(v string) *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesQueryPredicates {
+	s.Type = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesQueryPredicates) SetValue(v string) *UpdateGatewayRouteWafStatusResponseBodyDataRoutePredicatesQueryPredicates {
+	s.Value = &v
+	return s
+}
+
+type UpdateGatewayRouteWafStatusResponseBodyDataRouteServices struct {
+	GroupName   *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace   *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Percent     *int32  `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	ServiceId   *int64  `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	SourceType  *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataRouteServices) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataRouteServices) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRouteServices) SetGroupName(v string) *UpdateGatewayRouteWafStatusResponseBodyDataRouteServices {
+	s.GroupName = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRouteServices) SetName(v string) *UpdateGatewayRouteWafStatusResponseBodyDataRouteServices {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRouteServices) SetNamespace(v string) *UpdateGatewayRouteWafStatusResponseBodyDataRouteServices {
+	s.Namespace = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRouteServices) SetPercent(v int32) *UpdateGatewayRouteWafStatusResponseBodyDataRouteServices {
+	s.Percent = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRouteServices) SetServiceId(v int64) *UpdateGatewayRouteWafStatusResponseBodyDataRouteServices {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRouteServices) SetServiceName(v string) *UpdateGatewayRouteWafStatusResponseBodyDataRouteServices {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRouteServices) SetSourceType(v string) *UpdateGatewayRouteWafStatusResponseBodyDataRouteServices {
+	s.SourceType = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataRouteServices) SetVersion(v string) *UpdateGatewayRouteWafStatusResponseBodyDataRouteServices {
+	s.Version = &v
+	return s
+}
+
+type UpdateGatewayRouteWafStatusResponseBodyDataTimeout struct {
+	Status   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TimeUnit *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
+	UnitNum  *int32  `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataTimeout) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteWafStatusResponseBodyDataTimeout) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataTimeout) SetStatus(v string) *UpdateGatewayRouteWafStatusResponseBodyDataTimeout {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataTimeout) SetTimeUnit(v string) *UpdateGatewayRouteWafStatusResponseBodyDataTimeout {
+	s.TimeUnit = &v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponseBodyDataTimeout) SetUnitNum(v int32) *UpdateGatewayRouteWafStatusResponseBodyDataTimeout {
+	s.UnitNum = &v
+	return s
+}
+
+type UpdateGatewayRouteWafStatusResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateGatewayRouteWafStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGatewayRouteWafStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewayRouteWafStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewayRouteWafStatusResponse) SetHeaders(v map[string]*string) *UpdateGatewayRouteWafStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewayRouteWafStatusResponse) SetBody(v *UpdateGatewayRouteWafStatusResponseBody) *UpdateGatewayRouteWafStatusResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateGatewayServiceTrafficPolicyRequest struct {
 	AcceptLanguage       *string        `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayId            *int64         `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
@@ -22473,6 +23418,158 @@ func (s *UpdateImageResponse) SetHeaders(v map[string]*string) *UpdateImageRespo
 }
 
 func (s *UpdateImageResponse) SetBody(v *UpdateImageResponseBody) *UpdateImageResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateMessageQueueRouteRequest struct {
+	AcceptLanguage *string   `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AppId          *string   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Enable         *bool     `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Region         *string   `json:"Region,omitempty" xml:"Region,omitempty"`
+	Tags           []*string `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+}
+
+func (s UpdateMessageQueueRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMessageQueueRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMessageQueueRouteRequest) SetAcceptLanguage(v string) *UpdateMessageQueueRouteRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateMessageQueueRouteRequest) SetAppId(v string) *UpdateMessageQueueRouteRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateMessageQueueRouteRequest) SetEnable(v bool) *UpdateMessageQueueRouteRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateMessageQueueRouteRequest) SetRegion(v string) *UpdateMessageQueueRouteRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *UpdateMessageQueueRouteRequest) SetTags(v []*string) *UpdateMessageQueueRouteRequest {
+	s.Tags = v
+	return s
+}
+
+type UpdateMessageQueueRouteShrinkRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Enable         *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	TagsShrink     *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+}
+
+func (s UpdateMessageQueueRouteShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMessageQueueRouteShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMessageQueueRouteShrinkRequest) SetAcceptLanguage(v string) *UpdateMessageQueueRouteShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateMessageQueueRouteShrinkRequest) SetAppId(v string) *UpdateMessageQueueRouteShrinkRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *UpdateMessageQueueRouteShrinkRequest) SetEnable(v bool) *UpdateMessageQueueRouteShrinkRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateMessageQueueRouteShrinkRequest) SetRegion(v string) *UpdateMessageQueueRouteShrinkRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *UpdateMessageQueueRouteShrinkRequest) SetTagsShrink(v string) *UpdateMessageQueueRouteShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+type UpdateMessageQueueRouteResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateMessageQueueRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMessageQueueRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMessageQueueRouteResponseBody) SetCode(v int32) *UpdateMessageQueueRouteResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateMessageQueueRouteResponseBody) SetData(v string) *UpdateMessageQueueRouteResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateMessageQueueRouteResponseBody) SetHttpStatusCode(v int32) *UpdateMessageQueueRouteResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateMessageQueueRouteResponseBody) SetMessage(v string) *UpdateMessageQueueRouteResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateMessageQueueRouteResponseBody) SetRequestId(v string) *UpdateMessageQueueRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateMessageQueueRouteResponseBody) SetSuccess(v bool) *UpdateMessageQueueRouteResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateMessageQueueRouteResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateMessageQueueRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateMessageQueueRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMessageQueueRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMessageQueueRouteResponse) SetHeaders(v map[string]*string) *UpdateMessageQueueRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMessageQueueRouteResponse) SetBody(v *UpdateMessageQueueRouteResponseBody) *UpdateMessageQueueRouteResponse {
 	s.Body = v
 	return s
 }
@@ -23741,6 +24838,10 @@ func (client *Client) AddGatewayRouteWithOptions(tmpReq *AddGatewayRouteRequest,
 
 	if !tea.BoolValue(util.IsUnset(request.DomainIdListJSON)) {
 		query["DomainIdListJSON"] = request.DomainIdListJSON
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableWaf)) {
+		query["EnableWaf"] = request.EnableWaf
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
@@ -26177,6 +27278,58 @@ func (client *Client) ExportNacosConfig(request *ExportNacosConfigRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) GetAppMessageQueueRouteWithOptions(request *GetAppMessageQueueRouteRequest, runtime *util.RuntimeOptions) (_result *GetAppMessageQueueRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAppMessageQueueRoute"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAppMessageQueueRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAppMessageQueueRoute(request *GetAppMessageQueueRouteRequest) (_result *GetAppMessageQueueRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAppMessageQueueRouteResponse{}
+	_body, _err := client.GetAppMessageQueueRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetBlackWhiteListWithOptions(request *GetBlackWhiteListRequest, runtime *util.RuntimeOptions) (_result *GetBlackWhiteListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26450,7 +27603,19 @@ func (client *Client) GetGatewayRouteDetailWithOptions(request *GetGatewayRouteD
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteId)) {
+		query["RouteId"] = request.RouteId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -26459,7 +27624,7 @@ func (client *Client) GetGatewayRouteDetailWithOptions(request *GetGatewayRouteD
 		Version:     tea.String("2019-05-31"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -30217,6 +31382,10 @@ func (client *Client) UpdateGatewayRouteWithOptions(tmpReq *UpdateGatewayRouteRe
 		query["DomainIdListJSON"] = request.DomainIdListJSON
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnableWaf)) {
+		query["EnableWaf"] = request.EnableWaf
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
 		query["GatewayId"] = request.GatewayId
 	}
@@ -30601,6 +31770,62 @@ func (client *Client) UpdateGatewayRouteTimeout(request *UpdateGatewayRouteTimeo
 	return _result, _err
 }
 
+func (client *Client) UpdateGatewayRouteWafStatusWithOptions(request *UpdateGatewayRouteWafStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayRouteWafStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableWaf)) {
+		query["EnableWaf"] = request.EnableWaf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteId)) {
+		query["RouteId"] = request.RouteId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGatewayRouteWafStatus"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGatewayRouteWafStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewayRouteWafStatus(request *UpdateGatewayRouteWafStatusRequest) (_result *UpdateGatewayRouteWafStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGatewayRouteWafStatusResponse{}
+	_body, _err := client.UpdateGatewayRouteWafStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateGatewayServiceTrafficPolicyWithOptions(tmpReq *UpdateGatewayServiceTrafficPolicyRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewayServiceTrafficPolicyResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -30768,6 +31993,72 @@ func (client *Client) UpdateImage(request *UpdateImageRequest) (_result *UpdateI
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateImageResponse{}
 	_body, _err := client.UpdateImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateMessageQueueRouteWithOptions(tmpReq *UpdateMessageQueueRouteRequest, runtime *util.RuntimeOptions) (_result *UpdateMessageQueueRouteResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateMessageQueueRouteShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMessageQueueRoute"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateMessageQueueRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateMessageQueueRoute(request *UpdateMessageQueueRouteRequest) (_result *UpdateMessageQueueRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateMessageQueueRouteResponse{}
+	_body, _err := client.UpdateMessageQueueRouteWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
