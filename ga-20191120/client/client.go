@@ -782,16 +782,17 @@ func (s *ConfigEndpointProbeResponse) SetBody(v *ConfigEndpointProbeResponseBody
 }
 
 type CreateAcceleratorRequest struct {
-	AutoPay           *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	AutoRenew         *bool   `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	AutoRenewDuration *int32  `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
-	AutoUseCoupon     *string `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Duration          *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PricingCycle      *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	Spec              *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	AutoPay           *bool                                `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	AutoRenew         *bool                                `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenewDuration *int32                               `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
+	AutoUseCoupon     *string                              `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
+	ClientToken       *string                              `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Duration          *int32                               `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	IpSetConfig       *CreateAcceleratorRequestIpSetConfig `json:"IpSetConfig,omitempty" xml:"IpSetConfig,omitempty" type:"Struct"`
+	Name              *string                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	PricingCycle      *string                              `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	RegionId          *string                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Spec              *string                              `json:"Spec,omitempty" xml:"Spec,omitempty"`
 }
 
 func (s CreateAcceleratorRequest) String() string {
@@ -832,6 +833,11 @@ func (s *CreateAcceleratorRequest) SetDuration(v int32) *CreateAcceleratorReques
 	return s
 }
 
+func (s *CreateAcceleratorRequest) SetIpSetConfig(v *CreateAcceleratorRequestIpSetConfig) *CreateAcceleratorRequest {
+	s.IpSetConfig = v
+	return s
+}
+
 func (s *CreateAcceleratorRequest) SetName(v string) *CreateAcceleratorRequest {
 	s.Name = &v
 	return s
@@ -849,6 +855,23 @@ func (s *CreateAcceleratorRequest) SetRegionId(v string) *CreateAcceleratorReque
 
 func (s *CreateAcceleratorRequest) SetSpec(v string) *CreateAcceleratorRequest {
 	s.Spec = &v
+	return s
+}
+
+type CreateAcceleratorRequestIpSetConfig struct {
+	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
+}
+
+func (s CreateAcceleratorRequestIpSetConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAcceleratorRequestIpSetConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAcceleratorRequestIpSetConfig) SetAccessMode(v string) *CreateAcceleratorRequestIpSetConfig {
+	s.AccessMode = &v
 	return s
 }
 
@@ -2120,6 +2143,7 @@ type CreateForwardingRulesRequestForwardingRules struct {
 	Priority           *int32                                                       `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	RuleActions        []*CreateForwardingRulesRequestForwardingRulesRuleActions    `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
 	RuleConditions     []*CreateForwardingRulesRequestForwardingRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
+	RuleDirection      *string                                                      `json:"RuleDirection,omitempty" xml:"RuleDirection,omitempty"`
 }
 
 func (s CreateForwardingRulesRequestForwardingRules) String() string {
@@ -2150,10 +2174,16 @@ func (s *CreateForwardingRulesRequestForwardingRules) SetRuleConditions(v []*Cre
 	return s
 }
 
+func (s *CreateForwardingRulesRequestForwardingRules) SetRuleDirection(v string) *CreateForwardingRulesRequestForwardingRules {
+	s.RuleDirection = &v
+	return s
+}
+
 type CreateForwardingRulesRequestForwardingRulesRuleActions struct {
 	ForwardGroupConfig *CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
 	Order              *int32                                                                    `json:"Order,omitempty" xml:"Order,omitempty"`
 	RuleActionType     *string                                                                   `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
+	RuleActionValue    *string                                                                   `json:"RuleActionValue,omitempty" xml:"RuleActionValue,omitempty"`
 }
 
 func (s CreateForwardingRulesRequestForwardingRulesRuleActions) String() string {
@@ -2176,6 +2206,11 @@ func (s *CreateForwardingRulesRequestForwardingRulesRuleActions) SetOrder(v int3
 
 func (s *CreateForwardingRulesRequestForwardingRulesRuleActions) SetRuleActionType(v string) *CreateForwardingRulesRequestForwardingRulesRuleActions {
 	s.RuleActionType = &v
+	return s
+}
+
+func (s *CreateForwardingRulesRequestForwardingRulesRuleActions) SetRuleActionValue(v string) *CreateForwardingRulesRequestForwardingRulesRuleActions {
+	s.RuleActionValue = &v
 	return s
 }
 
@@ -2214,9 +2249,10 @@ func (s *CreateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfi
 }
 
 type CreateForwardingRulesRequestForwardingRulesRuleConditions struct {
-	HostConfig        *CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
-	PathConfig        *CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
-	RuleConditionType *string                                                              `json:"RuleConditionType,omitempty" xml:"RuleConditionType,omitempty"`
+	HostConfig         *CreateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
+	PathConfig         *CreateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
+	RuleConditionType  *string                                                              `json:"RuleConditionType,omitempty" xml:"RuleConditionType,omitempty"`
+	RuleConditionValue *string                                                              `json:"RuleConditionValue,omitempty" xml:"RuleConditionValue,omitempty"`
 }
 
 func (s CreateForwardingRulesRequestForwardingRulesRuleConditions) String() string {
@@ -2239,6 +2275,11 @@ func (s *CreateForwardingRulesRequestForwardingRulesRuleConditions) SetPathConfi
 
 func (s *CreateForwardingRulesRequestForwardingRulesRuleConditions) SetRuleConditionType(v string) *CreateForwardingRulesRequestForwardingRulesRuleConditions {
 	s.RuleConditionType = &v
+	return s
+}
+
+func (s *CreateForwardingRulesRequestForwardingRulesRuleConditions) SetRuleConditionValue(v string) *CreateForwardingRulesRequestForwardingRulesRuleConditions {
+	s.RuleConditionValue = &v
 	return s
 }
 
@@ -3855,6 +3896,7 @@ type DescribeAcceleratorResponseBody struct {
 	DnsName                     *string                                                     `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
 	ExpiredTime                 *int64                                                      `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	InstanceChargeType          *string                                                     `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	IpSetConfig                 *DescribeAcceleratorResponseBodyIpSetConfig                 `json:"IpSetConfig,omitempty" xml:"IpSetConfig,omitempty" type:"Struct"`
 	Name                        *string                                                     `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId                    *string                                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RequestId                   *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3918,6 +3960,11 @@ func (s *DescribeAcceleratorResponseBody) SetExpiredTime(v int64) *DescribeAccel
 
 func (s *DescribeAcceleratorResponseBody) SetInstanceChargeType(v string) *DescribeAcceleratorResponseBody {
 	s.InstanceChargeType = &v
+	return s
+}
+
+func (s *DescribeAcceleratorResponseBody) SetIpSetConfig(v *DescribeAcceleratorResponseBodyIpSetConfig) *DescribeAcceleratorResponseBody {
+	s.IpSetConfig = v
 	return s
 }
 
@@ -4000,6 +4047,23 @@ func (s *DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage) SetBandwidt
 
 func (s *DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage) SetInstanceId(v string) *DescribeAcceleratorResponseBodyCrossDomainBandwidthPackage {
 	s.InstanceId = &v
+	return s
+}
+
+type DescribeAcceleratorResponseBodyIpSetConfig struct {
+	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
+}
+
+func (s DescribeAcceleratorResponseBodyIpSetConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAcceleratorResponseBodyIpSetConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAcceleratorResponseBodyIpSetConfig) SetAccessMode(v string) *DescribeAcceleratorResponseBodyIpSetConfig {
+	s.AccessMode = &v
 	return s
 }
 
@@ -6844,12 +6908,14 @@ type ListAcceleratorsResponseBodyAccelerators struct {
 	DnsName                     *string                                                              `json:"DnsName,omitempty" xml:"DnsName,omitempty"`
 	ExpiredTime                 *int64                                                               `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
 	InstanceChargeType          *string                                                              `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	Name                        *string                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	RegionId                    *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecondDnsName               *string                                                              `json:"SecondDnsName,omitempty" xml:"SecondDnsName,omitempty"`
-	Spec                        *string                                                              `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	State                       *string                                                              `json:"State,omitempty" xml:"State,omitempty"`
-	Type                        *string                                                              `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 加速区配置
+	IpSetConfig   *ListAcceleratorsResponseBodyAcceleratorsIpSetConfig `json:"IpSetConfig,omitempty" xml:"IpSetConfig,omitempty" type:"Struct"`
+	Name          *string                                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	RegionId      *string                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SecondDnsName *string                                              `json:"SecondDnsName,omitempty" xml:"SecondDnsName,omitempty"`
+	Spec          *string                                              `json:"Spec,omitempty" xml:"Spec,omitempty"`
+	State         *string                                              `json:"State,omitempty" xml:"State,omitempty"`
+	Type          *string                                              `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListAcceleratorsResponseBodyAccelerators) String() string {
@@ -6912,6 +6978,11 @@ func (s *ListAcceleratorsResponseBodyAccelerators) SetExpiredTime(v int64) *List
 
 func (s *ListAcceleratorsResponseBodyAccelerators) SetInstanceChargeType(v string) *ListAcceleratorsResponseBodyAccelerators {
 	s.InstanceChargeType = &v
+	return s
+}
+
+func (s *ListAcceleratorsResponseBodyAccelerators) SetIpSetConfig(v *ListAcceleratorsResponseBodyAcceleratorsIpSetConfig) *ListAcceleratorsResponseBodyAccelerators {
+	s.IpSetConfig = v
 	return s
 }
 
@@ -6994,6 +7065,24 @@ func (s *ListAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage) Se
 
 func (s *ListAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage) SetInstanceId(v string) *ListAcceleratorsResponseBodyAcceleratorsCrossDomainBandwidthPackage {
 	s.InstanceId = &v
+	return s
+}
+
+type ListAcceleratorsResponseBodyAcceleratorsIpSetConfig struct {
+	// 加速区接入方式
+	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
+}
+
+func (s ListAcceleratorsResponseBodyAcceleratorsIpSetConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListAcceleratorsResponseBodyAcceleratorsIpSetConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListAcceleratorsResponseBodyAcceleratorsIpSetConfig) SetAccessMode(v string) *ListAcceleratorsResponseBodyAcceleratorsIpSetConfig {
+	s.AccessMode = &v
 	return s
 }
 
@@ -8880,13 +8969,14 @@ func (s *ListForwardingRulesResponseBody) SetTotalCount(v int32) *ListForwarding
 }
 
 type ListForwardingRulesResponseBodyForwardingRules struct {
-	ForwardingRuleId     *string                                                         `json:"ForwardingRuleId,omitempty" xml:"ForwardingRuleId,omitempty"`
-	ForwardingRuleName   *string                                                         `json:"ForwardingRuleName,omitempty" xml:"ForwardingRuleName,omitempty"`
-	ForwardingRuleStatus *string                                                         `json:"ForwardingRuleStatus,omitempty" xml:"ForwardingRuleStatus,omitempty"`
-	ListenerId           *string                                                         `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
-	Priority             *int32                                                          `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RuleActions          []*ListForwardingRulesResponseBodyForwardingRulesRuleActions    `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
-	RuleConditions       []*ListForwardingRulesResponseBodyForwardingRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
+	ForwardingRuleDirection *string                                                         `json:"ForwardingRuleDirection,omitempty" xml:"ForwardingRuleDirection,omitempty"`
+	ForwardingRuleId        *string                                                         `json:"ForwardingRuleId,omitempty" xml:"ForwardingRuleId,omitempty"`
+	ForwardingRuleName      *string                                                         `json:"ForwardingRuleName,omitempty" xml:"ForwardingRuleName,omitempty"`
+	ForwardingRuleStatus    *string                                                         `json:"ForwardingRuleStatus,omitempty" xml:"ForwardingRuleStatus,omitempty"`
+	ListenerId              *string                                                         `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
+	Priority                *int32                                                          `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RuleActions             []*ListForwardingRulesResponseBodyForwardingRulesRuleActions    `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
+	RuleConditions          []*ListForwardingRulesResponseBodyForwardingRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
 }
 
 func (s ListForwardingRulesResponseBodyForwardingRules) String() string {
@@ -8895,6 +8985,11 @@ func (s ListForwardingRulesResponseBodyForwardingRules) String() string {
 
 func (s ListForwardingRulesResponseBodyForwardingRules) GoString() string {
 	return s.String()
+}
+
+func (s *ListForwardingRulesResponseBodyForwardingRules) SetForwardingRuleDirection(v string) *ListForwardingRulesResponseBodyForwardingRules {
+	s.ForwardingRuleDirection = &v
+	return s
 }
 
 func (s *ListForwardingRulesResponseBodyForwardingRules) SetForwardingRuleId(v string) *ListForwardingRulesResponseBodyForwardingRules {
@@ -8936,6 +9031,7 @@ type ListForwardingRulesResponseBodyForwardingRulesRuleActions struct {
 	ForwardGroupConfig *ListForwardingRulesResponseBodyForwardingRulesRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
 	Order              *int32                                                                       `json:"Order,omitempty" xml:"Order,omitempty"`
 	RuleActionType     *string                                                                      `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
+	RuleActionValue    *string                                                                      `json:"RuleActionValue,omitempty" xml:"RuleActionValue,omitempty"`
 }
 
 func (s ListForwardingRulesResponseBodyForwardingRulesRuleActions) String() string {
@@ -8958,6 +9054,11 @@ func (s *ListForwardingRulesResponseBodyForwardingRulesRuleActions) SetOrder(v i
 
 func (s *ListForwardingRulesResponseBodyForwardingRulesRuleActions) SetRuleActionType(v string) *ListForwardingRulesResponseBodyForwardingRulesRuleActions {
 	s.RuleActionType = &v
+	return s
+}
+
+func (s *ListForwardingRulesResponseBodyForwardingRulesRuleActions) SetRuleActionValue(v string) *ListForwardingRulesResponseBodyForwardingRulesRuleActions {
+	s.RuleActionValue = &v
 	return s
 }
 
@@ -8996,9 +9097,10 @@ func (s *ListForwardingRulesResponseBodyForwardingRulesRuleActionsForwardGroupCo
 }
 
 type ListForwardingRulesResponseBodyForwardingRulesRuleConditions struct {
-	HostConfig        *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
-	PathConfig        *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
-	RuleConditionType *string                                                                 `json:"RuleConditionType,omitempty" xml:"RuleConditionType,omitempty"`
+	HostConfig         *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
+	PathConfig         *ListForwardingRulesResponseBodyForwardingRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
+	RuleConditionType  *string                                                                 `json:"RuleConditionType,omitempty" xml:"RuleConditionType,omitempty"`
+	RuleConditionValue *string                                                                 `json:"RuleConditionValue,omitempty" xml:"RuleConditionValue,omitempty"`
 }
 
 func (s ListForwardingRulesResponseBodyForwardingRulesRuleConditions) String() string {
@@ -9021,6 +9123,11 @@ func (s *ListForwardingRulesResponseBodyForwardingRulesRuleConditions) SetPathCo
 
 func (s *ListForwardingRulesResponseBodyForwardingRulesRuleConditions) SetRuleConditionType(v string) *ListForwardingRulesResponseBodyForwardingRulesRuleConditions {
 	s.RuleConditionType = &v
+	return s
+}
+
+func (s *ListForwardingRulesResponseBodyForwardingRulesRuleConditions) SetRuleConditionValue(v string) *ListForwardingRulesResponseBodyForwardingRulesRuleConditions {
+	s.RuleConditionValue = &v
 	return s
 }
 
@@ -11400,6 +11507,7 @@ type UpdateForwardingRulesRequestForwardingRules struct {
 	Priority           *int32                                                       `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	RuleActions        []*UpdateForwardingRulesRequestForwardingRulesRuleActions    `json:"RuleActions,omitempty" xml:"RuleActions,omitempty" type:"Repeated"`
 	RuleConditions     []*UpdateForwardingRulesRequestForwardingRulesRuleConditions `json:"RuleConditions,omitempty" xml:"RuleConditions,omitempty" type:"Repeated"`
+	RuleDirection      *string                                                      `json:"RuleDirection,omitempty" xml:"RuleDirection,omitempty"`
 }
 
 func (s UpdateForwardingRulesRequestForwardingRules) String() string {
@@ -11435,10 +11543,16 @@ func (s *UpdateForwardingRulesRequestForwardingRules) SetRuleConditions(v []*Upd
 	return s
 }
 
+func (s *UpdateForwardingRulesRequestForwardingRules) SetRuleDirection(v string) *UpdateForwardingRulesRequestForwardingRules {
+	s.RuleDirection = &v
+	return s
+}
+
 type UpdateForwardingRulesRequestForwardingRulesRuleActions struct {
 	ForwardGroupConfig *UpdateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfig `json:"ForwardGroupConfig,omitempty" xml:"ForwardGroupConfig,omitempty" type:"Struct"`
 	Order              *int32                                                                    `json:"Order,omitempty" xml:"Order,omitempty"`
 	RuleActionType     *string                                                                   `json:"RuleActionType,omitempty" xml:"RuleActionType,omitempty"`
+	RuleActionValue    *string                                                                   `json:"RuleActionValue,omitempty" xml:"RuleActionValue,omitempty"`
 }
 
 func (s UpdateForwardingRulesRequestForwardingRulesRuleActions) String() string {
@@ -11461,6 +11575,11 @@ func (s *UpdateForwardingRulesRequestForwardingRulesRuleActions) SetOrder(v int3
 
 func (s *UpdateForwardingRulesRequestForwardingRulesRuleActions) SetRuleActionType(v string) *UpdateForwardingRulesRequestForwardingRulesRuleActions {
 	s.RuleActionType = &v
+	return s
+}
+
+func (s *UpdateForwardingRulesRequestForwardingRulesRuleActions) SetRuleActionValue(v string) *UpdateForwardingRulesRequestForwardingRulesRuleActions {
+	s.RuleActionValue = &v
 	return s
 }
 
@@ -11499,9 +11618,10 @@ func (s *UpdateForwardingRulesRequestForwardingRulesRuleActionsForwardGroupConfi
 }
 
 type UpdateForwardingRulesRequestForwardingRulesRuleConditions struct {
-	HostConfig        *UpdateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
-	PathConfig        *UpdateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
-	RuleConditionType *string                                                              `json:"RuleConditionType,omitempty" xml:"RuleConditionType,omitempty"`
+	HostConfig         *UpdateForwardingRulesRequestForwardingRulesRuleConditionsHostConfig `json:"HostConfig,omitempty" xml:"HostConfig,omitempty" type:"Struct"`
+	PathConfig         *UpdateForwardingRulesRequestForwardingRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
+	RuleConditionType  *string                                                              `json:"RuleConditionType,omitempty" xml:"RuleConditionType,omitempty"`
+	RuleConditionValue *string                                                              `json:"RuleConditionValue,omitempty" xml:"RuleConditionValue,omitempty"`
 }
 
 func (s UpdateForwardingRulesRequestForwardingRulesRuleConditions) String() string {
@@ -11524,6 +11644,11 @@ func (s *UpdateForwardingRulesRequestForwardingRulesRuleConditions) SetPathConfi
 
 func (s *UpdateForwardingRulesRequestForwardingRulesRuleConditions) SetRuleConditionType(v string) *UpdateForwardingRulesRequestForwardingRulesRuleConditions {
 	s.RuleConditionType = &v
+	return s
+}
+
+func (s *UpdateForwardingRulesRequestForwardingRulesRuleConditions) SetRuleConditionValue(v string) *UpdateForwardingRulesRequestForwardingRulesRuleConditions {
+	s.RuleConditionValue = &v
 	return s
 }
 
@@ -12581,6 +12706,10 @@ func (client *Client) CreateAcceleratorWithOptions(request *CreateAcceleratorReq
 
 	if !tea.BoolValue(util.IsUnset(request.Duration)) {
 		query["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.IpSetConfig))) {
+		query["IpSetConfig"] = request.IpSetConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
