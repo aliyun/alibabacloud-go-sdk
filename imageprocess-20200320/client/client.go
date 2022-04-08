@@ -2080,7 +2080,6 @@ func (s *FeedbackSessionRequest) SetSessionId(v string) *FeedbackSessionRequest 
 }
 
 type FeedbackSessionResponseBody struct {
-	Data *FeedbackSessionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -2093,30 +2092,8 @@ func (s FeedbackSessionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *FeedbackSessionResponseBody) SetData(v *FeedbackSessionResponseBodyData) *FeedbackSessionResponseBody {
-	s.Data = v
-	return s
-}
-
 func (s *FeedbackSessionResponseBody) SetRequestId(v string) *FeedbackSessionResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-type FeedbackSessionResponseBodyData struct {
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-}
-
-func (s FeedbackSessionResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s FeedbackSessionResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *FeedbackSessionResponseBodyData) SetData(v string) *FeedbackSessionResponseBodyData {
-	s.Data = &v
 	return s
 }
 
