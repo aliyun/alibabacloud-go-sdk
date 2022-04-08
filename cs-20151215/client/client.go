@@ -2422,6 +2422,24 @@ func (s *DeleteClusterResponse) SetHeaders(v map[string]*string) *DeleteClusterR
 	return s
 }
 
+type DeleteClusterNodepoolRequest struct {
+	// 是否强制删除。
+	Force *bool `json:"force,omitempty" xml:"force,omitempty"`
+}
+
+func (s DeleteClusterNodepoolRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteClusterNodepoolRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteClusterNodepoolRequest) SetForce(v bool) *DeleteClusterNodepoolRequest {
+	s.Force = &v
+	return s
+}
+
 type DeleteClusterNodepoolResponseBody struct {
 	// 请求ID
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
@@ -11693,6 +11711,8 @@ func (s *UpgradeClusterAddonsRequest) SetBody(v []*UpgradeClusterAddonsRequestBo
 type UpgradeClusterAddonsRequestBody struct {
 	// 组件名称
 	ComponentName *string `json:"component_name,omitempty" xml:"component_name,omitempty"`
+	// 组件自定义参数
+	Config *string `json:"config,omitempty" xml:"config,omitempty"`
 	// 可升级版本
 	NextVersion *string `json:"next_version,omitempty" xml:"next_version,omitempty"`
 	// 当前版本
@@ -11709,6 +11729,11 @@ func (s UpgradeClusterAddonsRequestBody) GoString() string {
 
 func (s *UpgradeClusterAddonsRequestBody) SetComponentName(v string) *UpgradeClusterAddonsRequestBody {
 	s.ComponentName = &v
+	return s
+}
+
+func (s *UpgradeClusterAddonsRequestBody) SetConfig(v string) *UpgradeClusterAddonsRequestBody {
+	s.Config = &v
 	return s
 }
 
@@ -12976,11 +13001,11 @@ func (client *Client) DeleteClusterWithOptions(ClusterId *string, tmpReq *Delete
 	return _result, _err
 }
 
-func (client *Client) DeleteClusterNodepool(ClusterId *string, NodepoolId *string) (_result *DeleteClusterNodepoolResponse, _err error) {
+func (client *Client) DeleteClusterNodepool(ClusterId *string, NodepoolId *string, request *DeleteClusterNodepoolRequest) (_result *DeleteClusterNodepoolResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &DeleteClusterNodepoolResponse{}
-	_body, _err := client.DeleteClusterNodepoolWithOptions(ClusterId, NodepoolId, headers, runtime)
+	_body, _err := client.DeleteClusterNodepoolWithOptions(ClusterId, NodepoolId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12988,11 +13013,21 @@ func (client *Client) DeleteClusterNodepool(ClusterId *string, NodepoolId *strin
 	return _result, _err
 }
 
-func (client *Client) DeleteClusterNodepoolWithOptions(ClusterId *string, NodepoolId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteClusterNodepoolResponse, _err error) {
+func (client *Client) DeleteClusterNodepoolWithOptions(ClusterId *string, NodepoolId *string, request *DeleteClusterNodepoolRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteClusterNodepoolResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
 	ClusterId = openapiutil.GetEncodeParam(ClusterId)
 	NodepoolId = openapiutil.GetEncodeParam(NodepoolId)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		body["force"] = request.Force
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteClusterNodepool"),
