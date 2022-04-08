@@ -824,202 +824,6 @@ func (s *AddNetworkInterfaceToInstanceResponse) SetBody(v *AddNetworkInterfaceTo
 	return s
 }
 
-type AllocateEipAddressRequest struct {
-	Count       *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	MinCount    *int32  `json:"MinCount,omitempty" xml:"MinCount,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
-}
-
-func (s AllocateEipAddressRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AllocateEipAddressRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AllocateEipAddressRequest) SetCount(v int32) *AllocateEipAddressRequest {
-	s.Count = &v
-	return s
-}
-
-func (s *AllocateEipAddressRequest) SetEnsRegionId(v string) *AllocateEipAddressRequest {
-	s.EnsRegionId = &v
-	return s
-}
-
-func (s *AllocateEipAddressRequest) SetMinCount(v int32) *AllocateEipAddressRequest {
-	s.MinCount = &v
-	return s
-}
-
-func (s *AllocateEipAddressRequest) SetVersion(v string) *AllocateEipAddressRequest {
-	s.Version = &v
-	return s
-}
-
-type AllocateEipAddressResponseBody struct {
-	BizStatusCode *string                                     `json:"BizStatusCode,omitempty" xml:"BizStatusCode,omitempty"`
-	EipAddresses  *AllocateEipAddressResponseBodyEipAddresses `json:"EipAddresses,omitempty" xml:"EipAddresses,omitempty" type:"Struct"`
-	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s AllocateEipAddressResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AllocateEipAddressResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AllocateEipAddressResponseBody) SetBizStatusCode(v string) *AllocateEipAddressResponseBody {
-	s.BizStatusCode = &v
-	return s
-}
-
-func (s *AllocateEipAddressResponseBody) SetEipAddresses(v *AllocateEipAddressResponseBodyEipAddresses) *AllocateEipAddressResponseBody {
-	s.EipAddresses = v
-	return s
-}
-
-func (s *AllocateEipAddressResponseBody) SetRequestId(v string) *AllocateEipAddressResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type AllocateEipAddressResponseBodyEipAddresses struct {
-	EipAddress []*AllocateEipAddressResponseBodyEipAddressesEipAddress `json:"EipAddress,omitempty" xml:"EipAddress,omitempty" type:"Repeated"`
-}
-
-func (s AllocateEipAddressResponseBodyEipAddresses) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AllocateEipAddressResponseBodyEipAddresses) GoString() string {
-	return s.String()
-}
-
-func (s *AllocateEipAddressResponseBodyEipAddresses) SetEipAddress(v []*AllocateEipAddressResponseBodyEipAddressesEipAddress) *AllocateEipAddressResponseBodyEipAddresses {
-	s.EipAddress = v
-	return s
-}
-
-type AllocateEipAddressResponseBodyEipAddressesEipAddress struct {
-	Eip *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
-}
-
-func (s AllocateEipAddressResponseBodyEipAddressesEipAddress) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AllocateEipAddressResponseBodyEipAddressesEipAddress) GoString() string {
-	return s.String()
-}
-
-func (s *AllocateEipAddressResponseBodyEipAddressesEipAddress) SetEip(v string) *AllocateEipAddressResponseBodyEipAddressesEipAddress {
-	s.Eip = &v
-	return s
-}
-
-type AllocateEipAddressResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AllocateEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AllocateEipAddressResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AllocateEipAddressResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AllocateEipAddressResponse) SetHeaders(v map[string]*string) *AllocateEipAddressResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AllocateEipAddressResponse) SetBody(v *AllocateEipAddressResponseBody) *AllocateEipAddressResponse {
-	s.Body = v
-	return s
-}
-
-type AssociateEipAddressRequest struct {
-	Eip                  *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
-	EnsRegionId          *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	InstanceIdInternetIp *string `json:"InstanceIdInternetIp,omitempty" xml:"InstanceIdInternetIp,omitempty"`
-	Version              *string `json:"Version,omitempty" xml:"Version,omitempty"`
-}
-
-func (s AssociateEipAddressRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AssociateEipAddressRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AssociateEipAddressRequest) SetEip(v string) *AssociateEipAddressRequest {
-	s.Eip = &v
-	return s
-}
-
-func (s *AssociateEipAddressRequest) SetEnsRegionId(v string) *AssociateEipAddressRequest {
-	s.EnsRegionId = &v
-	return s
-}
-
-func (s *AssociateEipAddressRequest) SetInstanceIdInternetIp(v string) *AssociateEipAddressRequest {
-	s.InstanceIdInternetIp = &v
-	return s
-}
-
-func (s *AssociateEipAddressRequest) SetVersion(v string) *AssociateEipAddressRequest {
-	s.Version = &v
-	return s
-}
-
-type AssociateEipAddressResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s AssociateEipAddressResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AssociateEipAddressResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AssociateEipAddressResponseBody) SetRequestId(v string) *AssociateEipAddressResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type AssociateEipAddressResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AssociateEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AssociateEipAddressResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AssociateEipAddressResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AssociateEipAddressResponse) SetHeaders(v map[string]*string) *AssociateEipAddressResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AssociateEipAddressResponse) SetBody(v *AssociateEipAddressResponseBody) *AssociateEipAddressResponse {
-	s.Body = v
-	return s
-}
-
 type AssociateEnsEipAddressRequest struct {
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -1432,100 +1236,6 @@ func (s *AuthorizeSecurityGroupEgressResponse) SetBody(v *AuthorizeSecurityGroup
 	return s
 }
 
-type CheckQuotaRequest struct {
-	AliUid            *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	GroupUuid         *string `json:"GroupUuid,omitempty" xml:"GroupUuid,omitempty"`
-	ResourceAttribute *string `json:"ResourceAttribute,omitempty" xml:"ResourceAttribute,omitempty"`
-}
-
-func (s CheckQuotaRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckQuotaRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CheckQuotaRequest) SetAliUid(v int64) *CheckQuotaRequest {
-	s.AliUid = &v
-	return s
-}
-
-func (s *CheckQuotaRequest) SetGroupUuid(v string) *CheckQuotaRequest {
-	s.GroupUuid = &v
-	return s
-}
-
-func (s *CheckQuotaRequest) SetResourceAttribute(v string) *CheckQuotaRequest {
-	s.ResourceAttribute = &v
-	return s
-}
-
-type CheckQuotaResponseBody struct {
-	Code *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Msg  *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CheckQuotaResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckQuotaResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CheckQuotaResponseBody) SetCode(v int32) *CheckQuotaResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CheckQuotaResponseBody) SetData(v string) *CheckQuotaResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CheckQuotaResponseBody) SetDesc(v string) *CheckQuotaResponseBody {
-	s.Desc = &v
-	return s
-}
-
-func (s *CheckQuotaResponseBody) SetMsg(v string) *CheckQuotaResponseBody {
-	s.Msg = &v
-	return s
-}
-
-func (s *CheckQuotaResponseBody) SetRequestId(v string) *CheckQuotaResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CheckQuotaResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CheckQuotaResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckQuotaResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CheckQuotaResponse) SetHeaders(v map[string]*string) *CheckQuotaResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CheckQuotaResponse) SetBody(v *CheckQuotaResponseBody) *CheckQuotaResponse {
-	s.Body = v
-	return s
-}
-
 type CreateApplicationRequest struct {
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	Timeout  *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
@@ -1790,6 +1500,107 @@ func (s *CreateEipInstanceResponse) SetBody(v *CreateEipInstanceResponseBody) *C
 	return s
 }
 
+type CreateEnsRouteEntryRequest struct {
+	// 自定义路由条目的描述信息。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 自定义路由条目的目标网段。
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	// 自定义路由条目的下一跳实例的ID。
+	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	// 自定义路由条目的下一跳的类型
+	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	// 要创建的自定义路由条目的名称。
+	RouteEntryName *string `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
+	// 要创建自定义路由条目的路由表ID。
+	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+}
+
+func (s CreateEnsRouteEntryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnsRouteEntryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnsRouteEntryRequest) SetDescription(v string) *CreateEnsRouteEntryRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateEnsRouteEntryRequest) SetDestinationCidrBlock(v string) *CreateEnsRouteEntryRequest {
+	s.DestinationCidrBlock = &v
+	return s
+}
+
+func (s *CreateEnsRouteEntryRequest) SetNextHopId(v string) *CreateEnsRouteEntryRequest {
+	s.NextHopId = &v
+	return s
+}
+
+func (s *CreateEnsRouteEntryRequest) SetNextHopType(v string) *CreateEnsRouteEntryRequest {
+	s.NextHopType = &v
+	return s
+}
+
+func (s *CreateEnsRouteEntryRequest) SetRouteEntryName(v string) *CreateEnsRouteEntryRequest {
+	s.RouteEntryName = &v
+	return s
+}
+
+func (s *CreateEnsRouteEntryRequest) SetRouteTableId(v string) *CreateEnsRouteEntryRequest {
+	s.RouteTableId = &v
+	return s
+}
+
+type CreateEnsRouteEntryResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 路由条目id。
+	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
+}
+
+func (s CreateEnsRouteEntryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnsRouteEntryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnsRouteEntryResponseBody) SetRequestId(v string) *CreateEnsRouteEntryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateEnsRouteEntryResponseBody) SetRouteEntryId(v string) *CreateEnsRouteEntryResponseBody {
+	s.RouteEntryId = &v
+	return s
+}
+
+type CreateEnsRouteEntryResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateEnsRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateEnsRouteEntryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEnsRouteEntryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEnsRouteEntryResponse) SetHeaders(v map[string]*string) *CreateEnsRouteEntryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEnsRouteEntryResponse) SetBody(v *CreateEnsRouteEntryResponseBody) *CreateEnsRouteEntryResponse {
+	s.Body = v
+	return s
+}
+
 type CreateEnsServiceRequest struct {
 	EnsServiceId *string `json:"EnsServiceId,omitempty" xml:"EnsServiceId,omitempty"`
 	OrderType    *string `json:"OrderType,omitempty" xml:"OrderType,omitempty"`
@@ -1952,6 +1763,106 @@ func (s *CreateEpnInstanceResponse) SetBody(v *CreateEpnInstanceResponseBody) *C
 	return s
 }
 
+type CreateForwardEntryRequest struct {
+	ExternalIp       *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	ExternalPort     *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
+	ForwardEntryName *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
+	InternalIp       *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	InternalPort     *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
+	IpProtocol       *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	NatGatewayId     *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+}
+
+func (s CreateForwardEntryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateForwardEntryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateForwardEntryRequest) SetExternalIp(v string) *CreateForwardEntryRequest {
+	s.ExternalIp = &v
+	return s
+}
+
+func (s *CreateForwardEntryRequest) SetExternalPort(v string) *CreateForwardEntryRequest {
+	s.ExternalPort = &v
+	return s
+}
+
+func (s *CreateForwardEntryRequest) SetForwardEntryName(v string) *CreateForwardEntryRequest {
+	s.ForwardEntryName = &v
+	return s
+}
+
+func (s *CreateForwardEntryRequest) SetInternalIp(v string) *CreateForwardEntryRequest {
+	s.InternalIp = &v
+	return s
+}
+
+func (s *CreateForwardEntryRequest) SetInternalPort(v string) *CreateForwardEntryRequest {
+	s.InternalPort = &v
+	return s
+}
+
+func (s *CreateForwardEntryRequest) SetIpProtocol(v string) *CreateForwardEntryRequest {
+	s.IpProtocol = &v
+	return s
+}
+
+func (s *CreateForwardEntryRequest) SetNatGatewayId(v string) *CreateForwardEntryRequest {
+	s.NatGatewayId = &v
+	return s
+}
+
+type CreateForwardEntryResponseBody struct {
+	ForwardEntryId *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateForwardEntryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateForwardEntryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateForwardEntryResponseBody) SetForwardEntryId(v string) *CreateForwardEntryResponseBody {
+	s.ForwardEntryId = &v
+	return s
+}
+
+func (s *CreateForwardEntryResponseBody) SetRequestId(v string) *CreateForwardEntryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateForwardEntryResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateForwardEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateForwardEntryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateForwardEntryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateForwardEntryResponse) SetHeaders(v map[string]*string) *CreateForwardEntryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateForwardEntryResponse) SetBody(v *CreateForwardEntryResponseBody) *CreateForwardEntryResponse {
+	s.Body = v
+	return s
+}
+
 type CreateImageRequest struct {
 	DeleteAfterImageUpload *string `json:"DeleteAfterImageUpload,omitempty" xml:"DeleteAfterImageUpload,omitempty"`
 	ImageName              *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
@@ -2041,28 +1952,30 @@ func (s *CreateImageResponse) SetBody(v *CreateImageResponseBody) *CreateImageRe
 }
 
 type CreateInstanceRequest struct {
-	DataDisk               []*CreateInstanceRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	SystemDisk             *CreateInstanceRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	AutoRenew              *string                          `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	AutoRenewPeriod        *string                          `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	EnsRegionId            *string                          `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	HostName               *string                          `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	ImageId                *string                          `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	InstanceName           *string                          `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InstanceType           *string                          `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	InternetChargeType     *string                          `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
-	IpType                 *string                          `json:"IpType,omitempty" xml:"IpType,omitempty"`
-	KeyPairName            *string                          `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	OwnerId                *int64                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Password               *string                          `json:"Password,omitempty" xml:"Password,omitempty"`
-	PaymentType            *string                          `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	Period                 *string                          `json:"Period,omitempty" xml:"Period,omitempty"`
-	PrivateIpAddress       *string                          `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	PublicIpIdentification *bool                            `json:"PublicIpIdentification,omitempty" xml:"PublicIpIdentification,omitempty"`
-	Quantity               *string                          `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	UniqueSuffix           *bool                            `json:"UniqueSuffix,omitempty" xml:"UniqueSuffix,omitempty"`
-	UserData               *string                          `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	VSwitchId              *string                          `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	DataDisk           []*CreateInstanceRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
+	SystemDisk         *CreateInstanceRequestSystemDisk `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
+	AutoRenew          *string                          `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	AutoRenewPeriod    *string                          `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
+	EnsRegionId        *string                          `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	HostName           *string                          `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	ImageId            *string                          `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	InstanceName       *string                          `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceType       *string                          `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetChargeType *string                          `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+	IpType             *string                          `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	KeyPairName        *string                          `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	OwnerId            *int64                           `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Password           *string                          `json:"Password,omitempty" xml:"Password,omitempty"`
+	// 是否使用镜像预设的密码。使用该参数时，Password参数必须为空，同时您需要确保使用的镜像已经设置了密码。
+	PasswordInherit        *bool   `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
+	PaymentType            *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	Period                 *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	PrivateIpAddress       *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	PublicIpIdentification *bool   `json:"PublicIpIdentification,omitempty" xml:"PublicIpIdentification,omitempty"`
+	Quantity               *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+	UniqueSuffix           *bool   `json:"UniqueSuffix,omitempty" xml:"UniqueSuffix,omitempty"`
+	UserData               *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+	VSwitchId              *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s CreateInstanceRequest) String() string {
@@ -2140,6 +2053,11 @@ func (s *CreateInstanceRequest) SetOwnerId(v int64) *CreateInstanceRequest {
 
 func (s *CreateInstanceRequest) SetPassword(v string) *CreateInstanceRequest {
 	s.Password = &v
+	return s
+}
+
+func (s *CreateInstanceRequest) SetPasswordInherit(v bool) *CreateInstanceRequest {
+	s.PasswordInherit = &v
 	return s
 }
 
@@ -3191,6 +3109,88 @@ func (s *CreateLoadBalancerUDPListenerResponse) SetBody(v *CreateLoadBalancerUDP
 	return s
 }
 
+type CreateNatGatewayRequest struct {
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NetworkId   *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	VSwitchId   *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s CreateNatGatewayRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNatGatewayRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNatGatewayRequest) SetEnsRegionId(v string) *CreateNatGatewayRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *CreateNatGatewayRequest) SetName(v string) *CreateNatGatewayRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateNatGatewayRequest) SetNetworkId(v string) *CreateNatGatewayRequest {
+	s.NetworkId = &v
+	return s
+}
+
+func (s *CreateNatGatewayRequest) SetVSwitchId(v string) *CreateNatGatewayRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+type CreateNatGatewayResponseBody struct {
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateNatGatewayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNatGatewayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNatGatewayResponseBody) SetNatGatewayId(v string) *CreateNatGatewayResponseBody {
+	s.NatGatewayId = &v
+	return s
+}
+
+func (s *CreateNatGatewayResponseBody) SetRequestId(v string) *CreateNatGatewayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateNatGatewayResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateNatGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateNatGatewayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateNatGatewayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateNatGatewayResponse) SetHeaders(v map[string]*string) *CreateNatGatewayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateNatGatewayResponse) SetBody(v *CreateNatGatewayResponseBody) *CreateNatGatewayResponse {
+	s.Body = v
+	return s
+}
+
 type CreateNetworkRequest struct {
 	CidrBlock   *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -3348,6 +3348,94 @@ func (s *CreateSecurityGroupResponse) SetBody(v *CreateSecurityGroupResponseBody
 	return s
 }
 
+type CreateSnatEntryRequest struct {
+	NatGatewayId    *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	SnatEntryName   *string `json:"SnatEntryName,omitempty" xml:"SnatEntryName,omitempty"`
+	SnatIp          *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+	SourceCIDR      *string `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
+	SourceVSwitchId *string `json:"SourceVSwitchId,omitempty" xml:"SourceVSwitchId,omitempty"`
+}
+
+func (s CreateSnatEntryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSnatEntryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSnatEntryRequest) SetNatGatewayId(v string) *CreateSnatEntryRequest {
+	s.NatGatewayId = &v
+	return s
+}
+
+func (s *CreateSnatEntryRequest) SetSnatEntryName(v string) *CreateSnatEntryRequest {
+	s.SnatEntryName = &v
+	return s
+}
+
+func (s *CreateSnatEntryRequest) SetSnatIp(v string) *CreateSnatEntryRequest {
+	s.SnatIp = &v
+	return s
+}
+
+func (s *CreateSnatEntryRequest) SetSourceCIDR(v string) *CreateSnatEntryRequest {
+	s.SourceCIDR = &v
+	return s
+}
+
+func (s *CreateSnatEntryRequest) SetSourceVSwitchId(v string) *CreateSnatEntryRequest {
+	s.SourceVSwitchId = &v
+	return s
+}
+
+type CreateSnatEntryResponseBody struct {
+	// Id of the request
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
+}
+
+func (s CreateSnatEntryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSnatEntryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSnatEntryResponseBody) SetRequestId(v string) *CreateSnatEntryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSnatEntryResponseBody) SetSnatEntryId(v string) *CreateSnatEntryResponseBody {
+	s.SnatEntryId = &v
+	return s
+}
+
+type CreateSnatEntryResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateSnatEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSnatEntryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSnatEntryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSnatEntryResponse) SetHeaders(v map[string]*string) *CreateSnatEntryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSnatEntryResponse) SetBody(v *CreateSnatEntryResponseBody) *CreateSnatEntryResponse {
+	s.Body = v
+	return s
+}
+
 type CreateVSwitchRequest struct {
 	CidrBlock   *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -3437,112 +3525,6 @@ func (s *CreateVSwitchResponse) SetHeaders(v map[string]*string) *CreateVSwitchR
 }
 
 func (s *CreateVSwitchResponse) SetBody(v *CreateVSwitchResponseBody) *CreateVSwitchResponse {
-	s.Body = v
-	return s
-}
-
-type CreateVmAndSaveStockRequest struct {
-	AliUid            *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	GroupUuid         *string `json:"GroupUuid,omitempty" xml:"GroupUuid,omitempty"`
-	ResourceAttribute *string `json:"ResourceAttribute,omitempty" xml:"ResourceAttribute,omitempty"`
-	Tenant            *string `json:"Tenant,omitempty" xml:"Tenant,omitempty"`
-	WorkloadUuid      *string `json:"WorkloadUuid,omitempty" xml:"WorkloadUuid,omitempty"`
-}
-
-func (s CreateVmAndSaveStockRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateVmAndSaveStockRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateVmAndSaveStockRequest) SetAliUid(v int64) *CreateVmAndSaveStockRequest {
-	s.AliUid = &v
-	return s
-}
-
-func (s *CreateVmAndSaveStockRequest) SetGroupUuid(v string) *CreateVmAndSaveStockRequest {
-	s.GroupUuid = &v
-	return s
-}
-
-func (s *CreateVmAndSaveStockRequest) SetResourceAttribute(v string) *CreateVmAndSaveStockRequest {
-	s.ResourceAttribute = &v
-	return s
-}
-
-func (s *CreateVmAndSaveStockRequest) SetTenant(v string) *CreateVmAndSaveStockRequest {
-	s.Tenant = &v
-	return s
-}
-
-func (s *CreateVmAndSaveStockRequest) SetWorkloadUuid(v string) *CreateVmAndSaveStockRequest {
-	s.WorkloadUuid = &v
-	return s
-}
-
-type CreateVmAndSaveStockResponseBody struct {
-	Code *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Msg  *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateVmAndSaveStockResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateVmAndSaveStockResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateVmAndSaveStockResponseBody) SetCode(v int32) *CreateVmAndSaveStockResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateVmAndSaveStockResponseBody) SetData(v string) *CreateVmAndSaveStockResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CreateVmAndSaveStockResponseBody) SetDesc(v string) *CreateVmAndSaveStockResponseBody {
-	s.Desc = &v
-	return s
-}
-
-func (s *CreateVmAndSaveStockResponseBody) SetMsg(v string) *CreateVmAndSaveStockResponseBody {
-	s.Msg = &v
-	return s
-}
-
-func (s *CreateVmAndSaveStockResponseBody) SetRequestId(v string) *CreateVmAndSaveStockResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateVmAndSaveStockResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateVmAndSaveStockResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateVmAndSaveStockResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateVmAndSaveStockResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateVmAndSaveStockResponse) SetHeaders(v map[string]*string) *CreateVmAndSaveStockResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateVmAndSaveStockResponse) SetBody(v *CreateVmAndSaveStockResponseBody) *CreateVmAndSaveStockResponse {
 	s.Body = v
 	return s
 }
@@ -3690,6 +3672,65 @@ func (s *DeleteDeviceInternetPortResponse) SetBody(v *DeleteDeviceInternetPortRe
 	return s
 }
 
+type DeleteEnsRouteEntryRequest struct {
+	// 要删除的路由条目ID。
+	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
+}
+
+func (s DeleteEnsRouteEntryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnsRouteEntryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnsRouteEntryRequest) SetRouteEntryId(v string) *DeleteEnsRouteEntryRequest {
+	s.RouteEntryId = &v
+	return s
+}
+
+type DeleteEnsRouteEntryResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteEnsRouteEntryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnsRouteEntryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnsRouteEntryResponseBody) SetRequestId(v string) *DeleteEnsRouteEntryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteEnsRouteEntryResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteEnsRouteEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteEnsRouteEntryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEnsRouteEntryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEnsRouteEntryResponse) SetHeaders(v map[string]*string) *DeleteEnsRouteEntryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEnsRouteEntryResponse) SetBody(v *DeleteEnsRouteEntryResponseBody) *DeleteEnsRouteEntryResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteEpnInstanceRequest struct {
 	EPNInstanceId *string `json:"EPNInstanceId,omitempty" xml:"EPNInstanceId,omitempty"`
 }
@@ -3743,6 +3784,64 @@ func (s *DeleteEpnInstanceResponse) SetHeaders(v map[string]*string) *DeleteEpnI
 }
 
 func (s *DeleteEpnInstanceResponse) SetBody(v *DeleteEpnInstanceResponseBody) *DeleteEpnInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteForwardEntryRequest struct {
+	ForwardEntryId *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
+}
+
+func (s DeleteForwardEntryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteForwardEntryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteForwardEntryRequest) SetForwardEntryId(v string) *DeleteForwardEntryRequest {
+	s.ForwardEntryId = &v
+	return s
+}
+
+type DeleteForwardEntryResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteForwardEntryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteForwardEntryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteForwardEntryResponseBody) SetRequestId(v string) *DeleteForwardEntryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteForwardEntryResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteForwardEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteForwardEntryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteForwardEntryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteForwardEntryResponse) SetHeaders(v map[string]*string) *DeleteForwardEntryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteForwardEntryResponse) SetBody(v *DeleteForwardEntryResponseBody) *DeleteForwardEntryResponse {
 	s.Body = v
 	return s
 }
@@ -3874,6 +3973,64 @@ func (s *DeleteLoadBalancerListenerResponse) SetBody(v *DeleteLoadBalancerListen
 	return s
 }
 
+type DeleteNatGatewayRequest struct {
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+}
+
+func (s DeleteNatGatewayRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNatGatewayRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNatGatewayRequest) SetNatGatewayId(v string) *DeleteNatGatewayRequest {
+	s.NatGatewayId = &v
+	return s
+}
+
+type DeleteNatGatewayResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteNatGatewayResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNatGatewayResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNatGatewayResponseBody) SetRequestId(v string) *DeleteNatGatewayResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteNatGatewayResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteNatGatewayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteNatGatewayResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteNatGatewayResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteNatGatewayResponse) SetHeaders(v map[string]*string) *DeleteNatGatewayResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteNatGatewayResponse) SetBody(v *DeleteNatGatewayResponseBody) *DeleteNatGatewayResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteNetworkRequest struct {
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 }
@@ -3995,6 +4152,64 @@ func (s *DeleteSecurityGroupResponse) SetBody(v *DeleteSecurityGroupResponseBody
 	return s
 }
 
+type DeleteSnatEntryRequest struct {
+	SnatEntryId *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
+}
+
+func (s DeleteSnatEntryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSnatEntryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSnatEntryRequest) SetSnatEntryId(v string) *DeleteSnatEntryRequest {
+	s.SnatEntryId = &v
+	return s
+}
+
+type DeleteSnatEntryResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteSnatEntryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSnatEntryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSnatEntryResponseBody) SetRequestId(v string) *DeleteSnatEntryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteSnatEntryResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteSnatEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSnatEntryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSnatEntryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSnatEntryResponse) SetHeaders(v map[string]*string) *DeleteSnatEntryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSnatEntryResponse) SetBody(v *DeleteSnatEntryResponseBody) *DeleteSnatEntryResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteVSwitchRequest struct {
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
@@ -4054,93 +4269,6 @@ func (s *DeleteVSwitchResponse) SetHeaders(v map[string]*string) *DeleteVSwitchR
 }
 
 func (s *DeleteVSwitchResponse) SetBody(v *DeleteVSwitchResponseBody) *DeleteVSwitchResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteVmRequest struct {
-	AliUid       *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	WorkloadUuid *string `json:"WorkloadUuid,omitempty" xml:"WorkloadUuid,omitempty"`
-}
-
-func (s DeleteVmRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteVmRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteVmRequest) SetAliUid(v int64) *DeleteVmRequest {
-	s.AliUid = &v
-	return s
-}
-
-func (s *DeleteVmRequest) SetWorkloadUuid(v string) *DeleteVmRequest {
-	s.WorkloadUuid = &v
-	return s
-}
-
-type DeleteVmResponseBody struct {
-	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Desc      *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Msg       *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteVmResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteVmResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteVmResponseBody) SetCode(v int32) *DeleteVmResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteVmResponseBody) SetData(v string) *DeleteVmResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *DeleteVmResponseBody) SetDesc(v string) *DeleteVmResponseBody {
-	s.Desc = &v
-	return s
-}
-
-func (s *DeleteVmResponseBody) SetMsg(v string) *DeleteVmResponseBody {
-	s.Msg = &v
-	return s
-}
-
-func (s *DeleteVmResponseBody) SetRequestId(v string) *DeleteVmResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteVmResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteVmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteVmResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteVmResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteVmResponse) SetHeaders(v map[string]*string) *DeleteVmResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteVmResponse) SetBody(v *DeleteVmResponseBody) *DeleteVmResponse {
 	s.Body = v
 	return s
 }
@@ -8061,6 +8189,238 @@ func (s *DescribeEnsResourceUsageResponse) SetBody(v *DescribeEnsResourceUsageRe
 	return s
 }
 
+type DescribeEnsRouteEntryListRequest struct {
+	// 路由条目的目标网段
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	// 下一跳实例ID。
+	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	// 下一跳类型
+	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	// 列表的页码，默认值为1。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页查询时每页的行数，最大值为100，默认值为10。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 要查询的路由条目的ID。
+	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
+	// 路由条目的名称。
+	RouteEntryName *string `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
+	// 路由条目的类型
+	RouteEntryType *string `json:"RouteEntryType,omitempty" xml:"RouteEntryType,omitempty"`
+	// 要查询的路由表的ID。
+	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+}
+
+func (s DescribeEnsRouteEntryListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsRouteEntryListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsRouteEntryListRequest) SetDestinationCidrBlock(v string) *DescribeEnsRouteEntryListRequest {
+	s.DestinationCidrBlock = &v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListRequest) SetNextHopId(v string) *DescribeEnsRouteEntryListRequest {
+	s.NextHopId = &v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListRequest) SetNextHopType(v string) *DescribeEnsRouteEntryListRequest {
+	s.NextHopType = &v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListRequest) SetPageNumber(v int32) *DescribeEnsRouteEntryListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListRequest) SetPageSize(v int32) *DescribeEnsRouteEntryListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListRequest) SetRouteEntryId(v string) *DescribeEnsRouteEntryListRequest {
+	s.RouteEntryId = &v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListRequest) SetRouteEntryName(v string) *DescribeEnsRouteEntryListRequest {
+	s.RouteEntryName = &v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListRequest) SetRouteEntryType(v string) *DescribeEnsRouteEntryListRequest {
+	s.RouteEntryType = &v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListRequest) SetRouteTableId(v string) *DescribeEnsRouteEntryListRequest {
+	s.RouteTableId = &v
+	return s
+}
+
+type DescribeEnsRouteEntryListResponseBody struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 路由条目信息。
+	RouteEntrys []*DescribeEnsRouteEntryListResponseBodyRouteEntrys `json:"RouteEntrys,omitempty" xml:"RouteEntrys,omitempty" type:"Repeated"`
+	TotalCount  *int32                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeEnsRouteEntryListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsRouteEntryListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsRouteEntryListResponseBody) SetPageNumber(v int32) *DescribeEnsRouteEntryListResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListResponseBody) SetPageSize(v int32) *DescribeEnsRouteEntryListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListResponseBody) SetRequestId(v string) *DescribeEnsRouteEntryListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListResponseBody) SetRouteEntrys(v []*DescribeEnsRouteEntryListResponseBodyRouteEntrys) *DescribeEnsRouteEntryListResponseBody {
+	s.RouteEntrys = v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListResponseBody) SetTotalCount(v int32) *DescribeEnsRouteEntryListResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeEnsRouteEntryListResponseBodyRouteEntrys struct {
+	// 路由条目的描述信息。
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// 路由条目的目标网段。
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	// 下一跳
+	NextHops []*DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops `json:"NextHops,omitempty" xml:"NextHops,omitempty" type:"Repeated"`
+	// 路由条目的ID。
+	RouteEntryId *string `json:"RouteEntryId,omitempty" xml:"RouteEntryId,omitempty"`
+	// 路由条目的名称。
+	RouteEntryName *string `json:"RouteEntryName,omitempty" xml:"RouteEntryName,omitempty"`
+	// 路由表ID。
+	RouteTableId *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	// 路由条目的状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 路由条目的类型
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeEnsRouteEntryListResponseBodyRouteEntrys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsRouteEntryListResponseBodyRouteEntrys) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrys) SetDescription(v string) *DescribeEnsRouteEntryListResponseBodyRouteEntrys {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrys) SetDestinationCidrBlock(v string) *DescribeEnsRouteEntryListResponseBodyRouteEntrys {
+	s.DestinationCidrBlock = &v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrys) SetNextHops(v []*DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops) *DescribeEnsRouteEntryListResponseBodyRouteEntrys {
+	s.NextHops = v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrys) SetRouteEntryId(v string) *DescribeEnsRouteEntryListResponseBodyRouteEntrys {
+	s.RouteEntryId = &v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrys) SetRouteEntryName(v string) *DescribeEnsRouteEntryListResponseBodyRouteEntrys {
+	s.RouteEntryName = &v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrys) SetRouteTableId(v string) *DescribeEnsRouteEntryListResponseBodyRouteEntrys {
+	s.RouteTableId = &v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrys) SetStatus(v string) *DescribeEnsRouteEntryListResponseBodyRouteEntrys {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrys) SetType(v string) *DescribeEnsRouteEntryListResponseBodyRouteEntrys {
+	s.Type = &v
+	return s
+}
+
+type DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops struct {
+	// 下一跳实例ID。
+	NextHopId *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	// 下一跳类型
+	NextHopType *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+}
+
+func (s DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops) SetNextHopId(v string) *DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops {
+	s.NextHopId = &v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops) SetNextHopType(v string) *DescribeEnsRouteEntryListResponseBodyRouteEntrysNextHops {
+	s.NextHopType = &v
+	return s
+}
+
+type DescribeEnsRouteEntryListResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeEnsRouteEntryListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeEnsRouteEntryListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeEnsRouteEntryListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeEnsRouteEntryListResponse) SetHeaders(v map[string]*string) *DescribeEnsRouteEntryListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeEnsRouteEntryListResponse) SetBody(v *DescribeEnsRouteEntryListResponseBody) *DescribeEnsRouteEntryListResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeEpnBandWidthDataRequest struct {
 	EPNInstanceId   *string `json:"EPNInstanceId,omitempty" xml:"EPNInstanceId,omitempty"`
 	EndTime         *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -9169,6 +9529,195 @@ func (s *DescribeExportImageStatusResponse) SetHeaders(v map[string]*string) *De
 }
 
 func (s *DescribeExportImageStatusResponse) SetBody(v *DescribeExportImageStatusResponseBody) *DescribeExportImageStatusResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeForwardTableEntriesRequest struct {
+	ExternalIp       *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	ForwardEntryId   *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
+	ForwardEntryName *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
+	InternalIp       *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	IpProtocol       *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	NatGatewayId     *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeForwardTableEntriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeForwardTableEntriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeForwardTableEntriesRequest) SetExternalIp(v string) *DescribeForwardTableEntriesRequest {
+	s.ExternalIp = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesRequest) SetForwardEntryId(v string) *DescribeForwardTableEntriesRequest {
+	s.ForwardEntryId = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesRequest) SetForwardEntryName(v string) *DescribeForwardTableEntriesRequest {
+	s.ForwardEntryName = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesRequest) SetInternalIp(v string) *DescribeForwardTableEntriesRequest {
+	s.InternalIp = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesRequest) SetIpProtocol(v string) *DescribeForwardTableEntriesRequest {
+	s.IpProtocol = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesRequest) SetNatGatewayId(v string) *DescribeForwardTableEntriesRequest {
+	s.NatGatewayId = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesRequest) SetPageNumber(v int32) *DescribeForwardTableEntriesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesRequest) SetPageSize(v int32) *DescribeForwardTableEntriesRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeForwardTableEntriesResponseBody struct {
+	ForwardTableEntries []*DescribeForwardTableEntriesResponseBodyForwardTableEntries `json:"ForwardTableEntries,omitempty" xml:"ForwardTableEntries,omitempty" type:"Repeated"`
+	PageNumber          *string                                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *string                                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeForwardTableEntriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeForwardTableEntriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeForwardTableEntriesResponseBody) SetForwardTableEntries(v []*DescribeForwardTableEntriesResponseBodyForwardTableEntries) *DescribeForwardTableEntriesResponseBody {
+	s.ForwardTableEntries = v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesResponseBody) SetPageNumber(v string) *DescribeForwardTableEntriesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesResponseBody) SetPageSize(v string) *DescribeForwardTableEntriesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesResponseBody) SetRequestId(v string) *DescribeForwardTableEntriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesResponseBody) SetTotalCount(v string) *DescribeForwardTableEntriesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeForwardTableEntriesResponseBodyForwardTableEntries struct {
+	ExternalIp       *string `json:"ExternalIp,omitempty" xml:"ExternalIp,omitempty"`
+	ExternalPort     *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
+	ForwardEntryId   *string `json:"ForwardEntryId,omitempty" xml:"ForwardEntryId,omitempty"`
+	ForwardEntryName *string `json:"ForwardEntryName,omitempty" xml:"ForwardEntryName,omitempty"`
+	InternalIp       *string `json:"InternalIp,omitempty" xml:"InternalIp,omitempty"`
+	InternalPort     *string `json:"InternalPort,omitempty" xml:"InternalPort,omitempty"`
+	IpProtocol       *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	NatGatewayId     *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeForwardTableEntriesResponseBodyForwardTableEntries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeForwardTableEntriesResponseBodyForwardTableEntries) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntries) SetExternalIp(v string) *DescribeForwardTableEntriesResponseBodyForwardTableEntries {
+	s.ExternalIp = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntries) SetExternalPort(v string) *DescribeForwardTableEntriesResponseBodyForwardTableEntries {
+	s.ExternalPort = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntries) SetForwardEntryId(v string) *DescribeForwardTableEntriesResponseBodyForwardTableEntries {
+	s.ForwardEntryId = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntries) SetForwardEntryName(v string) *DescribeForwardTableEntriesResponseBodyForwardTableEntries {
+	s.ForwardEntryName = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntries) SetInternalIp(v string) *DescribeForwardTableEntriesResponseBodyForwardTableEntries {
+	s.InternalIp = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntries) SetInternalPort(v string) *DescribeForwardTableEntriesResponseBodyForwardTableEntries {
+	s.InternalPort = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntries) SetIpProtocol(v string) *DescribeForwardTableEntriesResponseBodyForwardTableEntries {
+	s.IpProtocol = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntries) SetNatGatewayId(v string) *DescribeForwardTableEntriesResponseBodyForwardTableEntries {
+	s.NatGatewayId = &v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesResponseBodyForwardTableEntries) SetStatus(v string) *DescribeForwardTableEntriesResponseBodyForwardTableEntries {
+	s.Status = &v
+	return s
+}
+
+type DescribeForwardTableEntriesResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeForwardTableEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeForwardTableEntriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeForwardTableEntriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeForwardTableEntriesResponse) SetHeaders(v map[string]*string) *DescribeForwardTableEntriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeForwardTableEntriesResponse) SetBody(v *DescribeForwardTableEntriesResponseBody) *DescribeForwardTableEntriesResponse {
 	s.Body = v
 	return s
 }
@@ -12598,6 +13147,171 @@ func (s *DescribeMeasurementDataResponse) SetBody(v *DescribeMeasurementDataResp
 	return s
 }
 
+type DescribeNatGatewaysRequest struct {
+	EnsRegionId  *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	NetworkId    *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	VSwitchId    *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s DescribeNatGatewaysRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatGatewaysRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatGatewaysRequest) SetEnsRegionId(v string) *DescribeNatGatewaysRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysRequest) SetName(v string) *DescribeNatGatewaysRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysRequest) SetNatGatewayId(v string) *DescribeNatGatewaysRequest {
+	s.NatGatewayId = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysRequest) SetNetworkId(v string) *DescribeNatGatewaysRequest {
+	s.NetworkId = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysRequest) SetPageNumber(v int32) *DescribeNatGatewaysRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysRequest) SetPageSize(v int32) *DescribeNatGatewaysRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysRequest) SetVSwitchId(v string) *DescribeNatGatewaysRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+type DescribeNatGatewaysResponseBody struct {
+	NatGateways []*DescribeNatGatewaysResponseBodyNatGateways `json:"NatGateways,omitempty" xml:"NatGateways,omitempty" type:"Repeated"`
+	PageNumber  *int32                                        `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                        `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeNatGatewaysResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatGatewaysResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatGatewaysResponseBody) SetNatGateways(v []*DescribeNatGatewaysResponseBodyNatGateways) *DescribeNatGatewaysResponseBody {
+	s.NatGateways = v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponseBody) SetPageNumber(v int32) *DescribeNatGatewaysResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponseBody) SetPageSize(v int32) *DescribeNatGatewaysResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponseBody) SetRequestId(v string) *DescribeNatGatewaysResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponseBody) SetTotalCount(v int32) *DescribeNatGatewaysResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeNatGatewaysResponseBodyNatGateways struct {
+	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	EnsRegionId  *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	NetworkId    *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	VSwitchId    *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s DescribeNatGatewaysResponseBodyNatGateways) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatGatewaysResponseBodyNatGateways) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGateways) SetCreationTime(v string) *DescribeNatGatewaysResponseBodyNatGateways {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGateways) SetEnsRegionId(v string) *DescribeNatGatewaysResponseBodyNatGateways {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGateways) SetName(v string) *DescribeNatGatewaysResponseBodyNatGateways {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGateways) SetNatGatewayId(v string) *DescribeNatGatewaysResponseBodyNatGateways {
+	s.NatGatewayId = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGateways) SetNetworkId(v string) *DescribeNatGatewaysResponseBodyNatGateways {
+	s.NetworkId = &v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponseBodyNatGateways) SetVSwitchId(v string) *DescribeNatGatewaysResponseBodyNatGateways {
+	s.VSwitchId = &v
+	return s
+}
+
+type DescribeNatGatewaysResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeNatGatewaysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeNatGatewaysResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNatGatewaysResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNatGatewaysResponse) SetHeaders(v map[string]*string) *DescribeNatGatewaysResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeNatGatewaysResponse) SetBody(v *DescribeNatGatewaysResponseBody) *DescribeNatGatewaysResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeNetworkAttributeRequest struct {
 	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 }
@@ -14460,6 +15174,171 @@ func (s *DescribeServcieScheduleResponse) SetBody(v *DescribeServcieScheduleResp
 	return s
 }
 
+type DescribeSnatTableEntriesRequest struct {
+	NatGatewayId  *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SnatEntryId   *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
+	SnatEntryName *string `json:"SnatEntryName,omitempty" xml:"SnatEntryName,omitempty"`
+	SnatIp        *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+	SourceCIDR    *string `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
+}
+
+func (s DescribeSnatTableEntriesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSnatTableEntriesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSnatTableEntriesRequest) SetNatGatewayId(v string) *DescribeSnatTableEntriesRequest {
+	s.NatGatewayId = &v
+	return s
+}
+
+func (s *DescribeSnatTableEntriesRequest) SetPageNumber(v int32) *DescribeSnatTableEntriesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSnatTableEntriesRequest) SetPageSize(v int32) *DescribeSnatTableEntriesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSnatTableEntriesRequest) SetSnatEntryId(v string) *DescribeSnatTableEntriesRequest {
+	s.SnatEntryId = &v
+	return s
+}
+
+func (s *DescribeSnatTableEntriesRequest) SetSnatEntryName(v string) *DescribeSnatTableEntriesRequest {
+	s.SnatEntryName = &v
+	return s
+}
+
+func (s *DescribeSnatTableEntriesRequest) SetSnatIp(v string) *DescribeSnatTableEntriesRequest {
+	s.SnatIp = &v
+	return s
+}
+
+func (s *DescribeSnatTableEntriesRequest) SetSourceCIDR(v string) *DescribeSnatTableEntriesRequest {
+	s.SourceCIDR = &v
+	return s
+}
+
+type DescribeSnatTableEntriesResponseBody struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SnatTableEntries []*DescribeSnatTableEntriesResponseBodySnatTableEntries `json:"SnatTableEntries,omitempty" xml:"SnatTableEntries,omitempty" type:"Repeated"`
+	TotalCount       *int32                                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeSnatTableEntriesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSnatTableEntriesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSnatTableEntriesResponseBody) SetPageNumber(v int32) *DescribeSnatTableEntriesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeSnatTableEntriesResponseBody) SetPageSize(v int32) *DescribeSnatTableEntriesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeSnatTableEntriesResponseBody) SetRequestId(v string) *DescribeSnatTableEntriesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSnatTableEntriesResponseBody) SetSnatTableEntries(v []*DescribeSnatTableEntriesResponseBodySnatTableEntries) *DescribeSnatTableEntriesResponseBody {
+	s.SnatTableEntries = v
+	return s
+}
+
+func (s *DescribeSnatTableEntriesResponseBody) SetTotalCount(v int32) *DescribeSnatTableEntriesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeSnatTableEntriesResponseBodySnatTableEntries struct {
+	NatGatewayId  *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
+	SnatEntryId   *string `json:"SnatEntryId,omitempty" xml:"SnatEntryId,omitempty"`
+	SnatEntryName *string `json:"SnatEntryName,omitempty" xml:"SnatEntryName,omitempty"`
+	SnatIp        *string `json:"SnatIp,omitempty" xml:"SnatIp,omitempty"`
+	SourceCIDR    *string `json:"SourceCIDR,omitempty" xml:"SourceCIDR,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeSnatTableEntriesResponseBodySnatTableEntries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSnatTableEntriesResponseBodySnatTableEntries) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) SetNatGatewayId(v string) *DescribeSnatTableEntriesResponseBodySnatTableEntries {
+	s.NatGatewayId = &v
+	return s
+}
+
+func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) SetSnatEntryId(v string) *DescribeSnatTableEntriesResponseBodySnatTableEntries {
+	s.SnatEntryId = &v
+	return s
+}
+
+func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) SetSnatEntryName(v string) *DescribeSnatTableEntriesResponseBodySnatTableEntries {
+	s.SnatEntryName = &v
+	return s
+}
+
+func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) SetSnatIp(v string) *DescribeSnatTableEntriesResponseBodySnatTableEntries {
+	s.SnatIp = &v
+	return s
+}
+
+func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) SetSourceCIDR(v string) *DescribeSnatTableEntriesResponseBodySnatTableEntries {
+	s.SourceCIDR = &v
+	return s
+}
+
+func (s *DescribeSnatTableEntriesResponseBodySnatTableEntries) SetStatus(v string) *DescribeSnatTableEntriesResponseBodySnatTableEntries {
+	s.Status = &v
+	return s
+}
+
+type DescribeSnatTableEntriesResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeSnatTableEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeSnatTableEntriesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeSnatTableEntriesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeSnatTableEntriesResponse) SetHeaders(v map[string]*string) *DescribeSnatTableEntriesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeSnatTableEntriesResponse) SetBody(v *DescribeSnatTableEntriesResponseBody) *DescribeSnatTableEntriesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeUserBandWidthDataRequest struct {
 	EndTime     *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
@@ -15429,121 +16308,6 @@ func (s *GetDeviceInternetPortResponse) SetBody(v *GetDeviceInternetPortResponse
 	return s
 }
 
-type GetVmListRequest struct {
-	AliUid       *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	GroupUuid    *string `json:"GroupUuid,omitempty" xml:"GroupUuid,omitempty"`
-	InstanceUuid *string `json:"InstanceUuid,omitempty" xml:"InstanceUuid,omitempty"`
-	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	WorkloadUuid *string `json:"WorkloadUuid,omitempty" xml:"WorkloadUuid,omitempty"`
-}
-
-func (s GetVmListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetVmListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetVmListRequest) SetAliUid(v int64) *GetVmListRequest {
-	s.AliUid = &v
-	return s
-}
-
-func (s *GetVmListRequest) SetGroupUuid(v string) *GetVmListRequest {
-	s.GroupUuid = &v
-	return s
-}
-
-func (s *GetVmListRequest) SetInstanceUuid(v string) *GetVmListRequest {
-	s.InstanceUuid = &v
-	return s
-}
-
-func (s *GetVmListRequest) SetPageNumber(v int32) *GetVmListRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *GetVmListRequest) SetPageSize(v int32) *GetVmListRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *GetVmListRequest) SetWorkloadUuid(v string) *GetVmListRequest {
-	s.WorkloadUuid = &v
-	return s
-}
-
-type GetVmListResponseBody struct {
-	// 业务状态码
-	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 业务数据
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// 返回信息
-	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetVmListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetVmListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetVmListResponseBody) SetCode(v int32) *GetVmListResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetVmListResponseBody) SetData(v string) *GetVmListResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *GetVmListResponseBody) SetDesc(v string) *GetVmListResponseBody {
-	s.Desc = &v
-	return s
-}
-
-func (s *GetVmListResponseBody) SetMsg(v string) *GetVmListResponseBody {
-	s.Msg = &v
-	return s
-}
-
-func (s *GetVmListResponseBody) SetRequestId(v string) *GetVmListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetVmListResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetVmListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetVmListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetVmListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetVmListResponse) SetHeaders(v map[string]*string) *GetVmListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetVmListResponse) SetBody(v *GetVmListResponseBody) *GetVmListResponse {
-	s.Body = v
-	return s
-}
-
 type ImportKeyPairRequest struct {
 	KeyPairName   *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	PublicKeyBody *string `json:"PublicKeyBody,omitempty" xml:"PublicKeyBody,omitempty"`
@@ -16088,106 +16852,6 @@ func (s *ListApplicationsResponse) SetHeaders(v map[string]*string) *ListApplica
 }
 
 func (s *ListApplicationsResponse) SetBody(v *ListApplicationsResponseBody) *ListApplicationsResponse {
-	s.Body = v
-	return s
-}
-
-type MigrateVmRequest struct {
-	GroupUuid   *string `json:"GroupUuid,omitempty" xml:"GroupUuid,omitempty"`
-	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	Instances   *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
-	Tenant      *string `json:"Tenant,omitempty" xml:"Tenant,omitempty"`
-}
-
-func (s MigrateVmRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s MigrateVmRequest) GoString() string {
-	return s.String()
-}
-
-func (s *MigrateVmRequest) SetGroupUuid(v string) *MigrateVmRequest {
-	s.GroupUuid = &v
-	return s
-}
-
-func (s *MigrateVmRequest) SetInstanceIds(v string) *MigrateVmRequest {
-	s.InstanceIds = &v
-	return s
-}
-
-func (s *MigrateVmRequest) SetInstances(v string) *MigrateVmRequest {
-	s.Instances = &v
-	return s
-}
-
-func (s *MigrateVmRequest) SetTenant(v string) *MigrateVmRequest {
-	s.Tenant = &v
-	return s
-}
-
-type MigrateVmResponseBody struct {
-	Code *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Msg  *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s MigrateVmResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s MigrateVmResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *MigrateVmResponseBody) SetCode(v int32) *MigrateVmResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *MigrateVmResponseBody) SetData(v string) *MigrateVmResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *MigrateVmResponseBody) SetDesc(v string) *MigrateVmResponseBody {
-	s.Desc = &v
-	return s
-}
-
-func (s *MigrateVmResponseBody) SetMsg(v string) *MigrateVmResponseBody {
-	s.Msg = &v
-	return s
-}
-
-func (s *MigrateVmResponseBody) SetRequestId(v string) *MigrateVmResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type MigrateVmResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *MigrateVmResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s MigrateVmResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s MigrateVmResponse) GoString() string {
-	return s.String()
-}
-
-func (s *MigrateVmResponse) SetHeaders(v map[string]*string) *MigrateVmResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *MigrateVmResponse) SetBody(v *MigrateVmResponseBody) *MigrateVmResponse {
 	s.Body = v
 	return s
 }
@@ -17444,75 +18108,6 @@ func (s *RebootInstanceResponse) SetHeaders(v map[string]*string) *RebootInstanc
 }
 
 func (s *RebootInstanceResponse) SetBody(v *RebootInstanceResponseBody) *RebootInstanceResponse {
-	s.Body = v
-	return s
-}
-
-type ReleaseEipAddressRequest struct {
-	Eips        *string `json:"Eips,omitempty" xml:"Eips,omitempty"`
-	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
-}
-
-func (s ReleaseEipAddressRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReleaseEipAddressRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ReleaseEipAddressRequest) SetEips(v string) *ReleaseEipAddressRequest {
-	s.Eips = &v
-	return s
-}
-
-func (s *ReleaseEipAddressRequest) SetEnsRegionId(v string) *ReleaseEipAddressRequest {
-	s.EnsRegionId = &v
-	return s
-}
-
-func (s *ReleaseEipAddressRequest) SetVersion(v string) *ReleaseEipAddressRequest {
-	s.Version = &v
-	return s
-}
-
-type ReleaseEipAddressResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ReleaseEipAddressResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReleaseEipAddressResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ReleaseEipAddressResponseBody) SetRequestId(v string) *ReleaseEipAddressResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ReleaseEipAddressResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ReleaseEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ReleaseEipAddressResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ReleaseEipAddressResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ReleaseEipAddressResponse) SetHeaders(v map[string]*string) *ReleaseEipAddressResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ReleaseEipAddressResponse) SetBody(v *ReleaseEipAddressResponseBody) *ReleaseEipAddressResponse {
 	s.Body = v
 	return s
 }
@@ -19463,142 +20058,6 @@ func (s *RunServiceScheduleResponse) SetBody(v *RunServiceScheduleResponseBody) 
 	return s
 }
 
-type SchedulePodRequest struct {
-	AliUid            *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	AreaCodes         *string `json:"AreaCodes,omitempty" xml:"AreaCodes,omitempty"`
-	GroupUuid         *string `json:"GroupUuid,omitempty" xml:"GroupUuid,omitempty"`
-	Isps              *string `json:"Isps,omitempty" xml:"Isps,omitempty"`
-	Labels            *string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	Regions           *string `json:"Regions,omitempty" xml:"Regions,omitempty"`
-	Requirements      *string `json:"Requirements,omitempty" xml:"Requirements,omitempty"`
-	ResourceAttribute *string `json:"ResourceAttribute,omitempty" xml:"ResourceAttribute,omitempty"`
-	Tenant            *string `json:"Tenant,omitempty" xml:"Tenant,omitempty"`
-	WorkloadUuid      *string `json:"WorkloadUuid,omitempty" xml:"WorkloadUuid,omitempty"`
-}
-
-func (s SchedulePodRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SchedulePodRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SchedulePodRequest) SetAliUid(v int64) *SchedulePodRequest {
-	s.AliUid = &v
-	return s
-}
-
-func (s *SchedulePodRequest) SetAreaCodes(v string) *SchedulePodRequest {
-	s.AreaCodes = &v
-	return s
-}
-
-func (s *SchedulePodRequest) SetGroupUuid(v string) *SchedulePodRequest {
-	s.GroupUuid = &v
-	return s
-}
-
-func (s *SchedulePodRequest) SetIsps(v string) *SchedulePodRequest {
-	s.Isps = &v
-	return s
-}
-
-func (s *SchedulePodRequest) SetLabels(v string) *SchedulePodRequest {
-	s.Labels = &v
-	return s
-}
-
-func (s *SchedulePodRequest) SetRegions(v string) *SchedulePodRequest {
-	s.Regions = &v
-	return s
-}
-
-func (s *SchedulePodRequest) SetRequirements(v string) *SchedulePodRequest {
-	s.Requirements = &v
-	return s
-}
-
-func (s *SchedulePodRequest) SetResourceAttribute(v string) *SchedulePodRequest {
-	s.ResourceAttribute = &v
-	return s
-}
-
-func (s *SchedulePodRequest) SetTenant(v string) *SchedulePodRequest {
-	s.Tenant = &v
-	return s
-}
-
-func (s *SchedulePodRequest) SetWorkloadUuid(v string) *SchedulePodRequest {
-	s.WorkloadUuid = &v
-	return s
-}
-
-type SchedulePodResponseBody struct {
-	Code *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Msg  *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SchedulePodResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SchedulePodResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SchedulePodResponseBody) SetCode(v int64) *SchedulePodResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *SchedulePodResponseBody) SetData(v string) *SchedulePodResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *SchedulePodResponseBody) SetDesc(v string) *SchedulePodResponseBody {
-	s.Desc = &v
-	return s
-}
-
-func (s *SchedulePodResponseBody) SetMsg(v string) *SchedulePodResponseBody {
-	s.Msg = &v
-	return s
-}
-
-func (s *SchedulePodResponseBody) SetRequestId(v string) *SchedulePodResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SchedulePodResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SchedulePodResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SchedulePodResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SchedulePodResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SchedulePodResponse) SetHeaders(v map[string]*string) *SchedulePodResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SchedulePodResponse) SetBody(v *SchedulePodResponseBody) *SchedulePodResponse {
-	s.Body = v
-	return s
-}
-
 type SetBackendServersRequest struct {
 	BackendServers []*SetBackendServersRequestBackendServers `json:"BackendServers,omitempty" xml:"BackendServers,omitempty" type:"Repeated"`
 	LoadBalancerId *string                                   `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
@@ -20920,81 +21379,6 @@ func (s *UnAssociateEnsEipAddressResponse) SetBody(v *UnAssociateEnsEipAddressRe
 	return s
 }
 
-type UnassociateEipAddressRequest struct {
-	Eip                  *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
-	EnsRegionId          *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	InstanceIdInternetIp *string `json:"InstanceIdInternetIp,omitempty" xml:"InstanceIdInternetIp,omitempty"`
-	Version              *string `json:"Version,omitempty" xml:"Version,omitempty"`
-}
-
-func (s UnassociateEipAddressRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UnassociateEipAddressRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UnassociateEipAddressRequest) SetEip(v string) *UnassociateEipAddressRequest {
-	s.Eip = &v
-	return s
-}
-
-func (s *UnassociateEipAddressRequest) SetEnsRegionId(v string) *UnassociateEipAddressRequest {
-	s.EnsRegionId = &v
-	return s
-}
-
-func (s *UnassociateEipAddressRequest) SetInstanceIdInternetIp(v string) *UnassociateEipAddressRequest {
-	s.InstanceIdInternetIp = &v
-	return s
-}
-
-func (s *UnassociateEipAddressRequest) SetVersion(v string) *UnassociateEipAddressRequest {
-	s.Version = &v
-	return s
-}
-
-type UnassociateEipAddressResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UnassociateEipAddressResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UnassociateEipAddressResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UnassociateEipAddressResponseBody) SetRequestId(v string) *UnassociateEipAddressResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UnassociateEipAddressResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UnassociateEipAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UnassociateEipAddressResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UnassociateEipAddressResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UnassociateEipAddressResponse) SetHeaders(v map[string]*string) *UnassociateEipAddressResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UnassociateEipAddressResponse) SetBody(v *UnassociateEipAddressResponseBody) *UnassociateEipAddressResponse {
-	s.Body = v
-	return s
-}
-
 type UpgradeApplicationRequest struct {
 	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
@@ -21250,118 +21634,6 @@ func (client *Client) AddNetworkInterfaceToInstance(request *AddNetworkInterface
 	runtime := &util.RuntimeOptions{}
 	_result = &AddNetworkInterfaceToInstanceResponse{}
 	_body, _err := client.AddNetworkInterfaceToInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) AllocateEipAddressWithOptions(request *AllocateEipAddressRequest, runtime *util.RuntimeOptions) (_result *AllocateEipAddressResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Count)) {
-		query["Count"] = request.Count
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
-		query["EnsRegionId"] = request.EnsRegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MinCount)) {
-		query["MinCount"] = request.MinCount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AllocateEipAddress"),
-		Version:     tea.String("2017-11-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &AllocateEipAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AllocateEipAddress(request *AllocateEipAddressRequest) (_result *AllocateEipAddressResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AllocateEipAddressResponse{}
-	_body, _err := client.AllocateEipAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) AssociateEipAddressWithOptions(request *AssociateEipAddressRequest, runtime *util.RuntimeOptions) (_result *AssociateEipAddressResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Eip)) {
-		query["Eip"] = request.Eip
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
-		query["EnsRegionId"] = request.EnsRegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceIdInternetIp)) {
-		query["InstanceIdInternetIp"] = request.InstanceIdInternetIp
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AssociateEipAddress"),
-		Version:     tea.String("2017-11-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &AssociateEipAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AssociateEipAddress(request *AssociateEipAddressRequest) (_result *AssociateEipAddressResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AssociateEipAddressResponse{}
-	_body, _err := client.AssociateEipAddressWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21669,60 +21941,6 @@ func (client *Client) AuthorizeSecurityGroupEgress(request *AuthorizeSecurityGro
 	return _result, _err
 }
 
-func (client *Client) CheckQuotaWithOptions(request *CheckQuotaRequest, runtime *util.RuntimeOptions) (_result *CheckQuotaResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
-		query["AliUid"] = request.AliUid
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.GroupUuid)) {
-		query["GroupUuid"] = request.GroupUuid
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ResourceAttribute)) {
-		body["ResourceAttribute"] = request.ResourceAttribute
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CheckQuota"),
-		Version:     tea.String("2017-11-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CheckQuotaResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CheckQuota(request *CheckQuotaRequest) (_result *CheckQuotaResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CheckQuotaResponse{}
-	_body, _err := client.CheckQuotaWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CreateApplicationWithOptions(request *CreateApplicationRequest, runtime *util.RuntimeOptions) (_result *CreateApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21891,6 +22109,70 @@ func (client *Client) CreateEipInstance(request *CreateEipInstanceRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) CreateEnsRouteEntryWithOptions(request *CreateEnsRouteEntryRequest, runtime *util.RuntimeOptions) (_result *CreateEnsRouteEntryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationCidrBlock)) {
+		query["DestinationCidrBlock"] = request.DestinationCidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextHopId)) {
+		query["NextHopId"] = request.NextHopId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextHopType)) {
+		query["NextHopType"] = request.NextHopType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteEntryName)) {
+		query["RouteEntryName"] = request.RouteEntryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteTableId)) {
+		query["RouteTableId"] = request.RouteTableId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEnsRouteEntry"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateEnsRouteEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateEnsRouteEntry(request *CreateEnsRouteEntryRequest) (_result *CreateEnsRouteEntryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateEnsRouteEntryResponse{}
+	_body, _err := client.CreateEnsRouteEntryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateEnsServiceWithOptions(request *CreateEnsServiceRequest, runtime *util.RuntimeOptions) (_result *CreateEnsServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21996,6 +22278,74 @@ func (client *Client) CreateEpnInstance(request *CreateEpnInstanceRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateEpnInstanceResponse{}
 	_body, _err := client.CreateEpnInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateForwardEntryWithOptions(request *CreateForwardEntryRequest, runtime *util.RuntimeOptions) (_result *CreateForwardEntryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExternalIp)) {
+		query["ExternalIp"] = request.ExternalIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExternalPort)) {
+		query["ExternalPort"] = request.ExternalPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForwardEntryName)) {
+		query["ForwardEntryName"] = request.ForwardEntryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternalIp)) {
+		query["InternalIp"] = request.InternalIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternalPort)) {
+		query["InternalPort"] = request.InternalPort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpProtocol)) {
+		query["IpProtocol"] = request.IpProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NatGatewayId)) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateForwardEntry"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateForwardEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateForwardEntry(request *CreateForwardEntryRequest) (_result *CreateForwardEntryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateForwardEntryResponse{}
+	_body, _err := client.CreateForwardEntryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -22111,6 +22461,10 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.Password)) {
 		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PasswordInherit)) {
+		query["PasswordInherit"] = request.PasswordInherit
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PaymentType)) {
@@ -22743,6 +23097,62 @@ func (client *Client) CreateLoadBalancerUDPListener(request *CreateLoadBalancerU
 	return _result, _err
 }
 
+func (client *Client) CreateNatGatewayWithOptions(request *CreateNatGatewayRequest, runtime *util.RuntimeOptions) (_result *CreateNatGatewayResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkId)) {
+		query["NetworkId"] = request.NetworkId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateNatGateway"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateNatGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateNatGateway(request *CreateNatGatewayRequest) (_result *CreateNatGatewayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateNatGatewayResponse{}
+	_body, _err := client.CreateNatGatewayWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateNetworkWithOptions(request *CreateNetworkRequest, runtime *util.RuntimeOptions) (_result *CreateNetworkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22851,6 +23261,66 @@ func (client *Client) CreateSecurityGroup(request *CreateSecurityGroupRequest) (
 	return _result, _err
 }
 
+func (client *Client) CreateSnatEntryWithOptions(request *CreateSnatEntryRequest, runtime *util.RuntimeOptions) (_result *CreateSnatEntryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NatGatewayId)) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnatEntryName)) {
+		query["SnatEntryName"] = request.SnatEntryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SnatIp)) {
+		query["SnatIp"] = request.SnatIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceCIDR)) {
+		query["SourceCIDR"] = request.SourceCIDR
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceVSwitchId)) {
+		query["SourceVSwitchId"] = request.SourceVSwitchId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSnatEntry"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSnatEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSnatEntry(request *CreateSnatEntryRequest) (_result *CreateSnatEntryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSnatEntryResponse{}
+	_body, _err := client.CreateSnatEntryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateVSwitchWithOptions(request *CreateVSwitchRequest, runtime *util.RuntimeOptions) (_result *CreateVSwitchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22908,68 +23378,6 @@ func (client *Client) CreateVSwitch(request *CreateVSwitchRequest) (_result *Cre
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateVSwitchResponse{}
 	_body, _err := client.CreateVSwitchWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateVmAndSaveStockWithOptions(request *CreateVmAndSaveStockRequest, runtime *util.RuntimeOptions) (_result *CreateVmAndSaveStockResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
-		query["AliUid"] = request.AliUid
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.GroupUuid)) {
-		query["GroupUuid"] = request.GroupUuid
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tenant)) {
-		query["Tenant"] = request.Tenant
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkloadUuid)) {
-		query["WorkloadUuid"] = request.WorkloadUuid
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ResourceAttribute)) {
-		body["ResourceAttribute"] = request.ResourceAttribute
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateVmAndSaveStock"),
-		Version:     tea.String("2017-11-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateVmAndSaveStockResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateVmAndSaveStock(request *CreateVmAndSaveStockRequest) (_result *CreateVmAndSaveStockResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateVmAndSaveStockResponse{}
-	_body, _err := client.CreateVmAndSaveStockWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23065,6 +23473,50 @@ func (client *Client) DeleteDeviceInternetPort(request *DeleteDeviceInternetPort
 	return _result, _err
 }
 
+func (client *Client) DeleteEnsRouteEntryWithOptions(request *DeleteEnsRouteEntryRequest, runtime *util.RuntimeOptions) (_result *DeleteEnsRouteEntryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RouteEntryId)) {
+		query["RouteEntryId"] = request.RouteEntryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEnsRouteEntry"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteEnsRouteEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteEnsRouteEntry(request *DeleteEnsRouteEntryRequest) (_result *DeleteEnsRouteEntryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteEnsRouteEntryResponse{}
+	_body, _err := client.DeleteEnsRouteEntryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteEpnInstanceWithOptions(request *DeleteEpnInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteEpnInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23102,6 +23554,50 @@ func (client *Client) DeleteEpnInstance(request *DeleteEpnInstanceRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteEpnInstanceResponse{}
 	_body, _err := client.DeleteEpnInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteForwardEntryWithOptions(request *DeleteForwardEntryRequest, runtime *util.RuntimeOptions) (_result *DeleteForwardEntryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ForwardEntryId)) {
+		query["ForwardEntryId"] = request.ForwardEntryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteForwardEntry"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteForwardEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteForwardEntry(request *DeleteForwardEntryRequest) (_result *DeleteForwardEntryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteForwardEntryResponse{}
+	_body, _err := client.DeleteForwardEntryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23205,6 +23701,50 @@ func (client *Client) DeleteLoadBalancerListener(request *DeleteLoadBalancerList
 	return _result, _err
 }
 
+func (client *Client) DeleteNatGatewayWithOptions(request *DeleteNatGatewayRequest, runtime *util.RuntimeOptions) (_result *DeleteNatGatewayResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NatGatewayId)) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteNatGateway"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteNatGatewayResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteNatGateway(request *DeleteNatGatewayRequest) (_result *DeleteNatGatewayResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteNatGatewayResponse{}
+	_body, _err := client.DeleteNatGatewayWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteNetworkWithOptions(request *DeleteNetworkRequest, runtime *util.RuntimeOptions) (_result *DeleteNetworkResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23297,6 +23837,50 @@ func (client *Client) DeleteSecurityGroup(request *DeleteSecurityGroupRequest) (
 	return _result, _err
 }
 
+func (client *Client) DeleteSnatEntryWithOptions(request *DeleteSnatEntryRequest, runtime *util.RuntimeOptions) (_result *DeleteSnatEntryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SnatEntryId)) {
+		query["SnatEntryId"] = request.SnatEntryId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSnatEntry"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSnatEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSnatEntry(request *DeleteSnatEntryRequest) (_result *DeleteSnatEntryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSnatEntryResponse{}
+	_body, _err := client.DeleteSnatEntryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteVSwitchWithOptions(request *DeleteVSwitchRequest, runtime *util.RuntimeOptions) (_result *DeleteVSwitchResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23338,54 +23922,6 @@ func (client *Client) DeleteVSwitch(request *DeleteVSwitchRequest) (_result *Del
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVSwitchResponse{}
 	_body, _err := client.DeleteVSwitchWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteVmWithOptions(request *DeleteVmRequest, runtime *util.RuntimeOptions) (_result *DeleteVmResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
-		query["AliUid"] = request.AliUid
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkloadUuid)) {
-		query["WorkloadUuid"] = request.WorkloadUuid
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteVm"),
-		Version:     tea.String("2017-11-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteVmResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteVm(request *DeleteVmRequest) (_result *DeleteVmResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteVmResponse{}
-	_body, _err := client.DeleteVmWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24627,6 +25163,82 @@ func (client *Client) DescribeEnsResourceUsage(request *DescribeEnsResourceUsage
 	return _result, _err
 }
 
+func (client *Client) DescribeEnsRouteEntryListWithOptions(request *DescribeEnsRouteEntryListRequest, runtime *util.RuntimeOptions) (_result *DescribeEnsRouteEntryListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DestinationCidrBlock)) {
+		query["DestinationCidrBlock"] = request.DestinationCidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextHopId)) {
+		query["NextHopId"] = request.NextHopId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextHopType)) {
+		query["NextHopType"] = request.NextHopType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteEntryId)) {
+		query["RouteEntryId"] = request.RouteEntryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteEntryName)) {
+		query["RouteEntryName"] = request.RouteEntryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteEntryType)) {
+		query["RouteEntryType"] = request.RouteEntryType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RouteTableId)) {
+		query["RouteTableId"] = request.RouteTableId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeEnsRouteEntryList"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeEnsRouteEntryListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeEnsRouteEntryList(request *DescribeEnsRouteEntryListRequest) (_result *DescribeEnsRouteEntryListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeEnsRouteEntryListResponse{}
+	_body, _err := client.DescribeEnsRouteEntryListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeEpnBandWidthDataWithOptions(request *DescribeEpnBandWidthDataRequest, runtime *util.RuntimeOptions) (_result *DescribeEpnBandWidthDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25016,6 +25628,78 @@ func (client *Client) DescribeExportImageStatus(request *DescribeExportImageStat
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeExportImageStatusResponse{}
 	_body, _err := client.DescribeExportImageStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeForwardTableEntriesWithOptions(request *DescribeForwardTableEntriesRequest, runtime *util.RuntimeOptions) (_result *DescribeForwardTableEntriesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExternalIp)) {
+		query["ExternalIp"] = request.ExternalIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForwardEntryId)) {
+		query["ForwardEntryId"] = request.ForwardEntryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForwardEntryName)) {
+		query["ForwardEntryName"] = request.ForwardEntryName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternalIp)) {
+		query["InternalIp"] = request.InternalIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpProtocol)) {
+		query["IpProtocol"] = request.IpProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NatGatewayId)) {
+		query["NatGatewayId"] = request.NatGatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeForwardTableEntries"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeForwardTableEntriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeForwardTableEntries(request *DescribeForwardTableEntriesRequest) (_result *DescribeForwardTableEntriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeForwardTableEntriesResponse{}
+	_body, _err := client.DescribeForwardTableEntriesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25971,6 +26655,46 @@ func (client *Client) DescribeMeasurementData(request *DescribeMeasurementDataRe
 	return _result, _err
 }
 
+func (client *Client) DescribeNatGatewaysWithOptions(request *DescribeNatGatewaysRequest, runtime *util.RuntimeOptions) (_result *DescribeNatGatewaysResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeNatGateways"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeNatGatewaysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeNatGateways(request *DescribeNatGatewaysRequest) (_result *DescribeNatGatewaysResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeNatGatewaysResponse{}
+	_body, _err := client.DescribeNatGatewaysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeNetworkAttributeWithOptions(request *DescribeNetworkAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeNetworkAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26521,6 +27245,46 @@ func (client *Client) DescribeServcieSchedule(request *DescribeServcieScheduleRe
 	return _result, _err
 }
 
+func (client *Client) DescribeSnatTableEntriesWithOptions(request *DescribeSnatTableEntriesRequest, runtime *util.RuntimeOptions) (_result *DescribeSnatTableEntriesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSnatTableEntries"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeSnatTableEntriesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeSnatTableEntries(request *DescribeSnatTableEntriesRequest) (_result *DescribeSnatTableEntriesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeSnatTableEntriesResponse{}
+	_body, _err := client.DescribeSnatTableEntriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeUserBandWidthDataWithOptions(request *DescribeUserBandWidthDataRequest, runtime *util.RuntimeOptions) (_result *DescribeUserBandWidthDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26957,46 +27721,6 @@ func (client *Client) GetDeviceInternetPort(request *GetDeviceInternetPortReques
 	return _result, _err
 }
 
-func (client *Client) GetVmListWithOptions(request *GetVmListRequest, runtime *util.RuntimeOptions) (_result *GetVmListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetVmList"),
-		Version:     tea.String("2017-11-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetVmListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetVmList(request *GetVmListRequest) (_result *GetVmListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetVmListResponse{}
-	_body, _err := client.GetVmListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ImportKeyPairWithOptions(request *ImportKeyPairRequest, runtime *util.RuntimeOptions) (_result *ImportKeyPairResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27314,64 +28038,6 @@ func (client *Client) ListApplications(request *ListApplicationsRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListApplicationsResponse{}
 	_body, _err := client.ListApplicationsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) MigrateVmWithOptions(request *MigrateVmRequest, runtime *util.RuntimeOptions) (_result *MigrateVmResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.GroupUuid)) {
-		query["GroupUuid"] = request.GroupUuid
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
-		query["InstanceIds"] = request.InstanceIds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tenant)) {
-		query["Tenant"] = request.Tenant
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Instances)) {
-		body["Instances"] = request.Instances
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("MigrateVm"),
-		Version:     tea.String("2017-11-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &MigrateVmResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) MigrateVm(request *MigrateVmRequest) (_result *MigrateVmResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &MigrateVmResponse{}
-	_body, _err := client.MigrateVmWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28220,58 +28886,6 @@ func (client *Client) RebootInstance(request *RebootInstanceRequest) (_result *R
 	runtime := &util.RuntimeOptions{}
 	_result = &RebootInstanceResponse{}
 	_body, _err := client.RebootInstanceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ReleaseEipAddressWithOptions(request *ReleaseEipAddressRequest, runtime *util.RuntimeOptions) (_result *ReleaseEipAddressResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Eips)) {
-		query["Eips"] = request.Eips
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
-		query["EnsRegionId"] = request.EnsRegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ReleaseEipAddress"),
-		Version:     tea.String("2017-11-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ReleaseEipAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ReleaseEipAddress(request *ReleaseEipAddressRequest) (_result *ReleaseEipAddressResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ReleaseEipAddressResponse{}
-	_body, _err := client.ReleaseEipAddressWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29269,88 +29883,6 @@ func (client *Client) RunServiceSchedule(request *RunServiceScheduleRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) SchedulePodWithOptions(request *SchedulePodRequest, runtime *util.RuntimeOptions) (_result *SchedulePodResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
-		query["AliUid"] = request.AliUid
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.AreaCodes)) {
-		query["AreaCodes"] = request.AreaCodes
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.GroupUuid)) {
-		query["GroupUuid"] = request.GroupUuid
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Isps)) {
-		query["Isps"] = request.Isps
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Labels)) {
-		query["Labels"] = request.Labels
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Regions)) {
-		query["Regions"] = request.Regions
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tenant)) {
-		query["Tenant"] = request.Tenant
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkloadUuid)) {
-		query["WorkloadUuid"] = request.WorkloadUuid
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Requirements)) {
-		body["Requirements"] = request.Requirements
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceAttribute)) {
-		body["ResourceAttribute"] = request.ResourceAttribute
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SchedulePod"),
-		Version:     tea.String("2017-11-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SchedulePodResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SchedulePod(request *SchedulePodRequest) (_result *SchedulePodResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SchedulePodResponse{}
-	_body, _err := client.SchedulePodWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) SetBackendServersWithOptions(tmpReq *SetBackendServersRequest, runtime *util.RuntimeOptions) (_result *SetBackendServersResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -30178,62 +30710,6 @@ func (client *Client) UnAssociateEnsEipAddress(request *UnAssociateEnsEipAddress
 	runtime := &util.RuntimeOptions{}
 	_result = &UnAssociateEnsEipAddressResponse{}
 	_body, _err := client.UnAssociateEnsEipAddressWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UnassociateEipAddressWithOptions(request *UnassociateEipAddressRequest, runtime *util.RuntimeOptions) (_result *UnassociateEipAddressResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Eip)) {
-		query["Eip"] = request.Eip
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
-		query["EnsRegionId"] = request.EnsRegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceIdInternetIp)) {
-		query["InstanceIdInternetIp"] = request.InstanceIdInternetIp
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UnassociateEipAddress"),
-		Version:     tea.String("2017-11-10"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UnassociateEipAddressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UnassociateEipAddress(request *UnassociateEipAddressRequest) (_result *UnassociateEipAddressResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UnassociateEipAddressResponse{}
-	_body, _err := client.UnassociateEipAddressWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
