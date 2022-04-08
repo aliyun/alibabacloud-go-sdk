@@ -13020,14 +13020,14 @@ func (client *Client) DeleteClusterNodepoolWithOptions(ClusterId *string, Nodepo
 	}
 	ClusterId = openapiutil.GetEncodeParam(ClusterId)
 	NodepoolId = openapiutil.GetEncodeParam(NodepoolId)
-	body := map[string]interface{}{}
+	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Force)) {
-		body["force"] = request.Force
+		query["force"] = request.Force
 	}
 
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
-		Body:    openapiutil.ParseToMap(body),
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("DeleteClusterNodepool"),
