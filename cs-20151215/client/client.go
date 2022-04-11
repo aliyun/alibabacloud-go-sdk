@@ -464,8 +464,12 @@ func (s *CancelWorkflowResponse) SetHeaders(v map[string]*string) *CancelWorkflo
 type CreateAutoscalingConfigRequest struct {
 	// 静默时间，扩容出的节点，在静默时间过后，方可进入缩容判断
 	CoolDownDuration *string `json:"cool_down_duration,omitempty" xml:"cool_down_duration,omitempty"`
+	// 节点池扩容顺序策略
+	Expander *string `json:"expander,omitempty" xml:"expander,omitempty"`
 	// GPU缩容阈值，节点上 Request 的资源与总资源量的比值
 	GpuUtilizationThreshold *string `json:"gpu_utilization_threshold,omitempty" xml:"gpu_utilization_threshold,omitempty"`
+	// 是否允许缩容
+	ScaleDownEnabled *bool `json:"scale_down_enabled,omitempty" xml:"scale_down_enabled,omitempty"`
 	// 弹性灵敏度，判断伸缩的间隔时间
 	ScanInterval *string `json:"scan_interval,omitempty" xml:"scan_interval,omitempty"`
 	// 缩容触发时延，节点缩容时需要连续满足触发时延所设定的时间，方可进行缩容
@@ -487,8 +491,18 @@ func (s *CreateAutoscalingConfigRequest) SetCoolDownDuration(v string) *CreateAu
 	return s
 }
 
+func (s *CreateAutoscalingConfigRequest) SetExpander(v string) *CreateAutoscalingConfigRequest {
+	s.Expander = &v
+	return s
+}
+
 func (s *CreateAutoscalingConfigRequest) SetGpuUtilizationThreshold(v string) *CreateAutoscalingConfigRequest {
 	s.GpuUtilizationThreshold = &v
+	return s
+}
+
+func (s *CreateAutoscalingConfigRequest) SetScaleDownEnabled(v bool) *CreateAutoscalingConfigRequest {
+	s.ScaleDownEnabled = &v
 	return s
 }
 
@@ -3551,29 +3565,6 @@ func (s *DescribeClusterLogsResponseBody) SetCreated(v string) *DescribeClusterL
 
 func (s *DescribeClusterLogsResponseBody) SetUpdated(v string) *DescribeClusterLogsResponseBody {
 	s.Updated = &v
-	return s
-}
-
-type DescribeClusterNamespacesResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    []*string          `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
-}
-
-func (s DescribeClusterNamespacesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeClusterNamespacesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeClusterNamespacesResponse) SetHeaders(v map[string]*string) *DescribeClusterNamespacesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeClusterNamespacesResponse) SetBody(v []*string) *DescribeClusterNamespacesResponse {
-	s.Body = v
 	return s
 }
 
@@ -12134,8 +12125,16 @@ func (client *Client) CreateAutoscalingConfigWithOptions(ClusterId *string, requ
 		body["cool_down_duration"] = request.CoolDownDuration
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Expander)) {
+		body["expander"] = request.Expander
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GpuUtilizationThreshold)) {
 		body["gpu_utilization_threshold"] = request.GpuUtilizationThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleDownEnabled)) {
+		body["scale_down_enabled"] = request.ScaleDownEnabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ScanInterval)) {
@@ -13754,43 +13753,6 @@ func (client *Client) DescribeClusterLogsWithOptions(ClusterId *string, headers 
 		BodyType:    tea.String("array"),
 	}
 	_result = &DescribeClusterLogsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeClusterNamespaces(ClusterId *string) (_result *DescribeClusterNamespacesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	headers := make(map[string]*string)
-	_result = &DescribeClusterNamespacesResponse{}
-	_body, _err := client.DescribeClusterNamespacesWithOptions(ClusterId, headers, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeClusterNamespacesWithOptions(ClusterId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeClusterNamespacesResponse, _err error) {
-	ClusterId = openapiutil.GetEncodeParam(ClusterId)
-	req := &openapi.OpenApiRequest{
-		Headers: headers,
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeClusterNamespaces"),
-		Version:     tea.String("2015-12-15"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/k8s/" + tea.StringValue(ClusterId) + "/namespaces"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("ROA"),
-		ReqBodyType: tea.String("json"),
-		BodyType:    tea.String("array"),
-	}
-	_result = &DescribeClusterNamespacesResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
