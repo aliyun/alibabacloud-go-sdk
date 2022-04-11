@@ -361,118 +361,6 @@ func (s *AddEditingProjectResponse) SetBody(v *AddEditingProjectResponseBody) *A
 	return s
 }
 
-type AddFileInfoRequest struct {
-	// 应用
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 文件业务类型
-	BusinessType *int64 `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// 文件类型
-	FileType *int64 `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// 文件oss地址
-	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// 文件标题
-	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
-	// 媒资Id
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-}
-
-func (s AddFileInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddFileInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddFileInfoRequest) SetAppId(v string) *AddFileInfoRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *AddFileInfoRequest) SetBusinessType(v int64) *AddFileInfoRequest {
-	s.BusinessType = &v
-	return s
-}
-
-func (s *AddFileInfoRequest) SetFileType(v int64) *AddFileInfoRequest {
-	s.FileType = &v
-	return s
-}
-
-func (s *AddFileInfoRequest) SetFileUrl(v string) *AddFileInfoRequest {
-	s.FileUrl = &v
-	return s
-}
-
-func (s *AddFileInfoRequest) SetFilename(v string) *AddFileInfoRequest {
-	s.Filename = &v
-	return s
-}
-
-func (s *AddFileInfoRequest) SetMediaId(v string) *AddFileInfoRequest {
-	s.MediaId = &v
-	return s
-}
-
-type AddFileInfoResponseBody struct {
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 文件Id
-	FileId    *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s AddFileInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddFileInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddFileInfoResponseBody) SetCode(v string) *AddFileInfoResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *AddFileInfoResponseBody) SetFileId(v string) *AddFileInfoResponseBody {
-	s.FileId = &v
-	return s
-}
-
-func (s *AddFileInfoResponseBody) SetRequestId(v string) *AddFileInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AddFileInfoResponseBody) SetSuccess(v string) *AddFileInfoResponseBody {
-	s.Success = &v
-	return s
-}
-
-type AddFileInfoResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddFileInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddFileInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddFileInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddFileInfoResponse) SetHeaders(v map[string]*string) *AddFileInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddFileInfoResponse) SetBody(v *AddFileInfoResponseBody) *AddFileInfoResponse {
-	s.Body = v
-	return s
-}
-
 type AddTranscodeTemplateGroupRequest struct {
 	AppId                    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Name                     *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -1804,87 +1692,6 @@ func (s *CreateUploadVideoResponse) SetBody(v *CreateUploadVideoResponseBody) *C
 	return s
 }
 
-type CreateVodRealTimeLogDeliveryRequest struct {
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Logstore   *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Project    *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
-}
-
-func (s CreateVodRealTimeLogDeliveryRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateVodRealTimeLogDeliveryRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateVodRealTimeLogDeliveryRequest) SetDomainName(v string) *CreateVodRealTimeLogDeliveryRequest {
-	s.DomainName = &v
-	return s
-}
-
-func (s *CreateVodRealTimeLogDeliveryRequest) SetLogstore(v string) *CreateVodRealTimeLogDeliveryRequest {
-	s.Logstore = &v
-	return s
-}
-
-func (s *CreateVodRealTimeLogDeliveryRequest) SetOwnerId(v int64) *CreateVodRealTimeLogDeliveryRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CreateVodRealTimeLogDeliveryRequest) SetProject(v string) *CreateVodRealTimeLogDeliveryRequest {
-	s.Project = &v
-	return s
-}
-
-func (s *CreateVodRealTimeLogDeliveryRequest) SetRegion(v string) *CreateVodRealTimeLogDeliveryRequest {
-	s.Region = &v
-	return s
-}
-
-type CreateVodRealTimeLogDeliveryResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CreateVodRealTimeLogDeliveryResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateVodRealTimeLogDeliveryResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateVodRealTimeLogDeliveryResponseBody) SetRequestId(v string) *CreateVodRealTimeLogDeliveryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CreateVodRealTimeLogDeliveryResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateVodRealTimeLogDeliveryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateVodRealTimeLogDeliveryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateVodRealTimeLogDeliveryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateVodRealTimeLogDeliveryResponse) SetHeaders(v map[string]*string) *CreateVodRealTimeLogDeliveryResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateVodRealTimeLogDeliveryResponse) SetBody(v *CreateVodRealTimeLogDeliveryResponseBody) *CreateVodRealTimeLogDeliveryResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteAIImageInfosRequest struct {
 	AIImageInfoIds *string `json:"AIImageInfoIds,omitempty" xml:"AIImageInfoIds,omitempty"`
 }
@@ -2407,82 +2214,6 @@ func (s *DeleteImageResponse) SetBody(v *DeleteImageResponseBody) *DeleteImageRe
 	return s
 }
 
-type DeleteMediaInfoRequest struct {
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 媒资Id
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-}
-
-func (s DeleteMediaInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteMediaInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteMediaInfoRequest) SetAppId(v string) *DeleteMediaInfoRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *DeleteMediaInfoRequest) SetMediaId(v string) *DeleteMediaInfoRequest {
-	s.MediaId = &v
-	return s
-}
-
-type DeleteMediaInfoResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeleteMediaInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteMediaInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteMediaInfoResponseBody) SetCode(v string) *DeleteMediaInfoResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteMediaInfoResponseBody) SetRequestId(v string) *DeleteMediaInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteMediaInfoResponseBody) SetSuccess(v string) *DeleteMediaInfoResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DeleteMediaInfoResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteMediaInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteMediaInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteMediaInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteMediaInfoResponse) SetHeaders(v map[string]*string) *DeleteMediaInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteMediaInfoResponse) SetBody(v *DeleteMediaInfoResponseBody) *DeleteMediaInfoResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteMessageCallbackRequest struct {
 	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -2968,87 +2699,6 @@ func (s *DeleteVodDomainResponse) SetHeaders(v map[string]*string) *DeleteVodDom
 }
 
 func (s *DeleteVodDomainResponse) SetBody(v *DeleteVodDomainResponseBody) *DeleteVodDomainResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteVodRealtimeLogDeliveryRequest struct {
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Logstore   *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Project    *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
-}
-
-func (s DeleteVodRealtimeLogDeliveryRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteVodRealtimeLogDeliveryRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteVodRealtimeLogDeliveryRequest) SetDomainName(v string) *DeleteVodRealtimeLogDeliveryRequest {
-	s.DomainName = &v
-	return s
-}
-
-func (s *DeleteVodRealtimeLogDeliveryRequest) SetLogstore(v string) *DeleteVodRealtimeLogDeliveryRequest {
-	s.Logstore = &v
-	return s
-}
-
-func (s *DeleteVodRealtimeLogDeliveryRequest) SetOwnerId(v int64) *DeleteVodRealtimeLogDeliveryRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DeleteVodRealtimeLogDeliveryRequest) SetProject(v string) *DeleteVodRealtimeLogDeliveryRequest {
-	s.Project = &v
-	return s
-}
-
-func (s *DeleteVodRealtimeLogDeliveryRequest) SetRegion(v string) *DeleteVodRealtimeLogDeliveryRequest {
-	s.Region = &v
-	return s
-}
-
-type DeleteVodRealtimeLogDeliveryResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DeleteVodRealtimeLogDeliveryResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteVodRealtimeLogDeliveryResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteVodRealtimeLogDeliveryResponseBody) SetRequestId(v string) *DeleteVodRealtimeLogDeliveryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DeleteVodRealtimeLogDeliveryResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteVodRealtimeLogDeliveryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteVodRealtimeLogDeliveryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteVodRealtimeLogDeliveryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteVodRealtimeLogDeliveryResponse) SetHeaders(v map[string]*string) *DeleteVodRealtimeLogDeliveryResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteVodRealtimeLogDeliveryResponse) SetBody(v *DeleteVodRealtimeLogDeliveryResponseBody) *DeleteVodRealtimeLogDeliveryResponse {
 	s.Body = v
 	return s
 }
@@ -5186,407 +4836,6 @@ func (s *DescribeVodDomainLogResponse) SetBody(v *DescribeVodDomainLogResponseBo
 	return s
 }
 
-type DescribeVodDomainRealtimeLogDeliveryRequest struct {
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DescribeVodDomainRealtimeLogDeliveryRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodDomainRealtimeLogDeliveryRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodDomainRealtimeLogDeliveryRequest) SetDomainName(v string) *DescribeVodDomainRealtimeLogDeliveryRequest {
-	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeVodDomainRealtimeLogDeliveryRequest) SetOwnerId(v int64) *DescribeVodDomainRealtimeLogDeliveryRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type DescribeVodDomainRealtimeLogDeliveryResponseBody struct {
-	Logstore  *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
-	Project   *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s DescribeVodDomainRealtimeLogDeliveryResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodDomainRealtimeLogDeliveryResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodDomainRealtimeLogDeliveryResponseBody) SetLogstore(v string) *DescribeVodDomainRealtimeLogDeliveryResponseBody {
-	s.Logstore = &v
-	return s
-}
-
-func (s *DescribeVodDomainRealtimeLogDeliveryResponseBody) SetProject(v string) *DescribeVodDomainRealtimeLogDeliveryResponseBody {
-	s.Project = &v
-	return s
-}
-
-func (s *DescribeVodDomainRealtimeLogDeliveryResponseBody) SetRegion(v string) *DescribeVodDomainRealtimeLogDeliveryResponseBody {
-	s.Region = &v
-	return s
-}
-
-func (s *DescribeVodDomainRealtimeLogDeliveryResponseBody) SetRequestId(v string) *DescribeVodDomainRealtimeLogDeliveryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeVodDomainRealtimeLogDeliveryResponseBody) SetStatus(v string) *DescribeVodDomainRealtimeLogDeliveryResponseBody {
-	s.Status = &v
-	return s
-}
-
-type DescribeVodDomainRealtimeLogDeliveryResponse struct {
-	Headers map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVodDomainRealtimeLogDeliveryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeVodDomainRealtimeLogDeliveryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodDomainRealtimeLogDeliveryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodDomainRealtimeLogDeliveryResponse) SetHeaders(v map[string]*string) *DescribeVodDomainRealtimeLogDeliveryResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeVodDomainRealtimeLogDeliveryResponse) SetBody(v *DescribeVodDomainRealtimeLogDeliveryResponseBody) *DescribeVodDomainRealtimeLogDeliveryResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeVodDomainSrcBpsDataRequest struct {
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeVodDomainSrcBpsDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodDomainSrcBpsDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodDomainSrcBpsDataRequest) SetDomainName(v string) *DescribeVodDomainSrcBpsDataRequest {
-	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeVodDomainSrcBpsDataRequest) SetEndTime(v string) *DescribeVodDomainSrcBpsDataRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeVodDomainSrcBpsDataRequest) SetInterval(v string) *DescribeVodDomainSrcBpsDataRequest {
-	s.Interval = &v
-	return s
-}
-
-func (s *DescribeVodDomainSrcBpsDataRequest) SetOwnerId(v int64) *DescribeVodDomainSrcBpsDataRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVodDomainSrcBpsDataRequest) SetStartTime(v string) *DescribeVodDomainSrcBpsDataRequest {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeVodDomainSrcBpsDataResponseBody struct {
-	DataInterval          *string                                                       `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	DomainName            *string                                                       `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndTime               *string                                                       `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RequestId             *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SrcBpsDataPerInterval *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval `json:"SrcBpsDataPerInterval,omitempty" xml:"SrcBpsDataPerInterval,omitempty" type:"Struct"`
-	StartTime             *string                                                       `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeVodDomainSrcBpsDataResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodDomainSrcBpsDataResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodDomainSrcBpsDataResponseBody) SetDataInterval(v string) *DescribeVodDomainSrcBpsDataResponseBody {
-	s.DataInterval = &v
-	return s
-}
-
-func (s *DescribeVodDomainSrcBpsDataResponseBody) SetDomainName(v string) *DescribeVodDomainSrcBpsDataResponseBody {
-	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeVodDomainSrcBpsDataResponseBody) SetEndTime(v string) *DescribeVodDomainSrcBpsDataResponseBody {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeVodDomainSrcBpsDataResponseBody) SetRequestId(v string) *DescribeVodDomainSrcBpsDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeVodDomainSrcBpsDataResponseBody) SetSrcBpsDataPerInterval(v *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval) *DescribeVodDomainSrcBpsDataResponseBody {
-	s.SrcBpsDataPerInterval = v
-	return s
-}
-
-func (s *DescribeVodDomainSrcBpsDataResponseBody) SetStartTime(v string) *DescribeVodDomainSrcBpsDataResponseBody {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval struct {
-	DataModule []*DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
-}
-
-func (s DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval) SetDataModule(v []*DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule) *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerInterval {
-	s.DataModule = v
-	return s
-}
-
-type DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule struct {
-	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule) SetHttpsValue(v string) *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule {
-	s.HttpsValue = &v
-	return s
-}
-
-func (s *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule) SetTimeStamp(v string) *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule {
-	s.TimeStamp = &v
-	return s
-}
-
-func (s *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule) SetValue(v string) *DescribeVodDomainSrcBpsDataResponseBodySrcBpsDataPerIntervalDataModule {
-	s.Value = &v
-	return s
-}
-
-type DescribeVodDomainSrcBpsDataResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVodDomainSrcBpsDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeVodDomainSrcBpsDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodDomainSrcBpsDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodDomainSrcBpsDataResponse) SetHeaders(v map[string]*string) *DescribeVodDomainSrcBpsDataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeVodDomainSrcBpsDataResponse) SetBody(v *DescribeVodDomainSrcBpsDataResponseBody) *DescribeVodDomainSrcBpsDataResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeVodDomainSrcTrafficDataRequest struct {
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	Interval   *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeVodDomainSrcTrafficDataRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodDomainSrcTrafficDataRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodDomainSrcTrafficDataRequest) SetDomainName(v string) *DescribeVodDomainSrcTrafficDataRequest {
-	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeVodDomainSrcTrafficDataRequest) SetEndTime(v string) *DescribeVodDomainSrcTrafficDataRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeVodDomainSrcTrafficDataRequest) SetInterval(v string) *DescribeVodDomainSrcTrafficDataRequest {
-	s.Interval = &v
-	return s
-}
-
-func (s *DescribeVodDomainSrcTrafficDataRequest) SetOwnerId(v int64) *DescribeVodDomainSrcTrafficDataRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVodDomainSrcTrafficDataRequest) SetStartTime(v string) *DescribeVodDomainSrcTrafficDataRequest {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeVodDomainSrcTrafficDataResponseBody struct {
-	DataInterval              *string                                                               `json:"DataInterval,omitempty" xml:"DataInterval,omitempty"`
-	DomainName                *string                                                               `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	EndTime                   *string                                                               `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	RequestId                 *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SrcTrafficDataPerInterval *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval `json:"SrcTrafficDataPerInterval,omitempty" xml:"SrcTrafficDataPerInterval,omitempty" type:"Struct"`
-	StartTime                 *string                                                               `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s DescribeVodDomainSrcTrafficDataResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodDomainSrcTrafficDataResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodDomainSrcTrafficDataResponseBody) SetDataInterval(v string) *DescribeVodDomainSrcTrafficDataResponseBody {
-	s.DataInterval = &v
-	return s
-}
-
-func (s *DescribeVodDomainSrcTrafficDataResponseBody) SetDomainName(v string) *DescribeVodDomainSrcTrafficDataResponseBody {
-	s.DomainName = &v
-	return s
-}
-
-func (s *DescribeVodDomainSrcTrafficDataResponseBody) SetEndTime(v string) *DescribeVodDomainSrcTrafficDataResponseBody {
-	s.EndTime = &v
-	return s
-}
-
-func (s *DescribeVodDomainSrcTrafficDataResponseBody) SetRequestId(v string) *DescribeVodDomainSrcTrafficDataResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeVodDomainSrcTrafficDataResponseBody) SetSrcTrafficDataPerInterval(v *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval) *DescribeVodDomainSrcTrafficDataResponseBody {
-	s.SrcTrafficDataPerInterval = v
-	return s
-}
-
-func (s *DescribeVodDomainSrcTrafficDataResponseBody) SetStartTime(v string) *DescribeVodDomainSrcTrafficDataResponseBody {
-	s.StartTime = &v
-	return s
-}
-
-type DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval struct {
-	DataModule []*DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
-}
-
-func (s DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval) SetDataModule(v []*DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule) *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerInterval {
-	s.DataModule = v
-	return s
-}
-
-type DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule struct {
-	HttpsValue *string `json:"HttpsValue,omitempty" xml:"HttpsValue,omitempty"`
-	TimeStamp  *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
-	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule) SetHttpsValue(v string) *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule {
-	s.HttpsValue = &v
-	return s
-}
-
-func (s *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule) SetTimeStamp(v string) *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule {
-	s.TimeStamp = &v
-	return s
-}
-
-func (s *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule) SetValue(v string) *DescribeVodDomainSrcTrafficDataResponseBodySrcTrafficDataPerIntervalDataModule {
-	s.Value = &v
-	return s
-}
-
-type DescribeVodDomainSrcTrafficDataResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVodDomainSrcTrafficDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeVodDomainSrcTrafficDataResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodDomainSrcTrafficDataResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodDomainSrcTrafficDataResponse) SetHeaders(v map[string]*string) *DescribeVodDomainSrcTrafficDataResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeVodDomainSrcTrafficDataResponse) SetBody(v *DescribeVodDomainSrcTrafficDataResponseBody) *DescribeVodDomainSrcTrafficDataResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeVodDomainTrafficDataRequest struct {
 	DomainName     *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -5646,6 +4895,7 @@ type DescribeVodDomainTrafficDataResponseBody struct {
 	EndTime                *string                                                         `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	RequestId              *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	StartTime              *string                                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TotalTraffic           *string                                                         `json:"TotalTraffic,omitempty" xml:"TotalTraffic,omitempty"`
 	TrafficDataPerInterval *DescribeVodDomainTrafficDataResponseBodyTrafficDataPerInterval `json:"TrafficDataPerInterval,omitempty" xml:"TrafficDataPerInterval,omitempty" type:"Struct"`
 }
 
@@ -5679,6 +4929,11 @@ func (s *DescribeVodDomainTrafficDataResponseBody) SetRequestId(v string) *Descr
 
 func (s *DescribeVodDomainTrafficDataResponseBody) SetStartTime(v string) *DescribeVodDomainTrafficDataResponseBody {
 	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeVodDomainTrafficDataResponseBody) SetTotalTraffic(v string) *DescribeVodDomainTrafficDataResponseBody {
+	s.TotalTraffic = &v
 	return s
 }
 
@@ -6422,156 +5677,6 @@ func (s *DescribeVodStorageDataResponse) SetBody(v *DescribeVodStorageDataRespon
 	return s
 }
 
-type DescribeVodTagResourcesRequest struct {
-	OwnerId      *int64                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceId   []*string                            `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                              `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*DescribeVodTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-}
-
-func (s DescribeVodTagResourcesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodTagResourcesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodTagResourcesRequest) SetOwnerId(v int64) *DescribeVodTagResourcesRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *DescribeVodTagResourcesRequest) SetResourceId(v []*string) *DescribeVodTagResourcesRequest {
-	s.ResourceId = v
-	return s
-}
-
-func (s *DescribeVodTagResourcesRequest) SetResourceType(v string) *DescribeVodTagResourcesRequest {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *DescribeVodTagResourcesRequest) SetTag(v []*DescribeVodTagResourcesRequestTag) *DescribeVodTagResourcesRequest {
-	s.Tag = v
-	return s
-}
-
-type DescribeVodTagResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s DescribeVodTagResourcesRequestTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodTagResourcesRequestTag) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodTagResourcesRequestTag) SetKey(v string) *DescribeVodTagResourcesRequestTag {
-	s.Key = &v
-	return s
-}
-
-func (s *DescribeVodTagResourcesRequestTag) SetValue(v string) *DescribeVodTagResourcesRequestTag {
-	s.Value = &v
-	return s
-}
-
-type DescribeVodTagResourcesResponseBody struct {
-	RequestId    *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TagResources []*DescribeVodTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
-}
-
-func (s DescribeVodTagResourcesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodTagResourcesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodTagResourcesResponseBody) SetRequestId(v string) *DescribeVodTagResourcesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeVodTagResourcesResponseBody) SetTagResources(v []*DescribeVodTagResourcesResponseBodyTagResources) *DescribeVodTagResourcesResponseBody {
-	s.TagResources = v
-	return s
-}
-
-type DescribeVodTagResourcesResponseBodyTagResources struct {
-	ResourceId *string                                               `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	Tag        []*DescribeVodTagResourcesResponseBodyTagResourcesTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-}
-
-func (s DescribeVodTagResourcesResponseBodyTagResources) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodTagResourcesResponseBodyTagResources) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodTagResourcesResponseBodyTagResources) SetResourceId(v string) *DescribeVodTagResourcesResponseBodyTagResources {
-	s.ResourceId = &v
-	return s
-}
-
-func (s *DescribeVodTagResourcesResponseBodyTagResources) SetTag(v []*DescribeVodTagResourcesResponseBodyTagResourcesTag) *DescribeVodTagResourcesResponseBodyTagResources {
-	s.Tag = v
-	return s
-}
-
-type DescribeVodTagResourcesResponseBodyTagResourcesTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s DescribeVodTagResourcesResponseBodyTagResourcesTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodTagResourcesResponseBodyTagResourcesTag) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodTagResourcesResponseBodyTagResourcesTag) SetKey(v string) *DescribeVodTagResourcesResponseBodyTagResourcesTag {
-	s.Key = &v
-	return s
-}
-
-func (s *DescribeVodTagResourcesResponseBodyTagResourcesTag) SetValue(v string) *DescribeVodTagResourcesResponseBodyTagResourcesTag {
-	s.Value = &v
-	return s
-}
-
-type DescribeVodTagResourcesResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVodTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeVodTagResourcesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodTagResourcesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodTagResourcesResponse) SetHeaders(v map[string]*string) *DescribeVodTagResourcesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeVodTagResourcesResponse) SetBody(v *DescribeVodTagResourcesResponseBody) *DescribeVodTagResourcesResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeVodTranscodeDataRequest struct {
 	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Interval      *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
@@ -7037,92 +6142,6 @@ func (s *DescribeVodUserDomainsResponse) SetBody(v *DescribeVodUserDomainsRespon
 	return s
 }
 
-type DescribeVodUserTagsRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DescribeVodUserTagsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodUserTagsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodUserTagsRequest) SetOwnerId(v int64) *DescribeVodUserTagsRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type DescribeVodUserTagsResponseBody struct {
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Tags      []*DescribeVodUserTagsResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-}
-
-func (s DescribeVodUserTagsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodUserTagsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodUserTagsResponseBody) SetRequestId(v string) *DescribeVodUserTagsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeVodUserTagsResponseBody) SetTags(v []*DescribeVodUserTagsResponseBodyTags) *DescribeVodUserTagsResponseBody {
-	s.Tags = v
-	return s
-}
-
-type DescribeVodUserTagsResponseBodyTags struct {
-	Key   *string   `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value []*string `json:"Value,omitempty" xml:"Value,omitempty" type:"Repeated"`
-}
-
-func (s DescribeVodUserTagsResponseBodyTags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodUserTagsResponseBodyTags) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodUserTagsResponseBodyTags) SetKey(v string) *DescribeVodUserTagsResponseBodyTags {
-	s.Key = &v
-	return s
-}
-
-func (s *DescribeVodUserTagsResponseBodyTags) SetValue(v []*string) *DescribeVodUserTagsResponseBodyTags {
-	s.Value = v
-	return s
-}
-
-type DescribeVodUserTagsResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVodUserTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeVodUserTagsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVodUserTagsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVodUserTagsResponse) SetHeaders(v map[string]*string) *DescribeVodUserTagsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeVodUserTagsResponse) SetBody(v *DescribeVodUserTagsResponseBody) *DescribeVodUserTagsResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeVodVerifyContentRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -7275,132 +6294,6 @@ func (s *DetachAppPolicyFromIdentityResponse) SetHeaders(v map[string]*string) *
 }
 
 func (s *DetachAppPolicyFromIdentityResponse) SetBody(v *DetachAppPolicyFromIdentityResponseBody) *DetachAppPolicyFromIdentityResponse {
-	s.Body = v
-	return s
-}
-
-type DisableVodRealtimeLogDeliveryRequest struct {
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s DisableVodRealtimeLogDeliveryRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DisableVodRealtimeLogDeliveryRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DisableVodRealtimeLogDeliveryRequest) SetDomainName(v string) *DisableVodRealtimeLogDeliveryRequest {
-	s.DomainName = &v
-	return s
-}
-
-func (s *DisableVodRealtimeLogDeliveryRequest) SetOwnerId(v int64) *DisableVodRealtimeLogDeliveryRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type DisableVodRealtimeLogDeliveryResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DisableVodRealtimeLogDeliveryResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DisableVodRealtimeLogDeliveryResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DisableVodRealtimeLogDeliveryResponseBody) SetRequestId(v string) *DisableVodRealtimeLogDeliveryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DisableVodRealtimeLogDeliveryResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableVodRealtimeLogDeliveryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DisableVodRealtimeLogDeliveryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DisableVodRealtimeLogDeliveryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DisableVodRealtimeLogDeliveryResponse) SetHeaders(v map[string]*string) *DisableVodRealtimeLogDeliveryResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DisableVodRealtimeLogDeliveryResponse) SetBody(v *DisableVodRealtimeLogDeliveryResponseBody) *DisableVodRealtimeLogDeliveryResponse {
-	s.Body = v
-	return s
-}
-
-type EnableVodRealtimeLogDeliveryRequest struct {
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s EnableVodRealtimeLogDeliveryRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EnableVodRealtimeLogDeliveryRequest) GoString() string {
-	return s.String()
-}
-
-func (s *EnableVodRealtimeLogDeliveryRequest) SetDomainName(v string) *EnableVodRealtimeLogDeliveryRequest {
-	s.DomainName = &v
-	return s
-}
-
-func (s *EnableVodRealtimeLogDeliveryRequest) SetOwnerId(v int64) *EnableVodRealtimeLogDeliveryRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type EnableVodRealtimeLogDeliveryResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s EnableVodRealtimeLogDeliveryResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EnableVodRealtimeLogDeliveryResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *EnableVodRealtimeLogDeliveryResponseBody) SetRequestId(v string) *EnableVodRealtimeLogDeliveryResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type EnableVodRealtimeLogDeliveryResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableVodRealtimeLogDeliveryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s EnableVodRealtimeLogDeliveryResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s EnableVodRealtimeLogDeliveryResponse) GoString() string {
-	return s.String()
-}
-
-func (s *EnableVodRealtimeLogDeliveryResponse) SetHeaders(v map[string]*string) *EnableVodRealtimeLogDeliveryResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *EnableVodRealtimeLogDeliveryResponse) SetBody(v *EnableVodRealtimeLogDeliveryResponseBody) *EnableVodRealtimeLogDeliveryResponse {
 	s.Body = v
 	return s
 }
@@ -11887,6 +10780,160 @@ func (s *GetMediaDNAResultResponse) SetBody(v *GetMediaDNAResultResponseBody) *G
 	return s
 }
 
+type GetMediaRefreshJobsRequest struct {
+	// 媒资ID
+	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	// 媒资刷新预热任务ID
+	MediaRefreshJobId *string `json:"MediaRefreshJobId,omitempty" xml:"MediaRefreshJobId,omitempty"`
+}
+
+func (s GetMediaRefreshJobsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaRefreshJobsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaRefreshJobsRequest) SetMediaId(v string) *GetMediaRefreshJobsRequest {
+	s.MediaId = &v
+	return s
+}
+
+func (s *GetMediaRefreshJobsRequest) SetMediaRefreshJobId(v string) *GetMediaRefreshJobsRequest {
+	s.MediaRefreshJobId = &v
+	return s
+}
+
+type GetMediaRefreshJobsResponseBody struct {
+	MediaRefreshJobs []*GetMediaRefreshJobsResponseBodyMediaRefreshJobs `json:"MediaRefreshJobs,omitempty" xml:"MediaRefreshJobs,omitempty" type:"Repeated"`
+	RequestId        *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetMediaRefreshJobsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaRefreshJobsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaRefreshJobsResponseBody) SetMediaRefreshJobs(v []*GetMediaRefreshJobsResponseBodyMediaRefreshJobs) *GetMediaRefreshJobsResponseBody {
+	s.MediaRefreshJobs = v
+	return s
+}
+
+func (s *GetMediaRefreshJobsResponseBody) SetRequestId(v string) *GetMediaRefreshJobsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetMediaRefreshJobsResponseBodyMediaRefreshJobs struct {
+	ErrorCode         *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage      *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	FilterPolicy      *string `json:"FilterPolicy,omitempty" xml:"FilterPolicy,omitempty"`
+	GmtCreate         *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified       *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	MediaId           *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
+	MediaRefreshJobId *string `json:"MediaRefreshJobId,omitempty" xml:"MediaRefreshJobId,omitempty"`
+	Status            *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SuccessPlayUrls   *string `json:"SuccessPlayUrls,omitempty" xml:"SuccessPlayUrls,omitempty"`
+	TaskIds           *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
+	TaskType          *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	UserData          *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s GetMediaRefreshJobsResponseBodyMediaRefreshJobs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaRefreshJobsResponseBodyMediaRefreshJobs) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaRefreshJobsResponseBodyMediaRefreshJobs) SetErrorCode(v string) *GetMediaRefreshJobsResponseBodyMediaRefreshJobs {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *GetMediaRefreshJobsResponseBodyMediaRefreshJobs) SetErrorMessage(v string) *GetMediaRefreshJobsResponseBodyMediaRefreshJobs {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetMediaRefreshJobsResponseBodyMediaRefreshJobs) SetFilterPolicy(v string) *GetMediaRefreshJobsResponseBodyMediaRefreshJobs {
+	s.FilterPolicy = &v
+	return s
+}
+
+func (s *GetMediaRefreshJobsResponseBodyMediaRefreshJobs) SetGmtCreate(v string) *GetMediaRefreshJobsResponseBodyMediaRefreshJobs {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetMediaRefreshJobsResponseBodyMediaRefreshJobs) SetGmtModified(v string) *GetMediaRefreshJobsResponseBodyMediaRefreshJobs {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetMediaRefreshJobsResponseBodyMediaRefreshJobs) SetMediaId(v string) *GetMediaRefreshJobsResponseBodyMediaRefreshJobs {
+	s.MediaId = &v
+	return s
+}
+
+func (s *GetMediaRefreshJobsResponseBodyMediaRefreshJobs) SetMediaRefreshJobId(v string) *GetMediaRefreshJobsResponseBodyMediaRefreshJobs {
+	s.MediaRefreshJobId = &v
+	return s
+}
+
+func (s *GetMediaRefreshJobsResponseBodyMediaRefreshJobs) SetStatus(v string) *GetMediaRefreshJobsResponseBodyMediaRefreshJobs {
+	s.Status = &v
+	return s
+}
+
+func (s *GetMediaRefreshJobsResponseBodyMediaRefreshJobs) SetSuccessPlayUrls(v string) *GetMediaRefreshJobsResponseBodyMediaRefreshJobs {
+	s.SuccessPlayUrls = &v
+	return s
+}
+
+func (s *GetMediaRefreshJobsResponseBodyMediaRefreshJobs) SetTaskIds(v string) *GetMediaRefreshJobsResponseBodyMediaRefreshJobs {
+	s.TaskIds = &v
+	return s
+}
+
+func (s *GetMediaRefreshJobsResponseBodyMediaRefreshJobs) SetTaskType(v string) *GetMediaRefreshJobsResponseBodyMediaRefreshJobs {
+	s.TaskType = &v
+	return s
+}
+
+func (s *GetMediaRefreshJobsResponseBodyMediaRefreshJobs) SetUserData(v string) *GetMediaRefreshJobsResponseBodyMediaRefreshJobs {
+	s.UserData = &v
+	return s
+}
+
+type GetMediaRefreshJobsResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetMediaRefreshJobsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMediaRefreshJobsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaRefreshJobsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaRefreshJobsResponse) SetHeaders(v map[string]*string) *GetMediaRefreshJobsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMediaRefreshJobsResponse) SetBody(v *GetMediaRefreshJobsResponseBody) *GetMediaRefreshJobsResponse {
+	s.Body = v
+	return s
+}
+
 type GetMessageCallbackRequest struct {
 	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -16064,180 +15111,6 @@ func (s *ListLiveRecordVideoResponse) SetBody(v *ListLiveRecordVideoResponseBody
 	return s
 }
 
-type ListMediaDNADeleteJobRequest struct {
-	JobIds               *string `json:"JobIds,omitempty" xml:"JobIds,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *string `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s ListMediaDNADeleteJobRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMediaDNADeleteJobRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListMediaDNADeleteJobRequest) SetJobIds(v string) *ListMediaDNADeleteJobRequest {
-	s.JobIds = &v
-	return s
-}
-
-func (s *ListMediaDNADeleteJobRequest) SetOwnerAccount(v string) *ListMediaDNADeleteJobRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *ListMediaDNADeleteJobRequest) SetOwnerId(v string) *ListMediaDNADeleteJobRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ListMediaDNADeleteJobRequest) SetResourceOwnerAccount(v string) *ListMediaDNADeleteJobRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ListMediaDNADeleteJobRequest) SetResourceOwnerId(v string) *ListMediaDNADeleteJobRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type ListMediaDNADeleteJobResponseBody struct {
-	AIJobList        *ListMediaDNADeleteJobResponseBodyAIJobList        `json:"AIJobList,omitempty" xml:"AIJobList,omitempty" type:"Struct"`
-	NonExistAIJobIds *ListMediaDNADeleteJobResponseBodyNonExistAIJobIds `json:"NonExistAIJobIds,omitempty" xml:"NonExistAIJobIds,omitempty" type:"Struct"`
-	RequestId        *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListMediaDNADeleteJobResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMediaDNADeleteJobResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListMediaDNADeleteJobResponseBody) SetAIJobList(v *ListMediaDNADeleteJobResponseBodyAIJobList) *ListMediaDNADeleteJobResponseBody {
-	s.AIJobList = v
-	return s
-}
-
-func (s *ListMediaDNADeleteJobResponseBody) SetNonExistAIJobIds(v *ListMediaDNADeleteJobResponseBodyNonExistAIJobIds) *ListMediaDNADeleteJobResponseBody {
-	s.NonExistAIJobIds = v
-	return s
-}
-
-func (s *ListMediaDNADeleteJobResponseBody) SetRequestId(v string) *ListMediaDNADeleteJobResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListMediaDNADeleteJobResponseBodyAIJobList struct {
-	AIJob []*ListMediaDNADeleteJobResponseBodyAIJobListAIJob `json:"AIJob,omitempty" xml:"AIJob,omitempty" type:"Repeated"`
-}
-
-func (s ListMediaDNADeleteJobResponseBodyAIJobList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMediaDNADeleteJobResponseBodyAIJobList) GoString() string {
-	return s.String()
-}
-
-func (s *ListMediaDNADeleteJobResponseBodyAIJobList) SetAIJob(v []*ListMediaDNADeleteJobResponseBodyAIJobListAIJob) *ListMediaDNADeleteJobResponseBodyAIJobList {
-	s.AIJob = v
-	return s
-}
-
-type ListMediaDNADeleteJobResponseBodyAIJobListAIJob struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	FpDBId  *string `json:"FpDBId,omitempty" xml:"FpDBId,omitempty"`
-	JobId   *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s ListMediaDNADeleteJobResponseBodyAIJobListAIJob) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMediaDNADeleteJobResponseBodyAIJobListAIJob) GoString() string {
-	return s.String()
-}
-
-func (s *ListMediaDNADeleteJobResponseBodyAIJobListAIJob) SetCode(v string) *ListMediaDNADeleteJobResponseBodyAIJobListAIJob {
-	s.Code = &v
-	return s
-}
-
-func (s *ListMediaDNADeleteJobResponseBodyAIJobListAIJob) SetFpDBId(v string) *ListMediaDNADeleteJobResponseBodyAIJobListAIJob {
-	s.FpDBId = &v
-	return s
-}
-
-func (s *ListMediaDNADeleteJobResponseBodyAIJobListAIJob) SetJobId(v string) *ListMediaDNADeleteJobResponseBodyAIJobListAIJob {
-	s.JobId = &v
-	return s
-}
-
-func (s *ListMediaDNADeleteJobResponseBodyAIJobListAIJob) SetMediaId(v string) *ListMediaDNADeleteJobResponseBodyAIJobListAIJob {
-	s.MediaId = &v
-	return s
-}
-
-func (s *ListMediaDNADeleteJobResponseBodyAIJobListAIJob) SetMessage(v string) *ListMediaDNADeleteJobResponseBodyAIJobListAIJob {
-	s.Message = &v
-	return s
-}
-
-func (s *ListMediaDNADeleteJobResponseBodyAIJobListAIJob) SetStatus(v string) *ListMediaDNADeleteJobResponseBodyAIJobListAIJob {
-	s.Status = &v
-	return s
-}
-
-type ListMediaDNADeleteJobResponseBodyNonExistAIJobIds struct {
-	String_ []*string `json:"String,omitempty" xml:"String,omitempty" type:"Repeated"`
-}
-
-func (s ListMediaDNADeleteJobResponseBodyNonExistAIJobIds) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMediaDNADeleteJobResponseBodyNonExistAIJobIds) GoString() string {
-	return s.String()
-}
-
-func (s *ListMediaDNADeleteJobResponseBodyNonExistAIJobIds) SetString_(v []*string) *ListMediaDNADeleteJobResponseBodyNonExistAIJobIds {
-	s.String_ = v
-	return s
-}
-
-type ListMediaDNADeleteJobResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListMediaDNADeleteJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListMediaDNADeleteJobResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListMediaDNADeleteJobResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListMediaDNADeleteJobResponse) SetHeaders(v map[string]*string) *ListMediaDNADeleteJobResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListMediaDNADeleteJobResponse) SetBody(v *ListMediaDNADeleteJobResponseBody) *ListMediaDNADeleteJobResponse {
-	s.Body = v
-	return s
-}
-
 type ListSnapshotsRequest struct {
 	AuthTimeout  *string `json:"AuthTimeout,omitempty" xml:"AuthTimeout,omitempty"`
 	PageNo       *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
@@ -16662,236 +15535,6 @@ func (s *ListTranscodeTemplateGroupResponse) SetBody(v *ListTranscodeTemplateGro
 	return s
 }
 
-type ListVodRealtimeLogDeliveryDomainsRequest struct {
-	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
-}
-
-func (s ListVodRealtimeLogDeliveryDomainsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVodRealtimeLogDeliveryDomainsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListVodRealtimeLogDeliveryDomainsRequest) SetLogstore(v string) *ListVodRealtimeLogDeliveryDomainsRequest {
-	s.Logstore = &v
-	return s
-}
-
-func (s *ListVodRealtimeLogDeliveryDomainsRequest) SetOwnerId(v int64) *ListVodRealtimeLogDeliveryDomainsRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ListVodRealtimeLogDeliveryDomainsRequest) SetProject(v string) *ListVodRealtimeLogDeliveryDomainsRequest {
-	s.Project = &v
-	return s
-}
-
-func (s *ListVodRealtimeLogDeliveryDomainsRequest) SetRegion(v string) *ListVodRealtimeLogDeliveryDomainsRequest {
-	s.Region = &v
-	return s
-}
-
-type ListVodRealtimeLogDeliveryDomainsResponseBody struct {
-	Content   *ListVodRealtimeLogDeliveryDomainsResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListVodRealtimeLogDeliveryDomainsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVodRealtimeLogDeliveryDomainsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListVodRealtimeLogDeliveryDomainsResponseBody) SetContent(v *ListVodRealtimeLogDeliveryDomainsResponseBodyContent) *ListVodRealtimeLogDeliveryDomainsResponseBody {
-	s.Content = v
-	return s
-}
-
-func (s *ListVodRealtimeLogDeliveryDomainsResponseBody) SetRequestId(v string) *ListVodRealtimeLogDeliveryDomainsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListVodRealtimeLogDeliveryDomainsResponseBodyContent struct {
-	Domains []*ListVodRealtimeLogDeliveryDomainsResponseBodyContentDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-}
-
-func (s ListVodRealtimeLogDeliveryDomainsResponseBodyContent) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVodRealtimeLogDeliveryDomainsResponseBodyContent) GoString() string {
-	return s.String()
-}
-
-func (s *ListVodRealtimeLogDeliveryDomainsResponseBodyContent) SetDomains(v []*ListVodRealtimeLogDeliveryDomainsResponseBodyContentDomains) *ListVodRealtimeLogDeliveryDomainsResponseBodyContent {
-	s.Domains = v
-	return s
-}
-
-type ListVodRealtimeLogDeliveryDomainsResponseBodyContentDomains struct {
-	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s ListVodRealtimeLogDeliveryDomainsResponseBodyContentDomains) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVodRealtimeLogDeliveryDomainsResponseBodyContentDomains) GoString() string {
-	return s.String()
-}
-
-func (s *ListVodRealtimeLogDeliveryDomainsResponseBodyContentDomains) SetDomainName(v string) *ListVodRealtimeLogDeliveryDomainsResponseBodyContentDomains {
-	s.DomainName = &v
-	return s
-}
-
-func (s *ListVodRealtimeLogDeliveryDomainsResponseBodyContentDomains) SetStatus(v string) *ListVodRealtimeLogDeliveryDomainsResponseBodyContentDomains {
-	s.Status = &v
-	return s
-}
-
-type ListVodRealtimeLogDeliveryDomainsResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListVodRealtimeLogDeliveryDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListVodRealtimeLogDeliveryDomainsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVodRealtimeLogDeliveryDomainsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListVodRealtimeLogDeliveryDomainsResponse) SetHeaders(v map[string]*string) *ListVodRealtimeLogDeliveryDomainsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListVodRealtimeLogDeliveryDomainsResponse) SetBody(v *ListVodRealtimeLogDeliveryDomainsResponseBody) *ListVodRealtimeLogDeliveryDomainsResponse {
-	s.Body = v
-	return s
-}
-
-type ListVodRealtimeLogDeliveryInfosRequest struct {
-	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-}
-
-func (s ListVodRealtimeLogDeliveryInfosRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVodRealtimeLogDeliveryInfosRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListVodRealtimeLogDeliveryInfosRequest) SetOwnerId(v int64) *ListVodRealtimeLogDeliveryInfosRequest {
-	s.OwnerId = &v
-	return s
-}
-
-type ListVodRealtimeLogDeliveryInfosResponseBody struct {
-	Content   *ListVodRealtimeLogDeliveryInfosResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
-	RequestId *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListVodRealtimeLogDeliveryInfosResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVodRealtimeLogDeliveryInfosResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListVodRealtimeLogDeliveryInfosResponseBody) SetContent(v *ListVodRealtimeLogDeliveryInfosResponseBodyContent) *ListVodRealtimeLogDeliveryInfosResponseBody {
-	s.Content = v
-	return s
-}
-
-func (s *ListVodRealtimeLogDeliveryInfosResponseBody) SetRequestId(v string) *ListVodRealtimeLogDeliveryInfosResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListVodRealtimeLogDeliveryInfosResponseBodyContent struct {
-	RealtimeLogDeliveryInfos []*ListVodRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos `json:"RealtimeLogDeliveryInfos,omitempty" xml:"RealtimeLogDeliveryInfos,omitempty" type:"Repeated"`
-}
-
-func (s ListVodRealtimeLogDeliveryInfosResponseBodyContent) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVodRealtimeLogDeliveryInfosResponseBodyContent) GoString() string {
-	return s.String()
-}
-
-func (s *ListVodRealtimeLogDeliveryInfosResponseBodyContent) SetRealtimeLogDeliveryInfos(v []*ListVodRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos) *ListVodRealtimeLogDeliveryInfosResponseBodyContent {
-	s.RealtimeLogDeliveryInfos = v
-	return s
-}
-
-type ListVodRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos struct {
-	Logstore *string `json:"Logstore,omitempty" xml:"Logstore,omitempty"`
-	Project  *string `json:"Project,omitempty" xml:"Project,omitempty"`
-	Region   *string `json:"Region,omitempty" xml:"Region,omitempty"`
-}
-
-func (s ListVodRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVodRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos) GoString() string {
-	return s.String()
-}
-
-func (s *ListVodRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos) SetLogstore(v string) *ListVodRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos {
-	s.Logstore = &v
-	return s
-}
-
-func (s *ListVodRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos) SetProject(v string) *ListVodRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos {
-	s.Project = &v
-	return s
-}
-
-func (s *ListVodRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos) SetRegion(v string) *ListVodRealtimeLogDeliveryInfosResponseBodyContentRealtimeLogDeliveryInfos {
-	s.Region = &v
-	return s
-}
-
-type ListVodRealtimeLogDeliveryInfosResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListVodRealtimeLogDeliveryInfosResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListVodRealtimeLogDeliveryInfosResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListVodRealtimeLogDeliveryInfosResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListVodRealtimeLogDeliveryInfosResponse) SetHeaders(v map[string]*string) *ListVodRealtimeLogDeliveryInfosResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListVodRealtimeLogDeliveryInfosResponse) SetBody(v *ListVodRealtimeLogDeliveryInfosResponseBody) *ListVodRealtimeLogDeliveryInfosResponse {
-	s.Body = v
-	return s
-}
-
 type ListVodTemplateRequest struct {
 	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	TemplateType *string `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
@@ -17138,160 +15781,6 @@ func (s *ListWatermarkResponse) SetHeaders(v map[string]*string) *ListWatermarkR
 }
 
 func (s *ListWatermarkResponse) SetBody(v *ListWatermarkResponseBody) *ListWatermarkResponse {
-	s.Body = v
-	return s
-}
-
-type ModifyMediaInfoRequest struct {
-	// OSS存储地址
-	AiLabelUrl *string `json:"AiLabelUrl,omitempty" xml:"AiLabelUrl,omitempty"`
-	// 应用
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 媒资业务类型
-	BusinessType *int64 `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// 分类ID
-	CateId *int64 `json:"CateId,omitempty" xml:"CateId,omitempty"`
-	// 描述
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// 动态数据
-	DynamicData *string `json:"DynamicData,omitempty" xml:"DynamicData,omitempty"`
-	// 元数据实体ID
-	EntityId *string `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
-	// 智能标签，json结构
-	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// 媒资Id
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// 媒资类型
-	MediaType *int64 `json:"MediaType,omitempty" xml:"MediaType,omitempty"`
-	// 媒资来源
-	Source *int64 `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 视频标签
-	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// 标题
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-}
-
-func (s ModifyMediaInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyMediaInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyMediaInfoRequest) SetAiLabelUrl(v string) *ModifyMediaInfoRequest {
-	s.AiLabelUrl = &v
-	return s
-}
-
-func (s *ModifyMediaInfoRequest) SetAppId(v string) *ModifyMediaInfoRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *ModifyMediaInfoRequest) SetBusinessType(v int64) *ModifyMediaInfoRequest {
-	s.BusinessType = &v
-	return s
-}
-
-func (s *ModifyMediaInfoRequest) SetCateId(v int64) *ModifyMediaInfoRequest {
-	s.CateId = &v
-	return s
-}
-
-func (s *ModifyMediaInfoRequest) SetDescription(v string) *ModifyMediaInfoRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *ModifyMediaInfoRequest) SetDynamicData(v string) *ModifyMediaInfoRequest {
-	s.DynamicData = &v
-	return s
-}
-
-func (s *ModifyMediaInfoRequest) SetEntityId(v string) *ModifyMediaInfoRequest {
-	s.EntityId = &v
-	return s
-}
-
-func (s *ModifyMediaInfoRequest) SetLabel(v string) *ModifyMediaInfoRequest {
-	s.Label = &v
-	return s
-}
-
-func (s *ModifyMediaInfoRequest) SetMediaId(v string) *ModifyMediaInfoRequest {
-	s.MediaId = &v
-	return s
-}
-
-func (s *ModifyMediaInfoRequest) SetMediaType(v int64) *ModifyMediaInfoRequest {
-	s.MediaType = &v
-	return s
-}
-
-func (s *ModifyMediaInfoRequest) SetSource(v int64) *ModifyMediaInfoRequest {
-	s.Source = &v
-	return s
-}
-
-func (s *ModifyMediaInfoRequest) SetTags(v string) *ModifyMediaInfoRequest {
-	s.Tags = &v
-	return s
-}
-
-func (s *ModifyMediaInfoRequest) SetTitle(v string) *ModifyMediaInfoRequest {
-	s.Title = &v
-	return s
-}
-
-type ModifyMediaInfoResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ModifyMediaInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyMediaInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyMediaInfoResponseBody) SetCode(v string) *ModifyMediaInfoResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ModifyMediaInfoResponseBody) SetRequestId(v string) *ModifyMediaInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ModifyMediaInfoResponseBody) SetSuccess(v string) *ModifyMediaInfoResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ModifyMediaInfoResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyMediaInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ModifyMediaInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ModifyMediaInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ModifyMediaInfoResponse) SetHeaders(v map[string]*string) *ModifyMediaInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ModifyMediaInfoResponse) SetBody(v *ModifyMediaInfoResponseBody) *ModifyMediaInfoResponse {
 	s.Body = v
 	return s
 }
@@ -17577,6 +16066,141 @@ func (s *ProduceEditingProjectVideoResponse) SetHeaders(v map[string]*string) *P
 }
 
 func (s *ProduceEditingProjectVideoResponse) SetBody(v *ProduceEditingProjectVideoResponseBody) *ProduceEditingProjectVideoResponse {
+	s.Body = v
+	return s
+}
+
+type RefreshMediaPlayUrlsRequest struct {
+	// 播放流清晰度
+	Definitions *string `json:"Definitions,omitempty" xml:"Definitions,omitempty"`
+	// 播放流格式
+	Formats *string `json:"Formats,omitempty" xml:"Formats,omitempty"`
+	// 媒资ID列表
+	MediaIds *string `json:"MediaIds,omitempty" xml:"MediaIds,omitempty"`
+	// 结果类型：Single或Multiple
+	ResultType *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
+	// M3U8文件的ts链接数量
+	SliceCount *int32 `json:"SliceCount,omitempty" xml:"SliceCount,omitempty"`
+	// M3U8文件是否获取ts链接
+	SliceFlag *bool `json:"SliceFlag,omitempty" xml:"SliceFlag,omitempty"`
+	// 播放流类型：视频或音频
+	StreamType *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
+	// Refresh: 刷新。Preload: 预热
+	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	// 回调设置
+	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s RefreshMediaPlayUrlsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshMediaPlayUrlsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshMediaPlayUrlsRequest) SetDefinitions(v string) *RefreshMediaPlayUrlsRequest {
+	s.Definitions = &v
+	return s
+}
+
+func (s *RefreshMediaPlayUrlsRequest) SetFormats(v string) *RefreshMediaPlayUrlsRequest {
+	s.Formats = &v
+	return s
+}
+
+func (s *RefreshMediaPlayUrlsRequest) SetMediaIds(v string) *RefreshMediaPlayUrlsRequest {
+	s.MediaIds = &v
+	return s
+}
+
+func (s *RefreshMediaPlayUrlsRequest) SetResultType(v string) *RefreshMediaPlayUrlsRequest {
+	s.ResultType = &v
+	return s
+}
+
+func (s *RefreshMediaPlayUrlsRequest) SetSliceCount(v int32) *RefreshMediaPlayUrlsRequest {
+	s.SliceCount = &v
+	return s
+}
+
+func (s *RefreshMediaPlayUrlsRequest) SetSliceFlag(v bool) *RefreshMediaPlayUrlsRequest {
+	s.SliceFlag = &v
+	return s
+}
+
+func (s *RefreshMediaPlayUrlsRequest) SetStreamType(v string) *RefreshMediaPlayUrlsRequest {
+	s.StreamType = &v
+	return s
+}
+
+func (s *RefreshMediaPlayUrlsRequest) SetTaskType(v string) *RefreshMediaPlayUrlsRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *RefreshMediaPlayUrlsRequest) SetUserData(v string) *RefreshMediaPlayUrlsRequest {
+	s.UserData = &v
+	return s
+}
+
+type RefreshMediaPlayUrlsResponseBody struct {
+	// 没有多应用权限的视频ID
+	ForbiddenMediaIds *string `json:"ForbiddenMediaIds,omitempty" xml:"ForbiddenMediaIds,omitempty"`
+	// 刷新预热任务ID
+	MediaRefreshJobId *string `json:"MediaRefreshJobId,omitempty" xml:"MediaRefreshJobId,omitempty"`
+	// 不存在的媒资ID
+	NonExistMediaIds *string `json:"NonExistMediaIds,omitempty" xml:"NonExistMediaIds,omitempty"`
+	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RefreshMediaPlayUrlsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshMediaPlayUrlsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshMediaPlayUrlsResponseBody) SetForbiddenMediaIds(v string) *RefreshMediaPlayUrlsResponseBody {
+	s.ForbiddenMediaIds = &v
+	return s
+}
+
+func (s *RefreshMediaPlayUrlsResponseBody) SetMediaRefreshJobId(v string) *RefreshMediaPlayUrlsResponseBody {
+	s.MediaRefreshJobId = &v
+	return s
+}
+
+func (s *RefreshMediaPlayUrlsResponseBody) SetNonExistMediaIds(v string) *RefreshMediaPlayUrlsResponseBody {
+	s.NonExistMediaIds = &v
+	return s
+}
+
+func (s *RefreshMediaPlayUrlsResponseBody) SetRequestId(v string) *RefreshMediaPlayUrlsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RefreshMediaPlayUrlsResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RefreshMediaPlayUrlsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RefreshMediaPlayUrlsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefreshMediaPlayUrlsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RefreshMediaPlayUrlsResponse) SetHeaders(v map[string]*string) *RefreshMediaPlayUrlsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RefreshMediaPlayUrlsResponse) SetBody(v *RefreshMediaPlayUrlsResponseBody) *RefreshMediaPlayUrlsResponse {
 	s.Body = v
 	return s
 }
@@ -19879,148 +18503,6 @@ func (s *SubmitDynamicImageJobResponse) SetBody(v *SubmitDynamicImageJobResponse
 	return s
 }
 
-type SubmitLiveEditingRequest struct {
-	AppName              *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	Clips                *string `json:"Clips,omitempty" xml:"Clips,omitempty"`
-	CoverURL             *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DomainName           *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	MediaMetadata        *string `json:"MediaMetadata,omitempty" xml:"MediaMetadata,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProduceConfig        *string `json:"ProduceConfig,omitempty" xml:"ProduceConfig,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	StreamName           *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
-	Title                *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	UserData             *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-}
-
-func (s SubmitLiveEditingRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitLiveEditingRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitLiveEditingRequest) SetAppName(v string) *SubmitLiveEditingRequest {
-	s.AppName = &v
-	return s
-}
-
-func (s *SubmitLiveEditingRequest) SetClips(v string) *SubmitLiveEditingRequest {
-	s.Clips = &v
-	return s
-}
-
-func (s *SubmitLiveEditingRequest) SetCoverURL(v string) *SubmitLiveEditingRequest {
-	s.CoverURL = &v
-	return s
-}
-
-func (s *SubmitLiveEditingRequest) SetDescription(v string) *SubmitLiveEditingRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *SubmitLiveEditingRequest) SetDomainName(v string) *SubmitLiveEditingRequest {
-	s.DomainName = &v
-	return s
-}
-
-func (s *SubmitLiveEditingRequest) SetMediaMetadata(v string) *SubmitLiveEditingRequest {
-	s.MediaMetadata = &v
-	return s
-}
-
-func (s *SubmitLiveEditingRequest) SetOwnerId(v int64) *SubmitLiveEditingRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *SubmitLiveEditingRequest) SetProduceConfig(v string) *SubmitLiveEditingRequest {
-	s.ProduceConfig = &v
-	return s
-}
-
-func (s *SubmitLiveEditingRequest) SetResourceOwnerAccount(v string) *SubmitLiveEditingRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *SubmitLiveEditingRequest) SetResourceOwnerId(v int64) *SubmitLiveEditingRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *SubmitLiveEditingRequest) SetStreamName(v string) *SubmitLiveEditingRequest {
-	s.StreamName = &v
-	return s
-}
-
-func (s *SubmitLiveEditingRequest) SetTitle(v string) *SubmitLiveEditingRequest {
-	s.Title = &v
-	return s
-}
-
-func (s *SubmitLiveEditingRequest) SetUserData(v string) *SubmitLiveEditingRequest {
-	s.UserData = &v
-	return s
-}
-
-type SubmitLiveEditingResponseBody struct {
-	MediaId   *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SubmitLiveEditingResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitLiveEditingResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitLiveEditingResponseBody) SetMediaId(v string) *SubmitLiveEditingResponseBody {
-	s.MediaId = &v
-	return s
-}
-
-func (s *SubmitLiveEditingResponseBody) SetProjectId(v string) *SubmitLiveEditingResponseBody {
-	s.ProjectId = &v
-	return s
-}
-
-func (s *SubmitLiveEditingResponseBody) SetRequestId(v string) *SubmitLiveEditingResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SubmitLiveEditingResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SubmitLiveEditingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SubmitLiveEditingResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SubmitLiveEditingResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SubmitLiveEditingResponse) SetHeaders(v map[string]*string) *SubmitLiveEditingResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SubmitLiveEditingResponse) SetBody(v *SubmitLiveEditingResponseBody) *SubmitLiveEditingResponse {
-	s.Body = v
-	return s
-}
-
 type SubmitMediaDNADeleteJobRequest struct {
 	MediaId              *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -20541,185 +19023,6 @@ func (s *SubmitWorkflowJobResponse) SetBody(v *SubmitWorkflowJobResponseBody) *S
 	return s
 }
 
-type TagVodResourcesRequest struct {
-	OwnerId      *int64                       `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceId   []*string                    `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string                      `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	Tag          []*TagVodResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-}
-
-func (s TagVodResourcesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TagVodResourcesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *TagVodResourcesRequest) SetOwnerId(v int64) *TagVodResourcesRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *TagVodResourcesRequest) SetResourceId(v []*string) *TagVodResourcesRequest {
-	s.ResourceId = v
-	return s
-}
-
-func (s *TagVodResourcesRequest) SetResourceType(v string) *TagVodResourcesRequest {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *TagVodResourcesRequest) SetTag(v []*TagVodResourcesRequestTag) *TagVodResourcesRequest {
-	s.Tag = v
-	return s
-}
-
-type TagVodResourcesRequestTag struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s TagVodResourcesRequestTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TagVodResourcesRequestTag) GoString() string {
-	return s.String()
-}
-
-func (s *TagVodResourcesRequestTag) SetKey(v string) *TagVodResourcesRequestTag {
-	s.Key = &v
-	return s
-}
-
-func (s *TagVodResourcesRequestTag) SetValue(v string) *TagVodResourcesRequestTag {
-	s.Value = &v
-	return s
-}
-
-type TagVodResourcesResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s TagVodResourcesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TagVodResourcesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *TagVodResourcesResponseBody) SetRequestId(v string) *TagVodResourcesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type TagVodResourcesResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TagVodResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s TagVodResourcesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TagVodResourcesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *TagVodResourcesResponse) SetHeaders(v map[string]*string) *TagVodResourcesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *TagVodResourcesResponse) SetBody(v *TagVodResourcesResponseBody) *TagVodResourcesResponse {
-	s.Body = v
-	return s
-}
-
-type UnTagVodResourcesRequest struct {
-	All          *bool     `json:"All,omitempty" xml:"All,omitempty"`
-	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceId   []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	ResourceType *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	TagKey       []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
-}
-
-func (s UnTagVodResourcesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UnTagVodResourcesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UnTagVodResourcesRequest) SetAll(v bool) *UnTagVodResourcesRequest {
-	s.All = &v
-	return s
-}
-
-func (s *UnTagVodResourcesRequest) SetOwnerId(v int64) *UnTagVodResourcesRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *UnTagVodResourcesRequest) SetResourceId(v []*string) *UnTagVodResourcesRequest {
-	s.ResourceId = v
-	return s
-}
-
-func (s *UnTagVodResourcesRequest) SetResourceType(v string) *UnTagVodResourcesRequest {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *UnTagVodResourcesRequest) SetTagKey(v []*string) *UnTagVodResourcesRequest {
-	s.TagKey = v
-	return s
-}
-
-type UnTagVodResourcesResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UnTagVodResourcesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UnTagVodResourcesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UnTagVodResourcesResponseBody) SetRequestId(v string) *UnTagVodResourcesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UnTagVodResourcesResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UnTagVodResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UnTagVodResourcesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UnTagVodResourcesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UnTagVodResourcesResponse) SetHeaders(v map[string]*string) *UnTagVodResourcesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UnTagVodResourcesResponse) SetBody(v *UnTagVodResourcesResponseBody) *UnTagVodResourcesResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateAITemplateRequest struct {
 	TemplateConfig *string `json:"TemplateConfig,omitempty" xml:"TemplateConfig,omitempty"`
 	TemplateId     *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
@@ -21177,71 +19480,6 @@ func (s *UpdateImageInfosResponse) SetHeaders(v map[string]*string) *UpdateImage
 }
 
 func (s *UpdateImageInfosResponse) SetBody(v *UpdateImageInfosResponseBody) *UpdateImageInfosResponse {
-	s.Body = v
-	return s
-}
-
-type UpdateStreamInfoRequest struct {
-	// 视频流ID
-	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// 视频ID
-	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-}
-
-func (s UpdateStreamInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateStreamInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateStreamInfoRequest) SetJobId(v string) *UpdateStreamInfoRequest {
-	s.JobId = &v
-	return s
-}
-
-func (s *UpdateStreamInfoRequest) SetMediaId(v string) *UpdateStreamInfoRequest {
-	s.MediaId = &v
-	return s
-}
-
-type UpdateStreamInfoResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateStreamInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateStreamInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateStreamInfoResponseBody) SetRequestId(v string) *UpdateStreamInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateStreamInfoResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateStreamInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateStreamInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateStreamInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateStreamInfoResponse) SetHeaders(v map[string]*string) *UpdateStreamInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateStreamInfoResponse) SetBody(v *UpdateStreamInfoResponseBody) *UpdateStreamInfoResponse {
 	s.Body = v
 	return s
 }
@@ -22347,70 +20585,6 @@ func (client *Client) AddEditingProject(request *AddEditingProjectRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) AddFileInfoWithOptions(request *AddFileInfoRequest, runtime *util.RuntimeOptions) (_result *AddFileInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
-		query["BusinessType"] = request.BusinessType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FileType)) {
-		query["FileType"] = request.FileType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FileUrl)) {
-		query["FileUrl"] = request.FileUrl
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Filename)) {
-		query["Filename"] = request.Filename
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
-		query["MediaId"] = request.MediaId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AddFileInfo"),
-		Version:     tea.String("2017-03-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &AddFileInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AddFileInfo(request *AddFileInfoRequest) (_result *AddFileInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AddFileInfoResponse{}
-	_body, _err := client.AddFileInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) AddTranscodeTemplateGroupWithOptions(request *AddTranscodeTemplateGroupRequest, runtime *util.RuntimeOptions) (_result *AddTranscodeTemplateGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23263,46 +21437,6 @@ func (client *Client) CreateUploadVideo(request *CreateUploadVideoRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) CreateVodRealTimeLogDeliveryWithOptions(request *CreateVodRealTimeLogDeliveryRequest, runtime *util.RuntimeOptions) (_result *CreateVodRealTimeLogDeliveryResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateVodRealTimeLogDelivery"),
-		Version:     tea.String("2017-03-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateVodRealTimeLogDeliveryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateVodRealTimeLogDelivery(request *CreateVodRealTimeLogDeliveryRequest) (_result *CreateVodRealTimeLogDeliveryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateVodRealTimeLogDeliveryResponse{}
-	_body, _err := client.CreateVodRealTimeLogDeliveryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteAIImageInfosWithOptions(request *DeleteAIImageInfosRequest, runtime *util.RuntimeOptions) (_result *DeleteAIImageInfosResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23691,54 +21825,6 @@ func (client *Client) DeleteImage(request *DeleteImageRequest) (_result *DeleteI
 	return _result, _err
 }
 
-func (client *Client) DeleteMediaInfoWithOptions(request *DeleteMediaInfoRequest, runtime *util.RuntimeOptions) (_result *DeleteMediaInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
-		query["MediaId"] = request.MediaId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteMediaInfo"),
-		Version:     tea.String("2017-03-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteMediaInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteMediaInfo(request *DeleteMediaInfoRequest) (_result *DeleteMediaInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteMediaInfoResponse{}
-	_body, _err := client.DeleteMediaInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteMessageCallbackWithOptions(request *DeleteMessageCallbackRequest, runtime *util.RuntimeOptions) (_result *DeleteMessageCallbackResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -24080,46 +22166,6 @@ func (client *Client) DeleteVodDomain(request *DeleteVodDomainRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteVodDomainResponse{}
 	_body, _err := client.DeleteVodDomainWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteVodRealtimeLogDeliveryWithOptions(request *DeleteVodRealtimeLogDeliveryRequest, runtime *util.RuntimeOptions) (_result *DeleteVodRealtimeLogDeliveryResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteVodRealtimeLogDelivery"),
-		Version:     tea.String("2017-03-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteVodRealtimeLogDeliveryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteVodRealtimeLogDelivery(request *DeleteVodRealtimeLogDeliveryRequest) (_result *DeleteVodRealtimeLogDeliveryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteVodRealtimeLogDeliveryResponse{}
-	_body, _err := client.DeleteVodRealtimeLogDeliveryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24887,166 +22933,6 @@ func (client *Client) DescribeVodDomainLog(request *DescribeVodDomainLogRequest)
 	return _result, _err
 }
 
-func (client *Client) DescribeVodDomainRealtimeLogDeliveryWithOptions(request *DescribeVodDomainRealtimeLogDeliveryRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainRealtimeLogDeliveryResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeVodDomainRealtimeLogDelivery"),
-		Version:     tea.String("2017-03-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeVodDomainRealtimeLogDeliveryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeVodDomainRealtimeLogDelivery(request *DescribeVodDomainRealtimeLogDeliveryRequest) (_result *DescribeVodDomainRealtimeLogDeliveryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeVodDomainRealtimeLogDeliveryResponse{}
-	_body, _err := client.DescribeVodDomainRealtimeLogDeliveryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeVodDomainSrcBpsDataWithOptions(request *DescribeVodDomainSrcBpsDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainSrcBpsDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
-		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Interval)) {
-		query["Interval"] = request.Interval
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeVodDomainSrcBpsData"),
-		Version:     tea.String("2017-03-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeVodDomainSrcBpsDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeVodDomainSrcBpsData(request *DescribeVodDomainSrcBpsDataRequest) (_result *DescribeVodDomainSrcBpsDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeVodDomainSrcBpsDataResponse{}
-	_body, _err := client.DescribeVodDomainSrcBpsDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeVodDomainSrcTrafficDataWithOptions(request *DescribeVodDomainSrcTrafficDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainSrcTrafficDataResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
-		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Interval)) {
-		query["Interval"] = request.Interval
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeVodDomainSrcTrafficData"),
-		Version:     tea.String("2017-03-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeVodDomainSrcTrafficDataResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeVodDomainSrcTrafficData(request *DescribeVodDomainSrcTrafficDataRequest) (_result *DescribeVodDomainSrcTrafficDataResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeVodDomainSrcTrafficDataResponse{}
-	_body, _err := client.DescribeVodDomainSrcTrafficDataWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeVodDomainTrafficDataWithOptions(request *DescribeVodDomainTrafficDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodDomainTrafficDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25379,62 +23265,6 @@ func (client *Client) DescribeVodStorageData(request *DescribeVodStorageDataRequ
 	return _result, _err
 }
 
-func (client *Client) DescribeVodTagResourcesWithOptions(request *DescribeVodTagResourcesRequest, runtime *util.RuntimeOptions) (_result *DescribeVodTagResourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
-		query["ResourceId"] = request.ResourceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
-		query["ResourceType"] = request.ResourceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
-		query["Tag"] = request.Tag
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeVodTagResources"),
-		Version:     tea.String("2017-03-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeVodTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeVodTagResources(request *DescribeVodTagResourcesRequest) (_result *DescribeVodTagResourcesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeVodTagResourcesResponse{}
-	_body, _err := client.DescribeVodTagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeVodTranscodeDataWithOptions(request *DescribeVodTranscodeDataRequest, runtime *util.RuntimeOptions) (_result *DescribeVodTranscodeDataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25575,50 +23405,6 @@ func (client *Client) DescribeVodUserDomains(request *DescribeVodUserDomainsRequ
 	return _result, _err
 }
 
-func (client *Client) DescribeVodUserTagsWithOptions(request *DescribeVodUserTagsRequest, runtime *util.RuntimeOptions) (_result *DescribeVodUserTagsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeVodUserTags"),
-		Version:     tea.String("2017-03-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeVodUserTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeVodUserTags(request *DescribeVodUserTagsRequest) (_result *DescribeVodUserTagsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeVodUserTagsResponse{}
-	_body, _err := client.DescribeVodUserTagsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeVodVerifyContentWithOptions(request *DescribeVodVerifyContentRequest, runtime *util.RuntimeOptions) (_result *DescribeVodVerifyContentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25716,86 +23502,6 @@ func (client *Client) DetachAppPolicyFromIdentity(request *DetachAppPolicyFromId
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachAppPolicyFromIdentityResponse{}
 	_body, _err := client.DetachAppPolicyFromIdentityWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DisableVodRealtimeLogDeliveryWithOptions(request *DisableVodRealtimeLogDeliveryRequest, runtime *util.RuntimeOptions) (_result *DisableVodRealtimeLogDeliveryResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DisableVodRealtimeLogDelivery"),
-		Version:     tea.String("2017-03-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DisableVodRealtimeLogDeliveryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DisableVodRealtimeLogDelivery(request *DisableVodRealtimeLogDeliveryRequest) (_result *DisableVodRealtimeLogDeliveryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DisableVodRealtimeLogDeliveryResponse{}
-	_body, _err := client.DisableVodRealtimeLogDeliveryWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) EnableVodRealtimeLogDeliveryWithOptions(request *EnableVodRealtimeLogDeliveryRequest, runtime *util.RuntimeOptions) (_result *EnableVodRealtimeLogDeliveryResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("EnableVodRealtimeLogDelivery"),
-		Version:     tea.String("2017-03-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &EnableVodRealtimeLogDeliveryResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) EnableVodRealtimeLogDelivery(request *EnableVodRealtimeLogDeliveryRequest) (_result *EnableVodRealtimeLogDeliveryResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &EnableVodRealtimeLogDeliveryResponse{}
-	_body, _err := client.EnableVodRealtimeLogDeliveryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -26700,6 +24406,46 @@ func (client *Client) GetMediaDNAResult(request *GetMediaDNAResultRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &GetMediaDNAResultResponse{}
 	_body, _err := client.GetMediaDNAResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetMediaRefreshJobsWithOptions(request *GetMediaRefreshJobsRequest, runtime *util.RuntimeOptions) (_result *GetMediaRefreshJobsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMediaRefreshJobs"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMediaRefreshJobsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMediaRefreshJobs(request *GetMediaRefreshJobsRequest) (_result *GetMediaRefreshJobsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMediaRefreshJobsResponse{}
+	_body, _err := client.GetMediaRefreshJobsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27831,66 +25577,6 @@ func (client *Client) ListLiveRecordVideo(request *ListLiveRecordVideoRequest) (
 	return _result, _err
 }
 
-func (client *Client) ListMediaDNADeleteJobWithOptions(request *ListMediaDNADeleteJobRequest, runtime *util.RuntimeOptions) (_result *ListMediaDNADeleteJobResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.JobIds)) {
-		query["JobIds"] = request.JobIds
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
-		query["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListMediaDNADeleteJob"),
-		Version:     tea.String("2017-03-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListMediaDNADeleteJobResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListMediaDNADeleteJob(request *ListMediaDNADeleteJobRequest) (_result *ListMediaDNADeleteJobResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListMediaDNADeleteJobResponse{}
-	_body, _err := client.ListMediaDNADeleteJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListSnapshotsWithOptions(request *ListSnapshotsRequest, runtime *util.RuntimeOptions) (_result *ListSnapshotsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28055,86 +25741,6 @@ func (client *Client) ListTranscodeTemplateGroup(request *ListTranscodeTemplateG
 	return _result, _err
 }
 
-func (client *Client) ListVodRealtimeLogDeliveryDomainsWithOptions(request *ListVodRealtimeLogDeliveryDomainsRequest, runtime *util.RuntimeOptions) (_result *ListVodRealtimeLogDeliveryDomainsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListVodRealtimeLogDeliveryDomains"),
-		Version:     tea.String("2017-03-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListVodRealtimeLogDeliveryDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListVodRealtimeLogDeliveryDomains(request *ListVodRealtimeLogDeliveryDomainsRequest) (_result *ListVodRealtimeLogDeliveryDomainsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListVodRealtimeLogDeliveryDomainsResponse{}
-	_body, _err := client.ListVodRealtimeLogDeliveryDomainsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListVodRealtimeLogDeliveryInfosWithOptions(request *ListVodRealtimeLogDeliveryInfosRequest, runtime *util.RuntimeOptions) (_result *ListVodRealtimeLogDeliveryInfosResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListVodRealtimeLogDeliveryInfos"),
-		Version:     tea.String("2017-03-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListVodRealtimeLogDeliveryInfosResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListVodRealtimeLogDeliveryInfos(request *ListVodRealtimeLogDeliveryInfosRequest) (_result *ListVodRealtimeLogDeliveryInfosResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListVodRealtimeLogDeliveryInfosResponse{}
-	_body, _err := client.ListVodRealtimeLogDeliveryInfosWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListVodTemplateWithOptions(request *ListVodTemplateRequest, runtime *util.RuntimeOptions) (_result *ListVodTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28220,98 +25826,6 @@ func (client *Client) ListWatermark(request *ListWatermarkRequest) (_result *Lis
 	runtime := &util.RuntimeOptions{}
 	_result = &ListWatermarkResponse{}
 	_body, _err := client.ListWatermarkWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ModifyMediaInfoWithOptions(request *ModifyMediaInfoRequest, runtime *util.RuntimeOptions) (_result *ModifyMediaInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AiLabelUrl)) {
-		query["AiLabelUrl"] = request.AiLabelUrl
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
-		query["BusinessType"] = request.BusinessType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CateId)) {
-		query["CateId"] = request.CateId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Description)) {
-		query["Description"] = request.Description
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DynamicData)) {
-		query["DynamicData"] = request.DynamicData
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EntityId)) {
-		query["EntityId"] = request.EntityId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Label)) {
-		query["Label"] = request.Label
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
-		query["MediaId"] = request.MediaId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MediaType)) {
-		query["MediaType"] = request.MediaType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Source)) {
-		query["Source"] = request.Source
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tags)) {
-		query["Tags"] = request.Tags
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Title)) {
-		query["Title"] = request.Title
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ModifyMediaInfo"),
-		Version:     tea.String("2017-03-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ModifyMediaInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ModifyMediaInfo(request *ModifyMediaInfoRequest) (_result *ModifyMediaInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ModifyMediaInfoResponse{}
-	_body, _err := client.ModifyMediaInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28500,6 +26014,82 @@ func (client *Client) ProduceEditingProjectVideo(request *ProduceEditingProjectV
 	runtime := &util.RuntimeOptions{}
 	_result = &ProduceEditingProjectVideoResponse{}
 	_body, _err := client.ProduceEditingProjectVideoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RefreshMediaPlayUrlsWithOptions(request *RefreshMediaPlayUrlsRequest, runtime *util.RuntimeOptions) (_result *RefreshMediaPlayUrlsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Definitions)) {
+		query["Definitions"] = request.Definitions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Formats)) {
+		query["Formats"] = request.Formats
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MediaIds)) {
+		query["MediaIds"] = request.MediaIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultType)) {
+		query["ResultType"] = request.ResultType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SliceCount)) {
+		query["SliceCount"] = request.SliceCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SliceFlag)) {
+		query["SliceFlag"] = request.SliceFlag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StreamType)) {
+		query["StreamType"] = request.StreamType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefreshMediaPlayUrls"),
+		Version:     tea.String("2017-03-21"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RefreshMediaPlayUrlsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RefreshMediaPlayUrls(request *RefreshMediaPlayUrlsRequest) (_result *RefreshMediaPlayUrlsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RefreshMediaPlayUrlsResponse{}
+	_body, _err := client.RefreshMediaPlayUrlsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29611,98 +27201,6 @@ func (client *Client) SubmitDynamicImageJob(request *SubmitDynamicImageJobReques
 	return _result, _err
 }
 
-func (client *Client) SubmitLiveEditingWithOptions(request *SubmitLiveEditingRequest, runtime *util.RuntimeOptions) (_result *SubmitLiveEditingResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppName)) {
-		query["AppName"] = request.AppName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Clips)) {
-		query["Clips"] = request.Clips
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CoverURL)) {
-		query["CoverURL"] = request.CoverURL
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Description)) {
-		query["Description"] = request.Description
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
-		query["DomainName"] = request.DomainName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MediaMetadata)) {
-		query["MediaMetadata"] = request.MediaMetadata
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ProduceConfig)) {
-		query["ProduceConfig"] = request.ProduceConfig
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StreamName)) {
-		query["StreamName"] = request.StreamName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Title)) {
-		query["Title"] = request.Title
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserData)) {
-		query["UserData"] = request.UserData
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SubmitLiveEditing"),
-		Version:     tea.String("2017-03-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SubmitLiveEditingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SubmitLiveEditing(request *SubmitLiveEditingRequest) (_result *SubmitLiveEditingResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SubmitLiveEditingResponse{}
-	_body, _err := client.SubmitLiveEditingWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) SubmitMediaDNADeleteJobWithOptions(request *SubmitMediaDNADeleteJobRequest, runtime *util.RuntimeOptions) (_result *SubmitMediaDNADeleteJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29996,122 +27494,6 @@ func (client *Client) SubmitWorkflowJob(request *SubmitWorkflowJobRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &SubmitWorkflowJobResponse{}
 	_body, _err := client.SubmitWorkflowJobWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) TagVodResourcesWithOptions(request *TagVodResourcesRequest, runtime *util.RuntimeOptions) (_result *TagVodResourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
-		query["ResourceId"] = request.ResourceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
-		query["ResourceType"] = request.ResourceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
-		query["Tag"] = request.Tag
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("TagVodResources"),
-		Version:     tea.String("2017-03-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &TagVodResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) TagVodResources(request *TagVodResourcesRequest) (_result *TagVodResourcesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &TagVodResourcesResponse{}
-	_body, _err := client.TagVodResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UnTagVodResourcesWithOptions(request *UnTagVodResourcesRequest, runtime *util.RuntimeOptions) (_result *UnTagVodResourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.All)) {
-		query["All"] = request.All
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
-		query["ResourceId"] = request.ResourceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
-		query["ResourceType"] = request.ResourceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
-		query["TagKey"] = request.TagKey
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UnTagVodResources"),
-		Version:     tea.String("2017-03-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UnTagVodResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UnTagVodResources(request *UnTagVodResourcesRequest) (_result *UnTagVodResourcesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UnTagVodResourcesResponse{}
-	_body, _err := client.UnTagVodResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30432,54 +27814,6 @@ func (client *Client) UpdateImageInfos(request *UpdateImageInfosRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateImageInfosResponse{}
 	_body, _err := client.UpdateImageInfosWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateStreamInfoWithOptions(request *UpdateStreamInfoRequest, runtime *util.RuntimeOptions) (_result *UpdateStreamInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.JobId)) {
-		query["JobId"] = request.JobId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MediaId)) {
-		query["MediaId"] = request.MediaId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateStreamInfo"),
-		Version:     tea.String("2017-03-21"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateStreamInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateStreamInfo(request *UpdateStreamInfoRequest) (_result *UpdateStreamInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateStreamInfoResponse{}
-	_body, _err := client.UpdateStreamInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
