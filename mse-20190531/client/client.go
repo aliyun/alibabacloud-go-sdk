@@ -3200,6 +3200,7 @@ type CreateEngineNamespaceRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	Desc           *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Id             *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	ServiceCount   *int32  `json:"ServiceCount,omitempty" xml:"ServiceCount,omitempty"`
@@ -3225,6 +3226,11 @@ func (s *CreateEngineNamespaceRequest) SetClusterId(v string) *CreateEngineNames
 
 func (s *CreateEngineNamespaceRequest) SetDesc(v string) *CreateEngineNamespaceRequest {
 	s.Desc = &v
+	return s
+}
+
+func (s *CreateEngineNamespaceRequest) SetId(v string) *CreateEngineNamespaceRequest {
+	s.Id = &v
 	return s
 }
 
@@ -19787,111 +19793,6 @@ func (s *RetryClusterResponse) SetBody(v *RetryClusterResponseBody) *RetryCluste
 	return s
 }
 
-type ScalingClusterRequest struct {
-	AcceptLanguage       *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	ClusterSpecification *string `json:"ClusterSpecification,omitempty" xml:"ClusterSpecification,omitempty"`
-	Cpu                  *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	InstanceCount        *int32  `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MemoryCapacity       *int64  `json:"MemoryCapacity,omitempty" xml:"MemoryCapacity,omitempty"`
-}
-
-func (s ScalingClusterRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScalingClusterRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ScalingClusterRequest) SetAcceptLanguage(v string) *ScalingClusterRequest {
-	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *ScalingClusterRequest) SetClusterSpecification(v string) *ScalingClusterRequest {
-	s.ClusterSpecification = &v
-	return s
-}
-
-func (s *ScalingClusterRequest) SetCpu(v int32) *ScalingClusterRequest {
-	s.Cpu = &v
-	return s
-}
-
-func (s *ScalingClusterRequest) SetInstanceCount(v int32) *ScalingClusterRequest {
-	s.InstanceCount = &v
-	return s
-}
-
-func (s *ScalingClusterRequest) SetInstanceId(v string) *ScalingClusterRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ScalingClusterRequest) SetMemoryCapacity(v int64) *ScalingClusterRequest {
-	s.MemoryCapacity = &v
-	return s
-}
-
-type ScalingClusterResponseBody struct {
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ScalingClusterResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScalingClusterResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ScalingClusterResponseBody) SetErrorCode(v string) *ScalingClusterResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ScalingClusterResponseBody) SetMessage(v string) *ScalingClusterResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ScalingClusterResponseBody) SetRequestId(v string) *ScalingClusterResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ScalingClusterResponseBody) SetSuccess(v bool) *ScalingClusterResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ScalingClusterResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ScalingClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ScalingClusterResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ScalingClusterResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ScalingClusterResponse) SetHeaders(v map[string]*string) *ScalingClusterResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ScalingClusterResponse) SetBody(v *ScalingClusterResponseBody) *ScalingClusterResponse {
-	s.Body = v
-	return s
-}
-
 type SelectGatewaySlbRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
@@ -25674,6 +25575,10 @@ func (client *Client) CreateEngineNamespaceWithOptions(request *CreateEngineName
 		query["Desc"] = request.Desc
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
@@ -30683,70 +30588,6 @@ func (client *Client) RetryCluster(request *RetryClusterRequest) (_result *Retry
 	runtime := &util.RuntimeOptions{}
 	_result = &RetryClusterResponse{}
 	_body, _err := client.RetryClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ScalingClusterWithOptions(request *ScalingClusterRequest, runtime *util.RuntimeOptions) (_result *ScalingClusterResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
-		query["AcceptLanguage"] = request.AcceptLanguage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClusterSpecification)) {
-		query["ClusterSpecification"] = request.ClusterSpecification
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Cpu)) {
-		query["Cpu"] = request.Cpu
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceCount)) {
-		query["InstanceCount"] = request.InstanceCount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MemoryCapacity)) {
-		query["MemoryCapacity"] = request.MemoryCapacity
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ScalingCluster"),
-		Version:     tea.String("2019-05-31"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ScalingClusterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ScalingCluster(request *ScalingClusterRequest) (_result *ScalingClusterResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ScalingClusterResponse{}
-	_body, _err := client.ScalingClusterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
