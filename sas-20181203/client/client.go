@@ -11048,6 +11048,7 @@ func (s *DescribePropertyCountResponse) SetBody(v *DescribePropertyCountResponse
 
 type DescribePropertyCronDetailRequest struct {
 	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Extend      *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Remark      *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	Source      *string `json:"Source,omitempty" xml:"Source,omitempty"`
@@ -11065,6 +11066,11 @@ func (s DescribePropertyCronDetailRequest) GoString() string {
 
 func (s *DescribePropertyCronDetailRequest) SetCurrentPage(v int32) *DescribePropertyCronDetailRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribePropertyCronDetailRequest) SetExtend(v string) *DescribePropertyCronDetailRequest {
+	s.Extend = &v
 	return s
 }
 
@@ -11272,6 +11278,7 @@ func (s *DescribePropertyCronDetailResponse) SetBody(v *DescribePropertyCronDeta
 type DescribePropertyPortDetailRequest struct {
 	BindIp      *string `json:"BindIp,omitempty" xml:"BindIp,omitempty"`
 	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Extend      *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Port        *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	ProcName    *string `json:"ProcName,omitempty" xml:"ProcName,omitempty"`
@@ -11294,6 +11301,11 @@ func (s *DescribePropertyPortDetailRequest) SetBindIp(v string) *DescribePropert
 
 func (s *DescribePropertyPortDetailRequest) SetCurrentPage(v int32) *DescribePropertyPortDetailRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribePropertyPortDetailRequest) SetExtend(v string) *DescribePropertyPortDetailRequest {
+	s.Extend = &v
 	return s
 }
 
@@ -11652,6 +11664,7 @@ func (s *DescribePropertyPortItemResponse) SetBody(v *DescribePropertyPortItemRe
 type DescribePropertyProcDetailRequest struct {
 	Cmdline       *string `json:"Cmdline,omitempty" xml:"Cmdline,omitempty"`
 	CurrentPage   *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Extend        *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ProcTimeEnd   *int64  `json:"ProcTimeEnd,omitempty" xml:"ProcTimeEnd,omitempty"`
@@ -11676,6 +11689,11 @@ func (s *DescribePropertyProcDetailRequest) SetCmdline(v string) *DescribeProper
 
 func (s *DescribePropertyProcDetailRequest) SetCurrentPage(v int32) *DescribePropertyProcDetailRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribePropertyProcDetailRequest) SetExtend(v string) *DescribePropertyProcDetailRequest {
+	s.Extend = &v
 	return s
 }
 
@@ -12470,6 +12488,7 @@ func (s *DescribePropertyScaDetailResponse) SetBody(v *DescribePropertyScaDetail
 
 type DescribePropertySoftwareDetailRequest struct {
 	CurrentPage      *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Extend           *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	InstallTimeEnd   *int64  `json:"InstallTimeEnd,omitempty" xml:"InstallTimeEnd,omitempty"`
 	InstallTimeStart *int64  `json:"InstallTimeStart,omitempty" xml:"InstallTimeStart,omitempty"`
 	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -12490,6 +12509,11 @@ func (s DescribePropertySoftwareDetailRequest) GoString() string {
 
 func (s *DescribePropertySoftwareDetailRequest) SetCurrentPage(v int32) *DescribePropertySoftwareDetailRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribePropertySoftwareDetailRequest) SetExtend(v string) *DescribePropertySoftwareDetailRequest {
+	s.Extend = &v
 	return s
 }
 
@@ -12954,6 +12978,7 @@ func (s *DescribePropertyUsageNewestResponse) SetBody(v *DescribePropertyUsageNe
 
 type DescribePropertyUserDetailRequest struct {
 	CurrentPage        *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Extend             *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	IsRoot             *string `json:"IsRoot,omitempty" xml:"IsRoot,omitempty"`
 	LastLoginTimeEnd   *int64  `json:"LastLoginTimeEnd,omitempty" xml:"LastLoginTimeEnd,omitempty"`
 	LastLoginTimeStart *int64  `json:"LastLoginTimeStart,omitempty" xml:"LastLoginTimeStart,omitempty"`
@@ -12973,6 +12998,11 @@ func (s DescribePropertyUserDetailRequest) GoString() string {
 
 func (s *DescribePropertyUserDetailRequest) SetCurrentPage(v int32) *DescribePropertyUserDetailRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribePropertyUserDetailRequest) SetExtend(v string) *DescribePropertyUserDetailRequest {
+	s.Extend = &v
 	return s
 }
 
@@ -19407,16 +19437,16 @@ func (s *DescribeVulListResponseBodyVulRecordsExtendContentJsonNecessity) SetTot
 }
 
 type DescribeVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList struct {
-	ContainerName *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	FullVersion   *string `json:"FullVersion,omitempty" xml:"FullVersion,omitempty"`
-	ImageName     *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	MatchDetail   *string `json:"MatchDetail,omitempty" xml:"MatchDetail,omitempty"`
-	MatchList     *string `json:"MatchList,omitempty" xml:"MatchList,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Path          *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Pid           *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	UpdateCmd     *string `json:"UpdateCmd,omitempty" xml:"UpdateCmd,omitempty"`
-	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	ContainerName *string   `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	FullVersion   *string   `json:"FullVersion,omitempty" xml:"FullVersion,omitempty"`
+	ImageName     *string   `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	MatchDetail   *string   `json:"MatchDetail,omitempty" xml:"MatchDetail,omitempty"`
+	MatchList     []*string `json:"MatchList,omitempty" xml:"MatchList,omitempty" type:"Repeated"`
+	Name          *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Path          *string   `json:"Path,omitempty" xml:"Path,omitempty"`
+	Pid           *string   `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	UpdateCmd     *string   `json:"UpdateCmd,omitempty" xml:"UpdateCmd,omitempty"`
+	Version       *string   `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList) String() string {
@@ -19447,8 +19477,8 @@ func (s *DescribeVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList) Se
 	return s
 }
 
-func (s *DescribeVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList) SetMatchList(v string) *DescribeVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList {
-	s.MatchList = &v
+func (s *DescribeVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList) SetMatchList(v []*string) *DescribeVulListResponseBodyVulRecordsExtendContentJsonRpmEntityList {
+	s.MatchList = v
 	return s
 }
 
@@ -20404,6 +20434,159 @@ func (s *ExportVulResponse) SetHeaders(v map[string]*string) *ExportVulResponse 
 }
 
 func (s *ExportVulResponse) SetBody(v *ExportVulResponseBody) *ExportVulResponse {
+	s.Body = v
+	return s
+}
+
+type ExportWarningRequest struct {
+	Dealed          *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	ExportType      *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
+	IsCleartextPwd  *int32  `json:"IsCleartextPwd,omitempty" xml:"IsCleartextPwd,omitempty"`
+	IsSummaryExport *int32  `json:"IsSummaryExport,omitempty" xml:"IsSummaryExport,omitempty"`
+	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	RiskIds         *string `json:"RiskIds,omitempty" xml:"RiskIds,omitempty"`
+	RiskLevels      *string `json:"RiskLevels,omitempty" xml:"RiskLevels,omitempty"`
+	RiskName        *string `json:"RiskName,omitempty" xml:"RiskName,omitempty"`
+	SourceIp        *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	StatusList      *string `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
+	StrategyId      *int64  `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	SubTypeNames    *string `json:"SubTypeNames,omitempty" xml:"SubTypeNames,omitempty"`
+	TypeName        *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
+	TypeNames       *string `json:"TypeNames,omitempty" xml:"TypeNames,omitempty"`
+	Uuids           *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+}
+
+func (s ExportWarningRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportWarningRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExportWarningRequest) SetDealed(v string) *ExportWarningRequest {
+	s.Dealed = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetExportType(v string) *ExportWarningRequest {
+	s.ExportType = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetIsCleartextPwd(v int32) *ExportWarningRequest {
+	s.IsCleartextPwd = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetIsSummaryExport(v int32) *ExportWarningRequest {
+	s.IsSummaryExport = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetLang(v string) *ExportWarningRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetRiskIds(v string) *ExportWarningRequest {
+	s.RiskIds = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetRiskLevels(v string) *ExportWarningRequest {
+	s.RiskLevels = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetRiskName(v string) *ExportWarningRequest {
+	s.RiskName = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetSourceIp(v string) *ExportWarningRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetStatusList(v string) *ExportWarningRequest {
+	s.StatusList = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetStrategyId(v int64) *ExportWarningRequest {
+	s.StrategyId = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetSubTypeNames(v string) *ExportWarningRequest {
+	s.SubTypeNames = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetTypeName(v string) *ExportWarningRequest {
+	s.TypeName = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetTypeNames(v string) *ExportWarningRequest {
+	s.TypeNames = &v
+	return s
+}
+
+func (s *ExportWarningRequest) SetUuids(v string) *ExportWarningRequest {
+	s.Uuids = &v
+	return s
+}
+
+type ExportWarningResponseBody struct {
+	FileName  *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ExportWarningResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportWarningResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExportWarningResponseBody) SetFileName(v string) *ExportWarningResponseBody {
+	s.FileName = &v
+	return s
+}
+
+func (s *ExportWarningResponseBody) SetId(v int64) *ExportWarningResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *ExportWarningResponseBody) SetRequestId(v string) *ExportWarningResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ExportWarningResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ExportWarningResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ExportWarningResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportWarningResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExportWarningResponse) SetHeaders(v map[string]*string) *ExportWarningResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExportWarningResponse) SetBody(v *ExportWarningResponseBody) *ExportWarningResponse {
 	s.Body = v
 	return s
 }
@@ -28805,6 +28988,10 @@ func (client *Client) DescribePropertyCronDetailWithOptions(request *DescribePro
 		query["CurrentPage"] = request.CurrentPage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Extend)) {
+		query["Extend"] = request.Extend
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
 	}
@@ -28871,6 +29058,10 @@ func (client *Client) DescribePropertyPortDetailWithOptions(request *DescribePro
 
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Extend)) {
+		query["Extend"] = request.Extend
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
@@ -28995,6 +29186,10 @@ func (client *Client) DescribePropertyProcDetailWithOptions(request *DescribePro
 
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Extend)) {
+		query["Extend"] = request.Extend
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
@@ -29245,6 +29440,10 @@ func (client *Client) DescribePropertySoftwareDetailWithOptions(request *Describ
 		query["CurrentPage"] = request.CurrentPage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Extend)) {
+		query["Extend"] = request.Extend
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstallTimeEnd)) {
 		query["InstallTimeEnd"] = request.InstallTimeEnd
 	}
@@ -29419,6 +29618,10 @@ func (client *Client) DescribePropertyUserDetailWithOptions(request *DescribePro
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Extend)) {
+		query["Extend"] = request.Extend
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.IsRoot)) {
@@ -31847,6 +32050,106 @@ func (client *Client) ExportVul(request *ExportVulRequest) (_result *ExportVulRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ExportVulResponse{}
 	_body, _err := client.ExportVulWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ExportWarningWithOptions(request *ExportWarningRequest, runtime *util.RuntimeOptions) (_result *ExportWarningResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Dealed)) {
+		query["Dealed"] = request.Dealed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExportType)) {
+		query["ExportType"] = request.ExportType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsCleartextPwd)) {
+		query["IsCleartextPwd"] = request.IsCleartextPwd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsSummaryExport)) {
+		query["IsSummaryExport"] = request.IsSummaryExport
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskIds)) {
+		query["RiskIds"] = request.RiskIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevels)) {
+		query["RiskLevels"] = request.RiskLevels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskName)) {
+		query["RiskName"] = request.RiskName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusList)) {
+		query["StatusList"] = request.StatusList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StrategyId)) {
+		query["StrategyId"] = request.StrategyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubTypeNames)) {
+		query["SubTypeNames"] = request.SubTypeNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TypeName)) {
+		query["TypeName"] = request.TypeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TypeNames)) {
+		query["TypeNames"] = request.TypeNames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportWarning"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExportWarningResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExportWarning(request *ExportWarningRequest) (_result *ExportWarningResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExportWarningResponse{}
+	_body, _err := client.ExportWarningWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
