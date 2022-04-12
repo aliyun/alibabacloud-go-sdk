@@ -114,6 +114,8 @@ type QueryCopyrightResponseBodyData struct {
 	MessageId *int64 `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
 	// 水印视频输出
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// 任务结果
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// 状态
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 用户数据
@@ -172,6 +174,11 @@ func (s *QueryCopyrightResponseBodyData) SetMessageId(v int64) *QueryCopyrightRe
 
 func (s *QueryCopyrightResponseBodyData) SetOutput(v string) *QueryCopyrightResponseBodyData {
 	s.Output = &v
+	return s
+}
+
+func (s *QueryCopyrightResponseBodyData) SetResult(v string) *QueryCopyrightResponseBodyData {
+	s.Result = &v
 	return s
 }
 
@@ -390,6 +397,8 @@ type QueryTraceAbResponseBodyData struct {
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
 	// 输出地址
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
+	// 任务结果
+	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	// 任务状态
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 用户数据
@@ -443,6 +452,11 @@ func (s *QueryTraceAbResponseBodyData) SetMediaId(v string) *QueryTraceAbRespons
 
 func (s *QueryTraceAbResponseBodyData) SetOutput(v string) *QueryTraceAbResponseBodyData {
 	s.Output = &v
+	return s
+}
+
+func (s *QueryTraceAbResponseBodyData) SetResult(v string) *QueryTraceAbResponseBodyData {
+	s.Result = &v
 	return s
 }
 
