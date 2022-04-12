@@ -12,6 +12,102 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type AdjustJMeterSceneSpeedRequest struct {
+	// 报告id
+	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	// 要调整到的压力值
+	Speed *int32 `json:"Speed,omitempty" xml:"Speed,omitempty"`
+}
+
+func (s AdjustJMeterSceneSpeedRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AdjustJMeterSceneSpeedRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AdjustJMeterSceneSpeedRequest) SetReportId(v string) *AdjustJMeterSceneSpeedRequest {
+	s.ReportId = &v
+	return s
+}
+
+func (s *AdjustJMeterSceneSpeedRequest) SetSpeed(v int32) *AdjustJMeterSceneSpeedRequest {
+	s.Speed = &v
+	return s
+}
+
+type AdjustJMeterSceneSpeedResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 报告ID
+	ReportId  *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AdjustJMeterSceneSpeedResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AdjustJMeterSceneSpeedResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AdjustJMeterSceneSpeedResponseBody) SetCode(v string) *AdjustJMeterSceneSpeedResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AdjustJMeterSceneSpeedResponseBody) SetHttpStatusCode(v int32) *AdjustJMeterSceneSpeedResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *AdjustJMeterSceneSpeedResponseBody) SetMessage(v string) *AdjustJMeterSceneSpeedResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AdjustJMeterSceneSpeedResponseBody) SetReportId(v string) *AdjustJMeterSceneSpeedResponseBody {
+	s.ReportId = &v
+	return s
+}
+
+func (s *AdjustJMeterSceneSpeedResponseBody) SetRequestId(v string) *AdjustJMeterSceneSpeedResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AdjustJMeterSceneSpeedResponseBody) SetSuccess(v bool) *AdjustJMeterSceneSpeedResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AdjustJMeterSceneSpeedResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AdjustJMeterSceneSpeedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AdjustJMeterSceneSpeedResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AdjustJMeterSceneSpeedResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AdjustJMeterSceneSpeedResponse) SetHeaders(v map[string]*string) *AdjustJMeterSceneSpeedResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AdjustJMeterSceneSpeedResponse) SetBody(v *AdjustJMeterSceneSpeedResponseBody) *AdjustJMeterSceneSpeedResponse {
+	s.Body = v
+	return s
+}
+
 type CreatePtsSceneRequest struct {
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
 }
@@ -442,6 +538,76 @@ func (s *DeletePtsScenesResponse) SetHeaders(v map[string]*string) *DeletePtsSce
 }
 
 func (s *DeletePtsScenesResponse) SetBody(v *DeletePtsScenesResponseBody) *DeletePtsScenesResponse {
+	s.Body = v
+	return s
+}
+
+type GetAllRegionsResponseBody struct {
+	AllRegions     map[string]*string `json:"AllRegions,omitempty" xml:"AllRegions,omitempty"`
+	Code           *string            `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32             `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAllRegionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAllRegionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAllRegionsResponseBody) SetAllRegions(v map[string]*string) *GetAllRegionsResponseBody {
+	s.AllRegions = v
+	return s
+}
+
+func (s *GetAllRegionsResponseBody) SetCode(v string) *GetAllRegionsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAllRegionsResponseBody) SetHttpStatusCode(v int32) *GetAllRegionsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetAllRegionsResponseBody) SetMessage(v string) *GetAllRegionsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAllRegionsResponseBody) SetRequestId(v string) *GetAllRegionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAllRegionsResponseBody) SetSuccess(v bool) *GetAllRegionsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAllRegionsResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetAllRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAllRegionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAllRegionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAllRegionsResponse) SetHeaders(v map[string]*string) *GetAllRegionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAllRegionsResponse) SetBody(v *GetAllRegionsResponseBody) *GetAllRegionsResponse {
 	s.Body = v
 	return s
 }
@@ -1182,7 +1348,7 @@ type GetOpenJMeterSceneResponseBodyScene struct {
 	AgentCount *int32 `json:"AgentCount,omitempty" xml:"AgentCount,omitempty"`
 	// 基本信息
 	BaseInfo *GetOpenJMeterSceneResponseBodySceneBaseInfo `json:"BaseInfo,omitempty" xml:"BaseInfo,omitempty" type:"Struct"`
-	// 最大并发
+	// 最大并发，并发模式下生效
 	Concurrency *int32 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
 	// constantThroughputTimerType
 	ConstantThroughputTimerType *string `json:"ConstantThroughputTimerType,omitempty" xml:"ConstantThroughputTimerType,omitempty"`
@@ -1195,7 +1361,12 @@ type GetOpenJMeterSceneResponseBodyScene struct {
 	// 文件列表
 	FileList []*GetOpenJMeterSceneResponseBodySceneFileList `json:"FileList,omitempty" xml:"FileList,omitempty" type:"Repeated"`
 	// 是否为VPC压测
-	IsVpcTest *bool `json:"IsVpcTest,omitempty" xml:"IsVpcTest,omitempty"`
+	IsVpcTest *bool  `json:"IsVpcTest,omitempty" xml:"IsVpcTest,omitempty"`
+	MaxRps    *int32 `json:"MaxRps,omitempty" xml:"MaxRps,omitempty"`
+	// 施压模式，concurrency_mode表示并发压测,tps_mode表示RPS压测
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// 压力来源。“”表示公网，intranet-vpc表示VPC
+	Pool *string `json:"Pool,omitempty" xml:"Pool,omitempty"`
 	// 递增时间，单位s
 	RampUp *int32 `json:"RampUp,omitempty" xml:"RampUp,omitempty"`
 	// VPC压测时配置
@@ -1205,7 +1376,9 @@ type GetOpenJMeterSceneResponseBodyScene struct {
 	// 场景名
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
 	// 安全组id，VPC压测时配置
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupId  *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	StartConcurrency *int32  `json:"StartConcurrency,omitempty" xml:"StartConcurrency,omitempty"`
+	StartRps         *int32  `json:"StartRps,omitempty" xml:"StartRps,omitempty"`
 	// 递增阶梯数。预热时间和预热阶段数都不配置时 使用固定压力值 只配置预热时间，不配置阶段数时 使用均匀递增 预热时间和阶段数都配置时，并且steps<rampUp 使用阶梯递增 不能只配置steps，不配置rampUp 如果这样配置，默认使用固定压力值
 	Steps *int32 `json:"Steps,omitempty" xml:"Steps,omitempty"`
 	// synchronizing timer 类型
@@ -1271,6 +1444,21 @@ func (s *GetOpenJMeterSceneResponseBodyScene) SetIsVpcTest(v bool) *GetOpenJMete
 	return s
 }
 
+func (s *GetOpenJMeterSceneResponseBodyScene) SetMaxRps(v int32) *GetOpenJMeterSceneResponseBodyScene {
+	s.MaxRps = &v
+	return s
+}
+
+func (s *GetOpenJMeterSceneResponseBodyScene) SetMode(v string) *GetOpenJMeterSceneResponseBodyScene {
+	s.Mode = &v
+	return s
+}
+
+func (s *GetOpenJMeterSceneResponseBodyScene) SetPool(v string) *GetOpenJMeterSceneResponseBodyScene {
+	s.Pool = &v
+	return s
+}
+
 func (s *GetOpenJMeterSceneResponseBodyScene) SetRampUp(v int32) *GetOpenJMeterSceneResponseBodyScene {
 	s.RampUp = &v
 	return s
@@ -1293,6 +1481,16 @@ func (s *GetOpenJMeterSceneResponseBodyScene) SetSceneName(v string) *GetOpenJMe
 
 func (s *GetOpenJMeterSceneResponseBodyScene) SetSecurityGroupId(v string) *GetOpenJMeterSceneResponseBodyScene {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *GetOpenJMeterSceneResponseBodyScene) SetStartConcurrency(v int32) *GetOpenJMeterSceneResponseBodyScene {
+	s.StartConcurrency = &v
+	return s
+}
+
+func (s *GetOpenJMeterSceneResponseBodyScene) SetStartRps(v int32) *GetOpenJMeterSceneResponseBodyScene {
+	s.StartRps = &v
 	return s
 }
 
@@ -3907,6 +4105,740 @@ func (s *GetPtsSceneRunningStatusResponse) SetBody(v *GetPtsSceneRunningStatusRe
 	return s
 }
 
+type GetUserVpcSecurityGroupRequest struct {
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s GetUserVpcSecurityGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserVpcSecurityGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserVpcSecurityGroupRequest) SetPageNumber(v int32) *GetUserVpcSecurityGroupRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetUserVpcSecurityGroupRequest) SetPageSize(v int32) *GetUserVpcSecurityGroupRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetUserVpcSecurityGroupRequest) SetRegionId(v string) *GetUserVpcSecurityGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetUserVpcSecurityGroupRequest) SetVpcId(v string) *GetUserVpcSecurityGroupRequest {
+	s.VpcId = &v
+	return s
+}
+
+type GetUserVpcSecurityGroupResponseBody struct {
+	Code               *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode     *int32                                                  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message            *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber         *int32                                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize           *int32                                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId          *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecurityGroupCount *int32                                                  `json:"SecurityGroupCount,omitempty" xml:"SecurityGroupCount,omitempty"`
+	SecurityGroupList  []*GetUserVpcSecurityGroupResponseBodySecurityGroupList `json:"SecurityGroupList,omitempty" xml:"SecurityGroupList,omitempty" type:"Repeated"`
+	Success            *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetUserVpcSecurityGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserVpcSecurityGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserVpcSecurityGroupResponseBody) SetCode(v string) *GetUserVpcSecurityGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetUserVpcSecurityGroupResponseBody) SetHttpStatusCode(v int32) *GetUserVpcSecurityGroupResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetUserVpcSecurityGroupResponseBody) SetMessage(v string) *GetUserVpcSecurityGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetUserVpcSecurityGroupResponseBody) SetPageNumber(v int32) *GetUserVpcSecurityGroupResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetUserVpcSecurityGroupResponseBody) SetPageSize(v int32) *GetUserVpcSecurityGroupResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetUserVpcSecurityGroupResponseBody) SetRequestId(v string) *GetUserVpcSecurityGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUserVpcSecurityGroupResponseBody) SetSecurityGroupCount(v int32) *GetUserVpcSecurityGroupResponseBody {
+	s.SecurityGroupCount = &v
+	return s
+}
+
+func (s *GetUserVpcSecurityGroupResponseBody) SetSecurityGroupList(v []*GetUserVpcSecurityGroupResponseBodySecurityGroupList) *GetUserVpcSecurityGroupResponseBody {
+	s.SecurityGroupList = v
+	return s
+}
+
+func (s *GetUserVpcSecurityGroupResponseBody) SetSuccess(v bool) *GetUserVpcSecurityGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetUserVpcSecurityGroupResponseBodySecurityGroupList struct {
+	AvailableInstanceAmount *int32                                                      `json:"AvailableInstanceAmount,omitempty" xml:"AvailableInstanceAmount,omitempty"`
+	CreationTime            *string                                                     `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description             *string                                                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	EcsCount                *int32                                                      `json:"EcsCount,omitempty" xml:"EcsCount,omitempty"`
+	ResourceGroupId         *string                                                     `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityGroupId         *string                                                     `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupName       *string                                                     `json:"SecurityGroupName,omitempty" xml:"SecurityGroupName,omitempty"`
+	Tags                    []*GetUserVpcSecurityGroupResponseBodySecurityGroupListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VpcId                   *string                                                     `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s GetUserVpcSecurityGroupResponseBodySecurityGroupList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserVpcSecurityGroupResponseBodySecurityGroupList) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserVpcSecurityGroupResponseBodySecurityGroupList) SetAvailableInstanceAmount(v int32) *GetUserVpcSecurityGroupResponseBodySecurityGroupList {
+	s.AvailableInstanceAmount = &v
+	return s
+}
+
+func (s *GetUserVpcSecurityGroupResponseBodySecurityGroupList) SetCreationTime(v string) *GetUserVpcSecurityGroupResponseBodySecurityGroupList {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *GetUserVpcSecurityGroupResponseBodySecurityGroupList) SetDescription(v string) *GetUserVpcSecurityGroupResponseBodySecurityGroupList {
+	s.Description = &v
+	return s
+}
+
+func (s *GetUserVpcSecurityGroupResponseBodySecurityGroupList) SetEcsCount(v int32) *GetUserVpcSecurityGroupResponseBodySecurityGroupList {
+	s.EcsCount = &v
+	return s
+}
+
+func (s *GetUserVpcSecurityGroupResponseBodySecurityGroupList) SetResourceGroupId(v string) *GetUserVpcSecurityGroupResponseBodySecurityGroupList {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetUserVpcSecurityGroupResponseBodySecurityGroupList) SetSecurityGroupId(v string) *GetUserVpcSecurityGroupResponseBodySecurityGroupList {
+	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *GetUserVpcSecurityGroupResponseBodySecurityGroupList) SetSecurityGroupName(v string) *GetUserVpcSecurityGroupResponseBodySecurityGroupList {
+	s.SecurityGroupName = &v
+	return s
+}
+
+func (s *GetUserVpcSecurityGroupResponseBodySecurityGroupList) SetTags(v []*GetUserVpcSecurityGroupResponseBodySecurityGroupListTags) *GetUserVpcSecurityGroupResponseBodySecurityGroupList {
+	s.Tags = v
+	return s
+}
+
+func (s *GetUserVpcSecurityGroupResponseBodySecurityGroupList) SetVpcId(v string) *GetUserVpcSecurityGroupResponseBodySecurityGroupList {
+	s.VpcId = &v
+	return s
+}
+
+type GetUserVpcSecurityGroupResponseBodySecurityGroupListTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetUserVpcSecurityGroupResponseBodySecurityGroupListTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserVpcSecurityGroupResponseBodySecurityGroupListTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserVpcSecurityGroupResponseBodySecurityGroupListTags) SetKey(v string) *GetUserVpcSecurityGroupResponseBodySecurityGroupListTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetUserVpcSecurityGroupResponseBodySecurityGroupListTags) SetValue(v string) *GetUserVpcSecurityGroupResponseBodySecurityGroupListTags {
+	s.Value = &v
+	return s
+}
+
+type GetUserVpcSecurityGroupResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetUserVpcSecurityGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserVpcSecurityGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserVpcSecurityGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserVpcSecurityGroupResponse) SetHeaders(v map[string]*string) *GetUserVpcSecurityGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserVpcSecurityGroupResponse) SetBody(v *GetUserVpcSecurityGroupResponseBody) *GetUserVpcSecurityGroupResponse {
+	s.Body = v
+	return s
+}
+
+type GetUserVpcVSwitchRequest struct {
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s GetUserVpcVSwitchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserVpcVSwitchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserVpcVSwitchRequest) SetPageNumber(v int32) *GetUserVpcVSwitchRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchRequest) SetPageSize(v int32) *GetUserVpcVSwitchRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchRequest) SetRegionId(v string) *GetUserVpcVSwitchRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchRequest) SetVpcId(v string) *GetUserVpcVSwitchRequest {
+	s.VpcId = &v
+	return s
+}
+
+type GetUserVpcVSwitchResponseBody struct {
+	Code           *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32                                      `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber     *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId      *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	VSwitchCount   *int32                                      `json:"VSwitchCount,omitempty" xml:"VSwitchCount,omitempty"`
+	VSwitchList    []*GetUserVpcVSwitchResponseBodyVSwitchList `json:"VSwitchList,omitempty" xml:"VSwitchList,omitempty" type:"Repeated"`
+}
+
+func (s GetUserVpcVSwitchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserVpcVSwitchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserVpcVSwitchResponseBody) SetCode(v string) *GetUserVpcVSwitchResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBody) SetHttpStatusCode(v int32) *GetUserVpcVSwitchResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBody) SetMessage(v string) *GetUserVpcVSwitchResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBody) SetPageNumber(v int32) *GetUserVpcVSwitchResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBody) SetPageSize(v int32) *GetUserVpcVSwitchResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBody) SetRequestId(v string) *GetUserVpcVSwitchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBody) SetSuccess(v bool) *GetUserVpcVSwitchResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBody) SetVSwitchCount(v int32) *GetUserVpcVSwitchResponseBody {
+	s.VSwitchCount = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBody) SetVSwitchList(v []*GetUserVpcVSwitchResponseBodyVSwitchList) *GetUserVpcVSwitchResponseBody {
+	s.VSwitchList = v
+	return s
+}
+
+type GetUserVpcVSwitchResponseBodyVSwitchList struct {
+	AvailableIpAddressCount *int64                                                `json:"AvailableIpAddressCount,omitempty" xml:"AvailableIpAddressCount,omitempty"`
+	CidrBlock               *string                                               `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	CreationTime            *string                                               `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description             *string                                               `json:"Description,omitempty" xml:"Description,omitempty"`
+	Ipv6CidrBlock           *string                                               `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
+	IsDefault               *bool                                                 `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	MaxAgentCount           *int32                                                `json:"MaxAgentCount,omitempty" xml:"MaxAgentCount,omitempty"`
+	ResourceGroupId         *string                                               `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	RouteTable              []*GetUserVpcVSwitchResponseBodyVSwitchListRouteTable `json:"RouteTable,omitempty" xml:"RouteTable,omitempty" type:"Repeated"`
+	Status                  *string                                               `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags                    []*GetUserVpcVSwitchResponseBodyVSwitchListTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VSwitchId               *string                                               `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VSwitchName             *string                                               `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
+	VpcId                   *string                                               `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId                  *string                                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s GetUserVpcVSwitchResponseBodyVSwitchList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserVpcVSwitchResponseBodyVSwitchList) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserVpcVSwitchResponseBodyVSwitchList) SetAvailableIpAddressCount(v int64) *GetUserVpcVSwitchResponseBodyVSwitchList {
+	s.AvailableIpAddressCount = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBodyVSwitchList) SetCidrBlock(v string) *GetUserVpcVSwitchResponseBodyVSwitchList {
+	s.CidrBlock = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBodyVSwitchList) SetCreationTime(v string) *GetUserVpcVSwitchResponseBodyVSwitchList {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBodyVSwitchList) SetDescription(v string) *GetUserVpcVSwitchResponseBodyVSwitchList {
+	s.Description = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBodyVSwitchList) SetIpv6CidrBlock(v string) *GetUserVpcVSwitchResponseBodyVSwitchList {
+	s.Ipv6CidrBlock = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBodyVSwitchList) SetIsDefault(v bool) *GetUserVpcVSwitchResponseBodyVSwitchList {
+	s.IsDefault = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBodyVSwitchList) SetMaxAgentCount(v int32) *GetUserVpcVSwitchResponseBodyVSwitchList {
+	s.MaxAgentCount = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBodyVSwitchList) SetResourceGroupId(v string) *GetUserVpcVSwitchResponseBodyVSwitchList {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBodyVSwitchList) SetRouteTable(v []*GetUserVpcVSwitchResponseBodyVSwitchListRouteTable) *GetUserVpcVSwitchResponseBodyVSwitchList {
+	s.RouteTable = v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBodyVSwitchList) SetStatus(v string) *GetUserVpcVSwitchResponseBodyVSwitchList {
+	s.Status = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBodyVSwitchList) SetTags(v []*GetUserVpcVSwitchResponseBodyVSwitchListTags) *GetUserVpcVSwitchResponseBodyVSwitchList {
+	s.Tags = v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBodyVSwitchList) SetVSwitchId(v string) *GetUserVpcVSwitchResponseBodyVSwitchList {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBodyVSwitchList) SetVSwitchName(v string) *GetUserVpcVSwitchResponseBodyVSwitchList {
+	s.VSwitchName = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBodyVSwitchList) SetVpcId(v string) *GetUserVpcVSwitchResponseBodyVSwitchList {
+	s.VpcId = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBodyVSwitchList) SetZoneId(v string) *GetUserVpcVSwitchResponseBodyVSwitchList {
+	s.ZoneId = &v
+	return s
+}
+
+type GetUserVpcVSwitchResponseBodyVSwitchListRouteTable struct {
+	RouteTableId   *string `json:"RouteTableId,omitempty" xml:"RouteTableId,omitempty"`
+	RouteTableType *string `json:"RouteTableType,omitempty" xml:"RouteTableType,omitempty"`
+}
+
+func (s GetUserVpcVSwitchResponseBodyVSwitchListRouteTable) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserVpcVSwitchResponseBodyVSwitchListRouteTable) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserVpcVSwitchResponseBodyVSwitchListRouteTable) SetRouteTableId(v string) *GetUserVpcVSwitchResponseBodyVSwitchListRouteTable {
+	s.RouteTableId = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBodyVSwitchListRouteTable) SetRouteTableType(v string) *GetUserVpcVSwitchResponseBodyVSwitchListRouteTable {
+	s.RouteTableType = &v
+	return s
+}
+
+type GetUserVpcVSwitchResponseBodyVSwitchListTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetUserVpcVSwitchResponseBodyVSwitchListTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserVpcVSwitchResponseBodyVSwitchListTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserVpcVSwitchResponseBodyVSwitchListTags) SetKey(v string) *GetUserVpcVSwitchResponseBodyVSwitchListTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponseBodyVSwitchListTags) SetValue(v string) *GetUserVpcVSwitchResponseBodyVSwitchListTags {
+	s.Value = &v
+	return s
+}
+
+type GetUserVpcVSwitchResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetUserVpcVSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserVpcVSwitchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserVpcVSwitchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserVpcVSwitchResponse) SetHeaders(v map[string]*string) *GetUserVpcVSwitchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserVpcVSwitchResponse) SetBody(v *GetUserVpcVSwitchResponseBody) *GetUserVpcVSwitchResponse {
+	s.Body = v
+	return s
+}
+
+type GetUserVpcsRequest struct {
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	VpcId      *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s GetUserVpcsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserVpcsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserVpcsRequest) SetPageNumber(v int32) *GetUserVpcsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetUserVpcsRequest) SetPageSize(v int32) *GetUserVpcsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetUserVpcsRequest) SetRegionId(v string) *GetUserVpcsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetUserVpcsRequest) SetVpcId(v string) *GetUserVpcsRequest {
+	s.VpcId = &v
+	return s
+}
+
+type GetUserVpcsResponseBody struct {
+	Code           *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber     *int32                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount     *int64                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Vpcs           []*GetUserVpcsResponseBodyVpcs `json:"Vpcs,omitempty" xml:"Vpcs,omitempty" type:"Repeated"`
+}
+
+func (s GetUserVpcsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserVpcsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserVpcsResponseBody) SetCode(v string) *GetUserVpcsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetUserVpcsResponseBody) SetHttpStatusCode(v int32) *GetUserVpcsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetUserVpcsResponseBody) SetMessage(v string) *GetUserVpcsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetUserVpcsResponseBody) SetPageNumber(v int32) *GetUserVpcsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetUserVpcsResponseBody) SetPageSize(v int32) *GetUserVpcsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetUserVpcsResponseBody) SetRequestId(v string) *GetUserVpcsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetUserVpcsResponseBody) SetSuccess(v bool) *GetUserVpcsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetUserVpcsResponseBody) SetTotalCount(v int64) *GetUserVpcsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *GetUserVpcsResponseBody) SetVpcs(v []*GetUserVpcsResponseBodyVpcs) *GetUserVpcsResponseBody {
+	s.Vpcs = v
+	return s
+}
+
+type GetUserVpcsResponseBodyVpcs struct {
+	CidrBlock       *string                            `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	CreationTime    *string                            `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	Description     *string                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	Ipv6CidrBlock   *string                            `json:"Ipv6CidrBlock,omitempty" xml:"Ipv6CidrBlock,omitempty"`
+	IsDefault       *bool                              `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	NatGatewayIds   []*string                          `json:"NatGatewayIds,omitempty" xml:"NatGatewayIds,omitempty" type:"Repeated"`
+	RegionId        *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	RouterTableIds  []*string                          `json:"RouterTableIds,omitempty" xml:"RouterTableIds,omitempty" type:"Repeated"`
+	Status          *string                            `json:"Status,omitempty" xml:"Status,omitempty"`
+	Tags            []*GetUserVpcsResponseBodyVpcsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	UserCidrs       []*string                          `json:"UserCidrs,omitempty" xml:"UserCidrs,omitempty" type:"Repeated"`
+	VRouterId       *string                            `json:"VRouterId,omitempty" xml:"VRouterId,omitempty"`
+	VSwitchIds      []*string                          `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	VpcId           *string                            `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcName         *string                            `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
+}
+
+func (s GetUserVpcsResponseBodyVpcs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserVpcsResponseBodyVpcs) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserVpcsResponseBodyVpcs) SetCidrBlock(v string) *GetUserVpcsResponseBodyVpcs {
+	s.CidrBlock = &v
+	return s
+}
+
+func (s *GetUserVpcsResponseBodyVpcs) SetCreationTime(v string) *GetUserVpcsResponseBodyVpcs {
+	s.CreationTime = &v
+	return s
+}
+
+func (s *GetUserVpcsResponseBodyVpcs) SetDescription(v string) *GetUserVpcsResponseBodyVpcs {
+	s.Description = &v
+	return s
+}
+
+func (s *GetUserVpcsResponseBodyVpcs) SetIpv6CidrBlock(v string) *GetUserVpcsResponseBodyVpcs {
+	s.Ipv6CidrBlock = &v
+	return s
+}
+
+func (s *GetUserVpcsResponseBodyVpcs) SetIsDefault(v bool) *GetUserVpcsResponseBodyVpcs {
+	s.IsDefault = &v
+	return s
+}
+
+func (s *GetUserVpcsResponseBodyVpcs) SetNatGatewayIds(v []*string) *GetUserVpcsResponseBodyVpcs {
+	s.NatGatewayIds = v
+	return s
+}
+
+func (s *GetUserVpcsResponseBodyVpcs) SetRegionId(v string) *GetUserVpcsResponseBodyVpcs {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetUserVpcsResponseBodyVpcs) SetResourceGroupId(v string) *GetUserVpcsResponseBodyVpcs {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *GetUserVpcsResponseBodyVpcs) SetRouterTableIds(v []*string) *GetUserVpcsResponseBodyVpcs {
+	s.RouterTableIds = v
+	return s
+}
+
+func (s *GetUserVpcsResponseBodyVpcs) SetStatus(v string) *GetUserVpcsResponseBodyVpcs {
+	s.Status = &v
+	return s
+}
+
+func (s *GetUserVpcsResponseBodyVpcs) SetTags(v []*GetUserVpcsResponseBodyVpcsTags) *GetUserVpcsResponseBodyVpcs {
+	s.Tags = v
+	return s
+}
+
+func (s *GetUserVpcsResponseBodyVpcs) SetUserCidrs(v []*string) *GetUserVpcsResponseBodyVpcs {
+	s.UserCidrs = v
+	return s
+}
+
+func (s *GetUserVpcsResponseBodyVpcs) SetVRouterId(v string) *GetUserVpcsResponseBodyVpcs {
+	s.VRouterId = &v
+	return s
+}
+
+func (s *GetUserVpcsResponseBodyVpcs) SetVSwitchIds(v []*string) *GetUserVpcsResponseBodyVpcs {
+	s.VSwitchIds = v
+	return s
+}
+
+func (s *GetUserVpcsResponseBodyVpcs) SetVpcId(v string) *GetUserVpcsResponseBodyVpcs {
+	s.VpcId = &v
+	return s
+}
+
+func (s *GetUserVpcsResponseBodyVpcs) SetVpcName(v string) *GetUserVpcsResponseBodyVpcs {
+	s.VpcName = &v
+	return s
+}
+
+type GetUserVpcsResponseBodyVpcsTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetUserVpcsResponseBodyVpcsTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserVpcsResponseBodyVpcsTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserVpcsResponseBodyVpcsTags) SetKey(v string) *GetUserVpcsResponseBodyVpcsTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetUserVpcsResponseBodyVpcsTags) SetValue(v string) *GetUserVpcsResponseBodyVpcsTags {
+	s.Value = &v
+	return s
+}
+
+type GetUserVpcsResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetUserVpcsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetUserVpcsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetUserVpcsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetUserVpcsResponse) SetHeaders(v map[string]*string) *GetUserVpcsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetUserVpcsResponse) SetBody(v *GetUserVpcsResponseBody) *GetUserVpcsResponse {
+	s.Body = v
+	return s
+}
+
 type ListEnvsRequest struct {
 	// 环境ID
 	EnvId *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
@@ -5163,6 +6095,9 @@ type SaveOpenJMeterSceneRequestOpenJMeterScene struct {
 	JMeterProperties []*SaveOpenJMeterSceneRequestOpenJMeterSceneJMeterProperties `json:"JMeterProperties,omitempty" xml:"JMeterProperties,omitempty" type:"Repeated"`
 	// jmeter插件的环境标签
 	JmeterPluginLabel *string `json:"JmeterPluginLabel,omitempty" xml:"JmeterPluginLabel,omitempty"`
+	MaxRps            *int32  `json:"MaxRps,omitempty" xml:"MaxRps,omitempty"`
+	// 压力模式
+	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// 预热时间
 	RampUp *int32 `json:"RampUp,omitempty" xml:"RampUp,omitempty"`
 	// region的id，VPC压测时配置
@@ -5172,7 +6107,9 @@ type SaveOpenJMeterSceneRequestOpenJMeterScene struct {
 	// 场景名
 	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
 	// 安全组id，VPC压测时配置
-	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SecurityGroupId  *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	StartConcurrency *int32  `json:"StartConcurrency,omitempty" xml:"StartConcurrency,omitempty"`
+	StartRps         *int32  `json:"StartRps,omitempty" xml:"StartRps,omitempty"`
 	// 预热阶段
 	Steps *int32 `json:"Steps,omitempty" xml:"Steps,omitempty"`
 	// synchronizing timer 类型
@@ -5243,6 +6180,16 @@ func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetJmeterPluginLabel(v strin
 	return s
 }
 
+func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetMaxRps(v int32) *SaveOpenJMeterSceneRequestOpenJMeterScene {
+	s.MaxRps = &v
+	return s
+}
+
+func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetMode(v string) *SaveOpenJMeterSceneRequestOpenJMeterScene {
+	s.Mode = &v
+	return s
+}
+
 func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetRampUp(v int32) *SaveOpenJMeterSceneRequestOpenJMeterScene {
 	s.RampUp = &v
 	return s
@@ -5265,6 +6212,16 @@ func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetSceneName(v string) *Save
 
 func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetSecurityGroupId(v string) *SaveOpenJMeterSceneRequestOpenJMeterScene {
 	s.SecurityGroupId = &v
+	return s
+}
+
+func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetStartConcurrency(v int32) *SaveOpenJMeterSceneRequestOpenJMeterScene {
+	s.StartConcurrency = &v
+	return s
+}
+
+func (s *SaveOpenJMeterSceneRequestOpenJMeterScene) SetStartRps(v int32) *SaveOpenJMeterSceneRequestOpenJMeterScene {
+	s.StartRps = &v
 	return s
 }
 
@@ -5697,6 +6654,8 @@ type SavePtsSceneRequestSceneLoadConfig struct {
 	Configuration *SavePtsSceneRequestSceneLoadConfigConfiguration `json:"Configuration,omitempty" xml:"Configuration,omitempty" type:"Struct"`
 	// 递增百分比，取值范围[10,100]，且是整十倍；只有在并发模式且是自动递增模式下有效，即 testMode=concurrency_mode 且 autoStep=true 时
 	Increment *int32 `json:"Increment,omitempty" xml:"Increment,omitempty"`
+	// 是否为VPC测试。默认为false，表示公网测试。当此值为true时，VPC相关配置才会生效。
+	IsVpcTest *string `json:"IsVpcTest,omitempty" xml:"IsVpcTest,omitempty"`
 	// 单量级持续时长，单位分钟，一定是小于施压时长 maxRunningTime
 	KeepTime *int32 `json:"KeepTime,omitempty" xml:"KeepTime,omitempty"`
 	// 施压时长，单位分钟，[1-1440]
@@ -5739,6 +6698,11 @@ func (s *SavePtsSceneRequestSceneLoadConfig) SetConfiguration(v *SavePtsSceneReq
 
 func (s *SavePtsSceneRequestSceneLoadConfig) SetIncrement(v int32) *SavePtsSceneRequestSceneLoadConfig {
 	s.Increment = &v
+	return s
+}
+
+func (s *SavePtsSceneRequestSceneLoadConfig) SetIsVpcTest(v string) *SavePtsSceneRequestSceneLoadConfig {
+	s.IsVpcTest = &v
 	return s
 }
 
@@ -7136,6 +8100,54 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) AdjustJMeterSceneSpeedWithOptions(request *AdjustJMeterSceneSpeedRequest, runtime *util.RuntimeOptions) (_result *AdjustJMeterSceneSpeedResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ReportId)) {
+		query["ReportId"] = request.ReportId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Speed)) {
+		query["Speed"] = request.Speed
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AdjustJMeterSceneSpeed"),
+		Version:     tea.String("2020-10-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AdjustJMeterSceneSpeedResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AdjustJMeterSceneSpeed(request *AdjustJMeterSceneSpeedRequest) (_result *AdjustJMeterSceneSpeedResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AdjustJMeterSceneSpeedResponse{}
+	_body, _err := client.AdjustJMeterSceneSpeedWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreatePtsSceneWithOptions(request *CreatePtsSceneRequest, runtime *util.RuntimeOptions) (_result *CreatePtsSceneResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7359,6 +8371,39 @@ func (client *Client) DeletePtsScenes(request *DeletePtsScenesRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DeletePtsScenesResponse{}
 	_body, _err := client.DeletePtsScenesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAllRegionsWithOptions(runtime *util.RuntimeOptions) (_result *GetAllRegionsResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetAllRegions"),
+		Version:     tea.String("2020-10-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAllRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAllRegions() (_result *GetAllRegionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAllRegionsResponse{}
+	_body, _err := client.GetAllRegionsWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7951,6 +8996,174 @@ func (client *Client) GetPtsSceneRunningStatus(request *GetPtsSceneRunningStatus
 	runtime := &util.RuntimeOptions{}
 	_result = &GetPtsSceneRunningStatusResponse{}
 	_body, _err := client.GetPtsSceneRunningStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUserVpcSecurityGroupWithOptions(request *GetUserVpcSecurityGroupRequest, runtime *util.RuntimeOptions) (_result *GetUserVpcSecurityGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserVpcSecurityGroup"),
+		Version:     tea.String("2020-10-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserVpcSecurityGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserVpcSecurityGroup(request *GetUserVpcSecurityGroupRequest) (_result *GetUserVpcSecurityGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUserVpcSecurityGroupResponse{}
+	_body, _err := client.GetUserVpcSecurityGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUserVpcVSwitchWithOptions(request *GetUserVpcVSwitchRequest, runtime *util.RuntimeOptions) (_result *GetUserVpcVSwitchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserVpcVSwitch"),
+		Version:     tea.String("2020-10-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserVpcVSwitchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserVpcVSwitch(request *GetUserVpcVSwitchRequest) (_result *GetUserVpcVSwitchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUserVpcVSwitchResponse{}
+	_body, _err := client.GetUserVpcVSwitchWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetUserVpcsWithOptions(request *GetUserVpcsRequest, runtime *util.RuntimeOptions) (_result *GetUserVpcsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetUserVpcs"),
+		Version:     tea.String("2020-10-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetUserVpcsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetUserVpcs(request *GetUserVpcsRequest) (_result *GetUserVpcsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetUserVpcsResponse{}
+	_body, _err := client.GetUserVpcsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
