@@ -11791,6 +11791,175 @@ func (s *ListColumnsResponse) SetBody(v *ListColumnsResponseBody) *ListColumnsRe
 	return s
 }
 
+type ListDAGVersionsRequest struct {
+	DagId     *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
+	PageSize  *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tid       *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s ListDAGVersionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDAGVersionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDAGVersionsRequest) SetDagId(v int64) *ListDAGVersionsRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *ListDAGVersionsRequest) SetPageIndex(v int32) *ListDAGVersionsRequest {
+	s.PageIndex = &v
+	return s
+}
+
+func (s *ListDAGVersionsRequest) SetPageSize(v int32) *ListDAGVersionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDAGVersionsRequest) SetTid(v int64) *ListDAGVersionsRequest {
+	s.Tid = &v
+	return s
+}
+
+type ListDAGVersionsResponseBody struct {
+	DagVersionList *ListDAGVersionsResponseBodyDagVersionList `json:"DagVersionList,omitempty" xml:"DagVersionList,omitempty" type:"Struct"`
+	ErrorCode      *string                                    `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId      *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount     *int32                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDAGVersionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDAGVersionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDAGVersionsResponseBody) SetDagVersionList(v *ListDAGVersionsResponseBodyDagVersionList) *ListDAGVersionsResponseBody {
+	s.DagVersionList = v
+	return s
+}
+
+func (s *ListDAGVersionsResponseBody) SetErrorCode(v string) *ListDAGVersionsResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListDAGVersionsResponseBody) SetErrorMessage(v string) *ListDAGVersionsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDAGVersionsResponseBody) SetRequestId(v string) *ListDAGVersionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDAGVersionsResponseBody) SetSuccess(v bool) *ListDAGVersionsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListDAGVersionsResponseBody) SetTotalCount(v int32) *ListDAGVersionsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDAGVersionsResponseBodyDagVersionList struct {
+	DagVersion []*ListDAGVersionsResponseBodyDagVersionListDagVersion `json:"DagVersion,omitempty" xml:"DagVersion,omitempty" type:"Repeated"`
+}
+
+func (s ListDAGVersionsResponseBodyDagVersionList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDAGVersionsResponseBodyDagVersionList) GoString() string {
+	return s.String()
+}
+
+func (s *ListDAGVersionsResponseBodyDagVersionList) SetDagVersion(v []*ListDAGVersionsResponseBodyDagVersionListDagVersion) *ListDAGVersionsResponseBodyDagVersionList {
+	s.DagVersion = v
+	return s
+}
+
+type ListDAGVersionsResponseBodyDagVersionListDagVersion struct {
+	DagName          *string `json:"DagName,omitempty" xml:"DagName,omitempty"`
+	DagOwnerId       *string `json:"DagOwnerId,omitempty" xml:"DagOwnerId,omitempty"`
+	DagOwnerNickName *string `json:"DagOwnerNickName,omitempty" xml:"DagOwnerNickName,omitempty"`
+	LastVersionId    *int64  `json:"LastVersionId,omitempty" xml:"LastVersionId,omitempty"`
+	VersionComments  *string `json:"VersionComments,omitempty" xml:"VersionComments,omitempty"`
+	VersionId        *int64  `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+}
+
+func (s ListDAGVersionsResponseBodyDagVersionListDagVersion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDAGVersionsResponseBodyDagVersionListDagVersion) GoString() string {
+	return s.String()
+}
+
+func (s *ListDAGVersionsResponseBodyDagVersionListDagVersion) SetDagName(v string) *ListDAGVersionsResponseBodyDagVersionListDagVersion {
+	s.DagName = &v
+	return s
+}
+
+func (s *ListDAGVersionsResponseBodyDagVersionListDagVersion) SetDagOwnerId(v string) *ListDAGVersionsResponseBodyDagVersionListDagVersion {
+	s.DagOwnerId = &v
+	return s
+}
+
+func (s *ListDAGVersionsResponseBodyDagVersionListDagVersion) SetDagOwnerNickName(v string) *ListDAGVersionsResponseBodyDagVersionListDagVersion {
+	s.DagOwnerNickName = &v
+	return s
+}
+
+func (s *ListDAGVersionsResponseBodyDagVersionListDagVersion) SetLastVersionId(v int64) *ListDAGVersionsResponseBodyDagVersionListDagVersion {
+	s.LastVersionId = &v
+	return s
+}
+
+func (s *ListDAGVersionsResponseBodyDagVersionListDagVersion) SetVersionComments(v string) *ListDAGVersionsResponseBodyDagVersionListDagVersion {
+	s.VersionComments = &v
+	return s
+}
+
+func (s *ListDAGVersionsResponseBodyDagVersionListDagVersion) SetVersionId(v int64) *ListDAGVersionsResponseBodyDagVersionListDagVersion {
+	s.VersionId = &v
+	return s
+}
+
+type ListDAGVersionsResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDAGVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDAGVersionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDAGVersionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDAGVersionsResponse) SetHeaders(v map[string]*string) *ListDAGVersionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDAGVersionsResponse) SetBody(v *ListDAGVersionsResponseBody) *ListDAGVersionsResponse {
+	s.Body = v
+	return s
+}
+
 type ListDBTaskSQLJobRequest struct {
 	DBTaskGroupId *int64 `json:"DBTaskGroupId,omitempty" xml:"DBTaskGroupId,omitempty"`
 	PageNumber    *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -17287,9 +17456,7 @@ func (s *ListTablesResponse) SetBody(v *ListTablesResponseBody) *ListTablesRespo
 }
 
 type ListTaskFlowRequest struct {
-	DagId         *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
-	DagInstanceId *int64 `json:"DagInstanceId,omitempty" xml:"DagInstanceId,omitempty"`
-	Tid           *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+	Tid *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
 }
 
 func (s ListTaskFlowRequest) String() string {
@@ -17298,16 +17465,6 @@ func (s ListTaskFlowRequest) String() string {
 
 func (s ListTaskFlowRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListTaskFlowRequest) SetDagId(v int64) *ListTaskFlowRequest {
-	s.DagId = &v
-	return s
-}
-
-func (s *ListTaskFlowRequest) SetDagInstanceId(v int64) *ListTaskFlowRequest {
-	s.DagInstanceId = &v
-	return s
 }
 
 func (s *ListTaskFlowRequest) SetTid(v int64) *ListTaskFlowRequest {
@@ -25121,6 +25278,62 @@ func (client *Client) ListColumns(request *ListColumnsRequest) (_result *ListCol
 	return _result, _err
 }
 
+func (client *Client) ListDAGVersionsWithOptions(request *ListDAGVersionsRequest, runtime *util.RuntimeOptions) (_result *ListDAGVersionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageIndex)) {
+		query["PageIndex"] = request.PageIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDAGVersions"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDAGVersionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDAGVersions(request *ListDAGVersionsRequest) (_result *ListDAGVersionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDAGVersionsResponse{}
+	_body, _err := client.ListDAGVersionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListDBTaskSQLJobWithOptions(request *ListDBTaskSQLJobRequest, runtime *util.RuntimeOptions) (_result *ListDBTaskSQLJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26629,14 +26842,6 @@ func (client *Client) ListTaskFlowWithOptions(request *ListTaskFlowRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DagId)) {
-		query["DagId"] = request.DagId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DagInstanceId)) {
-		query["DagInstanceId"] = request.DagInstanceId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Tid)) {
 		query["Tid"] = request.Tid
 	}
