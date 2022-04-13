@@ -5,11 +5,14 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-fc/client"
+	
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
+	
 )
 
 type AccelerationInfo struct {
@@ -1424,6 +1427,31 @@ func (s *StatefulAsyncInvocationEvent) SetTimestamp(v int64) *StatefulAsyncInvoc
 	return s
 }
 
+type TLSConfig struct {
+	// TLS加密套件列表
+	CipherSuites []*string `json:"cipherSuites,omitempty" xml:"cipherSuites,omitempty" type:"Repeated"`
+	// TLS最小版本号
+	MinVersion *string `json:"minVersion,omitempty" xml:"minVersion,omitempty"`
+}
+
+func (s TLSConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TLSConfig) GoString() string {
+	return s.String()
+}
+
+func (s *TLSConfig) SetCipherSuites(v []*string) *TLSConfig {
+	s.CipherSuites = v
+	return s
+}
+
+func (s *TLSConfig) SetMinVersion(v string) *TLSConfig {
+	s.MinVersion = &v
+	return s
+}
+
 type TargetTrackingPolicies struct {
 	// endTime
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
@@ -1776,6 +1804,7 @@ type CreateCustomDomainRequest struct {
 	DomainName  *string      `json:"domainName,omitempty" xml:"domainName,omitempty"`
 	Protocol    *string      `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
+	TlsConfig   *TLSConfig   `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
 }
 
 func (s CreateCustomDomainRequest) String() string {
@@ -1806,6 +1835,11 @@ func (s *CreateCustomDomainRequest) SetRouteConfig(v *RouteConfig) *CreateCustom
 	return s
 }
 
+func (s *CreateCustomDomainRequest) SetTlsConfig(v *TLSConfig) *CreateCustomDomainRequest {
+	s.TlsConfig = v
+	return s
+}
+
 type CreateCustomDomainResponseBody struct {
 	AccountId   *string     `json:"accountId,omitempty" xml:"accountId,omitempty"`
 	ApiVersion  *string     `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
@@ -1816,6 +1850,7 @@ type CreateCustomDomainResponseBody struct {
 	LastModifiedTime *string      `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	Protocol         *string      `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	RouteConfig      *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
+	TlsConfig        *TLSConfig   `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
 }
 
 func (s CreateCustomDomainResponseBody) String() string {
@@ -1863,6 +1898,11 @@ func (s *CreateCustomDomainResponseBody) SetProtocol(v string) *CreateCustomDoma
 
 func (s *CreateCustomDomainResponseBody) SetRouteConfig(v *RouteConfig) *CreateCustomDomainResponseBody {
 	s.RouteConfig = v
+	return s
+}
+
+func (s *CreateCustomDomainResponseBody) SetTlsConfig(v *TLSConfig) *CreateCustomDomainResponseBody {
+	s.TlsConfig = v
 	return s
 }
 
@@ -3768,6 +3808,7 @@ type GetCustomDomainResponseBody struct {
 	LastModifiedTime *string      `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	Protocol         *string      `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	RouteConfig      *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
+	TlsConfig        *TLSConfig   `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
 }
 
 func (s GetCustomDomainResponseBody) String() string {
@@ -3815,6 +3856,11 @@ func (s *GetCustomDomainResponseBody) SetProtocol(v string) *GetCustomDomainResp
 
 func (s *GetCustomDomainResponseBody) SetRouteConfig(v *RouteConfig) *GetCustomDomainResponseBody {
 	s.RouteConfig = v
+	return s
+}
+
+func (s *GetCustomDomainResponseBody) SetTlsConfig(v *TLSConfig) *GetCustomDomainResponseBody {
+	s.TlsConfig = v
 	return s
 }
 
@@ -5497,6 +5543,7 @@ type ListCustomDomainsResponseBodyCustomDomains struct {
 	LastModifiedTime *string      `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	Protocol         *string      `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	RouteConfig      *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
+	TlsConfig        *TLSConfig   `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
 }
 
 func (s ListCustomDomainsResponseBodyCustomDomains) String() string {
@@ -5544,6 +5591,11 @@ func (s *ListCustomDomainsResponseBodyCustomDomains) SetProtocol(v string) *List
 
 func (s *ListCustomDomainsResponseBodyCustomDomains) SetRouteConfig(v *RouteConfig) *ListCustomDomainsResponseBodyCustomDomains {
 	s.RouteConfig = v
+	return s
+}
+
+func (s *ListCustomDomainsResponseBodyCustomDomains) SetTlsConfig(v *TLSConfig) *ListCustomDomainsResponseBodyCustomDomains {
+	s.TlsConfig = v
 	return s
 }
 
@@ -8924,6 +8976,7 @@ type UpdateCustomDomainRequest struct {
 	CertConfig  *CertConfig  `json:"certConfig,omitempty" xml:"certConfig,omitempty"`
 	Protocol    *string      `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	RouteConfig *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
+	TlsConfig   *TLSConfig   `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
 }
 
 func (s UpdateCustomDomainRequest) String() string {
@@ -8949,6 +9002,11 @@ func (s *UpdateCustomDomainRequest) SetRouteConfig(v *RouteConfig) *UpdateCustom
 	return s
 }
 
+func (s *UpdateCustomDomainRequest) SetTlsConfig(v *TLSConfig) *UpdateCustomDomainRequest {
+	s.TlsConfig = v
+	return s
+}
+
 type UpdateCustomDomainResponseBody struct {
 	AccountId        *string      `json:"accountId,omitempty" xml:"accountId,omitempty"`
 	ApiVersion       *string      `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
@@ -8958,6 +9016,7 @@ type UpdateCustomDomainResponseBody struct {
 	LastModifiedTime *string      `json:"lastModifiedTime,omitempty" xml:"lastModifiedTime,omitempty"`
 	Protocol         *string      `json:"protocol,omitempty" xml:"protocol,omitempty"`
 	RouteConfig      *RouteConfig `json:"routeConfig,omitempty" xml:"routeConfig,omitempty"`
+	TlsConfig        *TLSConfig   `json:"tlsConfig,omitempty" xml:"tlsConfig,omitempty"`
 }
 
 func (s UpdateCustomDomainResponseBody) String() string {
@@ -9005,6 +9064,11 @@ func (s *UpdateCustomDomainResponseBody) SetProtocol(v string) *UpdateCustomDoma
 
 func (s *UpdateCustomDomainResponseBody) SetRouteConfig(v *RouteConfig) *UpdateCustomDomainResponseBody {
 	s.RouteConfig = v
+	return s
+}
+
+func (s *UpdateCustomDomainResponseBody) SetTlsConfig(v *TLSConfig) *UpdateCustomDomainResponseBody {
+	s.TlsConfig = v
 	return s
 }
 
@@ -9789,6 +9853,12 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	interfaceSPI, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = interfaceSPI
 	client.EndpointRule = tea.String("regional")
 	client.EndpointMap = map[string]*string{
 		"ap-northeast-1":      tea.String("account-id.ap-northeast-1.fc.aliyuncs.com"),
@@ -9912,7 +9982,7 @@ func (client *Client) CreateAliasWithOptions(serviceName *string, request *Creat
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAliasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9954,6 +10024,10 @@ func (client *Client) CreateCustomDomainWithOptions(request *CreateCustomDomainR
 		body["routeConfig"] = request.RouteConfig
 	}
 
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TlsConfig))) {
+		body["tlsConfig"] = request.TlsConfig
+	}
+
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -9987,7 +10061,7 @@ func (client *Client) CreateCustomDomainWithOptions(request *CreateCustomDomainR
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateCustomDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10123,7 +10197,7 @@ func (client *Client) CreateFunctionWithOptions(serviceName *string, request *Cr
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateFunctionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10195,7 +10269,7 @@ func (client *Client) CreateLayerVersionWithOptions(layerName *string, request *
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateLayerVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10286,7 +10360,7 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, he
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10375,7 +10449,7 @@ func (client *Client) CreateTriggerWithOptions(serviceName *string, functionName
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateTriggerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10439,7 +10513,7 @@ func (client *Client) CreateVpcBindingWithOptions(serviceName *string, request *
 		BodyType:    tea.String("none"),
 	}
 	_result = &CreateVpcBindingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10498,7 +10572,7 @@ func (client *Client) DeleteAliasWithOptions(serviceName *string, aliasName *str
 		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteAliasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10552,7 +10626,7 @@ func (client *Client) DeleteCustomDomainWithOptions(domainName *string, headers 
 		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteCustomDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10611,7 +10685,7 @@ func (client *Client) DeleteFunctionWithOptions(serviceName *string, functionNam
 		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteFunctionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10676,7 +10750,7 @@ func (client *Client) DeleteFunctionAsyncInvokeConfigWithOptions(serviceName *st
 		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteFunctionAsyncInvokeConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10745,7 +10819,7 @@ func (client *Client) DeleteFunctionOnDemandConfigWithOptions(serviceName *strin
 		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteFunctionOnDemandConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10800,7 +10874,7 @@ func (client *Client) DeleteLayerVersionWithOptions(layerName *string, version *
 		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteLayerVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10858,7 +10932,7 @@ func (client *Client) DeleteServiceWithOptions(serviceName *string, headers *Del
 		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10913,7 +10987,7 @@ func (client *Client) DeleteServiceVersionWithOptions(serviceName *string, versi
 		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteServiceVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10973,7 +11047,7 @@ func (client *Client) DeleteTriggerWithOptions(serviceName *string, functionName
 		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteTriggerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11028,7 +11102,7 @@ func (client *Client) DeleteVpcBindingWithOptions(serviceName *string, vpcId *st
 		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteVpcBindingResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11094,7 +11168,7 @@ func (client *Client) DeregisterEventSourceWithOptions(serviceName *string, func
 		BodyType:    tea.String("none"),
 	}
 	_result = &DeregisterEventSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11147,7 +11221,7 @@ func (client *Client) GetAccountSettingsWithOptions(headers *GetAccountSettingsH
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAccountSettingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11202,7 +11276,7 @@ func (client *Client) GetAliasWithOptions(serviceName *string, aliasName *string
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetAliasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11256,7 +11330,7 @@ func (client *Client) GetCustomDomainWithOptions(domainName *string, headers *Ge
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetCustomDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11321,7 +11395,7 @@ func (client *Client) GetFunctionWithOptions(serviceName *string, functionName *
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetFunctionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11386,7 +11460,7 @@ func (client *Client) GetFunctionAsyncInvokeConfigWithOptions(serviceName *strin
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetFunctionAsyncInvokeConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11451,7 +11525,7 @@ func (client *Client) GetFunctionCodeWithOptions(serviceName *string, functionNa
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetFunctionCodeResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11516,7 +11590,7 @@ func (client *Client) GetFunctionOnDemandConfigWithOptions(serviceName *string, 
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetFunctionOnDemandConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11571,7 +11645,7 @@ func (client *Client) GetLayerVersionWithOptions(layerName *string, version *str
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetLayerVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11636,7 +11710,7 @@ func (client *Client) GetProvisionConfigWithOptions(serviceName *string, functio
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetProvisionConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11699,7 +11773,7 @@ func (client *Client) GetResourceTagsWithOptions(request *GetResourceTagsRequest
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetResourceTagsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11763,7 +11837,7 @@ func (client *Client) GetServiceWithOptions(serviceName *string, request *GetSer
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11841,7 +11915,7 @@ func (client *Client) GetStatefulAsyncInvocationWithOptions(serviceName *string,
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetStatefulAsyncInvocationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11897,7 +11971,7 @@ func (client *Client) GetTriggerWithOptions(serviceName *string, functionName *s
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetTriggerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11975,7 +12049,7 @@ func (client *Client) InvokeFunctionWithOptions(serviceName *string, functionNam
 		BodyType:    tea.String("byte"),
 	}
 	_result = &InvokeFunctionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12051,7 +12125,7 @@ func (client *Client) ListAliasesWithOptions(serviceName *string, request *ListA
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListAliasesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12126,7 +12200,7 @@ func (client *Client) ListCustomDomainsWithOptions(request *ListCustomDomainsReq
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListCustomDomainsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12191,7 +12265,7 @@ func (client *Client) ListEventSourcesWithOptions(serviceName *string, functionN
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListEventSourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12272,7 +12346,7 @@ func (client *Client) ListFunctionAsyncInvokeConfigsWithOptions(serviceName *str
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListFunctionAsyncInvokeConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12352,7 +12426,7 @@ func (client *Client) ListFunctionsWithOptions(serviceName *string, request *Lis
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListFunctionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12420,7 +12494,7 @@ func (client *Client) ListLayerVersionsWithOptions(layerName *string, request *L
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListLayerVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12495,7 +12569,7 @@ func (client *Client) ListLayersWithOptions(request *ListLayersRequest, headers 
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListLayersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12570,7 +12644,7 @@ func (client *Client) ListOnDemandConfigsWithOptions(request *ListOnDemandConfig
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListOnDemandConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12645,7 +12719,7 @@ func (client *Client) ListProvisionConfigsWithOptions(request *ListProvisionConf
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListProvisionConfigsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12712,7 +12786,7 @@ func (client *Client) ListReservedCapacitiesWithOptions(request *ListReservedCap
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListReservedCapacitiesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12788,7 +12862,7 @@ func (client *Client) ListServiceVersionsWithOptions(serviceName *string, reques
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListServiceVersionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12863,7 +12937,7 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, head
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListServicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12930,7 +13004,7 @@ func (client *Client) ListStatefulAsyncInvocationFunctionsWithOptions(request *L
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListStatefulAsyncInvocationFunctionsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13039,7 +13113,7 @@ func (client *Client) ListStatefulAsyncInvocationsWithOptions(serviceName *strin
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListStatefulAsyncInvocationsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13106,7 +13180,7 @@ func (client *Client) ListTaggedResourcesWithOptions(request *ListTaggedResource
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTaggedResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13183,7 +13257,7 @@ func (client *Client) ListTriggersWithOptions(serviceName *string, functionName 
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListTriggersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13237,7 +13311,7 @@ func (client *Client) ListVpcBindingsWithOptions(serviceName *string, headers *L
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListVpcBindingsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13305,7 +13379,7 @@ func (client *Client) PublishServiceVersionWithOptions(serviceName *string, requ
 		BodyType:    tea.String("json"),
 	}
 	_result = &PublishServiceVersionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13388,7 +13462,7 @@ func (client *Client) PutFunctionAsyncInvokeConfigWithOptions(serviceName *strin
 		BodyType:    tea.String("json"),
 	}
 	_result = &PutFunctionAsyncInvokeConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13463,7 +13537,7 @@ func (client *Client) PutFunctionOnDemandConfigWithOptions(serviceName *string, 
 		BodyType:    tea.String("json"),
 	}
 	_result = &PutFunctionOnDemandConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13546,7 +13620,7 @@ func (client *Client) PutProvisionConfigWithOptions(serviceName *string, functio
 		BodyType:    tea.String("json"),
 	}
 	_result = &PutProvisionConfigResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13617,7 +13691,7 @@ func (client *Client) RegisterEventSourceWithOptions(serviceName *string, functi
 		BodyType:    tea.String("json"),
 	}
 	_result = &RegisterEventSourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13683,7 +13757,7 @@ func (client *Client) StopStatefulAsyncInvocationWithOptions(serviceName *string
 		BodyType:    tea.String("none"),
 	}
 	_result = &StopStatefulAsyncInvocationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13750,7 +13824,7 @@ func (client *Client) TagResourceWithOptions(request *TagResourceRequest, header
 		BodyType:    tea.String("none"),
 	}
 	_result = &TagResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13821,7 +13895,7 @@ func (client *Client) UntagResourceWithOptions(request *UntagResourceRequest, he
 		BodyType:    tea.String("none"),
 	}
 	_result = &UntagResourceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13898,7 +13972,7 @@ func (client *Client) UpdateAliasWithOptions(serviceName *string, aliasName *str
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAliasResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13937,6 +14011,10 @@ func (client *Client) UpdateCustomDomainWithOptions(domainName *string, request 
 		body["routeConfig"] = request.RouteConfig
 	}
 
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TlsConfig))) {
+		body["tlsConfig"] = request.TlsConfig
+	}
+
 	realHeaders := make(map[string]*string)
 	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
 		realHeaders = headers.CommonHeaders
@@ -13970,7 +14048,7 @@ func (client *Client) UpdateCustomDomainWithOptions(domainName *string, request 
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateCustomDomainResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14107,7 +14185,7 @@ func (client *Client) UpdateFunctionWithOptions(serviceName *string, functionNam
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateFunctionResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14199,7 +14277,7 @@ func (client *Client) UpdateServiceWithOptions(serviceName *string, request *Upd
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateServiceResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14281,10 +14359,26 @@ func (client *Client) UpdateTriggerWithOptions(serviceName *string, functionName
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateTriggerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
+	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SignRequest(request *gatewayclient.HttpRequest) (_result map[string]interface{}, _err error) {
+	cred := client.Credential
+	gateway, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = make(map[string]interface{})
+	_body, _err := gateway.SignRequest(request, cred)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
