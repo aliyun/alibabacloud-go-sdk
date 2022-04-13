@@ -15917,10 +15917,10 @@ func (s *ListK8sConfigMapsRequest) SetShowRelatedApps(v bool) *ListK8sConfigMaps
 }
 
 type ListK8sConfigMapsResponseBody struct {
-	Code      *int32                                 `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListK8sConfigMapsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Code      *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ListK8sConfigMapsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListK8sConfigMapsResponseBody) String() string {
@@ -15946,7 +15946,7 @@ func (s *ListK8sConfigMapsResponseBody) SetRequestId(v string) *ListK8sConfigMap
 	return s
 }
 
-func (s *ListK8sConfigMapsResponseBody) SetResult(v []*ListK8sConfigMapsResponseBodyResult) *ListK8sConfigMapsResponseBody {
+func (s *ListK8sConfigMapsResponseBody) SetResult(v *ListK8sConfigMapsResponseBodyResult) *ListK8sConfigMapsResponseBody {
 	s.Result = v
 	return s
 }
@@ -16442,10 +16442,10 @@ func (s *ListK8sSecretsRequest) SetShowRelatedApps(v bool) *ListK8sSecretsReques
 }
 
 type ListK8sSecretsResponseBody struct {
-	Code      *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    []*ListK8sSecretsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	Code      *int32                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string                           `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *ListK8sSecretsResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
 func (s ListK8sSecretsResponseBody) String() string {
@@ -16471,7 +16471,7 @@ func (s *ListK8sSecretsResponseBody) SetRequestId(v string) *ListK8sSecretsRespo
 	return s
 }
 
-func (s *ListK8sSecretsResponseBody) SetResult(v []*ListK8sSecretsResponseBodyResult) *ListK8sSecretsResponseBody {
+func (s *ListK8sSecretsResponseBody) SetResult(v *ListK8sSecretsResponseBodyResult) *ListK8sSecretsResponseBody {
 	s.Result = v
 	return s
 }
@@ -16592,7 +16592,6 @@ type ListK8sSecretsResponseBodyResultSecretsCertDetail struct {
 	DomainNames []*string `json:"DomainNames,omitempty" xml:"DomainNames,omitempty" type:"Repeated"`
 	EndTime     *string   `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Issuer      *string   `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	KeySize     *int32    `json:"KeySize,omitempty" xml:"KeySize,omitempty"`
 	StartTime   *string   `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Status      *string   `json:"Status,omitempty" xml:"Status,omitempty"`
 }
@@ -16617,11 +16616,6 @@ func (s *ListK8sSecretsResponseBodyResultSecretsCertDetail) SetEndTime(v string)
 
 func (s *ListK8sSecretsResponseBodyResultSecretsCertDetail) SetIssuer(v string) *ListK8sSecretsResponseBodyResultSecretsCertDetail {
 	s.Issuer = &v
-	return s
-}
-
-func (s *ListK8sSecretsResponseBodyResultSecretsCertDetail) SetKeySize(v int32) *ListK8sSecretsResponseBodyResultSecretsCertDetail {
-	s.KeySize = &v
 	return s
 }
 
