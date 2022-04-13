@@ -1893,6 +1893,8 @@ type CreateWorkitemRequest struct {
 	DescriptionFormat *string `json:"descriptionFormat,omitempty" xml:"descriptionFormat,omitempty"`
 	// 自定义字段
 	FieldValueList []*CreateWorkitemRequestFieldValueList `json:"fieldValueList,omitempty" xml:"fieldValueList,omitempty" type:"Repeated"`
+	// 所属父工作项的唯一标识
+	Parent *string `json:"parent,omitempty" xml:"parent,omitempty"`
 	// 参与人id列表，或者企业名称列表
 	Participant []*string `json:"participant,omitempty" xml:"participant,omitempty" type:"Repeated"`
 	// 项目id
@@ -1943,6 +1945,11 @@ func (s *CreateWorkitemRequest) SetDescriptionFormat(v string) *CreateWorkitemRe
 
 func (s *CreateWorkitemRequest) SetFieldValueList(v []*CreateWorkitemRequestFieldValueList) *CreateWorkitemRequest {
 	s.FieldValueList = v
+	return s
+}
+
+func (s *CreateWorkitemRequest) SetParent(v string) *CreateWorkitemRequest {
+	s.Parent = &v
 	return s
 }
 
@@ -11573,6 +11580,8 @@ func (s *ListWorkItemWorkFlowStatusResponse) SetBody(v *ListWorkItemWorkFlowStat
 type ListWorkitemsRequest struct {
 	// 工作项类型，需求为Req，缺陷为Bug，任务为Task，风险为Risk
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
+	// 过滤条件
+	Conditions *string `json:"conditions,omitempty" xml:"conditions,omitempty"`
 	// 每页最大返回数量，0-200，默认值20
 	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	// 分页中的起始序列
@@ -11593,6 +11602,11 @@ func (s ListWorkitemsRequest) GoString() string {
 
 func (s *ListWorkitemsRequest) SetCategory(v string) *ListWorkitemsRequest {
 	s.Category = &v
+	return s
+}
+
+func (s *ListWorkitemsRequest) SetConditions(v string) *ListWorkitemsRequest {
+	s.Conditions = &v
 	return s
 }
 
@@ -15100,6 +15114,10 @@ func (client *Client) CreateWorkitemWithOptions(organizationId *string, request 
 		body["fieldValueList"] = request.FieldValueList
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Parent)) {
+		body["parent"] = request.Parent
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Participant)) {
 		body["participant"] = request.Participant
 	}
@@ -17663,6 +17681,10 @@ func (client *Client) ListWorkitemsWithOptions(organizationId *string, request *
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Category)) {
 		query["category"] = request.Category
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Conditions)) {
+		query["conditions"] = request.Conditions
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
