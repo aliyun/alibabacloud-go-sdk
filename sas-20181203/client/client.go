@@ -1261,6 +1261,7 @@ func (s *DescribeAccesskeyLeakListResponse) SetBody(v *DescribeAccesskeyLeakList
 }
 
 type DescribeAffectedMaliciousFileImagesRequest struct {
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	ImageDigest    *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
 	ImageLayer     *string `json:"ImageLayer,omitempty" xml:"ImageLayer,omitempty"`
@@ -1281,6 +1282,11 @@ func (s DescribeAffectedMaliciousFileImagesRequest) String() string {
 
 func (s DescribeAffectedMaliciousFileImagesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAffectedMaliciousFileImagesRequest) SetClusterId(v string) *DescribeAffectedMaliciousFileImagesRequest {
+	s.ClusterId = &v
+	return s
 }
 
 func (s *DescribeAffectedMaliciousFileImagesRequest) SetCurrentPage(v int32) *DescribeAffectedMaliciousFileImagesRequest {
@@ -1374,8 +1380,10 @@ func (s *DescribeAffectedMaliciousFileImagesResponseBody) SetRequestId(v string)
 
 type DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse struct {
 	Digest                *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	DownloadUrl           *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
 	FilePath              *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
 	FirstScanTimestamp    *int64  `json:"FirstScanTimestamp,omitempty" xml:"FirstScanTimestamp,omitempty"`
+	HighLight             *string `json:"HighLight,omitempty" xml:"HighLight,omitempty"`
 	ImageUuid             *string `json:"ImageUuid,omitempty" xml:"ImageUuid,omitempty"`
 	LatestScanTimestamp   *int64  `json:"LatestScanTimestamp,omitempty" xml:"LatestScanTimestamp,omitempty"`
 	LatestVerifyTimestamp *int64  `json:"LatestVerifyTimestamp,omitempty" xml:"LatestVerifyTimestamp,omitempty"`
@@ -1404,6 +1412,11 @@ func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileIma
 	return s
 }
 
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetDownloadUrl(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
+	s.DownloadUrl = &v
+	return s
+}
+
 func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetFilePath(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
 	s.FilePath = &v
 	return s
@@ -1411,6 +1424,11 @@ func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileIma
 
 func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetFirstScanTimestamp(v int64) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
 	s.FirstScanTimestamp = &v
+	return s
+}
+
+func (s *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse) SetHighLight(v string) *DescribeAffectedMaliciousFileImagesResponseBodyAffectedMaliciousFileImagesResponse {
+	s.HighLight = &v
 	return s
 }
 
@@ -4112,16 +4130,20 @@ func (s *DescribeCheckWarningDetailResponse) SetBody(v *DescribeCheckWarningDeta
 }
 
 type DescribeCheckWarningSummaryRequest struct {
-	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RiskName    *string `json:"RiskName,omitempty" xml:"RiskName,omitempty"`
-	RiskStatus  *int32  `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
-	SourceIp    *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	StrategyId  *int64  `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
-	TypeName    *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
-	Uuids       *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ContainerFieldName  *string `json:"ContainerFieldName,omitempty" xml:"ContainerFieldName,omitempty"`
+	ContainerFieldValue *string `json:"ContainerFieldValue,omitempty" xml:"ContainerFieldValue,omitempty"`
+	CurrentPage         *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	Lang                *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RiskName            *string `json:"RiskName,omitempty" xml:"RiskName,omitempty"`
+	RiskStatus          *int32  `json:"RiskStatus,omitempty" xml:"RiskStatus,omitempty"`
+	SourceIp            *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StrategyId          *int64  `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+	TargetType          *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	TypeName            *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
+	Uuids               *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 
 func (s DescribeCheckWarningSummaryRequest) String() string {
@@ -4130,6 +4152,21 @@ func (s DescribeCheckWarningSummaryRequest) String() string {
 
 func (s DescribeCheckWarningSummaryRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCheckWarningSummaryRequest) SetClusterId(v string) *DescribeCheckWarningSummaryRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeCheckWarningSummaryRequest) SetContainerFieldName(v string) *DescribeCheckWarningSummaryRequest {
+	s.ContainerFieldName = &v
+	return s
+}
+
+func (s *DescribeCheckWarningSummaryRequest) SetContainerFieldValue(v string) *DescribeCheckWarningSummaryRequest {
+	s.ContainerFieldValue = &v
+	return s
 }
 
 func (s *DescribeCheckWarningSummaryRequest) SetCurrentPage(v int32) *DescribeCheckWarningSummaryRequest {
@@ -4169,6 +4206,11 @@ func (s *DescribeCheckWarningSummaryRequest) SetStatus(v string) *DescribeCheckW
 
 func (s *DescribeCheckWarningSummaryRequest) SetStrategyId(v int64) *DescribeCheckWarningSummaryRequest {
 	s.StrategyId = &v
+	return s
+}
+
+func (s *DescribeCheckWarningSummaryRequest) SetTargetType(v string) *DescribeCheckWarningSummaryRequest {
+	s.TargetType = &v
 	return s
 }
 
@@ -7703,6 +7745,7 @@ func (s *DescribeGroupedInstancesResponse) SetBody(v *DescribeGroupedInstancesRe
 }
 
 type DescribeGroupedMaliciousFilesRequest struct {
+	ClusterId          *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	CurrentPage        *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	FuzzyMaliciousName *string `json:"FuzzyMaliciousName,omitempty" xml:"FuzzyMaliciousName,omitempty"`
 	ImageDigest        *string `json:"ImageDigest,omitempty" xml:"ImageDigest,omitempty"`
@@ -7724,6 +7767,11 @@ func (s DescribeGroupedMaliciousFilesRequest) String() string {
 
 func (s DescribeGroupedMaliciousFilesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeGroupedMaliciousFilesRequest) SetClusterId(v string) *DescribeGroupedMaliciousFilesRequest {
+	s.ClusterId = &v
+	return s
 }
 
 func (s *DescribeGroupedMaliciousFilesRequest) SetCurrentPage(v int32) *DescribeGroupedMaliciousFilesRequest {
@@ -8422,6 +8470,7 @@ func (s *DescribeHoneyPotSuspStatisticsResponse) SetBody(v *DescribeHoneyPotSusp
 }
 
 type DescribeImageBaselineCheckSummaryRequest struct {
+	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	Criteria     *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
 	CriteriaType *string `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
 	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -8436,6 +8485,11 @@ func (s DescribeImageBaselineCheckSummaryRequest) String() string {
 
 func (s DescribeImageBaselineCheckSummaryRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeImageBaselineCheckSummaryRequest) SetClusterId(v string) *DescribeImageBaselineCheckSummaryRequest {
+	s.ClusterId = &v
+	return s
 }
 
 func (s *DescribeImageBaselineCheckSummaryRequest) SetCriteria(v string) *DescribeImageBaselineCheckSummaryRequest {
@@ -8846,6 +8900,7 @@ func (s *DescribeImageFixTaskResponse) SetBody(v *DescribeImageFixTaskResponseBo
 
 type DescribeImageGroupedVulListRequest struct {
 	AliasName      *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	CveId          *string `json:"CveId,omitempty" xml:"CveId,omitempty"`
 	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -8877,6 +8932,11 @@ func (s DescribeImageGroupedVulListRequest) GoString() string {
 
 func (s *DescribeImageGroupedVulListRequest) SetAliasName(v string) *DescribeImageGroupedVulListRequest {
 	s.AliasName = &v
+	return s
+}
+
+func (s *DescribeImageGroupedVulListRequest) SetClusterId(v string) *DescribeImageGroupedVulListRequest {
+	s.ClusterId = &v
 	return s
 }
 
@@ -9112,6 +9172,7 @@ func (s *DescribeImageGroupedVulListResponse) SetBody(v *DescribeImageGroupedVul
 
 type DescribeImageListWithBaselineNameRequest struct {
 	BaselineNameKey *string `json:"BaselineNameKey,omitempty" xml:"BaselineNameKey,omitempty"`
+	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	Criteria        *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
 	CriteriaType    *string `json:"CriteriaType,omitempty" xml:"CriteriaType,omitempty"`
 	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
@@ -9133,6 +9194,11 @@ func (s DescribeImageListWithBaselineNameRequest) GoString() string {
 
 func (s *DescribeImageListWithBaselineNameRequest) SetBaselineNameKey(v string) *DescribeImageListWithBaselineNameRequest {
 	s.BaselineNameKey = &v
+	return s
+}
+
+func (s *DescribeImageListWithBaselineNameRequest) SetClusterId(v string) *DescribeImageListWithBaselineNameRequest {
+	s.ClusterId = &v
 	return s
 }
 
@@ -9522,6 +9588,7 @@ func (s *DescribeImageStatisticsResponse) SetBody(v *DescribeImageStatisticsResp
 
 type DescribeImageVulListRequest struct {
 	AliasName      *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Dealed         *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
 	Digest         *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
@@ -9552,6 +9619,11 @@ func (s DescribeImageVulListRequest) GoString() string {
 
 func (s *DescribeImageVulListRequest) SetAliasName(v string) *DescribeImageVulListRequest {
 	s.AliasName = &v
+	return s
+}
+
+func (s *DescribeImageVulListRequest) SetClusterId(v string) *DescribeImageVulListRequest {
+	s.ClusterId = &v
 	return s
 }
 
@@ -11165,7 +11237,6 @@ func (s *DescribePropertyCronDetailResponseBodyPageInfo) SetTotalCount(v int32) 
 
 type DescribePropertyCronDetailResponseBodyPropertys struct {
 	Cmd             *string `json:"Cmd,omitempty" xml:"Cmd,omitempty"`
-	Create          *string `json:"Create,omitempty" xml:"Create,omitempty"`
 	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
@@ -11189,11 +11260,6 @@ func (s DescribePropertyCronDetailResponseBodyPropertys) GoString() string {
 
 func (s *DescribePropertyCronDetailResponseBodyPropertys) SetCmd(v string) *DescribePropertyCronDetailResponseBodyPropertys {
 	s.Cmd = &v
-	return s
-}
-
-func (s *DescribePropertyCronDetailResponseBodyPropertys) SetCreate(v string) *DescribePropertyCronDetailResponseBodyPropertys {
-	s.Create = &v
 	return s
 }
 
@@ -11400,7 +11466,6 @@ func (s *DescribePropertyPortDetailResponseBodyPageInfo) SetTotalCount(v int32) 
 
 type DescribePropertyPortDetailResponseBodyPropertys struct {
 	BindIp          *string `json:"BindIp,omitempty" xml:"BindIp,omitempty"`
-	Create          *string `json:"Create,omitempty" xml:"Create,omitempty"`
 	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
@@ -11424,11 +11489,6 @@ func (s DescribePropertyPortDetailResponseBodyPropertys) GoString() string {
 
 func (s *DescribePropertyPortDetailResponseBodyPropertys) SetBindIp(v string) *DescribePropertyPortDetailResponseBodyPropertys {
 	s.BindIp = &v
-	return s
-}
-
-func (s *DescribePropertyPortDetailResponseBodyPropertys) SetCreate(v string) *DescribePropertyPortDetailResponseBodyPropertys {
-	s.Create = &v
 	return s
 }
 
@@ -11798,7 +11858,6 @@ func (s *DescribePropertyProcDetailResponseBodyPageInfo) SetTotalCount(v int32) 
 
 type DescribePropertyProcDetailResponseBodyPropertys struct {
 	Cmdline         *string `json:"Cmdline,omitempty" xml:"Cmdline,omitempty"`
-	Create          *string `json:"Create,omitempty" xml:"Create,omitempty"`
 	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
 	EuidName        *string `json:"EuidName,omitempty" xml:"EuidName,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -11828,11 +11887,6 @@ func (s DescribePropertyProcDetailResponseBodyPropertys) GoString() string {
 
 func (s *DescribePropertyProcDetailResponseBodyPropertys) SetCmdline(v string) *DescribePropertyProcDetailResponseBodyPropertys {
 	s.Cmdline = &v
-	return s
-}
-
-func (s *DescribePropertyProcDetailResponseBodyPropertys) SetCreate(v string) *DescribePropertyProcDetailResponseBodyPropertys {
-	s.Create = &v
 	return s
 }
 
@@ -12285,34 +12339,34 @@ func (s *DescribePropertyScaDetailResponseBodyPageInfo) SetTotalCount(v int32) *
 }
 
 type DescribePropertyScaDetailResponseBodyPropertys struct {
-	BizType         *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	BizTypeDispaly  *string `json:"BizTypeDispaly,omitempty" xml:"BizTypeDispaly,omitempty"`
-	Cmdline         *string `json:"Cmdline,omitempty" xml:"Cmdline,omitempty"`
-	ConfigPath      *string `json:"ConfigPath,omitempty" xml:"ConfigPath,omitempty"`
-	ContainerName   *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
-	Create          *string `json:"Create,omitempty" xml:"Create,omitempty"`
-	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
-	ImageName       *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
-	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName    *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	InternetIp      *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	IntranetIp      *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	Ip              *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	ListenIp        *string `json:"ListenIp,omitempty" xml:"ListenIp,omitempty"`
-	ListenProtocol  *string `json:"ListenProtocol,omitempty" xml:"ListenProtocol,omitempty"`
-	ListenStatus    *string `json:"ListenStatus,omitempty" xml:"ListenStatus,omitempty"`
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Path            *string `json:"Path,omitempty" xml:"Path,omitempty"`
-	Pid             *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	Port            *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	Ppid            *string `json:"Ppid,omitempty" xml:"Ppid,omitempty"`
-	ProcessStarted  *int64  `json:"ProcessStarted,omitempty" xml:"ProcessStarted,omitempty"`
-	ProcessUser     *string `json:"ProcessUser,omitempty" xml:"ProcessUser,omitempty"`
-	Proof           *string `json:"Proof,omitempty" xml:"Proof,omitempty"`
-	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uuid            *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-	Version         *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	WebPath         *string `json:"WebPath,omitempty" xml:"WebPath,omitempty"`
+	BizType           *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
+	BizTypeDispaly    *string `json:"BizTypeDispaly,omitempty" xml:"BizTypeDispaly,omitempty"`
+	Cmdline           *string `json:"Cmdline,omitempty" xml:"Cmdline,omitempty"`
+	ConfigPath        *string `json:"ConfigPath,omitempty" xml:"ConfigPath,omitempty"`
+	ContainerName     *string `json:"ContainerName,omitempty" xml:"ContainerName,omitempty"`
+	CreateTimestamp   *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
+	ImageName         *string `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName      *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InternetIp        *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	IntranetIp        *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
+	Ip                *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
+	ListenIp          *string `json:"ListenIp,omitempty" xml:"ListenIp,omitempty"`
+	ListenProtocol    *string `json:"ListenProtocol,omitempty" xml:"ListenProtocol,omitempty"`
+	ListenStatus      *string `json:"ListenStatus,omitempty" xml:"ListenStatus,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Path              *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	Pid               *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	Port              *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Ppid              *string `json:"Ppid,omitempty" xml:"Ppid,omitempty"`
+	ProcessStarted    *int64  `json:"ProcessStarted,omitempty" xml:"ProcessStarted,omitempty"`
+	ProcessUser       *string `json:"ProcessUser,omitempty" xml:"ProcessUser,omitempty"`
+	Proof             *string `json:"Proof,omitempty" xml:"Proof,omitempty"`
+	RuntimeEnvVersion *string `json:"RuntimeEnvVersion,omitempty" xml:"RuntimeEnvVersion,omitempty"`
+	Type              *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Uuid              *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+	Version           *string `json:"Version,omitempty" xml:"Version,omitempty"`
+	WebPath           *string `json:"WebPath,omitempty" xml:"WebPath,omitempty"`
 }
 
 func (s DescribePropertyScaDetailResponseBodyPropertys) String() string {
@@ -12345,11 +12399,6 @@ func (s *DescribePropertyScaDetailResponseBodyPropertys) SetConfigPath(v string)
 
 func (s *DescribePropertyScaDetailResponseBodyPropertys) SetContainerName(v string) *DescribePropertyScaDetailResponseBodyPropertys {
 	s.ContainerName = &v
-	return s
-}
-
-func (s *DescribePropertyScaDetailResponseBodyPropertys) SetCreate(v string) *DescribePropertyScaDetailResponseBodyPropertys {
-	s.Create = &v
 	return s
 }
 
@@ -12440,6 +12489,11 @@ func (s *DescribePropertyScaDetailResponseBodyPropertys) SetProcessUser(v string
 
 func (s *DescribePropertyScaDetailResponseBodyPropertys) SetProof(v string) *DescribePropertyScaDetailResponseBodyPropertys {
 	s.Proof = &v
+	return s
+}
+
+func (s *DescribePropertyScaDetailResponseBodyPropertys) SetRuntimeEnvVersion(v string) *DescribePropertyScaDetailResponseBodyPropertys {
+	s.RuntimeEnvVersion = &v
 	return s
 }
 
@@ -12622,7 +12676,6 @@ func (s *DescribePropertySoftwareDetailResponseBodyPageInfo) SetTotalCount(v int
 }
 
 type DescribePropertySoftwareDetailResponseBodyPropertys struct {
-	Create          *int64  `json:"Create,omitempty" xml:"Create,omitempty"`
 	CreateTimestamp *int64  `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
 	InstallTime     *string `json:"InstallTime,omitempty" xml:"InstallTime,omitempty"`
 	InstallTimeDt   *int64  `json:"InstallTimeDt,omitempty" xml:"InstallTimeDt,omitempty"`
@@ -12643,11 +12696,6 @@ func (s DescribePropertySoftwareDetailResponseBodyPropertys) String() string {
 
 func (s DescribePropertySoftwareDetailResponseBodyPropertys) GoString() string {
 	return s.String()
-}
-
-func (s *DescribePropertySoftwareDetailResponseBodyPropertys) SetCreate(v int64) *DescribePropertySoftwareDetailResponseBodyPropertys {
-	s.Create = &v
-	return s
 }
 
 func (s *DescribePropertySoftwareDetailResponseBodyPropertys) SetCreateTimestamp(v int64) *DescribePropertySoftwareDetailResponseBodyPropertys {
@@ -13107,7 +13155,6 @@ func (s *DescribePropertyUserDetailResponseBodyPageInfo) SetTotalCount(v int32) 
 
 type DescribePropertyUserDetailResponseBodyPropertys struct {
 	AccountsExpirationDate *string   `json:"AccountsExpirationDate,omitempty" xml:"AccountsExpirationDate,omitempty"`
-	Create                 *string   `json:"Create,omitempty" xml:"Create,omitempty"`
 	CreateTimestamp        *int64    `json:"CreateTimestamp,omitempty" xml:"CreateTimestamp,omitempty"`
 	GroupNames             []*string `json:"GroupNames,omitempty" xml:"GroupNames,omitempty" type:"Repeated"`
 	InstanceId             *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -13141,11 +13188,6 @@ func (s DescribePropertyUserDetailResponseBodyPropertys) GoString() string {
 
 func (s *DescribePropertyUserDetailResponseBodyPropertys) SetAccountsExpirationDate(v string) *DescribePropertyUserDetailResponseBodyPropertys {
 	s.AccountsExpirationDate = &v
-	return s
-}
-
-func (s *DescribePropertyUserDetailResponseBodyPropertys) SetCreate(v string) *DescribePropertyUserDetailResponseBodyPropertys {
-	s.Create = &v
 	return s
 }
 
@@ -17381,6 +17423,7 @@ type DescribeSuspEventsResponseBodySuspEvents struct {
 	LastTime              *string                                               `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
 	LastTimeStamp         *int64                                                `json:"LastTimeStamp,omitempty" xml:"LastTimeStamp,omitempty"`
 	Level                 *string                                               `json:"Level,omitempty" xml:"Level,omitempty"`
+	MaliciousRuleStatus   *string                                               `json:"MaliciousRuleStatus,omitempty" xml:"MaliciousRuleStatus,omitempty"`
 	MarkMisRules          *string                                               `json:"MarkMisRules,omitempty" xml:"MarkMisRules,omitempty"`
 	Name                  *string                                               `json:"Name,omitempty" xml:"Name,omitempty"`
 	OccurrenceTime        *string                                               `json:"OccurrenceTime,omitempty" xml:"OccurrenceTime,omitempty"`
@@ -17577,6 +17620,11 @@ func (s *DescribeSuspEventsResponseBodySuspEvents) SetLastTimeStamp(v int64) *De
 
 func (s *DescribeSuspEventsResponseBodySuspEvents) SetLevel(v string) *DescribeSuspEventsResponseBodySuspEvents {
 	s.Level = &v
+	return s
+}
+
+func (s *DescribeSuspEventsResponseBodySuspEvents) SetMaliciousRuleStatus(v string) *DescribeSuspEventsResponseBodySuspEvents {
+	s.MaliciousRuleStatus = &v
 	return s
 }
 
@@ -25665,6 +25713,10 @@ func (client *Client) DescribeAffectedMaliciousFileImagesWithOptions(request *De
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
 	}
@@ -26601,6 +26653,18 @@ func (client *Client) DescribeCheckWarningSummaryWithOptions(request *DescribeCh
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerFieldName)) {
+		query["ContainerFieldName"] = request.ContainerFieldName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerFieldValue)) {
+		query["ContainerFieldValue"] = request.ContainerFieldValue
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
 	}
@@ -26631,6 +26695,10 @@ func (client *Client) DescribeCheckWarningSummaryWithOptions(request *DescribeCh
 
 	if !tea.BoolValue(util.IsUnset(request.StrategyId)) {
 		query["StrategyId"] = request.StrategyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TypeName)) {
@@ -27747,6 +27815,10 @@ func (client *Client) DescribeGroupedMaliciousFilesWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
 	}
@@ -28048,6 +28120,10 @@ func (client *Client) DescribeImageBaselineCheckSummaryWithOptions(request *Desc
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Criteria)) {
 		query["Criteria"] = request.Criteria
 	}
@@ -28176,6 +28252,10 @@ func (client *Client) DescribeImageGroupedVulListWithOptions(request *DescribeIm
 		query["AliasName"] = request.AliasName
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
 	}
@@ -28294,6 +28374,10 @@ func (client *Client) DescribeImageListWithBaselineNameWithOptions(request *Desc
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.BaselineNameKey)) {
 		query["BaselineNameKey"] = request.BaselineNameKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Criteria)) {
@@ -28440,6 +28524,10 @@ func (client *Client) DescribeImageVulListWithOptions(request *DescribeImageVulL
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AliasName)) {
 		query["AliasName"] = request.AliasName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
