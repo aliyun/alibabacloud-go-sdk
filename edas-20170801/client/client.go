@@ -4466,6 +4466,7 @@ type DeployK8sApplicationRequest struct {
 	Args                   *string `json:"Args,omitempty" xml:"Args,omitempty"`
 	BatchTimeout           *int32  `json:"BatchTimeout,omitempty" xml:"BatchTimeout,omitempty"`
 	BatchWaitTime          *int32  `json:"BatchWaitTime,omitempty" xml:"BatchWaitTime,omitempty"`
+	BuildPackId            *string `json:"BuildPackId,omitempty" xml:"BuildPackId,omitempty"`
 	ChangeOrderDesc        *string `json:"ChangeOrderDesc,omitempty" xml:"ChangeOrderDesc,omitempty"`
 	Command                *string `json:"Command,omitempty" xml:"Command,omitempty"`
 	ConfigMountDescs       *string `json:"ConfigMountDescs,omitempty" xml:"ConfigMountDescs,omitempty"`
@@ -4537,6 +4538,11 @@ func (s *DeployK8sApplicationRequest) SetBatchTimeout(v int32) *DeployK8sApplica
 
 func (s *DeployK8sApplicationRequest) SetBatchWaitTime(v int32) *DeployK8sApplicationRequest {
 	s.BatchWaitTime = &v
+	return s
+}
+
+func (s *DeployK8sApplicationRequest) SetBuildPackId(v string) *DeployK8sApplicationRequest {
+	s.BuildPackId = &v
 	return s
 }
 
@@ -27731,6 +27737,10 @@ func (client *Client) DeployK8sApplicationWithOptions(request *DeployK8sApplicat
 
 	if !tea.BoolValue(util.IsUnset(request.BatchWaitTime)) {
 		query["BatchWaitTime"] = request.BatchWaitTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuildPackId)) {
+		query["BuildPackId"] = request.BuildPackId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ChangeOrderDesc)) {
