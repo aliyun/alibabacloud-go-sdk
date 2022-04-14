@@ -761,6 +761,7 @@ func (s *AnswerCallResponseBodyData) SetUserContext(v *AnswerCallResponseBodyDat
 }
 
 type AnswerCallResponseBodyDataCallContext struct {
+	CallType        *string                                                 `json:"CallType,omitempty" xml:"CallType,omitempty"`
 	ChannelContexts []*AnswerCallResponseBodyDataCallContextChannelContexts `json:"ChannelContexts,omitempty" xml:"ChannelContexts,omitempty" type:"Repeated"`
 	InstanceId      *string                                                 `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	JobId           *string                                                 `json:"JobId,omitempty" xml:"JobId,omitempty"`
@@ -772,6 +773,11 @@ func (s AnswerCallResponseBodyDataCallContext) String() string {
 
 func (s AnswerCallResponseBodyDataCallContext) GoString() string {
 	return s.String()
+}
+
+func (s *AnswerCallResponseBodyDataCallContext) SetCallType(v string) *AnswerCallResponseBodyDataCallContext {
+	s.CallType = &v
+	return s
 }
 
 func (s *AnswerCallResponseBodyDataCallContext) SetChannelContexts(v []*AnswerCallResponseBodyDataCallContextChannelContexts) *AnswerCallResponseBodyDataCallContext {
@@ -1574,6 +1580,7 @@ func (s *BlindTransferResponseBody) SetRequestId(v string) *BlindTransferRespons
 
 type BlindTransferResponseBodyData struct {
 	CallContext *BlindTransferResponseBodyDataCallContext `json:"CallContext,omitempty" xml:"CallContext,omitempty" type:"Struct"`
+	ContextId   *int64                                    `json:"ContextId,omitempty" xml:"ContextId,omitempty"`
 	UserContext *BlindTransferResponseBodyDataUserContext `json:"UserContext,omitempty" xml:"UserContext,omitempty" type:"Struct"`
 }
 
@@ -1587,6 +1594,11 @@ func (s BlindTransferResponseBodyData) GoString() string {
 
 func (s *BlindTransferResponseBodyData) SetCallContext(v *BlindTransferResponseBodyDataCallContext) *BlindTransferResponseBodyData {
 	s.CallContext = v
+	return s
+}
+
+func (s *BlindTransferResponseBodyData) SetContextId(v int64) *BlindTransferResponseBodyData {
+	s.ContextId = &v
 	return s
 }
 
@@ -4760,6 +4772,7 @@ func (s *GetCallDetailRecordResponseBodyDataAgentEvents) SetSkillGroupId(v strin
 }
 
 type GetCallDetailRecordResponseBodyDataAgentEventsEventSequence struct {
+	Duration  *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	Event     *string `json:"Event,omitempty" xml:"Event,omitempty"`
 	EventTime *int64  `json:"EventTime,omitempty" xml:"EventTime,omitempty"`
 }
@@ -4770,6 +4783,11 @@ func (s GetCallDetailRecordResponseBodyDataAgentEventsEventSequence) String() st
 
 func (s GetCallDetailRecordResponseBodyDataAgentEventsEventSequence) GoString() string {
 	return s.String()
+}
+
+func (s *GetCallDetailRecordResponseBodyDataAgentEventsEventSequence) SetDuration(v int64) *GetCallDetailRecordResponseBodyDataAgentEventsEventSequence {
+	s.Duration = &v
+	return s
 }
 
 func (s *GetCallDetailRecordResponseBodyDataAgentEventsEventSequence) SetEvent(v string) *GetCallDetailRecordResponseBodyDataAgentEventsEventSequence {
@@ -5035,23 +5053,24 @@ type GetCampaignResponseBodyData struct {
 	ActualEndTime   *int64 `json:"ActualEndTime,omitempty" xml:"ActualEndTime,omitempty"`
 	ActualStartTime *int64 `json:"ActualStartTime,omitempty" xml:"ActualStartTime,omitempty"`
 	// id
-	CampaignId           *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
-	CasesAborted         *int64  `json:"CasesAborted,omitempty" xml:"CasesAborted,omitempty"`
-	CasesConnected       *int64  `json:"CasesConnected,omitempty" xml:"CasesConnected,omitempty"`
-	CasesUncompleted     *int64  `json:"CasesUncompleted,omitempty" xml:"CasesUncompleted,omitempty"`
-	MaxAttemptCount      *int64  `json:"MaxAttemptCount,omitempty" xml:"MaxAttemptCount,omitempty"`
-	MinAttemptInterval   *int64  `json:"MinAttemptInterval,omitempty" xml:"MinAttemptInterval,omitempty"`
-	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PlanedEndTime        *int64  `json:"PlanedEndTime,omitempty" xml:"PlanedEndTime,omitempty"`
-	PlanedStartTime      *int64  `json:"PlanedStartTime,omitempty" xml:"PlanedStartTime,omitempty"`
-	QueueId              *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
-	QueueName            *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
-	Simulation           *bool   `json:"Simulation,omitempty" xml:"Simulation,omitempty"`
-	SimulationParameters *string `json:"SimulationParameters,omitempty" xml:"SimulationParameters,omitempty"`
-	State                *string `json:"State,omitempty" xml:"State,omitempty"`
-	StrategyParameters   *string `json:"StrategyParameters,omitempty" xml:"StrategyParameters,omitempty"`
-	StrategyType         *string `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
-	TotalCases           *int64  `json:"TotalCases,omitempty" xml:"TotalCases,omitempty"`
+	CampaignId                     *string `json:"CampaignId,omitempty" xml:"CampaignId,omitempty"`
+	CasesAborted                   *int64  `json:"CasesAborted,omitempty" xml:"CasesAborted,omitempty"`
+	CasesConnected                 *int64  `json:"CasesConnected,omitempty" xml:"CasesConnected,omitempty"`
+	CasesUncompleted               *int64  `json:"CasesUncompleted,omitempty" xml:"CasesUncompleted,omitempty"`
+	CasesUncompletedAfterAttempted *int64  `json:"CasesUncompletedAfterAttempted,omitempty" xml:"CasesUncompletedAfterAttempted,omitempty"`
+	MaxAttemptCount                *int64  `json:"MaxAttemptCount,omitempty" xml:"MaxAttemptCount,omitempty"`
+	MinAttemptInterval             *int64  `json:"MinAttemptInterval,omitempty" xml:"MinAttemptInterval,omitempty"`
+	Name                           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	PlanedEndTime                  *int64  `json:"PlanedEndTime,omitempty" xml:"PlanedEndTime,omitempty"`
+	PlanedStartTime                *int64  `json:"PlanedStartTime,omitempty" xml:"PlanedStartTime,omitempty"`
+	QueueId                        *string `json:"QueueId,omitempty" xml:"QueueId,omitempty"`
+	QueueName                      *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	Simulation                     *bool   `json:"Simulation,omitempty" xml:"Simulation,omitempty"`
+	SimulationParameters           *string `json:"SimulationParameters,omitempty" xml:"SimulationParameters,omitempty"`
+	State                          *string `json:"State,omitempty" xml:"State,omitempty"`
+	StrategyParameters             *string `json:"StrategyParameters,omitempty" xml:"StrategyParameters,omitempty"`
+	StrategyType                   *string `json:"StrategyType,omitempty" xml:"StrategyType,omitempty"`
+	TotalCases                     *int64  `json:"TotalCases,omitempty" xml:"TotalCases,omitempty"`
 }
 
 func (s GetCampaignResponseBodyData) String() string {
@@ -5089,6 +5108,11 @@ func (s *GetCampaignResponseBodyData) SetCasesConnected(v int64) *GetCampaignRes
 
 func (s *GetCampaignResponseBodyData) SetCasesUncompleted(v int64) *GetCampaignResponseBodyData {
 	s.CasesUncompleted = &v
+	return s
+}
+
+func (s *GetCampaignResponseBodyData) SetCasesUncompletedAfterAttempted(v int64) *GetCampaignResponseBodyData {
+	s.CasesUncompletedAfterAttempted = &v
 	return s
 }
 
@@ -7794,6 +7818,134 @@ func (s *GetRealtimeInstanceStatesResponse) SetBody(v *GetRealtimeInstanceStates
 	return s
 }
 
+type GetSkillGroupRequest struct {
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+}
+
+func (s GetSkillGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSkillGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSkillGroupRequest) SetInstanceId(v string) *GetSkillGroupRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetSkillGroupRequest) SetSkillGroupId(v string) *GetSkillGroupRequest {
+	s.SkillGroupId = &v
+	return s
+}
+
+type GetSkillGroupResponseBody struct {
+	Code           *string                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *GetSkillGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                         `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                        `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetSkillGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSkillGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSkillGroupResponseBody) SetCode(v string) *GetSkillGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSkillGroupResponseBody) SetData(v *GetSkillGroupResponseBodyData) *GetSkillGroupResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSkillGroupResponseBody) SetHttpStatusCode(v int32) *GetSkillGroupResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetSkillGroupResponseBody) SetMessage(v string) *GetSkillGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetSkillGroupResponseBody) SetRequestId(v string) *GetSkillGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetSkillGroupResponseBodyData struct {
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisplayName  *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+}
+
+func (s GetSkillGroupResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSkillGroupResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSkillGroupResponseBodyData) SetDescription(v string) *GetSkillGroupResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *GetSkillGroupResponseBodyData) SetDisplayName(v string) *GetSkillGroupResponseBodyData {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *GetSkillGroupResponseBodyData) SetInstanceId(v string) *GetSkillGroupResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetSkillGroupResponseBodyData) SetName(v string) *GetSkillGroupResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetSkillGroupResponseBodyData) SetSkillGroupId(v string) *GetSkillGroupResponseBodyData {
+	s.SkillGroupId = &v
+	return s
+}
+
+type GetSkillGroupResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetSkillGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSkillGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSkillGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSkillGroupResponse) SetHeaders(v map[string]*string) *GetSkillGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSkillGroupResponse) SetBody(v *GetSkillGroupResponseBody) *GetSkillGroupResponse {
+	s.Body = v
+	return s
+}
+
 type GetTurnCredentialsRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -9945,6 +10097,7 @@ func (s *LaunchSurveyResponseBody) SetRequestId(v string) *LaunchSurveyResponseB
 
 type LaunchSurveyResponseBodyData struct {
 	CallContext *LaunchSurveyResponseBodyDataCallContext `json:"CallContext,omitempty" xml:"CallContext,omitempty" type:"Struct"`
+	ContextId   *int64                                   `json:"ContextId,omitempty" xml:"ContextId,omitempty"`
 	UserContext *LaunchSurveyResponseBodyDataUserContext `json:"UserContext,omitempty" xml:"UserContext,omitempty" type:"Struct"`
 }
 
@@ -9958,6 +10111,11 @@ func (s LaunchSurveyResponseBodyData) GoString() string {
 
 func (s *LaunchSurveyResponseBodyData) SetCallContext(v *LaunchSurveyResponseBodyDataCallContext) *LaunchSurveyResponseBodyData {
 	s.CallContext = v
+	return s
+}
+
+func (s *LaunchSurveyResponseBodyData) SetContextId(v int64) *LaunchSurveyResponseBodyData {
+	s.ContextId = &v
 	return s
 }
 
@@ -10291,10 +10449,11 @@ func (s *ListAgentStateLogsResponseBody) SetRequestId(v string) *ListAgentStateL
 }
 
 type ListAgentStateLogsResponseBodyData struct {
-	Duration  *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	State     *string `json:"State,omitempty" xml:"State,omitempty"`
-	StateCode *string `json:"StateCode,omitempty" xml:"StateCode,omitempty"`
+	Duration         *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	OutboundScenario *bool   `json:"OutboundScenario,omitempty" xml:"OutboundScenario,omitempty"`
+	StartTime        *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	State            *string `json:"State,omitempty" xml:"State,omitempty"`
+	StateCode        *string `json:"StateCode,omitempty" xml:"StateCode,omitempty"`
 }
 
 func (s ListAgentStateLogsResponseBodyData) String() string {
@@ -10307,6 +10466,11 @@ func (s ListAgentStateLogsResponseBodyData) GoString() string {
 
 func (s *ListAgentStateLogsResponseBodyData) SetDuration(v int64) *ListAgentStateLogsResponseBodyData {
 	s.Duration = &v
+	return s
+}
+
+func (s *ListAgentStateLogsResponseBodyData) SetOutboundScenario(v bool) *ListAgentStateLogsResponseBodyData {
+	s.OutboundScenario = &v
 	return s
 }
 
@@ -11615,8 +11779,10 @@ type ListCallDetailRecordsRequest struct {
 	CalledNumber                *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
 	CallingNumber               *string `json:"CallingNumber,omitempty" xml:"CallingNumber,omitempty"`
 	ContactDisposition          *string `json:"ContactDisposition,omitempty" xml:"ContactDisposition,omitempty"`
+	ContactDispositionList      *string `json:"ContactDispositionList,omitempty" xml:"ContactDispositionList,omitempty"`
 	ContactId                   *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
 	ContactType                 *string `json:"ContactType,omitempty" xml:"ContactType,omitempty"`
+	ContactTypeList             *string `json:"ContactTypeList,omitempty" xml:"ContactTypeList,omitempty"`
 	Criteria                    *string `json:"Criteria,omitempty" xml:"Criteria,omitempty"`
 	EarlyMediaStateList         *string `json:"EarlyMediaStateList,omitempty" xml:"EarlyMediaStateList,omitempty"`
 	EndTime                     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
@@ -11660,6 +11826,11 @@ func (s *ListCallDetailRecordsRequest) SetContactDisposition(v string) *ListCall
 	return s
 }
 
+func (s *ListCallDetailRecordsRequest) SetContactDispositionList(v string) *ListCallDetailRecordsRequest {
+	s.ContactDispositionList = &v
+	return s
+}
+
 func (s *ListCallDetailRecordsRequest) SetContactId(v string) *ListCallDetailRecordsRequest {
 	s.ContactId = &v
 	return s
@@ -11667,6 +11838,11 @@ func (s *ListCallDetailRecordsRequest) SetContactId(v string) *ListCallDetailRec
 
 func (s *ListCallDetailRecordsRequest) SetContactType(v string) *ListCallDetailRecordsRequest {
 	s.ContactType = &v
+	return s
+}
+
+func (s *ListCallDetailRecordsRequest) SetContactTypeList(v string) *ListCallDetailRecordsRequest {
+	s.ContactTypeList = &v
 	return s
 }
 
@@ -18258,6 +18434,310 @@ func (s *ListIvrTrackingDetailsResponse) SetBody(v *ListIvrTrackingDetailsRespon
 	return s
 }
 
+type ListMonoRecordingsRequest struct {
+	ContactId  *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ListMonoRecordingsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMonoRecordingsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMonoRecordingsRequest) SetContactId(v string) *ListMonoRecordingsRequest {
+	s.ContactId = &v
+	return s
+}
+
+func (s *ListMonoRecordingsRequest) SetInstanceId(v string) *ListMonoRecordingsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type ListMonoRecordingsResponseBody struct {
+	Code           *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           []*ListMonoRecordingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	HttpStatusCode *int32                                `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListMonoRecordingsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMonoRecordingsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMonoRecordingsResponseBody) SetCode(v string) *ListMonoRecordingsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListMonoRecordingsResponseBody) SetData(v []*ListMonoRecordingsResponseBodyData) *ListMonoRecordingsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListMonoRecordingsResponseBody) SetHttpStatusCode(v int32) *ListMonoRecordingsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListMonoRecordingsResponseBody) SetMessage(v string) *ListMonoRecordingsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListMonoRecordingsResponseBody) SetRequestId(v string) *ListMonoRecordingsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListMonoRecordingsResponseBodyData struct {
+	AgentId      *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	AgentName    *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	ContactId    *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrl      *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	RamId        *string `json:"RamId,omitempty" xml:"RamId,omitempty"`
+	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListMonoRecordingsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMonoRecordingsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListMonoRecordingsResponseBodyData) SetAgentId(v string) *ListMonoRecordingsResponseBodyData {
+	s.AgentId = &v
+	return s
+}
+
+func (s *ListMonoRecordingsResponseBodyData) SetAgentName(v string) *ListMonoRecordingsResponseBodyData {
+	s.AgentName = &v
+	return s
+}
+
+func (s *ListMonoRecordingsResponseBodyData) SetContactId(v string) *ListMonoRecordingsResponseBodyData {
+	s.ContactId = &v
+	return s
+}
+
+func (s *ListMonoRecordingsResponseBodyData) SetDuration(v string) *ListMonoRecordingsResponseBodyData {
+	s.Duration = &v
+	return s
+}
+
+func (s *ListMonoRecordingsResponseBodyData) SetFileName(v string) *ListMonoRecordingsResponseBodyData {
+	s.FileName = &v
+	return s
+}
+
+func (s *ListMonoRecordingsResponseBodyData) SetFileUrl(v string) *ListMonoRecordingsResponseBodyData {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *ListMonoRecordingsResponseBodyData) SetRamId(v string) *ListMonoRecordingsResponseBodyData {
+	s.RamId = &v
+	return s
+}
+
+func (s *ListMonoRecordingsResponseBodyData) SetSkillGroupId(v string) *ListMonoRecordingsResponseBodyData {
+	s.SkillGroupId = &v
+	return s
+}
+
+func (s *ListMonoRecordingsResponseBodyData) SetStartTime(v string) *ListMonoRecordingsResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+type ListMonoRecordingsResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListMonoRecordingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMonoRecordingsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMonoRecordingsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMonoRecordingsResponse) SetHeaders(v map[string]*string) *ListMonoRecordingsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMonoRecordingsResponse) SetBody(v *ListMonoRecordingsResponseBody) *ListMonoRecordingsResponse {
+	s.Body = v
+	return s
+}
+
+type ListMultiChannelRecordingsRequest struct {
+	ContactId  *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ListMultiChannelRecordingsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiChannelRecordingsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiChannelRecordingsRequest) SetContactId(v string) *ListMultiChannelRecordingsRequest {
+	s.ContactId = &v
+	return s
+}
+
+func (s *ListMultiChannelRecordingsRequest) SetInstanceId(v string) *ListMultiChannelRecordingsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type ListMultiChannelRecordingsResponseBody struct {
+	Code           *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           []*ListMultiChannelRecordingsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	HttpStatusCode *int32                                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListMultiChannelRecordingsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiChannelRecordingsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiChannelRecordingsResponseBody) SetCode(v string) *ListMultiChannelRecordingsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListMultiChannelRecordingsResponseBody) SetData(v []*ListMultiChannelRecordingsResponseBodyData) *ListMultiChannelRecordingsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListMultiChannelRecordingsResponseBody) SetHttpStatusCode(v int32) *ListMultiChannelRecordingsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListMultiChannelRecordingsResponseBody) SetMessage(v string) *ListMultiChannelRecordingsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListMultiChannelRecordingsResponseBody) SetRequestId(v string) *ListMultiChannelRecordingsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListMultiChannelRecordingsResponseBodyData struct {
+	AgentId      *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	AgentName    *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	ContactId    *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrl      *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	RamId        *string `json:"RamId,omitempty" xml:"RamId,omitempty"`
+	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListMultiChannelRecordingsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiChannelRecordingsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiChannelRecordingsResponseBodyData) SetAgentId(v string) *ListMultiChannelRecordingsResponseBodyData {
+	s.AgentId = &v
+	return s
+}
+
+func (s *ListMultiChannelRecordingsResponseBodyData) SetAgentName(v string) *ListMultiChannelRecordingsResponseBodyData {
+	s.AgentName = &v
+	return s
+}
+
+func (s *ListMultiChannelRecordingsResponseBodyData) SetContactId(v string) *ListMultiChannelRecordingsResponseBodyData {
+	s.ContactId = &v
+	return s
+}
+
+func (s *ListMultiChannelRecordingsResponseBodyData) SetDuration(v string) *ListMultiChannelRecordingsResponseBodyData {
+	s.Duration = &v
+	return s
+}
+
+func (s *ListMultiChannelRecordingsResponseBodyData) SetFileName(v string) *ListMultiChannelRecordingsResponseBodyData {
+	s.FileName = &v
+	return s
+}
+
+func (s *ListMultiChannelRecordingsResponseBodyData) SetFileUrl(v string) *ListMultiChannelRecordingsResponseBodyData {
+	s.FileUrl = &v
+	return s
+}
+
+func (s *ListMultiChannelRecordingsResponseBodyData) SetRamId(v string) *ListMultiChannelRecordingsResponseBodyData {
+	s.RamId = &v
+	return s
+}
+
+func (s *ListMultiChannelRecordingsResponseBodyData) SetSkillGroupId(v string) *ListMultiChannelRecordingsResponseBodyData {
+	s.SkillGroupId = &v
+	return s
+}
+
+func (s *ListMultiChannelRecordingsResponseBodyData) SetStartTime(v int64) *ListMultiChannelRecordingsResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+type ListMultiChannelRecordingsResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListMultiChannelRecordingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMultiChannelRecordingsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMultiChannelRecordingsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMultiChannelRecordingsResponse) SetHeaders(v map[string]*string) *ListMultiChannelRecordingsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMultiChannelRecordingsResponse) SetBody(v *ListMultiChannelRecordingsResponseBody) *ListMultiChannelRecordingsResponse {
+	s.Body = v
+	return s
+}
+
 type ListOutboundNumbersOfUserRequest struct {
 	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -19540,15 +20020,16 @@ func (s *ListRealtimeAgentStatesResponseBodyData) SetTotalCount(v int32) *ListRe
 }
 
 type ListRealtimeAgentStatesResponseBodyDataList struct {
-	AgentId          *string   `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	AgentName        *string   `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	CounterParty     *string   `json:"CounterParty,omitempty" xml:"CounterParty,omitempty"`
-	Extension        *string   `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	InstanceId       *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	SkillGroupIdList []*string `json:"SkillGroupIdList,omitempty" xml:"SkillGroupIdList,omitempty" type:"Repeated"`
-	State            *string   `json:"State,omitempty" xml:"State,omitempty"`
-	StateCode        *string   `json:"StateCode,omitempty" xml:"StateCode,omitempty"`
-	StateTime        *int64    `json:"StateTime,omitempty" xml:"StateTime,omitempty"`
+	AgentId            *string   `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	AgentName          *string   `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	CounterParty       *string   `json:"CounterParty,omitempty" xml:"CounterParty,omitempty"`
+	Extension          *string   `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	InstanceId         *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SkillGroupIdList   []*string `json:"SkillGroupIdList,omitempty" xml:"SkillGroupIdList,omitempty" type:"Repeated"`
+	SkillGroupNameList []*string `json:"SkillGroupNameList,omitempty" xml:"SkillGroupNameList,omitempty" type:"Repeated"`
+	State              *string   `json:"State,omitempty" xml:"State,omitempty"`
+	StateCode          *string   `json:"StateCode,omitempty" xml:"StateCode,omitempty"`
+	StateTime          *int64    `json:"StateTime,omitempty" xml:"StateTime,omitempty"`
 }
 
 func (s ListRealtimeAgentStatesResponseBodyDataList) String() string {
@@ -19586,6 +20067,11 @@ func (s *ListRealtimeAgentStatesResponseBodyDataList) SetInstanceId(v string) *L
 
 func (s *ListRealtimeAgentStatesResponseBodyDataList) SetSkillGroupIdList(v []*string) *ListRealtimeAgentStatesResponseBodyDataList {
 	s.SkillGroupIdList = v
+	return s
+}
+
+func (s *ListRealtimeAgentStatesResponseBodyDataList) SetSkillGroupNameList(v []*string) *ListRealtimeAgentStatesResponseBodyDataList {
+	s.SkillGroupNameList = v
 	return s
 }
 
@@ -20884,6 +21370,8 @@ type ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummary
 	AverageWorkTime                           *int64   `json:"AverageWorkTime,omitempty" xml:"AverageWorkTime,omitempty"`
 	CallsHandled                              *int64   `json:"CallsHandled,omitempty" xml:"CallsHandled,omitempty"`
 	CallsOffered                              *int64   `json:"CallsOffered,omitempty" xml:"CallsOffered,omitempty"`
+	CallsServiceLevel20                       *int64   `json:"CallsServiceLevel20,omitempty" xml:"CallsServiceLevel20,omitempty"`
+	CallsServiceLevel30                       *int64   `json:"CallsServiceLevel30,omitempty" xml:"CallsServiceLevel30,omitempty"`
 	GiveUpByAgentOfQueueCount                 *int64   `json:"GiveUpByAgentOfQueueCount,omitempty" xml:"GiveUpByAgentOfQueueCount,omitempty"`
 	HandleRate                                *float32 `json:"HandleRate,omitempty" xml:"HandleRate,omitempty"`
 	InComingQueueOfQueueCount                 *int64   `json:"InComingQueueOfQueueCount,omitempty" xml:"InComingQueueOfQueueCount,omitempty"`
@@ -20952,6 +21440,16 @@ func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSum
 
 func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound) SetCallsOffered(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound {
 	s.CallsOffered = &v
+	return s
+}
+
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound) SetCallsServiceLevel20(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound {
+	s.CallsServiceLevel20 = &v
+	return s
+}
+
+func (s *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound) SetCallsServiceLevel30(v int64) *ListSkillGroupSummaryReportsSinceMidnightResponseBodyPagedSkillGroupSummaryReportListInbound {
+	s.CallsServiceLevel30 = &v
 	return s
 }
 
@@ -25661,6 +26159,7 @@ func (s *RemovePhoneNumberFromSkillGroupsResponse) SetBody(v *RemovePhoneNumberF
 }
 
 type RemovePhoneNumbersRequest struct {
+	Force      *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	NumberList *string `json:"NumberList,omitempty" xml:"NumberList,omitempty"`
 }
@@ -25671,6 +26170,11 @@ func (s RemovePhoneNumbersRequest) String() string {
 
 func (s RemovePhoneNumbersRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RemovePhoneNumbersRequest) SetForce(v bool) *RemovePhoneNumbersRequest {
+	s.Force = &v
+	return s
 }
 
 func (s *RemovePhoneNumbersRequest) SetInstanceId(v string) *RemovePhoneNumbersRequest {
@@ -31862,6 +32366,54 @@ func (client *Client) GetRealtimeInstanceStates(request *GetRealtimeInstanceStat
 	return _result, _err
 }
 
+func (client *Client) GetSkillGroupWithOptions(request *GetSkillGroupRequest, runtime *util.RuntimeOptions) (_result *GetSkillGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkillGroupId)) {
+		query["SkillGroupId"] = request.SkillGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSkillGroup"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSkillGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSkillGroup(request *GetSkillGroupRequest) (_result *GetSkillGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSkillGroupResponse{}
+	_body, _err := client.GetSkillGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetTurnCredentialsWithOptions(request *GetTurnCredentialsRequest, runtime *util.RuntimeOptions) (_result *GetTurnCredentialsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32704,12 +33256,20 @@ func (client *Client) ListCallDetailRecordsWithOptions(request *ListCallDetailRe
 		query["ContactDisposition"] = request.ContactDisposition
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ContactDispositionList)) {
+		query["ContactDispositionList"] = request.ContactDispositionList
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
 		query["ContactId"] = request.ContactId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ContactType)) {
 		query["ContactType"] = request.ContactType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContactTypeList)) {
+		query["ContactTypeList"] = request.ContactTypeList
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Criteria)) {
@@ -33759,6 +34319,102 @@ func (client *Client) ListIvrTrackingDetails(request *ListIvrTrackingDetailsRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ListIvrTrackingDetailsResponse{}
 	_body, _err := client.ListIvrTrackingDetailsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListMonoRecordingsWithOptions(request *ListMonoRecordingsRequest, runtime *util.RuntimeOptions) (_result *ListMonoRecordingsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMonoRecordings"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMonoRecordingsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMonoRecordings(request *ListMonoRecordingsRequest) (_result *ListMonoRecordingsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMonoRecordingsResponse{}
+	_body, _err := client.ListMonoRecordingsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListMultiChannelRecordingsWithOptions(request *ListMultiChannelRecordingsRequest, runtime *util.RuntimeOptions) (_result *ListMultiChannelRecordingsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ContactId)) {
+		query["ContactId"] = request.ContactId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMultiChannelRecordings"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMultiChannelRecordingsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMultiChannelRecordings(request *ListMultiChannelRecordingsRequest) (_result *ListMultiChannelRecordingsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListMultiChannelRecordingsResponse{}
+	_body, _err := client.ListMultiChannelRecordingsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -35950,6 +36606,10 @@ func (client *Client) RemovePhoneNumbersWithOptions(request *RemovePhoneNumbersR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		query["Force"] = request.Force
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
