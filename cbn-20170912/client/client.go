@@ -461,6 +461,111 @@ func (s *AssociateTransitRouterAttachmentWithRouteTableResponse) SetBody(v *Asso
 	return s
 }
 
+type AssociateTransitRouterMulticastDomainRequest struct {
+	ClientToken                    *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                         *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount                   *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                        *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount           *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterAttachmentId      *string   `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	TransitRouterMulticastDomainId *string   `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
+	VSwitchIds                     []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+}
+
+func (s AssociateTransitRouterMulticastDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateTransitRouterMulticastDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateTransitRouterMulticastDomainRequest) SetClientToken(v string) *AssociateTransitRouterMulticastDomainRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *AssociateTransitRouterMulticastDomainRequest) SetDryRun(v bool) *AssociateTransitRouterMulticastDomainRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *AssociateTransitRouterMulticastDomainRequest) SetOwnerAccount(v string) *AssociateTransitRouterMulticastDomainRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *AssociateTransitRouterMulticastDomainRequest) SetOwnerId(v int64) *AssociateTransitRouterMulticastDomainRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *AssociateTransitRouterMulticastDomainRequest) SetResourceOwnerAccount(v string) *AssociateTransitRouterMulticastDomainRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *AssociateTransitRouterMulticastDomainRequest) SetResourceOwnerId(v int64) *AssociateTransitRouterMulticastDomainRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *AssociateTransitRouterMulticastDomainRequest) SetTransitRouterAttachmentId(v string) *AssociateTransitRouterMulticastDomainRequest {
+	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+func (s *AssociateTransitRouterMulticastDomainRequest) SetTransitRouterMulticastDomainId(v string) *AssociateTransitRouterMulticastDomainRequest {
+	s.TransitRouterMulticastDomainId = &v
+	return s
+}
+
+func (s *AssociateTransitRouterMulticastDomainRequest) SetVSwitchIds(v []*string) *AssociateTransitRouterMulticastDomainRequest {
+	s.VSwitchIds = v
+	return s
+}
+
+type AssociateTransitRouterMulticastDomainResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AssociateTransitRouterMulticastDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateTransitRouterMulticastDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateTransitRouterMulticastDomainResponseBody) SetRequestId(v string) *AssociateTransitRouterMulticastDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AssociateTransitRouterMulticastDomainResponse struct {
+	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *AssociateTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AssociateTransitRouterMulticastDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssociateTransitRouterMulticastDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AssociateTransitRouterMulticastDomainResponse) SetHeaders(v map[string]*string) *AssociateTransitRouterMulticastDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AssociateTransitRouterMulticastDomainResponse) SetBody(v *AssociateTransitRouterMulticastDomainResponseBody) *AssociateTransitRouterMulticastDomainResponse {
+	s.Body = v
+	return s
+}
+
 type AttachCenChildInstanceRequest struct {
 	CenId                 *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	ChildInstanceId       *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
@@ -1334,6 +1439,7 @@ type CreateCenRouteMapRequest struct {
 	SourceInstanceIdsReverseMatch      *bool     `json:"SourceInstanceIdsReverseMatch,omitempty" xml:"SourceInstanceIdsReverseMatch,omitempty"`
 	SourceRegionIds                    []*string `json:"SourceRegionIds,omitempty" xml:"SourceRegionIds,omitempty" type:"Repeated"`
 	SourceRouteTableIds                []*string `json:"SourceRouteTableIds,omitempty" xml:"SourceRouteTableIds,omitempty" type:"Repeated"`
+	TransitRouterRouteTableId          *string   `json:"TransitRouterRouteTableId,omitempty" xml:"TransitRouterRouteTableId,omitempty"`
 	TransmitDirection                  *string   `json:"TransmitDirection,omitempty" xml:"TransmitDirection,omitempty"`
 }
 
@@ -1492,6 +1598,11 @@ func (s *CreateCenRouteMapRequest) SetSourceRegionIds(v []*string) *CreateCenRou
 
 func (s *CreateCenRouteMapRequest) SetSourceRouteTableIds(v []*string) *CreateCenRouteMapRequest {
 	s.SourceRouteTableIds = v
+	return s
+}
+
+func (s *CreateCenRouteMapRequest) SetTransitRouterRouteTableId(v string) *CreateCenRouteMapRequest {
+	s.TransitRouterRouteTableId = &v
 	return s
 }
 
@@ -1872,6 +1983,7 @@ type CreateTransitRouterRequest struct {
 	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount     *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId          *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SupportMulticast         *bool   `json:"SupportMulticast,omitempty" xml:"SupportMulticast,omitempty"`
 	TransitRouterDescription *string `json:"TransitRouterDescription,omitempty" xml:"TransitRouterDescription,omitempty"`
 	TransitRouterName        *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
 }
@@ -1921,6 +2033,11 @@ func (s *CreateTransitRouterRequest) SetResourceOwnerAccount(v string) *CreateTr
 
 func (s *CreateTransitRouterRequest) SetResourceOwnerId(v int64) *CreateTransitRouterRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateTransitRouterRequest) SetSupportMulticast(v bool) *CreateTransitRouterRequest {
+	s.SupportMulticast = &v
 	return s
 }
 
@@ -1976,6 +2093,129 @@ func (s *CreateTransitRouterResponse) SetHeaders(v map[string]*string) *CreateTr
 }
 
 func (s *CreateTransitRouterResponse) SetBody(v *CreateTransitRouterResponseBody) *CreateTransitRouterResponse {
+	s.Body = v
+	return s
+}
+
+type CreateTransitRouterMulticastDomainRequest struct {
+	CenId                                   *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	ClientToken                             *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                                  *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount                            *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId                                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount                    *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                         *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterId                         *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterMulticastDomainDescription *string `json:"TransitRouterMulticastDomainDescription,omitempty" xml:"TransitRouterMulticastDomainDescription,omitempty"`
+	TransitRouterMulticastDomainName        *string `json:"TransitRouterMulticastDomainName,omitempty" xml:"TransitRouterMulticastDomainName,omitempty"`
+}
+
+func (s CreateTransitRouterMulticastDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTransitRouterMulticastDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTransitRouterMulticastDomainRequest) SetCenId(v string) *CreateTransitRouterMulticastDomainRequest {
+	s.CenId = &v
+	return s
+}
+
+func (s *CreateTransitRouterMulticastDomainRequest) SetClientToken(v string) *CreateTransitRouterMulticastDomainRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateTransitRouterMulticastDomainRequest) SetDryRun(v bool) *CreateTransitRouterMulticastDomainRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateTransitRouterMulticastDomainRequest) SetOwnerAccount(v string) *CreateTransitRouterMulticastDomainRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *CreateTransitRouterMulticastDomainRequest) SetOwnerId(v int64) *CreateTransitRouterMulticastDomainRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *CreateTransitRouterMulticastDomainRequest) SetRegionId(v string) *CreateTransitRouterMulticastDomainRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateTransitRouterMulticastDomainRequest) SetResourceOwnerAccount(v string) *CreateTransitRouterMulticastDomainRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *CreateTransitRouterMulticastDomainRequest) SetResourceOwnerId(v int64) *CreateTransitRouterMulticastDomainRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateTransitRouterMulticastDomainRequest) SetTransitRouterId(v string) *CreateTransitRouterMulticastDomainRequest {
+	s.TransitRouterId = &v
+	return s
+}
+
+func (s *CreateTransitRouterMulticastDomainRequest) SetTransitRouterMulticastDomainDescription(v string) *CreateTransitRouterMulticastDomainRequest {
+	s.TransitRouterMulticastDomainDescription = &v
+	return s
+}
+
+func (s *CreateTransitRouterMulticastDomainRequest) SetTransitRouterMulticastDomainName(v string) *CreateTransitRouterMulticastDomainRequest {
+	s.TransitRouterMulticastDomainName = &v
+	return s
+}
+
+type CreateTransitRouterMulticastDomainResponseBody struct {
+	RequestId                      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TransitRouterMulticastDomainId *string `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
+}
+
+func (s CreateTransitRouterMulticastDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTransitRouterMulticastDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTransitRouterMulticastDomainResponseBody) SetRequestId(v string) *CreateTransitRouterMulticastDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateTransitRouterMulticastDomainResponseBody) SetTransitRouterMulticastDomainId(v string) *CreateTransitRouterMulticastDomainResponseBody {
+	s.TransitRouterMulticastDomainId = &v
+	return s
+}
+
+type CreateTransitRouterMulticastDomainResponse struct {
+	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateTransitRouterMulticastDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateTransitRouterMulticastDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateTransitRouterMulticastDomainResponse) SetHeaders(v map[string]*string) *CreateTransitRouterMulticastDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateTransitRouterMulticastDomainResponse) SetBody(v *CreateTransitRouterMulticastDomainResponseBody) *CreateTransitRouterMulticastDomainResponse {
 	s.Body = v
 	return s
 }
@@ -3860,6 +4100,99 @@ func (s *DeleteTransitRouterResponse) SetBody(v *DeleteTransitRouterResponseBody
 	return s
 }
 
+type DeleteTransitRouterMulticastDomainRequest struct {
+	ClientToken                    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                         *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount                   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount           *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterMulticastDomainId *string `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
+}
+
+func (s DeleteTransitRouterMulticastDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTransitRouterMulticastDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTransitRouterMulticastDomainRequest) SetClientToken(v string) *DeleteTransitRouterMulticastDomainRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteTransitRouterMulticastDomainRequest) SetDryRun(v bool) *DeleteTransitRouterMulticastDomainRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteTransitRouterMulticastDomainRequest) SetOwnerAccount(v string) *DeleteTransitRouterMulticastDomainRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeleteTransitRouterMulticastDomainRequest) SetOwnerId(v int64) *DeleteTransitRouterMulticastDomainRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeleteTransitRouterMulticastDomainRequest) SetResourceOwnerAccount(v string) *DeleteTransitRouterMulticastDomainRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeleteTransitRouterMulticastDomainRequest) SetResourceOwnerId(v int64) *DeleteTransitRouterMulticastDomainRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeleteTransitRouterMulticastDomainRequest) SetTransitRouterMulticastDomainId(v string) *DeleteTransitRouterMulticastDomainRequest {
+	s.TransitRouterMulticastDomainId = &v
+	return s
+}
+
+type DeleteTransitRouterMulticastDomainResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteTransitRouterMulticastDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTransitRouterMulticastDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTransitRouterMulticastDomainResponseBody) SetRequestId(v string) *DeleteTransitRouterMulticastDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteTransitRouterMulticastDomainResponse struct {
+	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteTransitRouterMulticastDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteTransitRouterMulticastDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteTransitRouterMulticastDomainResponse) SetHeaders(v map[string]*string) *DeleteTransitRouterMulticastDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteTransitRouterMulticastDomainResponse) SetBody(v *DeleteTransitRouterMulticastDomainResponseBody) *DeleteTransitRouterMulticastDomainResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteTransitRouterPeerAttachmentRequest struct {
 	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun                    *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
@@ -4345,6 +4678,222 @@ func (s *DeleteTransitRouterVpcAttachmentResponse) SetHeaders(v map[string]*stri
 }
 
 func (s *DeleteTransitRouterVpcAttachmentResponse) SetBody(v *DeleteTransitRouterVpcAttachmentResponseBody) *DeleteTransitRouterVpcAttachmentResponse {
+	s.Body = v
+	return s
+}
+
+type DeregisterTransitRouterMulticastGroupMembersRequest struct {
+	ClientToken                       *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                            *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	GroupIpAddress                    *string   `json:"GroupIpAddress,omitempty" xml:"GroupIpAddress,omitempty"`
+	NetworkInterfaceIds               []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
+	OwnerAccount                      *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                           *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PeerTransitRouterMulticastDomains []*string `json:"PeerTransitRouterMulticastDomains,omitempty" xml:"PeerTransitRouterMulticastDomains,omitempty" type:"Repeated"`
+	ResourceOwnerAccount              *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                   *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterMulticastDomainId    *string   `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
+}
+
+func (s DeregisterTransitRouterMulticastGroupMembersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeregisterTransitRouterMulticastGroupMembersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeregisterTransitRouterMulticastGroupMembersRequest) SetClientToken(v string) *DeregisterTransitRouterMulticastGroupMembersRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeregisterTransitRouterMulticastGroupMembersRequest) SetDryRun(v bool) *DeregisterTransitRouterMulticastGroupMembersRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeregisterTransitRouterMulticastGroupMembersRequest) SetGroupIpAddress(v string) *DeregisterTransitRouterMulticastGroupMembersRequest {
+	s.GroupIpAddress = &v
+	return s
+}
+
+func (s *DeregisterTransitRouterMulticastGroupMembersRequest) SetNetworkInterfaceIds(v []*string) *DeregisterTransitRouterMulticastGroupMembersRequest {
+	s.NetworkInterfaceIds = v
+	return s
+}
+
+func (s *DeregisterTransitRouterMulticastGroupMembersRequest) SetOwnerAccount(v string) *DeregisterTransitRouterMulticastGroupMembersRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeregisterTransitRouterMulticastGroupMembersRequest) SetOwnerId(v int64) *DeregisterTransitRouterMulticastGroupMembersRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeregisterTransitRouterMulticastGroupMembersRequest) SetPeerTransitRouterMulticastDomains(v []*string) *DeregisterTransitRouterMulticastGroupMembersRequest {
+	s.PeerTransitRouterMulticastDomains = v
+	return s
+}
+
+func (s *DeregisterTransitRouterMulticastGroupMembersRequest) SetResourceOwnerAccount(v string) *DeregisterTransitRouterMulticastGroupMembersRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeregisterTransitRouterMulticastGroupMembersRequest) SetResourceOwnerId(v int64) *DeregisterTransitRouterMulticastGroupMembersRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeregisterTransitRouterMulticastGroupMembersRequest) SetTransitRouterMulticastDomainId(v string) *DeregisterTransitRouterMulticastGroupMembersRequest {
+	s.TransitRouterMulticastDomainId = &v
+	return s
+}
+
+type DeregisterTransitRouterMulticastGroupMembersResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeregisterTransitRouterMulticastGroupMembersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeregisterTransitRouterMulticastGroupMembersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeregisterTransitRouterMulticastGroupMembersResponseBody) SetRequestId(v string) *DeregisterTransitRouterMulticastGroupMembersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeregisterTransitRouterMulticastGroupMembersResponse struct {
+	Headers map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeregisterTransitRouterMulticastGroupMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeregisterTransitRouterMulticastGroupMembersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeregisterTransitRouterMulticastGroupMembersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeregisterTransitRouterMulticastGroupMembersResponse) SetHeaders(v map[string]*string) *DeregisterTransitRouterMulticastGroupMembersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeregisterTransitRouterMulticastGroupMembersResponse) SetBody(v *DeregisterTransitRouterMulticastGroupMembersResponseBody) *DeregisterTransitRouterMulticastGroupMembersResponse {
+	s.Body = v
+	return s
+}
+
+type DeregisterTransitRouterMulticastGroupSourcesRequest struct {
+	ClientToken                    *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                         *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	GroupIpAddress                 *string   `json:"GroupIpAddress,omitempty" xml:"GroupIpAddress,omitempty"`
+	NetworkInterfaceIds            []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
+	OwnerAccount                   *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                        *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount           *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterMulticastDomainId *string   `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
+}
+
+func (s DeregisterTransitRouterMulticastGroupSourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeregisterTransitRouterMulticastGroupSourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeregisterTransitRouterMulticastGroupSourcesRequest) SetClientToken(v string) *DeregisterTransitRouterMulticastGroupSourcesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeregisterTransitRouterMulticastGroupSourcesRequest) SetDryRun(v bool) *DeregisterTransitRouterMulticastGroupSourcesRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeregisterTransitRouterMulticastGroupSourcesRequest) SetGroupIpAddress(v string) *DeregisterTransitRouterMulticastGroupSourcesRequest {
+	s.GroupIpAddress = &v
+	return s
+}
+
+func (s *DeregisterTransitRouterMulticastGroupSourcesRequest) SetNetworkInterfaceIds(v []*string) *DeregisterTransitRouterMulticastGroupSourcesRequest {
+	s.NetworkInterfaceIds = v
+	return s
+}
+
+func (s *DeregisterTransitRouterMulticastGroupSourcesRequest) SetOwnerAccount(v string) *DeregisterTransitRouterMulticastGroupSourcesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DeregisterTransitRouterMulticastGroupSourcesRequest) SetOwnerId(v int64) *DeregisterTransitRouterMulticastGroupSourcesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DeregisterTransitRouterMulticastGroupSourcesRequest) SetResourceOwnerAccount(v string) *DeregisterTransitRouterMulticastGroupSourcesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DeregisterTransitRouterMulticastGroupSourcesRequest) SetResourceOwnerId(v int64) *DeregisterTransitRouterMulticastGroupSourcesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DeregisterTransitRouterMulticastGroupSourcesRequest) SetTransitRouterMulticastDomainId(v string) *DeregisterTransitRouterMulticastGroupSourcesRequest {
+	s.TransitRouterMulticastDomainId = &v
+	return s
+}
+
+type DeregisterTransitRouterMulticastGroupSourcesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeregisterTransitRouterMulticastGroupSourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeregisterTransitRouterMulticastGroupSourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeregisterTransitRouterMulticastGroupSourcesResponseBody) SetRequestId(v string) *DeregisterTransitRouterMulticastGroupSourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeregisterTransitRouterMulticastGroupSourcesResponse struct {
+	Headers map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeregisterTransitRouterMulticastGroupSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeregisterTransitRouterMulticastGroupSourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeregisterTransitRouterMulticastGroupSourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeregisterTransitRouterMulticastGroupSourcesResponse) SetHeaders(v map[string]*string) *DeregisterTransitRouterMulticastGroupSourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeregisterTransitRouterMulticastGroupSourcesResponse) SetBody(v *DeregisterTransitRouterMulticastGroupSourcesResponseBody) *DeregisterTransitRouterMulticastGroupSourcesResponse {
 	s.Body = v
 	return s
 }
@@ -7365,8 +7914,10 @@ type DescribeCensResponseBodyCensCen struct {
 	CenId                  *string                                                `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	CreationTime           *string                                                `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	Description            *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Ipv6Level              *string                                                `json:"Ipv6Level,omitempty" xml:"Ipv6Level,omitempty"`
 	Name                   *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
 	ProtectionLevel        *string                                                `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
+	ResourceGroupId        *string                                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Status                 *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags                   *DescribeCensResponseBodyCensCenTags                   `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
 }
@@ -7399,6 +7950,11 @@ func (s *DescribeCensResponseBodyCensCen) SetDescription(v string) *DescribeCens
 	return s
 }
 
+func (s *DescribeCensResponseBodyCensCen) SetIpv6Level(v string) *DescribeCensResponseBodyCensCen {
+	s.Ipv6Level = &v
+	return s
+}
+
 func (s *DescribeCensResponseBodyCensCen) SetName(v string) *DescribeCensResponseBodyCensCen {
 	s.Name = &v
 	return s
@@ -7406,6 +7962,11 @@ func (s *DescribeCensResponseBodyCensCen) SetName(v string) *DescribeCensRespons
 
 func (s *DescribeCensResponseBodyCensCen) SetProtectionLevel(v string) *DescribeCensResponseBodyCensCen {
 	s.ProtectionLevel = &v
+	return s
+}
+
+func (s *DescribeCensResponseBodyCensCen) SetResourceGroupId(v string) *DescribeCensResponseBodyCensCen {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -9204,6 +9765,111 @@ func (s *DisableTransitRouterRouteTablePropagationResponse) SetBody(v *DisableTr
 	return s
 }
 
+type DisassociateTransitRouterMulticastDomainRequest struct {
+	ClientToken                    *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                         *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount                   *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                        *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount           *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterAttachmentId      *string   `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	TransitRouterMulticastDomainId *string   `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
+	VSwitchIds                     []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+}
+
+func (s DisassociateTransitRouterMulticastDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisassociateTransitRouterMulticastDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisassociateTransitRouterMulticastDomainRequest) SetClientToken(v string) *DisassociateTransitRouterMulticastDomainRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DisassociateTransitRouterMulticastDomainRequest) SetDryRun(v bool) *DisassociateTransitRouterMulticastDomainRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DisassociateTransitRouterMulticastDomainRequest) SetOwnerAccount(v string) *DisassociateTransitRouterMulticastDomainRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *DisassociateTransitRouterMulticastDomainRequest) SetOwnerId(v int64) *DisassociateTransitRouterMulticastDomainRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DisassociateTransitRouterMulticastDomainRequest) SetResourceOwnerAccount(v string) *DisassociateTransitRouterMulticastDomainRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *DisassociateTransitRouterMulticastDomainRequest) SetResourceOwnerId(v int64) *DisassociateTransitRouterMulticastDomainRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DisassociateTransitRouterMulticastDomainRequest) SetTransitRouterAttachmentId(v string) *DisassociateTransitRouterMulticastDomainRequest {
+	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+func (s *DisassociateTransitRouterMulticastDomainRequest) SetTransitRouterMulticastDomainId(v string) *DisassociateTransitRouterMulticastDomainRequest {
+	s.TransitRouterMulticastDomainId = &v
+	return s
+}
+
+func (s *DisassociateTransitRouterMulticastDomainRequest) SetVSwitchIds(v []*string) *DisassociateTransitRouterMulticastDomainRequest {
+	s.VSwitchIds = v
+	return s
+}
+
+type DisassociateTransitRouterMulticastDomainResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisassociateTransitRouterMulticastDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisassociateTransitRouterMulticastDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisassociateTransitRouterMulticastDomainResponseBody) SetRequestId(v string) *DisassociateTransitRouterMulticastDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisassociateTransitRouterMulticastDomainResponse struct {
+	Headers map[string]*string                                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DisassociateTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisassociateTransitRouterMulticastDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisassociateTransitRouterMulticastDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisassociateTransitRouterMulticastDomainResponse) SetHeaders(v map[string]*string) *DisassociateTransitRouterMulticastDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisassociateTransitRouterMulticastDomainResponse) SetBody(v *DisassociateTransitRouterMulticastDomainResponseBody) *DisassociateTransitRouterMulticastDomainResponse {
+	s.Body = v
+	return s
+}
+
 type DissociateTransitRouterAttachmentFromRouteTableRequest struct {
 	ClientToken               *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun                    *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
@@ -9865,6 +10531,152 @@ func (s *ListCenInterRegionTrafficQosPoliciesResponse) SetBody(v *ListCenInterRe
 	return s
 }
 
+type ListGrantVSwitchEnisRequest struct {
+	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	VSwitchId            *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId                *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s ListGrantVSwitchEnisRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGrantVSwitchEnisRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGrantVSwitchEnisRequest) SetCenId(v string) *ListGrantVSwitchEnisRequest {
+	s.CenId = &v
+	return s
+}
+
+func (s *ListGrantVSwitchEnisRequest) SetOwnerAccount(v string) *ListGrantVSwitchEnisRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListGrantVSwitchEnisRequest) SetOwnerId(v int64) *ListGrantVSwitchEnisRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListGrantVSwitchEnisRequest) SetResourceOwnerAccount(v string) *ListGrantVSwitchEnisRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListGrantVSwitchEnisRequest) SetResourceOwnerId(v int64) *ListGrantVSwitchEnisRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListGrantVSwitchEnisRequest) SetVSwitchId(v string) *ListGrantVSwitchEnisRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *ListGrantVSwitchEnisRequest) SetVpcId(v string) *ListGrantVSwitchEnisRequest {
+	s.VpcId = &v
+	return s
+}
+
+type ListGrantVSwitchEnisResponseBody struct {
+	GrantVSwitchEnis []*ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis `json:"GrantVSwitchEnis,omitempty" xml:"GrantVSwitchEnis,omitempty" type:"Repeated"`
+	RequestId        *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount       *string                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListGrantVSwitchEnisResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGrantVSwitchEnisResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGrantVSwitchEnisResponseBody) SetGrantVSwitchEnis(v []*ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis) *ListGrantVSwitchEnisResponseBody {
+	s.GrantVSwitchEnis = v
+	return s
+}
+
+func (s *ListGrantVSwitchEnisResponseBody) SetRequestId(v string) *ListGrantVSwitchEnisResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListGrantVSwitchEnisResponseBody) SetTotalCount(v string) *ListGrantVSwitchEnisResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis struct {
+	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	TransitRouterFlag  *bool   `json:"TransitRouterFlag,omitempty" xml:"TransitRouterFlag,omitempty"`
+	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	VpcId              *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+}
+
+func (s ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis) GoString() string {
+	return s.String()
+}
+
+func (s *ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis) SetDescription(v string) *ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis {
+	s.Description = &v
+	return s
+}
+
+func (s *ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis) SetNetworkInterfaceId(v string) *ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis {
+	s.NetworkInterfaceId = &v
+	return s
+}
+
+func (s *ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis) SetTransitRouterFlag(v bool) *ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis {
+	s.TransitRouterFlag = &v
+	return s
+}
+
+func (s *ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis) SetVSwitchId(v string) *ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis {
+	s.VSwitchId = &v
+	return s
+}
+
+func (s *ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis) SetVpcId(v string) *ListGrantVSwitchEnisResponseBodyGrantVSwitchEnis {
+	s.VpcId = &v
+	return s
+}
+
+type ListGrantVSwitchEnisResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListGrantVSwitchEnisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGrantVSwitchEnisResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGrantVSwitchEnisResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGrantVSwitchEnisResponse) SetHeaders(v map[string]*string) *ListGrantVSwitchEnisResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGrantVSwitchEnisResponse) SetBody(v *ListGrantVSwitchEnisResponseBody) *ListGrantVSwitchEnisResponse {
+	s.Body = v
+	return s
+}
+
 type ListGrantVSwitchesToCenRequest struct {
 	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -10486,6 +11298,7 @@ type ListTransitRouterAvailableResourceRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SupportMulticast     *bool   `json:"SupportMulticast,omitempty" xml:"SupportMulticast,omitempty"`
 }
 
 func (s ListTransitRouterAvailableResourceRequest) String() string {
@@ -10518,6 +11331,11 @@ func (s *ListTransitRouterAvailableResourceRequest) SetResourceOwnerAccount(v st
 
 func (s *ListTransitRouterAvailableResourceRequest) SetResourceOwnerId(v int64) *ListTransitRouterAvailableResourceRequest {
 	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListTransitRouterAvailableResourceRequest) SetSupportMulticast(v bool) *ListTransitRouterAvailableResourceRequest {
+	s.SupportMulticast = &v
 	return s
 }
 
@@ -10569,6 +11387,642 @@ func (s *ListTransitRouterAvailableResourceResponse) SetHeaders(v map[string]*st
 }
 
 func (s *ListTransitRouterAvailableResourceResponse) SetBody(v *ListTransitRouterAvailableResourceResponseBody) *ListTransitRouterAvailableResourceResponse {
+	s.Body = v
+	return s
+}
+
+type ListTransitRouterMulticastDomainAssociationsRequest struct {
+	ClientToken                    *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                         *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	MaxResults                     *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                      *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount                   *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                        *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceId                     *string   `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceOwnerAccount           *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceType                   *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TransitRouterAttachmentId      *string   `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	TransitRouterMulticastDomainId *string   `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
+	VSwitchIds                     []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+}
+
+func (s ListTransitRouterMulticastDomainAssociationsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterMulticastDomainAssociationsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsRequest) SetClientToken(v string) *ListTransitRouterMulticastDomainAssociationsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsRequest) SetDryRun(v bool) *ListTransitRouterMulticastDomainAssociationsRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsRequest) SetMaxResults(v int64) *ListTransitRouterMulticastDomainAssociationsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsRequest) SetNextToken(v string) *ListTransitRouterMulticastDomainAssociationsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsRequest) SetOwnerAccount(v string) *ListTransitRouterMulticastDomainAssociationsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsRequest) SetOwnerId(v int64) *ListTransitRouterMulticastDomainAssociationsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsRequest) SetResourceId(v string) *ListTransitRouterMulticastDomainAssociationsRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsRequest) SetResourceOwnerAccount(v string) *ListTransitRouterMulticastDomainAssociationsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsRequest) SetResourceOwnerId(v int64) *ListTransitRouterMulticastDomainAssociationsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsRequest) SetResourceType(v string) *ListTransitRouterMulticastDomainAssociationsRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsRequest) SetTransitRouterAttachmentId(v string) *ListTransitRouterMulticastDomainAssociationsRequest {
+	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsRequest) SetTransitRouterMulticastDomainId(v string) *ListTransitRouterMulticastDomainAssociationsRequest {
+	s.TransitRouterMulticastDomainId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsRequest) SetVSwitchIds(v []*string) *ListTransitRouterMulticastDomainAssociationsRequest {
+	s.VSwitchIds = v
+	return s
+}
+
+type ListTransitRouterMulticastDomainAssociationsResponseBody struct {
+	MaxResults                         *int32                                                                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                          *string                                                                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId                          *string                                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount                         *int32                                                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TransitRouterMulticastAssociations []*ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations `json:"TransitRouterMulticastAssociations,omitempty" xml:"TransitRouterMulticastAssociations,omitempty" type:"Repeated"`
+}
+
+func (s ListTransitRouterMulticastDomainAssociationsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterMulticastDomainAssociationsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsResponseBody) SetMaxResults(v int32) *ListTransitRouterMulticastDomainAssociationsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsResponseBody) SetNextToken(v string) *ListTransitRouterMulticastDomainAssociationsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsResponseBody) SetRequestId(v string) *ListTransitRouterMulticastDomainAssociationsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsResponseBody) SetTotalCount(v int32) *ListTransitRouterMulticastDomainAssociationsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsResponseBody) SetTransitRouterMulticastAssociations(v []*ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations) *ListTransitRouterMulticastDomainAssociationsResponseBody {
+	s.TransitRouterMulticastAssociations = v
+	return s
+}
+
+type ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations struct {
+	ResourceId                     *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceOwnerId                *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceType                   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	Status                         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TransitRouterAttachmentId      *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	TransitRouterMulticastDomainId *string `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
+	VSwitchId                      *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations) SetResourceId(v string) *ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations) SetResourceOwnerId(v int64) *ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations) SetResourceType(v string) *ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations) SetStatus(v string) *ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations) SetTransitRouterAttachmentId(v string) *ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations {
+	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations) SetTransitRouterMulticastDomainId(v string) *ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations {
+	s.TransitRouterMulticastDomainId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations) SetVSwitchId(v string) *ListTransitRouterMulticastDomainAssociationsResponseBodyTransitRouterMulticastAssociations {
+	s.VSwitchId = &v
+	return s
+}
+
+type ListTransitRouterMulticastDomainAssociationsResponse struct {
+	Headers map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListTransitRouterMulticastDomainAssociationsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTransitRouterMulticastDomainAssociationsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterMulticastDomainAssociationsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsResponse) SetHeaders(v map[string]*string) *ListTransitRouterMulticastDomainAssociationsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainAssociationsResponse) SetBody(v *ListTransitRouterMulticastDomainAssociationsResponseBody) *ListTransitRouterMulticastDomainAssociationsResponse {
+	s.Body = v
+	return s
+}
+
+type ListTransitRouterMulticastDomainsRequest struct {
+	CenId                          *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	ClientToken                    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                         *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	MaxResults                     *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                      *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount                   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId                       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount           *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterId                *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterMulticastDomainId *string `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
+}
+
+func (s ListTransitRouterMulticastDomainsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterMulticastDomainsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterMulticastDomainsRequest) SetCenId(v string) *ListTransitRouterMulticastDomainsRequest {
+	s.CenId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsRequest) SetClientToken(v string) *ListTransitRouterMulticastDomainsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsRequest) SetDryRun(v bool) *ListTransitRouterMulticastDomainsRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsRequest) SetMaxResults(v int64) *ListTransitRouterMulticastDomainsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsRequest) SetNextToken(v string) *ListTransitRouterMulticastDomainsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsRequest) SetOwnerAccount(v string) *ListTransitRouterMulticastDomainsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsRequest) SetOwnerId(v int64) *ListTransitRouterMulticastDomainsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsRequest) SetRegionId(v string) *ListTransitRouterMulticastDomainsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsRequest) SetResourceOwnerAccount(v string) *ListTransitRouterMulticastDomainsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsRequest) SetResourceOwnerId(v int64) *ListTransitRouterMulticastDomainsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsRequest) SetTransitRouterId(v string) *ListTransitRouterMulticastDomainsRequest {
+	s.TransitRouterId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsRequest) SetTransitRouterMulticastDomainId(v string) *ListTransitRouterMulticastDomainsRequest {
+	s.TransitRouterMulticastDomainId = &v
+	return s
+}
+
+type ListTransitRouterMulticastDomainsResponseBody struct {
+	MaxResults                    *int32                                                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                     *string                                                                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId                     *string                                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount                    *int32                                                                        `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TransitRouterMulticastDomains []*ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains `json:"TransitRouterMulticastDomains,omitempty" xml:"TransitRouterMulticastDomains,omitempty" type:"Repeated"`
+}
+
+func (s ListTransitRouterMulticastDomainsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterMulticastDomainsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterMulticastDomainsResponseBody) SetMaxResults(v int32) *ListTransitRouterMulticastDomainsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsResponseBody) SetNextToken(v string) *ListTransitRouterMulticastDomainsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsResponseBody) SetRequestId(v string) *ListTransitRouterMulticastDomainsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsResponseBody) SetTotalCount(v int32) *ListTransitRouterMulticastDomainsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsResponseBody) SetTransitRouterMulticastDomains(v []*ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains) *ListTransitRouterMulticastDomainsResponseBody {
+	s.TransitRouterMulticastDomains = v
+	return s
+}
+
+type ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains struct {
+	Status                                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TransitRouterMulticastDomainDescription *string `json:"TransitRouterMulticastDomainDescription,omitempty" xml:"TransitRouterMulticastDomainDescription,omitempty"`
+	TransitRouterMulticastDomainId          *string `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
+	TransitRouterMulticastDomainName        *string `json:"TransitRouterMulticastDomainName,omitempty" xml:"TransitRouterMulticastDomainName,omitempty"`
+}
+
+func (s ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains) SetStatus(v string) *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains) SetTransitRouterMulticastDomainDescription(v string) *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains {
+	s.TransitRouterMulticastDomainDescription = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains) SetTransitRouterMulticastDomainId(v string) *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains {
+	s.TransitRouterMulticastDomainId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains) SetTransitRouterMulticastDomainName(v string) *ListTransitRouterMulticastDomainsResponseBodyTransitRouterMulticastDomains {
+	s.TransitRouterMulticastDomainName = &v
+	return s
+}
+
+type ListTransitRouterMulticastDomainsResponse struct {
+	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListTransitRouterMulticastDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTransitRouterMulticastDomainsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterMulticastDomainsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterMulticastDomainsResponse) SetHeaders(v map[string]*string) *ListTransitRouterMulticastDomainsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTransitRouterMulticastDomainsResponse) SetBody(v *ListTransitRouterMulticastDomainsResponseBody) *ListTransitRouterMulticastDomainsResponse {
+	s.Body = v
+	return s
+}
+
+type ListTransitRouterMulticastGroupsRequest struct {
+	ClientToken                       *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	GroupIpAddress                    *string   `json:"GroupIpAddress,omitempty" xml:"GroupIpAddress,omitempty"`
+	MaxResults                        *int64    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                         *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount                      *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                           *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PeerTransitRouterMulticastDomains []*string `json:"PeerTransitRouterMulticastDomains,omitempty" xml:"PeerTransitRouterMulticastDomains,omitempty" type:"Repeated"`
+	ResourceId                        *string   `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceOwnerAccount              *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                   *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceType                      *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TransitRouterAttachmentId         *string   `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	TransitRouterMulticastDomainId    *string   `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
+	VSwitchIds                        []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+}
+
+func (s ListTransitRouterMulticastGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterMulticastGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterMulticastGroupsRequest) SetClientToken(v string) *ListTransitRouterMulticastGroupsRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsRequest) SetGroupIpAddress(v string) *ListTransitRouterMulticastGroupsRequest {
+	s.GroupIpAddress = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsRequest) SetMaxResults(v int64) *ListTransitRouterMulticastGroupsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsRequest) SetNextToken(v string) *ListTransitRouterMulticastGroupsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsRequest) SetOwnerAccount(v string) *ListTransitRouterMulticastGroupsRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsRequest) SetOwnerId(v int64) *ListTransitRouterMulticastGroupsRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsRequest) SetPeerTransitRouterMulticastDomains(v []*string) *ListTransitRouterMulticastGroupsRequest {
+	s.PeerTransitRouterMulticastDomains = v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsRequest) SetResourceId(v string) *ListTransitRouterMulticastGroupsRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsRequest) SetResourceOwnerAccount(v string) *ListTransitRouterMulticastGroupsRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsRequest) SetResourceOwnerId(v int64) *ListTransitRouterMulticastGroupsRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsRequest) SetResourceType(v string) *ListTransitRouterMulticastGroupsRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsRequest) SetTransitRouterAttachmentId(v string) *ListTransitRouterMulticastGroupsRequest {
+	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsRequest) SetTransitRouterMulticastDomainId(v string) *ListTransitRouterMulticastGroupsRequest {
+	s.TransitRouterMulticastDomainId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsRequest) SetVSwitchIds(v []*string) *ListTransitRouterMulticastGroupsRequest {
+	s.VSwitchIds = v
+	return s
+}
+
+type ListTransitRouterMulticastGroupsResponseBody struct {
+	MaxResults                   *int32                                                                      `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken                    *string                                                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId                    *string                                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount                   *int32                                                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	TransitRouterMulticastGroups []*ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups `json:"TransitRouterMulticastGroups,omitempty" xml:"TransitRouterMulticastGroups,omitempty" type:"Repeated"`
+}
+
+func (s ListTransitRouterMulticastGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterMulticastGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterMulticastGroupsResponseBody) SetMaxResults(v int32) *ListTransitRouterMulticastGroupsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsResponseBody) SetNextToken(v string) *ListTransitRouterMulticastGroupsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsResponseBody) SetRequestId(v string) *ListTransitRouterMulticastGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsResponseBody) SetTotalCount(v int32) *ListTransitRouterMulticastGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsResponseBody) SetTransitRouterMulticastGroups(v []*ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups) *ListTransitRouterMulticastGroupsResponseBody {
+	s.TransitRouterMulticastGroups = v
+	return s
+}
+
+type ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups struct {
+	GroupIpAddress                     *string `json:"GroupIpAddress,omitempty" xml:"GroupIpAddress,omitempty"`
+	GroupMember                        *bool   `json:"GroupMember,omitempty" xml:"GroupMember,omitempty"`
+	GroupSource                        *bool   `json:"GroupSource,omitempty" xml:"GroupSource,omitempty"`
+	MemberType                         *string `json:"MemberType,omitempty" xml:"MemberType,omitempty"`
+	NetworkInterfaceId                 *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	PeerTransitRouterMulticastDomainId *string `json:"PeerTransitRouterMulticastDomainId,omitempty" xml:"PeerTransitRouterMulticastDomainId,omitempty"`
+	ResourceId                         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceOwnerId                    *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceType                       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SourceType                         *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Status                             *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TransitRouterAttachmentId          *string `json:"TransitRouterAttachmentId,omitempty" xml:"TransitRouterAttachmentId,omitempty"`
+	VSwitchId                          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups) SetGroupIpAddress(v string) *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups {
+	s.GroupIpAddress = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups) SetGroupMember(v bool) *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups {
+	s.GroupMember = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups) SetGroupSource(v bool) *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups {
+	s.GroupSource = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups) SetMemberType(v string) *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups {
+	s.MemberType = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups) SetNetworkInterfaceId(v string) *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups {
+	s.NetworkInterfaceId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups) SetPeerTransitRouterMulticastDomainId(v string) *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups {
+	s.PeerTransitRouterMulticastDomainId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups) SetResourceId(v string) *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups) SetResourceOwnerId(v int64) *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups) SetResourceType(v string) *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups) SetSourceType(v string) *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups {
+	s.SourceType = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups) SetStatus(v string) *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups {
+	s.Status = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups) SetTransitRouterAttachmentId(v string) *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups {
+	s.TransitRouterAttachmentId = &v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups) SetVSwitchId(v string) *ListTransitRouterMulticastGroupsResponseBodyTransitRouterMulticastGroups {
+	s.VSwitchId = &v
+	return s
+}
+
+type ListTransitRouterMulticastGroupsResponse struct {
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListTransitRouterMulticastGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTransitRouterMulticastGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTransitRouterMulticastGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTransitRouterMulticastGroupsResponse) SetHeaders(v map[string]*string) *ListTransitRouterMulticastGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTransitRouterMulticastGroupsResponse) SetBody(v *ListTransitRouterMulticastGroupsResponseBody) *ListTransitRouterMulticastGroupsResponse {
 	s.Body = v
 	return s
 }
@@ -12102,6 +13556,7 @@ type ListTransitRoutersResponseBodyTransitRouters struct {
 	CreationTime             *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	Status                   *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportMulticast         *bool   `json:"SupportMulticast,omitempty" xml:"SupportMulticast,omitempty"`
 	TransitRouterDescription *string `json:"TransitRouterDescription,omitempty" xml:"TransitRouterDescription,omitempty"`
 	TransitRouterId          *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
 	TransitRouterName        *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
@@ -12138,6 +13593,11 @@ func (s *ListTransitRoutersResponseBodyTransitRouters) SetRegionId(v string) *Li
 
 func (s *ListTransitRoutersResponseBodyTransitRouters) SetStatus(v string) *ListTransitRoutersResponseBodyTransitRouters {
 	s.Status = &v
+	return s
+}
+
+func (s *ListTransitRoutersResponseBodyTransitRouters) SetSupportMulticast(v bool) *ListTransitRoutersResponseBodyTransitRouters {
+	s.SupportMulticast = &v
 	return s
 }
 
@@ -12817,6 +14277,111 @@ func (s *ModifyFlowLogAttributeResponse) SetBody(v *ModifyFlowLogAttributeRespon
 	return s
 }
 
+type ModifyTransitRouterMulticastDomainRequest struct {
+	ClientToken                             *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                                  *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	OwnerAccount                            *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount                    *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                         *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterMulticastDomainDescription *string `json:"TransitRouterMulticastDomainDescription,omitempty" xml:"TransitRouterMulticastDomainDescription,omitempty"`
+	TransitRouterMulticastDomainId          *string `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
+	TransitRouterMulticastDomainName        *string `json:"TransitRouterMulticastDomainName,omitempty" xml:"TransitRouterMulticastDomainName,omitempty"`
+}
+
+func (s ModifyTransitRouterMulticastDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTransitRouterMulticastDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTransitRouterMulticastDomainRequest) SetClientToken(v string) *ModifyTransitRouterMulticastDomainRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *ModifyTransitRouterMulticastDomainRequest) SetDryRun(v bool) *ModifyTransitRouterMulticastDomainRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *ModifyTransitRouterMulticastDomainRequest) SetOwnerAccount(v string) *ModifyTransitRouterMulticastDomainRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ModifyTransitRouterMulticastDomainRequest) SetOwnerId(v int64) *ModifyTransitRouterMulticastDomainRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ModifyTransitRouterMulticastDomainRequest) SetResourceOwnerAccount(v string) *ModifyTransitRouterMulticastDomainRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ModifyTransitRouterMulticastDomainRequest) SetResourceOwnerId(v int64) *ModifyTransitRouterMulticastDomainRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ModifyTransitRouterMulticastDomainRequest) SetTransitRouterMulticastDomainDescription(v string) *ModifyTransitRouterMulticastDomainRequest {
+	s.TransitRouterMulticastDomainDescription = &v
+	return s
+}
+
+func (s *ModifyTransitRouterMulticastDomainRequest) SetTransitRouterMulticastDomainId(v string) *ModifyTransitRouterMulticastDomainRequest {
+	s.TransitRouterMulticastDomainId = &v
+	return s
+}
+
+func (s *ModifyTransitRouterMulticastDomainRequest) SetTransitRouterMulticastDomainName(v string) *ModifyTransitRouterMulticastDomainRequest {
+	s.TransitRouterMulticastDomainName = &v
+	return s
+}
+
+type ModifyTransitRouterMulticastDomainResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyTransitRouterMulticastDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTransitRouterMulticastDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTransitRouterMulticastDomainResponseBody) SetRequestId(v string) *ModifyTransitRouterMulticastDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyTransitRouterMulticastDomainResponse struct {
+	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyTransitRouterMulticastDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyTransitRouterMulticastDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyTransitRouterMulticastDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyTransitRouterMulticastDomainResponse) SetHeaders(v map[string]*string) *ModifyTransitRouterMulticastDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyTransitRouterMulticastDomainResponse) SetBody(v *ModifyTransitRouterMulticastDomainResponseBody) *ModifyTransitRouterMulticastDomainResponse {
+	s.Body = v
+	return s
+}
+
 type MoveResourceGroupRequest struct {
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
@@ -13104,6 +14669,222 @@ func (s *PublishRouteEntriesResponse) SetHeaders(v map[string]*string) *PublishR
 }
 
 func (s *PublishRouteEntriesResponse) SetBody(v *PublishRouteEntriesResponseBody) *PublishRouteEntriesResponse {
+	s.Body = v
+	return s
+}
+
+type RegisterTransitRouterMulticastGroupMembersRequest struct {
+	ClientToken                       *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                            *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	GroupIpAddress                    *string   `json:"GroupIpAddress,omitempty" xml:"GroupIpAddress,omitempty"`
+	NetworkInterfaceIds               []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
+	OwnerAccount                      *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                           *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PeerTransitRouterMulticastDomains []*string `json:"PeerTransitRouterMulticastDomains,omitempty" xml:"PeerTransitRouterMulticastDomains,omitempty" type:"Repeated"`
+	ResourceOwnerAccount              *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                   *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterMulticastDomainId    *string   `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
+}
+
+func (s RegisterTransitRouterMulticastGroupMembersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterTransitRouterMulticastGroupMembersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterTransitRouterMulticastGroupMembersRequest) SetClientToken(v string) *RegisterTransitRouterMulticastGroupMembersRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RegisterTransitRouterMulticastGroupMembersRequest) SetDryRun(v bool) *RegisterTransitRouterMulticastGroupMembersRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *RegisterTransitRouterMulticastGroupMembersRequest) SetGroupIpAddress(v string) *RegisterTransitRouterMulticastGroupMembersRequest {
+	s.GroupIpAddress = &v
+	return s
+}
+
+func (s *RegisterTransitRouterMulticastGroupMembersRequest) SetNetworkInterfaceIds(v []*string) *RegisterTransitRouterMulticastGroupMembersRequest {
+	s.NetworkInterfaceIds = v
+	return s
+}
+
+func (s *RegisterTransitRouterMulticastGroupMembersRequest) SetOwnerAccount(v string) *RegisterTransitRouterMulticastGroupMembersRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *RegisterTransitRouterMulticastGroupMembersRequest) SetOwnerId(v int64) *RegisterTransitRouterMulticastGroupMembersRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *RegisterTransitRouterMulticastGroupMembersRequest) SetPeerTransitRouterMulticastDomains(v []*string) *RegisterTransitRouterMulticastGroupMembersRequest {
+	s.PeerTransitRouterMulticastDomains = v
+	return s
+}
+
+func (s *RegisterTransitRouterMulticastGroupMembersRequest) SetResourceOwnerAccount(v string) *RegisterTransitRouterMulticastGroupMembersRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *RegisterTransitRouterMulticastGroupMembersRequest) SetResourceOwnerId(v int64) *RegisterTransitRouterMulticastGroupMembersRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *RegisterTransitRouterMulticastGroupMembersRequest) SetTransitRouterMulticastDomainId(v string) *RegisterTransitRouterMulticastGroupMembersRequest {
+	s.TransitRouterMulticastDomainId = &v
+	return s
+}
+
+type RegisterTransitRouterMulticastGroupMembersResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RegisterTransitRouterMulticastGroupMembersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterTransitRouterMulticastGroupMembersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterTransitRouterMulticastGroupMembersResponseBody) SetRequestId(v string) *RegisterTransitRouterMulticastGroupMembersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RegisterTransitRouterMulticastGroupMembersResponse struct {
+	Headers map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RegisterTransitRouterMulticastGroupMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RegisterTransitRouterMulticastGroupMembersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterTransitRouterMulticastGroupMembersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterTransitRouterMulticastGroupMembersResponse) SetHeaders(v map[string]*string) *RegisterTransitRouterMulticastGroupMembersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RegisterTransitRouterMulticastGroupMembersResponse) SetBody(v *RegisterTransitRouterMulticastGroupMembersResponseBody) *RegisterTransitRouterMulticastGroupMembersResponse {
+	s.Body = v
+	return s
+}
+
+type RegisterTransitRouterMulticastGroupSourcesRequest struct {
+	ClientToken                    *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun                         *bool     `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	GroupIpAddress                 *string   `json:"GroupIpAddress,omitempty" xml:"GroupIpAddress,omitempty"`
+	NetworkInterfaceIds            []*string `json:"NetworkInterfaceIds,omitempty" xml:"NetworkInterfaceIds,omitempty" type:"Repeated"`
+	OwnerAccount                   *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                        *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount           *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId                *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TransitRouterMulticastDomainId *string   `json:"TransitRouterMulticastDomainId,omitempty" xml:"TransitRouterMulticastDomainId,omitempty"`
+}
+
+func (s RegisterTransitRouterMulticastGroupSourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterTransitRouterMulticastGroupSourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterTransitRouterMulticastGroupSourcesRequest) SetClientToken(v string) *RegisterTransitRouterMulticastGroupSourcesRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RegisterTransitRouterMulticastGroupSourcesRequest) SetDryRun(v bool) *RegisterTransitRouterMulticastGroupSourcesRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *RegisterTransitRouterMulticastGroupSourcesRequest) SetGroupIpAddress(v string) *RegisterTransitRouterMulticastGroupSourcesRequest {
+	s.GroupIpAddress = &v
+	return s
+}
+
+func (s *RegisterTransitRouterMulticastGroupSourcesRequest) SetNetworkInterfaceIds(v []*string) *RegisterTransitRouterMulticastGroupSourcesRequest {
+	s.NetworkInterfaceIds = v
+	return s
+}
+
+func (s *RegisterTransitRouterMulticastGroupSourcesRequest) SetOwnerAccount(v string) *RegisterTransitRouterMulticastGroupSourcesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *RegisterTransitRouterMulticastGroupSourcesRequest) SetOwnerId(v int64) *RegisterTransitRouterMulticastGroupSourcesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *RegisterTransitRouterMulticastGroupSourcesRequest) SetResourceOwnerAccount(v string) *RegisterTransitRouterMulticastGroupSourcesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *RegisterTransitRouterMulticastGroupSourcesRequest) SetResourceOwnerId(v int64) *RegisterTransitRouterMulticastGroupSourcesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *RegisterTransitRouterMulticastGroupSourcesRequest) SetTransitRouterMulticastDomainId(v string) *RegisterTransitRouterMulticastGroupSourcesRequest {
+	s.TransitRouterMulticastDomainId = &v
+	return s
+}
+
+type RegisterTransitRouterMulticastGroupSourcesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RegisterTransitRouterMulticastGroupSourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterTransitRouterMulticastGroupSourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterTransitRouterMulticastGroupSourcesResponseBody) SetRequestId(v string) *RegisterTransitRouterMulticastGroupSourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RegisterTransitRouterMulticastGroupSourcesResponse struct {
+	Headers map[string]*string                                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RegisterTransitRouterMulticastGroupSourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RegisterTransitRouterMulticastGroupSourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegisterTransitRouterMulticastGroupSourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RegisterTransitRouterMulticastGroupSourcesResponse) SetHeaders(v map[string]*string) *RegisterTransitRouterMulticastGroupSourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RegisterTransitRouterMulticastGroupSourcesResponse) SetBody(v *RegisterTransitRouterMulticastGroupSourcesResponseBody) *RegisterTransitRouterMulticastGroupSourcesResponse {
 	s.Body = v
 	return s
 }
@@ -15621,6 +17402,82 @@ func (client *Client) AssociateTransitRouterAttachmentWithRouteTable(request *As
 	return _result, _err
 }
 
+func (client *Client) AssociateTransitRouterMulticastDomainWithOptions(request *AssociateTransitRouterMulticastDomainRequest, runtime *util.RuntimeOptions) (_result *AssociateTransitRouterMulticastDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterMulticastDomainId)) {
+		query["TransitRouterMulticastDomainId"] = request.TransitRouterMulticastDomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchIds)) {
+		query["VSwitchIds"] = request.VSwitchIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssociateTransitRouterMulticastDomain"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AssociateTransitRouterMulticastDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AssociateTransitRouterMulticastDomain(request *AssociateTransitRouterMulticastDomainRequest) (_result *AssociateTransitRouterMulticastDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AssociateTransitRouterMulticastDomainResponse{}
+	_body, _err := client.AssociateTransitRouterMulticastDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AttachCenChildInstanceWithOptions(request *AttachCenChildInstanceRequest, runtime *util.RuntimeOptions) (_result *AttachCenChildInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -16307,6 +18164,10 @@ func (client *Client) CreateCenRouteMapWithOptions(request *CreateCenRouteMapReq
 		query["SourceRouteTableIds"] = request.SourceRouteTableIds
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableId)) {
+		query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TransmitDirection)) {
 		query["TransmitDirection"] = request.TransmitDirection
 	}
@@ -16555,6 +18416,10 @@ func (client *Client) CreateTransitRouterWithOptions(request *CreateTransitRoute
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SupportMulticast)) {
+		query["SupportMulticast"] = request.SupportMulticast
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TransitRouterDescription)) {
 		query["TransitRouterDescription"] = request.TransitRouterDescription
 	}
@@ -16590,6 +18455,90 @@ func (client *Client) CreateTransitRouter(request *CreateTransitRouterRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTransitRouterResponse{}
 	_body, _err := client.CreateTransitRouterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateTransitRouterMulticastDomainWithOptions(request *CreateTransitRouterMulticastDomainRequest, runtime *util.RuntimeOptions) (_result *CreateTransitRouterMulticastDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterMulticastDomainDescription)) {
+		query["TransitRouterMulticastDomainDescription"] = request.TransitRouterMulticastDomainDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterMulticastDomainName)) {
+		query["TransitRouterMulticastDomainName"] = request.TransitRouterMulticastDomainName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateTransitRouterMulticastDomain"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateTransitRouterMulticastDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateTransitRouterMulticastDomain(request *CreateTransitRouterMulticastDomainRequest) (_result *CreateTransitRouterMulticastDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateTransitRouterMulticastDomainResponse{}
+	_body, _err := client.CreateTransitRouterMulticastDomainWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -17909,6 +19858,74 @@ func (client *Client) DeleteTransitRouter(request *DeleteTransitRouterRequest) (
 	return _result, _err
 }
 
+func (client *Client) DeleteTransitRouterMulticastDomainWithOptions(request *DeleteTransitRouterMulticastDomainRequest, runtime *util.RuntimeOptions) (_result *DeleteTransitRouterMulticastDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterMulticastDomainId)) {
+		query["TransitRouterMulticastDomainId"] = request.TransitRouterMulticastDomainId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteTransitRouterMulticastDomain"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteTransitRouterMulticastDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteTransitRouterMulticastDomain(request *DeleteTransitRouterMulticastDomainRequest) (_result *DeleteTransitRouterMulticastDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteTransitRouterMulticastDomainResponse{}
+	_body, _err := client.DeleteTransitRouterMulticastDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteTransitRouterPeerAttachmentWithOptions(request *DeleteTransitRouterPeerAttachmentRequest, runtime *util.RuntimeOptions) (_result *DeleteTransitRouterPeerAttachmentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -18258,6 +20275,162 @@ func (client *Client) DeleteTransitRouterVpcAttachment(request *DeleteTransitRou
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteTransitRouterVpcAttachmentResponse{}
 	_body, _err := client.DeleteTransitRouterVpcAttachmentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeregisterTransitRouterMulticastGroupMembersWithOptions(request *DeregisterTransitRouterMulticastGroupMembersRequest, runtime *util.RuntimeOptions) (_result *DeregisterTransitRouterMulticastGroupMembersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupIpAddress)) {
+		query["GroupIpAddress"] = request.GroupIpAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceIds)) {
+		query["NetworkInterfaceIds"] = request.NetworkInterfaceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeerTransitRouterMulticastDomains)) {
+		query["PeerTransitRouterMulticastDomains"] = request.PeerTransitRouterMulticastDomains
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterMulticastDomainId)) {
+		query["TransitRouterMulticastDomainId"] = request.TransitRouterMulticastDomainId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeregisterTransitRouterMulticastGroupMembers"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeregisterTransitRouterMulticastGroupMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeregisterTransitRouterMulticastGroupMembers(request *DeregisterTransitRouterMulticastGroupMembersRequest) (_result *DeregisterTransitRouterMulticastGroupMembersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeregisterTransitRouterMulticastGroupMembersResponse{}
+	_body, _err := client.DeregisterTransitRouterMulticastGroupMembersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeregisterTransitRouterMulticastGroupSourcesWithOptions(request *DeregisterTransitRouterMulticastGroupSourcesRequest, runtime *util.RuntimeOptions) (_result *DeregisterTransitRouterMulticastGroupSourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupIpAddress)) {
+		query["GroupIpAddress"] = request.GroupIpAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceIds)) {
+		query["NetworkInterfaceIds"] = request.NetworkInterfaceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterMulticastDomainId)) {
+		query["TransitRouterMulticastDomainId"] = request.TransitRouterMulticastDomainId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeregisterTransitRouterMulticastGroupSources"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeregisterTransitRouterMulticastGroupSourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeregisterTransitRouterMulticastGroupSources(request *DeregisterTransitRouterMulticastGroupSourcesRequest) (_result *DeregisterTransitRouterMulticastGroupSourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeregisterTransitRouterMulticastGroupSourcesResponse{}
+	_body, _err := client.DeregisterTransitRouterMulticastGroupSourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19929,6 +22102,82 @@ func (client *Client) DisableTransitRouterRouteTablePropagation(request *Disable
 	return _result, _err
 }
 
+func (client *Client) DisassociateTransitRouterMulticastDomainWithOptions(request *DisassociateTransitRouterMulticastDomainRequest, runtime *util.RuntimeOptions) (_result *DisassociateTransitRouterMulticastDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterMulticastDomainId)) {
+		query["TransitRouterMulticastDomainId"] = request.TransitRouterMulticastDomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchIds)) {
+		query["VSwitchIds"] = request.VSwitchIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisassociateTransitRouterMulticastDomain"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisassociateTransitRouterMulticastDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisassociateTransitRouterMulticastDomain(request *DisassociateTransitRouterMulticastDomainRequest) (_result *DisassociateTransitRouterMulticastDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisassociateTransitRouterMulticastDomainResponse{}
+	_body, _err := client.DisassociateTransitRouterMulticastDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DissociateTransitRouterAttachmentFromRouteTableWithOptions(request *DissociateTransitRouterAttachmentFromRouteTableRequest, runtime *util.RuntimeOptions) (_result *DissociateTransitRouterAttachmentFromRouteTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20329,6 +22578,74 @@ func (client *Client) ListCenInterRegionTrafficQosPolicies(request *ListCenInter
 	return _result, _err
 }
 
+func (client *Client) ListGrantVSwitchEnisWithOptions(request *ListGrantVSwitchEnisRequest, runtime *util.RuntimeOptions) (_result *ListGrantVSwitchEnisResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
+		query["VpcId"] = request.VpcId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGrantVSwitchEnis"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGrantVSwitchEnisResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGrantVSwitchEnis(request *ListGrantVSwitchEnisRequest) (_result *ListGrantVSwitchEnisResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListGrantVSwitchEnisResponse{}
+	_body, _err := client.ListGrantVSwitchEnisWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListGrantVSwitchesToCenWithOptions(request *ListGrantVSwitchesToCenRequest, runtime *util.RuntimeOptions) (_result *ListGrantVSwitchesToCenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -20591,6 +22908,10 @@ func (client *Client) ListTransitRouterAvailableResourceWithOptions(request *Lis
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SupportMulticast)) {
+		query["SupportMulticast"] = request.SupportMulticast
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -20618,6 +22939,282 @@ func (client *Client) ListTransitRouterAvailableResource(request *ListTransitRou
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTransitRouterAvailableResourceResponse{}
 	_body, _err := client.ListTransitRouterAvailableResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTransitRouterMulticastDomainAssociationsWithOptions(request *ListTransitRouterMulticastDomainAssociationsRequest, runtime *util.RuntimeOptions) (_result *ListTransitRouterMulticastDomainAssociationsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterMulticastDomainId)) {
+		query["TransitRouterMulticastDomainId"] = request.TransitRouterMulticastDomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchIds)) {
+		query["VSwitchIds"] = request.VSwitchIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTransitRouterMulticastDomainAssociations"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTransitRouterMulticastDomainAssociationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTransitRouterMulticastDomainAssociations(request *ListTransitRouterMulticastDomainAssociationsRequest) (_result *ListTransitRouterMulticastDomainAssociationsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTransitRouterMulticastDomainAssociationsResponse{}
+	_body, _err := client.ListTransitRouterMulticastDomainAssociationsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTransitRouterMulticastDomainsWithOptions(request *ListTransitRouterMulticastDomainsRequest, runtime *util.RuntimeOptions) (_result *ListTransitRouterMulticastDomainsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CenId)) {
+		query["CenId"] = request.CenId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterId)) {
+		query["TransitRouterId"] = request.TransitRouterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterMulticastDomainId)) {
+		query["TransitRouterMulticastDomainId"] = request.TransitRouterMulticastDomainId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTransitRouterMulticastDomains"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTransitRouterMulticastDomainsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTransitRouterMulticastDomains(request *ListTransitRouterMulticastDomainsRequest) (_result *ListTransitRouterMulticastDomainsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTransitRouterMulticastDomainsResponse{}
+	_body, _err := client.ListTransitRouterMulticastDomainsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTransitRouterMulticastGroupsWithOptions(request *ListTransitRouterMulticastGroupsRequest, runtime *util.RuntimeOptions) (_result *ListTransitRouterMulticastGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupIpAddress)) {
+		query["GroupIpAddress"] = request.GroupIpAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeerTransitRouterMulticastDomains)) {
+		query["PeerTransitRouterMulticastDomains"] = request.PeerTransitRouterMulticastDomains
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterAttachmentId)) {
+		query["TransitRouterAttachmentId"] = request.TransitRouterAttachmentId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterMulticastDomainId)) {
+		query["TransitRouterMulticastDomainId"] = request.TransitRouterMulticastDomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchIds)) {
+		query["VSwitchIds"] = request.VSwitchIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTransitRouterMulticastGroups"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTransitRouterMulticastGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTransitRouterMulticastGroups(request *ListTransitRouterMulticastGroupsRequest) (_result *ListTransitRouterMulticastGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTransitRouterMulticastGroupsResponse{}
+	_body, _err := client.ListTransitRouterMulticastGroupsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21701,6 +24298,82 @@ func (client *Client) ModifyFlowLogAttribute(request *ModifyFlowLogAttributeRequ
 	return _result, _err
 }
 
+func (client *Client) ModifyTransitRouterMulticastDomainWithOptions(request *ModifyTransitRouterMulticastDomainRequest, runtime *util.RuntimeOptions) (_result *ModifyTransitRouterMulticastDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterMulticastDomainDescription)) {
+		query["TransitRouterMulticastDomainDescription"] = request.TransitRouterMulticastDomainDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterMulticastDomainId)) {
+		query["TransitRouterMulticastDomainId"] = request.TransitRouterMulticastDomainId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterMulticastDomainName)) {
+		query["TransitRouterMulticastDomainName"] = request.TransitRouterMulticastDomainName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyTransitRouterMulticastDomain"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyTransitRouterMulticastDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyTransitRouterMulticastDomain(request *ModifyTransitRouterMulticastDomainRequest) (_result *ModifyTransitRouterMulticastDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyTransitRouterMulticastDomainResponse{}
+	_body, _err := client.ModifyTransitRouterMulticastDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) MoveResourceGroupWithOptions(request *MoveResourceGroupRequest, runtime *util.RuntimeOptions) (_result *MoveResourceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -21902,6 +24575,162 @@ func (client *Client) PublishRouteEntries(request *PublishRouteEntriesRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &PublishRouteEntriesResponse{}
 	_body, _err := client.PublishRouteEntriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RegisterTransitRouterMulticastGroupMembersWithOptions(request *RegisterTransitRouterMulticastGroupMembersRequest, runtime *util.RuntimeOptions) (_result *RegisterTransitRouterMulticastGroupMembersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupIpAddress)) {
+		query["GroupIpAddress"] = request.GroupIpAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceIds)) {
+		query["NetworkInterfaceIds"] = request.NetworkInterfaceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeerTransitRouterMulticastDomains)) {
+		query["PeerTransitRouterMulticastDomains"] = request.PeerTransitRouterMulticastDomains
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterMulticastDomainId)) {
+		query["TransitRouterMulticastDomainId"] = request.TransitRouterMulticastDomainId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RegisterTransitRouterMulticastGroupMembers"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RegisterTransitRouterMulticastGroupMembersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RegisterTransitRouterMulticastGroupMembers(request *RegisterTransitRouterMulticastGroupMembersRequest) (_result *RegisterTransitRouterMulticastGroupMembersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RegisterTransitRouterMulticastGroupMembersResponse{}
+	_body, _err := client.RegisterTransitRouterMulticastGroupMembersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RegisterTransitRouterMulticastGroupSourcesWithOptions(request *RegisterTransitRouterMulticastGroupSourcesRequest, runtime *util.RuntimeOptions) (_result *RegisterTransitRouterMulticastGroupSourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupIpAddress)) {
+		query["GroupIpAddress"] = request.GroupIpAddress
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceIds)) {
+		query["NetworkInterfaceIds"] = request.NetworkInterfaceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterMulticastDomainId)) {
+		query["TransitRouterMulticastDomainId"] = request.TransitRouterMulticastDomainId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RegisterTransitRouterMulticastGroupSources"),
+		Version:     tea.String("2017-09-12"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RegisterTransitRouterMulticastGroupSourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RegisterTransitRouterMulticastGroupSources(request *RegisterTransitRouterMulticastGroupSourcesRequest) (_result *RegisterTransitRouterMulticastGroupSourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RegisterTransitRouterMulticastGroupSourcesResponse{}
+	_body, _err := client.RegisterTransitRouterMulticastGroupSourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
