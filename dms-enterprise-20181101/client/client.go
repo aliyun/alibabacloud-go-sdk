@@ -17514,7 +17514,7 @@ func (s *ListTaskFlowResponseBody) SetTaskFlowList(v *ListTaskFlowResponseBodyTa
 }
 
 type ListTaskFlowResponseBodyTaskFlowList struct {
-	DAGInstance []*ListTaskFlowResponseBodyTaskFlowListDAGInstance `json:"DAGInstance,omitempty" xml:"DAGInstance,omitempty" type:"Repeated"`
+	TaskFlow []*ListTaskFlowResponseBodyTaskFlowListTaskFlow `json:"TaskFlow,omitempty" xml:"TaskFlow,omitempty" type:"Repeated"`
 }
 
 func (s ListTaskFlowResponseBodyTaskFlowList) String() string {
@@ -17525,12 +17525,12 @@ func (s ListTaskFlowResponseBodyTaskFlowList) GoString() string {
 	return s.String()
 }
 
-func (s *ListTaskFlowResponseBodyTaskFlowList) SetDAGInstance(v []*ListTaskFlowResponseBodyTaskFlowListDAGInstance) *ListTaskFlowResponseBodyTaskFlowList {
-	s.DAGInstance = v
+func (s *ListTaskFlowResponseBodyTaskFlowList) SetTaskFlow(v []*ListTaskFlowResponseBodyTaskFlowListTaskFlow) *ListTaskFlowResponseBodyTaskFlowList {
+	s.TaskFlow = v
 	return s
 }
 
-type ListTaskFlowResponseBodyTaskFlowListDAGInstance struct {
+type ListTaskFlowResponseBodyTaskFlowListTaskFlow struct {
 	CreatorId            *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	CreatorNickName      *string `json:"CreatorNickName,omitempty" xml:"CreatorNickName,omitempty"`
 	DagOwnerNickName     *string `json:"DagOwnerNickName,omitempty" xml:"DagOwnerNickName,omitempty"`
@@ -17541,50 +17541,50 @@ type ListTaskFlowResponseBodyTaskFlowListDAGInstance struct {
 	Status               *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
-func (s ListTaskFlowResponseBodyTaskFlowListDAGInstance) String() string {
+func (s ListTaskFlowResponseBodyTaskFlowListTaskFlow) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListTaskFlowResponseBodyTaskFlowListDAGInstance) GoString() string {
+func (s ListTaskFlowResponseBodyTaskFlowListTaskFlow) GoString() string {
 	return s.String()
 }
 
-func (s *ListTaskFlowResponseBodyTaskFlowListDAGInstance) SetCreatorId(v string) *ListTaskFlowResponseBodyTaskFlowListDAGInstance {
+func (s *ListTaskFlowResponseBodyTaskFlowListTaskFlow) SetCreatorId(v string) *ListTaskFlowResponseBodyTaskFlowListTaskFlow {
 	s.CreatorId = &v
 	return s
 }
 
-func (s *ListTaskFlowResponseBodyTaskFlowListDAGInstance) SetCreatorNickName(v string) *ListTaskFlowResponseBodyTaskFlowListDAGInstance {
+func (s *ListTaskFlowResponseBodyTaskFlowListTaskFlow) SetCreatorNickName(v string) *ListTaskFlowResponseBodyTaskFlowListTaskFlow {
 	s.CreatorNickName = &v
 	return s
 }
 
-func (s *ListTaskFlowResponseBodyTaskFlowListDAGInstance) SetDagOwnerNickName(v string) *ListTaskFlowResponseBodyTaskFlowListDAGInstance {
+func (s *ListTaskFlowResponseBodyTaskFlowListTaskFlow) SetDagOwnerNickName(v string) *ListTaskFlowResponseBodyTaskFlowListTaskFlow {
 	s.DagOwnerNickName = &v
 	return s
 }
 
-func (s *ListTaskFlowResponseBodyTaskFlowListDAGInstance) SetDeployId(v int64) *ListTaskFlowResponseBodyTaskFlowListDAGInstance {
+func (s *ListTaskFlowResponseBodyTaskFlowListTaskFlow) SetDeployId(v int64) *ListTaskFlowResponseBodyTaskFlowListTaskFlow {
 	s.DeployId = &v
 	return s
 }
 
-func (s *ListTaskFlowResponseBodyTaskFlowListDAGInstance) SetId(v int64) *ListTaskFlowResponseBodyTaskFlowListDAGInstance {
+func (s *ListTaskFlowResponseBodyTaskFlowListTaskFlow) SetId(v int64) *ListTaskFlowResponseBodyTaskFlowListTaskFlow {
 	s.Id = &v
 	return s
 }
 
-func (s *ListTaskFlowResponseBodyTaskFlowListDAGInstance) SetLatestInstanceStatus(v int32) *ListTaskFlowResponseBodyTaskFlowListDAGInstance {
+func (s *ListTaskFlowResponseBodyTaskFlowListTaskFlow) SetLatestInstanceStatus(v int32) *ListTaskFlowResponseBodyTaskFlowListTaskFlow {
 	s.LatestInstanceStatus = &v
 	return s
 }
 
-func (s *ListTaskFlowResponseBodyTaskFlowListDAGInstance) SetLatestInstanceTime(v string) *ListTaskFlowResponseBodyTaskFlowListDAGInstance {
+func (s *ListTaskFlowResponseBodyTaskFlowListTaskFlow) SetLatestInstanceTime(v string) *ListTaskFlowResponseBodyTaskFlowListTaskFlow {
 	s.LatestInstanceTime = &v
 	return s
 }
 
-func (s *ListTaskFlowResponseBodyTaskFlowListDAGInstance) SetStatus(v int32) *ListTaskFlowResponseBodyTaskFlowListDAGInstance {
+func (s *ListTaskFlowResponseBodyTaskFlowListTaskFlow) SetStatus(v int32) *ListTaskFlowResponseBodyTaskFlowListTaskFlow {
 	s.Status = &v
 	return s
 }
