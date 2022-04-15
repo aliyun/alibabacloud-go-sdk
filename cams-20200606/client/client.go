@@ -17,6 +17,8 @@ type CheckChatappContactsRequest struct {
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
 	// 需要查询的用户列表,单次调用最多查询10个。注意：用户号码必须加国家码
 	Contacts []*string `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Repeated"`
+	// ISV客户wabaId
+	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	// 发送号码,所选择ChannelType下的Business账号，即在控制台上审核通过的Number
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
 }
@@ -39,6 +41,11 @@ func (s *CheckChatappContactsRequest) SetContacts(v []*string) *CheckChatappCont
 	return s
 }
 
+func (s *CheckChatappContactsRequest) SetCustWabaId(v string) *CheckChatappContactsRequest {
+	s.CustWabaId = &v
+	return s
+}
+
 func (s *CheckChatappContactsRequest) SetFrom(v string) *CheckChatappContactsRequest {
 	s.From = &v
 	return s
@@ -49,6 +56,8 @@ type CheckChatappContactsShrinkRequest struct {
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
 	// 需要查询的用户列表,单次调用最多查询10个。注意：用户号码必须加国家码
 	ContactsShrink *string `json:"Contacts,omitempty" xml:"Contacts,omitempty"`
+	// ISV客户wabaId
+	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	// 发送号码,所选择ChannelType下的Business账号，即在控制台上审核通过的Number
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
 }
@@ -68,6 +77,11 @@ func (s *CheckChatappContactsShrinkRequest) SetChannelType(v string) *CheckChata
 
 func (s *CheckChatappContactsShrinkRequest) SetContactsShrink(v string) *CheckChatappContactsShrinkRequest {
 	s.ContactsShrink = &v
+	return s
+}
+
+func (s *CheckChatappContactsShrinkRequest) SetCustWabaId(v string) *CheckChatappContactsShrinkRequest {
+	s.CustWabaId = &v
 	return s
 }
 
@@ -295,6 +309,8 @@ type CreateChatappTemplateRequest struct {
 	// 模板分类
 	Category   *string                                   `json:"Category,omitempty" xml:"Category,omitempty"`
 	Components []*CreateChatappTemplateRequestComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
+	// ISV客户WabaId
+	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	// 变量，KEY-VALUE结构
 	Example map[string]*string `json:"Example,omitempty" xml:"Example,omitempty"`
 	// 语言
@@ -323,6 +339,11 @@ func (s *CreateChatappTemplateRequest) SetComponents(v []*CreateChatappTemplateR
 	return s
 }
 
+func (s *CreateChatappTemplateRequest) SetCustWabaId(v string) *CreateChatappTemplateRequest {
+	s.CustWabaId = &v
+	return s
+}
+
 func (s *CreateChatappTemplateRequest) SetExample(v map[string]*string) *CreateChatappTemplateRequest {
 	s.Example = v
 	return s
@@ -346,6 +367,10 @@ func (s *CreateChatappTemplateRequest) SetTemplateType(v string) *CreateChatappT
 type CreateChatappTemplateRequestComponents struct {
 	// 按钮
 	Buttons []*CreateChatappTemplateRequestComponentsButtons `json:"Buttons,omitempty" xml:"Buttons,omitempty" type:"Repeated"`
+	// 描述，当Type为Header，且Format为IMGAGE/DOCUMENT/VIDEO 可以增加描述
+	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	// 文件名称，当Type为Header，且Format为DOCUMENT时可以给文件指定名称
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// 格式
 	// TEXT-文本 IMGAGE-图片 DOCUMENT-文档 VIDEO-视频
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
@@ -368,6 +393,16 @@ func (s CreateChatappTemplateRequestComponents) GoString() string {
 
 func (s *CreateChatappTemplateRequestComponents) SetButtons(v []*CreateChatappTemplateRequestComponentsButtons) *CreateChatappTemplateRequestComponents {
 	s.Buttons = v
+	return s
+}
+
+func (s *CreateChatappTemplateRequestComponents) SetCaption(v string) *CreateChatappTemplateRequestComponents {
+	s.Caption = &v
+	return s
+}
+
+func (s *CreateChatappTemplateRequestComponents) SetFileName(v string) *CreateChatappTemplateRequestComponents {
+	s.FileName = &v
 	return s
 }
 
@@ -442,6 +477,8 @@ type CreateChatappTemplateShrinkRequest struct {
 	// 模板分类
 	Category         *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	ComponentsShrink *string `json:"Components,omitempty" xml:"Components,omitempty"`
+	// ISV客户WabaId
+	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	// 变量，KEY-VALUE结构
 	ExampleShrink *string `json:"Example,omitempty" xml:"Example,omitempty"`
 	// 语言
@@ -467,6 +504,11 @@ func (s *CreateChatappTemplateShrinkRequest) SetCategory(v string) *CreateChatap
 
 func (s *CreateChatappTemplateShrinkRequest) SetComponentsShrink(v string) *CreateChatappTemplateShrinkRequest {
 	s.ComponentsShrink = &v
+	return s
+}
+
+func (s *CreateChatappTemplateShrinkRequest) SetCustWabaId(v string) *CreateChatappTemplateShrinkRequest {
+	s.CustWabaId = &v
 	return s
 }
 
@@ -577,6 +619,8 @@ func (s *CreateChatappTemplateResponse) SetBody(v *CreateChatappTemplateResponse
 }
 
 type DeleteChatappTemplateRequest struct {
+	// ISV客户wabaId
+	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	// 模板编码
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
@@ -587,6 +631,11 @@ func (s DeleteChatappTemplateRequest) String() string {
 
 func (s DeleteChatappTemplateRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DeleteChatappTemplateRequest) SetCustWabaId(v string) *DeleteChatappTemplateRequest {
+	s.CustWabaId = &v
+	return s
 }
 
 func (s *DeleteChatappTemplateRequest) SetTemplateCode(v string) *DeleteChatappTemplateRequest {
@@ -650,9 +699,10 @@ func (s *DeleteChatappTemplateResponse) SetBody(v *DeleteChatappTemplateResponse
 }
 
 type GetChatappTemplateDetailRequest struct {
+	// ISV客户WabaId
+	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	// 语言
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	OwnerId  *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// 模板分类
 	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
 }
@@ -665,13 +715,13 @@ func (s GetChatappTemplateDetailRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetChatappTemplateDetailRequest) SetLanguage(v string) *GetChatappTemplateDetailRequest {
-	s.Language = &v
+func (s *GetChatappTemplateDetailRequest) SetCustWabaId(v string) *GetChatappTemplateDetailRequest {
+	s.CustWabaId = &v
 	return s
 }
 
-func (s *GetChatappTemplateDetailRequest) SetOwnerId(v int64) *GetChatappTemplateDetailRequest {
-	s.OwnerId = &v
+func (s *GetChatappTemplateDetailRequest) SetLanguage(v string) *GetChatappTemplateDetailRequest {
+	s.Language = &v
 	return s
 }
 
@@ -782,6 +832,10 @@ type GetChatappTemplateDetailResponseBodyDataComponents struct {
 	// 仅适用于 BUTTONS 类型。
 	// 与按钮相关的参数。
 	Buttons []*GetChatappTemplateDetailResponseBodyDataComponentsButtons `json:"Buttons,omitempty" xml:"Buttons,omitempty" type:"Repeated"`
+	// 描述，当Type为Header，且Format为IMGAGE/DOCUMENT/VIDEO 可以增加描述
+	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
+	// 文件名称，当Type为Header，且Format为DOCUMENT时可以给文件指定名称
+	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// 所发送消息的文本
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// 组件类型
@@ -800,6 +854,16 @@ func (s GetChatappTemplateDetailResponseBodyDataComponents) GoString() string {
 
 func (s *GetChatappTemplateDetailResponseBodyDataComponents) SetButtons(v []*GetChatappTemplateDetailResponseBodyDataComponentsButtons) *GetChatappTemplateDetailResponseBodyDataComponents {
 	s.Buttons = v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponents) SetCaption(v string) *GetChatappTemplateDetailResponseBodyDataComponents {
+	s.Caption = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponents) SetFileName(v string) *GetChatappTemplateDetailResponseBodyDataComponents {
+	s.FileName = &v
 	return s
 }
 
@@ -893,6 +957,8 @@ func (s *GetChatappTemplateDetailResponse) SetBody(v *GetChatappTemplateDetailRe
 type ListChatappTemplateRequest struct {
 	// 审核状态
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// ISV客户WabaId
+	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	// 语言
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// 模板名称
@@ -910,6 +976,11 @@ func (s ListChatappTemplateRequest) GoString() string {
 
 func (s *ListChatappTemplateRequest) SetAuditStatus(v string) *ListChatappTemplateRequest {
 	s.AuditStatus = &v
+	return s
+}
+
+func (s *ListChatappTemplateRequest) SetCustWabaId(v string) *ListChatappTemplateRequest {
+	s.CustWabaId = &v
 	return s
 }
 
@@ -956,6 +1027,8 @@ func (s *ListChatappTemplateRequestPage) SetSize(v int32) *ListChatappTemplateRe
 type ListChatappTemplateShrinkRequest struct {
 	// 审核状态
 	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	// ISV客户WabaId
+	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	// 语言
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// 模板名称
@@ -973,6 +1046,11 @@ func (s ListChatappTemplateShrinkRequest) GoString() string {
 
 func (s *ListChatappTemplateShrinkRequest) SetAuditStatus(v string) *ListChatappTemplateShrinkRequest {
 	s.AuditStatus = &v
+	return s
+}
+
+func (s *ListChatappTemplateShrinkRequest) SetCustWabaId(v string) *ListChatappTemplateShrinkRequest {
+	s.CustWabaId = &v
 	return s
 }
 
@@ -1101,6 +1179,8 @@ type SendChatappMessageRequest struct {
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
 	// 消息内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// ISV客户wabaId
+	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	// 发送方
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
 	// 语言
@@ -1134,6 +1214,11 @@ func (s *SendChatappMessageRequest) SetChannelType(v string) *SendChatappMessage
 
 func (s *SendChatappMessageRequest) SetContent(v string) *SendChatappMessageRequest {
 	s.Content = &v
+	return s
+}
+
+func (s *SendChatappMessageRequest) SetCustWabaId(v string) *SendChatappMessageRequest {
+	s.CustWabaId = &v
 	return s
 }
 
@@ -1182,6 +1267,8 @@ type SendChatappMessageShrinkRequest struct {
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
 	// 消息内容
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// ISV客户wabaId
+	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
 	// 发送方
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
 	// 语言
@@ -1215,6 +1302,11 @@ func (s *SendChatappMessageShrinkRequest) SetChannelType(v string) *SendChatappM
 
 func (s *SendChatappMessageShrinkRequest) SetContent(v string) *SendChatappMessageShrinkRequest {
 	s.Content = &v
+	return s
+}
+
+func (s *SendChatappMessageShrinkRequest) SetCustWabaId(v string) *SendChatappMessageShrinkRequest {
+	s.CustWabaId = &v
 	return s
 }
 
@@ -1578,6 +1670,10 @@ func (client *Client) CheckChatappContactsWithOptions(tmpReq *CheckChatappContac
 		body["Contacts"] = request.ContactsShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CustWabaId)) {
+		body["CustWabaId"] = request.CustWabaId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.From)) {
 		body["From"] = request.From
 	}
@@ -1706,6 +1802,10 @@ func (client *Client) CreateChatappTemplateWithOptions(tmpReq *CreateChatappTemp
 		body["Components"] = request.ComponentsShrink
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.CustWabaId)) {
+		body["CustWabaId"] = request.CustWabaId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ExampleShrink)) {
 		body["Example"] = request.ExampleShrink
 	}
@@ -1762,6 +1862,10 @@ func (client *Client) DeleteChatappTemplateWithOptions(request *DeleteChatappTem
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustWabaId)) {
+		query["CustWabaId"] = request.CustWabaId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
 		query["TemplateCode"] = request.TemplateCode
 	}
@@ -1806,12 +1910,12 @@ func (client *Client) GetChatappTemplateDetailWithOptions(request *GetChatappTem
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Language)) {
-		query["Language"] = request.Language
+	if !tea.BoolValue(util.IsUnset(request.CustWabaId)) {
+		query["CustWabaId"] = request.CustWabaId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
@@ -1866,6 +1970,10 @@ func (client *Client) ListChatappTemplateWithOptions(tmpReq *ListChatappTemplate
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AuditStatus)) {
 		query["AuditStatus"] = request.AuditStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustWabaId)) {
+		query["CustWabaId"] = request.CustWabaId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Language)) {
@@ -1941,6 +2049,10 @@ func (client *Client) SendChatappMessageWithOptions(tmpReq *SendChatappMessageRe
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.ChannelType)) {
 		body["ChannelType"] = request.ChannelType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustWabaId)) {
+		body["CustWabaId"] = request.CustWabaId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.From)) {
