@@ -16754,7 +16754,8 @@ type DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttribute struct
 	// vpc授权ID
 	VpcAccessId *string `json:"VpcAccessId,omitempty" xml:"VpcAccessId,omitempty"`
 	// VPC的ID
-	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId             *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcTargetHostName *string `json:"VpcTargetHostName,omitempty" xml:"VpcTargetHostName,omitempty"`
 }
 
 func (s DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttribute) String() string {
@@ -16802,6 +16803,11 @@ func (s *DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttribute) S
 
 func (s *DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttribute) SetVpcId(v string) *DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttribute {
 	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttribute) SetVpcTargetHostName(v string) *DescribeVpcAccessesResponseBodyVpcAccessAttributesVpcAccessAttribute {
+	s.VpcTargetHostName = &v
 	return s
 }
 
@@ -21167,12 +21173,13 @@ func (s *SetTrafficControlApisResponse) SetBody(v *SetTrafficControlApisResponse
 }
 
 type SetVpcAccessRequest struct {
-	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Port          *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	VpcId         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	InstanceId        *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Name              *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Port              *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	SecurityToken     *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	VpcId             *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcTargetHostName *string `json:"VpcTargetHostName,omitempty" xml:"VpcTargetHostName,omitempty"`
 }
 
 func (s SetVpcAccessRequest) String() string {
@@ -21210,6 +21217,11 @@ func (s *SetVpcAccessRequest) SetSecurityToken(v string) *SetVpcAccessRequest {
 
 func (s *SetVpcAccessRequest) SetVpcId(v string) *SetVpcAccessRequest {
 	s.VpcId = &v
+	return s
+}
+
+func (s *SetVpcAccessRequest) SetVpcTargetHostName(v string) *SetVpcAccessRequest {
+	s.VpcTargetHostName = &v
 	return s
 }
 
@@ -29796,6 +29808,10 @@ func (client *Client) SetVpcAccessWithOptions(request *SetVpcAccessRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.VpcId)) {
 		query["VpcId"] = request.VpcId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcTargetHostName)) {
+		query["VpcTargetHostName"] = request.VpcTargetHostName
 	}
 
 	req := &openapi.OpenApiRequest{
