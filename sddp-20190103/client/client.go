@@ -2996,8 +2996,8 @@ func (s *DescribeEventDetailResponseBodyEventDetailChart) SetYLabel(v string) *D
 }
 
 type DescribeEventDetailResponseBodyEventDetailChartData struct {
-	X *string `json:"X,omitempty" xml:"X,omitempty"`
-	Y *string `json:"Y,omitempty" xml:"Y,omitempty"`
+	X []*string `json:"X,omitempty" xml:"X,omitempty" type:"Repeated"`
+	Y []*string `json:"Y,omitempty" xml:"Y,omitempty" type:"Repeated"`
 }
 
 func (s DescribeEventDetailResponseBodyEventDetailChartData) String() string {
@@ -3008,13 +3008,13 @@ func (s DescribeEventDetailResponseBodyEventDetailChartData) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeEventDetailResponseBodyEventDetailChartData) SetX(v string) *DescribeEventDetailResponseBodyEventDetailChartData {
-	s.X = &v
+func (s *DescribeEventDetailResponseBodyEventDetailChartData) SetX(v []*string) *DescribeEventDetailResponseBodyEventDetailChartData {
+	s.X = v
 	return s
 }
 
-func (s *DescribeEventDetailResponseBodyEventDetailChartData) SetY(v string) *DescribeEventDetailResponseBodyEventDetailChartData {
-	s.Y = &v
+func (s *DescribeEventDetailResponseBodyEventDetailChartData) SetY(v []*string) *DescribeEventDetailResponseBodyEventDetailChartData {
+	s.Y = v
 	return s
 }
 
@@ -3642,12 +3642,17 @@ func (s *DescribeEventsResponse) SetBody(v *DescribeEventsResponseBody) *Describ
 }
 
 type DescribeInstanceSourcesRequest struct {
+	AuditStatus     *int32  `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	AuthStatus      *int32  `json:"AuthStatus,omitempty" xml:"AuthStatus,omitempty"`
 	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	EngineType      *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProductCode     *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProductId       *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	SearchKey       *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
+	SearchType      *string `json:"SearchType,omitempty" xml:"SearchType,omitempty"`
 	ServiceRegionId *string `json:"ServiceRegionId,omitempty" xml:"ServiceRegionId,omitempty"`
 }
 
@@ -3657,6 +3662,16 @@ func (s DescribeInstanceSourcesRequest) String() string {
 
 func (s DescribeInstanceSourcesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstanceSourcesRequest) SetAuditStatus(v int32) *DescribeInstanceSourcesRequest {
+	s.AuditStatus = &v
+	return s
+}
+
+func (s *DescribeInstanceSourcesRequest) SetAuthStatus(v int32) *DescribeInstanceSourcesRequest {
+	s.AuthStatus = &v
+	return s
 }
 
 func (s *DescribeInstanceSourcesRequest) SetCurrentPage(v int32) *DescribeInstanceSourcesRequest {
@@ -3684,8 +3699,23 @@ func (s *DescribeInstanceSourcesRequest) SetPageSize(v int32) *DescribeInstanceS
 	return s
 }
 
+func (s *DescribeInstanceSourcesRequest) SetProductCode(v string) *DescribeInstanceSourcesRequest {
+	s.ProductCode = &v
+	return s
+}
+
 func (s *DescribeInstanceSourcesRequest) SetProductId(v int64) *DescribeInstanceSourcesRequest {
 	s.ProductId = &v
+	return s
+}
+
+func (s *DescribeInstanceSourcesRequest) SetSearchKey(v string) *DescribeInstanceSourcesRequest {
+	s.SearchKey = &v
+	return s
+}
+
+func (s *DescribeInstanceSourcesRequest) SetSearchType(v string) *DescribeInstanceSourcesRequest {
+	s.SearchType = &v
 	return s
 }
 
@@ -3739,9 +3769,12 @@ type DescribeInstanceSourcesResponseBodyItems struct {
 	AuditStatus         *int32  `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
 	AutoScan            *int32  `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
 	CanModifyUserName   *bool   `json:"CanModifyUserName,omitempty" xml:"CanModifyUserName,omitempty"`
+	CheckStatus         *int32  `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
+	DatamaskStatus      *int32  `json:"DatamaskStatus,omitempty" xml:"DatamaskStatus,omitempty"`
 	DbName              *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
 	Enable              *int32  `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	EngineType          *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	ErrorMessage        *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	GmtCreate           *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	InstanceDescription *string `json:"InstanceDescription,omitempty" xml:"InstanceDescription,omitempty"`
@@ -3754,6 +3787,7 @@ type DescribeInstanceSourcesResponseBodyItems struct {
 	ProductId           *int64  `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
 	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RegionName          *string `json:"RegionName,omitempty" xml:"RegionName,omitempty"`
+	SamplingSize        *int32  `json:"SamplingSize,omitempty" xml:"SamplingSize,omitempty"`
 	TenantId            *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
 	TenantName          *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
 	UserName            *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
@@ -3782,6 +3816,16 @@ func (s *DescribeInstanceSourcesResponseBodyItems) SetCanModifyUserName(v bool) 
 	return s
 }
 
+func (s *DescribeInstanceSourcesResponseBodyItems) SetCheckStatus(v int32) *DescribeInstanceSourcesResponseBodyItems {
+	s.CheckStatus = &v
+	return s
+}
+
+func (s *DescribeInstanceSourcesResponseBodyItems) SetDatamaskStatus(v int32) *DescribeInstanceSourcesResponseBodyItems {
+	s.DatamaskStatus = &v
+	return s
+}
+
 func (s *DescribeInstanceSourcesResponseBodyItems) SetDbName(v string) *DescribeInstanceSourcesResponseBodyItems {
 	s.DbName = &v
 	return s
@@ -3794,6 +3838,11 @@ func (s *DescribeInstanceSourcesResponseBodyItems) SetEnable(v int32) *DescribeI
 
 func (s *DescribeInstanceSourcesResponseBodyItems) SetEngineType(v string) *DescribeInstanceSourcesResponseBodyItems {
 	s.EngineType = &v
+	return s
+}
+
+func (s *DescribeInstanceSourcesResponseBodyItems) SetErrorMessage(v string) *DescribeInstanceSourcesResponseBodyItems {
+	s.ErrorMessage = &v
 	return s
 }
 
@@ -3854,6 +3903,11 @@ func (s *DescribeInstanceSourcesResponseBodyItems) SetRegionId(v string) *Descri
 
 func (s *DescribeInstanceSourcesResponseBodyItems) SetRegionName(v string) *DescribeInstanceSourcesResponseBodyItems {
 	s.RegionName = &v
+	return s
+}
+
+func (s *DescribeInstanceSourcesResponseBodyItems) SetSamplingSize(v int32) *DescribeInstanceSourcesResponseBodyItems {
+	s.SamplingSize = &v
 	return s
 }
 
@@ -7801,6 +7855,14 @@ func (client *Client) DescribeInstanceSourcesWithOptions(request *DescribeInstan
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuditStatus)) {
+		query["AuditStatus"] = request.AuditStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthStatus)) {
+		query["AuthStatus"] = request.AuthStatus
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
 	}
@@ -7821,8 +7883,20 @@ func (client *Client) DescribeInstanceSourcesWithOptions(request *DescribeInstan
 		query["PageSize"] = request.PageSize
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ProductId)) {
 		query["ProductId"] = request.ProductId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchKey)) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchType)) {
+		query["SearchType"] = request.SearchType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceRegionId)) {
