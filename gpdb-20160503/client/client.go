@@ -1778,6 +1778,7 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	AvailabilityValue     *string                                                              `json:"AvailabilityValue,omitempty" xml:"AvailabilityValue,omitempty"`
 	ConnectionMode        *string                                                              `json:"ConnectionMode,omitempty" xml:"ConnectionMode,omitempty"`
 	ConnectionString      *string                                                              `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
+	CoreVersion           *string                                                              `json:"CoreVersion,omitempty" xml:"CoreVersion,omitempty"`
 	CpuCores              *int32                                                               `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
 	CpuCoresPerNode       *int32                                                               `json:"CpuCoresPerNode,omitempty" xml:"CpuCoresPerNode,omitempty"`
 	CreationTime          *string                                                              `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
@@ -1849,6 +1850,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetCon
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetConnectionString(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.ConnectionString = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetCoreVersion(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.CoreVersion = &v
 	return s
 }
 
@@ -3940,6 +3946,174 @@ func (s *DescribeDataShareInstancesResponse) SetHeaders(v map[string]*string) *D
 }
 
 func (s *DescribeDataShareInstancesResponse) SetBody(v *DescribeDataShareInstancesResponseBody) *DescribeDataShareInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDataSharePerformanceRequest struct {
+	EndTime   *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDataSharePerformanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataSharePerformanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataSharePerformanceRequest) SetEndTime(v string) *DescribeDataSharePerformanceRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDataSharePerformanceRequest) SetKey(v string) *DescribeDataSharePerformanceRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeDataSharePerformanceRequest) SetRegionId(v string) *DescribeDataSharePerformanceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeDataSharePerformanceRequest) SetStartTime(v string) *DescribeDataSharePerformanceRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDataSharePerformanceResponseBody struct {
+	DBClusterId     *string                                                    `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
+	EndTime         *string                                                    `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PerformanceKeys []*DescribeDataSharePerformanceResponseBodyPerformanceKeys `json:"PerformanceKeys,omitempty" xml:"PerformanceKeys,omitempty" type:"Repeated"`
+	RequestId       *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime       *string                                                    `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDataSharePerformanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataSharePerformanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataSharePerformanceResponseBody) SetDBClusterId(v string) *DescribeDataSharePerformanceResponseBody {
+	s.DBClusterId = &v
+	return s
+}
+
+func (s *DescribeDataSharePerformanceResponseBody) SetEndTime(v string) *DescribeDataSharePerformanceResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDataSharePerformanceResponseBody) SetPerformanceKeys(v []*DescribeDataSharePerformanceResponseBodyPerformanceKeys) *DescribeDataSharePerformanceResponseBody {
+	s.PerformanceKeys = v
+	return s
+}
+
+func (s *DescribeDataSharePerformanceResponseBody) SetRequestId(v string) *DescribeDataSharePerformanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDataSharePerformanceResponseBody) SetStartTime(v string) *DescribeDataSharePerformanceResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDataSharePerformanceResponseBodyPerformanceKeys struct {
+	Name   *string                                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	Series []*DescribeDataSharePerformanceResponseBodyPerformanceKeysSeries `json:"Series,omitempty" xml:"Series,omitempty" type:"Repeated"`
+	Unit   *string                                                          `json:"Unit,omitempty" xml:"Unit,omitempty"`
+}
+
+func (s DescribeDataSharePerformanceResponseBodyPerformanceKeys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataSharePerformanceResponseBodyPerformanceKeys) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataSharePerformanceResponseBodyPerformanceKeys) SetName(v string) *DescribeDataSharePerformanceResponseBodyPerformanceKeys {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDataSharePerformanceResponseBodyPerformanceKeys) SetSeries(v []*DescribeDataSharePerformanceResponseBodyPerformanceKeysSeries) *DescribeDataSharePerformanceResponseBodyPerformanceKeys {
+	s.Series = v
+	return s
+}
+
+func (s *DescribeDataSharePerformanceResponseBodyPerformanceKeys) SetUnit(v string) *DescribeDataSharePerformanceResponseBodyPerformanceKeys {
+	s.Unit = &v
+	return s
+}
+
+type DescribeDataSharePerformanceResponseBodyPerformanceKeysSeries struct {
+	Name   *string                                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Values []*DescribeDataSharePerformanceResponseBodyPerformanceKeysSeriesValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDataSharePerformanceResponseBodyPerformanceKeysSeries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataSharePerformanceResponseBodyPerformanceKeysSeries) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataSharePerformanceResponseBodyPerformanceKeysSeries) SetName(v string) *DescribeDataSharePerformanceResponseBodyPerformanceKeysSeries {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeDataSharePerformanceResponseBodyPerformanceKeysSeries) SetValues(v []*DescribeDataSharePerformanceResponseBodyPerformanceKeysSeriesValues) *DescribeDataSharePerformanceResponseBodyPerformanceKeysSeries {
+	s.Values = v
+	return s
+}
+
+type DescribeDataSharePerformanceResponseBodyPerformanceKeysSeriesValues struct {
+	Point []*string `json:"Point,omitempty" xml:"Point,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDataSharePerformanceResponseBodyPerformanceKeysSeriesValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataSharePerformanceResponseBodyPerformanceKeysSeriesValues) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataSharePerformanceResponseBodyPerformanceKeysSeriesValues) SetPoint(v []*string) *DescribeDataSharePerformanceResponseBodyPerformanceKeysSeriesValues {
+	s.Point = v
+	return s
+}
+
+type DescribeDataSharePerformanceResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeDataSharePerformanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDataSharePerformanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDataSharePerformanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDataSharePerformanceResponse) SetHeaders(v map[string]*string) *DescribeDataSharePerformanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDataSharePerformanceResponse) SetBody(v *DescribeDataSharePerformanceResponseBody) *DescribeDataSharePerformanceResponse {
 	s.Body = v
 	return s
 }
@@ -9071,9 +9245,14 @@ type UpgradeDBInstanceRequest struct {
 	DBInstanceClass      *string `json:"DBInstanceClass,omitempty" xml:"DBInstanceClass,omitempty"`
 	DBInstanceGroupCount *string `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty"`
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	InstanceSpec         *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SegNodeNum           *string `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
+	StorageSize          *string `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
+	MasterNodeNum        *string `json:"masterNodeNum,omitempty" xml:"masterNodeNum,omitempty"`
+	UpgradeType          *int64  `json:"upgradeType,omitempty" xml:"upgradeType,omitempty"`
 }
 
 func (s UpgradeDBInstanceRequest) String() string {
@@ -9099,6 +9278,11 @@ func (s *UpgradeDBInstanceRequest) SetDBInstanceId(v string) *UpgradeDBInstanceR
 	return s
 }
 
+func (s *UpgradeDBInstanceRequest) SetInstanceSpec(v string) *UpgradeDBInstanceRequest {
+	s.InstanceSpec = &v
+	return s
+}
+
 func (s *UpgradeDBInstanceRequest) SetOwnerId(v int64) *UpgradeDBInstanceRequest {
 	s.OwnerId = &v
 	return s
@@ -9111,6 +9295,26 @@ func (s *UpgradeDBInstanceRequest) SetPayType(v string) *UpgradeDBInstanceReques
 
 func (s *UpgradeDBInstanceRequest) SetRegionId(v string) *UpgradeDBInstanceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpgradeDBInstanceRequest) SetSegNodeNum(v string) *UpgradeDBInstanceRequest {
+	s.SegNodeNum = &v
+	return s
+}
+
+func (s *UpgradeDBInstanceRequest) SetStorageSize(v string) *UpgradeDBInstanceRequest {
+	s.StorageSize = &v
+	return s
+}
+
+func (s *UpgradeDBInstanceRequest) SetMasterNodeNum(v string) *UpgradeDBInstanceRequest {
+	s.MasterNodeNum = &v
+	return s
+}
+
+func (s *UpgradeDBInstanceRequest) SetUpgradeType(v int64) *UpgradeDBInstanceRequest {
+	s.UpgradeType = &v
 	return s
 }
 
@@ -10838,6 +11042,62 @@ func (client *Client) DescribeDataShareInstances(request *DescribeDataShareInsta
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDataShareInstancesResponse{}
 	_body, _err := client.DescribeDataShareInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDataSharePerformanceWithOptions(request *DescribeDataSharePerformanceRequest, runtime *util.RuntimeOptions) (_result *DescribeDataSharePerformanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDataSharePerformance"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDataSharePerformanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDataSharePerformance(request *DescribeDataSharePerformanceRequest) (_result *DescribeDataSharePerformanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDataSharePerformanceResponse{}
+	_body, _err := client.DescribeDataSharePerformanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13201,6 +13461,10 @@ func (client *Client) UpgradeDBInstanceWithOptions(request *UpgradeDBInstanceReq
 		query["DBInstanceId"] = request.DBInstanceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InstanceSpec)) {
+		query["InstanceSpec"] = request.InstanceSpec
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
 	}
@@ -13211,6 +13475,22 @@ func (client *Client) UpgradeDBInstanceWithOptions(request *UpgradeDBInstanceReq
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SegNodeNum)) {
+		query["SegNodeNum"] = request.SegNodeNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StorageSize)) {
+		query["StorageSize"] = request.StorageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MasterNodeNum)) {
+		query["masterNodeNum"] = request.MasterNodeNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpgradeType)) {
+		query["upgradeType"] = request.UpgradeType
 	}
 
 	req := &openapi.OpenApiRequest{
