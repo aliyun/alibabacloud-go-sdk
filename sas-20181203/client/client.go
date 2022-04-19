@@ -13,8 +13,7 @@ import (
 )
 
 type AddVpcHoneyPotRequest struct {
-	VpcId       *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcSwitchId *string `json:"VpcSwitchId,omitempty" xml:"VpcSwitchId,omitempty"`
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 
 func (s AddVpcHoneyPotRequest) String() string {
@@ -27,11 +26,6 @@ func (s AddVpcHoneyPotRequest) GoString() string {
 
 func (s *AddVpcHoneyPotRequest) SetVpcId(v string) *AddVpcHoneyPotRequest {
 	s.VpcId = &v
-	return s
-}
-
-func (s *AddVpcHoneyPotRequest) SetVpcSwitchId(v string) *AddVpcHoneyPotRequest {
-	s.VpcSwitchId = &v
 	return s
 }
 
@@ -603,6 +597,125 @@ func (s *CreateSimilarSecurityEventsQueryTaskResponse) SetHeaders(v map[string]*
 }
 
 func (s *CreateSimilarSecurityEventsQueryTaskResponse) SetBody(v *CreateSimilarSecurityEventsQueryTaskResponseBody) *CreateSimilarSecurityEventsQueryTaskResponse {
+	s.Body = v
+	return s
+}
+
+type CreateVulAutoRepairConfigRequest struct {
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// 漏洞类型
+	Type                    *string                                                    `json:"Type,omitempty" xml:"Type,omitempty"`
+	VulAutoRepairConfigList []*CreateVulAutoRepairConfigRequestVulAutoRepairConfigList `json:"VulAutoRepairConfigList,omitempty" xml:"VulAutoRepairConfigList,omitempty" type:"Repeated"`
+}
+
+func (s CreateVulAutoRepairConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVulAutoRepairConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVulAutoRepairConfigRequest) SetReason(v string) *CreateVulAutoRepairConfigRequest {
+	s.Reason = &v
+	return s
+}
+
+func (s *CreateVulAutoRepairConfigRequest) SetType(v string) *CreateVulAutoRepairConfigRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateVulAutoRepairConfigRequest) SetVulAutoRepairConfigList(v []*CreateVulAutoRepairConfigRequestVulAutoRepairConfigList) *CreateVulAutoRepairConfigRequest {
+	s.VulAutoRepairConfigList = v
+	return s
+}
+
+type CreateVulAutoRepairConfigRequestVulAutoRepairConfigList struct {
+	// 漏洞别名
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	// 漏洞名称
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateVulAutoRepairConfigRequestVulAutoRepairConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVulAutoRepairConfigRequestVulAutoRepairConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVulAutoRepairConfigRequestVulAutoRepairConfigList) SetAliasName(v string) *CreateVulAutoRepairConfigRequestVulAutoRepairConfigList {
+	s.AliasName = &v
+	return s
+}
+
+func (s *CreateVulAutoRepairConfigRequestVulAutoRepairConfigList) SetName(v string) *CreateVulAutoRepairConfigRequestVulAutoRepairConfigList {
+	s.Name = &v
+	return s
+}
+
+type CreateVulAutoRepairConfigResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateVulAutoRepairConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVulAutoRepairConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVulAutoRepairConfigResponseBody) SetCode(v string) *CreateVulAutoRepairConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateVulAutoRepairConfigResponseBody) SetHttpStatusCode(v int32) *CreateVulAutoRepairConfigResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateVulAutoRepairConfigResponseBody) SetMessage(v string) *CreateVulAutoRepairConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateVulAutoRepairConfigResponseBody) SetRequestId(v string) *CreateVulAutoRepairConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateVulAutoRepairConfigResponseBody) SetSuccess(v bool) *CreateVulAutoRepairConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateVulAutoRepairConfigResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateVulAutoRepairConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateVulAutoRepairConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVulAutoRepairConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVulAutoRepairConfigResponse) SetHeaders(v map[string]*string) *CreateVulAutoRepairConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateVulAutoRepairConfigResponse) SetBody(v *CreateVulAutoRepairConfigResponseBody) *CreateVulAutoRepairConfigResponse {
 	s.Body = v
 	return s
 }
@@ -15367,6 +15480,8 @@ type DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseM
 	MarkMisType      *string   `json:"MarkMisType,omitempty" xml:"MarkMisType,omitempty"`
 	MarkMisValue     *string   `json:"MarkMisValue,omitempty" xml:"MarkMisValue,omitempty"`
 	SupportedMisType []*string `json:"SupportedMisType,omitempty" xml:"SupportedMisType,omitempty" type:"Repeated"`
+	// 资产uuid
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField) String() string {
@@ -15399,6 +15514,11 @@ func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsRespo
 
 func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField) SetSupportedMisType(v []*string) *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField {
 	s.SupportedMisType = v
+	return s
+}
+
+func (s *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField) SetUuid(v string) *DescribeSecurityEventOperationsResponseBodySecurityEventOperationsResponseMarkField {
+	s.Uuid = &v
 	return s
 }
 
@@ -24122,6 +24242,279 @@ func (s *QueryGroupIdByGroupNameResponse) SetBody(v *QueryGroupIdByGroupNameResp
 	return s
 }
 
+type QueryGroupedSecurityEventMarkMissListRequest struct {
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// 告警事件名称（子类型）
+	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	From      *string `json:"From,omitempty" xml:"From,omitempty"`
+	Lang      *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	MaxId     *int64  `json:"MaxId,omitempty" xml:"MaxId,omitempty"`
+	PageSize  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 资产名
+	Remark   *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+}
+
+func (s QueryGroupedSecurityEventMarkMissListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGroupedSecurityEventMarkMissListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListRequest) SetCurrentPage(v int32) *QueryGroupedSecurityEventMarkMissListRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListRequest) SetEventName(v string) *QueryGroupedSecurityEventMarkMissListRequest {
+	s.EventName = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListRequest) SetFrom(v string) *QueryGroupedSecurityEventMarkMissListRequest {
+	s.From = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListRequest) SetLang(v string) *QueryGroupedSecurityEventMarkMissListRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListRequest) SetMaxId(v int64) *QueryGroupedSecurityEventMarkMissListRequest {
+	s.MaxId = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListRequest) SetPageSize(v int32) *QueryGroupedSecurityEventMarkMissListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListRequest) SetRemark(v string) *QueryGroupedSecurityEventMarkMissListRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListRequest) SetSourceIp(v string) *QueryGroupedSecurityEventMarkMissListRequest {
+	s.SourceIp = &v
+	return s
+}
+
+type QueryGroupedSecurityEventMarkMissListResponseBody struct {
+	Code           *string                                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32                                                     `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	List           []*QueryGroupedSecurityEventMarkMissListResponseBodyList   `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Message        *string                                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageInfo       *QueryGroupedSecurityEventMarkMissListResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId      *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	TimeCost       *int64                                                     `json:"TimeCost,omitempty" xml:"TimeCost,omitempty"`
+}
+
+func (s QueryGroupedSecurityEventMarkMissListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGroupedSecurityEventMarkMissListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBody) SetCode(v string) *QueryGroupedSecurityEventMarkMissListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBody) SetHttpStatusCode(v int32) *QueryGroupedSecurityEventMarkMissListResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBody) SetList(v []*QueryGroupedSecurityEventMarkMissListResponseBodyList) *QueryGroupedSecurityEventMarkMissListResponseBody {
+	s.List = v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBody) SetMessage(v string) *QueryGroupedSecurityEventMarkMissListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBody) SetPageInfo(v *QueryGroupedSecurityEventMarkMissListResponseBodyPageInfo) *QueryGroupedSecurityEventMarkMissListResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBody) SetRequestId(v string) *QueryGroupedSecurityEventMarkMissListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBody) SetSuccess(v bool) *QueryGroupedSecurityEventMarkMissListResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBody) SetTimeCost(v int64) *QueryGroupedSecurityEventMarkMissListResponseBody {
+	s.TimeCost = &v
+	return s
+}
+
+type QueryGroupedSecurityEventMarkMissListResponseBodyList struct {
+	// 用户统一编号
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// 告警事件名称（子类型）
+	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// 告警事件名称（子类型）
+	EventNameOriginal *string `json:"EventNameOriginal,omitempty" xml:"EventNameOriginal,omitempty"`
+	// 告警事件名称（父类型）
+	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// 告警事件名称（父类型）
+	EventTypeOriginal *string `json:"EventTypeOriginal,omitempty" xml:"EventTypeOriginal,omitempty"`
+	// 加白字段
+	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
+	// 加白值
+	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
+	// 加白字段别名
+	FiledAliasName *string `json:"FiledAliasName,omitempty" xml:"FiledAliasName,omitempty"`
+	// 创建时间
+	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	// 修改时间
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// 操作符
+	Operate *string `json:"Operate,omitempty" xml:"Operate,omitempty"`
+	// 资产ids，逗号分割
+	Uuids *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+}
+
+func (s QueryGroupedSecurityEventMarkMissListResponseBodyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGroupedSecurityEventMarkMissListResponseBodyList) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBodyList) SetAliUid(v int64) *QueryGroupedSecurityEventMarkMissListResponseBodyList {
+	s.AliUid = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBodyList) SetEventName(v string) *QueryGroupedSecurityEventMarkMissListResponseBodyList {
+	s.EventName = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBodyList) SetEventNameOriginal(v string) *QueryGroupedSecurityEventMarkMissListResponseBodyList {
+	s.EventNameOriginal = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBodyList) SetEventType(v string) *QueryGroupedSecurityEventMarkMissListResponseBodyList {
+	s.EventType = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBodyList) SetEventTypeOriginal(v string) *QueryGroupedSecurityEventMarkMissListResponseBodyList {
+	s.EventTypeOriginal = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBodyList) SetField(v string) *QueryGroupedSecurityEventMarkMissListResponseBodyList {
+	s.Field = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBodyList) SetFieldValue(v string) *QueryGroupedSecurityEventMarkMissListResponseBodyList {
+	s.FieldValue = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBodyList) SetFiledAliasName(v string) *QueryGroupedSecurityEventMarkMissListResponseBodyList {
+	s.FiledAliasName = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBodyList) SetGmtCreate(v int64) *QueryGroupedSecurityEventMarkMissListResponseBodyList {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBodyList) SetGmtModified(v int64) *QueryGroupedSecurityEventMarkMissListResponseBodyList {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBodyList) SetOperate(v string) *QueryGroupedSecurityEventMarkMissListResponseBodyList {
+	s.Operate = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBodyList) SetUuids(v string) *QueryGroupedSecurityEventMarkMissListResponseBodyList {
+	s.Uuids = &v
+	return s
+}
+
+type QueryGroupedSecurityEventMarkMissListResponseBodyPageInfo struct {
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s QueryGroupedSecurityEventMarkMissListResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGroupedSecurityEventMarkMissListResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBodyPageInfo) SetCount(v int32) *QueryGroupedSecurityEventMarkMissListResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBodyPageInfo) SetCurrentPage(v int32) *QueryGroupedSecurityEventMarkMissListResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBodyPageInfo) SetPageSize(v int32) *QueryGroupedSecurityEventMarkMissListResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBodyPageInfo) SetTotalCount(v int32) *QueryGroupedSecurityEventMarkMissListResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type QueryGroupedSecurityEventMarkMissListResponse struct {
+	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryGroupedSecurityEventMarkMissListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryGroupedSecurityEventMarkMissListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGroupedSecurityEventMarkMissListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponse) SetHeaders(v map[string]*string) *QueryGroupedSecurityEventMarkMissListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponse) SetBody(v *QueryGroupedSecurityEventMarkMissListResponseBody) *QueryGroupedSecurityEventMarkMissListResponse {
+	s.Body = v
+	return s
+}
+
 type RefreshAssetsRequest struct {
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
 }
@@ -24934,10 +25327,6 @@ func (client *Client) AddVpcHoneyPotWithOptions(request *AddVpcHoneyPotRequest, 
 		query["VpcId"] = request.VpcId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.VpcSwitchId)) {
-		query["VpcSwitchId"] = request.VpcSwitchId
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -25292,6 +25681,58 @@ func (client *Client) CreateSimilarSecurityEventsQueryTask(request *CreateSimila
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSimilarSecurityEventsQueryTaskResponse{}
 	_body, _err := client.CreateSimilarSecurityEventsQueryTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateVulAutoRepairConfigWithOptions(request *CreateVulAutoRepairConfigRequest, runtime *util.RuntimeOptions) (_result *CreateVulAutoRepairConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Reason)) {
+		query["Reason"] = request.Reason
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VulAutoRepairConfigList)) {
+		query["VulAutoRepairConfigList"] = request.VulAutoRepairConfigList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVulAutoRepairConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateVulAutoRepairConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateVulAutoRepairConfig(request *CreateVulAutoRepairConfigRequest) (_result *CreateVulAutoRepairConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateVulAutoRepairConfigResponse{}
+	_body, _err := client.CreateVulAutoRepairConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -34581,6 +35022,80 @@ func (client *Client) QueryGroupIdByGroupName(request *QueryGroupIdByGroupNameRe
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryGroupIdByGroupNameResponse{}
 	_body, _err := client.QueryGroupIdByGroupNameWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryGroupedSecurityEventMarkMissListWithOptions(request *QueryGroupedSecurityEventMarkMissListRequest, runtime *util.RuntimeOptions) (_result *QueryGroupedSecurityEventMarkMissListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		body["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventName)) {
+		body["EventName"] = request.EventName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		body["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		body["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxId)) {
+		body["MaxId"] = request.MaxId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		body["Remark"] = request.Remark
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryGroupedSecurityEventMarkMissList"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryGroupedSecurityEventMarkMissListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryGroupedSecurityEventMarkMissList(request *QueryGroupedSecurityEventMarkMissListRequest) (_result *QueryGroupedSecurityEventMarkMissListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryGroupedSecurityEventMarkMissListResponse{}
+	_body, _err := client.QueryGroupedSecurityEventMarkMissListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
