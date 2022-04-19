@@ -309,6 +309,135 @@ func (s *ApplyMetricRuleTemplateResponse) SetBody(v *ApplyMetricRuleTemplateResp
 	return s
 }
 
+type BatchCreateOnceSiteMonitorRequest struct {
+	RegionId *string                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TaskList []*BatchCreateOnceSiteMonitorRequestTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
+}
+
+func (s BatchCreateOnceSiteMonitorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateOnceSiteMonitorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateOnceSiteMonitorRequest) SetRegionId(v string) *BatchCreateOnceSiteMonitorRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *BatchCreateOnceSiteMonitorRequest) SetTaskList(v []*BatchCreateOnceSiteMonitorRequestTaskList) *BatchCreateOnceSiteMonitorRequest {
+	s.TaskList = v
+	return s
+}
+
+type BatchCreateOnceSiteMonitorRequestTaskList struct {
+	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	IspCities   *string `json:"IspCities,omitempty" xml:"IspCities,omitempty"`
+	OptionsJson *string `json:"OptionsJson,omitempty" xml:"OptionsJson,omitempty"`
+	TaskName    *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskType    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s BatchCreateOnceSiteMonitorRequestTaskList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateOnceSiteMonitorRequestTaskList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateOnceSiteMonitorRequestTaskList) SetAddress(v string) *BatchCreateOnceSiteMonitorRequestTaskList {
+	s.Address = &v
+	return s
+}
+
+func (s *BatchCreateOnceSiteMonitorRequestTaskList) SetIspCities(v string) *BatchCreateOnceSiteMonitorRequestTaskList {
+	s.IspCities = &v
+	return s
+}
+
+func (s *BatchCreateOnceSiteMonitorRequestTaskList) SetOptionsJson(v string) *BatchCreateOnceSiteMonitorRequestTaskList {
+	s.OptionsJson = &v
+	return s
+}
+
+func (s *BatchCreateOnceSiteMonitorRequestTaskList) SetTaskName(v string) *BatchCreateOnceSiteMonitorRequestTaskList {
+	s.TaskName = &v
+	return s
+}
+
+func (s *BatchCreateOnceSiteMonitorRequestTaskList) SetTaskType(v string) *BatchCreateOnceSiteMonitorRequestTaskList {
+	s.TaskType = &v
+	return s
+}
+
+type BatchCreateOnceSiteMonitorResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BatchCreateOnceSiteMonitorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateOnceSiteMonitorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateOnceSiteMonitorResponseBody) SetCode(v string) *BatchCreateOnceSiteMonitorResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BatchCreateOnceSiteMonitorResponseBody) SetData(v string) *BatchCreateOnceSiteMonitorResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *BatchCreateOnceSiteMonitorResponseBody) SetMessage(v string) *BatchCreateOnceSiteMonitorResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BatchCreateOnceSiteMonitorResponseBody) SetRequestId(v string) *BatchCreateOnceSiteMonitorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchCreateOnceSiteMonitorResponseBody) SetSuccess(v bool) *BatchCreateOnceSiteMonitorResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BatchCreateOnceSiteMonitorResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BatchCreateOnceSiteMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchCreateOnceSiteMonitorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateOnceSiteMonitorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateOnceSiteMonitorResponse) SetHeaders(v map[string]*string) *BatchCreateOnceSiteMonitorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchCreateOnceSiteMonitorResponse) SetBody(v *BatchCreateOnceSiteMonitorResponseBody) *BatchCreateOnceSiteMonitorResponse {
+	s.Body = v
+	return s
+}
+
 type CreateCmsCallNumOrderRequest struct {
 	AutoPay         *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	AutoRenewPeriod *int32  `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
@@ -843,6 +972,7 @@ type CreateGroupMetricRulesRequestGroupMetricRules struct {
 	EffectiveInterval   *string                                                   `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
 	EmailSubject        *string                                                   `json:"EmailSubject,omitempty" xml:"EmailSubject,omitempty"`
 	Interval            *string                                                   `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Labels              []*CreateGroupMetricRulesRequestGroupMetricRulesLabels    `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	MetricName          *string                                                   `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	Namespace           *string                                                   `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	NoDataPolicy        *string                                                   `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
@@ -894,6 +1024,11 @@ func (s *CreateGroupMetricRulesRequestGroupMetricRules) SetEmailSubject(v string
 
 func (s *CreateGroupMetricRulesRequestGroupMetricRules) SetInterval(v string) *CreateGroupMetricRulesRequestGroupMetricRules {
 	s.Interval = &v
+	return s
+}
+
+func (s *CreateGroupMetricRulesRequestGroupMetricRules) SetLabels(v []*CreateGroupMetricRulesRequestGroupMetricRulesLabels) *CreateGroupMetricRulesRequestGroupMetricRules {
+	s.Labels = v
 	return s
 }
 
@@ -973,6 +1108,7 @@ func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalations) SetWarn(v *Cr
 
 type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical struct {
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	PreCondition       *string `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
 	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
 	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 	Times              *int32  `json:"Times,omitempty" xml:"Times,omitempty"`
@@ -988,6 +1124,11 @@ func (s CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical) GoStri
 
 func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical) SetComparisonOperator(v string) *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical {
 	s.ComparisonOperator = &v
+	return s
+}
+
+func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical) SetPreCondition(v string) *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical {
+	s.PreCondition = &v
 	return s
 }
 
@@ -1008,6 +1149,7 @@ func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsCritical) SetTi
 
 type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo struct {
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	PreCondition       *string `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
 	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
 	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 	Times              *int32  `json:"Times,omitempty" xml:"Times,omitempty"`
@@ -1023,6 +1165,11 @@ func (s CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo) GoString()
 
 func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo) SetComparisonOperator(v string) *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo {
 	s.ComparisonOperator = &v
+	return s
+}
+
+func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo) SetPreCondition(v string) *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo {
+	s.PreCondition = &v
 	return s
 }
 
@@ -1043,6 +1190,7 @@ func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsInfo) SetTimes(
 
 type CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn struct {
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	PreCondition       *string `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
 	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
 	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 	Times              *int32  `json:"Times,omitempty" xml:"Times,omitempty"`
@@ -1061,6 +1209,11 @@ func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn) SetCompar
 	return s
 }
 
+func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn) SetPreCondition(v string) *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn {
+	s.PreCondition = &v
+	return s
+}
+
 func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn) SetStatistics(v string) *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn {
 	s.Statistics = &v
 	return s
@@ -1073,6 +1226,29 @@ func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn) SetThresh
 
 func (s *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn) SetTimes(v int32) *CreateGroupMetricRulesRequestGroupMetricRulesEscalationsWarn {
 	s.Times = &v
+	return s
+}
+
+type CreateGroupMetricRulesRequestGroupMetricRulesLabels struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateGroupMetricRulesRequestGroupMetricRulesLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateGroupMetricRulesRequestGroupMetricRulesLabels) GoString() string {
+	return s.String()
+}
+
+func (s *CreateGroupMetricRulesRequestGroupMetricRulesLabels) SetKey(v string) *CreateGroupMetricRulesRequestGroupMetricRulesLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *CreateGroupMetricRulesRequestGroupMetricRulesLabels) SetValue(v string) *CreateGroupMetricRulesRequestGroupMetricRulesLabels {
+	s.Value = &v
 	return s
 }
 
@@ -9612,6 +9788,7 @@ type DescribeEventRuleTargetListResponseBodyMnsParametersMnsParameter struct {
 	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Queue  *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Topic  *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s DescribeEventRuleTargetListResponseBodyMnsParametersMnsParameter) String() string {
@@ -9639,6 +9816,11 @@ func (s *DescribeEventRuleTargetListResponseBodyMnsParametersMnsParameter) SetQu
 
 func (s *DescribeEventRuleTargetListResponseBodyMnsParametersMnsParameter) SetRegion(v string) *DescribeEventRuleTargetListResponseBodyMnsParametersMnsParameter {
 	s.Region = &v
+	return s
+}
+
+func (s *DescribeEventRuleTargetListResponseBodyMnsParametersMnsParameter) SetTopic(v string) *DescribeEventRuleTargetListResponseBodyMnsParametersMnsParameter {
+	s.Topic = &v
 	return s
 }
 
@@ -22754,6 +22936,7 @@ type PutEventRuleTargetsRequestMnsParameters struct {
 	Id     *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	Queue  *string `json:"Queue,omitempty" xml:"Queue,omitempty"`
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Topic  *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
 func (s PutEventRuleTargetsRequestMnsParameters) String() string {
@@ -22776,6 +22959,11 @@ func (s *PutEventRuleTargetsRequestMnsParameters) SetQueue(v string) *PutEventRu
 
 func (s *PutEventRuleTargetsRequestMnsParameters) SetRegion(v string) *PutEventRuleTargetsRequestMnsParameters {
 	s.Region = &v
+	return s
+}
+
+func (s *PutEventRuleTargetsRequestMnsParameters) SetTopic(v string) *PutEventRuleTargetsRequestMnsParameters {
+	s.Topic = &v
 	return s
 }
 
@@ -23354,6 +23542,7 @@ type PutGroupMetricRuleRequest struct {
 	ExtraDimensionJson  *string                               `json:"ExtraDimensionJson,omitempty" xml:"ExtraDimensionJson,omitempty"`
 	GroupId             *string                               `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	Interval            *string                               `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Labels              []*PutGroupMetricRuleRequestLabels    `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	MetricName          *string                               `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	Namespace           *string                               `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	NoDataPolicy        *string                               `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
@@ -23415,6 +23604,11 @@ func (s *PutGroupMetricRuleRequest) SetGroupId(v string) *PutGroupMetricRuleRequ
 
 func (s *PutGroupMetricRuleRequest) SetInterval(v string) *PutGroupMetricRuleRequest {
 	s.Interval = &v
+	return s
+}
+
+func (s *PutGroupMetricRuleRequest) SetLabels(v []*PutGroupMetricRuleRequestLabels) *PutGroupMetricRuleRequest {
+	s.Labels = v
 	return s
 }
 
@@ -23594,6 +23788,29 @@ func (s *PutGroupMetricRuleRequestEscalationsWarn) SetThreshold(v string) *PutGr
 
 func (s *PutGroupMetricRuleRequestEscalationsWarn) SetTimes(v int32) *PutGroupMetricRuleRequestEscalationsWarn {
 	s.Times = &v
+	return s
+}
+
+type PutGroupMetricRuleRequestLabels struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s PutGroupMetricRuleRequestLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutGroupMetricRuleRequestLabels) GoString() string {
+	return s.String()
+}
+
+func (s *PutGroupMetricRuleRequestLabels) SetKey(v string) *PutGroupMetricRuleRequestLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *PutGroupMetricRuleRequestLabels) SetValue(v string) *PutGroupMetricRuleRequestLabels {
+	s.Value = &v
 	return s
 }
 
@@ -24285,6 +24502,7 @@ func (s *PutMetricRuleTargetsResponse) SetBody(v *PutMetricRuleTargetsResponseBo
 type PutMonitorGroupDynamicRuleRequest struct {
 	GroupId    *int64                                         `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	GroupRules []*PutMonitorGroupDynamicRuleRequestGroupRules `json:"GroupRules,omitempty" xml:"GroupRules,omitempty" type:"Repeated"`
+	IsAsync    *bool                                          `json:"IsAsync,omitempty" xml:"IsAsync,omitempty"`
 	RegionId   *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
 
@@ -24303,6 +24521,11 @@ func (s *PutMonitorGroupDynamicRuleRequest) SetGroupId(v int64) *PutMonitorGroup
 
 func (s *PutMonitorGroupDynamicRuleRequest) SetGroupRules(v []*PutMonitorGroupDynamicRuleRequestGroupRules) *PutMonitorGroupDynamicRuleRequest {
 	s.GroupRules = v
+	return s
+}
+
+func (s *PutMonitorGroupDynamicRuleRequest) SetIsAsync(v bool) *PutMonitorGroupDynamicRuleRequest {
+	s.IsAsync = &v
 	return s
 }
 
@@ -25217,6 +25440,7 @@ type PutResourceMetricRulesRequestRules struct {
 	EffectiveInterval   *string                                        `json:"EffectiveInterval,omitempty" xml:"EffectiveInterval,omitempty"`
 	EmailSubject        *string                                        `json:"EmailSubject,omitempty" xml:"EmailSubject,omitempty"`
 	Interval            *string                                        `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Labels              []*PutResourceMetricRulesRequestRulesLabels    `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
 	MetricName          *string                                        `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	Namespace           *string                                        `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	NoDataPolicy        *string                                        `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
@@ -25259,6 +25483,11 @@ func (s *PutResourceMetricRulesRequestRules) SetEmailSubject(v string) *PutResou
 
 func (s *PutResourceMetricRulesRequestRules) SetInterval(v string) *PutResourceMetricRulesRequestRules {
 	s.Interval = &v
+	return s
+}
+
+func (s *PutResourceMetricRulesRequestRules) SetLabels(v []*PutResourceMetricRulesRequestRulesLabels) *PutResourceMetricRulesRequestRules {
+	s.Labels = v
 	return s
 }
 
@@ -25343,6 +25572,7 @@ func (s *PutResourceMetricRulesRequestRulesEscalations) SetWarn(v *PutResourceMe
 
 type PutResourceMetricRulesRequestRulesEscalationsCritical struct {
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	PreCondition       *string `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
 	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
 	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 	Times              *int32  `json:"Times,omitempty" xml:"Times,omitempty"`
@@ -25358,6 +25588,11 @@ func (s PutResourceMetricRulesRequestRulesEscalationsCritical) GoString() string
 
 func (s *PutResourceMetricRulesRequestRulesEscalationsCritical) SetComparisonOperator(v string) *PutResourceMetricRulesRequestRulesEscalationsCritical {
 	s.ComparisonOperator = &v
+	return s
+}
+
+func (s *PutResourceMetricRulesRequestRulesEscalationsCritical) SetPreCondition(v string) *PutResourceMetricRulesRequestRulesEscalationsCritical {
+	s.PreCondition = &v
 	return s
 }
 
@@ -25378,6 +25613,7 @@ func (s *PutResourceMetricRulesRequestRulesEscalationsCritical) SetTimes(v int32
 
 type PutResourceMetricRulesRequestRulesEscalationsInfo struct {
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	PreCondition       *string `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
 	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
 	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 	Times              *int32  `json:"Times,omitempty" xml:"Times,omitempty"`
@@ -25393,6 +25629,11 @@ func (s PutResourceMetricRulesRequestRulesEscalationsInfo) GoString() string {
 
 func (s *PutResourceMetricRulesRequestRulesEscalationsInfo) SetComparisonOperator(v string) *PutResourceMetricRulesRequestRulesEscalationsInfo {
 	s.ComparisonOperator = &v
+	return s
+}
+
+func (s *PutResourceMetricRulesRequestRulesEscalationsInfo) SetPreCondition(v string) *PutResourceMetricRulesRequestRulesEscalationsInfo {
+	s.PreCondition = &v
 	return s
 }
 
@@ -25413,6 +25654,7 @@ func (s *PutResourceMetricRulesRequestRulesEscalationsInfo) SetTimes(v int32) *P
 
 type PutResourceMetricRulesRequestRulesEscalationsWarn struct {
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
+	PreCondition       *string `json:"PreCondition,omitempty" xml:"PreCondition,omitempty"`
 	Statistics         *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
 	Threshold          *string `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
 	Times              *int32  `json:"Times,omitempty" xml:"Times,omitempty"`
@@ -25431,6 +25673,11 @@ func (s *PutResourceMetricRulesRequestRulesEscalationsWarn) SetComparisonOperato
 	return s
 }
 
+func (s *PutResourceMetricRulesRequestRulesEscalationsWarn) SetPreCondition(v string) *PutResourceMetricRulesRequestRulesEscalationsWarn {
+	s.PreCondition = &v
+	return s
+}
+
 func (s *PutResourceMetricRulesRequestRulesEscalationsWarn) SetStatistics(v string) *PutResourceMetricRulesRequestRulesEscalationsWarn {
 	s.Statistics = &v
 	return s
@@ -25443,6 +25690,29 @@ func (s *PutResourceMetricRulesRequestRulesEscalationsWarn) SetThreshold(v strin
 
 func (s *PutResourceMetricRulesRequestRulesEscalationsWarn) SetTimes(v int32) *PutResourceMetricRulesRequestRulesEscalationsWarn {
 	s.Times = &v
+	return s
+}
+
+type PutResourceMetricRulesRequestRulesLabels struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s PutResourceMetricRulesRequestRulesLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutResourceMetricRulesRequestRulesLabels) GoString() string {
+	return s.String()
+}
+
+func (s *PutResourceMetricRulesRequestRulesLabels) SetKey(v string) *PutResourceMetricRulesRequestRulesLabels {
+	s.Key = &v
+	return s
+}
+
+func (s *PutResourceMetricRulesRequestRulesLabels) SetValue(v string) *PutResourceMetricRulesRequestRulesLabels {
+	s.Value = &v
 	return s
 }
 
@@ -26052,6 +26322,50 @@ func (client *Client) ApplyMetricRuleTemplate(request *ApplyMetricRuleTemplateRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ApplyMetricRuleTemplateResponse{}
 	_body, _err := client.ApplyMetricRuleTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchCreateOnceSiteMonitorWithOptions(request *BatchCreateOnceSiteMonitorRequest, runtime *util.RuntimeOptions) (_result *BatchCreateOnceSiteMonitorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskList)) {
+		query["TaskList"] = request.TaskList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchCreateOnceSiteMonitor"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchCreateOnceSiteMonitorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchCreateOnceSiteMonitor(request *BatchCreateOnceSiteMonitorRequest) (_result *BatchCreateOnceSiteMonitorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchCreateOnceSiteMonitorResponse{}
+	_body, _err := client.BatchCreateOnceSiteMonitorWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28088,7 +28402,11 @@ func (client *Client) DescribeActiveMetricRuleListWithOptions(request *DescribeA
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Product)) {
+		query["Product"] = request.Product
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28097,7 +28415,7 @@ func (client *Client) DescribeActiveMetricRuleListWithOptions(request *DescribeA
 		Version:     tea.String("2019-01-01"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -33400,6 +33718,10 @@ func (client *Client) PutGroupMetricRuleWithOptions(request *PutGroupMetricRuleR
 		query["Interval"] = request.Interval
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		query["Labels"] = request.Labels
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MetricName)) {
 		query["MetricName"] = request.MetricName
 	}
@@ -33674,6 +33996,10 @@ func (client *Client) PutMonitorGroupDynamicRuleWithOptions(request *PutMonitorG
 
 	if !tea.BoolValue(util.IsUnset(request.GroupRules)) {
 		query["GroupRules"] = request.GroupRules
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsAsync)) {
+		query["IsAsync"] = request.IsAsync
 	}
 
 	req := &openapi.OpenApiRequest{
