@@ -1048,10 +1048,13 @@ type CreateApplicationMonitorRequest struct {
 	AcceleratorId   *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	Address         *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DetectEnable    *bool   `json:"DetectEnable,omitempty" xml:"DetectEnable,omitempty"`
 	DetectThreshold *int32  `json:"DetectThreshold,omitempty" xml:"DetectThreshold,omitempty"`
+	DetectTimes     *int32  `json:"DetectTimes,omitempty" xml:"DetectTimes,omitempty"`
 	ListenerId      *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	OptionsJson     *string `json:"OptionsJson,omitempty" xml:"OptionsJson,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SilenceTime     *int32  `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
 	TaskName        *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
 
@@ -1078,8 +1081,18 @@ func (s *CreateApplicationMonitorRequest) SetClientToken(v string) *CreateApplic
 	return s
 }
 
+func (s *CreateApplicationMonitorRequest) SetDetectEnable(v bool) *CreateApplicationMonitorRequest {
+	s.DetectEnable = &v
+	return s
+}
+
 func (s *CreateApplicationMonitorRequest) SetDetectThreshold(v int32) *CreateApplicationMonitorRequest {
 	s.DetectThreshold = &v
+	return s
+}
+
+func (s *CreateApplicationMonitorRequest) SetDetectTimes(v int32) *CreateApplicationMonitorRequest {
+	s.DetectTimes = &v
 	return s
 }
 
@@ -1095,6 +1108,11 @@ func (s *CreateApplicationMonitorRequest) SetOptionsJson(v string) *CreateApplic
 
 func (s *CreateApplicationMonitorRequest) SetRegionId(v string) *CreateApplicationMonitorRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateApplicationMonitorRequest) SetSilenceTime(v int32) *CreateApplicationMonitorRequest {
+	s.SilenceTime = &v
 	return s
 }
 
@@ -4209,12 +4227,15 @@ func (s *DescribeApplicationMonitorRequest) SetTaskId(v string) *DescribeApplica
 type DescribeApplicationMonitorResponseBody struct {
 	AcceleratorId   *string                                              `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	Address         *string                                              `json:"Address,omitempty" xml:"Address,omitempty"`
-	DetectThreshold *string                                              `json:"DetectThreshold,omitempty" xml:"DetectThreshold,omitempty"`
+	DetectEnable    *bool                                                `json:"DetectEnable,omitempty" xml:"DetectEnable,omitempty"`
+	DetectThreshold *int32                                               `json:"DetectThreshold,omitempty" xml:"DetectThreshold,omitempty"`
+	DetectTimes     *int32                                               `json:"DetectTimes,omitempty" xml:"DetectTimes,omitempty"`
 	IspCityList     []*DescribeApplicationMonitorResponseBodyIspCityList `json:"IspCityList,omitempty" xml:"IspCityList,omitempty" type:"Repeated"`
 	ListenerId      *string                                              `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	OptionsJson     *string                                              `json:"OptionsJson,omitempty" xml:"OptionsJson,omitempty"`
 	RegionId        *string                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RequestId       *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SilenceTime     *int32                                               `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
 	TaskId          *string                                              `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	TaskName        *string                                              `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
@@ -4237,8 +4258,18 @@ func (s *DescribeApplicationMonitorResponseBody) SetAddress(v string) *DescribeA
 	return s
 }
 
-func (s *DescribeApplicationMonitorResponseBody) SetDetectThreshold(v string) *DescribeApplicationMonitorResponseBody {
+func (s *DescribeApplicationMonitorResponseBody) SetDetectEnable(v bool) *DescribeApplicationMonitorResponseBody {
+	s.DetectEnable = &v
+	return s
+}
+
+func (s *DescribeApplicationMonitorResponseBody) SetDetectThreshold(v int32) *DescribeApplicationMonitorResponseBody {
 	s.DetectThreshold = &v
+	return s
+}
+
+func (s *DescribeApplicationMonitorResponseBody) SetDetectTimes(v int32) *DescribeApplicationMonitorResponseBody {
+	s.DetectTimes = &v
 	return s
 }
 
@@ -4264,6 +4295,11 @@ func (s *DescribeApplicationMonitorResponseBody) SetRegionId(v string) *Describe
 
 func (s *DescribeApplicationMonitorResponseBody) SetRequestId(v string) *DescribeApplicationMonitorResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeApplicationMonitorResponseBody) SetSilenceTime(v int32) *DescribeApplicationMonitorResponseBody {
+	s.SilenceTime = &v
 	return s
 }
 
@@ -7334,9 +7370,12 @@ func (s *ListApplicationMonitorResponseBody) SetTotalCount(v int32) *ListApplica
 type ListApplicationMonitorResponseBodyApplicationMonitors struct {
 	AcceleratorId   *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	Address         *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	DetectEnable    *bool   `json:"DetectEnable,omitempty" xml:"DetectEnable,omitempty"`
 	DetectThreshold *int32  `json:"DetectThreshold,omitempty" xml:"DetectThreshold,omitempty"`
+	DetectTimes     *int32  `json:"DetectTimes,omitempty" xml:"DetectTimes,omitempty"`
 	ListenerId      *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	OptionsJson     *string `json:"OptionsJson,omitempty" xml:"OptionsJson,omitempty"`
+	SilenceTime     *int32  `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
 	State           *string `json:"State,omitempty" xml:"State,omitempty"`
 	TaskId          *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	TaskName        *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
@@ -7360,8 +7399,18 @@ func (s *ListApplicationMonitorResponseBodyApplicationMonitors) SetAddress(v str
 	return s
 }
 
+func (s *ListApplicationMonitorResponseBodyApplicationMonitors) SetDetectEnable(v bool) *ListApplicationMonitorResponseBodyApplicationMonitors {
+	s.DetectEnable = &v
+	return s
+}
+
 func (s *ListApplicationMonitorResponseBodyApplicationMonitors) SetDetectThreshold(v int32) *ListApplicationMonitorResponseBodyApplicationMonitors {
 	s.DetectThreshold = &v
+	return s
+}
+
+func (s *ListApplicationMonitorResponseBodyApplicationMonitors) SetDetectTimes(v int32) *ListApplicationMonitorResponseBodyApplicationMonitors {
+	s.DetectTimes = &v
 	return s
 }
 
@@ -7372,6 +7421,11 @@ func (s *ListApplicationMonitorResponseBodyApplicationMonitors) SetListenerId(v 
 
 func (s *ListApplicationMonitorResponseBodyApplicationMonitors) SetOptionsJson(v string) *ListApplicationMonitorResponseBodyApplicationMonitors {
 	s.OptionsJson = &v
+	return s
+}
+
+func (s *ListApplicationMonitorResponseBodyApplicationMonitors) SetSilenceTime(v int32) *ListApplicationMonitorResponseBodyApplicationMonitors {
+	s.SilenceTime = &v
 	return s
 }
 
@@ -7503,11 +7557,14 @@ func (s *ListApplicationMonitorDetectResultResponseBody) SetTotalCount(v int32) 
 
 type ListApplicationMonitorDetectResultResponseBodyApplicationMonitorDetectResultList struct {
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
+	Content       *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	Detail        *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	DetectTime    *string `json:"DetectTime,omitempty" xml:"DetectTime,omitempty"`
 	DiagStatus    *string `json:"DiagStatus,omitempty" xml:"DiagStatus,omitempty"`
 	ListenerId    *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	Port          *string `json:"Port,omitempty" xml:"Port,omitempty"`
 	Protocol      *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
+	StatusCode    *string `json:"StatusCode,omitempty" xml:"StatusCode,omitempty"`
 	TaskId        *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
@@ -7524,8 +7581,18 @@ func (s *ListApplicationMonitorDetectResultResponseBodyApplicationMonitorDetectR
 	return s
 }
 
+func (s *ListApplicationMonitorDetectResultResponseBodyApplicationMonitorDetectResultList) SetContent(v string) *ListApplicationMonitorDetectResultResponseBodyApplicationMonitorDetectResultList {
+	s.Content = &v
+	return s
+}
+
 func (s *ListApplicationMonitorDetectResultResponseBodyApplicationMonitorDetectResultList) SetDetail(v string) *ListApplicationMonitorDetectResultResponseBodyApplicationMonitorDetectResultList {
 	s.Detail = &v
+	return s
+}
+
+func (s *ListApplicationMonitorDetectResultResponseBodyApplicationMonitorDetectResultList) SetDetectTime(v string) *ListApplicationMonitorDetectResultResponseBodyApplicationMonitorDetectResultList {
+	s.DetectTime = &v
 	return s
 }
 
@@ -7546,6 +7613,11 @@ func (s *ListApplicationMonitorDetectResultResponseBodyApplicationMonitorDetectR
 
 func (s *ListApplicationMonitorDetectResultResponseBodyApplicationMonitorDetectResultList) SetProtocol(v string) *ListApplicationMonitorDetectResultResponseBodyApplicationMonitorDetectResultList {
 	s.Protocol = &v
+	return s
+}
+
+func (s *ListApplicationMonitorDetectResultResponseBodyApplicationMonitorDetectResultList) SetStatusCode(v string) *ListApplicationMonitorDetectResultResponseBodyApplicationMonitorDetectResultList {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10532,10 +10604,13 @@ func (s *UpdateAclAttributeResponse) SetBody(v *UpdateAclAttributeResponseBody) 
 type UpdateApplicationMonitorRequest struct {
 	Address         *string `json:"Address,omitempty" xml:"Address,omitempty"`
 	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DetectEnable    *bool   `json:"DetectEnable,omitempty" xml:"DetectEnable,omitempty"`
 	DetectThreshold *int32  `json:"DetectThreshold,omitempty" xml:"DetectThreshold,omitempty"`
+	DetectTimes     *int32  `json:"DetectTimes,omitempty" xml:"DetectTimes,omitempty"`
 	ListenerId      *string `json:"ListenerId,omitempty" xml:"ListenerId,omitempty"`
 	OptionsJson     *string `json:"OptionsJson,omitempty" xml:"OptionsJson,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SilenceTime     *int32  `json:"SilenceTime,omitempty" xml:"SilenceTime,omitempty"`
 	TaskId          *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	TaskName        *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
 }
@@ -10558,8 +10633,18 @@ func (s *UpdateApplicationMonitorRequest) SetClientToken(v string) *UpdateApplic
 	return s
 }
 
+func (s *UpdateApplicationMonitorRequest) SetDetectEnable(v bool) *UpdateApplicationMonitorRequest {
+	s.DetectEnable = &v
+	return s
+}
+
 func (s *UpdateApplicationMonitorRequest) SetDetectThreshold(v int32) *UpdateApplicationMonitorRequest {
 	s.DetectThreshold = &v
+	return s
+}
+
+func (s *UpdateApplicationMonitorRequest) SetDetectTimes(v int32) *UpdateApplicationMonitorRequest {
+	s.DetectTimes = &v
 	return s
 }
 
@@ -10575,6 +10660,11 @@ func (s *UpdateApplicationMonitorRequest) SetOptionsJson(v string) *UpdateApplic
 
 func (s *UpdateApplicationMonitorRequest) SetRegionId(v string) *UpdateApplicationMonitorRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateApplicationMonitorRequest) SetSilenceTime(v int32) *UpdateApplicationMonitorRequest {
+	s.SilenceTime = &v
 	return s
 }
 
@@ -12844,8 +12934,16 @@ func (client *Client) CreateApplicationMonitorWithOptions(request *CreateApplica
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DetectEnable)) {
+		query["DetectEnable"] = request.DetectEnable
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DetectThreshold)) {
 		query["DetectThreshold"] = request.DetectThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DetectTimes)) {
+		query["DetectTimes"] = request.DetectTimes
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
@@ -12858,6 +12956,10 @@ func (client *Client) CreateApplicationMonitorWithOptions(request *CreateApplica
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SilenceTime)) {
+		query["SilenceTime"] = request.SilenceTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
@@ -16864,8 +16966,16 @@ func (client *Client) UpdateApplicationMonitorWithOptions(request *UpdateApplica
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DetectEnable)) {
+		query["DetectEnable"] = request.DetectEnable
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DetectThreshold)) {
 		query["DetectThreshold"] = request.DetectThreshold
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DetectTimes)) {
+		query["DetectTimes"] = request.DetectTimes
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ListenerId)) {
@@ -16878,6 +16988,10 @@ func (client *Client) UpdateApplicationMonitorWithOptions(request *UpdateApplica
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SilenceTime)) {
+		query["SilenceTime"] = request.SilenceTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
