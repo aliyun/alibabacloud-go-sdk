@@ -2155,6 +2155,113 @@ func (s *CreateCoreWordResponse) SetBody(v *CreateCoreWordResponseBody) *CreateC
 	return s
 }
 
+type CreateDSEntityRequest struct {
+	// 实体名称，仅支持中文、大小写字母、数字、下划线
+	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// 实体类型：详见:,EntityTypeEnum[synonyms(同义词),regex(正则)]
+	EntityType *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s CreateDSEntityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDSEntityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDSEntityRequest) SetEntityName(v string) *CreateDSEntityRequest {
+	s.EntityName = &v
+	return s
+}
+
+func (s *CreateDSEntityRequest) SetEntityType(v string) *CreateDSEntityRequest {
+	s.EntityType = &v
+	return s
+}
+
+func (s *CreateDSEntityRequest) SetInstanceId(v string) *CreateDSEntityRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type CreateDSEntityResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	EntityId       *int64  `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateDSEntityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDSEntityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDSEntityResponseBody) SetCode(v string) *CreateDSEntityResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateDSEntityResponseBody) SetData(v int64) *CreateDSEntityResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateDSEntityResponseBody) SetEntityId(v int64) *CreateDSEntityResponseBody {
+	s.EntityId = &v
+	return s
+}
+
+func (s *CreateDSEntityResponseBody) SetHttpStatusCode(v int32) *CreateDSEntityResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateDSEntityResponseBody) SetMessage(v string) *CreateDSEntityResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateDSEntityResponseBody) SetRequestId(v string) *CreateDSEntityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDSEntityResponseBody) SetSuccess(v bool) *CreateDSEntityResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDSEntityResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateDSEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDSEntityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDSEntityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDSEntityResponse) SetHeaders(v map[string]*string) *CreateDSEntityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDSEntityResponse) SetBody(v *CreateDSEntityResponseBody) *CreateDSEntityResponse {
+	s.Body = v
+	return s
+}
+
 type CreateDialogRequest struct {
 	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
@@ -2593,6 +2700,7 @@ func (s *CreateKnowledgeRequestKnowledge) SetStartDate(v string) *CreateKnowledg
 
 type CreateKnowledgeRequestKnowledgeOutlines struct {
 	KnowledgeId *int64  `json:"KnowledgeId,omitempty" xml:"KnowledgeId,omitempty"`
+	OutlineId   *int64  `json:"OutlineId,omitempty" xml:"OutlineId,omitempty"`
 	Title       *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -2606,6 +2714,11 @@ func (s CreateKnowledgeRequestKnowledgeOutlines) GoString() string {
 
 func (s *CreateKnowledgeRequestKnowledgeOutlines) SetKnowledgeId(v int64) *CreateKnowledgeRequestKnowledgeOutlines {
 	s.KnowledgeId = &v
+	return s
+}
+
+func (s *CreateKnowledgeRequestKnowledgeOutlines) SetOutlineId(v int64) *CreateKnowledgeRequestKnowledgeOutlines {
+	s.OutlineId = &v
 	return s
 }
 
@@ -6382,6 +6495,347 @@ func (s *ListConversationLogsResponse) SetBody(v *ListConversationLogsResponseBo
 	return s
 }
 
+type ListDSEntityRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 筛选项，contains匹配，范围：实体名称、实体成员、同义词
+	Keyword    *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListDSEntityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDSEntityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDSEntityRequest) SetInstanceId(v string) *ListDSEntityRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListDSEntityRequest) SetKeyword(v string) *ListDSEntityRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *ListDSEntityRequest) SetPageNumber(v int32) *ListDSEntityRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDSEntityRequest) SetPageSize(v int32) *ListDSEntityRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListDSEntityResponseBody struct {
+	Code           *string                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *ListDSEntityResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListDSEntityResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDSEntityResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDSEntityResponseBody) SetCode(v string) *ListDSEntityResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBody) SetData(v *ListDSEntityResponseBodyData) *ListDSEntityResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDSEntityResponseBody) SetHttpStatusCode(v int32) *ListDSEntityResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBody) SetMessage(v string) *ListDSEntityResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBody) SetRequestId(v string) *ListDSEntityResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBody) SetSuccess(v bool) *ListDSEntityResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListDSEntityResponseBodyData struct {
+	Entities   []*ListDSEntityResponseBodyDataEntities `json:"Entities,omitempty" xml:"Entities,omitempty" type:"Repeated"`
+	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDSEntityResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDSEntityResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDSEntityResponseBodyData) SetEntities(v []*ListDSEntityResponseBodyDataEntities) *ListDSEntityResponseBodyData {
+	s.Entities = v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyData) SetPageNumber(v int32) *ListDSEntityResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyData) SetPageSize(v int32) *ListDSEntityResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyData) SetTotalCount(v int32) *ListDSEntityResponseBodyData {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDSEntityResponseBodyDataEntities struct {
+	Action              *string `json:"Action,omitempty" xml:"Action,omitempty"`
+	AppKey              *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	CallerBid           *string `json:"CallerBid,omitempty" xml:"CallerBid,omitempty"`
+	CallerBidLoginEmail *string `json:"CallerBidLoginEmail,omitempty" xml:"CallerBidLoginEmail,omitempty"`
+	CallerUid           *int64  `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	CallerUidLoginEmail *string `json:"CallerUidLoginEmail,omitempty" xml:"CallerUidLoginEmail,omitempty"`
+	Channel             *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
+	ClientIP            *string `json:"ClientIP,omitempty" xml:"ClientIP,omitempty"`
+	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CreateUserId        *string `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	CreateUserName      *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
+	Enable              *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// 实体ID
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// 实体名称，仅支持中文、大小写字母、数字、下划线
+	EntityName *string `json:"EntityName,omitempty" xml:"EntityName,omitempty"`
+	// 实体类型：详见:,EntityTypeEnum[synonyms(同义词),regex(正则)]
+	EntityType           *string `json:"EntityType,omitempty" xml:"EntityType,omitempty"`
+	ModifyTime           *string `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	ModifyUserId         *string `json:"ModifyUserId,omitempty" xml:"ModifyUserId,omitempty"`
+	ModifyUserName       *string `json:"ModifyUserName,omitempty" xml:"ModifyUserName,omitempty"`
+	Operator             *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	OwnerIdLoginEmail    *string `json:"OwnerIdLoginEmail,omitempty" xml:"OwnerIdLoginEmail,omitempty"`
+	ProxyId              *string `json:"ProxyId,omitempty" xml:"ProxyId,omitempty"`
+	RequestContent       *string `json:"RequestContent,omitempty" xml:"RequestContent,omitempty"`
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TenantId             *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
+	Token                *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	UserId               *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserNick             *string `json:"UserNick,omitempty" xml:"UserNick,omitempty"`
+}
+
+func (s ListDSEntityResponseBodyDataEntities) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDSEntityResponseBodyDataEntities) GoString() string {
+	return s.String()
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetAction(v string) *ListDSEntityResponseBodyDataEntities {
+	s.Action = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetAppKey(v string) *ListDSEntityResponseBodyDataEntities {
+	s.AppKey = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetCallerBid(v string) *ListDSEntityResponseBodyDataEntities {
+	s.CallerBid = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetCallerBidLoginEmail(v string) *ListDSEntityResponseBodyDataEntities {
+	s.CallerBidLoginEmail = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetCallerUid(v int64) *ListDSEntityResponseBodyDataEntities {
+	s.CallerUid = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetCallerUidLoginEmail(v string) *ListDSEntityResponseBodyDataEntities {
+	s.CallerUidLoginEmail = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetChannel(v string) *ListDSEntityResponseBodyDataEntities {
+	s.Channel = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetClientIP(v string) *ListDSEntityResponseBodyDataEntities {
+	s.ClientIP = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetCreateTime(v string) *ListDSEntityResponseBodyDataEntities {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetCreateUserId(v string) *ListDSEntityResponseBodyDataEntities {
+	s.CreateUserId = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetCreateUserName(v string) *ListDSEntityResponseBodyDataEntities {
+	s.CreateUserName = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetEnable(v bool) *ListDSEntityResponseBodyDataEntities {
+	s.Enable = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetEntityId(v int64) *ListDSEntityResponseBodyDataEntities {
+	s.EntityId = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetEntityName(v string) *ListDSEntityResponseBodyDataEntities {
+	s.EntityName = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetEntityType(v string) *ListDSEntityResponseBodyDataEntities {
+	s.EntityType = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetModifyTime(v string) *ListDSEntityResponseBodyDataEntities {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetModifyUserId(v string) *ListDSEntityResponseBodyDataEntities {
+	s.ModifyUserId = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetModifyUserName(v string) *ListDSEntityResponseBodyDataEntities {
+	s.ModifyUserName = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetOperator(v string) *ListDSEntityResponseBodyDataEntities {
+	s.Operator = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetOwnerAccount(v string) *ListDSEntityResponseBodyDataEntities {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetOwnerId(v int64) *ListDSEntityResponseBodyDataEntities {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetOwnerIdLoginEmail(v string) *ListDSEntityResponseBodyDataEntities {
+	s.OwnerIdLoginEmail = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetProxyId(v string) *ListDSEntityResponseBodyDataEntities {
+	s.ProxyId = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetRequestContent(v string) *ListDSEntityResponseBodyDataEntities {
+	s.RequestContent = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetRequestId(v string) *ListDSEntityResponseBodyDataEntities {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetResourceOwnerAccount(v string) *ListDSEntityResponseBodyDataEntities {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetResourceOwnerId(v int64) *ListDSEntityResponseBodyDataEntities {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetTenantId(v int64) *ListDSEntityResponseBodyDataEntities {
+	s.TenantId = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetToken(v string) *ListDSEntityResponseBodyDataEntities {
+	s.Token = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetUserId(v int64) *ListDSEntityResponseBodyDataEntities {
+	s.UserId = &v
+	return s
+}
+
+func (s *ListDSEntityResponseBodyDataEntities) SetUserNick(v string) *ListDSEntityResponseBodyDataEntities {
+	s.UserNick = &v
+	return s
+}
+
+type ListDSEntityResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDSEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDSEntityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDSEntityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDSEntityResponse) SetHeaders(v map[string]*string) *ListDSEntityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDSEntityResponse) SetBody(v *ListDSEntityResponseBody) *ListDSEntityResponse {
+	s.Body = v
+	return s
+}
+
 type MoveKnowledgeCategoryRequest struct {
 	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey    *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
@@ -9899,6 +10353,58 @@ func (client *Client) CreateCoreWord(request *CreateCoreWordRequest) (_result *C
 	return _result, _err
 }
 
+func (client *Client) CreateDSEntityWithOptions(request *CreateDSEntityRequest, runtime *util.RuntimeOptions) (_result *CreateDSEntityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EntityName)) {
+		query["EntityName"] = request.EntityName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EntityType)) {
+		query["EntityType"] = request.EntityType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDSEntity"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDSEntityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDSEntity(request *CreateDSEntityRequest) (_result *CreateDSEntityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDSEntityResponse{}
+	_body, _err := client.CreateDSEntityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateDialogWithOptions(request *CreateDialogRequest, runtime *util.RuntimeOptions) (_result *CreateDialogResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11972,6 +12478,62 @@ func (client *Client) ListConversationLogs(request *ListConversationLogsRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &ListConversationLogsResponse{}
 	_body, _err := client.ListConversationLogsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDSEntityWithOptions(request *ListDSEntityRequest, runtime *util.RuntimeOptions) (_result *ListDSEntityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDSEntity"),
+		Version:     tea.String("2017-10-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDSEntityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDSEntity(request *ListDSEntityRequest) (_result *ListDSEntityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDSEntityResponse{}
+	_body, _err := client.ListDSEntityWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
