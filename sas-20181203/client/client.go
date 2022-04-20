@@ -8204,6 +8204,7 @@ func (s *DescribeGroupedTagsResponse) SetBody(v *DescribeGroupedTagsResponseBody
 
 type DescribeGroupedVulRequest struct {
 	AliasName   *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	AttachTypes *string `json:"AttachTypes,omitempty" xml:"AttachTypes,omitempty"`
 	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Dealed      *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
 	GroupId     *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -8225,6 +8226,11 @@ func (s DescribeGroupedVulRequest) GoString() string {
 
 func (s *DescribeGroupedVulRequest) SetAliasName(v string) *DescribeGroupedVulRequest {
 	s.AliasName = &v
+	return s
+}
+
+func (s *DescribeGroupedVulRequest) SetAttachTypes(v string) *DescribeGroupedVulRequest {
+	s.AttachTypes = &v
 	return s
 }
 
@@ -28398,6 +28404,10 @@ func (client *Client) DescribeGroupedVulWithOptions(request *DescribeGroupedVulR
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AliasName)) {
 		query["AliasName"] = request.AliasName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AttachTypes)) {
+		query["AttachTypes"] = request.AttachTypes
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
