@@ -96,6 +96,7 @@ func (s *CreateConfigResponse) SetBody(v *CreateConfigResponseBody) *CreateConfi
 type CreateDataLimitRequest struct {
 	AuditStatus     *int32  `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
 	AutoScan        *int32  `json:"AutoScan,omitempty" xml:"AutoScan,omitempty"`
+	Enable          *int32  `json:"Enable,omitempty" xml:"Enable,omitempty"`
 	EngineType      *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
 	EventStatus     *int32  `json:"EventStatus,omitempty" xml:"EventStatus,omitempty"`
 	Lang            *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -124,6 +125,11 @@ func (s *CreateDataLimitRequest) SetAuditStatus(v int32) *CreateDataLimitRequest
 
 func (s *CreateDataLimitRequest) SetAutoScan(v int32) *CreateDataLimitRequest {
 	s.AutoScan = &v
+	return s
+}
+
+func (s *CreateDataLimitRequest) SetEnable(v int32) *CreateDataLimitRequest {
+	s.Enable = &v
 	return s
 }
 
@@ -6633,6 +6639,10 @@ func (client *Client) CreateDataLimitWithOptions(request *CreateDataLimitRequest
 
 	if !tea.BoolValue(util.IsUnset(request.AutoScan)) {
 		query["AutoScan"] = request.AutoScan
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		query["Enable"] = request.Enable
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EngineType)) {
