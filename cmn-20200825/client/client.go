@@ -10177,7 +10177,9 @@ type DisableNotificationRequestList struct {
 	// 专线ID
 	DedicatedLineId *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
 	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceId      *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	EventId       *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventObjectId *string `json:"EventObjectId,omitempty" xml:"EventObjectId,omitempty"`
 	// 监控项ID
 	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
 	// 端口集ID
@@ -10211,6 +10213,16 @@ func (s *DisableNotificationRequestList) SetDedicatedLineId(v string) *DisableNo
 
 func (s *DisableNotificationRequestList) SetDeviceId(v string) *DisableNotificationRequestList {
 	s.DeviceId = &v
+	return s
+}
+
+func (s *DisableNotificationRequestList) SetEventId(v string) *DisableNotificationRequestList {
+	s.EventId = &v
+	return s
+}
+
+func (s *DisableNotificationRequestList) SetEventObjectId(v string) *DisableNotificationRequestList {
+	s.EventObjectId = &v
 	return s
 }
 
@@ -10443,7 +10455,9 @@ type EnableNotificationRequestList struct {
 	// 专线ID
 	DedicatedLineId *string `json:"DedicatedLineId,omitempty" xml:"DedicatedLineId,omitempty"`
 	// 设备ID
-	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	DeviceId      *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	EventId       *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	EventObjectId *string `json:"EventObjectId,omitempty" xml:"EventObjectId,omitempty"`
 	// 监控项ID
 	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
 	// 端口集ID
@@ -10477,6 +10491,16 @@ func (s *EnableNotificationRequestList) SetDedicatedLineId(v string) *EnableNoti
 
 func (s *EnableNotificationRequestList) SetDeviceId(v string) *EnableNotificationRequestList {
 	s.DeviceId = &v
+	return s
+}
+
+func (s *EnableNotificationRequestList) SetEventId(v string) *EnableNotificationRequestList {
+	s.EventId = &v
+	return s
+}
+
+func (s *EnableNotificationRequestList) SetEventObjectId(v string) *EnableNotificationRequestList {
+	s.EventObjectId = &v
 	return s
 }
 
