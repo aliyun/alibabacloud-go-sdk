@@ -375,99 +375,6 @@ func (s *BatchRobotSmartCallResponse) SetBody(v *BatchRobotSmartCallResponseBody
 	return s
 }
 
-type CancelCallRequest struct {
-	CallId               *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s CancelCallRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelCallRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CancelCallRequest) SetCallId(v string) *CancelCallRequest {
-	s.CallId = &v
-	return s
-}
-
-func (s *CancelCallRequest) SetOwnerId(v int64) *CancelCallRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CancelCallRequest) SetResourceOwnerAccount(v string) *CancelCallRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *CancelCallRequest) SetResourceOwnerId(v int64) *CancelCallRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type CancelCallResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Status    *bool   `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s CancelCallResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelCallResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CancelCallResponseBody) SetCode(v string) *CancelCallResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CancelCallResponseBody) SetMessage(v string) *CancelCallResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CancelCallResponseBody) SetRequestId(v string) *CancelCallResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CancelCallResponseBody) SetStatus(v bool) *CancelCallResponseBody {
-	s.Status = &v
-	return s
-}
-
-type CancelCallResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CancelCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CancelCallResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CancelCallResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CancelCallResponse) SetHeaders(v map[string]*string) *CancelCallResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CancelCallResponse) SetBody(v *CancelCallResponseBody) *CancelCallResponse {
-	s.Body = v
-	return s
-}
-
 type CancelOrderRobotTaskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -650,147 +557,6 @@ func (s *CancelRobotTaskResponse) SetHeaders(v map[string]*string) *CancelRobotT
 }
 
 func (s *CancelRobotTaskResponse) SetBody(v *CancelRobotTaskResponseBody) *CancelRobotTaskResponse {
-	s.Body = v
-	return s
-}
-
-type ClickToDialRequest struct {
-	AsrFlag              *bool   `json:"AsrFlag,omitempty" xml:"AsrFlag,omitempty"`
-	AsrModelId           *string `json:"AsrModelId,omitempty" xml:"AsrModelId,omitempty"`
-	CalledNumber         *string `json:"CalledNumber,omitempty" xml:"CalledNumber,omitempty"`
-	CalledShowNumber     *string `json:"CalledShowNumber,omitempty" xml:"CalledShowNumber,omitempty"`
-	CallerNumber         *string `json:"CallerNumber,omitempty" xml:"CallerNumber,omitempty"`
-	CallerShowNumber     *string `json:"CallerShowNumber,omitempty" xml:"CallerShowNumber,omitempty"`
-	OutId                *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RecordFlag           *bool   `json:"RecordFlag,omitempty" xml:"RecordFlag,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SessionTimeout       *int32  `json:"SessionTimeout,omitempty" xml:"SessionTimeout,omitempty"`
-}
-
-func (s ClickToDialRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ClickToDialRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ClickToDialRequest) SetAsrFlag(v bool) *ClickToDialRequest {
-	s.AsrFlag = &v
-	return s
-}
-
-func (s *ClickToDialRequest) SetAsrModelId(v string) *ClickToDialRequest {
-	s.AsrModelId = &v
-	return s
-}
-
-func (s *ClickToDialRequest) SetCalledNumber(v string) *ClickToDialRequest {
-	s.CalledNumber = &v
-	return s
-}
-
-func (s *ClickToDialRequest) SetCalledShowNumber(v string) *ClickToDialRequest {
-	s.CalledShowNumber = &v
-	return s
-}
-
-func (s *ClickToDialRequest) SetCallerNumber(v string) *ClickToDialRequest {
-	s.CallerNumber = &v
-	return s
-}
-
-func (s *ClickToDialRequest) SetCallerShowNumber(v string) *ClickToDialRequest {
-	s.CallerShowNumber = &v
-	return s
-}
-
-func (s *ClickToDialRequest) SetOutId(v string) *ClickToDialRequest {
-	s.OutId = &v
-	return s
-}
-
-func (s *ClickToDialRequest) SetOwnerId(v int64) *ClickToDialRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *ClickToDialRequest) SetRecordFlag(v bool) *ClickToDialRequest {
-	s.RecordFlag = &v
-	return s
-}
-
-func (s *ClickToDialRequest) SetResourceOwnerAccount(v string) *ClickToDialRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *ClickToDialRequest) SetResourceOwnerId(v int64) *ClickToDialRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *ClickToDialRequest) SetSessionTimeout(v int32) *ClickToDialRequest {
-	s.SessionTimeout = &v
-	return s
-}
-
-type ClickToDialResponseBody struct {
-	CallId    *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ClickToDialResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ClickToDialResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ClickToDialResponseBody) SetCallId(v string) *ClickToDialResponseBody {
-	s.CallId = &v
-	return s
-}
-
-func (s *ClickToDialResponseBody) SetCode(v string) *ClickToDialResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ClickToDialResponseBody) SetMessage(v string) *ClickToDialResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ClickToDialResponseBody) SetRequestId(v string) *ClickToDialResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ClickToDialResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ClickToDialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ClickToDialResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ClickToDialResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ClickToDialResponse) SetHeaders(v map[string]*string) *ClickToDialResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ClickToDialResponse) SetBody(v *ClickToDialResponseBody) *ClickToDialResponse {
 	s.Body = v
 	return s
 }
@@ -4449,6 +4215,99 @@ func (s *QueryVoiceFileAuditInfoResponse) SetBody(v *QueryVoiceFileAuditInfoResp
 	return s
 }
 
+type RecoverCallInConfigRequest struct {
+	Number               *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s RecoverCallInConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecoverCallInConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecoverCallInConfigRequest) SetNumber(v string) *RecoverCallInConfigRequest {
+	s.Number = &v
+	return s
+}
+
+func (s *RecoverCallInConfigRequest) SetOwnerId(v int64) *RecoverCallInConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *RecoverCallInConfigRequest) SetResourceOwnerAccount(v string) *RecoverCallInConfigRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *RecoverCallInConfigRequest) SetResourceOwnerId(v int64) *RecoverCallInConfigRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type RecoverCallInConfigResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RecoverCallInConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecoverCallInConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecoverCallInConfigResponseBody) SetCode(v string) *RecoverCallInConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RecoverCallInConfigResponseBody) SetData(v bool) *RecoverCallInConfigResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *RecoverCallInConfigResponseBody) SetMessage(v string) *RecoverCallInConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RecoverCallInConfigResponseBody) SetRequestId(v string) *RecoverCallInConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RecoverCallInConfigResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RecoverCallInConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RecoverCallInConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecoverCallInConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecoverCallInConfigResponse) SetHeaders(v map[string]*string) *RecoverCallInConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecoverCallInConfigResponse) SetBody(v *RecoverCallInConfigResponseBody) *RecoverCallInConfigResponse {
+	s.Body = v
+	return s
+}
+
 type RefreshMqttTokenRequest struct {
 	ClientId             *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -5551,6 +5410,99 @@ func (s *StartRobotTaskResponse) SetBody(v *StartRobotTaskResponseBody) *StartRo
 	return s
 }
 
+type StopCallInConfigRequest struct {
+	Number               *string `json:"Number,omitempty" xml:"Number,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s StopCallInConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopCallInConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopCallInConfigRequest) SetNumber(v string) *StopCallInConfigRequest {
+	s.Number = &v
+	return s
+}
+
+func (s *StopCallInConfigRequest) SetOwnerId(v int64) *StopCallInConfigRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *StopCallInConfigRequest) SetResourceOwnerAccount(v string) *StopCallInConfigRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *StopCallInConfigRequest) SetResourceOwnerId(v int64) *StopCallInConfigRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type StopCallInConfigResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopCallInConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopCallInConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopCallInConfigResponseBody) SetCode(v string) *StopCallInConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StopCallInConfigResponseBody) SetData(v bool) *StopCallInConfigResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *StopCallInConfigResponseBody) SetMessage(v string) *StopCallInConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StopCallInConfigResponseBody) SetRequestId(v string) *StopCallInConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopCallInConfigResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *StopCallInConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopCallInConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopCallInConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopCallInConfigResponse) SetHeaders(v map[string]*string) *StopCallInConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopCallInConfigResponse) SetBody(v *StopCallInConfigResponseBody) *StopCallInConfigResponse {
+	s.Body = v
+	return s
+}
+
 type StopRobotTaskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -6202,62 +6154,6 @@ func (client *Client) BatchRobotSmartCall(request *BatchRobotSmartCallRequest) (
 	return _result, _err
 }
 
-func (client *Client) CancelCallWithOptions(request *CancelCallRequest, runtime *util.RuntimeOptions) (_result *CancelCallResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CallId)) {
-		query["CallId"] = request.CallId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CancelCall"),
-		Version:     tea.String("2017-05-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CancelCallResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CancelCall(request *CancelCallRequest) (_result *CancelCallResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CancelCallResponse{}
-	_body, _err := client.CancelCallWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CancelOrderRobotTaskWithOptions(request *CancelOrderRobotTaskRequest, runtime *util.RuntimeOptions) (_result *CancelOrderRobotTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6363,94 +6259,6 @@ func (client *Client) CancelRobotTask(request *CancelRobotTaskRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &CancelRobotTaskResponse{}
 	_body, _err := client.CancelRobotTaskWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ClickToDialWithOptions(request *ClickToDialRequest, runtime *util.RuntimeOptions) (_result *ClickToDialResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AsrFlag)) {
-		query["AsrFlag"] = request.AsrFlag
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.AsrModelId)) {
-		query["AsrModelId"] = request.AsrModelId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CalledNumber)) {
-		query["CalledNumber"] = request.CalledNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CalledShowNumber)) {
-		query["CalledShowNumber"] = request.CalledShowNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CallerNumber)) {
-		query["CallerNumber"] = request.CallerNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CallerShowNumber)) {
-		query["CallerShowNumber"] = request.CallerShowNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OutId)) {
-		query["OutId"] = request.OutId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RecordFlag)) {
-		query["RecordFlag"] = request.RecordFlag
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SessionTimeout)) {
-		query["SessionTimeout"] = request.SessionTimeout
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ClickToDial"),
-		Version:     tea.String("2017-05-25"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ClickToDialResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ClickToDial(request *ClickToDialRequest) (_result *ClickToDialResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ClickToDialResponse{}
-	_body, _err := client.ClickToDialWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8294,6 +8102,62 @@ func (client *Client) QueryVoiceFileAuditInfo(request *QueryVoiceFileAuditInfoRe
 	return _result, _err
 }
 
+func (client *Client) RecoverCallInConfigWithOptions(request *RecoverCallInConfigRequest, runtime *util.RuntimeOptions) (_result *RecoverCallInConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Number)) {
+		query["Number"] = request.Number
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecoverCallInConfig"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecoverCallInConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RecoverCallInConfig(request *RecoverCallInConfigRequest) (_result *RecoverCallInConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecoverCallInConfigResponse{}
+	_body, _err := client.RecoverCallInConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RefreshMqttTokenWithOptions(request *RefreshMqttTokenRequest, runtime *util.RuntimeOptions) (_result *RefreshMqttTokenResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8919,6 +8783,62 @@ func (client *Client) StartRobotTask(request *StartRobotTaskRequest) (_result *S
 	runtime := &util.RuntimeOptions{}
 	_result = &StartRobotTaskResponse{}
 	_body, _err := client.StartRobotTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopCallInConfigWithOptions(request *StopCallInConfigRequest, runtime *util.RuntimeOptions) (_result *StopCallInConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Number)) {
+		query["Number"] = request.Number
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopCallInConfig"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopCallInConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopCallInConfig(request *StopCallInConfigRequest) (_result *StopCallInConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopCallInConfigResponse{}
+	_body, _err := client.StopCallInConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
