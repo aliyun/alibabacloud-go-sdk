@@ -4774,8 +4774,9 @@ func (s *ListOpenPlatformConfigResponse) SetBody(v *ListOpenPlatformConfigRespon
 }
 
 type ListSpaceRequest struct {
-	PageNum  *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	PageNum  *int32    `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SpaceIds []*string `json:"SpaceIds,omitempty" xml:"SpaceIds,omitempty" type:"Repeated"`
 }
 
 func (s ListSpaceRequest) String() string {
@@ -4793,6 +4794,40 @@ func (s *ListSpaceRequest) SetPageNum(v int32) *ListSpaceRequest {
 
 func (s *ListSpaceRequest) SetPageSize(v int32) *ListSpaceRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *ListSpaceRequest) SetSpaceIds(v []*string) *ListSpaceRequest {
+	s.SpaceIds = v
+	return s
+}
+
+type ListSpaceShrinkRequest struct {
+	PageNum        *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SpaceIdsShrink *string `json:"SpaceIds,omitempty" xml:"SpaceIds,omitempty"`
+}
+
+func (s ListSpaceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSpaceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSpaceShrinkRequest) SetPageNum(v int32) *ListSpaceShrinkRequest {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListSpaceShrinkRequest) SetPageSize(v int32) *ListSpaceShrinkRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSpaceShrinkRequest) SetSpaceIdsShrink(v string) *ListSpaceShrinkRequest {
+	s.SpaceIdsShrink = &v
 	return s
 }
 
@@ -4832,11 +4867,12 @@ func (s *ListSpaceResponseBody) SetSpaces(v []*ListSpaceResponseBodySpaces) *Lis
 }
 
 type ListSpaceResponseBodySpaces struct {
-	Desc      *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	GmtCreate *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	SpaceId   *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Desc          *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	GmtCreate     *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtLastAccess *int64  `json:"GmtLastAccess,omitempty" xml:"GmtLastAccess,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SpaceId       *string `json:"SpaceId,omitempty" xml:"SpaceId,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s ListSpaceResponseBodySpaces) String() string {
@@ -4854,6 +4890,11 @@ func (s *ListSpaceResponseBodySpaces) SetDesc(v string) *ListSpaceResponseBodySp
 
 func (s *ListSpaceResponseBodySpaces) SetGmtCreate(v int64) *ListSpaceResponseBodySpaces {
 	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListSpaceResponseBodySpaces) SetGmtLastAccess(v int64) *ListSpaceResponseBodySpaces {
+	s.GmtLastAccess = &v
 	return s
 }
 
@@ -9752,11 +9793,17 @@ func (client *Client) ListOpenPlatformConfig(request *ListOpenPlatformConfigRequ
 	return _result, _err
 }
 
-func (client *Client) ListSpaceWithOptions(request *ListSpaceRequest, runtime *util.RuntimeOptions) (_result *ListSpaceResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListSpaceWithOptions(tmpReq *ListSpaceRequest, runtime *util.RuntimeOptions) (_result *ListSpaceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListSpaceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SpaceIds)) {
+		request.SpaceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SpaceIds, tea.String("SpaceIds"), tea.String("simple"))
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
 		body["PageNum"] = request.PageNum
@@ -9764,6 +9811,10 @@ func (client *Client) ListSpaceWithOptions(request *ListSpaceRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpaceIdsShrink)) {
+		body["SpaceIds"] = request.SpaceIdsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
