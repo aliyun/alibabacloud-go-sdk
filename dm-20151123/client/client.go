@@ -1455,175 +1455,6 @@ func (s *DescDomainResponse) SetBody(v *DescDomainResponseBody) *DescDomainRespo
 	return s
 }
 
-type GetRegionListRequest struct {
-	Offset               *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	OffsetCreateTime     *string `json:"OffsetCreateTime,omitempty" xml:"OffsetCreateTime,omitempty"`
-	OffsetCreateTimeDesc *string `json:"OffsetCreateTimeDesc,omitempty" xml:"OffsetCreateTimeDesc,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	Total                *string `json:"Total,omitempty" xml:"Total,omitempty"`
-}
-
-func (s GetRegionListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRegionListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetRegionListRequest) SetOffset(v string) *GetRegionListRequest {
-	s.Offset = &v
-	return s
-}
-
-func (s *GetRegionListRequest) SetOffsetCreateTime(v string) *GetRegionListRequest {
-	s.OffsetCreateTime = &v
-	return s
-}
-
-func (s *GetRegionListRequest) SetOffsetCreateTimeDesc(v string) *GetRegionListRequest {
-	s.OffsetCreateTimeDesc = &v
-	return s
-}
-
-func (s *GetRegionListRequest) SetOwnerId(v int64) *GetRegionListRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *GetRegionListRequest) SetPageNumber(v string) *GetRegionListRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *GetRegionListRequest) SetPageSize(v string) *GetRegionListRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *GetRegionListRequest) SetResourceOwnerAccount(v string) *GetRegionListRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *GetRegionListRequest) SetResourceOwnerId(v int64) *GetRegionListRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *GetRegionListRequest) SetTotal(v string) *GetRegionListRequest {
-	s.Total = &v
-	return s
-}
-
-type GetRegionListResponseBody struct {
-	PageNo    *int32                         `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize  *int32                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Total     *int32                         `json:"Total,omitempty" xml:"Total,omitempty"`
-	Data      *GetRegionListResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-}
-
-func (s GetRegionListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRegionListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetRegionListResponseBody) SetPageNo(v int32) *GetRegionListResponseBody {
-	s.PageNo = &v
-	return s
-}
-
-func (s *GetRegionListResponseBody) SetPageSize(v int32) *GetRegionListResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *GetRegionListResponseBody) SetRequestId(v string) *GetRegionListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetRegionListResponseBody) SetTotal(v int32) *GetRegionListResponseBody {
-	s.Total = &v
-	return s
-}
-
-func (s *GetRegionListResponseBody) SetData(v *GetRegionListResponseBodyData) *GetRegionListResponseBody {
-	s.Data = v
-	return s
-}
-
-type GetRegionListResponseBodyData struct {
-	RegionList []*GetRegionListResponseBodyDataRegionList `json:"regionList,omitempty" xml:"regionList,omitempty" type:"Repeated"`
-}
-
-func (s GetRegionListResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRegionListResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetRegionListResponseBodyData) SetRegionList(v []*GetRegionListResponseBodyDataRegionList) *GetRegionListResponseBodyData {
-	s.RegionList = v
-	return s
-}
-
-type GetRegionListResponseBodyDataRegionList struct {
-	Region     *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	RegionDesc *string `json:"RegionDesc,omitempty" xml:"RegionDesc,omitempty"`
-}
-
-func (s GetRegionListResponseBodyDataRegionList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRegionListResponseBodyDataRegionList) GoString() string {
-	return s.String()
-}
-
-func (s *GetRegionListResponseBodyDataRegionList) SetRegion(v string) *GetRegionListResponseBodyDataRegionList {
-	s.Region = &v
-	return s
-}
-
-func (s *GetRegionListResponseBodyDataRegionList) SetRegionDesc(v string) *GetRegionListResponseBodyDataRegionList {
-	s.RegionDesc = &v
-	return s
-}
-
-type GetRegionListResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetRegionListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetRegionListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRegionListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetRegionListResponse) SetHeaders(v map[string]*string) *GetRegionListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetRegionListResponse) SetBody(v *GetRegionListResponseBody) *GetRegionListResponse {
-	s.Body = v
-	return s
-}
-
 type GetTrackListRequest struct {
 	EndTime              *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	Offset               *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
@@ -4179,7 +4010,7 @@ func (s *SenderStatisticsDetailByParamRequest) SetToAddress(v string) *SenderSta
 }
 
 type SenderStatisticsDetailByParamResponseBody struct {
-	NextStart *int32                                         `json:"NextStart,omitempty" xml:"NextStart,omitempty"`
+	NextStart *string                                        `json:"NextStart,omitempty" xml:"NextStart,omitempty"`
 	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Data      *SenderStatisticsDetailByParamResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 }
@@ -4192,7 +4023,7 @@ func (s SenderStatisticsDetailByParamResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *SenderStatisticsDetailByParamResponseBody) SetNextStart(v int32) *SenderStatisticsDetailByParamResponseBody {
+func (s *SenderStatisticsDetailByParamResponseBody) SetNextStart(v string) *SenderStatisticsDetailByParamResponseBody {
 	s.NextStart = &v
 	return s
 }
@@ -5454,82 +5285,6 @@ func (client *Client) DescDomain(request *DescDomainRequest) (_result *DescDomai
 	runtime := &util.RuntimeOptions{}
 	_result = &DescDomainResponse{}
 	_body, _err := client.DescDomainWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetRegionListWithOptions(request *GetRegionListRequest, runtime *util.RuntimeOptions) (_result *GetRegionListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Offset)) {
-		query["Offset"] = request.Offset
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OffsetCreateTime)) {
-		query["OffsetCreateTime"] = request.OffsetCreateTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OffsetCreateTimeDesc)) {
-		query["OffsetCreateTimeDesc"] = request.OffsetCreateTimeDesc
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Total)) {
-		query["Total"] = request.Total
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetRegionList"),
-		Version:     tea.String("2015-11-23"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetRegionListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetRegionList(request *GetRegionListRequest) (_result *GetRegionListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetRegionListResponse{}
-	_body, _err := client.GetRegionListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
