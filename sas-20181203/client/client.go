@@ -69,6 +69,75 @@ func (s *AddVpcHoneyPotResponse) SetBody(v *AddVpcHoneyPotResponseBody) *AddVpcH
 	return s
 }
 
+type CheckQuaraFileIdRequest struct {
+	QuaraFileIds []*string `json:"QuaraFileIds,omitempty" xml:"QuaraFileIds,omitempty" type:"Repeated"`
+	Uuid         *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s CheckQuaraFileIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckQuaraFileIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckQuaraFileIdRequest) SetQuaraFileIds(v []*string) *CheckQuaraFileIdRequest {
+	s.QuaraFileIds = v
+	return s
+}
+
+func (s *CheckQuaraFileIdRequest) SetUuid(v string) *CheckQuaraFileIdRequest {
+	s.Uuid = &v
+	return s
+}
+
+type CheckQuaraFileIdResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CheckQuaraFileIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckQuaraFileIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckQuaraFileIdResponseBody) SetData(v bool) *CheckQuaraFileIdResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CheckQuaraFileIdResponseBody) SetRequestId(v string) *CheckQuaraFileIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CheckQuaraFileIdResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CheckQuaraFileIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckQuaraFileIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckQuaraFileIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckQuaraFileIdResponse) SetHeaders(v map[string]*string) *CheckQuaraFileIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckQuaraFileIdResponse) SetBody(v *CheckQuaraFileIdResponseBody) *CheckQuaraFileIdResponse {
+	s.Body = v
+	return s
+}
+
 type CheckSecurityEventIdRequest struct {
 	SecurityEventIds []*string `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty" type:"Repeated"`
 	Uuid             *string   `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
@@ -2343,6 +2412,93 @@ func (s *DescribeAlarmEventListResponse) SetHeaders(v map[string]*string) *Descr
 }
 
 func (s *DescribeAlarmEventListResponse) SetBody(v *DescribeAlarmEventListResponseBody) *DescribeAlarmEventListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAlarmEventStackInfoRequest struct {
+	EventName  *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	Lang       *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SourceIp   *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	UniqueInfo *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
+	Uuid       *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s DescribeAlarmEventStackInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlarmEventStackInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlarmEventStackInfoRequest) SetEventName(v string) *DescribeAlarmEventStackInfoRequest {
+	s.EventName = &v
+	return s
+}
+
+func (s *DescribeAlarmEventStackInfoRequest) SetLang(v string) *DescribeAlarmEventStackInfoRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeAlarmEventStackInfoRequest) SetSourceIp(v string) *DescribeAlarmEventStackInfoRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeAlarmEventStackInfoRequest) SetUniqueInfo(v string) *DescribeAlarmEventStackInfoRequest {
+	s.UniqueInfo = &v
+	return s
+}
+
+func (s *DescribeAlarmEventStackInfoRequest) SetUuid(v string) *DescribeAlarmEventStackInfoRequest {
+	s.Uuid = &v
+	return s
+}
+
+type DescribeAlarmEventStackInfoResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StackInfo *string `json:"StackInfo,omitempty" xml:"StackInfo,omitempty"`
+}
+
+func (s DescribeAlarmEventStackInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlarmEventStackInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlarmEventStackInfoResponseBody) SetRequestId(v string) *DescribeAlarmEventStackInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAlarmEventStackInfoResponseBody) SetStackInfo(v string) *DescribeAlarmEventStackInfoResponseBody {
+	s.StackInfo = &v
+	return s
+}
+
+type DescribeAlarmEventStackInfoResponse struct {
+	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeAlarmEventStackInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAlarmEventStackInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAlarmEventStackInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAlarmEventStackInfoResponse) SetHeaders(v map[string]*string) *DescribeAlarmEventStackInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAlarmEventStackInfoResponse) SetBody(v *DescribeAlarmEventStackInfoResponseBody) *DescribeAlarmEventStackInfoResponse {
 	s.Body = v
 	return s
 }
@@ -7371,6 +7527,127 @@ func (s *DescribeFieldStatisticsResponse) SetHeaders(v map[string]*string) *Desc
 }
 
 func (s *DescribeFieldStatisticsResponse) SetBody(v *DescribeFieldStatisticsResponseBody) *DescribeFieldStatisticsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeFrontVulPatchListRequest struct {
+	Info        *string `json:"Info,omitempty" xml:"Info,omitempty"`
+	OperateType *string `json:"OperateType,omitempty" xml:"OperateType,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeFrontVulPatchListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFrontVulPatchListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFrontVulPatchListRequest) SetInfo(v string) *DescribeFrontVulPatchListRequest {
+	s.Info = &v
+	return s
+}
+
+func (s *DescribeFrontVulPatchListRequest) SetOperateType(v string) *DescribeFrontVulPatchListRequest {
+	s.OperateType = &v
+	return s
+}
+
+func (s *DescribeFrontVulPatchListRequest) SetType(v string) *DescribeFrontVulPatchListRequest {
+	s.Type = &v
+	return s
+}
+
+type DescribeFrontVulPatchListResponseBody struct {
+	FrontPatchList []*DescribeFrontVulPatchListResponseBodyFrontPatchList `json:"FrontPatchList,omitempty" xml:"FrontPatchList,omitempty" type:"Repeated"`
+	RequestId      *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeFrontVulPatchListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFrontVulPatchListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFrontVulPatchListResponseBody) SetFrontPatchList(v []*DescribeFrontVulPatchListResponseBodyFrontPatchList) *DescribeFrontVulPatchListResponseBody {
+	s.FrontPatchList = v
+	return s
+}
+
+func (s *DescribeFrontVulPatchListResponseBody) SetRequestId(v string) *DescribeFrontVulPatchListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeFrontVulPatchListResponseBodyFrontPatchList struct {
+	PatchList []*DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList `json:"PatchList,omitempty" xml:"PatchList,omitempty" type:"Repeated"`
+	Uuid      *string                                                         `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s DescribeFrontVulPatchListResponseBodyFrontPatchList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFrontVulPatchListResponseBodyFrontPatchList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFrontVulPatchListResponseBodyFrontPatchList) SetPatchList(v []*DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList) *DescribeFrontVulPatchListResponseBodyFrontPatchList {
+	s.PatchList = v
+	return s
+}
+
+func (s *DescribeFrontVulPatchListResponseBodyFrontPatchList) SetUuid(v string) *DescribeFrontVulPatchListResponseBodyFrontPatchList {
+	s.Uuid = &v
+	return s
+}
+
+type DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList struct {
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList) SetAliasName(v string) *DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList {
+	s.AliasName = &v
+	return s
+}
+
+func (s *DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList) SetName(v string) *DescribeFrontVulPatchListResponseBodyFrontPatchListPatchList {
+	s.Name = &v
+	return s
+}
+
+type DescribeFrontVulPatchListResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeFrontVulPatchListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeFrontVulPatchListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeFrontVulPatchListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeFrontVulPatchListResponse) SetHeaders(v map[string]*string) *DescribeFrontVulPatchListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeFrontVulPatchListResponse) SetBody(v *DescribeFrontVulPatchListResponseBody) *DescribeFrontVulPatchListResponse {
 	s.Body = v
 	return s
 }
@@ -14832,6 +15109,262 @@ func (s *DescribeRiskListCheckResultResponse) SetBody(v *DescribeRiskListCheckRe
 	return s
 }
 
+type DescribeRiskTypeRequest struct {
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+}
+
+func (s DescribeRiskTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskTypeRequest) SetLang(v string) *DescribeRiskTypeRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeRiskTypeRequest) SetSourceIp(v string) *DescribeRiskTypeRequest {
+	s.SourceIp = &v
+	return s
+}
+
+type DescribeRiskTypeResponseBody struct {
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RiskTypes []*DescribeRiskTypeResponseBodyRiskTypes `json:"RiskTypes,omitempty" xml:"RiskTypes,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRiskTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskTypeResponseBody) SetRequestId(v string) *DescribeRiskTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeRiskTypeResponseBody) SetRiskTypes(v []*DescribeRiskTypeResponseBodyRiskTypes) *DescribeRiskTypeResponseBody {
+	s.RiskTypes = v
+	return s
+}
+
+type DescribeRiskTypeResponseBodyRiskTypes struct {
+	Alias    *string                                          `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	SubTypes []*DescribeRiskTypeResponseBodyRiskTypesSubTypes `json:"SubTypes,omitempty" xml:"SubTypes,omitempty" type:"Repeated"`
+	TypeName *string                                          `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
+}
+
+func (s DescribeRiskTypeResponseBodyRiskTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskTypeResponseBodyRiskTypes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypes) SetAlias(v string) *DescribeRiskTypeResponseBodyRiskTypes {
+	s.Alias = &v
+	return s
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypes) SetSubTypes(v []*DescribeRiskTypeResponseBodyRiskTypesSubTypes) *DescribeRiskTypeResponseBodyRiskTypes {
+	s.SubTypes = v
+	return s
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypes) SetTypeName(v string) *DescribeRiskTypeResponseBodyRiskTypes {
+	s.TypeName = &v
+	return s
+}
+
+type DescribeRiskTypeResponseBodyRiskTypesSubTypes struct {
+	Alias        *string                                                      `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	CheckDetails []*DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetails `json:"CheckDetails,omitempty" xml:"CheckDetails,omitempty" type:"Repeated"`
+	TypeName     *string                                                      `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
+}
+
+func (s DescribeRiskTypeResponseBodyRiskTypesSubTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskTypeResponseBodyRiskTypesSubTypes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypes) SetAlias(v string) *DescribeRiskTypeResponseBodyRiskTypesSubTypes {
+	s.Alias = &v
+	return s
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypes) SetCheckDetails(v []*DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetails) *DescribeRiskTypeResponseBodyRiskTypesSubTypes {
+	s.CheckDetails = v
+	return s
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypes) SetTypeName(v string) *DescribeRiskTypeResponseBodyRiskTypesSubTypes {
+	s.TypeName = &v
+	return s
+}
+
+type DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetails struct {
+	CheckDesc *string                                                           `json:"CheckDesc,omitempty" xml:"CheckDesc,omitempty"`
+	CheckId   *int64                                                            `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CheckItem *string                                                           `json:"CheckItem,omitempty" xml:"CheckItem,omitempty"`
+	Rules     []*DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetails) SetCheckDesc(v string) *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetails {
+	s.CheckDesc = &v
+	return s
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetails) SetCheckId(v int64) *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetails {
+	s.CheckId = &v
+	return s
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetails) SetCheckItem(v string) *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetails {
+	s.CheckItem = &v
+	return s
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetails) SetRules(v []*DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRules) *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetails {
+	s.Rules = v
+	return s
+}
+
+type DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRules struct {
+	DefaultValue *int32                                                                     `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	Optional     *int32                                                                     `json:"Optional,omitempty" xml:"Optional,omitempty"`
+	ParamList    []*DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRulesParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
+	RuleDesc     *string                                                                    `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
+	RuleId       *string                                                                    `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRules) SetDefaultValue(v int32) *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRules {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRules) SetOptional(v int32) *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRules {
+	s.Optional = &v
+	return s
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRules) SetParamList(v []*DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRulesParamList) *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRules {
+	s.ParamList = v
+	return s
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRules) SetRuleDesc(v string) *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRules {
+	s.RuleDesc = &v
+	return s
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRules) SetRuleId(v string) *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRules {
+	s.RuleId = &v
+	return s
+}
+
+type DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRulesParamList struct {
+	EnumValue         *string `json:"EnumValue,omitempty" xml:"EnumValue,omitempty"`
+	MaxValue          *int32  `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	MinValue          *int32  `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	ParamDefaultValue *string `json:"ParamDefaultValue,omitempty" xml:"ParamDefaultValue,omitempty"`
+	ParamDesc         *string `json:"ParamDesc,omitempty" xml:"ParamDesc,omitempty"`
+	ParamName         *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	ParamType         *int32  `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+}
+
+func (s DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRulesParamList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRulesParamList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRulesParamList) SetEnumValue(v string) *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRulesParamList {
+	s.EnumValue = &v
+	return s
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRulesParamList) SetMaxValue(v int32) *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRulesParamList {
+	s.MaxValue = &v
+	return s
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRulesParamList) SetMinValue(v int32) *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRulesParamList {
+	s.MinValue = &v
+	return s
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRulesParamList) SetParamDefaultValue(v string) *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRulesParamList {
+	s.ParamDefaultValue = &v
+	return s
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRulesParamList) SetParamDesc(v string) *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRulesParamList {
+	s.ParamDesc = &v
+	return s
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRulesParamList) SetParamName(v string) *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRulesParamList {
+	s.ParamName = &v
+	return s
+}
+
+func (s *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRulesParamList) SetParamType(v int32) *DescribeRiskTypeResponseBodyRiskTypesSubTypesCheckDetailsRulesParamList {
+	s.ParamType = &v
+	return s
+}
+
+type DescribeRiskTypeResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeRiskTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeRiskTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeRiskTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeRiskTypeResponse) SetHeaders(v map[string]*string) *DescribeRiskTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeRiskTypeResponse) SetBody(v *DescribeRiskTypeResponseBody) *DescribeRiskTypeResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeScanTaskProgressRequest struct {
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
@@ -16470,6 +17003,333 @@ func (s *DescribeStrategyResponse) SetHeaders(v map[string]*string) *DescribeStr
 }
 
 func (s *DescribeStrategyResponse) SetBody(v *DescribeStrategyResponseBody) *DescribeStrategyResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeStrategyDetailRequest struct {
+	Id       *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+}
+
+func (s DescribeStrategyDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStrategyDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStrategyDetailRequest) SetId(v string) *DescribeStrategyDetailRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailRequest) SetLang(v string) *DescribeStrategyDetailRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailRequest) SetSourceIp(v string) *DescribeStrategyDetailRequest {
+	s.SourceIp = &v
+	return s
+}
+
+type DescribeStrategyDetailResponseBody struct {
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Strategy  *DescribeStrategyDetailResponseBodyStrategy `json:"Strategy,omitempty" xml:"Strategy,omitempty" type:"Struct"`
+}
+
+func (s DescribeStrategyDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStrategyDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStrategyDetailResponseBody) SetRequestId(v string) *DescribeStrategyDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBody) SetStrategy(v *DescribeStrategyDetailResponseBodyStrategy) *DescribeStrategyDetailResponseBody {
+	s.Strategy = v
+	return s
+}
+
+type DescribeStrategyDetailResponseBodyStrategy struct {
+	CycleDays                        *int32                                                                        `json:"CycleDays,omitempty" xml:"CycleDays,omitempty"`
+	CycleStartTime                   *int32                                                                        `json:"CycleStartTime,omitempty" xml:"CycleStartTime,omitempty"`
+	Id                               *int32                                                                        `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name                             *string                                                                       `json:"Name,omitempty" xml:"Name,omitempty"`
+	RiskTypeWhiteListQueryResultList []*DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList `json:"RiskTypeWhiteListQueryResultList,omitempty" xml:"RiskTypeWhiteListQueryResultList,omitempty" type:"Repeated"`
+	Type                             *int32                                                                        `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s DescribeStrategyDetailResponseBodyStrategy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStrategyDetailResponseBodyStrategy) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategy) SetCycleDays(v int32) *DescribeStrategyDetailResponseBodyStrategy {
+	s.CycleDays = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategy) SetCycleStartTime(v int32) *DescribeStrategyDetailResponseBodyStrategy {
+	s.CycleStartTime = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategy) SetId(v int32) *DescribeStrategyDetailResponseBodyStrategy {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategy) SetName(v string) *DescribeStrategyDetailResponseBodyStrategy {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategy) SetRiskTypeWhiteListQueryResultList(v []*DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList) *DescribeStrategyDetailResponseBodyStrategy {
+	s.RiskTypeWhiteListQueryResultList = v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategy) SetType(v int32) *DescribeStrategyDetailResponseBodyStrategy {
+	s.Type = &v
+	return s
+}
+
+type DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList struct {
+	Alias    *string                                                                               `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	On       *bool                                                                                 `json:"On,omitempty" xml:"On,omitempty"`
+	SubTypes []*DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypes `json:"SubTypes,omitempty" xml:"SubTypes,omitempty" type:"Repeated"`
+	TypeName *string                                                                               `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
+}
+
+func (s DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList) SetAlias(v string) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList {
+	s.Alias = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList) SetOn(v bool) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList {
+	s.On = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList) SetSubTypes(v []*DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypes) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList {
+	s.SubTypes = v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList) SetTypeName(v string) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultList {
+	s.TypeName = &v
+	return s
+}
+
+type DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypes struct {
+	Alias        *string                                                                                           `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	CheckDetails []*DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetails `json:"CheckDetails,omitempty" xml:"CheckDetails,omitempty" type:"Repeated"`
+	On           *bool                                                                                             `json:"On,omitempty" xml:"On,omitempty"`
+	TypeName     *string                                                                                           `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
+}
+
+func (s DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypes) SetAlias(v string) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypes {
+	s.Alias = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypes) SetCheckDetails(v []*DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetails) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypes {
+	s.CheckDetails = v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypes) SetOn(v bool) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypes {
+	s.On = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypes) SetTypeName(v string) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypes {
+	s.TypeName = &v
+	return s
+}
+
+type DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetails struct {
+	CheckDesc *string                                                                                                `json:"CheckDesc,omitempty" xml:"CheckDesc,omitempty"`
+	CheckId   *int64                                                                                                 `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CheckItem *string                                                                                                `json:"CheckItem,omitempty" xml:"CheckItem,omitempty"`
+	Rules     []*DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetails) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetails) SetCheckDesc(v string) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetails {
+	s.CheckDesc = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetails) SetCheckId(v int64) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetails {
+	s.CheckId = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetails) SetCheckItem(v string) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetails {
+	s.CheckItem = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetails) SetRules(v []*DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRules) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetails {
+	s.Rules = v
+	return s
+}
+
+type DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRules struct {
+	DefaultValue *int32                                                                                                          `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
+	Optional     *int32                                                                                                          `json:"Optional,omitempty" xml:"Optional,omitempty"`
+	ParamList    []*DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList `json:"ParamList,omitempty" xml:"ParamList,omitempty" type:"Repeated"`
+	RuleDesc     *string                                                                                                         `json:"RuleDesc,omitempty" xml:"RuleDesc,omitempty"`
+	RuleId       *string                                                                                                         `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+}
+
+func (s DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRules) SetDefaultValue(v int32) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRules {
+	s.DefaultValue = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRules) SetOptional(v int32) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRules {
+	s.Optional = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRules) SetParamList(v []*DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRules {
+	s.ParamList = v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRules) SetRuleDesc(v string) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRules {
+	s.RuleDesc = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRules) SetRuleId(v string) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRules {
+	s.RuleId = &v
+	return s
+}
+
+type DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList struct {
+	EnumValue         *string `json:"EnumValue,omitempty" xml:"EnumValue,omitempty"`
+	MaxValue          *int32  `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
+	MinValue          *int32  `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
+	ParamDefaultValue *string `json:"ParamDefaultValue,omitempty" xml:"ParamDefaultValue,omitempty"`
+	ParamDesc         *string `json:"ParamDesc,omitempty" xml:"ParamDesc,omitempty"`
+	ParamName         *string `json:"ParamName,omitempty" xml:"ParamName,omitempty"`
+	ParamType         *int32  `json:"ParamType,omitempty" xml:"ParamType,omitempty"`
+	Value             *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList) SetEnumValue(v string) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList {
+	s.EnumValue = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList) SetMaxValue(v int32) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList {
+	s.MaxValue = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList) SetMinValue(v int32) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList {
+	s.MinValue = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList) SetParamDefaultValue(v string) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList {
+	s.ParamDefaultValue = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList) SetParamDesc(v string) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList {
+	s.ParamDesc = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList) SetParamName(v string) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList {
+	s.ParamName = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList) SetParamType(v int32) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList {
+	s.ParamType = &v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList) SetValue(v string) *DescribeStrategyDetailResponseBodyStrategyRiskTypeWhiteListQueryResultListSubTypesCheckDetailsRulesParamList {
+	s.Value = &v
+	return s
+}
+
+type DescribeStrategyDetailResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeStrategyDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeStrategyDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStrategyDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStrategyDetailResponse) SetHeaders(v map[string]*string) *DescribeStrategyDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeStrategyDetailResponse) SetBody(v *DescribeStrategyDetailResponseBody) *DescribeStrategyDetailResponse {
 	s.Body = v
 	return s
 }
@@ -18236,6 +19096,200 @@ func (s *DescribeUserLayoutAuthorizationResponse) SetHeaders(v map[string]*strin
 }
 
 func (s *DescribeUserLayoutAuthorizationResponse) SetBody(v *DescribeUserLayoutAuthorizationResponseBody) *DescribeUserLayoutAuthorizationResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeUuidsByVulNamesRequest struct {
+	Dealed         *string   `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
+	FieldName      *string   `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	FieldValue     *string   `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
+	GroupId        *int64    `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Lang           *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Level          *string   `json:"Level,omitempty" xml:"Level,omitempty"`
+	Necessity      *string   `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
+	Remark         *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	SearchTags     *string   `json:"SearchTags,omitempty" xml:"SearchTags,omitempty"`
+	StatusList     *string   `json:"StatusList,omitempty" xml:"StatusList,omitempty"`
+	Tag            *string   `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	TargetType     *string   `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	Type           *string   `json:"Type,omitempty" xml:"Type,omitempty"`
+	VpcInstanceIds *string   `json:"VpcInstanceIds,omitempty" xml:"VpcInstanceIds,omitempty"`
+	VulNames       []*string `json:"VulNames,omitempty" xml:"VulNames,omitempty" type:"Repeated"`
+}
+
+func (s DescribeUuidsByVulNamesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUuidsByVulNamesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetDealed(v string) *DescribeUuidsByVulNamesRequest {
+	s.Dealed = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetFieldName(v string) *DescribeUuidsByVulNamesRequest {
+	s.FieldName = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetFieldValue(v string) *DescribeUuidsByVulNamesRequest {
+	s.FieldValue = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetGroupId(v int64) *DescribeUuidsByVulNamesRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetLang(v string) *DescribeUuidsByVulNamesRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetLevel(v string) *DescribeUuidsByVulNamesRequest {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetNecessity(v string) *DescribeUuidsByVulNamesRequest {
+	s.Necessity = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetRemark(v string) *DescribeUuidsByVulNamesRequest {
+	s.Remark = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetSearchTags(v string) *DescribeUuidsByVulNamesRequest {
+	s.SearchTags = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetStatusList(v string) *DescribeUuidsByVulNamesRequest {
+	s.StatusList = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetTag(v string) *DescribeUuidsByVulNamesRequest {
+	s.Tag = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetTargetType(v string) *DescribeUuidsByVulNamesRequest {
+	s.TargetType = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetType(v string) *DescribeUuidsByVulNamesRequest {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetVpcInstanceIds(v string) *DescribeUuidsByVulNamesRequest {
+	s.VpcInstanceIds = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesRequest) SetVulNames(v []*string) *DescribeUuidsByVulNamesRequest {
+	s.VulNames = v
+	return s
+}
+
+type DescribeUuidsByVulNamesResponseBody struct {
+	MachineInfoStatistics []*DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics `json:"MachineInfoStatistics,omitempty" xml:"MachineInfoStatistics,omitempty" type:"Repeated"`
+	RequestId             *string                                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeUuidsByVulNamesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUuidsByVulNamesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUuidsByVulNamesResponseBody) SetMachineInfoStatistics(v []*DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) *DescribeUuidsByVulNamesResponseBody {
+	s.MachineInfoStatistics = v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesResponseBody) SetRequestId(v string) *DescribeUuidsByVulNamesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics struct {
+	MachineInstanceId *string `json:"MachineInstanceId,omitempty" xml:"MachineInstanceId,omitempty"`
+	MachineIp         *string `json:"MachineIp,omitempty" xml:"MachineIp,omitempty"`
+	MachineName       *string `json:"MachineName,omitempty" xml:"MachineName,omitempty"`
+	Os                *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Uuid              *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) SetMachineInstanceId(v string) *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics {
+	s.MachineInstanceId = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) SetMachineIp(v string) *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics {
+	s.MachineIp = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) SetMachineName(v string) *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics {
+	s.MachineName = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) SetOs(v string) *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics {
+	s.Os = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) SetRegionId(v string) *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics) SetUuid(v string) *DescribeUuidsByVulNamesResponseBodyMachineInfoStatistics {
+	s.Uuid = &v
+	return s
+}
+
+type DescribeUuidsByVulNamesResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeUuidsByVulNamesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeUuidsByVulNamesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUuidsByVulNamesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUuidsByVulNamesResponse) SetHeaders(v map[string]*string) *DescribeUuidsByVulNamesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUuidsByVulNamesResponse) SetBody(v *DescribeUuidsByVulNamesResponseBody) *DescribeUuidsByVulNamesResponse {
 	s.Body = v
 	return s
 }
@@ -21576,6 +22630,195 @@ func (s *InstallCloudMonitorResponse) SetBody(v *InstallCloudMonitorResponseBody
 	return s
 }
 
+type ListVulAutoRepairConfigRequest struct {
+	// 漏洞别名
+	AliasName   *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 漏洞类型
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListVulAutoRepairConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVulAutoRepairConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListVulAutoRepairConfigRequest) SetAliasName(v string) *ListVulAutoRepairConfigRequest {
+	s.AliasName = &v
+	return s
+}
+
+func (s *ListVulAutoRepairConfigRequest) SetCurrentPage(v int32) *ListVulAutoRepairConfigRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListVulAutoRepairConfigRequest) SetPageSize(v int32) *ListVulAutoRepairConfigRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListVulAutoRepairConfigRequest) SetType(v string) *ListVulAutoRepairConfigRequest {
+	s.Type = &v
+	return s
+}
+
+type ListVulAutoRepairConfigResponseBody struct {
+	Code                    *string                                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode          *int32                                                        `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message                 *string                                                       `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageInfo                *ListVulAutoRepairConfigResponseBodyPageInfo                  `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId               *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success                 *bool                                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	VulAutoRepairConfigList []*ListVulAutoRepairConfigResponseBodyVulAutoRepairConfigList `json:"VulAutoRepairConfigList,omitempty" xml:"VulAutoRepairConfigList,omitempty" type:"Repeated"`
+}
+
+func (s ListVulAutoRepairConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVulAutoRepairConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListVulAutoRepairConfigResponseBody) SetCode(v string) *ListVulAutoRepairConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListVulAutoRepairConfigResponseBody) SetHttpStatusCode(v int32) *ListVulAutoRepairConfigResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListVulAutoRepairConfigResponseBody) SetMessage(v string) *ListVulAutoRepairConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListVulAutoRepairConfigResponseBody) SetPageInfo(v *ListVulAutoRepairConfigResponseBodyPageInfo) *ListVulAutoRepairConfigResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *ListVulAutoRepairConfigResponseBody) SetRequestId(v string) *ListVulAutoRepairConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListVulAutoRepairConfigResponseBody) SetSuccess(v bool) *ListVulAutoRepairConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListVulAutoRepairConfigResponseBody) SetVulAutoRepairConfigList(v []*ListVulAutoRepairConfigResponseBodyVulAutoRepairConfigList) *ListVulAutoRepairConfigResponseBody {
+	s.VulAutoRepairConfigList = v
+	return s
+}
+
+type ListVulAutoRepairConfigResponseBodyPageInfo struct {
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListVulAutoRepairConfigResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVulAutoRepairConfigResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListVulAutoRepairConfigResponseBodyPageInfo) SetCount(v int32) *ListVulAutoRepairConfigResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+func (s *ListVulAutoRepairConfigResponseBodyPageInfo) SetCurrentPage(v int32) *ListVulAutoRepairConfigResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListVulAutoRepairConfigResponseBodyPageInfo) SetPageSize(v int32) *ListVulAutoRepairConfigResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListVulAutoRepairConfigResponseBodyPageInfo) SetTotalCount(v int32) *ListVulAutoRepairConfigResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListVulAutoRepairConfigResponseBodyVulAutoRepairConfigList struct {
+	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	Id        *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Reason    *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ListVulAutoRepairConfigResponseBodyVulAutoRepairConfigList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVulAutoRepairConfigResponseBodyVulAutoRepairConfigList) GoString() string {
+	return s.String()
+}
+
+func (s *ListVulAutoRepairConfigResponseBodyVulAutoRepairConfigList) SetAliasName(v string) *ListVulAutoRepairConfigResponseBodyVulAutoRepairConfigList {
+	s.AliasName = &v
+	return s
+}
+
+func (s *ListVulAutoRepairConfigResponseBodyVulAutoRepairConfigList) SetId(v int64) *ListVulAutoRepairConfigResponseBodyVulAutoRepairConfigList {
+	s.Id = &v
+	return s
+}
+
+func (s *ListVulAutoRepairConfigResponseBodyVulAutoRepairConfigList) SetName(v string) *ListVulAutoRepairConfigResponseBodyVulAutoRepairConfigList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListVulAutoRepairConfigResponseBodyVulAutoRepairConfigList) SetReason(v string) *ListVulAutoRepairConfigResponseBodyVulAutoRepairConfigList {
+	s.Reason = &v
+	return s
+}
+
+func (s *ListVulAutoRepairConfigResponseBodyVulAutoRepairConfigList) SetType(v string) *ListVulAutoRepairConfigResponseBodyVulAutoRepairConfigList {
+	s.Type = &v
+	return s
+}
+
+type ListVulAutoRepairConfigResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListVulAutoRepairConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListVulAutoRepairConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVulAutoRepairConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListVulAutoRepairConfigResponse) SetHeaders(v map[string]*string) *ListVulAutoRepairConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListVulAutoRepairConfigResponse) SetBody(v *ListVulAutoRepairConfigResponseBody) *ListVulAutoRepairConfigResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyAntiBruteForceRuleRequest struct {
 	DefaultRule     *bool     `json:"DefaultRule,omitempty" xml:"DefaultRule,omitempty"`
 	FailCount       *int32    `json:"FailCount,omitempty" xml:"FailCount,omitempty"`
@@ -23039,6 +24282,215 @@ func (s *ModifyStartVulScanResponse) SetHeaders(v map[string]*string) *ModifySta
 }
 
 func (s *ModifyStartVulScanResponse) SetBody(v *ModifyStartVulScanResponseBody) *ModifyStartVulScanResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyStrategyRequest struct {
+	CustomType       *string `json:"CustomType,omitempty" xml:"CustomType,omitempty"`
+	CycleDays        *string `json:"CycleDays,omitempty" xml:"CycleDays,omitempty"`
+	CycleStartTime   *string `json:"CycleStartTime,omitempty" xml:"CycleStartTime,omitempty"`
+	Id               *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	RiskCustomParams *string `json:"RiskCustomParams,omitempty" xml:"RiskCustomParams,omitempty"`
+	RiskSubTypeName  *string `json:"RiskSubTypeName,omitempty" xml:"RiskSubTypeName,omitempty"`
+	SourceIp         *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+}
+
+func (s ModifyStrategyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyStrategyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyStrategyRequest) SetCustomType(v string) *ModifyStrategyRequest {
+	s.CustomType = &v
+	return s
+}
+
+func (s *ModifyStrategyRequest) SetCycleDays(v string) *ModifyStrategyRequest {
+	s.CycleDays = &v
+	return s
+}
+
+func (s *ModifyStrategyRequest) SetCycleStartTime(v string) *ModifyStrategyRequest {
+	s.CycleStartTime = &v
+	return s
+}
+
+func (s *ModifyStrategyRequest) SetId(v string) *ModifyStrategyRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyStrategyRequest) SetName(v string) *ModifyStrategyRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyStrategyRequest) SetRiskCustomParams(v string) *ModifyStrategyRequest {
+	s.RiskCustomParams = &v
+	return s
+}
+
+func (s *ModifyStrategyRequest) SetRiskSubTypeName(v string) *ModifyStrategyRequest {
+	s.RiskSubTypeName = &v
+	return s
+}
+
+func (s *ModifyStrategyRequest) SetSourceIp(v string) *ModifyStrategyRequest {
+	s.SourceIp = &v
+	return s
+}
+
+type ModifyStrategyResponseBody struct {
+	HttpStatusCode *int32                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result         *ModifyStrategyResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
+	Success        *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyStrategyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyStrategyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyStrategyResponseBody) SetHttpStatusCode(v int32) *ModifyStrategyResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ModifyStrategyResponseBody) SetRequestId(v string) *ModifyStrategyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyStrategyResponseBody) SetResult(v *ModifyStrategyResponseBodyResult) *ModifyStrategyResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *ModifyStrategyResponseBody) SetSuccess(v bool) *ModifyStrategyResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyStrategyResponseBodyResult struct {
+	StrategyId *int32 `json:"StrategyId,omitempty" xml:"StrategyId,omitempty"`
+}
+
+func (s ModifyStrategyResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyStrategyResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyStrategyResponseBodyResult) SetStrategyId(v int32) *ModifyStrategyResponseBodyResult {
+	s.StrategyId = &v
+	return s
+}
+
+type ModifyStrategyResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyStrategyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyStrategyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyStrategyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyStrategyResponse) SetHeaders(v map[string]*string) *ModifyStrategyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyStrategyResponse) SetBody(v *ModifyStrategyResponseBody) *ModifyStrategyResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyStrategyTargetRequest struct {
+	Config   *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Target   *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s ModifyStrategyTargetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyStrategyTargetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyStrategyTargetRequest) SetConfig(v string) *ModifyStrategyTargetRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *ModifyStrategyTargetRequest) SetSourceIp(v string) *ModifyStrategyTargetRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *ModifyStrategyTargetRequest) SetTarget(v string) *ModifyStrategyTargetRequest {
+	s.Target = &v
+	return s
+}
+
+func (s *ModifyStrategyTargetRequest) SetType(v string) *ModifyStrategyTargetRequest {
+	s.Type = &v
+	return s
+}
+
+type ModifyStrategyTargetResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyStrategyTargetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyStrategyTargetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyStrategyTargetResponseBody) SetRequestId(v string) *ModifyStrategyTargetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyStrategyTargetResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyStrategyTargetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyStrategyTargetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyStrategyTargetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyStrategyTargetResponse) SetHeaders(v map[string]*string) *ModifyStrategyTargetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyStrategyTargetResponse) SetBody(v *ModifyStrategyTargetResponseBody) *ModifyStrategyTargetResponse {
 	s.Body = v
 	return s
 }
@@ -25367,6 +26819,54 @@ func (client *Client) AddVpcHoneyPot(request *AddVpcHoneyPotRequest) (_result *A
 	return _result, _err
 }
 
+func (client *Client) CheckQuaraFileIdWithOptions(request *CheckQuaraFileIdRequest, runtime *util.RuntimeOptions) (_result *CheckQuaraFileIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.QuaraFileIds)) {
+		query["QuaraFileIds"] = request.QuaraFileIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckQuaraFileId"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckQuaraFileIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckQuaraFileId(request *CheckQuaraFileIdRequest) (_result *CheckQuaraFileIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckQuaraFileIdResponse{}
+	_body, _err := client.CheckQuaraFileIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CheckSecurityEventIdWithOptions(request *CheckSecurityEventIdRequest, runtime *util.RuntimeOptions) (_result *CheckSecurityEventIdResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26387,6 +27887,66 @@ func (client *Client) DescribeAlarmEventList(request *DescribeAlarmEventListRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAlarmEventListResponse{}
 	_body, _err := client.DescribeAlarmEventListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAlarmEventStackInfoWithOptions(request *DescribeAlarmEventStackInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeAlarmEventStackInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EventName)) {
+		query["EventName"] = request.EventName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UniqueInfo)) {
+		query["UniqueInfo"] = request.UniqueInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAlarmEventStackInfo"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAlarmEventStackInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAlarmEventStackInfo(request *DescribeAlarmEventStackInfoRequest) (_result *DescribeAlarmEventStackInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAlarmEventStackInfoResponse{}
+	_body, _err := client.DescribeAlarmEventStackInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28117,6 +29677,58 @@ func (client *Client) DescribeFieldStatistics(request *DescribeFieldStatisticsRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeFieldStatisticsResponse{}
 	_body, _err := client.DescribeFieldStatisticsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeFrontVulPatchListWithOptions(request *DescribeFrontVulPatchListRequest, runtime *util.RuntimeOptions) (_result *DescribeFrontVulPatchListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Info)) {
+		query["Info"] = request.Info
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperateType)) {
+		query["OperateType"] = request.OperateType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeFrontVulPatchList"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeFrontVulPatchListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeFrontVulPatchList(request *DescribeFrontVulPatchListRequest) (_result *DescribeFrontVulPatchListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeFrontVulPatchListResponse{}
+	_body, _err := client.DescribeFrontVulPatchListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30661,6 +32273,54 @@ func (client *Client) DescribeRiskListCheckResult(request *DescribeRiskListCheck
 	return _result, _err
 }
 
+func (client *Client) DescribeRiskTypeWithOptions(request *DescribeRiskTypeRequest, runtime *util.RuntimeOptions) (_result *DescribeRiskTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRiskType"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeRiskTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeRiskType(request *DescribeRiskTypeRequest) (_result *DescribeRiskTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeRiskTypeResponse{}
+	_body, _err := client.DescribeRiskTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeScanTaskProgressWithOptions(request *DescribeScanTaskProgressRequest, runtime *util.RuntimeOptions) (_result *DescribeScanTaskProgressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -31219,6 +32879,58 @@ func (client *Client) DescribeStrategy(request *DescribeStrategyRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeStrategyResponse{}
 	_body, _err := client.DescribeStrategyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeStrategyDetailWithOptions(request *DescribeStrategyDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeStrategyDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeStrategyDetail"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeStrategyDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeStrategyDetail(request *DescribeStrategyDetailRequest) (_result *DescribeStrategyDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeStrategyDetailResponse{}
+	_body, _err := client.DescribeStrategyDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31855,6 +33567,106 @@ func (client *Client) DescribeUserLayoutAuthorization(request *DescribeUserLayou
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUserLayoutAuthorizationResponse{}
 	_body, _err := client.DescribeUserLayoutAuthorizationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeUuidsByVulNamesWithOptions(request *DescribeUuidsByVulNamesRequest, runtime *util.RuntimeOptions) (_result *DescribeUuidsByVulNamesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Dealed)) {
+		query["Dealed"] = request.Dealed
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FieldName)) {
+		query["FieldName"] = request.FieldName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FieldValue)) {
+		query["FieldValue"] = request.FieldValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Level)) {
+		query["Level"] = request.Level
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Necessity)) {
+		query["Necessity"] = request.Necessity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Remark)) {
+		query["Remark"] = request.Remark
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchTags)) {
+		query["SearchTags"] = request.SearchTags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusList)) {
+		query["StatusList"] = request.StatusList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
+		query["TargetType"] = request.TargetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcInstanceIds)) {
+		query["VpcInstanceIds"] = request.VpcInstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VulNames)) {
+		query["VulNames"] = request.VulNames
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUuidsByVulNames"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUuidsByVulNamesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUuidsByVulNames(request *DescribeUuidsByVulNamesRequest) (_result *DescribeUuidsByVulNamesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUuidsByVulNamesResponse{}
+	_body, _err := client.DescribeUuidsByVulNamesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33193,6 +35005,62 @@ func (client *Client) InstallCloudMonitor(request *InstallCloudMonitorRequest) (
 	return _result, _err
 }
 
+func (client *Client) ListVulAutoRepairConfigWithOptions(request *ListVulAutoRepairConfigRequest, runtime *util.RuntimeOptions) (_result *ListVulAutoRepairConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliasName)) {
+		query["AliasName"] = request.AliasName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListVulAutoRepairConfig"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListVulAutoRepairConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListVulAutoRepairConfig(request *ListVulAutoRepairConfigRequest) (_result *ListVulAutoRepairConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListVulAutoRepairConfigResponse{}
+	_body, _err := client.ListVulAutoRepairConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyAntiBruteForceRuleWithOptions(request *ModifyAntiBruteForceRuleRequest, runtime *util.RuntimeOptions) (_result *ModifyAntiBruteForceRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34180,6 +36048,134 @@ func (client *Client) ModifyStartVulScan(request *ModifyStartVulScanRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyStartVulScanResponse{}
 	_body, _err := client.ModifyStartVulScanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyStrategyWithOptions(request *ModifyStrategyRequest, runtime *util.RuntimeOptions) (_result *ModifyStrategyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomType)) {
+		query["CustomType"] = request.CustomType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CycleDays)) {
+		query["CycleDays"] = request.CycleDays
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CycleStartTime)) {
+		query["CycleStartTime"] = request.CycleStartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskCustomParams)) {
+		query["RiskCustomParams"] = request.RiskCustomParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskSubTypeName)) {
+		query["RiskSubTypeName"] = request.RiskSubTypeName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyStrategy"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyStrategyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyStrategy(request *ModifyStrategyRequest) (_result *ModifyStrategyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyStrategyResponse{}
+	_body, _err := client.ModifyStrategyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyStrategyTargetWithOptions(request *ModifyStrategyTargetRequest, runtime *util.RuntimeOptions) (_result *ModifyStrategyTargetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Target)) {
+		query["Target"] = request.Target
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyStrategyTarget"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyStrategyTargetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyStrategyTarget(request *ModifyStrategyTargetRequest) (_result *ModifyStrategyTargetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyStrategyTargetResponse{}
+	_body, _err := client.ModifyStrategyTargetWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
