@@ -19073,6 +19073,87 @@ func (s *ModifyDataCorrectExecSQLResponse) SetBody(v *ModifyDataCorrectExecSQLRe
 	return s
 }
 
+type OfflineTaskFlowRequest struct {
+	DagId *int64 `json:"DagId,omitempty" xml:"DagId,omitempty"`
+	Tid   *int64 `json:"Tid,omitempty" xml:"Tid,omitempty"`
+}
+
+func (s OfflineTaskFlowRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OfflineTaskFlowRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OfflineTaskFlowRequest) SetDagId(v int64) *OfflineTaskFlowRequest {
+	s.DagId = &v
+	return s
+}
+
+func (s *OfflineTaskFlowRequest) SetTid(v int64) *OfflineTaskFlowRequest {
+	s.Tid = &v
+	return s
+}
+
+type OfflineTaskFlowResponseBody struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s OfflineTaskFlowResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OfflineTaskFlowResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OfflineTaskFlowResponseBody) SetErrorCode(v string) *OfflineTaskFlowResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *OfflineTaskFlowResponseBody) SetErrorMessage(v string) *OfflineTaskFlowResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *OfflineTaskFlowResponseBody) SetRequestId(v string) *OfflineTaskFlowResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *OfflineTaskFlowResponseBody) SetSuccess(v bool) *OfflineTaskFlowResponseBody {
+	s.Success = &v
+	return s
+}
+
+type OfflineTaskFlowResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *OfflineTaskFlowResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s OfflineTaskFlowResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OfflineTaskFlowResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OfflineTaskFlowResponse) SetHeaders(v map[string]*string) *OfflineTaskFlowResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OfflineTaskFlowResponse) SetBody(v *OfflineTaskFlowResponseBody) *OfflineTaskFlowResponse {
+	s.Body = v
+	return s
+}
+
 type PauseDataCorrectSQLJobRequest struct {
 	JobId   *int64  `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	OrderId *int64  `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
@@ -27277,6 +27358,54 @@ func (client *Client) ModifyDataCorrectExecSQL(request *ModifyDataCorrectExecSQL
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyDataCorrectExecSQLResponse{}
 	_body, _err := client.ModifyDataCorrectExecSQLWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) OfflineTaskFlowWithOptions(request *OfflineTaskFlowRequest, runtime *util.RuntimeOptions) (_result *OfflineTaskFlowResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DagId)) {
+		query["DagId"] = request.DagId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tid)) {
+		query["Tid"] = request.Tid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OfflineTaskFlow"),
+		Version:     tea.String("2018-11-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OfflineTaskFlowResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OfflineTaskFlow(request *OfflineTaskFlowRequest) (_result *OfflineTaskFlowResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OfflineTaskFlowResponse{}
+	_body, _err := client.OfflineTaskFlowWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
