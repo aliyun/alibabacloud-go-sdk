@@ -309,6 +309,135 @@ func (s *ApplyMetricRuleTemplateResponse) SetBody(v *ApplyMetricRuleTemplateResp
 	return s
 }
 
+type BatchCreateIntantSiteMonitorRequest struct {
+	RegionId *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TaskList []*BatchCreateIntantSiteMonitorRequestTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
+}
+
+func (s BatchCreateIntantSiteMonitorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateIntantSiteMonitorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateIntantSiteMonitorRequest) SetRegionId(v string) *BatchCreateIntantSiteMonitorRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *BatchCreateIntantSiteMonitorRequest) SetTaskList(v []*BatchCreateIntantSiteMonitorRequestTaskList) *BatchCreateIntantSiteMonitorRequest {
+	s.TaskList = v
+	return s
+}
+
+type BatchCreateIntantSiteMonitorRequestTaskList struct {
+	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	IspCities   *string `json:"IspCities,omitempty" xml:"IspCities,omitempty"`
+	OptionsJson *string `json:"OptionsJson,omitempty" xml:"OptionsJson,omitempty"`
+	TaskName    *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskType    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s BatchCreateIntantSiteMonitorRequestTaskList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateIntantSiteMonitorRequestTaskList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateIntantSiteMonitorRequestTaskList) SetAddress(v string) *BatchCreateIntantSiteMonitorRequestTaskList {
+	s.Address = &v
+	return s
+}
+
+func (s *BatchCreateIntantSiteMonitorRequestTaskList) SetIspCities(v string) *BatchCreateIntantSiteMonitorRequestTaskList {
+	s.IspCities = &v
+	return s
+}
+
+func (s *BatchCreateIntantSiteMonitorRequestTaskList) SetOptionsJson(v string) *BatchCreateIntantSiteMonitorRequestTaskList {
+	s.OptionsJson = &v
+	return s
+}
+
+func (s *BatchCreateIntantSiteMonitorRequestTaskList) SetTaskName(v string) *BatchCreateIntantSiteMonitorRequestTaskList {
+	s.TaskName = &v
+	return s
+}
+
+func (s *BatchCreateIntantSiteMonitorRequestTaskList) SetTaskType(v string) *BatchCreateIntantSiteMonitorRequestTaskList {
+	s.TaskType = &v
+	return s
+}
+
+type BatchCreateIntantSiteMonitorResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BatchCreateIntantSiteMonitorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateIntantSiteMonitorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateIntantSiteMonitorResponseBody) SetCode(v string) *BatchCreateIntantSiteMonitorResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BatchCreateIntantSiteMonitorResponseBody) SetData(v string) *BatchCreateIntantSiteMonitorResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *BatchCreateIntantSiteMonitorResponseBody) SetMessage(v string) *BatchCreateIntantSiteMonitorResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *BatchCreateIntantSiteMonitorResponseBody) SetRequestId(v string) *BatchCreateIntantSiteMonitorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchCreateIntantSiteMonitorResponseBody) SetSuccess(v bool) *BatchCreateIntantSiteMonitorResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BatchCreateIntantSiteMonitorResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BatchCreateIntantSiteMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchCreateIntantSiteMonitorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateIntantSiteMonitorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateIntantSiteMonitorResponse) SetHeaders(v map[string]*string) *BatchCreateIntantSiteMonitorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchCreateIntantSiteMonitorResponse) SetBody(v *BatchCreateIntantSiteMonitorResponseBody) *BatchCreateIntantSiteMonitorResponse {
+	s.Body = v
+	return s
+}
+
 type BatchCreateOnceSiteMonitorRequest struct {
 	RegionId *string                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	TaskList []*BatchCreateOnceSiteMonitorRequestTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
@@ -26322,6 +26451,50 @@ func (client *Client) ApplyMetricRuleTemplate(request *ApplyMetricRuleTemplateRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ApplyMetricRuleTemplateResponse{}
 	_body, _err := client.ApplyMetricRuleTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchCreateIntantSiteMonitorWithOptions(request *BatchCreateIntantSiteMonitorRequest, runtime *util.RuntimeOptions) (_result *BatchCreateIntantSiteMonitorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskList)) {
+		query["TaskList"] = request.TaskList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchCreateIntantSiteMonitor"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchCreateIntantSiteMonitorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchCreateIntantSiteMonitor(request *BatchCreateIntantSiteMonitorRequest) (_result *BatchCreateIntantSiteMonitorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchCreateIntantSiteMonitorResponse{}
+	_body, _err := client.BatchCreateIntantSiteMonitorWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
