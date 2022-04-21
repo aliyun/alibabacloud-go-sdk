@@ -1038,6 +1038,122 @@ func (s *ReplaceBackgroundResponse) SetBody(v map[string]interface{}) *ReplaceBa
 	return s
 }
 
+type SeleteCommodityRequest struct {
+	Num   *int32  `json:"Num,omitempty" xml:"Num,omitempty"`
+	Pid   *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	Start *int32  `json:"Start,omitempty" xml:"Start,omitempty"`
+}
+
+func (s SeleteCommodityRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SeleteCommodityRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SeleteCommodityRequest) SetNum(v int32) *SeleteCommodityRequest {
+	s.Num = &v
+	return s
+}
+
+func (s *SeleteCommodityRequest) SetPid(v string) *SeleteCommodityRequest {
+	s.Pid = &v
+	return s
+}
+
+func (s *SeleteCommodityRequest) SetQuery(v string) *SeleteCommodityRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *SeleteCommodityRequest) SetStart(v int32) *SeleteCommodityRequest {
+	s.Start = &v
+	return s
+}
+
+type SeleteCommodityResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SeleteCommodityResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SeleteCommodityResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SeleteCommodityResponse) SetHeaders(v map[string]*string) *SeleteCommodityResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SeleteCommodityResponse) SetBody(v map[string]interface{}) *SeleteCommodityResponse {
+	s.Body = v
+	return s
+}
+
+type SeleteCommodityByBToBRequest struct {
+	Num   *int32  `json:"Num,omitempty" xml:"Num,omitempty"`
+	Pid   *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
+	Start *int32  `json:"Start,omitempty" xml:"Start,omitempty"`
+}
+
+func (s SeleteCommodityByBToBRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SeleteCommodityByBToBRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SeleteCommodityByBToBRequest) SetNum(v int32) *SeleteCommodityByBToBRequest {
+	s.Num = &v
+	return s
+}
+
+func (s *SeleteCommodityByBToBRequest) SetPid(v string) *SeleteCommodityByBToBRequest {
+	s.Pid = &v
+	return s
+}
+
+func (s *SeleteCommodityByBToBRequest) SetQuery(v string) *SeleteCommodityByBToBRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *SeleteCommodityByBToBRequest) SetStart(v int32) *SeleteCommodityByBToBRequest {
+	s.Start = &v
+	return s
+}
+
+type SeleteCommodityByBToBResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SeleteCommodityByBToBResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SeleteCommodityByBToBResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SeleteCommodityByBToBResponse) SetHeaders(v map[string]*string) *SeleteCommodityByBToBResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SeleteCommodityByBToBResponse) SetBody(v map[string]interface{}) *SeleteCommodityByBToBResponse {
+	s.Body = v
+	return s
+}
+
 type TbPredictCategoryRequest struct {
 	PicUrl *string `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
 }
@@ -1148,6 +1264,52 @@ func (s *TbPropRecResponse) SetHeaders(v map[string]*string) *TbPropRecResponse 
 }
 
 func (s *TbPropRecResponse) SetBody(v map[string]interface{}) *TbPropRecResponse {
+	s.Body = v
+	return s
+}
+
+type TransferUrlByBtoBRequest struct {
+	OfferId *int64  `json:"OfferId,omitempty" xml:"OfferId,omitempty"`
+	Pid     *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+}
+
+func (s TransferUrlByBtoBRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferUrlByBtoBRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TransferUrlByBtoBRequest) SetOfferId(v int64) *TransferUrlByBtoBRequest {
+	s.OfferId = &v
+	return s
+}
+
+func (s *TransferUrlByBtoBRequest) SetPid(v string) *TransferUrlByBtoBRequest {
+	s.Pid = &v
+	return s
+}
+
+type TransferUrlByBtoBResponse struct {
+	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TransferUrlByBtoBResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TransferUrlByBtoBResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TransferUrlByBtoBResponse) SetHeaders(v map[string]*string) *TransferUrlByBtoBResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TransferUrlByBtoBResponse) SetBody(v map[string]interface{}) *TransferUrlByBtoBResponse {
 	s.Body = v
 	return s
 }
@@ -2605,6 +2767,118 @@ func (client *Client) ReplaceBackgroundAdvance(request *ReplaceBackgroundAdvance
 	return _result, _err
 }
 
+func (client *Client) SeleteCommodityWithOptions(request *SeleteCommodityRequest, runtime *util.RuntimeOptions) (_result *SeleteCommodityResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Num)) {
+		query["Num"] = request.Num
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pid)) {
+		query["Pid"] = request.Pid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Start)) {
+		query["Start"] = request.Start
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SeleteCommodity"),
+		Version:     tea.String("2020-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SeleteCommodityResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SeleteCommodity(request *SeleteCommodityRequest) (_result *SeleteCommodityResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SeleteCommodityResponse{}
+	_body, _err := client.SeleteCommodityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SeleteCommodityByBToBWithOptions(request *SeleteCommodityByBToBRequest, runtime *util.RuntimeOptions) (_result *SeleteCommodityByBToBResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Num)) {
+		query["Num"] = request.Num
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pid)) {
+		query["Pid"] = request.Pid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["Query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Start)) {
+		query["Start"] = request.Start
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SeleteCommodityByBToB"),
+		Version:     tea.String("2020-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SeleteCommodityByBToBResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SeleteCommodityByBToB(request *SeleteCommodityByBToBRequest) (_result *SeleteCommodityByBToBResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SeleteCommodityByBToBResponse{}
+	_body, _err := client.SeleteCommodityByBToBWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) TbPredictCategoryWithOptions(request *TbPredictCategoryRequest, runtime *util.RuntimeOptions) (_result *TbPredictCategoryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -2902,5 +3176,53 @@ func (client *Client) TbPropRecAdvance(request *TbPropRecAdvanceRequest, runtime
 	}
 
 	_result = tbPropRecResp
+	return _result, _err
+}
+
+func (client *Client) TransferUrlByBtoBWithOptions(request *TransferUrlByBtoBRequest, runtime *util.RuntimeOptions) (_result *TransferUrlByBtoBResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OfferId)) {
+		query["OfferId"] = request.OfferId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pid)) {
+		query["Pid"] = request.Pid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TransferUrlByBtoB"),
+		Version:     tea.String("2020-12-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TransferUrlByBtoBResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TransferUrlByBtoB(request *TransferUrlByBtoBRequest) (_result *TransferUrlByBtoBResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TransferUrlByBtoBResponse{}
+	_body, _err := client.TransferUrlByBtoBWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
 	return _result, _err
 }
