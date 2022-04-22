@@ -786,6 +786,280 @@ func (s *DescribePhoneNumberStatusResponse) SetBody(v *DescribePhoneNumberStatus
 	return s
 }
 
+type InvalidPhoneNumberFilterRequest struct {
+	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s InvalidPhoneNumberFilterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvalidPhoneNumberFilterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InvalidPhoneNumberFilterRequest) SetAuthCode(v string) *InvalidPhoneNumberFilterRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *InvalidPhoneNumberFilterRequest) SetInputNumber(v string) *InvalidPhoneNumberFilterRequest {
+	s.InputNumber = &v
+	return s
+}
+
+func (s *InvalidPhoneNumberFilterRequest) SetMask(v string) *InvalidPhoneNumberFilterRequest {
+	s.Mask = &v
+	return s
+}
+
+func (s *InvalidPhoneNumberFilterRequest) SetOwnerId(v int64) *InvalidPhoneNumberFilterRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *InvalidPhoneNumberFilterRequest) SetResourceOwnerAccount(v string) *InvalidPhoneNumberFilterRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *InvalidPhoneNumberFilterRequest) SetResourceOwnerId(v int64) *InvalidPhoneNumberFilterRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type InvalidPhoneNumberFilterResponseBody struct {
+	Code      *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*InvalidPhoneNumberFilterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s InvalidPhoneNumberFilterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvalidPhoneNumberFilterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InvalidPhoneNumberFilterResponseBody) SetCode(v string) *InvalidPhoneNumberFilterResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InvalidPhoneNumberFilterResponseBody) SetData(v []*InvalidPhoneNumberFilterResponseBodyData) *InvalidPhoneNumberFilterResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *InvalidPhoneNumberFilterResponseBody) SetMessage(v string) *InvalidPhoneNumberFilterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InvalidPhoneNumberFilterResponseBody) SetRequestId(v string) *InvalidPhoneNumberFilterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type InvalidPhoneNumberFilterResponseBodyData struct {
+	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	EncryptedNumber *string `json:"EncryptedNumber,omitempty" xml:"EncryptedNumber,omitempty"`
+	ExpireTime      *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	OriginalNumber  *string `json:"OriginalNumber,omitempty" xml:"OriginalNumber,omitempty"`
+}
+
+func (s InvalidPhoneNumberFilterResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvalidPhoneNumberFilterResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *InvalidPhoneNumberFilterResponseBodyData) SetCode(v string) *InvalidPhoneNumberFilterResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *InvalidPhoneNumberFilterResponseBodyData) SetEncryptedNumber(v string) *InvalidPhoneNumberFilterResponseBodyData {
+	s.EncryptedNumber = &v
+	return s
+}
+
+func (s *InvalidPhoneNumberFilterResponseBodyData) SetExpireTime(v string) *InvalidPhoneNumberFilterResponseBodyData {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *InvalidPhoneNumberFilterResponseBodyData) SetOriginalNumber(v string) *InvalidPhoneNumberFilterResponseBodyData {
+	s.OriginalNumber = &v
+	return s
+}
+
+type InvalidPhoneNumberFilterResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *InvalidPhoneNumberFilterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InvalidPhoneNumberFilterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InvalidPhoneNumberFilterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InvalidPhoneNumberFilterResponse) SetHeaders(v map[string]*string) *InvalidPhoneNumberFilterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InvalidPhoneNumberFilterResponse) SetBody(v *InvalidPhoneNumberFilterResponseBody) *InvalidPhoneNumberFilterResponse {
+	s.Body = v
+	return s
+}
+
+type PhoneNumberEncryptRequest struct {
+	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s PhoneNumberEncryptRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PhoneNumberEncryptRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PhoneNumberEncryptRequest) SetAuthCode(v string) *PhoneNumberEncryptRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *PhoneNumberEncryptRequest) SetInputNumber(v string) *PhoneNumberEncryptRequest {
+	s.InputNumber = &v
+	return s
+}
+
+func (s *PhoneNumberEncryptRequest) SetMask(v string) *PhoneNumberEncryptRequest {
+	s.Mask = &v
+	return s
+}
+
+func (s *PhoneNumberEncryptRequest) SetOwnerId(v int64) *PhoneNumberEncryptRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *PhoneNumberEncryptRequest) SetResourceOwnerAccount(v string) *PhoneNumberEncryptRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *PhoneNumberEncryptRequest) SetResourceOwnerId(v int64) *PhoneNumberEncryptRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type PhoneNumberEncryptResponseBody struct {
+	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*PhoneNumberEncryptResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s PhoneNumberEncryptResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PhoneNumberEncryptResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PhoneNumberEncryptResponseBody) SetCode(v string) *PhoneNumberEncryptResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PhoneNumberEncryptResponseBody) SetData(v []*PhoneNumberEncryptResponseBodyData) *PhoneNumberEncryptResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *PhoneNumberEncryptResponseBody) SetMessage(v string) *PhoneNumberEncryptResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *PhoneNumberEncryptResponseBody) SetRequestId(v string) *PhoneNumberEncryptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type PhoneNumberEncryptResponseBodyData struct {
+	EncryptedNumber *string `json:"EncryptedNumber,omitempty" xml:"EncryptedNumber,omitempty"`
+	ExpireTime      *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	OriginalNumber  *string `json:"OriginalNumber,omitempty" xml:"OriginalNumber,omitempty"`
+}
+
+func (s PhoneNumberEncryptResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PhoneNumberEncryptResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *PhoneNumberEncryptResponseBodyData) SetEncryptedNumber(v string) *PhoneNumberEncryptResponseBodyData {
+	s.EncryptedNumber = &v
+	return s
+}
+
+func (s *PhoneNumberEncryptResponseBodyData) SetExpireTime(v string) *PhoneNumberEncryptResponseBodyData {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *PhoneNumberEncryptResponseBodyData) SetOriginalNumber(v string) *PhoneNumberEncryptResponseBodyData {
+	s.OriginalNumber = &v
+	return s
+}
+
+type PhoneNumberEncryptResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *PhoneNumberEncryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PhoneNumberEncryptResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PhoneNumberEncryptResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PhoneNumberEncryptResponse) SetHeaders(v map[string]*string) *PhoneNumberEncryptResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PhoneNumberEncryptResponse) SetBody(v *PhoneNumberEncryptResponseBody) *PhoneNumberEncryptResponse {
+	s.Body = v
+	return s
+}
+
 type PvrCallbackFCUResponse struct {
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 }
@@ -1215,6 +1489,134 @@ func (client *Client) DescribePhoneNumberStatus(request *DescribePhoneNumberStat
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribePhoneNumberStatusResponse{}
 	_body, _err := client.DescribePhoneNumberStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InvalidPhoneNumberFilterWithOptions(request *InvalidPhoneNumberFilterRequest, runtime *util.RuntimeOptions) (_result *InvalidPhoneNumberFilterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
+		query["InputNumber"] = request.InputNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mask)) {
+		query["Mask"] = request.Mask
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InvalidPhoneNumberFilter"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InvalidPhoneNumberFilterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InvalidPhoneNumberFilter(request *InvalidPhoneNumberFilterRequest) (_result *InvalidPhoneNumberFilterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InvalidPhoneNumberFilterResponse{}
+	_body, _err := client.InvalidPhoneNumberFilterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PhoneNumberEncryptWithOptions(request *PhoneNumberEncryptRequest, runtime *util.RuntimeOptions) (_result *PhoneNumberEncryptResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
+		query["InputNumber"] = request.InputNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mask)) {
+		query["Mask"] = request.Mask
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PhoneNumberEncrypt"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PhoneNumberEncryptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PhoneNumberEncrypt(request *PhoneNumberEncryptRequest) (_result *PhoneNumberEncryptResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PhoneNumberEncryptResponse{}
+	_body, _err := client.PhoneNumberEncryptWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
