@@ -275,8 +275,6 @@ func (s *DeleteVpcPeerConnectionResponse) SetBody(v *DeleteVpcPeerConnectionResp
 }
 
 type GetVpcPeerConnectionAttributeRequest struct {
-	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 }
@@ -287,16 +285,6 @@ func (s GetVpcPeerConnectionAttributeRequest) String() string {
 
 func (s GetVpcPeerConnectionAttributeRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetVpcPeerConnectionAttributeRequest) SetClientToken(v string) *GetVpcPeerConnectionAttributeRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *GetVpcPeerConnectionAttributeRequest) SetDryRun(v bool) *GetVpcPeerConnectionAttributeRequest {
-	s.DryRun = &v
-	return s
 }
 
 func (s *GetVpcPeerConnectionAttributeRequest) SetInstanceId(v string) *GetVpcPeerConnectionAttributeRequest {
@@ -504,13 +492,11 @@ func (s *GetVpcPeerConnectionAttributeResponse) SetBody(v *GetVpcPeerConnectionA
 }
 
 type ListVpcPeerConnectionsRequest struct {
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 根据两端vpcid过滤，不区分发起端和接收端。如果只传入一个，则根据一端过滤
 	VpcId []*string `json:"VpcId,omitempty" xml:"VpcId,omitempty" type:"Repeated"`
 }
@@ -521,16 +507,6 @@ func (s ListVpcPeerConnectionsRequest) String() string {
 
 func (s ListVpcPeerConnectionsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListVpcPeerConnectionsRequest) SetClientToken(v string) *ListVpcPeerConnectionsRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *ListVpcPeerConnectionsRequest) SetDryRun(v bool) *ListVpcPeerConnectionsRequest {
-	s.DryRun = &v
-	return s
 }
 
 func (s *ListVpcPeerConnectionsRequest) SetInstanceId(v string) *ListVpcPeerConnectionsRequest {
@@ -564,13 +540,11 @@ func (s *ListVpcPeerConnectionsRequest) SetVpcId(v []*string) *ListVpcPeerConnec
 }
 
 type ListVpcPeerConnectionsShrinkRequest struct {
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Name       *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 根据两端vpcid过滤，不区分发起端和接收端。如果只传入一个，则根据一端过滤
 	VpcIdShrink *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
@@ -581,16 +555,6 @@ func (s ListVpcPeerConnectionsShrinkRequest) String() string {
 
 func (s ListVpcPeerConnectionsShrinkRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListVpcPeerConnectionsShrinkRequest) SetClientToken(v string) *ListVpcPeerConnectionsShrinkRequest {
-	s.ClientToken = &v
-	return s
-}
-
-func (s *ListVpcPeerConnectionsShrinkRequest) SetDryRun(v bool) *ListVpcPeerConnectionsShrinkRequest {
-	s.DryRun = &v
-	return s
 }
 
 func (s *ListVpcPeerConnectionsShrinkRequest) SetInstanceId(v string) *ListVpcPeerConnectionsShrinkRequest {
@@ -1249,14 +1213,6 @@ func (client *Client) GetVpcPeerConnectionAttributeWithOptions(request *GetVpcPe
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
-		body["ClientToken"] = request.ClientToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
-		body["DryRun"] = request.DryRun
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
 	}
@@ -1311,14 +1267,6 @@ func (client *Client) ListVpcPeerConnectionsWithOptions(tmpReq *ListVpcPeerConne
 	}
 
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
-		body["ClientToken"] = request.ClientToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
-		body["DryRun"] = request.DryRun
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
 	}
