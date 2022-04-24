@@ -13,11 +13,9 @@ import (
 )
 
 type AcceptVpcPeerConnectionRequest struct {
-	Channel              *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RequestContent       *string `json:"RequestContent,omitempty" xml:"RequestContent,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 }
 
@@ -27,11 +25,6 @@ func (s AcceptVpcPeerConnectionRequest) String() string {
 
 func (s AcceptVpcPeerConnectionRequest) GoString() string {
 	return s.String()
-}
-
-func (s *AcceptVpcPeerConnectionRequest) SetChannel(v string) *AcceptVpcPeerConnectionRequest {
-	s.Channel = &v
-	return s
 }
 
 func (s *AcceptVpcPeerConnectionRequest) SetClientToken(v string) *AcceptVpcPeerConnectionRequest {
@@ -46,11 +39,6 @@ func (s *AcceptVpcPeerConnectionRequest) SetDryRun(v bool) *AcceptVpcPeerConnect
 
 func (s *AcceptVpcPeerConnectionRequest) SetInstanceId(v string) *AcceptVpcPeerConnectionRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *AcceptVpcPeerConnectionRequest) SetRequestContent(v string) *AcceptVpcPeerConnectionRequest {
-	s.RequestContent = &v
 	return s
 }
 
@@ -103,7 +91,6 @@ type CreateVpcPeerConnectionRequest struct {
 	AcceptingAliUid   *int64  `json:"AcceptingAliUid,omitempty" xml:"AcceptingAliUid,omitempty"`
 	AcceptingRegionId *string `json:"AcceptingRegionId,omitempty" xml:"AcceptingRegionId,omitempty"`
 	AcceptingVpcId    *string `json:"AcceptingVpcId,omitempty" xml:"AcceptingVpcId,omitempty"`
-	Channel           *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	ClientToken       *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DryRun            *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
@@ -132,11 +119,6 @@ func (s *CreateVpcPeerConnectionRequest) SetAcceptingRegionId(v string) *CreateV
 
 func (s *CreateVpcPeerConnectionRequest) SetAcceptingVpcId(v string) *CreateVpcPeerConnectionRequest {
 	s.AcceptingVpcId = &v
-	return s
-}
-
-func (s *CreateVpcPeerConnectionRequest) SetChannel(v string) *CreateVpcPeerConnectionRequest {
-	s.Channel = &v
 	return s
 }
 
@@ -217,7 +199,6 @@ func (s *CreateVpcPeerConnectionResponse) SetBody(v *CreateVpcPeerConnectionResp
 }
 
 type DeleteVpcPeerConnectionRequest struct {
-	Channel     *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// 是否强删
@@ -231,11 +212,6 @@ func (s DeleteVpcPeerConnectionRequest) String() string {
 
 func (s DeleteVpcPeerConnectionRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteVpcPeerConnectionRequest) SetChannel(v string) *DeleteVpcPeerConnectionRequest {
-	s.Channel = &v
-	return s
 }
 
 func (s *DeleteVpcPeerConnectionRequest) SetClientToken(v string) *DeleteVpcPeerConnectionRequest {
@@ -299,11 +275,9 @@ func (s *DeleteVpcPeerConnectionResponse) SetBody(v *DeleteVpcPeerConnectionResp
 }
 
 type GetVpcPeerConnectionAttributeRequest struct {
-	Channel              *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RequestContent       *string `json:"RequestContent,omitempty" xml:"RequestContent,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 }
 
@@ -313,11 +287,6 @@ func (s GetVpcPeerConnectionAttributeRequest) String() string {
 
 func (s GetVpcPeerConnectionAttributeRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetVpcPeerConnectionAttributeRequest) SetChannel(v string) *GetVpcPeerConnectionAttributeRequest {
-	s.Channel = &v
-	return s
 }
 
 func (s *GetVpcPeerConnectionAttributeRequest) SetClientToken(v string) *GetVpcPeerConnectionAttributeRequest {
@@ -332,11 +301,6 @@ func (s *GetVpcPeerConnectionAttributeRequest) SetDryRun(v bool) *GetVpcPeerConn
 
 func (s *GetVpcPeerConnectionAttributeRequest) SetInstanceId(v string) *GetVpcPeerConnectionAttributeRequest {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetVpcPeerConnectionAttributeRequest) SetRequestContent(v string) *GetVpcPeerConnectionAttributeRequest {
-	s.RequestContent = &v
 	return s
 }
 
@@ -540,7 +504,6 @@ func (s *GetVpcPeerConnectionAttributeResponse) SetBody(v *GetVpcPeerConnectionA
 }
 
 type ListVpcPeerConnectionsRequest struct {
-	Channel     *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -558,11 +521,6 @@ func (s ListVpcPeerConnectionsRequest) String() string {
 
 func (s ListVpcPeerConnectionsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListVpcPeerConnectionsRequest) SetChannel(v string) *ListVpcPeerConnectionsRequest {
-	s.Channel = &v
-	return s
 }
 
 func (s *ListVpcPeerConnectionsRequest) SetClientToken(v string) *ListVpcPeerConnectionsRequest {
@@ -606,7 +564,6 @@ func (s *ListVpcPeerConnectionsRequest) SetVpcId(v []*string) *ListVpcPeerConnec
 }
 
 type ListVpcPeerConnectionsShrinkRequest struct {
-	Channel     *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -624,11 +581,6 @@ func (s ListVpcPeerConnectionsShrinkRequest) String() string {
 
 func (s ListVpcPeerConnectionsShrinkRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListVpcPeerConnectionsShrinkRequest) SetChannel(v string) *ListVpcPeerConnectionsShrinkRequest {
-	s.Channel = &v
-	return s
 }
 
 func (s *ListVpcPeerConnectionsShrinkRequest) SetClientToken(v string) *ListVpcPeerConnectionsShrinkRequest {
@@ -901,7 +853,6 @@ func (s *ListVpcPeerConnectionsResponse) SetBody(v *ListVpcPeerConnectionsRespon
 }
 
 type ModifyVpcPeerConnectionRequest struct {
-	Channel     *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
@@ -915,11 +866,6 @@ func (s ModifyVpcPeerConnectionRequest) String() string {
 
 func (s ModifyVpcPeerConnectionRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ModifyVpcPeerConnectionRequest) SetChannel(v string) *ModifyVpcPeerConnectionRequest {
-	s.Channel = &v
-	return s
 }
 
 func (s *ModifyVpcPeerConnectionRequest) SetClientToken(v string) *ModifyVpcPeerConnectionRequest {
@@ -988,7 +934,6 @@ func (s *ModifyVpcPeerConnectionResponse) SetBody(v *ModifyVpcPeerConnectionResp
 }
 
 type RejectVpcPeerConnectionRequest struct {
-	Channel              *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -1001,11 +946,6 @@ func (s RejectVpcPeerConnectionRequest) String() string {
 
 func (s RejectVpcPeerConnectionRequest) GoString() string {
 	return s.String()
-}
-
-func (s *RejectVpcPeerConnectionRequest) SetChannel(v string) *RejectVpcPeerConnectionRequest {
-	s.Channel = &v
-	return s
 }
 
 func (s *RejectVpcPeerConnectionRequest) SetClientToken(v string) *RejectVpcPeerConnectionRequest {
@@ -1121,10 +1061,6 @@ func (client *Client) AcceptVpcPeerConnectionWithOptions(request *AcceptVpcPeerC
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Channel)) {
-		body["Channel"] = request.Channel
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		body["ClientToken"] = request.ClientToken
 	}
@@ -1135,10 +1071,6 @@ func (client *Client) AcceptVpcPeerConnectionWithOptions(request *AcceptVpcPeerC
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RequestContent)) {
-		body["RequestContent"] = request.RequestContent
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -1195,10 +1127,6 @@ func (client *Client) CreateVpcPeerConnectionWithOptions(request *CreateVpcPeerC
 
 	if !tea.BoolValue(util.IsUnset(request.AcceptingVpcId)) {
 		body["AcceptingVpcId"] = request.AcceptingVpcId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Channel)) {
-		body["Channel"] = request.Channel
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
@@ -1265,10 +1193,6 @@ func (client *Client) DeleteVpcPeerConnectionWithOptions(request *DeleteVpcPeerC
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Channel)) {
-		body["Channel"] = request.Channel
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		body["ClientToken"] = request.ClientToken
 	}
@@ -1325,10 +1249,6 @@ func (client *Client) GetVpcPeerConnectionAttributeWithOptions(request *GetVpcPe
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Channel)) {
-		body["Channel"] = request.Channel
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		body["ClientToken"] = request.ClientToken
 	}
@@ -1339,10 +1259,6 @@ func (client *Client) GetVpcPeerConnectionAttributeWithOptions(request *GetVpcPe
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RequestContent)) {
-		body["RequestContent"] = request.RequestContent
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
@@ -1395,10 +1311,6 @@ func (client *Client) ListVpcPeerConnectionsWithOptions(tmpReq *ListVpcPeerConne
 	}
 
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Channel)) {
-		body["Channel"] = request.Channel
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		body["ClientToken"] = request.ClientToken
 	}
@@ -1471,10 +1383,6 @@ func (client *Client) ModifyVpcPeerConnectionWithOptions(request *ModifyVpcPeerC
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Channel)) {
-		body["Channel"] = request.Channel
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		body["ClientToken"] = request.ClientToken
 	}
@@ -1535,10 +1443,6 @@ func (client *Client) RejectVpcPeerConnectionWithOptions(request *RejectVpcPeerC
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Channel)) {
-		body["Channel"] = request.Channel
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		body["ClientToken"] = request.ClientToken
 	}
