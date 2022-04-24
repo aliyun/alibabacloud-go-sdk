@@ -107,7 +107,8 @@ func (s *AddAccountRelationResponseBody) SetSuccess(v bool) *AddAccountRelationR
 }
 
 type AddAccountRelationResponseBodyData struct {
-	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	HostId     *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	RelationId *int64  `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
 }
 
 func (s AddAccountRelationResponseBodyData) String() string {
@@ -120,6 +121,11 @@ func (s AddAccountRelationResponseBodyData) GoString() string {
 
 func (s *AddAccountRelationResponseBodyData) SetHostId(v string) *AddAccountRelationResponseBodyData {
 	s.HostId = &v
+	return s
+}
+
+func (s *AddAccountRelationResponseBodyData) SetRelationId(v int64) *AddAccountRelationResponseBodyData {
+	s.RelationId = &v
 	return s
 }
 
@@ -699,6 +705,7 @@ type ConfirmRelationRequest struct {
 	ConfirmCode     *string   `json:"ConfirmCode,omitempty" xml:"ConfirmCode,omitempty"`
 	ParentUserId    *int64    `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
 	PermissionCodes []*string `json:"PermissionCodes,omitempty" xml:"PermissionCodes,omitempty" type:"Repeated"`
+	RelationId      *int64    `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
 	RelationType    *string   `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
 	RequestId       *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -728,6 +735,11 @@ func (s *ConfirmRelationRequest) SetParentUserId(v int64) *ConfirmRelationReques
 
 func (s *ConfirmRelationRequest) SetPermissionCodes(v []*string) *ConfirmRelationRequest {
 	s.PermissionCodes = v
+	return s
+}
+
+func (s *ConfirmRelationRequest) SetRelationId(v int64) *ConfirmRelationRequest {
+	s.RelationId = &v
 	return s
 }
 
@@ -2175,6 +2187,7 @@ type DescribeInstanceBillResponseBodyDataItems struct {
 	BillAccountName           *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
 	BillingDate               *string  `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
 	BillingItem               *string  `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
+	BillingItemCode           *string  `json:"BillingItemCode,omitempty" xml:"BillingItemCode,omitempty"`
 	BillingType               *string  `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
 	BizType                   *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	CashAmount                *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
@@ -2192,6 +2205,7 @@ type DescribeInstanceBillResponseBodyDataItems struct {
 	IntranetIP                *string  `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
 	InvoiceDiscount           *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
 	Item                      *string  `json:"Item,omitempty" xml:"Item,omitempty"`
+	ItemName                  *string  `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
 	ListPrice                 *string  `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
 	ListPriceUnit             *string  `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
 	NickName                  *string  `json:"NickName,omitempty" xml:"NickName,omitempty"`
@@ -2246,6 +2260,11 @@ func (s *DescribeInstanceBillResponseBodyDataItems) SetBillingDate(v string) *De
 
 func (s *DescribeInstanceBillResponseBodyDataItems) SetBillingItem(v string) *DescribeInstanceBillResponseBodyDataItems {
 	s.BillingItem = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetBillingItemCode(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.BillingItemCode = &v
 	return s
 }
 
@@ -2331,6 +2350,11 @@ func (s *DescribeInstanceBillResponseBodyDataItems) SetInvoiceDiscount(v float32
 
 func (s *DescribeInstanceBillResponseBodyDataItems) SetItem(v string) *DescribeInstanceBillResponseBodyDataItems {
 	s.Item = &v
+	return s
+}
+
+func (s *DescribeInstanceBillResponseBodyDataItems) SetItemName(v string) *DescribeInstanceBillResponseBodyDataItems {
+	s.ItemName = &v
 	return s
 }
 
@@ -5082,6 +5106,7 @@ type DescribeSplitItemBillResponseBodyDataItems struct {
 	BillAccountName           *string  `json:"BillAccountName,omitempty" xml:"BillAccountName,omitempty"`
 	BillingDate               *string  `json:"BillingDate,omitempty" xml:"BillingDate,omitempty"`
 	BillingItem               *string  `json:"BillingItem,omitempty" xml:"BillingItem,omitempty"`
+	BillingItemCode           *string  `json:"BillingItemCode,omitempty" xml:"BillingItemCode,omitempty"`
 	BillingType               *string  `json:"BillingType,omitempty" xml:"BillingType,omitempty"`
 	BizType                   *string  `json:"BizType,omitempty" xml:"BizType,omitempty"`
 	CashAmount                *float32 `json:"CashAmount,omitempty" xml:"CashAmount,omitempty"`
@@ -5099,6 +5124,7 @@ type DescribeSplitItemBillResponseBodyDataItems struct {
 	IntranetIP                *string  `json:"IntranetIP,omitempty" xml:"IntranetIP,omitempty"`
 	InvoiceDiscount           *float32 `json:"InvoiceDiscount,omitempty" xml:"InvoiceDiscount,omitempty"`
 	Item                      *string  `json:"Item,omitempty" xml:"Item,omitempty"`
+	ItemName                  *string  `json:"ItemName,omitempty" xml:"ItemName,omitempty"`
 	ListPrice                 *string  `json:"ListPrice,omitempty" xml:"ListPrice,omitempty"`
 	ListPriceUnit             *string  `json:"ListPriceUnit,omitempty" xml:"ListPriceUnit,omitempty"`
 	NickName                  *string  `json:"NickName,omitempty" xml:"NickName,omitempty"`
@@ -5161,6 +5187,11 @@ func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillingDate(v string) *D
 
 func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillingItem(v string) *DescribeSplitItemBillResponseBodyDataItems {
 	s.BillingItem = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetBillingItemCode(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.BillingItemCode = &v
 	return s
 }
 
@@ -5246,6 +5277,11 @@ func (s *DescribeSplitItemBillResponseBodyDataItems) SetInvoiceDiscount(v float3
 
 func (s *DescribeSplitItemBillResponseBodyDataItems) SetItem(v string) *DescribeSplitItemBillResponseBodyDataItems {
 	s.Item = &v
+	return s
+}
+
+func (s *DescribeSplitItemBillResponseBodyDataItems) SetItemName(v string) *DescribeSplitItemBillResponseBodyDataItems {
+	s.ItemName = &v
 	return s
 }
 
@@ -5522,6 +5558,162 @@ func (s *EnableBillGenerationResponse) SetHeaders(v map[string]*string) *EnableB
 }
 
 func (s *EnableBillGenerationResponse) SetBody(v *EnableBillGenerationResponseBody) *EnableBillGenerationResponse {
+	s.Body = v
+	return s
+}
+
+type GetAccountRelationRequest struct {
+	// relationId
+	RelationId *int64 `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
+	// requestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetAccountRelationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountRelationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountRelationRequest) SetRelationId(v int64) *GetAccountRelationRequest {
+	s.RelationId = &v
+	return s
+}
+
+func (s *GetAccountRelationRequest) SetRequestId(v string) *GetAccountRelationRequest {
+	s.RequestId = &v
+	return s
+}
+
+type GetAccountRelationResponseBody struct {
+	// code
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// data
+	Data *GetAccountRelationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// requestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// success
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetAccountRelationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountRelationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountRelationResponseBody) SetCode(v string) *GetAccountRelationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetAccountRelationResponseBody) SetData(v *GetAccountRelationResponseBodyData) *GetAccountRelationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetAccountRelationResponseBody) SetMessage(v string) *GetAccountRelationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetAccountRelationResponseBody) SetRequestId(v string) *GetAccountRelationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetAccountRelationResponseBody) SetSuccess(v bool) *GetAccountRelationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetAccountRelationResponseBodyData struct {
+	ChildUserId *int64 `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
+	EndTime     *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	// id
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// parentUserId
+	ParentUserId *int64  `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
+	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// type
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetAccountRelationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountRelationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountRelationResponseBodyData) SetChildUserId(v int64) *GetAccountRelationResponseBodyData {
+	s.ChildUserId = &v
+	return s
+}
+
+func (s *GetAccountRelationResponseBodyData) SetEndTime(v int64) *GetAccountRelationResponseBodyData {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetAccountRelationResponseBodyData) SetGmtModified(v int64) *GetAccountRelationResponseBodyData {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *GetAccountRelationResponseBodyData) SetId(v int64) *GetAccountRelationResponseBodyData {
+	s.Id = &v
+	return s
+}
+
+func (s *GetAccountRelationResponseBodyData) SetParentUserId(v int64) *GetAccountRelationResponseBodyData {
+	s.ParentUserId = &v
+	return s
+}
+
+func (s *GetAccountRelationResponseBodyData) SetStartTime(v int64) *GetAccountRelationResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetAccountRelationResponseBodyData) SetStatus(v string) *GetAccountRelationResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetAccountRelationResponseBodyData) SetType(v string) *GetAccountRelationResponseBodyData {
+	s.Type = &v
+	return s
+}
+
+type GetAccountRelationResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetAccountRelationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAccountRelationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAccountRelationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAccountRelationResponse) SetHeaders(v map[string]*string) *GetAccountRelationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAccountRelationResponse) SetBody(v *GetAccountRelationResponseBody) *GetAccountRelationResponse {
 	s.Body = v
 	return s
 }
@@ -6869,11 +7061,159 @@ func (s *GetSubscriptionPriceResponse) SetBody(v *GetSubscriptionPriceResponseBo
 	return s
 }
 
+type InquiryPriceRefundInstanceRequest struct {
+	// clientToken
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// instanceId
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// productCode
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// productType
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+}
+
+func (s InquiryPriceRefundInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InquiryPriceRefundInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InquiryPriceRefundInstanceRequest) SetClientToken(v string) *InquiryPriceRefundInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *InquiryPriceRefundInstanceRequest) SetInstanceId(v string) *InquiryPriceRefundInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *InquiryPriceRefundInstanceRequest) SetProductCode(v string) *InquiryPriceRefundInstanceRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *InquiryPriceRefundInstanceRequest) SetProductType(v string) *InquiryPriceRefundInstanceRequest {
+	s.ProductType = &v
+	return s
+}
+
+type InquiryPriceRefundInstanceResponseBody struct {
+	// code
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// data
+	Data *InquiryPriceRefundInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// requestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// success
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s InquiryPriceRefundInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InquiryPriceRefundInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InquiryPriceRefundInstanceResponseBody) SetCode(v string) *InquiryPriceRefundInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *InquiryPriceRefundInstanceResponseBody) SetData(v *InquiryPriceRefundInstanceResponseBodyData) *InquiryPriceRefundInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *InquiryPriceRefundInstanceResponseBody) SetMessage(v string) *InquiryPriceRefundInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *InquiryPriceRefundInstanceResponseBody) SetRequestId(v string) *InquiryPriceRefundInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *InquiryPriceRefundInstanceResponseBody) SetSuccess(v bool) *InquiryPriceRefundInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type InquiryPriceRefundInstanceResponseBodyData struct {
+	// currency
+	Currency *string `json:"Currency,omitempty" xml:"Currency,omitempty"`
+	// hostId
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// instanceId
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// refundAmount
+	RefundAmount *float64 `json:"RefundAmount,omitempty" xml:"RefundAmount,omitempty"`
+}
+
+func (s InquiryPriceRefundInstanceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InquiryPriceRefundInstanceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *InquiryPriceRefundInstanceResponseBodyData) SetCurrency(v string) *InquiryPriceRefundInstanceResponseBodyData {
+	s.Currency = &v
+	return s
+}
+
+func (s *InquiryPriceRefundInstanceResponseBodyData) SetHostId(v string) *InquiryPriceRefundInstanceResponseBodyData {
+	s.HostId = &v
+	return s
+}
+
+func (s *InquiryPriceRefundInstanceResponseBodyData) SetInstanceId(v string) *InquiryPriceRefundInstanceResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *InquiryPriceRefundInstanceResponseBodyData) SetRefundAmount(v float64) *InquiryPriceRefundInstanceResponseBodyData {
+	s.RefundAmount = &v
+	return s
+}
+
+type InquiryPriceRefundInstanceResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *InquiryPriceRefundInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InquiryPriceRefundInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InquiryPriceRefundInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InquiryPriceRefundInstanceResponse) SetHeaders(v map[string]*string) *InquiryPriceRefundInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InquiryPriceRefundInstanceResponse) SetBody(v *InquiryPriceRefundInstanceResponseBody) *InquiryPriceRefundInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyAccountRelationRequest struct {
 	ChildNick         *string   `json:"ChildNick,omitempty" xml:"ChildNick,omitempty"`
 	ChildUserId       *int64    `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
 	ParentUserId      *int64    `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
 	PermissionCodes   []*string `json:"PermissionCodes,omitempty" xml:"PermissionCodes,omitempty" type:"Repeated"`
+	RelationId        *int64    `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
 	RelationOperation *string   `json:"RelationOperation,omitempty" xml:"RelationOperation,omitempty"`
 	RelationType      *string   `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
 	RequestId         *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -6905,6 +7245,11 @@ func (s *ModifyAccountRelationRequest) SetParentUserId(v int64) *ModifyAccountRe
 
 func (s *ModifyAccountRelationRequest) SetPermissionCodes(v []*string) *ModifyAccountRelationRequest {
 	s.PermissionCodes = v
+	return s
+}
+
+func (s *ModifyAccountRelationRequest) SetRelationId(v int64) *ModifyAccountRelationRequest {
+	s.RelationId = &v
 	return s
 }
 
@@ -8046,8 +8391,11 @@ type QueryAccountTransactionsRequest struct {
 	PageNum              *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RecordID             *string `json:"RecordID,omitempty" xml:"RecordID,omitempty"`
+	TransactionChannel   *string `json:"TransactionChannel,omitempty" xml:"TransactionChannel,omitempty"`
 	TransactionChannelSN *string `json:"TransactionChannelSN,omitempty" xml:"TransactionChannelSN,omitempty"`
+	TransactionFlow      *string `json:"TransactionFlow,omitempty" xml:"TransactionFlow,omitempty"`
 	TransactionNumber    *string `json:"TransactionNumber,omitempty" xml:"TransactionNumber,omitempty"`
+	TransactionType      *string `json:"TransactionType,omitempty" xml:"TransactionType,omitempty"`
 }
 
 func (s QueryAccountTransactionsRequest) String() string {
@@ -8083,13 +8431,28 @@ func (s *QueryAccountTransactionsRequest) SetRecordID(v string) *QueryAccountTra
 	return s
 }
 
+func (s *QueryAccountTransactionsRequest) SetTransactionChannel(v string) *QueryAccountTransactionsRequest {
+	s.TransactionChannel = &v
+	return s
+}
+
 func (s *QueryAccountTransactionsRequest) SetTransactionChannelSN(v string) *QueryAccountTransactionsRequest {
 	s.TransactionChannelSN = &v
 	return s
 }
 
+func (s *QueryAccountTransactionsRequest) SetTransactionFlow(v string) *QueryAccountTransactionsRequest {
+	s.TransactionFlow = &v
+	return s
+}
+
 func (s *QueryAccountTransactionsRequest) SetTransactionNumber(v string) *QueryAccountTransactionsRequest {
 	s.TransactionNumber = &v
+	return s
+}
+
+func (s *QueryAccountTransactionsRequest) SetTransactionType(v string) *QueryAccountTransactionsRequest {
+	s.TransactionType = &v
 	return s
 }
 
@@ -17094,9 +17457,150 @@ func (s *QueryUserOmsDataResponse) SetBody(v *QueryUserOmsDataResponseBody) *Que
 	return s
 }
 
+type RefundInstanceRequest struct {
+	// clientToken
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// immediatelyRelease
+	ImmediatelyRelease *string `json:"ImmediatelyRelease,omitempty" xml:"ImmediatelyRelease,omitempty"`
+	// instanceId
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// productCode
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// productType
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+}
+
+func (s RefundInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefundInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RefundInstanceRequest) SetClientToken(v string) *RefundInstanceRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *RefundInstanceRequest) SetImmediatelyRelease(v string) *RefundInstanceRequest {
+	s.ImmediatelyRelease = &v
+	return s
+}
+
+func (s *RefundInstanceRequest) SetInstanceId(v string) *RefundInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RefundInstanceRequest) SetProductCode(v string) *RefundInstanceRequest {
+	s.ProductCode = &v
+	return s
+}
+
+func (s *RefundInstanceRequest) SetProductType(v string) *RefundInstanceRequest {
+	s.ProductType = &v
+	return s
+}
+
+type RefundInstanceResponseBody struct {
+	// code
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// data
+	Data *RefundInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// message
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// requestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// success
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RefundInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefundInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RefundInstanceResponseBody) SetCode(v string) *RefundInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RefundInstanceResponseBody) SetData(v *RefundInstanceResponseBodyData) *RefundInstanceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RefundInstanceResponseBody) SetMessage(v string) *RefundInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RefundInstanceResponseBody) SetRequestId(v string) *RefundInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RefundInstanceResponseBody) SetSuccess(v bool) *RefundInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RefundInstanceResponseBodyData struct {
+	// hostId
+	HostId *string `json:"HostId,omitempty" xml:"HostId,omitempty"`
+	// orderId
+	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+}
+
+func (s RefundInstanceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefundInstanceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RefundInstanceResponseBodyData) SetHostId(v string) *RefundInstanceResponseBodyData {
+	s.HostId = &v
+	return s
+}
+
+func (s *RefundInstanceResponseBodyData) SetOrderId(v int64) *RefundInstanceResponseBodyData {
+	s.OrderId = &v
+	return s
+}
+
+type RefundInstanceResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RefundInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RefundInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RefundInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RefundInstanceResponse) SetHeaders(v map[string]*string) *RefundInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RefundInstanceResponse) SetBody(v *RefundInstanceResponseBody) *RefundInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type RelieveAccountRelationRequest struct {
 	ChildUserId  *int64  `json:"ChildUserId,omitempty" xml:"ChildUserId,omitempty"`
 	ParentUserId *int64  `json:"ParentUserId,omitempty" xml:"ParentUserId,omitempty"`
+	RelationId   *int64  `json:"RelationId,omitempty" xml:"RelationId,omitempty"`
 	RelationType *string `json:"RelationType,omitempty" xml:"RelationType,omitempty"`
 	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -17116,6 +17620,11 @@ func (s *RelieveAccountRelationRequest) SetChildUserId(v int64) *RelieveAccountR
 
 func (s *RelieveAccountRelationRequest) SetParentUserId(v int64) *RelieveAccountRelationRequest {
 	s.ParentUserId = &v
+	return s
+}
+
+func (s *RelieveAccountRelationRequest) SetRelationId(v int64) *RelieveAccountRelationRequest {
+	s.RelationId = &v
 	return s
 }
 
@@ -18880,11 +19389,51 @@ func (client *Client) AddAccountRelationWithOptions(request *AddAccountRelationR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChildNick)) {
+		query["ChildNick"] = request.ChildNick
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildUserId)) {
+		query["ChildUserId"] = request.ChildUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentUserId)) {
+		query["ParentUserId"] = request.ParentUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermissionCodes)) {
+		query["PermissionCodes"] = request.PermissionCodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelationType)) {
+		query["RelationType"] = request.RelationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		query["RequestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleCodes)) {
+		query["RoleCodes"] = request.RoleCodes
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddAccountRelation"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AddAccountRelationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AddAccountRelation"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18908,11 +19457,43 @@ func (client *Client) AllocateCostUnitResourceWithOptions(request *AllocateCostU
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FromUnitId)) {
+		query["FromUnitId"] = request.FromUnitId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FromUnitUserId)) {
+		query["FromUnitUserId"] = request.FromUnitUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceInstanceList)) {
+		query["ResourceInstanceList"] = request.ResourceInstanceList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToUnitId)) {
+		query["ToUnitId"] = request.ToUnitId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ToUnitUserId)) {
+		query["ToUnitUserId"] = request.ToUnitUserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AllocateCostUnitResource"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AllocateCostUnitResourceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AllocateCostUnitResource"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18936,11 +19517,63 @@ func (client *Client) ApplyInvoiceWithOptions(request *ApplyInvoiceRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddressId)) {
+		query["AddressId"] = request.AddressId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApplyUserNick)) {
+		query["ApplyUserNick"] = request.ApplyUserNick
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomerId)) {
+		query["CustomerId"] = request.CustomerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InvoiceAmount)) {
+		query["InvoiceAmount"] = request.InvoiceAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InvoiceByAmount)) {
+		query["InvoiceByAmount"] = request.InvoiceByAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InvoicingType)) {
+		query["InvoicingType"] = request.InvoicingType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessWay)) {
+		query["ProcessWay"] = request.ProcessWay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SelectedIds)) {
+		query["SelectedIds"] = request.SelectedIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserRemark)) {
+		query["UserRemark"] = request.UserRemark
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyInvoice"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ApplyInvoiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ApplyInvoice"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18964,11 +19597,31 @@ func (client *Client) CancelOrderWithOptions(request *CancelOrderRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelOrder"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CancelOrderResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CancelOrder"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -18992,11 +19645,55 @@ func (client *Client) ChangeResellerConsumeAmountWithOptions(request *ChangeRese
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdjustType)) {
+		query["AdjustType"] = request.AdjustType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Amount)) {
+		query["Amount"] = request.Amount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
+		query["BusinessType"] = request.BusinessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Currency)) {
+		query["Currency"] = request.Currency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtendMap)) {
+		query["ExtendMap"] = request.ExtendMap
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutBizId)) {
+		query["OutBizId"] = request.OutBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeResellerConsumeAmount"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ChangeResellerConsumeAmountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ChangeResellerConsumeAmount"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19020,11 +19717,51 @@ func (client *Client) ConfirmRelationWithOptions(request *ConfirmRelationRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChildUserId)) {
+		query["ChildUserId"] = request.ChildUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfirmCode)) {
+		query["ConfirmCode"] = request.ConfirmCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentUserId)) {
+		query["ParentUserId"] = request.ParentUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermissionCodes)) {
+		query["PermissionCodes"] = request.PermissionCodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelationId)) {
+		query["RelationId"] = request.RelationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelationType)) {
+		query["RelationType"] = request.RelationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		query["RequestId"] = request.RequestId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConfirmRelation"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ConfirmRelationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ConfirmRelation"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19048,11 +19785,47 @@ func (client *Client) ConvertChargeTypeWithOptions(request *ConvertChargeTypeReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionType)) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ConvertChargeType"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ConvertChargeTypeResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ConvertChargeType"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19076,11 +19849,59 @@ func (client *Client) CreateAgAccountWithOptions(request *CreateAgAccountRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountAttr)) {
+		query["AccountAttr"] = request.AccountAttr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CityName)) {
+		query["CityName"] = request.CityName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnterpriseName)) {
+		query["EnterpriseName"] = request.EnterpriseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FirstName)) {
+		query["FirstName"] = request.FirstName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LastName)) {
+		query["LastName"] = request.LastName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoginEmail)) {
+		query["LoginEmail"] = request.LoginEmail
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NationCode)) {
+		query["NationCode"] = request.NationCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Postcode)) {
+		query["Postcode"] = request.Postcode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProvinceName)) {
+		query["ProvinceName"] = request.ProvinceName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAgAccount"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAgAccountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAgAccount"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19104,11 +19925,27 @@ func (client *Client) CreateCostUnitWithOptions(request *CreateCostUnitRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UnitEntityList)) {
+		query["UnitEntityList"] = request.UnitEntityList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCostUnit"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateCostUnitResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateCostUnit"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19132,11 +19969,63 @@ func (client *Client) CreateInstanceWithOptions(request *CreateInstanceRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Logistics)) {
+		query["Logistics"] = request.Logistics
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameter)) {
+		query["Parameter"] = request.Parameter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenewPeriod)) {
+		query["RenewPeriod"] = request.RenewPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenewalStatus)) {
+		query["RenewalStatus"] = request.RenewalStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionType)) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateInstance"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateInstance"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19160,11 +20049,39 @@ func (client *Client) CreateResellerUserQuotaWithOptions(request *CreateReseller
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Amount)) {
+		query["Amount"] = request.Amount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Currency)) {
+		query["Currency"] = request.Currency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutBizId)) {
+		query["OutBizId"] = request.OutBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateResellerUserQuota"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateResellerUserQuotaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateResellerUserQuota"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19188,11 +20105,51 @@ func (client *Client) CreateResourcePackageWithOptions(request *CreateResourcePa
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		query["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectiveDate)) {
+		query["EffectiveDate"] = request.EffectiveDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageType)) {
+		query["PackageType"] = request.PackageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PricingCycle)) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Specification)) {
+		query["Specification"] = request.Specification
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateResourcePackage"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateResourcePackageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateResourcePackage"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19216,11 +20173,63 @@ func (client *Client) CreateSavingsPlansInstanceWithOptions(request *CreateSavin
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		query["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectiveDate)) {
+		query["EffectiveDate"] = request.EffectiveDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayMode)) {
+		query["PayMode"] = request.PayMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PoolValue)) {
+		query["PoolValue"] = request.PoolValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PricingCycle)) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpecType)) {
+		query["SpecType"] = request.SpecType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Specification)) {
+		query["Specification"] = request.Specification
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSavingsPlansInstance"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateSavingsPlansInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateSavingsPlansInstance"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19244,11 +20253,31 @@ func (client *Client) DeleteCostUnitWithOptions(request *DeleteCostUnitRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerUid)) {
+		query["OwnerUid"] = request.OwnerUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnitId)) {
+		query["UnitId"] = request.UnitId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCostUnit"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteCostUnitResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteCostUnit"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19272,11 +20301,75 @@ func (client *Client) DescribeInstanceBillWithOptions(request *DescribeInstanceB
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillOwnerId)) {
+		query["BillOwnerId"] = request.BillOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillingCycle)) {
+		query["BillingCycle"] = request.BillingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillingDate)) {
+		query["BillingDate"] = request.BillingDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Granularity)) {
+		query["Granularity"] = request.Granularity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceID)) {
+		query["InstanceID"] = request.InstanceID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsBillingItem)) {
+		query["IsBillingItem"] = request.IsBillingItem
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsHideZeroCharge)) {
+		query["IsHideZeroCharge"] = request.IsHideZeroCharge
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionType)) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceBill"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceBillResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstanceBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19300,11 +20393,39 @@ func (client *Client) DescribePricingModuleWithOptions(request *DescribePricingM
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionType)) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePricingModule"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribePricingModuleResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribePricingModule"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19328,11 +20449,51 @@ func (client *Client) DescribeResourceCoverageDetailWithOptions(request *Describ
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillOwnerId)) {
+		query["BillOwnerId"] = request.BillOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndPeriod)) {
+		query["EndPeriod"] = request.EndPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodType)) {
+		query["PeriodType"] = request.PeriodType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartPeriod)) {
+		query["StartPeriod"] = request.StartPeriod
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeResourceCoverageDetail"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeResourceCoverageDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeResourceCoverageDetail"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19356,11 +20517,43 @@ func (client *Client) DescribeResourceCoverageTotalWithOptions(request *Describe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillOwnerId)) {
+		query["BillOwnerId"] = request.BillOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndPeriod)) {
+		query["EndPeriod"] = request.EndPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodType)) {
+		query["PeriodType"] = request.PeriodType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartPeriod)) {
+		query["StartPeriod"] = request.StartPeriod
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeResourceCoverageTotal"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeResourceCoverageTotalResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeResourceCoverageTotal"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19384,11 +20577,27 @@ func (client *Client) DescribeResourcePackageProductWithOptions(request *Describ
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeResourcePackageProduct"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeResourcePackageProductResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeResourcePackageProduct"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19412,11 +20621,51 @@ func (client *Client) DescribeResourceUsageDetailWithOptions(request *DescribeRe
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillOwnerId)) {
+		query["BillOwnerId"] = request.BillOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndPeriod)) {
+		query["EndPeriod"] = request.EndPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodType)) {
+		query["PeriodType"] = request.PeriodType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartPeriod)) {
+		query["StartPeriod"] = request.StartPeriod
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeResourceUsageDetail"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeResourceUsageDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeResourceUsageDetail"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19440,11 +20689,43 @@ func (client *Client) DescribeResourceUsageTotalWithOptions(request *DescribeRes
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillOwnerId)) {
+		query["BillOwnerId"] = request.BillOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndPeriod)) {
+		query["EndPeriod"] = request.EndPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodType)) {
+		query["PeriodType"] = request.PeriodType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartPeriod)) {
+		query["StartPeriod"] = request.StartPeriod
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeResourceUsageTotal"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeResourceUsageTotalResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeResourceUsageTotal"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19468,11 +20749,47 @@ func (client *Client) DescribeSavingsPlansCoverageDetailWithOptions(request *Des
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillOwnerId)) {
+		query["BillOwnerId"] = request.BillOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndPeriod)) {
+		query["EndPeriod"] = request.EndPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodType)) {
+		query["PeriodType"] = request.PeriodType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartPeriod)) {
+		query["StartPeriod"] = request.StartPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSavingsPlansCoverageDetail"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSavingsPlansCoverageDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSavingsPlansCoverageDetail"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19496,11 +20813,39 @@ func (client *Client) DescribeSavingsPlansCoverageTotalWithOptions(request *Desc
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillOwnerId)) {
+		query["BillOwnerId"] = request.BillOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndPeriod)) {
+		query["EndPeriod"] = request.EndPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodType)) {
+		query["PeriodType"] = request.PeriodType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartPeriod)) {
+		query["StartPeriod"] = request.StartPeriod
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSavingsPlansCoverageTotal"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSavingsPlansCoverageTotalResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSavingsPlansCoverageTotal"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19524,11 +20869,47 @@ func (client *Client) DescribeSavingsPlansUsageDetailWithOptions(request *Descri
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillOwnerId)) {
+		query["BillOwnerId"] = request.BillOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndPeriod)) {
+		query["EndPeriod"] = request.EndPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodType)) {
+		query["PeriodType"] = request.PeriodType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartPeriod)) {
+		query["StartPeriod"] = request.StartPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSavingsPlansUsageDetail"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSavingsPlansUsageDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSavingsPlansUsageDetail"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19552,11 +20933,39 @@ func (client *Client) DescribeSavingsPlansUsageTotalWithOptions(request *Describ
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillOwnerId)) {
+		query["BillOwnerId"] = request.BillOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndPeriod)) {
+		query["EndPeriod"] = request.EndPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodType)) {
+		query["PeriodType"] = request.PeriodType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartPeriod)) {
+		query["StartPeriod"] = request.StartPeriod
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSavingsPlansUsageTotal"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSavingsPlansUsageTotalResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSavingsPlansUsageTotal"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19580,11 +20989,75 @@ func (client *Client) DescribeSplitItemBillWithOptions(request *DescribeSplitIte
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillOwnerId)) {
+		query["BillOwnerId"] = request.BillOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillingCycle)) {
+		query["BillingCycle"] = request.BillingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillingDate)) {
+		query["BillingDate"] = request.BillingDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Granularity)) {
+		query["Granularity"] = request.Granularity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceID)) {
+		query["InstanceID"] = request.InstanceID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SplitItemID)) {
+		query["SplitItemID"] = request.SplitItemID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionType)) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagFilter)) {
+		query["TagFilter"] = request.TagFilter
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSplitItemBill"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSplitItemBillResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSplitItemBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19608,11 +21081,31 @@ func (client *Client) EnableBillGenerationWithOptions(request *EnableBillGenerat
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableBillGeneration"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &EnableBillGenerationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("EnableBillGeneration"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19631,16 +21124,72 @@ func (client *Client) EnableBillGeneration(request *EnableBillGenerationRequest)
 	return _result, _err
 }
 
+func (client *Client) GetAccountRelationWithOptions(request *GetAccountRelationRequest, runtime *util.RuntimeOptions) (_result *GetAccountRelationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAccountRelation"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAccountRelationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAccountRelation(request *GetAccountRelationRequest) (_result *GetAccountRelationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetAccountRelationResponse{}
+	_body, _err := client.GetAccountRelationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetCustomerAccountInfoWithOptions(request *GetCustomerAccountInfoRequest, runtime *util.RuntimeOptions) (_result *GetCustomerAccountInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCustomerAccountInfo"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetCustomerAccountInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetCustomerAccountInfo"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19661,8 +21210,19 @@ func (client *Client) GetCustomerAccountInfo(request *GetCustomerAccountInfoRequ
 
 func (client *Client) GetCustomerListWithOptions(runtime *util.RuntimeOptions) (_result *GetCustomerListResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetCustomerList"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &GetCustomerListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetCustomerList"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19686,11 +21246,31 @@ func (client *Client) GetOrderDetailWithOptions(request *GetOrderDetailRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOrderDetail"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetOrderDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetOrderDetail"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19714,11 +21294,47 @@ func (client *Client) GetPayAsYouGoPriceWithOptions(request *GetPayAsYouGoPriceR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ModuleList)) {
+		query["ModuleList"] = request.ModuleList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionType)) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPayAsYouGoPrice"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetPayAsYouGoPriceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetPayAsYouGoPrice"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19742,11 +21358,59 @@ func (client *Client) GetResourcePackagePriceWithOptions(request *GetResourcePac
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		query["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectiveDate)) {
+		query["EffectiveDate"] = request.EffectiveDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackageType)) {
+		query["PackageType"] = request.PackageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PricingCycle)) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Specification)) {
+		query["Specification"] = request.Specification
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetResourcePackagePrice"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetResourcePackagePriceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetResourcePackagePrice"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19770,11 +21434,67 @@ func (client *Client) GetSubscriptionPriceWithOptions(request *GetSubscriptionPr
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModuleList)) {
+		query["ModuleList"] = request.ModuleList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Quantity)) {
+		query["Quantity"] = request.Quantity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServicePeriodQuantity)) {
+		query["ServicePeriodQuantity"] = request.ServicePeriodQuantity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServicePeriodUnit)) {
+		query["ServicePeriodUnit"] = request.ServicePeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionType)) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSubscriptionPrice"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetSubscriptionPriceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetSubscriptionPrice"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19793,16 +21513,120 @@ func (client *Client) GetSubscriptionPrice(request *GetSubscriptionPriceRequest)
 	return _result, _err
 }
 
+func (client *Client) InquiryPriceRefundInstanceWithOptions(request *InquiryPriceRefundInstanceRequest, runtime *util.RuntimeOptions) (_result *InquiryPriceRefundInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InquiryPriceRefundInstance"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InquiryPriceRefundInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InquiryPriceRefundInstance(request *InquiryPriceRefundInstanceRequest) (_result *InquiryPriceRefundInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InquiryPriceRefundInstanceResponse{}
+	_body, _err := client.InquiryPriceRefundInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyAccountRelationWithOptions(request *ModifyAccountRelationRequest, runtime *util.RuntimeOptions) (_result *ModifyAccountRelationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChildNick)) {
+		query["ChildNick"] = request.ChildNick
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChildUserId)) {
+		query["ChildUserId"] = request.ChildUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentUserId)) {
+		query["ParentUserId"] = request.ParentUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PermissionCodes)) {
+		query["PermissionCodes"] = request.PermissionCodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelationId)) {
+		query["RelationId"] = request.RelationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelationOperation)) {
+		query["RelationOperation"] = request.RelationOperation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelationType)) {
+		query["RelationType"] = request.RelationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		query["RequestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleCodes)) {
+		query["RoleCodes"] = request.RoleCodes
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyAccountRelation"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyAccountRelationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyAccountRelation"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19826,11 +21650,27 @@ func (client *Client) ModifyCostUnitWithOptions(request *ModifyCostUnitRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UnitEntityList)) {
+		query["UnitEntityList"] = request.UnitEntityList
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyCostUnit"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyCostUnitResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyCostUnit"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19854,11 +21694,55 @@ func (client *Client) ModifyInstanceWithOptions(request *ModifyInstanceRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModifyType)) {
+		query["ModifyType"] = request.ModifyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Parameter)) {
+		query["Parameter"] = request.Parameter
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionType)) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyInstance"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyInstance"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19879,8 +21763,19 @@ func (client *Client) ModifyInstance(request *ModifyInstanceRequest) (_result *M
 
 func (client *Client) QueryAccountBalanceWithOptions(runtime *util.RuntimeOptions) (_result *QueryAccountBalanceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAccountBalance"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &QueryAccountBalanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryAccountBalance"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19904,11 +21799,59 @@ func (client *Client) QueryAccountBillWithOptions(request *QueryAccountBillReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillOwnerId)) {
+		query["BillOwnerId"] = request.BillOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillingCycle)) {
+		query["BillingCycle"] = request.BillingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillingDate)) {
+		query["BillingDate"] = request.BillingDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Granularity)) {
+		query["Granularity"] = request.Granularity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsGroupByProduct)) {
+		query["IsGroupByProduct"] = request.IsGroupByProduct
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerID)) {
+		query["OwnerID"] = request.OwnerID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAccountBill"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryAccountBillResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryAccountBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19932,11 +21875,59 @@ func (client *Client) QueryAccountTransactionDetailsWithOptions(request *QueryAc
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeEnd)) {
+		query["CreateTimeEnd"] = request.CreateTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeStart)) {
+		query["CreateTimeStart"] = request.CreateTimeStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordID)) {
+		query["RecordID"] = request.RecordID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransactionChannel)) {
+		query["TransactionChannel"] = request.TransactionChannel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransactionChannelSN)) {
+		query["TransactionChannelSN"] = request.TransactionChannelSN
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransactionNumber)) {
+		query["TransactionNumber"] = request.TransactionNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransactionType)) {
+		query["TransactionType"] = request.TransactionType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAccountTransactionDetails"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryAccountTransactionDetailsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryAccountTransactionDetails"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19960,11 +21951,63 @@ func (client *Client) QueryAccountTransactionsWithOptions(request *QueryAccountT
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeEnd)) {
+		query["CreateTimeEnd"] = request.CreateTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeStart)) {
+		query["CreateTimeStart"] = request.CreateTimeStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordID)) {
+		query["RecordID"] = request.RecordID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransactionChannel)) {
+		query["TransactionChannel"] = request.TransactionChannel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransactionChannelSN)) {
+		query["TransactionChannelSN"] = request.TransactionChannelSN
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransactionFlow)) {
+		query["TransactionFlow"] = request.TransactionFlow
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransactionNumber)) {
+		query["TransactionNumber"] = request.TransactionNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransactionType)) {
+		query["TransactionType"] = request.TransactionType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAccountTransactions"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryAccountTransactionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryAccountTransactions"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -19988,11 +22031,75 @@ func (client *Client) QueryAvailableInstancesWithOptions(request *QueryAvailable
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeEnd)) {
+		query["CreateTimeEnd"] = request.CreateTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeStart)) {
+		query["CreateTimeStart"] = request.CreateTimeStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTimeEnd)) {
+		query["EndTimeEnd"] = request.EndTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTimeStart)) {
+		query["EndTimeStart"] = request.EndTimeStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIDs)) {
+		query["InstanceIDs"] = request.InstanceIDs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenewStatus)) {
+		query["RenewStatus"] = request.RenewStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionType)) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryAvailableInstances"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryAvailableInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryAvailableInstances"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20016,11 +22123,67 @@ func (client *Client) QueryBillWithOptions(request *QueryBillRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillOwnerId)) {
+		query["BillOwnerId"] = request.BillOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillingCycle)) {
+		query["BillingCycle"] = request.BillingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsDisplayLocalCurrency)) {
+		query["IsDisplayLocalCurrency"] = request.IsDisplayLocalCurrency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsHideZeroCharge)) {
+		query["IsHideZeroCharge"] = request.IsHideZeroCharge
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionType)) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryBill"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryBillResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20044,11 +22207,43 @@ func (client *Client) QueryBillOverviewWithOptions(request *QueryBillOverviewReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillOwnerId)) {
+		query["BillOwnerId"] = request.BillOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillingCycle)) {
+		query["BillingCycle"] = request.BillingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionType)) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryBillOverview"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryBillOverviewResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryBillOverview"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20069,8 +22264,19 @@ func (client *Client) QueryBillOverview(request *QueryBillOverviewRequest) (_res
 
 func (client *Client) QueryBillToOSSSubscriptionWithOptions(runtime *util.RuntimeOptions) (_result *QueryBillToOSSSubscriptionResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("QueryBillToOSSSubscription"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &QueryBillToOSSSubscriptionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryBillToOSSSubscription"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20094,11 +22300,35 @@ func (client *Client) QueryCashCouponsWithOptions(request *QueryCashCouponsReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EffectiveOrNot)) {
+		query["EffectiveOrNot"] = request.EffectiveOrNot
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpiryTimeEnd)) {
+		query["ExpiryTimeEnd"] = request.ExpiryTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpiryTimeStart)) {
+		query["ExpiryTimeStart"] = request.ExpiryTimeStart
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCashCoupons"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCashCouponsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryCashCoupons"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20122,11 +22352,39 @@ func (client *Client) QueryCostUnitWithOptions(request *QueryCostUnitRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerUid)) {
+		query["OwnerUid"] = request.OwnerUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentUnitId)) {
+		query["ParentUnitId"] = request.ParentUnitId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCostUnit"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCostUnitResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryCostUnit"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20150,11 +22408,39 @@ func (client *Client) QueryCostUnitResourceWithOptions(request *QueryCostUnitRes
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerUid)) {
+		query["OwnerUid"] = request.OwnerUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnitId)) {
+		query["UnitId"] = request.UnitId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCostUnitResource"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCostUnitResourceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryCostUnitResource"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20178,11 +22464,27 @@ func (client *Client) QueryCustomerAddressListWithOptions(request *QueryCustomer
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCustomerAddressList"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryCustomerAddressListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryCustomerAddressList"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20206,11 +22508,63 @@ func (client *Client) QueryDPUtilizationDetailWithOptions(request *QueryDPUtiliz
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CommodityCode)) {
+		query["CommodityCode"] = request.CommodityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DeductedInstanceId)) {
+		query["DeductedInstanceId"] = request.DeductedInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeShare)) {
+		query["IncludeShare"] = request.IncludeShare
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceSpec)) {
+		query["InstanceSpec"] = request.InstanceSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LastToken)) {
+		query["LastToken"] = request.LastToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProdCode)) {
+		query["ProdCode"] = request.ProdCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryDPUtilizationDetail"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryDPUtilizationDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryDPUtilizationDetail"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20234,11 +22588,79 @@ func (client *Client) QueryEvaluateListWithOptions(request *QueryEvaluateListReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillCycle)) {
+		query["BillCycle"] = request.BillCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BizTypeList)) {
+		query["BizTypeList"] = request.BizTypeList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndAmount)) {
+		query["EndAmount"] = request.EndAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndBizTime)) {
+		query["EndBizTime"] = request.EndBizTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndSearchTime)) {
+		query["EndSearchTime"] = request.EndSearchTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutBizId)) {
+		query["OutBizId"] = request.OutBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortType)) {
+		query["SortType"] = request.SortType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartAmount)) {
+		query["StartAmount"] = request.StartAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartBizTime)) {
+		query["StartBizTime"] = request.StartBizTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartSearchTime)) {
+		query["StartSearchTime"] = request.StartSearchTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryEvaluateList"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryEvaluateListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryEvaluateList"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20262,11 +22684,27 @@ func (client *Client) QueryFinancialAccountInfoWithOptions(request *QueryFinanci
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryFinancialAccountInfo"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryFinancialAccountInfoResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryFinancialAccountInfo"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20290,11 +22728,71 @@ func (client *Client) QueryInstanceBillWithOptions(request *QueryInstanceBillReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillOwnerId)) {
+		query["BillOwnerId"] = request.BillOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillingCycle)) {
+		query["BillingCycle"] = request.BillingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillingDate)) {
+		query["BillingDate"] = request.BillingDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Granularity)) {
+		query["Granularity"] = request.Granularity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsBillingItem)) {
+		query["IsBillingItem"] = request.IsBillingItem
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsHideZeroCharge)) {
+		query["IsHideZeroCharge"] = request.IsHideZeroCharge
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionType)) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryInstanceBill"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryInstanceBillResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryInstanceBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20318,11 +22816,35 @@ func (client *Client) QueryInstanceByTagWithOptions(request *QueryInstanceByTagR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryInstanceByTag"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryInstanceByTagResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryInstanceByTag"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20346,11 +22868,47 @@ func (client *Client) QueryInstanceGaapCostWithOptions(request *QueryInstanceGaa
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillingCycle)) {
+		query["BillingCycle"] = request.BillingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionType)) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryInstanceGaapCost"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryInstanceGaapCostResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryInstanceGaapCost"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20374,11 +22932,27 @@ func (client *Client) QueryInvoicingCustomerListWithOptions(request *QueryInvoic
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryInvoicingCustomerList"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryInvoicingCustomerListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryInvoicingCustomerList"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20402,11 +22976,27 @@ func (client *Client) QueryMonthlyBillWithOptions(request *QueryMonthlyBillReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillingCycle)) {
+		query["BillingCycle"] = request.BillingCycle
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryMonthlyBill"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryMonthlyBillResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryMonthlyBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20430,11 +23020,51 @@ func (client *Client) QueryMonthlyInstanceConsumptionWithOptions(request *QueryM
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillingCycle)) {
+		query["BillingCycle"] = request.BillingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionType)) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryMonthlyInstanceConsumption"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryMonthlyInstanceConsumptionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryMonthlyInstanceConsumption"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20458,11 +23088,63 @@ func (client *Client) QueryOrdersWithOptions(request *QueryOrdersRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeEnd)) {
+		query["CreateTimeEnd"] = request.CreateTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateTimeStart)) {
+		query["CreateTimeStart"] = request.CreateTimeStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderType)) {
+		query["OrderType"] = request.OrderType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaymentStatus)) {
+		query["PaymentStatus"] = request.PaymentStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionType)) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryOrders"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryOrdersResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryOrders"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20486,11 +23168,27 @@ func (client *Client) QueryPermissionListWithOptions(request *QueryPermissionLis
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RelationId)) {
+		query["RelationId"] = request.RelationId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryPermissionList"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryPermissionListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryPermissionList"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20514,11 +23212,35 @@ func (client *Client) QueryPrepaidCardsWithOptions(request *QueryPrepaidCardsReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EffectiveOrNot)) {
+		query["EffectiveOrNot"] = request.EffectiveOrNot
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpiryTimeEnd)) {
+		query["ExpiryTimeEnd"] = request.ExpiryTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpiryTimeStart)) {
+		query["ExpiryTimeStart"] = request.ExpiryTimeStart
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryPrepaidCards"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryPrepaidCardsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryPrepaidCards"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20542,11 +23264,35 @@ func (client *Client) QueryProductListWithOptions(request *QueryProductListReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryTotalCount)) {
+		query["QueryTotalCount"] = request.QueryTotalCount
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryProductList"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryProductListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryProductList"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20570,11 +23316,55 @@ func (client *Client) QueryRIUtilizationDetailWithOptions(request *QueryRIUtiliz
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeductedInstanceId)) {
+		query["DeductedInstanceId"] = request.DeductedInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceSpec)) {
+		query["InstanceSpec"] = request.InstanceSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RICommodityCode)) {
+		query["RICommodityCode"] = request.RICommodityCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RIInstanceId)) {
+		query["RIInstanceId"] = request.RIInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRIUtilizationDetail"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryRIUtilizationDetailResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryRIUtilizationDetail"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20600,10 +23390,21 @@ func (client *Client) QueryRedeemWithOptions(request *QueryRedeemRequest, runtim
 	}
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
-		Query: query,
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRedeem"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryRedeemResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryRedeem"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("GET"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20627,11 +23428,39 @@ func (client *Client) QueryRelationListWithOptions(request *QueryRelationListReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatusList)) {
+		query["StatusList"] = request.StatusList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryRelationList"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryRelationListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryRelationList"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20655,11 +23484,31 @@ func (client *Client) QueryResellerAvailableQuotaWithOptions(request *QueryResel
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ItemCodes)) {
+		query["ItemCodes"] = request.ItemCodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryResellerAvailableQuota"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryResellerAvailableQuotaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryResellerAvailableQuota"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20683,11 +23532,51 @@ func (client *Client) QueryResourcePackageInstancesWithOptions(request *QueryRes
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExpiryTimeEnd)) {
+		query["ExpiryTimeEnd"] = request.ExpiryTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpiryTimeStart)) {
+		query["ExpiryTimeStart"] = request.ExpiryTimeStart
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludePartner)) {
+		query["IncludePartner"] = request.IncludePartner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryResourcePackageInstances"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryResourcePackageInstancesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryResourcePackageInstances"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20711,11 +23600,51 @@ func (client *Client) QuerySavingsPlansDeductLogWithOptions(request *QuerySaving
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Locale)) {
+		query["Locale"] = request.Locale
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySavingsPlansDeductLog"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySavingsPlansDeductLogResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QuerySavingsPlansDeductLog"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20739,11 +23668,51 @@ func (client *Client) QuerySavingsPlansInstanceWithOptions(request *QuerySavings
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Locale)) {
+		query["Locale"] = request.Locale
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySavingsPlansInstance"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySavingsPlansInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QuerySavingsPlansInstance"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20767,11 +23736,71 @@ func (client *Client) QuerySettleBillWithOptions(request *QuerySettleBillRequest
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillOwnerId)) {
+		query["BillOwnerId"] = request.BillOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillingCycle)) {
+		query["BillingCycle"] = request.BillingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsDisplayLocalCurrency)) {
+		query["IsDisplayLocalCurrency"] = request.IsDisplayLocalCurrency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsHideZeroCharge)) {
+		query["IsHideZeroCharge"] = request.IsHideZeroCharge
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecordID)) {
+		query["RecordID"] = request.RecordID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionType)) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySettleBill"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySettleBillResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QuerySettleBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20795,11 +23824,67 @@ func (client *Client) QuerySettlementBillWithOptions(request *QuerySettlementBil
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillingCycle)) {
+		query["BillingCycle"] = request.BillingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsHideZeroCharge)) {
+		query["IsHideZeroCharge"] = request.IsHideZeroCharge
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionType)) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySettlementBill"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySettlementBillResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QuerySettlementBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20823,11 +23908,55 @@ func (client *Client) QuerySplitItemBillWithOptions(request *QuerySplitItemBillR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BillOwnerId)) {
+		query["BillOwnerId"] = request.BillOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BillingCycle)) {
+		query["BillingCycle"] = request.BillingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNum)) {
+		query["PageNum"] = request.PageNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionType)) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySplitItemBill"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QuerySplitItemBillResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QuerySplitItemBill"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20851,11 +23980,51 @@ func (client *Client) QueryUserOmsDataWithOptions(request *QueryUserOmsDataReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataType)) {
+		query["DataType"] = request.DataType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Marker)) {
+		query["Marker"] = request.Marker
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Table)) {
+		query["Table"] = request.Table
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryUserOmsData"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &QueryUserOmsDataResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("QueryUserOmsData"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20874,16 +24043,108 @@ func (client *Client) QueryUserOmsData(request *QueryUserOmsDataRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) RefundInstanceWithOptions(request *RefundInstanceRequest, runtime *util.RuntimeOptions) (_result *RefundInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImmediatelyRelease)) {
+		query["ImmediatelyRelease"] = request.ImmediatelyRelease
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RefundInstance"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RefundInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RefundInstance(request *RefundInstanceRequest) (_result *RefundInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RefundInstanceResponse{}
+	_body, _err := client.RefundInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RelieveAccountRelationWithOptions(request *RelieveAccountRelationRequest, runtime *util.RuntimeOptions) (_result *RelieveAccountRelationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChildUserId)) {
+		query["ChildUserId"] = request.ChildUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentUserId)) {
+		query["ParentUserId"] = request.ParentUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelationId)) {
+		query["RelationId"] = request.RelationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RelationType)) {
+		query["RelationType"] = request.RelationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		query["RequestId"] = request.RequestId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RelieveAccountRelation"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RelieveAccountRelationResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RelieveAccountRelation"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20907,11 +24168,47 @@ func (client *Client) RenewInstanceWithOptions(request *RenewInstanceRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenewPeriod)) {
+		query["RenewPeriod"] = request.RenewPeriod
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RenewInstance"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RenewInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RenewInstance"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20935,11 +24232,43 @@ func (client *Client) RenewResourcePackageWithOptions(request *RenewResourcePack
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		query["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EffectiveDate)) {
+		query["EffectiveDate"] = request.EffectiveDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PricingCycle)) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RenewResourcePackage"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RenewResourcePackageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RenewResourcePackage"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20963,11 +24292,55 @@ func (client *Client) SaveUserCreditWithOptions(request *SaveUserCreditRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AvoidExpiration)) {
+		query["AvoidExpiration"] = request.AvoidExpiration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AvoidNotification)) {
+		query["AvoidNotification"] = request.AvoidNotification
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AvoidPrepaidExpiration)) {
+		query["AvoidPrepaidExpiration"] = request.AvoidPrepaidExpiration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AvoidPrepaidNotification)) {
+		query["AvoidPrepaidNotification"] = request.AvoidPrepaidNotification
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreditType)) {
+		query["CreditType"] = request.CreditType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreditValue)) {
+		query["CreditValue"] = request.CreditValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Operator)) {
+		query["Operator"] = request.Operator
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveUserCredit"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SaveUserCreditResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SaveUserCredit"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20991,11 +24364,31 @@ func (client *Client) SetAllExpirationDayWithOptions(request *SetAllExpirationDa
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnifyExpireDay)) {
+		query["UnifyExpireDay"] = request.UnifyExpireDay
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetAllExpirationDay"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetAllExpirationDayResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetAllExpirationDay"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21019,11 +24412,91 @@ func (client *Client) SetCreditLabelActionWithOptions(request *SetCreditLabelAct
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ActionType)) {
+		query["ActionType"] = request.ActionType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClearCycle)) {
+		query["ClearCycle"] = request.ClearCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreditAmount)) {
+		query["CreditAmount"] = request.CreditAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrencyCode)) {
+		query["CurrencyCode"] = request.CurrencyCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DailyCycle)) {
+		query["DailyCycle"] = request.DailyCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsNeedAddSettleLabel)) {
+		query["IsNeedAddSettleLabel"] = request.IsNeedAddSettleLabel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsNeedAdjustCreditAccount)) {
+		query["IsNeedAdjustCreditAccount"] = request.IsNeedAdjustCreditAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsNeedSaveNotifyRule)) {
+		query["IsNeedSaveNotifyRule"] = request.IsNeedSaveNotifyRule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsNeedSetCreditAmount)) {
+		query["IsNeedSetCreditAmount"] = request.IsNeedSetCreditAmount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NeedNotice)) {
+		query["NeedNotice"] = request.NeedNotice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewCreateMode)) {
+		query["NewCreateMode"] = request.NewCreateMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Operator)) {
+		query["Operator"] = request.Operator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestId)) {
+		query["RequestId"] = request.RequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SiteCode)) {
+		query["SiteCode"] = request.SiteCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uid)) {
+		query["Uid"] = request.Uid
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetCreditLabelAction"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetCreditLabelActionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetCreditLabelAction"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21047,11 +24520,55 @@ func (client *Client) SetRenewalWithOptions(request *SetRenewalRequest, runtime 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceIDs)) {
+		query["InstanceIDs"] = request.InstanceIDs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductCode)) {
+		query["ProductCode"] = request.ProductCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenewalPeriod)) {
+		query["RenewalPeriod"] = request.RenewalPeriod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenewalPeriodUnit)) {
+		query["RenewalPeriodUnit"] = request.RenewalPeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RenewalStatus)) {
+		query["RenewalStatus"] = request.RenewalStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscriptionType)) {
+		query["SubscriptionType"] = request.SubscriptionType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetRenewal"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetRenewalResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetRenewal"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21075,11 +24592,35 @@ func (client *Client) SetResellerUserAlarmThresholdWithOptions(request *SetResel
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlarmThresholds)) {
+		query["AlarmThresholds"] = request.AlarmThresholds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlarmType)) {
+		query["AlarmType"] = request.AlarmType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetResellerUserAlarmThreshold"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetResellerUserAlarmThresholdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetResellerUserAlarmThreshold"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21103,11 +24644,39 @@ func (client *Client) SetResellerUserQuotaWithOptions(request *SetResellerUserQu
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Amount)) {
+		query["Amount"] = request.Amount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Currency)) {
+		query["Currency"] = request.Currency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutBizId)) {
+		query["OutBizId"] = request.OutBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetResellerUserQuota"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetResellerUserQuotaResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetResellerUserQuota"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21131,11 +24700,35 @@ func (client *Client) SetResellerUserStatusWithOptions(request *SetResellerUserS
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
+		query["BusinessType"] = request.BusinessType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetResellerUserStatus"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SetResellerUserStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SetResellerUserStatus"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21159,11 +24752,43 @@ func (client *Client) SubscribeBillToOSSWithOptions(request *SubscribeBillToOSSR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BeginBillingCycle)) {
+		query["BeginBillingCycle"] = request.BeginBillingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BucketOwnerId)) {
+		query["BucketOwnerId"] = request.BucketOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MultAccountRelSubscribe)) {
+		query["MultAccountRelSubscribe"] = request.MultAccountRelSubscribe
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscribeBucket)) {
+		query["SubscribeBucket"] = request.SubscribeBucket
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscribeType)) {
+		query["SubscribeType"] = request.SubscribeType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SubscribeBillToOSS"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &SubscribeBillToOSSResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("SubscribeBillToOSS"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21187,11 +24812,35 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &TagResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("TagResources"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21215,11 +24864,31 @@ func (client *Client) UnsubscribeBillToOSSWithOptions(request *UnsubscribeBillTo
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MultAccountRelSubscribe)) {
+		query["MultAccountRelSubscribe"] = request.MultAccountRelSubscribe
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubscribeType)) {
+		query["SubscribeType"] = request.SubscribeType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnsubscribeBillToOSS"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UnsubscribeBillToOSSResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UnsubscribeBillToOSS"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21243,11 +24912,39 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResources"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UntagResources"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21271,11 +24968,39 @@ func (client *Client) UpgradeResourcePackageWithOptions(request *UpgradeResource
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EffectiveDate)) {
+		query["EffectiveDate"] = request.EffectiveDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Specification)) {
+		query["Specification"] = request.Specification
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeResourcePackage"),
+		Version:     tea.String("2017-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpgradeResourcePackageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpgradeResourcePackage"), tea.String("2017-12-14"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
