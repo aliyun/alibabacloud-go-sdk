@@ -13,14 +13,10 @@ import (
 )
 
 type AcceptVpcPeerConnectionRequest struct {
-	CallerBidLoginEmail  *string `json:"CallerBidLoginEmail,omitempty" xml:"CallerBidLoginEmail,omitempty"`
-	CallerUidLoginEmail  *string `json:"CallerUidLoginEmail,omitempty" xml:"CallerUidLoginEmail,omitempty"`
 	Channel              *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerIdLoginEmail    *string `json:"OwnerIdLoginEmail,omitempty" xml:"OwnerIdLoginEmail,omitempty"`
 	RequestContent       *string `json:"RequestContent,omitempty" xml:"RequestContent,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 }
@@ -31,16 +27,6 @@ func (s AcceptVpcPeerConnectionRequest) String() string {
 
 func (s AcceptVpcPeerConnectionRequest) GoString() string {
 	return s.String()
-}
-
-func (s *AcceptVpcPeerConnectionRequest) SetCallerBidLoginEmail(v string) *AcceptVpcPeerConnectionRequest {
-	s.CallerBidLoginEmail = &v
-	return s
-}
-
-func (s *AcceptVpcPeerConnectionRequest) SetCallerUidLoginEmail(v string) *AcceptVpcPeerConnectionRequest {
-	s.CallerUidLoginEmail = &v
-	return s
 }
 
 func (s *AcceptVpcPeerConnectionRequest) SetChannel(v string) *AcceptVpcPeerConnectionRequest {
@@ -63,16 +49,6 @@ func (s *AcceptVpcPeerConnectionRequest) SetInstanceId(v string) *AcceptVpcPeerC
 	return s
 }
 
-func (s *AcceptVpcPeerConnectionRequest) SetOwnerAccount(v string) *AcceptVpcPeerConnectionRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *AcceptVpcPeerConnectionRequest) SetOwnerIdLoginEmail(v string) *AcceptVpcPeerConnectionRequest {
-	s.OwnerIdLoginEmail = &v
-	return s
-}
-
 func (s *AcceptVpcPeerConnectionRequest) SetRequestContent(v string) *AcceptVpcPeerConnectionRequest {
 	s.RequestContent = &v
 	return s
@@ -84,14 +60,7 @@ func (s *AcceptVpcPeerConnectionRequest) SetResourceOwnerAccount(v string) *Acce
 }
 
 type AcceptVpcPeerConnectionResponseBody struct {
-	Code           *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	DynamicCode    *string                `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string                `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AcceptVpcPeerConnectionResponseBody) String() string {
@@ -102,43 +71,8 @@ func (s AcceptVpcPeerConnectionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *AcceptVpcPeerConnectionResponseBody) SetCode(v string) *AcceptVpcPeerConnectionResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *AcceptVpcPeerConnectionResponseBody) SetData(v map[string]interface{}) *AcceptVpcPeerConnectionResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *AcceptVpcPeerConnectionResponseBody) SetDynamicCode(v string) *AcceptVpcPeerConnectionResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *AcceptVpcPeerConnectionResponseBody) SetDynamicMessage(v string) *AcceptVpcPeerConnectionResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *AcceptVpcPeerConnectionResponseBody) SetHttpStatusCode(v int32) *AcceptVpcPeerConnectionResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *AcceptVpcPeerConnectionResponseBody) SetMessage(v string) *AcceptVpcPeerConnectionResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *AcceptVpcPeerConnectionResponseBody) SetRequestId(v string) *AcceptVpcPeerConnectionResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *AcceptVpcPeerConnectionResponseBody) SetSuccess(v bool) *AcceptVpcPeerConnectionResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -237,14 +171,8 @@ func (s *CreateVpcPeerConnectionRequest) SetVpcId(v string) *CreateVpcPeerConnec
 }
 
 type CreateVpcPeerConnectionResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateVpcPeerConnectionResponseBody) String() string {
@@ -255,43 +183,13 @@ func (s CreateVpcPeerConnectionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateVpcPeerConnectionResponseBody) SetCode(v string) *CreateVpcPeerConnectionResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateVpcPeerConnectionResponseBody) SetDynamicCode(v string) *CreateVpcPeerConnectionResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *CreateVpcPeerConnectionResponseBody) SetDynamicMessage(v string) *CreateVpcPeerConnectionResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *CreateVpcPeerConnectionResponseBody) SetHttpStatusCode(v int32) *CreateVpcPeerConnectionResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *CreateVpcPeerConnectionResponseBody) SetInstanceId(v string) *CreateVpcPeerConnectionResponseBody {
 	s.InstanceId = &v
 	return s
 }
 
-func (s *CreateVpcPeerConnectionResponseBody) SetMessage(v string) *CreateVpcPeerConnectionResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *CreateVpcPeerConnectionResponseBody) SetRequestId(v string) *CreateVpcPeerConnectionResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *CreateVpcPeerConnectionResponseBody) SetSuccess(v bool) *CreateVpcPeerConnectionResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -322,7 +220,9 @@ type DeleteVpcPeerConnectionRequest struct {
 	Channel     *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	InstanceId  *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 是否强删
+	Force      *bool   `json:"Force,omitempty" xml:"Force,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 }
 
 func (s DeleteVpcPeerConnectionRequest) String() string {
@@ -348,19 +248,18 @@ func (s *DeleteVpcPeerConnectionRequest) SetDryRun(v bool) *DeleteVpcPeerConnect
 	return s
 }
 
+func (s *DeleteVpcPeerConnectionRequest) SetForce(v bool) *DeleteVpcPeerConnectionRequest {
+	s.Force = &v
+	return s
+}
+
 func (s *DeleteVpcPeerConnectionRequest) SetInstanceId(v string) *DeleteVpcPeerConnectionRequest {
 	s.InstanceId = &v
 	return s
 }
 
 type DeleteVpcPeerConnectionResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DeleteVpcPeerConnectionResponseBody) String() string {
@@ -371,38 +270,8 @@ func (s DeleteVpcPeerConnectionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteVpcPeerConnectionResponseBody) SetCode(v string) *DeleteVpcPeerConnectionResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteVpcPeerConnectionResponseBody) SetDynamicCode(v string) *DeleteVpcPeerConnectionResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *DeleteVpcPeerConnectionResponseBody) SetDynamicMessage(v string) *DeleteVpcPeerConnectionResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *DeleteVpcPeerConnectionResponseBody) SetHttpStatusCode(v int32) *DeleteVpcPeerConnectionResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *DeleteVpcPeerConnectionResponseBody) SetMessage(v string) *DeleteVpcPeerConnectionResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *DeleteVpcPeerConnectionResponseBody) SetRequestId(v string) *DeleteVpcPeerConnectionResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteVpcPeerConnectionResponseBody) SetSuccess(v bool) *DeleteVpcPeerConnectionResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -430,14 +299,10 @@ func (s *DeleteVpcPeerConnectionResponse) SetBody(v *DeleteVpcPeerConnectionResp
 }
 
 type GetVpcPeerConnectionAttributeRequest struct {
-	CallerBidLoginEmail  *string `json:"CallerBidLoginEmail,omitempty" xml:"CallerBidLoginEmail,omitempty"`
-	CallerUidLoginEmail  *string `json:"CallerUidLoginEmail,omitempty" xml:"CallerUidLoginEmail,omitempty"`
 	Channel              *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerIdLoginEmail    *string `json:"OwnerIdLoginEmail,omitempty" xml:"OwnerIdLoginEmail,omitempty"`
 	RequestContent       *string `json:"RequestContent,omitempty" xml:"RequestContent,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 }
@@ -448,16 +313,6 @@ func (s GetVpcPeerConnectionAttributeRequest) String() string {
 
 func (s GetVpcPeerConnectionAttributeRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetVpcPeerConnectionAttributeRequest) SetCallerBidLoginEmail(v string) *GetVpcPeerConnectionAttributeRequest {
-	s.CallerBidLoginEmail = &v
-	return s
-}
-
-func (s *GetVpcPeerConnectionAttributeRequest) SetCallerUidLoginEmail(v string) *GetVpcPeerConnectionAttributeRequest {
-	s.CallerUidLoginEmail = &v
-	return s
 }
 
 func (s *GetVpcPeerConnectionAttributeRequest) SetChannel(v string) *GetVpcPeerConnectionAttributeRequest {
@@ -480,16 +335,6 @@ func (s *GetVpcPeerConnectionAttributeRequest) SetInstanceId(v string) *GetVpcPe
 	return s
 }
 
-func (s *GetVpcPeerConnectionAttributeRequest) SetOwnerAccount(v string) *GetVpcPeerConnectionAttributeRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *GetVpcPeerConnectionAttributeRequest) SetOwnerIdLoginEmail(v string) *GetVpcPeerConnectionAttributeRequest {
-	s.OwnerIdLoginEmail = &v
-	return s
-}
-
 func (s *GetVpcPeerConnectionAttributeRequest) SetRequestContent(v string) *GetVpcPeerConnectionAttributeRequest {
 	s.RequestContent = &v
 	return s
@@ -506,23 +351,17 @@ type GetVpcPeerConnectionAttributeResponseBody struct {
 	AcceptingVpc      *GetVpcPeerConnectionAttributeResponseBodyAcceptingVpc `json:"AcceptingVpc,omitempty" xml:"AcceptingVpc,omitempty" type:"Struct"`
 	Bandwidth         *int32                                                 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	BizStatus         *string                                                `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
-	Code              *string                                                `json:"Code,omitempty" xml:"Code,omitempty"`
 	Description       *string                                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	DynamicCode       *string                                                `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage    *string                                                `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	GmtCreate         *string                                                `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtExpired        *string                                                `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
 	GmtModified       *string                                                `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	HttpStatusCode    *int32                                                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	InstanceId        *string                                                `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	Message           *string                                                `json:"Message,omitempty" xml:"Message,omitempty"`
 	Name              *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId           *int64                                                 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	RegionId          *string                                                `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	RequestId         *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResourceGroupId   *string                                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Status            *string                                                `json:"Status,omitempty" xml:"Status,omitempty"`
-	Success           *bool                                                  `json:"Success,omitempty" xml:"Success,omitempty"`
 	Vpc               *GetVpcPeerConnectionAttributeResponseBodyVpc          `json:"Vpc,omitempty" xml:"Vpc,omitempty" type:"Struct"`
 }
 
@@ -559,23 +398,8 @@ func (s *GetVpcPeerConnectionAttributeResponseBody) SetBizStatus(v string) *GetV
 	return s
 }
 
-func (s *GetVpcPeerConnectionAttributeResponseBody) SetCode(v string) *GetVpcPeerConnectionAttributeResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *GetVpcPeerConnectionAttributeResponseBody) SetDescription(v string) *GetVpcPeerConnectionAttributeResponseBody {
 	s.Description = &v
-	return s
-}
-
-func (s *GetVpcPeerConnectionAttributeResponseBody) SetDynamicCode(v string) *GetVpcPeerConnectionAttributeResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *GetVpcPeerConnectionAttributeResponseBody) SetDynamicMessage(v string) *GetVpcPeerConnectionAttributeResponseBody {
-	s.DynamicMessage = &v
 	return s
 }
 
@@ -594,18 +418,8 @@ func (s *GetVpcPeerConnectionAttributeResponseBody) SetGmtModified(v string) *Ge
 	return s
 }
 
-func (s *GetVpcPeerConnectionAttributeResponseBody) SetHttpStatusCode(v int32) *GetVpcPeerConnectionAttributeResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *GetVpcPeerConnectionAttributeResponseBody) SetInstanceId(v string) *GetVpcPeerConnectionAttributeResponseBody {
 	s.InstanceId = &v
-	return s
-}
-
-func (s *GetVpcPeerConnectionAttributeResponseBody) SetMessage(v string) *GetVpcPeerConnectionAttributeResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -636,11 +450,6 @@ func (s *GetVpcPeerConnectionAttributeResponseBody) SetResourceGroupId(v string)
 
 func (s *GetVpcPeerConnectionAttributeResponseBody) SetStatus(v string) *GetVpcPeerConnectionAttributeResponseBody {
 	s.Status = &v
-	return s
-}
-
-func (s *GetVpcPeerConnectionAttributeResponseBody) SetSuccess(v bool) *GetVpcPeerConnectionAttributeResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -863,15 +672,9 @@ func (s *ListVpcPeerConnectionsShrinkRequest) SetVpcIdShrink(v string) *ListVpcP
 }
 
 type ListVpcPeerConnectionsResponseBody struct {
-	Code            *string                                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode     *string                                              `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage  *string                                              `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode  *int32                                               `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	MaxResults      *int32                                               `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	Message         *string                                              `json:"Message,omitempty" xml:"Message,omitempty"`
 	NextToken       *string                                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId       *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success         *bool                                                `json:"Success,omitempty" xml:"Success,omitempty"`
 	TotalCount      *int32                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 	VpcPeerConnects []*ListVpcPeerConnectionsResponseBodyVpcPeerConnects `json:"VpcPeerConnects,omitempty" xml:"VpcPeerConnects,omitempty" type:"Repeated"`
 }
@@ -884,33 +687,8 @@ func (s ListVpcPeerConnectionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListVpcPeerConnectionsResponseBody) SetCode(v string) *ListVpcPeerConnectionsResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListVpcPeerConnectionsResponseBody) SetDynamicCode(v string) *ListVpcPeerConnectionsResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *ListVpcPeerConnectionsResponseBody) SetDynamicMessage(v string) *ListVpcPeerConnectionsResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *ListVpcPeerConnectionsResponseBody) SetHttpStatusCode(v int32) *ListVpcPeerConnectionsResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
 func (s *ListVpcPeerConnectionsResponseBody) SetMaxResults(v int32) *ListVpcPeerConnectionsResponseBody {
 	s.MaxResults = &v
-	return s
-}
-
-func (s *ListVpcPeerConnectionsResponseBody) SetMessage(v string) *ListVpcPeerConnectionsResponseBody {
-	s.Message = &v
 	return s
 }
 
@@ -921,11 +699,6 @@ func (s *ListVpcPeerConnectionsResponseBody) SetNextToken(v string) *ListVpcPeer
 
 func (s *ListVpcPeerConnectionsResponseBody) SetRequestId(v string) *ListVpcPeerConnectionsResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ListVpcPeerConnectionsResponseBody) SetSuccess(v bool) *ListVpcPeerConnectionsResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -1175,13 +948,7 @@ func (s *ModifyVpcPeerConnectionRequest) SetName(v string) *ModifyVpcPeerConnect
 }
 
 type ModifyVpcPeerConnectionResponseBody struct {
-	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	DynamicCode    *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ModifyVpcPeerConnectionResponseBody) String() string {
@@ -1192,38 +959,8 @@ func (s ModifyVpcPeerConnectionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ModifyVpcPeerConnectionResponseBody) SetCode(v string) *ModifyVpcPeerConnectionResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ModifyVpcPeerConnectionResponseBody) SetDynamicCode(v string) *ModifyVpcPeerConnectionResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *ModifyVpcPeerConnectionResponseBody) SetDynamicMessage(v string) *ModifyVpcPeerConnectionResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *ModifyVpcPeerConnectionResponseBody) SetHttpStatusCode(v int32) *ModifyVpcPeerConnectionResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ModifyVpcPeerConnectionResponseBody) SetMessage(v string) *ModifyVpcPeerConnectionResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *ModifyVpcPeerConnectionResponseBody) SetRequestId(v string) *ModifyVpcPeerConnectionResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *ModifyVpcPeerConnectionResponseBody) SetSuccess(v bool) *ModifyVpcPeerConnectionResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -1251,15 +988,10 @@ func (s *ModifyVpcPeerConnectionResponse) SetBody(v *ModifyVpcPeerConnectionResp
 }
 
 type RejectVpcPeerConnectionRequest struct {
-	CallerBidLoginEmail  *string `json:"CallerBidLoginEmail,omitempty" xml:"CallerBidLoginEmail,omitempty"`
-	CallerUidLoginEmail  *string `json:"CallerUidLoginEmail,omitempty" xml:"CallerUidLoginEmail,omitempty"`
 	Channel              *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun               *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerIdLoginEmail    *string `json:"OwnerIdLoginEmail,omitempty" xml:"OwnerIdLoginEmail,omitempty"`
-	RequestContent       *string `json:"RequestContent,omitempty" xml:"RequestContent,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 }
 
@@ -1269,16 +1001,6 @@ func (s RejectVpcPeerConnectionRequest) String() string {
 
 func (s RejectVpcPeerConnectionRequest) GoString() string {
 	return s.String()
-}
-
-func (s *RejectVpcPeerConnectionRequest) SetCallerBidLoginEmail(v string) *RejectVpcPeerConnectionRequest {
-	s.CallerBidLoginEmail = &v
-	return s
-}
-
-func (s *RejectVpcPeerConnectionRequest) SetCallerUidLoginEmail(v string) *RejectVpcPeerConnectionRequest {
-	s.CallerUidLoginEmail = &v
-	return s
 }
 
 func (s *RejectVpcPeerConnectionRequest) SetChannel(v string) *RejectVpcPeerConnectionRequest {
@@ -1301,35 +1023,13 @@ func (s *RejectVpcPeerConnectionRequest) SetInstanceId(v string) *RejectVpcPeerC
 	return s
 }
 
-func (s *RejectVpcPeerConnectionRequest) SetOwnerAccount(v string) *RejectVpcPeerConnectionRequest {
-	s.OwnerAccount = &v
-	return s
-}
-
-func (s *RejectVpcPeerConnectionRequest) SetOwnerIdLoginEmail(v string) *RejectVpcPeerConnectionRequest {
-	s.OwnerIdLoginEmail = &v
-	return s
-}
-
-func (s *RejectVpcPeerConnectionRequest) SetRequestContent(v string) *RejectVpcPeerConnectionRequest {
-	s.RequestContent = &v
-	return s
-}
-
 func (s *RejectVpcPeerConnectionRequest) SetResourceOwnerAccount(v string) *RejectVpcPeerConnectionRequest {
 	s.ResourceOwnerAccount = &v
 	return s
 }
 
 type RejectVpcPeerConnectionResponseBody struct {
-	Code           *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	DynamicCode    *string                `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage *string                `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32                 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s RejectVpcPeerConnectionResponseBody) String() string {
@@ -1340,43 +1040,8 @@ func (s RejectVpcPeerConnectionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RejectVpcPeerConnectionResponseBody) SetCode(v string) *RejectVpcPeerConnectionResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *RejectVpcPeerConnectionResponseBody) SetData(v map[string]interface{}) *RejectVpcPeerConnectionResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *RejectVpcPeerConnectionResponseBody) SetDynamicCode(v string) *RejectVpcPeerConnectionResponseBody {
-	s.DynamicCode = &v
-	return s
-}
-
-func (s *RejectVpcPeerConnectionResponseBody) SetDynamicMessage(v string) *RejectVpcPeerConnectionResponseBody {
-	s.DynamicMessage = &v
-	return s
-}
-
-func (s *RejectVpcPeerConnectionResponseBody) SetHttpStatusCode(v int32) *RejectVpcPeerConnectionResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *RejectVpcPeerConnectionResponseBody) SetMessage(v string) *RejectVpcPeerConnectionResponseBody {
-	s.Message = &v
-	return s
-}
-
 func (s *RejectVpcPeerConnectionResponseBody) SetRequestId(v string) *RejectVpcPeerConnectionResponseBody {
 	s.RequestId = &v
-	return s
-}
-
-func (s *RejectVpcPeerConnectionResponseBody) SetSuccess(v bool) *RejectVpcPeerConnectionResponseBody {
-	s.Success = &v
 	return s
 }
 
@@ -1456,14 +1121,6 @@ func (client *Client) AcceptVpcPeerConnectionWithOptions(request *AcceptVpcPeerC
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CallerBidLoginEmail)) {
-		body["CallerBidLoginEmail"] = request.CallerBidLoginEmail
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CallerUidLoginEmail)) {
-		body["CallerUidLoginEmail"] = request.CallerUidLoginEmail
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Channel)) {
 		body["Channel"] = request.Channel
 	}
@@ -1478,14 +1135,6 @@ func (client *Client) AcceptVpcPeerConnectionWithOptions(request *AcceptVpcPeerC
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
-		body["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerIdLoginEmail)) {
-		body["OwnerIdLoginEmail"] = request.OwnerIdLoginEmail
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RequestContent)) {
@@ -1628,6 +1277,10 @@ func (client *Client) DeleteVpcPeerConnectionWithOptions(request *DeleteVpcPeerC
 		body["DryRun"] = request.DryRun
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Force)) {
+		body["Force"] = request.Force
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
 	}
@@ -1672,14 +1325,6 @@ func (client *Client) GetVpcPeerConnectionAttributeWithOptions(request *GetVpcPe
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CallerBidLoginEmail)) {
-		body["CallerBidLoginEmail"] = request.CallerBidLoginEmail
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CallerUidLoginEmail)) {
-		body["CallerUidLoginEmail"] = request.CallerUidLoginEmail
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Channel)) {
 		body["Channel"] = request.Channel
 	}
@@ -1694,14 +1339,6 @@ func (client *Client) GetVpcPeerConnectionAttributeWithOptions(request *GetVpcPe
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
-		body["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerIdLoginEmail)) {
-		body["OwnerIdLoginEmail"] = request.OwnerIdLoginEmail
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RequestContent)) {
@@ -1898,14 +1535,6 @@ func (client *Client) RejectVpcPeerConnectionWithOptions(request *RejectVpcPeerC
 		return _result, _err
 	}
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CallerBidLoginEmail)) {
-		body["CallerBidLoginEmail"] = request.CallerBidLoginEmail
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CallerUidLoginEmail)) {
-		body["CallerUidLoginEmail"] = request.CallerUidLoginEmail
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Channel)) {
 		body["Channel"] = request.Channel
 	}
@@ -1920,18 +1549,6 @@ func (client *Client) RejectVpcPeerConnectionWithOptions(request *RejectVpcPeerC
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		body["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
-		body["OwnerAccount"] = request.OwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OwnerIdLoginEmail)) {
-		body["OwnerIdLoginEmail"] = request.OwnerIdLoginEmail
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RequestContent)) {
-		body["RequestContent"] = request.RequestContent
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
