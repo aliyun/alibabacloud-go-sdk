@@ -4810,6 +4810,8 @@ func (s *GetLiveRoomUserStatisticsResponseBodyResult) SetUserStatisticsList(v []
 }
 
 type GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList struct {
+	CommentCount *int32 `json:"CommentCount,omitempty" xml:"CommentCount,omitempty"`
+	LikeCount    *int32 `json:"LikeCount,omitempty" xml:"LikeCount,omitempty"`
 	// 用户ID。
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 	// 观看时长，单位：毫秒。
@@ -4822,6 +4824,16 @@ func (s GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList) String() 
 
 func (s GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList) GoString() string {
 	return s.String()
+}
+
+func (s *GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList) SetCommentCount(v int32) *GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList {
+	s.CommentCount = &v
+	return s
+}
+
+func (s *GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList) SetLikeCount(v int32) *GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList {
+	s.LikeCount = &v
+	return s
 }
 
 func (s *GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList) SetUserId(v string) *GetLiveRoomUserStatisticsResponseBodyResultUserStatisticsList {
