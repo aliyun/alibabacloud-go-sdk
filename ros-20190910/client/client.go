@@ -3211,8 +3211,9 @@ func (s *GetFeatureDetailsRequest) SetRegionId(v string) *GetFeatureDetailsReque
 }
 
 type GetFeatureDetailsResponseBody struct {
-	RequestId *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Terraform *GetFeatureDetailsResponseBodyTerraform `json:"Terraform,omitempty" xml:"Terraform,omitempty" type:"Struct"`
+	RequestId       *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TemplateScratch *GetFeatureDetailsResponseBodyTemplateScratch `json:"TemplateScratch,omitempty" xml:"TemplateScratch,omitempty" type:"Struct"`
+	Terraform       *GetFeatureDetailsResponseBodyTerraform       `json:"Terraform,omitempty" xml:"Terraform,omitempty" type:"Struct"`
 }
 
 func (s GetFeatureDetailsResponseBody) String() string {
@@ -3228,8 +3229,71 @@ func (s *GetFeatureDetailsResponseBody) SetRequestId(v string) *GetFeatureDetail
 	return s
 }
 
+func (s *GetFeatureDetailsResponseBody) SetTemplateScratch(v *GetFeatureDetailsResponseBodyTemplateScratch) *GetFeatureDetailsResponseBody {
+	s.TemplateScratch = v
+	return s
+}
+
 func (s *GetFeatureDetailsResponseBody) SetTerraform(v *GetFeatureDetailsResponseBodyTerraform) *GetFeatureDetailsResponseBody {
 	s.Terraform = v
+	return s
+}
+
+type GetFeatureDetailsResponseBodyTemplateScratch struct {
+	SupportedResourceTypes []*GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes `json:"SupportedResourceTypes,omitempty" xml:"SupportedResourceTypes,omitempty" type:"Repeated"`
+}
+
+func (s GetFeatureDetailsResponseBodyTemplateScratch) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureDetailsResponseBodyTemplateScratch) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureDetailsResponseBodyTemplateScratch) SetSupportedResourceTypes(v []*GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes) *GetFeatureDetailsResponseBodyTemplateScratch {
+	s.SupportedResourceTypes = v
+	return s
+}
+
+type GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes struct {
+	ResourceType                 *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SourceResourceGroupSupported *bool   `json:"SourceResourceGroupSupported,omitempty" xml:"SourceResourceGroupSupported,omitempty"`
+	SourceResourcesSupported     *bool   `json:"SourceResourcesSupported,omitempty" xml:"SourceResourcesSupported,omitempty"`
+	SourceSupported              *bool   `json:"SourceSupported,omitempty" xml:"SourceSupported,omitempty"`
+	SourceTagSupported           *bool   `json:"SourceTagSupported,omitempty" xml:"SourceTagSupported,omitempty"`
+}
+
+func (s GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes) SetResourceType(v string) *GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes) SetSourceResourceGroupSupported(v bool) *GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes {
+	s.SourceResourceGroupSupported = &v
+	return s
+}
+
+func (s *GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes) SetSourceResourcesSupported(v bool) *GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes {
+	s.SourceResourcesSupported = &v
+	return s
+}
+
+func (s *GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes) SetSourceSupported(v bool) *GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes {
+	s.SourceSupported = &v
+	return s
+}
+
+func (s *GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes) SetSourceTagSupported(v bool) *GetFeatureDetailsResponseBodyTemplateScratchSupportedResourceTypes {
+	s.SourceTagSupported = &v
 	return s
 }
 
@@ -10284,6 +10348,7 @@ type UpdateStackRequest struct {
 	RamRoleName                 *string                         `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
 	RegionId                    *string                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReplacementOption           *string                         `json:"ReplacementOption,omitempty" xml:"ReplacementOption,omitempty"`
+	ResourceGroupId             *string                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	StackId                     *string                         `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	StackPolicyBody             *string                         `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
 	StackPolicyDuringUpdateBody *string                         `json:"StackPolicyDuringUpdateBody,omitempty" xml:"StackPolicyDuringUpdateBody,omitempty"`
@@ -10338,6 +10403,11 @@ func (s *UpdateStackRequest) SetRegionId(v string) *UpdateStackRequest {
 
 func (s *UpdateStackRequest) SetReplacementOption(v string) *UpdateStackRequest {
 	s.ReplacementOption = &v
+	return s
+}
+
+func (s *UpdateStackRequest) SetResourceGroupId(v string) *UpdateStackRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -15837,6 +15907,10 @@ func (client *Client) UpdateStackWithOptions(request *UpdateStackRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.ReplacementOption)) {
 		query["ReplacementOption"] = request.ReplacementOption
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StackId)) {
