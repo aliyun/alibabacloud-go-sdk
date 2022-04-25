@@ -229,11 +229,9 @@ type DescribeRegionsRequest struct {
 	AcceptLanguage       *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	ZoneId               *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s DescribeRegionsRequest) String() string {
@@ -259,11 +257,6 @@ func (s *DescribeRegionsRequest) SetOwnerId(v int64) *DescribeRegionsRequest {
 	return s
 }
 
-func (s *DescribeRegionsRequest) SetRegionId(v string) *DescribeRegionsRequest {
-	s.RegionId = &v
-	return s
-}
-
 func (s *DescribeRegionsRequest) SetResourceOwnerAccount(v string) *DescribeRegionsRequest {
 	s.ResourceOwnerAccount = &v
 	return s
@@ -276,11 +269,6 @@ func (s *DescribeRegionsRequest) SetResourceOwnerId(v int64) *DescribeRegionsReq
 
 func (s *DescribeRegionsRequest) SetSecurityToken(v string) *DescribeRegionsRequest {
 	s.SecurityToken = &v
-	return s
-}
-
-func (s *DescribeRegionsRequest) SetZoneId(v string) *DescribeRegionsRequest {
-	s.ZoneId = &v
 	return s
 }
 
@@ -364,7 +352,6 @@ type GetInstanceIpWhiteListRequest struct {
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -395,11 +382,6 @@ func (s *GetInstanceIpWhiteListRequest) SetOwnerAccount(v string) *GetInstanceIp
 
 func (s *GetInstanceIpWhiteListRequest) SetOwnerId(v int64) *GetInstanceIpWhiteListRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *GetInstanceIpWhiteListRequest) SetRegionId(v string) *GetInstanceIpWhiteListRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -533,8 +515,12 @@ type GetLindormInstanceResponseBody struct {
 	DiskCategory        *string                                     `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
 	DiskThreshold       *string                                     `json:"DiskThreshold,omitempty" xml:"DiskThreshold,omitempty"`
 	DiskUsage           *string                                     `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
+	EnableCdc           *bool                                       `json:"EnableCdc,omitempty" xml:"EnableCdc,omitempty"`
 	EnableCompute       *bool                                       `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
 	EnableKms           *bool                                       `json:"EnableKms,omitempty" xml:"EnableKms,omitempty"`
+	EnableSSL           *bool                                       `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
+	EnableShs           *bool                                       `json:"EnableShs,omitempty" xml:"EnableShs,omitempty"`
+	EnableStream        *bool                                       `json:"EnableStream,omitempty" xml:"EnableStream,omitempty"`
 	EngineList          []*GetLindormInstanceResponseBodyEngineList `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
 	EngineType          *int32                                      `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
 	ExpireTime          *string                                     `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
@@ -543,6 +529,8 @@ type GetLindormInstanceResponseBody struct {
 	InstanceId          *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceStatus      *string                                     `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
 	InstanceStorage     *string                                     `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
+	MaintainEndTime     *string                                     `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	MaintainStartTime   *string                                     `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
 	NetworkType         *string                                     `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	PayType             *string                                     `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	RegionId            *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -606,6 +594,11 @@ func (s *GetLindormInstanceResponseBody) SetDiskUsage(v string) *GetLindormInsta
 	return s
 }
 
+func (s *GetLindormInstanceResponseBody) SetEnableCdc(v bool) *GetLindormInstanceResponseBody {
+	s.EnableCdc = &v
+	return s
+}
+
 func (s *GetLindormInstanceResponseBody) SetEnableCompute(v bool) *GetLindormInstanceResponseBody {
 	s.EnableCompute = &v
 	return s
@@ -613,6 +606,21 @@ func (s *GetLindormInstanceResponseBody) SetEnableCompute(v bool) *GetLindormIns
 
 func (s *GetLindormInstanceResponseBody) SetEnableKms(v bool) *GetLindormInstanceResponseBody {
 	s.EnableKms = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetEnableSSL(v bool) *GetLindormInstanceResponseBody {
+	s.EnableSSL = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetEnableShs(v bool) *GetLindormInstanceResponseBody {
+	s.EnableShs = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetEnableStream(v bool) *GetLindormInstanceResponseBody {
+	s.EnableStream = &v
 	return s
 }
 
@@ -653,6 +661,16 @@ func (s *GetLindormInstanceResponseBody) SetInstanceStatus(v string) *GetLindorm
 
 func (s *GetLindormInstanceResponseBody) SetInstanceStorage(v string) *GetLindormInstanceResponseBody {
 	s.InstanceStorage = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetMaintainEndTime(v string) *GetLindormInstanceResponseBody {
+	s.MaintainEndTime = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBody) SetMaintainStartTime(v string) *GetLindormInstanceResponseBody {
+	s.MaintainStartTime = &v
 	return s
 }
 
@@ -936,17 +954,18 @@ func (s *GetLindormInstanceEngineListResponse) SetBody(v *GetLindormInstanceEngi
 }
 
 type GetLindormInstanceListRequest struct {
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	QueryStr             *string `json:"QueryStr,omitempty" xml:"QueryStr,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	ServiceType          *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	SupportEngine        *int32  `json:"SupportEngine,omitempty" xml:"SupportEngine,omitempty"`
+	OwnerAccount         *string                             `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                              `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber           *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryStr             *string                             `json:"QueryStr,omitempty" xml:"QueryStr,omitempty"`
+	RegionId             *string                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount *string                             `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                              `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken        *string                             `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	ServiceType          *string                             `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	SupportEngine        *int32                              `json:"SupportEngine,omitempty" xml:"SupportEngine,omitempty"`
+	Tag                  []*GetLindormInstanceListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
 func (s GetLindormInstanceListRequest) String() string {
@@ -1012,6 +1031,34 @@ func (s *GetLindormInstanceListRequest) SetSupportEngine(v int32) *GetLindormIns
 	return s
 }
 
+func (s *GetLindormInstanceListRequest) SetTag(v []*GetLindormInstanceListRequestTag) *GetLindormInstanceListRequest {
+	s.Tag = v
+	return s
+}
+
+type GetLindormInstanceListRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetLindormInstanceListRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormInstanceListRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormInstanceListRequestTag) SetKey(v string) *GetLindormInstanceListRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *GetLindormInstanceListRequestTag) SetValue(v string) *GetLindormInstanceListRequestTag {
+	s.Value = &v
+	return s
+}
+
 type GetLindormInstanceListResponseBody struct {
 	InstanceList []*GetLindormInstanceListResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
 	PageNumber   *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
@@ -1054,22 +1101,24 @@ func (s *GetLindormInstanceListResponseBody) SetTotal(v int32) *GetLindormInstan
 }
 
 type GetLindormInstanceListResponseBodyInstanceList struct {
-	AliUid              *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	CreateMilliseconds  *int64  `json:"CreateMilliseconds,omitempty" xml:"CreateMilliseconds,omitempty"`
-	CreateTime          *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EngineType          *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	ExpireTime          *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	ExpiredMilliseconds *int64  `json:"ExpiredMilliseconds,omitempty" xml:"ExpiredMilliseconds,omitempty"`
-	InstanceAlias       *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceStatus      *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	InstanceStorage     *string `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
-	NetworkType         *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	PayType             *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ServiceType         *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	VpcId               *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneId              *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AliUid              *int64                                                `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	CreateMilliseconds  *int64                                                `json:"CreateMilliseconds,omitempty" xml:"CreateMilliseconds,omitempty"`
+	CreateTime          *string                                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	EnableStream        *bool                                                 `json:"EnableStream,omitempty" xml:"EnableStream,omitempty"`
+	EngineType          *string                                               `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
+	ExpireTime          *string                                               `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExpiredMilliseconds *int64                                                `json:"ExpiredMilliseconds,omitempty" xml:"ExpiredMilliseconds,omitempty"`
+	InstanceAlias       *string                                               `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	InstanceId          *string                                               `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceStatus      *string                                               `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InstanceStorage     *string                                               `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
+	NetworkType         *string                                               `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	PayType             *string                                               `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	RegionId            *string                                               `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceType         *string                                               `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Tags                []*GetLindormInstanceListResponseBodyInstanceListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	VpcId               *string                                               `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneId              *string                                               `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetLindormInstanceListResponseBodyInstanceList) String() string {
@@ -1092,6 +1141,11 @@ func (s *GetLindormInstanceListResponseBodyInstanceList) SetCreateMilliseconds(v
 
 func (s *GetLindormInstanceListResponseBodyInstanceList) SetCreateTime(v string) *GetLindormInstanceListResponseBodyInstanceList {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *GetLindormInstanceListResponseBodyInstanceList) SetEnableStream(v bool) *GetLindormInstanceListResponseBodyInstanceList {
+	s.EnableStream = &v
 	return s
 }
 
@@ -1150,6 +1204,11 @@ func (s *GetLindormInstanceListResponseBodyInstanceList) SetServiceType(v string
 	return s
 }
 
+func (s *GetLindormInstanceListResponseBodyInstanceList) SetTags(v []*GetLindormInstanceListResponseBodyInstanceListTags) *GetLindormInstanceListResponseBodyInstanceList {
+	s.Tags = v
+	return s
+}
+
 func (s *GetLindormInstanceListResponseBodyInstanceList) SetVpcId(v string) *GetLindormInstanceListResponseBodyInstanceList {
 	s.VpcId = &v
 	return s
@@ -1157,6 +1216,29 @@ func (s *GetLindormInstanceListResponseBodyInstanceList) SetVpcId(v string) *Get
 
 func (s *GetLindormInstanceListResponseBodyInstanceList) SetZoneId(v string) *GetLindormInstanceListResponseBodyInstanceList {
 	s.ZoneId = &v
+	return s
+}
+
+type GetLindormInstanceListResponseBodyInstanceListTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetLindormInstanceListResponseBodyInstanceListTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLindormInstanceListResponseBodyInstanceListTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormInstanceListResponseBodyInstanceListTags) SetKey(v string) *GetLindormInstanceListResponseBodyInstanceListTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetLindormInstanceListResponseBodyInstanceListTags) SetValue(v string) *GetLindormInstanceListResponseBodyInstanceListTags {
+	s.Value = &v
 	return s
 }
 
@@ -1183,11 +1265,191 @@ func (s *GetLindormInstanceListResponse) SetBody(v *GetLindormInstanceListRespon
 	return s
 }
 
+type ListTagResourcesRequest struct {
+	NextToken            *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OwnerAccount         *string                       `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                        `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	RegionId             *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceId           []*string                     `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string                       `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                        `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceType         *string                       `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SecurityToken        *string                       `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Tag                  []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetOwnerAccount(v string) *ListTagResourcesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetOwnerId(v int64) *ListTagResourcesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceOwnerAccount(v string) *ListTagResourcesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceOwnerId(v int64) *ListTagResourcesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetSecurityToken(v string) *ListTagResourcesRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type ListTagResourcesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type ListTagResourcesResponseBody struct {
+	NextToken    *string                                     `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+	s.TagResources = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResources struct {
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	TagKey       *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue     *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceId(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagValue = &v
+	return s
+}
+
+type ListTagResourcesResponse struct {
+	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type ReleaseLindormInstanceRequest struct {
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
@@ -1213,11 +1475,6 @@ func (s *ReleaseLindormInstanceRequest) SetOwnerAccount(v string) *ReleaseLindor
 
 func (s *ReleaseLindormInstanceRequest) SetOwnerId(v int64) *ReleaseLindormInstanceRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *ReleaseLindormInstanceRequest) SetRegionId(v string) *ReleaseLindormInstanceRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1276,12 +1533,238 @@ func (s *ReleaseLindormInstanceResponse) SetBody(v *ReleaseLindormInstanceRespon
 	return s
 }
 
+type TagResourcesRequest struct {
+	OwnerAccount         *string                   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64                    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceId           []*string                 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string                   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64                    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceType         *string                   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SecurityToken        *string                   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Tag                  []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s TagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequest) SetOwnerAccount(v string) *TagResourcesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetOwnerId(v int64) *TagResourcesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceOwnerAccount(v string) *TagResourcesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceOwnerId(v int64) *TagResourcesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetSecurityToken(v string) *TagResourcesRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesRequest {
+	s.Tag = v
+	return s
+}
+
+type TagResourcesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s TagResourcesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequestTag) SetKey(v string) *TagResourcesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type TagResourcesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TagResourcesResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
+	s.Body = v
+	return s
+}
+
+type UntagResourcesRequest struct {
+	All                  *bool     `json:"All,omitempty" xml:"All,omitempty"`
+	OwnerAccount         *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId              *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
+	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	ResourceType         *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SecurityToken        *string   `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	TagKey               []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
+}
+
+func (s UntagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
+	s.All = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetOwnerAccount(v string) *UntagResourcesRequest {
+	s.OwnerAccount = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetOwnerId(v int64) *UntagResourcesRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceOwnerAccount(v string) *UntagResourcesRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceOwnerId(v int64) *UntagResourcesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetSecurityToken(v string) *UntagResourcesRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
+	s.TagKey = v
+	return s
+}
+
+type UntagResourcesResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UntagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UntagResourcesResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UntagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UntagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateInstanceIpWhiteListRequest struct {
 	GroupName            *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
 	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityIpList       *string `json:"SecurityIpList,omitempty" xml:"SecurityIpList,omitempty"`
@@ -1313,11 +1796,6 @@ func (s *UpdateInstanceIpWhiteListRequest) SetOwnerAccount(v string) *UpdateInst
 
 func (s *UpdateInstanceIpWhiteListRequest) SetOwnerId(v int64) *UpdateInstanceIpWhiteListRequest {
 	s.OwnerId = &v
-	return s
-}
-
-func (s *UpdateInstanceIpWhiteListRequest) SetRegionId(v string) *UpdateInstanceIpWhiteListRequest {
-	s.RegionId = &v
 	return s
 }
 
@@ -1690,31 +2168,106 @@ func (client *Client) CreateLindormInstanceWithOptions(request *CreateLindormIns
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ColdStorage"] = request.ColdStorage
-	query["CoreSpec"] = request.CoreSpec
-	query["DiskCategory"] = request.DiskCategory
-	query["Duration"] = request.Duration
-	query["FilestoreNum"] = request.FilestoreNum
-	query["FilestoreSpec"] = request.FilestoreSpec
-	query["InstanceAlias"] = request.InstanceAlias
-	query["InstanceStorage"] = request.InstanceStorage
-	query["LindormNum"] = request.LindormNum
-	query["LindormSpec"] = request.LindormSpec
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PayType"] = request.PayType
-	query["PricingCycle"] = request.PricingCycle
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecurityToken"] = request.SecurityToken
-	query["SolrNum"] = request.SolrNum
-	query["SolrSpec"] = request.SolrSpec
-	query["TsdbNum"] = request.TsdbNum
-	query["TsdbSpec"] = request.TsdbSpec
-	query["VPCId"] = request.VPCId
-	query["VSwitchId"] = request.VSwitchId
-	query["ZoneId"] = request.ZoneId
+	if !tea.BoolValue(util.IsUnset(request.ColdStorage)) {
+		query["ColdStorage"] = request.ColdStorage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreSpec)) {
+		query["CoreSpec"] = request.CoreSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskCategory)) {
+		query["DiskCategory"] = request.DiskCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		query["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilestoreNum)) {
+		query["FilestoreNum"] = request.FilestoreNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilestoreSpec)) {
+		query["FilestoreSpec"] = request.FilestoreSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceAlias)) {
+		query["InstanceAlias"] = request.InstanceAlias
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceStorage)) {
+		query["InstanceStorage"] = request.InstanceStorage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LindormNum)) {
+		query["LindormNum"] = request.LindormNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LindormSpec)) {
+		query["LindormSpec"] = request.LindormSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PricingCycle)) {
+		query["PricingCycle"] = request.PricingCycle
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SolrNum)) {
+		query["SolrNum"] = request.SolrNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SolrSpec)) {
+		query["SolrSpec"] = request.SolrSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TsdbNum)) {
+		query["TsdbNum"] = request.TsdbNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TsdbSpec)) {
+		query["TsdbSpec"] = request.TsdbSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VPCId)) {
+		query["VPCId"] = request.VPCId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1755,12 +2308,30 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AcceptLanguage"] = request.AcceptLanguage
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1801,13 +2372,34 @@ func (client *Client) GetInstanceIpWhiteListWithOptions(request *GetInstanceIpWh
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GroupName"] = request.GroupName
-	query["InstanceId"] = request.InstanceId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1848,13 +2440,34 @@ func (client *Client) GetLindormInstanceWithOptions(request *GetLindormInstanceR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1895,13 +2508,34 @@ func (client *Client) GetLindormInstanceEngineListWithOptions(request *GetLindor
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1942,17 +2576,54 @@ func (client *Client) GetLindormInstanceListWithOptions(request *GetLindormInsta
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["QueryStr"] = request.QueryStr
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecurityToken"] = request.SecurityToken
-	query["ServiceType"] = request.ServiceType
-	query["SupportEngine"] = request.SupportEngine
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryStr)) {
+		query["QueryStr"] = request.QueryStr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceType)) {
+		query["ServiceType"] = request.ServiceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SupportEngine)) {
+		query["SupportEngine"] = request.SupportEngine
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -1987,18 +2658,116 @@ func (client *Client) GetLindormInstanceList(request *GetLindormInstanceListRequ
 	return _result, _err
 }
 
+func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ReleaseLindormInstanceWithOptions(request *ReleaseLindormInstanceRequest, runtime *util.RuntimeOptions) (_result *ReleaseLindormInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["InstanceId"] = request.InstanceId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2033,20 +2802,192 @@ func (client *Client) ReleaseLindormInstance(request *ReleaseLindormInstanceRequ
 	return _result, _err
 }
 
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
+		query["TagKey"] = request.TagKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResources"),
+		Version:     tea.String("2020-06-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UntagResourcesResponse{}
+	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateInstanceIpWhiteListWithOptions(request *UpdateInstanceIpWhiteListRequest, runtime *util.RuntimeOptions) (_result *UpdateInstanceIpWhiteListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GroupName"] = request.GroupName
-	query["InstanceId"] = request.InstanceId
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecurityIpList"] = request.SecurityIpList
-	query["SecurityToken"] = request.SecurityToken
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["GroupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityIpList)) {
+		query["SecurityIpList"] = request.SecurityIpList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -2087,31 +3028,106 @@ func (client *Client) UpgradeLindormInstanceWithOptions(request *UpgradeLindormI
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClusterStorage"] = request.ClusterStorage
-	query["ColdStorage"] = request.ColdStorage
-	query["CoreNum"] = request.CoreNum
-	query["CoreSpec"] = request.CoreSpec
-	query["FilestoreNum"] = request.FilestoreNum
-	query["FilestoreSpec"] = request.FilestoreSpec
-	query["InstanceId"] = request.InstanceId
-	query["LindormNum"] = request.LindormNum
-	query["LindormSpec"] = request.LindormSpec
-	query["LtsCoreNum"] = request.LtsCoreNum
-	query["LtsCoreSpec"] = request.LtsCoreSpec
-	query["OwnerAccount"] = request.OwnerAccount
-	query["OwnerId"] = request.OwnerId
-	query["PhoenixCoreNum"] = request.PhoenixCoreNum
-	query["PhoenixCoreSpec"] = request.PhoenixCoreSpec
-	query["RegionId"] = request.RegionId
-	query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	query["ResourceOwnerId"] = request.ResourceOwnerId
-	query["SecurityToken"] = request.SecurityToken
-	query["SolrNum"] = request.SolrNum
-	query["SolrSpec"] = request.SolrSpec
-	query["TsdbNum"] = request.TsdbNum
-	query["TsdbSpec"] = request.TsdbSpec
-	query["UpgradeType"] = request.UpgradeType
-	query["ZoneId"] = request.ZoneId
+	if !tea.BoolValue(util.IsUnset(request.ClusterStorage)) {
+		query["ClusterStorage"] = request.ClusterStorage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ColdStorage)) {
+		query["ColdStorage"] = request.ColdStorage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreNum)) {
+		query["CoreNum"] = request.CoreNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CoreSpec)) {
+		query["CoreSpec"] = request.CoreSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilestoreNum)) {
+		query["FilestoreNum"] = request.FilestoreNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilestoreSpec)) {
+		query["FilestoreSpec"] = request.FilestoreSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LindormNum)) {
+		query["LindormNum"] = request.LindormNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LindormSpec)) {
+		query["LindormSpec"] = request.LindormSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LtsCoreNum)) {
+		query["LtsCoreNum"] = request.LtsCoreNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LtsCoreSpec)) {
+		query["LtsCoreSpec"] = request.LtsCoreSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
+		query["OwnerAccount"] = request.OwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoenixCoreNum)) {
+		query["PhoenixCoreNum"] = request.PhoenixCoreNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoenixCoreSpec)) {
+		query["PhoenixCoreSpec"] = request.PhoenixCoreSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SolrNum)) {
+		query["SolrNum"] = request.SolrNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SolrSpec)) {
+		query["SolrSpec"] = request.SolrSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TsdbNum)) {
+		query["TsdbNum"] = request.TsdbNum
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TsdbSpec)) {
+		query["TsdbSpec"] = request.TsdbSpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UpgradeType)) {
+		query["UpgradeType"] = request.UpgradeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
