@@ -1954,6 +1954,64 @@ func (s *DeleteWorkspaceResponse) SetBody(v *DeleteWorkspaceResponseBody) *Delet
 	return s
 }
 
+type DeleteWorkspaceResourceRequest struct {
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
+}
+
+func (s DeleteWorkspaceResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWorkspaceResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWorkspaceResourceRequest) SetProductType(v string) *DeleteWorkspaceResourceRequest {
+	s.ProductType = &v
+	return s
+}
+
+type DeleteWorkspaceResourceResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+}
+
+func (s DeleteWorkspaceResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWorkspaceResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWorkspaceResourceResponseBody) SetRequestId(v string) *DeleteWorkspaceResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteWorkspaceResourceResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteWorkspaceResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteWorkspaceResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteWorkspaceResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteWorkspaceResourceResponse) SetHeaders(v map[string]*string) *DeleteWorkspaceResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteWorkspaceResourceResponse) SetBody(v *DeleteWorkspaceResourceResponseBody) *DeleteWorkspaceResourceResponse {
+	s.Body = v
+	return s
+}
+
 type GetCodeSourceResponseBody struct {
 	// 代码是否是本工作空间内公开的，可选值PRIVATE、PUBLIC
 	Accessibility *string `json:"Accessibility,omitempty" xml:"Accessibility,omitempty"`
@@ -2365,6 +2423,23 @@ func (s *GetDatasetsStatisticsResponse) SetHeaders(v map[string]*string) *GetDat
 
 func (s *GetDatasetsStatisticsResponse) SetBody(v *GetDatasetsStatisticsResponseBody) *GetDatasetsStatisticsResponse {
 	s.Body = v
+	return s
+}
+
+type GetDefaultWorkspaceRequest struct {
+	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+}
+
+func (s GetDefaultWorkspaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDefaultWorkspaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDefaultWorkspaceRequest) SetVerbose(v bool) *GetDefaultWorkspaceRequest {
+	s.Verbose = &v
 	return s
 }
 
@@ -3073,6 +3148,23 @@ func (s *GetRoleStatisticsResponse) SetBody(v *GetRoleStatisticsResponseBody) *G
 	return s
 }
 
+type GetWorkspaceRequest struct {
+	Verbose *bool `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
+}
+
+func (s GetWorkspaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkspaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkspaceRequest) SetVerbose(v bool) *GetWorkspaceRequest {
+	s.Verbose = &v
+	return s
+}
+
 type GetWorkspaceResponseBody struct {
 	// 管理员账户
 	AdminNames []*string `json:"AdminNames,omitempty" xml:"AdminNames,omitempty" type:"Repeated"`
@@ -3091,11 +3183,10 @@ type GetWorkspaceResponseBody struct {
 	// 修改 UTC 时间，日期格式 iso8601
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	// 是否为默认工作空间
-	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	IsDefault *bool                          `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	Owner     *GetWorkspaceResponseBodyOwner `json:"Owner,omitempty" xml:"Owner,omitempty" type:"Struct"`
 	// 请求 id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 资源数目
-	ResourceCount *int32 `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
 	// 工作空间状态
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 工作空间 id
@@ -3157,13 +3248,13 @@ func (s *GetWorkspaceResponseBody) SetIsDefault(v bool) *GetWorkspaceResponseBod
 	return s
 }
 
-func (s *GetWorkspaceResponseBody) SetRequestId(v string) *GetWorkspaceResponseBody {
-	s.RequestId = &v
+func (s *GetWorkspaceResponseBody) SetOwner(v *GetWorkspaceResponseBodyOwner) *GetWorkspaceResponseBody {
+	s.Owner = v
 	return s
 }
 
-func (s *GetWorkspaceResponseBody) SetResourceCount(v int32) *GetWorkspaceResponseBody {
-	s.ResourceCount = &v
+func (s *GetWorkspaceResponseBody) SetRequestId(v string) *GetWorkspaceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -3179,6 +3270,41 @@ func (s *GetWorkspaceResponseBody) SetWorkspaceId(v string) *GetWorkspaceRespons
 
 func (s *GetWorkspaceResponseBody) SetWorkspaceName(v string) *GetWorkspaceResponseBody {
 	s.WorkspaceName = &v
+	return s
+}
+
+type GetWorkspaceResponseBodyOwner struct {
+	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
+	UserId      *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserKp      *string `json:"UserKp,omitempty" xml:"UserKp,omitempty"`
+	UserName    *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+}
+
+func (s GetWorkspaceResponseBodyOwner) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkspaceResponseBodyOwner) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkspaceResponseBodyOwner) SetDisplayName(v string) *GetWorkspaceResponseBodyOwner {
+	s.DisplayName = &v
+	return s
+}
+
+func (s *GetWorkspaceResponseBodyOwner) SetUserId(v string) *GetWorkspaceResponseBodyOwner {
+	s.UserId = &v
+	return s
+}
+
+func (s *GetWorkspaceResponseBodyOwner) SetUserKp(v string) *GetWorkspaceResponseBodyOwner {
+	s.UserKp = &v
+	return s
+}
+
+func (s *GetWorkspaceResponseBodyOwner) SetUserName(v string) *GetWorkspaceResponseBodyOwner {
+	s.UserName = &v
 	return s
 }
 
@@ -4637,6 +4763,7 @@ type ListProductsRequest struct {
 	ProductCodes *string `json:"ProductCodes,omitempty" xml:"ProductCodes,omitempty"`
 	// 逗号分割的服务 code
 	ServiceCodes *string `json:"ServiceCodes,omitempty" xml:"ServiceCodes,omitempty"`
+	Verbose      *bool   `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
 }
 
 func (s ListProductsRequest) String() string {
@@ -4654,6 +4781,11 @@ func (s *ListProductsRequest) SetProductCodes(v string) *ListProductsRequest {
 
 func (s *ListProductsRequest) SetServiceCodes(v string) *ListProductsRequest {
 	s.ServiceCodes = &v
+	return s
+}
+
+func (s *ListProductsRequest) SetVerbose(v bool) *ListProductsRequest {
+	s.Verbose = &v
 	return s
 }
 
@@ -4690,12 +4822,14 @@ func (s *ListProductsResponseBody) SetServices(v []*ListProductsResponseBodyServ
 }
 
 type ListProductsResponseBodyProducts struct {
-	// 购买链接
-	BuyUrl *string `json:"BuyUrl,omitempty" xml:"BuyUrl,omitempty"`
+	// Whether user has permission to purchase
+	HasPermissionToPurchase *bool `json:"HasPermissionToPurchase,omitempty" xml:"HasPermissionToPurchase,omitempty"`
 	// 是否已购买
 	IsPurchased *bool `json:"IsPurchased,omitempty" xml:"IsPurchased,omitempty"`
 	// 商品 code
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+	// 购买链接
+	PurchaseUrl *string `json:"PurchaseUrl,omitempty" xml:"PurchaseUrl,omitempty"`
 }
 
 func (s ListProductsResponseBodyProducts) String() string {
@@ -4706,8 +4840,8 @@ func (s ListProductsResponseBodyProducts) GoString() string {
 	return s.String()
 }
 
-func (s *ListProductsResponseBodyProducts) SetBuyUrl(v string) *ListProductsResponseBodyProducts {
-	s.BuyUrl = &v
+func (s *ListProductsResponseBodyProducts) SetHasPermissionToPurchase(v bool) *ListProductsResponseBodyProducts {
+	s.HasPermissionToPurchase = &v
 	return s
 }
 
@@ -4718,6 +4852,11 @@ func (s *ListProductsResponseBodyProducts) SetIsPurchased(v bool) *ListProductsR
 
 func (s *ListProductsResponseBodyProducts) SetProductCode(v string) *ListProductsResponseBodyProducts {
 	s.ProductCode = &v
+	return s
+}
+
+func (s *ListProductsResponseBodyProducts) SetPurchaseUrl(v string) *ListProductsResponseBodyProducts {
+	s.PurchaseUrl = &v
 	return s
 }
 
@@ -5609,8 +5748,6 @@ type ListWorkspacesResponseBodyWorkspaces struct {
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
 	// 是否为默认工作空间
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// 资源数目
-	ResourceCount *int32 `json:"ResourceCount,omitempty" xml:"ResourceCount,omitempty"`
 	// 工作空间状态
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 工作空间 id
@@ -5664,11 +5801,6 @@ func (s *ListWorkspacesResponseBodyWorkspaces) SetGmtModifiedTime(v string) *Lis
 
 func (s *ListWorkspacesResponseBodyWorkspaces) SetIsDefault(v bool) *ListWorkspacesResponseBodyWorkspaces {
 	s.IsDefault = &v
-	return s
-}
-
-func (s *ListWorkspacesResponseBodyWorkspaces) SetResourceCount(v int32) *ListWorkspacesResponseBodyWorkspaces {
-	s.ResourceCount = &v
 	return s
 }
 
@@ -6232,7 +6364,8 @@ func (s *UpdateWorkspaceResponse) SetBody(v *UpdateWorkspaceResponseBody) *Updat
 
 type UpdateWorkspaceResourceRequest struct {
 	// 是否默认资源实例，目前只能填 true，不支持填 false
-	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	IsDefault   *bool   `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
+	ProductType *string `json:"ProductType,omitempty" xml:"ProductType,omitempty"`
 }
 
 func (s UpdateWorkspaceResourceRequest) String() string {
@@ -6245,6 +6378,11 @@ func (s UpdateWorkspaceResourceRequest) GoString() string {
 
 func (s *UpdateWorkspaceResourceRequest) SetIsDefault(v bool) *UpdateWorkspaceResourceRequest {
 	s.IsDefault = &v
+	return s
+}
+
+func (s *UpdateWorkspaceResourceRequest) SetProductType(v string) *UpdateWorkspaceResourceRequest {
+	s.ProductType = &v
 	return s
 }
 
@@ -7294,6 +7432,54 @@ func (client *Client) DeleteWorkspaceWithOptions(WorkspaceId *string, headers ma
 	return _result, _err
 }
 
+func (client *Client) DeleteWorkspaceResource(ResourceGroupName *string, WorkspaceId *string, request *DeleteWorkspaceResourceRequest) (_result *DeleteWorkspaceResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteWorkspaceResourceResponse{}
+	_body, _err := client.DeleteWorkspaceResourceWithOptions(ResourceGroupName, WorkspaceId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteWorkspaceResourceWithOptions(ResourceGroupName *string, WorkspaceId *string, request *DeleteWorkspaceResourceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteWorkspaceResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	ResourceGroupName = openapiutil.GetEncodeParam(ResourceGroupName)
+	WorkspaceId = openapiutil.GetEncodeParam(WorkspaceId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		query["ProductType"] = request.ProductType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteWorkspaceResource"),
+		Version:     tea.String("2021-02-04"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v1/workspaces/" + tea.StringValue(WorkspaceId) + "/resources/" + tea.StringValue(ResourceGroupName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteWorkspaceResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) GetCodeSource(CodeSourceId *string) (_result *GetCodeSourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7460,11 +7646,11 @@ func (client *Client) GetDatasetsStatisticsWithOptions(request *GetDatasetsStati
 	return _result, _err
 }
 
-func (client *Client) GetDefaultWorkspace() (_result *GetDefaultWorkspaceResponse, _err error) {
+func (client *Client) GetDefaultWorkspace(request *GetDefaultWorkspaceRequest) (_result *GetDefaultWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetDefaultWorkspaceResponse{}
-	_body, _err := client.GetDefaultWorkspaceWithOptions(headers, runtime)
+	_body, _err := client.GetDefaultWorkspaceWithOptions(request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7472,9 +7658,19 @@ func (client *Client) GetDefaultWorkspace() (_result *GetDefaultWorkspaceRespons
 	return _result, _err
 }
 
-func (client *Client) GetDefaultWorkspaceWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDefaultWorkspaceResponse, _err error) {
+func (client *Client) GetDefaultWorkspaceWithOptions(request *GetDefaultWorkspaceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetDefaultWorkspaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
+		query["Verbose"] = request.Verbose
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetDefaultWorkspace"),
@@ -7734,11 +7930,11 @@ func (client *Client) GetRoleStatisticsWithOptions(request *GetRoleStatisticsReq
 	return _result, _err
 }
 
-func (client *Client) GetWorkspace(WorkspaceId *string) (_result *GetWorkspaceResponse, _err error) {
+func (client *Client) GetWorkspace(WorkspaceId *string, request *GetWorkspaceRequest) (_result *GetWorkspaceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &GetWorkspaceResponse{}
-	_body, _err := client.GetWorkspaceWithOptions(WorkspaceId, headers, runtime)
+	_body, _err := client.GetWorkspaceWithOptions(WorkspaceId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7746,10 +7942,20 @@ func (client *Client) GetWorkspace(WorkspaceId *string) (_result *GetWorkspaceRe
 	return _result, _err
 }
 
-func (client *Client) GetWorkspaceWithOptions(WorkspaceId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWorkspaceResponse, _err error) {
+func (client *Client) GetWorkspaceWithOptions(WorkspaceId *string, request *GetWorkspaceRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetWorkspaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
 	WorkspaceId = openapiutil.GetEncodeParam(WorkspaceId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
+		query["Verbose"] = request.Verbose
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("GetWorkspace"),
@@ -8434,6 +8640,10 @@ func (client *Client) ListProductsWithOptions(request *ListProductsRequest, head
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceCodes)) {
 		query["ServiceCodes"] = request.ServiceCodes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
+		query["Verbose"] = request.Verbose
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9203,6 +9413,10 @@ func (client *Client) UpdateWorkspaceResourceWithOptions(WorkspaceId *string, Re
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.IsDefault)) {
 		body["IsDefault"] = request.IsDefault
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductType)) {
+		body["ProductType"] = request.ProductType
 	}
 
 	req := &openapi.OpenApiRequest{
