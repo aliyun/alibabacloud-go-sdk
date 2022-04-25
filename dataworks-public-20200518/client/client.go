@@ -1912,6 +1912,8 @@ type CreateFileRequest struct {
 	FileName                *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	FileType                *int32  `json:"FileType,omitempty" xml:"FileType,omitempty"`
 	InputList               *string `json:"InputList,omitempty" xml:"InputList,omitempty"`
+	InputParameters         *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
+	OutputParameters        *string `json:"OutputParameters,omitempty" xml:"OutputParameters,omitempty"`
 	Owner                   *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	ParaValue               *string `json:"ParaValue,omitempty" xml:"ParaValue,omitempty"`
 	ProjectId               *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
@@ -2010,6 +2012,16 @@ func (s *CreateFileRequest) SetFileType(v int32) *CreateFileRequest {
 
 func (s *CreateFileRequest) SetInputList(v string) *CreateFileRequest {
 	s.InputList = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetInputParameters(v string) *CreateFileRequest {
+	s.InputParameters = &v
+	return s
+}
+
+func (s *CreateFileRequest) SetOutputParameters(v string) *CreateFileRequest {
+	s.OutputParameters = &v
 	return s
 }
 
@@ -11138,22 +11150,24 @@ func (s *GetFileResponseBodyDataFile) SetUseType(v string) *GetFileResponseBodyD
 }
 
 type GetFileResponseBodyDataNodeConfiguration struct {
-	AutoRerunIntervalMillis *int32                                                `json:"AutoRerunIntervalMillis,omitempty" xml:"AutoRerunIntervalMillis,omitempty"`
-	AutoRerunTimes          *int32                                                `json:"AutoRerunTimes,omitempty" xml:"AutoRerunTimes,omitempty"`
-	CronExpress             *string                                               `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
-	CycleType               *string                                               `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
-	DependentNodeIdList     *string                                               `json:"DependentNodeIdList,omitempty" xml:"DependentNodeIdList,omitempty"`
-	DependentType           *string                                               `json:"DependentType,omitempty" xml:"DependentType,omitempty"`
-	EndEffectDate           *int64                                                `json:"EndEffectDate,omitempty" xml:"EndEffectDate,omitempty"`
-	InputList               []*GetFileResponseBodyDataNodeConfigurationInputList  `json:"InputList,omitempty" xml:"InputList,omitempty" type:"Repeated"`
-	OutputList              []*GetFileResponseBodyDataNodeConfigurationOutputList `json:"OutputList,omitempty" xml:"OutputList,omitempty" type:"Repeated"`
-	ParaValue               *string                                               `json:"ParaValue,omitempty" xml:"ParaValue,omitempty"`
-	RerunMode               *string                                               `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
-	ResourceGroupId         *int64                                                `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SchedulerType           *string                                               `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
-	StartEffectDate         *int64                                                `json:"StartEffectDate,omitempty" xml:"StartEffectDate,omitempty"`
-	StartImmediately        *bool                                                 `json:"StartImmediately,omitempty" xml:"StartImmediately,omitempty"`
-	Stop                    *bool                                                 `json:"Stop,omitempty" xml:"Stop,omitempty"`
+	AutoRerunIntervalMillis *int32                                                      `json:"AutoRerunIntervalMillis,omitempty" xml:"AutoRerunIntervalMillis,omitempty"`
+	AutoRerunTimes          *int32                                                      `json:"AutoRerunTimes,omitempty" xml:"AutoRerunTimes,omitempty"`
+	CronExpress             *string                                                     `json:"CronExpress,omitempty" xml:"CronExpress,omitempty"`
+	CycleType               *string                                                     `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
+	DependentNodeIdList     *string                                                     `json:"DependentNodeIdList,omitempty" xml:"DependentNodeIdList,omitempty"`
+	DependentType           *string                                                     `json:"DependentType,omitempty" xml:"DependentType,omitempty"`
+	EndEffectDate           *int64                                                      `json:"EndEffectDate,omitempty" xml:"EndEffectDate,omitempty"`
+	InputList               []*GetFileResponseBodyDataNodeConfigurationInputList        `json:"InputList,omitempty" xml:"InputList,omitempty" type:"Repeated"`
+	InputParameters         []*GetFileResponseBodyDataNodeConfigurationInputParameters  `json:"InputParameters,omitempty" xml:"InputParameters,omitempty" type:"Repeated"`
+	OutputList              []*GetFileResponseBodyDataNodeConfigurationOutputList       `json:"OutputList,omitempty" xml:"OutputList,omitempty" type:"Repeated"`
+	OutputParameters        []*GetFileResponseBodyDataNodeConfigurationOutputParameters `json:"OutputParameters,omitempty" xml:"OutputParameters,omitempty" type:"Repeated"`
+	ParaValue               *string                                                     `json:"ParaValue,omitempty" xml:"ParaValue,omitempty"`
+	RerunMode               *string                                                     `json:"RerunMode,omitempty" xml:"RerunMode,omitempty"`
+	ResourceGroupId         *int64                                                      `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SchedulerType           *string                                                     `json:"SchedulerType,omitempty" xml:"SchedulerType,omitempty"`
+	StartEffectDate         *int64                                                      `json:"StartEffectDate,omitempty" xml:"StartEffectDate,omitempty"`
+	StartImmediately        *bool                                                       `json:"StartImmediately,omitempty" xml:"StartImmediately,omitempty"`
+	Stop                    *bool                                                       `json:"Stop,omitempty" xml:"Stop,omitempty"`
 }
 
 func (s GetFileResponseBodyDataNodeConfiguration) String() string {
@@ -11204,8 +11218,18 @@ func (s *GetFileResponseBodyDataNodeConfiguration) SetInputList(v []*GetFileResp
 	return s
 }
 
+func (s *GetFileResponseBodyDataNodeConfiguration) SetInputParameters(v []*GetFileResponseBodyDataNodeConfigurationInputParameters) *GetFileResponseBodyDataNodeConfiguration {
+	s.InputParameters = v
+	return s
+}
+
 func (s *GetFileResponseBodyDataNodeConfiguration) SetOutputList(v []*GetFileResponseBodyDataNodeConfigurationOutputList) *GetFileResponseBodyDataNodeConfiguration {
 	s.OutputList = v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfiguration) SetOutputParameters(v []*GetFileResponseBodyDataNodeConfigurationOutputParameters) *GetFileResponseBodyDataNodeConfiguration {
+	s.OutputParameters = v
 	return s
 }
 
@@ -11267,6 +11291,29 @@ func (s *GetFileResponseBodyDataNodeConfigurationInputList) SetParseType(v strin
 	return s
 }
 
+type GetFileResponseBodyDataNodeConfigurationInputParameters struct {
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	ValueSource   *string `json:"ValueSource,omitempty" xml:"ValueSource,omitempty"`
+}
+
+func (s GetFileResponseBodyDataNodeConfigurationInputParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileResponseBodyDataNodeConfigurationInputParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileResponseBodyDataNodeConfigurationInputParameters) SetParameterName(v string) *GetFileResponseBodyDataNodeConfigurationInputParameters {
+	s.ParameterName = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfigurationInputParameters) SetValueSource(v string) *GetFileResponseBodyDataNodeConfigurationInputParameters {
+	s.ValueSource = &v
+	return s
+}
+
 type GetFileResponseBodyDataNodeConfigurationOutputList struct {
 	Output       *string `json:"Output,omitempty" xml:"Output,omitempty"`
 	RefTableName *string `json:"RefTableName,omitempty" xml:"RefTableName,omitempty"`
@@ -11287,6 +11334,41 @@ func (s *GetFileResponseBodyDataNodeConfigurationOutputList) SetOutput(v string)
 
 func (s *GetFileResponseBodyDataNodeConfigurationOutputList) SetRefTableName(v string) *GetFileResponseBodyDataNodeConfigurationOutputList {
 	s.RefTableName = &v
+	return s
+}
+
+type GetFileResponseBodyDataNodeConfigurationOutputParameters struct {
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	ParameterName *string `json:"ParameterName,omitempty" xml:"ParameterName,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Value         *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetFileResponseBodyDataNodeConfigurationOutputParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileResponseBodyDataNodeConfigurationOutputParameters) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileResponseBodyDataNodeConfigurationOutputParameters) SetDescription(v string) *GetFileResponseBodyDataNodeConfigurationOutputParameters {
+	s.Description = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfigurationOutputParameters) SetParameterName(v string) *GetFileResponseBodyDataNodeConfigurationOutputParameters {
+	s.ParameterName = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfigurationOutputParameters) SetType(v string) *GetFileResponseBodyDataNodeConfigurationOutputParameters {
+	s.Type = &v
+	return s
+}
+
+func (s *GetFileResponseBodyDataNodeConfigurationOutputParameters) SetValue(v string) *GetFileResponseBodyDataNodeConfigurationOutputParameters {
+	s.Value = &v
 	return s
 }
 
@@ -34903,7 +34985,9 @@ type UpdateFileRequest struct {
 	FileId                  *int64  `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	FileName                *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	InputList               *string `json:"InputList,omitempty" xml:"InputList,omitempty"`
+	InputParameters         *string `json:"InputParameters,omitempty" xml:"InputParameters,omitempty"`
 	OutputList              *string `json:"OutputList,omitempty" xml:"OutputList,omitempty"`
+	OutputParameters        *string `json:"OutputParameters,omitempty" xml:"OutputParameters,omitempty"`
 	Owner                   *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	ParaValue               *string `json:"ParaValue,omitempty" xml:"ParaValue,omitempty"`
 	ProjectId               *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
@@ -35004,8 +35088,18 @@ func (s *UpdateFileRequest) SetInputList(v string) *UpdateFileRequest {
 	return s
 }
 
+func (s *UpdateFileRequest) SetInputParameters(v string) *UpdateFileRequest {
+	s.InputParameters = &v
+	return s
+}
+
 func (s *UpdateFileRequest) SetOutputList(v string) *UpdateFileRequest {
 	s.OutputList = &v
+	return s
+}
+
+func (s *UpdateFileRequest) SetOutputParameters(v string) *UpdateFileRequest {
+	s.OutputParameters = &v
 	return s
 }
 
@@ -38452,6 +38546,14 @@ func (client *Client) CreateFileWithOptions(request *CreateFileRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.InputList)) {
 		body["InputList"] = request.InputList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputParameters)) {
+		body["InputParameters"] = request.InputParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputParameters)) {
+		body["OutputParameters"] = request.OutputParameters
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Owner)) {
@@ -48942,8 +49044,16 @@ func (client *Client) UpdateFileWithOptions(request *UpdateFileRequest, runtime 
 		body["InputList"] = request.InputList
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.InputParameters)) {
+		body["InputParameters"] = request.InputParameters
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OutputList)) {
 		body["OutputList"] = request.OutputList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutputParameters)) {
+		body["OutputParameters"] = request.OutputParameters
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Owner)) {
