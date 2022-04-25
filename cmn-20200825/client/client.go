@@ -3924,6 +3924,115 @@ func (s *PhysicalSpace) SetSpaceName(v string) *PhysicalSpace {
 	return s
 }
 
+type PhysicalSpaceDto struct {
+	// 具体地址
+	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	// 下一级
+	Children []*PhysicalSpaceDto `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
+	// 所属城市
+	City *string `json:"City,omitempty" xml:"City,omitempty"`
+	// 所属国家
+	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
+	// 上级全路径
+	FullParentPath *string `json:"FullParentPath,omitempty" xml:"FullParentPath,omitempty"`
+	// 实例
+	Instance *string `json:"Instance,omitempty" xml:"Instance,omitempty"`
+	// 负责人
+	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// 上级物理空间
+	ParentUid *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
+	// 物理空间ID
+	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
+	// 物理空间名称
+	PhysicalSpaceName *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
+	// 所属省份
+	Province *string `json:"Province,omitempty" xml:"Province,omitempty"`
+	// 备注
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// 缩写
+	SpaceAbbreviation *string `json:"SpaceAbbreviation,omitempty" xml:"SpaceAbbreviation,omitempty"`
+	// 模型
+	SpaceType *string `json:"SpaceType,omitempty" xml:"SpaceType,omitempty"`
+}
+
+func (s PhysicalSpaceDto) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PhysicalSpaceDto) GoString() string {
+	return s.String()
+}
+
+func (s *PhysicalSpaceDto) SetAddress(v string) *PhysicalSpaceDto {
+	s.Address = &v
+	return s
+}
+
+func (s *PhysicalSpaceDto) SetChildren(v []*PhysicalSpaceDto) *PhysicalSpaceDto {
+	s.Children = v
+	return s
+}
+
+func (s *PhysicalSpaceDto) SetCity(v string) *PhysicalSpaceDto {
+	s.City = &v
+	return s
+}
+
+func (s *PhysicalSpaceDto) SetCountry(v string) *PhysicalSpaceDto {
+	s.Country = &v
+	return s
+}
+
+func (s *PhysicalSpaceDto) SetFullParentPath(v string) *PhysicalSpaceDto {
+	s.FullParentPath = &v
+	return s
+}
+
+func (s *PhysicalSpaceDto) SetInstance(v string) *PhysicalSpaceDto {
+	s.Instance = &v
+	return s
+}
+
+func (s *PhysicalSpaceDto) SetOwner(v string) *PhysicalSpaceDto {
+	s.Owner = &v
+	return s
+}
+
+func (s *PhysicalSpaceDto) SetParentUid(v string) *PhysicalSpaceDto {
+	s.ParentUid = &v
+	return s
+}
+
+func (s *PhysicalSpaceDto) SetPhysicalSpaceId(v string) *PhysicalSpaceDto {
+	s.PhysicalSpaceId = &v
+	return s
+}
+
+func (s *PhysicalSpaceDto) SetPhysicalSpaceName(v string) *PhysicalSpaceDto {
+	s.PhysicalSpaceName = &v
+	return s
+}
+
+func (s *PhysicalSpaceDto) SetProvince(v string) *PhysicalSpaceDto {
+	s.Province = &v
+	return s
+}
+
+func (s *PhysicalSpaceDto) SetRemark(v string) *PhysicalSpaceDto {
+	s.Remark = &v
+	return s
+}
+
+func (s *PhysicalSpaceDto) SetSpaceAbbreviation(v string) *PhysicalSpaceDto {
+	s.SpaceAbbreviation = &v
+	return s
+}
+
+func (s *PhysicalSpaceDto) SetSpaceType(v string) *PhysicalSpaceDto {
+	s.SpaceType = &v
+	return s
+}
+
 type Port struct {
 	// 设备ID
 	DeviceId *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
@@ -7802,7 +7911,8 @@ type CreatePhysicalSpaceRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 负责人
-	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner     *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	ParentUid *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
 	// 物理空间名称
 	PhysicalSpaceName *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
 	// 所属省份
@@ -7850,6 +7960,11 @@ func (s *CreatePhysicalSpaceRequest) SetInstanceId(v string) *CreatePhysicalSpac
 
 func (s *CreatePhysicalSpaceRequest) SetOwner(v string) *CreatePhysicalSpaceRequest {
 	s.Owner = &v
+	return s
+}
+
+func (s *CreatePhysicalSpaceRequest) SetParentUid(v string) *CreatePhysicalSpaceRequest {
+	s.ParentUid = &v
 	return s
 }
 
@@ -13296,6 +13411,294 @@ func (s *GetInspectionTaskResponse) SetBody(v *GetInspectionTaskResponseBody) *G
 	return s
 }
 
+type GetMonitorItemRequest struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 监控项ID
+	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
+}
+
+func (s GetMonitorItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMonitorItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMonitorItemRequest) SetInstanceId(v string) *GetMonitorItemRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetMonitorItemRequest) SetMonitorItemId(v string) *GetMonitorItemRequest {
+	s.MonitorItemId = &v
+	return s
+}
+
+type GetMonitorItemResponseBody struct {
+	// 数据
+	MonitorItem *GetMonitorItemResponseBodyMonitorItem `json:"MonitorItem,omitempty" xml:"MonitorItem,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetMonitorItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMonitorItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMonitorItemResponseBody) SetMonitorItem(v *GetMonitorItemResponseBodyMonitorItem) *GetMonitorItemResponseBody {
+	s.MonitorItem = v
+	return s
+}
+
+func (s *GetMonitorItemResponseBody) SetRequestId(v string) *GetMonitorItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetMonitorItemResponseBodyMonitorItem struct {
+	// 通用告警规则列表
+	AlarmRuleList []*GetMonitorItemResponseBodyMonitorItemAlarmRuleList `json:"AlarmRuleList,omitempty" xml:"AlarmRuleList,omitempty" type:"Repeated"`
+	// 解析代码
+	AnalysisCode *string `json:"AnalysisCode,omitempty" xml:"AnalysisCode,omitempty"`
+	// 采集类型
+	CollectionType *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
+	// 监控项参数配置
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// 创建时间
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 数据项
+	DataItem *string `json:"DataItem,omitempty" xml:"DataItem,omitempty"`
+	// 设备形态
+	DeviceForm *string `json:"DeviceForm,omitempty" xml:"DeviceForm,omitempty"`
+	// 是否启用
+	Effective *int32 `json:"Effective,omitempty" xml:"Effective,omitempty"`
+	// 执行间隔(s)
+	ExecInterval *int32 `json:"ExecInterval,omitempty" xml:"ExecInterval,omitempty"`
+	// 监控项描述
+	MonitorItemDescription *string `json:"MonitorItemDescription,omitempty" xml:"MonitorItemDescription,omitempty"`
+	// 监控项ID
+	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
+	// 监控项名称
+	MonitorItemName *string `json:"MonitorItemName,omitempty" xml:"MonitorItemName,omitempty"`
+	// 个性化告警规则列表
+	PersonalizedAlarmRuleList []*GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList `json:"PersonalizedAlarmRuleList,omitempty" xml:"PersonalizedAlarmRuleList,omitempty" type:"Repeated"`
+	// 安全域
+	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
+	// 类型
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// 修改时间
+	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s GetMonitorItemResponseBodyMonitorItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMonitorItemResponseBodyMonitorItem) GoString() string {
+	return s.String()
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItem) SetAlarmRuleList(v []*GetMonitorItemResponseBodyMonitorItemAlarmRuleList) *GetMonitorItemResponseBodyMonitorItem {
+	s.AlarmRuleList = v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItem) SetAnalysisCode(v string) *GetMonitorItemResponseBodyMonitorItem {
+	s.AnalysisCode = &v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItem) SetCollectionType(v string) *GetMonitorItemResponseBodyMonitorItem {
+	s.CollectionType = &v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItem) SetConfig(v string) *GetMonitorItemResponseBodyMonitorItem {
+	s.Config = &v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItem) SetCreateTime(v string) *GetMonitorItemResponseBodyMonitorItem {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItem) SetDataItem(v string) *GetMonitorItemResponseBodyMonitorItem {
+	s.DataItem = &v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItem) SetDeviceForm(v string) *GetMonitorItemResponseBodyMonitorItem {
+	s.DeviceForm = &v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItem) SetEffective(v int32) *GetMonitorItemResponseBodyMonitorItem {
+	s.Effective = &v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItem) SetExecInterval(v int32) *GetMonitorItemResponseBodyMonitorItem {
+	s.ExecInterval = &v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItem) SetMonitorItemDescription(v string) *GetMonitorItemResponseBodyMonitorItem {
+	s.MonitorItemDescription = &v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItem) SetMonitorItemId(v string) *GetMonitorItemResponseBodyMonitorItem {
+	s.MonitorItemId = &v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItem) SetMonitorItemName(v string) *GetMonitorItemResponseBodyMonitorItem {
+	s.MonitorItemName = &v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItem) SetPersonalizedAlarmRuleList(v []*GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList) *GetMonitorItemResponseBodyMonitorItem {
+	s.PersonalizedAlarmRuleList = v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItem) SetSecurityDomain(v string) *GetMonitorItemResponseBodyMonitorItem {
+	s.SecurityDomain = &v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItem) SetType(v string) *GetMonitorItemResponseBodyMonitorItem {
+	s.Type = &v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItem) SetUpdateTime(v string) *GetMonitorItemResponseBodyMonitorItem {
+	s.UpdateTime = &v
+	return s
+}
+
+type GetMonitorItemResponseBodyMonitorItemAlarmRuleList struct {
+	// 告警规则
+	AlarmStatus *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
+	// 表达式
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// 比较值
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// 指标名
+	Variable *string `json:"Variable,omitempty" xml:"Variable,omitempty"`
+}
+
+func (s GetMonitorItemResponseBodyMonitorItemAlarmRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMonitorItemResponseBodyMonitorItemAlarmRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItemAlarmRuleList) SetAlarmStatus(v string) *GetMonitorItemResponseBodyMonitorItemAlarmRuleList {
+	s.AlarmStatus = &v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItemAlarmRuleList) SetExpression(v string) *GetMonitorItemResponseBodyMonitorItemAlarmRuleList {
+	s.Expression = &v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItemAlarmRuleList) SetValue(v string) *GetMonitorItemResponseBodyMonitorItemAlarmRuleList {
+	s.Value = &v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItemAlarmRuleList) SetVariable(v string) *GetMonitorItemResponseBodyMonitorItemAlarmRuleList {
+	s.Variable = &v
+	return s
+}
+
+type GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList struct {
+	// 告警规则
+	AlarmStatus *string `json:"AlarmStatus,omitempty" xml:"AlarmStatus,omitempty"`
+	// 表达式
+	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
+	// 个性化对象类型
+	FieldName *string `json:"FieldName,omitempty" xml:"FieldName,omitempty"`
+	// 个性化对象值
+	FieldValue *string `json:"FieldValue,omitempty" xml:"FieldValue,omitempty"`
+	// 类型
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+	// 指标名
+	Variable *string `json:"Variable,omitempty" xml:"Variable,omitempty"`
+}
+
+func (s GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList) GoString() string {
+	return s.String()
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList) SetAlarmStatus(v string) *GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList {
+	s.AlarmStatus = &v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList) SetExpression(v string) *GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList {
+	s.Expression = &v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList) SetFieldName(v string) *GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList {
+	s.FieldName = &v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList) SetFieldValue(v string) *GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList {
+	s.FieldValue = &v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList) SetValue(v string) *GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList {
+	s.Value = &v
+	return s
+}
+
+func (s *GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList) SetVariable(v string) *GetMonitorItemResponseBodyMonitorItemPersonalizedAlarmRuleList {
+	s.Variable = &v
+	return s
+}
+
+type GetMonitorItemResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetMonitorItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMonitorItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMonitorItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMonitorItemResponse) SetHeaders(v map[string]*string) *GetMonitorItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMonitorItemResponse) SetBody(v *GetMonitorItemResponseBody) *GetMonitorItemResponse {
+	s.Body = v
+	return s
+}
+
 type GetOsDownloadPathRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 架构资源uuid
@@ -17092,8 +17495,12 @@ func (s *ListConnectionPoliciesResponse) SetBody(v *ListConnectionPoliciesRespon
 type ListDedicatedLinesRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// 物理空间ID
 	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
+	// 物理空间名称
+	SpaceName *string `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
 }
 
 func (s ListDedicatedLinesRequest) String() string {
@@ -17109,16 +17516,34 @@ func (s *ListDedicatedLinesRequest) SetInstanceId(v string) *ListDedicatedLinesR
 	return s
 }
 
+func (s *ListDedicatedLinesRequest) SetMaxResults(v int32) *ListDedicatedLinesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDedicatedLinesRequest) SetNextToken(v string) *ListDedicatedLinesRequest {
+	s.NextToken = &v
+	return s
+}
+
 func (s *ListDedicatedLinesRequest) SetPhysicalSpaceId(v string) *ListDedicatedLinesRequest {
 	s.PhysicalSpaceId = &v
+	return s
+}
+
+func (s *ListDedicatedLinesRequest) SetSpaceName(v string) *ListDedicatedLinesRequest {
+	s.SpaceName = &v
 	return s
 }
 
 type ListDedicatedLinesResponseBody struct {
 	// 数组，返回示例目录。
 	DedicatedLines []*ListDedicatedLinesResponseBodyDedicatedLines `json:"DedicatedLines,omitempty" xml:"DedicatedLines,omitempty" type:"Repeated"`
+	MaxResults     *int32                                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken      *int32                                          `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDedicatedLinesResponseBody) String() string {
@@ -17134,8 +17559,23 @@ func (s *ListDedicatedLinesResponseBody) SetDedicatedLines(v []*ListDedicatedLin
 	return s
 }
 
+func (s *ListDedicatedLinesResponseBody) SetMaxResults(v int32) *ListDedicatedLinesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListDedicatedLinesResponseBody) SetNextToken(v int32) *ListDedicatedLinesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
 func (s *ListDedicatedLinesResponseBody) SetRequestId(v string) *ListDedicatedLinesResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *ListDedicatedLinesResponseBody) SetTotalCount(v int32) *ListDedicatedLinesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -17166,6 +17606,7 @@ type ListDedicatedLinesResponseBodyDedicatedLines struct {
 	Phone *string `json:"Phone,omitempty" xml:"Phone,omitempty"`
 	// 关联物理空间ID
 	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
+	SpaceName       *string `json:"SpaceName,omitempty" xml:"SpaceName,omitempty"`
 }
 
 func (s ListDedicatedLinesResponseBodyDedicatedLines) String() string {
@@ -17238,6 +17679,11 @@ func (s *ListDedicatedLinesResponseBodyDedicatedLines) SetPhone(v string) *ListD
 
 func (s *ListDedicatedLinesResponseBodyDedicatedLines) SetPhysicalSpaceId(v string) *ListDedicatedLinesResponseBodyDedicatedLines {
 	s.PhysicalSpaceId = &v
+	return s
+}
+
+func (s *ListDedicatedLinesResponseBodyDedicatedLines) SetSpaceName(v string) *ListDedicatedLinesResponseBodyDedicatedLines {
+	s.SpaceName = &v
 	return s
 }
 
@@ -17432,7 +17878,8 @@ func (s *ListDeviceFormsResponseBodyDeviceForms) SetUniqueKey(v string) *ListDev
 
 type ListDeviceFormsResponseBodyDeviceFormsAttributeList struct {
 	// 设备形态属性是否内置
-	AttributeBuiltIn *bool `json:"AttributeBuiltIn,omitempty" xml:"AttributeBuiltIn,omitempty"`
+	AttributeBuiltIn *bool   `json:"AttributeBuiltIn,omitempty" xml:"AttributeBuiltIn,omitempty"`
+	AttributeContent *string `json:"AttributeContent,omitempty" xml:"AttributeContent,omitempty"`
 	// 设备形态属性值格式
 	AttributeFormat *string `json:"AttributeFormat,omitempty" xml:"AttributeFormat,omitempty"`
 	// 前端查询控件是否支持模糊搜索
@@ -17467,6 +17914,11 @@ func (s ListDeviceFormsResponseBodyDeviceFormsAttributeList) GoString() string {
 
 func (s *ListDeviceFormsResponseBodyDeviceFormsAttributeList) SetAttributeBuiltIn(v bool) *ListDeviceFormsResponseBodyDeviceFormsAttributeList {
 	s.AttributeBuiltIn = &v
+	return s
+}
+
+func (s *ListDeviceFormsResponseBodyDeviceFormsAttributeList) SetAttributeContent(v string) *ListDeviceFormsResponseBodyDeviceFormsAttributeList {
+	s.AttributeContent = &v
 	return s
 }
 
@@ -22949,6 +23401,122 @@ func (s *ListTasksHistoriesResponse) SetBody(v *ListTasksHistoriesResponseBody) 
 	return s
 }
 
+type ListTreePhysicalSpacesRequest struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 返回结果的最大个数。
+	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 当总结果个数大于MaxResults时，用于翻页的token。
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 物理空间ID
+	PhysicalSpaceIds  []*string `json:"PhysicalSpaceIds,omitempty" xml:"PhysicalSpaceIds,omitempty" type:"Repeated"`
+	PhysicalSpaceName *string   `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
+	// 如果Tree为true时，分页失效
+	Tree *bool `json:"Tree,omitempty" xml:"Tree,omitempty"`
+}
+
+func (s ListTreePhysicalSpacesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTreePhysicalSpacesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTreePhysicalSpacesRequest) SetInstanceId(v string) *ListTreePhysicalSpacesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListTreePhysicalSpacesRequest) SetMaxResults(v string) *ListTreePhysicalSpacesRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTreePhysicalSpacesRequest) SetNextToken(v string) *ListTreePhysicalSpacesRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTreePhysicalSpacesRequest) SetPhysicalSpaceIds(v []*string) *ListTreePhysicalSpacesRequest {
+	s.PhysicalSpaceIds = v
+	return s
+}
+
+func (s *ListTreePhysicalSpacesRequest) SetPhysicalSpaceName(v string) *ListTreePhysicalSpacesRequest {
+	s.PhysicalSpaceName = &v
+	return s
+}
+
+func (s *ListTreePhysicalSpacesRequest) SetTree(v bool) *ListTreePhysicalSpacesRequest {
+	s.Tree = &v
+	return s
+}
+
+type ListTreePhysicalSpacesResponseBody struct {
+	MaxResults     *int32              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken      *int32              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PhysicalSpaces []*PhysicalSpaceDto `json:"PhysicalSpaces,omitempty" xml:"PhysicalSpaces,omitempty" type:"Repeated"`
+	RequestId      *string             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount     *int32              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListTreePhysicalSpacesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTreePhysicalSpacesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTreePhysicalSpacesResponseBody) SetMaxResults(v int32) *ListTreePhysicalSpacesResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTreePhysicalSpacesResponseBody) SetNextToken(v int32) *ListTreePhysicalSpacesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTreePhysicalSpacesResponseBody) SetPhysicalSpaces(v []*PhysicalSpaceDto) *ListTreePhysicalSpacesResponseBody {
+	s.PhysicalSpaces = v
+	return s
+}
+
+func (s *ListTreePhysicalSpacesResponseBody) SetRequestId(v string) *ListTreePhysicalSpacesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListTreePhysicalSpacesResponseBody) SetTotalCount(v int32) *ListTreePhysicalSpacesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListTreePhysicalSpacesResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListTreePhysicalSpacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTreePhysicalSpacesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTreePhysicalSpacesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTreePhysicalSpacesResponse) SetHeaders(v map[string]*string) *ListTreePhysicalSpacesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTreePhysicalSpacesResponse) SetBody(v *ListTreePhysicalSpacesResponseBody) *ListTreePhysicalSpacesResponse {
+	s.Body = v
+	return s
+}
+
 type ListWorkOrdersRequest struct {
 	// A-设备SN
 	DeviceSnA *string `json:"DeviceSnA,omitempty" xml:"DeviceSnA,omitempty"`
@@ -25613,7 +26181,8 @@ type UpdatePhysicalSpaceRequest struct {
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 负责人
-	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Owner     *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	ParentUid *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
 	// 实例 ID。
 	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
 	// 物理空间名称
@@ -25658,6 +26227,11 @@ func (s *UpdatePhysicalSpaceRequest) SetInstanceId(v string) *UpdatePhysicalSpac
 
 func (s *UpdatePhysicalSpaceRequest) SetOwner(v string) *UpdatePhysicalSpaceRequest {
 	s.Owner = &v
+	return s
+}
+
+func (s *UpdatePhysicalSpaceRequest) SetParentUid(v string) *UpdatePhysicalSpaceRequest {
+	s.ParentUid = &v
 	return s
 }
 
@@ -28119,6 +28693,10 @@ func (client *Client) CreatePhysicalSpaceWithOptions(request *CreatePhysicalSpac
 		body["Owner"] = request.Owner
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ParentUid)) {
+		body["ParentUid"] = request.ParentUid
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PhysicalSpaceName)) {
 		body["PhysicalSpaceName"] = request.PhysicalSpaceName
 	}
@@ -30307,6 +30885,46 @@ func (client *Client) GetInspectionTask(request *GetInspectionTaskRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) GetMonitorItemWithOptions(request *GetMonitorItemRequest, runtime *util.RuntimeOptions) (_result *GetMonitorItemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMonitorItem"),
+		Version:     tea.String("2020-08-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMonitorItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMonitorItem(request *GetMonitorItemRequest) (_result *GetMonitorItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMonitorItemResponse{}
+	_body, _err := client.GetMonitorItemWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetOsDownloadPathWithOptions(request *GetOsDownloadPathRequest, runtime *util.RuntimeOptions) (_result *GetOsDownloadPathResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32270,6 +32888,46 @@ func (client *Client) ListTasksHistories(request *ListTasksHistoriesRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) ListTreePhysicalSpacesWithOptions(request *ListTreePhysicalSpacesRequest, runtime *util.RuntimeOptions) (_result *ListTreePhysicalSpacesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTreePhysicalSpaces"),
+		Version:     tea.String("2020-08-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTreePhysicalSpacesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListTreePhysicalSpaces(request *ListTreePhysicalSpacesRequest) (_result *ListTreePhysicalSpacesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListTreePhysicalSpacesResponse{}
+	_body, _err := client.ListTreePhysicalSpacesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListWorkOrdersWithOptions(request *ListWorkOrdersRequest, runtime *util.RuntimeOptions) (_result *ListWorkOrdersResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33544,6 +34202,10 @@ func (client *Client) UpdatePhysicalSpaceWithOptions(request *UpdatePhysicalSpac
 
 	if !tea.BoolValue(util.IsUnset(request.Owner)) {
 		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentUid)) {
+		body["ParentUid"] = request.ParentUid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PhysicalSpaceId)) {
