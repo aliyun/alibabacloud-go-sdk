@@ -11470,6 +11470,7 @@ type InsertApplicationRequest struct {
 	MinHeapSize     *int32  `json:"MinHeapSize,omitempty" xml:"MinHeapSize,omitempty"`
 	PackageType     *string `json:"PackageType,omitempty" xml:"PackageType,omitempty"`
 	ReservedPortStr *string `json:"ReservedPortStr,omitempty" xml:"ReservedPortStr,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	WebContainer    *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
 }
 
@@ -11583,6 +11584,11 @@ func (s *InsertApplicationRequest) SetPackageType(v string) *InsertApplicationRe
 
 func (s *InsertApplicationRequest) SetReservedPortStr(v string) *InsertApplicationRequest {
 	s.ReservedPortStr = &v
+	return s
+}
+
+func (s *InsertApplicationRequest) SetResourceGroupId(v string) *InsertApplicationRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -12169,6 +12175,7 @@ type InsertK8sApplicationRequest struct {
 	RequestsCpu            *int32  `json:"RequestsCpu,omitempty" xml:"RequestsCpu,omitempty"`
 	RequestsMem            *int32  `json:"RequestsMem,omitempty" xml:"RequestsMem,omitempty"`
 	RequestsmCpu           *int32  `json:"RequestsmCpu,omitempty" xml:"RequestsmCpu,omitempty"`
+	ResourceGroupId        *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	RuntimeClassName       *string `json:"RuntimeClassName,omitempty" xml:"RuntimeClassName,omitempty"`
 	SlsConfigs             *string `json:"SlsConfigs,omitempty" xml:"SlsConfigs,omitempty"`
 	StorageType            *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
@@ -12439,6 +12446,11 @@ func (s *InsertK8sApplicationRequest) SetRequestsMem(v int32) *InsertK8sApplicat
 
 func (s *InsertK8sApplicationRequest) SetRequestsmCpu(v int32) *InsertK8sApplicationRequest {
 	s.RequestsmCpu = &v
+	return s
+}
+
+func (s *InsertK8sApplicationRequest) SetResourceGroupId(v string) *InsertK8sApplicationRequest {
+	s.ResourceGroupId = &v
 	return s
 }
 
@@ -29705,6 +29717,10 @@ func (client *Client) InsertApplicationWithOptions(request *InsertApplicationReq
 		query["ReservedPortStr"] = request.ReservedPortStr
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.WebContainer)) {
 		query["WebContainer"] = request.WebContainer
 	}
@@ -30131,6 +30147,10 @@ func (client *Client) InsertK8sApplicationWithOptions(request *InsertK8sApplicat
 
 	if !tea.BoolValue(util.IsUnset(request.RequestsmCpu)) {
 		query["RequestsmCpu"] = request.RequestsmCpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RuntimeClassName)) {
