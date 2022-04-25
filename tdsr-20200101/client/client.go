@@ -435,6 +435,7 @@ func (s *AddRoomPlanResponse) SetBody(v *AddRoomPlanResponseBody) *AddRoomPlanRe
 }
 
 type AddSceneRequest struct {
+	CustomerUid *string `json:"CustomerUid,omitempty" xml:"CustomerUid,omitempty"`
 	// 场景名称
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// 项目ID
@@ -449,6 +450,11 @@ func (s AddSceneRequest) String() string {
 
 func (s AddSceneRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AddSceneRequest) SetCustomerUid(v string) *AddSceneRequest {
+	s.CustomerUid = &v
+	return s
 }
 
 func (s *AddSceneRequest) SetName(v string) *AddSceneRequest {
@@ -3024,6 +3030,150 @@ func (s *GetScenePreviewInfoResponse) SetHeaders(v map[string]*string) *GetScene
 }
 
 func (s *GetScenePreviewInfoResponse) SetBody(v *GetScenePreviewInfoResponseBody) *GetScenePreviewInfoResponse {
+	s.Body = v
+	return s
+}
+
+type GetScenePreviewResourceRequest struct {
+	// 预览token
+	PreviewToken *string `json:"PreviewToken,omitempty" xml:"PreviewToken,omitempty"`
+}
+
+func (s GetScenePreviewResourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScenePreviewResourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetScenePreviewResourceRequest) SetPreviewToken(v string) *GetScenePreviewResourceRequest {
+	s.PreviewToken = &v
+	return s
+}
+
+type GetScenePreviewResourceResponseBody struct {
+	// 返回码
+	Code *int64                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetScenePreviewResourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 是否请求成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetScenePreviewResourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScenePreviewResourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetScenePreviewResourceResponseBody) SetCode(v int64) *GetScenePreviewResourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetScenePreviewResourceResponseBody) SetData(v *GetScenePreviewResourceResponseBodyData) *GetScenePreviewResourceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetScenePreviewResourceResponseBody) SetMessage(v string) *GetScenePreviewResourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetScenePreviewResourceResponseBody) SetRequestId(v string) *GetScenePreviewResourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetScenePreviewResourceResponseBody) SetSuccess(v bool) *GetScenePreviewResourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetScenePreviewResourceResponseBodyData struct {
+	Name              *string                                                   `json:"Name,omitempty" xml:"Name,omitempty"`
+	ResourceDirectory *GetScenePreviewResourceResponseBodyDataResourceDirectory `json:"ResourceDirectory,omitempty" xml:"ResourceDirectory,omitempty" type:"Struct"`
+	Version           *string                                                   `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s GetScenePreviewResourceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScenePreviewResourceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetScenePreviewResourceResponseBodyData) SetName(v string) *GetScenePreviewResourceResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetScenePreviewResourceResponseBodyData) SetResourceDirectory(v *GetScenePreviewResourceResponseBodyDataResourceDirectory) *GetScenePreviewResourceResponseBodyData {
+	s.ResourceDirectory = v
+	return s
+}
+
+func (s *GetScenePreviewResourceResponseBodyData) SetVersion(v string) *GetScenePreviewResourceResponseBodyData {
+	s.Version = &v
+	return s
+}
+
+type GetScenePreviewResourceResponseBodyDataResourceDirectory struct {
+	ModelConfig    *string `json:"ModelConfig,omitempty" xml:"ModelConfig,omitempty"`
+	OrthomapConfig *string `json:"OrthomapConfig,omitempty" xml:"OrthomapConfig,omitempty"`
+	RootPath       *string `json:"RootPath,omitempty" xml:"RootPath,omitempty"`
+}
+
+func (s GetScenePreviewResourceResponseBodyDataResourceDirectory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScenePreviewResourceResponseBodyDataResourceDirectory) GoString() string {
+	return s.String()
+}
+
+func (s *GetScenePreviewResourceResponseBodyDataResourceDirectory) SetModelConfig(v string) *GetScenePreviewResourceResponseBodyDataResourceDirectory {
+	s.ModelConfig = &v
+	return s
+}
+
+func (s *GetScenePreviewResourceResponseBodyDataResourceDirectory) SetOrthomapConfig(v string) *GetScenePreviewResourceResponseBodyDataResourceDirectory {
+	s.OrthomapConfig = &v
+	return s
+}
+
+func (s *GetScenePreviewResourceResponseBodyDataResourceDirectory) SetRootPath(v string) *GetScenePreviewResourceResponseBodyDataResourceDirectory {
+	s.RootPath = &v
+	return s
+}
+
+type GetScenePreviewResourceResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetScenePreviewResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetScenePreviewResourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetScenePreviewResourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetScenePreviewResourceResponse) SetHeaders(v map[string]*string) *GetScenePreviewResourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetScenePreviewResourceResponse) SetBody(v *GetScenePreviewResourceResponseBody) *GetScenePreviewResourceResponse {
 	s.Body = v
 	return s
 }
@@ -6365,6 +6515,10 @@ func (client *Client) AddSceneWithOptions(request *AddSceneRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CustomerUid)) {
+		query["CustomerUid"] = request.CustomerUid
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
 	}
@@ -7308,6 +7462,50 @@ func (client *Client) GetScenePreviewInfo(request *GetScenePreviewInfoRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &GetScenePreviewInfoResponse{}
 	_body, _err := client.GetScenePreviewInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetScenePreviewResourceWithOptions(request *GetScenePreviewResourceRequest, runtime *util.RuntimeOptions) (_result *GetScenePreviewResourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PreviewToken)) {
+		query["PreviewToken"] = request.PreviewToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetScenePreviewResource"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetScenePreviewResourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetScenePreviewResource(request *GetScenePreviewResourceRequest) (_result *GetScenePreviewResourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetScenePreviewResourceResponse{}
+	_body, _err := client.GetScenePreviewResourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
