@@ -12,6 +12,105 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type CreateClusterCheckRequest struct {
+	AddonName       *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
+	ClusterRegionId *string `json:"ClusterRegionId,omitempty" xml:"ClusterRegionId,omitempty"`
+	ClusterUid      *string `json:"ClusterUid,omitempty" xml:"ClusterUid,omitempty"`
+	OwnerUid        *int64  `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	ReportName      *string `json:"ReportName,omitempty" xml:"ReportName,omitempty"`
+}
+
+func (s CreateClusterCheckRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterCheckRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterCheckRequest) SetAddonName(v string) *CreateClusterCheckRequest {
+	s.AddonName = &v
+	return s
+}
+
+func (s *CreateClusterCheckRequest) SetClusterRegionId(v string) *CreateClusterCheckRequest {
+	s.ClusterRegionId = &v
+	return s
+}
+
+func (s *CreateClusterCheckRequest) SetClusterUid(v string) *CreateClusterCheckRequest {
+	s.ClusterUid = &v
+	return s
+}
+
+func (s *CreateClusterCheckRequest) SetOwnerUid(v int64) *CreateClusterCheckRequest {
+	s.OwnerUid = &v
+	return s
+}
+
+func (s *CreateClusterCheckRequest) SetReportName(v string) *CreateClusterCheckRequest {
+	s.ReportName = &v
+	return s
+}
+
+type CreateClusterCheckResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess *bool   `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	ReportUid *string `json:"ReportUid,omitempty" xml:"ReportUid,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateClusterCheckResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterCheckResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterCheckResponseBody) SetCode(v string) *CreateClusterCheckResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateClusterCheckResponseBody) SetIsSuccess(v bool) *CreateClusterCheckResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *CreateClusterCheckResponseBody) SetReportUid(v string) *CreateClusterCheckResponseBody {
+	s.ReportUid = &v
+	return s
+}
+
+func (s *CreateClusterCheckResponseBody) SetRequestId(v string) *CreateClusterCheckResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateClusterCheckResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateClusterCheckResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateClusterCheckResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClusterCheckResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClusterCheckResponse) SetHeaders(v map[string]*string) *CreateClusterCheckResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateClusterCheckResponse) SetBody(v *CreateClusterCheckResponseBody) *CreateClusterCheckResponse {
+	s.Body = v
+	return s
+}
+
 type CreateClusterReportRequest struct {
 	AddonName       *string `json:"AddonName,omitempty" xml:"AddonName,omitempty"`
 	ClusterRegionId *string `json:"ClusterRegionId,omitempty" xml:"ClusterRegionId,omitempty"`
@@ -406,6 +505,259 @@ func (s *DeleteReportTaskRuleResponse) SetHeaders(v map[string]*string) *DeleteR
 }
 
 func (s *DeleteReportTaskRuleResponse) SetBody(v *DeleteReportTaskRuleResponseBody) *DeleteReportTaskRuleResponse {
+	s.Body = v
+	return s
+}
+
+type GetClusterCheckItemRequest struct {
+	ClusterRegionId *string `json:"ClusterRegionId,omitempty" xml:"ClusterRegionId,omitempty"`
+	ClusterUid      *string `json:"ClusterUid,omitempty" xml:"ClusterUid,omitempty"`
+	EnableFilter    *bool   `json:"EnableFilter,omitempty" xml:"EnableFilter,omitempty"`
+	Language        *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	OwnerUid        *int64  `json:"OwnerUid,omitempty" xml:"OwnerUid,omitempty"`
+	ReportUid       *string `json:"ReportUid,omitempty" xml:"ReportUid,omitempty"`
+}
+
+func (s GetClusterCheckItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCheckItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCheckItemRequest) SetClusterRegionId(v string) *GetClusterCheckItemRequest {
+	s.ClusterRegionId = &v
+	return s
+}
+
+func (s *GetClusterCheckItemRequest) SetClusterUid(v string) *GetClusterCheckItemRequest {
+	s.ClusterUid = &v
+	return s
+}
+
+func (s *GetClusterCheckItemRequest) SetEnableFilter(v bool) *GetClusterCheckItemRequest {
+	s.EnableFilter = &v
+	return s
+}
+
+func (s *GetClusterCheckItemRequest) SetLanguage(v string) *GetClusterCheckItemRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *GetClusterCheckItemRequest) SetOwnerUid(v int64) *GetClusterCheckItemRequest {
+	s.OwnerUid = &v
+	return s
+}
+
+func (s *GetClusterCheckItemRequest) SetReportUid(v string) *GetClusterCheckItemRequest {
+	s.ReportUid = &v
+	return s
+}
+
+type GetClusterCheckItemResponseBody struct {
+	CheckResult *GetClusterCheckItemResponseBodyCheckResult `json:"CheckResult,omitempty" xml:"CheckResult,omitempty" type:"Struct"`
+	Code        *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	IsSuccess   *bool                                       `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetClusterCheckItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCheckItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCheckItemResponseBody) SetCheckResult(v *GetClusterCheckItemResponseBodyCheckResult) *GetClusterCheckItemResponseBody {
+	s.CheckResult = v
+	return s
+}
+
+func (s *GetClusterCheckItemResponseBody) SetCode(v string) *GetClusterCheckItemResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetClusterCheckItemResponseBody) SetIsSuccess(v bool) *GetClusterCheckItemResponseBody {
+	s.IsSuccess = &v
+	return s
+}
+
+func (s *GetClusterCheckItemResponseBody) SetRequestId(v string) *GetClusterCheckItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetClusterCheckItemResponseBodyCheckResult struct {
+	CheckId *string                                              `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	Cluster []*GetClusterCheckItemResponseBodyCheckResultCluster `json:"Cluster,omitempty" xml:"Cluster,omitempty" type:"Repeated"`
+	Nodes   []*GetClusterCheckItemResponseBodyCheckResultNodes   `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+}
+
+func (s GetClusterCheckItemResponseBodyCheckResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCheckItemResponseBodyCheckResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCheckItemResponseBodyCheckResult) SetCheckId(v string) *GetClusterCheckItemResponseBodyCheckResult {
+	s.CheckId = &v
+	return s
+}
+
+func (s *GetClusterCheckItemResponseBodyCheckResult) SetCluster(v []*GetClusterCheckItemResponseBodyCheckResultCluster) *GetClusterCheckItemResponseBodyCheckResult {
+	s.Cluster = v
+	return s
+}
+
+func (s *GetClusterCheckItemResponseBodyCheckResult) SetNodes(v []*GetClusterCheckItemResponseBodyCheckResultNodes) *GetClusterCheckItemResponseBodyCheckResult {
+	s.Nodes = v
+	return s
+}
+
+type GetClusterCheckItemResponseBodyCheckResultCluster struct {
+	Desc    *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	Fix     *string `json:"Fix,omitempty" xml:"Fix,omitempty"`
+	Group   *string `json:"Group,omitempty" xml:"Group,omitempty"`
+	Level   *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Refer   *string `json:"Refer,omitempty" xml:"Refer,omitempty"`
+	Value   *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetClusterCheckItemResponseBodyCheckResultCluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCheckItemResponseBodyCheckResultCluster) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCheckItemResponseBodyCheckResultCluster) SetDesc(v string) *GetClusterCheckItemResponseBodyCheckResultCluster {
+	s.Desc = &v
+	return s
+}
+
+func (s *GetClusterCheckItemResponseBodyCheckResultCluster) SetDisplay(v string) *GetClusterCheckItemResponseBodyCheckResultCluster {
+	s.Display = &v
+	return s
+}
+
+func (s *GetClusterCheckItemResponseBodyCheckResultCluster) SetFix(v string) *GetClusterCheckItemResponseBodyCheckResultCluster {
+	s.Fix = &v
+	return s
+}
+
+func (s *GetClusterCheckItemResponseBodyCheckResultCluster) SetGroup(v string) *GetClusterCheckItemResponseBodyCheckResultCluster {
+	s.Group = &v
+	return s
+}
+
+func (s *GetClusterCheckItemResponseBodyCheckResultCluster) SetLevel(v string) *GetClusterCheckItemResponseBodyCheckResultCluster {
+	s.Level = &v
+	return s
+}
+
+func (s *GetClusterCheckItemResponseBodyCheckResultCluster) SetMessage(v string) *GetClusterCheckItemResponseBodyCheckResultCluster {
+	s.Message = &v
+	return s
+}
+
+func (s *GetClusterCheckItemResponseBodyCheckResultCluster) SetName(v string) *GetClusterCheckItemResponseBodyCheckResultCluster {
+	s.Name = &v
+	return s
+}
+
+func (s *GetClusterCheckItemResponseBodyCheckResultCluster) SetRefer(v string) *GetClusterCheckItemResponseBodyCheckResultCluster {
+	s.Refer = &v
+	return s
+}
+
+func (s *GetClusterCheckItemResponseBodyCheckResultCluster) SetValue(v string) *GetClusterCheckItemResponseBodyCheckResultCluster {
+	s.Value = &v
+	return s
+}
+
+type GetClusterCheckItemResponseBodyCheckResultNodes struct {
+	Desc    *string                                `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	Display *string                                `json:"Display,omitempty" xml:"Display,omitempty"`
+	Fix     *string                                `json:"Fix,omitempty" xml:"Fix,omitempty"`
+	Group   *string                                `json:"Group,omitempty" xml:"Group,omitempty"`
+	Level   map[string]*CheckResultNodesLevelValue `json:"Level,omitempty" xml:"Level,omitempty"`
+	Name    *string                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	Refer   *string                                `json:"Refer,omitempty" xml:"Refer,omitempty"`
+}
+
+func (s GetClusterCheckItemResponseBodyCheckResultNodes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCheckItemResponseBodyCheckResultNodes) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCheckItemResponseBodyCheckResultNodes) SetDesc(v string) *GetClusterCheckItemResponseBodyCheckResultNodes {
+	s.Desc = &v
+	return s
+}
+
+func (s *GetClusterCheckItemResponseBodyCheckResultNodes) SetDisplay(v string) *GetClusterCheckItemResponseBodyCheckResultNodes {
+	s.Display = &v
+	return s
+}
+
+func (s *GetClusterCheckItemResponseBodyCheckResultNodes) SetFix(v string) *GetClusterCheckItemResponseBodyCheckResultNodes {
+	s.Fix = &v
+	return s
+}
+
+func (s *GetClusterCheckItemResponseBodyCheckResultNodes) SetGroup(v string) *GetClusterCheckItemResponseBodyCheckResultNodes {
+	s.Group = &v
+	return s
+}
+
+func (s *GetClusterCheckItemResponseBodyCheckResultNodes) SetLevel(v map[string]*CheckResultNodesLevelValue) *GetClusterCheckItemResponseBodyCheckResultNodes {
+	s.Level = v
+	return s
+}
+
+func (s *GetClusterCheckItemResponseBodyCheckResultNodes) SetName(v string) *GetClusterCheckItemResponseBodyCheckResultNodes {
+	s.Name = &v
+	return s
+}
+
+func (s *GetClusterCheckItemResponseBodyCheckResultNodes) SetRefer(v string) *GetClusterCheckItemResponseBodyCheckResultNodes {
+	s.Refer = &v
+	return s
+}
+
+type GetClusterCheckItemResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetClusterCheckItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetClusterCheckItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterCheckItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterCheckItemResponse) SetHeaders(v map[string]*string) *GetClusterCheckItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetClusterCheckItemResponse) SetBody(v *GetClusterCheckItemResponseBody) *GetClusterCheckItemResponse {
 	s.Body = v
 	return s
 }
@@ -2234,6 +2586,52 @@ func (s *ListReportTaskRuleResponse) SetBody(v *ListReportTaskRuleResponseBody) 
 	return s
 }
 
+type CheckResultNodesLevelValue struct {
+	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	Targets []*CheckResultNodesLevelValueTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
+}
+
+func (s CheckResultNodesLevelValue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckResultNodesLevelValue) GoString() string {
+	return s.String()
+}
+
+func (s *CheckResultNodesLevelValue) SetMessage(v string) *CheckResultNodesLevelValue {
+	s.Message = &v
+	return s
+}
+
+func (s *CheckResultNodesLevelValue) SetTargets(v []*CheckResultNodesLevelValueTargets) *CheckResultNodesLevelValue {
+	s.Targets = v
+	return s
+}
+
+type CheckResultNodesLevelValueTargets struct {
+	Target *string `json:"Target,omitempty" xml:"Target,omitempty"`
+	Value  *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CheckResultNodesLevelValueTargets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckResultNodesLevelValueTargets) GoString() string {
+	return s.String()
+}
+
+func (s *CheckResultNodesLevelValueTargets) SetTarget(v string) *CheckResultNodesLevelValueTargets {
+	s.Target = &v
+	return s
+}
+
+func (s *CheckResultNodesLevelValueTargets) SetValue(v string) *CheckResultNodesLevelValueTargets {
+	s.Value = &v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -2274,6 +2672,66 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateClusterCheckWithOptions(request *CreateClusterCheckRequest, runtime *util.RuntimeOptions) (_result *CreateClusterCheckResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddonName)) {
+		query["AddonName"] = request.AddonName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterRegionId)) {
+		query["ClusterRegionId"] = request.ClusterRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterUid)) {
+		query["ClusterUid"] = request.ClusterUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerUid)) {
+		query["OwnerUid"] = request.OwnerUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ReportName)) {
+		query["ReportName"] = request.ReportName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateClusterCheck"),
+		Version:     tea.String("2018-08-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateClusterCheckResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateClusterCheck(request *CreateClusterCheckRequest) (_result *CreateClusterCheckResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateClusterCheckResponse{}
+	_body, _err := client.CreateClusterCheckWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2514,6 +2972,46 @@ func (client *Client) DeleteReportTaskRule(request *DeleteReportTaskRuleRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteReportTaskRuleResponse{}
 	_body, _err := client.DeleteReportTaskRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetClusterCheckItemWithOptions(request *GetClusterCheckItemRequest, runtime *util.RuntimeOptions) (_result *GetClusterCheckItemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetClusterCheckItem"),
+		Version:     tea.String("2018-08-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetClusterCheckItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetClusterCheckItem(request *GetClusterCheckItemRequest) (_result *GetClusterCheckItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetClusterCheckItemResponse{}
+	_body, _err := client.GetClusterCheckItemWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
