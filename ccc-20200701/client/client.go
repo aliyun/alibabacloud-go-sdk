@@ -8696,6 +8696,134 @@ func (s *HoldCallResponse) SetBody(v *HoldCallResponseBody) *HoldCallResponse {
 	return s
 }
 
+type ImportAdminsRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RamIdList  *string `json:"RamIdList,omitempty" xml:"RamIdList,omitempty"`
+}
+
+func (s ImportAdminsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportAdminsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ImportAdminsRequest) SetInstanceId(v string) *ImportAdminsRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ImportAdminsRequest) SetRamIdList(v string) *ImportAdminsRequest {
+	s.RamIdList = &v
+	return s
+}
+
+type ImportAdminsResponseBody struct {
+	Code           *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           []*ImportAdminsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	HttpStatusCode *int32                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ImportAdminsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportAdminsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ImportAdminsResponseBody) SetCode(v string) *ImportAdminsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ImportAdminsResponseBody) SetData(v []*ImportAdminsResponseBodyData) *ImportAdminsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ImportAdminsResponseBody) SetHttpStatusCode(v int32) *ImportAdminsResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ImportAdminsResponseBody) SetMessage(v string) *ImportAdminsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ImportAdminsResponseBody) SetRequestId(v string) *ImportAdminsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ImportAdminsResponseBodyData struct {
+	Extension  *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	RamId      *string `json:"RamId,omitempty" xml:"RamId,omitempty"`
+	RoleId     *string `json:"RoleId,omitempty" xml:"RoleId,omitempty"`
+	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ImportAdminsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportAdminsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ImportAdminsResponseBodyData) SetExtension(v string) *ImportAdminsResponseBodyData {
+	s.Extension = &v
+	return s
+}
+
+func (s *ImportAdminsResponseBodyData) SetInstanceId(v string) *ImportAdminsResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ImportAdminsResponseBodyData) SetRamId(v string) *ImportAdminsResponseBodyData {
+	s.RamId = &v
+	return s
+}
+
+func (s *ImportAdminsResponseBodyData) SetRoleId(v string) *ImportAdminsResponseBodyData {
+	s.RoleId = &v
+	return s
+}
+
+func (s *ImportAdminsResponseBodyData) SetUserId(v string) *ImportAdminsResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+type ImportAdminsResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ImportAdminsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ImportAdminsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ImportAdminsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ImportAdminsResponse) SetHeaders(v map[string]*string) *ImportAdminsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ImportAdminsResponse) SetBody(v *ImportAdminsResponseBody) *ImportAdminsResponse {
+	s.Body = v
+	return s
+}
+
 type ImportCustomCallTaggingRequest struct {
 	FilePath   *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -9649,11 +9777,12 @@ func (s *InterceptCallResponse) SetBody(v *InterceptCallResponseBody) *Intercept
 }
 
 type LaunchAuthenticationRequest struct {
-	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
-	DeviceId      *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	ContactFlowId        *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	ContactFlowVariables *string `json:"ContactFlowVariables,omitempty" xml:"ContactFlowVariables,omitempty"`
+	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s LaunchAuthenticationRequest) String() string {
@@ -9666,6 +9795,11 @@ func (s LaunchAuthenticationRequest) GoString() string {
 
 func (s *LaunchAuthenticationRequest) SetContactFlowId(v string) *LaunchAuthenticationRequest {
 	s.ContactFlowId = &v
+	return s
+}
+
+func (s *LaunchAuthenticationRequest) SetContactFlowVariables(v string) *LaunchAuthenticationRequest {
+	s.ContactFlowVariables = &v
 	return s
 }
 
@@ -10008,11 +10142,14 @@ func (s *LaunchAuthenticationResponse) SetBody(v *LaunchAuthenticationResponseBo
 }
 
 type LaunchSurveyRequest struct {
-	ContactFlowId *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
-	DeviceId      *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	JobId         *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	UserId        *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	ContactFlowId        *string `json:"ContactFlowId,omitempty" xml:"ContactFlowId,omitempty"`
+	ContactFlowVariables *string `json:"ContactFlowVariables,omitempty" xml:"ContactFlowVariables,omitempty"`
+	DeviceId             *string `json:"DeviceId,omitempty" xml:"DeviceId,omitempty"`
+	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	JobId                *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	SmsMetadataId        *string `json:"SmsMetadataId,omitempty" xml:"SmsMetadataId,omitempty"`
+	SurveyChannel        *string `json:"SurveyChannel,omitempty" xml:"SurveyChannel,omitempty"`
+	UserId               *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s LaunchSurveyRequest) String() string {
@@ -10028,6 +10165,11 @@ func (s *LaunchSurveyRequest) SetContactFlowId(v string) *LaunchSurveyRequest {
 	return s
 }
 
+func (s *LaunchSurveyRequest) SetContactFlowVariables(v string) *LaunchSurveyRequest {
+	s.ContactFlowVariables = &v
+	return s
+}
+
 func (s *LaunchSurveyRequest) SetDeviceId(v string) *LaunchSurveyRequest {
 	s.DeviceId = &v
 	return s
@@ -10040,6 +10182,16 @@ func (s *LaunchSurveyRequest) SetInstanceId(v string) *LaunchSurveyRequest {
 
 func (s *LaunchSurveyRequest) SetJobId(v string) *LaunchSurveyRequest {
 	s.JobId = &v
+	return s
+}
+
+func (s *LaunchSurveyRequest) SetSmsMetadataId(v string) *LaunchSurveyRequest {
+	s.SmsMetadataId = &v
+	return s
+}
+
+func (s *LaunchSurveyRequest) SetSurveyChannel(v string) *LaunchSurveyRequest {
+	s.SurveyChannel = &v
 	return s
 }
 
@@ -18651,15 +18803,16 @@ func (s *ListMultiChannelRecordingsResponseBody) SetRequestId(v string) *ListMul
 }
 
 type ListMultiChannelRecordingsResponseBodyData struct {
-	AgentId      *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	AgentName    *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	ContactId    *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
-	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	FileUrl      *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	RamId        *string `json:"RamId,omitempty" xml:"RamId,omitempty"`
-	SkillGroupId *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
-	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	AgentChannelId *string `json:"AgentChannelId,omitempty" xml:"AgentChannelId,omitempty"`
+	AgentId        *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	AgentName      *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	ContactId      *string `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
+	Duration       *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	FileName       *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	FileUrl        *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
+	RamId          *string `json:"RamId,omitempty" xml:"RamId,omitempty"`
+	SkillGroupId   *string `json:"SkillGroupId,omitempty" xml:"SkillGroupId,omitempty"`
+	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
 func (s ListMultiChannelRecordingsResponseBodyData) String() string {
@@ -18668,6 +18821,11 @@ func (s ListMultiChannelRecordingsResponseBodyData) String() string {
 
 func (s ListMultiChannelRecordingsResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *ListMultiChannelRecordingsResponseBodyData) SetAgentChannelId(v string) *ListMultiChannelRecordingsResponseBodyData {
+	s.AgentChannelId = &v
+	return s
 }
 
 func (s *ListMultiChannelRecordingsResponseBodyData) SetAgentId(v string) *ListMultiChannelRecordingsResponseBodyData {
@@ -26189,8 +26347,7 @@ func (s *RemovePhoneNumbersRequest) SetNumberList(v string) *RemovePhoneNumbersR
 
 type RemovePhoneNumbersResponseBody struct {
 	Code           *string   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *string   `json:"Data,omitempty" xml:"Data,omitempty"`
-	FailureList    []*string `json:"FailureList,omitempty" xml:"FailureList,omitempty" type:"Repeated"`
+	Data           []*string `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string   `json:"Message,omitempty" xml:"Message,omitempty"`
 	Params         []*string `json:"Params,omitempty" xml:"Params,omitempty" type:"Repeated"`
@@ -26210,13 +26367,8 @@ func (s *RemovePhoneNumbersResponseBody) SetCode(v string) *RemovePhoneNumbersRe
 	return s
 }
 
-func (s *RemovePhoneNumbersResponseBody) SetData(v string) *RemovePhoneNumbersResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *RemovePhoneNumbersResponseBody) SetFailureList(v []*string) *RemovePhoneNumbersResponseBody {
-	s.FailureList = v
+func (s *RemovePhoneNumbersResponseBody) SetData(v []*string) *RemovePhoneNumbersResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -32622,6 +32774,54 @@ func (client *Client) HoldCall(request *HoldCallRequest) (_result *HoldCallRespo
 	return _result, _err
 }
 
+func (client *Client) ImportAdminsWithOptions(request *ImportAdminsRequest, runtime *util.RuntimeOptions) (_result *ImportAdminsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RamIdList)) {
+		query["RamIdList"] = request.RamIdList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImportAdmins"),
+		Version:     tea.String("2020-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ImportAdminsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ImportAdmins(request *ImportAdminsRequest) (_result *ImportAdminsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ImportAdminsResponse{}
+	_body, _err := client.ImportAdminsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ImportCustomCallTaggingWithOptions(request *ImportCustomCallTaggingRequest, runtime *util.RuntimeOptions) (_result *ImportCustomCallTaggingResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32868,6 +33068,10 @@ func (client *Client) LaunchAuthenticationWithOptions(request *LaunchAuthenticat
 		query["ContactFlowId"] = request.ContactFlowId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ContactFlowVariables)) {
+		query["ContactFlowVariables"] = request.ContactFlowVariables
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
 		query["DeviceId"] = request.DeviceId
 	}
@@ -32928,6 +33132,10 @@ func (client *Client) LaunchSurveyWithOptions(request *LaunchSurveyRequest, runt
 		query["ContactFlowId"] = request.ContactFlowId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ContactFlowVariables)) {
+		query["ContactFlowVariables"] = request.ContactFlowVariables
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.DeviceId)) {
 		query["DeviceId"] = request.DeviceId
 	}
@@ -32938,6 +33146,14 @@ func (client *Client) LaunchSurveyWithOptions(request *LaunchSurveyRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.JobId)) {
 		query["JobId"] = request.JobId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmsMetadataId)) {
+		query["SmsMetadataId"] = request.SmsMetadataId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SurveyChannel)) {
+		query["SurveyChannel"] = request.SurveyChannel
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
