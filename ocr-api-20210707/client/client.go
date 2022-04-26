@@ -789,8 +789,7 @@ func (s *RecognizeBusShipTicketResponse) SetBody(v *RecognizeBusShipTicketRespon
 
 type RecognizeBusinessLicenseRequest struct {
 	// 图片链接（长度不超 2048，不支持 base64）
-	Url        *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	WorkflowOp *string `json:"WorkflowOp,omitempty" xml:"WorkflowOp,omitempty"`
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	// 图片二进制字节流，最大10MB
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -805,11 +804,6 @@ func (s RecognizeBusinessLicenseRequest) GoString() string {
 
 func (s *RecognizeBusinessLicenseRequest) SetUrl(v string) *RecognizeBusinessLicenseRequest {
 	s.Url = &v
-	return s
-}
-
-func (s *RecognizeBusinessLicenseRequest) SetWorkflowOp(v string) *RecognizeBusinessLicenseRequest {
-	s.WorkflowOp = &v
 	return s
 }
 
@@ -961,8 +955,7 @@ func (s *RecognizeCarInvoiceResponse) SetBody(v *RecognizeCarInvoiceResponseBody
 
 type RecognizeCarNumberRequest struct {
 	// 图片链接（长度不超 2048，不支持 base64）
-	Url        *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	WorkflowOp *string `json:"WorkflowOp,omitempty" xml:"WorkflowOp,omitempty"`
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	// 图片二进制字节流，最大10MB
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -977,11 +970,6 @@ func (s RecognizeCarNumberRequest) GoString() string {
 
 func (s *RecognizeCarNumberRequest) SetUrl(v string) *RecognizeCarNumberRequest {
 	s.Url = &v
-	return s
-}
-
-func (s *RecognizeCarNumberRequest) SetWorkflowOp(v string) *RecognizeCarNumberRequest {
-	s.WorkflowOp = &v
 	return s
 }
 
@@ -3124,6 +3112,93 @@ func (s *RecognizeHandwritingResponse) SetBody(v *RecognizeHandwritingResponseBo
 	return s
 }
 
+type RecognizeHealthCodeRequest struct {
+	// 图片链接（长度不超 2048，不支持 base64）
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RecognizeHealthCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeHealthCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeHealthCodeRequest) SetUrl(v string) *RecognizeHealthCodeRequest {
+	s.Url = &v
+	return s
+}
+
+func (s *RecognizeHealthCodeRequest) SetBody(v io.Reader) *RecognizeHealthCodeRequest {
+	s.Body = v
+	return s
+}
+
+type RecognizeHealthCodeResponseBody struct {
+	// 错误码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 返回数据
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 错误提示
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求唯一 ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RecognizeHealthCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeHealthCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeHealthCodeResponseBody) SetCode(v string) *RecognizeHealthCodeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RecognizeHealthCodeResponseBody) SetData(v string) *RecognizeHealthCodeResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *RecognizeHealthCodeResponseBody) SetMessage(v string) *RecognizeHealthCodeResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RecognizeHealthCodeResponseBody) SetRequestId(v string) *RecognizeHealthCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RecognizeHealthCodeResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RecognizeHealthCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RecognizeHealthCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeHealthCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeHealthCodeResponse) SetHeaders(v map[string]*string) *RecognizeHealthCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecognizeHealthCodeResponse) SetBody(v *RecognizeHealthCodeResponseBody) *RecognizeHealthCodeResponse {
+	s.Body = v
+	return s
+}
+
 type RecognizeHotelConsumeRequest struct {
 	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
@@ -3294,8 +3369,7 @@ type RecognizeIdcardRequest struct {
 	// 是否需要图案检测功能，默认不需要
 	OutputFigure *bool `json:"OutputFigure,omitempty" xml:"OutputFigure,omitempty"`
 	// 图片链接（长度不超 2048，不支持 base64）
-	Url        *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	WorkflowOp *string `json:"WorkflowOp,omitempty" xml:"WorkflowOp,omitempty"`
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	// 图片二进制字节流，最大10MB
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -3315,11 +3389,6 @@ func (s *RecognizeIdcardRequest) SetOutputFigure(v bool) *RecognizeIdcardRequest
 
 func (s *RecognizeIdcardRequest) SetUrl(v string) *RecognizeIdcardRequest {
 	s.Url = &v
-	return s
-}
-
-func (s *RecognizeIdcardRequest) SetWorkflowOp(v string) *RecognizeIdcardRequest {
-	s.WorkflowOp = &v
 	return s
 }
 
@@ -5615,6 +5684,93 @@ func (s *RecognizeTrainInvoiceResponse) SetBody(v *RecognizeTrainInvoiceResponse
 	return s
 }
 
+type RecognizeTravelCardRequest struct {
+	// 图片链接（长度不超 2048，不支持 base64）
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// 图片二进制字节流，最大10MB
+	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s RecognizeTravelCardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTravelCardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTravelCardRequest) SetUrl(v string) *RecognizeTravelCardRequest {
+	s.Url = &v
+	return s
+}
+
+func (s *RecognizeTravelCardRequest) SetBody(v io.Reader) *RecognizeTravelCardRequest {
+	s.Body = v
+	return s
+}
+
+type RecognizeTravelCardResponseBody struct {
+	// 错误码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 返回数据
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 错误提示
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求唯一 ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RecognizeTravelCardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTravelCardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTravelCardResponseBody) SetCode(v string) *RecognizeTravelCardResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RecognizeTravelCardResponseBody) SetData(v string) *RecognizeTravelCardResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *RecognizeTravelCardResponseBody) SetMessage(v string) *RecognizeTravelCardResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RecognizeTravelCardResponseBody) SetRequestId(v string) *RecognizeTravelCardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RecognizeTravelCardResponse struct {
+	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RecognizeTravelCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RecognizeTravelCardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTravelCardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTravelCardResponse) SetHeaders(v map[string]*string) *RecognizeTravelCardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecognizeTravelCardResponse) SetBody(v *RecognizeTravelCardResponseBody) *RecognizeTravelCardResponse {
+	s.Body = v
+	return s
+}
+
 type RecognizeUsedCarInvoiceRequest struct {
 	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
@@ -5791,8 +5947,7 @@ func (s *RecognizeVehicleCertificationResponse) SetBody(v *RecognizeVehicleCerti
 
 type RecognizeVehicleLicenseRequest struct {
 	// 图片链接（长度不超 2048，不支持 base64）
-	Url        *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	WorkflowOp *string `json:"WorkflowOp,omitempty" xml:"WorkflowOp,omitempty"`
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	// 图片二进制字节流，最大10MB
 	Body io.Reader `json:"body,omitempty" xml:"body,omitempty"`
 }
@@ -5807,11 +5962,6 @@ func (s RecognizeVehicleLicenseRequest) GoString() string {
 
 func (s *RecognizeVehicleLicenseRequest) SetUrl(v string) *RecognizeVehicleLicenseRequest {
 	s.Url = &v
-	return s
-}
-
-func (s *RecognizeVehicleLicenseRequest) SetWorkflowOp(v string) *RecognizeVehicleLicenseRequest {
-	s.WorkflowOp = &v
 	return s
 }
 
@@ -6531,10 +6681,6 @@ func (client *Client) RecognizeBusinessLicenseWithOptions(request *RecognizeBusi
 		query["Url"] = request.Url
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.WorkflowOp)) {
-		query["WorkflowOp"] = request.WorkflowOp
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query:  openapiutil.Query(query),
 		Body:   request.Body,
@@ -6625,10 +6771,6 @@ func (client *Client) RecognizeCarNumberWithOptions(request *RecognizeCarNumberR
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Url)) {
 		query["Url"] = request.Url
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkflowOp)) {
-		query["WorkflowOp"] = request.WorkflowOp
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -7811,6 +7953,52 @@ func (client *Client) RecognizeHandwriting(request *RecognizeHandwritingRequest)
 	return _result, _err
 }
 
+func (client *Client) RecognizeHealthCodeWithOptions(request *RecognizeHealthCodeRequest, runtime *util.RuntimeOptions) (_result *RecognizeHealthCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query:  openapiutil.Query(query),
+		Body:   request.Body,
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeHealthCode"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecognizeHealthCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RecognizeHealthCode(request *RecognizeHealthCodeRequest) (_result *RecognizeHealthCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecognizeHealthCodeResponse{}
+	_body, _err := client.RecognizeHealthCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RecognizeHotelConsumeWithOptions(request *RecognizeHotelConsumeRequest, runtime *util.RuntimeOptions) (_result *RecognizeHotelConsumeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7915,10 +8103,6 @@ func (client *Client) RecognizeIdcardWithOptions(request *RecognizeIdcardRequest
 
 	if !tea.BoolValue(util.IsUnset(request.Url)) {
 		query["Url"] = request.Url
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkflowOp)) {
-		query["WorkflowOp"] = request.WorkflowOp
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9159,6 +9343,52 @@ func (client *Client) RecognizeTrainInvoice(request *RecognizeTrainInvoiceReques
 	return _result, _err
 }
 
+func (client *Client) RecognizeTravelCardWithOptions(request *RecognizeTravelCardRequest, runtime *util.RuntimeOptions) (_result *RecognizeTravelCardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query:  openapiutil.Query(query),
+		Body:   request.Body,
+		Stream: request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeTravelCard"),
+		Version:     tea.String("2021-07-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecognizeTravelCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RecognizeTravelCard(request *RecognizeTravelCardRequest) (_result *RecognizeTravelCardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecognizeTravelCardResponse{}
+	_body, _err := client.RecognizeTravelCardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RecognizeUsedCarInvoiceWithOptions(request *RecognizeUsedCarInvoiceRequest, runtime *util.RuntimeOptions) (_result *RecognizeUsedCarInvoiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9259,10 +9489,6 @@ func (client *Client) RecognizeVehicleLicenseWithOptions(request *RecognizeVehic
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Url)) {
 		query["Url"] = request.Url
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.WorkflowOp)) {
-		query["WorkflowOp"] = request.WorkflowOp
 	}
 
 	req := &openapi.OpenApiRequest{
