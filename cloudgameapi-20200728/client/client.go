@@ -397,6 +397,94 @@ func (s *BatchStopGameSessionsResponse) SetBody(v *BatchStopGameSessionsResponse
 	return s
 }
 
+type CancelGameHangRequest struct {
+	AccessKey   *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	GameSession *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
+}
+
+func (s CancelGameHangRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelGameHangRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelGameHangRequest) SetAccessKey(v string) *CancelGameHangRequest {
+	s.AccessKey = &v
+	return s
+}
+
+func (s *CancelGameHangRequest) SetGameSession(v string) *CancelGameHangRequest {
+	s.GameSession = &v
+	return s
+}
+
+type CancelGameHangResponseBody struct {
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	GameSession *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CancelGameHangResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelGameHangResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelGameHangResponseBody) SetCode(v string) *CancelGameHangResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CancelGameHangResponseBody) SetGameSession(v string) *CancelGameHangResponseBody {
+	s.GameSession = &v
+	return s
+}
+
+func (s *CancelGameHangResponseBody) SetMessage(v string) *CancelGameHangResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CancelGameHangResponseBody) SetRequestId(v string) *CancelGameHangResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CancelGameHangResponseBody) SetSuccess(v bool) *CancelGameHangResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CancelGameHangResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CancelGameHangResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelGameHangResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelGameHangResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelGameHangResponse) SetHeaders(v map[string]*string) *CancelGameHangResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelGameHangResponse) SetBody(v *CancelGameHangResponseBody) *CancelGameHangResponse {
+	s.Body = v
+	return s
+}
+
 type CloseOrderRequest struct {
 	AccountDomain  *string `json:"AccountDomain,omitempty" xml:"AccountDomain,omitempty"`
 	BuyerAccountId *string `json:"BuyerAccountId,omitempty" xml:"BuyerAccountId,omitempty"`
@@ -3873,6 +3961,112 @@ func (s *QueryGameResponse) SetBody(v *QueryGameResponseBody) *QueryGameResponse
 	return s
 }
 
+type QueryGameHangRequest struct {
+	AccessKey   *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	GameSession *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
+}
+
+func (s QueryGameHangRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGameHangRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGameHangRequest) SetAccessKey(v string) *QueryGameHangRequest {
+	s.AccessKey = &v
+	return s
+}
+
+func (s *QueryGameHangRequest) SetGameSession(v string) *QueryGameHangRequest {
+	s.GameSession = &v
+	return s
+}
+
+type QueryGameHangResponseBody struct {
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Duration    *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	GameSession *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
+	Hanging     *bool   `json:"Hanging,omitempty" xml:"Hanging,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartHangTimestamp *int64  `json:"StartHangTimestamp,omitempty" xml:"StartHangTimestamp,omitempty"`
+	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryGameHangResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGameHangResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGameHangResponseBody) SetCode(v string) *QueryGameHangResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryGameHangResponseBody) SetDuration(v int64) *QueryGameHangResponseBody {
+	s.Duration = &v
+	return s
+}
+
+func (s *QueryGameHangResponseBody) SetGameSession(v string) *QueryGameHangResponseBody {
+	s.GameSession = &v
+	return s
+}
+
+func (s *QueryGameHangResponseBody) SetHanging(v bool) *QueryGameHangResponseBody {
+	s.Hanging = &v
+	return s
+}
+
+func (s *QueryGameHangResponseBody) SetMessage(v string) *QueryGameHangResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *QueryGameHangResponseBody) SetRequestId(v string) *QueryGameHangResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryGameHangResponseBody) SetStartHangTimestamp(v int64) *QueryGameHangResponseBody {
+	s.StartHangTimestamp = &v
+	return s
+}
+
+func (s *QueryGameHangResponseBody) SetSuccess(v bool) *QueryGameHangResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryGameHangResponse struct {
+	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QueryGameHangResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryGameHangResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryGameHangResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryGameHangResponse) SetHeaders(v map[string]*string) *QueryGameHangResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryGameHangResponse) SetBody(v *QueryGameHangResponseBody) *QueryGameHangResponse {
+	s.Body = v
+	return s
+}
+
 type QueryItemsRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -4775,6 +4969,206 @@ func (s *RemoveGameFromProjectResponse) SetHeaders(v map[string]*string) *Remove
 }
 
 func (s *RemoveGameFromProjectResponse) SetBody(v *RemoveGameFromProjectResponseBody) *RemoveGameFromProjectResponse {
+	s.Body = v
+	return s
+}
+
+type SetGameAliveRequest struct {
+	AccessKey   *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	GameSession *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
+	KeepAlive   *int64  `json:"KeepAlive,omitempty" xml:"KeepAlive,omitempty"`
+}
+
+func (s SetGameAliveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGameAliveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetGameAliveRequest) SetAccessKey(v string) *SetGameAliveRequest {
+	s.AccessKey = &v
+	return s
+}
+
+func (s *SetGameAliveRequest) SetGameSession(v string) *SetGameAliveRequest {
+	s.GameSession = &v
+	return s
+}
+
+func (s *SetGameAliveRequest) SetKeepAlive(v int64) *SetGameAliveRequest {
+	s.KeepAlive = &v
+	return s
+}
+
+type SetGameAliveResponseBody struct {
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	GameSession *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SetGameAliveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGameAliveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetGameAliveResponseBody) SetCode(v string) *SetGameAliveResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SetGameAliveResponseBody) SetGameSession(v string) *SetGameAliveResponseBody {
+	s.GameSession = &v
+	return s
+}
+
+func (s *SetGameAliveResponseBody) SetMessage(v string) *SetGameAliveResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SetGameAliveResponseBody) SetRequestId(v string) *SetGameAliveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetGameAliveResponseBody) SetSuccess(v bool) *SetGameAliveResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SetGameAliveResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SetGameAliveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetGameAliveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGameAliveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetGameAliveResponse) SetHeaders(v map[string]*string) *SetGameAliveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetGameAliveResponse) SetBody(v *SetGameAliveResponseBody) *SetGameAliveResponse {
+	s.Body = v
+	return s
+}
+
+type SetGameHangRequest struct {
+	AccessKey   *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	Duration    *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	GameSession *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
+}
+
+func (s SetGameHangRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGameHangRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetGameHangRequest) SetAccessKey(v string) *SetGameHangRequest {
+	s.AccessKey = &v
+	return s
+}
+
+func (s *SetGameHangRequest) SetDuration(v int64) *SetGameHangRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *SetGameHangRequest) SetGameSession(v string) *SetGameHangRequest {
+	s.GameSession = &v
+	return s
+}
+
+type SetGameHangResponseBody struct {
+	Code        *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Duration    *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	GameSession *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
+	Message     *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId          *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartHangTimestamp *int64  `json:"StartHangTimestamp,omitempty" xml:"StartHangTimestamp,omitempty"`
+	Success            *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SetGameHangResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGameHangResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetGameHangResponseBody) SetCode(v string) *SetGameHangResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SetGameHangResponseBody) SetDuration(v int64) *SetGameHangResponseBody {
+	s.Duration = &v
+	return s
+}
+
+func (s *SetGameHangResponseBody) SetGameSession(v string) *SetGameHangResponseBody {
+	s.GameSession = &v
+	return s
+}
+
+func (s *SetGameHangResponseBody) SetMessage(v string) *SetGameHangResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SetGameHangResponseBody) SetRequestId(v string) *SetGameHangResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetGameHangResponseBody) SetStartHangTimestamp(v int64) *SetGameHangResponseBody {
+	s.StartHangTimestamp = &v
+	return s
+}
+
+func (s *SetGameHangResponseBody) SetSuccess(v bool) *SetGameHangResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SetGameHangResponse struct {
+	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *SetGameHangResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetGameHangResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetGameHangResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetGameHangResponse) SetHeaders(v map[string]*string) *SetGameHangResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetGameHangResponse) SetBody(v *SetGameHangResponseBody) *SetGameHangResponse {
 	s.Body = v
 	return s
 }
@@ -5696,9 +6090,18 @@ func (client *Client) AdaptGameVersionWithOptions(request *AdaptGameVersionReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["FrameRate"] = request.FrameRate
-	query["Resolution"] = request.Resolution
-	query["VersionId"] = request.VersionId
+	if !tea.BoolValue(util.IsUnset(request.FrameRate)) {
+		query["FrameRate"] = request.FrameRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resolution)) {
+		query["Resolution"] = request.Resolution
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5739,8 +6142,14 @@ func (client *Client) AddGameToProjectWithOptions(request *AddGameToProjectReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GameId"] = request.GameId
-	query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.GameId)) {
+		query["GameId"] = request.GameId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5825,12 +6234,30 @@ func (client *Client) BatchStopGameSessionsWithOptions(request *BatchStopGameSes
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GameId"] = request.GameId
-	query["ProjectId"] = request.ProjectId
-	query["Reason"] = request.Reason
-	query["Tags"] = request.Tags
-	query["Token"] = request.Token
-	query["TrackInfo"] = request.TrackInfo
+	if !tea.BoolValue(util.IsUnset(request.GameId)) {
+		query["GameId"] = request.GameId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reason)) {
+		query["Reason"] = request.Reason
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TrackInfo)) {
+		query["TrackInfo"] = request.TrackInfo
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5865,15 +6292,72 @@ func (client *Client) BatchStopGameSessions(request *BatchStopGameSessionsReques
 	return _result, _err
 }
 
+func (client *Client) CancelGameHangWithOptions(request *CancelGameHangRequest, runtime *util.RuntimeOptions) (_result *CancelGameHangResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessKey)) {
+		body["AccessKey"] = request.AccessKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameSession)) {
+		body["GameSession"] = request.GameSession
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelGameHang"),
+		Version:     tea.String("2020-07-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelGameHangResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelGameHang(request *CancelGameHangRequest) (_result *CancelGameHangResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelGameHangResponse{}
+	_body, _err := client.CancelGameHangWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CloseOrderWithOptions(request *CloseOrderRequest, runtime *util.RuntimeOptions) (_result *CloseOrderResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountDomain"] = request.AccountDomain
-	query["BuyerAccountId"] = request.BuyerAccountId
-	query["OrderId"] = request.OrderId
+	if !tea.BoolValue(util.IsUnset(request.AccountDomain)) {
+		query["AccountDomain"] = request.AccountDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuyerAccountId)) {
+		query["BuyerAccountId"] = request.BuyerAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5914,9 +6398,18 @@ func (client *Client) CreateGameWithOptions(request *CreateGameRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["GameName"] = request.GameName
-	query["PlatformType"] = request.PlatformType
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameName)) {
+		query["GameName"] = request.GameName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlatformType)) {
+		query["PlatformType"] = request.PlatformType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -5957,16 +6450,46 @@ func (client *Client) CreateGameDeployWorkflowWithOptions(request *CreateGameDep
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DownloadType"] = request.DownloadType
-	query["FileType"] = request.FileType
-	query["FrameRate"] = request.FrameRate
-	query["GameId"] = request.GameId
-	query["GameVersion"] = request.GameVersion
-	query["Hash"] = request.Hash
-	query["Instance"] = request.Instance
-	query["ProjectId"] = request.ProjectId
-	query["Resolution"] = request.Resolution
-	query["VersionName"] = request.VersionName
+	if !tea.BoolValue(util.IsUnset(request.DownloadType)) {
+		query["DownloadType"] = request.DownloadType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileType)) {
+		query["FileType"] = request.FileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FrameRate)) {
+		query["FrameRate"] = request.FrameRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameId)) {
+		query["GameId"] = request.GameId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameVersion)) {
+		query["GameVersion"] = request.GameVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Hash)) {
+		query["Hash"] = request.Hash
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Instance)) {
+		query["Instance"] = request.Instance
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resolution)) {
+		query["Resolution"] = request.Resolution
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionName)) {
+		query["VersionName"] = request.VersionName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6007,14 +6530,38 @@ func (client *Client) CreateOrderWithOptions(request *CreateOrderRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountDomain"] = request.AccountDomain
-	query["Amount"] = request.Amount
-	query["BuyerAccountId"] = request.BuyerAccountId
-	query["IdempotentCode"] = request.IdempotentCode
-	query["ItemId"] = request.ItemId
-	query["OriginPrice"] = request.OriginPrice
-	query["SettlementPrice"] = request.SettlementPrice
-	query["SkuId"] = request.SkuId
+	if !tea.BoolValue(util.IsUnset(request.AccountDomain)) {
+		query["AccountDomain"] = request.AccountDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Amount)) {
+		query["Amount"] = request.Amount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuyerAccountId)) {
+		query["BuyerAccountId"] = request.BuyerAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IdempotentCode)) {
+		query["IdempotentCode"] = request.IdempotentCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemId)) {
+		query["ItemId"] = request.ItemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OriginPrice)) {
+		query["OriginPrice"] = request.OriginPrice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SettlementPrice)) {
+		query["SettlementPrice"] = request.SettlementPrice
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkuId)) {
+		query["SkuId"] = request.SkuId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6055,8 +6602,14 @@ func (client *Client) CreateProjectWithOptions(request *CreateProjectRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["ProjectName"] = request.ProjectName
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6097,9 +6650,18 @@ func (client *Client) CreateTokenWithOptions(request *CreateTokenRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ClientToken"] = request.ClientToken
-	query["CurrentToken"] = request.CurrentToken
-	query["Session"] = request.Session
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentToken)) {
+		query["CurrentToken"] = request.CurrentToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Session)) {
+		query["Session"] = request.Session
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6140,7 +6702,10 @@ func (client *Client) DeleteGameWithOptions(request *DeleteGameRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GameId"] = request.GameId
+	if !tea.BoolValue(util.IsUnset(request.GameId)) {
+		query["GameId"] = request.GameId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6181,7 +6746,10 @@ func (client *Client) DeleteGameVersionWithOptions(request *DeleteGameVersionReq
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["VersionId"] = request.VersionId
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6222,7 +6790,10 @@ func (client *Client) DeleteProjectWithOptions(request *DeleteProjectRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6263,9 +6834,18 @@ func (client *Client) DeliveryOrderWithOptions(request *DeliveryOrderRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountDomain"] = request.AccountDomain
-	query["BuyerAccountId"] = request.BuyerAccountId
-	query["OrderId"] = request.OrderId
+	if !tea.BoolValue(util.IsUnset(request.AccountDomain)) {
+		query["AccountDomain"] = request.AccountDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuyerAccountId)) {
+		query["BuyerAccountId"] = request.BuyerAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6402,9 +6982,18 @@ func (client *Client) GetGameCcuWithOptions(request *GetGameCcuRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessKey"] = request.AccessKey
-	query["GameId"] = request.GameId
-	query["RegionName"] = request.RegionName
+	if !tea.BoolValue(util.IsUnset(request.AccessKey)) {
+		query["AccessKey"] = request.AccessKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameId)) {
+		query["GameId"] = request.GameId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionName)) {
+		query["RegionName"] = request.RegionName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6445,7 +7034,10 @@ func (client *Client) GetGameStatusWithOptions(request *GetGameStatusRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GameSession"] = request.GameSession
+	if !tea.BoolValue(util.IsUnset(request.GameSession)) {
+		query["GameSession"] = request.GameSession
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6486,9 +7078,18 @@ func (client *Client) GetGameStockWithOptions(request *GetGameStockRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessKey"] = request.AccessKey
-	query["GameId"] = request.GameId
-	query["UserLevel"] = request.UserLevel
+	if !tea.BoolValue(util.IsUnset(request.AccessKey)) {
+		query["AccessKey"] = request.AccessKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameId)) {
+		query["GameId"] = request.GameId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserLevel)) {
+		query["UserLevel"] = request.UserLevel
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6529,9 +7130,18 @@ func (client *Client) GetGameTrialSurplusDurationWithOptions(request *GetGameTri
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountId"] = request.AccountId
-	query["GameId"] = request.GameId
-	query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameId)) {
+		query["GameId"] = request.GameId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6572,7 +7182,10 @@ func (client *Client) GetGameVersionWithOptions(request *GetGameVersionRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["VersionId"] = request.VersionId
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6613,7 +7226,10 @@ func (client *Client) GetGameVersionProgressWithOptions(request *GetGameVersionP
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["TaskId"] = request.TaskId
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6654,7 +7270,10 @@ func (client *Client) GetItemWithOptions(request *GetItemRequest, runtime *util.
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ItemId"] = request.ItemId
+	if !tea.BoolValue(util.IsUnset(request.ItemId)) {
+		query["ItemId"] = request.ItemId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6695,9 +7314,18 @@ func (client *Client) GetOutAccountBindDetailWithOptions(request *GetOutAccountB
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountDomain"] = request.AccountDomain
-	query["AccountId"] = request.AccountId
-	query["OutAccountType"] = request.OutAccountType
+	if !tea.BoolValue(util.IsUnset(request.AccountDomain)) {
+		query["AccountDomain"] = request.AccountDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutAccountType)) {
+		query["OutAccountType"] = request.OutAccountType
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6738,7 +7366,10 @@ func (client *Client) GetSessionWithOptions(request *GetSessionRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["Token"] = request.Token
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		query["Token"] = request.Token
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6779,8 +7410,14 @@ func (client *Client) GetStopGameTokenWithOptions(request *GetStopGameTokenReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccessKey"] = request.AccessKey
-	query["GameId"] = request.GameId
+	if !tea.BoolValue(util.IsUnset(request.AccessKey)) {
+		query["AccessKey"] = request.AccessKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameId)) {
+		query["GameId"] = request.GameId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6821,8 +7458,14 @@ func (client *Client) KickPlayerWithOptions(request *KickPlayerRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GameSession"] = request.GameSession
-	query["KickedAccountId"] = request.KickedAccountId
+	if !tea.BoolValue(util.IsUnset(request.GameSession)) {
+		query["GameSession"] = request.GameSession
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KickedAccountId)) {
+		query["KickedAccountId"] = request.KickedAccountId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6863,10 +7506,22 @@ func (client *Client) ListBoughtGamesWithOptions(request *ListBoughtGamesRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountDomain"] = request.AccountDomain
-	query["AccountId"] = request.AccountId
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.AccountDomain)) {
+		query["AccountDomain"] = request.AccountDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6907,7 +7562,10 @@ func (client *Client) ListContainerStatusWithOptions(request *ListContainerStatu
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GameSessionIdList"] = request.GameSessionIdList
+	if !tea.BoolValue(util.IsUnset(request.GameSessionIdList)) {
+		query["GameSessionIdList"] = request.GameSessionIdList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6948,10 +7606,22 @@ func (client *Client) ListDeployableInstancesWithOptions(request *ListDeployable
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
-	query["ProjectId"] = request.ProjectId
-	query["VersionId"] = request.VersionId
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -6992,9 +7662,18 @@ func (client *Client) ListGameVersionsWithOptions(request *ListGameVersionsReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GameId"] = request.GameId
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
+	if !tea.BoolValue(util.IsUnset(request.GameId)) {
+		query["GameId"] = request.GameId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7035,8 +7714,14 @@ func (client *Client) ListGamesWithOptions(request *ListGamesRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7077,11 +7762,26 @@ func (client *Client) ListHistoryContainerStatusWithOptions(request *ListHistory
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["EndTime"] = request.EndTime
-	query["LastGameSessionId"] = request.LastGameSessionId
-	query["PageSize"] = request.PageSize
-	query["ProjectId"] = request.ProjectId
-	query["StartTime"] = request.StartTime
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LastGameSessionId)) {
+		query["LastGameSessionId"] = request.LastGameSessionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7122,8 +7822,14 @@ func (client *Client) ListProjectsWithOptions(request *ListProjectsRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["MaxResults"] = request.MaxResults
-	query["NextToken"] = request.NextToken
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7164,10 +7870,22 @@ func (client *Client) QueryGameWithOptions(request *QueryGameRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["ProjectId"] = request.ProjectId
-	query["TenantId"] = request.TenantId
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		query["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7202,14 +7920,68 @@ func (client *Client) QueryGame(request *QueryGameRequest) (_result *QueryGameRe
 	return _result, _err
 }
 
+func (client *Client) QueryGameHangWithOptions(request *QueryGameHangRequest, runtime *util.RuntimeOptions) (_result *QueryGameHangResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessKey)) {
+		body["AccessKey"] = request.AccessKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameSession)) {
+		body["GameSession"] = request.GameSession
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryGameHang"),
+		Version:     tea.String("2020-07-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryGameHangResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryGameHang(request *QueryGameHangRequest) (_result *QueryGameHangResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryGameHangResponse{}
+	_body, _err := client.QueryGameHangWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryItemsWithOptions(request *QueryItemsRequest, runtime *util.RuntimeOptions) (_result *QueryItemsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNumber"] = request.PageNumber
-	query["PageSize"] = request.PageSize
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7250,9 +8022,18 @@ func (client *Client) QueryOrderWithOptions(request *QueryOrderRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountDomain"] = request.AccountDomain
-	query["BuyerAccountId"] = request.BuyerAccountId
-	query["OrderId"] = request.OrderId
+	if !tea.BoolValue(util.IsUnset(request.AccountDomain)) {
+		query["AccountDomain"] = request.AccountDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BuyerAccountId)) {
+		query["BuyerAccountId"] = request.BuyerAccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderId)) {
+		query["OrderId"] = request.OrderId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7293,9 +8074,18 @@ func (client *Client) QueryOutAccountBindStatusWithOptions(request *QueryOutAcco
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["AccountDomain"] = request.AccountDomain
-	query["AccountId"] = request.AccountId
-	query["GameId"] = request.GameId
+	if !tea.BoolValue(util.IsUnset(request.AccountDomain)) {
+		query["AccountDomain"] = request.AccountDomain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccountId)) {
+		query["AccountId"] = request.AccountId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameId)) {
+		query["GameId"] = request.GameId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7336,10 +8126,22 @@ func (client *Client) QueryProjectWithOptions(request *QueryProjectRequest, runt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["ProjectId"] = request.ProjectId
-	query["TenantId"] = request.TenantId
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TenantId)) {
+		query["TenantId"] = request.TenantId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7380,9 +8182,18 @@ func (client *Client) QueryTenantWithOptions(request *QueryTenantRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["PageNo"] = request.PageNo
-	query["PageSize"] = request.PageSize
-	query["Param"] = request.Param
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Param)) {
+		query["Param"] = request.Param
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7423,8 +8234,14 @@ func (client *Client) RemoveGameFromProjectWithOptions(request *RemoveGameFromPr
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GameId"] = request.GameId
-	query["ProjectId"] = request.ProjectId
+	if !tea.BoolValue(util.IsUnset(request.GameId)) {
+		query["GameId"] = request.GameId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7459,13 +8276,120 @@ func (client *Client) RemoveGameFromProject(request *RemoveGameFromProjectReques
 	return _result, _err
 }
 
+func (client *Client) SetGameAliveWithOptions(request *SetGameAliveRequest, runtime *util.RuntimeOptions) (_result *SetGameAliveResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessKey)) {
+		body["AccessKey"] = request.AccessKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameSession)) {
+		body["GameSession"] = request.GameSession
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeepAlive)) {
+		body["KeepAlive"] = request.KeepAlive
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetGameAlive"),
+		Version:     tea.String("2020-07-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetGameAliveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetGameAlive(request *SetGameAliveRequest) (_result *SetGameAliveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetGameAliveResponse{}
+	_body, _err := client.SetGameAliveWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetGameHangWithOptions(request *SetGameHangRequest, runtime *util.RuntimeOptions) (_result *SetGameHangResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccessKey)) {
+		body["AccessKey"] = request.AccessKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		body["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameSession)) {
+		body["GameSession"] = request.GameSession
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetGameHang"),
+		Version:     tea.String("2020-07-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetGameHangResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetGameHang(request *SetGameHangRequest) (_result *SetGameHangResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetGameHangResponse{}
+	_body, _err := client.SetGameHangWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SkipTrialPolicyWithOptions(request *SkipTrialPolicyRequest, runtime *util.RuntimeOptions) (_result *SkipTrialPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["GameSessionId"] = request.GameSessionId
+	if !tea.BoolValue(util.IsUnset(request.GameSessionId)) {
+		query["GameSessionId"] = request.GameSessionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7570,11 +8494,26 @@ func (client *Client) SubmitDeploymentWithOptions(request *SubmitDeploymentReque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["CloudGameInstanceIds"] = request.CloudGameInstanceIds
-	query["GameId"] = request.GameId
-	query["OperationType"] = request.OperationType
-	query["ProjectId"] = request.ProjectId
-	query["VersionId"] = request.VersionId
+	if !tea.BoolValue(util.IsUnset(request.CloudGameInstanceIds)) {
+		query["CloudGameInstanceIds"] = request.CloudGameInstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameId)) {
+		query["GameId"] = request.GameId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationType)) {
+		query["OperationType"] = request.OperationType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7615,25 +8554,82 @@ func (client *Client) SubmitInternalPurchaseChargeDataWithOptions(request *Submi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["ActiveUserRetentionRateOneDay"] = request.ActiveUserRetentionRateOneDay
-	query["ActiveUserRetentionRateSevenDay"] = request.ActiveUserRetentionRateSevenDay
-	query["ActiveUserRetentionRateThirtyDay"] = request.ActiveUserRetentionRateThirtyDay
-	query["Arpu"] = request.Arpu
-	query["ChargeDate"] = request.ChargeDate
-	query["Dau"] = request.Dau
-	query["GameId"] = request.GameId
-	query["Mau"] = request.Mau
-	query["NewUserRetentionRateOneDay"] = request.NewUserRetentionRateOneDay
-	query["NewUserRetentionRateSevenDay"] = request.NewUserRetentionRateSevenDay
-	query["NewUserRetentionRateThirtyDay"] = request.NewUserRetentionRateThirtyDay
-	query["PaymentConversionRate"] = request.PaymentConversionRate
-	query["PlayTimeAverageOneDay"] = request.PlayTimeAverageOneDay
-	query["PlayTimeAverageThirtyDay"] = request.PlayTimeAverageThirtyDay
-	query["PlayTimeNinetyPointsOneDay"] = request.PlayTimeNinetyPointsOneDay
-	query["PlayTimeNinetyPointsThirtyDay"] = request.PlayTimeNinetyPointsThirtyDay
-	query["PlayTimeRangeOneDay"] = request.PlayTimeRangeOneDay
-	query["PlayTimeRangeThirtyDay"] = request.PlayTimeRangeThirtyDay
-	query["UserActivationRate"] = request.UserActivationRate
+	if !tea.BoolValue(util.IsUnset(request.ActiveUserRetentionRateOneDay)) {
+		query["ActiveUserRetentionRateOneDay"] = request.ActiveUserRetentionRateOneDay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ActiveUserRetentionRateSevenDay)) {
+		query["ActiveUserRetentionRateSevenDay"] = request.ActiveUserRetentionRateSevenDay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ActiveUserRetentionRateThirtyDay)) {
+		query["ActiveUserRetentionRateThirtyDay"] = request.ActiveUserRetentionRateThirtyDay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Arpu)) {
+		query["Arpu"] = request.Arpu
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChargeDate)) {
+		query["ChargeDate"] = request.ChargeDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Dau)) {
+		query["Dau"] = request.Dau
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameId)) {
+		query["GameId"] = request.GameId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mau)) {
+		query["Mau"] = request.Mau
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewUserRetentionRateOneDay)) {
+		query["NewUserRetentionRateOneDay"] = request.NewUserRetentionRateOneDay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewUserRetentionRateSevenDay)) {
+		query["NewUserRetentionRateSevenDay"] = request.NewUserRetentionRateSevenDay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewUserRetentionRateThirtyDay)) {
+		query["NewUserRetentionRateThirtyDay"] = request.NewUserRetentionRateThirtyDay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PaymentConversionRate)) {
+		query["PaymentConversionRate"] = request.PaymentConversionRate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlayTimeAverageOneDay)) {
+		query["PlayTimeAverageOneDay"] = request.PlayTimeAverageOneDay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlayTimeAverageThirtyDay)) {
+		query["PlayTimeAverageThirtyDay"] = request.PlayTimeAverageThirtyDay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlayTimeNinetyPointsOneDay)) {
+		query["PlayTimeNinetyPointsOneDay"] = request.PlayTimeNinetyPointsOneDay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlayTimeNinetyPointsThirtyDay)) {
+		query["PlayTimeNinetyPointsThirtyDay"] = request.PlayTimeNinetyPointsThirtyDay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlayTimeRangeOneDay)) {
+		query["PlayTimeRangeOneDay"] = request.PlayTimeRangeOneDay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlayTimeRangeThirtyDay)) {
+		query["PlayTimeRangeThirtyDay"] = request.PlayTimeRangeThirtyDay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserActivationRate)) {
+		query["UserActivationRate"] = request.UserActivationRate
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7674,7 +8670,10 @@ func (client *Client) SubmitInternalPurchaseOrdersWithOptions(request *SubmitInt
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["OrderList"] = request.OrderList
+	if !tea.BoolValue(util.IsUnset(request.OrderList)) {
+		query["OrderList"] = request.OrderList
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7715,11 +8714,26 @@ func (client *Client) SubmitInternalPurchaseReadyFlagWithOptions(request *Submit
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["BatchInfoList"] = request.BatchInfoList
-	query["ChargeDate"] = request.ChargeDate
-	query["GameId"] = request.GameId
-	query["OrderTotalCount"] = request.OrderTotalCount
-	query["Status"] = request.Status
+	if !tea.BoolValue(util.IsUnset(request.BatchInfoList)) {
+		query["BatchInfoList"] = request.BatchInfoList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChargeDate)) {
+		query["ChargeDate"] = request.ChargeDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameId)) {
+		query["GameId"] = request.GameId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderTotalCount)) {
+		query["OrderTotalCount"] = request.OrderTotalCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -7760,12 +8774,30 @@ func (client *Client) UploadGameVersionByDownloadWithOptions(request *UploadGame
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	query["DownloadType"] = request.DownloadType
-	query["FileType"] = request.FileType
-	query["GameId"] = request.GameId
-	query["GameVersion"] = request.GameVersion
-	query["Hash"] = request.Hash
-	query["VersionName"] = request.VersionName
+	if !tea.BoolValue(util.IsUnset(request.DownloadType)) {
+		query["DownloadType"] = request.DownloadType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileType)) {
+		query["FileType"] = request.FileType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameId)) {
+		query["GameId"] = request.GameId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GameVersion)) {
+		query["GameVersion"] = request.GameVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Hash)) {
+		query["Hash"] = request.Hash
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionName)) {
+		query["VersionName"] = request.VersionName
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
