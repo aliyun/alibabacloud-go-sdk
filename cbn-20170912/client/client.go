@@ -6978,16 +6978,17 @@ func (s *DescribeCenRegionDomainRouteEntriesResponse) SetBody(v *DescribeCenRegi
 }
 
 type DescribeCenRouteMapsRequest struct {
-	CenId                *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
-	CenRegionId          *string `json:"CenRegionId,omitempty" xml:"CenRegionId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	PageNumber           *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	RouteMapId           *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
-	TransmitDirection    *string `json:"TransmitDirection,omitempty" xml:"TransmitDirection,omitempty"`
+	CenId                     *string `json:"CenId,omitempty" xml:"CenId,omitempty"`
+	CenRegionId               *string `json:"CenRegionId,omitempty" xml:"CenRegionId,omitempty"`
+	OwnerAccount              *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	PageNumber                *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                  *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceOwnerAccount      *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId           *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	RouteMapId                *string `json:"RouteMapId,omitempty" xml:"RouteMapId,omitempty"`
+	TransitRouterRouteTableId *string `json:"TransitRouterRouteTableId,omitempty" xml:"TransitRouterRouteTableId,omitempty"`
+	TransmitDirection         *string `json:"TransmitDirection,omitempty" xml:"TransmitDirection,omitempty"`
 }
 
 func (s DescribeCenRouteMapsRequest) String() string {
@@ -7040,6 +7041,11 @@ func (s *DescribeCenRouteMapsRequest) SetResourceOwnerId(v int64) *DescribeCenRo
 
 func (s *DescribeCenRouteMapsRequest) SetRouteMapId(v string) *DescribeCenRouteMapsRequest {
 	s.RouteMapId = &v
+	return s
+}
+
+func (s *DescribeCenRouteMapsRequest) SetTransitRouterRouteTableId(v string) *DescribeCenRouteMapsRequest {
+	s.TransitRouterRouteTableId = &v
 	return s
 }
 
@@ -7135,6 +7141,7 @@ type DescribeCenRouteMapsResponseBodyRouteMapsRouteMap struct {
 	SourceRegionIds                    *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRegionIds               `json:"SourceRegionIds,omitempty" xml:"SourceRegionIds,omitempty" type:"Struct"`
 	SourceRouteTableIds                *DescribeCenRouteMapsResponseBodyRouteMapsRouteMapSourceRouteTableIds           `json:"SourceRouteTableIds,omitempty" xml:"SourceRouteTableIds,omitempty" type:"Struct"`
 	Status                             *string                                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+	TransitRouterRouteTableId          *string                                                                         `json:"TransitRouterRouteTableId,omitempty" xml:"TransitRouterRouteTableId,omitempty"`
 	TransmitDirection                  *string                                                                         `json:"TransmitDirection,omitempty" xml:"TransmitDirection,omitempty"`
 }
 
@@ -7283,6 +7290,11 @@ func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetSourceRouteTableI
 
 func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetStatus(v string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
 	s.Status = &v
+	return s
+}
+
+func (s *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap) SetTransitRouterRouteTableId(v string) *DescribeCenRouteMapsResponseBodyRouteMapsRouteMap {
+	s.TransitRouterRouteTableId = &v
 	return s
 }
 
@@ -16767,6 +16779,7 @@ func (s *UpdateTransitRouterRouteTableResponse) SetBody(v *UpdateTransitRouterRo
 }
 
 type UpdateTransitRouterVbrAttachmentAttributeRequest struct {
+	AutoPublishRouteEnabled            *bool   `json:"AutoPublishRouteEnabled,omitempty" xml:"AutoPublishRouteEnabled,omitempty"`
 	ClientToken                        *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun                             *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	OwnerAccount                       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -16784,6 +16797,11 @@ func (s UpdateTransitRouterVbrAttachmentAttributeRequest) String() string {
 
 func (s UpdateTransitRouterVbrAttachmentAttributeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateTransitRouterVbrAttachmentAttributeRequest) SetAutoPublishRouteEnabled(v bool) *UpdateTransitRouterVbrAttachmentAttributeRequest {
+	s.AutoPublishRouteEnabled = &v
+	return s
 }
 
 func (s *UpdateTransitRouterVbrAttachmentAttributeRequest) SetClientToken(v string) *UpdateTransitRouterVbrAttachmentAttributeRequest {
@@ -21142,6 +21160,10 @@ func (client *Client) DescribeCenRouteMapsWithOptions(request *DescribeCenRouteM
 
 	if !tea.BoolValue(util.IsUnset(request.RouteMapId)) {
 		query["RouteMapId"] = request.RouteMapId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TransitRouterRouteTableId)) {
+		query["TransitRouterRouteTableId"] = request.TransitRouterRouteTableId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TransmitDirection)) {
@@ -26088,6 +26110,10 @@ func (client *Client) UpdateTransitRouterVbrAttachmentAttributeWithOptions(reque
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPublishRouteEnabled)) {
+		query["AutoPublishRouteEnabled"] = request.AutoPublishRouteEnabled
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
 	}
