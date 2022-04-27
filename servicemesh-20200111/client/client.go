@@ -1098,7 +1098,6 @@ type CreateServiceMeshRequest struct {
 	AutoRenew                  *bool    `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	AutoRenewPeriod            *int32   `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
 	CRAggregationEnabled       *bool    `json:"CRAggregationEnabled,omitempty" xml:"CRAggregationEnabled,omitempty"`
-	CanaryUpgradeEnabled       *bool    `json:"CanaryUpgradeEnabled,omitempty" xml:"CanaryUpgradeEnabled,omitempty"`
 	ChargeType                 *string  `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	ClusterSpec                *string  `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
 	ConfigSourceEnabled        *bool    `json:"ConfigSourceEnabled,omitempty" xml:"ConfigSourceEnabled,omitempty"`
@@ -1224,11 +1223,6 @@ func (s *CreateServiceMeshRequest) SetAutoRenewPeriod(v int32) *CreateServiceMes
 
 func (s *CreateServiceMeshRequest) SetCRAggregationEnabled(v bool) *CreateServiceMeshRequest {
 	s.CRAggregationEnabled = &v
-	return s
-}
-
-func (s *CreateServiceMeshRequest) SetCanaryUpgradeEnabled(v bool) *CreateServiceMeshRequest {
-	s.CanaryUpgradeEnabled = &v
 	return s
 }
 
@@ -4297,216 +4291,6 @@ func (s *DescribeIstioGatewayRoutesResponse) SetBody(v *DescribeIstioGatewayRout
 	return s
 }
 
-type DescribeManagedServicesRequest struct {
-	GuestCluster  *string `json:"GuestCluster,omitempty" xml:"GuestCluster,omitempty"`
-	Limit         *int64  `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	Marker        *string `json:"Marker,omitempty" xml:"Marker,omitempty"`
-	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-}
-
-func (s DescribeManagedServicesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeManagedServicesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeManagedServicesRequest) SetGuestCluster(v string) *DescribeManagedServicesRequest {
-	s.GuestCluster = &v
-	return s
-}
-
-func (s *DescribeManagedServicesRequest) SetLimit(v int64) *DescribeManagedServicesRequest {
-	s.Limit = &v
-	return s
-}
-
-func (s *DescribeManagedServicesRequest) SetMarker(v string) *DescribeManagedServicesRequest {
-	s.Marker = &v
-	return s
-}
-
-func (s *DescribeManagedServicesRequest) SetNamespace(v string) *DescribeManagedServicesRequest {
-	s.Namespace = &v
-	return s
-}
-
-func (s *DescribeManagedServicesRequest) SetServiceMeshId(v string) *DescribeManagedServicesRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-type DescribeManagedServicesResponseBody struct {
-	ManagedServiceInfo []*DescribeManagedServicesResponseBodyManagedServiceInfo `json:"ManagedServiceInfo,omitempty" xml:"ManagedServiceInfo,omitempty" type:"Repeated"`
-	Mark               *string                                                  `json:"Mark,omitempty" xml:"Mark,omitempty"`
-	RequestId          *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeManagedServicesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeManagedServicesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeManagedServicesResponseBody) SetManagedServiceInfo(v []*DescribeManagedServicesResponseBodyManagedServiceInfo) *DescribeManagedServicesResponseBody {
-	s.ManagedServiceInfo = v
-	return s
-}
-
-func (s *DescribeManagedServicesResponseBody) SetMark(v string) *DescribeManagedServicesResponseBody {
-	s.Mark = &v
-	return s
-}
-
-func (s *DescribeManagedServicesResponseBody) SetRequestId(v string) *DescribeManagedServicesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeManagedServicesResponseBodyManagedServiceInfo struct {
-	CreateTime          *string                                                                     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeploymentInstances []*DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances `json:"DeploymentInstances,omitempty" xml:"DeploymentInstances,omitempty" type:"Repeated"`
-	Message             *string                                                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	Selector            map[string]*string                                                          `json:"Selector,omitempty" xml:"Selector,omitempty"`
-	ServiceName         *string                                                                     `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	SidecarInjectStatus *string                                                                     `json:"SidecarInjectStatus,omitempty" xml:"SidecarInjectStatus,omitempty"`
-	SidecarResource     *DescribeManagedServicesResponseBodyManagedServiceInfoSidecarResource       `json:"SidecarResource,omitempty" xml:"SidecarResource,omitempty" type:"Struct"`
-}
-
-func (s DescribeManagedServicesResponseBodyManagedServiceInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeManagedServicesResponseBodyManagedServiceInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeManagedServicesResponseBodyManagedServiceInfo) SetCreateTime(v string) *DescribeManagedServicesResponseBodyManagedServiceInfo {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *DescribeManagedServicesResponseBodyManagedServiceInfo) SetDeploymentInstances(v []*DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances) *DescribeManagedServicesResponseBodyManagedServiceInfo {
-	s.DeploymentInstances = v
-	return s
-}
-
-func (s *DescribeManagedServicesResponseBodyManagedServiceInfo) SetMessage(v string) *DescribeManagedServicesResponseBodyManagedServiceInfo {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeManagedServicesResponseBodyManagedServiceInfo) SetSelector(v map[string]*string) *DescribeManagedServicesResponseBodyManagedServiceInfo {
-	s.Selector = v
-	return s
-}
-
-func (s *DescribeManagedServicesResponseBodyManagedServiceInfo) SetServiceName(v string) *DescribeManagedServicesResponseBodyManagedServiceInfo {
-	s.ServiceName = &v
-	return s
-}
-
-func (s *DescribeManagedServicesResponseBodyManagedServiceInfo) SetSidecarInjectStatus(v string) *DescribeManagedServicesResponseBodyManagedServiceInfo {
-	s.SidecarInjectStatus = &v
-	return s
-}
-
-func (s *DescribeManagedServicesResponseBodyManagedServiceInfo) SetSidecarResource(v *DescribeManagedServicesResponseBodyManagedServiceInfoSidecarResource) *DescribeManagedServicesResponseBodyManagedServiceInfo {
-	s.SidecarResource = v
-	return s
-}
-
-type DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances struct {
-	ReadyReplicas *int32  `json:"ReadyReplicas,omitempty" xml:"ReadyReplicas,omitempty"`
-	Replicas      *int32  `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	Version       *string `json:"Version,omitempty" xml:"Version,omitempty"`
-}
-
-func (s DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances) SetReadyReplicas(v int32) *DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances {
-	s.ReadyReplicas = &v
-	return s
-}
-
-func (s *DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances) SetReplicas(v int32) *DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances {
-	s.Replicas = &v
-	return s
-}
-
-func (s *DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances) SetVersion(v string) *DescribeManagedServicesResponseBodyManagedServiceInfoDeploymentInstances {
-	s.Version = &v
-	return s
-}
-
-type DescribeManagedServicesResponseBodyManagedServiceInfoSidecarResource struct {
-	LimitCPU      *string `json:"LimitCPU,omitempty" xml:"LimitCPU,omitempty"`
-	LimitMemory   *string `json:"LimitMemory,omitempty" xml:"LimitMemory,omitempty"`
-	RequestCPU    *string `json:"RequestCPU,omitempty" xml:"RequestCPU,omitempty"`
-	RequestMemory *string `json:"RequestMemory,omitempty" xml:"RequestMemory,omitempty"`
-}
-
-func (s DescribeManagedServicesResponseBodyManagedServiceInfoSidecarResource) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeManagedServicesResponseBodyManagedServiceInfoSidecarResource) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeManagedServicesResponseBodyManagedServiceInfoSidecarResource) SetLimitCPU(v string) *DescribeManagedServicesResponseBodyManagedServiceInfoSidecarResource {
-	s.LimitCPU = &v
-	return s
-}
-
-func (s *DescribeManagedServicesResponseBodyManagedServiceInfoSidecarResource) SetLimitMemory(v string) *DescribeManagedServicesResponseBodyManagedServiceInfoSidecarResource {
-	s.LimitMemory = &v
-	return s
-}
-
-func (s *DescribeManagedServicesResponseBodyManagedServiceInfoSidecarResource) SetRequestCPU(v string) *DescribeManagedServicesResponseBodyManagedServiceInfoSidecarResource {
-	s.RequestCPU = &v
-	return s
-}
-
-func (s *DescribeManagedServicesResponseBodyManagedServiceInfoSidecarResource) SetRequestMemory(v string) *DescribeManagedServicesResponseBodyManagedServiceInfoSidecarResource {
-	s.RequestMemory = &v
-	return s
-}
-
-type DescribeManagedServicesResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeManagedServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeManagedServicesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeManagedServicesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeManagedServicesResponse) SetHeaders(v map[string]*string) *DescribeManagedServicesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeManagedServicesResponse) SetBody(v *DescribeManagedServicesResponseBody) *DescribeManagedServicesResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeNamespaceScopeSidecarConfigRequest struct {
 	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
@@ -4988,122 +4772,6 @@ func (s *DescribeReusableSlbResponse) SetBody(v *DescribeReusableSlbResponseBody
 	return s
 }
 
-type DescribeServiceAccessDetailRequest struct {
-	GuestCluster  *string `json:"GuestCluster,omitempty" xml:"GuestCluster,omitempty"`
-	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	ServiceName   *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-}
-
-func (s DescribeServiceAccessDetailRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceAccessDetailRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceAccessDetailRequest) SetGuestCluster(v string) *DescribeServiceAccessDetailRequest {
-	s.GuestCluster = &v
-	return s
-}
-
-func (s *DescribeServiceAccessDetailRequest) SetNamespace(v string) *DescribeServiceAccessDetailRequest {
-	s.Namespace = &v
-	return s
-}
-
-func (s *DescribeServiceAccessDetailRequest) SetServiceMeshId(v string) *DescribeServiceAccessDetailRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-func (s *DescribeServiceAccessDetailRequest) SetServiceName(v string) *DescribeServiceAccessDetailRequest {
-	s.ServiceName = &v
-	return s
-}
-
-type DescribeServiceAccessDetailResponseBody struct {
-	AccessDetail *DescribeServiceAccessDetailResponseBodyAccessDetail `json:"AccessDetail,omitempty" xml:"AccessDetail,omitempty" type:"Struct"`
-	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeServiceAccessDetailResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceAccessDetailResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceAccessDetailResponseBody) SetAccessDetail(v *DescribeServiceAccessDetailResponseBodyAccessDetail) *DescribeServiceAccessDetailResponseBody {
-	s.AccessDetail = v
-	return s
-}
-
-func (s *DescribeServiceAccessDetailResponseBody) SetRequestId(v string) *DescribeServiceAccessDetailResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeServiceAccessDetailResponseBodyAccessDetail struct {
-	ClusterIP *string `json:"ClusterIP,omitempty" xml:"ClusterIP,omitempty"`
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Ports     *string `json:"Ports,omitempty" xml:"Ports,omitempty"`
-	Type      *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s DescribeServiceAccessDetailResponseBodyAccessDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceAccessDetailResponseBodyAccessDetail) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceAccessDetailResponseBodyAccessDetail) SetClusterIP(v string) *DescribeServiceAccessDetailResponseBodyAccessDetail {
-	s.ClusterIP = &v
-	return s
-}
-
-func (s *DescribeServiceAccessDetailResponseBodyAccessDetail) SetName(v string) *DescribeServiceAccessDetailResponseBodyAccessDetail {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeServiceAccessDetailResponseBodyAccessDetail) SetPorts(v string) *DescribeServiceAccessDetailResponseBodyAccessDetail {
-	s.Ports = &v
-	return s
-}
-
-func (s *DescribeServiceAccessDetailResponseBodyAccessDetail) SetType(v string) *DescribeServiceAccessDetailResponseBodyAccessDetail {
-	s.Type = &v
-	return s
-}
-
-type DescribeServiceAccessDetailResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeServiceAccessDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeServiceAccessDetailResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceAccessDetailResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceAccessDetailResponse) SetHeaders(v map[string]*string) *DescribeServiceAccessDetailResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeServiceAccessDetailResponse) SetBody(v *DescribeServiceAccessDetailResponseBody) *DescribeServiceAccessDetailResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeServiceMeshAdditionalStatusRequest struct {
 	CheckMode     *string `json:"CheckMode,omitempty" xml:"CheckMode,omitempty"`
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
@@ -5156,7 +4824,7 @@ type DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus struct {
 	ApiServerLoadBalancerStatus *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus `json:"ApiServerLoadBalancerStatus,omitempty" xml:"ApiServerLoadBalancerStatus,omitempty" type:"Struct"`
 	AuditProjectStatus          *string                                                                                  `json:"AuditProjectStatus,omitempty" xml:"AuditProjectStatus,omitempty"`
 	ControlPlaneProjectStatus   *string                                                                                  `json:"ControlPlaneProjectStatus,omitempty" xml:"ControlPlaneProjectStatus,omitempty"`
-	LogtailStatusRecord         map[string]*ClusterStatusLogtailStatusRecordValue                                        `json:"LogtailStatusRecord,omitempty" xml:"LogtailStatusRecord,omitempty"`
+	LogtailStatusRecord         map[string]interface{}                                                                   `json:"LogtailStatusRecord,omitempty" xml:"LogtailStatusRecord,omitempty"`
 	PilotLoadBalancerStatus     *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus     `json:"PilotLoadBalancerStatus,omitempty" xml:"PilotLoadBalancerStatus,omitempty" type:"Struct"`
 	SgStatus                    *string                                                                                  `json:"SgStatus,omitempty" xml:"SgStatus,omitempty"`
 }
@@ -5194,7 +4862,7 @@ func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus) SetContro
 	return s
 }
 
-func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus) SetLogtailStatusRecord(v map[string]*ClusterStatusLogtailStatusRecordValue) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus {
+func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus) SetLogtailStatusRecord(v map[string]interface{}) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus {
 	s.LogtailStatusRecord = v
 	return s
 }
@@ -5210,6 +4878,7 @@ func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus) SetSgStat
 }
 
 type DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus struct {
+	Locked                    *bool   `json:"Locked,omitempty" xml:"Locked,omitempty"`
 	PayType                   *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	Reused                    *bool   `json:"Reused,omitempty" xml:"Reused,omitempty"`
 	SLBBackEndServerNumStatus *string `json:"SLBBackEndServerNumStatus,omitempty" xml:"SLBBackEndServerNumStatus,omitempty"`
@@ -5222,6 +4891,11 @@ func (s DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoa
 
 func (s DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus) SetLocked(v bool) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus {
+	s.Locked = &v
+	return s
 }
 
 func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus) SetPayType(v string) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus {
@@ -5245,6 +4919,7 @@ func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLo
 }
 
 type DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus struct {
+	Locked                    *bool   `json:"Locked,omitempty" xml:"Locked,omitempty"`
 	PayType                   *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	Reused                    *bool   `json:"Reused,omitempty" xml:"Reused,omitempty"`
 	SLBBackEndServerNumStatus *string `json:"SLBBackEndServerNumStatus,omitempty" xml:"SLBBackEndServerNumStatus,omitempty"`
@@ -5257,6 +4932,11 @@ func (s DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBal
 
 func (s DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus) SetLocked(v bool) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus {
+	s.Locked = &v
+	return s
 }
 
 func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus) SetPayType(v string) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus {
@@ -8402,240 +8082,6 @@ func (s *DescribeVSwitchesResponse) SetBody(v *DescribeVSwitchesResponseBody) *D
 	return s
 }
 
-type DescribeVersionManagementRequest struct {
-	GuestCluster  *string `json:"GuestCluster,omitempty" xml:"GuestCluster,omitempty"`
-	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	ServiceName   *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-}
-
-func (s DescribeVersionManagementRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVersionManagementRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVersionManagementRequest) SetGuestCluster(v string) *DescribeVersionManagementRequest {
-	s.GuestCluster = &v
-	return s
-}
-
-func (s *DescribeVersionManagementRequest) SetNamespace(v string) *DescribeVersionManagementRequest {
-	s.Namespace = &v
-	return s
-}
-
-func (s *DescribeVersionManagementRequest) SetServiceMeshId(v string) *DescribeVersionManagementRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-func (s *DescribeVersionManagementRequest) SetServiceName(v string) *DescribeVersionManagementRequest {
-	s.ServiceName = &v
-	return s
-}
-
-type DescribeVersionManagementResponseBody struct {
-	RequestId      *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	VersionDetails []*DescribeVersionManagementResponseBodyVersionDetails `json:"VersionDetails,omitempty" xml:"VersionDetails,omitempty" type:"Repeated"`
-}
-
-func (s DescribeVersionManagementResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVersionManagementResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVersionManagementResponseBody) SetRequestId(v string) *DescribeVersionManagementResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeVersionManagementResponseBody) SetVersionDetails(v []*DescribeVersionManagementResponseBodyVersionDetails) *DescribeVersionManagementResponseBody {
-	s.VersionDetails = v
-	return s
-}
-
-type DescribeVersionManagementResponseBodyVersionDetails struct {
-	CreateTime     *string                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	DeploymentName *string                                                            `json:"DeploymentName,omitempty" xml:"DeploymentName,omitempty"`
-	Images         []*string                                                          `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	Inject         *bool                                                              `json:"Inject,omitempty" xml:"Inject,omitempty"`
-	PodInstances   []*DescribeVersionManagementResponseBodyVersionDetailsPodInstances `json:"PodInstances,omitempty" xml:"PodInstances,omitempty" type:"Repeated"`
-	ReadyReplicas  *int32                                                             `json:"ReadyReplicas,omitempty" xml:"ReadyReplicas,omitempty"`
-	Replicas       *int32                                                             `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
-	Resource       *DescribeVersionManagementResponseBodyVersionDetailsResource       `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Struct"`
-	Version        *string                                                            `json:"Version,omitempty" xml:"Version,omitempty"`
-}
-
-func (s DescribeVersionManagementResponseBodyVersionDetails) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVersionManagementResponseBodyVersionDetails) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVersionManagementResponseBodyVersionDetails) SetCreateTime(v string) *DescribeVersionManagementResponseBodyVersionDetails {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *DescribeVersionManagementResponseBodyVersionDetails) SetDeploymentName(v string) *DescribeVersionManagementResponseBodyVersionDetails {
-	s.DeploymentName = &v
-	return s
-}
-
-func (s *DescribeVersionManagementResponseBodyVersionDetails) SetImages(v []*string) *DescribeVersionManagementResponseBodyVersionDetails {
-	s.Images = v
-	return s
-}
-
-func (s *DescribeVersionManagementResponseBodyVersionDetails) SetInject(v bool) *DescribeVersionManagementResponseBodyVersionDetails {
-	s.Inject = &v
-	return s
-}
-
-func (s *DescribeVersionManagementResponseBodyVersionDetails) SetPodInstances(v []*DescribeVersionManagementResponseBodyVersionDetailsPodInstances) *DescribeVersionManagementResponseBodyVersionDetails {
-	s.PodInstances = v
-	return s
-}
-
-func (s *DescribeVersionManagementResponseBodyVersionDetails) SetReadyReplicas(v int32) *DescribeVersionManagementResponseBodyVersionDetails {
-	s.ReadyReplicas = &v
-	return s
-}
-
-func (s *DescribeVersionManagementResponseBodyVersionDetails) SetReplicas(v int32) *DescribeVersionManagementResponseBodyVersionDetails {
-	s.Replicas = &v
-	return s
-}
-
-func (s *DescribeVersionManagementResponseBodyVersionDetails) SetResource(v *DescribeVersionManagementResponseBodyVersionDetailsResource) *DescribeVersionManagementResponseBodyVersionDetails {
-	s.Resource = v
-	return s
-}
-
-func (s *DescribeVersionManagementResponseBodyVersionDetails) SetVersion(v string) *DescribeVersionManagementResponseBodyVersionDetails {
-	s.Version = &v
-	return s
-}
-
-type DescribeVersionManagementResponseBodyVersionDetailsPodInstances struct {
-	CreateTime  *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Namespace   *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NodeIp      *string `json:"NodeIp,omitempty" xml:"NodeIp,omitempty"`
-	PodIP       *string `json:"PodIP,omitempty" xml:"PodIP,omitempty"`
-	PodName     *string `json:"PodName,omitempty" xml:"PodName,omitempty"`
-	RestartTime *int32  `json:"RestartTime,omitempty" xml:"RestartTime,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s DescribeVersionManagementResponseBodyVersionDetailsPodInstances) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVersionManagementResponseBodyVersionDetailsPodInstances) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVersionManagementResponseBodyVersionDetailsPodInstances) SetCreateTime(v string) *DescribeVersionManagementResponseBodyVersionDetailsPodInstances {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *DescribeVersionManagementResponseBodyVersionDetailsPodInstances) SetNamespace(v string) *DescribeVersionManagementResponseBodyVersionDetailsPodInstances {
-	s.Namespace = &v
-	return s
-}
-
-func (s *DescribeVersionManagementResponseBodyVersionDetailsPodInstances) SetNodeIp(v string) *DescribeVersionManagementResponseBodyVersionDetailsPodInstances {
-	s.NodeIp = &v
-	return s
-}
-
-func (s *DescribeVersionManagementResponseBodyVersionDetailsPodInstances) SetPodIP(v string) *DescribeVersionManagementResponseBodyVersionDetailsPodInstances {
-	s.PodIP = &v
-	return s
-}
-
-func (s *DescribeVersionManagementResponseBodyVersionDetailsPodInstances) SetPodName(v string) *DescribeVersionManagementResponseBodyVersionDetailsPodInstances {
-	s.PodName = &v
-	return s
-}
-
-func (s *DescribeVersionManagementResponseBodyVersionDetailsPodInstances) SetRestartTime(v int32) *DescribeVersionManagementResponseBodyVersionDetailsPodInstances {
-	s.RestartTime = &v
-	return s
-}
-
-func (s *DescribeVersionManagementResponseBodyVersionDetailsPodInstances) SetStatus(v string) *DescribeVersionManagementResponseBodyVersionDetailsPodInstances {
-	s.Status = &v
-	return s
-}
-
-type DescribeVersionManagementResponseBodyVersionDetailsResource struct {
-	CPULimit      *string `json:"CPULimit,omitempty" xml:"CPULimit,omitempty"`
-	CPURequest    *string `json:"CPURequest,omitempty" xml:"CPURequest,omitempty"`
-	MemoryLimit   *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
-	MemoryRequest *string `json:"MemoryRequest,omitempty" xml:"MemoryRequest,omitempty"`
-}
-
-func (s DescribeVersionManagementResponseBodyVersionDetailsResource) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVersionManagementResponseBodyVersionDetailsResource) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVersionManagementResponseBodyVersionDetailsResource) SetCPULimit(v string) *DescribeVersionManagementResponseBodyVersionDetailsResource {
-	s.CPULimit = &v
-	return s
-}
-
-func (s *DescribeVersionManagementResponseBodyVersionDetailsResource) SetCPURequest(v string) *DescribeVersionManagementResponseBodyVersionDetailsResource {
-	s.CPURequest = &v
-	return s
-}
-
-func (s *DescribeVersionManagementResponseBodyVersionDetailsResource) SetMemoryLimit(v string) *DescribeVersionManagementResponseBodyVersionDetailsResource {
-	s.MemoryLimit = &v
-	return s
-}
-
-func (s *DescribeVersionManagementResponseBodyVersionDetailsResource) SetMemoryRequest(v string) *DescribeVersionManagementResponseBodyVersionDetailsResource {
-	s.MemoryRequest = &v
-	return s
-}
-
-type DescribeVersionManagementResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVersionManagementResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeVersionManagementResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeVersionManagementResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeVersionManagementResponse) SetHeaders(v map[string]*string) *DescribeVersionManagementResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeVersionManagementResponse) SetBody(v *DescribeVersionManagementResponseBody) *DescribeVersionManagementResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeVersionsResponseBody struct {
 	RequestId   *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VersionInfo []*DescribeVersionsResponseBodyVersionInfo `json:"VersionInfo,omitempty" xml:"VersionInfo,omitempty" type:"Repeated"`
@@ -10700,6 +10146,93 @@ func (s *UpdateIstioRouteAdditionalStatusResponse) SetBody(v *UpdateIstioRouteAd
 	return s
 }
 
+type UpdateMeshCRAggregationRequest struct {
+	CPULimit          *string `json:"CPULimit,omitempty" xml:"CPULimit,omitempty"`
+	CPURequirement    *string `json:"CPURequirement,omitempty" xml:"CPURequirement,omitempty"`
+	Enabled           *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	MemoryLimit       *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
+	MemoryRequirement *string `json:"MemoryRequirement,omitempty" xml:"MemoryRequirement,omitempty"`
+	ServiceMeshId     *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s UpdateMeshCRAggregationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMeshCRAggregationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMeshCRAggregationRequest) SetCPULimit(v string) *UpdateMeshCRAggregationRequest {
+	s.CPULimit = &v
+	return s
+}
+
+func (s *UpdateMeshCRAggregationRequest) SetCPURequirement(v string) *UpdateMeshCRAggregationRequest {
+	s.CPURequirement = &v
+	return s
+}
+
+func (s *UpdateMeshCRAggregationRequest) SetEnabled(v bool) *UpdateMeshCRAggregationRequest {
+	s.Enabled = &v
+	return s
+}
+
+func (s *UpdateMeshCRAggregationRequest) SetMemoryLimit(v string) *UpdateMeshCRAggregationRequest {
+	s.MemoryLimit = &v
+	return s
+}
+
+func (s *UpdateMeshCRAggregationRequest) SetMemoryRequirement(v string) *UpdateMeshCRAggregationRequest {
+	s.MemoryRequirement = &v
+	return s
+}
+
+func (s *UpdateMeshCRAggregationRequest) SetServiceMeshId(v string) *UpdateMeshCRAggregationRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type UpdateMeshCRAggregationResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateMeshCRAggregationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMeshCRAggregationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMeshCRAggregationResponseBody) SetRequestId(v string) *UpdateMeshCRAggregationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateMeshCRAggregationResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateMeshCRAggregationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateMeshCRAggregationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMeshCRAggregationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMeshCRAggregationResponse) SetHeaders(v map[string]*string) *UpdateMeshCRAggregationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMeshCRAggregationResponse) SetBody(v *UpdateMeshCRAggregationResponseBody) *UpdateMeshCRAggregationResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateMeshFeatureRequest struct {
 	AccessLogEnabled               *bool    `json:"AccessLogEnabled,omitempty" xml:"AccessLogEnabled,omitempty"`
 	AccessLogFile                  *string  `json:"AccessLogFile,omitempty" xml:"AccessLogFile,omitempty"`
@@ -10711,7 +10244,6 @@ type UpdateMeshFeatureRequest struct {
 	AuditProject                   *string  `json:"AuditProject,omitempty" xml:"AuditProject,omitempty"`
 	AutoInjectionPolicyEnabled     *bool    `json:"AutoInjectionPolicyEnabled,omitempty" xml:"AutoInjectionPolicyEnabled,omitempty"`
 	CRAggregationEnabled           *bool    `json:"CRAggregationEnabled,omitempty" xml:"CRAggregationEnabled,omitempty"`
-	CanaryUpgradeEnabled           *bool    `json:"CanaryUpgradeEnabled,omitempty" xml:"CanaryUpgradeEnabled,omitempty"`
 	ClusterSpec                    *string  `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
 	CniEnabled                     *bool    `json:"CniEnabled,omitempty" xml:"CniEnabled,omitempty"`
 	CniExcludeNamespaces           *string  `json:"CniExcludeNamespaces,omitempty" xml:"CniExcludeNamespaces,omitempty"`
@@ -10835,11 +10367,6 @@ func (s *UpdateMeshFeatureRequest) SetAutoInjectionPolicyEnabled(v bool) *Update
 
 func (s *UpdateMeshFeatureRequest) SetCRAggregationEnabled(v bool) *UpdateMeshFeatureRequest {
 	s.CRAggregationEnabled = &v
-	return s
-}
-
-func (s *UpdateMeshFeatureRequest) SetCanaryUpgradeEnabled(v bool) *UpdateMeshFeatureRequest {
-	s.CanaryUpgradeEnabled = &v
 	return s
 }
 
@@ -11645,58 +11172,6 @@ func (s *CCMVersionsValue) SetMessage(v string) *CCMVersionsValue {
 	return s
 }
 
-type ClusterStatusLogtailStatusRecordValue struct {
-	ClusterId           *string                                                     `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	LogtailDetailStatus *string                                                     `json:"LogtailDetailStatus,omitempty" xml:"LogtailDetailStatus,omitempty"`
-	AccessLogDashboards []*ClusterStatusLogtailStatusRecordValueAccessLogDashboards `json:"AccessLogDashboards,omitempty" xml:"AccessLogDashboards,omitempty" type:"Repeated"`
-}
-
-func (s ClusterStatusLogtailStatusRecordValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ClusterStatusLogtailStatusRecordValue) GoString() string {
-	return s.String()
-}
-
-func (s *ClusterStatusLogtailStatusRecordValue) SetClusterId(v string) *ClusterStatusLogtailStatusRecordValue {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *ClusterStatusLogtailStatusRecordValue) SetLogtailDetailStatus(v string) *ClusterStatusLogtailStatusRecordValue {
-	s.LogtailDetailStatus = &v
-	return s
-}
-
-func (s *ClusterStatusLogtailStatusRecordValue) SetAccessLogDashboards(v []*ClusterStatusLogtailStatusRecordValueAccessLogDashboards) *ClusterStatusLogtailStatusRecordValue {
-	s.AccessLogDashboards = v
-	return s
-}
-
-type ClusterStatusLogtailStatusRecordValueAccessLogDashboards struct {
-	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	Url   *string `json:"Url,omitempty" xml:"Url,omitempty"`
-}
-
-func (s ClusterStatusLogtailStatusRecordValueAccessLogDashboards) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ClusterStatusLogtailStatusRecordValueAccessLogDashboards) GoString() string {
-	return s.String()
-}
-
-func (s *ClusterStatusLogtailStatusRecordValueAccessLogDashboards) SetTitle(v string) *ClusterStatusLogtailStatusRecordValueAccessLogDashboards {
-	s.Title = &v
-	return s
-}
-
-func (s *ClusterStatusLogtailStatusRecordValueAccessLogDashboards) SetUrl(v string) *ClusterStatusLogtailStatusRecordValueAccessLogDashboards {
-	s.Url = &v
-	return s
-}
-
 type ServiceLabelsValue struct {
 	Labels  map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
 	Success *bool              `json:"Success,omitempty" xml:"Success,omitempty"`
@@ -12210,10 +11685,6 @@ func (client *Client) CreateServiceMeshWithOptions(request *CreateServiceMeshReq
 
 	if !tea.BoolValue(util.IsUnset(request.CRAggregationEnabled)) {
 		body["CRAggregationEnabled"] = request.CRAggregationEnabled
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CanaryUpgradeEnabled)) {
-		body["CanaryUpgradeEnabled"] = request.CanaryUpgradeEnabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
@@ -13550,66 +13021,6 @@ func (client *Client) DescribeIstioGatewayRoutes(request *DescribeIstioGatewayRo
 	return _result, _err
 }
 
-func (client *Client) DescribeManagedServicesWithOptions(request *DescribeManagedServicesRequest, runtime *util.RuntimeOptions) (_result *DescribeManagedServicesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.GuestCluster)) {
-		body["GuestCluster"] = request.GuestCluster
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Limit)) {
-		body["Limit"] = request.Limit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Marker)) {
-		body["Marker"] = request.Marker
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
-		body["Namespace"] = request.Namespace
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
-		body["ServiceMeshId"] = request.ServiceMeshId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeManagedServices"),
-		Version:     tea.String("2020-01-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeManagedServicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeManagedServices(request *DescribeManagedServicesRequest) (_result *DescribeManagedServicesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeManagedServicesResponse{}
-	_body, _err := client.DescribeManagedServicesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeNamespaceScopeSidecarConfigWithOptions(request *DescribeNamespaceScopeSidecarConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeNamespaceScopeSidecarConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13743,62 +13154,6 @@ func (client *Client) DescribeReusableSlb(request *DescribeReusableSlbRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeReusableSlbResponse{}
 	_body, _err := client.DescribeReusableSlbWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeServiceAccessDetailWithOptions(request *DescribeServiceAccessDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeServiceAccessDetailResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.GuestCluster)) {
-		body["GuestCluster"] = request.GuestCluster
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
-		body["Namespace"] = request.Namespace
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
-		body["ServiceMeshId"] = request.ServiceMeshId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
-		body["ServiceName"] = request.ServiceName
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeServiceAccessDetail"),
-		Version:     tea.String("2020-01-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeServiceAccessDetailResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeServiceAccessDetail(request *DescribeServiceAccessDetailRequest) (_result *DescribeServiceAccessDetailResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeServiceAccessDetailResponse{}
-	_body, _err := client.DescribeServiceAccessDetailWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14444,62 +13799,6 @@ func (client *Client) DescribeVSwitches(request *DescribeVSwitchesRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVSwitchesResponse{}
 	_body, _err := client.DescribeVSwitchesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeVersionManagementWithOptions(request *DescribeVersionManagementRequest, runtime *util.RuntimeOptions) (_result *DescribeVersionManagementResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.GuestCluster)) {
-		body["GuestCluster"] = request.GuestCluster
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
-		body["Namespace"] = request.Namespace
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
-		body["ServiceMeshId"] = request.ServiceMeshId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServiceName)) {
-		body["ServiceName"] = request.ServiceName
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeVersionManagement"),
-		Version:     tea.String("2020-01-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeVersionManagementResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeVersionManagement(request *DescribeVersionManagementRequest) (_result *DescribeVersionManagementResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeVersionManagementResponse{}
-	_body, _err := client.DescribeVersionManagementWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15396,6 +14695,70 @@ func (client *Client) UpdateIstioRouteAdditionalStatus(request *UpdateIstioRoute
 	return _result, _err
 }
 
+func (client *Client) UpdateMeshCRAggregationWithOptions(request *UpdateMeshCRAggregationRequest, runtime *util.RuntimeOptions) (_result *UpdateMeshCRAggregationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CPULimit)) {
+		body["CPULimit"] = request.CPULimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CPURequirement)) {
+		body["CPURequirement"] = request.CPURequirement
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
+		body["Enabled"] = request.Enabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemoryLimit)) {
+		body["MemoryLimit"] = request.MemoryLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemoryRequirement)) {
+		body["MemoryRequirement"] = request.MemoryRequirement
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMeshCRAggregation"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateMeshCRAggregationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateMeshCRAggregation(request *UpdateMeshCRAggregationRequest) (_result *UpdateMeshCRAggregationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateMeshCRAggregationResponse{}
+	_body, _err := client.UpdateMeshCRAggregationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureRequest, runtime *util.RuntimeOptions) (_result *UpdateMeshFeatureResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -15440,10 +14803,6 @@ func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureReq
 
 	if !tea.BoolValue(util.IsUnset(request.CRAggregationEnabled)) {
 		body["CRAggregationEnabled"] = request.CRAggregationEnabled
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CanaryUpgradeEnabled)) {
-		body["CanaryUpgradeEnabled"] = request.CanaryUpgradeEnabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClusterSpec)) {
