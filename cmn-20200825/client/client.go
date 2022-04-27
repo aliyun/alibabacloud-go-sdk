@@ -7729,6 +7729,115 @@ func (s *CreateMonitorItemRequestAlarmRuleList) SetVariable(v string) *CreateMon
 	return s
 }
 
+type CreateMonitorItemShrinkRequest struct {
+	// 告警规则列表
+	AlarmRuleListShrink *string `json:"AlarmRuleList,omitempty" xml:"AlarmRuleList,omitempty"`
+	// 解析代码
+	AnalysisCode *string `json:"AnalysisCode,omitempty" xml:"AnalysisCode,omitempty"`
+	// 幂等参数
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 采集类型
+	CollectionType *string `json:"CollectionType,omitempty" xml:"CollectionType,omitempty"`
+	// 监控项参数配置
+	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// 数据项
+	DataItem *string `json:"DataItem,omitempty" xml:"DataItem,omitempty"`
+	// 设备形态
+	DeviceForm *string `json:"DeviceForm,omitempty" xml:"DeviceForm,omitempty"`
+	// 是否启用
+	Effective *int32 `json:"Effective,omitempty" xml:"Effective,omitempty"`
+	// 执行间隔(s)
+	ExecInterval *int32 `json:"ExecInterval,omitempty" xml:"ExecInterval,omitempty"`
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 监控项描述
+	MonitorItemDescription *string `json:"MonitorItemDescription,omitempty" xml:"MonitorItemDescription,omitempty"`
+	// 监控项名称
+	MonitorItemName *string `json:"MonitorItemName,omitempty" xml:"MonitorItemName,omitempty"`
+	// 安全域
+	SecurityDomain *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
+	// 类型
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateMonitorItemShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMonitorItemShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMonitorItemShrinkRequest) SetAlarmRuleListShrink(v string) *CreateMonitorItemShrinkRequest {
+	s.AlarmRuleListShrink = &v
+	return s
+}
+
+func (s *CreateMonitorItemShrinkRequest) SetAnalysisCode(v string) *CreateMonitorItemShrinkRequest {
+	s.AnalysisCode = &v
+	return s
+}
+
+func (s *CreateMonitorItemShrinkRequest) SetClientToken(v string) *CreateMonitorItemShrinkRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateMonitorItemShrinkRequest) SetCollectionType(v string) *CreateMonitorItemShrinkRequest {
+	s.CollectionType = &v
+	return s
+}
+
+func (s *CreateMonitorItemShrinkRequest) SetConfig(v string) *CreateMonitorItemShrinkRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *CreateMonitorItemShrinkRequest) SetDataItem(v string) *CreateMonitorItemShrinkRequest {
+	s.DataItem = &v
+	return s
+}
+
+func (s *CreateMonitorItemShrinkRequest) SetDeviceForm(v string) *CreateMonitorItemShrinkRequest {
+	s.DeviceForm = &v
+	return s
+}
+
+func (s *CreateMonitorItemShrinkRequest) SetEffective(v int32) *CreateMonitorItemShrinkRequest {
+	s.Effective = &v
+	return s
+}
+
+func (s *CreateMonitorItemShrinkRequest) SetExecInterval(v int32) *CreateMonitorItemShrinkRequest {
+	s.ExecInterval = &v
+	return s
+}
+
+func (s *CreateMonitorItemShrinkRequest) SetInstanceId(v string) *CreateMonitorItemShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateMonitorItemShrinkRequest) SetMonitorItemDescription(v string) *CreateMonitorItemShrinkRequest {
+	s.MonitorItemDescription = &v
+	return s
+}
+
+func (s *CreateMonitorItemShrinkRequest) SetMonitorItemName(v string) *CreateMonitorItemShrinkRequest {
+	s.MonitorItemName = &v
+	return s
+}
+
+func (s *CreateMonitorItemShrinkRequest) SetSecurityDomain(v string) *CreateMonitorItemShrinkRequest {
+	s.SecurityDomain = &v
+	return s
+}
+
+func (s *CreateMonitorItemShrinkRequest) SetType(v string) *CreateMonitorItemShrinkRequest {
+	s.Type = &v
+	return s
+}
+
 type CreateMonitorItemResponseBody struct {
 	// 监控项ID
 	MonitorItemId *string `json:"MonitorItemId,omitempty" xml:"MonitorItemId,omitempty"`
@@ -10356,6 +10465,45 @@ func (s *DisableNotificationRequestList) SetType(v string) *DisableNotificationR
 	return s
 }
 
+type DisableNotificationShrinkRequest struct {
+	// 到期时间
+	ExpiryTime *string `json:"ExpiryTime,omitempty" xml:"ExpiryTime,omitempty"`
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 关闭通知的对象
+	ListShrink *string `json:"List,omitempty" xml:"List,omitempty"`
+	// 关闭原因
+	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+}
+
+func (s DisableNotificationShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableNotificationShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableNotificationShrinkRequest) SetExpiryTime(v string) *DisableNotificationShrinkRequest {
+	s.ExpiryTime = &v
+	return s
+}
+
+func (s *DisableNotificationShrinkRequest) SetInstanceId(v string) *DisableNotificationShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DisableNotificationShrinkRequest) SetListShrink(v string) *DisableNotificationShrinkRequest {
+	s.ListShrink = &v
+	return s
+}
+
+func (s *DisableNotificationShrinkRequest) SetReason(v string) *DisableNotificationShrinkRequest {
+	s.Reason = &v
+	return s
+}
+
 type DisableNotificationResponseBody struct {
 	// request id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -10631,6 +10779,31 @@ func (s *EnableNotificationRequestList) SetPortCollectionId(v string) *EnableNot
 
 func (s *EnableNotificationRequestList) SetType(v string) *EnableNotificationRequestList {
 	s.Type = &v
+	return s
+}
+
+type EnableNotificationShrinkRequest struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 通知对象
+	ListShrink *string `json:"List,omitempty" xml:"List,omitempty"`
+}
+
+func (s EnableNotificationShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableNotificationShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableNotificationShrinkRequest) SetInstanceId(v string) *EnableNotificationShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *EnableNotificationShrinkRequest) SetListShrink(v string) *EnableNotificationShrinkRequest {
+	s.ListShrink = &v
 	return s
 }
 
@@ -18703,19 +18876,19 @@ type ListDevicesShrinkRequest struct {
 	// 设备额外属性
 	ExtAttributes *string `json:"ExtAttributes,omitempty" xml:"ExtAttributes,omitempty"`
 	// 设备主机名
-	HostName []*string `json:"HostName,omitempty" xml:"HostName,omitempty" type:"Repeated"`
+	HostNameShrink *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
 	// 实例ID
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 设备IP
-	Ip []*string `json:"Ip,omitempty" xml:"Ip,omitempty" type:"Repeated"`
+	IpShrink *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
 	// 模糊查询值
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// 设备MAC
-	Mac []*string `json:"Mac,omitempty" xml:"Mac,omitempty" type:"Repeated"`
+	MacShrink *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
 	// 返回结果的最大个数。
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// 设备型号
-	Model []*string `json:"Model,omitempty" xml:"Model,omitempty" type:"Repeated"`
+	ModelShrink *string `json:"Model,omitempty" xml:"Model,omitempty"`
 	// 当总结果个数大于MaxResults时，用于翻页的token。
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// 物理空间ID
@@ -18723,13 +18896,13 @@ type ListDevicesShrinkRequest struct {
 	// 物理空间IDS
 	PhysicalSpaceIdsShrink *string `json:"PhysicalSpaceIds,omitempty" xml:"PhysicalSpaceIds,omitempty"`
 	// 安全域
-	SecurityDomain []*string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty" type:"Repeated"`
+	SecurityDomainShrink *string `json:"SecurityDomain,omitempty" xml:"SecurityDomain,omitempty"`
 	// 设备服务状态
-	ServiceStatus []*string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty" type:"Repeated"`
+	ServiceStatusShrink *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
 	// 设备SN
-	Sn []*string `json:"Sn,omitempty" xml:"Sn,omitempty" type:"Repeated"`
+	SnShrink *string `json:"Sn,omitempty" xml:"Sn,omitempty"`
 	// 设备厂商
-	Vendor []*string `json:"Vendor,omitempty" xml:"Vendor,omitempty" type:"Repeated"`
+	VendorShrink *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 
 func (s ListDevicesShrinkRequest) String() string {
@@ -18760,8 +18933,8 @@ func (s *ListDevicesShrinkRequest) SetExtAttributes(v string) *ListDevicesShrink
 	return s
 }
 
-func (s *ListDevicesShrinkRequest) SetHostName(v []*string) *ListDevicesShrinkRequest {
-	s.HostName = v
+func (s *ListDevicesShrinkRequest) SetHostNameShrink(v string) *ListDevicesShrinkRequest {
+	s.HostNameShrink = &v
 	return s
 }
 
@@ -18770,8 +18943,8 @@ func (s *ListDevicesShrinkRequest) SetInstanceId(v string) *ListDevicesShrinkReq
 	return s
 }
 
-func (s *ListDevicesShrinkRequest) SetIp(v []*string) *ListDevicesShrinkRequest {
-	s.Ip = v
+func (s *ListDevicesShrinkRequest) SetIpShrink(v string) *ListDevicesShrinkRequest {
+	s.IpShrink = &v
 	return s
 }
 
@@ -18780,8 +18953,8 @@ func (s *ListDevicesShrinkRequest) SetKeyword(v string) *ListDevicesShrinkReques
 	return s
 }
 
-func (s *ListDevicesShrinkRequest) SetMac(v []*string) *ListDevicesShrinkRequest {
-	s.Mac = v
+func (s *ListDevicesShrinkRequest) SetMacShrink(v string) *ListDevicesShrinkRequest {
+	s.MacShrink = &v
 	return s
 }
 
@@ -18790,8 +18963,8 @@ func (s *ListDevicesShrinkRequest) SetMaxResults(v int32) *ListDevicesShrinkRequ
 	return s
 }
 
-func (s *ListDevicesShrinkRequest) SetModel(v []*string) *ListDevicesShrinkRequest {
-	s.Model = v
+func (s *ListDevicesShrinkRequest) SetModelShrink(v string) *ListDevicesShrinkRequest {
+	s.ModelShrink = &v
 	return s
 }
 
@@ -18810,23 +18983,23 @@ func (s *ListDevicesShrinkRequest) SetPhysicalSpaceIdsShrink(v string) *ListDevi
 	return s
 }
 
-func (s *ListDevicesShrinkRequest) SetSecurityDomain(v []*string) *ListDevicesShrinkRequest {
-	s.SecurityDomain = v
+func (s *ListDevicesShrinkRequest) SetSecurityDomainShrink(v string) *ListDevicesShrinkRequest {
+	s.SecurityDomainShrink = &v
 	return s
 }
 
-func (s *ListDevicesShrinkRequest) SetServiceStatus(v []*string) *ListDevicesShrinkRequest {
-	s.ServiceStatus = v
+func (s *ListDevicesShrinkRequest) SetServiceStatusShrink(v string) *ListDevicesShrinkRequest {
+	s.ServiceStatusShrink = &v
 	return s
 }
 
-func (s *ListDevicesShrinkRequest) SetSn(v []*string) *ListDevicesShrinkRequest {
-	s.Sn = v
+func (s *ListDevicesShrinkRequest) SetSnShrink(v string) *ListDevicesShrinkRequest {
+	s.SnShrink = &v
 	return s
 }
 
-func (s *ListDevicesShrinkRequest) SetVendor(v []*string) *ListDevicesShrinkRequest {
-	s.Vendor = v
+func (s *ListDevicesShrinkRequest) SetVendorShrink(v string) *ListDevicesShrinkRequest {
+	s.VendorShrink = &v
 	return s
 }
 
@@ -22131,6 +22304,52 @@ func (s *ListPhysicalSpacesRequest) SetPhysicalSpaceName(v string) *ListPhysical
 	return s
 }
 
+type ListPhysicalSpacesShrinkRequest struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 返回结果的最大个数。
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 当总结果个数大于MaxResults时，用于翻页的token。
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 物理空间ID
+	PhysicalSpaceIdsShrink *string `json:"PhysicalSpaceIds,omitempty" xml:"PhysicalSpaceIds,omitempty"`
+	// 物理空间名称，支持模糊搜索。
+	PhysicalSpaceName *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
+}
+
+func (s ListPhysicalSpacesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListPhysicalSpacesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListPhysicalSpacesShrinkRequest) SetInstanceId(v string) *ListPhysicalSpacesShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListPhysicalSpacesShrinkRequest) SetMaxResults(v int32) *ListPhysicalSpacesShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListPhysicalSpacesShrinkRequest) SetNextToken(v string) *ListPhysicalSpacesShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListPhysicalSpacesShrinkRequest) SetPhysicalSpaceIdsShrink(v string) *ListPhysicalSpacesShrinkRequest {
+	s.PhysicalSpaceIdsShrink = &v
+	return s
+}
+
+func (s *ListPhysicalSpacesShrinkRequest) SetPhysicalSpaceName(v string) *ListPhysicalSpacesShrinkRequest {
+	s.PhysicalSpaceName = &v
+	return s
+}
+
 type ListPhysicalSpacesResponseBody struct {
 	// 每页数量。
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -23449,6 +23668,58 @@ func (s *ListTreePhysicalSpacesRequest) SetPhysicalSpaceName(v string) *ListTree
 }
 
 func (s *ListTreePhysicalSpacesRequest) SetTree(v bool) *ListTreePhysicalSpacesRequest {
+	s.Tree = &v
+	return s
+}
+
+type ListTreePhysicalSpacesShrinkRequest struct {
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 返回结果的最大个数。
+	MaxResults *string `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 当总结果个数大于MaxResults时，用于翻页的token。
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 物理空间ID
+	PhysicalSpaceIdsShrink *string `json:"PhysicalSpaceIds,omitempty" xml:"PhysicalSpaceIds,omitempty"`
+	PhysicalSpaceName      *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
+	// 如果Tree为true时，分页失效
+	Tree *bool `json:"Tree,omitempty" xml:"Tree,omitempty"`
+}
+
+func (s ListTreePhysicalSpacesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTreePhysicalSpacesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTreePhysicalSpacesShrinkRequest) SetInstanceId(v string) *ListTreePhysicalSpacesShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListTreePhysicalSpacesShrinkRequest) SetMaxResults(v string) *ListTreePhysicalSpacesShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListTreePhysicalSpacesShrinkRequest) SetNextToken(v string) *ListTreePhysicalSpacesShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTreePhysicalSpacesShrinkRequest) SetPhysicalSpaceIdsShrink(v string) *ListTreePhysicalSpacesShrinkRequest {
+	s.PhysicalSpaceIdsShrink = &v
+	return s
+}
+
+func (s *ListTreePhysicalSpacesShrinkRequest) SetPhysicalSpaceName(v string) *ListTreePhysicalSpacesShrinkRequest {
+	s.PhysicalSpaceName = &v
+	return s
+}
+
+func (s *ListTreePhysicalSpacesShrinkRequest) SetTree(v bool) *ListTreePhysicalSpacesShrinkRequest {
 	s.Tree = &v
 	return s
 }
@@ -25765,6 +26036,157 @@ func (s *UpdateDevicesRequest) SetSnmpUsername(v string) *UpdateDevicesRequest {
 }
 
 func (s *UpdateDevicesRequest) SetVendor(v string) *UpdateDevicesRequest {
+	s.Vendor = &v
+	return s
+}
+
+type UpdateDevicesShrinkRequest struct {
+	// 设备ID
+	DeviceIdsShrink *string `json:"DeviceIds,omitempty" xml:"DeviceIds,omitempty"`
+	// enable密码
+	EnablePassword *string `json:"EnablePassword,omitempty" xml:"EnablePassword,omitempty"`
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 登录密码
+	LoginPassword *string `json:"LoginPassword,omitempty" xml:"LoginPassword,omitempty"`
+	// 登录类型
+	LoginType *string `json:"LoginType,omitempty" xml:"LoginType,omitempty"`
+	// 登录账号
+	LoginUsername *string `json:"LoginUsername,omitempty" xml:"LoginUsername,omitempty"`
+	// 型号
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// 物理空间id
+	PhysicalSpaceId *string `json:"PhysicalSpaceId,omitempty" xml:"PhysicalSpaceId,omitempty"`
+	// 物理空间名称
+	PhysicalSpaceName *string `json:"PhysicalSpaceName,omitempty" xml:"PhysicalSpaceName,omitempty"`
+	// 服务状态
+	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	// SNMP 账号类型
+	SnmpAccountType *string `json:"SnmpAccountType,omitempty" xml:"SnmpAccountType,omitempty"`
+	// SNMP 版本号
+	SnmpAccountVersion *string `json:"SnmpAccountVersion,omitempty" xml:"SnmpAccountVersion,omitempty"`
+	// SNMP Auth Passphrase
+	SnmpAuthPassphrase *string `json:"SnmpAuthPassphrase,omitempty" xml:"SnmpAuthPassphrase,omitempty"`
+	// SNMP Auth Protocol
+	SnmpAuthProtocol *string `json:"SnmpAuthProtocol,omitempty" xml:"SnmpAuthProtocol,omitempty"`
+	// SNMP Community
+	SnmpCommunity *string `json:"SnmpCommunity,omitempty" xml:"SnmpCommunity,omitempty"`
+	// SNMP Privacy Passphrase
+	SnmpPrivacyPassphrase *string `json:"SnmpPrivacyPassphrase,omitempty" xml:"SnmpPrivacyPassphrase,omitempty"`
+	// SNMP Privacy Protocol
+	SnmpPrivacyProtocol *string `json:"SnmpPrivacyProtocol,omitempty" xml:"SnmpPrivacyProtocol,omitempty"`
+	// SNMP 安全级别
+	SnmpSecurityLevel *string `json:"SnmpSecurityLevel,omitempty" xml:"SnmpSecurityLevel,omitempty"`
+	// SNMP 用户名
+	SnmpUsername *string `json:"SnmpUsername,omitempty" xml:"SnmpUsername,omitempty"`
+	// 厂商
+	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+}
+
+func (s UpdateDevicesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDevicesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDevicesShrinkRequest) SetDeviceIdsShrink(v string) *UpdateDevicesShrinkRequest {
+	s.DeviceIdsShrink = &v
+	return s
+}
+
+func (s *UpdateDevicesShrinkRequest) SetEnablePassword(v string) *UpdateDevicesShrinkRequest {
+	s.EnablePassword = &v
+	return s
+}
+
+func (s *UpdateDevicesShrinkRequest) SetInstanceId(v string) *UpdateDevicesShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateDevicesShrinkRequest) SetLoginPassword(v string) *UpdateDevicesShrinkRequest {
+	s.LoginPassword = &v
+	return s
+}
+
+func (s *UpdateDevicesShrinkRequest) SetLoginType(v string) *UpdateDevicesShrinkRequest {
+	s.LoginType = &v
+	return s
+}
+
+func (s *UpdateDevicesShrinkRequest) SetLoginUsername(v string) *UpdateDevicesShrinkRequest {
+	s.LoginUsername = &v
+	return s
+}
+
+func (s *UpdateDevicesShrinkRequest) SetModel(v string) *UpdateDevicesShrinkRequest {
+	s.Model = &v
+	return s
+}
+
+func (s *UpdateDevicesShrinkRequest) SetPhysicalSpaceId(v string) *UpdateDevicesShrinkRequest {
+	s.PhysicalSpaceId = &v
+	return s
+}
+
+func (s *UpdateDevicesShrinkRequest) SetPhysicalSpaceName(v string) *UpdateDevicesShrinkRequest {
+	s.PhysicalSpaceName = &v
+	return s
+}
+
+func (s *UpdateDevicesShrinkRequest) SetServiceStatus(v string) *UpdateDevicesShrinkRequest {
+	s.ServiceStatus = &v
+	return s
+}
+
+func (s *UpdateDevicesShrinkRequest) SetSnmpAccountType(v string) *UpdateDevicesShrinkRequest {
+	s.SnmpAccountType = &v
+	return s
+}
+
+func (s *UpdateDevicesShrinkRequest) SetSnmpAccountVersion(v string) *UpdateDevicesShrinkRequest {
+	s.SnmpAccountVersion = &v
+	return s
+}
+
+func (s *UpdateDevicesShrinkRequest) SetSnmpAuthPassphrase(v string) *UpdateDevicesShrinkRequest {
+	s.SnmpAuthPassphrase = &v
+	return s
+}
+
+func (s *UpdateDevicesShrinkRequest) SetSnmpAuthProtocol(v string) *UpdateDevicesShrinkRequest {
+	s.SnmpAuthProtocol = &v
+	return s
+}
+
+func (s *UpdateDevicesShrinkRequest) SetSnmpCommunity(v string) *UpdateDevicesShrinkRequest {
+	s.SnmpCommunity = &v
+	return s
+}
+
+func (s *UpdateDevicesShrinkRequest) SetSnmpPrivacyPassphrase(v string) *UpdateDevicesShrinkRequest {
+	s.SnmpPrivacyPassphrase = &v
+	return s
+}
+
+func (s *UpdateDevicesShrinkRequest) SetSnmpPrivacyProtocol(v string) *UpdateDevicesShrinkRequest {
+	s.SnmpPrivacyProtocol = &v
+	return s
+}
+
+func (s *UpdateDevicesShrinkRequest) SetSnmpSecurityLevel(v string) *UpdateDevicesShrinkRequest {
+	s.SnmpSecurityLevel = &v
+	return s
+}
+
+func (s *UpdateDevicesShrinkRequest) SetSnmpUsername(v string) *UpdateDevicesShrinkRequest {
+	s.SnmpUsername = &v
+	return s
+}
+
+func (s *UpdateDevicesShrinkRequest) SetVendor(v string) *UpdateDevicesShrinkRequest {
 	s.Vendor = &v
 	return s
 }
@@ -28488,19 +28910,25 @@ func (client *Client) CreateLinkJob(request *CreateLinkJobRequest) (_result *Cre
 	return _result, _err
 }
 
-func (client *Client) CreateMonitorItemWithOptions(request *CreateMonitorItemRequest, runtime *util.RuntimeOptions) (_result *CreateMonitorItemResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateMonitorItemWithOptions(tmpReq *CreateMonitorItemRequest, runtime *util.RuntimeOptions) (_result *CreateMonitorItemResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateMonitorItemShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.AlarmRuleList)) {
+		request.AlarmRuleListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.AlarmRuleList, tea.String("AlarmRuleList"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
 
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AlarmRuleList)) {
-		body["AlarmRuleList"] = request.AlarmRuleList
+	if !tea.BoolValue(util.IsUnset(request.AlarmRuleListShrink)) {
+		body["AlarmRuleList"] = request.AlarmRuleListShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AnalysisCode)) {
@@ -30211,11 +30639,17 @@ func (client *Client) DeleteWorkOrder(request *DeleteWorkOrderRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) DisableNotificationWithOptions(request *DisableNotificationRequest, runtime *util.RuntimeOptions) (_result *DisableNotificationResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) DisableNotificationWithOptions(tmpReq *DisableNotificationRequest, runtime *util.RuntimeOptions) (_result *DisableNotificationResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &DisableNotificationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.List)) {
+		request.ListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.List, tea.String("List"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
@@ -30226,8 +30660,8 @@ func (client *Client) DisableNotificationWithOptions(request *DisableNotificatio
 		body["ExpiryTime"] = request.ExpiryTime
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.List)) {
-		body["List"] = request.List
+	if !tea.BoolValue(util.IsUnset(request.ListShrink)) {
+		body["List"] = request.ListShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Reason)) {
@@ -30315,24 +30749,28 @@ func (client *Client) DownloadDeviceResource(request *DownloadDeviceResourceRequ
 	return _result, _err
 }
 
-func (client *Client) EnableNotificationWithOptions(request *EnableNotificationRequest, runtime *util.RuntimeOptions) (_result *EnableNotificationResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) EnableNotificationWithOptions(tmpReq *EnableNotificationRequest, runtime *util.RuntimeOptions) (_result *EnableNotificationResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
+	request := &EnableNotificationShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.List)) {
+		request.ListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.List, tea.String("List"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.List)) {
-		body["List"] = request.List
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ListShrink)) {
+		body["List"] = request.ListShrink
 	}
 
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("EnableNotification"),
@@ -31986,8 +32424,40 @@ func (client *Client) ListDevicesWithOptions(tmpReq *ListDevicesRequest, runtime
 		request.DeviceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceIds, tea.String("DeviceIds"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.HostName)) {
+		request.HostNameShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.HostName, tea.String("HostName"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Ip)) {
+		request.IpShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Ip, tea.String("Ip"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Mac)) {
+		request.MacShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Mac, tea.String("Mac"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Model)) {
+		request.ModelShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Model, tea.String("Model"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.PhysicalSpaceIds)) {
 		request.PhysicalSpaceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PhysicalSpaceIds, tea.String("PhysicalSpaceIds"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.SecurityDomain)) {
+		request.SecurityDomainShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SecurityDomain, tea.String("SecurityDomain"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ServiceStatus)) {
+		request.ServiceStatusShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ServiceStatus, tea.String("ServiceStatus"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Sn)) {
+		request.SnShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Sn, tea.String("Sn"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Vendor)) {
+		request.VendorShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Vendor, tea.String("Vendor"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
@@ -32007,32 +32477,32 @@ func (client *Client) ListDevicesWithOptions(tmpReq *ListDevicesRequest, runtime
 		query["ExtAttributes"] = request.ExtAttributes
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.HostName)) {
-		query["HostName"] = request.HostName
+	if !tea.BoolValue(util.IsUnset(request.HostNameShrink)) {
+		query["HostName"] = request.HostNameShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Ip)) {
-		query["Ip"] = request.Ip
+	if !tea.BoolValue(util.IsUnset(request.IpShrink)) {
+		query["Ip"] = request.IpShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
 		query["Keyword"] = request.Keyword
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Mac)) {
-		query["Mac"] = request.Mac
+	if !tea.BoolValue(util.IsUnset(request.MacShrink)) {
+		query["Mac"] = request.MacShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["MaxResults"] = request.MaxResults
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Model)) {
-		query["Model"] = request.Model
+	if !tea.BoolValue(util.IsUnset(request.ModelShrink)) {
+		query["Model"] = request.ModelShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
@@ -32047,20 +32517,20 @@ func (client *Client) ListDevicesWithOptions(tmpReq *ListDevicesRequest, runtime
 		query["PhysicalSpaceIds"] = request.PhysicalSpaceIdsShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SecurityDomain)) {
-		query["SecurityDomain"] = request.SecurityDomain
+	if !tea.BoolValue(util.IsUnset(request.SecurityDomainShrink)) {
+		query["SecurityDomain"] = request.SecurityDomainShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ServiceStatus)) {
-		query["ServiceStatus"] = request.ServiceStatus
+	if !tea.BoolValue(util.IsUnset(request.ServiceStatusShrink)) {
+		query["ServiceStatus"] = request.ServiceStatusShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Sn)) {
-		query["Sn"] = request.Sn
+	if !tea.BoolValue(util.IsUnset(request.SnShrink)) {
+		query["Sn"] = request.SnShrink
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Vendor)) {
-		query["Vendor"] = request.Vendor
+	if !tea.BoolValue(util.IsUnset(request.VendorShrink)) {
+		query["Vendor"] = request.VendorShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -32582,11 +33052,17 @@ func (client *Client) ListOsVersions(request *ListOsVersionsRequest) (_result *L
 	return _result, _err
 }
 
-func (client *Client) ListPhysicalSpacesWithOptions(request *ListPhysicalSpacesRequest, runtime *util.RuntimeOptions) (_result *ListPhysicalSpacesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListPhysicalSpacesWithOptions(tmpReq *ListPhysicalSpacesRequest, runtime *util.RuntimeOptions) (_result *ListPhysicalSpacesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListPhysicalSpacesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.PhysicalSpaceIds)) {
+		request.PhysicalSpaceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PhysicalSpaceIds, tea.String("PhysicalSpaceIds"), tea.String("json"))
+	}
+
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -32888,11 +33364,17 @@ func (client *Client) ListTasksHistories(request *ListTasksHistoriesRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) ListTreePhysicalSpacesWithOptions(request *ListTreePhysicalSpacesRequest, runtime *util.RuntimeOptions) (_result *ListTreePhysicalSpacesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) ListTreePhysicalSpacesWithOptions(tmpReq *ListTreePhysicalSpacesRequest, runtime *util.RuntimeOptions) (_result *ListTreePhysicalSpacesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &ListTreePhysicalSpacesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.PhysicalSpaceIds)) {
+		request.PhysicalSpaceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PhysicalSpaceIds, tea.String("PhysicalSpaceIds"), tea.String("json"))
+	}
+
 	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -33808,20 +34290,25 @@ func (client *Client) UpdateDeviceResource(request *UpdateDeviceResourceRequest)
 	return _result, _err
 }
 
-func (client *Client) UpdateDevicesWithOptions(request *UpdateDevicesRequest, runtime *util.RuntimeOptions) (_result *UpdateDevicesResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateDevicesWithOptions(tmpReq *UpdateDevicesRequest, runtime *util.RuntimeOptions) (_result *UpdateDevicesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpdateDevicesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DeviceIds)) {
+		request.DeviceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DeviceIds, tea.String("DeviceIds"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
 		query["InstanceId"] = request.InstanceId
 	}
 
 	body := map[string]interface{}{}
-	bodyFlat := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DeviceIds)) {
-		bodyFlat["DeviceIds"] = request.DeviceIds
+	if !tea.BoolValue(util.IsUnset(request.DeviceIdsShrink)) {
+		body["DeviceIds"] = request.DeviceIdsShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.EnablePassword)) {
@@ -33896,8 +34383,6 @@ func (client *Client) UpdateDevicesWithOptions(request *UpdateDevicesRequest, ru
 		body["Vendor"] = request.Vendor
 	}
 
-	body = tea.ToMap(body,
-		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 		Body:  openapiutil.ParseToMap(body),
