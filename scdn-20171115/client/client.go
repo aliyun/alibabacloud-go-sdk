@@ -2376,6 +2376,7 @@ type DescribeScdnDomainConfigsResponseBodyDomainConfigsDomainConfig struct {
 	ConfigId     *string                                                                     `json:"ConfigId,omitempty" xml:"ConfigId,omitempty"`
 	FunctionArgs *DescribeScdnDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionArgs `json:"FunctionArgs,omitempty" xml:"FunctionArgs,omitempty" type:"Struct"`
 	FunctionName *string                                                                     `json:"FunctionName,omitempty" xml:"FunctionName,omitempty"`
+	ParentId     *int64                                                                      `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
 	Status       *string                                                                     `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
@@ -2399,6 +2400,11 @@ func (s *DescribeScdnDomainConfigsResponseBodyDomainConfigsDomainConfig) SetFunc
 
 func (s *DescribeScdnDomainConfigsResponseBodyDomainConfigsDomainConfig) SetFunctionName(v string) *DescribeScdnDomainConfigsResponseBodyDomainConfigsDomainConfig {
 	s.FunctionName = &v
+	return s
+}
+
+func (s *DescribeScdnDomainConfigsResponseBodyDomainConfigsDomainConfig) SetParentId(v int64) *DescribeScdnDomainConfigsResponseBodyDomainConfigsDomainConfig {
+	s.ParentId = &v
 	return s
 }
 
@@ -7647,6 +7653,75 @@ func (s *DescribeScdnUserQuotaResponse) SetBody(v *DescribeScdnUserQuotaResponse
 	return s
 }
 
+type DescribeScdnVerifyContentRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DescribeScdnVerifyContentRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScdnVerifyContentRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScdnVerifyContentRequest) SetDomainName(v string) *DescribeScdnVerifyContentRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeScdnVerifyContentRequest) SetOwnerId(v int64) *DescribeScdnVerifyContentRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DescribeScdnVerifyContentResponseBody struct {
+	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeScdnVerifyContentResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScdnVerifyContentResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScdnVerifyContentResponseBody) SetContent(v string) *DescribeScdnVerifyContentResponseBody {
+	s.Content = &v
+	return s
+}
+
+func (s *DescribeScdnVerifyContentResponseBody) SetRequestId(v string) *DescribeScdnVerifyContentResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeScdnVerifyContentResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeScdnVerifyContentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeScdnVerifyContentResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeScdnVerifyContentResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScdnVerifyContentResponse) SetHeaders(v map[string]*string) *DescribeScdnVerifyContentResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeScdnVerifyContentResponse) SetBody(v *DescribeScdnVerifyContentResponseBody) *DescribeScdnVerifyContentResponse {
+	s.Body = v
+	return s
+}
+
 type OpenScdnServiceRequest struct {
 	Bandwidth         *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	CcProtection      *int32  `json:"CcProtection,omitempty" xml:"CcProtection,omitempty"`
@@ -8522,6 +8597,81 @@ func (s *UpdateScdnDomainResponse) SetHeaders(v map[string]*string) *UpdateScdnD
 }
 
 func (s *UpdateScdnDomainResponse) SetBody(v *UpdateScdnDomainResponseBody) *UpdateScdnDomainResponse {
+	s.Body = v
+	return s
+}
+
+type VerifyScdnDomainOwnerRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	VerifyType *string `json:"VerifyType,omitempty" xml:"VerifyType,omitempty"`
+}
+
+func (s VerifyScdnDomainOwnerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyScdnDomainOwnerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyScdnDomainOwnerRequest) SetDomainName(v string) *VerifyScdnDomainOwnerRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *VerifyScdnDomainOwnerRequest) SetOwnerId(v int64) *VerifyScdnDomainOwnerRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *VerifyScdnDomainOwnerRequest) SetVerifyType(v string) *VerifyScdnDomainOwnerRequest {
+	s.VerifyType = &v
+	return s
+}
+
+type VerifyScdnDomainOwnerResponseBody struct {
+	Content   *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s VerifyScdnDomainOwnerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyScdnDomainOwnerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyScdnDomainOwnerResponseBody) SetContent(v string) *VerifyScdnDomainOwnerResponseBody {
+	s.Content = &v
+	return s
+}
+
+func (s *VerifyScdnDomainOwnerResponseBody) SetRequestId(v string) *VerifyScdnDomainOwnerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type VerifyScdnDomainOwnerResponse struct {
+	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *VerifyScdnDomainOwnerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s VerifyScdnDomainOwnerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s VerifyScdnDomainOwnerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *VerifyScdnDomainOwnerResponse) SetHeaders(v map[string]*string) *VerifyScdnDomainOwnerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *VerifyScdnDomainOwnerResponse) SetBody(v *VerifyScdnDomainOwnerResponseBody) *VerifyScdnDomainOwnerResponse {
 	s.Body = v
 	return s
 }
@@ -11353,6 +11503,54 @@ func (client *Client) DescribeScdnUserQuota(request *DescribeScdnUserQuotaReques
 	return _result, _err
 }
 
+func (client *Client) DescribeScdnVerifyContentWithOptions(request *DescribeScdnVerifyContentRequest, runtime *util.RuntimeOptions) (_result *DescribeScdnVerifyContentResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeScdnVerifyContent"),
+		Version:     tea.String("2017-11-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeScdnVerifyContentResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeScdnVerifyContent(request *DescribeScdnVerifyContentRequest) (_result *DescribeScdnVerifyContentResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeScdnVerifyContentResponse{}
+	_body, _err := client.DescribeScdnVerifyContentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) OpenScdnServiceWithOptions(request *OpenScdnServiceRequest, runtime *util.RuntimeOptions) (_result *OpenScdnServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11946,6 +12144,58 @@ func (client *Client) UpdateScdnDomain(request *UpdateScdnDomainRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateScdnDomainResponse{}
 	_body, _err := client.UpdateScdnDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) VerifyScdnDomainOwnerWithOptions(request *VerifyScdnDomainOwnerRequest, runtime *util.RuntimeOptions) (_result *VerifyScdnDomainOwnerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VerifyType)) {
+		query["VerifyType"] = request.VerifyType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("VerifyScdnDomainOwner"),
+		Version:     tea.String("2017-11-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &VerifyScdnDomainOwnerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) VerifyScdnDomainOwner(request *VerifyScdnDomainOwnerRequest) (_result *VerifyScdnDomainOwnerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &VerifyScdnDomainOwnerResponse{}
+	_body, _err := client.VerifyScdnDomainOwnerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
