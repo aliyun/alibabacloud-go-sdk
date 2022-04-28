@@ -4521,13 +4521,13 @@ func (s *GetAsyncErrorRequestStatResultResponseBody) SetSuccess(v bool) *GetAsyn
 }
 
 type GetAsyncErrorRequestStatResultResponseBodyData struct {
-	Complete  *bool                       `json:"complete,omitempty" xml:"complete,omitempty"`
-	Fail      *bool                       `json:"fail,omitempty" xml:"fail,omitempty"`
-	IsFinish  *bool                       `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
-	Result    map[string]*DataResultValue `json:"result,omitempty" xml:"result,omitempty"`
-	ResultId  *string                     `json:"resultId,omitempty" xml:"resultId,omitempty"`
-	State     *string                     `json:"state,omitempty" xml:"state,omitempty"`
-	Timestamp *int64                      `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	Complete  *bool                         `json:"complete,omitempty" xml:"complete,omitempty"`
+	Fail      *bool                         `json:"fail,omitempty" xml:"fail,omitempty"`
+	IsFinish  *bool                         `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
+	Result    []map[string]*DataResultValue `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	ResultId  *string                       `json:"resultId,omitempty" xml:"resultId,omitempty"`
+	State     *string                       `json:"state,omitempty" xml:"state,omitempty"`
+	Timestamp *int64                        `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
 }
 
 func (s GetAsyncErrorRequestStatResultResponseBodyData) String() string {
@@ -4553,7 +4553,7 @@ func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetIsFinish(v bool) *Ge
 	return s
 }
 
-func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetResult(v map[string]*DataResultValue) *GetAsyncErrorRequestStatResultResponseBodyData {
+func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetResult(v []map[string]*DataResultValue) *GetAsyncErrorRequestStatResultResponseBodyData {
 	s.Result = v
 	return s
 }
@@ -9837,9 +9837,9 @@ func (s *SyncHDMAliyunResourceResponse) SetBody(v *SyncHDMAliyunResourceResponse
 }
 
 type DataResultValue struct {
-	SqlId     *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	Count     *int64  `json:"count,omitempty" xml:"count,omitempty"`
+	SqlId      *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Count      *int32  `json:"count,omitempty" xml:"count,omitempty"`
 }
 
 func (s DataResultValue) String() string {
@@ -9855,12 +9855,12 @@ func (s *DataResultValue) SetSqlId(v string) *DataResultValue {
 	return s
 }
 
-func (s *DataResultValue) SetErrorCode(v string) *DataResultValue {
-	s.ErrorCode = &v
+func (s *DataResultValue) SetInstanceId(v string) *DataResultValue {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *DataResultValue) SetCount(v int64) *DataResultValue {
+func (s *DataResultValue) SetCount(v int32) *DataResultValue {
 	s.Count = &v
 	return s
 }
