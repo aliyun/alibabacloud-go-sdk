@@ -9246,13 +9246,13 @@ type UpgradeDBInstanceRequest struct {
 	DBInstanceGroupCount *string `json:"DBInstanceGroupCount,omitempty" xml:"DBInstanceGroupCount,omitempty"`
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	InstanceSpec         *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	MasterNodeNum        *string `json:"MasterNodeNum,omitempty" xml:"MasterNodeNum,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PayType              *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SegNodeNum           *string `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
 	StorageSize          *string `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	MasterNodeNum        *string `json:"masterNodeNum,omitempty" xml:"masterNodeNum,omitempty"`
-	UpgradeType          *int64  `json:"upgradeType,omitempty" xml:"upgradeType,omitempty"`
+	UpgradeType          *int64  `json:"UpgradeType,omitempty" xml:"UpgradeType,omitempty"`
 }
 
 func (s UpgradeDBInstanceRequest) String() string {
@@ -9283,6 +9283,11 @@ func (s *UpgradeDBInstanceRequest) SetInstanceSpec(v string) *UpgradeDBInstanceR
 	return s
 }
 
+func (s *UpgradeDBInstanceRequest) SetMasterNodeNum(v string) *UpgradeDBInstanceRequest {
+	s.MasterNodeNum = &v
+	return s
+}
+
 func (s *UpgradeDBInstanceRequest) SetOwnerId(v int64) *UpgradeDBInstanceRequest {
 	s.OwnerId = &v
 	return s
@@ -9305,11 +9310,6 @@ func (s *UpgradeDBInstanceRequest) SetSegNodeNum(v string) *UpgradeDBInstanceReq
 
 func (s *UpgradeDBInstanceRequest) SetStorageSize(v string) *UpgradeDBInstanceRequest {
 	s.StorageSize = &v
-	return s
-}
-
-func (s *UpgradeDBInstanceRequest) SetMasterNodeNum(v string) *UpgradeDBInstanceRequest {
-	s.MasterNodeNum = &v
 	return s
 }
 
@@ -13465,6 +13465,10 @@ func (client *Client) UpgradeDBInstanceWithOptions(request *UpgradeDBInstanceReq
 		query["InstanceSpec"] = request.InstanceSpec
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MasterNodeNum)) {
+		query["MasterNodeNum"] = request.MasterNodeNum
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
 	}
@@ -13485,12 +13489,8 @@ func (client *Client) UpgradeDBInstanceWithOptions(request *UpgradeDBInstanceReq
 		query["StorageSize"] = request.StorageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.MasterNodeNum)) {
-		query["masterNodeNum"] = request.MasterNodeNum
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.UpgradeType)) {
-		query["upgradeType"] = request.UpgradeType
+		query["UpgradeType"] = request.UpgradeType
 	}
 
 	req := &openapi.OpenApiRequest{
