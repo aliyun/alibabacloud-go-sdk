@@ -6943,81 +6943,6 @@ func (s *DescribeServiceMeshProxyStatusResponse) SetBody(v *DescribeServiceMeshP
 	return s
 }
 
-type DescribeServiceMeshServiceLabelRequest struct {
-	ServiceMeshId     *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	ServiceNames      *string `json:"ServiceNames,omitempty" xml:"ServiceNames,omitempty"`
-	ServiceNamespaces *string `json:"ServiceNamespaces,omitempty" xml:"ServiceNamespaces,omitempty"`
-}
-
-func (s DescribeServiceMeshServiceLabelRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceMeshServiceLabelRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceMeshServiceLabelRequest) SetServiceMeshId(v string) *DescribeServiceMeshServiceLabelRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-func (s *DescribeServiceMeshServiceLabelRequest) SetServiceNames(v string) *DescribeServiceMeshServiceLabelRequest {
-	s.ServiceNames = &v
-	return s
-}
-
-func (s *DescribeServiceMeshServiceLabelRequest) SetServiceNamespaces(v string) *DescribeServiceMeshServiceLabelRequest {
-	s.ServiceNamespaces = &v
-	return s
-}
-
-type DescribeServiceMeshServiceLabelResponseBody struct {
-	RequestId     *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServiceLabels map[string]*ServiceLabelsValue `json:"ServiceLabels,omitempty" xml:"ServiceLabels,omitempty"`
-}
-
-func (s DescribeServiceMeshServiceLabelResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceMeshServiceLabelResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceMeshServiceLabelResponseBody) SetRequestId(v string) *DescribeServiceMeshServiceLabelResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeServiceMeshServiceLabelResponseBody) SetServiceLabels(v map[string]*ServiceLabelsValue) *DescribeServiceMeshServiceLabelResponseBody {
-	s.ServiceLabels = v
-	return s
-}
-
-type DescribeServiceMeshServiceLabelResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeServiceMeshServiceLabelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeServiceMeshServiceLabelResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceMeshServiceLabelResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceMeshServiceLabelResponse) SetHeaders(v map[string]*string) *DescribeServiceMeshServiceLabelResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeServiceMeshServiceLabelResponse) SetBody(v *DescribeServiceMeshServiceLabelResponseBody) *DescribeServiceMeshServiceLabelResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeServiceMeshUpgradeStatusRequest struct {
 	AllIstioGatewayFullNames *string `json:"AllIstioGatewayFullNames,omitempty" xml:"AllIstioGatewayFullNames,omitempty"`
 	GuestClusterIds          *string `json:"GuestClusterIds,omitempty" xml:"GuestClusterIds,omitempty"`
@@ -8770,76 +8695,6 @@ func (s *GetVmMetaResponse) SetBody(v *GetVmMetaResponseBody) *GetVmMetaResponse
 	return s
 }
 
-type ListDashboardRequest struct {
-	K8sClusterId  *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-}
-
-func (s ListDashboardRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDashboardRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDashboardRequest) SetK8sClusterId(v string) *ListDashboardRequest {
-	s.K8sClusterId = &v
-	return s
-}
-
-func (s *ListDashboardRequest) SetServiceMeshId(v string) *ListDashboardRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-type ListDashboardResponseBody struct {
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListDashboardResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDashboardResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDashboardResponseBody) SetData(v string) *ListDashboardResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *ListDashboardResponseBody) SetRequestId(v string) *ListDashboardResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListDashboardResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDashboardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDashboardResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDashboardResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListDashboardResponse) SetHeaders(v map[string]*string) *ListDashboardResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDashboardResponse) SetBody(v *ListDashboardResponseBody) *ListDashboardResponse {
-	s.Body = v
-	return s
-}
-
 type ModifyApiServerEipResourceRequest struct {
 	ApiServerEipId *string `json:"ApiServerEipId,omitempty" xml:"ApiServerEipId,omitempty"`
 	Operation      *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
@@ -10146,93 +10001,6 @@ func (s *UpdateIstioRouteAdditionalStatusResponse) SetBody(v *UpdateIstioRouteAd
 	return s
 }
 
-type UpdateMeshCRAggregationRequest struct {
-	CPULimit          *string `json:"CPULimit,omitempty" xml:"CPULimit,omitempty"`
-	CPURequirement    *string `json:"CPURequirement,omitempty" xml:"CPURequirement,omitempty"`
-	Enabled           *bool   `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	MemoryLimit       *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
-	MemoryRequirement *string `json:"MemoryRequirement,omitempty" xml:"MemoryRequirement,omitempty"`
-	ServiceMeshId     *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-}
-
-func (s UpdateMeshCRAggregationRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateMeshCRAggregationRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateMeshCRAggregationRequest) SetCPULimit(v string) *UpdateMeshCRAggregationRequest {
-	s.CPULimit = &v
-	return s
-}
-
-func (s *UpdateMeshCRAggregationRequest) SetCPURequirement(v string) *UpdateMeshCRAggregationRequest {
-	s.CPURequirement = &v
-	return s
-}
-
-func (s *UpdateMeshCRAggregationRequest) SetEnabled(v bool) *UpdateMeshCRAggregationRequest {
-	s.Enabled = &v
-	return s
-}
-
-func (s *UpdateMeshCRAggregationRequest) SetMemoryLimit(v string) *UpdateMeshCRAggregationRequest {
-	s.MemoryLimit = &v
-	return s
-}
-
-func (s *UpdateMeshCRAggregationRequest) SetMemoryRequirement(v string) *UpdateMeshCRAggregationRequest {
-	s.MemoryRequirement = &v
-	return s
-}
-
-func (s *UpdateMeshCRAggregationRequest) SetServiceMeshId(v string) *UpdateMeshCRAggregationRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-type UpdateMeshCRAggregationResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UpdateMeshCRAggregationResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateMeshCRAggregationResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateMeshCRAggregationResponseBody) SetRequestId(v string) *UpdateMeshCRAggregationResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UpdateMeshCRAggregationResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateMeshCRAggregationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UpdateMeshCRAggregationResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UpdateMeshCRAggregationResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UpdateMeshCRAggregationResponse) SetHeaders(v map[string]*string) *UpdateMeshCRAggregationResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UpdateMeshCRAggregationResponse) SetBody(v *UpdateMeshCRAggregationResponseBody) *UpdateMeshCRAggregationResponse {
-	s.Body = v
-	return s
-}
-
 type UpdateMeshFeatureRequest struct {
 	AccessLogEnabled               *bool    `json:"AccessLogEnabled,omitempty" xml:"AccessLogEnabled,omitempty"`
 	AccessLogFile                  *string  `json:"AccessLogFile,omitempty" xml:"AccessLogFile,omitempty"`
@@ -11169,29 +10937,6 @@ func (s *CCMVersionsValue) SetClusterId(v string) *CCMVersionsValue {
 
 func (s *CCMVersionsValue) SetMessage(v string) *CCMVersionsValue {
 	s.Message = &v
-	return s
-}
-
-type ServiceLabelsValue struct {
-	Labels  map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	Success *bool              `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ServiceLabelsValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ServiceLabelsValue) GoString() string {
-	return s.String()
-}
-
-func (s *ServiceLabelsValue) SetLabels(v map[string]*string) *ServiceLabelsValue {
-	s.Labels = v
-	return s
-}
-
-func (s *ServiceLabelsValue) SetSuccess(v bool) *ServiceLabelsValue {
-	s.Success = &v
 	return s
 }
 
@@ -13443,58 +13188,6 @@ func (client *Client) DescribeServiceMeshProxyStatus(request *DescribeServiceMes
 	return _result, _err
 }
 
-func (client *Client) DescribeServiceMeshServiceLabelWithOptions(request *DescribeServiceMeshServiceLabelRequest, runtime *util.RuntimeOptions) (_result *DescribeServiceMeshServiceLabelResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
-		body["ServiceMeshId"] = request.ServiceMeshId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServiceNames)) {
-		body["ServiceNames"] = request.ServiceNames
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServiceNamespaces)) {
-		body["ServiceNamespaces"] = request.ServiceNamespaces
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeServiceMeshServiceLabel"),
-		Version:     tea.String("2020-01-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeServiceMeshServiceLabelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeServiceMeshServiceLabel(request *DescribeServiceMeshServiceLabelRequest) (_result *DescribeServiceMeshServiceLabelResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeServiceMeshServiceLabelResponse{}
-	_body, _err := client.DescribeServiceMeshServiceLabelWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeServiceMeshUpgradeStatusWithOptions(request *DescribeServiceMeshUpgradeStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeServiceMeshUpgradeStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14111,54 +13804,6 @@ func (client *Client) GetVmMeta(request *GetVmMetaRequest) (_result *GetVmMetaRe
 	return _result, _err
 }
 
-func (client *Client) ListDashboardWithOptions(request *ListDashboardRequest, runtime *util.RuntimeOptions) (_result *ListDashboardResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.K8sClusterId)) {
-		query["K8sClusterId"] = request.K8sClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
-		query["ServiceMeshId"] = request.ServiceMeshId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListDashboard"),
-		Version:     tea.String("2020-01-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListDashboardResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDashboard(request *ListDashboardRequest) (_result *ListDashboardResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListDashboardResponse{}
-	_body, _err := client.ListDashboardWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ModifyApiServerEipResourceWithOptions(request *ModifyApiServerEipResourceRequest, runtime *util.RuntimeOptions) (_result *ModifyApiServerEipResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14688,70 +14333,6 @@ func (client *Client) UpdateIstioRouteAdditionalStatus(request *UpdateIstioRoute
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateIstioRouteAdditionalStatusResponse{}
 	_body, _err := client.UpdateIstioRouteAdditionalStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UpdateMeshCRAggregationWithOptions(request *UpdateMeshCRAggregationRequest, runtime *util.RuntimeOptions) (_result *UpdateMeshCRAggregationResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.CPULimit)) {
-		body["CPULimit"] = request.CPULimit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CPURequirement)) {
-		body["CPURequirement"] = request.CPURequirement
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Enabled)) {
-		body["Enabled"] = request.Enabled
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MemoryLimit)) {
-		body["MemoryLimit"] = request.MemoryLimit
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MemoryRequirement)) {
-		body["MemoryRequirement"] = request.MemoryRequirement
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
-		body["ServiceMeshId"] = request.ServiceMeshId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UpdateMeshCRAggregation"),
-		Version:     tea.String("2020-01-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UpdateMeshCRAggregationResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UpdateMeshCRAggregation(request *UpdateMeshCRAggregationRequest) (_result *UpdateMeshCRAggregationResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UpdateMeshCRAggregationResponse{}
-	_body, _err := client.UpdateMeshCRAggregationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
