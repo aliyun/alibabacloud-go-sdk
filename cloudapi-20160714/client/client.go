@@ -18137,6 +18137,273 @@ func (s *ModifyApiResponse) SetBody(v *ModifyApiResponseBody) *ModifyApiResponse
 	return s
 }
 
+type ModifyApiConfigurationRequest struct {
+	AllowSignatureMethod  *string `json:"AllowSignatureMethod,omitempty" xml:"AllowSignatureMethod,omitempty"`
+	ApiId                 *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	ApiName               *string `json:"ApiName,omitempty" xml:"ApiName,omitempty"`
+	AppCodeAuthType       *string `json:"AppCodeAuthType,omitempty" xml:"AppCodeAuthType,omitempty"`
+	AuthType              *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
+	BackendName           *string `json:"BackendName,omitempty" xml:"BackendName,omitempty"`
+	BodyFormat            *string `json:"BodyFormat,omitempty" xml:"BodyFormat,omitempty"`
+	BodyModel             *string `json:"BodyModel,omitempty" xml:"BodyModel,omitempty"`
+	ContentTypeCategory   *string `json:"ContentTypeCategory,omitempty" xml:"ContentTypeCategory,omitempty"`
+	ContentTypeValue      *string `json:"ContentTypeValue,omitempty" xml:"ContentTypeValue,omitempty"`
+	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DisableInternet       *bool   `json:"DisableInternet,omitempty" xml:"DisableInternet,omitempty"`
+	ErrorCodeSamples      *string `json:"ErrorCodeSamples,omitempty" xml:"ErrorCodeSamples,omitempty"`
+	FailResultSample      *string `json:"FailResultSample,omitempty" xml:"FailResultSample,omitempty"`
+	ForceNonceCheck       *bool   `json:"ForceNonceCheck,omitempty" xml:"ForceNonceCheck,omitempty"`
+	FunctionComputeConfig *string `json:"FunctionComputeConfig,omitempty" xml:"FunctionComputeConfig,omitempty"`
+	HttpConfig            *string `json:"HttpConfig,omitempty" xml:"HttpConfig,omitempty"`
+	MockConfig            *string `json:"MockConfig,omitempty" xml:"MockConfig,omitempty"`
+	ModelName             *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
+	OssConfig             *string `json:"OssConfig,omitempty" xml:"OssConfig,omitempty"`
+	PostBodyDescription   *string `json:"PostBodyDescription,omitempty" xml:"PostBodyDescription,omitempty"`
+	RequestHttpMethod     *string `json:"RequestHttpMethod,omitempty" xml:"RequestHttpMethod,omitempty"`
+	RequestMode           *string `json:"RequestMode,omitempty" xml:"RequestMode,omitempty"`
+	RequestParameters     *string `json:"RequestParameters,omitempty" xml:"RequestParameters,omitempty"`
+	RequestPath           *string `json:"RequestPath,omitempty" xml:"RequestPath,omitempty"`
+	RequestProtocol       *string `json:"RequestProtocol,omitempty" xml:"RequestProtocol,omitempty"`
+	ResultSample          *string `json:"ResultSample,omitempty" xml:"ResultSample,omitempty"`
+	ResultType            *string `json:"ResultType,omitempty" xml:"ResultType,omitempty"`
+	SecurityToken         *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	ServiceParameters     *string `json:"ServiceParameters,omitempty" xml:"ServiceParameters,omitempty"`
+	ServiceParametersMap  *string `json:"ServiceParametersMap,omitempty" xml:"ServiceParametersMap,omitempty"`
+	ServiceProtocol       *string `json:"ServiceProtocol,omitempty" xml:"ServiceProtocol,omitempty"`
+	ServiceTimeout        *int32  `json:"ServiceTimeout,omitempty" xml:"ServiceTimeout,omitempty"`
+	UseBackendService     *bool   `json:"UseBackendService,omitempty" xml:"UseBackendService,omitempty"`
+	Visibility            *string `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
+	VpcConfig             *string `json:"VpcConfig,omitempty" xml:"VpcConfig,omitempty"`
+}
+
+func (s ModifyApiConfigurationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApiConfigurationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApiConfigurationRequest) SetAllowSignatureMethod(v string) *ModifyApiConfigurationRequest {
+	s.AllowSignatureMethod = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetApiId(v string) *ModifyApiConfigurationRequest {
+	s.ApiId = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetApiName(v string) *ModifyApiConfigurationRequest {
+	s.ApiName = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetAppCodeAuthType(v string) *ModifyApiConfigurationRequest {
+	s.AppCodeAuthType = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetAuthType(v string) *ModifyApiConfigurationRequest {
+	s.AuthType = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetBackendName(v string) *ModifyApiConfigurationRequest {
+	s.BackendName = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetBodyFormat(v string) *ModifyApiConfigurationRequest {
+	s.BodyFormat = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetBodyModel(v string) *ModifyApiConfigurationRequest {
+	s.BodyModel = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetContentTypeCategory(v string) *ModifyApiConfigurationRequest {
+	s.ContentTypeCategory = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetContentTypeValue(v string) *ModifyApiConfigurationRequest {
+	s.ContentTypeValue = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetDescription(v string) *ModifyApiConfigurationRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetDisableInternet(v bool) *ModifyApiConfigurationRequest {
+	s.DisableInternet = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetErrorCodeSamples(v string) *ModifyApiConfigurationRequest {
+	s.ErrorCodeSamples = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetFailResultSample(v string) *ModifyApiConfigurationRequest {
+	s.FailResultSample = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetForceNonceCheck(v bool) *ModifyApiConfigurationRequest {
+	s.ForceNonceCheck = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetFunctionComputeConfig(v string) *ModifyApiConfigurationRequest {
+	s.FunctionComputeConfig = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetHttpConfig(v string) *ModifyApiConfigurationRequest {
+	s.HttpConfig = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetMockConfig(v string) *ModifyApiConfigurationRequest {
+	s.MockConfig = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetModelName(v string) *ModifyApiConfigurationRequest {
+	s.ModelName = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetOssConfig(v string) *ModifyApiConfigurationRequest {
+	s.OssConfig = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetPostBodyDescription(v string) *ModifyApiConfigurationRequest {
+	s.PostBodyDescription = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetRequestHttpMethod(v string) *ModifyApiConfigurationRequest {
+	s.RequestHttpMethod = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetRequestMode(v string) *ModifyApiConfigurationRequest {
+	s.RequestMode = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetRequestParameters(v string) *ModifyApiConfigurationRequest {
+	s.RequestParameters = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetRequestPath(v string) *ModifyApiConfigurationRequest {
+	s.RequestPath = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetRequestProtocol(v string) *ModifyApiConfigurationRequest {
+	s.RequestProtocol = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetResultSample(v string) *ModifyApiConfigurationRequest {
+	s.ResultSample = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetResultType(v string) *ModifyApiConfigurationRequest {
+	s.ResultType = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetSecurityToken(v string) *ModifyApiConfigurationRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetServiceParameters(v string) *ModifyApiConfigurationRequest {
+	s.ServiceParameters = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetServiceParametersMap(v string) *ModifyApiConfigurationRequest {
+	s.ServiceParametersMap = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetServiceProtocol(v string) *ModifyApiConfigurationRequest {
+	s.ServiceProtocol = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetServiceTimeout(v int32) *ModifyApiConfigurationRequest {
+	s.ServiceTimeout = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetUseBackendService(v bool) *ModifyApiConfigurationRequest {
+	s.UseBackendService = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetVisibility(v string) *ModifyApiConfigurationRequest {
+	s.Visibility = &v
+	return s
+}
+
+func (s *ModifyApiConfigurationRequest) SetVpcConfig(v string) *ModifyApiConfigurationRequest {
+	s.VpcConfig = &v
+	return s
+}
+
+type ModifyApiConfigurationResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyApiConfigurationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApiConfigurationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApiConfigurationResponseBody) SetRequestId(v string) *ModifyApiConfigurationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyApiConfigurationResponse struct {
+	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ModifyApiConfigurationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyApiConfigurationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyApiConfigurationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyApiConfigurationResponse) SetHeaders(v map[string]*string) *ModifyApiConfigurationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyApiConfigurationResponse) SetBody(v *ModifyApiConfigurationResponseBody) *ModifyApiConfigurationResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyApiGroupRequest struct {
 	BasePath           *string                     `json:"BasePath,omitempty" xml:"BasePath,omitempty"`
 	CompatibleFlags    *string                     `json:"CompatibleFlags,omitempty" xml:"CompatibleFlags,omitempty"`
@@ -27696,6 +27963,190 @@ func (client *Client) ModifyApi(request *ModifyApiRequest) (_result *ModifyApiRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyApiResponse{}
 	_body, _err := client.ModifyApiWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyApiConfigurationWithOptions(request *ModifyApiConfigurationRequest, runtime *util.RuntimeOptions) (_result *ModifyApiConfigurationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AllowSignatureMethod)) {
+		query["AllowSignatureMethod"] = request.AllowSignatureMethod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApiName)) {
+		query["ApiName"] = request.ApiName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppCodeAuthType)) {
+		query["AppCodeAuthType"] = request.AppCodeAuthType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AuthType)) {
+		query["AuthType"] = request.AuthType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackendName)) {
+		query["BackendName"] = request.BackendName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BodyFormat)) {
+		query["BodyFormat"] = request.BodyFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BodyModel)) {
+		query["BodyModel"] = request.BodyModel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentTypeCategory)) {
+		query["ContentTypeCategory"] = request.ContentTypeCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContentTypeValue)) {
+		query["ContentTypeValue"] = request.ContentTypeValue
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisableInternet)) {
+		query["DisableInternet"] = request.DisableInternet
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ErrorCodeSamples)) {
+		query["ErrorCodeSamples"] = request.ErrorCodeSamples
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FailResultSample)) {
+		query["FailResultSample"] = request.FailResultSample
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceNonceCheck)) {
+		query["ForceNonceCheck"] = request.ForceNonceCheck
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FunctionComputeConfig)) {
+		query["FunctionComputeConfig"] = request.FunctionComputeConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HttpConfig)) {
+		query["HttpConfig"] = request.HttpConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MockConfig)) {
+		query["MockConfig"] = request.MockConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ModelName)) {
+		query["ModelName"] = request.ModelName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssConfig)) {
+		query["OssConfig"] = request.OssConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PostBodyDescription)) {
+		query["PostBodyDescription"] = request.PostBodyDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestHttpMethod)) {
+		query["RequestHttpMethod"] = request.RequestHttpMethod
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestMode)) {
+		query["RequestMode"] = request.RequestMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestParameters)) {
+		query["RequestParameters"] = request.RequestParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestPath)) {
+		query["RequestPath"] = request.RequestPath
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequestProtocol)) {
+		query["RequestProtocol"] = request.RequestProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultSample)) {
+		query["ResultSample"] = request.ResultSample
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResultType)) {
+		query["ResultType"] = request.ResultType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceParameters)) {
+		query["ServiceParameters"] = request.ServiceParameters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceParametersMap)) {
+		query["ServiceParametersMap"] = request.ServiceParametersMap
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceProtocol)) {
+		query["ServiceProtocol"] = request.ServiceProtocol
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceTimeout)) {
+		query["ServiceTimeout"] = request.ServiceTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseBackendService)) {
+		query["UseBackendService"] = request.UseBackendService
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Visibility)) {
+		query["Visibility"] = request.Visibility
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VpcConfig)) {
+		query["VpcConfig"] = request.VpcConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyApiConfiguration"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyApiConfigurationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyApiConfiguration(request *ModifyApiConfigurationRequest) (_result *ModifyApiConfigurationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyApiConfigurationResponse{}
+	_body, _err := client.ModifyApiConfigurationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
