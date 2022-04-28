@@ -1883,7 +1883,9 @@ func (s *CreateVariableGroupResponse) SetBody(v *CreateVariableGroupResponseBody
 }
 
 type CreateWorkitemRequest struct {
-	// 工作项负责人的id，或者企业中的用户名
+	Ak       *CreateWorkitemRequestAk       `json:"ak,omitempty" xml:"ak,omitempty" require:"true" type:"Struct"`
+	Workitem *CreateWorkitemRequestWorkitem `json:"workitem,omitempty" xml:"workitem,omitempty" require:"true" type:"Struct"`
+	// 工作项负责人的account id，或者企业中的用户名
 	AssignedTo *string `json:"assignedTo,omitempty" xml:"assignedTo,omitempty"`
 	// 工作项的类型id，比如：Bug、Task对应id
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
@@ -1895,8 +1897,6 @@ type CreateWorkitemRequest struct {
 	FieldValueList []*CreateWorkitemRequestFieldValueList `json:"fieldValueList,omitempty" xml:"fieldValueList,omitempty" type:"Repeated"`
 	// 所属父工作项的唯一标识
 	Parent *string `json:"parent,omitempty" xml:"parent,omitempty"`
-	// 参与人id列表，或者企业名称列表
-	Participant []*string `json:"participant,omitempty" xml:"participant,omitempty" type:"Repeated"`
 	// 项目id
 	Space *string `json:"space,omitempty" xml:"space,omitempty"`
 	// 项目id
@@ -1907,10 +1907,6 @@ type CreateWorkitemRequest struct {
 	Sprint []*string `json:"sprint,omitempty" xml:"sprint,omitempty" type:"Repeated"`
 	// 标题
 	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
-	// 抄送人id列表
-	Tracker []*string `json:"tracker,omitempty" xml:"tracker,omitempty" type:"Repeated"`
-	// 验证者id列表，或者企业名称列表
-	Verifier []*string `json:"verifier,omitempty" xml:"verifier,omitempty" type:"Repeated"`
 	// 工作项小类型id
 	WorkitemType *string `json:"workitemType,omitempty" xml:"workitemType,omitempty"`
 }
@@ -1921,6 +1917,16 @@ func (s CreateWorkitemRequest) String() string {
 
 func (s CreateWorkitemRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateWorkitemRequest) SetAk(v *CreateWorkitemRequestAk) *CreateWorkitemRequest {
+	s.Ak = v
+	return s
+}
+
+func (s *CreateWorkitemRequest) SetWorkitem(v *CreateWorkitemRequestWorkitem) *CreateWorkitemRequest {
+	s.Workitem = v
+	return s
 }
 
 func (s *CreateWorkitemRequest) SetAssignedTo(v string) *CreateWorkitemRequest {
@@ -1953,11 +1959,6 @@ func (s *CreateWorkitemRequest) SetParent(v string) *CreateWorkitemRequest {
 	return s
 }
 
-func (s *CreateWorkitemRequest) SetParticipant(v []*string) *CreateWorkitemRequest {
-	s.Participant = v
-	return s
-}
-
 func (s *CreateWorkitemRequest) SetSpace(v string) *CreateWorkitemRequest {
 	s.Space = &v
 	return s
@@ -1983,18 +1984,68 @@ func (s *CreateWorkitemRequest) SetSubject(v string) *CreateWorkitemRequest {
 	return s
 }
 
-func (s *CreateWorkitemRequest) SetTracker(v []*string) *CreateWorkitemRequest {
+func (s *CreateWorkitemRequest) SetWorkitemType(v string) *CreateWorkitemRequest {
+	s.WorkitemType = &v
+	return s
+}
+
+type CreateWorkitemRequestAk struct {
+	Issue *CreateWorkitemRequestAkIssue `json:"issue,omitempty" xml:"issue,omitempty" require:"true" type:"Struct"`
+}
+
+func (s CreateWorkitemRequestAk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkitemRequestAk) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkitemRequestAk) SetIssue(v *CreateWorkitemRequestAkIssue) *CreateWorkitemRequestAk {
+	s.Issue = v
+	return s
+}
+
+type CreateWorkitemRequestAkIssue struct {
+	// 参与人account id列表，或者企业名称列表
+	Member []*string `json:"member,omitempty" xml:"member,omitempty" type:"Repeated"`
+}
+
+func (s CreateWorkitemRequestAkIssue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkitemRequestAkIssue) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkitemRequestAkIssue) SetMember(v []*string) *CreateWorkitemRequestAkIssue {
+	s.Member = v
+	return s
+}
+
+type CreateWorkitemRequestWorkitem struct {
+	// 抄送人account id列表
+	Tracker []*string `json:"tracker,omitempty" xml:"tracker,omitempty" type:"Repeated"`
+	// 验证者account id列表，或者企业名称列表
+	Verifier []*string `json:"verifier,omitempty" xml:"verifier,omitempty" type:"Repeated"`
+}
+
+func (s CreateWorkitemRequestWorkitem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateWorkitemRequestWorkitem) GoString() string {
+	return s.String()
+}
+
+func (s *CreateWorkitemRequestWorkitem) SetTracker(v []*string) *CreateWorkitemRequestWorkitem {
 	s.Tracker = v
 	return s
 }
 
-func (s *CreateWorkitemRequest) SetVerifier(v []*string) *CreateWorkitemRequest {
+func (s *CreateWorkitemRequestWorkitem) SetVerifier(v []*string) *CreateWorkitemRequestWorkitem {
 	s.Verifier = v
-	return s
-}
-
-func (s *CreateWorkitemRequest) SetWorkitemType(v string) *CreateWorkitemRequest {
-	s.WorkitemType = &v
 	return s
 }
 
@@ -6647,6 +6698,8 @@ func (s *GetWorkItemInfoResponseBody) SetWorkitem(v *GetWorkItemInfoResponseBody
 }
 
 type GetWorkItemInfoResponseBodyWorkitem struct {
+	Ak       *GetWorkItemInfoResponseBodyWorkitemAk       `json:"ak,omitempty" xml:"ak,omitempty" require:"true" type:"Struct"`
+	Workitem *GetWorkItemInfoResponseBodyWorkitemWorkitem `json:"workitem,omitempty" xml:"workitem,omitempty" require:"true" type:"Struct"`
 	// 负责人
 	AssignedTo *string `json:"assignedTo,omitempty" xml:"assignedTo,omitempty"`
 	// 工作项的类型id
@@ -6669,8 +6722,6 @@ type GetWorkItemInfoResponseBodyWorkitem struct {
 	Modifier *string `json:"modifier,omitempty" xml:"modifier,omitempty"`
 	// 父工作项id
 	ParentIdentifier *string `json:"parentIdentifier,omitempty" xml:"parentIdentifier,omitempty"`
-	// 参与人aliyunPk id列表
-	Participant []*string `json:"participant,omitempty" xml:"participant,omitempty" type:"Repeated"`
 	// 编号
 	SerialNumber *string `json:"serialNumber,omitempty" xml:"serialNumber,omitempty"`
 	// 所属项目id
@@ -6691,12 +6742,8 @@ type GetWorkItemInfoResponseBodyWorkitem struct {
 	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
 	// 标签id列表
 	Tag []*string `json:"tag,omitempty" xml:"tag,omitempty" type:"Repeated"`
-	// 抄送人的aliyunPk id列表
-	Tracker []*string `json:"tracker,omitempty" xml:"tracker,omitempty" type:"Repeated"`
 	// 状态更新时间
 	UpdateStatusAt *int64 `json:"updateStatusAt,omitempty" xml:"updateStatusAt,omitempty"`
-	// 验证者的aliyunPk id列表
-	Verifier []*string `json:"verifier,omitempty" xml:"verifier,omitempty" type:"Repeated"`
 	// 工作项类型id
 	WorkitemTypeIdentifier *string `json:"workitemTypeIdentifier,omitempty" xml:"workitemTypeIdentifier,omitempty"`
 }
@@ -6707,6 +6754,16 @@ func (s GetWorkItemInfoResponseBodyWorkitem) String() string {
 
 func (s GetWorkItemInfoResponseBodyWorkitem) GoString() string {
 	return s.String()
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetAk(v *GetWorkItemInfoResponseBodyWorkitemAk) *GetWorkItemInfoResponseBodyWorkitem {
+	s.Ak = v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetWorkitem(v *GetWorkItemInfoResponseBodyWorkitemWorkitem) *GetWorkItemInfoResponseBodyWorkitem {
+	s.Workitem = v
+	return s
 }
 
 func (s *GetWorkItemInfoResponseBodyWorkitem) SetAssignedTo(v string) *GetWorkItemInfoResponseBodyWorkitem {
@@ -6764,11 +6821,6 @@ func (s *GetWorkItemInfoResponseBodyWorkitem) SetParentIdentifier(v string) *Get
 	return s
 }
 
-func (s *GetWorkItemInfoResponseBodyWorkitem) SetParticipant(v []*string) *GetWorkItemInfoResponseBodyWorkitem {
-	s.Participant = v
-	return s
-}
-
 func (s *GetWorkItemInfoResponseBodyWorkitem) SetSerialNumber(v string) *GetWorkItemInfoResponseBodyWorkitem {
 	s.SerialNumber = &v
 	return s
@@ -6819,23 +6871,73 @@ func (s *GetWorkItemInfoResponseBodyWorkitem) SetTag(v []*string) *GetWorkItemIn
 	return s
 }
 
-func (s *GetWorkItemInfoResponseBodyWorkitem) SetTracker(v []*string) *GetWorkItemInfoResponseBodyWorkitem {
-	s.Tracker = v
-	return s
-}
-
 func (s *GetWorkItemInfoResponseBodyWorkitem) SetUpdateStatusAt(v int64) *GetWorkItemInfoResponseBodyWorkitem {
 	s.UpdateStatusAt = &v
 	return s
 }
 
-func (s *GetWorkItemInfoResponseBodyWorkitem) SetVerifier(v []*string) *GetWorkItemInfoResponseBodyWorkitem {
-	s.Verifier = v
+func (s *GetWorkItemInfoResponseBodyWorkitem) SetWorkitemTypeIdentifier(v string) *GetWorkItemInfoResponseBodyWorkitem {
+	s.WorkitemTypeIdentifier = &v
 	return s
 }
 
-func (s *GetWorkItemInfoResponseBodyWorkitem) SetWorkitemTypeIdentifier(v string) *GetWorkItemInfoResponseBodyWorkitem {
-	s.WorkitemTypeIdentifier = &v
+type GetWorkItemInfoResponseBodyWorkitemAk struct {
+	Issue *GetWorkItemInfoResponseBodyWorkitemAkIssue `json:"issue,omitempty" xml:"issue,omitempty" require:"true" type:"Struct"`
+}
+
+func (s GetWorkItemInfoResponseBodyWorkitemAk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkItemInfoResponseBodyWorkitemAk) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitemAk) SetIssue(v *GetWorkItemInfoResponseBodyWorkitemAkIssue) *GetWorkItemInfoResponseBodyWorkitemAk {
+	s.Issue = v
+	return s
+}
+
+type GetWorkItemInfoResponseBodyWorkitemAkIssue struct {
+	// 参与人account id列表
+	Member []*string `json:"member,omitempty" xml:"member,omitempty" type:"Repeated"`
+}
+
+func (s GetWorkItemInfoResponseBodyWorkitemAkIssue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkItemInfoResponseBodyWorkitemAkIssue) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitemAkIssue) SetMember(v []*string) *GetWorkItemInfoResponseBodyWorkitemAkIssue {
+	s.Member = v
+	return s
+}
+
+type GetWorkItemInfoResponseBodyWorkitemWorkitem struct {
+	// 抄送人的account id列表
+	Tracker []*string `json:"tracker,omitempty" xml:"tracker,omitempty" type:"Repeated"`
+	// 验证者的account id列表
+	Verifier []*string `json:"verifier,omitempty" xml:"verifier,omitempty" type:"Repeated"`
+}
+
+func (s GetWorkItemInfoResponseBodyWorkitemWorkitem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetWorkItemInfoResponseBodyWorkitemWorkitem) GoString() string {
+	return s.String()
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitemWorkitem) SetTracker(v []*string) *GetWorkItemInfoResponseBodyWorkitemWorkitem {
+	s.Tracker = v
+	return s
+}
+
+func (s *GetWorkItemInfoResponseBodyWorkitemWorkitem) SetVerifier(v []*string) *GetWorkItemInfoResponseBodyWorkitemWorkitem {
+	s.Verifier = v
 	return s
 }
 
@@ -11582,10 +11684,16 @@ type ListWorkitemsRequest struct {
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
 	// 过滤条件
 	Conditions *string `json:"conditions,omitempty" xml:"conditions,omitempty"`
+	// 额外条件
+	ExtraConditions *string `json:"extraConditions,omitempty" xml:"extraConditions,omitempty"`
+	// 分组条件
+	GroupCondition *string `json:"groupCondition,omitempty" xml:"groupCondition,omitempty"`
 	// 每页最大返回数量，0-200，默认值20
 	MaxResults *string `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
 	// 分页中的起始序列
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// 排序顺序
+	OrderBy *string `json:"orderBy,omitempty" xml:"orderBy,omitempty"`
 	// 项目id
 	SpaceIdentifier *string `json:"spaceIdentifier,omitempty" xml:"spaceIdentifier,omitempty"`
 	// 项目类型
@@ -11610,6 +11718,16 @@ func (s *ListWorkitemsRequest) SetConditions(v string) *ListWorkitemsRequest {
 	return s
 }
 
+func (s *ListWorkitemsRequest) SetExtraConditions(v string) *ListWorkitemsRequest {
+	s.ExtraConditions = &v
+	return s
+}
+
+func (s *ListWorkitemsRequest) SetGroupCondition(v string) *ListWorkitemsRequest {
+	s.GroupCondition = &v
+	return s
+}
+
 func (s *ListWorkitemsRequest) SetMaxResults(v string) *ListWorkitemsRequest {
 	s.MaxResults = &v
 	return s
@@ -11617,6 +11735,11 @@ func (s *ListWorkitemsRequest) SetMaxResults(v string) *ListWorkitemsRequest {
 
 func (s *ListWorkitemsRequest) SetNextToken(v string) *ListWorkitemsRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListWorkitemsRequest) SetOrderBy(v string) *ListWorkitemsRequest {
+	s.OrderBy = &v
 	return s
 }
 
@@ -15094,6 +15217,10 @@ func (client *Client) CreateWorkitemWithOptions(organizationId *string, request 
 	}
 	organizationId = openapiutil.GetEncodeParam(organizationId)
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Ak.Issue.Member)) {
+		body["ak"] = request.Ak.Issue.Member
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AssignedTo)) {
 		body["assignedTo"] = request.AssignedTo
 	}
@@ -15118,10 +15245,6 @@ func (client *Client) CreateWorkitemWithOptions(organizationId *string, request 
 		body["parent"] = request.Parent
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Participant)) {
-		body["participant"] = request.Participant
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Space)) {
 		body["space"] = request.Space
 	}
@@ -15142,12 +15265,12 @@ func (client *Client) CreateWorkitemWithOptions(organizationId *string, request 
 		body["subject"] = request.Subject
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Tracker)) {
-		body["tracker"] = request.Tracker
+	if !tea.BoolValue(util.IsUnset(request.Workitem.Tracker)) {
+		body["workitem"] = request.Workitem.Tracker
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Verifier)) {
-		body["verifier"] = request.Verifier
+	if !tea.BoolValue(util.IsUnset(request.Workitem.Verifier)) {
+		body["workitem"] = request.Workitem.Verifier
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WorkitemType)) {
@@ -17687,12 +17810,24 @@ func (client *Client) ListWorkitemsWithOptions(organizationId *string, request *
 		query["conditions"] = request.Conditions
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ExtraConditions)) {
+		query["extraConditions"] = request.ExtraConditions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupCondition)) {
+		query["groupCondition"] = request.GroupCondition
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["maxResults"] = request.MaxResults
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
 		query["nextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderBy)) {
+		query["orderBy"] = request.OrderBy
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SpaceIdentifier)) {
