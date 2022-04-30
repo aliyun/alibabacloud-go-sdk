@@ -1,3 +1,6 @@
+2022-04-30 Version: v3.0.18
+- Add GrtApplicationList.
+
 2022-04-11 Version: v3.0.17
 - Fix some bug.
 

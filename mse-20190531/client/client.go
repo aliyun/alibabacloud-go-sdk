@@ -7136,6 +7136,253 @@ func (s *GetAppMessageQueueRouteResponse) SetBody(v *GetAppMessageQueueRouteResp
 	return s
 }
 
+type GetApplicationListRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AppId          *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Language       *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	SentinelEnable *bool   `json:"SentinelEnable,omitempty" xml:"SentinelEnable,omitempty"`
+	Source         *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SwitchEnable   *bool   `json:"SwitchEnable,omitempty" xml:"SwitchEnable,omitempty"`
+}
+
+func (s GetApplicationListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationListRequest) SetAcceptLanguage(v string) *GetApplicationListRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *GetApplicationListRequest) SetAppId(v string) *GetApplicationListRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetApplicationListRequest) SetAppName(v string) *GetApplicationListRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetApplicationListRequest) SetLanguage(v string) *GetApplicationListRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *GetApplicationListRequest) SetPageNumber(v int32) *GetApplicationListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetApplicationListRequest) SetPageSize(v int32) *GetApplicationListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetApplicationListRequest) SetRegion(v string) *GetApplicationListRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *GetApplicationListRequest) SetSentinelEnable(v bool) *GetApplicationListRequest {
+	s.SentinelEnable = &v
+	return s
+}
+
+func (s *GetApplicationListRequest) SetSource(v string) *GetApplicationListRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *GetApplicationListRequest) SetSwitchEnable(v bool) *GetApplicationListRequest {
+	s.SwitchEnable = &v
+	return s
+}
+
+type GetApplicationListResponseBody struct {
+	Code           *int32                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *GetApplicationListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetApplicationListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationListResponseBody) SetCode(v int32) *GetApplicationListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetApplicationListResponseBody) SetData(v *GetApplicationListResponseBodyData) *GetApplicationListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetApplicationListResponseBody) SetHttpStatusCode(v int32) *GetApplicationListResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *GetApplicationListResponseBody) SetMessage(v string) *GetApplicationListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetApplicationListResponseBody) SetRequestId(v string) *GetApplicationListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetApplicationListResponseBody) SetSuccess(v bool) *GetApplicationListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetApplicationListResponseBodyData struct {
+	PageNumber *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Result     []*GetApplicationListResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	TotalSize  *int32                                      `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+}
+
+func (s GetApplicationListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationListResponseBodyData) SetPageNumber(v int32) *GetApplicationListResponseBodyData {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetApplicationListResponseBodyData) SetPageSize(v int32) *GetApplicationListResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetApplicationListResponseBodyData) SetResult(v []*GetApplicationListResponseBodyDataResult) *GetApplicationListResponseBodyData {
+	s.Result = v
+	return s
+}
+
+func (s *GetApplicationListResponseBodyData) SetTotalSize(v int32) *GetApplicationListResponseBodyData {
+	s.TotalSize = &v
+	return s
+}
+
+type GetApplicationListResponseBodyDataResult struct {
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ExtraInfo       *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	InstancesNumber *int32  `json:"InstancesNumber,omitempty" xml:"InstancesNumber,omitempty"`
+	Language        *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	LicenseKey      *string `json:"LicenseKey,omitempty" xml:"LicenseKey,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Source          *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status          *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserId          *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetApplicationListResponseBodyDataResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationListResponseBodyDataResult) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationListResponseBodyDataResult) SetAppId(v string) *GetApplicationListResponseBodyDataResult {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetApplicationListResponseBodyDataResult) SetAppName(v string) *GetApplicationListResponseBodyDataResult {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetApplicationListResponseBodyDataResult) SetExtraInfo(v string) *GetApplicationListResponseBodyDataResult {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *GetApplicationListResponseBodyDataResult) SetInstancesNumber(v int32) *GetApplicationListResponseBodyDataResult {
+	s.InstancesNumber = &v
+	return s
+}
+
+func (s *GetApplicationListResponseBodyDataResult) SetLanguage(v string) *GetApplicationListResponseBodyDataResult {
+	s.Language = &v
+	return s
+}
+
+func (s *GetApplicationListResponseBodyDataResult) SetLicenseKey(v string) *GetApplicationListResponseBodyDataResult {
+	s.LicenseKey = &v
+	return s
+}
+
+func (s *GetApplicationListResponseBodyDataResult) SetRegionId(v string) *GetApplicationListResponseBodyDataResult {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetApplicationListResponseBodyDataResult) SetSource(v string) *GetApplicationListResponseBodyDataResult {
+	s.Source = &v
+	return s
+}
+
+func (s *GetApplicationListResponseBodyDataResult) SetStatus(v int64) *GetApplicationListResponseBodyDataResult {
+	s.Status = &v
+	return s
+}
+
+func (s *GetApplicationListResponseBodyDataResult) SetUserId(v string) *GetApplicationListResponseBodyDataResult {
+	s.UserId = &v
+	return s
+}
+
+type GetApplicationListResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetApplicationListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetApplicationListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetApplicationListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetApplicationListResponse) SetHeaders(v map[string]*string) *GetApplicationListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetApplicationListResponse) SetBody(v *GetApplicationListResponseBody) *GetApplicationListResponse {
+	s.Body = v
+	return s
+}
+
 type GetBlackWhiteListRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
@@ -13807,6 +14054,7 @@ func (s *ListGatewayResponseBodyData) SetTotalSize(v int64) *ListGatewayResponse
 
 type ListGatewayResponseBodyDataResult struct {
 	AhasOn          *bool                                           `json:"AhasOn,omitempty" xml:"AhasOn,omitempty"`
+	AppVersion      *string                                         `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
 	ArmsOn          *bool                                           `json:"ArmsOn,omitempty" xml:"ArmsOn,omitempty"`
 	ChargeType      *string                                         `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	CurrentVersion  *string                                         `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
@@ -13829,6 +14077,7 @@ type ListGatewayResponseBodyDataResult struct {
 	Spec            *string                                         `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	Status          *int32                                          `json:"Status,omitempty" xml:"Status,omitempty"`
 	StatusDesc      *string                                         `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
+	SupportWasm     *bool                                           `json:"SupportWasm,omitempty" xml:"SupportWasm,omitempty"`
 	Tag             *string                                         `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	Upgrade         *bool                                           `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
 	Vswitch2        *string                                         `json:"Vswitch2,omitempty" xml:"Vswitch2,omitempty"`
@@ -13844,6 +14093,11 @@ func (s ListGatewayResponseBodyDataResult) GoString() string {
 
 func (s *ListGatewayResponseBodyDataResult) SetAhasOn(v bool) *ListGatewayResponseBodyDataResult {
 	s.AhasOn = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyDataResult) SetAppVersion(v string) *ListGatewayResponseBodyDataResult {
+	s.AppVersion = &v
 	return s
 }
 
@@ -13954,6 +14208,11 @@ func (s *ListGatewayResponseBodyDataResult) SetStatus(v int32) *ListGatewayRespo
 
 func (s *ListGatewayResponseBodyDataResult) SetStatusDesc(v string) *ListGatewayResponseBodyDataResult {
 	s.StatusDesc = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyDataResult) SetSupportWasm(v bool) *ListGatewayResponseBodyDataResult {
+	s.SupportWasm = &v
 	return s
 }
 
@@ -27228,6 +27487,86 @@ func (client *Client) GetAppMessageQueueRoute(request *GetAppMessageQueueRouteRe
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAppMessageQueueRouteResponse{}
 	_body, _err := client.GetAppMessageQueueRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetApplicationListWithOptions(request *GetApplicationListRequest, runtime *util.RuntimeOptions) (_result *GetApplicationListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SentinelEnable)) {
+		query["SentinelEnable"] = request.SentinelEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SwitchEnable)) {
+		query["SwitchEnable"] = request.SwitchEnable
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetApplicationList"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetApplicationListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetApplicationList(request *GetApplicationListRequest) (_result *GetApplicationListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetApplicationListResponse{}
+	_body, _err := client.GetApplicationListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
