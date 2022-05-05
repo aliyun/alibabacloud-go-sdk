@@ -2032,6 +2032,8 @@ type Story struct {
 	FigureClusterIds []*string `json:"FigureClusterIds,omitempty" xml:"FigureClusterIds,omitempty" type:"Repeated"`
 	// Files
 	Files []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// MIILCustomFields
+	MIILCustomFields []map[string]interface{} `json:"MIILCustomFields,omitempty" xml:"MIILCustomFields,omitempty" type:"Repeated"`
 	// ObjectId
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
 	// ObjectType
@@ -2094,6 +2096,11 @@ func (s *Story) SetFigureClusterIds(v []*string) *Story {
 
 func (s *Story) SetFiles(v []*File) *Story {
 	s.Files = v
+	return s
+}
+
+func (s *Story) SetMIILCustomFields(v []map[string]interface{}) *Story {
+	s.MIILCustomFields = v
 	return s
 }
 
@@ -8304,16 +8311,19 @@ func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProject
 }
 
 type ListTasksRequest struct {
+	EndTimeRange *TimeRange `json:"EndTimeRange,omitempty" xml:"EndTimeRange,omitempty"`
 	// MaxResults
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// NextToken
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	Order     *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// 项目名称
-	ProjectName *string   `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sort        *string   `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	TagSelector *string   `json:"TagSelector,omitempty" xml:"TagSelector,omitempty"`
-	TaskTypes   []*string `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty" type:"Repeated"`
+	ProjectName    *string    `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Sort           *string    `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	StartTimeRange *TimeRange `json:"StartTimeRange,omitempty" xml:"StartTimeRange,omitempty"`
+	Status         *string    `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagSelector    *string    `json:"TagSelector,omitempty" xml:"TagSelector,omitempty"`
+	TaskTypes      []*string  `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty" type:"Repeated"`
 }
 
 func (s ListTasksRequest) String() string {
@@ -8322,6 +8332,11 @@ func (s ListTasksRequest) String() string {
 
 func (s ListTasksRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListTasksRequest) SetEndTimeRange(v *TimeRange) *ListTasksRequest {
+	s.EndTimeRange = v
+	return s
 }
 
 func (s *ListTasksRequest) SetMaxResults(v int64) *ListTasksRequest {
@@ -8349,6 +8364,16 @@ func (s *ListTasksRequest) SetSort(v string) *ListTasksRequest {
 	return s
 }
 
+func (s *ListTasksRequest) SetStartTimeRange(v *TimeRange) *ListTasksRequest {
+	s.StartTimeRange = v
+	return s
+}
+
+func (s *ListTasksRequest) SetStatus(v string) *ListTasksRequest {
+	s.Status = &v
+	return s
+}
+
 func (s *ListTasksRequest) SetTagSelector(v string) *ListTasksRequest {
 	s.TagSelector = &v
 	return s
@@ -8360,16 +8385,19 @@ func (s *ListTasksRequest) SetTaskTypes(v []*string) *ListTasksRequest {
 }
 
 type ListTasksShrinkRequest struct {
+	EndTimeRangeShrink *string `json:"EndTimeRange,omitempty" xml:"EndTimeRange,omitempty"`
 	// MaxResults
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// NextToken
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	Order     *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	// 项目名称
-	ProjectName     *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	Sort            *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	TagSelector     *string `json:"TagSelector,omitempty" xml:"TagSelector,omitempty"`
-	TaskTypesShrink *string `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty"`
+	ProjectName          *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Sort                 *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	StartTimeRangeShrink *string `json:"StartTimeRange,omitempty" xml:"StartTimeRange,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TagSelector          *string `json:"TagSelector,omitempty" xml:"TagSelector,omitempty"`
+	TaskTypesShrink      *string `json:"TaskTypes,omitempty" xml:"TaskTypes,omitempty"`
 }
 
 func (s ListTasksShrinkRequest) String() string {
@@ -8378,6 +8406,11 @@ func (s ListTasksShrinkRequest) String() string {
 
 func (s ListTasksShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListTasksShrinkRequest) SetEndTimeRangeShrink(v string) *ListTasksShrinkRequest {
+	s.EndTimeRangeShrink = &v
+	return s
 }
 
 func (s *ListTasksShrinkRequest) SetMaxResults(v int64) *ListTasksShrinkRequest {
@@ -8402,6 +8435,16 @@ func (s *ListTasksShrinkRequest) SetProjectName(v string) *ListTasksShrinkReques
 
 func (s *ListTasksShrinkRequest) SetSort(v string) *ListTasksShrinkRequest {
 	s.Sort = &v
+	return s
+}
+
+func (s *ListTasksShrinkRequest) SetStartTimeRangeShrink(v string) *ListTasksShrinkRequest {
+	s.StartTimeRangeShrink = &v
+	return s
+}
+
+func (s *ListTasksShrinkRequest) SetStatus(v string) *ListTasksShrinkRequest {
+	s.Status = &v
 	return s
 }
 
@@ -12884,11 +12927,23 @@ func (client *Client) ListTasksWithOptions(tmpReq *ListTasksRequest, runtime *ut
 	}
 	request := &ListTasksShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.EndTimeRange))) {
+		request.EndTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.EndTimeRange), tea.String("EndTimeRange"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.StartTimeRange))) {
+		request.StartTimeRangeShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.StartTimeRange), tea.String("StartTimeRange"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.TaskTypes)) {
 		request.TaskTypesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.TaskTypes, tea.String("TaskTypes"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTimeRangeShrink)) {
+		query["EndTimeRange"] = request.EndTimeRangeShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["MaxResults"] = request.MaxResults
 	}
@@ -12907,6 +12962,14 @@ func (client *Client) ListTasksWithOptions(tmpReq *ListTasksRequest, runtime *ut
 
 	if !tea.BoolValue(util.IsUnset(request.Sort)) {
 		query["Sort"] = request.Sort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTimeRangeShrink)) {
+		query["StartTimeRange"] = request.StartTimeRangeShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TagSelector)) {
