@@ -8689,6 +8689,7 @@ func (s *ListRulesResponseBodyRulesRuleActionsRewriteConfig) SetQuery(v string) 
 }
 
 type ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig struct {
+	QPS *int32 `json:"QPS,omitempty" xml:"QPS,omitempty"`
 }
 
 func (s ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig) String() string {
@@ -8699,7 +8700,14 @@ func (s ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig) GoString() stri
 	return s.String()
 }
 
+func (s *ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig) SetQPS(v int32) *ListRulesResponseBodyRulesRuleActionsTrafficLimitConfig {
+	s.QPS = &v
+	return s
+}
+
 type ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig struct {
+	// TargetType为服务器组时必选，目标服务器组
+	MirrorGroupConfig *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig `json:"MirrorGroupConfig,omitempty" xml:"MirrorGroupConfig,omitempty" type:"Struct"`
 }
 
 func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig) String() string {
@@ -8708,6 +8716,51 @@ func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig) String() strin
 
 func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig) GoString() string {
 	return s.String()
+}
+
+func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig) SetMirrorGroupConfig(v *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfig {
+	s.MirrorGroupConfig = v
+	return s
+}
+
+type ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig struct {
+	ServerGroupTuples []*ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples `json:"ServerGroupTuples,omitempty" xml:"ServerGroupTuples,omitempty" type:"Repeated"`
+}
+
+func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig) SetServerGroupTuples(v []*ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfig {
+	s.ServerGroupTuples = v
+	return s
+}
+
+type ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples struct {
+	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	Weight        *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) GoString() string {
+	return s.String()
+}
+
+func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) SetServerGroupId(v string) *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples {
+	s.ServerGroupId = &v
+	return s
+}
+
+func (s *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples) SetWeight(v int32) *ListRulesResponseBodyRulesRuleActionsTrafficMirrorConfigMirrorGroupConfigServerGroupTuples {
+	s.Weight = &v
+	return s
 }
 
 type ListRulesResponseBodyRulesRuleConditions struct {
@@ -8723,6 +8776,8 @@ type ListRulesResponseBodyRulesRuleConditions struct {
 	PathConfig *ListRulesResponseBodyRulesRuleConditionsPathConfig `json:"PathConfig,omitempty" xml:"PathConfig,omitempty" type:"Struct"`
 	// 查询字符串条件配置
 	QueryStringConfig *ListRulesResponseBodyRulesRuleConditionsQueryStringConfig `json:"QueryStringConfig,omitempty" xml:"QueryStringConfig,omitempty" type:"Struct"`
+	// 源IP业务流量匹配
+	SourceIpConfig *ListRulesResponseBodyRulesRuleConditionsSourceIpConfig `json:"SourceIpConfig,omitempty" xml:"SourceIpConfig,omitempty" type:"Struct"`
 	// 条件类型
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
@@ -8762,6 +8817,11 @@ func (s *ListRulesResponseBodyRulesRuleConditions) SetPathConfig(v *ListRulesRes
 
 func (s *ListRulesResponseBodyRulesRuleConditions) SetQueryStringConfig(v *ListRulesResponseBodyRulesRuleConditionsQueryStringConfig) *ListRulesResponseBodyRulesRuleConditions {
 	s.QueryStringConfig = v
+	return s
+}
+
+func (s *ListRulesResponseBodyRulesRuleConditions) SetSourceIpConfig(v *ListRulesResponseBodyRulesRuleConditionsSourceIpConfig) *ListRulesResponseBodyRulesRuleConditions {
+	s.SourceIpConfig = v
 	return s
 }
 
@@ -8932,6 +8992,24 @@ func (s *ListRulesResponseBodyRulesRuleConditionsQueryStringConfigValues) SetKey
 
 func (s *ListRulesResponseBodyRulesRuleConditionsQueryStringConfigValues) SetValue(v string) *ListRulesResponseBodyRulesRuleConditionsQueryStringConfigValues {
 	s.Value = &v
+	return s
+}
+
+type ListRulesResponseBodyRulesRuleConditionsSourceIpConfig struct {
+	// 需要匹配的源IP列表
+	Values []*string `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s ListRulesResponseBodyRulesRuleConditionsSourceIpConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRulesResponseBodyRulesRuleConditionsSourceIpConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ListRulesResponseBodyRulesRuleConditionsSourceIpConfig) SetValues(v []*string) *ListRulesResponseBodyRulesRuleConditionsSourceIpConfig {
+	s.Values = v
 	return s
 }
 
@@ -11142,6 +11220,8 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 }
 
 type UnTagResourcesRequest struct {
+	// 是否删除全部
+	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// 资源实例Id
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// 资源类型
@@ -11158,6 +11238,11 @@ func (s UnTagResourcesRequest) String() string {
 
 func (s UnTagResourcesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UnTagResourcesRequest) SetAll(v bool) *UnTagResourcesRequest {
+	s.All = &v
+	return s
 }
 
 func (s *UnTagResourcesRequest) SetResourceId(v []*string) *UnTagResourcesRequest {
@@ -17946,6 +18031,10 @@ func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		query["All"] = request.All
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
 		query["ResourceId"] = request.ResourceId
 	}
