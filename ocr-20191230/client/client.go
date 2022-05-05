@@ -644,6 +644,23 @@ func (s *RecognizeBankCardRequest) SetImageURL(v string) *RecognizeBankCardReque
 	return s
 }
 
+type RecognizeBankCardAdvanceRequest struct {
+	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
+}
+
+func (s RecognizeBankCardAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeBankCardAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeBankCardAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeBankCardAdvanceRequest {
+	s.ImageURLObject = v
+	return s
+}
+
 type RecognizeBankCardResponseBody struct {
 	Data      *RecognizeBankCardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -3725,145 +3742,6 @@ func (s *RecognizeStampResponse) SetBody(v *RecognizeStampResponseBody) *Recogni
 	return s
 }
 
-type RecognizeStructuredTaxiInvoicesRequest struct {
-	ImageURL *string `json:"ImageURL,omitempty" xml:"ImageURL,omitempty"`
-}
-
-func (s RecognizeStructuredTaxiInvoicesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RecognizeStructuredTaxiInvoicesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RecognizeStructuredTaxiInvoicesRequest) SetImageURL(v string) *RecognizeStructuredTaxiInvoicesRequest {
-	s.ImageURL = &v
-	return s
-}
-
-type RecognizeStructuredTaxiInvoicesAdvanceRequest struct {
-	ImageURLObject io.Reader `json:"ImageURLObject,omitempty" xml:"ImageURLObject,omitempty" require:"true"`
-}
-
-func (s RecognizeStructuredTaxiInvoicesAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RecognizeStructuredTaxiInvoicesAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RecognizeStructuredTaxiInvoicesAdvanceRequest) SetImageURLObject(v io.Reader) *RecognizeStructuredTaxiInvoicesAdvanceRequest {
-	s.ImageURLObject = v
-	return s
-}
-
-type RecognizeStructuredTaxiInvoicesResponseBody struct {
-	Data      *RecognizeStructuredTaxiInvoicesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s RecognizeStructuredTaxiInvoicesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RecognizeStructuredTaxiInvoicesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RecognizeStructuredTaxiInvoicesResponseBody) SetData(v *RecognizeStructuredTaxiInvoicesResponseBodyData) *RecognizeStructuredTaxiInvoicesResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *RecognizeStructuredTaxiInvoicesResponseBody) SetRequestId(v string) *RecognizeStructuredTaxiInvoicesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type RecognizeStructuredTaxiInvoicesResponseBodyData struct {
-	Addresses          []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	CellPhoneNumbers   []*string `json:"CellPhoneNumbers,omitempty" xml:"CellPhoneNumbers,omitempty" type:"Repeated"`
-	Companies          []*string `json:"Companies,omitempty" xml:"Companies,omitempty" type:"Repeated"`
-	Departments        []*string `json:"Departments,omitempty" xml:"Departments,omitempty" type:"Repeated"`
-	Emails             []*string `json:"Emails,omitempty" xml:"Emails,omitempty" type:"Repeated"`
-	Name               *string   `json:"Name,omitempty" xml:"Name,omitempty"`
-	OfficePhoneNumbers []*string `json:"OfficePhoneNumbers,omitempty" xml:"OfficePhoneNumbers,omitempty" type:"Repeated"`
-	Titles             []*string `json:"Titles,omitempty" xml:"Titles,omitempty" type:"Repeated"`
-}
-
-func (s RecognizeStructuredTaxiInvoicesResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RecognizeStructuredTaxiInvoicesResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *RecognizeStructuredTaxiInvoicesResponseBodyData) SetAddresses(v []*string) *RecognizeStructuredTaxiInvoicesResponseBodyData {
-	s.Addresses = v
-	return s
-}
-
-func (s *RecognizeStructuredTaxiInvoicesResponseBodyData) SetCellPhoneNumbers(v []*string) *RecognizeStructuredTaxiInvoicesResponseBodyData {
-	s.CellPhoneNumbers = v
-	return s
-}
-
-func (s *RecognizeStructuredTaxiInvoicesResponseBodyData) SetCompanies(v []*string) *RecognizeStructuredTaxiInvoicesResponseBodyData {
-	s.Companies = v
-	return s
-}
-
-func (s *RecognizeStructuredTaxiInvoicesResponseBodyData) SetDepartments(v []*string) *RecognizeStructuredTaxiInvoicesResponseBodyData {
-	s.Departments = v
-	return s
-}
-
-func (s *RecognizeStructuredTaxiInvoicesResponseBodyData) SetEmails(v []*string) *RecognizeStructuredTaxiInvoicesResponseBodyData {
-	s.Emails = v
-	return s
-}
-
-func (s *RecognizeStructuredTaxiInvoicesResponseBodyData) SetName(v string) *RecognizeStructuredTaxiInvoicesResponseBodyData {
-	s.Name = &v
-	return s
-}
-
-func (s *RecognizeStructuredTaxiInvoicesResponseBodyData) SetOfficePhoneNumbers(v []*string) *RecognizeStructuredTaxiInvoicesResponseBodyData {
-	s.OfficePhoneNumbers = v
-	return s
-}
-
-func (s *RecognizeStructuredTaxiInvoicesResponseBodyData) SetTitles(v []*string) *RecognizeStructuredTaxiInvoicesResponseBodyData {
-	s.Titles = v
-	return s
-}
-
-type RecognizeStructuredTaxiInvoicesResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeStructuredTaxiInvoicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RecognizeStructuredTaxiInvoicesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RecognizeStructuredTaxiInvoicesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RecognizeStructuredTaxiInvoicesResponse) SetHeaders(v map[string]*string) *RecognizeStructuredTaxiInvoicesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RecognizeStructuredTaxiInvoicesResponse) SetBody(v *RecognizeStructuredTaxiInvoicesResponseBody) *RecognizeStructuredTaxiInvoicesResponse {
-	s.Body = v
-	return s
-}
-
 type RecognizeTableRequest struct {
 	AssureDirection *bool   `json:"AssureDirection,omitempty" xml:"AssureDirection,omitempty"`
 	HasLine         *bool   `json:"HasLine,omitempty" xml:"HasLine,omitempty"`
@@ -4968,6 +4846,852 @@ func (s *RecognizeTrainTicketResponse) SetHeaders(v map[string]*string) *Recogni
 }
 
 func (s *RecognizeTrainTicketResponse) SetBody(v *RecognizeTrainTicketResponseBody) *RecognizeTrainTicketResponse {
+	s.Body = v
+	return s
+}
+
+type RecognizeUkraineIdentityCardRequest struct {
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardRequest) SetImageUrl(v string) *RecognizeUkraineIdentityCardRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardAdvanceRequest struct {
+	ImageUrlObject io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
+}
+
+func (s RecognizeUkraineIdentityCardAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardAdvanceRequest) SetImageUrlObject(v io.Reader) *RecognizeUkraineIdentityCardAdvanceRequest {
+	s.ImageUrlObject = v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBody struct {
+	Data *RecognizeUkraineIdentityCardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBody) SetData(v *RecognizeUkraineIdentityCardResponseBodyData) *RecognizeUkraineIdentityCardResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBody) SetRequestId(v string) *RecognizeUkraineIdentityCardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyData struct {
+	BirthDate      *RecognizeUkraineIdentityCardResponseBodyDataBirthDate      `json:"BirthDate,omitempty" xml:"BirthDate,omitempty" type:"Struct"`
+	CardBox        *RecognizeUkraineIdentityCardResponseBodyDataCardBox        `json:"CardBox,omitempty" xml:"CardBox,omitempty" type:"Struct"`
+	DocumentNumber *RecognizeUkraineIdentityCardResponseBodyDataDocumentNumber `json:"DocumentNumber,omitempty" xml:"DocumentNumber,omitempty" type:"Struct"`
+	ExpiryDate     *RecognizeUkraineIdentityCardResponseBodyDataExpiryDate     `json:"ExpiryDate,omitempty" xml:"ExpiryDate,omitempty" type:"Struct"`
+	NameEnglish    *RecognizeUkraineIdentityCardResponseBodyDataNameEnglish    `json:"NameEnglish,omitempty" xml:"NameEnglish,omitempty" type:"Struct"`
+	NameUkraine    *RecognizeUkraineIdentityCardResponseBodyDataNameUkraine    `json:"NameUkraine,omitempty" xml:"NameUkraine,omitempty" type:"Struct"`
+	Nationality    *RecognizeUkraineIdentityCardResponseBodyDataNationality    `json:"Nationality,omitempty" xml:"Nationality,omitempty" type:"Struct"`
+	Patronymic     *RecognizeUkraineIdentityCardResponseBodyDataPatronymic     `json:"Patronymic,omitempty" xml:"Patronymic,omitempty" type:"Struct"`
+	PortraitBox    *RecognizeUkraineIdentityCardResponseBodyDataPortraitBox    `json:"PortraitBox,omitempty" xml:"PortraitBox,omitempty" type:"Struct"`
+	RecordNumber   *RecognizeUkraineIdentityCardResponseBodyDataRecordNumber   `json:"RecordNumber,omitempty" xml:"RecordNumber,omitempty" type:"Struct"`
+	Sex            *RecognizeUkraineIdentityCardResponseBodyDataSex            `json:"Sex,omitempty" xml:"Sex,omitempty" type:"Struct"`
+	SurnameEnglish *RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglish `json:"SurnameEnglish,omitempty" xml:"SurnameEnglish,omitempty" type:"Struct"`
+	SurnameUkraine *RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraine `json:"SurnameUkraine,omitempty" xml:"SurnameUkraine,omitempty" type:"Struct"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyData) SetBirthDate(v *RecognizeUkraineIdentityCardResponseBodyDataBirthDate) *RecognizeUkraineIdentityCardResponseBodyData {
+	s.BirthDate = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyData) SetCardBox(v *RecognizeUkraineIdentityCardResponseBodyDataCardBox) *RecognizeUkraineIdentityCardResponseBodyData {
+	s.CardBox = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyData) SetDocumentNumber(v *RecognizeUkraineIdentityCardResponseBodyDataDocumentNumber) *RecognizeUkraineIdentityCardResponseBodyData {
+	s.DocumentNumber = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyData) SetExpiryDate(v *RecognizeUkraineIdentityCardResponseBodyDataExpiryDate) *RecognizeUkraineIdentityCardResponseBodyData {
+	s.ExpiryDate = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyData) SetNameEnglish(v *RecognizeUkraineIdentityCardResponseBodyDataNameEnglish) *RecognizeUkraineIdentityCardResponseBodyData {
+	s.NameEnglish = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyData) SetNameUkraine(v *RecognizeUkraineIdentityCardResponseBodyDataNameUkraine) *RecognizeUkraineIdentityCardResponseBodyData {
+	s.NameUkraine = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyData) SetNationality(v *RecognizeUkraineIdentityCardResponseBodyDataNationality) *RecognizeUkraineIdentityCardResponseBodyData {
+	s.Nationality = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyData) SetPatronymic(v *RecognizeUkraineIdentityCardResponseBodyDataPatronymic) *RecognizeUkraineIdentityCardResponseBodyData {
+	s.Patronymic = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyData) SetPortraitBox(v *RecognizeUkraineIdentityCardResponseBodyDataPortraitBox) *RecognizeUkraineIdentityCardResponseBodyData {
+	s.PortraitBox = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyData) SetRecordNumber(v *RecognizeUkraineIdentityCardResponseBodyDataRecordNumber) *RecognizeUkraineIdentityCardResponseBodyData {
+	s.RecordNumber = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyData) SetSex(v *RecognizeUkraineIdentityCardResponseBodyDataSex) *RecognizeUkraineIdentityCardResponseBodyData {
+	s.Sex = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyData) SetSurnameEnglish(v *RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglish) *RecognizeUkraineIdentityCardResponseBodyData {
+	s.SurnameEnglish = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyData) SetSurnameUkraine(v *RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraine) *RecognizeUkraineIdentityCardResponseBodyData {
+	s.SurnameUkraine = v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataBirthDate struct {
+	KeyPoints []*RecognizeUkraineIdentityCardResponseBodyDataBirthDateKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                          `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                           `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataBirthDate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataBirthDate) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataBirthDate) SetKeyPoints(v []*RecognizeUkraineIdentityCardResponseBodyDataBirthDateKeyPoints) *RecognizeUkraineIdentityCardResponseBodyDataBirthDate {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataBirthDate) SetScore(v float32) *RecognizeUkraineIdentityCardResponseBodyDataBirthDate {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataBirthDate) SetText(v string) *RecognizeUkraineIdentityCardResponseBodyDataBirthDate {
+	s.Text = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataBirthDateKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataBirthDateKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataBirthDateKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataBirthDateKeyPoints) SetX(v float32) *RecognizeUkraineIdentityCardResponseBodyDataBirthDateKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataBirthDateKeyPoints) SetY(v float32) *RecognizeUkraineIdentityCardResponseBodyDataBirthDateKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataCardBox struct {
+	KeyPoints []*RecognizeUkraineIdentityCardResponseBodyDataCardBoxKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                        `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                         `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataCardBox) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataCardBox) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataCardBox) SetKeyPoints(v []*RecognizeUkraineIdentityCardResponseBodyDataCardBoxKeyPoints) *RecognizeUkraineIdentityCardResponseBodyDataCardBox {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataCardBox) SetScore(v float32) *RecognizeUkraineIdentityCardResponseBodyDataCardBox {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataCardBox) SetText(v string) *RecognizeUkraineIdentityCardResponseBodyDataCardBox {
+	s.Text = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataCardBoxKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataCardBoxKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataCardBoxKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataCardBoxKeyPoints) SetX(v float32) *RecognizeUkraineIdentityCardResponseBodyDataCardBoxKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataCardBoxKeyPoints) SetY(v float32) *RecognizeUkraineIdentityCardResponseBodyDataCardBoxKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataDocumentNumber struct {
+	KeyPoints []*RecognizeUkraineIdentityCardResponseBodyDataDocumentNumberKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                               `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataDocumentNumber) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataDocumentNumber) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataDocumentNumber) SetKeyPoints(v []*RecognizeUkraineIdentityCardResponseBodyDataDocumentNumberKeyPoints) *RecognizeUkraineIdentityCardResponseBodyDataDocumentNumber {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataDocumentNumber) SetScore(v float32) *RecognizeUkraineIdentityCardResponseBodyDataDocumentNumber {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataDocumentNumber) SetText(v string) *RecognizeUkraineIdentityCardResponseBodyDataDocumentNumber {
+	s.Text = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataDocumentNumberKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataDocumentNumberKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataDocumentNumberKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataDocumentNumberKeyPoints) SetX(v float32) *RecognizeUkraineIdentityCardResponseBodyDataDocumentNumberKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataDocumentNumberKeyPoints) SetY(v float32) *RecognizeUkraineIdentityCardResponseBodyDataDocumentNumberKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataExpiryDate struct {
+	KeyPoints []*RecognizeUkraineIdentityCardResponseBodyDataExpiryDateKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                           `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                            `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataExpiryDate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataExpiryDate) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataExpiryDate) SetKeyPoints(v []*RecognizeUkraineIdentityCardResponseBodyDataExpiryDateKeyPoints) *RecognizeUkraineIdentityCardResponseBodyDataExpiryDate {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataExpiryDate) SetScore(v float32) *RecognizeUkraineIdentityCardResponseBodyDataExpiryDate {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataExpiryDate) SetText(v string) *RecognizeUkraineIdentityCardResponseBodyDataExpiryDate {
+	s.Text = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataExpiryDateKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataExpiryDateKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataExpiryDateKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataExpiryDateKeyPoints) SetX(v float32) *RecognizeUkraineIdentityCardResponseBodyDataExpiryDateKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataExpiryDateKeyPoints) SetY(v float32) *RecognizeUkraineIdentityCardResponseBodyDataExpiryDateKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataNameEnglish struct {
+	KeyPoints []*RecognizeUkraineIdentityCardResponseBodyDataNameEnglishKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                            `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                             `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataNameEnglish) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataNameEnglish) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataNameEnglish) SetKeyPoints(v []*RecognizeUkraineIdentityCardResponseBodyDataNameEnglishKeyPoints) *RecognizeUkraineIdentityCardResponseBodyDataNameEnglish {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataNameEnglish) SetScore(v float32) *RecognizeUkraineIdentityCardResponseBodyDataNameEnglish {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataNameEnglish) SetText(v string) *RecognizeUkraineIdentityCardResponseBodyDataNameEnglish {
+	s.Text = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataNameEnglishKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataNameEnglishKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataNameEnglishKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataNameEnglishKeyPoints) SetX(v float32) *RecognizeUkraineIdentityCardResponseBodyDataNameEnglishKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataNameEnglishKeyPoints) SetY(v float32) *RecognizeUkraineIdentityCardResponseBodyDataNameEnglishKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataNameUkraine struct {
+	KeyPoints []*RecognizeUkraineIdentityCardResponseBodyDataNameUkraineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                            `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                             `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataNameUkraine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataNameUkraine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataNameUkraine) SetKeyPoints(v []*RecognizeUkraineIdentityCardResponseBodyDataNameUkraineKeyPoints) *RecognizeUkraineIdentityCardResponseBodyDataNameUkraine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataNameUkraine) SetScore(v float32) *RecognizeUkraineIdentityCardResponseBodyDataNameUkraine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataNameUkraine) SetText(v string) *RecognizeUkraineIdentityCardResponseBodyDataNameUkraine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataNameUkraineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataNameUkraineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataNameUkraineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataNameUkraineKeyPoints) SetX(v float32) *RecognizeUkraineIdentityCardResponseBodyDataNameUkraineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataNameUkraineKeyPoints) SetY(v float32) *RecognizeUkraineIdentityCardResponseBodyDataNameUkraineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataNationality struct {
+	KeyPoints []*RecognizeUkraineIdentityCardResponseBodyDataNationalityKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                            `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                             `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataNationality) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataNationality) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataNationality) SetKeyPoints(v []*RecognizeUkraineIdentityCardResponseBodyDataNationalityKeyPoints) *RecognizeUkraineIdentityCardResponseBodyDataNationality {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataNationality) SetScore(v float32) *RecognizeUkraineIdentityCardResponseBodyDataNationality {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataNationality) SetText(v string) *RecognizeUkraineIdentityCardResponseBodyDataNationality {
+	s.Text = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataNationalityKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataNationalityKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataNationalityKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataNationalityKeyPoints) SetX(v float32) *RecognizeUkraineIdentityCardResponseBodyDataNationalityKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataNationalityKeyPoints) SetY(v float32) *RecognizeUkraineIdentityCardResponseBodyDataNationalityKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataPatronymic struct {
+	KeyPoints []*RecognizeUkraineIdentityCardResponseBodyDataPatronymicKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                           `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                            `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataPatronymic) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataPatronymic) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataPatronymic) SetKeyPoints(v []*RecognizeUkraineIdentityCardResponseBodyDataPatronymicKeyPoints) *RecognizeUkraineIdentityCardResponseBodyDataPatronymic {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataPatronymic) SetScore(v float32) *RecognizeUkraineIdentityCardResponseBodyDataPatronymic {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataPatronymic) SetText(v string) *RecognizeUkraineIdentityCardResponseBodyDataPatronymic {
+	s.Text = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataPatronymicKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataPatronymicKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataPatronymicKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataPatronymicKeyPoints) SetX(v float32) *RecognizeUkraineIdentityCardResponseBodyDataPatronymicKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataPatronymicKeyPoints) SetY(v float32) *RecognizeUkraineIdentityCardResponseBodyDataPatronymicKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataPortraitBox struct {
+	KeyPoints []*RecognizeUkraineIdentityCardResponseBodyDataPortraitBoxKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                            `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                             `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataPortraitBox) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataPortraitBox) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataPortraitBox) SetKeyPoints(v []*RecognizeUkraineIdentityCardResponseBodyDataPortraitBoxKeyPoints) *RecognizeUkraineIdentityCardResponseBodyDataPortraitBox {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataPortraitBox) SetScore(v float32) *RecognizeUkraineIdentityCardResponseBodyDataPortraitBox {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataPortraitBox) SetText(v string) *RecognizeUkraineIdentityCardResponseBodyDataPortraitBox {
+	s.Text = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataPortraitBoxKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataPortraitBoxKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataPortraitBoxKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataPortraitBoxKeyPoints) SetX(v float32) *RecognizeUkraineIdentityCardResponseBodyDataPortraitBoxKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataPortraitBoxKeyPoints) SetY(v float32) *RecognizeUkraineIdentityCardResponseBodyDataPortraitBoxKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataRecordNumber struct {
+	KeyPoints []*RecognizeUkraineIdentityCardResponseBodyDataRecordNumberKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                             `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                              `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataRecordNumber) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataRecordNumber) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataRecordNumber) SetKeyPoints(v []*RecognizeUkraineIdentityCardResponseBodyDataRecordNumberKeyPoints) *RecognizeUkraineIdentityCardResponseBodyDataRecordNumber {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataRecordNumber) SetScore(v float32) *RecognizeUkraineIdentityCardResponseBodyDataRecordNumber {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataRecordNumber) SetText(v string) *RecognizeUkraineIdentityCardResponseBodyDataRecordNumber {
+	s.Text = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataRecordNumberKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataRecordNumberKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataRecordNumberKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataRecordNumberKeyPoints) SetX(v float32) *RecognizeUkraineIdentityCardResponseBodyDataRecordNumberKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataRecordNumberKeyPoints) SetY(v float32) *RecognizeUkraineIdentityCardResponseBodyDataRecordNumberKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataSex struct {
+	KeyPoints []*RecognizeUkraineIdentityCardResponseBodyDataSexKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                    `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                     `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataSex) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataSex) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataSex) SetKeyPoints(v []*RecognizeUkraineIdentityCardResponseBodyDataSexKeyPoints) *RecognizeUkraineIdentityCardResponseBodyDataSex {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataSex) SetScore(v float32) *RecognizeUkraineIdentityCardResponseBodyDataSex {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataSex) SetText(v string) *RecognizeUkraineIdentityCardResponseBodyDataSex {
+	s.Text = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataSexKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataSexKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataSexKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataSexKeyPoints) SetX(v float32) *RecognizeUkraineIdentityCardResponseBodyDataSexKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataSexKeyPoints) SetY(v float32) *RecognizeUkraineIdentityCardResponseBodyDataSexKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglish struct {
+	KeyPoints []*RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglishKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                               `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglish) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglish) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglish) SetKeyPoints(v []*RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglishKeyPoints) *RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglish {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglish) SetScore(v float32) *RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglish {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglish) SetText(v string) *RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglish {
+	s.Text = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglishKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglishKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglishKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglishKeyPoints) SetX(v float32) *RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglishKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglishKeyPoints) SetY(v float32) *RecognizeUkraineIdentityCardResponseBodyDataSurnameEnglishKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraine struct {
+	KeyPoints []*RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                               `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraine) SetKeyPoints(v []*RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraineKeyPoints) *RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraine) SetScore(v float32) *RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraine) SetText(v string) *RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraineKeyPoints) SetX(v float32) *RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraineKeyPoints) SetY(v float32) *RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeUkraineIdentityCardResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RecognizeUkraineIdentityCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RecognizeUkraineIdentityCardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeUkraineIdentityCardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeUkraineIdentityCardResponse) SetHeaders(v map[string]*string) *RecognizeUkraineIdentityCardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponse) SetBody(v *RecognizeUkraineIdentityCardResponseBody) *RecognizeUkraineIdentityCardResponse {
 	s.Body = v
 	return s
 }
@@ -6776,6 +7500,112 @@ func (client *Client) RecognizeBankCard(request *RecognizeBankCardRequest) (_res
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RecognizeBankCardAdvance(request *RecognizeBankCardAdvanceRequest, runtime *util.RuntimeOptions) (_result *RecognizeBankCardResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("ocr"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	recognizeBankCardReq := &RecognizeBankCardRequest{}
+	openapiutil.Convert(request, recognizeBankCardReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageURLObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeBankCardReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	}
+
+	recognizeBankCardResp, _err := client.RecognizeBankCardWithOptions(recognizeBankCardReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = recognizeBankCardResp
 	return _result, _err
 }
 
@@ -8793,156 +9623,6 @@ func (client *Client) RecognizeStampAdvance(request *RecognizeStampAdvanceReques
 	return _result, _err
 }
 
-func (client *Client) RecognizeStructuredTaxiInvoicesWithOptions(request *RecognizeStructuredTaxiInvoicesRequest, runtime *util.RuntimeOptions) (_result *RecognizeStructuredTaxiInvoicesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ImageURL)) {
-		body["ImageURL"] = request.ImageURL
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RecognizeStructuredTaxiInvoices"),
-		Version:     tea.String("2019-12-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &RecognizeStructuredTaxiInvoicesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) RecognizeStructuredTaxiInvoices(request *RecognizeStructuredTaxiInvoicesRequest) (_result *RecognizeStructuredTaxiInvoicesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RecognizeStructuredTaxiInvoicesResponse{}
-	_body, _err := client.RecognizeStructuredTaxiInvoicesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) RecognizeStructuredTaxiInvoicesAdvance(request *RecognizeStructuredTaxiInvoicesAdvanceRequest, runtime *util.RuntimeOptions) (_result *RecognizeStructuredTaxiInvoicesResponse, _err error) {
-	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	securityToken, _err := client.Credential.GetSecurityToken()
-	if _err != nil {
-		return _result, _err
-	}
-
-	credentialType := client.Credential.GetType()
-	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
-		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
-	}
-
-	if tea.BoolValue(util.IsUnset(credentialType)) {
-		credentialType = tea.String("access_key")
-	}
-
-	authConfig := &rpc.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		SecurityToken:   securityToken,
-		Type:            credentialType,
-		Endpoint:        openPlatformEndpoint,
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openplatform.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("ocr"),
-		RegionId: client.RegionId,
-	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	var ossClient *oss.Client
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
-	recognizeStructuredTaxiInvoicesReq := &RecognizeStructuredTaxiInvoicesRequest{}
-	openapiutil.Convert(request, recognizeStructuredTaxiInvoicesReq)
-	if !tea.BoolValue(util.IsUnset(request.ImageURLObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
-		if _err != nil {
-			return _result, _err
-		}
-
-		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
-			Content:     request.ImageURLObject,
-			ContentType: tea.String(""),
-		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
-		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-		if _err != nil {
-			return _result, _err
-		}
-		recognizeStructuredTaxiInvoicesReq.ImageURL = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	}
-
-	recognizeStructuredTaxiInvoicesResp, _err := client.RecognizeStructuredTaxiInvoicesWithOptions(recognizeStructuredTaxiInvoicesReq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = recognizeStructuredTaxiInvoicesResp
-	return _result, _err
-}
-
 func (client *Client) RecognizeTableWithOptions(request *RecognizeTableRequest, runtime *util.RuntimeOptions) (_result *RecognizeTableResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9710,6 +10390,156 @@ func (client *Client) RecognizeTrainTicketAdvance(request *RecognizeTrainTicketA
 	}
 
 	_result = recognizeTrainTicketResp
+	return _result, _err
+}
+
+func (client *Client) RecognizeUkraineIdentityCardWithOptions(request *RecognizeUkraineIdentityCardRequest, runtime *util.RuntimeOptions) (_result *RecognizeUkraineIdentityCardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeUkraineIdentityCard"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecognizeUkraineIdentityCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RecognizeUkraineIdentityCard(request *RecognizeUkraineIdentityCardRequest) (_result *RecognizeUkraineIdentityCardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecognizeUkraineIdentityCardResponse{}
+	_body, _err := client.RecognizeUkraineIdentityCardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RecognizeUkraineIdentityCardAdvance(request *RecognizeUkraineIdentityCardAdvanceRequest, runtime *util.RuntimeOptions) (_result *RecognizeUkraineIdentityCardResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("ocr"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	recognizeUkraineIdentityCardReq := &RecognizeUkraineIdentityCardRequest{}
+	openapiutil.Convert(request, recognizeUkraineIdentityCardReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeUkraineIdentityCardReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	}
+
+	recognizeUkraineIdentityCardResp, _err := client.RecognizeUkraineIdentityCardWithOptions(recognizeUkraineIdentityCardReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = recognizeUkraineIdentityCardResp
 	return _result, _err
 }
 
