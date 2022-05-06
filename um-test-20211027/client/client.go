@@ -180,6 +180,64 @@ func (s *GetOssUploadParamResponse) SetBody(v *GetOssUploadParamResponseBody) *G
 	return s
 }
 
+type UploadNotaryResponseBody struct {
+	Code      *int64  `json:"code,omitempty" xml:"code,omitempty"`
+	Data      *string `json:"data,omitempty" xml:"data,omitempty"`
+	DetailMsg *string `json:"detailMsg,omitempty" xml:"detailMsg,omitempty"`
+	Msg       *string `json:"msg,omitempty" xml:"msg,omitempty"`
+}
+
+func (s UploadNotaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadNotaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UploadNotaryResponseBody) SetCode(v int64) *UploadNotaryResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UploadNotaryResponseBody) SetData(v string) *UploadNotaryResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UploadNotaryResponseBody) SetDetailMsg(v string) *UploadNotaryResponseBody {
+	s.DetailMsg = &v
+	return s
+}
+
+func (s *UploadNotaryResponseBody) SetMsg(v string) *UploadNotaryResponseBody {
+	s.Msg = &v
+	return s
+}
+
+type UploadNotaryResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UploadNotaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UploadNotaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UploadNotaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UploadNotaryResponse) SetHeaders(v map[string]*string) *UploadNotaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UploadNotaryResponse) SetBody(v *UploadNotaryResponseBody) *UploadNotaryResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -260,6 +318,39 @@ func (client *Client) GetOssUploadParam(request *GetOssUploadParamRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &GetOssUploadParamResponse{}
 	_body, _err := client.GetOssUploadParamWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UploadNotaryWithOptions(runtime *util.RuntimeOptions) (_result *UploadNotaryResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("UploadNotary"),
+		Version:     tea.String("2021-10-27"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("Anonymous"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UploadNotaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UploadNotary() (_result *UploadNotaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UploadNotaryResponse{}
+	_body, _err := client.UploadNotaryWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
