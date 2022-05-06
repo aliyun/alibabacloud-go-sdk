@@ -1031,6 +1031,75 @@ func (s *DeleteRecordTemplateResponse) SetBody(v *DeleteRecordTemplateResponseBo
 	return s
 }
 
+type DescribeAppKeyRequest struct {
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DescribeAppKeyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppKeyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppKeyRequest) SetAppId(v string) *DescribeAppKeyRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeAppKeyRequest) SetOwnerId(v int64) *DescribeAppKeyRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DescribeAppKeyResponseBody struct {
+	AppKey    *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeAppKeyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppKeyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppKeyResponseBody) SetAppKey(v string) *DescribeAppKeyResponseBody {
+	s.AppKey = &v
+	return s
+}
+
+func (s *DescribeAppKeyResponseBody) SetRequestId(v string) *DescribeAppKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeAppKeyResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DescribeAppKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAppKeyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAppKeyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAppKeyResponse) SetHeaders(v map[string]*string) *DescribeAppKeyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppKeyResponse) SetBody(v *DescribeAppKeyResponseBody) *DescribeAppKeyResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAppsRequest struct {
 	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Order    *string `json:"Order,omitempty" xml:"Order,omitempty"`
@@ -1136,6 +1205,7 @@ type DescribeAppsResponseBodyAppListApp struct {
 	AppType      *string                                         `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	BillType     *string                                         `json:"BillType,omitempty" xml:"BillType,omitempty"`
 	CreateTime   *string                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Region       *string                                         `json:"Region,omitempty" xml:"Region,omitempty"`
 	ServiceAreas *DescribeAppsResponseBodyAppListAppServiceAreas `json:"ServiceAreas,omitempty" xml:"ServiceAreas,omitempty" type:"Struct"`
 	Status       *int32                                          `json:"Status,omitempty" xml:"Status,omitempty"`
 }
@@ -1170,6 +1240,11 @@ func (s *DescribeAppsResponseBodyAppListApp) SetBillType(v string) *DescribeApps
 
 func (s *DescribeAppsResponseBodyAppListApp) SetCreateTime(v string) *DescribeAppsResponseBodyAppListApp {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeAppsResponseBodyAppListApp) SetRegion(v string) *DescribeAppsResponseBodyAppListApp {
+	s.Region = &v
 	return s
 }
 
@@ -6047,6 +6122,54 @@ func (client *Client) DeleteRecordTemplate(request *DeleteRecordTemplateRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteRecordTemplateResponse{}
 	_body, _err := client.DeleteRecordTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAppKeyWithOptions(request *DescribeAppKeyRequest, runtime *util.RuntimeOptions) (_result *DescribeAppKeyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAppKey"),
+		Version:     tea.String("2018-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAppKeyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAppKey(request *DescribeAppKeyRequest) (_result *DescribeAppKeyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAppKeyResponse{}
+	_body, _err := client.DescribeAppKeyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
