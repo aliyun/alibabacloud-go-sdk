@@ -4959,6 +4959,7 @@ type DescribeLoadBalancerAttributeResponseBody struct {
 	DeleteProtection             *string                                                            `json:"DeleteProtection,omitempty" xml:"DeleteProtection,omitempty"`
 	EndTime                      *string                                                            `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	EndTimeStamp                 *int64                                                             `json:"EndTimeStamp,omitempty" xml:"EndTimeStamp,omitempty"`
+	InstanceChargeType           *string                                                            `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	InternetChargeType           *string                                                            `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	ListenerPorts                *DescribeLoadBalancerAttributeResponseBodyListenerPorts            `json:"ListenerPorts,omitempty" xml:"ListenerPorts,omitempty" type:"Struct"`
 	ListenerPortsAndProtocal     *DescribeLoadBalancerAttributeResponseBodyListenerPortsAndProtocal `json:"ListenerPortsAndProtocal,omitempty" xml:"ListenerPortsAndProtocal,omitempty" type:"Struct"`
@@ -5044,6 +5045,11 @@ func (s *DescribeLoadBalancerAttributeResponseBody) SetEndTime(v string) *Descri
 
 func (s *DescribeLoadBalancerAttributeResponseBody) SetEndTimeStamp(v int64) *DescribeLoadBalancerAttributeResponseBody {
 	s.EndTimeStamp = &v
+	return s
+}
+
+func (s *DescribeLoadBalancerAttributeResponseBody) SetInstanceChargeType(v string) *DescribeLoadBalancerAttributeResponseBody {
+	s.InstanceChargeType = &v
 	return s
 }
 
@@ -7659,6 +7665,7 @@ type DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer struct {
 	CreateTime                   *string                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CreateTimeStamp              *int64                                                          `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
 	DeleteProtection             *string                                                         `json:"DeleteProtection,omitempty" xml:"DeleteProtection,omitempty"`
+	InstanceChargeType           *string                                                         `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	InternetChargeType           *string                                                         `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	InternetChargeTypeAlias      *string                                                         `json:"InternetChargeTypeAlias,omitempty" xml:"InternetChargeTypeAlias,omitempty"`
 	LoadBalancerId               *string                                                         `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
@@ -7719,6 +7726,11 @@ func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetCreateTi
 
 func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetDeleteProtection(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
 	s.DeleteProtection = &v
+	return s
+}
+
+func (s *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer) SetInstanceChargeType(v string) *DescribeLoadBalancersResponseBodyLoadBalancersLoadBalancer {
+	s.InstanceChargeType = &v
 	return s
 }
 
