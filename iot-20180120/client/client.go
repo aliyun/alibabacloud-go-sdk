@@ -1075,6 +1075,204 @@ func (s *BatchClearEdgeInstanceDeviceConfigResponse) SetBody(v *BatchClearEdgeIn
 	return s
 }
 
+type BatchCreateSoundCodeLabelRequest struct {
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ScheduleCode  *string `json:"ScheduleCode,omitempty" xml:"ScheduleCode,omitempty"`
+	Total         *int32  `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s BatchCreateSoundCodeLabelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateSoundCodeLabelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateSoundCodeLabelRequest) SetDescription(v string) *BatchCreateSoundCodeLabelRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *BatchCreateSoundCodeLabelRequest) SetIotInstanceId(v string) *BatchCreateSoundCodeLabelRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *BatchCreateSoundCodeLabelRequest) SetScheduleCode(v string) *BatchCreateSoundCodeLabelRequest {
+	s.ScheduleCode = &v
+	return s
+}
+
+func (s *BatchCreateSoundCodeLabelRequest) SetTotal(v int32) *BatchCreateSoundCodeLabelRequest {
+	s.Total = &v
+	return s
+}
+
+type BatchCreateSoundCodeLabelResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BatchCreateSoundCodeLabelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateSoundCodeLabelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateSoundCodeLabelResponseBody) SetCode(v string) *BatchCreateSoundCodeLabelResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BatchCreateSoundCodeLabelResponseBody) SetData(v string) *BatchCreateSoundCodeLabelResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *BatchCreateSoundCodeLabelResponseBody) SetErrorMessage(v string) *BatchCreateSoundCodeLabelResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BatchCreateSoundCodeLabelResponseBody) SetRequestId(v string) *BatchCreateSoundCodeLabelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchCreateSoundCodeLabelResponseBody) SetSuccess(v bool) *BatchCreateSoundCodeLabelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BatchCreateSoundCodeLabelResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BatchCreateSoundCodeLabelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchCreateSoundCodeLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateSoundCodeLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateSoundCodeLabelResponse) SetHeaders(v map[string]*string) *BatchCreateSoundCodeLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchCreateSoundCodeLabelResponse) SetBody(v *BatchCreateSoundCodeLabelResponseBody) *BatchCreateSoundCodeLabelResponse {
+	s.Body = v
+	return s
+}
+
+type BatchCreateSoundCodeLabelWithLabelsRequest struct {
+	Description   *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	IotInstanceId *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Labels        []*string `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	ScheduleCode  *string   `json:"ScheduleCode,omitempty" xml:"ScheduleCode,omitempty"`
+}
+
+func (s BatchCreateSoundCodeLabelWithLabelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateSoundCodeLabelWithLabelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateSoundCodeLabelWithLabelsRequest) SetDescription(v string) *BatchCreateSoundCodeLabelWithLabelsRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *BatchCreateSoundCodeLabelWithLabelsRequest) SetIotInstanceId(v string) *BatchCreateSoundCodeLabelWithLabelsRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *BatchCreateSoundCodeLabelWithLabelsRequest) SetLabels(v []*string) *BatchCreateSoundCodeLabelWithLabelsRequest {
+	s.Labels = v
+	return s
+}
+
+func (s *BatchCreateSoundCodeLabelWithLabelsRequest) SetScheduleCode(v string) *BatchCreateSoundCodeLabelWithLabelsRequest {
+	s.ScheduleCode = &v
+	return s
+}
+
+type BatchCreateSoundCodeLabelWithLabelsResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BatchCreateSoundCodeLabelWithLabelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateSoundCodeLabelWithLabelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateSoundCodeLabelWithLabelsResponseBody) SetCode(v string) *BatchCreateSoundCodeLabelWithLabelsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BatchCreateSoundCodeLabelWithLabelsResponseBody) SetData(v string) *BatchCreateSoundCodeLabelWithLabelsResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *BatchCreateSoundCodeLabelWithLabelsResponseBody) SetErrorMessage(v string) *BatchCreateSoundCodeLabelWithLabelsResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BatchCreateSoundCodeLabelWithLabelsResponseBody) SetRequestId(v string) *BatchCreateSoundCodeLabelWithLabelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BatchCreateSoundCodeLabelWithLabelsResponseBody) SetSuccess(v bool) *BatchCreateSoundCodeLabelWithLabelsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BatchCreateSoundCodeLabelWithLabelsResponse struct {
+	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BatchCreateSoundCodeLabelWithLabelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BatchCreateSoundCodeLabelWithLabelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateSoundCodeLabelWithLabelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateSoundCodeLabelWithLabelsResponse) SetHeaders(v map[string]*string) *BatchCreateSoundCodeLabelWithLabelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchCreateSoundCodeLabelWithLabelsResponse) SetBody(v *BatchCreateSoundCodeLabelWithLabelsResponseBody) *BatchCreateSoundCodeLabelWithLabelsResponse {
+	s.Body = v
+	return s
+}
+
 type BatchDeleteDeviceGroupRelationsRequest struct {
 	Device        []*BatchDeleteDeviceGroupRelationsRequestDevice `json:"Device,omitempty" xml:"Device,omitempty" type:"Repeated"`
 	GroupId       *string                                         `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -3894,6 +4092,239 @@ func (s *BindGatewayToEdgeInstanceResponse) SetBody(v *BindGatewayToEdgeInstance
 	return s
 }
 
+type BindLicenseDeviceRequest struct {
+	IotIdList     []*string `json:"IotIdList,omitempty" xml:"IotIdList,omitempty" type:"Repeated"`
+	IotInstanceId *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	LicenseCode   *string   `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
+	ProductKey    *string   `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s BindLicenseDeviceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindLicenseDeviceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindLicenseDeviceRequest) SetIotIdList(v []*string) *BindLicenseDeviceRequest {
+	s.IotIdList = v
+	return s
+}
+
+func (s *BindLicenseDeviceRequest) SetIotInstanceId(v string) *BindLicenseDeviceRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *BindLicenseDeviceRequest) SetLicenseCode(v string) *BindLicenseDeviceRequest {
+	s.LicenseCode = &v
+	return s
+}
+
+func (s *BindLicenseDeviceRequest) SetProductKey(v string) *BindLicenseDeviceRequest {
+	s.ProductKey = &v
+	return s
+}
+
+type BindLicenseDeviceResponseBody struct {
+	Code         *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *BindLicenseDeviceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                            `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BindLicenseDeviceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindLicenseDeviceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BindLicenseDeviceResponseBody) SetCode(v string) *BindLicenseDeviceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BindLicenseDeviceResponseBody) SetData(v *BindLicenseDeviceResponseBodyData) *BindLicenseDeviceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *BindLicenseDeviceResponseBody) SetErrorMessage(v string) *BindLicenseDeviceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BindLicenseDeviceResponseBody) SetRequestId(v string) *BindLicenseDeviceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BindLicenseDeviceResponseBody) SetSuccess(v bool) *BindLicenseDeviceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BindLicenseDeviceResponseBodyData struct {
+	CheckProgressId *string `json:"CheckProgressId,omitempty" xml:"CheckProgressId,omitempty"`
+	FailSum         *int64  `json:"FailSum,omitempty" xml:"FailSum,omitempty"`
+	Progress        *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	ResultCsvFile   *string `json:"ResultCsvFile,omitempty" xml:"ResultCsvFile,omitempty"`
+	SuccessSum      *int64  `json:"SuccessSum,omitempty" xml:"SuccessSum,omitempty"`
+}
+
+func (s BindLicenseDeviceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindLicenseDeviceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *BindLicenseDeviceResponseBodyData) SetCheckProgressId(v string) *BindLicenseDeviceResponseBodyData {
+	s.CheckProgressId = &v
+	return s
+}
+
+func (s *BindLicenseDeviceResponseBodyData) SetFailSum(v int64) *BindLicenseDeviceResponseBodyData {
+	s.FailSum = &v
+	return s
+}
+
+func (s *BindLicenseDeviceResponseBodyData) SetProgress(v int32) *BindLicenseDeviceResponseBodyData {
+	s.Progress = &v
+	return s
+}
+
+func (s *BindLicenseDeviceResponseBodyData) SetResultCsvFile(v string) *BindLicenseDeviceResponseBodyData {
+	s.ResultCsvFile = &v
+	return s
+}
+
+func (s *BindLicenseDeviceResponseBodyData) SetSuccessSum(v int64) *BindLicenseDeviceResponseBodyData {
+	s.SuccessSum = &v
+	return s
+}
+
+type BindLicenseDeviceResponse struct {
+	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BindLicenseDeviceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BindLicenseDeviceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindLicenseDeviceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BindLicenseDeviceResponse) SetHeaders(v map[string]*string) *BindLicenseDeviceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BindLicenseDeviceResponse) SetBody(v *BindLicenseDeviceResponseBody) *BindLicenseDeviceResponse {
+	s.Body = v
+	return s
+}
+
+type BindLicenseProductRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	LicenseCode   *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s BindLicenseProductRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindLicenseProductRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BindLicenseProductRequest) SetIotInstanceId(v string) *BindLicenseProductRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *BindLicenseProductRequest) SetLicenseCode(v string) *BindLicenseProductRequest {
+	s.LicenseCode = &v
+	return s
+}
+
+func (s *BindLicenseProductRequest) SetProductKey(v string) *BindLicenseProductRequest {
+	s.ProductKey = &v
+	return s
+}
+
+type BindLicenseProductResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s BindLicenseProductResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindLicenseProductResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *BindLicenseProductResponseBody) SetCode(v string) *BindLicenseProductResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *BindLicenseProductResponseBody) SetData(v bool) *BindLicenseProductResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *BindLicenseProductResponseBody) SetErrorMessage(v string) *BindLicenseProductResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *BindLicenseProductResponseBody) SetRequestId(v string) *BindLicenseProductResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *BindLicenseProductResponseBody) SetSuccess(v bool) *BindLicenseProductResponseBody {
+	s.Success = &v
+	return s
+}
+
+type BindLicenseProductResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *BindLicenseProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s BindLicenseProductResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BindLicenseProductResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BindLicenseProductResponse) SetHeaders(v map[string]*string) *BindLicenseProductResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BindLicenseProductResponse) SetBody(v *BindLicenseProductResponseBody) *BindLicenseProductResponse {
+	s.Body = v
+	return s
+}
+
 type BindRoleToEdgeInstanceRequest struct {
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
@@ -5360,6 +5791,93 @@ func (s *CreateDataAPIServiceResponse) SetHeaders(v map[string]*string) *CreateD
 }
 
 func (s *CreateDataAPIServiceResponse) SetBody(v *CreateDataAPIServiceResponseBody) *CreateDataAPIServiceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDataSourceItemRequest struct {
+	DataSourceId  *int64  `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Topic         *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s CreateDataSourceItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataSourceItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataSourceItemRequest) SetDataSourceId(v int64) *CreateDataSourceItemRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *CreateDataSourceItemRequest) SetIotInstanceId(v string) *CreateDataSourceItemRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *CreateDataSourceItemRequest) SetTopic(v string) *CreateDataSourceItemRequest {
+	s.Topic = &v
+	return s
+}
+
+type CreateDataSourceItemResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateDataSourceItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataSourceItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataSourceItemResponseBody) SetCode(v string) *CreateDataSourceItemResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateDataSourceItemResponseBody) SetErrorMessage(v string) *CreateDataSourceItemResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateDataSourceItemResponseBody) SetRequestId(v string) *CreateDataSourceItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDataSourceItemResponseBody) SetSuccess(v bool) *CreateDataSourceItemResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDataSourceItemResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateDataSourceItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDataSourceItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDataSourceItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDataSourceItemResponse) SetHeaders(v map[string]*string) *CreateDataSourceItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDataSourceItemResponse) SetBody(v *CreateDataSourceItemResponseBody) *CreateDataSourceItemResponse {
 	s.Body = v
 	return s
 }
@@ -8995,9 +9513,122 @@ func (s *CreateSceneRuleResponse) SetBody(v *CreateSceneRuleResponseBody) *Creat
 	return s
 }
 
+type CreateSchedulePeriodRequest struct {
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndTime          *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IotInstanceId    *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ScheduleCode     *string `json:"ScheduleCode,omitempty" xml:"ScheduleCode,omitempty"`
+	SoundCodeContent *string `json:"SoundCodeContent,omitempty" xml:"SoundCodeContent,omitempty"`
+	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s CreateSchedulePeriodRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSchedulePeriodRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSchedulePeriodRequest) SetDescription(v string) *CreateSchedulePeriodRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateSchedulePeriodRequest) SetEndTime(v string) *CreateSchedulePeriodRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *CreateSchedulePeriodRequest) SetIotInstanceId(v string) *CreateSchedulePeriodRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *CreateSchedulePeriodRequest) SetScheduleCode(v string) *CreateSchedulePeriodRequest {
+	s.ScheduleCode = &v
+	return s
+}
+
+func (s *CreateSchedulePeriodRequest) SetSoundCodeContent(v string) *CreateSchedulePeriodRequest {
+	s.SoundCodeContent = &v
+	return s
+}
+
+func (s *CreateSchedulePeriodRequest) SetStartTime(v string) *CreateSchedulePeriodRequest {
+	s.StartTime = &v
+	return s
+}
+
+type CreateSchedulePeriodResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateSchedulePeriodResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSchedulePeriodResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSchedulePeriodResponseBody) SetCode(v string) *CreateSchedulePeriodResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateSchedulePeriodResponseBody) SetData(v string) *CreateSchedulePeriodResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateSchedulePeriodResponseBody) SetErrorMessage(v string) *CreateSchedulePeriodResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateSchedulePeriodResponseBody) SetRequestId(v string) *CreateSchedulePeriodResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSchedulePeriodResponseBody) SetSuccess(v bool) *CreateSchedulePeriodResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateSchedulePeriodResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateSchedulePeriodResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSchedulePeriodResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSchedulePeriodResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSchedulePeriodResponse) SetHeaders(v map[string]*string) *CreateSchedulePeriodResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSchedulePeriodResponse) SetBody(v *CreateSchedulePeriodResponseBody) *CreateSchedulePeriodResponse {
+	s.Body = v
+	return s
+}
+
 type CreateSoundCodeRequest struct {
 	Duration         *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	IotInstanceId    *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OpenType         *string `json:"OpenType,omitempty" xml:"OpenType,omitempty"`
 	SoundCodeContent *string `json:"SoundCodeContent,omitempty" xml:"SoundCodeContent,omitempty"`
 }
 
@@ -9016,6 +9647,16 @@ func (s *CreateSoundCodeRequest) SetDuration(v int32) *CreateSoundCodeRequest {
 
 func (s *CreateSoundCodeRequest) SetIotInstanceId(v string) *CreateSoundCodeRequest {
 	s.IotInstanceId = &v
+	return s
+}
+
+func (s *CreateSoundCodeRequest) SetName(v string) *CreateSoundCodeRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateSoundCodeRequest) SetOpenType(v string) *CreateSoundCodeRequest {
+	s.OpenType = &v
 	return s
 }
 
@@ -9084,6 +9725,210 @@ func (s *CreateSoundCodeResponse) SetHeaders(v map[string]*string) *CreateSoundC
 }
 
 func (s *CreateSoundCodeResponse) SetBody(v *CreateSoundCodeResponseBody) *CreateSoundCodeResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSoundCodeLabelRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Label         *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	ScheduleCode  *string `json:"ScheduleCode,omitempty" xml:"ScheduleCode,omitempty"`
+}
+
+func (s CreateSoundCodeLabelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSoundCodeLabelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSoundCodeLabelRequest) SetIotInstanceId(v string) *CreateSoundCodeLabelRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *CreateSoundCodeLabelRequest) SetLabel(v string) *CreateSoundCodeLabelRequest {
+	s.Label = &v
+	return s
+}
+
+func (s *CreateSoundCodeLabelRequest) SetScheduleCode(v string) *CreateSoundCodeLabelRequest {
+	s.ScheduleCode = &v
+	return s
+}
+
+type CreateSoundCodeLabelResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateSoundCodeLabelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSoundCodeLabelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSoundCodeLabelResponseBody) SetCode(v string) *CreateSoundCodeLabelResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateSoundCodeLabelResponseBody) SetData(v string) *CreateSoundCodeLabelResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateSoundCodeLabelResponseBody) SetErrorMessage(v string) *CreateSoundCodeLabelResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateSoundCodeLabelResponseBody) SetRequestId(v string) *CreateSoundCodeLabelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSoundCodeLabelResponseBody) SetSuccess(v bool) *CreateSoundCodeLabelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateSoundCodeLabelResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateSoundCodeLabelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSoundCodeLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSoundCodeLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSoundCodeLabelResponse) SetHeaders(v map[string]*string) *CreateSoundCodeLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSoundCodeLabelResponse) SetBody(v *CreateSoundCodeLabelResponseBody) *CreateSoundCodeLabelResponse {
+	s.Body = v
+	return s
+}
+
+type CreateSoundCodeScheduleRequest struct {
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndDate       *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OpenType      *string `json:"OpenType,omitempty" xml:"OpenType,omitempty"`
+	StartDate     *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+}
+
+func (s CreateSoundCodeScheduleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSoundCodeScheduleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSoundCodeScheduleRequest) SetDescription(v string) *CreateSoundCodeScheduleRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateSoundCodeScheduleRequest) SetEndDate(v string) *CreateSoundCodeScheduleRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *CreateSoundCodeScheduleRequest) SetIotInstanceId(v string) *CreateSoundCodeScheduleRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *CreateSoundCodeScheduleRequest) SetName(v string) *CreateSoundCodeScheduleRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateSoundCodeScheduleRequest) SetOpenType(v string) *CreateSoundCodeScheduleRequest {
+	s.OpenType = &v
+	return s
+}
+
+func (s *CreateSoundCodeScheduleRequest) SetStartDate(v string) *CreateSoundCodeScheduleRequest {
+	s.StartDate = &v
+	return s
+}
+
+type CreateSoundCodeScheduleResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateSoundCodeScheduleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSoundCodeScheduleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSoundCodeScheduleResponseBody) SetCode(v string) *CreateSoundCodeScheduleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateSoundCodeScheduleResponseBody) SetData(v string) *CreateSoundCodeScheduleResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateSoundCodeScheduleResponseBody) SetErrorMessage(v string) *CreateSoundCodeScheduleResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateSoundCodeScheduleResponseBody) SetRequestId(v string) *CreateSoundCodeScheduleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSoundCodeScheduleResponseBody) SetSuccess(v bool) *CreateSoundCodeScheduleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateSoundCodeScheduleResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *CreateSoundCodeScheduleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSoundCodeScheduleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSoundCodeScheduleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSoundCodeScheduleResponse) SetHeaders(v map[string]*string) *CreateSoundCodeScheduleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSoundCodeScheduleResponse) SetBody(v *CreateSoundCodeScheduleResponseBody) *CreateSoundCodeScheduleResponse {
 	s.Body = v
 	return s
 }
@@ -11976,6 +12821,87 @@ func (s *DeleteSceneRuleResponse) SetBody(v *DeleteSceneRuleResponseBody) *Delet
 	return s
 }
 
+type DeleteSchedulePeriodRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	PeriodCode    *string `json:"PeriodCode,omitempty" xml:"PeriodCode,omitempty"`
+}
+
+func (s DeleteSchedulePeriodRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSchedulePeriodRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSchedulePeriodRequest) SetIotInstanceId(v string) *DeleteSchedulePeriodRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *DeleteSchedulePeriodRequest) SetPeriodCode(v string) *DeleteSchedulePeriodRequest {
+	s.PeriodCode = &v
+	return s
+}
+
+type DeleteSchedulePeriodResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteSchedulePeriodResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSchedulePeriodResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSchedulePeriodResponseBody) SetCode(v string) *DeleteSchedulePeriodResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteSchedulePeriodResponseBody) SetErrorMessage(v string) *DeleteSchedulePeriodResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteSchedulePeriodResponseBody) SetRequestId(v string) *DeleteSchedulePeriodResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSchedulePeriodResponseBody) SetSuccess(v bool) *DeleteSchedulePeriodResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteSchedulePeriodResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteSchedulePeriodResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSchedulePeriodResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSchedulePeriodResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSchedulePeriodResponse) SetHeaders(v map[string]*string) *DeleteSchedulePeriodResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSchedulePeriodResponse) SetBody(v *DeleteSchedulePeriodResponseBody) *DeleteSchedulePeriodResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteSoundCodeRequest struct {
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	SoundCode     *string `json:"SoundCode,omitempty" xml:"SoundCode,omitempty"`
@@ -12053,6 +12979,168 @@ func (s *DeleteSoundCodeResponse) SetHeaders(v map[string]*string) *DeleteSoundC
 }
 
 func (s *DeleteSoundCodeResponse) SetBody(v *DeleteSoundCodeResponseBody) *DeleteSoundCodeResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSoundCodeLabelRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	SoundCode     *string `json:"SoundCode,omitempty" xml:"SoundCode,omitempty"`
+}
+
+func (s DeleteSoundCodeLabelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSoundCodeLabelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSoundCodeLabelRequest) SetIotInstanceId(v string) *DeleteSoundCodeLabelRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *DeleteSoundCodeLabelRequest) SetSoundCode(v string) *DeleteSoundCodeLabelRequest {
+	s.SoundCode = &v
+	return s
+}
+
+type DeleteSoundCodeLabelResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteSoundCodeLabelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSoundCodeLabelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSoundCodeLabelResponseBody) SetCode(v string) *DeleteSoundCodeLabelResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteSoundCodeLabelResponseBody) SetErrorMessage(v string) *DeleteSoundCodeLabelResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteSoundCodeLabelResponseBody) SetRequestId(v string) *DeleteSoundCodeLabelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSoundCodeLabelResponseBody) SetSuccess(v bool) *DeleteSoundCodeLabelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteSoundCodeLabelResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteSoundCodeLabelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSoundCodeLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSoundCodeLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSoundCodeLabelResponse) SetHeaders(v map[string]*string) *DeleteSoundCodeLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSoundCodeLabelResponse) SetBody(v *DeleteSoundCodeLabelResponseBody) *DeleteSoundCodeLabelResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteSoundCodeScheduleRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ScheduleCode  *string `json:"ScheduleCode,omitempty" xml:"ScheduleCode,omitempty"`
+}
+
+func (s DeleteSoundCodeScheduleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSoundCodeScheduleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSoundCodeScheduleRequest) SetIotInstanceId(v string) *DeleteSoundCodeScheduleRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *DeleteSoundCodeScheduleRequest) SetScheduleCode(v string) *DeleteSoundCodeScheduleRequest {
+	s.ScheduleCode = &v
+	return s
+}
+
+type DeleteSoundCodeScheduleResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteSoundCodeScheduleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSoundCodeScheduleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSoundCodeScheduleResponseBody) SetCode(v string) *DeleteSoundCodeScheduleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteSoundCodeScheduleResponseBody) SetErrorMessage(v string) *DeleteSoundCodeScheduleResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteSoundCodeScheduleResponseBody) SetRequestId(v string) *DeleteSoundCodeScheduleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteSoundCodeScheduleResponseBody) SetSuccess(v bool) *DeleteSoundCodeScheduleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteSoundCodeScheduleResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *DeleteSoundCodeScheduleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteSoundCodeScheduleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSoundCodeScheduleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSoundCodeScheduleResponse) SetHeaders(v map[string]*string) *DeleteSoundCodeScheduleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSoundCodeScheduleResponse) SetBody(v *DeleteSoundCodeScheduleResponseBody) *DeleteSoundCodeScheduleResponse {
 	s.Body = v
 	return s
 }
@@ -16259,6 +17347,164 @@ func (s *GetSoundCodeAudioResponse) SetBody(v *GetSoundCodeAudioResponseBody) *G
 	return s
 }
 
+type GetSoundCodeScheduleRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ScheduleCode  *string `json:"ScheduleCode,omitempty" xml:"ScheduleCode,omitempty"`
+}
+
+func (s GetSoundCodeScheduleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSoundCodeScheduleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSoundCodeScheduleRequest) SetIotInstanceId(v string) *GetSoundCodeScheduleRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *GetSoundCodeScheduleRequest) SetScheduleCode(v string) *GetSoundCodeScheduleRequest {
+	s.ScheduleCode = &v
+	return s
+}
+
+type GetSoundCodeScheduleResponseBody struct {
+	Code         *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *GetSoundCodeScheduleResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetSoundCodeScheduleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSoundCodeScheduleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSoundCodeScheduleResponseBody) SetCode(v string) *GetSoundCodeScheduleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSoundCodeScheduleResponseBody) SetData(v *GetSoundCodeScheduleResponseBodyData) *GetSoundCodeScheduleResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSoundCodeScheduleResponseBody) SetErrorMessage(v string) *GetSoundCodeScheduleResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetSoundCodeScheduleResponseBody) SetRequestId(v string) *GetSoundCodeScheduleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSoundCodeScheduleResponseBody) SetSuccess(v bool) *GetSoundCodeScheduleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetSoundCodeScheduleResponseBodyData struct {
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndDate      *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GmtCreate    *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OpenType     *string `json:"OpenType,omitempty" xml:"OpenType,omitempty"`
+	ScheduleCode *string `json:"ScheduleCode,omitempty" xml:"ScheduleCode,omitempty"`
+	StartDate    *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetSoundCodeScheduleResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSoundCodeScheduleResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSoundCodeScheduleResponseBodyData) SetDescription(v string) *GetSoundCodeScheduleResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *GetSoundCodeScheduleResponseBodyData) SetEndDate(v string) *GetSoundCodeScheduleResponseBodyData {
+	s.EndDate = &v
+	return s
+}
+
+func (s *GetSoundCodeScheduleResponseBodyData) SetEndTime(v string) *GetSoundCodeScheduleResponseBodyData {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetSoundCodeScheduleResponseBodyData) SetGmtCreate(v int64) *GetSoundCodeScheduleResponseBodyData {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *GetSoundCodeScheduleResponseBodyData) SetName(v string) *GetSoundCodeScheduleResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetSoundCodeScheduleResponseBodyData) SetOpenType(v string) *GetSoundCodeScheduleResponseBodyData {
+	s.OpenType = &v
+	return s
+}
+
+func (s *GetSoundCodeScheduleResponseBodyData) SetScheduleCode(v string) *GetSoundCodeScheduleResponseBodyData {
+	s.ScheduleCode = &v
+	return s
+}
+
+func (s *GetSoundCodeScheduleResponseBodyData) SetStartDate(v string) *GetSoundCodeScheduleResponseBodyData {
+	s.StartDate = &v
+	return s
+}
+
+func (s *GetSoundCodeScheduleResponseBodyData) SetStartTime(v string) *GetSoundCodeScheduleResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *GetSoundCodeScheduleResponseBodyData) SetStatus(v string) *GetSoundCodeScheduleResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetSoundCodeScheduleResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetSoundCodeScheduleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSoundCodeScheduleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSoundCodeScheduleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSoundCodeScheduleResponse) SetHeaders(v map[string]*string) *GetSoundCodeScheduleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSoundCodeScheduleResponse) SetBody(v *GetSoundCodeScheduleResponseBody) *GetSoundCodeScheduleResponse {
+	s.Body = v
+	return s
+}
+
 type GetSpeechDeviceDetailRequest struct {
 	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
@@ -18442,6 +19688,169 @@ func (s *ListAnalyticsDataResponse) SetBody(v *ListAnalyticsDataResponseBody) *L
 	return s
 }
 
+type ListDataSourceItemRequest struct {
+	DataSourceId  *int64  `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Page          *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchName    *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+}
+
+func (s ListDataSourceItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceItemRequest) SetDataSourceId(v int64) *ListDataSourceItemRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *ListDataSourceItemRequest) SetIotInstanceId(v string) *ListDataSourceItemRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *ListDataSourceItemRequest) SetPage(v int32) *ListDataSourceItemRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListDataSourceItemRequest) SetPageSize(v int32) *ListDataSourceItemRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataSourceItemRequest) SetSearchName(v string) *ListDataSourceItemRequest {
+	s.SearchName = &v
+	return s
+}
+
+type ListDataSourceItemResponseBody struct {
+	Code            *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	DataSourceItems *ListDataSourceItemResponseBodyDataSourceItems `json:"DataSourceItems,omitempty" xml:"DataSourceItems,omitempty" type:"Struct"`
+	ErrorMessage    *string                                        `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Page            *int32                                         `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize        *int32                                         `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId       *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success         *bool                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total           *int32                                         `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListDataSourceItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceItemResponseBody) SetCode(v string) *ListDataSourceItemResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDataSourceItemResponseBody) SetDataSourceItems(v *ListDataSourceItemResponseBodyDataSourceItems) *ListDataSourceItemResponseBody {
+	s.DataSourceItems = v
+	return s
+}
+
+func (s *ListDataSourceItemResponseBody) SetErrorMessage(v string) *ListDataSourceItemResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDataSourceItemResponseBody) SetPage(v int32) *ListDataSourceItemResponseBody {
+	s.Page = &v
+	return s
+}
+
+func (s *ListDataSourceItemResponseBody) SetPageSize(v int32) *ListDataSourceItemResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDataSourceItemResponseBody) SetRequestId(v string) *ListDataSourceItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDataSourceItemResponseBody) SetSuccess(v bool) *ListDataSourceItemResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListDataSourceItemResponseBody) SetTotal(v int32) *ListDataSourceItemResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListDataSourceItemResponseBodyDataSourceItems struct {
+	DataSourceItem []*ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem `json:"dataSourceItem,omitempty" xml:"dataSourceItem,omitempty" type:"Repeated"`
+}
+
+func (s ListDataSourceItemResponseBodyDataSourceItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceItemResponseBodyDataSourceItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceItemResponseBodyDataSourceItems) SetDataSourceItem(v []*ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem) *ListDataSourceItemResponseBodyDataSourceItems {
+	s.DataSourceItem = v
+	return s
+}
+
+type ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem struct {
+	DataSourceItemId *int64  `json:"DataSourceItemId,omitempty" xml:"DataSourceItemId,omitempty"`
+	Topic            *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem) SetDataSourceItemId(v int64) *ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem {
+	s.DataSourceItemId = &v
+	return s
+}
+
+func (s *ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem) SetTopic(v string) *ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem {
+	s.Topic = &v
+	return s
+}
+
+type ListDataSourceItemResponse struct {
+	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListDataSourceItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDataSourceItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataSourceItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataSourceItemResponse) SetHeaders(v map[string]*string) *ListDataSourceItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataSourceItemResponse) SetBody(v *ListDataSourceItemResponseBody) *ListDataSourceItemResponse {
+	s.Body = v
+	return s
+}
+
 type ListDeviceDistributeJobRequest struct {
 	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	JobId       *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
@@ -19103,7 +20512,7 @@ func (s *ListDistributedProductResponseBodyDataInfo) SetItems(v []*ListDistribut
 }
 
 type ListDistributedProductResponseBodyDataInfoItems struct {
-	GmtCreate          *int32  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtCreate          *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	ProductKey         *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
 	SourceInstanceId   *string `json:"SourceInstanceId,omitempty" xml:"SourceInstanceId,omitempty"`
 	SourceInstanceName *string `json:"SourceInstanceName,omitempty" xml:"SourceInstanceName,omitempty"`
@@ -19124,7 +20533,7 @@ func (s ListDistributedProductResponseBodyDataInfoItems) GoString() string {
 	return s.String()
 }
 
-func (s *ListDistributedProductResponseBodyDataInfoItems) SetGmtCreate(v int32) *ListDistributedProductResponseBodyDataInfoItems {
+func (s *ListDistributedProductResponseBodyDataInfoItems) SetGmtCreate(v int64) *ListDistributedProductResponseBodyDataInfoItems {
 	s.GmtCreate = &v
 	return s
 }
@@ -22334,6 +23743,93 @@ func (s *OpenIotServiceResponse) SetHeaders(v map[string]*string) *OpenIotServic
 }
 
 func (s *OpenIotServiceResponse) SetBody(v *OpenIotServiceResponseBody) *OpenIotServiceResponse {
+	s.Body = v
+	return s
+}
+
+type PackageSoundCodeLabelBatchAudioRequest struct {
+	BatchCode     *string `json:"BatchCode,omitempty" xml:"BatchCode,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+}
+
+func (s PackageSoundCodeLabelBatchAudioRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PackageSoundCodeLabelBatchAudioRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PackageSoundCodeLabelBatchAudioRequest) SetBatchCode(v string) *PackageSoundCodeLabelBatchAudioRequest {
+	s.BatchCode = &v
+	return s
+}
+
+func (s *PackageSoundCodeLabelBatchAudioRequest) SetIotInstanceId(v string) *PackageSoundCodeLabelBatchAudioRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+type PackageSoundCodeLabelBatchAudioResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s PackageSoundCodeLabelBatchAudioResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PackageSoundCodeLabelBatchAudioResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PackageSoundCodeLabelBatchAudioResponseBody) SetCode(v string) *PackageSoundCodeLabelBatchAudioResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PackageSoundCodeLabelBatchAudioResponseBody) SetData(v string) *PackageSoundCodeLabelBatchAudioResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *PackageSoundCodeLabelBatchAudioResponseBody) SetErrorMessage(v string) *PackageSoundCodeLabelBatchAudioResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *PackageSoundCodeLabelBatchAudioResponseBody) SetRequestId(v string) *PackageSoundCodeLabelBatchAudioResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PackageSoundCodeLabelBatchAudioResponseBody) SetSuccess(v bool) *PackageSoundCodeLabelBatchAudioResponseBody {
+	s.Success = &v
+	return s
+}
+
+type PackageSoundCodeLabelBatchAudioResponse struct {
+	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *PackageSoundCodeLabelBatchAudioResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PackageSoundCodeLabelBatchAudioResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PackageSoundCodeLabelBatchAudioResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PackageSoundCodeLabelBatchAudioResponse) SetHeaders(v map[string]*string) *PackageSoundCodeLabelBatchAudioResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PackageSoundCodeLabelBatchAudioResponse) SetBody(v *PackageSoundCodeLabelBatchAudioResponseBody) *PackageSoundCodeLabelBatchAudioResponse {
 	s.Body = v
 	return s
 }
@@ -34625,6 +36121,198 @@ func (s *QuerySceneRuleResponse) SetBody(v *QuerySceneRuleResponseBody) *QuerySc
 	return s
 }
 
+type QuerySchedulePeriodListRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	PageId        *int32  `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ScheduleCode  *string `json:"ScheduleCode,omitempty" xml:"ScheduleCode,omitempty"`
+}
+
+func (s QuerySchedulePeriodListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySchedulePeriodListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySchedulePeriodListRequest) SetIotInstanceId(v string) *QuerySchedulePeriodListRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *QuerySchedulePeriodListRequest) SetPageId(v int32) *QuerySchedulePeriodListRequest {
+	s.PageId = &v
+	return s
+}
+
+func (s *QuerySchedulePeriodListRequest) SetPageSize(v int32) *QuerySchedulePeriodListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QuerySchedulePeriodListRequest) SetScheduleCode(v string) *QuerySchedulePeriodListRequest {
+	s.ScheduleCode = &v
+	return s
+}
+
+type QuerySchedulePeriodListResponseBody struct {
+	Code         *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *QuerySchedulePeriodListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QuerySchedulePeriodListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySchedulePeriodListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySchedulePeriodListResponseBody) SetCode(v string) *QuerySchedulePeriodListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySchedulePeriodListResponseBody) SetData(v *QuerySchedulePeriodListResponseBodyData) *QuerySchedulePeriodListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QuerySchedulePeriodListResponseBody) SetErrorMessage(v string) *QuerySchedulePeriodListResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QuerySchedulePeriodListResponseBody) SetRequestId(v string) *QuerySchedulePeriodListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySchedulePeriodListResponseBody) SetSuccess(v bool) *QuerySchedulePeriodListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QuerySchedulePeriodListResponseBodyData struct {
+	List     *QuerySchedulePeriodListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
+	PageId   *int32                                       `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	PageSize *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int32                                       `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s QuerySchedulePeriodListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySchedulePeriodListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySchedulePeriodListResponseBodyData) SetList(v *QuerySchedulePeriodListResponseBodyDataList) *QuerySchedulePeriodListResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *QuerySchedulePeriodListResponseBodyData) SetPageId(v int32) *QuerySchedulePeriodListResponseBodyData {
+	s.PageId = &v
+	return s
+}
+
+func (s *QuerySchedulePeriodListResponseBodyData) SetPageSize(v int32) *QuerySchedulePeriodListResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QuerySchedulePeriodListResponseBodyData) SetTotal(v int32) *QuerySchedulePeriodListResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type QuerySchedulePeriodListResponseBodyDataList struct {
+	Items []*QuerySchedulePeriodListResponseBodyDataListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+}
+
+func (s QuerySchedulePeriodListResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySchedulePeriodListResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySchedulePeriodListResponseBodyDataList) SetItems(v []*QuerySchedulePeriodListResponseBodyDataListItems) *QuerySchedulePeriodListResponseBodyDataList {
+	s.Items = v
+	return s
+}
+
+type QuerySchedulePeriodListResponseBodyDataListItems struct {
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndTime          *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PeriodCode       *string `json:"PeriodCode,omitempty" xml:"PeriodCode,omitempty"`
+	SoundCodeContent *string `json:"SoundCodeContent,omitempty" xml:"SoundCodeContent,omitempty"`
+	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s QuerySchedulePeriodListResponseBodyDataListItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySchedulePeriodListResponseBodyDataListItems) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySchedulePeriodListResponseBodyDataListItems) SetDescription(v string) *QuerySchedulePeriodListResponseBodyDataListItems {
+	s.Description = &v
+	return s
+}
+
+func (s *QuerySchedulePeriodListResponseBodyDataListItems) SetEndTime(v string) *QuerySchedulePeriodListResponseBodyDataListItems {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QuerySchedulePeriodListResponseBodyDataListItems) SetPeriodCode(v string) *QuerySchedulePeriodListResponseBodyDataListItems {
+	s.PeriodCode = &v
+	return s
+}
+
+func (s *QuerySchedulePeriodListResponseBodyDataListItems) SetSoundCodeContent(v string) *QuerySchedulePeriodListResponseBodyDataListItems {
+	s.SoundCodeContent = &v
+	return s
+}
+
+func (s *QuerySchedulePeriodListResponseBodyDataListItems) SetStartTime(v string) *QuerySchedulePeriodListResponseBodyDataListItems {
+	s.StartTime = &v
+	return s
+}
+
+type QuerySchedulePeriodListResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QuerySchedulePeriodListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySchedulePeriodListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySchedulePeriodListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySchedulePeriodListResponse) SetHeaders(v map[string]*string) *QuerySchedulePeriodListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySchedulePeriodListResponse) SetBody(v *QuerySchedulePeriodListResponseBody) *QuerySchedulePeriodListResponse {
+	s.Body = v
+	return s
+}
+
 type QuerySolutionDeviceGroupPageRequest struct {
 	FuzzyGroupName *string `json:"FuzzyGroupName,omitempty" xml:"FuzzyGroupName,omitempty"`
 	IotInstanceId  *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
@@ -34829,6 +36517,511 @@ func (s *QuerySolutionDeviceGroupPageResponse) SetBody(v *QuerySolutionDeviceGro
 	return s
 }
 
+type QuerySoundCodeLabelBatchFailedResultRequest struct {
+	BatchCode     *string `json:"BatchCode,omitempty" xml:"BatchCode,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+}
+
+func (s QuerySoundCodeLabelBatchFailedResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeLabelBatchFailedResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeLabelBatchFailedResultRequest) SetBatchCode(v string) *QuerySoundCodeLabelBatchFailedResultRequest {
+	s.BatchCode = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchFailedResultRequest) SetIotInstanceId(v string) *QuerySoundCodeLabelBatchFailedResultRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+type QuerySoundCodeLabelBatchFailedResultResponseBody struct {
+	Code         *string                                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *QuerySoundCodeLabelBatchFailedResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QuerySoundCodeLabelBatchFailedResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeLabelBatchFailedResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeLabelBatchFailedResultResponseBody) SetCode(v string) *QuerySoundCodeLabelBatchFailedResultResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchFailedResultResponseBody) SetData(v *QuerySoundCodeLabelBatchFailedResultResponseBodyData) *QuerySoundCodeLabelBatchFailedResultResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchFailedResultResponseBody) SetErrorMessage(v string) *QuerySoundCodeLabelBatchFailedResultResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchFailedResultResponseBody) SetRequestId(v string) *QuerySoundCodeLabelBatchFailedResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchFailedResultResponseBody) SetSuccess(v bool) *QuerySoundCodeLabelBatchFailedResultResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QuerySoundCodeLabelBatchFailedResultResponseBodyData struct {
+	Items []*QuerySoundCodeLabelBatchFailedResultResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+}
+
+func (s QuerySoundCodeLabelBatchFailedResultResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeLabelBatchFailedResultResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeLabelBatchFailedResultResponseBodyData) SetItems(v []*QuerySoundCodeLabelBatchFailedResultResponseBodyDataItems) *QuerySoundCodeLabelBatchFailedResultResponseBodyData {
+	s.Items = v
+	return s
+}
+
+type QuerySoundCodeLabelBatchFailedResultResponseBodyDataItems struct {
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Label        *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	ResultCode   *string `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
+}
+
+func (s QuerySoundCodeLabelBatchFailedResultResponseBodyDataItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeLabelBatchFailedResultResponseBodyDataItems) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeLabelBatchFailedResultResponseBodyDataItems) SetErrorMessage(v string) *QuerySoundCodeLabelBatchFailedResultResponseBodyDataItems {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchFailedResultResponseBodyDataItems) SetLabel(v string) *QuerySoundCodeLabelBatchFailedResultResponseBodyDataItems {
+	s.Label = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchFailedResultResponseBodyDataItems) SetResultCode(v string) *QuerySoundCodeLabelBatchFailedResultResponseBodyDataItems {
+	s.ResultCode = &v
+	return s
+}
+
+type QuerySoundCodeLabelBatchFailedResultResponse struct {
+	Headers map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QuerySoundCodeLabelBatchFailedResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySoundCodeLabelBatchFailedResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeLabelBatchFailedResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeLabelBatchFailedResultResponse) SetHeaders(v map[string]*string) *QuerySoundCodeLabelBatchFailedResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchFailedResultResponse) SetBody(v *QuerySoundCodeLabelBatchFailedResultResponseBody) *QuerySoundCodeLabelBatchFailedResultResponse {
+	s.Body = v
+	return s
+}
+
+type QuerySoundCodeLabelBatchListRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	PageId        *int32  `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ScheduleCode  *string `json:"ScheduleCode,omitempty" xml:"ScheduleCode,omitempty"`
+}
+
+func (s QuerySoundCodeLabelBatchListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeLabelBatchListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeLabelBatchListRequest) SetIotInstanceId(v string) *QuerySoundCodeLabelBatchListRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchListRequest) SetPageId(v int32) *QuerySoundCodeLabelBatchListRequest {
+	s.PageId = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchListRequest) SetPageSize(v int32) *QuerySoundCodeLabelBatchListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchListRequest) SetScheduleCode(v string) *QuerySoundCodeLabelBatchListRequest {
+	s.ScheduleCode = &v
+	return s
+}
+
+type QuerySoundCodeLabelBatchListResponseBody struct {
+	Code         *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *QuerySoundCodeLabelBatchListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QuerySoundCodeLabelBatchListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeLabelBatchListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeLabelBatchListResponseBody) SetCode(v string) *QuerySoundCodeLabelBatchListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchListResponseBody) SetData(v *QuerySoundCodeLabelBatchListResponseBodyData) *QuerySoundCodeLabelBatchListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchListResponseBody) SetErrorMessage(v string) *QuerySoundCodeLabelBatchListResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchListResponseBody) SetRequestId(v string) *QuerySoundCodeLabelBatchListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchListResponseBody) SetSuccess(v bool) *QuerySoundCodeLabelBatchListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QuerySoundCodeLabelBatchListResponseBodyData struct {
+	List     *QuerySoundCodeLabelBatchListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
+	PageId   *int32                                            `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	PageSize *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int32                                            `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s QuerySoundCodeLabelBatchListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeLabelBatchListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeLabelBatchListResponseBodyData) SetList(v *QuerySoundCodeLabelBatchListResponseBodyDataList) *QuerySoundCodeLabelBatchListResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchListResponseBodyData) SetPageId(v int32) *QuerySoundCodeLabelBatchListResponseBodyData {
+	s.PageId = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchListResponseBodyData) SetPageSize(v int32) *QuerySoundCodeLabelBatchListResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchListResponseBodyData) SetTotal(v int32) *QuerySoundCodeLabelBatchListResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type QuerySoundCodeLabelBatchListResponseBodyDataList struct {
+	Items []*QuerySoundCodeLabelBatchListResponseBodyDataListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+}
+
+func (s QuerySoundCodeLabelBatchListResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeLabelBatchListResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeLabelBatchListResponseBodyDataList) SetItems(v []*QuerySoundCodeLabelBatchListResponseBodyDataListItems) *QuerySoundCodeLabelBatchListResponseBodyDataList {
+	s.Items = v
+	return s
+}
+
+type QuerySoundCodeLabelBatchListResponseBodyDataListItems struct {
+	BatchCode   *string `json:"BatchCode,omitempty" xml:"BatchCode,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreate   *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SuccessNum  *int32  `json:"SuccessNum,omitempty" xml:"SuccessNum,omitempty"`
+	Total       *int32  `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s QuerySoundCodeLabelBatchListResponseBodyDataListItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeLabelBatchListResponseBodyDataListItems) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeLabelBatchListResponseBodyDataListItems) SetBatchCode(v string) *QuerySoundCodeLabelBatchListResponseBodyDataListItems {
+	s.BatchCode = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchListResponseBodyDataListItems) SetDescription(v string) *QuerySoundCodeLabelBatchListResponseBodyDataListItems {
+	s.Description = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchListResponseBodyDataListItems) SetGmtCreate(v int64) *QuerySoundCodeLabelBatchListResponseBodyDataListItems {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchListResponseBodyDataListItems) SetStatus(v string) *QuerySoundCodeLabelBatchListResponseBodyDataListItems {
+	s.Status = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchListResponseBodyDataListItems) SetSuccessNum(v int32) *QuerySoundCodeLabelBatchListResponseBodyDataListItems {
+	s.SuccessNum = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchListResponseBodyDataListItems) SetTotal(v int32) *QuerySoundCodeLabelBatchListResponseBodyDataListItems {
+	s.Total = &v
+	return s
+}
+
+type QuerySoundCodeLabelBatchListResponse struct {
+	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QuerySoundCodeLabelBatchListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySoundCodeLabelBatchListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeLabelBatchListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeLabelBatchListResponse) SetHeaders(v map[string]*string) *QuerySoundCodeLabelBatchListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySoundCodeLabelBatchListResponse) SetBody(v *QuerySoundCodeLabelBatchListResponseBody) *QuerySoundCodeLabelBatchListResponse {
+	s.Body = v
+	return s
+}
+
+type QuerySoundCodeLabelListRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	PageId        *int32  `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ScheduleCode  *string `json:"ScheduleCode,omitempty" xml:"ScheduleCode,omitempty"`
+}
+
+func (s QuerySoundCodeLabelListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeLabelListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeLabelListRequest) SetIotInstanceId(v string) *QuerySoundCodeLabelListRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelListRequest) SetPageId(v int32) *QuerySoundCodeLabelListRequest {
+	s.PageId = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelListRequest) SetPageSize(v int32) *QuerySoundCodeLabelListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelListRequest) SetScheduleCode(v string) *QuerySoundCodeLabelListRequest {
+	s.ScheduleCode = &v
+	return s
+}
+
+type QuerySoundCodeLabelListResponseBody struct {
+	Code         *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *QuerySoundCodeLabelListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QuerySoundCodeLabelListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeLabelListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeLabelListResponseBody) SetCode(v string) *QuerySoundCodeLabelListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelListResponseBody) SetData(v *QuerySoundCodeLabelListResponseBodyData) *QuerySoundCodeLabelListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QuerySoundCodeLabelListResponseBody) SetErrorMessage(v string) *QuerySoundCodeLabelListResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelListResponseBody) SetRequestId(v string) *QuerySoundCodeLabelListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelListResponseBody) SetSuccess(v bool) *QuerySoundCodeLabelListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QuerySoundCodeLabelListResponseBodyData struct {
+	List     *QuerySoundCodeLabelListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
+	PageId   *int32                                       `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	PageSize *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int32                                       `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s QuerySoundCodeLabelListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeLabelListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeLabelListResponseBodyData) SetList(v *QuerySoundCodeLabelListResponseBodyDataList) *QuerySoundCodeLabelListResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *QuerySoundCodeLabelListResponseBodyData) SetPageId(v int32) *QuerySoundCodeLabelListResponseBodyData {
+	s.PageId = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelListResponseBodyData) SetPageSize(v int32) *QuerySoundCodeLabelListResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelListResponseBodyData) SetTotal(v int32) *QuerySoundCodeLabelListResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type QuerySoundCodeLabelListResponseBodyDataList struct {
+	Items []*QuerySoundCodeLabelListResponseBodyDataListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+}
+
+func (s QuerySoundCodeLabelListResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeLabelListResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeLabelListResponseBodyDataList) SetItems(v []*QuerySoundCodeLabelListResponseBodyDataListItems) *QuerySoundCodeLabelListResponseBodyDataList {
+	s.Items = v
+	return s
+}
+
+type QuerySoundCodeLabelListResponseBodyDataListItems struct {
+	Label     *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	SoundCode *string `json:"SoundCode,omitempty" xml:"SoundCode,omitempty"`
+}
+
+func (s QuerySoundCodeLabelListResponseBodyDataListItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeLabelListResponseBodyDataListItems) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeLabelListResponseBodyDataListItems) SetLabel(v string) *QuerySoundCodeLabelListResponseBodyDataListItems {
+	s.Label = &v
+	return s
+}
+
+func (s *QuerySoundCodeLabelListResponseBodyDataListItems) SetSoundCode(v string) *QuerySoundCodeLabelListResponseBodyDataListItems {
+	s.SoundCode = &v
+	return s
+}
+
+type QuerySoundCodeLabelListResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QuerySoundCodeLabelListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySoundCodeLabelListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeLabelListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeLabelListResponse) SetHeaders(v map[string]*string) *QuerySoundCodeLabelListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySoundCodeLabelListResponse) SetBody(v *QuerySoundCodeLabelListResponseBody) *QuerySoundCodeLabelListResponse {
+	s.Body = v
+	return s
+}
+
 type QuerySoundCodeListRequest struct {
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	PageId        *int32  `json:"PageId,omitempty" xml:"PageId,omitempty"`
@@ -34954,6 +37147,8 @@ func (s *QuerySoundCodeListResponseBodyDataList) SetItems(v []*QuerySoundCodeLis
 type QuerySoundCodeListResponseBodyDataListItems struct {
 	Duration         *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	GmtCreate        *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OpenType         *string `json:"OpenType,omitempty" xml:"OpenType,omitempty"`
 	SoundCode        *string `json:"SoundCode,omitempty" xml:"SoundCode,omitempty"`
 	SoundCodeContent *string `json:"SoundCodeContent,omitempty" xml:"SoundCodeContent,omitempty"`
 }
@@ -34973,6 +37168,16 @@ func (s *QuerySoundCodeListResponseBodyDataListItems) SetDuration(v int32) *Quer
 
 func (s *QuerySoundCodeListResponseBodyDataListItems) SetGmtCreate(v int64) *QuerySoundCodeListResponseBodyDataListItems {
 	s.GmtCreate = &v
+	return s
+}
+
+func (s *QuerySoundCodeListResponseBodyDataListItems) SetName(v string) *QuerySoundCodeListResponseBodyDataListItems {
+	s.Name = &v
+	return s
+}
+
+func (s *QuerySoundCodeListResponseBodyDataListItems) SetOpenType(v string) *QuerySoundCodeListResponseBodyDataListItems {
+	s.OpenType = &v
 	return s
 }
 
@@ -35005,6 +37210,222 @@ func (s *QuerySoundCodeListResponse) SetHeaders(v map[string]*string) *QuerySoun
 }
 
 func (s *QuerySoundCodeListResponse) SetBody(v *QuerySoundCodeListResponseBody) *QuerySoundCodeListResponse {
+	s.Body = v
+	return s
+}
+
+type QuerySoundCodeScheduleListRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	PageId        *int32  `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s QuerySoundCodeScheduleListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeScheduleListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeScheduleListRequest) SetIotInstanceId(v string) *QuerySoundCodeScheduleListRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *QuerySoundCodeScheduleListRequest) SetPageId(v int32) *QuerySoundCodeScheduleListRequest {
+	s.PageId = &v
+	return s
+}
+
+func (s *QuerySoundCodeScheduleListRequest) SetPageSize(v int32) *QuerySoundCodeScheduleListRequest {
+	s.PageSize = &v
+	return s
+}
+
+type QuerySoundCodeScheduleListResponseBody struct {
+	Code         *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *QuerySoundCodeScheduleListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QuerySoundCodeScheduleListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeScheduleListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeScheduleListResponseBody) SetCode(v string) *QuerySoundCodeScheduleListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QuerySoundCodeScheduleListResponseBody) SetData(v *QuerySoundCodeScheduleListResponseBodyData) *QuerySoundCodeScheduleListResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QuerySoundCodeScheduleListResponseBody) SetErrorMessage(v string) *QuerySoundCodeScheduleListResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *QuerySoundCodeScheduleListResponseBody) SetRequestId(v string) *QuerySoundCodeScheduleListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QuerySoundCodeScheduleListResponseBody) SetSuccess(v bool) *QuerySoundCodeScheduleListResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QuerySoundCodeScheduleListResponseBodyData struct {
+	List     *QuerySoundCodeScheduleListResponseBodyDataList `json:"List,omitempty" xml:"List,omitempty" type:"Struct"`
+	PageId   *int32                                          `json:"PageId,omitempty" xml:"PageId,omitempty"`
+	PageSize *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Total    *int32                                          `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s QuerySoundCodeScheduleListResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeScheduleListResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeScheduleListResponseBodyData) SetList(v *QuerySoundCodeScheduleListResponseBodyDataList) *QuerySoundCodeScheduleListResponseBodyData {
+	s.List = v
+	return s
+}
+
+func (s *QuerySoundCodeScheduleListResponseBodyData) SetPageId(v int32) *QuerySoundCodeScheduleListResponseBodyData {
+	s.PageId = &v
+	return s
+}
+
+func (s *QuerySoundCodeScheduleListResponseBodyData) SetPageSize(v int32) *QuerySoundCodeScheduleListResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *QuerySoundCodeScheduleListResponseBodyData) SetTotal(v int32) *QuerySoundCodeScheduleListResponseBodyData {
+	s.Total = &v
+	return s
+}
+
+type QuerySoundCodeScheduleListResponseBodyDataList struct {
+	Items []*QuerySoundCodeScheduleListResponseBodyDataListItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+}
+
+func (s QuerySoundCodeScheduleListResponseBodyDataList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeScheduleListResponseBodyDataList) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeScheduleListResponseBodyDataList) SetItems(v []*QuerySoundCodeScheduleListResponseBodyDataListItems) *QuerySoundCodeScheduleListResponseBodyDataList {
+	s.Items = v
+	return s
+}
+
+type QuerySoundCodeScheduleListResponseBodyDataListItems struct {
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndDate      *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	GmtCreate    *int64  `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OpenType     *string `json:"OpenType,omitempty" xml:"OpenType,omitempty"`
+	ScheduleCode *string `json:"ScheduleCode,omitempty" xml:"ScheduleCode,omitempty"`
+	StartDate    *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s QuerySoundCodeScheduleListResponseBodyDataListItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeScheduleListResponseBodyDataListItems) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeScheduleListResponseBodyDataListItems) SetDescription(v string) *QuerySoundCodeScheduleListResponseBodyDataListItems {
+	s.Description = &v
+	return s
+}
+
+func (s *QuerySoundCodeScheduleListResponseBodyDataListItems) SetEndDate(v string) *QuerySoundCodeScheduleListResponseBodyDataListItems {
+	s.EndDate = &v
+	return s
+}
+
+func (s *QuerySoundCodeScheduleListResponseBodyDataListItems) SetEndTime(v string) *QuerySoundCodeScheduleListResponseBodyDataListItems {
+	s.EndTime = &v
+	return s
+}
+
+func (s *QuerySoundCodeScheduleListResponseBodyDataListItems) SetGmtCreate(v int64) *QuerySoundCodeScheduleListResponseBodyDataListItems {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *QuerySoundCodeScheduleListResponseBodyDataListItems) SetName(v string) *QuerySoundCodeScheduleListResponseBodyDataListItems {
+	s.Name = &v
+	return s
+}
+
+func (s *QuerySoundCodeScheduleListResponseBodyDataListItems) SetOpenType(v string) *QuerySoundCodeScheduleListResponseBodyDataListItems {
+	s.OpenType = &v
+	return s
+}
+
+func (s *QuerySoundCodeScheduleListResponseBodyDataListItems) SetScheduleCode(v string) *QuerySoundCodeScheduleListResponseBodyDataListItems {
+	s.ScheduleCode = &v
+	return s
+}
+
+func (s *QuerySoundCodeScheduleListResponseBodyDataListItems) SetStartDate(v string) *QuerySoundCodeScheduleListResponseBodyDataListItems {
+	s.StartDate = &v
+	return s
+}
+
+func (s *QuerySoundCodeScheduleListResponseBodyDataListItems) SetStartTime(v string) *QuerySoundCodeScheduleListResponseBodyDataListItems {
+	s.StartTime = &v
+	return s
+}
+
+func (s *QuerySoundCodeScheduleListResponseBodyDataListItems) SetStatus(v string) *QuerySoundCodeScheduleListResponseBodyDataListItems {
+	s.Status = &v
+	return s
+}
+
+type QuerySoundCodeScheduleListResponse struct {
+	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *QuerySoundCodeScheduleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QuerySoundCodeScheduleListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QuerySoundCodeScheduleListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QuerySoundCodeScheduleListResponse) SetHeaders(v map[string]*string) *QuerySoundCodeScheduleListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QuerySoundCodeScheduleListResponse) SetBody(v *QuerySoundCodeScheduleListResponseBody) *QuerySoundCodeScheduleListResponse {
 	s.Body = v
 	return s
 }
@@ -38765,6 +41186,168 @@ func (s *RRpcResponse) SetBody(v *RRpcResponseBody) *RRpcResponse {
 	return s
 }
 
+type RecognizeCarNumRequest struct {
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RecognizeCarNumRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeCarNumRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeCarNumRequest) SetUrl(v string) *RecognizeCarNumRequest {
+	s.Url = &v
+	return s
+}
+
+type RecognizeCarNumResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RecognizeCarNumResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeCarNumResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeCarNumResponseBody) SetCode(v string) *RecognizeCarNumResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RecognizeCarNumResponseBody) SetData(v string) *RecognizeCarNumResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *RecognizeCarNumResponseBody) SetErrorMessage(v string) *RecognizeCarNumResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RecognizeCarNumResponseBody) SetRequestId(v string) *RecognizeCarNumResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RecognizeCarNumResponseBody) SetSuccess(v bool) *RecognizeCarNumResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RecognizeCarNumResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RecognizeCarNumResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RecognizeCarNumResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeCarNumResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeCarNumResponse) SetHeaders(v map[string]*string) *RecognizeCarNumResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecognizeCarNumResponse) SetBody(v *RecognizeCarNumResponseBody) *RecognizeCarNumResponse {
+	s.Body = v
+	return s
+}
+
+type RecognizePictureGeneralRequest struct {
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s RecognizePictureGeneralRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizePictureGeneralRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizePictureGeneralRequest) SetUrl(v string) *RecognizePictureGeneralRequest {
+	s.Url = &v
+	return s
+}
+
+type RecognizePictureGeneralResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RecognizePictureGeneralResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizePictureGeneralResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizePictureGeneralResponseBody) SetCode(v string) *RecognizePictureGeneralResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RecognizePictureGeneralResponseBody) SetData(v string) *RecognizePictureGeneralResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *RecognizePictureGeneralResponseBody) SetErrorMessage(v string) *RecognizePictureGeneralResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RecognizePictureGeneralResponseBody) SetRequestId(v string) *RecognizePictureGeneralResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RecognizePictureGeneralResponseBody) SetSuccess(v bool) *RecognizePictureGeneralResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RecognizePictureGeneralResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RecognizePictureGeneralResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RecognizePictureGeneralResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizePictureGeneralResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizePictureGeneralResponse) SetHeaders(v map[string]*string) *RecognizePictureGeneralResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecognizePictureGeneralResponse) SetBody(v *RecognizePictureGeneralResponseBody) *RecognizePictureGeneralResponse {
+	s.Body = v
+	return s
+}
+
 type RefreshDeviceTunnelSharePasswordRequest struct {
 	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
@@ -39785,6 +42368,87 @@ func (s *ResetThingResponse) SetHeaders(v map[string]*string) *ResetThingRespons
 }
 
 func (s *ResetThingResponse) SetBody(v *ResetThingResponseBody) *ResetThingResponse {
+	s.Body = v
+	return s
+}
+
+type RetrySoundCodeLabelBatchRequest struct {
+	BatchCode     *string `json:"BatchCode,omitempty" xml:"BatchCode,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+}
+
+func (s RetrySoundCodeLabelBatchRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetrySoundCodeLabelBatchRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RetrySoundCodeLabelBatchRequest) SetBatchCode(v string) *RetrySoundCodeLabelBatchRequest {
+	s.BatchCode = &v
+	return s
+}
+
+func (s *RetrySoundCodeLabelBatchRequest) SetIotInstanceId(v string) *RetrySoundCodeLabelBatchRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+type RetrySoundCodeLabelBatchResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s RetrySoundCodeLabelBatchResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetrySoundCodeLabelBatchResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RetrySoundCodeLabelBatchResponseBody) SetCode(v string) *RetrySoundCodeLabelBatchResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RetrySoundCodeLabelBatchResponseBody) SetErrorMessage(v string) *RetrySoundCodeLabelBatchResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *RetrySoundCodeLabelBatchResponseBody) SetRequestId(v string) *RetrySoundCodeLabelBatchResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *RetrySoundCodeLabelBatchResponseBody) SetSuccess(v bool) *RetrySoundCodeLabelBatchResponseBody {
+	s.Success = &v
+	return s
+}
+
+type RetrySoundCodeLabelBatchResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *RetrySoundCodeLabelBatchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RetrySoundCodeLabelBatchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RetrySoundCodeLabelBatchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RetrySoundCodeLabelBatchResponse) SetHeaders(v map[string]*string) *RetrySoundCodeLabelBatchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RetrySoundCodeLabelBatchResponse) SetBody(v *RetrySoundCodeLabelBatchResponseBody) *RetrySoundCodeLabelBatchResponse {
 	s.Body = v
 	return s
 }
@@ -42240,6 +44904,99 @@ func (s *UnbindDriverFromEdgeInstanceResponse) SetBody(v *UnbindDriverFromEdgeIn
 	return s
 }
 
+type UnbindLicenseProductRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	LicenseCode   *string `json:"LicenseCode,omitempty" xml:"LicenseCode,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+}
+
+func (s UnbindLicenseProductRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindLicenseProductRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindLicenseProductRequest) SetIotInstanceId(v string) *UnbindLicenseProductRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *UnbindLicenseProductRequest) SetLicenseCode(v string) *UnbindLicenseProductRequest {
+	s.LicenseCode = &v
+	return s
+}
+
+func (s *UnbindLicenseProductRequest) SetProductKey(v string) *UnbindLicenseProductRequest {
+	s.ProductKey = &v
+	return s
+}
+
+type UnbindLicenseProductResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UnbindLicenseProductResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindLicenseProductResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindLicenseProductResponseBody) SetCode(v string) *UnbindLicenseProductResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UnbindLicenseProductResponseBody) SetData(v bool) *UnbindLicenseProductResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UnbindLicenseProductResponseBody) SetErrorMessage(v string) *UnbindLicenseProductResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UnbindLicenseProductResponseBody) SetRequestId(v string) *UnbindLicenseProductResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UnbindLicenseProductResponseBody) SetSuccess(v bool) *UnbindLicenseProductResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UnbindLicenseProductResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UnbindLicenseProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UnbindLicenseProductResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnbindLicenseProductResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnbindLicenseProductResponse) SetHeaders(v map[string]*string) *UnbindLicenseProductResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnbindLicenseProductResponse) SetBody(v *UnbindLicenseProductResponseBody) *UnbindLicenseProductResponse {
+	s.Body = v
+	return s
+}
+
 type UnbindRoleFromEdgeInstanceRequest struct {
 	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
@@ -44185,6 +46942,420 @@ func (s *UpdateSceneRuleResponse) SetBody(v *UpdateSceneRuleResponseBody) *Updat
 	return s
 }
 
+type UpdateSchedulePeriodRequest struct {
+	Description      *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndTime          *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IotInstanceId    *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	PeriodCode       *string `json:"PeriodCode,omitempty" xml:"PeriodCode,omitempty"`
+	SoundCodeContent *string `json:"SoundCodeContent,omitempty" xml:"SoundCodeContent,omitempty"`
+	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s UpdateSchedulePeriodRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSchedulePeriodRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSchedulePeriodRequest) SetDescription(v string) *UpdateSchedulePeriodRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateSchedulePeriodRequest) SetEndTime(v string) *UpdateSchedulePeriodRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *UpdateSchedulePeriodRequest) SetIotInstanceId(v string) *UpdateSchedulePeriodRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *UpdateSchedulePeriodRequest) SetPeriodCode(v string) *UpdateSchedulePeriodRequest {
+	s.PeriodCode = &v
+	return s
+}
+
+func (s *UpdateSchedulePeriodRequest) SetSoundCodeContent(v string) *UpdateSchedulePeriodRequest {
+	s.SoundCodeContent = &v
+	return s
+}
+
+func (s *UpdateSchedulePeriodRequest) SetStartTime(v string) *UpdateSchedulePeriodRequest {
+	s.StartTime = &v
+	return s
+}
+
+type UpdateSchedulePeriodResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateSchedulePeriodResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSchedulePeriodResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSchedulePeriodResponseBody) SetCode(v string) *UpdateSchedulePeriodResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSchedulePeriodResponseBody) SetErrorMessage(v string) *UpdateSchedulePeriodResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateSchedulePeriodResponseBody) SetRequestId(v string) *UpdateSchedulePeriodResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSchedulePeriodResponseBody) SetSuccess(v bool) *UpdateSchedulePeriodResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateSchedulePeriodResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateSchedulePeriodResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSchedulePeriodResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSchedulePeriodResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSchedulePeriodResponse) SetHeaders(v map[string]*string) *UpdateSchedulePeriodResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSchedulePeriodResponse) SetBody(v *UpdateSchedulePeriodResponseBody) *UpdateSchedulePeriodResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSoundCodeRequest struct {
+	Duration         *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	IotInstanceId    *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Name             *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	SoundCode        *string `json:"SoundCode,omitempty" xml:"SoundCode,omitempty"`
+	SoundCodeContent *string `json:"SoundCodeContent,omitempty" xml:"SoundCodeContent,omitempty"`
+}
+
+func (s UpdateSoundCodeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSoundCodeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSoundCodeRequest) SetDuration(v int32) *UpdateSoundCodeRequest {
+	s.Duration = &v
+	return s
+}
+
+func (s *UpdateSoundCodeRequest) SetIotInstanceId(v string) *UpdateSoundCodeRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *UpdateSoundCodeRequest) SetName(v string) *UpdateSoundCodeRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateSoundCodeRequest) SetSoundCode(v string) *UpdateSoundCodeRequest {
+	s.SoundCode = &v
+	return s
+}
+
+func (s *UpdateSoundCodeRequest) SetSoundCodeContent(v string) *UpdateSoundCodeRequest {
+	s.SoundCodeContent = &v
+	return s
+}
+
+type UpdateSoundCodeResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateSoundCodeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSoundCodeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSoundCodeResponseBody) SetCode(v string) *UpdateSoundCodeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSoundCodeResponseBody) SetErrorMessage(v string) *UpdateSoundCodeResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateSoundCodeResponseBody) SetRequestId(v string) *UpdateSoundCodeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSoundCodeResponseBody) SetSuccess(v bool) *UpdateSoundCodeResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateSoundCodeResponse struct {
+	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateSoundCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSoundCodeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSoundCodeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSoundCodeResponse) SetHeaders(v map[string]*string) *UpdateSoundCodeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSoundCodeResponse) SetBody(v *UpdateSoundCodeResponseBody) *UpdateSoundCodeResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSoundCodeLabelRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Label         *string `json:"Label,omitempty" xml:"Label,omitempty"`
+	SoundCode     *string `json:"SoundCode,omitempty" xml:"SoundCode,omitempty"`
+}
+
+func (s UpdateSoundCodeLabelRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSoundCodeLabelRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSoundCodeLabelRequest) SetIotInstanceId(v string) *UpdateSoundCodeLabelRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *UpdateSoundCodeLabelRequest) SetLabel(v string) *UpdateSoundCodeLabelRequest {
+	s.Label = &v
+	return s
+}
+
+func (s *UpdateSoundCodeLabelRequest) SetSoundCode(v string) *UpdateSoundCodeLabelRequest {
+	s.SoundCode = &v
+	return s
+}
+
+type UpdateSoundCodeLabelResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateSoundCodeLabelResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSoundCodeLabelResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSoundCodeLabelResponseBody) SetCode(v string) *UpdateSoundCodeLabelResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSoundCodeLabelResponseBody) SetErrorMessage(v string) *UpdateSoundCodeLabelResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateSoundCodeLabelResponseBody) SetRequestId(v string) *UpdateSoundCodeLabelResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSoundCodeLabelResponseBody) SetSuccess(v bool) *UpdateSoundCodeLabelResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateSoundCodeLabelResponse struct {
+	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateSoundCodeLabelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSoundCodeLabelResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSoundCodeLabelResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSoundCodeLabelResponse) SetHeaders(v map[string]*string) *UpdateSoundCodeLabelResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSoundCodeLabelResponse) SetBody(v *UpdateSoundCodeLabelResponseBody) *UpdateSoundCodeLabelResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSoundCodeScheduleRequest struct {
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndDate       *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	EndTime       *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ScheduleCode  *string `json:"ScheduleCode,omitempty" xml:"ScheduleCode,omitempty"`
+	StartDate     *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	StartTime     *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateSoundCodeScheduleRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSoundCodeScheduleRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSoundCodeScheduleRequest) SetDescription(v string) *UpdateSoundCodeScheduleRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateSoundCodeScheduleRequest) SetEndDate(v string) *UpdateSoundCodeScheduleRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *UpdateSoundCodeScheduleRequest) SetEndTime(v string) *UpdateSoundCodeScheduleRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *UpdateSoundCodeScheduleRequest) SetIotInstanceId(v string) *UpdateSoundCodeScheduleRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *UpdateSoundCodeScheduleRequest) SetName(v string) *UpdateSoundCodeScheduleRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateSoundCodeScheduleRequest) SetScheduleCode(v string) *UpdateSoundCodeScheduleRequest {
+	s.ScheduleCode = &v
+	return s
+}
+
+func (s *UpdateSoundCodeScheduleRequest) SetStartDate(v string) *UpdateSoundCodeScheduleRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *UpdateSoundCodeScheduleRequest) SetStartTime(v string) *UpdateSoundCodeScheduleRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *UpdateSoundCodeScheduleRequest) SetStatus(v string) *UpdateSoundCodeScheduleRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateSoundCodeScheduleResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateSoundCodeScheduleResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSoundCodeScheduleResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSoundCodeScheduleResponseBody) SetCode(v string) *UpdateSoundCodeScheduleResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSoundCodeScheduleResponseBody) SetErrorMessage(v string) *UpdateSoundCodeScheduleResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateSoundCodeScheduleResponseBody) SetRequestId(v string) *UpdateSoundCodeScheduleResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSoundCodeScheduleResponseBody) SetSuccess(v bool) *UpdateSoundCodeScheduleResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateSoundCodeScheduleResponse struct {
+	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *UpdateSoundCodeScheduleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSoundCodeScheduleResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSoundCodeScheduleResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSoundCodeScheduleResponse) SetHeaders(v map[string]*string) *UpdateSoundCodeScheduleResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSoundCodeScheduleResponse) SetBody(v *UpdateSoundCodeScheduleResponseBody) *UpdateSoundCodeScheduleResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateSpeechRequest struct {
 	EnableSoundCode *bool                  `json:"EnableSoundCode,omitempty" xml:"EnableSoundCode,omitempty"`
 	IotInstanceId   *string                `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
@@ -45293,6 +48464,118 @@ func (client *Client) BatchClearEdgeInstanceDeviceConfig(request *BatchClearEdge
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchClearEdgeInstanceDeviceConfigResponse{}
 	_body, _err := client.BatchClearEdgeInstanceDeviceConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchCreateSoundCodeLabelWithOptions(request *BatchCreateSoundCodeLabelRequest, runtime *util.RuntimeOptions) (_result *BatchCreateSoundCodeLabelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleCode)) {
+		body["ScheduleCode"] = request.ScheduleCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Total)) {
+		body["Total"] = request.Total
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchCreateSoundCodeLabel"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchCreateSoundCodeLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchCreateSoundCodeLabel(request *BatchCreateSoundCodeLabelRequest) (_result *BatchCreateSoundCodeLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchCreateSoundCodeLabelResponse{}
+	_body, _err := client.BatchCreateSoundCodeLabelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchCreateSoundCodeLabelWithLabelsWithOptions(request *BatchCreateSoundCodeLabelWithLabelsRequest, runtime *util.RuntimeOptions) (_result *BatchCreateSoundCodeLabelWithLabelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Labels)) {
+		body["Labels"] = request.Labels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleCode)) {
+		body["ScheduleCode"] = request.ScheduleCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchCreateSoundCodeLabelWithLabels"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BatchCreateSoundCodeLabelWithLabelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchCreateSoundCodeLabelWithLabels(request *BatchCreateSoundCodeLabelWithLabelsRequest) (_result *BatchCreateSoundCodeLabelWithLabelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BatchCreateSoundCodeLabelWithLabelsResponse{}
+	_body, _err := client.BatchCreateSoundCodeLabelWithLabelsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -46540,6 +49823,114 @@ func (client *Client) BindGatewayToEdgeInstance(request *BindGatewayToEdgeInstan
 	return _result, _err
 }
 
+func (client *Client) BindLicenseDeviceWithOptions(request *BindLicenseDeviceRequest, runtime *util.RuntimeOptions) (_result *BindLicenseDeviceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotIdList)) {
+		query["IotIdList"] = request.IotIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LicenseCode)) {
+		query["LicenseCode"] = request.LicenseCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindLicenseDevice"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BindLicenseDeviceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BindLicenseDevice(request *BindLicenseDeviceRequest) (_result *BindLicenseDeviceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BindLicenseDeviceResponse{}
+	_body, _err := client.BindLicenseDeviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BindLicenseProductWithOptions(request *BindLicenseProductRequest, runtime *util.RuntimeOptions) (_result *BindLicenseProductResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LicenseCode)) {
+		query["LicenseCode"] = request.LicenseCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BindLicenseProduct"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &BindLicenseProductResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BindLicenseProduct(request *BindLicenseProductRequest) (_result *BindLicenseProductResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &BindLicenseProductResponse{}
+	_body, _err := client.BindLicenseProductWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) BindRoleToEdgeInstanceWithOptions(request *BindRoleToEdgeInstanceRequest, runtime *util.RuntimeOptions) (_result *BindRoleToEdgeInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -47341,6 +50732,58 @@ func (client *Client) CreateDataAPIService(request *CreateDataAPIServiceRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDataAPIServiceResponse{}
 	_body, _err := client.CreateDataAPIServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDataSourceItemWithOptions(request *CreateDataSourceItemRequest, runtime *util.RuntimeOptions) (_result *CreateDataSourceItemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		query["Topic"] = request.Topic
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDataSourceItem"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDataSourceItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDataSourceItem(request *CreateDataSourceItemRequest) (_result *CreateDataSourceItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDataSourceItemResponse{}
+	_body, _err := client.CreateDataSourceItemWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -49138,6 +52581,70 @@ func (client *Client) CreateSceneRule(request *CreateSceneRuleRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) CreateSchedulePeriodWithOptions(request *CreateSchedulePeriodRequest, runtime *util.RuntimeOptions) (_result *CreateSchedulePeriodResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleCode)) {
+		body["ScheduleCode"] = request.ScheduleCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SoundCodeContent)) {
+		body["SoundCodeContent"] = request.SoundCodeContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSchedulePeriod"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSchedulePeriodResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSchedulePeriod(request *CreateSchedulePeriodRequest) (_result *CreateSchedulePeriodResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSchedulePeriodResponse{}
+	_body, _err := client.CreateSchedulePeriodWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateSoundCodeWithOptions(request *CreateSoundCodeRequest, runtime *util.RuntimeOptions) (_result *CreateSoundCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -49150,6 +52657,14 @@ func (client *Client) CreateSoundCodeWithOptions(request *CreateSoundCodeRequest
 
 	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
 		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenType)) {
+		body["OpenType"] = request.OpenType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SoundCodeContent)) {
@@ -49183,6 +52698,122 @@ func (client *Client) CreateSoundCode(request *CreateSoundCodeRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateSoundCodeResponse{}
 	_body, _err := client.CreateSoundCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSoundCodeLabelWithOptions(request *CreateSoundCodeLabelRequest, runtime *util.RuntimeOptions) (_result *CreateSoundCodeLabelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Label)) {
+		body["Label"] = request.Label
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleCode)) {
+		body["ScheduleCode"] = request.ScheduleCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSoundCodeLabel"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSoundCodeLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSoundCodeLabel(request *CreateSoundCodeLabelRequest) (_result *CreateSoundCodeLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSoundCodeLabelResponse{}
+	_body, _err := client.CreateSoundCodeLabelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateSoundCodeScheduleWithOptions(request *CreateSoundCodeScheduleRequest, runtime *util.RuntimeOptions) (_result *CreateSoundCodeScheduleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OpenType)) {
+		body["OpenType"] = request.OpenType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		body["StartDate"] = request.StartDate
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSoundCodeSchedule"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSoundCodeScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSoundCodeSchedule(request *CreateSoundCodeScheduleRequest) (_result *CreateSoundCodeScheduleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSoundCodeScheduleResponse{}
+	_body, _err := client.CreateSoundCodeScheduleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -50812,6 +54443,54 @@ func (client *Client) DeleteSceneRule(request *DeleteSceneRuleRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) DeleteSchedulePeriodWithOptions(request *DeleteSchedulePeriodRequest, runtime *util.RuntimeOptions) (_result *DeleteSchedulePeriodResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodCode)) {
+		body["PeriodCode"] = request.PeriodCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSchedulePeriod"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSchedulePeriodResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSchedulePeriod(request *DeleteSchedulePeriodRequest) (_result *DeleteSchedulePeriodResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSchedulePeriodResponse{}
+	_body, _err := client.DeleteSchedulePeriodWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteSoundCodeWithOptions(request *DeleteSoundCodeRequest, runtime *util.RuntimeOptions) (_result *DeleteSoundCodeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50853,6 +54532,102 @@ func (client *Client) DeleteSoundCode(request *DeleteSoundCodeRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSoundCodeResponse{}
 	_body, _err := client.DeleteSoundCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteSoundCodeLabelWithOptions(request *DeleteSoundCodeLabelRequest, runtime *util.RuntimeOptions) (_result *DeleteSoundCodeLabelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SoundCode)) {
+		body["SoundCode"] = request.SoundCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSoundCodeLabel"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSoundCodeLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSoundCodeLabel(request *DeleteSoundCodeLabelRequest) (_result *DeleteSoundCodeLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSoundCodeLabelResponse{}
+	_body, _err := client.DeleteSoundCodeLabelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteSoundCodeScheduleWithOptions(request *DeleteSoundCodeScheduleRequest, runtime *util.RuntimeOptions) (_result *DeleteSoundCodeScheduleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleCode)) {
+		body["ScheduleCode"] = request.ScheduleCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSoundCodeSchedule"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteSoundCodeScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSoundCodeSchedule(request *DeleteSoundCodeScheduleRequest) (_result *DeleteSoundCodeScheduleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteSoundCodeScheduleResponse{}
+	_body, _err := client.DeleteSoundCodeScheduleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -52460,6 +56235,54 @@ func (client *Client) GetSoundCodeAudio(request *GetSoundCodeAudioRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) GetSoundCodeScheduleWithOptions(request *GetSoundCodeScheduleRequest, runtime *util.RuntimeOptions) (_result *GetSoundCodeScheduleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleCode)) {
+		body["ScheduleCode"] = request.ScheduleCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSoundCodeSchedule"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSoundCodeScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSoundCodeSchedule(request *GetSoundCodeScheduleRequest) (_result *GetSoundCodeScheduleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSoundCodeScheduleResponse{}
+	_body, _err := client.GetSoundCodeScheduleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetSpeechDeviceDetailWithOptions(request *GetSpeechDeviceDetailRequest, runtime *util.RuntimeOptions) (_result *GetSpeechDeviceDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -53294,6 +57117,66 @@ func (client *Client) ListAnalyticsData(request *ListAnalyticsDataRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ListAnalyticsDataResponse{}
 	_body, _err := client.ListAnalyticsDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDataSourceItemWithOptions(request *ListDataSourceItemRequest, runtime *util.RuntimeOptions) (_result *ListDataSourceItemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchName)) {
+		query["SearchName"] = request.SearchName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataSourceItem"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDataSourceItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDataSourceItem(request *ListDataSourceItemRequest) (_result *ListDataSourceItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataSourceItemResponse{}
+	_body, _err := client.ListDataSourceItemWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -54434,6 +58317,54 @@ func (client *Client) OpenIotService(request *OpenIotServiceRequest) (_result *O
 	runtime := &util.RuntimeOptions{}
 	_result = &OpenIotServiceResponse{}
 	_body, _err := client.OpenIotServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PackageSoundCodeLabelBatchAudioWithOptions(request *PackageSoundCodeLabelBatchAudioRequest, runtime *util.RuntimeOptions) (_result *PackageSoundCodeLabelBatchAudioResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BatchCode)) {
+		body["BatchCode"] = request.BatchCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PackageSoundCodeLabelBatchAudio"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PackageSoundCodeLabelBatchAudioResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PackageSoundCodeLabelBatchAudio(request *PackageSoundCodeLabelBatchAudioRequest) (_result *PackageSoundCodeLabelBatchAudioResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PackageSoundCodeLabelBatchAudioResponse{}
+	_body, _err := client.PackageSoundCodeLabelBatchAudioWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -58399,6 +62330,62 @@ func (client *Client) QuerySceneRule(request *QuerySceneRuleRequest) (_result *Q
 	return _result, _err
 }
 
+func (client *Client) QuerySchedulePeriodListWithOptions(request *QuerySchedulePeriodListRequest, runtime *util.RuntimeOptions) (_result *QuerySchedulePeriodListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageId)) {
+		body["PageId"] = request.PageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleCode)) {
+		body["ScheduleCode"] = request.ScheduleCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySchedulePeriodList"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySchedulePeriodListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySchedulePeriodList(request *QuerySchedulePeriodListRequest) (_result *QuerySchedulePeriodListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySchedulePeriodListResponse{}
+	_body, _err := client.QuerySchedulePeriodListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QuerySolutionDeviceGroupPageWithOptions(request *QuerySolutionDeviceGroupPageRequest, runtime *util.RuntimeOptions) (_result *QuerySolutionDeviceGroupPageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58459,6 +62446,166 @@ func (client *Client) QuerySolutionDeviceGroupPage(request *QuerySolutionDeviceG
 	return _result, _err
 }
 
+func (client *Client) QuerySoundCodeLabelBatchFailedResultWithOptions(request *QuerySoundCodeLabelBatchFailedResultRequest, runtime *util.RuntimeOptions) (_result *QuerySoundCodeLabelBatchFailedResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BatchCode)) {
+		body["BatchCode"] = request.BatchCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySoundCodeLabelBatchFailedResult"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySoundCodeLabelBatchFailedResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySoundCodeLabelBatchFailedResult(request *QuerySoundCodeLabelBatchFailedResultRequest) (_result *QuerySoundCodeLabelBatchFailedResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySoundCodeLabelBatchFailedResultResponse{}
+	_body, _err := client.QuerySoundCodeLabelBatchFailedResultWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QuerySoundCodeLabelBatchListWithOptions(request *QuerySoundCodeLabelBatchListRequest, runtime *util.RuntimeOptions) (_result *QuerySoundCodeLabelBatchListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageId)) {
+		body["PageId"] = request.PageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleCode)) {
+		body["ScheduleCode"] = request.ScheduleCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySoundCodeLabelBatchList"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySoundCodeLabelBatchListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySoundCodeLabelBatchList(request *QuerySoundCodeLabelBatchListRequest) (_result *QuerySoundCodeLabelBatchListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySoundCodeLabelBatchListResponse{}
+	_body, _err := client.QuerySoundCodeLabelBatchListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QuerySoundCodeLabelListWithOptions(request *QuerySoundCodeLabelListRequest, runtime *util.RuntimeOptions) (_result *QuerySoundCodeLabelListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageId)) {
+		body["PageId"] = request.PageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleCode)) {
+		body["ScheduleCode"] = request.ScheduleCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySoundCodeLabelList"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySoundCodeLabelListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySoundCodeLabelList(request *QuerySoundCodeLabelListRequest) (_result *QuerySoundCodeLabelListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySoundCodeLabelListResponse{}
+	_body, _err := client.QuerySoundCodeLabelListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QuerySoundCodeListWithOptions(request *QuerySoundCodeListRequest, runtime *util.RuntimeOptions) (_result *QuerySoundCodeListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58504,6 +62651,58 @@ func (client *Client) QuerySoundCodeList(request *QuerySoundCodeListRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &QuerySoundCodeListResponse{}
 	_body, _err := client.QuerySoundCodeListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QuerySoundCodeScheduleListWithOptions(request *QuerySoundCodeScheduleListRequest, runtime *util.RuntimeOptions) (_result *QuerySoundCodeScheduleListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageId)) {
+		body["PageId"] = request.PageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QuerySoundCodeScheduleList"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QuerySoundCodeScheduleListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QuerySoundCodeScheduleList(request *QuerySoundCodeScheduleListRequest) (_result *QuerySoundCodeScheduleListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QuerySoundCodeScheduleListResponse{}
+	_body, _err := client.QuerySoundCodeScheduleListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -59729,6 +63928,94 @@ func (client *Client) RRpc(request *RRpcRequest) (_result *RRpcResponse, _err er
 	return _result, _err
 }
 
+func (client *Client) RecognizeCarNumWithOptions(request *RecognizeCarNumRequest, runtime *util.RuntimeOptions) (_result *RecognizeCarNumResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeCarNum"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecognizeCarNumResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RecognizeCarNum(request *RecognizeCarNumRequest) (_result *RecognizeCarNumResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecognizeCarNumResponse{}
+	_body, _err := client.RecognizeCarNumWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RecognizePictureGeneralWithOptions(request *RecognizePictureGeneralRequest, runtime *util.RuntimeOptions) (_result *RecognizePictureGeneralResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Url)) {
+		query["Url"] = request.Url
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizePictureGeneral"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecognizePictureGeneralResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RecognizePictureGeneral(request *RecognizePictureGeneralRequest) (_result *RecognizePictureGeneralResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecognizePictureGeneralResponse{}
+	_body, _err := client.RecognizePictureGeneralWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RefreshDeviceTunnelSharePasswordWithOptions(request *RefreshDeviceTunnelSharePasswordRequest, runtime *util.RuntimeOptions) (_result *RefreshDeviceTunnelSharePasswordResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -60266,6 +64553,54 @@ func (client *Client) ResetThing(request *ResetThingRequest) (_result *ResetThin
 	runtime := &util.RuntimeOptions{}
 	_result = &ResetThingResponse{}
 	_body, _err := client.ResetThingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RetrySoundCodeLabelBatchWithOptions(request *RetrySoundCodeLabelBatchRequest, runtime *util.RuntimeOptions) (_result *RetrySoundCodeLabelBatchResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BatchCode)) {
+		body["BatchCode"] = request.BatchCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RetrySoundCodeLabelBatch"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RetrySoundCodeLabelBatchResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RetrySoundCodeLabelBatch(request *RetrySoundCodeLabelBatchRequest) (_result *RetrySoundCodeLabelBatchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RetrySoundCodeLabelBatchResponse{}
+	_body, _err := client.RetrySoundCodeLabelBatchWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -61547,6 +65882,58 @@ func (client *Client) UnbindDriverFromEdgeInstance(request *UnbindDriverFromEdge
 	return _result, _err
 }
 
+func (client *Client) UnbindLicenseProductWithOptions(request *UnbindLicenseProductRequest, runtime *util.RuntimeOptions) (_result *UnbindLicenseProductResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LicenseCode)) {
+		query["LicenseCode"] = request.LicenseCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnbindLicenseProduct"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnbindLicenseProductResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UnbindLicenseProduct(request *UnbindLicenseProductRequest) (_result *UnbindLicenseProductResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnbindLicenseProductResponse{}
+	_body, _err := client.UnbindLicenseProductWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UnbindRoleFromEdgeInstanceWithOptions(request *UnbindRoleFromEdgeInstanceRequest, runtime *util.RuntimeOptions) (_result *UnbindRoleFromEdgeInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -62646,6 +67033,258 @@ func (client *Client) UpdateSceneRule(request *UpdateSceneRuleRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSceneRuleResponse{}
 	_body, _err := client.UpdateSceneRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSchedulePeriodWithOptions(request *UpdateSchedulePeriodRequest, runtime *util.RuntimeOptions) (_result *UpdateSchedulePeriodResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodCode)) {
+		body["PeriodCode"] = request.PeriodCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SoundCodeContent)) {
+		body["SoundCodeContent"] = request.SoundCodeContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSchedulePeriod"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSchedulePeriodResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSchedulePeriod(request *UpdateSchedulePeriodRequest) (_result *UpdateSchedulePeriodResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSchedulePeriodResponse{}
+	_body, _err := client.UpdateSchedulePeriodWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSoundCodeWithOptions(request *UpdateSoundCodeRequest, runtime *util.RuntimeOptions) (_result *UpdateSoundCodeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Duration)) {
+		body["Duration"] = request.Duration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SoundCode)) {
+		body["SoundCode"] = request.SoundCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SoundCodeContent)) {
+		body["SoundCodeContent"] = request.SoundCodeContent
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSoundCode"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSoundCodeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSoundCode(request *UpdateSoundCodeRequest) (_result *UpdateSoundCodeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSoundCodeResponse{}
+	_body, _err := client.UpdateSoundCodeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSoundCodeLabelWithOptions(request *UpdateSoundCodeLabelRequest, runtime *util.RuntimeOptions) (_result *UpdateSoundCodeLabelResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Label)) {
+		body["Label"] = request.Label
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SoundCode)) {
+		body["SoundCode"] = request.SoundCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSoundCodeLabel"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSoundCodeLabelResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSoundCodeLabel(request *UpdateSoundCodeLabelRequest) (_result *UpdateSoundCodeLabelResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSoundCodeLabelResponse{}
+	_body, _err := client.UpdateSoundCodeLabelWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSoundCodeScheduleWithOptions(request *UpdateSoundCodeScheduleRequest, runtime *util.RuntimeOptions) (_result *UpdateSoundCodeScheduleResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		body["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		body["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		body["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		body["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScheduleCode)) {
+		body["ScheduleCode"] = request.ScheduleCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		body["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSoundCodeSchedule"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSoundCodeScheduleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSoundCodeSchedule(request *UpdateSoundCodeScheduleRequest) (_result *UpdateSoundCodeScheduleResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSoundCodeScheduleResponse{}
+	_body, _err := client.UpdateSoundCodeScheduleWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
