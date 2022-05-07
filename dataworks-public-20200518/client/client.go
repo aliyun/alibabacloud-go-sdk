@@ -10901,6 +10901,193 @@ func (s *GetDeploymentResponse) SetBody(v *GetDeploymentResponseBody) *GetDeploy
 	return s
 }
 
+type GetExtensionRequest struct {
+	ExtensionCode *string `json:"ExtensionCode,omitempty" xml:"ExtensionCode,omitempty"`
+}
+
+func (s GetExtensionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExtensionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetExtensionRequest) SetExtensionCode(v string) *GetExtensionRequest {
+	s.ExtensionCode = &v
+	return s
+}
+
+type GetExtensionResponseBody struct {
+	Extension *GetExtensionResponseBodyExtension `json:"Extension,omitempty" xml:"Extension,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetExtensionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExtensionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetExtensionResponseBody) SetExtension(v *GetExtensionResponseBodyExtension) *GetExtensionResponseBody {
+	s.Extension = v
+	return s
+}
+
+func (s *GetExtensionResponseBody) SetRequestId(v string) *GetExtensionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetExtensionResponseBodyExtension struct {
+	BindEventList     []*GetExtensionResponseBodyExtensionBindEventList     `json:"BindEventList,omitempty" xml:"BindEventList,omitempty" type:"Repeated"`
+	DetailUrl         *string                                               `json:"DetailUrl,omitempty" xml:"DetailUrl,omitempty"`
+	EventCategoryList []*GetExtensionResponseBodyExtensionEventCategoryList `json:"EventCategoryList,omitempty" xml:"EventCategoryList,omitempty" type:"Repeated"`
+	ExtensionCode     *string                                               `json:"ExtensionCode,omitempty" xml:"ExtensionCode,omitempty"`
+	ExtensionDesc     *string                                               `json:"ExtensionDesc,omitempty" xml:"ExtensionDesc,omitempty"`
+	ExtensionName     *string                                               `json:"ExtensionName,omitempty" xml:"ExtensionName,omitempty"`
+	HelpDocUrl        *string                                               `json:"HelpDocUrl,omitempty" xml:"HelpDocUrl,omitempty"`
+	OptionSetting     *string                                               `json:"OptionSetting,omitempty" xml:"OptionSetting,omitempty"`
+	ParameterSetting  *string                                               `json:"ParameterSetting,omitempty" xml:"ParameterSetting,omitempty"`
+	ProjectTesting    *int64                                                `json:"ProjectTesting,omitempty" xml:"ProjectTesting,omitempty"`
+	Status            *int32                                                `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetExtensionResponseBodyExtension) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExtensionResponseBodyExtension) GoString() string {
+	return s.String()
+}
+
+func (s *GetExtensionResponseBodyExtension) SetBindEventList(v []*GetExtensionResponseBodyExtensionBindEventList) *GetExtensionResponseBodyExtension {
+	s.BindEventList = v
+	return s
+}
+
+func (s *GetExtensionResponseBodyExtension) SetDetailUrl(v string) *GetExtensionResponseBodyExtension {
+	s.DetailUrl = &v
+	return s
+}
+
+func (s *GetExtensionResponseBodyExtension) SetEventCategoryList(v []*GetExtensionResponseBodyExtensionEventCategoryList) *GetExtensionResponseBodyExtension {
+	s.EventCategoryList = v
+	return s
+}
+
+func (s *GetExtensionResponseBodyExtension) SetExtensionCode(v string) *GetExtensionResponseBodyExtension {
+	s.ExtensionCode = &v
+	return s
+}
+
+func (s *GetExtensionResponseBodyExtension) SetExtensionDesc(v string) *GetExtensionResponseBodyExtension {
+	s.ExtensionDesc = &v
+	return s
+}
+
+func (s *GetExtensionResponseBodyExtension) SetExtensionName(v string) *GetExtensionResponseBodyExtension {
+	s.ExtensionName = &v
+	return s
+}
+
+func (s *GetExtensionResponseBodyExtension) SetHelpDocUrl(v string) *GetExtensionResponseBodyExtension {
+	s.HelpDocUrl = &v
+	return s
+}
+
+func (s *GetExtensionResponseBodyExtension) SetOptionSetting(v string) *GetExtensionResponseBodyExtension {
+	s.OptionSetting = &v
+	return s
+}
+
+func (s *GetExtensionResponseBodyExtension) SetParameterSetting(v string) *GetExtensionResponseBodyExtension {
+	s.ParameterSetting = &v
+	return s
+}
+
+func (s *GetExtensionResponseBodyExtension) SetProjectTesting(v int64) *GetExtensionResponseBodyExtension {
+	s.ProjectTesting = &v
+	return s
+}
+
+func (s *GetExtensionResponseBodyExtension) SetStatus(v int32) *GetExtensionResponseBodyExtension {
+	s.Status = &v
+	return s
+}
+
+type GetExtensionResponseBodyExtensionBindEventList struct {
+	EventCode *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
+	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+}
+
+func (s GetExtensionResponseBodyExtensionBindEventList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExtensionResponseBodyExtensionBindEventList) GoString() string {
+	return s.String()
+}
+
+func (s *GetExtensionResponseBodyExtensionBindEventList) SetEventCode(v string) *GetExtensionResponseBodyExtensionBindEventList {
+	s.EventCode = &v
+	return s
+}
+
+func (s *GetExtensionResponseBodyExtensionBindEventList) SetEventName(v string) *GetExtensionResponseBodyExtensionBindEventList {
+	s.EventName = &v
+	return s
+}
+
+type GetExtensionResponseBodyExtensionEventCategoryList struct {
+	CategoryCode *string `json:"CategoryCode,omitempty" xml:"CategoryCode,omitempty"`
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+}
+
+func (s GetExtensionResponseBodyExtensionEventCategoryList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExtensionResponseBodyExtensionEventCategoryList) GoString() string {
+	return s.String()
+}
+
+func (s *GetExtensionResponseBodyExtensionEventCategoryList) SetCategoryCode(v string) *GetExtensionResponseBodyExtensionEventCategoryList {
+	s.CategoryCode = &v
+	return s
+}
+
+func (s *GetExtensionResponseBodyExtensionEventCategoryList) SetCategoryName(v string) *GetExtensionResponseBodyExtensionEventCategoryList {
+	s.CategoryName = &v
+	return s
+}
+
+type GetExtensionResponse struct {
+	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetExtensionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetExtensionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetExtensionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetExtensionResponse) SetHeaders(v map[string]*string) *GetExtensionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetExtensionResponse) SetBody(v *GetExtensionResponseBody) *GetExtensionResponse {
+	s.Body = v
+	return s
+}
+
 type GetFileRequest struct {
 	FileId            *int64  `json:"FileId,omitempty" xml:"FileId,omitempty"`
 	NodeId            *int64  `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
@@ -17819,6 +18006,76 @@ func (s *GetOpSensitiveDataResponse) SetBody(v *GetOpSensitiveDataResponseBody) 
 	return s
 }
 
+type GetOptionValueForProjectRequest struct {
+	ExtensionCode *string `json:"ExtensionCode,omitempty" xml:"ExtensionCode,omitempty"`
+	ProjectId     *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+}
+
+func (s GetOptionValueForProjectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOptionValueForProjectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOptionValueForProjectRequest) SetExtensionCode(v string) *GetOptionValueForProjectRequest {
+	s.ExtensionCode = &v
+	return s
+}
+
+func (s *GetOptionValueForProjectRequest) SetProjectId(v string) *GetOptionValueForProjectRequest {
+	s.ProjectId = &v
+	return s
+}
+
+type GetOptionValueForProjectResponseBody struct {
+	OptionValue *string `json:"OptionValue,omitempty" xml:"OptionValue,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetOptionValueForProjectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOptionValueForProjectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOptionValueForProjectResponseBody) SetOptionValue(v string) *GetOptionValueForProjectResponseBody {
+	s.OptionValue = &v
+	return s
+}
+
+func (s *GetOptionValueForProjectResponseBody) SetRequestId(v string) *GetOptionValueForProjectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetOptionValueForProjectResponse struct {
+	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *GetOptionValueForProjectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetOptionValueForProjectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOptionValueForProjectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOptionValueForProjectResponse) SetHeaders(v map[string]*string) *GetOptionValueForProjectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOptionValueForProjectResponse) SetBody(v *GetOptionValueForProjectResponseBody) *GetOptionValueForProjectResponse {
+	s.Body = v
+	return s
+}
+
 type GetPermissionApplyOrderDetailRequest struct {
 	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 }
@@ -21875,6 +22132,318 @@ func (s *ListConnectionsResponse) SetBody(v *ListConnectionsResponseBody) *ListC
 	return s
 }
 
+type ListCurrentTasksForResourceGroupRequest struct {
+	PageNumber              *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectEnv              *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
+	// 3-等待资源；4-运行中
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListCurrentTasksForResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCurrentTasksForResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCurrentTasksForResourceGroupRequest) SetPageNumber(v int32) *ListCurrentTasksForResourceGroupRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListCurrentTasksForResourceGroupRequest) SetPageSize(v int32) *ListCurrentTasksForResourceGroupRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCurrentTasksForResourceGroupRequest) SetProjectEnv(v string) *ListCurrentTasksForResourceGroupRequest {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *ListCurrentTasksForResourceGroupRequest) SetResourceGroupIdentifier(v string) *ListCurrentTasksForResourceGroupRequest {
+	s.ResourceGroupIdentifier = &v
+	return s
+}
+
+func (s *ListCurrentTasksForResourceGroupRequest) SetStatus(v int32) *ListCurrentTasksForResourceGroupRequest {
+	s.Status = &v
+	return s
+}
+
+type ListCurrentTasksForResourceGroupResponseBody struct {
+	Data           *ListCurrentTasksForResourceGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode      *string                                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32                                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListCurrentTasksForResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCurrentTasksForResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCurrentTasksForResourceGroupResponseBody) SetData(v *ListCurrentTasksForResourceGroupResponseBodyData) *ListCurrentTasksForResourceGroupResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListCurrentTasksForResourceGroupResponseBody) SetErrorCode(v string) *ListCurrentTasksForResourceGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListCurrentTasksForResourceGroupResponseBody) SetErrorMessage(v string) *ListCurrentTasksForResourceGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListCurrentTasksForResourceGroupResponseBody) SetHttpStatusCode(v int32) *ListCurrentTasksForResourceGroupResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListCurrentTasksForResourceGroupResponseBody) SetRequestId(v string) *ListCurrentTasksForResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCurrentTasksForResourceGroupResponseBody) SetSuccess(v bool) *ListCurrentTasksForResourceGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListCurrentTasksForResourceGroupResponseBodyData struct {
+	PageNum  *int32                                                   `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tasks    []*ListCurrentTasksForResourceGroupResponseBodyDataTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	TotalNum *int32                                                   `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+}
+
+func (s ListCurrentTasksForResourceGroupResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCurrentTasksForResourceGroupResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListCurrentTasksForResourceGroupResponseBodyData) SetPageNum(v int32) *ListCurrentTasksForResourceGroupResponseBodyData {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListCurrentTasksForResourceGroupResponseBodyData) SetPageSize(v int32) *ListCurrentTasksForResourceGroupResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCurrentTasksForResourceGroupResponseBodyData) SetTasks(v []*ListCurrentTasksForResourceGroupResponseBodyDataTasks) *ListCurrentTasksForResourceGroupResponseBodyData {
+	s.Tasks = v
+	return s
+}
+
+func (s *ListCurrentTasksForResourceGroupResponseBodyData) SetTotalNum(v int32) *ListCurrentTasksForResourceGroupResponseBodyData {
+	s.TotalNum = &v
+	return s
+}
+
+type ListCurrentTasksForResourceGroupResponseBodyDataTasks struct {
+	Concurrency *string `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName    *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskSource  *string `json:"TaskSource,omitempty" xml:"TaskSource,omitempty"`
+	TaskType    *int32  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s ListCurrentTasksForResourceGroupResponseBodyDataTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCurrentTasksForResourceGroupResponseBodyDataTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ListCurrentTasksForResourceGroupResponseBodyDataTasks) SetConcurrency(v string) *ListCurrentTasksForResourceGroupResponseBodyDataTasks {
+	s.Concurrency = &v
+	return s
+}
+
+func (s *ListCurrentTasksForResourceGroupResponseBodyDataTasks) SetProjectName(v string) *ListCurrentTasksForResourceGroupResponseBodyDataTasks {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ListCurrentTasksForResourceGroupResponseBodyDataTasks) SetStatus(v int32) *ListCurrentTasksForResourceGroupResponseBodyDataTasks {
+	s.Status = &v
+	return s
+}
+
+func (s *ListCurrentTasksForResourceGroupResponseBodyDataTasks) SetTaskId(v string) *ListCurrentTasksForResourceGroupResponseBodyDataTasks {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListCurrentTasksForResourceGroupResponseBodyDataTasks) SetTaskName(v string) *ListCurrentTasksForResourceGroupResponseBodyDataTasks {
+	s.TaskName = &v
+	return s
+}
+
+func (s *ListCurrentTasksForResourceGroupResponseBodyDataTasks) SetTaskSource(v string) *ListCurrentTasksForResourceGroupResponseBodyDataTasks {
+	s.TaskSource = &v
+	return s
+}
+
+func (s *ListCurrentTasksForResourceGroupResponseBodyDataTasks) SetTaskType(v int32) *ListCurrentTasksForResourceGroupResponseBodyDataTasks {
+	s.TaskType = &v
+	return s
+}
+
+type ListCurrentTasksForResourceGroupResponse struct {
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListCurrentTasksForResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCurrentTasksForResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCurrentTasksForResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCurrentTasksForResourceGroupResponse) SetHeaders(v map[string]*string) *ListCurrentTasksForResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCurrentTasksForResourceGroupResponse) SetBody(v *ListCurrentTasksForResourceGroupResponseBody) *ListCurrentTasksForResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ListCurrentUsageForResourceGroupRequest struct {
+	ProjectEnv              *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
+}
+
+func (s ListCurrentUsageForResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCurrentUsageForResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCurrentUsageForResourceGroupRequest) SetProjectEnv(v string) *ListCurrentUsageForResourceGroupRequest {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *ListCurrentUsageForResourceGroupRequest) SetResourceGroupIdentifier(v string) *ListCurrentUsageForResourceGroupRequest {
+	s.ResourceGroupIdentifier = &v
+	return s
+}
+
+type ListCurrentUsageForResourceGroupResponseBody struct {
+	Data           *ListCurrentUsageForResourceGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage   *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32                                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListCurrentUsageForResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCurrentUsageForResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCurrentUsageForResourceGroupResponseBody) SetData(v *ListCurrentUsageForResourceGroupResponseBodyData) *ListCurrentUsageForResourceGroupResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListCurrentUsageForResourceGroupResponseBody) SetErrorMessage(v string) *ListCurrentUsageForResourceGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListCurrentUsageForResourceGroupResponseBody) SetHttpStatusCode(v int32) *ListCurrentUsageForResourceGroupResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListCurrentUsageForResourceGroupResponseBody) SetRequestId(v string) *ListCurrentUsageForResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListCurrentUsageForResourceGroupResponseBody) SetSuccess(v bool) *ListCurrentUsageForResourceGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListCurrentUsageForResourceGroupResponseBodyData struct {
+	RecodeTime *int64   `json:"RecodeTime,omitempty" xml:"RecodeTime,omitempty"`
+	Usage      *float32 `json:"Usage,omitempty" xml:"Usage,omitempty"`
+}
+
+func (s ListCurrentUsageForResourceGroupResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCurrentUsageForResourceGroupResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListCurrentUsageForResourceGroupResponseBodyData) SetRecodeTime(v int64) *ListCurrentUsageForResourceGroupResponseBodyData {
+	s.RecodeTime = &v
+	return s
+}
+
+func (s *ListCurrentUsageForResourceGroupResponseBodyData) SetUsage(v float32) *ListCurrentUsageForResourceGroupResponseBodyData {
+	s.Usage = &v
+	return s
+}
+
+type ListCurrentUsageForResourceGroupResponse struct {
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListCurrentUsageForResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCurrentUsageForResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCurrentUsageForResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCurrentUsageForResourceGroupResponse) SetHeaders(v map[string]*string) *ListCurrentUsageForResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCurrentUsageForResourceGroupResponse) SetBody(v *ListCurrentUsageForResourceGroupResponseBody) *ListCurrentUsageForResourceGroupResponse {
+	s.Body = v
+	return s
+}
+
 type ListDIProjectConfigRequest struct {
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	ProjectId       *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
@@ -25325,6 +25894,181 @@ func (s *ListDeploymentsResponse) SetBody(v *ListDeploymentsResponseBody) *ListD
 	return s
 }
 
+type ListExtensionsRequest struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListExtensionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExtensionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListExtensionsRequest) SetPageNumber(v int32) *ListExtensionsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListExtensionsRequest) SetPageSize(v int32) *ListExtensionsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListExtensionsResponseBody struct {
+	PagingInfo *ListExtensionsResponseBodyPagingInfo `json:"PagingInfo,omitempty" xml:"PagingInfo,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListExtensionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExtensionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListExtensionsResponseBody) SetPagingInfo(v *ListExtensionsResponseBodyPagingInfo) *ListExtensionsResponseBody {
+	s.PagingInfo = v
+	return s
+}
+
+func (s *ListExtensionsResponseBody) SetRequestId(v string) *ListExtensionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListExtensionsResponseBodyPagingInfo struct {
+	Extensions []*ListExtensionsResponseBodyPagingInfoExtensions `json:"Extensions,omitempty" xml:"Extensions,omitempty" type:"Repeated"`
+	PageNumber *int32                                            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32                                            `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListExtensionsResponseBodyPagingInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExtensionsResponseBodyPagingInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListExtensionsResponseBodyPagingInfo) SetExtensions(v []*ListExtensionsResponseBodyPagingInfoExtensions) *ListExtensionsResponseBodyPagingInfo {
+	s.Extensions = v
+	return s
+}
+
+func (s *ListExtensionsResponseBodyPagingInfo) SetPageNumber(v int32) *ListExtensionsResponseBodyPagingInfo {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListExtensionsResponseBodyPagingInfo) SetPageSize(v int32) *ListExtensionsResponseBodyPagingInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListExtensionsResponseBodyPagingInfo) SetTotalCount(v int32) *ListExtensionsResponseBodyPagingInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListExtensionsResponseBodyPagingInfoExtensions struct {
+	BindEventList []*ListExtensionsResponseBodyPagingInfoExtensionsBindEventList `json:"BindEventList,omitempty" xml:"BindEventList,omitempty" type:"Repeated"`
+	ExtensionCode *string                                                        `json:"ExtensionCode,omitempty" xml:"ExtensionCode,omitempty"`
+	ExtensionDesc *string                                                        `json:"ExtensionDesc,omitempty" xml:"ExtensionDesc,omitempty"`
+	ExtensionName *string                                                        `json:"ExtensionName,omitempty" xml:"ExtensionName,omitempty"`
+	Owner         *string                                                        `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	Status        *int32                                                         `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListExtensionsResponseBodyPagingInfoExtensions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExtensionsResponseBodyPagingInfoExtensions) GoString() string {
+	return s.String()
+}
+
+func (s *ListExtensionsResponseBodyPagingInfoExtensions) SetBindEventList(v []*ListExtensionsResponseBodyPagingInfoExtensionsBindEventList) *ListExtensionsResponseBodyPagingInfoExtensions {
+	s.BindEventList = v
+	return s
+}
+
+func (s *ListExtensionsResponseBodyPagingInfoExtensions) SetExtensionCode(v string) *ListExtensionsResponseBodyPagingInfoExtensions {
+	s.ExtensionCode = &v
+	return s
+}
+
+func (s *ListExtensionsResponseBodyPagingInfoExtensions) SetExtensionDesc(v string) *ListExtensionsResponseBodyPagingInfoExtensions {
+	s.ExtensionDesc = &v
+	return s
+}
+
+func (s *ListExtensionsResponseBodyPagingInfoExtensions) SetExtensionName(v string) *ListExtensionsResponseBodyPagingInfoExtensions {
+	s.ExtensionName = &v
+	return s
+}
+
+func (s *ListExtensionsResponseBodyPagingInfoExtensions) SetOwner(v string) *ListExtensionsResponseBodyPagingInfoExtensions {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListExtensionsResponseBodyPagingInfoExtensions) SetStatus(v int32) *ListExtensionsResponseBodyPagingInfoExtensions {
+	s.Status = &v
+	return s
+}
+
+type ListExtensionsResponseBodyPagingInfoExtensionsBindEventList struct {
+	EventCode *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
+	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+}
+
+func (s ListExtensionsResponseBodyPagingInfoExtensionsBindEventList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExtensionsResponseBodyPagingInfoExtensionsBindEventList) GoString() string {
+	return s.String()
+}
+
+func (s *ListExtensionsResponseBodyPagingInfoExtensionsBindEventList) SetEventCode(v string) *ListExtensionsResponseBodyPagingInfoExtensionsBindEventList {
+	s.EventCode = &v
+	return s
+}
+
+func (s *ListExtensionsResponseBodyPagingInfoExtensionsBindEventList) SetEventName(v string) *ListExtensionsResponseBodyPagingInfoExtensionsBindEventList {
+	s.EventName = &v
+	return s
+}
+
+type ListExtensionsResponse struct {
+	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListExtensionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListExtensionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListExtensionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListExtensionsResponse) SetHeaders(v map[string]*string) *ListExtensionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListExtensionsResponse) SetBody(v *ListExtensionsResponseBody) *ListExtensionsResponse {
+	s.Body = v
+	return s
+}
+
 type ListFileTypeRequest struct {
 	Keyword           *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	Locale            *string `json:"Locale,omitempty" xml:"Locale,omitempty"`
@@ -26189,6 +26933,208 @@ func (s *ListFoldersResponse) SetHeaders(v map[string]*string) *ListFoldersRespo
 }
 
 func (s *ListFoldersResponse) SetBody(v *ListFoldersResponseBody) *ListFoldersResponse {
+	s.Body = v
+	return s
+}
+
+type ListHistoryTasksForResourceGroupRequest struct {
+	// 最晚当前时间
+	EndTime                 *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PageNumber              *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProjectEnv              *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
+	// 7天内
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListHistoryTasksForResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHistoryTasksForResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListHistoryTasksForResourceGroupRequest) SetEndTime(v int64) *ListHistoryTasksForResourceGroupRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListHistoryTasksForResourceGroupRequest) SetPageNumber(v int32) *ListHistoryTasksForResourceGroupRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListHistoryTasksForResourceGroupRequest) SetPageSize(v int32) *ListHistoryTasksForResourceGroupRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHistoryTasksForResourceGroupRequest) SetProjectEnv(v string) *ListHistoryTasksForResourceGroupRequest {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *ListHistoryTasksForResourceGroupRequest) SetResourceGroupIdentifier(v string) *ListHistoryTasksForResourceGroupRequest {
+	s.ResourceGroupIdentifier = &v
+	return s
+}
+
+func (s *ListHistoryTasksForResourceGroupRequest) SetStartTime(v int64) *ListHistoryTasksForResourceGroupRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ListHistoryTasksForResourceGroupResponseBody struct {
+	Data           *ListHistoryTasksForResourceGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode      *string                                           `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                                           `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32                                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListHistoryTasksForResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHistoryTasksForResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListHistoryTasksForResourceGroupResponseBody) SetData(v *ListHistoryTasksForResourceGroupResponseBodyData) *ListHistoryTasksForResourceGroupResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListHistoryTasksForResourceGroupResponseBody) SetErrorCode(v string) *ListHistoryTasksForResourceGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListHistoryTasksForResourceGroupResponseBody) SetErrorMessage(v string) *ListHistoryTasksForResourceGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListHistoryTasksForResourceGroupResponseBody) SetHttpStatusCode(v int32) *ListHistoryTasksForResourceGroupResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListHistoryTasksForResourceGroupResponseBody) SetRequestId(v string) *ListHistoryTasksForResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListHistoryTasksForResourceGroupResponseBody) SetSuccess(v bool) *ListHistoryTasksForResourceGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListHistoryTasksForResourceGroupResponseBodyData struct {
+	PageNum  *int32                                                   `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	PageSize *int32                                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Tasks    []*ListHistoryTasksForResourceGroupResponseBodyDataTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+	TotalNum *int32                                                   `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+}
+
+func (s ListHistoryTasksForResourceGroupResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHistoryTasksForResourceGroupResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListHistoryTasksForResourceGroupResponseBodyData) SetPageNum(v int32) *ListHistoryTasksForResourceGroupResponseBodyData {
+	s.PageNum = &v
+	return s
+}
+
+func (s *ListHistoryTasksForResourceGroupResponseBodyData) SetPageSize(v int32) *ListHistoryTasksForResourceGroupResponseBodyData {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListHistoryTasksForResourceGroupResponseBodyData) SetTasks(v []*ListHistoryTasksForResourceGroupResponseBodyDataTasks) *ListHistoryTasksForResourceGroupResponseBodyData {
+	s.Tasks = v
+	return s
+}
+
+func (s *ListHistoryTasksForResourceGroupResponseBodyData) SetTotalNum(v int32) *ListHistoryTasksForResourceGroupResponseBodyData {
+	s.TotalNum = &v
+	return s
+}
+
+type ListHistoryTasksForResourceGroupResponseBodyDataTasks struct {
+	Concurrency *int32  `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Status      *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId      *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName    *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskType    *int32  `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s ListHistoryTasksForResourceGroupResponseBodyDataTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHistoryTasksForResourceGroupResponseBodyDataTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ListHistoryTasksForResourceGroupResponseBodyDataTasks) SetConcurrency(v int32) *ListHistoryTasksForResourceGroupResponseBodyDataTasks {
+	s.Concurrency = &v
+	return s
+}
+
+func (s *ListHistoryTasksForResourceGroupResponseBodyDataTasks) SetProjectName(v string) *ListHistoryTasksForResourceGroupResponseBodyDataTasks {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *ListHistoryTasksForResourceGroupResponseBodyDataTasks) SetStatus(v int32) *ListHistoryTasksForResourceGroupResponseBodyDataTasks {
+	s.Status = &v
+	return s
+}
+
+func (s *ListHistoryTasksForResourceGroupResponseBodyDataTasks) SetTaskId(v string) *ListHistoryTasksForResourceGroupResponseBodyDataTasks {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListHistoryTasksForResourceGroupResponseBodyDataTasks) SetTaskName(v string) *ListHistoryTasksForResourceGroupResponseBodyDataTasks {
+	s.TaskName = &v
+	return s
+}
+
+func (s *ListHistoryTasksForResourceGroupResponseBodyDataTasks) SetTaskType(v int32) *ListHistoryTasksForResourceGroupResponseBodyDataTasks {
+	s.TaskType = &v
+	return s
+}
+
+type ListHistoryTasksForResourceGroupResponse struct {
+	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListHistoryTasksForResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListHistoryTasksForResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListHistoryTasksForResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListHistoryTasksForResourceGroupResponse) SetHeaders(v map[string]*string) *ListHistoryTasksForResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListHistoryTasksForResourceGroupResponse) SetBody(v *ListHistoryTasksForResourceGroupResponseBody) *ListHistoryTasksForResourceGroupResponse {
 	s.Body = v
 	return s
 }
@@ -31429,6 +32375,136 @@ func (s *ListTopicsResponse) SetHeaders(v map[string]*string) *ListTopicsRespons
 }
 
 func (s *ListTopicsResponse) SetBody(v *ListTopicsResponseBody) *ListTopicsResponse {
+	s.Body = v
+	return s
+}
+
+type ListUsageForResourceGroupRequest struct {
+	// 最晚当前时间
+	EndTime                 *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ProjectEnv              *string `json:"ProjectEnv,omitempty" xml:"ProjectEnv,omitempty"`
+	ResourceGroupIdentifier *string `json:"ResourceGroupIdentifier,omitempty" xml:"ResourceGroupIdentifier,omitempty"`
+	// 7天内
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s ListUsageForResourceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsageForResourceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsageForResourceGroupRequest) SetEndTime(v int64) *ListUsageForResourceGroupRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListUsageForResourceGroupRequest) SetProjectEnv(v string) *ListUsageForResourceGroupRequest {
+	s.ProjectEnv = &v
+	return s
+}
+
+func (s *ListUsageForResourceGroupRequest) SetResourceGroupIdentifier(v string) *ListUsageForResourceGroupRequest {
+	s.ResourceGroupIdentifier = &v
+	return s
+}
+
+func (s *ListUsageForResourceGroupRequest) SetStartTime(v int64) *ListUsageForResourceGroupRequest {
+	s.StartTime = &v
+	return s
+}
+
+type ListUsageForResourceGroupResponseBody struct {
+	Data           []*ListUsageForResourceGroupResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	ErrorCode      *string                                      `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage   *string                                      `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	HttpStatusCode *int32                                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListUsageForResourceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsageForResourceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsageForResourceGroupResponseBody) SetData(v []*ListUsageForResourceGroupResponseBodyData) *ListUsageForResourceGroupResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListUsageForResourceGroupResponseBody) SetErrorCode(v string) *ListUsageForResourceGroupResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListUsageForResourceGroupResponseBody) SetErrorMessage(v string) *ListUsageForResourceGroupResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListUsageForResourceGroupResponseBody) SetHttpStatusCode(v int32) *ListUsageForResourceGroupResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *ListUsageForResourceGroupResponseBody) SetRequestId(v string) *ListUsageForResourceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListUsageForResourceGroupResponseBody) SetSuccess(v bool) *ListUsageForResourceGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListUsageForResourceGroupResponseBodyData struct {
+	RecodeTime *int64   `json:"RecodeTime,omitempty" xml:"RecodeTime,omitempty"`
+	Usage      *float64 `json:"Usage,omitempty" xml:"Usage,omitempty"`
+}
+
+func (s ListUsageForResourceGroupResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsageForResourceGroupResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsageForResourceGroupResponseBodyData) SetRecodeTime(v int64) *ListUsageForResourceGroupResponseBodyData {
+	s.RecodeTime = &v
+	return s
+}
+
+func (s *ListUsageForResourceGroupResponseBodyData) SetUsage(v float64) *ListUsageForResourceGroupResponseBodyData {
+	s.Usage = &v
+	return s
+}
+
+type ListUsageForResourceGroupResponse struct {
+	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	Body    *ListUsageForResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListUsageForResourceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListUsageForResourceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListUsageForResourceGroupResponse) SetHeaders(v map[string]*string) *ListUsageForResourceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListUsageForResourceGroupResponse) SetBody(v *ListUsageForResourceGroupResponseBody) *ListUsageForResourceGroupResponse {
 	s.Body = v
 	return s
 }
@@ -41966,6 +43042,50 @@ func (client *Client) GetDeployment(request *GetDeploymentRequest) (_result *Get
 	return _result, _err
 }
 
+func (client *Client) GetExtensionWithOptions(request *GetExtensionRequest, runtime *util.RuntimeOptions) (_result *GetExtensionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExtensionCode)) {
+		query["ExtensionCode"] = request.ExtensionCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetExtension"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetExtensionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetExtension(request *GetExtensionRequest) (_result *GetExtensionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetExtensionResponse{}
+	_body, _err := client.GetExtensionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetFileWithOptions(request *GetFileRequest, runtime *util.RuntimeOptions) (_result *GetFileResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -43858,6 +44978,54 @@ func (client *Client) GetOpSensitiveData(request *GetOpSensitiveDataRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) GetOptionValueForProjectWithOptions(request *GetOptionValueForProjectRequest, runtime *util.RuntimeOptions) (_result *GetOptionValueForProjectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExtensionCode)) {
+		body["ExtensionCode"] = request.ExtensionCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		body["ProjectId"] = request.ProjectId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOptionValueForProject"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOptionValueForProjectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetOptionValueForProject(request *GetOptionValueForProjectRequest) (_result *GetOptionValueForProjectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOptionValueForProjectResponse{}
+	_body, _err := client.GetOptionValueForProjectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetPermissionApplyOrderDetailWithOptions(request *GetPermissionApplyOrderDetailRequest, runtime *util.RuntimeOptions) (_result *GetPermissionApplyOrderDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44794,6 +45962,114 @@ func (client *Client) ListConnections(request *ListConnectionsRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) ListCurrentTasksForResourceGroupWithOptions(request *ListCurrentTasksForResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ListCurrentTasksForResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdentifier)) {
+		body["ResourceGroupIdentifier"] = request.ResourceGroupIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		body["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCurrentTasksForResourceGroup"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCurrentTasksForResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCurrentTasksForResourceGroup(request *ListCurrentTasksForResourceGroupRequest) (_result *ListCurrentTasksForResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCurrentTasksForResourceGroupResponse{}
+	_body, _err := client.ListCurrentTasksForResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCurrentUsageForResourceGroupWithOptions(request *ListCurrentUsageForResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ListCurrentUsageForResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdentifier)) {
+		body["ResourceGroupIdentifier"] = request.ResourceGroupIdentifier
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCurrentUsageForResourceGroup"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCurrentUsageForResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCurrentUsageForResourceGroup(request *ListCurrentUsageForResourceGroupRequest) (_result *ListCurrentUsageForResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCurrentUsageForResourceGroupResponse{}
+	_body, _err := client.ListCurrentUsageForResourceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListDIProjectConfigWithOptions(request *ListDIProjectConfigRequest, runtime *util.RuntimeOptions) (_result *ListDIProjectConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45454,6 +46730,46 @@ func (client *Client) ListDeployments(request *ListDeploymentsRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) ListExtensionsWithOptions(request *ListExtensionsRequest, runtime *util.RuntimeOptions) (_result *ListExtensionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListExtensions"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListExtensionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListExtensions(request *ListExtensionsRequest) (_result *ListExtensionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListExtensionsResponse{}
+	_body, _err := client.ListExtensionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListFileTypeWithOptions(request *ListFileTypeRequest, runtime *util.RuntimeOptions) (_result *ListFileTypeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -45711,6 +47027,70 @@ func (client *Client) ListFolders(request *ListFoldersRequest) (_result *ListFol
 	runtime := &util.RuntimeOptions{}
 	_result = &ListFoldersResponse{}
 	_body, _err := client.ListFoldersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListHistoryTasksForResourceGroupWithOptions(request *ListHistoryTasksForResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ListHistoryTasksForResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdentifier)) {
+		body["ResourceGroupIdentifier"] = request.ResourceGroupIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListHistoryTasksForResourceGroup"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListHistoryTasksForResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListHistoryTasksForResourceGroup(request *ListHistoryTasksForResourceGroupRequest) (_result *ListHistoryTasksForResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListHistoryTasksForResourceGroupResponse{}
+	_body, _err := client.ListHistoryTasksForResourceGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -47103,6 +48483,62 @@ func (client *Client) ListTopics(request *ListTopicsRequest) (_result *ListTopic
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTopicsResponse{}
 	_body, _err := client.ListTopicsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListUsageForResourceGroupWithOptions(request *ListUsageForResourceGroupRequest, runtime *util.RuntimeOptions) (_result *ListUsageForResourceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectEnv)) {
+		body["ProjectEnv"] = request.ProjectEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupIdentifier)) {
+		body["ResourceGroupIdentifier"] = request.ResourceGroupIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		body["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListUsageForResourceGroup"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListUsageForResourceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListUsageForResourceGroup(request *ListUsageForResourceGroupRequest) (_result *ListUsageForResourceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListUsageForResourceGroupResponse{}
+	_body, _err := client.ListUsageForResourceGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
