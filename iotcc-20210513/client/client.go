@@ -77,8 +77,9 @@ func (s *AddCidrToConnectionPoolResponseBody) SetRequestId(v string) *AddCidrToC
 }
 
 type AddCidrToConnectionPoolResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddCidrToConnectionPoolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddCidrToConnectionPoolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddCidrToConnectionPoolResponse) String() string {
@@ -91,6 +92,11 @@ func (s AddCidrToConnectionPoolResponse) GoString() string {
 
 func (s *AddCidrToConnectionPoolResponse) SetHeaders(v map[string]*string) *AddCidrToConnectionPoolResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddCidrToConnectionPoolResponse) SetStatusCode(v int32) *AddCidrToConnectionPoolResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -158,8 +164,9 @@ func (s *AddIoTCloudConnectorToGroupResponseBody) SetRequestId(v string) *AddIoT
 }
 
 type AddIoTCloudConnectorToGroupResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddIoTCloudConnectorToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddIoTCloudConnectorToGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddIoTCloudConnectorToGroupResponse) String() string {
@@ -172,6 +179,11 @@ func (s AddIoTCloudConnectorToGroupResponse) GoString() string {
 
 func (s *AddIoTCloudConnectorToGroupResponse) SetHeaders(v map[string]*string) *AddIoTCloudConnectorToGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddIoTCloudConnectorToGroupResponse) SetStatusCode(v int32) *AddIoTCloudConnectorToGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -251,8 +263,9 @@ func (s *AssociateIpWithConnectionPoolResponseBody) SetRequestId(v string) *Asso
 }
 
 type AssociateIpWithConnectionPoolResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AssociateIpWithConnectionPoolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AssociateIpWithConnectionPoolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AssociateIpWithConnectionPoolResponse) String() string {
@@ -265,6 +278,11 @@ func (s AssociateIpWithConnectionPoolResponse) GoString() string {
 
 func (s *AssociateIpWithConnectionPoolResponse) SetHeaders(v map[string]*string) *AssociateIpWithConnectionPoolResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AssociateIpWithConnectionPoolResponse) SetStatusCode(v int32) *AssociateIpWithConnectionPoolResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -338,8 +356,9 @@ func (s *AssociateVSwitchWithIoTCloudConnectorResponseBody) SetRequestId(v strin
 }
 
 type AssociateVSwitchWithIoTCloudConnectorResponse struct {
-	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AssociateVSwitchWithIoTCloudConnectorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AssociateVSwitchWithIoTCloudConnectorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AssociateVSwitchWithIoTCloudConnectorResponse) String() string {
@@ -352,6 +371,11 @@ func (s AssociateVSwitchWithIoTCloudConnectorResponse) GoString() string {
 
 func (s *AssociateVSwitchWithIoTCloudConnectorResponse) SetHeaders(v map[string]*string) *AssociateVSwitchWithIoTCloudConnectorResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AssociateVSwitchWithIoTCloudConnectorResponse) SetStatusCode(v int32) *AssociateVSwitchWithIoTCloudConnectorResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -455,8 +479,9 @@ func (s *CreateAuthorizationRuleResponseBody) SetRequestId(v string) *CreateAuth
 }
 
 type CreateAuthorizationRuleResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateAuthorizationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAuthorizationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateAuthorizationRuleResponse) String() string {
@@ -469,6 +494,11 @@ func (s CreateAuthorizationRuleResponse) GoString() string {
 
 func (s *CreateAuthorizationRuleResponse) SetHeaders(v map[string]*string) *CreateAuthorizationRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateAuthorizationRuleResponse) SetStatusCode(v int32) *CreateAuthorizationRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -560,8 +590,9 @@ func (s *CreateConnectionPoolResponseBody) SetRequestId(v string) *CreateConnect
 }
 
 type CreateConnectionPoolResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateConnectionPoolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateConnectionPoolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateConnectionPoolResponse) String() string {
@@ -574,6 +605,11 @@ func (s CreateConnectionPoolResponse) GoString() string {
 
 func (s *CreateConnectionPoolResponse) SetHeaders(v map[string]*string) *CreateConnectionPoolResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateConnectionPoolResponse) SetStatusCode(v int32) *CreateConnectionPoolResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -671,8 +707,9 @@ func (s *CreateDNSServiceRuleResponseBody) SetRequestId(v string) *CreateDNSServ
 }
 
 type CreateDNSServiceRuleResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDNSServiceRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDNSServiceRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateDNSServiceRuleResponse) String() string {
@@ -685,6 +722,11 @@ func (s CreateDNSServiceRuleResponse) GoString() string {
 
 func (s *CreateDNSServiceRuleResponse) SetHeaders(v map[string]*string) *CreateDNSServiceRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateDNSServiceRuleResponse) SetStatusCode(v int32) *CreateDNSServiceRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -794,8 +836,9 @@ func (s *CreateGroupAuthorizationRuleResponseBody) SetRequestId(v string) *Creat
 }
 
 type CreateGroupAuthorizationRuleResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateGroupAuthorizationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateGroupAuthorizationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateGroupAuthorizationRuleResponse) String() string {
@@ -808,6 +851,11 @@ func (s CreateGroupAuthorizationRuleResponse) GoString() string {
 
 func (s *CreateGroupAuthorizationRuleResponse) SetHeaders(v map[string]*string) *CreateGroupAuthorizationRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleResponse) SetStatusCode(v int32) *CreateGroupAuthorizationRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -911,8 +959,9 @@ func (s *CreateGroupDNSServiceRuleResponseBody) SetRequestId(v string) *CreateGr
 }
 
 type CreateGroupDNSServiceRuleResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateGroupDNSServiceRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateGroupDNSServiceRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateGroupDNSServiceRuleResponse) String() string {
@@ -925,6 +974,11 @@ func (s CreateGroupDNSServiceRuleResponse) GoString() string {
 
 func (s *CreateGroupDNSServiceRuleResponse) SetHeaders(v map[string]*string) *CreateGroupDNSServiceRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateGroupDNSServiceRuleResponse) SetStatusCode(v int32) *CreateGroupDNSServiceRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1022,8 +1076,9 @@ func (s *CreateIoTCloudConnectorResponseBody) SetRequestId(v string) *CreateIoTC
 }
 
 type CreateIoTCloudConnectorResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateIoTCloudConnectorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateIoTCloudConnectorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateIoTCloudConnectorResponse) String() string {
@@ -1039,7 +1094,99 @@ func (s *CreateIoTCloudConnectorResponse) SetHeaders(v map[string]*string) *Crea
 	return s
 }
 
+func (s *CreateIoTCloudConnectorResponse) SetStatusCode(v int32) *CreateIoTCloudConnectorResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateIoTCloudConnectorResponse) SetBody(v *CreateIoTCloudConnectorResponseBody) *CreateIoTCloudConnectorResponse {
+	s.Body = v
+	return s
+}
+
+type CreateIoTCloudConnectorBackhaulRouteRequest struct {
+	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun              *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorId *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s CreateIoTCloudConnectorBackhaulRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIoTCloudConnectorBackhaulRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIoTCloudConnectorBackhaulRouteRequest) SetClientToken(v string) *CreateIoTCloudConnectorBackhaulRouteRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateIoTCloudConnectorBackhaulRouteRequest) SetDryRun(v bool) *CreateIoTCloudConnectorBackhaulRouteRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *CreateIoTCloudConnectorBackhaulRouteRequest) SetIoTCloudConnectorId(v string) *CreateIoTCloudConnectorBackhaulRouteRequest {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *CreateIoTCloudConnectorBackhaulRouteRequest) SetRegionId(v string) *CreateIoTCloudConnectorBackhaulRouteRequest {
+	s.RegionId = &v
+	return s
+}
+
+type CreateIoTCloudConnectorBackhaulRouteResponseBody struct {
+	IoTCloudConnectorId *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	RequestId           *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateIoTCloudConnectorBackhaulRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIoTCloudConnectorBackhaulRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIoTCloudConnectorBackhaulRouteResponseBody) SetIoTCloudConnectorId(v string) *CreateIoTCloudConnectorBackhaulRouteResponseBody {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *CreateIoTCloudConnectorBackhaulRouteResponseBody) SetRequestId(v string) *CreateIoTCloudConnectorBackhaulRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateIoTCloudConnectorBackhaulRouteResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateIoTCloudConnectorBackhaulRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateIoTCloudConnectorBackhaulRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateIoTCloudConnectorBackhaulRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateIoTCloudConnectorBackhaulRouteResponse) SetHeaders(v map[string]*string) *CreateIoTCloudConnectorBackhaulRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateIoTCloudConnectorBackhaulRouteResponse) SetStatusCode(v int32) *CreateIoTCloudConnectorBackhaulRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateIoTCloudConnectorBackhaulRouteResponse) SetBody(v *CreateIoTCloudConnectorBackhaulRouteResponseBody) *CreateIoTCloudConnectorBackhaulRouteResponse {
 	s.Body = v
 	return s
 }
@@ -1109,8 +1256,9 @@ func (s *CreateIoTCloudConnectorGroupResponseBody) SetRequestId(v string) *Creat
 }
 
 type CreateIoTCloudConnectorGroupResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateIoTCloudConnectorGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateIoTCloudConnectorGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateIoTCloudConnectorGroupResponse) String() string {
@@ -1123,6 +1271,11 @@ func (s CreateIoTCloudConnectorGroupResponse) GoString() string {
 
 func (s *CreateIoTCloudConnectorGroupResponse) SetHeaders(v map[string]*string) *CreateIoTCloudConnectorGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateIoTCloudConnectorGroupResponse) SetStatusCode(v int32) *CreateIoTCloudConnectorGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1202,8 +1355,9 @@ func (s *CreateServiceResponseBody) SetServiceId(v string) *CreateServiceRespons
 }
 
 type CreateServiceResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateServiceResponse) String() string {
@@ -1216,6 +1370,11 @@ func (s CreateServiceResponse) GoString() string {
 
 func (s *CreateServiceResponse) SetHeaders(v map[string]*string) *CreateServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceResponse) SetStatusCode(v int32) *CreateServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1313,8 +1472,9 @@ func (s *CreateServiceEntryResponseBody) SetServiceEntryId(v string) *CreateServ
 }
 
 type CreateServiceEntryResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateServiceEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateServiceEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateServiceEntryResponse) String() string {
@@ -1327,6 +1487,11 @@ func (s CreateServiceEntryResponse) GoString() string {
 
 func (s *CreateServiceEntryResponse) SetHeaders(v map[string]*string) *CreateServiceEntryResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceEntryResponse) SetStatusCode(v int32) *CreateServiceEntryResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1394,8 +1559,9 @@ func (s *DeleteAuthorizationRuleResponseBody) SetRequestId(v string) *DeleteAuth
 }
 
 type DeleteAuthorizationRuleResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteAuthorizationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAuthorizationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteAuthorizationRuleResponse) String() string {
@@ -1408,6 +1574,11 @@ func (s DeleteAuthorizationRuleResponse) GoString() string {
 
 func (s *DeleteAuthorizationRuleResponse) SetHeaders(v map[string]*string) *DeleteAuthorizationRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteAuthorizationRuleResponse) SetStatusCode(v int32) *DeleteAuthorizationRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1475,8 +1646,9 @@ func (s *DeleteConnectionPoolResponseBody) SetRequestId(v string) *DeleteConnect
 }
 
 type DeleteConnectionPoolResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteConnectionPoolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteConnectionPoolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteConnectionPoolResponse) String() string {
@@ -1489,6 +1661,11 @@ func (s DeleteConnectionPoolResponse) GoString() string {
 
 func (s *DeleteConnectionPoolResponse) SetHeaders(v map[string]*string) *DeleteConnectionPoolResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteConnectionPoolResponse) SetStatusCode(v int32) *DeleteConnectionPoolResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1556,8 +1733,9 @@ func (s *DeleteDNSServiceRuleResponseBody) SetRequestId(v string) *DeleteDNSServ
 }
 
 type DeleteDNSServiceRuleResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDNSServiceRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDNSServiceRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteDNSServiceRuleResponse) String() string {
@@ -1570,6 +1748,11 @@ func (s DeleteDNSServiceRuleResponse) GoString() string {
 
 func (s *DeleteDNSServiceRuleResponse) SetHeaders(v map[string]*string) *DeleteDNSServiceRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteDNSServiceRuleResponse) SetStatusCode(v int32) *DeleteDNSServiceRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1637,8 +1820,9 @@ func (s *DeleteGroupAuthorizationRuleResponseBody) SetRequestId(v string) *Delet
 }
 
 type DeleteGroupAuthorizationRuleResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteGroupAuthorizationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGroupAuthorizationRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteGroupAuthorizationRuleResponse) String() string {
@@ -1651,6 +1835,11 @@ func (s DeleteGroupAuthorizationRuleResponse) GoString() string {
 
 func (s *DeleteGroupAuthorizationRuleResponse) SetHeaders(v map[string]*string) *DeleteGroupAuthorizationRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteGroupAuthorizationRuleResponse) SetStatusCode(v int32) *DeleteGroupAuthorizationRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1718,8 +1907,9 @@ func (s *DeleteGroupDNSServiceRuleResponseBody) SetRequestId(v string) *DeleteGr
 }
 
 type DeleteGroupDNSServiceRuleResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteGroupDNSServiceRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGroupDNSServiceRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteGroupDNSServiceRuleResponse) String() string {
@@ -1732,6 +1922,11 @@ func (s DeleteGroupDNSServiceRuleResponse) GoString() string {
 
 func (s *DeleteGroupDNSServiceRuleResponse) SetHeaders(v map[string]*string) *DeleteGroupDNSServiceRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteGroupDNSServiceRuleResponse) SetStatusCode(v int32) *DeleteGroupDNSServiceRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1793,8 +1988,9 @@ func (s *DeleteIoTCloudConnectorResponseBody) SetRequestId(v string) *DeleteIoTC
 }
 
 type DeleteIoTCloudConnectorResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteIoTCloudConnectorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteIoTCloudConnectorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteIoTCloudConnectorResponse) String() string {
@@ -1807,6 +2003,11 @@ func (s DeleteIoTCloudConnectorResponse) GoString() string {
 
 func (s *DeleteIoTCloudConnectorResponse) SetHeaders(v map[string]*string) *DeleteIoTCloudConnectorResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteIoTCloudConnectorResponse) SetStatusCode(v int32) *DeleteIoTCloudConnectorResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1868,8 +2069,9 @@ func (s *DeleteIoTCloudConnectorGroupResponseBody) SetRequestId(v string) *Delet
 }
 
 type DeleteIoTCloudConnectorGroupResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteIoTCloudConnectorGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteIoTCloudConnectorGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteIoTCloudConnectorGroupResponse) String() string {
@@ -1885,7 +2087,93 @@ func (s *DeleteIoTCloudConnectorGroupResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
+func (s *DeleteIoTCloudConnectorGroupResponse) SetStatusCode(v int32) *DeleteIoTCloudConnectorGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteIoTCloudConnectorGroupResponse) SetBody(v *DeleteIoTCloudConnectorGroupResponseBody) *DeleteIoTCloudConnectorGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteIoTCloudConnetorBackhaulRouteRequest struct {
+	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	DryRun              *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	IoTCloudConnectorId *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteIoTCloudConnetorBackhaulRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIoTCloudConnetorBackhaulRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIoTCloudConnetorBackhaulRouteRequest) SetClientToken(v string) *DeleteIoTCloudConnetorBackhaulRouteRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *DeleteIoTCloudConnetorBackhaulRouteRequest) SetDryRun(v bool) *DeleteIoTCloudConnetorBackhaulRouteRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *DeleteIoTCloudConnetorBackhaulRouteRequest) SetIoTCloudConnectorId(v string) *DeleteIoTCloudConnetorBackhaulRouteRequest {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *DeleteIoTCloudConnetorBackhaulRouteRequest) SetRegionId(v string) *DeleteIoTCloudConnetorBackhaulRouteRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteIoTCloudConnetorBackhaulRouteResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteIoTCloudConnetorBackhaulRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIoTCloudConnetorBackhaulRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIoTCloudConnetorBackhaulRouteResponseBody) SetRequestId(v string) *DeleteIoTCloudConnetorBackhaulRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteIoTCloudConnetorBackhaulRouteResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteIoTCloudConnetorBackhaulRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteIoTCloudConnetorBackhaulRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteIoTCloudConnetorBackhaulRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteIoTCloudConnetorBackhaulRouteResponse) SetHeaders(v map[string]*string) *DeleteIoTCloudConnetorBackhaulRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteIoTCloudConnetorBackhaulRouteResponse) SetStatusCode(v int32) *DeleteIoTCloudConnetorBackhaulRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteIoTCloudConnetorBackhaulRouteResponse) SetBody(v *DeleteIoTCloudConnetorBackhaulRouteResponseBody) *DeleteIoTCloudConnetorBackhaulRouteResponse {
 	s.Body = v
 	return s
 }
@@ -1949,8 +2237,9 @@ func (s *DeleteServiceResponseBody) SetRequestId(v string) *DeleteServiceRespons
 }
 
 type DeleteServiceResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteServiceResponse) String() string {
@@ -1963,6 +2252,11 @@ func (s DeleteServiceResponse) GoString() string {
 
 func (s *DeleteServiceResponse) SetHeaders(v map[string]*string) *DeleteServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteServiceResponse) SetStatusCode(v int32) *DeleteServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2036,8 +2330,9 @@ func (s *DeleteServiceEntryResponseBody) SetRequestId(v string) *DeleteServiceEn
 }
 
 type DeleteServiceEntryResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteServiceEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteServiceEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteServiceEntryResponse) String() string {
@@ -2050,6 +2345,11 @@ func (s DeleteServiceEntryResponse) GoString() string {
 
 func (s *DeleteServiceEntryResponse) SetHeaders(v map[string]*string) *DeleteServiceEntryResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteServiceEntryResponse) SetStatusCode(v int32) *DeleteServiceEntryResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2111,8 +2411,9 @@ func (s *DisableIoTCloudConnectorAccessLogResponseBody) SetRequestId(v string) *
 }
 
 type DisableIoTCloudConnectorAccessLogResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableIoTCloudConnectorAccessLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableIoTCloudConnectorAccessLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableIoTCloudConnectorAccessLogResponse) String() string {
@@ -2125,6 +2426,11 @@ func (s DisableIoTCloudConnectorAccessLogResponse) GoString() string {
 
 func (s *DisableIoTCloudConnectorAccessLogResponse) SetHeaders(v map[string]*string) *DisableIoTCloudConnectorAccessLogResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableIoTCloudConnectorAccessLogResponse) SetStatusCode(v int32) *DisableIoTCloudConnectorAccessLogResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2204,8 +2510,9 @@ func (s *DissociateIpFromConnectionPoolResponseBody) SetRequestId(v string) *Dis
 }
 
 type DissociateIpFromConnectionPoolResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DissociateIpFromConnectionPoolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DissociateIpFromConnectionPoolResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DissociateIpFromConnectionPoolResponse) String() string {
@@ -2218,6 +2525,11 @@ func (s DissociateIpFromConnectionPoolResponse) GoString() string {
 
 func (s *DissociateIpFromConnectionPoolResponse) SetHeaders(v map[string]*string) *DissociateIpFromConnectionPoolResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DissociateIpFromConnectionPoolResponse) SetStatusCode(v int32) *DissociateIpFromConnectionPoolResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2279,8 +2591,9 @@ func (s *DissociateVSwitchFromIoTCloudConnectorResponseBody) SetRequestId(v stri
 }
 
 type DissociateVSwitchFromIoTCloudConnectorResponse struct {
-	Headers map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DissociateVSwitchFromIoTCloudConnectorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DissociateVSwitchFromIoTCloudConnectorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DissociateVSwitchFromIoTCloudConnectorResponse) String() string {
@@ -2293,6 +2606,11 @@ func (s DissociateVSwitchFromIoTCloudConnectorResponse) GoString() string {
 
 func (s *DissociateVSwitchFromIoTCloudConnectorResponse) SetHeaders(v map[string]*string) *DissociateVSwitchFromIoTCloudConnectorResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DissociateVSwitchFromIoTCloudConnectorResponse) SetStatusCode(v int32) *DissociateVSwitchFromIoTCloudConnectorResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2366,8 +2684,9 @@ func (s *EnableIoTCloudConnectorAccessLogResponseBody) SetRequestId(v string) *E
 }
 
 type EnableIoTCloudConnectorAccessLogResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableIoTCloudConnectorAccessLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableIoTCloudConnectorAccessLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableIoTCloudConnectorAccessLogResponse) String() string {
@@ -2380,6 +2699,11 @@ func (s EnableIoTCloudConnectorAccessLogResponse) GoString() string {
 
 func (s *EnableIoTCloudConnectorAccessLogResponse) SetHeaders(v map[string]*string) *EnableIoTCloudConnectorAccessLogResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *EnableIoTCloudConnectorAccessLogResponse) SetStatusCode(v int32) *EnableIoTCloudConnectorAccessLogResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2449,8 +2773,9 @@ func (s *GetConnectionPoolIpOperationResultResponseBody) SetResultFilePaths(v []
 }
 
 type GetConnectionPoolIpOperationResultResponse struct {
-	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetConnectionPoolIpOperationResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetConnectionPoolIpOperationResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetConnectionPoolIpOperationResultResponse) String() string {
@@ -2463,6 +2788,11 @@ func (s GetConnectionPoolIpOperationResultResponse) GoString() string {
 
 func (s *GetConnectionPoolIpOperationResultResponse) SetHeaders(v map[string]*string) *GetConnectionPoolIpOperationResultResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetConnectionPoolIpOperationResultResponse) SetStatusCode(v int32) *GetConnectionPoolIpOperationResultResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2624,8 +2954,9 @@ func (s *GetDiagnoseResultForSingleCardResponseBodyErrorResult) SetErrorSuggesti
 }
 
 type GetDiagnoseResultForSingleCardResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetDiagnoseResultForSingleCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDiagnoseResultForSingleCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetDiagnoseResultForSingleCardResponse) String() string {
@@ -2638,6 +2969,11 @@ func (s GetDiagnoseResultForSingleCardResponse) GoString() string {
 
 func (s *GetDiagnoseResultForSingleCardResponse) SetHeaders(v map[string]*string) *GetDiagnoseResultForSingleCardResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetDiagnoseResultForSingleCardResponse) SetStatusCode(v int32) *GetDiagnoseResultForSingleCardResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2717,8 +3053,9 @@ func (s *GetIoTCloudConnectorAccessLogResponseBody) SetRequestId(v string) *GetI
 }
 
 type GetIoTCloudConnectorAccessLogResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetIoTCloudConnectorAccessLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetIoTCloudConnectorAccessLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetIoTCloudConnectorAccessLogResponse) String() string {
@@ -2731,6 +3068,11 @@ func (s GetIoTCloudConnectorAccessLogResponse) GoString() string {
 
 func (s *GetIoTCloudConnectorAccessLogResponse) SetHeaders(v map[string]*string) *GetIoTCloudConnectorAccessLogResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetIoTCloudConnectorAccessLogResponse) SetStatusCode(v int32) *GetIoTCloudConnectorAccessLogResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2840,8 +3182,9 @@ func (s *GetStsInfoAndOssPathResponseBody) SetSecurityToken(v string) *GetStsInf
 }
 
 type GetStsInfoAndOssPathResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetStsInfoAndOssPathResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetStsInfoAndOssPathResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetStsInfoAndOssPathResponse) String() string {
@@ -2854,6 +3197,11 @@ func (s GetStsInfoAndOssPathResponse) GoString() string {
 
 func (s *GetStsInfoAndOssPathResponse) SetHeaders(v map[string]*string) *GetStsInfoAndOssPathResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetStsInfoAndOssPathResponse) SetStatusCode(v int32) *GetStsInfoAndOssPathResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2904,8 +3252,9 @@ func (s *GrantVirtualBorderRouterResponseBody) SetRequestId(v string) *GrantVirt
 }
 
 type GrantVirtualBorderRouterResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GrantVirtualBorderRouterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GrantVirtualBorderRouterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GrantVirtualBorderRouterResponse) String() string {
@@ -2918,6 +3267,11 @@ func (s GrantVirtualBorderRouterResponse) GoString() string {
 
 func (s *GrantVirtualBorderRouterResponse) SetHeaders(v map[string]*string) *GrantVirtualBorderRouterResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GrantVirtualBorderRouterResponse) SetStatusCode(v int32) *GrantVirtualBorderRouterResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3056,8 +3410,9 @@ func (s *ListAPNsResponseBodyAPNs) SetZoneList(v []*string) *ListAPNsResponseBod
 }
 
 type ListAPNsResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAPNsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAPNsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAPNsResponse) String() string {
@@ -3070,6 +3425,11 @@ func (s ListAPNsResponse) GoString() string {
 
 func (s *ListAPNsResponse) SetHeaders(v map[string]*string) *ListAPNsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListAPNsResponse) SetStatusCode(v int32) *ListAPNsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3268,8 +3628,9 @@ func (s *ListAuthorizationRulesResponseBodyAuthorizationRules) SetSourceCidrs(v 
 }
 
 type ListAuthorizationRulesResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAuthorizationRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAuthorizationRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAuthorizationRulesResponse) String() string {
@@ -3282,6 +3643,11 @@ func (s ListAuthorizationRulesResponse) GoString() string {
 
 func (s *ListAuthorizationRulesResponse) SetHeaders(v map[string]*string) *ListAuthorizationRulesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListAuthorizationRulesResponse) SetStatusCode(v int32) *ListAuthorizationRulesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3426,8 +3792,9 @@ func (s *ListConnectionPoolAllIpsResponseBodyConnectionPoolIps) SetType(v string
 }
 
 type ListConnectionPoolAllIpsResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListConnectionPoolAllIpsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListConnectionPoolAllIpsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListConnectionPoolAllIpsResponse) String() string {
@@ -3440,6 +3807,11 @@ func (s ListConnectionPoolAllIpsResponse) GoString() string {
 
 func (s *ListConnectionPoolAllIpsResponse) SetHeaders(v map[string]*string) *ListConnectionPoolAllIpsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListConnectionPoolAllIpsResponse) SetStatusCode(v int32) *ListConnectionPoolAllIpsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3566,8 +3938,9 @@ func (s *ListConnectionPoolIpsResponseBodyConnectionPoolIps) SetStatus(v string)
 }
 
 type ListConnectionPoolIpsResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListConnectionPoolIpsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListConnectionPoolIpsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListConnectionPoolIpsResponse) String() string {
@@ -3580,6 +3953,11 @@ func (s ListConnectionPoolIpsResponse) GoString() string {
 
 func (s *ListConnectionPoolIpsResponse) SetHeaders(v map[string]*string) *ListConnectionPoolIpsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListConnectionPoolIpsResponse) SetStatusCode(v int32) *ListConnectionPoolIpsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3730,8 +4108,9 @@ func (s *ListConnectionPoolsResponseBodyConnectionPools) SetOperateResultRequest
 }
 
 type ListConnectionPoolsResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListConnectionPoolsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListConnectionPoolsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListConnectionPoolsResponse) String() string {
@@ -3744,6 +4123,11 @@ func (s ListConnectionPoolsResponse) GoString() string {
 
 func (s *ListConnectionPoolsResponse) SetHeaders(v map[string]*string) *ListConnectionPoolsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListConnectionPoolsResponse) SetStatusCode(v int32) *ListConnectionPoolsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3924,8 +4308,9 @@ func (s *ListDNSServiceRulesResponseBodyDNSServiceRules) SetSource(v string) *Li
 }
 
 type ListDNSServiceRulesResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDNSServiceRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDNSServiceRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDNSServiceRulesResponse) String() string {
@@ -3938,6 +4323,11 @@ func (s ListDNSServiceRulesResponse) GoString() string {
 
 func (s *ListDNSServiceRulesResponse) SetHeaders(v map[string]*string) *ListDNSServiceRulesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListDNSServiceRulesResponse) SetStatusCode(v int32) *ListDNSServiceRulesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4118,8 +4508,9 @@ func (s *ListDiagnoseInfoForSingleCardResponseBodyDiagnoseInfo) SetTaskId(v stri
 }
 
 type ListDiagnoseInfoForSingleCardResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListDiagnoseInfoForSingleCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDiagnoseInfoForSingleCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListDiagnoseInfoForSingleCardResponse) String() string {
@@ -4132,6 +4523,11 @@ func (s ListDiagnoseInfoForSingleCardResponse) GoString() string {
 
 func (s *ListDiagnoseInfoForSingleCardResponse) SetHeaders(v map[string]*string) *ListDiagnoseInfoForSingleCardResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListDiagnoseInfoForSingleCardResponse) SetStatusCode(v int32) *ListDiagnoseInfoForSingleCardResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4318,8 +4714,9 @@ func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetSour
 }
 
 type ListGroupAuthorizationRulesResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListGroupAuthorizationRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGroupAuthorizationRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListGroupAuthorizationRulesResponse) String() string {
@@ -4332,6 +4729,11 @@ func (s ListGroupAuthorizationRulesResponse) GoString() string {
 
 func (s *ListGroupAuthorizationRulesResponse) SetHeaders(v map[string]*string) *ListGroupAuthorizationRulesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponse) SetStatusCode(v int32) *ListGroupAuthorizationRulesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4512,8 +4914,9 @@ func (s *ListGroupDNSServiceRulesResponseBodyDNSServiceRules) SetSource(v string
 }
 
 type ListGroupDNSServiceRulesResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListGroupDNSServiceRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGroupDNSServiceRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListGroupDNSServiceRulesResponse) String() string {
@@ -4526,6 +4929,11 @@ func (s ListGroupDNSServiceRulesResponse) GoString() string {
 
 func (s *ListGroupDNSServiceRulesResponse) SetHeaders(v map[string]*string) *ListGroupDNSServiceRulesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListGroupDNSServiceRulesResponse) SetStatusCode(v int32) *ListGroupDNSServiceRulesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4694,8 +5102,9 @@ func (s *ListIoTCloudConnectorAccessSessionLogsResponseBodyAccessSessionLogs) Se
 }
 
 type ListIoTCloudConnectorAccessSessionLogsResponse struct {
-	Headers map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListIoTCloudConnectorAccessSessionLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIoTCloudConnectorAccessSessionLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListIoTCloudConnectorAccessSessionLogsResponse) String() string {
@@ -4708,6 +5117,11 @@ func (s ListIoTCloudConnectorAccessSessionLogsResponse) GoString() string {
 
 func (s *ListIoTCloudConnectorAccessSessionLogsResponse) SetHeaders(v map[string]*string) *ListIoTCloudConnectorAccessSessionLogsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListIoTCloudConnectorAccessSessionLogsResponse) SetStatusCode(v int32) *ListIoTCloudConnectorAccessSessionLogsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4769,8 +5183,9 @@ func (s *ListIoTCloudConnectorAvailableZonesResponseBody) SetRequestId(v string)
 }
 
 type ListIoTCloudConnectorAvailableZonesResponse struct {
-	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListIoTCloudConnectorAvailableZonesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIoTCloudConnectorAvailableZonesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListIoTCloudConnectorAvailableZonesResponse) String() string {
@@ -4783,6 +5198,11 @@ func (s ListIoTCloudConnectorAvailableZonesResponse) GoString() string {
 
 func (s *ListIoTCloudConnectorAvailableZonesResponse) SetHeaders(v map[string]*string) *ListIoTCloudConnectorAvailableZonesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListIoTCloudConnectorAvailableZonesResponse) SetStatusCode(v int32) *ListIoTCloudConnectorAvailableZonesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4980,8 +5400,9 @@ func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudC
 }
 
 type ListIoTCloudConnectorGroupsResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListIoTCloudConnectorGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIoTCloudConnectorGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListIoTCloudConnectorGroupsResponse) String() string {
@@ -4994,6 +5415,11 @@ func (s ListIoTCloudConnectorGroupsResponse) GoString() string {
 
 func (s *ListIoTCloudConnectorGroupsResponse) SetHeaders(v map[string]*string) *ListIoTCloudConnectorGroupsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsResponse) SetStatusCode(v int32) *ListIoTCloudConnectorGroupsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5130,6 +5556,8 @@ type ListIoTCloudConnectorsResponseBodyIoTCloudConnectors struct {
 	IoTCloudConnectorId             *string   `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
 	IoTCloudConnectorName           *string   `json:"IoTCloudConnectorName,omitempty" xml:"IoTCloudConnectorName,omitempty"`
 	IoTCloudConnectorStatus         *string   `json:"IoTCloudConnectorStatus,omitempty" xml:"IoTCloudConnectorStatus,omitempty"`
+	IpFeature                       *string   `json:"IpFeature,omitempty" xml:"IpFeature,omitempty"`
+	Mode                            *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	ModifyTime                      *int64    `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	RateLimit                       *int64    `json:"RateLimit,omitempty" xml:"RateLimit,omitempty"`
 	VSwitchList                     []*string `json:"VSwitchList,omitempty" xml:"VSwitchList,omitempty" type:"Repeated"`
@@ -5190,6 +5618,16 @@ func (s *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors) SetIoTCloudConnec
 	return s
 }
 
+func (s *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors) SetIpFeature(v string) *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors {
+	s.IpFeature = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors) SetMode(v string) *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors {
+	s.Mode = &v
+	return s
+}
+
 func (s *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors) SetModifyTime(v int64) *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors {
 	s.ModifyTime = &v
 	return s
@@ -5216,8 +5654,9 @@ func (s *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors) SetWildcardDomain
 }
 
 type ListIoTCloudConnectorsResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListIoTCloudConnectorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIoTCloudConnectorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListIoTCloudConnectorsResponse) String() string {
@@ -5233,7 +5672,158 @@ func (s *ListIoTCloudConnectorsResponse) SetHeaders(v map[string]*string) *ListI
 	return s
 }
 
+func (s *ListIoTCloudConnectorsResponse) SetStatusCode(v int32) *ListIoTCloudConnectorsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListIoTCloudConnectorsResponse) SetBody(v *ListIoTCloudConnectorsResponseBody) *ListIoTCloudConnectorsResponse {
+	s.Body = v
+	return s
+}
+
+type ListIoTCoudConnectorBackhaulRouteRequest struct {
+	IoTCloudConnectorId *string `json:"IoTCloudConnectorId,omitempty" xml:"IoTCloudConnectorId,omitempty"`
+	MaxResults          *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken           *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s ListIoTCoudConnectorBackhaulRouteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIoTCoudConnectorBackhaulRouteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListIoTCoudConnectorBackhaulRouteRequest) SetIoTCloudConnectorId(v string) *ListIoTCoudConnectorBackhaulRouteRequest {
+	s.IoTCloudConnectorId = &v
+	return s
+}
+
+func (s *ListIoTCoudConnectorBackhaulRouteRequest) SetMaxResults(v int32) *ListIoTCoudConnectorBackhaulRouteRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListIoTCoudConnectorBackhaulRouteRequest) SetNextToken(v string) *ListIoTCoudConnectorBackhaulRouteRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListIoTCoudConnectorBackhaulRouteRequest) SetRegionId(v string) *ListIoTCoudConnectorBackhaulRouteRequest {
+	s.RegionId = &v
+	return s
+}
+
+type ListIoTCoudConnectorBackhaulRouteResponseBody struct {
+	MaxResults *int32                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                                `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Routes     []*ListIoTCoudConnectorBackhaulRouteResponseBodyRoutes `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
+	TotalCount *int32                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListIoTCoudConnectorBackhaulRouteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIoTCoudConnectorBackhaulRouteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListIoTCoudConnectorBackhaulRouteResponseBody) SetMaxResults(v int32) *ListIoTCoudConnectorBackhaulRouteResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *ListIoTCoudConnectorBackhaulRouteResponseBody) SetNextToken(v string) *ListIoTCoudConnectorBackhaulRouteResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListIoTCoudConnectorBackhaulRouteResponseBody) SetRequestId(v string) *ListIoTCoudConnectorBackhaulRouteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListIoTCoudConnectorBackhaulRouteResponseBody) SetRoutes(v []*ListIoTCoudConnectorBackhaulRouteResponseBodyRoutes) *ListIoTCoudConnectorBackhaulRouteResponseBody {
+	s.Routes = v
+	return s
+}
+
+func (s *ListIoTCoudConnectorBackhaulRouteResponseBody) SetTotalCount(v int32) *ListIoTCoudConnectorBackhaulRouteResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListIoTCoudConnectorBackhaulRouteResponseBodyRoutes struct {
+	Description          *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
+	NextHopId            *string `json:"NextHopId,omitempty" xml:"NextHopId,omitempty"`
+	NextHopType          *string `json:"NextHopType,omitempty" xml:"NextHopType,omitempty"`
+	Status               *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListIoTCoudConnectorBackhaulRouteResponseBodyRoutes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIoTCoudConnectorBackhaulRouteResponseBodyRoutes) GoString() string {
+	return s.String()
+}
+
+func (s *ListIoTCoudConnectorBackhaulRouteResponseBodyRoutes) SetDescription(v string) *ListIoTCoudConnectorBackhaulRouteResponseBodyRoutes {
+	s.Description = &v
+	return s
+}
+
+func (s *ListIoTCoudConnectorBackhaulRouteResponseBodyRoutes) SetDestinationCidrBlock(v string) *ListIoTCoudConnectorBackhaulRouteResponseBodyRoutes {
+	s.DestinationCidrBlock = &v
+	return s
+}
+
+func (s *ListIoTCoudConnectorBackhaulRouteResponseBodyRoutes) SetNextHopId(v string) *ListIoTCoudConnectorBackhaulRouteResponseBodyRoutes {
+	s.NextHopId = &v
+	return s
+}
+
+func (s *ListIoTCoudConnectorBackhaulRouteResponseBodyRoutes) SetNextHopType(v string) *ListIoTCoudConnectorBackhaulRouteResponseBodyRoutes {
+	s.NextHopType = &v
+	return s
+}
+
+func (s *ListIoTCoudConnectorBackhaulRouteResponseBodyRoutes) SetStatus(v string) *ListIoTCoudConnectorBackhaulRouteResponseBodyRoutes {
+	s.Status = &v
+	return s
+}
+
+type ListIoTCoudConnectorBackhaulRouteResponse struct {
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListIoTCoudConnectorBackhaulRouteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListIoTCoudConnectorBackhaulRouteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListIoTCoudConnectorBackhaulRouteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListIoTCoudConnectorBackhaulRouteResponse) SetHeaders(v map[string]*string) *ListIoTCoudConnectorBackhaulRouteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListIoTCoudConnectorBackhaulRouteResponse) SetStatusCode(v int32) *ListIoTCoudConnectorBackhaulRouteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListIoTCoudConnectorBackhaulRouteResponse) SetBody(v *ListIoTCoudConnectorBackhaulRouteResponseBody) *ListIoTCoudConnectorBackhaulRouteResponse {
 	s.Body = v
 	return s
 }
@@ -5314,8 +5904,9 @@ func (s *ListRegionsResponseBodyRegions) SetRegionId(v string) *ListRegionsRespo
 }
 
 type ListRegionsResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListRegionsResponse) String() string {
@@ -5328,6 +5919,11 @@ func (s ListRegionsResponse) GoString() string {
 
 func (s *ListRegionsResponse) SetHeaders(v map[string]*string) *ListRegionsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListRegionsResponse) SetStatusCode(v int32) *ListRegionsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5472,8 +6068,9 @@ func (s *ListServiceResponseBodyServices) SetServiceStatus(v string) *ListServic
 }
 
 type ListServiceResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListServiceResponse) String() string {
@@ -5486,6 +6083,11 @@ func (s ListServiceResponse) GoString() string {
 
 func (s *ListServiceResponse) SetHeaders(v map[string]*string) *ListServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListServiceResponse) SetStatusCode(v int32) *ListServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5660,8 +6262,9 @@ func (s *ListServiceEntriesResponseBodyServiceEntries) SetTargetType(v string) *
 }
 
 type ListServiceEntriesResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListServiceEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListServiceEntriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListServiceEntriesResponse) String() string {
@@ -5674,6 +6277,11 @@ func (s ListServiceEntriesResponse) GoString() string {
 
 func (s *ListServiceEntriesResponse) SetHeaders(v map[string]*string) *ListServiceEntriesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListServiceEntriesResponse) SetStatusCode(v int32) *ListServiceEntriesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5741,8 +6349,9 @@ func (s *MoveAuthorizationRuleToDNSServiceResponseBody) SetRequestId(v string) *
 }
 
 type MoveAuthorizationRuleToDNSServiceResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *MoveAuthorizationRuleToDNSServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *MoveAuthorizationRuleToDNSServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s MoveAuthorizationRuleToDNSServiceResponse) String() string {
@@ -5755,6 +6364,11 @@ func (s MoveAuthorizationRuleToDNSServiceResponse) GoString() string {
 
 func (s *MoveAuthorizationRuleToDNSServiceResponse) SetHeaders(v map[string]*string) *MoveAuthorizationRuleToDNSServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *MoveAuthorizationRuleToDNSServiceResponse) SetStatusCode(v int32) *MoveAuthorizationRuleToDNSServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5822,8 +6436,9 @@ func (s *MoveGroupAuthorizationRuleToDNSServiceResponseBody) SetRequestId(v stri
 }
 
 type MoveGroupAuthorizationRuleToDNSServiceResponse struct {
-	Headers map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *MoveGroupAuthorizationRuleToDNSServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *MoveGroupAuthorizationRuleToDNSServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s MoveGroupAuthorizationRuleToDNSServiceResponse) String() string {
@@ -5836,6 +6451,11 @@ func (s MoveGroupAuthorizationRuleToDNSServiceResponse) GoString() string {
 
 func (s *MoveGroupAuthorizationRuleToDNSServiceResponse) SetHeaders(v map[string]*string) *MoveGroupAuthorizationRuleToDNSServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *MoveGroupAuthorizationRuleToDNSServiceResponse) SetStatusCode(v int32) *MoveGroupAuthorizationRuleToDNSServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5879,8 +6499,9 @@ func (s *OpenIoTCloudConnectorServiceResponseBody) SetRequestId(v string) *OpenI
 }
 
 type OpenIoTCloudConnectorServiceResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *OpenIoTCloudConnectorServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OpenIoTCloudConnectorServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s OpenIoTCloudConnectorServiceResponse) String() string {
@@ -5893,6 +6514,11 @@ func (s OpenIoTCloudConnectorServiceResponse) GoString() string {
 
 func (s *OpenIoTCloudConnectorServiceResponse) SetHeaders(v map[string]*string) *OpenIoTCloudConnectorServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *OpenIoTCloudConnectorServiceResponse) SetStatusCode(v int32) *OpenIoTCloudConnectorServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5960,8 +6586,9 @@ func (s *RemoveIoTCloudConnectorFromGroupResponseBody) SetRequestId(v string) *R
 }
 
 type RemoveIoTCloudConnectorFromGroupResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveIoTCloudConnectorFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveIoTCloudConnectorFromGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RemoveIoTCloudConnectorFromGroupResponse) String() string {
@@ -5974,6 +6601,11 @@ func (s RemoveIoTCloudConnectorFromGroupResponse) GoString() string {
 
 func (s *RemoveIoTCloudConnectorFromGroupResponse) SetHeaders(v map[string]*string) *RemoveIoTCloudConnectorFromGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RemoveIoTCloudConnectorFromGroupResponse) SetStatusCode(v int32) *RemoveIoTCloudConnectorFromGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6071,8 +6703,9 @@ func (s *SubmitDiagnoseTaskForSingleCardResponseBody) SetRequestId(v string) *Su
 }
 
 type SubmitDiagnoseTaskForSingleCardResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SubmitDiagnoseTaskForSingleCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SubmitDiagnoseTaskForSingleCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SubmitDiagnoseTaskForSingleCardResponse) String() string {
@@ -6085,6 +6718,11 @@ func (s SubmitDiagnoseTaskForSingleCardResponse) GoString() string {
 
 func (s *SubmitDiagnoseTaskForSingleCardResponse) SetHeaders(v map[string]*string) *SubmitDiagnoseTaskForSingleCardResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SubmitDiagnoseTaskForSingleCardResponse) SetStatusCode(v int32) *SubmitDiagnoseTaskForSingleCardResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6188,8 +6826,9 @@ func (s *UpdateAuthorizationRuleAttributeResponseBody) SetRequestId(v string) *U
 }
 
 type UpdateAuthorizationRuleAttributeResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateAuthorizationRuleAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateAuthorizationRuleAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateAuthorizationRuleAttributeResponse) String() string {
@@ -6202,6 +6841,11 @@ func (s UpdateAuthorizationRuleAttributeResponse) GoString() string {
 
 func (s *UpdateAuthorizationRuleAttributeResponse) SetHeaders(v map[string]*string) *UpdateAuthorizationRuleAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateAuthorizationRuleAttributeResponse) SetStatusCode(v int32) *UpdateAuthorizationRuleAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6293,8 +6937,9 @@ func (s *UpdateConnectionPoolAttributeResponseBody) SetRequestId(v string) *Upda
 }
 
 type UpdateConnectionPoolAttributeResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateConnectionPoolAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateConnectionPoolAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateConnectionPoolAttributeResponse) String() string {
@@ -6307,6 +6952,11 @@ func (s UpdateConnectionPoolAttributeResponse) GoString() string {
 
 func (s *UpdateConnectionPoolAttributeResponse) SetHeaders(v map[string]*string) *UpdateConnectionPoolAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateConnectionPoolAttributeResponse) SetStatusCode(v int32) *UpdateConnectionPoolAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6404,8 +7054,9 @@ func (s *UpdateDNSServiceRuleAttributeResponseBody) SetRequestId(v string) *Upda
 }
 
 type UpdateDNSServiceRuleAttributeResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateDNSServiceRuleAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateDNSServiceRuleAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateDNSServiceRuleAttributeResponse) String() string {
@@ -6418,6 +7069,11 @@ func (s UpdateDNSServiceRuleAttributeResponse) GoString() string {
 
 func (s *UpdateDNSServiceRuleAttributeResponse) SetHeaders(v map[string]*string) *UpdateDNSServiceRuleAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateDNSServiceRuleAttributeResponse) SetStatusCode(v int32) *UpdateDNSServiceRuleAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6533,8 +7189,9 @@ func (s *UpdateGroupAuthorizationRuleAttributeResponseBody) SetRequestId(v strin
 }
 
 type UpdateGroupAuthorizationRuleAttributeResponse struct {
-	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateGroupAuthorizationRuleAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGroupAuthorizationRuleAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateGroupAuthorizationRuleAttributeResponse) String() string {
@@ -6547,6 +7204,11 @@ func (s UpdateGroupAuthorizationRuleAttributeResponse) GoString() string {
 
 func (s *UpdateGroupAuthorizationRuleAttributeResponse) SetHeaders(v map[string]*string) *UpdateGroupAuthorizationRuleAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateGroupAuthorizationRuleAttributeResponse) SetStatusCode(v int32) *UpdateGroupAuthorizationRuleAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6644,8 +7306,9 @@ func (s *UpdateGroupDNSServiceRuleAttributeResponseBody) SetRequestId(v string) 
 }
 
 type UpdateGroupDNSServiceRuleAttributeResponse struct {
-	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateGroupDNSServiceRuleAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGroupDNSServiceRuleAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateGroupDNSServiceRuleAttributeResponse) String() string {
@@ -6658,6 +7321,11 @@ func (s UpdateGroupDNSServiceRuleAttributeResponse) GoString() string {
 
 func (s *UpdateGroupDNSServiceRuleAttributeResponse) SetHeaders(v map[string]*string) *UpdateGroupDNSServiceRuleAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateGroupDNSServiceRuleAttributeResponse) SetStatusCode(v int32) *UpdateGroupDNSServiceRuleAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6743,8 +7411,9 @@ func (s *UpdateIoTCloudConnectorAttributeResponseBody) SetResourceId(v string) *
 }
 
 type UpdateIoTCloudConnectorAttributeResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateIoTCloudConnectorAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateIoTCloudConnectorAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateIoTCloudConnectorAttributeResponse) String() string {
@@ -6757,6 +7426,11 @@ func (s UpdateIoTCloudConnectorAttributeResponse) GoString() string {
 
 func (s *UpdateIoTCloudConnectorAttributeResponse) SetHeaders(v map[string]*string) *UpdateIoTCloudConnectorAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateIoTCloudConnectorAttributeResponse) SetStatusCode(v int32) *UpdateIoTCloudConnectorAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6830,8 +7504,9 @@ func (s *UpdateIoTCloudConnectorGroupAttributeResponseBody) SetRequestId(v strin
 }
 
 type UpdateIoTCloudConnectorGroupAttributeResponse struct {
-	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateIoTCloudConnectorGroupAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateIoTCloudConnectorGroupAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateIoTCloudConnectorGroupAttributeResponse) String() string {
@@ -6844,6 +7519,11 @@ func (s UpdateIoTCloudConnectorGroupAttributeResponse) GoString() string {
 
 func (s *UpdateIoTCloudConnectorGroupAttributeResponse) SetHeaders(v map[string]*string) *UpdateIoTCloudConnectorGroupAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateIoTCloudConnectorGroupAttributeResponse) SetStatusCode(v int32) *UpdateIoTCloudConnectorGroupAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6923,8 +7603,9 @@ func (s *UpdateServiceAttributeResponseBody) SetRequestId(v string) *UpdateServi
 }
 
 type UpdateServiceAttributeResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateServiceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateServiceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateServiceAttributeResponse) String() string {
@@ -6937,6 +7618,11 @@ func (s UpdateServiceAttributeResponse) GoString() string {
 
 func (s *UpdateServiceAttributeResponse) SetHeaders(v map[string]*string) *UpdateServiceAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateServiceAttributeResponse) SetStatusCode(v int32) *UpdateServiceAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7022,8 +7708,9 @@ func (s *UpdateServiceEntryAttributeResponseBody) SetRequestId(v string) *Update
 }
 
 type UpdateServiceEntryAttributeResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateServiceEntryAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateServiceEntryAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateServiceEntryAttributeResponse) String() string {
@@ -7036,6 +7723,11 @@ func (s UpdateServiceEntryAttributeResponse) GoString() string {
 
 func (s *UpdateServiceEntryAttributeResponse) SetHeaders(v map[string]*string) *UpdateServiceEntryAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateServiceEntryAttributeResponse) SetStatusCode(v int32) *UpdateServiceEntryAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7807,6 +8499,62 @@ func (client *Client) CreateIoTCloudConnector(request *CreateIoTCloudConnectorRe
 	return _result, _err
 }
 
+func (client *Client) CreateIoTCloudConnectorBackhaulRouteWithOptions(request *CreateIoTCloudConnectorBackhaulRouteRequest, runtime *util.RuntimeOptions) (_result *CreateIoTCloudConnectorBackhaulRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateIoTCloudConnectorBackhaulRoute"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateIoTCloudConnectorBackhaulRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateIoTCloudConnectorBackhaulRoute(request *CreateIoTCloudConnectorBackhaulRouteRequest) (_result *CreateIoTCloudConnectorBackhaulRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateIoTCloudConnectorBackhaulRouteResponse{}
+	_body, _err := client.CreateIoTCloudConnectorBackhaulRouteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateIoTCloudConnectorGroupWithOptions(request *CreateIoTCloudConnectorGroupRequest, runtime *util.RuntimeOptions) (_result *CreateIoTCloudConnectorGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8412,6 +9160,62 @@ func (client *Client) DeleteIoTCloudConnectorGroup(request *DeleteIoTCloudConnec
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteIoTCloudConnectorGroupResponse{}
 	_body, _err := client.DeleteIoTCloudConnectorGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteIoTCloudConnetorBackhaulRouteWithOptions(request *DeleteIoTCloudConnetorBackhaulRouteRequest, runtime *util.RuntimeOptions) (_result *DeleteIoTCloudConnetorBackhaulRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteIoTCloudConnetorBackhaulRoute"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteIoTCloudConnetorBackhaulRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteIoTCloudConnetorBackhaulRoute(request *DeleteIoTCloudConnetorBackhaulRouteRequest) (_result *DeleteIoTCloudConnetorBackhaulRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteIoTCloudConnetorBackhaulRouteResponse{}
+	_body, _err := client.DeleteIoTCloudConnetorBackhaulRouteWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9968,6 +10772,62 @@ func (client *Client) ListIoTCloudConnectors(request *ListIoTCloudConnectorsRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &ListIoTCloudConnectorsResponse{}
 	_body, _err := client.ListIoTCloudConnectorsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListIoTCoudConnectorBackhaulRouteWithOptions(request *ListIoTCoudConnectorBackhaulRouteRequest, runtime *util.RuntimeOptions) (_result *ListIoTCoudConnectorBackhaulRouteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IoTCloudConnectorId)) {
+		query["IoTCloudConnectorId"] = request.IoTCloudConnectorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListIoTCoudConnectorBackhaulRoute"),
+		Version:     tea.String("2021-05-13"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListIoTCoudConnectorBackhaulRouteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListIoTCoudConnectorBackhaulRoute(request *ListIoTCoudConnectorBackhaulRouteRequest) (_result *ListIoTCoudConnectorBackhaulRouteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListIoTCoudConnectorBackhaulRouteResponse{}
+	_body, _err := client.ListIoTCoudConnectorBackhaulRouteWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
