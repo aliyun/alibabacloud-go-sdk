@@ -49,8 +49,9 @@ func (s *DeleteAppExpMetricRuleResponseBody) SetRequestId(v string) *DeleteAppEx
 }
 
 type DeleteAppExpMetricRuleResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteAppExpMetricRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAppExpMetricRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteAppExpMetricRuleResponse) String() string {
@@ -63,6 +64,11 @@ func (s DeleteAppExpMetricRuleResponse) GoString() string {
 
 func (s *DeleteAppExpMetricRuleResponse) SetHeaders(v map[string]*string) *DeleteAppExpMetricRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteAppExpMetricRuleResponse) SetStatusCode(v int32) *DeleteAppExpMetricRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -108,8 +114,9 @@ func (s *DeleteAppFollowCallRuleResponseBody) SetRequestId(v string) *DeleteAppF
 }
 
 type DeleteAppFollowCallRuleResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteAppFollowCallRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAppFollowCallRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteAppFollowCallRuleResponse) String() string {
@@ -122,6 +129,11 @@ func (s DeleteAppFollowCallRuleResponse) GoString() string {
 
 func (s *DeleteAppFollowCallRuleResponse) SetHeaders(v map[string]*string) *DeleteAppFollowCallRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteAppFollowCallRuleResponse) SetStatusCode(v int32) *DeleteAppFollowCallRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -192,8 +204,9 @@ func (s *DescribeAppConfigResponseBodyThresholdConfig) SetJoinSlowTime(v int64) 
 }
 
 type DescribeAppConfigResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAppConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAppConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeAppConfigResponse) String() string {
@@ -206,6 +219,11 @@ func (s DescribeAppConfigResponse) GoString() string {
 
 func (s *DescribeAppConfigResponse) SetHeaders(v map[string]*string) *DescribeAppConfigResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppConfigResponse) SetStatusCode(v int32) *DescribeAppConfigResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -309,8 +327,9 @@ func (s *DescribeAppExpMetricRuleResponseBodyAppExpMetricRule) SetRule(v string)
 }
 
 type DescribeAppExpMetricRuleResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAppExpMetricRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAppExpMetricRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeAppExpMetricRuleResponse) String() string {
@@ -323,6 +342,11 @@ func (s DescribeAppExpMetricRuleResponse) GoString() string {
 
 func (s *DescribeAppExpMetricRuleResponse) SetHeaders(v map[string]*string) *DescribeAppExpMetricRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppExpMetricRuleResponse) SetStatusCode(v int32) *DescribeAppExpMetricRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -408,8 +432,9 @@ func (s *DescribeAppExpMetricRuleListResponseBodyAppExpMetricRuleList) SetRule(v
 }
 
 type DescribeAppExpMetricRuleListResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAppExpMetricRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAppExpMetricRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeAppExpMetricRuleListResponse) String() string {
@@ -422,6 +447,11 @@ func (s DescribeAppExpMetricRuleListResponse) GoString() string {
 
 func (s *DescribeAppExpMetricRuleListResponse) SetHeaders(v map[string]*string) *DescribeAppExpMetricRuleListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppExpMetricRuleListResponse) SetStatusCode(v int32) *DescribeAppExpMetricRuleListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -525,8 +555,9 @@ func (s *DescribeAppFollowCallRuleResponseBodyAppFollowCallRule) SetRule(v strin
 }
 
 type DescribeAppFollowCallRuleResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAppFollowCallRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAppFollowCallRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeAppFollowCallRuleResponse) String() string {
@@ -539,6 +570,11 @@ func (s DescribeAppFollowCallRuleResponse) GoString() string {
 
 func (s *DescribeAppFollowCallRuleResponse) SetHeaders(v map[string]*string) *DescribeAppFollowCallRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppFollowCallRuleResponse) SetStatusCode(v int32) *DescribeAppFollowCallRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -626,8 +662,9 @@ func (s *DescribeAppFollowCallRuleListResponseBodyAppFollowCallRuleList) SetRule
 }
 
 type DescribeAppFollowCallRuleListResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAppFollowCallRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAppFollowCallRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeAppFollowCallRuleListResponse) String() string {
@@ -640,6 +677,11 @@ func (s DescribeAppFollowCallRuleListResponse) GoString() string {
 
 func (s *DescribeAppFollowCallRuleListResponse) SetHeaders(v map[string]*string) *DescribeAppFollowCallRuleListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeAppFollowCallRuleListResponse) SetStatusCode(v int32) *DescribeAppFollowCallRuleListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -798,7 +840,9 @@ type DescribeCallResponseBodyUserDetailList struct {
 	// 通话时长，首次进入到最后离开，单位：秒。
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// 地理位置信息，例如：北京市-北京市
-	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	Location   *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	LocationCn *string `json:"LocationCn,omitempty" xml:"LocationCn,omitempty"`
+	LocationEn *string `json:"LocationEn,omitempty" xml:"LocationEn,omitempty"`
 	// 网络类型，如WiFi，4G等
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// 网络类型，如WiFi，4G等
@@ -858,6 +902,16 @@ func (s *DescribeCallResponseBodyUserDetailList) SetDuration(v int64) *DescribeC
 
 func (s *DescribeCallResponseBodyUserDetailList) SetLocation(v string) *DescribeCallResponseBodyUserDetailList {
 	s.Location = &v
+	return s
+}
+
+func (s *DescribeCallResponseBodyUserDetailList) SetLocationCn(v string) *DescribeCallResponseBodyUserDetailList {
+	s.LocationCn = &v
+	return s
+}
+
+func (s *DescribeCallResponseBodyUserDetailList) SetLocationEn(v string) *DescribeCallResponseBodyUserDetailList {
+	s.LocationEn = &v
 	return s
 }
 
@@ -1023,8 +1077,9 @@ func (s *DescribeCallResponseBodyUserDetailListOnlinePeriods) SetLeaveTs(v int64
 }
 
 type DescribeCallResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCallResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCallResponse) String() string {
@@ -1040,7 +1095,146 @@ func (s *DescribeCallResponse) SetHeaders(v map[string]*string) *DescribeCallRes
 	return s
 }
 
+func (s *DescribeCallResponse) SetStatusCode(v int32) *DescribeCallResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeCallResponse) SetBody(v *DescribeCallResponseBody) *DescribeCallResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCallInfoRequest struct {
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+}
+
+func (s DescribeCallInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCallInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCallInfoRequest) SetAppId(v string) *DescribeCallInfoRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeCallInfoRequest) SetChannelId(v string) *DescribeCallInfoRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *DescribeCallInfoRequest) SetCreatedTs(v int64) *DescribeCallInfoRequest {
+	s.CreatedTs = &v
+	return s
+}
+
+func (s *DescribeCallInfoRequest) SetDestroyedTs(v int64) *DescribeCallInfoRequest {
+	s.DestroyedTs = &v
+	return s
+}
+
+type DescribeCallInfoResponseBody struct {
+	CallInfo  *DescribeCallInfoResponseBodyCallInfo `json:"CallInfo,omitempty" xml:"CallInfo,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeCallInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCallInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCallInfoResponseBody) SetCallInfo(v *DescribeCallInfoResponseBodyCallInfo) *DescribeCallInfoResponseBody {
+	s.CallInfo = v
+	return s
+}
+
+func (s *DescribeCallInfoResponseBody) SetRequestId(v string) *DescribeCallInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeCallInfoResponseBodyCallInfo struct {
+	AppId       *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	CallStatus  *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
+	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CreatedTs   *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	Duration    *int64  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+}
+
+func (s DescribeCallInfoResponseBodyCallInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCallInfoResponseBodyCallInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCallInfoResponseBodyCallInfo) SetAppId(v string) *DescribeCallInfoResponseBodyCallInfo {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeCallInfoResponseBodyCallInfo) SetCallStatus(v string) *DescribeCallInfoResponseBodyCallInfo {
+	s.CallStatus = &v
+	return s
+}
+
+func (s *DescribeCallInfoResponseBodyCallInfo) SetChannelId(v string) *DescribeCallInfoResponseBodyCallInfo {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *DescribeCallInfoResponseBodyCallInfo) SetCreatedTs(v int64) *DescribeCallInfoResponseBodyCallInfo {
+	s.CreatedTs = &v
+	return s
+}
+
+func (s *DescribeCallInfoResponseBodyCallInfo) SetDestroyedTs(v int64) *DescribeCallInfoResponseBodyCallInfo {
+	s.DestroyedTs = &v
+	return s
+}
+
+func (s *DescribeCallInfoResponseBodyCallInfo) SetDuration(v int64) *DescribeCallInfoResponseBodyCallInfo {
+	s.Duration = &v
+	return s
+}
+
+type DescribeCallInfoResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCallInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCallInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCallInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCallInfoResponse) SetHeaders(v map[string]*string) *DescribeCallInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCallInfoResponse) SetStatusCode(v int32) *DescribeCallInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCallInfoResponse) SetBody(v *DescribeCallInfoResponseBody) *DescribeCallInfoResponse {
 	s.Body = v
 	return s
 }
@@ -1240,8 +1434,9 @@ func (s *DescribeCallListResponseBodyCallList) SetUserCnt(v int32) *DescribeCall
 }
 
 type DescribeCallListResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCallListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCallListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCallListResponse) String() string {
@@ -1254,6 +1449,11 @@ func (s DescribeCallListResponse) GoString() string {
 
 func (s *DescribeCallListResponse) SetHeaders(v map[string]*string) *DescribeCallListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCallListResponse) SetStatusCode(v int32) *DescribeCallListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1310,8 +1510,9 @@ func (s *DescribeCallListTestResponseBody) SetRequestId(v string) *DescribeCallL
 }
 
 type DescribeCallListTestResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCallListTestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCallListTestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCallListTestResponse) String() string {
@@ -1324,6 +1525,11 @@ func (s DescribeCallListTestResponse) GoString() string {
 
 func (s *DescribeCallListTestResponse) SetHeaders(v map[string]*string) *DescribeCallListTestResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCallListTestResponse) SetStatusCode(v int32) *DescribeCallListTestResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1422,8 +1628,9 @@ func (s *DescribeCallUserExpResponseBodyExpInfoList) SetUserId(v string) *Descri
 }
 
 type DescribeCallUserExpResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCallUserExpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCallUserExpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCallUserExpResponse) String() string {
@@ -1439,7 +1646,367 @@ func (s *DescribeCallUserExpResponse) SetHeaders(v map[string]*string) *Describe
 	return s
 }
 
+func (s *DescribeCallUserExpResponse) SetStatusCode(v int32) *DescribeCallUserExpResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeCallUserExpResponse) SetBody(v *DescribeCallUserExpResponseBody) *DescribeCallUserExpResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCallUserListRequest struct {
+	// A short description of struct
+	AppId        *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ChannelId    *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	CreatedTs    *int64  `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs  *int64  `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	ExtDataType  *string `json:"ExtDataType,omitempty" xml:"ExtDataType,omitempty"`
+	PageNo       *int32  `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryExpInfo *bool   `json:"QueryExpInfo,omitempty" xml:"QueryExpInfo,omitempty"`
+	RoleType     *string `json:"RoleType,omitempty" xml:"RoleType,omitempty"`
+	UserId       *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeCallUserListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCallUserListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCallUserListRequest) SetAppId(v string) *DescribeCallUserListRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeCallUserListRequest) SetChannelId(v string) *DescribeCallUserListRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *DescribeCallUserListRequest) SetCreatedTs(v int64) *DescribeCallUserListRequest {
+	s.CreatedTs = &v
+	return s
+}
+
+func (s *DescribeCallUserListRequest) SetDestroyedTs(v int64) *DescribeCallUserListRequest {
+	s.DestroyedTs = &v
+	return s
+}
+
+func (s *DescribeCallUserListRequest) SetExtDataType(v string) *DescribeCallUserListRequest {
+	s.ExtDataType = &v
+	return s
+}
+
+func (s *DescribeCallUserListRequest) SetPageNo(v int32) *DescribeCallUserListRequest {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribeCallUserListRequest) SetPageSize(v int32) *DescribeCallUserListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCallUserListRequest) SetQueryExpInfo(v bool) *DescribeCallUserListRequest {
+	s.QueryExpInfo = &v
+	return s
+}
+
+func (s *DescribeCallUserListRequest) SetRoleType(v string) *DescribeCallUserListRequest {
+	s.RoleType = &v
+	return s
+}
+
+func (s *DescribeCallUserListRequest) SetUserId(v string) *DescribeCallUserListRequest {
+	s.UserId = &v
+	return s
+}
+
+type DescribeCallUserListResponseBody struct {
+	PageNo         *int32                                            `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	PageSize       *int32                                            `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCnt       *int32                                            `json:"TotalCnt,omitempty" xml:"TotalCnt,omitempty"`
+	UserDetailList []*DescribeCallUserListResponseBodyUserDetailList `json:"UserDetailList,omitempty" xml:"UserDetailList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCallUserListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCallUserListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCallUserListResponseBody) SetPageNo(v int32) *DescribeCallUserListResponseBody {
+	s.PageNo = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBody) SetPageSize(v int32) *DescribeCallUserListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBody) SetRequestId(v string) *DescribeCallUserListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBody) SetTotalCnt(v int32) *DescribeCallUserListResponseBody {
+	s.TotalCnt = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBody) SetUserDetailList(v []*DescribeCallUserListResponseBodyUserDetailList) *DescribeCallUserListResponseBody {
+	s.UserDetailList = v
+	return s
+}
+
+type DescribeCallUserListResponseBodyUserDetailList struct {
+	CallExp           *string                                                          `json:"CallExp,omitempty" xml:"CallExp,omitempty"`
+	CreatedTs         *int64                                                           `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	DestroyedTs       *int64                                                           `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	DurMetricStatData *DescribeCallUserListResponseBodyUserDetailListDurMetricStatData `json:"DurMetricStatData,omitempty" xml:"DurMetricStatData,omitempty" type:"Struct"`
+	Duration          *int64                                                           `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Location          *string                                                          `json:"Location,omitempty" xml:"Location,omitempty"`
+	LocationCn        *string                                                          `json:"LocationCn,omitempty" xml:"LocationCn,omitempty"`
+	LocationEn        *string                                                          `json:"LocationEn,omitempty" xml:"LocationEn,omitempty"`
+	Network           *string                                                          `json:"Network,omitempty" xml:"Network,omitempty"`
+	NetworkList       []*string                                                        `json:"NetworkList,omitempty" xml:"NetworkList,omitempty" type:"Repeated"`
+	OnlineDuration    *int64                                                           `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
+	OnlinePeriods     []*DescribeCallUserListResponseBodyUserDetailListOnlinePeriods   `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
+	Os                *string                                                          `json:"Os,omitempty" xml:"Os,omitempty"`
+	OsList            []*string                                                        `json:"OsList,omitempty" xml:"OsList,omitempty" type:"Repeated"`
+	Roles             []*string                                                        `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	SdkVersion        *string                                                          `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
+	SdkVersionList    []*string                                                        `json:"SdkVersionList,omitempty" xml:"SdkVersionList,omitempty" type:"Repeated"`
+	UserId            *string                                                          `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserIdAlias       *string                                                          `json:"UserIdAlias,omitempty" xml:"UserIdAlias,omitempty"`
+}
+
+func (s DescribeCallUserListResponseBodyUserDetailList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCallUserListResponseBodyUserDetailList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailList) SetCallExp(v string) *DescribeCallUserListResponseBodyUserDetailList {
+	s.CallExp = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailList) SetCreatedTs(v int64) *DescribeCallUserListResponseBodyUserDetailList {
+	s.CreatedTs = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailList) SetDestroyedTs(v int64) *DescribeCallUserListResponseBodyUserDetailList {
+	s.DestroyedTs = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailList) SetDurMetricStatData(v *DescribeCallUserListResponseBodyUserDetailListDurMetricStatData) *DescribeCallUserListResponseBodyUserDetailList {
+	s.DurMetricStatData = v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailList) SetDuration(v int64) *DescribeCallUserListResponseBodyUserDetailList {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailList) SetLocation(v string) *DescribeCallUserListResponseBodyUserDetailList {
+	s.Location = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailList) SetLocationCn(v string) *DescribeCallUserListResponseBodyUserDetailList {
+	s.LocationCn = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailList) SetLocationEn(v string) *DescribeCallUserListResponseBodyUserDetailList {
+	s.LocationEn = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailList) SetNetwork(v string) *DescribeCallUserListResponseBodyUserDetailList {
+	s.Network = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailList) SetNetworkList(v []*string) *DescribeCallUserListResponseBodyUserDetailList {
+	s.NetworkList = v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailList) SetOnlineDuration(v int64) *DescribeCallUserListResponseBodyUserDetailList {
+	s.OnlineDuration = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailList) SetOnlinePeriods(v []*DescribeCallUserListResponseBodyUserDetailListOnlinePeriods) *DescribeCallUserListResponseBodyUserDetailList {
+	s.OnlinePeriods = v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailList) SetOs(v string) *DescribeCallUserListResponseBodyUserDetailList {
+	s.Os = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailList) SetOsList(v []*string) *DescribeCallUserListResponseBodyUserDetailList {
+	s.OsList = v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailList) SetRoles(v []*string) *DescribeCallUserListResponseBodyUserDetailList {
+	s.Roles = v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailList) SetSdkVersion(v string) *DescribeCallUserListResponseBodyUserDetailList {
+	s.SdkVersion = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailList) SetSdkVersionList(v []*string) *DescribeCallUserListResponseBodyUserDetailList {
+	s.SdkVersionList = v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailList) SetUserId(v string) *DescribeCallUserListResponseBodyUserDetailList {
+	s.UserId = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailList) SetUserIdAlias(v string) *DescribeCallUserListResponseBodyUserDetailList {
+	s.UserIdAlias = &v
+	return s
+}
+
+type DescribeCallUserListResponseBodyUserDetailListDurMetricStatData struct {
+	PubAudio            *int64 `json:"PubAudio,omitempty" xml:"PubAudio,omitempty"`
+	PubVideo360         *int64 `json:"PubVideo360,omitempty" xml:"PubVideo360,omitempty"`
+	PubVideo720         *int64 `json:"PubVideo720,omitempty" xml:"PubVideo720,omitempty"`
+	PubVideoScreenShare *int64 `json:"PubVideoScreenShare,omitempty" xml:"PubVideoScreenShare,omitempty"`
+	SubAudio            *int64 `json:"SubAudio,omitempty" xml:"SubAudio,omitempty"`
+	SubVideo1080        *int64 `json:"SubVideo1080,omitempty" xml:"SubVideo1080,omitempty"`
+	SubVideo360         *int64 `json:"SubVideo360,omitempty" xml:"SubVideo360,omitempty"`
+	SubVideo720         *int64 `json:"SubVideo720,omitempty" xml:"SubVideo720,omitempty"`
+	SubVideoScreenShare *int64 `json:"SubVideoScreenShare,omitempty" xml:"SubVideoScreenShare,omitempty"`
+}
+
+func (s DescribeCallUserListResponseBodyUserDetailListDurMetricStatData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCallUserListResponseBodyUserDetailListDurMetricStatData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailListDurMetricStatData) SetPubAudio(v int64) *DescribeCallUserListResponseBodyUserDetailListDurMetricStatData {
+	s.PubAudio = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailListDurMetricStatData) SetPubVideo360(v int64) *DescribeCallUserListResponseBodyUserDetailListDurMetricStatData {
+	s.PubVideo360 = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailListDurMetricStatData) SetPubVideo720(v int64) *DescribeCallUserListResponseBodyUserDetailListDurMetricStatData {
+	s.PubVideo720 = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailListDurMetricStatData) SetPubVideoScreenShare(v int64) *DescribeCallUserListResponseBodyUserDetailListDurMetricStatData {
+	s.PubVideoScreenShare = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailListDurMetricStatData) SetSubAudio(v int64) *DescribeCallUserListResponseBodyUserDetailListDurMetricStatData {
+	s.SubAudio = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailListDurMetricStatData) SetSubVideo1080(v int64) *DescribeCallUserListResponseBodyUserDetailListDurMetricStatData {
+	s.SubVideo1080 = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailListDurMetricStatData) SetSubVideo360(v int64) *DescribeCallUserListResponseBodyUserDetailListDurMetricStatData {
+	s.SubVideo360 = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailListDurMetricStatData) SetSubVideo720(v int64) *DescribeCallUserListResponseBodyUserDetailListDurMetricStatData {
+	s.SubVideo720 = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailListDurMetricStatData) SetSubVideoScreenShare(v int64) *DescribeCallUserListResponseBodyUserDetailListDurMetricStatData {
+	s.SubVideoScreenShare = &v
+	return s
+}
+
+type DescribeCallUserListResponseBodyUserDetailListOnlinePeriods struct {
+	JoinTs  *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
+	LeaveTs *int64 `json:"LeaveTs,omitempty" xml:"LeaveTs,omitempty"`
+}
+
+func (s DescribeCallUserListResponseBodyUserDetailListOnlinePeriods) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCallUserListResponseBodyUserDetailListOnlinePeriods) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailListOnlinePeriods) SetJoinTs(v int64) *DescribeCallUserListResponseBodyUserDetailListOnlinePeriods {
+	s.JoinTs = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponseBodyUserDetailListOnlinePeriods) SetLeaveTs(v int64) *DescribeCallUserListResponseBodyUserDetailListOnlinePeriods {
+	s.LeaveTs = &v
+	return s
+}
+
+type DescribeCallUserListResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCallUserListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCallUserListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCallUserListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCallUserListResponse) SetHeaders(v map[string]*string) *DescribeCallUserListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCallUserListResponse) SetStatusCode(v int32) *DescribeCallUserListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCallUserListResponse) SetBody(v *DescribeCallUserListResponseBody) *DescribeCallUserListResponse {
 	s.Body = v
 	return s
 }
@@ -1562,8 +2129,9 @@ func (s *DescribeChannelAreaDistributionStatDataResponseBodyAreaStatList) SetSub
 }
 
 type DescribeChannelAreaDistributionStatDataResponse struct {
-	Headers map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeChannelAreaDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeChannelAreaDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeChannelAreaDistributionStatDataResponse) String() string {
@@ -1576,6 +2144,11 @@ func (s DescribeChannelAreaDistributionStatDataResponse) GoString() string {
 
 func (s *DescribeChannelAreaDistributionStatDataResponse) SetHeaders(v map[string]*string) *DescribeChannelAreaDistributionStatDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeChannelAreaDistributionStatDataResponse) SetStatusCode(v int32) *DescribeChannelAreaDistributionStatDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1688,8 +2261,9 @@ func (s *DescribeChannelDistributionStatDataResponseBodyStatList) SetName(v stri
 }
 
 type DescribeChannelDistributionStatDataResponse struct {
-	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeChannelDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeChannelDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeChannelDistributionStatDataResponse) String() string {
@@ -1702,6 +2276,11 @@ func (s DescribeChannelDistributionStatDataResponse) GoString() string {
 
 func (s *DescribeChannelDistributionStatDataResponse) SetHeaders(v map[string]*string) *DescribeChannelDistributionStatDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeChannelDistributionStatDataResponse) SetStatusCode(v int32) *DescribeChannelDistributionStatDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1782,8 +2361,9 @@ func (s *DescribeChannelJoinInfoResponseBody) SetRequestId(v string) *DescribeCh
 }
 
 type DescribeChannelJoinInfoResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeChannelJoinInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeChannelJoinInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeChannelJoinInfoResponse) String() string {
@@ -1796,6 +2376,11 @@ func (s DescribeChannelJoinInfoResponse) GoString() string {
 
 func (s *DescribeChannelJoinInfoResponse) SetHeaders(v map[string]*string) *DescribeChannelJoinInfoResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeChannelJoinInfoResponse) SetStatusCode(v int32) *DescribeChannelJoinInfoResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2039,8 +2624,9 @@ func (s *DescribeChannelOverallDataResponseBodyOverallData) SetTotalVideoVagueRa
 }
 
 type DescribeChannelOverallDataResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeChannelOverallDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeChannelOverallDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeChannelOverallDataResponse) String() string {
@@ -2053,6 +2639,11 @@ func (s DescribeChannelOverallDataResponse) GoString() string {
 
 func (s *DescribeChannelOverallDataResponse) SetHeaders(v map[string]*string) *DescribeChannelOverallDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeChannelOverallDataResponse) SetStatusCode(v int32) *DescribeChannelOverallDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2211,8 +2802,9 @@ func (s *DescribeChannelTopPubUserListResponseBodyTopPubUserDetailListOnlinePeri
 }
 
 type DescribeChannelTopPubUserListResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeChannelTopPubUserListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeChannelTopPubUserListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeChannelTopPubUserListResponse) String() string {
@@ -2225,6 +2817,11 @@ func (s DescribeChannelTopPubUserListResponse) GoString() string {
 
 func (s *DescribeChannelTopPubUserListResponse) SetHeaders(v map[string]*string) *DescribeChannelTopPubUserListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeChannelTopPubUserListResponse) SetStatusCode(v int32) *DescribeChannelTopPubUserListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2408,8 +3005,9 @@ func (s *DescribeChannelUserMetricsResponseBodyOverallData) SetTotalUserNum(v in
 }
 
 type DescribeChannelUserMetricsResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeChannelUserMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeChannelUserMetricsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeChannelUserMetricsResponse) String() string {
@@ -2422,6 +3020,11 @@ func (s DescribeChannelUserMetricsResponse) GoString() string {
 
 func (s *DescribeChannelUserMetricsResponse) SetHeaders(v map[string]*string) *DescribeChannelUserMetricsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeChannelUserMetricsResponse) SetStatusCode(v int32) *DescribeChannelUserMetricsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2552,12 +3155,21 @@ func (s *DescribeEndPointEventListResponseBodyNodesEventDataItems) SetTs(v int64
 }
 
 type DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList struct {
+	Acs       *string `json:"Acs,omitempty" xml:"Acs,omitempty"`
+	EventCode *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
 	// 事件名称。
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// 事件类型，取值：USER：用户事件。SYSTEM：系统事件。
-	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	EventType  *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	Os         *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	Sdk        *string `json:"Sdk,omitempty" xml:"Sdk,omitempty"`
+	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	StreamType *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
+	TrackCode  *string `json:"TrackCode,omitempty" xml:"TrackCode,omitempty"`
+	TrackName  *string `json:"TrackName,omitempty" xml:"TrackName,omitempty"`
 	// 事件发生的时间，使用UNIX时间戳表示，单位：秒。
-	Ts *int64 `json:"Ts,omitempty" xml:"Ts,omitempty"`
+	Ts     *int64  `json:"Ts,omitempty" xml:"Ts,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList) String() string {
@@ -2566,6 +3178,16 @@ func (s DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList) Strin
 
 func (s DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList) SetAcs(v string) *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList {
+	s.Acs = &v
+	return s
+}
+
+func (s *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList) SetEventCode(v string) *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList {
+	s.EventCode = &v
+	return s
 }
 
 func (s *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList) SetEventName(v string) *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList {
@@ -2578,14 +3200,50 @@ func (s *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList) SetE
 	return s
 }
 
+func (s *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList) SetOs(v string) *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList {
+	s.Os = &v
+	return s
+}
+
+func (s *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList) SetSdk(v string) *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList {
+	s.Sdk = &v
+	return s
+}
+
+func (s *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList) SetStreamName(v string) *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList {
+	s.StreamName = &v
+	return s
+}
+
+func (s *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList) SetStreamType(v string) *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList {
+	s.StreamType = &v
+	return s
+}
+
+func (s *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList) SetTrackCode(v string) *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList {
+	s.TrackCode = &v
+	return s
+}
+
+func (s *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList) SetTrackName(v string) *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList {
+	s.TrackName = &v
+	return s
+}
+
 func (s *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList) SetTs(v int64) *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList {
 	s.Ts = &v
 	return s
 }
 
+func (s *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList) SetUserId(v string) *DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList {
+	s.UserId = &v
+	return s
+}
+
 type DescribeEndPointEventListResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeEndPointEventListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeEndPointEventListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeEndPointEventListResponse) String() string {
@@ -2598,6 +3256,11 @@ func (s DescribeEndPointEventListResponse) GoString() string {
 
 func (s *DescribeEndPointEventListResponse) SetHeaders(v map[string]*string) *DescribeEndPointEventListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeEndPointEventListResponse) SetStatusCode(v int32) *DescribeEndPointEventListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2834,8 +3497,9 @@ func (s *DescribeEndPointMetricDataResponseBodySubMetricsNodes) SetY(v string) *
 }
 
 type DescribeEndPointMetricDataResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeEndPointMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeEndPointMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeEndPointMetricDataResponse) String() string {
@@ -2848,6 +3512,11 @@ func (s DescribeEndPointMetricDataResponse) GoString() string {
 
 func (s *DescribeEndPointMetricDataResponse) SetHeaders(v map[string]*string) *DescribeEndPointMetricDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeEndPointMetricDataResponse) SetStatusCode(v int32) *DescribeEndPointMetricDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2946,8 +3615,9 @@ func (s *DescribeFaultDiagnosisFactorDistributionStatResponseBodyStatList) SetUs
 }
 
 type DescribeFaultDiagnosisFactorDistributionStatResponse struct {
-	Headers map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeFaultDiagnosisFactorDistributionStatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeFaultDiagnosisFactorDistributionStatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeFaultDiagnosisFactorDistributionStatResponse) String() string {
@@ -2960,6 +3630,11 @@ func (s DescribeFaultDiagnosisFactorDistributionStatResponse) GoString() string 
 
 func (s *DescribeFaultDiagnosisFactorDistributionStatResponse) SetHeaders(v map[string]*string) *DescribeFaultDiagnosisFactorDistributionStatResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeFaultDiagnosisFactorDistributionStatResponse) SetStatusCode(v int32) *DescribeFaultDiagnosisFactorDistributionStatResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3122,8 +3797,9 @@ func (s *DescribeFaultDiagnosisOverallDataResponseBodyOverallData) SetTotalUserC
 }
 
 type DescribeFaultDiagnosisOverallDataResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeFaultDiagnosisOverallDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeFaultDiagnosisOverallDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeFaultDiagnosisOverallDataResponse) String() string {
@@ -3136,6 +3812,11 @@ func (s DescribeFaultDiagnosisOverallDataResponse) GoString() string {
 
 func (s *DescribeFaultDiagnosisOverallDataResponse) SetHeaders(v map[string]*string) *DescribeFaultDiagnosisOverallDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeFaultDiagnosisOverallDataResponse) SetStatusCode(v int32) *DescribeFaultDiagnosisOverallDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3400,12 +4081,21 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList struct {
+	Acs       *string `json:"Acs,omitempty" xml:"Acs,omitempty"`
+	EventCode *string `json:"EventCode,omitempty" xml:"EventCode,omitempty"`
 	// 事件名称。
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// 事件类型，取值：USER：用户事件。SYSTEM：系统事件。
-	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	EventType  *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	Os         *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	Sdk        *string `json:"Sdk,omitempty" xml:"Sdk,omitempty"`
+	StreamName *string `json:"StreamName,omitempty" xml:"StreamName,omitempty"`
+	StreamType *string `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
+	TrackCode  *string `json:"TrackCode,omitempty" xml:"TrackCode,omitempty"`
+	TrackName  *string `json:"TrackName,omitempty" xml:"TrackName,omitempty"`
 	// 事件发生的时间，使用UNIX时间戳表示，单位：秒。
-	Ts *int64 `json:"Ts,omitempty" xml:"Ts,omitempty"`
+	Ts     *int64  `json:"Ts,omitempty" xml:"Ts,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
 func (s DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList) String() string {
@@ -3414,6 +4104,16 @@ func (s DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasE
 
 func (s DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList) SetAcs(v string) *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList {
+	s.Acs = &v
+	return s
+}
+
+func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList) SetEventCode(v string) *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList {
+	s.EventCode = &v
+	return s
 }
 
 func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList) SetEventName(v string) *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList {
@@ -3426,8 +4126,43 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas
 	return s
 }
 
+func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList) SetOs(v string) *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList {
+	s.Os = &v
+	return s
+}
+
+func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList) SetSdk(v string) *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList {
+	s.Sdk = &v
+	return s
+}
+
+func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList) SetStreamName(v string) *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList {
+	s.StreamName = &v
+	return s
+}
+
+func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList) SetStreamType(v string) *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList {
+	s.StreamType = &v
+	return s
+}
+
+func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList) SetTrackCode(v string) *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList {
+	s.TrackCode = &v
+	return s
+}
+
+func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList) SetTrackName(v string) *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList {
+	s.TrackName = &v
+	return s
+}
+
 func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList) SetTs(v int64) *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList {
 	s.Ts = &v
+	return s
+}
+
+func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList) SetUserId(v string) *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList {
+	s.UserId = &v
 	return s
 }
 
@@ -3652,8 +4387,9 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyUserDetailOnlinePeriods) Se
 }
 
 type DescribeFaultDiagnosisUserDetailResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeFaultDiagnosisUserDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeFaultDiagnosisUserDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeFaultDiagnosisUserDetailResponse) String() string {
@@ -3666,6 +4402,11 @@ func (s DescribeFaultDiagnosisUserDetailResponse) GoString() string {
 
 func (s *DescribeFaultDiagnosisUserDetailResponse) SetHeaders(v map[string]*string) *DescribeFaultDiagnosisUserDetailResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeFaultDiagnosisUserDetailResponse) SetStatusCode(v int32) *DescribeFaultDiagnosisUserDetailResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3859,8 +4600,9 @@ func (s *DescribeFaultDiagnosisUserListResponseBodyUserListFaultList) SetFaultTy
 }
 
 type DescribeFaultDiagnosisUserListResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeFaultDiagnosisUserListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeFaultDiagnosisUserListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeFaultDiagnosisUserListResponse) String() string {
@@ -3873,6 +4615,11 @@ func (s DescribeFaultDiagnosisUserListResponse) GoString() string {
 
 func (s *DescribeFaultDiagnosisUserListResponse) SetHeaders(v map[string]*string) *DescribeFaultDiagnosisUserListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeFaultDiagnosisUserListResponse) SetStatusCode(v int32) *DescribeFaultDiagnosisUserListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4003,8 +4750,9 @@ func (s *DescribeIceDurPeriodByDaySubTypeResponseBodyJobInfoListSubJobInfoList) 
 }
 
 type DescribeIceDurPeriodByDaySubTypeResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeIceDurPeriodByDaySubTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeIceDurPeriodByDaySubTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeIceDurPeriodByDaySubTypeResponse) String() string {
@@ -4017,6 +4765,11 @@ func (s DescribeIceDurPeriodByDaySubTypeResponse) GoString() string {
 
 func (s *DescribeIceDurPeriodByDaySubTypeResponse) SetHeaders(v map[string]*string) *DescribeIceDurPeriodByDaySubTypeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeIceDurPeriodByDaySubTypeResponse) SetStatusCode(v int32) *DescribeIceDurPeriodByDaySubTypeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4108,8 +4861,9 @@ func (s *DescribeIceDurSummaryOverviewResponseBodyJobInfoList) SetTimeRange(v st
 }
 
 type DescribeIceDurSummaryOverviewResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeIceDurSummaryOverviewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeIceDurSummaryOverviewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeIceDurSummaryOverviewResponse) String() string {
@@ -4122,6 +4876,11 @@ func (s DescribeIceDurSummaryOverviewResponse) GoString() string {
 
 func (s *DescribeIceDurSummaryOverviewResponse) SetHeaders(v map[string]*string) *DescribeIceDurSummaryOverviewResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeIceDurSummaryOverviewResponse) SetStatusCode(v int32) *DescribeIceDurSummaryOverviewResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4519,8 +5278,9 @@ func (s *DescribePubUserListBySubUserResponseBodySubUserDetailOnlinePeriods) Set
 }
 
 type DescribePubUserListBySubUserResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribePubUserListBySubUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePubUserListBySubUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribePubUserListBySubUserResponse) String() string {
@@ -4533,6 +5293,11 @@ func (s DescribePubUserListBySubUserResponse) GoString() string {
 
 func (s *DescribePubUserListBySubUserResponse) SetHeaders(v map[string]*string) *DescribePubUserListBySubUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribePubUserListBySubUserResponse) SetStatusCode(v int32) *DescribePubUserListBySubUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4734,8 +5499,9 @@ func (s *DescribeQoeMetricDataResponseBodyVideoDataNodes) SetY(v string) *Descri
 }
 
 type DescribeQoeMetricDataResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeQoeMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeQoeMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeQoeMetricDataResponse) String() string {
@@ -4748,6 +5514,11 @@ func (s DescribeQoeMetricDataResponse) GoString() string {
 
 func (s *DescribeQoeMetricDataResponse) SetHeaders(v map[string]*string) *DescribeQoeMetricDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeQoeMetricDataResponse) SetStatusCode(v int32) *DescribeQoeMetricDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4916,8 +5687,9 @@ func (s *DescribeQualityAreaDistributionStatDataResponseBodyQualityStatDataList)
 }
 
 type DescribeQualityAreaDistributionStatDataResponse struct {
-	Headers map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeQualityAreaDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeQualityAreaDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeQualityAreaDistributionStatDataResponse) String() string {
@@ -4930,6 +5702,11 @@ func (s DescribeQualityAreaDistributionStatDataResponse) GoString() string {
 
 func (s *DescribeQualityAreaDistributionStatDataResponse) SetHeaders(v map[string]*string) *DescribeQualityAreaDistributionStatDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeQualityAreaDistributionStatDataResponse) SetStatusCode(v int32) *DescribeQualityAreaDistributionStatDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5098,8 +5875,9 @@ func (s *DescribeQualityDistributionStatDataResponseBodyQualityStatDataList) Set
 }
 
 type DescribeQualityDistributionStatDataResponse struct {
-	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeQualityDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeQualityDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeQualityDistributionStatDataResponse) String() string {
@@ -5112,6 +5890,11 @@ func (s DescribeQualityDistributionStatDataResponse) GoString() string {
 
 func (s *DescribeQualityDistributionStatDataResponse) SetHeaders(v map[string]*string) *DescribeQualityDistributionStatDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeQualityDistributionStatDataResponse) SetStatusCode(v int32) *DescribeQualityDistributionStatDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5280,8 +6063,9 @@ func (s *DescribeQualityOsSdkVersionDistributionStatDataResponseBodyQualityOsSdk
 }
 
 type DescribeQualityOsSdkVersionDistributionStatDataResponse struct {
-	Headers map[string]*string                                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeQualityOsSdkVersionDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeQualityOsSdkVersionDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeQualityOsSdkVersionDistributionStatDataResponse) String() string {
@@ -5294,6 +6078,11 @@ func (s DescribeQualityOsSdkVersionDistributionStatDataResponse) GoString() stri
 
 func (s *DescribeQualityOsSdkVersionDistributionStatDataResponse) SetHeaders(v map[string]*string) *DescribeQualityOsSdkVersionDistributionStatDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeQualityOsSdkVersionDistributionStatDataResponse) SetStatusCode(v int32) *DescribeQualityOsSdkVersionDistributionStatDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5424,8 +6213,9 @@ func (s *DescribeQualityOverallDataResponseBodyQualityOverallDataNodes) SetY(v s
 }
 
 type DescribeQualityOverallDataResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeQualityOverallDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeQualityOverallDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeQualityOverallDataResponse) String() string {
@@ -5438,6 +6228,11 @@ func (s DescribeQualityOverallDataResponse) GoString() string {
 
 func (s *DescribeQualityOverallDataResponse) SetHeaders(v map[string]*string) *DescribeQualityOverallDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeQualityOverallDataResponse) SetStatusCode(v int32) *DescribeQualityOverallDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5620,8 +6415,9 @@ func (s *DescribeRtcChannelDetailsResponseBodyChannelInfo) SetUid(v string) *Des
 }
 
 type DescribeRtcChannelDetailsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRtcChannelDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRtcChannelDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRtcChannelDetailsResponse) String() string {
@@ -5634,6 +6430,11 @@ func (s DescribeRtcChannelDetailsResponse) GoString() string {
 
 func (s *DescribeRtcChannelDetailsResponse) SetHeaders(v map[string]*string) *DescribeRtcChannelDetailsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeRtcChannelDetailsResponse) SetStatusCode(v int32) *DescribeRtcChannelDetailsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5781,8 +6582,9 @@ func (s *DescribeRtcChannelListResponseBodyChannels) SetStartTime(v string) *Des
 }
 
 type DescribeRtcChannelListResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRtcChannelListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRtcChannelListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRtcChannelListResponse) String() string {
@@ -5795,6 +6597,11 @@ func (s DescribeRtcChannelListResponse) GoString() string {
 
 func (s *DescribeRtcChannelListResponse) SetHeaders(v map[string]*string) *DescribeRtcChannelListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeRtcChannelListResponse) SetStatusCode(v int32) *DescribeRtcChannelListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5914,8 +6721,9 @@ func (s *DescribeRtcChannelMetricListResponseBodyMetrics) SetUid(v string) *Desc
 }
 
 type DescribeRtcChannelMetricListResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRtcChannelMetricListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRtcChannelMetricListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRtcChannelMetricListResponse) String() string {
@@ -5928,6 +6736,11 @@ func (s DescribeRtcChannelMetricListResponse) GoString() string {
 
 func (s *DescribeRtcChannelMetricListResponse) SetHeaders(v map[string]*string) *DescribeRtcChannelMetricListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeRtcChannelMetricListResponse) SetStatusCode(v int32) *DescribeRtcChannelMetricListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6169,8 +6982,9 @@ func (s *DescribeRtcChannelUsersResponseBodyUserListUserList) SetUserId(v string
 }
 
 type DescribeRtcChannelUsersResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRtcChannelUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRtcChannelUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRtcChannelUsersResponse) String() string {
@@ -6183,6 +6997,11 @@ func (s DescribeRtcChannelUsersResponse) GoString() string {
 
 func (s *DescribeRtcChannelUsersResponse) SetHeaders(v map[string]*string) *DescribeRtcChannelUsersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeRtcChannelUsersResponse) SetStatusCode(v int32) *DescribeRtcChannelUsersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6309,8 +7128,9 @@ func (s *DescribeRtcRecordMetricDataResponseBodyRtcRecordMetricData) SetType(v s
 }
 
 type DescribeRtcRecordMetricDataResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRtcRecordMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRtcRecordMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRtcRecordMetricDataResponse) String() string {
@@ -6323,6 +7143,11 @@ func (s DescribeRtcRecordMetricDataResponse) GoString() string {
 
 func (s *DescribeRtcRecordMetricDataResponse) SetHeaders(v map[string]*string) *DescribeRtcRecordMetricDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeRtcRecordMetricDataResponse) SetStatusCode(v int32) *DescribeRtcRecordMetricDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6435,8 +7260,9 @@ func (s *DescribeRtcUserEventListResponseBodyEvents) SetEventTime(v int64) *Desc
 }
 
 type DescribeRtcUserEventListResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRtcUserEventListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRtcUserEventListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRtcUserEventListResponse) String() string {
@@ -6449,6 +7275,11 @@ func (s DescribeRtcUserEventListResponse) GoString() string {
 
 func (s *DescribeRtcUserEventListResponse) SetHeaders(v map[string]*string) *DescribeRtcUserEventListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeRtcUserEventListResponse) SetStatusCode(v int32) *DescribeRtcUserEventListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6561,8 +7392,9 @@ func (s *DescribeUsageAreaDistributionStatDataResponseBodyUsageAreaStatList) Set
 }
 
 type DescribeUsageAreaDistributionStatDataResponse struct {
-	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeUsageAreaDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeUsageAreaDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeUsageAreaDistributionStatDataResponse) String() string {
@@ -6575,6 +7407,11 @@ func (s DescribeUsageAreaDistributionStatDataResponse) GoString() string {
 
 func (s *DescribeUsageAreaDistributionStatDataResponse) SetHeaders(v map[string]*string) *DescribeUsageAreaDistributionStatDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeUsageAreaDistributionStatDataResponse) SetStatusCode(v int32) *DescribeUsageAreaDistributionStatDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6694,8 +7531,9 @@ func (s *DescribeUsageDistributionStatDataResponseBodyUsageStatList) SetVideoCal
 }
 
 type DescribeUsageDistributionStatDataResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeUsageDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeUsageDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeUsageDistributionStatDataResponse) String() string {
@@ -6708,6 +7546,11 @@ func (s DescribeUsageDistributionStatDataResponse) GoString() string {
 
 func (s *DescribeUsageDistributionStatDataResponse) SetHeaders(v map[string]*string) *DescribeUsageDistributionStatDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeUsageDistributionStatDataResponse) SetStatusCode(v int32) *DescribeUsageDistributionStatDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6827,8 +7670,9 @@ func (s *DescribeUsageOsSdkVersionDistributionStatDataResponseBodyUsageOsSdkVers
 }
 
 type DescribeUsageOsSdkVersionDistributionStatDataResponse struct {
-	Headers map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeUsageOsSdkVersionDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeUsageOsSdkVersionDistributionStatDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeUsageOsSdkVersionDistributionStatDataResponse) String() string {
@@ -6841,6 +7685,11 @@ func (s DescribeUsageOsSdkVersionDistributionStatDataResponse) GoString() string
 
 func (s *DescribeUsageOsSdkVersionDistributionStatDataResponse) SetHeaders(v map[string]*string) *DescribeUsageOsSdkVersionDistributionStatDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeUsageOsSdkVersionDistributionStatDataResponse) SetStatusCode(v int32) *DescribeUsageOsSdkVersionDistributionStatDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6964,8 +7813,9 @@ func (s *DescribeUsageOverallDataResponseBodyUsageOverallDataNodes) SetY(v strin
 }
 
 type DescribeUsageOverallDataResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeUsageOverallDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeUsageOverallDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeUsageOverallDataResponse) String() string {
@@ -6978,6 +7828,11 @@ func (s DescribeUsageOverallDataResponse) GoString() string {
 
 func (s *DescribeUsageOverallDataResponse) SetHeaders(v map[string]*string) *DescribeUsageOverallDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeUsageOverallDataResponse) SetStatusCode(v int32) *DescribeUsageOverallDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7030,8 +7885,9 @@ func (s *UpdateAppExpMetricRuleResponseBody) SetRequestId(v string) *UpdateAppEx
 }
 
 type UpdateAppExpMetricRuleResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateAppExpMetricRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateAppExpMetricRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateAppExpMetricRuleResponse) String() string {
@@ -7044,6 +7900,11 @@ func (s UpdateAppExpMetricRuleResponse) GoString() string {
 
 func (s *UpdateAppExpMetricRuleResponse) SetHeaders(v map[string]*string) *UpdateAppExpMetricRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateAppExpMetricRuleResponse) SetStatusCode(v int32) *UpdateAppExpMetricRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7096,8 +7957,9 @@ func (s *UpdateAppFollowCallRuleResponseBody) SetRequestId(v string) *UpdateAppF
 }
 
 type UpdateAppFollowCallRuleResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateAppFollowCallRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateAppFollowCallRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateAppFollowCallRuleResponse) String() string {
@@ -7110,6 +7972,11 @@ func (s UpdateAppFollowCallRuleResponse) GoString() string {
 
 func (s *UpdateAppFollowCallRuleResponse) SetHeaders(v map[string]*string) *UpdateAppFollowCallRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateAppFollowCallRuleResponse) SetStatusCode(v int32) *UpdateAppFollowCallRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7533,6 +8400,64 @@ func (client *Client) DescribeCallWithOptions(request *DescribeCallRequest, head
 	return _result, _err
 }
 
+func (client *Client) DescribeCallInfo(request *DescribeCallInfoRequest) (_result *DescribeCallInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeCallInfoResponse{}
+	_body, _err := client.DescribeCallInfoWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCallInfoWithOptions(request *DescribeCallInfoRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeCallInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreatedTs)) {
+		query["CreatedTs"] = request.CreatedTs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestroyedTs)) {
+		query["DestroyedTs"] = request.DestroyedTs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCallInfo"),
+		Version:     tea.String("2020-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/call/describeCallInfo"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCallInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DescribeCallList(request *DescribeCallListRequest) (_result *DescribeCallListResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7719,6 +8644,88 @@ func (client *Client) DescribeCallUserExpWithOptions(request *DescribeCallUserEx
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCallUserExpResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCallUserList(request *DescribeCallUserListRequest) (_result *DescribeCallUserListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeCallUserListResponse{}
+	_body, _err := client.DescribeCallUserListWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCallUserListWithOptions(request *DescribeCallUserListRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeCallUserListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreatedTs)) {
+		query["CreatedTs"] = request.CreatedTs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestroyedTs)) {
+		query["DestroyedTs"] = request.DestroyedTs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtDataType)) {
+		query["ExtDataType"] = request.ExtDataType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
+		query["PageNo"] = request.PageNo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryExpInfo)) {
+		query["QueryExpInfo"] = request.QueryExpInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RoleType)) {
+		query["RoleType"] = request.RoleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCallUserList"),
+		Version:     tea.String("2020-12-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/call/describeCallUserList"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCallUserListResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
