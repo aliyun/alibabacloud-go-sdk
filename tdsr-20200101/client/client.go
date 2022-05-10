@@ -2394,7 +2394,7 @@ func (s *GetPackSceneTaskStatusResponseBody) SetSuccess(v bool) *GetPackSceneTas
 
 type GetPackSceneTaskStatusResponseBodyData struct {
 	// 任务进度
-	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	Progress *int64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	// 任务状态
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
@@ -2407,7 +2407,7 @@ func (s GetPackSceneTaskStatusResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetPackSceneTaskStatusResponseBodyData) SetProgress(v string) *GetPackSceneTaskStatusResponseBodyData {
+func (s *GetPackSceneTaskStatusResponseBodyData) SetProgress(v int64) *GetPackSceneTaskStatusResponseBodyData {
 	s.Progress = &v
 	return s
 }
@@ -2722,7 +2722,7 @@ type GetScenePackUrlResponseBodyData struct {
 	// 打包文件地址
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	// 是否有效
-	Valid *string `json:"Valid,omitempty" xml:"Valid,omitempty"`
+	Valid *bool `json:"Valid,omitempty" xml:"Valid,omitempty"`
 }
 
 func (s GetScenePackUrlResponseBodyData) String() string {
@@ -2743,7 +2743,7 @@ func (s *GetScenePackUrlResponseBodyData) SetUrl(v string) *GetScenePackUrlRespo
 	return s
 }
 
-func (s *GetScenePackUrlResponseBodyData) SetValid(v string) *GetScenePackUrlResponseBodyData {
+func (s *GetScenePackUrlResponseBodyData) SetValid(v bool) *GetScenePackUrlResponseBodyData {
 	s.Valid = &v
 	return s
 }
