@@ -155,8 +155,9 @@ func (s *CheckChatappContactsResponseBodyData) SetStatus(v string) *CheckChatapp
 }
 
 type CheckChatappContactsResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckChatappContactsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckChatappContactsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CheckChatappContactsResponse) String() string {
@@ -172,135 +173,12 @@ func (s *CheckChatappContactsResponse) SetHeaders(v map[string]*string) *CheckCh
 	return s
 }
 
+func (s *CheckChatappContactsResponse) SetStatusCode(v int32) *CheckChatappContactsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CheckChatappContactsResponse) SetBody(v *CheckChatappContactsResponseBody) *CheckChatappContactsResponse {
-	s.Body = v
-	return s
-}
-
-type CheckContactsRequest struct {
-	ChannelType          *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	Contacts             *string `json:"Contacts,omitempty" xml:"Contacts,omitempty"`
-	From                 *string `json:"From,omitempty" xml:"From,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-}
-
-func (s CheckContactsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckContactsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CheckContactsRequest) SetChannelType(v string) *CheckContactsRequest {
-	s.ChannelType = &v
-	return s
-}
-
-func (s *CheckContactsRequest) SetContacts(v string) *CheckContactsRequest {
-	s.Contacts = &v
-	return s
-}
-
-func (s *CheckContactsRequest) SetFrom(v string) *CheckContactsRequest {
-	s.From = &v
-	return s
-}
-
-func (s *CheckContactsRequest) SetOwnerId(v int64) *CheckContactsRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *CheckContactsRequest) SetResourceOwnerAccount(v string) *CheckContactsRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *CheckContactsRequest) SetResourceOwnerId(v int64) *CheckContactsRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-type CheckContactsResponseBody struct {
-	Contacts      []*CheckContactsResponseBodyContacts `json:"Contacts,omitempty" xml:"Contacts,omitempty" type:"Repeated"`
-	RequestId     *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResultCode    *string                              `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage *string                              `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-}
-
-func (s CheckContactsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckContactsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CheckContactsResponseBody) SetContacts(v []*CheckContactsResponseBodyContacts) *CheckContactsResponseBody {
-	s.Contacts = v
-	return s
-}
-
-func (s *CheckContactsResponseBody) SetRequestId(v string) *CheckContactsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CheckContactsResponseBody) SetResultCode(v string) *CheckContactsResponseBody {
-	s.ResultCode = &v
-	return s
-}
-
-func (s *CheckContactsResponseBody) SetResultMessage(v string) *CheckContactsResponseBody {
-	s.ResultMessage = &v
-	return s
-}
-
-type CheckContactsResponseBodyContacts struct {
-	PhoneNumber *string `json:"PhoneNumber,omitempty" xml:"PhoneNumber,omitempty"`
-	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s CheckContactsResponseBodyContacts) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckContactsResponseBodyContacts) GoString() string {
-	return s.String()
-}
-
-func (s *CheckContactsResponseBodyContacts) SetPhoneNumber(v string) *CheckContactsResponseBodyContacts {
-	s.PhoneNumber = &v
-	return s
-}
-
-func (s *CheckContactsResponseBodyContacts) SetStatus(v string) *CheckContactsResponseBodyContacts {
-	s.Status = &v
-	return s
-}
-
-type CheckContactsResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckContactsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CheckContactsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CheckContactsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CheckContactsResponse) SetHeaders(v map[string]*string) *CheckContactsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CheckContactsResponse) SetBody(v *CheckContactsResponseBody) *CheckContactsResponse {
 	s.Body = v
 	return s
 }
@@ -596,8 +474,9 @@ func (s *CreateChatappTemplateResponseBodyData) SetTemplateName(v string) *Creat
 }
 
 type CreateChatappTemplateResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateChatappTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateChatappTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateChatappTemplateResponse) String() string {
@@ -610,6 +489,11 @@ func (s CreateChatappTemplateResponse) GoString() string {
 
 func (s *CreateChatappTemplateResponse) SetHeaders(v map[string]*string) *CreateChatappTemplateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateChatappTemplateResponse) SetStatusCode(v int32) *CreateChatappTemplateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -676,8 +560,9 @@ func (s *DeleteChatappTemplateResponseBody) SetRequestId(v string) *DeleteChatap
 }
 
 type DeleteChatappTemplateResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteChatappTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteChatappTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteChatappTemplateResponse) String() string {
@@ -690,6 +575,11 @@ func (s DeleteChatappTemplateResponse) GoString() string {
 
 func (s *DeleteChatappTemplateResponse) SetHeaders(v map[string]*string) *DeleteChatappTemplateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteChatappTemplateResponse) SetStatusCode(v int32) *DeleteChatappTemplateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -836,6 +726,8 @@ type GetChatappTemplateDetailResponseBodyDataComponents struct {
 	Caption *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
 	// 文件名称，当Type为Header，且Format为DOCUMENT时可以给文件指定名称
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	// 格式
+	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
 	// 所发送消息的文本
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 	// 组件类型
@@ -864,6 +756,11 @@ func (s *GetChatappTemplateDetailResponseBodyDataComponents) SetCaption(v string
 
 func (s *GetChatappTemplateDetailResponseBodyDataComponents) SetFileName(v string) *GetChatappTemplateDetailResponseBodyDataComponents {
 	s.FileName = &v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponseBodyDataComponents) SetFormat(v string) *GetChatappTemplateDetailResponseBodyDataComponents {
+	s.Format = &v
 	return s
 }
 
@@ -932,8 +829,9 @@ func (s *GetChatappTemplateDetailResponseBodyDataComponentsButtons) SetUrlType(v
 }
 
 type GetChatappTemplateDetailResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetChatappTemplateDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetChatappTemplateDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetChatappTemplateDetailResponse) String() string {
@@ -946,6 +844,11 @@ func (s GetChatappTemplateDetailResponse) GoString() string {
 
 func (s *GetChatappTemplateDetailResponse) SetHeaders(v map[string]*string) *GetChatappTemplateDetailResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetChatappTemplateDetailResponse) SetStatusCode(v int32) *GetChatappTemplateDetailResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1152,8 +1055,9 @@ func (s *ListChatappTemplateResponseBodyListTemplate) SetTemplateName(v string) 
 }
 
 type ListChatappTemplateResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListChatappTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListChatappTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListChatappTemplateResponse) String() string {
@@ -1166,6 +1070,11 @@ func (s ListChatappTemplateResponse) GoString() string {
 
 func (s *ListChatappTemplateResponse) SetHeaders(v map[string]*string) *ListChatappTemplateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListChatappTemplateResponse) SetStatusCode(v int32) *ListChatappTemplateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1387,8 +1296,9 @@ func (s *SendChatappMessageResponseBody) SetRequestId(v string) *SendChatappMess
 }
 
 type SendChatappMessageResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SendChatappMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendChatappMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SendChatappMessageResponse) String() string {
@@ -1404,201 +1314,12 @@ func (s *SendChatappMessageResponse) SetHeaders(v map[string]*string) *SendChata
 	return s
 }
 
+func (s *SendChatappMessageResponse) SetStatusCode(v int32) *SendChatappMessageResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SendChatappMessageResponse) SetBody(v *SendChatappMessageResponseBody) *SendChatappMessageResponse {
-	s.Body = v
-	return s
-}
-
-type SendMessageRequest struct {
-	Caption              *string `json:"Caption,omitempty" xml:"Caption,omitempty"`
-	ChannelType          *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	FileName             *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	From                 *string `json:"From,omitempty" xml:"From,omitempty"`
-	Link                 *string `json:"Link,omitempty" xml:"Link,omitempty"`
-	MessageType          *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	TemplateBodyParams   *string `json:"TemplateBodyParams,omitempty" xml:"TemplateBodyParams,omitempty"`
-	TemplateButtonParams *string `json:"TemplateButtonParams,omitempty" xml:"TemplateButtonParams,omitempty"`
-	TemplateCode         *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	TemplateHeaderParams *string `json:"TemplateHeaderParams,omitempty" xml:"TemplateHeaderParams,omitempty"`
-	Text                 *string `json:"Text,omitempty" xml:"Text,omitempty"`
-	To                   *string `json:"To,omitempty" xml:"To,omitempty"`
-	Type                 *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s SendMessageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SendMessageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SendMessageRequest) SetCaption(v string) *SendMessageRequest {
-	s.Caption = &v
-	return s
-}
-
-func (s *SendMessageRequest) SetChannelType(v string) *SendMessageRequest {
-	s.ChannelType = &v
-	return s
-}
-
-func (s *SendMessageRequest) SetFileName(v string) *SendMessageRequest {
-	s.FileName = &v
-	return s
-}
-
-func (s *SendMessageRequest) SetFrom(v string) *SendMessageRequest {
-	s.From = &v
-	return s
-}
-
-func (s *SendMessageRequest) SetLink(v string) *SendMessageRequest {
-	s.Link = &v
-	return s
-}
-
-func (s *SendMessageRequest) SetMessageType(v string) *SendMessageRequest {
-	s.MessageType = &v
-	return s
-}
-
-func (s *SendMessageRequest) SetOwnerId(v int64) *SendMessageRequest {
-	s.OwnerId = &v
-	return s
-}
-
-func (s *SendMessageRequest) SetResourceOwnerAccount(v string) *SendMessageRequest {
-	s.ResourceOwnerAccount = &v
-	return s
-}
-
-func (s *SendMessageRequest) SetResourceOwnerId(v int64) *SendMessageRequest {
-	s.ResourceOwnerId = &v
-	return s
-}
-
-func (s *SendMessageRequest) SetTemplateBodyParams(v string) *SendMessageRequest {
-	s.TemplateBodyParams = &v
-	return s
-}
-
-func (s *SendMessageRequest) SetTemplateButtonParams(v string) *SendMessageRequest {
-	s.TemplateButtonParams = &v
-	return s
-}
-
-func (s *SendMessageRequest) SetTemplateCode(v string) *SendMessageRequest {
-	s.TemplateCode = &v
-	return s
-}
-
-func (s *SendMessageRequest) SetTemplateHeaderParams(v string) *SendMessageRequest {
-	s.TemplateHeaderParams = &v
-	return s
-}
-
-func (s *SendMessageRequest) SetText(v string) *SendMessageRequest {
-	s.Text = &v
-	return s
-}
-
-func (s *SendMessageRequest) SetTo(v string) *SendMessageRequest {
-	s.To = &v
-	return s
-}
-
-func (s *SendMessageRequest) SetType(v string) *SendMessageRequest {
-	s.Type = &v
-	return s
-}
-
-type SendMessageResponseBody struct {
-	Module        *SendMessageResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	RequestId     *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResultCode    *string                        `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
-	ResultMessage *string                        `json:"ResultMessage,omitempty" xml:"ResultMessage,omitempty"`
-}
-
-func (s SendMessageResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SendMessageResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SendMessageResponseBody) SetModule(v *SendMessageResponseBodyModule) *SendMessageResponseBody {
-	s.Module = v
-	return s
-}
-
-func (s *SendMessageResponseBody) SetRequestId(v string) *SendMessageResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *SendMessageResponseBody) SetResultCode(v string) *SendMessageResponseBody {
-	s.ResultCode = &v
-	return s
-}
-
-func (s *SendMessageResponseBody) SetResultMessage(v string) *SendMessageResponseBody {
-	s.ResultMessage = &v
-	return s
-}
-
-type SendMessageResponseBodyModule struct {
-	FromId    *string `json:"FromId,omitempty" xml:"FromId,omitempty"`
-	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	ToId      *string `json:"ToId,omitempty" xml:"ToId,omitempty"`
-}
-
-func (s SendMessageResponseBodyModule) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SendMessageResponseBodyModule) GoString() string {
-	return s.String()
-}
-
-func (s *SendMessageResponseBodyModule) SetFromId(v string) *SendMessageResponseBodyModule {
-	s.FromId = &v
-	return s
-}
-
-func (s *SendMessageResponseBodyModule) SetMessageId(v string) *SendMessageResponseBodyModule {
-	s.MessageId = &v
-	return s
-}
-
-func (s *SendMessageResponseBodyModule) SetToId(v string) *SendMessageResponseBodyModule {
-	s.ToId = &v
-	return s
-}
-
-type SendMessageResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SendMessageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SendMessageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SendMessageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SendMessageResponse) SetHeaders(v map[string]*string) *SendMessageResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SendMessageResponse) SetBody(v *SendMessageResponseBody) *SendMessageResponse {
 	s.Body = v
 	return s
 }
@@ -1705,72 +1426,6 @@ func (client *Client) CheckChatappContacts(request *CheckChatappContactsRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &CheckChatappContactsResponse{}
 	_body, _err := client.CheckChatappContactsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CheckContactsWithOptions(request *CheckContactsRequest, runtime *util.RuntimeOptions) (_result *CheckContactsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ChannelType)) {
-		body["ChannelType"] = request.ChannelType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Contacts)) {
-		body["Contacts"] = request.Contacts
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.From)) {
-		body["From"] = request.From
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CheckContacts"),
-		Version:     tea.String("2020-06-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CheckContactsResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CheckContacts(request *CheckContactsRequest) (_result *CheckContactsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CheckContactsResponse{}
-	_body, _err := client.CheckContactsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2111,112 +1766,6 @@ func (client *Client) SendChatappMessage(request *SendChatappMessageRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &SendChatappMessageResponse{}
 	_body, _err := client.SendChatappMessageWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SendMessageWithOptions(request *SendMessageRequest, runtime *util.RuntimeOptions) (_result *SendMessageResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
-		query["OwnerId"] = request.OwnerId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
-		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
-		query["ResourceOwnerId"] = request.ResourceOwnerId
-	}
-
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Caption)) {
-		body["Caption"] = request.Caption
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ChannelType)) {
-		body["ChannelType"] = request.ChannelType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.FileName)) {
-		body["FileName"] = request.FileName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.From)) {
-		body["From"] = request.From
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Link)) {
-		body["Link"] = request.Link
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MessageType)) {
-		body["MessageType"] = request.MessageType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TemplateBodyParams)) {
-		body["TemplateBodyParams"] = request.TemplateBodyParams
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TemplateButtonParams)) {
-		body["TemplateButtonParams"] = request.TemplateButtonParams
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
-		body["TemplateCode"] = request.TemplateCode
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TemplateHeaderParams)) {
-		body["TemplateHeaderParams"] = request.TemplateHeaderParams
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Text)) {
-		body["Text"] = request.Text
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.To)) {
-		body["To"] = request.To
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		body["Type"] = request.Type
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SendMessage"),
-		Version:     tea.String("2020-06-06"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SendMessageResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SendMessage(request *SendMessageRequest) (_result *SendMessageResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SendMessageResponse{}
-	_body, _err := client.SendMessageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
