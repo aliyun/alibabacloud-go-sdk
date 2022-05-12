@@ -6455,6 +6455,8 @@ func (s *DescribeDomainListResponse) SetBody(v *DescribeDomainListResponseBody) 
 }
 
 type DescribeEmgVulItemRequest struct {
+	// 检测方式
+	CheckType   *int32  `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
 	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -6469,6 +6471,11 @@ func (s DescribeEmgVulItemRequest) String() string {
 
 func (s DescribeEmgVulItemRequest) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeEmgVulItemRequest) SetCheckType(v int32) *DescribeEmgVulItemRequest {
+	s.CheckType = &v
+	return s
 }
 
 func (s *DescribeEmgVulItemRequest) SetCurrentPage(v int32) *DescribeEmgVulItemRequest {
@@ -6544,6 +6551,7 @@ func (s *DescribeEmgVulItemResponseBody) SetTotalCount(v int32) *DescribeEmgVulI
 
 type DescribeEmgVulItemResponseBodyGroupedVulItems struct {
 	AliasName    *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	CheckType    *int32  `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
 	GmtLastCheck *int64  `json:"GmtLastCheck,omitempty" xml:"GmtLastCheck,omitempty"`
 	GmtPublish   *int64  `json:"GmtPublish,omitempty" xml:"GmtPublish,omitempty"`
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -6563,6 +6571,11 @@ func (s DescribeEmgVulItemResponseBodyGroupedVulItems) GoString() string {
 
 func (s *DescribeEmgVulItemResponseBodyGroupedVulItems) SetAliasName(v string) *DescribeEmgVulItemResponseBodyGroupedVulItems {
 	s.AliasName = &v
+	return s
+}
+
+func (s *DescribeEmgVulItemResponseBodyGroupedVulItems) SetCheckType(v int32) *DescribeEmgVulItemResponseBodyGroupedVulItems {
+	s.CheckType = &v
 	return s
 }
 
@@ -30739,6 +30752,10 @@ func (client *Client) DescribeEmgVulItemWithOptions(request *DescribeEmgVulItemR
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckType)) {
+		query["CheckType"] = request.CheckType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
 	}
