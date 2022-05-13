@@ -771,6 +771,123 @@ func (s *CheckUserPropertyResponse) SetBody(v *CheckUserPropertyResponseBody) *C
 	return s
 }
 
+type CopySceneRequest struct {
+	// 场景Id
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// 新场景名称
+	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+}
+
+func (s CopySceneRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopySceneRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CopySceneRequest) SetSceneId(v string) *CopySceneRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *CopySceneRequest) SetSceneName(v string) *CopySceneRequest {
+	s.SceneName = &v
+	return s
+}
+
+type CopySceneResponseBody struct {
+	// 返回码
+	Code *int64                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *CopySceneResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求ID，与入参requestId对应
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 是否请求成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CopySceneResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopySceneResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CopySceneResponseBody) SetCode(v int64) *CopySceneResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CopySceneResponseBody) SetData(v *CopySceneResponseBodyData) *CopySceneResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CopySceneResponseBody) SetMessage(v string) *CopySceneResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CopySceneResponseBody) SetRequestId(v string) *CopySceneResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CopySceneResponseBody) SetSuccess(v bool) *CopySceneResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CopySceneResponseBodyData struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CopySceneResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopySceneResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CopySceneResponseBodyData) SetTaskId(v string) *CopySceneResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type CopySceneResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CopySceneResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CopySceneResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CopySceneResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CopySceneResponse) SetHeaders(v map[string]*string) *CopySceneResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CopySceneResponse) SetStatusCode(v int32) *CopySceneResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CopySceneResponse) SetBody(v *CopySceneResponseBody) *CopySceneResponse {
+	s.Body = v
+	return s
+}
+
 type DetailProjectRequest struct {
 	// 项目Id
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -1625,6 +1742,123 @@ func (s *GetConnDataResponse) SetStatusCode(v int32) *GetConnDataResponse {
 }
 
 func (s *GetConnDataResponse) SetBody(v *GetConnDataResponseBody) *GetConnDataResponse {
+	s.Body = v
+	return s
+}
+
+type GetCopySceneTaskStatusRequest struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetCopySceneTaskStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCopySceneTaskStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCopySceneTaskStatusRequest) SetTaskId(v string) *GetCopySceneTaskStatusRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetCopySceneTaskStatusResponseBody struct {
+	// 返回码
+	Code *int64                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetCopySceneTaskStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 是否请求成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetCopySceneTaskStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCopySceneTaskStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCopySceneTaskStatusResponseBody) SetCode(v int64) *GetCopySceneTaskStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetCopySceneTaskStatusResponseBody) SetData(v *GetCopySceneTaskStatusResponseBodyData) *GetCopySceneTaskStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCopySceneTaskStatusResponseBody) SetMessage(v string) *GetCopySceneTaskStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetCopySceneTaskStatusResponseBody) SetRequestId(v string) *GetCopySceneTaskStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCopySceneTaskStatusResponseBody) SetSuccess(v bool) *GetCopySceneTaskStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCopySceneTaskStatusResponseBodyData struct {
+	// 任务进度
+	Progress *int64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// 任务状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetCopySceneTaskStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCopySceneTaskStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetCopySceneTaskStatusResponseBodyData) SetProgress(v int64) *GetCopySceneTaskStatusResponseBodyData {
+	s.Progress = &v
+	return s
+}
+
+func (s *GetCopySceneTaskStatusResponseBodyData) SetStatus(v string) *GetCopySceneTaskStatusResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetCopySceneTaskStatusResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCopySceneTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCopySceneTaskStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCopySceneTaskStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCopySceneTaskStatusResponse) SetHeaders(v map[string]*string) *GetCopySceneTaskStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCopySceneTaskStatusResponse) SetStatusCode(v int32) *GetCopySceneTaskStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCopySceneTaskStatusResponse) SetBody(v *GetCopySceneTaskStatusResponseBody) *GetCopySceneTaskStatusResponse {
 	s.Body = v
 	return s
 }
@@ -4694,6 +4928,8 @@ type ListSubSceneRequest struct {
 	// 场景ID
 	SceneId        *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
 	ShowLayoutData *bool   `json:"ShowLayoutData,omitempty" xml:"ShowLayoutData,omitempty"`
+	// 排序字段，默认：NAME（名称），SEQUENCE（自定义排序）
+	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
 }
 
 func (s ListSubSceneRequest) String() string {
@@ -4721,6 +4957,11 @@ func (s *ListSubSceneRequest) SetSceneId(v string) *ListSubSceneRequest {
 
 func (s *ListSubSceneRequest) SetShowLayoutData(v bool) *ListSubSceneRequest {
 	s.ShowLayoutData = &v
+	return s
+}
+
+func (s *ListSubSceneRequest) SetSortField(v string) *ListSubSceneRequest {
+	s.SortField = &v
 	return s
 }
 
@@ -6871,7 +7112,8 @@ type UpdateSubSceneRequest struct {
 	// 子场景ID
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// 子场景名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name      *string    `json:"Name,omitempty" xml:"Name,omitempty"`
+	ViewPoint []*float64 `json:"ViewPoint,omitempty" xml:"ViewPoint,omitempty" type:"Repeated"`
 }
 
 func (s UpdateSubSceneRequest) String() string {
@@ -6889,6 +7131,42 @@ func (s *UpdateSubSceneRequest) SetId(v string) *UpdateSubSceneRequest {
 
 func (s *UpdateSubSceneRequest) SetName(v string) *UpdateSubSceneRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateSubSceneRequest) SetViewPoint(v []*float64) *UpdateSubSceneRequest {
+	s.ViewPoint = v
+	return s
+}
+
+type UpdateSubSceneShrinkRequest struct {
+	// 子场景ID
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// 子场景名称
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ViewPointShrink *string `json:"ViewPoint,omitempty" xml:"ViewPoint,omitempty"`
+}
+
+func (s UpdateSubSceneShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSubSceneShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSubSceneShrinkRequest) SetId(v string) *UpdateSubSceneShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateSubSceneShrinkRequest) SetName(v string) *UpdateSubSceneShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateSubSceneShrinkRequest) SetViewPointShrink(v string) *UpdateSubSceneShrinkRequest {
+	s.ViewPointShrink = &v
 	return s
 }
 
@@ -6956,6 +7234,122 @@ func (s *UpdateSubSceneResponse) SetStatusCode(v int32) *UpdateSubSceneResponse 
 }
 
 func (s *UpdateSubSceneResponse) SetBody(v *UpdateSubSceneResponseBody) *UpdateSubSceneResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateSubSceneSeqRequest struct {
+	// 子场景ID
+	SceneId         *string   `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SortSubSceneIds []*string `json:"SortSubSceneIds,omitempty" xml:"SortSubSceneIds,omitempty" type:"Repeated"`
+}
+
+func (s UpdateSubSceneSeqRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSubSceneSeqRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSubSceneSeqRequest) SetSceneId(v string) *UpdateSubSceneSeqRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *UpdateSubSceneSeqRequest) SetSortSubSceneIds(v []*string) *UpdateSubSceneSeqRequest {
+	s.SortSubSceneIds = v
+	return s
+}
+
+type UpdateSubSceneSeqShrinkRequest struct {
+	// 子场景ID
+	SceneId               *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	SortSubSceneIdsShrink *string `json:"SortSubSceneIds,omitempty" xml:"SortSubSceneIds,omitempty"`
+}
+
+func (s UpdateSubSceneSeqShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSubSceneSeqShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSubSceneSeqShrinkRequest) SetSceneId(v string) *UpdateSubSceneSeqShrinkRequest {
+	s.SceneId = &v
+	return s
+}
+
+func (s *UpdateSubSceneSeqShrinkRequest) SetSortSubSceneIdsShrink(v string) *UpdateSubSceneSeqShrinkRequest {
+	s.SortSubSceneIdsShrink = &v
+	return s
+}
+
+type UpdateSubSceneSeqResponseBody struct {
+	// 返回码
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求ID，与入参requestId对应
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 是否请求成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateSubSceneSeqResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSubSceneSeqResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSubSceneSeqResponseBody) SetCode(v int64) *UpdateSubSceneSeqResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateSubSceneSeqResponseBody) SetMessage(v string) *UpdateSubSceneSeqResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateSubSceneSeqResponseBody) SetRequestId(v string) *UpdateSubSceneSeqResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSubSceneSeqResponseBody) SetSuccess(v bool) *UpdateSubSceneSeqResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateSubSceneSeqResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSubSceneSeqResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSubSceneSeqResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSubSceneSeqResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSubSceneSeqResponse) SetHeaders(v map[string]*string) *UpdateSubSceneSeqResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSubSceneSeqResponse) SetStatusCode(v int32) *UpdateSubSceneSeqResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSubSceneSeqResponse) SetBody(v *UpdateSubSceneSeqResponseBody) *UpdateSubSceneSeqResponse {
 	s.Body = v
 	return s
 }
@@ -7350,6 +7744,54 @@ func (client *Client) CheckUserProperty(request *CheckUserPropertyRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) CopySceneWithOptions(request *CopySceneRequest, runtime *util.RuntimeOptions) (_result *CopySceneResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SceneName)) {
+		query["SceneName"] = request.SceneName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CopyScene"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CopySceneResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CopyScene(request *CopySceneRequest) (_result *CopySceneResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CopySceneResponse{}
+	_body, _err := client.CopySceneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DetailProjectWithOptions(request *DetailProjectRequest, runtime *util.RuntimeOptions) (_result *DetailProjectResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7651,6 +8093,50 @@ func (client *Client) GetConnData(request *GetConnDataRequest) (_result *GetConn
 	runtime := &util.RuntimeOptions{}
 	_result = &GetConnDataResponse{}
 	_body, _err := client.GetConnDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetCopySceneTaskStatusWithOptions(request *GetCopySceneTaskStatusRequest, runtime *util.RuntimeOptions) (_result *GetCopySceneTaskStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCopySceneTaskStatus"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCopySceneTaskStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCopySceneTaskStatus(request *GetCopySceneTaskStatusRequest) (_result *GetCopySceneTaskStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCopySceneTaskStatusResponse{}
+	_body, _err := client.GetCopySceneTaskStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8704,6 +9190,10 @@ func (client *Client) ListSubSceneWithOptions(request *ListSubSceneRequest, runt
 		query["ShowLayoutData"] = request.ShowLayoutData
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.SortField)) {
+		query["SortField"] = request.SortField
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -9686,11 +10176,17 @@ func (client *Client) UpdateScene(request *UpdateSceneRequest) (_result *UpdateS
 	return _result, _err
 }
 
-func (client *Client) UpdateSubSceneWithOptions(request *UpdateSubSceneRequest, runtime *util.RuntimeOptions) (_result *UpdateSubSceneResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateSubSceneWithOptions(tmpReq *UpdateSubSceneRequest, runtime *util.RuntimeOptions) (_result *UpdateSubSceneResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpdateSubSceneShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ViewPoint)) {
+		request.ViewPointShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ViewPoint, tea.String("ViewPoint"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.Id)) {
 		query["Id"] = request.Id
@@ -9698,6 +10194,10 @@ func (client *Client) UpdateSubSceneWithOptions(request *UpdateSubSceneRequest, 
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ViewPointShrink)) {
+		query["ViewPoint"] = request.ViewPointShrink
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9727,6 +10227,60 @@ func (client *Client) UpdateSubScene(request *UpdateSubSceneRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSubSceneResponse{}
 	_body, _err := client.UpdateSubSceneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateSubSceneSeqWithOptions(tmpReq *UpdateSubSceneSeqRequest, runtime *util.RuntimeOptions) (_result *UpdateSubSceneSeqResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateSubSceneSeqShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.SortSubSceneIds)) {
+		request.SortSubSceneIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SortSubSceneIds, tea.String("SortSubSceneIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortSubSceneIdsShrink)) {
+		query["SortSubSceneIds"] = request.SortSubSceneIdsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSubSceneSeq"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSubSceneSeqResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSubSceneSeq(request *UpdateSubSceneSeqRequest) (_result *UpdateSubSceneSeqResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSubSceneSeqResponse{}
+	_body, _err := client.UpdateSubSceneSeqWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
