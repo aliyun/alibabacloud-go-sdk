@@ -2854,6 +2854,210 @@ func (s *DeleteSensitiveWordResponse) SetBody(v *DeleteSensitiveWordResponseBody
 	return s
 }
 
+type DescribeMeterImpPlayBackTimeByLiveIdRequest struct {
+	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	EndTs   *int64  `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	LiveId  *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+	StartTs *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+}
+
+func (s DescribeMeterImpPlayBackTimeByLiveIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImpPlayBackTimeByLiveIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImpPlayBackTimeByLiveIdRequest) SetAppId(v string) *DescribeMeterImpPlayBackTimeByLiveIdRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeMeterImpPlayBackTimeByLiveIdRequest) SetEndTs(v int64) *DescribeMeterImpPlayBackTimeByLiveIdRequest {
+	s.EndTs = &v
+	return s
+}
+
+func (s *DescribeMeterImpPlayBackTimeByLiveIdRequest) SetLiveId(v string) *DescribeMeterImpPlayBackTimeByLiveIdRequest {
+	s.LiveId = &v
+	return s
+}
+
+func (s *DescribeMeterImpPlayBackTimeByLiveIdRequest) SetStartTs(v int64) *DescribeMeterImpPlayBackTimeByLiveIdRequest {
+	s.StartTs = &v
+	return s
+}
+
+type DescribeMeterImpPlayBackTimeByLiveIdResponseBody struct {
+	Data []*DescribeMeterImpPlayBackTimeByLiveIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeMeterImpPlayBackTimeByLiveIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImpPlayBackTimeByLiveIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImpPlayBackTimeByLiveIdResponseBody) SetData(v []*DescribeMeterImpPlayBackTimeByLiveIdResponseBodyData) *DescribeMeterImpPlayBackTimeByLiveIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeMeterImpPlayBackTimeByLiveIdResponseBody) SetRequestId(v string) *DescribeMeterImpPlayBackTimeByLiveIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeMeterImpPlayBackTimeByLiveIdResponseBodyData struct {
+	WatchTime *int64 `json:"WatchTime,omitempty" xml:"WatchTime,omitempty"`
+}
+
+func (s DescribeMeterImpPlayBackTimeByLiveIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImpPlayBackTimeByLiveIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImpPlayBackTimeByLiveIdResponseBodyData) SetWatchTime(v int64) *DescribeMeterImpPlayBackTimeByLiveIdResponseBodyData {
+	s.WatchTime = &v
+	return s
+}
+
+type DescribeMeterImpPlayBackTimeByLiveIdResponse struct {
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMeterImpPlayBackTimeByLiveIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeMeterImpPlayBackTimeByLiveIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImpPlayBackTimeByLiveIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImpPlayBackTimeByLiveIdResponse) SetHeaders(v map[string]*string) *DescribeMeterImpPlayBackTimeByLiveIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMeterImpPlayBackTimeByLiveIdResponse) SetStatusCode(v int32) *DescribeMeterImpPlayBackTimeByLiveIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeMeterImpPlayBackTimeByLiveIdResponse) SetBody(v *DescribeMeterImpPlayBackTimeByLiveIdResponseBody) *DescribeMeterImpPlayBackTimeByLiveIdResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeMeterImpWatchLiveTimeByLiveIdRequest struct {
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
+}
+
+func (s DescribeMeterImpWatchLiveTimeByLiveIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImpWatchLiveTimeByLiveIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImpWatchLiveTimeByLiveIdRequest) SetAppId(v string) *DescribeMeterImpWatchLiveTimeByLiveIdRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeMeterImpWatchLiveTimeByLiveIdRequest) SetLiveId(v string) *DescribeMeterImpWatchLiveTimeByLiveIdRequest {
+	s.LiveId = &v
+	return s
+}
+
+type DescribeMeterImpWatchLiveTimeByLiveIdResponseBody struct {
+	Data []*DescribeMeterImpWatchLiveTimeByLiveIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// Id
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeMeterImpWatchLiveTimeByLiveIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImpWatchLiveTimeByLiveIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImpWatchLiveTimeByLiveIdResponseBody) SetData(v []*DescribeMeterImpWatchLiveTimeByLiveIdResponseBodyData) *DescribeMeterImpWatchLiveTimeByLiveIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeMeterImpWatchLiveTimeByLiveIdResponseBody) SetRequestId(v string) *DescribeMeterImpWatchLiveTimeByLiveIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeMeterImpWatchLiveTimeByLiveIdResponseBodyData struct {
+	WatchTimeInLatency    *int64 `json:"WatchTimeInLatency,omitempty" xml:"WatchTimeInLatency,omitempty"`
+	WatchTimeInLowLatency *int64 `json:"WatchTimeInLowLatency,omitempty" xml:"WatchTimeInLowLatency,omitempty"`
+}
+
+func (s DescribeMeterImpWatchLiveTimeByLiveIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImpWatchLiveTimeByLiveIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImpWatchLiveTimeByLiveIdResponseBodyData) SetWatchTimeInLatency(v int64) *DescribeMeterImpWatchLiveTimeByLiveIdResponseBodyData {
+	s.WatchTimeInLatency = &v
+	return s
+}
+
+func (s *DescribeMeterImpWatchLiveTimeByLiveIdResponseBodyData) SetWatchTimeInLowLatency(v int64) *DescribeMeterImpWatchLiveTimeByLiveIdResponseBodyData {
+	s.WatchTimeInLowLatency = &v
+	return s
+}
+
+type DescribeMeterImpWatchLiveTimeByLiveIdResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMeterImpWatchLiveTimeByLiveIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeMeterImpWatchLiveTimeByLiveIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMeterImpWatchLiveTimeByLiveIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMeterImpWatchLiveTimeByLiveIdResponse) SetHeaders(v map[string]*string) *DescribeMeterImpWatchLiveTimeByLiveIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeMeterImpWatchLiveTimeByLiveIdResponse) SetStatusCode(v int32) *DescribeMeterImpWatchLiveTimeByLiveIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeMeterImpWatchLiveTimeByLiveIdResponse) SetBody(v *DescribeMeterImpWatchLiveTimeByLiveIdResponseBody) *DescribeMeterImpWatchLiveTimeByLiveIdResponse {
+	s.Body = v
+	return s
+}
+
 type GetAppRequest struct {
 	// 应用唯一标识
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -11748,6 +11952,110 @@ func (client *Client) DeleteSensitiveWord(request *DeleteSensitiveWordRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSensitiveWordResponse{}
 	_body, _err := client.DeleteSensitiveWordWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeMeterImpPlayBackTimeByLiveIdWithOptions(request *DescribeMeterImpPlayBackTimeByLiveIdRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterImpPlayBackTimeByLiveIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTs)) {
+		query["EndTs"] = request.EndTs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LiveId)) {
+		query["LiveId"] = request.LiveId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTs)) {
+		query["StartTs"] = request.StartTs
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMeterImpPlayBackTimeByLiveId"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeMeterImpPlayBackTimeByLiveIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeMeterImpPlayBackTimeByLiveId(request *DescribeMeterImpPlayBackTimeByLiveIdRequest) (_result *DescribeMeterImpPlayBackTimeByLiveIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeMeterImpPlayBackTimeByLiveIdResponse{}
+	_body, _err := client.DescribeMeterImpPlayBackTimeByLiveIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeMeterImpWatchLiveTimeByLiveIdWithOptions(request *DescribeMeterImpWatchLiveTimeByLiveIdRequest, runtime *util.RuntimeOptions) (_result *DescribeMeterImpWatchLiveTimeByLiveIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LiveId)) {
+		query["LiveId"] = request.LiveId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeMeterImpWatchLiveTimeByLiveId"),
+		Version:     tea.String("2021-06-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeMeterImpWatchLiveTimeByLiveIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeMeterImpWatchLiveTimeByLiveId(request *DescribeMeterImpWatchLiveTimeByLiveIdRequest) (_result *DescribeMeterImpWatchLiveTimeByLiveIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeMeterImpWatchLiveTimeByLiveIdResponse{}
+	_body, _err := client.DescribeMeterImpWatchLiveTimeByLiveIdWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
