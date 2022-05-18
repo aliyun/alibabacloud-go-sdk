@@ -718,6 +718,99 @@ func (s *CreateSimilarSecurityEventsQueryTaskResponse) SetBody(v *CreateSimilarS
 	return s
 }
 
+type CreateSuspEventNoteRequest struct {
+	EventId *int64  `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	Note    *string `json:"Note,omitempty" xml:"Note,omitempty"`
+}
+
+func (s CreateSuspEventNoteRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSuspEventNoteRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSuspEventNoteRequest) SetEventId(v int64) *CreateSuspEventNoteRequest {
+	s.EventId = &v
+	return s
+}
+
+func (s *CreateSuspEventNoteRequest) SetNote(v string) *CreateSuspEventNoteRequest {
+	s.Note = &v
+	return s
+}
+
+type CreateSuspEventNoteResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateSuspEventNoteResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSuspEventNoteResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSuspEventNoteResponseBody) SetCode(v string) *CreateSuspEventNoteResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateSuspEventNoteResponseBody) SetHttpStatusCode(v int32) *CreateSuspEventNoteResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateSuspEventNoteResponseBody) SetMessage(v string) *CreateSuspEventNoteResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateSuspEventNoteResponseBody) SetRequestId(v string) *CreateSuspEventNoteResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateSuspEventNoteResponseBody) SetSuccess(v bool) *CreateSuspEventNoteResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateSuspEventNoteResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSuspEventNoteResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateSuspEventNoteResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateSuspEventNoteResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateSuspEventNoteResponse) SetHeaders(v map[string]*string) *CreateSuspEventNoteResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateSuspEventNoteResponse) SetStatusCode(v int32) *CreateSuspEventNoteResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateSuspEventNoteResponse) SetBody(v *CreateSuspEventNoteResponseBody) *CreateSuspEventNoteResponse {
+	s.Body = v
+	return s
+}
+
 type CreateVulAutoRepairConfigRequest struct {
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// 漏洞类型
@@ -10589,6 +10682,7 @@ func (s *DescribeImageVulListResponseBody) SetVulRecords(v []*DescribeImageVulLi
 
 type DescribeImageVulListResponseBodyVulRecords struct {
 	AliasName         *string                                                      `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	CanFix            *string                                                      `json:"CanFix,omitempty" xml:"CanFix,omitempty"`
 	CanUpdate         *bool                                                        `json:"CanUpdate,omitempty" xml:"CanUpdate,omitempty"`
 	ExtendContentJson *DescribeImageVulListResponseBodyVulRecordsExtendContentJson `json:"ExtendContentJson,omitempty" xml:"ExtendContentJson,omitempty" type:"Struct"`
 	FirstTs           *int64                                                       `json:"FirstTs,omitempty" xml:"FirstTs,omitempty"`
@@ -10618,6 +10712,11 @@ func (s DescribeImageVulListResponseBodyVulRecords) GoString() string {
 
 func (s *DescribeImageVulListResponseBodyVulRecords) SetAliasName(v string) *DescribeImageVulListResponseBodyVulRecords {
 	s.AliasName = &v
+	return s
+}
+
+func (s *DescribeImageVulListResponseBodyVulRecords) SetCanFix(v string) *DescribeImageVulListResponseBodyVulRecords {
+	s.CanFix = &v
 	return s
 }
 
@@ -11868,6 +11967,211 @@ func (s *DescribeNoticeConfigResponse) SetStatusCode(v int32) *DescribeNoticeCon
 }
 
 func (s *DescribeNoticeConfigResponse) SetBody(v *DescribeNoticeConfigResponseBody) *DescribeNoticeConfigResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeOnceTaskRequest struct {
+	CurrentPage    *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EndTimeQuery   *int64  `json:"EndTimeQuery,omitempty" xml:"EndTimeQuery,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RootTaskId     *string `json:"RootTaskId,omitempty" xml:"RootTaskId,omitempty"`
+	StartTimeQuery *int64  `json:"StartTimeQuery,omitempty" xml:"StartTimeQuery,omitempty"`
+	TaskType       *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s DescribeOnceTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOnceTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOnceTaskRequest) SetCurrentPage(v int32) *DescribeOnceTaskRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeOnceTaskRequest) SetEndTimeQuery(v int64) *DescribeOnceTaskRequest {
+	s.EndTimeQuery = &v
+	return s
+}
+
+func (s *DescribeOnceTaskRequest) SetPageSize(v int32) *DescribeOnceTaskRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeOnceTaskRequest) SetRootTaskId(v string) *DescribeOnceTaskRequest {
+	s.RootTaskId = &v
+	return s
+}
+
+func (s *DescribeOnceTaskRequest) SetStartTimeQuery(v int64) *DescribeOnceTaskRequest {
+	s.StartTimeQuery = &v
+	return s
+}
+
+func (s *DescribeOnceTaskRequest) SetTaskType(v string) *DescribeOnceTaskRequest {
+	s.TaskType = &v
+	return s
+}
+
+type DescribeOnceTaskResponseBody struct {
+	PageInfo               *DescribeOnceTaskResponseBodyPageInfo                 `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId              *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskManageResponseList []*DescribeOnceTaskResponseBodyTaskManageResponseList `json:"TaskManageResponseList,omitempty" xml:"TaskManageResponseList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeOnceTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOnceTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOnceTaskResponseBody) SetPageInfo(v *DescribeOnceTaskResponseBodyPageInfo) *DescribeOnceTaskResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeOnceTaskResponseBody) SetRequestId(v string) *DescribeOnceTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeOnceTaskResponseBody) SetTaskManageResponseList(v []*DescribeOnceTaskResponseBodyTaskManageResponseList) *DescribeOnceTaskResponseBody {
+	s.TaskManageResponseList = v
+	return s
+}
+
+type DescribeOnceTaskResponseBodyPageInfo struct {
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeOnceTaskResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOnceTaskResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOnceTaskResponseBodyPageInfo) SetCount(v int32) *DescribeOnceTaskResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+func (s *DescribeOnceTaskResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeOnceTaskResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeOnceTaskResponseBodyPageInfo) SetPageSize(v int32) *DescribeOnceTaskResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeOnceTaskResponseBodyPageInfo) SetTotalCount(v int32) *DescribeOnceTaskResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeOnceTaskResponseBodyTaskManageResponseList struct {
+	DetailData     *string `json:"DetailData,omitempty" xml:"DetailData,omitempty"`
+	Progress       *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	TaskEndTime    *int64  `json:"TaskEndTime,omitempty" xml:"TaskEndTime,omitempty"`
+	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName       *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskStartTime  *int64  `json:"TaskStartTime,omitempty" xml:"TaskStartTime,omitempty"`
+	TaskStatus     *int32  `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TaskStatusText *string `json:"TaskStatusText,omitempty" xml:"TaskStatusText,omitempty"`
+	TaskType       *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s DescribeOnceTaskResponseBodyTaskManageResponseList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOnceTaskResponseBodyTaskManageResponseList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOnceTaskResponseBodyTaskManageResponseList) SetDetailData(v string) *DescribeOnceTaskResponseBodyTaskManageResponseList {
+	s.DetailData = &v
+	return s
+}
+
+func (s *DescribeOnceTaskResponseBodyTaskManageResponseList) SetProgress(v string) *DescribeOnceTaskResponseBodyTaskManageResponseList {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeOnceTaskResponseBodyTaskManageResponseList) SetTaskEndTime(v int64) *DescribeOnceTaskResponseBodyTaskManageResponseList {
+	s.TaskEndTime = &v
+	return s
+}
+
+func (s *DescribeOnceTaskResponseBodyTaskManageResponseList) SetTaskId(v string) *DescribeOnceTaskResponseBodyTaskManageResponseList {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeOnceTaskResponseBodyTaskManageResponseList) SetTaskName(v string) *DescribeOnceTaskResponseBodyTaskManageResponseList {
+	s.TaskName = &v
+	return s
+}
+
+func (s *DescribeOnceTaskResponseBodyTaskManageResponseList) SetTaskStartTime(v int64) *DescribeOnceTaskResponseBodyTaskManageResponseList {
+	s.TaskStartTime = &v
+	return s
+}
+
+func (s *DescribeOnceTaskResponseBodyTaskManageResponseList) SetTaskStatus(v int32) *DescribeOnceTaskResponseBodyTaskManageResponseList {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *DescribeOnceTaskResponseBodyTaskManageResponseList) SetTaskStatusText(v string) *DescribeOnceTaskResponseBodyTaskManageResponseList {
+	s.TaskStatusText = &v
+	return s
+}
+
+func (s *DescribeOnceTaskResponseBodyTaskManageResponseList) SetTaskType(v string) *DescribeOnceTaskResponseBodyTaskManageResponseList {
+	s.TaskType = &v
+	return s
+}
+
+type DescribeOnceTaskResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeOnceTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeOnceTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOnceTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOnceTaskResponse) SetHeaders(v map[string]*string) *DescribeOnceTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeOnceTaskResponse) SetStatusCode(v int32) *DescribeOnceTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeOnceTaskResponse) SetBody(v *DescribeOnceTaskResponseBody) *DescribeOnceTaskResponse {
 	s.Body = v
 	return s
 }
@@ -28669,6 +28973,54 @@ func (client *Client) CreateSimilarSecurityEventsQueryTask(request *CreateSimila
 	return _result, _err
 }
 
+func (client *Client) CreateSuspEventNoteWithOptions(request *CreateSuspEventNoteRequest, runtime *util.RuntimeOptions) (_result *CreateSuspEventNoteResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EventId)) {
+		query["EventId"] = request.EventId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Note)) {
+		query["Note"] = request.Note
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSuspEventNote"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateSuspEventNoteResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateSuspEventNote(request *CreateSuspEventNoteRequest) (_result *CreateSuspEventNoteResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateSuspEventNoteResponse{}
+	_body, _err := client.CreateSuspEventNoteWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateVulAutoRepairConfigWithOptions(request *CreateVulAutoRepairConfigRequest, runtime *util.RuntimeOptions) (_result *CreateVulAutoRepairConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32557,6 +32909,70 @@ func (client *Client) DescribeNoticeConfig(request *DescribeNoticeConfigRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeNoticeConfigResponse{}
 	_body, _err := client.DescribeNoticeConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeOnceTaskWithOptions(request *DescribeOnceTaskRequest, runtime *util.RuntimeOptions) (_result *DescribeOnceTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTimeQuery)) {
+		query["EndTimeQuery"] = request.EndTimeQuery
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RootTaskId)) {
+		query["RootTaskId"] = request.RootTaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTimeQuery)) {
+		query["StartTimeQuery"] = request.StartTimeQuery
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeOnceTask"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeOnceTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeOnceTask(request *DescribeOnceTaskRequest) (_result *DescribeOnceTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeOnceTaskResponse{}
+	_body, _err := client.DescribeOnceTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
