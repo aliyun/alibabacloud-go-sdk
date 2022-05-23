@@ -4297,9 +4297,18 @@ func (s *GetWindowConfigResponse) SetBody(v *GetWindowConfigResponseBody) *GetWi
 }
 
 type LabelBuildRequest struct {
+	// 重建模式：MANUAL：手动（云端），默认，SEMI_AUTOMATIC：半自动（移动端）
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	// 模型效果 PASTER：切片模型（默认） DEPTH：深度模型 VIRTUAL：虚拟模型 MOBILE：移动重建模型
+	OptimizeModelEffect *string `json:"OptimizeModelEffect,omitempty" xml:"OptimizeModelEffect,omitempty"`
+	// 墙宽优化，SHUTDOWN:关闭（默认） STANDARD：标准 DEPTH：深度
+	OptimizeWallWidth *string `json:"OptimizeWallWidth,omitempty" xml:"OptimizeWallWidth,omitempty"`
+	// 户型图，DEFAULT（默认），STANDARD（标准）
+	PlanStyle *string `json:"PlanStyle,omitempty" xml:"PlanStyle,omitempty"`
 	// 场景ID
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+	// 墙高，默认0不设置，范围200-1000. 单位cm
+	WallHeight *int64 `json:"WallHeight,omitempty" xml:"WallHeight,omitempty"`
 }
 
 func (s LabelBuildRequest) String() string {
@@ -4315,8 +4324,28 @@ func (s *LabelBuildRequest) SetMode(v string) *LabelBuildRequest {
 	return s
 }
 
+func (s *LabelBuildRequest) SetOptimizeModelEffect(v string) *LabelBuildRequest {
+	s.OptimizeModelEffect = &v
+	return s
+}
+
+func (s *LabelBuildRequest) SetOptimizeWallWidth(v string) *LabelBuildRequest {
+	s.OptimizeWallWidth = &v
+	return s
+}
+
+func (s *LabelBuildRequest) SetPlanStyle(v string) *LabelBuildRequest {
+	s.PlanStyle = &v
+	return s
+}
+
 func (s *LabelBuildRequest) SetSceneId(v string) *LabelBuildRequest {
 	s.SceneId = &v
+	return s
+}
+
+func (s *LabelBuildRequest) SetWallHeight(v int64) *LabelBuildRequest {
+	s.WallHeight = &v
 	return s
 }
 
@@ -7112,7 +7141,8 @@ type UpdateSubSceneRequest struct {
 	// 子场景ID
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// 子场景名称
-	Name      *string    `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 视角坐标，目前支持3元坐标，4元坐标，例如：[0.94005,0.13397,-0.3136,0.782992]
 	ViewPoint []*float64 `json:"ViewPoint,omitempty" xml:"ViewPoint,omitempty" type:"Repeated"`
 }
 
@@ -7143,7 +7173,8 @@ type UpdateSubSceneShrinkRequest struct {
 	// 子场景ID
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// 子场景名称
-	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// 视角坐标，目前支持3元坐标，4元坐标，例如：[0.94005,0.13397,-0.3136,0.782992]
 	ViewPointShrink *string `json:"ViewPoint,omitempty" xml:"ViewPoint,omitempty"`
 }
 
@@ -8966,8 +8997,24 @@ func (client *Client) LabelBuildWithOptions(request *LabelBuildRequest, runtime 
 		query["Mode"] = request.Mode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OptimizeModelEffect)) {
+		query["OptimizeModelEffect"] = request.OptimizeModelEffect
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OptimizeWallWidth)) {
+		query["OptimizeWallWidth"] = request.OptimizeWallWidth
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanStyle)) {
+		query["PlanStyle"] = request.PlanStyle
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
 		query["SceneId"] = request.SceneId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WallHeight)) {
+		query["WallHeight"] = request.WallHeight
 	}
 
 	req := &openapi.OpenApiRequest{
