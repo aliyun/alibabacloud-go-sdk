@@ -13,6 +13,7 @@ import (
 )
 
 type CreateApplicationRequest struct {
+	ApplicationParams map[string]interface{} `json:"ApplicationParams,omitempty" xml:"ApplicationParams,omitempty"`
 	// 区域ID
 	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
 	// 幂等标记
@@ -25,6 +26,7 @@ type CreateApplicationRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// 模板ID
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Variables  *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
 }
 
 func (s CreateApplicationRequest) String() string {
@@ -33,6 +35,11 @@ func (s CreateApplicationRequest) String() string {
 
 func (s CreateApplicationRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateApplicationRequest) SetApplicationParams(v map[string]interface{}) *CreateApplicationRequest {
+	s.ApplicationParams = v
+	return s
 }
 
 func (s *CreateApplicationRequest) SetAreaId(v string) *CreateApplicationRequest {
@@ -62,6 +69,11 @@ func (s *CreateApplicationRequest) SetResourceGroupId(v string) *CreateApplicati
 
 func (s *CreateApplicationRequest) SetTemplateId(v string) *CreateApplicationRequest {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetVariables(v string) *CreateApplicationRequest {
+	s.Variables = &v
 	return s
 }
 
@@ -98,6 +110,7 @@ func (s *CreateApplicationRequestInstances) SetNodeType(v string) *CreateApplica
 }
 
 type CreateApplicationShrinkRequest struct {
+	ApplicationParamsShrink *string `json:"ApplicationParams,omitempty" xml:"ApplicationParams,omitempty"`
 	// 区域ID
 	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
 	// 幂等标记
@@ -110,6 +123,7 @@ type CreateApplicationShrinkRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// 模板ID
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Variables  *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
 }
 
 func (s CreateApplicationShrinkRequest) String() string {
@@ -118,6 +132,11 @@ func (s CreateApplicationShrinkRequest) String() string {
 
 func (s CreateApplicationShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateApplicationShrinkRequest) SetApplicationParamsShrink(v string) *CreateApplicationShrinkRequest {
+	s.ApplicationParamsShrink = &v
+	return s
 }
 
 func (s *CreateApplicationShrinkRequest) SetAreaId(v string) *CreateApplicationShrinkRequest {
@@ -147,6 +166,11 @@ func (s *CreateApplicationShrinkRequest) SetResourceGroupId(v string) *CreateApp
 
 func (s *CreateApplicationShrinkRequest) SetTemplateId(v string) *CreateApplicationShrinkRequest {
 	s.TemplateId = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetVariables(v string) *CreateApplicationShrinkRequest {
+	s.Variables = &v
 	return s
 }
 
@@ -1784,11 +1808,19 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 	}
 	request := &CreateApplicationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ApplicationParams)) {
+		request.ApplicationParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApplicationParams, tea.String("ApplicationParams"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.Instances)) {
 		request.InstancesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Instances, tea.String("Instances"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApplicationParamsShrink)) {
+		body["ApplicationParams"] = request.ApplicationParamsShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AreaId)) {
 		body["AreaId"] = request.AreaId
 	}
@@ -1811,6 +1843,10 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 
 	if !tea.BoolValue(util.IsUnset(request.TemplateId)) {
 		body["TemplateId"] = request.TemplateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Variables)) {
+		body["Variables"] = request.Variables
 	}
 
 	req := &openapi.OpenApiRequest{
