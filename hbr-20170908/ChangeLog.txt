@@ -1,3 +1,6 @@
+2022-05-24 Version: v1.3.0
+- Public api for container backup.
+
 2022-03-25 Version: v1.1.0
 - Public go sdk.
 

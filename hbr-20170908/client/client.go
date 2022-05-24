@@ -30,6 +30,66 @@ func (s *OtsDetail) SetTableNames(v []*string) *OtsDetail {
 	return s
 }
 
+type OtsTableRestoreDetail struct {
+	// Concurrent processing channel count for each restore task
+	BatchChannelCount *int32 `json:"BatchChannelCount,omitempty" xml:"BatchChannelCount,omitempty"`
+	// Specify a suffix to restored index name
+	IndexNameSuffix *string `json:"IndexNameSuffix,omitempty" xml:"IndexNameSuffix,omitempty"`
+	// Overwrite existing table or not
+	OverwriteExisting *bool `json:"OverwriteExisting,omitempty" xml:"OverwriteExisting,omitempty"`
+	// Re-generate auto incrmental primary key or not
+	ReGenerateAutoIncrementPK *bool `json:"ReGenerateAutoIncrementPK,omitempty" xml:"ReGenerateAutoIncrementPK,omitempty"`
+	// Restore index or not
+	RestoreIndex *bool `json:"RestoreIndex,omitempty" xml:"RestoreIndex,omitempty"`
+	// Restore search index or not
+	RestoreSearchIndex *bool `json:"RestoreSearchIndex,omitempty" xml:"RestoreSearchIndex,omitempty"`
+	// Specify a suffix to restored search index name
+	SearchIndexNameSuffix *string `json:"SearchIndexNameSuffix,omitempty" xml:"SearchIndexNameSuffix,omitempty"`
+}
+
+func (s OtsTableRestoreDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OtsTableRestoreDetail) GoString() string {
+	return s.String()
+}
+
+func (s *OtsTableRestoreDetail) SetBatchChannelCount(v int32) *OtsTableRestoreDetail {
+	s.BatchChannelCount = &v
+	return s
+}
+
+func (s *OtsTableRestoreDetail) SetIndexNameSuffix(v string) *OtsTableRestoreDetail {
+	s.IndexNameSuffix = &v
+	return s
+}
+
+func (s *OtsTableRestoreDetail) SetOverwriteExisting(v bool) *OtsTableRestoreDetail {
+	s.OverwriteExisting = &v
+	return s
+}
+
+func (s *OtsTableRestoreDetail) SetReGenerateAutoIncrementPK(v bool) *OtsTableRestoreDetail {
+	s.ReGenerateAutoIncrementPK = &v
+	return s
+}
+
+func (s *OtsTableRestoreDetail) SetRestoreIndex(v bool) *OtsTableRestoreDetail {
+	s.RestoreIndex = &v
+	return s
+}
+
+func (s *OtsTableRestoreDetail) SetRestoreSearchIndex(v bool) *OtsTableRestoreDetail {
+	s.RestoreSearchIndex = &v
+	return s
+}
+
+func (s *OtsTableRestoreDetail) SetSearchIndexNameSuffix(v string) *OtsTableRestoreDetail {
+	s.SearchIndexNameSuffix = &v
+	return s
+}
+
 type Rule struct {
 	// backup type
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
@@ -97,6 +157,246 @@ func (s *Rule) SetSchedule(v string) *Rule {
 	return s
 }
 
+type AddContainerClusterRequest struct {
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Identifier  *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+}
+
+func (s AddContainerClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddContainerClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddContainerClusterRequest) SetClusterType(v string) *AddContainerClusterRequest {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *AddContainerClusterRequest) SetDescription(v string) *AddContainerClusterRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *AddContainerClusterRequest) SetIdentifier(v string) *AddContainerClusterRequest {
+	s.Identifier = &v
+	return s
+}
+
+func (s *AddContainerClusterRequest) SetName(v string) *AddContainerClusterRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *AddContainerClusterRequest) SetNetworkType(v string) *AddContainerClusterRequest {
+	s.NetworkType = &v
+	return s
+}
+
+type AddContainerClusterResponseBody struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	Token     *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s AddContainerClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddContainerClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddContainerClusterResponseBody) SetClusterId(v string) *AddContainerClusterResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *AddContainerClusterResponseBody) SetCode(v string) *AddContainerClusterResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddContainerClusterResponseBody) SetMessage(v string) *AddContainerClusterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddContainerClusterResponseBody) SetRequestId(v string) *AddContainerClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddContainerClusterResponseBody) SetSuccess(v bool) *AddContainerClusterResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *AddContainerClusterResponseBody) SetToken(v string) *AddContainerClusterResponseBody {
+	s.Token = &v
+	return s
+}
+
+type AddContainerClusterResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddContainerClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddContainerClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddContainerClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddContainerClusterResponse) SetHeaders(v map[string]*string) *AddContainerClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddContainerClusterResponse) SetStatusCode(v int32) *AddContainerClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddContainerClusterResponse) SetBody(v *AddContainerClusterResponseBody) *AddContainerClusterResponse {
+	s.Body = v
+	return s
+}
+
+type AddObClusterRequest struct {
+	ClientId    *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Host        *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Password    *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	Port        *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	Username    *string `json:"Username,omitempty" xml:"Username,omitempty"`
+}
+
+func (s AddObClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddObClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddObClusterRequest) SetClientId(v string) *AddObClusterRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *AddObClusterRequest) SetClusterName(v string) *AddObClusterRequest {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *AddObClusterRequest) SetDescription(v string) *AddObClusterRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *AddObClusterRequest) SetHost(v string) *AddObClusterRequest {
+	s.Host = &v
+	return s
+}
+
+func (s *AddObClusterRequest) SetPassword(v string) *AddObClusterRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *AddObClusterRequest) SetPort(v string) *AddObClusterRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *AddObClusterRequest) SetUsername(v string) *AddObClusterRequest {
+	s.Username = &v
+	return s
+}
+
+type AddObClusterResponseBody struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AddObClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddObClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddObClusterResponseBody) SetClusterId(v string) *AddObClusterResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *AddObClusterResponseBody) SetCode(v string) *AddObClusterResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AddObClusterResponseBody) SetMessage(v string) *AddObClusterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *AddObClusterResponseBody) SetRequestId(v string) *AddObClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AddObClusterResponseBody) SetSuccess(v bool) *AddObClusterResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AddObClusterResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddObClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddObClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddObClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddObClusterResponse) SetHeaders(v map[string]*string) *AddObClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddObClusterResponse) SetStatusCode(v int32) *AddObClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddObClusterResponse) SetBody(v *AddObClusterResponseBody) *AddObClusterResponse {
+	s.Body = v
+	return s
+}
+
 type CancelBackupJobRequest struct {
 	JobId   *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	VaultId *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
@@ -156,8 +456,9 @@ func (s *CancelBackupJobResponseBody) SetSuccess(v bool) *CancelBackupJobRespons
 }
 
 type CancelBackupJobResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CancelBackupJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelBackupJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CancelBackupJobResponse) String() string {
@@ -170,6 +471,11 @@ func (s CancelBackupJobResponse) GoString() string {
 
 func (s *CancelBackupJobResponse) SetHeaders(v map[string]*string) *CancelBackupJobResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CancelBackupJobResponse) SetStatusCode(v int32) *CancelBackupJobResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -237,8 +543,9 @@ func (s *CancelRestoreJobResponseBody) SetSuccess(v bool) *CancelRestoreJobRespo
 }
 
 type CancelRestoreJobResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CancelRestoreJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelRestoreJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CancelRestoreJobResponse) String() string {
@@ -251,6 +558,11 @@ func (s CancelRestoreJobResponse) GoString() string {
 
 func (s *CancelRestoreJobResponse) SetHeaders(v map[string]*string) *CancelRestoreJobResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CancelRestoreJobResponse) SetStatusCode(v int32) *CancelRestoreJobResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -324,8 +636,9 @@ func (s *ChangeResourceGroupResponseBody) SetSuccess(v bool) *ChangeResourceGrou
 }
 
 type ChangeResourceGroupResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChangeResourceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ChangeResourceGroupResponse) String() string {
@@ -341,30 +654,194 @@ func (s *ChangeResourceGroupResponse) SetHeaders(v map[string]*string) *ChangeRe
 	return s
 }
 
+func (s *ChangeResourceGroupResponse) SetStatusCode(v int32) *ChangeResourceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ChangeResourceGroupResponse) SetBody(v *ChangeResourceGroupResponseBody) *ChangeResourceGroupResponse {
 	s.Body = v
 	return s
 }
 
+type CreateBackupJobRequest struct {
+	BackupType         *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	ClusterId          *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ContainerClusterId *string `json:"ContainerClusterId,omitempty" xml:"ContainerClusterId,omitempty"`
+	ContainerResources *string `json:"ContainerResources,omitempty" xml:"ContainerResources,omitempty"`
+	Exclude            *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	Include            *string `json:"Include,omitempty" xml:"Include,omitempty"`
+	JobName            *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	Options            *string `json:"Options,omitempty" xml:"Options,omitempty"`
+	Retention          *int64  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	SourceType         *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SpeedLimit         *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
+	VaultId            *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s CreateBackupJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackupJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackupJobRequest) SetBackupType(v string) *CreateBackupJobRequest {
+	s.BackupType = &v
+	return s
+}
+
+func (s *CreateBackupJobRequest) SetClusterId(v string) *CreateBackupJobRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateBackupJobRequest) SetContainerClusterId(v string) *CreateBackupJobRequest {
+	s.ContainerClusterId = &v
+	return s
+}
+
+func (s *CreateBackupJobRequest) SetContainerResources(v string) *CreateBackupJobRequest {
+	s.ContainerResources = &v
+	return s
+}
+
+func (s *CreateBackupJobRequest) SetExclude(v string) *CreateBackupJobRequest {
+	s.Exclude = &v
+	return s
+}
+
+func (s *CreateBackupJobRequest) SetInclude(v string) *CreateBackupJobRequest {
+	s.Include = &v
+	return s
+}
+
+func (s *CreateBackupJobRequest) SetJobName(v string) *CreateBackupJobRequest {
+	s.JobName = &v
+	return s
+}
+
+func (s *CreateBackupJobRequest) SetOptions(v string) *CreateBackupJobRequest {
+	s.Options = &v
+	return s
+}
+
+func (s *CreateBackupJobRequest) SetRetention(v int64) *CreateBackupJobRequest {
+	s.Retention = &v
+	return s
+}
+
+func (s *CreateBackupJobRequest) SetSourceType(v string) *CreateBackupJobRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *CreateBackupJobRequest) SetSpeedLimit(v string) *CreateBackupJobRequest {
+	s.SpeedLimit = &v
+	return s
+}
+
+func (s *CreateBackupJobRequest) SetVaultId(v string) *CreateBackupJobRequest {
+	s.VaultId = &v
+	return s
+}
+
+type CreateBackupJobResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateBackupJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackupJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackupJobResponseBody) SetCode(v string) *CreateBackupJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateBackupJobResponseBody) SetJobId(v string) *CreateBackupJobResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *CreateBackupJobResponseBody) SetMessage(v string) *CreateBackupJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateBackupJobResponseBody) SetRequestId(v string) *CreateBackupJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateBackupJobResponseBody) SetSuccess(v bool) *CreateBackupJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateBackupJobResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateBackupJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateBackupJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackupJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackupJobResponse) SetHeaders(v map[string]*string) *CreateBackupJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateBackupJobResponse) SetStatusCode(v int32) *CreateBackupJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateBackupJobResponse) SetBody(v *CreateBackupJobResponseBody) *CreateBackupJobResponse {
+	s.Body = v
+	return s
+}
+
 type CreateBackupPlanRequest struct {
-	BackupType   *string    `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	Bucket       *string    `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	CreateTime   *int64     `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Exclude      *string    `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	FileSystemId *string    `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	Include      *string    `json:"Include,omitempty" xml:"Include,omitempty"`
-	InstanceId   *string    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName *string    `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Options      *string    `json:"Options,omitempty" xml:"Options,omitempty"`
-	OtsDetail    *OtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
-	Path         []*string  `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
-	PlanName     *string    `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	Prefix       *string    `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	Retention    *int64     `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	Schedule     *string    `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	SourceType   *string    `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SpeedLimit   *string    `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
-	VaultId      *string    `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	BackupType       *string                        `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	Bucket           *string                        `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	CreateTime       *int64                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CrossAccountType *string                        `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossOwnerId     *int64                         `json:"CrossOwnerId,omitempty" xml:"CrossOwnerId,omitempty"`
+	CrossRamRole     *string                        `json:"CrossRamRole,omitempty" xml:"CrossRamRole,omitempty"`
+	Detail           map[string]interface{}         `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	Exclude          *string                        `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	FileSystemId     *string                        `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	Include          *string                        `json:"Include,omitempty" xml:"Include,omitempty"`
+	InstanceId       *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName     *string                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Options          *string                        `json:"Options,omitempty" xml:"Options,omitempty"`
+	OtsDetail        *OtsDetail                     `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
+	Path             []*string                      `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
+	PlanName         *string                        `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	Prefix           *string                        `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	Retention        *int64                         `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	Rule             []*CreateBackupPlanRequestRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
+	Schedule         *string                        `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	SourceType       *string                        `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SpeedLimit       *string                        `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
+	UdmRegionId      *string                        `json:"UdmRegionId,omitempty" xml:"UdmRegionId,omitempty"`
+	VaultId          *string                        `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s CreateBackupPlanRequest) String() string {
@@ -387,6 +864,26 @@ func (s *CreateBackupPlanRequest) SetBucket(v string) *CreateBackupPlanRequest {
 
 func (s *CreateBackupPlanRequest) SetCreateTime(v int64) *CreateBackupPlanRequest {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateBackupPlanRequest) SetCrossAccountType(v string) *CreateBackupPlanRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *CreateBackupPlanRequest) SetCrossOwnerId(v int64) *CreateBackupPlanRequest {
+	s.CrossOwnerId = &v
+	return s
+}
+
+func (s *CreateBackupPlanRequest) SetCrossRamRole(v string) *CreateBackupPlanRequest {
+	s.CrossRamRole = &v
+	return s
+}
+
+func (s *CreateBackupPlanRequest) SetDetail(v map[string]interface{}) *CreateBackupPlanRequest {
+	s.Detail = v
 	return s
 }
 
@@ -445,6 +942,11 @@ func (s *CreateBackupPlanRequest) SetRetention(v int64) *CreateBackupPlanRequest
 	return s
 }
 
+func (s *CreateBackupPlanRequest) SetRule(v []*CreateBackupPlanRequestRule) *CreateBackupPlanRequest {
+	s.Rule = v
+	return s
+}
+
 func (s *CreateBackupPlanRequest) SetSchedule(v string) *CreateBackupPlanRequest {
 	s.Schedule = &v
 	return s
@@ -460,30 +962,100 @@ func (s *CreateBackupPlanRequest) SetSpeedLimit(v string) *CreateBackupPlanReque
 	return s
 }
 
+func (s *CreateBackupPlanRequest) SetUdmRegionId(v string) *CreateBackupPlanRequest {
+	s.UdmRegionId = &v
+	return s
+}
+
 func (s *CreateBackupPlanRequest) SetVaultId(v string) *CreateBackupPlanRequest {
 	s.VaultId = &v
 	return s
 }
 
+type CreateBackupPlanRequestRule struct {
+	BackupType           *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	DestinationRegionId  *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
+	DestinationRetention *int64  `json:"DestinationRetention,omitempty" xml:"DestinationRetention,omitempty"`
+	Disabled             *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	DoCopy               *bool   `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
+	Retention            *int64  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	RuleName             *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Schedule             *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+}
+
+func (s CreateBackupPlanRequestRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackupPlanRequestRule) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackupPlanRequestRule) SetBackupType(v string) *CreateBackupPlanRequestRule {
+	s.BackupType = &v
+	return s
+}
+
+func (s *CreateBackupPlanRequestRule) SetDestinationRegionId(v string) *CreateBackupPlanRequestRule {
+	s.DestinationRegionId = &v
+	return s
+}
+
+func (s *CreateBackupPlanRequestRule) SetDestinationRetention(v int64) *CreateBackupPlanRequestRule {
+	s.DestinationRetention = &v
+	return s
+}
+
+func (s *CreateBackupPlanRequestRule) SetDisabled(v bool) *CreateBackupPlanRequestRule {
+	s.Disabled = &v
+	return s
+}
+
+func (s *CreateBackupPlanRequestRule) SetDoCopy(v bool) *CreateBackupPlanRequestRule {
+	s.DoCopy = &v
+	return s
+}
+
+func (s *CreateBackupPlanRequestRule) SetRetention(v int64) *CreateBackupPlanRequestRule {
+	s.Retention = &v
+	return s
+}
+
+func (s *CreateBackupPlanRequestRule) SetRuleName(v string) *CreateBackupPlanRequestRule {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateBackupPlanRequestRule) SetSchedule(v string) *CreateBackupPlanRequestRule {
+	s.Schedule = &v
+	return s
+}
+
 type CreateBackupPlanShrinkRequest struct {
-	BackupType      *string   `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	Bucket          *string   `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	CreateTime      *int64    `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Exclude         *string   `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	FileSystemId    *string   `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
-	Include         *string   `json:"Include,omitempty" xml:"Include,omitempty"`
-	InstanceId      *string   `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceName    *string   `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	Options         *string   `json:"Options,omitempty" xml:"Options,omitempty"`
-	OtsDetailShrink *string   `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
-	Path            []*string `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
-	PlanName        *string   `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	Prefix          *string   `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	Retention       *int64    `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	Schedule        *string   `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	SourceType      *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SpeedLimit      *string   `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
-	VaultId         *string   `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	BackupType       *string                              `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	Bucket           *string                              `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	CreateTime       *int64                               `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CrossAccountType *string                              `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossOwnerId     *int64                               `json:"CrossOwnerId,omitempty" xml:"CrossOwnerId,omitempty"`
+	CrossRamRole     *string                              `json:"CrossRamRole,omitempty" xml:"CrossRamRole,omitempty"`
+	DetailShrink     *string                              `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	Exclude          *string                              `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	FileSystemId     *string                              `json:"FileSystemId,omitempty" xml:"FileSystemId,omitempty"`
+	Include          *string                              `json:"Include,omitempty" xml:"Include,omitempty"`
+	InstanceId       *string                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName     *string                              `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	Options          *string                              `json:"Options,omitempty" xml:"Options,omitempty"`
+	OtsDetailShrink  *string                              `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
+	Path             []*string                            `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
+	PlanName         *string                              `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	Prefix           *string                              `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	Retention        *int64                               `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	Rule             []*CreateBackupPlanShrinkRequestRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
+	Schedule         *string                              `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	SourceType       *string                              `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SpeedLimit       *string                              `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
+	UdmRegionId      *string                              `json:"UdmRegionId,omitempty" xml:"UdmRegionId,omitempty"`
+	VaultId          *string                              `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s CreateBackupPlanShrinkRequest) String() string {
@@ -506,6 +1078,26 @@ func (s *CreateBackupPlanShrinkRequest) SetBucket(v string) *CreateBackupPlanShr
 
 func (s *CreateBackupPlanShrinkRequest) SetCreateTime(v int64) *CreateBackupPlanShrinkRequest {
 	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateBackupPlanShrinkRequest) SetCrossAccountType(v string) *CreateBackupPlanShrinkRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *CreateBackupPlanShrinkRequest) SetCrossOwnerId(v int64) *CreateBackupPlanShrinkRequest {
+	s.CrossOwnerId = &v
+	return s
+}
+
+func (s *CreateBackupPlanShrinkRequest) SetCrossRamRole(v string) *CreateBackupPlanShrinkRequest {
+	s.CrossRamRole = &v
+	return s
+}
+
+func (s *CreateBackupPlanShrinkRequest) SetDetailShrink(v string) *CreateBackupPlanShrinkRequest {
+	s.DetailShrink = &v
 	return s
 }
 
@@ -564,6 +1156,11 @@ func (s *CreateBackupPlanShrinkRequest) SetRetention(v int64) *CreateBackupPlanS
 	return s
 }
 
+func (s *CreateBackupPlanShrinkRequest) SetRule(v []*CreateBackupPlanShrinkRequestRule) *CreateBackupPlanShrinkRequest {
+	s.Rule = v
+	return s
+}
+
 func (s *CreateBackupPlanShrinkRequest) SetSchedule(v string) *CreateBackupPlanShrinkRequest {
 	s.Schedule = &v
 	return s
@@ -579,8 +1176,72 @@ func (s *CreateBackupPlanShrinkRequest) SetSpeedLimit(v string) *CreateBackupPla
 	return s
 }
 
+func (s *CreateBackupPlanShrinkRequest) SetUdmRegionId(v string) *CreateBackupPlanShrinkRequest {
+	s.UdmRegionId = &v
+	return s
+}
+
 func (s *CreateBackupPlanShrinkRequest) SetVaultId(v string) *CreateBackupPlanShrinkRequest {
 	s.VaultId = &v
+	return s
+}
+
+type CreateBackupPlanShrinkRequestRule struct {
+	BackupType           *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	DestinationRegionId  *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
+	DestinationRetention *int64  `json:"DestinationRetention,omitempty" xml:"DestinationRetention,omitempty"`
+	Disabled             *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	DoCopy               *bool   `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
+	Retention            *int64  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	RuleName             *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Schedule             *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+}
+
+func (s CreateBackupPlanShrinkRequestRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBackupPlanShrinkRequestRule) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBackupPlanShrinkRequestRule) SetBackupType(v string) *CreateBackupPlanShrinkRequestRule {
+	s.BackupType = &v
+	return s
+}
+
+func (s *CreateBackupPlanShrinkRequestRule) SetDestinationRegionId(v string) *CreateBackupPlanShrinkRequestRule {
+	s.DestinationRegionId = &v
+	return s
+}
+
+func (s *CreateBackupPlanShrinkRequestRule) SetDestinationRetention(v int64) *CreateBackupPlanShrinkRequestRule {
+	s.DestinationRetention = &v
+	return s
+}
+
+func (s *CreateBackupPlanShrinkRequestRule) SetDisabled(v bool) *CreateBackupPlanShrinkRequestRule {
+	s.Disabled = &v
+	return s
+}
+
+func (s *CreateBackupPlanShrinkRequestRule) SetDoCopy(v bool) *CreateBackupPlanShrinkRequestRule {
+	s.DoCopy = &v
+	return s
+}
+
+func (s *CreateBackupPlanShrinkRequestRule) SetRetention(v int64) *CreateBackupPlanShrinkRequestRule {
+	s.Retention = &v
+	return s
+}
+
+func (s *CreateBackupPlanShrinkRequestRule) SetRuleName(v string) *CreateBackupPlanShrinkRequestRule {
+	s.RuleName = &v
+	return s
+}
+
+func (s *CreateBackupPlanShrinkRequestRule) SetSchedule(v string) *CreateBackupPlanShrinkRequestRule {
+	s.Schedule = &v
 	return s
 }
 
@@ -626,8 +1287,9 @@ func (s *CreateBackupPlanResponseBody) SetSuccess(v bool) *CreateBackupPlanRespo
 }
 
 type CreateBackupPlanResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateBackupPlanResponse) String() string {
@@ -643,7 +1305,1142 @@ func (s *CreateBackupPlanResponse) SetHeaders(v map[string]*string) *CreateBacku
 	return s
 }
 
+func (s *CreateBackupPlanResponse) SetStatusCode(v int32) *CreateBackupPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateBackupPlanResponse) SetBody(v *CreateBackupPlanResponseBody) *CreateBackupPlanResponse {
+	s.Body = v
+	return s
+}
+
+type CreateClientsRequest struct {
+	AlertSetting    *string `json:"AlertSetting,omitempty" xml:"AlertSetting,omitempty"`
+	ClientInfo      *string `json:"ClientInfo,omitempty" xml:"ClientInfo,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	UseHttps        *bool   `json:"UseHttps,omitempty" xml:"UseHttps,omitempty"`
+	VaultId         *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s CreateClientsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClientsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClientsRequest) SetAlertSetting(v string) *CreateClientsRequest {
+	s.AlertSetting = &v
+	return s
+}
+
+func (s *CreateClientsRequest) SetClientInfo(v string) *CreateClientsRequest {
+	s.ClientInfo = &v
+	return s
+}
+
+func (s *CreateClientsRequest) SetResourceGroupId(v string) *CreateClientsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateClientsRequest) SetUseHttps(v bool) *CreateClientsRequest {
+	s.UseHttps = &v
+	return s
+}
+
+func (s *CreateClientsRequest) SetVaultId(v string) *CreateClientsRequest {
+	s.VaultId = &v
+	return s
+}
+
+type CreateClientsResponseBody struct {
+	Code             *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	InstanceStatuses *CreateClientsResponseBodyInstanceStatuses `json:"InstanceStatuses,omitempty" xml:"InstanceStatuses,omitempty" type:"Struct"`
+	Message          *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId        *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success          *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId           *string                                    `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateClientsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClientsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClientsResponseBody) SetCode(v string) *CreateClientsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateClientsResponseBody) SetInstanceStatuses(v *CreateClientsResponseBodyInstanceStatuses) *CreateClientsResponseBody {
+	s.InstanceStatuses = v
+	return s
+}
+
+func (s *CreateClientsResponseBody) SetMessage(v string) *CreateClientsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateClientsResponseBody) SetRequestId(v string) *CreateClientsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateClientsResponseBody) SetSuccess(v bool) *CreateClientsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *CreateClientsResponseBody) SetTaskId(v string) *CreateClientsResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateClientsResponseBodyInstanceStatuses struct {
+	InstanceStatus []*CreateClientsResponseBodyInstanceStatusesInstanceStatus `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty" type:"Repeated"`
+}
+
+func (s CreateClientsResponseBodyInstanceStatuses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClientsResponseBodyInstanceStatuses) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClientsResponseBodyInstanceStatuses) SetInstanceStatus(v []*CreateClientsResponseBodyInstanceStatusesInstanceStatus) *CreateClientsResponseBodyInstanceStatuses {
+	s.InstanceStatus = v
+	return s
+}
+
+type CreateClientsResponseBodyInstanceStatusesInstanceStatus struct {
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	ValidInstance *bool   `json:"ValidInstance,omitempty" xml:"ValidInstance,omitempty"`
+}
+
+func (s CreateClientsResponseBodyInstanceStatusesInstanceStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClientsResponseBodyInstanceStatusesInstanceStatus) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClientsResponseBodyInstanceStatusesInstanceStatus) SetInstanceId(v string) *CreateClientsResponseBodyInstanceStatusesInstanceStatus {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateClientsResponseBodyInstanceStatusesInstanceStatus) SetValidInstance(v bool) *CreateClientsResponseBodyInstanceStatusesInstanceStatus {
+	s.ValidInstance = &v
+	return s
+}
+
+type CreateClientsResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateClientsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClientsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClientsResponse) SetHeaders(v map[string]*string) *CreateClientsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateClientsResponse) SetStatusCode(v int32) *CreateClientsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateClientsResponse) SetBody(v *CreateClientsResponseBody) *CreateClientsResponse {
+	s.Body = v
+	return s
+}
+
+type CreateHanaBackupPlanRequest struct {
+	BackupPrefix    *string `json:"BackupPrefix,omitempty" xml:"BackupPrefix,omitempty"`
+	BackupType      *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DatabaseName    *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	PlanName        *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Schedule        *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	VaultId         *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s CreateHanaBackupPlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHanaBackupPlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHanaBackupPlanRequest) SetBackupPrefix(v string) *CreateHanaBackupPlanRequest {
+	s.BackupPrefix = &v
+	return s
+}
+
+func (s *CreateHanaBackupPlanRequest) SetBackupType(v string) *CreateHanaBackupPlanRequest {
+	s.BackupType = &v
+	return s
+}
+
+func (s *CreateHanaBackupPlanRequest) SetClusterId(v string) *CreateHanaBackupPlanRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateHanaBackupPlanRequest) SetDatabaseName(v string) *CreateHanaBackupPlanRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *CreateHanaBackupPlanRequest) SetPlanName(v string) *CreateHanaBackupPlanRequest {
+	s.PlanName = &v
+	return s
+}
+
+func (s *CreateHanaBackupPlanRequest) SetResourceGroupId(v string) *CreateHanaBackupPlanRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateHanaBackupPlanRequest) SetSchedule(v string) *CreateHanaBackupPlanRequest {
+	s.Schedule = &v
+	return s
+}
+
+func (s *CreateHanaBackupPlanRequest) SetVaultId(v string) *CreateHanaBackupPlanRequest {
+	s.VaultId = &v
+	return s
+}
+
+type CreateHanaBackupPlanResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	PlanId    *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateHanaBackupPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHanaBackupPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHanaBackupPlanResponseBody) SetCode(v string) *CreateHanaBackupPlanResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateHanaBackupPlanResponseBody) SetMessage(v string) *CreateHanaBackupPlanResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateHanaBackupPlanResponseBody) SetPlanId(v string) *CreateHanaBackupPlanResponseBody {
+	s.PlanId = &v
+	return s
+}
+
+func (s *CreateHanaBackupPlanResponseBody) SetRequestId(v string) *CreateHanaBackupPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateHanaBackupPlanResponseBody) SetSuccess(v bool) *CreateHanaBackupPlanResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateHanaBackupPlanResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateHanaBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateHanaBackupPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHanaBackupPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHanaBackupPlanResponse) SetHeaders(v map[string]*string) *CreateHanaBackupPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHanaBackupPlanResponse) SetStatusCode(v int32) *CreateHanaBackupPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHanaBackupPlanResponse) SetBody(v *CreateHanaBackupPlanResponseBody) *CreateHanaBackupPlanResponse {
+	s.Body = v
+	return s
+}
+
+type CreateHanaInstanceRequest struct {
+	AlertSetting        *string `json:"AlertSetting,omitempty" xml:"AlertSetting,omitempty"`
+	EcsInstanceId       *string `json:"EcsInstanceId,omitempty" xml:"EcsInstanceId,omitempty"`
+	HanaName            *string `json:"HanaName,omitempty" xml:"HanaName,omitempty"`
+	Host                *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	InstanceNumber      *int32  `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
+	Password            *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	ResourceGroupId     *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Sid                 *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	UseSsl              *bool   `json:"UseSsl,omitempty" xml:"UseSsl,omitempty"`
+	UserName            *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	ValidateCertificate *bool   `json:"ValidateCertificate,omitempty" xml:"ValidateCertificate,omitempty"`
+	VaultId             *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s CreateHanaInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHanaInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHanaInstanceRequest) SetAlertSetting(v string) *CreateHanaInstanceRequest {
+	s.AlertSetting = &v
+	return s
+}
+
+func (s *CreateHanaInstanceRequest) SetEcsInstanceId(v string) *CreateHanaInstanceRequest {
+	s.EcsInstanceId = &v
+	return s
+}
+
+func (s *CreateHanaInstanceRequest) SetHanaName(v string) *CreateHanaInstanceRequest {
+	s.HanaName = &v
+	return s
+}
+
+func (s *CreateHanaInstanceRequest) SetHost(v string) *CreateHanaInstanceRequest {
+	s.Host = &v
+	return s
+}
+
+func (s *CreateHanaInstanceRequest) SetInstanceNumber(v int32) *CreateHanaInstanceRequest {
+	s.InstanceNumber = &v
+	return s
+}
+
+func (s *CreateHanaInstanceRequest) SetPassword(v string) *CreateHanaInstanceRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *CreateHanaInstanceRequest) SetResourceGroupId(v string) *CreateHanaInstanceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *CreateHanaInstanceRequest) SetSid(v string) *CreateHanaInstanceRequest {
+	s.Sid = &v
+	return s
+}
+
+func (s *CreateHanaInstanceRequest) SetUseSsl(v bool) *CreateHanaInstanceRequest {
+	s.UseSsl = &v
+	return s
+}
+
+func (s *CreateHanaInstanceRequest) SetUserName(v string) *CreateHanaInstanceRequest {
+	s.UserName = &v
+	return s
+}
+
+func (s *CreateHanaInstanceRequest) SetValidateCertificate(v bool) *CreateHanaInstanceRequest {
+	s.ValidateCertificate = &v
+	return s
+}
+
+func (s *CreateHanaInstanceRequest) SetVaultId(v string) *CreateHanaInstanceRequest {
+	s.VaultId = &v
+	return s
+}
+
+type CreateHanaInstanceResponseBody struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateHanaInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHanaInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHanaInstanceResponseBody) SetClusterId(v string) *CreateHanaInstanceResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateHanaInstanceResponseBody) SetCode(v string) *CreateHanaInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateHanaInstanceResponseBody) SetMessage(v string) *CreateHanaInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateHanaInstanceResponseBody) SetRequestId(v string) *CreateHanaInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateHanaInstanceResponseBody) SetSuccess(v bool) *CreateHanaInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateHanaInstanceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateHanaInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateHanaInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHanaInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHanaInstanceResponse) SetHeaders(v map[string]*string) *CreateHanaInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHanaInstanceResponse) SetStatusCode(v int32) *CreateHanaInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHanaInstanceResponse) SetBody(v *CreateHanaInstanceResponseBody) *CreateHanaInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateHanaRestoreRequest struct {
+	BackupId            *int64  `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	BackupPrefix        *string `json:"BackupPrefix,omitempty" xml:"BackupPrefix,omitempty"`
+	CheckAccess         *bool   `json:"CheckAccess,omitempty" xml:"CheckAccess,omitempty"`
+	ClearLog            *bool   `json:"ClearLog,omitempty" xml:"ClearLog,omitempty"`
+	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DatabaseName        *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	LogPosition         *int64  `json:"LogPosition,omitempty" xml:"LogPosition,omitempty"`
+	Mode                *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	RecoveryPointInTime *int64  `json:"RecoveryPointInTime,omitempty" xml:"RecoveryPointInTime,omitempty"`
+	SidAdmin            *string `json:"SidAdmin,omitempty" xml:"SidAdmin,omitempty"`
+	Source              *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceClusterId     *string `json:"SourceClusterId,omitempty" xml:"SourceClusterId,omitempty"`
+	SystemCopy          *bool   `json:"SystemCopy,omitempty" xml:"SystemCopy,omitempty"`
+	UseCatalog          *bool   `json:"UseCatalog,omitempty" xml:"UseCatalog,omitempty"`
+	UseDelta            *bool   `json:"UseDelta,omitempty" xml:"UseDelta,omitempty"`
+	VolumeId            *int32  `json:"VolumeId,omitempty" xml:"VolumeId,omitempty"`
+}
+
+func (s CreateHanaRestoreRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHanaRestoreRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHanaRestoreRequest) SetBackupId(v int64) *CreateHanaRestoreRequest {
+	s.BackupId = &v
+	return s
+}
+
+func (s *CreateHanaRestoreRequest) SetBackupPrefix(v string) *CreateHanaRestoreRequest {
+	s.BackupPrefix = &v
+	return s
+}
+
+func (s *CreateHanaRestoreRequest) SetCheckAccess(v bool) *CreateHanaRestoreRequest {
+	s.CheckAccess = &v
+	return s
+}
+
+func (s *CreateHanaRestoreRequest) SetClearLog(v bool) *CreateHanaRestoreRequest {
+	s.ClearLog = &v
+	return s
+}
+
+func (s *CreateHanaRestoreRequest) SetClusterId(v string) *CreateHanaRestoreRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *CreateHanaRestoreRequest) SetDatabaseName(v string) *CreateHanaRestoreRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *CreateHanaRestoreRequest) SetLogPosition(v int64) *CreateHanaRestoreRequest {
+	s.LogPosition = &v
+	return s
+}
+
+func (s *CreateHanaRestoreRequest) SetMode(v string) *CreateHanaRestoreRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *CreateHanaRestoreRequest) SetRecoveryPointInTime(v int64) *CreateHanaRestoreRequest {
+	s.RecoveryPointInTime = &v
+	return s
+}
+
+func (s *CreateHanaRestoreRequest) SetSidAdmin(v string) *CreateHanaRestoreRequest {
+	s.SidAdmin = &v
+	return s
+}
+
+func (s *CreateHanaRestoreRequest) SetSource(v string) *CreateHanaRestoreRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateHanaRestoreRequest) SetSourceClusterId(v string) *CreateHanaRestoreRequest {
+	s.SourceClusterId = &v
+	return s
+}
+
+func (s *CreateHanaRestoreRequest) SetSystemCopy(v bool) *CreateHanaRestoreRequest {
+	s.SystemCopy = &v
+	return s
+}
+
+func (s *CreateHanaRestoreRequest) SetUseCatalog(v bool) *CreateHanaRestoreRequest {
+	s.UseCatalog = &v
+	return s
+}
+
+func (s *CreateHanaRestoreRequest) SetUseDelta(v bool) *CreateHanaRestoreRequest {
+	s.UseDelta = &v
+	return s
+}
+
+func (s *CreateHanaRestoreRequest) SetVolumeId(v int32) *CreateHanaRestoreRequest {
+	s.VolumeId = &v
+	return s
+}
+
+type CreateHanaRestoreResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RestoreId *string `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateHanaRestoreResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHanaRestoreResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHanaRestoreResponseBody) SetCode(v string) *CreateHanaRestoreResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateHanaRestoreResponseBody) SetMessage(v string) *CreateHanaRestoreResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateHanaRestoreResponseBody) SetRequestId(v string) *CreateHanaRestoreResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateHanaRestoreResponseBody) SetRestoreId(v string) *CreateHanaRestoreResponseBody {
+	s.RestoreId = &v
+	return s
+}
+
+func (s *CreateHanaRestoreResponseBody) SetSuccess(v bool) *CreateHanaRestoreResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateHanaRestoreResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateHanaRestoreResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateHanaRestoreResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHanaRestoreResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHanaRestoreResponse) SetHeaders(v map[string]*string) *CreateHanaRestoreResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHanaRestoreResponse) SetStatusCode(v int32) *CreateHanaRestoreResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHanaRestoreResponse) SetBody(v *CreateHanaRestoreResponseBody) *CreateHanaRestoreResponse {
+	s.Body = v
+	return s
+}
+
+type CreatePolicy2Request struct {
+	PolicyDescription *string                      `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
+	PolicyName        *string                      `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	Rules             []*CreatePolicy2RequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s CreatePolicy2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicy2Request) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicy2Request) SetPolicyDescription(v string) *CreatePolicy2Request {
+	s.PolicyDescription = &v
+	return s
+}
+
+func (s *CreatePolicy2Request) SetPolicyName(v string) *CreatePolicy2Request {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *CreatePolicy2Request) SetRules(v []*CreatePolicy2RequestRules) *CreatePolicy2Request {
+	s.Rules = v
+	return s
+}
+
+type CreatePolicy2RequestRules struct {
+	ArchiveDays *int64 `json:"ArchiveDays,omitempty" xml:"ArchiveDays,omitempty"`
+	// Transition
+	ArchiveVaultId *string `json:"ArchiveVaultId,omitempty" xml:"ArchiveVaultId,omitempty"`
+	// Backup Rule (COMPLETE: Complete backup type, INCREMENTAL: Incremental backup type, DIFFERENTIAL: Differential backup type, LOG: Transaction log backup type, INDEX: 不备份数据，只对元数据建立索引, ARCHIVE: 归档, ARCHIVE_BY_SEARCH: 根据搜索结果进行归档)
+	BackupType      *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	ColdArchiveDays *int64  `json:"ColdArchiveDays,omitempty" xml:"ColdArchiveDays,omitempty"`
+	Continuous      *bool   `json:"Continuous,omitempty" xml:"Continuous,omitempty"`
+	Cycles          *int64  `json:"Cycles,omitempty" xml:"Cycles,omitempty"`
+	// Replication
+	ReplicationRegionId *string `json:"ReplicationRegionId,omitempty" xml:"ReplicationRegionId,omitempty"`
+	ReplicationVaultId  *string `json:"ReplicationVaultId,omitempty" xml:"ReplicationVaultId,omitempty"`
+	// Expiration
+	Retention      *int64                                     `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	RetentionRules []*CreatePolicy2RequestRulesRetentionRules `json:"RetentionRules,omitempty" xml:"RetentionRules,omitempty" type:"Repeated"`
+	// TRANSITION: 过渡类规则, BACKUP: 定时类规则, REPLICATION: 镜像类规则
+	RuleType *string `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	Schedule *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	VaultId  *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s CreatePolicy2RequestRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicy2RequestRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicy2RequestRules) SetArchiveDays(v int64) *CreatePolicy2RequestRules {
+	s.ArchiveDays = &v
+	return s
+}
+
+func (s *CreatePolicy2RequestRules) SetArchiveVaultId(v string) *CreatePolicy2RequestRules {
+	s.ArchiveVaultId = &v
+	return s
+}
+
+func (s *CreatePolicy2RequestRules) SetBackupType(v string) *CreatePolicy2RequestRules {
+	s.BackupType = &v
+	return s
+}
+
+func (s *CreatePolicy2RequestRules) SetColdArchiveDays(v int64) *CreatePolicy2RequestRules {
+	s.ColdArchiveDays = &v
+	return s
+}
+
+func (s *CreatePolicy2RequestRules) SetContinuous(v bool) *CreatePolicy2RequestRules {
+	s.Continuous = &v
+	return s
+}
+
+func (s *CreatePolicy2RequestRules) SetCycles(v int64) *CreatePolicy2RequestRules {
+	s.Cycles = &v
+	return s
+}
+
+func (s *CreatePolicy2RequestRules) SetReplicationRegionId(v string) *CreatePolicy2RequestRules {
+	s.ReplicationRegionId = &v
+	return s
+}
+
+func (s *CreatePolicy2RequestRules) SetReplicationVaultId(v string) *CreatePolicy2RequestRules {
+	s.ReplicationVaultId = &v
+	return s
+}
+
+func (s *CreatePolicy2RequestRules) SetRetention(v int64) *CreatePolicy2RequestRules {
+	s.Retention = &v
+	return s
+}
+
+func (s *CreatePolicy2RequestRules) SetRetentionRules(v []*CreatePolicy2RequestRulesRetentionRules) *CreatePolicy2RequestRules {
+	s.RetentionRules = v
+	return s
+}
+
+func (s *CreatePolicy2RequestRules) SetRuleType(v string) *CreatePolicy2RequestRules {
+	s.RuleType = &v
+	return s
+}
+
+func (s *CreatePolicy2RequestRules) SetSchedule(v string) *CreatePolicy2RequestRules {
+	s.Schedule = &v
+	return s
+}
+
+func (s *CreatePolicy2RequestRules) SetVaultId(v string) *CreatePolicy2RequestRules {
+	s.VaultId = &v
+	return s
+}
+
+type CreatePolicy2RequestRulesRetentionRules struct {
+	Retention     *int64  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	ScheduleType  *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
+	WhichSnapshot *int64  `json:"WhichSnapshot,omitempty" xml:"WhichSnapshot,omitempty"`
+}
+
+func (s CreatePolicy2RequestRulesRetentionRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicy2RequestRulesRetentionRules) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicy2RequestRulesRetentionRules) SetRetention(v int64) *CreatePolicy2RequestRulesRetentionRules {
+	s.Retention = &v
+	return s
+}
+
+func (s *CreatePolicy2RequestRulesRetentionRules) SetScheduleType(v string) *CreatePolicy2RequestRulesRetentionRules {
+	s.ScheduleType = &v
+	return s
+}
+
+func (s *CreatePolicy2RequestRulesRetentionRules) SetWhichSnapshot(v int64) *CreatePolicy2RequestRulesRetentionRules {
+	s.WhichSnapshot = &v
+	return s
+}
+
+type CreatePolicy2ShrinkRequest struct {
+	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
+	PolicyName        *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	RulesShrink       *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+}
+
+func (s CreatePolicy2ShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicy2ShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicy2ShrinkRequest) SetPolicyDescription(v string) *CreatePolicy2ShrinkRequest {
+	s.PolicyDescription = &v
+	return s
+}
+
+func (s *CreatePolicy2ShrinkRequest) SetPolicyName(v string) *CreatePolicy2ShrinkRequest {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *CreatePolicy2ShrinkRequest) SetRulesShrink(v string) *CreatePolicy2ShrinkRequest {
+	s.RulesShrink = &v
+	return s
+}
+
+type CreatePolicy2ResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	PolicyId  *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreatePolicy2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicy2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicy2ResponseBody) SetCode(v string) *CreatePolicy2ResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreatePolicy2ResponseBody) SetMessage(v string) *CreatePolicy2ResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreatePolicy2ResponseBody) SetPolicyId(v string) *CreatePolicy2ResponseBody {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *CreatePolicy2ResponseBody) SetRequestId(v string) *CreatePolicy2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreatePolicy2ResponseBody) SetSuccess(v bool) *CreatePolicy2ResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreatePolicy2Response struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreatePolicy2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreatePolicy2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicy2Response) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicy2Response) SetHeaders(v map[string]*string) *CreatePolicy2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePolicy2Response) SetStatusCode(v int32) *CreatePolicy2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePolicy2Response) SetBody(v *CreatePolicy2ResponseBody) *CreatePolicy2Response {
+	s.Body = v
+	return s
+}
+
+type CreatePolicyBindingsRequest struct {
+	PolicyBindingList []*CreatePolicyBindingsRequestPolicyBindingList `json:"PolicyBindingList,omitempty" xml:"PolicyBindingList,omitempty" type:"Repeated"`
+	PolicyId          *string                                         `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+}
+
+func (s CreatePolicyBindingsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyBindingsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyBindingsRequest) SetPolicyBindingList(v []*CreatePolicyBindingsRequestPolicyBindingList) *CreatePolicyBindingsRequest {
+	s.PolicyBindingList = v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequest) SetPolicyId(v string) *CreatePolicyBindingsRequest {
+	s.PolicyId = &v
+	return s
+}
+
+type CreatePolicyBindingsRequestPolicyBindingList struct {
+	AdvancedOptions          *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions `json:"AdvancedOptions,omitempty" xml:"AdvancedOptions,omitempty" type:"Struct"`
+	DataSourceId             *string                                                      `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	Disabled                 *string                                                      `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	Exclude                  *string                                                      `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	Include                  *string                                                      `json:"Include,omitempty" xml:"Include,omitempty"`
+	PolicyBindingDescription *string                                                      `json:"PolicyBindingDescription,omitempty" xml:"PolicyBindingDescription,omitempty"`
+	Source                   *string                                                      `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceType               *string                                                      `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SpeedLimit               *string                                                      `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
+}
+
+func (s CreatePolicyBindingsRequestPolicyBindingList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyBindingsRequestPolicyBindingList) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingList) SetAdvancedOptions(v *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions) *CreatePolicyBindingsRequestPolicyBindingList {
+	s.AdvancedOptions = v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingList) SetDataSourceId(v string) *CreatePolicyBindingsRequestPolicyBindingList {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingList) SetDisabled(v string) *CreatePolicyBindingsRequestPolicyBindingList {
+	s.Disabled = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingList) SetExclude(v string) *CreatePolicyBindingsRequestPolicyBindingList {
+	s.Exclude = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingList) SetInclude(v string) *CreatePolicyBindingsRequestPolicyBindingList {
+	s.Include = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingList) SetPolicyBindingDescription(v string) *CreatePolicyBindingsRequestPolicyBindingList {
+	s.PolicyBindingDescription = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingList) SetSource(v string) *CreatePolicyBindingsRequestPolicyBindingList {
+	s.Source = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingList) SetSourceType(v string) *CreatePolicyBindingsRequestPolicyBindingList {
+	s.SourceType = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingList) SetSpeedLimit(v string) *CreatePolicyBindingsRequestPolicyBindingList {
+	s.SpeedLimit = &v
+	return s
+}
+
+type CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions struct {
+	UdmDetail *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty" type:"Struct"`
+}
+
+func (s CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions) SetUdmDetail(v *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptions {
+	s.UdmDetail = v
+	return s
+}
+
+type CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail struct {
+	AppConsistent     *bool     `json:"AppConsistent,omitempty" xml:"AppConsistent,omitempty"`
+	DiskIdList        []*string `json:"DiskIdList,omitempty" xml:"DiskIdList,omitempty" type:"Repeated"`
+	EnableFsFreeze    *bool     `json:"EnableFsFreeze,omitempty" xml:"EnableFsFreeze,omitempty"`
+	EnableWriters     *bool     `json:"EnableWriters,omitempty" xml:"EnableWriters,omitempty"`
+	ExcludeDiskIdList []*string `json:"ExcludeDiskIdList,omitempty" xml:"ExcludeDiskIdList,omitempty" type:"Repeated"`
+	PostScriptPath    *string   `json:"PostScriptPath,omitempty" xml:"PostScriptPath,omitempty"`
+	PreScriptPath     *string   `json:"PreScriptPath,omitempty" xml:"PreScriptPath,omitempty"`
+	RamRoleName       *string   `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	SnapshotGroup     *bool     `json:"SnapshotGroup,omitempty" xml:"SnapshotGroup,omitempty"`
+	TimeoutInSeconds  *int64    `json:"TimeoutInSeconds,omitempty" xml:"TimeoutInSeconds,omitempty"`
+}
+
+func (s CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail) SetAppConsistent(v bool) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail {
+	s.AppConsistent = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail) SetDiskIdList(v []*string) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail {
+	s.DiskIdList = v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail) SetEnableFsFreeze(v bool) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail {
+	s.EnableFsFreeze = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail) SetEnableWriters(v bool) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail {
+	s.EnableWriters = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail) SetExcludeDiskIdList(v []*string) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail {
+	s.ExcludeDiskIdList = v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail) SetPostScriptPath(v string) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail {
+	s.PostScriptPath = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail) SetPreScriptPath(v string) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail {
+	s.PreScriptPath = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail) SetRamRoleName(v string) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail {
+	s.RamRoleName = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail) SetSnapshotGroup(v bool) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail {
+	s.SnapshotGroup = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail) SetTimeoutInSeconds(v int64) *CreatePolicyBindingsRequestPolicyBindingListAdvancedOptionsUdmDetail {
+	s.TimeoutInSeconds = &v
+	return s
+}
+
+type CreatePolicyBindingsShrinkRequest struct {
+	PolicyBindingListShrink *string `json:"PolicyBindingList,omitempty" xml:"PolicyBindingList,omitempty"`
+	PolicyId                *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+}
+
+func (s CreatePolicyBindingsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyBindingsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyBindingsShrinkRequest) SetPolicyBindingListShrink(v string) *CreatePolicyBindingsShrinkRequest {
+	s.PolicyBindingListShrink = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsShrinkRequest) SetPolicyId(v string) *CreatePolicyBindingsShrinkRequest {
+	s.PolicyId = &v
+	return s
+}
+
+type CreatePolicyBindingsResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreatePolicyBindingsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyBindingsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyBindingsResponseBody) SetCode(v string) *CreatePolicyBindingsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsResponseBody) SetMessage(v string) *CreatePolicyBindingsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsResponseBody) SetRequestId(v string) *CreatePolicyBindingsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsResponseBody) SetSuccess(v bool) *CreatePolicyBindingsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreatePolicyBindingsResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreatePolicyBindingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreatePolicyBindingsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreatePolicyBindingsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreatePolicyBindingsResponse) SetHeaders(v map[string]*string) *CreatePolicyBindingsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreatePolicyBindingsResponse) SetStatusCode(v int32) *CreatePolicyBindingsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreatePolicyBindingsResponse) SetBody(v *CreatePolicyBindingsResponseBody) *CreatePolicyBindingsResponse {
 	s.Body = v
 	return s
 }
@@ -749,8 +2546,9 @@ func (s *CreateReplicationVaultResponseBody) SetVaultId(v string) *CreateReplica
 }
 
 type CreateReplicationVaultResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateReplicationVaultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateReplicationVaultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateReplicationVaultResponse) String() string {
@@ -766,30 +2564,38 @@ func (s *CreateReplicationVaultResponse) SetHeaders(v map[string]*string) *Creat
 	return s
 }
 
+func (s *CreateReplicationVaultResponse) SetStatusCode(v int32) *CreateReplicationVaultResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateReplicationVaultResponse) SetBody(v *CreateReplicationVaultResponseBody) *CreateReplicationVaultResponse {
 	s.Body = v
 	return s
 }
 
 type CreateRestoreJobRequest struct {
-	Exclude            *string                           `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	Include            *string                           `json:"Include,omitempty" xml:"Include,omitempty"`
-	OtsDetail          *CreateRestoreJobRequestOtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty" type:"Struct"`
-	RestoreType        *string                           `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
-	SnapshotHash       *string                           `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
-	SnapshotId         *string                           `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	SourceType         *string                           `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	TargetBucket       *string                           `json:"TargetBucket,omitempty" xml:"TargetBucket,omitempty"`
-	TargetCreateTime   *int64                            `json:"TargetCreateTime,omitempty" xml:"TargetCreateTime,omitempty"`
-	TargetFileSystemId *string                           `json:"TargetFileSystemId,omitempty" xml:"TargetFileSystemId,omitempty"`
-	TargetInstanceId   *string                           `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	TargetInstanceName *string                           `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
-	TargetPath         *string                           `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	TargetPrefix       *string                           `json:"TargetPrefix,omitempty" xml:"TargetPrefix,omitempty"`
-	TargetTableName    *string                           `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
-	TargetTime         *int64                            `json:"TargetTime,omitempty" xml:"TargetTime,omitempty"`
-	UdmDetail          map[string]interface{}            `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty"`
-	VaultId            *string                           `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	CrossAccountType   *string                `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossOwnerId       *int64                 `json:"CrossOwnerId,omitempty" xml:"CrossOwnerId,omitempty"`
+	CrossRamRole       *string                `json:"CrossRamRole,omitempty" xml:"CrossRamRole,omitempty"`
+	Exclude            *string                `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	Include            *string                `json:"Include,omitempty" xml:"Include,omitempty"`
+	OtsDetail          *OtsTableRestoreDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
+	RestoreType        *string                `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
+	SnapshotHash       *string                `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
+	SnapshotId         *string                `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SourceType         *string                `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	TargetBucket       *string                `json:"TargetBucket,omitempty" xml:"TargetBucket,omitempty"`
+	TargetCreateTime   *int64                 `json:"TargetCreateTime,omitempty" xml:"TargetCreateTime,omitempty"`
+	TargetFileSystemId *string                `json:"TargetFileSystemId,omitempty" xml:"TargetFileSystemId,omitempty"`
+	TargetInstanceId   *string                `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	TargetInstanceName *string                `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
+	TargetPath         *string                `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	TargetPrefix       *string                `json:"TargetPrefix,omitempty" xml:"TargetPrefix,omitempty"`
+	TargetTableName    *string                `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
+	TargetTime         *int64                 `json:"TargetTime,omitempty" xml:"TargetTime,omitempty"`
+	UdmDetail          map[string]interface{} `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty"`
+	VaultId            *string                `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s CreateRestoreJobRequest) String() string {
@@ -798,6 +2604,21 @@ func (s CreateRestoreJobRequest) String() string {
 
 func (s CreateRestoreJobRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateRestoreJobRequest) SetCrossAccountType(v string) *CreateRestoreJobRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *CreateRestoreJobRequest) SetCrossOwnerId(v int64) *CreateRestoreJobRequest {
+	s.CrossOwnerId = &v
+	return s
+}
+
+func (s *CreateRestoreJobRequest) SetCrossRamRole(v string) *CreateRestoreJobRequest {
+	s.CrossRamRole = &v
+	return s
 }
 
 func (s *CreateRestoreJobRequest) SetExclude(v string) *CreateRestoreJobRequest {
@@ -810,7 +2631,7 @@ func (s *CreateRestoreJobRequest) SetInclude(v string) *CreateRestoreJobRequest 
 	return s
 }
 
-func (s *CreateRestoreJobRequest) SetOtsDetail(v *CreateRestoreJobRequestOtsDetail) *CreateRestoreJobRequest {
+func (s *CreateRestoreJobRequest) SetOtsDetail(v *OtsTableRestoreDetail) *CreateRestoreJobRequest {
 	s.OtsDetail = v
 	return s
 }
@@ -890,48 +2711,28 @@ func (s *CreateRestoreJobRequest) SetVaultId(v string) *CreateRestoreJobRequest 
 	return s
 }
 
-type CreateRestoreJobRequestOtsDetail struct {
-	BatchChannelCount *int32 `json:"BatchChannelCount,omitempty" xml:"BatchChannelCount,omitempty"`
-	OverwriteExisting *bool  `json:"OverwriteExisting,omitempty" xml:"OverwriteExisting,omitempty"`
-}
-
-func (s CreateRestoreJobRequestOtsDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRestoreJobRequestOtsDetail) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRestoreJobRequestOtsDetail) SetBatchChannelCount(v int32) *CreateRestoreJobRequestOtsDetail {
-	s.BatchChannelCount = &v
-	return s
-}
-
-func (s *CreateRestoreJobRequestOtsDetail) SetOverwriteExisting(v bool) *CreateRestoreJobRequestOtsDetail {
-	s.OverwriteExisting = &v
-	return s
-}
-
 type CreateRestoreJobShrinkRequest struct {
-	Exclude            *string                                 `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	Include            *string                                 `json:"Include,omitempty" xml:"Include,omitempty"`
-	OtsDetail          *CreateRestoreJobShrinkRequestOtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty" type:"Struct"`
-	RestoreType        *string                                 `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
-	SnapshotHash       *string                                 `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
-	SnapshotId         *string                                 `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	SourceType         *string                                 `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	TargetBucket       *string                                 `json:"TargetBucket,omitempty" xml:"TargetBucket,omitempty"`
-	TargetCreateTime   *int64                                  `json:"TargetCreateTime,omitempty" xml:"TargetCreateTime,omitempty"`
-	TargetFileSystemId *string                                 `json:"TargetFileSystemId,omitempty" xml:"TargetFileSystemId,omitempty"`
-	TargetInstanceId   *string                                 `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
-	TargetInstanceName *string                                 `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
-	TargetPath         *string                                 `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	TargetPrefix       *string                                 `json:"TargetPrefix,omitempty" xml:"TargetPrefix,omitempty"`
-	TargetTableName    *string                                 `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
-	TargetTime         *int64                                  `json:"TargetTime,omitempty" xml:"TargetTime,omitempty"`
-	UdmDetailShrink    *string                                 `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty"`
-	VaultId            *string                                 `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	CrossAccountType   *string `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossOwnerId       *int64  `json:"CrossOwnerId,omitempty" xml:"CrossOwnerId,omitempty"`
+	CrossRamRole       *string `json:"CrossRamRole,omitempty" xml:"CrossRamRole,omitempty"`
+	Exclude            *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	Include            *string `json:"Include,omitempty" xml:"Include,omitempty"`
+	OtsDetailShrink    *string `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
+	RestoreType        *string `json:"RestoreType,omitempty" xml:"RestoreType,omitempty"`
+	SnapshotHash       *string `json:"SnapshotHash,omitempty" xml:"SnapshotHash,omitempty"`
+	SnapshotId         *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
+	SourceType         *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	TargetBucket       *string `json:"TargetBucket,omitempty" xml:"TargetBucket,omitempty"`
+	TargetCreateTime   *int64  `json:"TargetCreateTime,omitempty" xml:"TargetCreateTime,omitempty"`
+	TargetFileSystemId *string `json:"TargetFileSystemId,omitempty" xml:"TargetFileSystemId,omitempty"`
+	TargetInstanceId   *string `json:"TargetInstanceId,omitempty" xml:"TargetInstanceId,omitempty"`
+	TargetInstanceName *string `json:"TargetInstanceName,omitempty" xml:"TargetInstanceName,omitempty"`
+	TargetPath         *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
+	TargetPrefix       *string `json:"TargetPrefix,omitempty" xml:"TargetPrefix,omitempty"`
+	TargetTableName    *string `json:"TargetTableName,omitempty" xml:"TargetTableName,omitempty"`
+	TargetTime         *int64  `json:"TargetTime,omitempty" xml:"TargetTime,omitempty"`
+	UdmDetailShrink    *string `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty"`
+	VaultId            *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s CreateRestoreJobShrinkRequest) String() string {
@@ -940,6 +2741,21 @@ func (s CreateRestoreJobShrinkRequest) String() string {
 
 func (s CreateRestoreJobShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetCrossAccountType(v string) *CreateRestoreJobShrinkRequest {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetCrossOwnerId(v int64) *CreateRestoreJobShrinkRequest {
+	s.CrossOwnerId = &v
+	return s
+}
+
+func (s *CreateRestoreJobShrinkRequest) SetCrossRamRole(v string) *CreateRestoreJobShrinkRequest {
+	s.CrossRamRole = &v
+	return s
 }
 
 func (s *CreateRestoreJobShrinkRequest) SetExclude(v string) *CreateRestoreJobShrinkRequest {
@@ -952,8 +2768,8 @@ func (s *CreateRestoreJobShrinkRequest) SetInclude(v string) *CreateRestoreJobSh
 	return s
 }
 
-func (s *CreateRestoreJobShrinkRequest) SetOtsDetail(v *CreateRestoreJobShrinkRequestOtsDetail) *CreateRestoreJobShrinkRequest {
-	s.OtsDetail = v
+func (s *CreateRestoreJobShrinkRequest) SetOtsDetailShrink(v string) *CreateRestoreJobShrinkRequest {
+	s.OtsDetailShrink = &v
 	return s
 }
 
@@ -1032,29 +2848,6 @@ func (s *CreateRestoreJobShrinkRequest) SetVaultId(v string) *CreateRestoreJobSh
 	return s
 }
 
-type CreateRestoreJobShrinkRequestOtsDetail struct {
-	BatchChannelCount *int32 `json:"BatchChannelCount,omitempty" xml:"BatchChannelCount,omitempty"`
-	OverwriteExisting *bool  `json:"OverwriteExisting,omitempty" xml:"OverwriteExisting,omitempty"`
-}
-
-func (s CreateRestoreJobShrinkRequestOtsDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateRestoreJobShrinkRequestOtsDetail) GoString() string {
-	return s.String()
-}
-
-func (s *CreateRestoreJobShrinkRequestOtsDetail) SetBatchChannelCount(v int32) *CreateRestoreJobShrinkRequestOtsDetail {
-	s.BatchChannelCount = &v
-	return s
-}
-
-func (s *CreateRestoreJobShrinkRequestOtsDetail) SetOverwriteExisting(v bool) *CreateRestoreJobShrinkRequestOtsDetail {
-	s.OverwriteExisting = &v
-	return s
-}
-
 type CreateRestoreJobResponseBody struct {
 	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -1097,8 +2890,9 @@ func (s *CreateRestoreJobResponseBody) SetSuccess(v bool) *CreateRestoreJobRespo
 }
 
 type CreateRestoreJobResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateRestoreJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateRestoreJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateRestoreJobResponse) String() string {
@@ -1114,7 +2908,156 @@ func (s *CreateRestoreJobResponse) SetHeaders(v map[string]*string) *CreateResto
 	return s
 }
 
+func (s *CreateRestoreJobResponse) SetStatusCode(v int32) *CreateRestoreJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateRestoreJobResponse) SetBody(v *CreateRestoreJobResponseBody) *CreateRestoreJobResponse {
+	s.Body = v
+	return s
+}
+
+type CreateUdmEcsInstanceGroupRequest struct {
+	DiskIdMap        map[string]interface{} `json:"DiskIdMap,omitempty" xml:"DiskIdMap,omitempty"`
+	ExcludeDiskIdMap map[string]interface{} `json:"ExcludeDiskIdMap,omitempty" xml:"ExcludeDiskIdMap,omitempty"`
+	// required parameters
+	InstanceGroupName *string `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
+	// optional parameters
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+}
+
+func (s CreateUdmEcsInstanceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUdmEcsInstanceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUdmEcsInstanceGroupRequest) SetDiskIdMap(v map[string]interface{}) *CreateUdmEcsInstanceGroupRequest {
+	s.DiskIdMap = v
+	return s
+}
+
+func (s *CreateUdmEcsInstanceGroupRequest) SetExcludeDiskIdMap(v map[string]interface{}) *CreateUdmEcsInstanceGroupRequest {
+	s.ExcludeDiskIdMap = v
+	return s
+}
+
+func (s *CreateUdmEcsInstanceGroupRequest) SetInstanceGroupName(v string) *CreateUdmEcsInstanceGroupRequest {
+	s.InstanceGroupName = &v
+	return s
+}
+
+func (s *CreateUdmEcsInstanceGroupRequest) SetInstanceIds(v []*string) *CreateUdmEcsInstanceGroupRequest {
+	s.InstanceIds = v
+	return s
+}
+
+type CreateUdmEcsInstanceGroupShrinkRequest struct {
+	DiskIdMapShrink        *string `json:"DiskIdMap,omitempty" xml:"DiskIdMap,omitempty"`
+	ExcludeDiskIdMapShrink *string `json:"ExcludeDiskIdMap,omitempty" xml:"ExcludeDiskIdMap,omitempty"`
+	// required parameters
+	InstanceGroupName *string `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
+	// optional parameters
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+}
+
+func (s CreateUdmEcsInstanceGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUdmEcsInstanceGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUdmEcsInstanceGroupShrinkRequest) SetDiskIdMapShrink(v string) *CreateUdmEcsInstanceGroupShrinkRequest {
+	s.DiskIdMapShrink = &v
+	return s
+}
+
+func (s *CreateUdmEcsInstanceGroupShrinkRequest) SetExcludeDiskIdMapShrink(v string) *CreateUdmEcsInstanceGroupShrinkRequest {
+	s.ExcludeDiskIdMapShrink = &v
+	return s
+}
+
+func (s *CreateUdmEcsInstanceGroupShrinkRequest) SetInstanceGroupName(v string) *CreateUdmEcsInstanceGroupShrinkRequest {
+	s.InstanceGroupName = &v
+	return s
+}
+
+func (s *CreateUdmEcsInstanceGroupShrinkRequest) SetInstanceIds(v []*string) *CreateUdmEcsInstanceGroupShrinkRequest {
+	s.InstanceIds = v
+	return s
+}
+
+type CreateUdmEcsInstanceGroupResponseBody struct {
+	Code            *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	Message         *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success         *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateUdmEcsInstanceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUdmEcsInstanceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUdmEcsInstanceGroupResponseBody) SetCode(v string) *CreateUdmEcsInstanceGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateUdmEcsInstanceGroupResponseBody) SetInstanceGroupId(v string) *CreateUdmEcsInstanceGroupResponseBody {
+	s.InstanceGroupId = &v
+	return s
+}
+
+func (s *CreateUdmEcsInstanceGroupResponseBody) SetMessage(v string) *CreateUdmEcsInstanceGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateUdmEcsInstanceGroupResponseBody) SetRequestId(v string) *CreateUdmEcsInstanceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateUdmEcsInstanceGroupResponseBody) SetSuccess(v bool) *CreateUdmEcsInstanceGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateUdmEcsInstanceGroupResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateUdmEcsInstanceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateUdmEcsInstanceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateUdmEcsInstanceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateUdmEcsInstanceGroupResponse) SetHeaders(v map[string]*string) *CreateUdmEcsInstanceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateUdmEcsInstanceGroupResponse) SetStatusCode(v int32) *CreateUdmEcsInstanceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateUdmEcsInstanceGroupResponse) SetBody(v *CreateUdmEcsInstanceGroupResponseBody) *CreateUdmEcsInstanceGroupResponse {
 	s.Body = v
 	return s
 }
@@ -1244,8 +3187,9 @@ func (s *CreateVaultResponseBody) SetVaultId(v string) *CreateVaultResponseBody 
 }
 
 type CreateVaultResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateVaultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateVaultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateVaultResponse) String() string {
@@ -1258,6 +3202,11 @@ func (s CreateVaultResponse) GoString() string {
 
 func (s *CreateVaultResponse) SetHeaders(v map[string]*string) *CreateVaultResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateVaultResponse) SetStatusCode(v int32) *CreateVaultResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1319,8 +3268,9 @@ func (s *DeleteBackupClientResponseBody) SetSuccess(v bool) *DeleteBackupClientR
 }
 
 type DeleteBackupClientResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteBackupClientResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteBackupClientResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteBackupClientResponse) String() string {
@@ -1333,6 +3283,11 @@ func (s DeleteBackupClientResponse) GoString() string {
 
 func (s *DeleteBackupClientResponse) SetHeaders(v map[string]*string) *DeleteBackupClientResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteBackupClientResponse) SetStatusCode(v int32) *DeleteBackupClientResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1411,8 +3366,9 @@ func (s *DeleteBackupClientResourceResponseBody) SetSuccess(v bool) *DeleteBacku
 }
 
 type DeleteBackupClientResourceResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteBackupClientResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteBackupClientResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteBackupClientResourceResponse) String() string {
@@ -1425,6 +3381,11 @@ func (s DeleteBackupClientResourceResponse) GoString() string {
 
 func (s *DeleteBackupClientResourceResponse) SetHeaders(v map[string]*string) *DeleteBackupClientResourceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteBackupClientResourceResponse) SetStatusCode(v int32) *DeleteBackupClientResourceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1498,8 +3459,9 @@ func (s *DeleteBackupPlanResponseBody) SetSuccess(v bool) *DeleteBackupPlanRespo
 }
 
 type DeleteBackupPlanResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteBackupPlanResponse) String() string {
@@ -1515,7 +3477,581 @@ func (s *DeleteBackupPlanResponse) SetHeaders(v map[string]*string) *DeleteBacku
 	return s
 }
 
+func (s *DeleteBackupPlanResponse) SetStatusCode(v int32) *DeleteBackupPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteBackupPlanResponse) SetBody(v *DeleteBackupPlanResponseBody) *DeleteBackupPlanResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteCrossAccountRequest struct {
+	CrossOwnerId *int64  `json:"CrossOwnerId,omitempty" xml:"CrossOwnerId,omitempty"`
+	CrossRamRole *string `json:"CrossRamRole,omitempty" xml:"CrossRamRole,omitempty"`
+}
+
+func (s DeleteCrossAccountRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCrossAccountRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCrossAccountRequest) SetCrossOwnerId(v int64) *DeleteCrossAccountRequest {
+	s.CrossOwnerId = &v
+	return s
+}
+
+func (s *DeleteCrossAccountRequest) SetCrossRamRole(v string) *DeleteCrossAccountRequest {
+	s.CrossRamRole = &v
+	return s
+}
+
+type DeleteCrossAccountResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteCrossAccountResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCrossAccountResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCrossAccountResponseBody) SetCode(v string) *DeleteCrossAccountResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteCrossAccountResponseBody) SetMessage(v string) *DeleteCrossAccountResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteCrossAccountResponseBody) SetRequestId(v string) *DeleteCrossAccountResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteCrossAccountResponseBody) SetSuccess(v bool) *DeleteCrossAccountResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteCrossAccountResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCrossAccountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteCrossAccountResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteCrossAccountResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteCrossAccountResponse) SetHeaders(v map[string]*string) *DeleteCrossAccountResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteCrossAccountResponse) SetStatusCode(v int32) *DeleteCrossAccountResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteCrossAccountResponse) SetBody(v *DeleteCrossAccountResponseBody) *DeleteCrossAccountResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteHanaBackupPlanRequest struct {
+	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	PlanId          *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	VaultId         *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s DeleteHanaBackupPlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHanaBackupPlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHanaBackupPlanRequest) SetClusterId(v string) *DeleteHanaBackupPlanRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DeleteHanaBackupPlanRequest) SetPlanId(v string) *DeleteHanaBackupPlanRequest {
+	s.PlanId = &v
+	return s
+}
+
+func (s *DeleteHanaBackupPlanRequest) SetResourceGroupId(v string) *DeleteHanaBackupPlanRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DeleteHanaBackupPlanRequest) SetVaultId(v string) *DeleteHanaBackupPlanRequest {
+	s.VaultId = &v
+	return s
+}
+
+type DeleteHanaBackupPlanResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteHanaBackupPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHanaBackupPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHanaBackupPlanResponseBody) SetCode(v string) *DeleteHanaBackupPlanResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteHanaBackupPlanResponseBody) SetMessage(v string) *DeleteHanaBackupPlanResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteHanaBackupPlanResponseBody) SetRequestId(v string) *DeleteHanaBackupPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteHanaBackupPlanResponseBody) SetSuccess(v bool) *DeleteHanaBackupPlanResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteHanaBackupPlanResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteHanaBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteHanaBackupPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHanaBackupPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHanaBackupPlanResponse) SetHeaders(v map[string]*string) *DeleteHanaBackupPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteHanaBackupPlanResponse) SetStatusCode(v int32) *DeleteHanaBackupPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteHanaBackupPlanResponse) SetBody(v *DeleteHanaBackupPlanResponseBody) *DeleteHanaBackupPlanResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteHanaInstanceRequest struct {
+	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Sid             *string `json:"Sid,omitempty" xml:"Sid,omitempty"`
+	VaultId         *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s DeleteHanaInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHanaInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHanaInstanceRequest) SetClusterId(v string) *DeleteHanaInstanceRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DeleteHanaInstanceRequest) SetResourceGroupId(v string) *DeleteHanaInstanceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DeleteHanaInstanceRequest) SetSid(v string) *DeleteHanaInstanceRequest {
+	s.Sid = &v
+	return s
+}
+
+func (s *DeleteHanaInstanceRequest) SetVaultId(v string) *DeleteHanaInstanceRequest {
+	s.VaultId = &v
+	return s
+}
+
+type DeleteHanaInstanceResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteHanaInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHanaInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHanaInstanceResponseBody) SetCode(v string) *DeleteHanaInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteHanaInstanceResponseBody) SetMessage(v string) *DeleteHanaInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteHanaInstanceResponseBody) SetRequestId(v string) *DeleteHanaInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteHanaInstanceResponseBody) SetSuccess(v bool) *DeleteHanaInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteHanaInstanceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteHanaInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteHanaInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHanaInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHanaInstanceResponse) SetHeaders(v map[string]*string) *DeleteHanaInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteHanaInstanceResponse) SetStatusCode(v int32) *DeleteHanaInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteHanaInstanceResponse) SetBody(v *DeleteHanaInstanceResponseBody) *DeleteHanaInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteObClusterRequest struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+}
+
+func (s DeleteObClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteObClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteObClusterRequest) SetClusterId(v string) *DeleteObClusterRequest {
+	s.ClusterId = &v
+	return s
+}
+
+type DeleteObClusterResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteObClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteObClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteObClusterResponseBody) SetCode(v string) *DeleteObClusterResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteObClusterResponseBody) SetMessage(v string) *DeleteObClusterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteObClusterResponseBody) SetRequestId(v string) *DeleteObClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteObClusterResponseBody) SetSuccess(v bool) *DeleteObClusterResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteObClusterResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteObClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteObClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteObClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteObClusterResponse) SetHeaders(v map[string]*string) *DeleteObClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteObClusterResponse) SetStatusCode(v int32) *DeleteObClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteObClusterResponse) SetBody(v *DeleteObClusterResponseBody) *DeleteObClusterResponse {
+	s.Body = v
+	return s
+}
+
+type DeletePolicy2Request struct {
+	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+}
+
+func (s DeletePolicy2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicy2Request) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicy2Request) SetPolicyId(v string) *DeletePolicy2Request {
+	s.PolicyId = &v
+	return s
+}
+
+type DeletePolicy2ResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeletePolicy2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicy2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicy2ResponseBody) SetCode(v string) *DeletePolicy2ResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeletePolicy2ResponseBody) SetMessage(v string) *DeletePolicy2ResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeletePolicy2ResponseBody) SetRequestId(v string) *DeletePolicy2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeletePolicy2ResponseBody) SetSuccess(v bool) *DeletePolicy2ResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeletePolicy2Response struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeletePolicy2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeletePolicy2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicy2Response) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicy2Response) SetHeaders(v map[string]*string) *DeletePolicy2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePolicy2Response) SetStatusCode(v int32) *DeletePolicy2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePolicy2Response) SetBody(v *DeletePolicy2ResponseBody) *DeletePolicy2Response {
+	s.Body = v
+	return s
+}
+
+type DeletePolicyBindingRequest struct {
+	DataSourceIds []*string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty" type:"Repeated"`
+	PolicyId      *string   `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	SourceType    *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s DeletePolicyBindingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyBindingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyBindingRequest) SetDataSourceIds(v []*string) *DeletePolicyBindingRequest {
+	s.DataSourceIds = v
+	return s
+}
+
+func (s *DeletePolicyBindingRequest) SetPolicyId(v string) *DeletePolicyBindingRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DeletePolicyBindingRequest) SetSourceType(v string) *DeletePolicyBindingRequest {
+	s.SourceType = &v
+	return s
+}
+
+type DeletePolicyBindingShrinkRequest struct {
+	DataSourceIdsShrink *string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty"`
+	PolicyId            *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	SourceType          *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s DeletePolicyBindingShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyBindingShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyBindingShrinkRequest) SetDataSourceIdsShrink(v string) *DeletePolicyBindingShrinkRequest {
+	s.DataSourceIdsShrink = &v
+	return s
+}
+
+func (s *DeletePolicyBindingShrinkRequest) SetPolicyId(v string) *DeletePolicyBindingShrinkRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DeletePolicyBindingShrinkRequest) SetSourceType(v string) *DeletePolicyBindingShrinkRequest {
+	s.SourceType = &v
+	return s
+}
+
+type DeletePolicyBindingResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeletePolicyBindingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyBindingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyBindingResponseBody) SetCode(v string) *DeletePolicyBindingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeletePolicyBindingResponseBody) SetMessage(v string) *DeletePolicyBindingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeletePolicyBindingResponseBody) SetRequestId(v string) *DeletePolicyBindingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeletePolicyBindingResponseBody) SetSuccess(v bool) *DeletePolicyBindingResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeletePolicyBindingResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeletePolicyBindingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeletePolicyBindingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeletePolicyBindingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeletePolicyBindingResponse) SetHeaders(v map[string]*string) *DeletePolicyBindingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeletePolicyBindingResponse) SetStatusCode(v int32) *DeletePolicyBindingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeletePolicyBindingResponse) SetBody(v *DeletePolicyBindingResponseBody) *DeletePolicyBindingResponse {
 	s.Body = v
 	return s
 }
@@ -1609,8 +4145,9 @@ func (s *DeleteSnapshotResponseBody) SetSuccess(v bool) *DeleteSnapshotResponseB
 }
 
 type DeleteSnapshotResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSnapshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteSnapshotResponse) String() string {
@@ -1626,7 +4163,99 @@ func (s *DeleteSnapshotResponse) SetHeaders(v map[string]*string) *DeleteSnapsho
 	return s
 }
 
+func (s *DeleteSnapshotResponse) SetStatusCode(v int32) *DeleteSnapshotResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteSnapshotResponse) SetBody(v *DeleteSnapshotResponseBody) *DeleteSnapshotResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteUdmEcsInstanceGroupRequest struct {
+	DeleteUdmEcsInstance *bool   `json:"DeleteUdmEcsInstance,omitempty" xml:"DeleteUdmEcsInstance,omitempty"`
+	InstanceGroupId      *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+}
+
+func (s DeleteUdmEcsInstanceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUdmEcsInstanceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUdmEcsInstanceGroupRequest) SetDeleteUdmEcsInstance(v bool) *DeleteUdmEcsInstanceGroupRequest {
+	s.DeleteUdmEcsInstance = &v
+	return s
+}
+
+func (s *DeleteUdmEcsInstanceGroupRequest) SetInstanceGroupId(v string) *DeleteUdmEcsInstanceGroupRequest {
+	s.InstanceGroupId = &v
+	return s
+}
+
+type DeleteUdmEcsInstanceGroupResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteUdmEcsInstanceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUdmEcsInstanceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUdmEcsInstanceGroupResponseBody) SetCode(v string) *DeleteUdmEcsInstanceGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteUdmEcsInstanceGroupResponseBody) SetMessage(v string) *DeleteUdmEcsInstanceGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteUdmEcsInstanceGroupResponseBody) SetRequestId(v string) *DeleteUdmEcsInstanceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteUdmEcsInstanceGroupResponseBody) SetSuccess(v bool) *DeleteUdmEcsInstanceGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteUdmEcsInstanceGroupResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteUdmEcsInstanceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteUdmEcsInstanceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteUdmEcsInstanceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteUdmEcsInstanceGroupResponse) SetHeaders(v map[string]*string) *DeleteUdmEcsInstanceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteUdmEcsInstanceGroupResponse) SetStatusCode(v int32) *DeleteUdmEcsInstanceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteUdmEcsInstanceGroupResponse) SetBody(v *DeleteUdmEcsInstanceGroupResponseBody) *DeleteUdmEcsInstanceGroupResponse {
 	s.Body = v
 	return s
 }
@@ -1634,6 +4263,7 @@ func (s *DeleteSnapshotResponse) SetBody(v *DeleteSnapshotResponseBody) *DeleteS
 type DeleteVaultRequest struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	Token           *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	UserAccountId   *int64  `json:"UserAccountId,omitempty" xml:"UserAccountId,omitempty"`
 	VaultId         *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
@@ -1652,6 +4282,11 @@ func (s *DeleteVaultRequest) SetResourceGroupId(v string) *DeleteVaultRequest {
 
 func (s *DeleteVaultRequest) SetToken(v string) *DeleteVaultRequest {
 	s.Token = &v
+	return s
+}
+
+func (s *DeleteVaultRequest) SetUserAccountId(v int64) *DeleteVaultRequest {
+	s.UserAccountId = &v
 	return s
 }
 
@@ -1696,8 +4331,9 @@ func (s *DeleteVaultResponseBody) SetSuccess(v bool) *DeleteVaultResponseBody {
 }
 
 type DeleteVaultResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteVaultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteVaultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteVaultResponse) String() string {
@@ -1710,6 +4346,11 @@ func (s DeleteVaultResponse) GoString() string {
 
 func (s *DeleteVaultResponse) SetHeaders(v map[string]*string) *DeleteVaultResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteVaultResponse) SetStatusCode(v int32) *DeleteVaultResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2131,8 +4772,9 @@ func (s *DescribeBackupClientsResponseBodyClientsTags) SetValue(v string) *Descr
 }
 
 type DescribeBackupClientsResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeBackupClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeBackupClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeBackupClientsResponse) String() string {
@@ -2145,6 +4787,11 @@ func (s DescribeBackupClientsResponse) GoString() string {
 
 func (s *DescribeBackupClientsResponse) SetHeaders(v map[string]*string) *DescribeBackupClientsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeBackupClientsResponse) SetStatusCode(v int32) *DescribeBackupClientsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2566,8 +5213,9 @@ func (s *DescribeBackupJobs2ResponseBodyBackupJobsBackupJobPaths) SetPath(v []*s
 }
 
 type DescribeBackupJobs2Response struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeBackupJobs2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeBackupJobs2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeBackupJobs2Response) String() string {
@@ -2580,6 +5228,11 @@ func (s DescribeBackupJobs2Response) GoString() string {
 
 func (s *DescribeBackupJobs2Response) SetHeaders(v map[string]*string) *DescribeBackupJobs2Response {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeBackupJobs2Response) SetStatusCode(v int32) *DescribeBackupJobs2Response {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2730,6 +5383,9 @@ type DescribeBackupPlansResponseBodyBackupPlansBackupPlan struct {
 	ClusterId           *string                                                        `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	CreateTime          *int64                                                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	CreatedTime         *int64                                                         `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CrossAccountType    *string                                                        `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossOwnerId        *int64                                                         `json:"CrossOwnerId,omitempty" xml:"CrossOwnerId,omitempty"`
+	CrossRamRole        *string                                                        `json:"CrossRamRole,omitempty" xml:"CrossRamRole,omitempty"`
 	DataSourceId        *string                                                        `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
 	Detail              *string                                                        `json:"Detail,omitempty" xml:"Detail,omitempty"`
 	Disabled            *bool                                                          `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
@@ -2796,6 +5452,21 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetCreateTime(v i
 
 func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetCreatedTime(v int64) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
 	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetCrossAccountType(v string) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetCrossOwnerId(v int64) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
+	s.CrossOwnerId = &v
+	return s
+}
+
+func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlan) SetCrossRamRole(v string) *DescribeBackupPlansResponseBodyBackupPlansBackupPlan {
+	s.CrossRamRole = &v
 	return s
 }
 
@@ -3134,8 +5805,9 @@ func (s *DescribeBackupPlansResponseBodyBackupPlansBackupPlanTrialInfo) SetTrial
 }
 
 type DescribeBackupPlansResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeBackupPlansResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeBackupPlansResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeBackupPlansResponse) String() string {
@@ -3151,7 +5823,2619 @@ func (s *DescribeBackupPlansResponse) SetHeaders(v map[string]*string) *Describe
 	return s
 }
 
+func (s *DescribeBackupPlansResponse) SetStatusCode(v int32) *DescribeBackupPlansResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeBackupPlansResponse) SetBody(v *DescribeBackupPlansResponseBody) *DescribeBackupPlansResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeBackupSetRequest struct {
+	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeBackupSetRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupSetRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupSetRequest) SetClusterId(v string) *DescribeBackupSetRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeBackupSetRequest) SetPageNumber(v int32) *DescribeBackupSetRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeBackupSetRequest) SetPageSize(v int32) *DescribeBackupSetRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeBackupSetResponseBody struct {
+	BackupSetList *DescribeBackupSetResponseBodyBackupSetList `json:"BackupSetList,omitempty" xml:"BackupSetList,omitempty" type:"Struct"`
+	Code          *string                                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message       *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber    *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId     *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success       *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount    *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeBackupSetResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupSetResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupSetResponseBody) SetBackupSetList(v *DescribeBackupSetResponseBodyBackupSetList) *DescribeBackupSetResponseBody {
+	s.BackupSetList = v
+	return s
+}
+
+func (s *DescribeBackupSetResponseBody) SetCode(v string) *DescribeBackupSetResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeBackupSetResponseBody) SetMessage(v string) *DescribeBackupSetResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeBackupSetResponseBody) SetPageNumber(v int32) *DescribeBackupSetResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeBackupSetResponseBody) SetPageSize(v int32) *DescribeBackupSetResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeBackupSetResponseBody) SetRequestId(v string) *DescribeBackupSetResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBackupSetResponseBody) SetSuccess(v bool) *DescribeBackupSetResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeBackupSetResponseBody) SetTotalCount(v int32) *DescribeBackupSetResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeBackupSetResponseBodyBackupSetList struct {
+	BackupSet []*DescribeBackupSetResponseBodyBackupSetListBackupSet `json:"BackupSet,omitempty" xml:"BackupSet,omitempty" type:"Repeated"`
+}
+
+func (s DescribeBackupSetResponseBodyBackupSetList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupSetResponseBodyBackupSetList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupSetResponseBodyBackupSetList) SetBackupSet(v []*DescribeBackupSetResponseBodyBackupSetListBackupSet) *DescribeBackupSetResponseBodyBackupSetList {
+	s.BackupSet = v
+	return s
+}
+
+type DescribeBackupSetResponseBodyBackupSetListBackupSet struct {
+	BackupType       *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	BsKey            *int32  `json:"BsKey,omitempty" xml:"BsKey,omitempty"`
+	ClusterId        *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CompletionTime   *int32  `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
+	Compressed       *string `json:"Compressed,omitempty" xml:"Compressed,omitempty"`
+	CopyId           *int32  `json:"CopyId,omitempty" xml:"CopyId,omitempty"`
+	CreatedTime      *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	EncryptionMode   *string `json:"EncryptionMode,omitempty" xml:"EncryptionMode,omitempty"`
+	OutputBytes      *int32  `json:"OutputBytes,omitempty" xml:"OutputBytes,omitempty"`
+	OutputRateBytes  *int32  `json:"OutputRateBytes,omitempty" xml:"OutputRateBytes,omitempty"`
+	StartTime        *int32  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TotalOutputBytes *int32  `json:"TotalOutputBytes,omitempty" xml:"TotalOutputBytes,omitempty"`
+	UpdatedTime      *int64  `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+}
+
+func (s DescribeBackupSetResponseBodyBackupSetListBackupSet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupSetResponseBodyBackupSetListBackupSet) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupSetResponseBodyBackupSetListBackupSet) SetBackupType(v string) *DescribeBackupSetResponseBodyBackupSetListBackupSet {
+	s.BackupType = &v
+	return s
+}
+
+func (s *DescribeBackupSetResponseBodyBackupSetListBackupSet) SetBsKey(v int32) *DescribeBackupSetResponseBodyBackupSetListBackupSet {
+	s.BsKey = &v
+	return s
+}
+
+func (s *DescribeBackupSetResponseBodyBackupSetListBackupSet) SetClusterId(v string) *DescribeBackupSetResponseBodyBackupSetListBackupSet {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeBackupSetResponseBodyBackupSetListBackupSet) SetCompletionTime(v int32) *DescribeBackupSetResponseBodyBackupSetListBackupSet {
+	s.CompletionTime = &v
+	return s
+}
+
+func (s *DescribeBackupSetResponseBodyBackupSetListBackupSet) SetCompressed(v string) *DescribeBackupSetResponseBodyBackupSetListBackupSet {
+	s.Compressed = &v
+	return s
+}
+
+func (s *DescribeBackupSetResponseBodyBackupSetListBackupSet) SetCopyId(v int32) *DescribeBackupSetResponseBodyBackupSetListBackupSet {
+	s.CopyId = &v
+	return s
+}
+
+func (s *DescribeBackupSetResponseBodyBackupSetListBackupSet) SetCreatedTime(v int64) *DescribeBackupSetResponseBodyBackupSetListBackupSet {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeBackupSetResponseBodyBackupSetListBackupSet) SetEncryptionMode(v string) *DescribeBackupSetResponseBodyBackupSetListBackupSet {
+	s.EncryptionMode = &v
+	return s
+}
+
+func (s *DescribeBackupSetResponseBodyBackupSetListBackupSet) SetOutputBytes(v int32) *DescribeBackupSetResponseBodyBackupSetListBackupSet {
+	s.OutputBytes = &v
+	return s
+}
+
+func (s *DescribeBackupSetResponseBodyBackupSetListBackupSet) SetOutputRateBytes(v int32) *DescribeBackupSetResponseBodyBackupSetListBackupSet {
+	s.OutputRateBytes = &v
+	return s
+}
+
+func (s *DescribeBackupSetResponseBodyBackupSetListBackupSet) SetStartTime(v int32) *DescribeBackupSetResponseBodyBackupSetListBackupSet {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeBackupSetResponseBodyBackupSetListBackupSet) SetStatus(v string) *DescribeBackupSetResponseBodyBackupSetListBackupSet {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeBackupSetResponseBodyBackupSetListBackupSet) SetTotalOutputBytes(v int32) *DescribeBackupSetResponseBodyBackupSetListBackupSet {
+	s.TotalOutputBytes = &v
+	return s
+}
+
+func (s *DescribeBackupSetResponseBodyBackupSetListBackupSet) SetUpdatedTime(v int64) *DescribeBackupSetResponseBodyBackupSetListBackupSet {
+	s.UpdatedTime = &v
+	return s
+}
+
+type DescribeBackupSetResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeBackupSetResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeBackupSetResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBackupSetResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBackupSetResponse) SetHeaders(v map[string]*string) *DescribeBackupSetResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBackupSetResponse) SetStatusCode(v int32) *DescribeBackupSetResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeBackupSetResponse) SetBody(v *DescribeBackupSetResponseBody) *DescribeBackupSetResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeClientsRequest struct {
+	ClientId        *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientType      *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	VaultId         *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s DescribeClientsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClientsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClientsRequest) SetClientId(v string) *DescribeClientsRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *DescribeClientsRequest) SetClientType(v string) *DescribeClientsRequest {
+	s.ClientType = &v
+	return s
+}
+
+func (s *DescribeClientsRequest) SetClusterId(v string) *DescribeClientsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeClientsRequest) SetPageNumber(v int32) *DescribeClientsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeClientsRequest) SetPageSize(v int32) *DescribeClientsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeClientsRequest) SetResourceGroupId(v string) *DescribeClientsRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeClientsRequest) SetSourceType(v string) *DescribeClientsRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *DescribeClientsRequest) SetVaultId(v string) *DescribeClientsRequest {
+	s.VaultId = &v
+	return s
+}
+
+type DescribeClientsResponseBody struct {
+	Clients    *DescribeClientsResponseBodyClients `json:"Clients,omitempty" xml:"Clients,omitempty" type:"Struct"`
+	Code       *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeClientsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClientsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClientsResponseBody) SetClients(v *DescribeClientsResponseBodyClients) *DescribeClientsResponseBody {
+	s.Clients = v
+	return s
+}
+
+func (s *DescribeClientsResponseBody) SetCode(v string) *DescribeClientsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBody) SetMessage(v string) *DescribeClientsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBody) SetPageNumber(v int32) *DescribeClientsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBody) SetPageSize(v int32) *DescribeClientsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBody) SetRequestId(v string) *DescribeClientsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBody) SetSuccess(v bool) *DescribeClientsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBody) SetTotalCount(v int32) *DescribeClientsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeClientsResponseBodyClients struct {
+	Client []*DescribeClientsResponseBodyClientsClient `json:"Client,omitempty" xml:"Client,omitempty" type:"Repeated"`
+}
+
+func (s DescribeClientsResponseBodyClients) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClientsResponseBodyClients) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClientsResponseBodyClients) SetClient(v []*DescribeClientsResponseBodyClientsClient) *DescribeClientsResponseBodyClients {
+	s.Client = v
+	return s
+}
+
+type DescribeClientsResponseBodyClientsClient struct {
+	AlertSetting  *string `json:"AlertSetting,omitempty" xml:"AlertSetting,omitempty"`
+	ClientId      *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClientName    *string `json:"ClientName,omitempty" xml:"ClientName,omitempty"`
+	ClientType    *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	ClientVersion *string `json:"ClientVersion,omitempty" xml:"ClientVersion,omitempty"`
+	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CreatedTime   *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName  *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	MaxVersion    *string `json:"MaxVersion,omitempty" xml:"MaxVersion,omitempty"`
+	NetworkType   *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	UpdatedTime   *int64  `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	UseHttps      *bool   `json:"UseHttps,omitempty" xml:"UseHttps,omitempty"`
+	VaultId       *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s DescribeClientsResponseBodyClientsClient) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClientsResponseBodyClientsClient) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClientsResponseBodyClientsClient) SetAlertSetting(v string) *DescribeClientsResponseBodyClientsClient {
+	s.AlertSetting = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBodyClientsClient) SetClientId(v string) *DescribeClientsResponseBodyClientsClient {
+	s.ClientId = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBodyClientsClient) SetClientName(v string) *DescribeClientsResponseBodyClientsClient {
+	s.ClientName = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBodyClientsClient) SetClientType(v string) *DescribeClientsResponseBodyClientsClient {
+	s.ClientType = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBodyClientsClient) SetClientVersion(v string) *DescribeClientsResponseBodyClientsClient {
+	s.ClientVersion = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBodyClientsClient) SetClusterId(v string) *DescribeClientsResponseBodyClientsClient {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBodyClientsClient) SetCreatedTime(v int64) *DescribeClientsResponseBodyClientsClient {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBodyClientsClient) SetInstanceId(v string) *DescribeClientsResponseBodyClientsClient {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBodyClientsClient) SetInstanceName(v string) *DescribeClientsResponseBodyClientsClient {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBodyClientsClient) SetMaxVersion(v string) *DescribeClientsResponseBodyClientsClient {
+	s.MaxVersion = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBodyClientsClient) SetNetworkType(v string) *DescribeClientsResponseBodyClientsClient {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBodyClientsClient) SetStatus(v string) *DescribeClientsResponseBodyClientsClient {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBodyClientsClient) SetStatusMessage(v string) *DescribeClientsResponseBodyClientsClient {
+	s.StatusMessage = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBodyClientsClient) SetUpdatedTime(v int64) *DescribeClientsResponseBodyClientsClient {
+	s.UpdatedTime = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBodyClientsClient) SetUseHttps(v bool) *DescribeClientsResponseBodyClientsClient {
+	s.UseHttps = &v
+	return s
+}
+
+func (s *DescribeClientsResponseBodyClientsClient) SetVaultId(v string) *DescribeClientsResponseBodyClientsClient {
+	s.VaultId = &v
+	return s
+}
+
+type DescribeClientsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeClientsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeClientsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeClientsResponse) SetHeaders(v map[string]*string) *DescribeClientsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeClientsResponse) SetStatusCode(v int32) *DescribeClientsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeClientsResponse) SetBody(v *DescribeClientsResponseBody) *DescribeClientsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeContainerClusterRequest struct {
+	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeContainerClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerClusterRequest) SetClusterId(v string) *DescribeContainerClusterRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeContainerClusterRequest) SetPageNumber(v int32) *DescribeContainerClusterRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeContainerClusterRequest) SetPageSize(v int32) *DescribeContainerClusterRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeContainerClusterResponseBody struct {
+	Clusters   []*DescribeContainerClusterResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Repeated"`
+	Code       *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeContainerClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerClusterResponseBody) SetClusters(v []*DescribeContainerClusterResponseBodyClusters) *DescribeContainerClusterResponseBody {
+	s.Clusters = v
+	return s
+}
+
+func (s *DescribeContainerClusterResponseBody) SetCode(v string) *DescribeContainerClusterResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeContainerClusterResponseBody) SetMessage(v string) *DescribeContainerClusterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeContainerClusterResponseBody) SetPageNumber(v int32) *DescribeContainerClusterResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeContainerClusterResponseBody) SetPageSize(v int32) *DescribeContainerClusterResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeContainerClusterResponseBody) SetRequestId(v string) *DescribeContainerClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeContainerClusterResponseBody) SetSuccess(v bool) *DescribeContainerClusterResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeContainerClusterResponseBody) SetTotalCount(v int64) *DescribeContainerClusterResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeContainerClusterResponseBodyClusters struct {
+	AgentStatus *string `json:"AgentStatus,omitempty" xml:"AgentStatus,omitempty"`
+	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Identifier  *string `json:"Identifier,omitempty" xml:"Identifier,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	Token       *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s DescribeContainerClusterResponseBodyClusters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerClusterResponseBodyClusters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerClusterResponseBodyClusters) SetAgentStatus(v string) *DescribeContainerClusterResponseBodyClusters {
+	s.AgentStatus = &v
+	return s
+}
+
+func (s *DescribeContainerClusterResponseBodyClusters) SetClusterId(v string) *DescribeContainerClusterResponseBodyClusters {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeContainerClusterResponseBodyClusters) SetClusterType(v string) *DescribeContainerClusterResponseBodyClusters {
+	s.ClusterType = &v
+	return s
+}
+
+func (s *DescribeContainerClusterResponseBodyClusters) SetDescription(v string) *DescribeContainerClusterResponseBodyClusters {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeContainerClusterResponseBodyClusters) SetIdentifier(v string) *DescribeContainerClusterResponseBodyClusters {
+	s.Identifier = &v
+	return s
+}
+
+func (s *DescribeContainerClusterResponseBodyClusters) SetName(v string) *DescribeContainerClusterResponseBodyClusters {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeContainerClusterResponseBodyClusters) SetNetworkType(v string) *DescribeContainerClusterResponseBodyClusters {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *DescribeContainerClusterResponseBodyClusters) SetToken(v string) *DescribeContainerClusterResponseBodyClusters {
+	s.Token = &v
+	return s
+}
+
+type DescribeContainerClusterResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeContainerClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeContainerClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeContainerClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeContainerClusterResponse) SetHeaders(v map[string]*string) *DescribeContainerClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeContainerClusterResponse) SetStatusCode(v int32) *DescribeContainerClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeContainerClusterResponse) SetBody(v *DescribeContainerClusterResponseBody) *DescribeContainerClusterResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeCrossAccountsRequest struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeCrossAccountsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCrossAccountsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCrossAccountsRequest) SetPageNumber(v int32) *DescribeCrossAccountsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeCrossAccountsRequest) SetPageSize(v int32) *DescribeCrossAccountsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeCrossAccountsResponseBody struct {
+	Code          *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	CrossAccounts *DescribeCrossAccountsResponseBodyCrossAccounts `json:"CrossAccounts,omitempty" xml:"CrossAccounts,omitempty" type:"Struct"`
+	Message       *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber    *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success       *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount    *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeCrossAccountsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCrossAccountsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCrossAccountsResponseBody) SetCode(v string) *DescribeCrossAccountsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeCrossAccountsResponseBody) SetCrossAccounts(v *DescribeCrossAccountsResponseBodyCrossAccounts) *DescribeCrossAccountsResponseBody {
+	s.CrossAccounts = v
+	return s
+}
+
+func (s *DescribeCrossAccountsResponseBody) SetMessage(v string) *DescribeCrossAccountsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeCrossAccountsResponseBody) SetPageNumber(v int32) *DescribeCrossAccountsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeCrossAccountsResponseBody) SetPageSize(v int32) *DescribeCrossAccountsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeCrossAccountsResponseBody) SetRequestId(v string) *DescribeCrossAccountsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCrossAccountsResponseBody) SetSuccess(v bool) *DescribeCrossAccountsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeCrossAccountsResponseBody) SetTotalCount(v int64) *DescribeCrossAccountsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeCrossAccountsResponseBodyCrossAccounts struct {
+	CrossAccount []*DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount `json:"CrossAccount,omitempty" xml:"CrossAccount,omitempty" type:"Repeated"`
+}
+
+func (s DescribeCrossAccountsResponseBodyCrossAccounts) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCrossAccountsResponseBodyCrossAccounts) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCrossAccountsResponseBodyCrossAccounts) SetCrossAccount(v []*DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount) *DescribeCrossAccountsResponseBodyCrossAccounts {
+	s.CrossAccount = v
+	return s
+}
+
+type DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount struct {
+	Alias        *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	CreatedTime  *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CrossOwnerId *int64  `json:"CrossOwnerId,omitempty" xml:"CrossOwnerId,omitempty"`
+	CrossRamRole *string `json:"CrossRamRole,omitempty" xml:"CrossRamRole,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	UpdatedTime  *int64  `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+}
+
+func (s DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount) SetAlias(v string) *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount {
+	s.Alias = &v
+	return s
+}
+
+func (s *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount) SetCreatedTime(v int64) *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount) SetCrossOwnerId(v int64) *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount {
+	s.CrossOwnerId = &v
+	return s
+}
+
+func (s *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount) SetCrossRamRole(v string) *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount {
+	s.CrossRamRole = &v
+	return s
+}
+
+func (s *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount) SetId(v int64) *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount) SetOwnerId(v int64) *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount) SetUpdatedTime(v int64) *DescribeCrossAccountsResponseBodyCrossAccountsCrossAccount {
+	s.UpdatedTime = &v
+	return s
+}
+
+type DescribeCrossAccountsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCrossAccountsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeCrossAccountsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeCrossAccountsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeCrossAccountsResponse) SetHeaders(v map[string]*string) *DescribeCrossAccountsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeCrossAccountsResponse) SetStatusCode(v int32) *DescribeCrossAccountsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeCrossAccountsResponse) SetBody(v *DescribeCrossAccountsResponseBody) *DescribeCrossAccountsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHanaBackupPlansRequest struct {
+	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DatabaseName    *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	VaultId         *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s DescribeHanaBackupPlansRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaBackupPlansRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaBackupPlansRequest) SetClusterId(v string) *DescribeHanaBackupPlansRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansRequest) SetDatabaseName(v string) *DescribeHanaBackupPlansRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansRequest) SetPageNumber(v int32) *DescribeHanaBackupPlansRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansRequest) SetPageSize(v int32) *DescribeHanaBackupPlansRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansRequest) SetResourceGroupId(v string) *DescribeHanaBackupPlansRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansRequest) SetVaultId(v string) *DescribeHanaBackupPlansRequest {
+	s.VaultId = &v
+	return s
+}
+
+type DescribeHanaBackupPlansResponseBody struct {
+	Code            *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	HanaBackupPlans *DescribeHanaBackupPlansResponseBodyHanaBackupPlans `json:"HanaBackupPlans,omitempty" xml:"HanaBackupPlans,omitempty" type:"Struct"`
+	Message         *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber      *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId       *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success         *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount      *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeHanaBackupPlansResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaBackupPlansResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaBackupPlansResponseBody) SetCode(v string) *DescribeHanaBackupPlansResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansResponseBody) SetHanaBackupPlans(v *DescribeHanaBackupPlansResponseBodyHanaBackupPlans) *DescribeHanaBackupPlansResponseBody {
+	s.HanaBackupPlans = v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansResponseBody) SetMessage(v string) *DescribeHanaBackupPlansResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansResponseBody) SetPageNumber(v int32) *DescribeHanaBackupPlansResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansResponseBody) SetPageSize(v int32) *DescribeHanaBackupPlansResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansResponseBody) SetRequestId(v string) *DescribeHanaBackupPlansResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansResponseBody) SetSuccess(v bool) *DescribeHanaBackupPlansResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansResponseBody) SetTotalCount(v int64) *DescribeHanaBackupPlansResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeHanaBackupPlansResponseBodyHanaBackupPlans struct {
+	HanaBackupPlan []*DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan `json:"HanaBackupPlan,omitempty" xml:"HanaBackupPlan,omitempty" type:"Repeated"`
+}
+
+func (s DescribeHanaBackupPlansResponseBodyHanaBackupPlans) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaBackupPlansResponseBodyHanaBackupPlans) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaBackupPlansResponseBodyHanaBackupPlans) SetHanaBackupPlan(v []*DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan) *DescribeHanaBackupPlansResponseBodyHanaBackupPlans {
+	s.HanaBackupPlan = v
+	return s
+}
+
+type DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan struct {
+	BackupPrefix *string `json:"BackupPrefix,omitempty" xml:"BackupPrefix,omitempty"`
+	BackupType   *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	Disabled     *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	PlanId       *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	PlanName     *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	Schedule     *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	VaultId      *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan) SetBackupPrefix(v string) *DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan {
+	s.BackupPrefix = &v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan) SetBackupType(v string) *DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan {
+	s.BackupType = &v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan) SetClusterId(v string) *DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan) SetDatabaseName(v string) *DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan) SetDisabled(v bool) *DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan {
+	s.Disabled = &v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan) SetPlanId(v string) *DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan {
+	s.PlanId = &v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan) SetPlanName(v string) *DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan {
+	s.PlanName = &v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan) SetSchedule(v string) *DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan {
+	s.Schedule = &v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan) SetVaultId(v string) *DescribeHanaBackupPlansResponseBodyHanaBackupPlansHanaBackupPlan {
+	s.VaultId = &v
+	return s
+}
+
+type DescribeHanaBackupPlansResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeHanaBackupPlansResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeHanaBackupPlansResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaBackupPlansResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaBackupPlansResponse) SetHeaders(v map[string]*string) *DescribeHanaBackupPlansResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansResponse) SetStatusCode(v int32) *DescribeHanaBackupPlansResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHanaBackupPlansResponse) SetBody(v *DescribeHanaBackupPlansResponseBody) *DescribeHanaBackupPlansResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHanaBackupSettingRequest struct {
+	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	VaultId      *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s DescribeHanaBackupSettingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaBackupSettingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaBackupSettingRequest) SetClusterId(v string) *DescribeHanaBackupSettingRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeHanaBackupSettingRequest) SetDatabaseName(v string) *DescribeHanaBackupSettingRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeHanaBackupSettingRequest) SetVaultId(v string) *DescribeHanaBackupSettingRequest {
+	s.VaultId = &v
+	return s
+}
+
+type DescribeHanaBackupSettingResponseBody struct {
+	Code              *string                                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	HanaBackupSetting *DescribeHanaBackupSettingResponseBodyHanaBackupSetting `json:"HanaBackupSetting,omitempty" xml:"HanaBackupSetting,omitempty" type:"Struct"`
+	Message           *string                                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId         *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success           *bool                                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DescribeHanaBackupSettingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaBackupSettingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaBackupSettingResponseBody) SetCode(v string) *DescribeHanaBackupSettingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeHanaBackupSettingResponseBody) SetHanaBackupSetting(v *DescribeHanaBackupSettingResponseBodyHanaBackupSetting) *DescribeHanaBackupSettingResponseBody {
+	s.HanaBackupSetting = v
+	return s
+}
+
+func (s *DescribeHanaBackupSettingResponseBody) SetMessage(v string) *DescribeHanaBackupSettingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeHanaBackupSettingResponseBody) SetRequestId(v string) *DescribeHanaBackupSettingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeHanaBackupSettingResponseBody) SetSuccess(v bool) *DescribeHanaBackupSettingResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DescribeHanaBackupSettingResponseBodyHanaBackupSetting struct {
+	CatalogBackupParameterFile *string `json:"CatalogBackupParameterFile,omitempty" xml:"CatalogBackupParameterFile,omitempty"`
+	CatalogBackupUsingBackint  *bool   `json:"CatalogBackupUsingBackint,omitempty" xml:"CatalogBackupUsingBackint,omitempty"`
+	DataBackupParameterFile    *string `json:"DataBackupParameterFile,omitempty" xml:"DataBackupParameterFile,omitempty"`
+	DatabaseName               *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EnableAutoLogBackup        *bool   `json:"EnableAutoLogBackup,omitempty" xml:"EnableAutoLogBackup,omitempty"`
+	LogBackupParameterFile     *string `json:"LogBackupParameterFile,omitempty" xml:"LogBackupParameterFile,omitempty"`
+	LogBackupTimeout           *int64  `json:"LogBackupTimeout,omitempty" xml:"LogBackupTimeout,omitempty"`
+	LogBackupUsingBackint      *bool   `json:"LogBackupUsingBackint,omitempty" xml:"LogBackupUsingBackint,omitempty"`
+}
+
+func (s DescribeHanaBackupSettingResponseBodyHanaBackupSetting) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaBackupSettingResponseBodyHanaBackupSetting) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaBackupSettingResponseBodyHanaBackupSetting) SetCatalogBackupParameterFile(v string) *DescribeHanaBackupSettingResponseBodyHanaBackupSetting {
+	s.CatalogBackupParameterFile = &v
+	return s
+}
+
+func (s *DescribeHanaBackupSettingResponseBodyHanaBackupSetting) SetCatalogBackupUsingBackint(v bool) *DescribeHanaBackupSettingResponseBodyHanaBackupSetting {
+	s.CatalogBackupUsingBackint = &v
+	return s
+}
+
+func (s *DescribeHanaBackupSettingResponseBodyHanaBackupSetting) SetDataBackupParameterFile(v string) *DescribeHanaBackupSettingResponseBodyHanaBackupSetting {
+	s.DataBackupParameterFile = &v
+	return s
+}
+
+func (s *DescribeHanaBackupSettingResponseBodyHanaBackupSetting) SetDatabaseName(v string) *DescribeHanaBackupSettingResponseBodyHanaBackupSetting {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeHanaBackupSettingResponseBodyHanaBackupSetting) SetEnableAutoLogBackup(v bool) *DescribeHanaBackupSettingResponseBodyHanaBackupSetting {
+	s.EnableAutoLogBackup = &v
+	return s
+}
+
+func (s *DescribeHanaBackupSettingResponseBodyHanaBackupSetting) SetLogBackupParameterFile(v string) *DescribeHanaBackupSettingResponseBodyHanaBackupSetting {
+	s.LogBackupParameterFile = &v
+	return s
+}
+
+func (s *DescribeHanaBackupSettingResponseBodyHanaBackupSetting) SetLogBackupTimeout(v int64) *DescribeHanaBackupSettingResponseBodyHanaBackupSetting {
+	s.LogBackupTimeout = &v
+	return s
+}
+
+func (s *DescribeHanaBackupSettingResponseBodyHanaBackupSetting) SetLogBackupUsingBackint(v bool) *DescribeHanaBackupSettingResponseBodyHanaBackupSetting {
+	s.LogBackupUsingBackint = &v
+	return s
+}
+
+type DescribeHanaBackupSettingResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeHanaBackupSettingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeHanaBackupSettingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaBackupSettingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaBackupSettingResponse) SetHeaders(v map[string]*string) *DescribeHanaBackupSettingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHanaBackupSettingResponse) SetStatusCode(v int32) *DescribeHanaBackupSettingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHanaBackupSettingResponse) SetBody(v *DescribeHanaBackupSettingResponseBody) *DescribeHanaBackupSettingResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHanaBackupsAsyncRequest struct {
+	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DatabaseName        *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	IncludeDifferential *bool   `json:"IncludeDifferential,omitempty" xml:"IncludeDifferential,omitempty"`
+	IncludeIncremental  *bool   `json:"IncludeIncremental,omitempty" xml:"IncludeIncremental,omitempty"`
+	IncludeLog          *bool   `json:"IncludeLog,omitempty" xml:"IncludeLog,omitempty"`
+	LogPosition         *int64  `json:"LogPosition,omitempty" xml:"LogPosition,omitempty"`
+	Mode                *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	PageNumber          *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize            *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RecoveryPointInTime *int64  `json:"RecoveryPointInTime,omitempty" xml:"RecoveryPointInTime,omitempty"`
+	ResourceGroupId     *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Source              *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceClusterId     *string `json:"SourceClusterId,omitempty" xml:"SourceClusterId,omitempty"`
+	SystemCopy          *bool   `json:"SystemCopy,omitempty" xml:"SystemCopy,omitempty"`
+	UseBackint          *bool   `json:"UseBackint,omitempty" xml:"UseBackint,omitempty"`
+	VaultId             *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	VolumeId            *int32  `json:"VolumeId,omitempty" xml:"VolumeId,omitempty"`
+}
+
+func (s DescribeHanaBackupsAsyncRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaBackupsAsyncRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaBackupsAsyncRequest) SetClusterId(v string) *DescribeHanaBackupsAsyncRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncRequest) SetDatabaseName(v string) *DescribeHanaBackupsAsyncRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncRequest) SetIncludeDifferential(v bool) *DescribeHanaBackupsAsyncRequest {
+	s.IncludeDifferential = &v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncRequest) SetIncludeIncremental(v bool) *DescribeHanaBackupsAsyncRequest {
+	s.IncludeIncremental = &v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncRequest) SetIncludeLog(v bool) *DescribeHanaBackupsAsyncRequest {
+	s.IncludeLog = &v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncRequest) SetLogPosition(v int64) *DescribeHanaBackupsAsyncRequest {
+	s.LogPosition = &v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncRequest) SetMode(v string) *DescribeHanaBackupsAsyncRequest {
+	s.Mode = &v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncRequest) SetPageNumber(v int32) *DescribeHanaBackupsAsyncRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncRequest) SetPageSize(v int32) *DescribeHanaBackupsAsyncRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncRequest) SetRecoveryPointInTime(v int64) *DescribeHanaBackupsAsyncRequest {
+	s.RecoveryPointInTime = &v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncRequest) SetResourceGroupId(v string) *DescribeHanaBackupsAsyncRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncRequest) SetSource(v string) *DescribeHanaBackupsAsyncRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncRequest) SetSourceClusterId(v string) *DescribeHanaBackupsAsyncRequest {
+	s.SourceClusterId = &v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncRequest) SetSystemCopy(v bool) *DescribeHanaBackupsAsyncRequest {
+	s.SystemCopy = &v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncRequest) SetUseBackint(v bool) *DescribeHanaBackupsAsyncRequest {
+	s.UseBackint = &v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncRequest) SetVaultId(v string) *DescribeHanaBackupsAsyncRequest {
+	s.VaultId = &v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncRequest) SetVolumeId(v int32) *DescribeHanaBackupsAsyncRequest {
+	s.VolumeId = &v
+	return s
+}
+
+type DescribeHanaBackupsAsyncResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s DescribeHanaBackupsAsyncResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaBackupsAsyncResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaBackupsAsyncResponseBody) SetCode(v string) *DescribeHanaBackupsAsyncResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncResponseBody) SetMessage(v string) *DescribeHanaBackupsAsyncResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncResponseBody) SetRequestId(v string) *DescribeHanaBackupsAsyncResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncResponseBody) SetSuccess(v bool) *DescribeHanaBackupsAsyncResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncResponseBody) SetTaskId(v string) *DescribeHanaBackupsAsyncResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type DescribeHanaBackupsAsyncResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeHanaBackupsAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeHanaBackupsAsyncResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaBackupsAsyncResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaBackupsAsyncResponse) SetHeaders(v map[string]*string) *DescribeHanaBackupsAsyncResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncResponse) SetStatusCode(v int32) *DescribeHanaBackupsAsyncResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHanaBackupsAsyncResponse) SetBody(v *DescribeHanaBackupsAsyncResponseBody) *DescribeHanaBackupsAsyncResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHanaDatabasesRequest struct {
+	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	VaultId         *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s DescribeHanaDatabasesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaDatabasesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaDatabasesRequest) SetClusterId(v string) *DescribeHanaDatabasesRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeHanaDatabasesRequest) SetPageNumber(v int32) *DescribeHanaDatabasesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHanaDatabasesRequest) SetPageSize(v int32) *DescribeHanaDatabasesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHanaDatabasesRequest) SetResourceGroupId(v string) *DescribeHanaDatabasesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeHanaDatabasesRequest) SetVaultId(v string) *DescribeHanaDatabasesRequest {
+	s.VaultId = &v
+	return s
+}
+
+type DescribeHanaDatabasesResponseBody struct {
+	Code          *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	HanaDatabases *DescribeHanaDatabasesResponseBodyHanaDatabases `json:"HanaDatabases,omitempty" xml:"HanaDatabases,omitempty" type:"Struct"`
+	Message       *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber    *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId     *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success       *bool                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount    *int64                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeHanaDatabasesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaDatabasesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaDatabasesResponseBody) SetCode(v string) *DescribeHanaDatabasesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeHanaDatabasesResponseBody) SetHanaDatabases(v *DescribeHanaDatabasesResponseBodyHanaDatabases) *DescribeHanaDatabasesResponseBody {
+	s.HanaDatabases = v
+	return s
+}
+
+func (s *DescribeHanaDatabasesResponseBody) SetMessage(v string) *DescribeHanaDatabasesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeHanaDatabasesResponseBody) SetPageNumber(v int32) *DescribeHanaDatabasesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHanaDatabasesResponseBody) SetPageSize(v int32) *DescribeHanaDatabasesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHanaDatabasesResponseBody) SetRequestId(v string) *DescribeHanaDatabasesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeHanaDatabasesResponseBody) SetSuccess(v bool) *DescribeHanaDatabasesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeHanaDatabasesResponseBody) SetTotalCount(v int64) *DescribeHanaDatabasesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeHanaDatabasesResponseBodyHanaDatabases struct {
+	HanaDatabase []*DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase `json:"HanaDatabase,omitempty" xml:"HanaDatabase,omitempty" type:"Repeated"`
+}
+
+func (s DescribeHanaDatabasesResponseBodyHanaDatabases) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaDatabasesResponseBodyHanaDatabases) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaDatabasesResponseBodyHanaDatabases) SetHanaDatabase(v []*DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase) *DescribeHanaDatabasesResponseBodyHanaDatabases {
+	s.HanaDatabase = v
+	return s
+}
+
+type DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase struct {
+	ActiveStatus *string `json:"ActiveStatus,omitempty" xml:"ActiveStatus,omitempty"`
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	Detail       *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	Host         *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	ServiceName  *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	SqlPort      *int32  `json:"SqlPort,omitempty" xml:"SqlPort,omitempty"`
+}
+
+func (s DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase) SetActiveStatus(v string) *DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase {
+	s.ActiveStatus = &v
+	return s
+}
+
+func (s *DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase) SetDatabaseName(v string) *DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase) SetDetail(v string) *DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase {
+	s.Detail = &v
+	return s
+}
+
+func (s *DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase) SetHost(v string) *DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase {
+	s.Host = &v
+	return s
+}
+
+func (s *DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase) SetServiceName(v string) *DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase) SetSqlPort(v int32) *DescribeHanaDatabasesResponseBodyHanaDatabasesHanaDatabase {
+	s.SqlPort = &v
+	return s
+}
+
+type DescribeHanaDatabasesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeHanaDatabasesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeHanaDatabasesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaDatabasesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaDatabasesResponse) SetHeaders(v map[string]*string) *DescribeHanaDatabasesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHanaDatabasesResponse) SetStatusCode(v int32) *DescribeHanaDatabasesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHanaDatabasesResponse) SetBody(v *DescribeHanaDatabasesResponseBody) *DescribeHanaDatabasesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHanaInstancesRequest struct {
+	ClusterId       *string                            `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	PageNumber      *int32                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceGroupId *string                            `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Tag             []*DescribeHanaInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	VaultId         *string                            `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s DescribeHanaInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaInstancesRequest) SetClusterId(v string) *DescribeHanaInstancesRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesRequest) SetPageNumber(v int32) *DescribeHanaInstancesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesRequest) SetPageSize(v int32) *DescribeHanaInstancesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesRequest) SetResourceGroupId(v string) *DescribeHanaInstancesRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesRequest) SetTag(v []*DescribeHanaInstancesRequestTag) *DescribeHanaInstancesRequest {
+	s.Tag = v
+	return s
+}
+
+func (s *DescribeHanaInstancesRequest) SetVaultId(v string) *DescribeHanaInstancesRequest {
+	s.VaultId = &v
+	return s
+}
+
+type DescribeHanaInstancesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeHanaInstancesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaInstancesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaInstancesRequestTag) SetKey(v string) *DescribeHanaInstancesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesRequestTag) SetValue(v string) *DescribeHanaInstancesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type DescribeHanaInstancesResponseBody struct {
+	Code       *string                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Hanas      *DescribeHanaInstancesResponseBodyHanas `json:"Hanas,omitempty" xml:"Hanas,omitempty" type:"Struct"`
+	Message    *string                                 `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                                   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeHanaInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaInstancesResponseBody) SetCode(v string) *DescribeHanaInstancesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBody) SetHanas(v *DescribeHanaInstancesResponseBodyHanas) *DescribeHanaInstancesResponseBody {
+	s.Hanas = v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBody) SetMessage(v string) *DescribeHanaInstancesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBody) SetPageNumber(v int32) *DescribeHanaInstancesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBody) SetPageSize(v int32) *DescribeHanaInstancesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBody) SetRequestId(v string) *DescribeHanaInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBody) SetSuccess(v bool) *DescribeHanaInstancesResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBody) SetTotalCount(v int32) *DescribeHanaInstancesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeHanaInstancesResponseBodyHanas struct {
+	Hana []*DescribeHanaInstancesResponseBodyHanasHana `json:"Hana,omitempty" xml:"Hana,omitempty" type:"Repeated"`
+}
+
+func (s DescribeHanaInstancesResponseBodyHanas) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaInstancesResponseBodyHanas) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaInstancesResponseBodyHanas) SetHana(v []*DescribeHanaInstancesResponseBodyHanasHana) *DescribeHanaInstancesResponseBodyHanas {
+	s.Hana = v
+	return s
+}
+
+type DescribeHanaInstancesResponseBodyHanasHana struct {
+	AlertSetting        *string                                         `json:"AlertSetting,omitempty" xml:"AlertSetting,omitempty"`
+	ClusterId           *string                                         `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	HanaName            *string                                         `json:"HanaName,omitempty" xml:"HanaName,omitempty"`
+	Host                *string                                         `json:"Host,omitempty" xml:"Host,omitempty"`
+	InstanceNumber      *int32                                          `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
+	ResourceGroupId     *string                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Status              *int64                                          `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusMessage       *string                                         `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
+	Tags                *DescribeHanaInstancesResponseBodyHanasHanaTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	UseSsl              *bool                                           `json:"UseSsl,omitempty" xml:"UseSsl,omitempty"`
+	UserName            *string                                         `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	ValidateCertificate *bool                                           `json:"ValidateCertificate,omitempty" xml:"ValidateCertificate,omitempty"`
+	VaultId             *string                                         `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s DescribeHanaInstancesResponseBodyHanasHana) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaInstancesResponseBodyHanasHana) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaInstancesResponseBodyHanasHana) SetAlertSetting(v string) *DescribeHanaInstancesResponseBodyHanasHana {
+	s.AlertSetting = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBodyHanasHana) SetClusterId(v string) *DescribeHanaInstancesResponseBodyHanasHana {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBodyHanasHana) SetHanaName(v string) *DescribeHanaInstancesResponseBodyHanasHana {
+	s.HanaName = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBodyHanasHana) SetHost(v string) *DescribeHanaInstancesResponseBodyHanasHana {
+	s.Host = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBodyHanasHana) SetInstanceNumber(v int32) *DescribeHanaInstancesResponseBodyHanasHana {
+	s.InstanceNumber = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBodyHanasHana) SetResourceGroupId(v string) *DescribeHanaInstancesResponseBodyHanasHana {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBodyHanasHana) SetStatus(v int64) *DescribeHanaInstancesResponseBodyHanasHana {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBodyHanasHana) SetStatusMessage(v string) *DescribeHanaInstancesResponseBodyHanasHana {
+	s.StatusMessage = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBodyHanasHana) SetTags(v *DescribeHanaInstancesResponseBodyHanasHanaTags) *DescribeHanaInstancesResponseBodyHanasHana {
+	s.Tags = v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBodyHanasHana) SetUseSsl(v bool) *DescribeHanaInstancesResponseBodyHanasHana {
+	s.UseSsl = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBodyHanasHana) SetUserName(v string) *DescribeHanaInstancesResponseBodyHanasHana {
+	s.UserName = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBodyHanasHana) SetValidateCertificate(v bool) *DescribeHanaInstancesResponseBodyHanasHana {
+	s.ValidateCertificate = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBodyHanasHana) SetVaultId(v string) *DescribeHanaInstancesResponseBodyHanasHana {
+	s.VaultId = &v
+	return s
+}
+
+type DescribeHanaInstancesResponseBodyHanasHanaTags struct {
+	Tag []*DescribeHanaInstancesResponseBodyHanasHanaTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeHanaInstancesResponseBodyHanasHanaTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaInstancesResponseBodyHanasHanaTags) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaInstancesResponseBodyHanasHanaTags) SetTag(v []*DescribeHanaInstancesResponseBodyHanasHanaTagsTag) *DescribeHanaInstancesResponseBodyHanasHanaTags {
+	s.Tag = v
+	return s
+}
+
+type DescribeHanaInstancesResponseBodyHanasHanaTagsTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeHanaInstancesResponseBodyHanasHanaTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaInstancesResponseBodyHanasHanaTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaInstancesResponseBodyHanasHanaTagsTag) SetKey(v string) *DescribeHanaInstancesResponseBodyHanasHanaTagsTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponseBodyHanasHanaTagsTag) SetValue(v string) *DescribeHanaInstancesResponseBodyHanasHanaTagsTag {
+	s.Value = &v
+	return s
+}
+
+type DescribeHanaInstancesResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeHanaInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeHanaInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaInstancesResponse) SetHeaders(v map[string]*string) *DescribeHanaInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponse) SetStatusCode(v int32) *DescribeHanaInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHanaInstancesResponse) SetBody(v *DescribeHanaInstancesResponseBody) *DescribeHanaInstancesResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHanaRestoresRequest struct {
+	BackupId        *int64  `json:"BackupId,omitempty" xml:"BackupId,omitempty"`
+	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DatabaseName    *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	RestoreId       *string `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
+	RestoreStatus   *string `json:"RestoreStatus,omitempty" xml:"RestoreStatus,omitempty"`
+	VaultId         *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s DescribeHanaRestoresRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaRestoresRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaRestoresRequest) SetBackupId(v int64) *DescribeHanaRestoresRequest {
+	s.BackupId = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresRequest) SetClusterId(v string) *DescribeHanaRestoresRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresRequest) SetDatabaseName(v string) *DescribeHanaRestoresRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresRequest) SetPageNumber(v int32) *DescribeHanaRestoresRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresRequest) SetPageSize(v int32) *DescribeHanaRestoresRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresRequest) SetResourceGroupId(v string) *DescribeHanaRestoresRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresRequest) SetRestoreId(v string) *DescribeHanaRestoresRequest {
+	s.RestoreId = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresRequest) SetRestoreStatus(v string) *DescribeHanaRestoresRequest {
+	s.RestoreStatus = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresRequest) SetVaultId(v string) *DescribeHanaRestoresRequest {
+	s.VaultId = &v
+	return s
+}
+
+type DescribeHanaRestoresResponseBody struct {
+	Code        *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	HanaRestore *DescribeHanaRestoresResponseBodyHanaRestore `json:"HanaRestore,omitempty" xml:"HanaRestore,omitempty" type:"Struct"`
+	Message     *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber  *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                        `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount  *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeHanaRestoresResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaRestoresResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaRestoresResponseBody) SetCode(v string) *DescribeHanaRestoresResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBody) SetHanaRestore(v *DescribeHanaRestoresResponseBodyHanaRestore) *DescribeHanaRestoresResponseBody {
+	s.HanaRestore = v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBody) SetMessage(v string) *DescribeHanaRestoresResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBody) SetPageNumber(v int32) *DescribeHanaRestoresResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBody) SetPageSize(v int32) *DescribeHanaRestoresResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBody) SetRequestId(v string) *DescribeHanaRestoresResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBody) SetSuccess(v bool) *DescribeHanaRestoresResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBody) SetTotalCount(v int32) *DescribeHanaRestoresResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeHanaRestoresResponseBodyHanaRestore struct {
+	HanaRestores []*DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores `json:"HanaRestores,omitempty" xml:"HanaRestores,omitempty" type:"Repeated"`
+}
+
+func (s DescribeHanaRestoresResponseBodyHanaRestore) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaRestoresResponseBodyHanaRestore) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestore) SetHanaRestores(v []*DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) *DescribeHanaRestoresResponseBodyHanaRestore {
+	s.HanaRestores = v
+	return s
+}
+
+type DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores struct {
+	BackupID            *int64  `json:"BackupID,omitempty" xml:"BackupID,omitempty"`
+	BackupPrefix        *string `json:"BackupPrefix,omitempty" xml:"BackupPrefix,omitempty"`
+	CheckAccess         *bool   `json:"CheckAccess,omitempty" xml:"CheckAccess,omitempty"`
+	ClearLog            *bool   `json:"ClearLog,omitempty" xml:"ClearLog,omitempty"`
+	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CurrentPhase        *int32  `json:"CurrentPhase,omitempty" xml:"CurrentPhase,omitempty"`
+	CurrentProgress     *int64  `json:"CurrentProgress,omitempty" xml:"CurrentProgress,omitempty"`
+	DatabaseName        *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	DatabaseRestoreId   *int64  `json:"DatabaseRestoreId,omitempty" xml:"DatabaseRestoreId,omitempty"`
+	EndTime             *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	LogPosition         *int64  `json:"LogPosition,omitempty" xml:"LogPosition,omitempty"`
+	MaxPhase            *int32  `json:"MaxPhase,omitempty" xml:"MaxPhase,omitempty"`
+	MaxProgress         *int64  `json:"MaxProgress,omitempty" xml:"MaxProgress,omitempty"`
+	Message             *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Mode                *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
+	Phase               *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
+	ReachedTime         *int64  `json:"ReachedTime,omitempty" xml:"ReachedTime,omitempty"`
+	RecoveryPointInTime *int64  `json:"RecoveryPointInTime,omitempty" xml:"RecoveryPointInTime,omitempty"`
+	RestoreId           *string `json:"RestoreId,omitempty" xml:"RestoreId,omitempty"`
+	Source              *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceClusterId     *string `json:"SourceClusterId,omitempty" xml:"SourceClusterId,omitempty"`
+	StartTime           *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	State               *string `json:"State,omitempty" xml:"State,omitempty"`
+	Status              *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	SystemCopy          *bool   `json:"SystemCopy,omitempty" xml:"SystemCopy,omitempty"`
+	UseCatalog          *bool   `json:"UseCatalog,omitempty" xml:"UseCatalog,omitempty"`
+	UseDelta            *bool   `json:"UseDelta,omitempty" xml:"UseDelta,omitempty"`
+	VaultId             *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	VolumeId            *int32  `json:"VolumeId,omitempty" xml:"VolumeId,omitempty"`
+}
+
+func (s DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetBackupID(v int64) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.BackupID = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetBackupPrefix(v string) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.BackupPrefix = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetCheckAccess(v bool) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.CheckAccess = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetClearLog(v bool) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.ClearLog = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetClusterId(v string) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetCurrentPhase(v int32) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.CurrentPhase = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetCurrentProgress(v int64) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.CurrentProgress = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetDatabaseName(v string) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetDatabaseRestoreId(v int64) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.DatabaseRestoreId = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetEndTime(v int64) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetLogPosition(v int64) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.LogPosition = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetMaxPhase(v int32) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.MaxPhase = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetMaxProgress(v int64) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.MaxProgress = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetMessage(v string) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetMode(v string) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.Mode = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetPhase(v string) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.Phase = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetReachedTime(v int64) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.ReachedTime = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetRecoveryPointInTime(v int64) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.RecoveryPointInTime = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetRestoreId(v string) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.RestoreId = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetSource(v string) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.Source = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetSourceClusterId(v string) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.SourceClusterId = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetStartTime(v int64) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetState(v string) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetStatus(v string) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetSystemCopy(v bool) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.SystemCopy = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetUseCatalog(v bool) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.UseCatalog = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetUseDelta(v bool) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.UseDelta = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetVaultId(v string) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.VaultId = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores) SetVolumeId(v int32) *DescribeHanaRestoresResponseBodyHanaRestoreHanaRestores {
+	s.VolumeId = &v
+	return s
+}
+
+type DescribeHanaRestoresResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeHanaRestoresResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeHanaRestoresResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaRestoresResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaRestoresResponse) SetHeaders(v map[string]*string) *DescribeHanaRestoresResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponse) SetStatusCode(v int32) *DescribeHanaRestoresResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHanaRestoresResponse) SetBody(v *DescribeHanaRestoresResponseBody) *DescribeHanaRestoresResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHanaRetentionSettingRequest struct {
+	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	VaultId      *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s DescribeHanaRetentionSettingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaRetentionSettingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaRetentionSettingRequest) SetClusterId(v string) *DescribeHanaRetentionSettingRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeHanaRetentionSettingRequest) SetDatabaseName(v string) *DescribeHanaRetentionSettingRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeHanaRetentionSettingRequest) SetVaultId(v string) *DescribeHanaRetentionSettingRequest {
+	s.VaultId = &v
+	return s
+}
+
+type DescribeHanaRetentionSettingResponseBody struct {
+	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Code          *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	DatabaseName  *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	Disabled      *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RetentionDays *int64  `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	Schedule      *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	VaultId       *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s DescribeHanaRetentionSettingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaRetentionSettingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaRetentionSettingResponseBody) SetClusterId(v string) *DescribeHanaRetentionSettingResponseBody {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeHanaRetentionSettingResponseBody) SetCode(v string) *DescribeHanaRetentionSettingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeHanaRetentionSettingResponseBody) SetDatabaseName(v string) *DescribeHanaRetentionSettingResponseBody {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeHanaRetentionSettingResponseBody) SetDisabled(v bool) *DescribeHanaRetentionSettingResponseBody {
+	s.Disabled = &v
+	return s
+}
+
+func (s *DescribeHanaRetentionSettingResponseBody) SetMessage(v string) *DescribeHanaRetentionSettingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeHanaRetentionSettingResponseBody) SetRequestId(v string) *DescribeHanaRetentionSettingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeHanaRetentionSettingResponseBody) SetRetentionDays(v int64) *DescribeHanaRetentionSettingResponseBody {
+	s.RetentionDays = &v
+	return s
+}
+
+func (s *DescribeHanaRetentionSettingResponseBody) SetSchedule(v string) *DescribeHanaRetentionSettingResponseBody {
+	s.Schedule = &v
+	return s
+}
+
+func (s *DescribeHanaRetentionSettingResponseBody) SetSuccess(v bool) *DescribeHanaRetentionSettingResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeHanaRetentionSettingResponseBody) SetVaultId(v string) *DescribeHanaRetentionSettingResponseBody {
+	s.VaultId = &v
+	return s
+}
+
+type DescribeHanaRetentionSettingResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeHanaRetentionSettingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeHanaRetentionSettingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHanaRetentionSettingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHanaRetentionSettingResponse) SetHeaders(v map[string]*string) *DescribeHanaRetentionSettingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHanaRetentionSettingResponse) SetStatusCode(v int32) *DescribeHanaRetentionSettingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHanaRetentionSettingResponse) SetBody(v *DescribeHanaRetentionSettingResponseBody) *DescribeHanaRetentionSettingResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeObClusterRequest struct {
+	ClusterId  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeObClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeObClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeObClusterRequest) SetClusterId(v string) *DescribeObClusterRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeObClusterRequest) SetPageNumber(v int32) *DescribeObClusterRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeObClusterRequest) SetPageSize(v int32) *DescribeObClusterRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeObClusterResponseBody struct {
+	Clusters   *DescribeObClusterResponseBodyClusters `json:"Clusters,omitempty" xml:"Clusters,omitempty" type:"Struct"`
+	Code       *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeObClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeObClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeObClusterResponseBody) SetClusters(v *DescribeObClusterResponseBodyClusters) *DescribeObClusterResponseBody {
+	s.Clusters = v
+	return s
+}
+
+func (s *DescribeObClusterResponseBody) SetCode(v string) *DescribeObClusterResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeObClusterResponseBody) SetMessage(v string) *DescribeObClusterResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeObClusterResponseBody) SetPageNumber(v int32) *DescribeObClusterResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeObClusterResponseBody) SetPageSize(v int32) *DescribeObClusterResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeObClusterResponseBody) SetRequestId(v string) *DescribeObClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeObClusterResponseBody) SetSuccess(v bool) *DescribeObClusterResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeObClusterResponseBody) SetTotalCount(v int32) *DescribeObClusterResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeObClusterResponseBodyClusters struct {
+	Cluster []*DescribeObClusterResponseBodyClustersCluster `json:"Cluster,omitempty" xml:"Cluster,omitempty" type:"Repeated"`
+}
+
+func (s DescribeObClusterResponseBodyClusters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeObClusterResponseBodyClusters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeObClusterResponseBodyClusters) SetCluster(v []*DescribeObClusterResponseBodyClustersCluster) *DescribeObClusterResponseBodyClusters {
+	s.Cluster = v
+	return s
+}
+
+type DescribeObClusterResponseBodyClustersCluster struct {
+	ClientId       *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterName    *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	CreatedTime    *int64  `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Host           *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	LogArchiveTime *int64  `json:"LogArchiveTime,omitempty" xml:"LogArchiveTime,omitempty"`
+	Port           *int32  `json:"Port,omitempty" xml:"Port,omitempty"`
+	Retention      *int64  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	UpdatedTime    *int64  `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+	VaultId        *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s DescribeObClusterResponseBodyClustersCluster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeObClusterResponseBodyClustersCluster) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeObClusterResponseBodyClustersCluster) SetClientId(v string) *DescribeObClusterResponseBodyClustersCluster {
+	s.ClientId = &v
+	return s
+}
+
+func (s *DescribeObClusterResponseBodyClustersCluster) SetClusterId(v string) *DescribeObClusterResponseBodyClustersCluster {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DescribeObClusterResponseBodyClustersCluster) SetClusterName(v string) *DescribeObClusterResponseBodyClustersCluster {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *DescribeObClusterResponseBodyClustersCluster) SetCreatedTime(v int64) *DescribeObClusterResponseBodyClustersCluster {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeObClusterResponseBodyClustersCluster) SetDescription(v string) *DescribeObClusterResponseBodyClustersCluster {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeObClusterResponseBodyClustersCluster) SetHost(v string) *DescribeObClusterResponseBodyClustersCluster {
+	s.Host = &v
+	return s
+}
+
+func (s *DescribeObClusterResponseBodyClustersCluster) SetLogArchiveTime(v int64) *DescribeObClusterResponseBodyClustersCluster {
+	s.LogArchiveTime = &v
+	return s
+}
+
+func (s *DescribeObClusterResponseBodyClustersCluster) SetPort(v int32) *DescribeObClusterResponseBodyClustersCluster {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeObClusterResponseBodyClustersCluster) SetRetention(v int64) *DescribeObClusterResponseBodyClustersCluster {
+	s.Retention = &v
+	return s
+}
+
+func (s *DescribeObClusterResponseBodyClustersCluster) SetUpdatedTime(v int64) *DescribeObClusterResponseBodyClustersCluster {
+	s.UpdatedTime = &v
+	return s
+}
+
+func (s *DescribeObClusterResponseBodyClustersCluster) SetVaultId(v string) *DescribeObClusterResponseBodyClustersCluster {
+	s.VaultId = &v
+	return s
+}
+
+type DescribeObClusterResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeObClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeObClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeObClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeObClusterResponse) SetHeaders(v map[string]*string) *DescribeObClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeObClusterResponse) SetStatusCode(v int32) *DescribeObClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeObClusterResponse) SetBody(v *DescribeObClusterResponseBody) *DescribeObClusterResponse {
 	s.Body = v
 	return s
 }
@@ -3411,8 +8695,9 @@ func (s *DescribeOtsTableSnapshotsResponseBodySnapshots) SetVaultId(v string) *D
 }
 
 type DescribeOtsTableSnapshotsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeOtsTableSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeOtsTableSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeOtsTableSnapshotsResponse) String() string {
@@ -3428,7 +8713,697 @@ func (s *DescribeOtsTableSnapshotsResponse) SetHeaders(v map[string]*string) *De
 	return s
 }
 
+func (s *DescribeOtsTableSnapshotsResponse) SetStatusCode(v int32) *DescribeOtsTableSnapshotsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeOtsTableSnapshotsResponse) SetBody(v *DescribeOtsTableSnapshotsResponseBody) *DescribeOtsTableSnapshotsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribePolicies2Request struct {
+	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PolicyId   *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+}
+
+func (s DescribePolicies2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicies2Request) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicies2Request) SetMaxResults(v int32) *DescribePolicies2Request {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribePolicies2Request) SetNextToken(v string) *DescribePolicies2Request {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribePolicies2Request) SetPolicyId(v string) *DescribePolicies2Request {
+	s.PolicyId = &v
+	return s
+}
+
+type DescribePolicies2ResponseBody struct {
+	Code       *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	MaxResults *int32                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Message    *string                                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	NextToken  *string                                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	Policies   []*DescribePolicies2ResponseBodyPolicies `json:"Policies,omitempty" xml:"Policies,omitempty" type:"Repeated"`
+	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount *int64                                   `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribePolicies2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicies2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicies2ResponseBody) SetCode(v string) *DescribePolicies2ResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBody) SetMaxResults(v int32) *DescribePolicies2ResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBody) SetMessage(v string) *DescribePolicies2ResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBody) SetNextToken(v string) *DescribePolicies2ResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBody) SetPolicies(v []*DescribePolicies2ResponseBodyPolicies) *DescribePolicies2ResponseBody {
+	s.Policies = v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBody) SetRequestId(v string) *DescribePolicies2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBody) SetSuccess(v bool) *DescribePolicies2ResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBody) SetTotalCount(v int64) *DescribePolicies2ResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribePolicies2ResponseBodyPolicies struct {
+	CreatedTime        *int64                                        `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	PolicyBindingCount *int64                                        `json:"PolicyBindingCount,omitempty" xml:"PolicyBindingCount,omitempty"`
+	PolicyDescription  *string                                       `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
+	PolicyId           *string                                       `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName         *string                                       `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	Rules              []*DescribePolicies2ResponseBodyPoliciesRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	UpdatedTime        *int64                                        `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+}
+
+func (s DescribePolicies2ResponseBodyPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicies2ResponseBodyPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicies2ResponseBodyPolicies) SetCreatedTime(v int64) *DescribePolicies2ResponseBodyPolicies {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPolicies) SetPolicyBindingCount(v int64) *DescribePolicies2ResponseBodyPolicies {
+	s.PolicyBindingCount = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPolicies) SetPolicyDescription(v string) *DescribePolicies2ResponseBodyPolicies {
+	s.PolicyDescription = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPolicies) SetPolicyId(v string) *DescribePolicies2ResponseBodyPolicies {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPolicies) SetPolicyName(v string) *DescribePolicies2ResponseBodyPolicies {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPolicies) SetRules(v []*DescribePolicies2ResponseBodyPoliciesRules) *DescribePolicies2ResponseBodyPolicies {
+	s.Rules = v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPolicies) SetUpdatedTime(v int64) *DescribePolicies2ResponseBodyPolicies {
+	s.UpdatedTime = &v
+	return s
+}
+
+type DescribePolicies2ResponseBodyPoliciesRules struct {
+	ArchiveDays    *int64  `json:"ArchiveDays,omitempty" xml:"ArchiveDays,omitempty"`
+	ArchiveVaultId *string `json:"ArchiveVaultId,omitempty" xml:"ArchiveVaultId,omitempty"`
+	// COMPLETE, INCREMENTAL, DIFFERENTIAL, LOG
+	BackupType          *string                                                     `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	ColdArchiveDays     *int64                                                      `json:"ColdArchiveDays,omitempty" xml:"ColdArchiveDays,omitempty"`
+	Continuous          *bool                                                       `json:"Continuous,omitempty" xml:"Continuous,omitempty"`
+	ReplicationRegionId *string                                                     `json:"ReplicationRegionId,omitempty" xml:"ReplicationRegionId,omitempty"`
+	ReplicationVaultId  *string                                                     `json:"ReplicationVaultId,omitempty" xml:"ReplicationVaultId,omitempty"`
+	Retention           *int64                                                      `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	RetentionRules      []*DescribePolicies2ResponseBodyPoliciesRulesRetentionRules `json:"RetentionRules,omitempty" xml:"RetentionRules,omitempty" type:"Repeated"`
+	RuleId              *string                                                     `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// TRANSITION, BACKUP, REPLICATION
+	RuleType *string                                             `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	Schedule *string                                             `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	Selector *DescribePolicies2ResponseBodyPoliciesRulesSelector `json:"Selector,omitempty" xml:"Selector,omitempty" type:"Struct"`
+	VaultId  *string                                             `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s DescribePolicies2ResponseBodyPoliciesRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicies2ResponseBodyPoliciesRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicies2ResponseBodyPoliciesRules) SetArchiveDays(v int64) *DescribePolicies2ResponseBodyPoliciesRules {
+	s.ArchiveDays = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPoliciesRules) SetArchiveVaultId(v string) *DescribePolicies2ResponseBodyPoliciesRules {
+	s.ArchiveVaultId = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPoliciesRules) SetBackupType(v string) *DescribePolicies2ResponseBodyPoliciesRules {
+	s.BackupType = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPoliciesRules) SetColdArchiveDays(v int64) *DescribePolicies2ResponseBodyPoliciesRules {
+	s.ColdArchiveDays = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPoliciesRules) SetContinuous(v bool) *DescribePolicies2ResponseBodyPoliciesRules {
+	s.Continuous = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPoliciesRules) SetReplicationRegionId(v string) *DescribePolicies2ResponseBodyPoliciesRules {
+	s.ReplicationRegionId = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPoliciesRules) SetReplicationVaultId(v string) *DescribePolicies2ResponseBodyPoliciesRules {
+	s.ReplicationVaultId = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPoliciesRules) SetRetention(v int64) *DescribePolicies2ResponseBodyPoliciesRules {
+	s.Retention = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPoliciesRules) SetRetentionRules(v []*DescribePolicies2ResponseBodyPoliciesRulesRetentionRules) *DescribePolicies2ResponseBodyPoliciesRules {
+	s.RetentionRules = v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPoliciesRules) SetRuleId(v string) *DescribePolicies2ResponseBodyPoliciesRules {
+	s.RuleId = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPoliciesRules) SetRuleType(v string) *DescribePolicies2ResponseBodyPoliciesRules {
+	s.RuleType = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPoliciesRules) SetSchedule(v string) *DescribePolicies2ResponseBodyPoliciesRules {
+	s.Schedule = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPoliciesRules) SetSelector(v *DescribePolicies2ResponseBodyPoliciesRulesSelector) *DescribePolicies2ResponseBodyPoliciesRules {
+	s.Selector = v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPoliciesRules) SetVaultId(v string) *DescribePolicies2ResponseBodyPoliciesRules {
+	s.VaultId = &v
+	return s
+}
+
+type DescribePolicies2ResponseBodyPoliciesRulesRetentionRules struct {
+	Retention *int64 `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	// DAILY, WEEKLY, MONTHLY, YEARLY
+	ScheduleType  *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
+	WhichSnapshot *int64  `json:"WhichSnapshot,omitempty" xml:"WhichSnapshot,omitempty"`
+}
+
+func (s DescribePolicies2ResponseBodyPoliciesRulesRetentionRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicies2ResponseBodyPoliciesRulesRetentionRules) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicies2ResponseBodyPoliciesRulesRetentionRules) SetRetention(v int64) *DescribePolicies2ResponseBodyPoliciesRulesRetentionRules {
+	s.Retention = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPoliciesRulesRetentionRules) SetScheduleType(v string) *DescribePolicies2ResponseBodyPoliciesRulesRetentionRules {
+	s.ScheduleType = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPoliciesRulesRetentionRules) SetWhichSnapshot(v int64) *DescribePolicies2ResponseBodyPoliciesRulesRetentionRules {
+	s.WhichSnapshot = &v
+	return s
+}
+
+type DescribePolicies2ResponseBodyPoliciesRulesSelector struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribePolicies2ResponseBodyPoliciesRulesSelector) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicies2ResponseBodyPoliciesRulesSelector) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicies2ResponseBodyPoliciesRulesSelector) SetKey(v string) *DescribePolicies2ResponseBodyPoliciesRulesSelector {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribePolicies2ResponseBodyPoliciesRulesSelector) SetValue(v string) *DescribePolicies2ResponseBodyPoliciesRulesSelector {
+	s.Value = &v
+	return s
+}
+
+type DescribePolicies2Response struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePolicies2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribePolicies2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicies2Response) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicies2Response) SetHeaders(v map[string]*string) *DescribePolicies2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePolicies2Response) SetStatusCode(v int32) *DescribePolicies2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePolicies2Response) SetBody(v *DescribePolicies2ResponseBody) *DescribePolicies2Response {
+	s.Body = v
+	return s
+}
+
+type DescribePolicyBindingsRequest struct {
+	DataSourceIds []*string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty" type:"Repeated"`
+	MaxResults    *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken     *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PolicyId      *string   `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	SourceType    *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s DescribePolicyBindingsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyBindingsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyBindingsRequest) SetDataSourceIds(v []*string) *DescribePolicyBindingsRequest {
+	s.DataSourceIds = v
+	return s
+}
+
+func (s *DescribePolicyBindingsRequest) SetMaxResults(v int32) *DescribePolicyBindingsRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsRequest) SetNextToken(v string) *DescribePolicyBindingsRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsRequest) SetPolicyId(v string) *DescribePolicyBindingsRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsRequest) SetSourceType(v string) *DescribePolicyBindingsRequest {
+	s.SourceType = &v
+	return s
+}
+
+type DescribePolicyBindingsShrinkRequest struct {
+	DataSourceIdsShrink *string `json:"DataSourceIds,omitempty" xml:"DataSourceIds,omitempty"`
+	MaxResults          *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken           *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PolicyId            *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	SourceType          *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s DescribePolicyBindingsShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyBindingsShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyBindingsShrinkRequest) SetDataSourceIdsShrink(v string) *DescribePolicyBindingsShrinkRequest {
+	s.DataSourceIdsShrink = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsShrinkRequest) SetMaxResults(v int32) *DescribePolicyBindingsShrinkRequest {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsShrinkRequest) SetNextToken(v string) *DescribePolicyBindingsShrinkRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsShrinkRequest) SetPolicyId(v string) *DescribePolicyBindingsShrinkRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsShrinkRequest) SetSourceType(v string) *DescribePolicyBindingsShrinkRequest {
+	s.SourceType = &v
+	return s
+}
+
+type DescribePolicyBindingsResponseBody struct {
+	Code           *string                                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	MaxResults     *int32                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	Message        *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
+	NextToken      *string                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PolicyBindings []*DescribePolicyBindingsResponseBodyPolicyBindings `json:"PolicyBindings,omitempty" xml:"PolicyBindings,omitempty" type:"Repeated"`
+	RequestId      *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount     *int64                                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribePolicyBindingsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyBindingsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyBindingsResponseBody) SetCode(v string) *DescribePolicyBindingsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBody) SetMaxResults(v int32) *DescribePolicyBindingsResponseBody {
+	s.MaxResults = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBody) SetMessage(v string) *DescribePolicyBindingsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBody) SetNextToken(v string) *DescribePolicyBindingsResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBody) SetPolicyBindings(v []*DescribePolicyBindingsResponseBodyPolicyBindings) *DescribePolicyBindingsResponseBody {
+	s.PolicyBindings = v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBody) SetRequestId(v string) *DescribePolicyBindingsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBody) SetSuccess(v bool) *DescribePolicyBindingsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBody) SetTotalCount(v int64) *DescribePolicyBindingsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribePolicyBindingsResponseBodyPolicyBindings struct {
+	AdvancedOptions          *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions `json:"AdvancedOptions,omitempty" xml:"AdvancedOptions,omitempty" type:"Struct"`
+	CreatedTime              *int64                                                           `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	DataSourceId             *string                                                          `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	Disabled                 *bool                                                            `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	Exclude                  *string                                                          `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	Include                  *string                                                          `json:"Include,omitempty" xml:"Include,omitempty"`
+	PolicyBindingDescription *string                                                          `json:"PolicyBindingDescription,omitempty" xml:"PolicyBindingDescription,omitempty"`
+	PolicyBindingId          *string                                                          `json:"PolicyBindingId,omitempty" xml:"PolicyBindingId,omitempty"`
+	PolicyId                 *string                                                          `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	Source                   *string                                                          `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceType               *string                                                          `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SpeedLimit               *string                                                          `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
+	UpdatedTime              *int64                                                           `json:"UpdatedTime,omitempty" xml:"UpdatedTime,omitempty"`
+}
+
+func (s DescribePolicyBindingsResponseBodyPolicyBindings) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyBindingsResponseBodyPolicyBindings) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetAdvancedOptions(v *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions) *DescribePolicyBindingsResponseBodyPolicyBindings {
+	s.AdvancedOptions = v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetCreatedTime(v int64) *DescribePolicyBindingsResponseBodyPolicyBindings {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetDataSourceId(v string) *DescribePolicyBindingsResponseBodyPolicyBindings {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetDisabled(v bool) *DescribePolicyBindingsResponseBodyPolicyBindings {
+	s.Disabled = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetExclude(v string) *DescribePolicyBindingsResponseBodyPolicyBindings {
+	s.Exclude = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetInclude(v string) *DescribePolicyBindingsResponseBodyPolicyBindings {
+	s.Include = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetPolicyBindingDescription(v string) *DescribePolicyBindingsResponseBodyPolicyBindings {
+	s.PolicyBindingDescription = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetPolicyBindingId(v string) *DescribePolicyBindingsResponseBodyPolicyBindings {
+	s.PolicyBindingId = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetPolicyId(v string) *DescribePolicyBindingsResponseBodyPolicyBindings {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetSource(v string) *DescribePolicyBindingsResponseBodyPolicyBindings {
+	s.Source = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetSourceType(v string) *DescribePolicyBindingsResponseBodyPolicyBindings {
+	s.SourceType = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetSpeedLimit(v string) *DescribePolicyBindingsResponseBodyPolicyBindings {
+	s.SpeedLimit = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindings) SetUpdatedTime(v int64) *DescribePolicyBindingsResponseBodyPolicyBindings {
+	s.UpdatedTime = &v
+	return s
+}
+
+type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions struct {
+	UdmDetail *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty" type:"Struct"`
+}
+
+func (s DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions) SetUdmDetail(v *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptions {
+	s.UdmDetail = v
+	return s
+}
+
+type DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail struct {
+	AppConsistent     *bool     `json:"AppConsistent,omitempty" xml:"AppConsistent,omitempty"`
+	BackupRetention   *int64    `json:"BackupRetention,omitempty" xml:"BackupRetention,omitempty"`
+	BackupVaultId     *string   `json:"BackupVaultId,omitempty" xml:"BackupVaultId,omitempty"`
+	DiskIdList        []*string `json:"DiskIdList,omitempty" xml:"DiskIdList,omitempty" type:"Repeated"`
+	DoBackup          *bool     `json:"DoBackup,omitempty" xml:"DoBackup,omitempty"`
+	EnableFsFreeze    *bool     `json:"EnableFsFreeze,omitempty" xml:"EnableFsFreeze,omitempty"`
+	EnableWriters     *bool     `json:"EnableWriters,omitempty" xml:"EnableWriters,omitempty"`
+	ExcludeDiskIdList []*string `json:"ExcludeDiskIdList,omitempty" xml:"ExcludeDiskIdList,omitempty" type:"Repeated"`
+	PostScriptPath    *string   `json:"PostScriptPath,omitempty" xml:"PostScriptPath,omitempty"`
+	PreScriptPath     *string   `json:"PreScriptPath,omitempty" xml:"PreScriptPath,omitempty"`
+	RamRoleName       *string   `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	SnapshotGroup     *bool     `json:"SnapshotGroup,omitempty" xml:"SnapshotGroup,omitempty"`
+	TimeoutInSeconds  *int64    `json:"TimeoutInSeconds,omitempty" xml:"TimeoutInSeconds,omitempty"`
+}
+
+func (s DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail) SetAppConsistent(v bool) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail {
+	s.AppConsistent = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail) SetBackupRetention(v int64) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail {
+	s.BackupRetention = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail) SetBackupVaultId(v string) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail {
+	s.BackupVaultId = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail) SetDiskIdList(v []*string) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail {
+	s.DiskIdList = v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail) SetDoBackup(v bool) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail {
+	s.DoBackup = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail) SetEnableFsFreeze(v bool) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail {
+	s.EnableFsFreeze = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail) SetEnableWriters(v bool) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail {
+	s.EnableWriters = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail) SetExcludeDiskIdList(v []*string) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail {
+	s.ExcludeDiskIdList = v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail) SetPostScriptPath(v string) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail {
+	s.PostScriptPath = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail) SetPreScriptPath(v string) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail {
+	s.PreScriptPath = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail) SetRamRoleName(v string) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail {
+	s.RamRoleName = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail) SetSnapshotGroup(v bool) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail {
+	s.SnapshotGroup = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail) SetTimeoutInSeconds(v int64) *DescribePolicyBindingsResponseBodyPolicyBindingsAdvancedOptionsUdmDetail {
+	s.TimeoutInSeconds = &v
+	return s
+}
+
+type DescribePolicyBindingsResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePolicyBindingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribePolicyBindingsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribePolicyBindingsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribePolicyBindingsResponse) SetHeaders(v map[string]*string) *DescribePolicyBindingsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponse) SetStatusCode(v int32) *DescribePolicyBindingsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribePolicyBindingsResponse) SetBody(v *DescribePolicyBindingsResponseBody) *DescribePolicyBindingsResponse {
 	s.Body = v
 	return s
 }
@@ -3498,8 +9473,9 @@ func (s *DescribeRecoverableOtsInstancesResponseBodyOtsInstances) SetTableNames(
 }
 
 type DescribeRecoverableOtsInstancesResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRecoverableOtsInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRecoverableOtsInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRecoverableOtsInstancesResponse) String() string {
@@ -3512,6 +9488,11 @@ func (s DescribeRecoverableOtsInstancesResponse) GoString() string {
 
 func (s *DescribeRecoverableOtsInstancesResponse) SetHeaders(v map[string]*string) *DescribeRecoverableOtsInstancesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeRecoverableOtsInstancesResponse) SetStatusCode(v int32) *DescribeRecoverableOtsInstancesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3625,8 +9606,9 @@ func (s *DescribeRegionsResponseBodyRegionsRegion) SetVaultCount(v int32) *Descr
 }
 
 type DescribeRegionsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -3639,6 +9621,11 @@ func (s DescribeRegionsResponse) GoString() string {
 
 func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegionsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3795,6 +9782,9 @@ type DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob struct {
 	ClusterId          *string                                                         `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	CompleteTime       *int64                                                          `json:"CompleteTime,omitempty" xml:"CompleteTime,omitempty"`
 	CreatedTime        *int64                                                          `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	CrossAccountType   *string                                                         `json:"CrossAccountType,omitempty" xml:"CrossAccountType,omitempty"`
+	CrossOwnerId       *int64                                                          `json:"CrossOwnerId,omitempty" xml:"CrossOwnerId,omitempty"`
+	CrossRamRole       *string                                                         `json:"CrossRamRole,omitempty" xml:"CrossRamRole,omitempty"`
 	ErrorFile          *string                                                         `json:"ErrorFile,omitempty" xml:"ErrorFile,omitempty"`
 	ErrorMessage       *string                                                         `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	Exclude            *string                                                         `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
@@ -3870,6 +9860,21 @@ func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetCompleteTime(
 
 func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetCreatedTime(v int64) *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob {
 	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetCrossAccountType(v string) *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob {
+	s.CrossAccountType = &v
+	return s
+}
+
+func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetCrossOwnerId(v int64) *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob {
+	s.CrossOwnerId = &v
+	return s
+}
+
+func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob) SetCrossRamRole(v string) *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJob {
+	s.CrossRamRole = &v
 	return s
 }
 
@@ -4062,8 +10067,9 @@ func (s *DescribeRestoreJobs2ResponseBodyRestoreJobsRestoreJobOtsDetail) SetOver
 }
 
 type DescribeRestoreJobs2Response struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRestoreJobs2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRestoreJobs2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRestoreJobs2Response) String() string {
@@ -4076,6 +10082,11 @@ func (s DescribeRestoreJobs2Response) GoString() string {
 
 func (s *DescribeRestoreJobs2Response) SetHeaders(v map[string]*string) *DescribeRestoreJobs2Response {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeRestoreJobs2Response) SetStatusCode(v int32) *DescribeRestoreJobs2Response {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4191,8 +10202,9 @@ func (s *DescribeTaskResponseBody) SetUpdatedTime(v int64) *DescribeTaskResponse
 }
 
 type DescribeTaskResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeTaskResponse) String() string {
@@ -4208,7 +10220,543 @@ func (s *DescribeTaskResponse) SetHeaders(v map[string]*string) *DescribeTaskRes
 	return s
 }
 
+func (s *DescribeTaskResponse) SetStatusCode(v int32) *DescribeTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeTaskResponse) SetBody(v *DescribeTaskResponseBody) *DescribeTaskResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeUdmEcsInstanceGroupsRequest struct {
+	InstanceGroupId   *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	InstanceGroupName *string `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
+	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	UdmRegionId       *string `json:"UdmRegionId,omitempty" xml:"UdmRegionId,omitempty"`
+}
+
+func (s DescribeUdmEcsInstanceGroupsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUdmEcsInstanceGroupsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUdmEcsInstanceGroupsRequest) SetInstanceGroupId(v string) *DescribeUdmEcsInstanceGroupsRequest {
+	s.InstanceGroupId = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsRequest) SetInstanceGroupName(v string) *DescribeUdmEcsInstanceGroupsRequest {
+	s.InstanceGroupName = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsRequest) SetPageNumber(v int32) *DescribeUdmEcsInstanceGroupsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsRequest) SetPageSize(v int32) *DescribeUdmEcsInstanceGroupsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsRequest) SetUdmRegionId(v string) *DescribeUdmEcsInstanceGroupsRequest {
+	s.UdmRegionId = &v
+	return s
+}
+
+type DescribeUdmEcsInstanceGroupsResponseBody struct {
+	Code                 *string                                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message              *string                                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber           *int32                                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize             *int32                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId            *string                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success              *bool                                                           `json:"Success,omitempty" xml:"Success,omitempty"`
+	TotalCount           *int64                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	UdmEcsInstanceGroups []*DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups `json:"UdmEcsInstanceGroups,omitempty" xml:"UdmEcsInstanceGroups,omitempty" type:"Repeated"`
+}
+
+func (s DescribeUdmEcsInstanceGroupsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUdmEcsInstanceGroupsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBody) SetCode(v string) *DescribeUdmEcsInstanceGroupsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBody) SetMessage(v string) *DescribeUdmEcsInstanceGroupsResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBody) SetPageNumber(v int32) *DescribeUdmEcsInstanceGroupsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBody) SetPageSize(v int32) *DescribeUdmEcsInstanceGroupsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBody) SetRequestId(v string) *DescribeUdmEcsInstanceGroupsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBody) SetSuccess(v bool) *DescribeUdmEcsInstanceGroupsResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBody) SetTotalCount(v int64) *DescribeUdmEcsInstanceGroupsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBody) SetUdmEcsInstanceGroups(v []*DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups) *DescribeUdmEcsInstanceGroupsResponseBody {
+	s.UdmEcsInstanceGroups = v
+	return s
+}
+
+type DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups struct {
+	// return according planType
+	BackupCount             *int64                                                                     `json:"BackupCount,omitempty" xml:"BackupCount,omitempty"`
+	BackupPlans             []*DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsBackupPlans `json:"BackupPlans,omitempty" xml:"BackupPlans,omitempty" type:"Repeated"`
+	CompleteJobCount        *int64                                                                     `json:"CompleteJobCount,omitempty" xml:"CompleteJobCount,omitempty"`
+	DiskIdMap               map[string]interface{}                                                     `json:"DiskIdMap,omitempty" xml:"DiskIdMap,omitempty"`
+	DoBackup                *bool                                                                      `json:"DoBackup,omitempty" xml:"DoBackup,omitempty"`
+	ExcludeDiskIdMap        map[string]interface{}                                                     `json:"ExcludeDiskIdMap,omitempty" xml:"ExcludeDiskIdMap,omitempty"`
+	FailedJobCount          *int64                                                                     `json:"FailedJobCount,omitempty" xml:"FailedJobCount,omitempty"`
+	FirstNativeSnapshotTime *int64                                                                     `json:"FirstNativeSnapshotTime,omitempty" xml:"FirstNativeSnapshotTime,omitempty"`
+	InstanceGroupId         *string                                                                    `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	InstanceGroupName       *string                                                                    `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
+	// return according planType
+	NativeSnapshotCount *int64                                                                         `json:"NativeSnapshotCount,omitempty" xml:"NativeSnapshotCount,omitempty"`
+	PlanCount           *int64                                                                         `json:"PlanCount,omitempty" xml:"PlanCount,omitempty"`
+	RunningJobCount     *int64                                                                         `json:"RunningJobCount,omitempty" xml:"RunningJobCount,omitempty"`
+	UdmEcsInstances     []*DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances `json:"UdmEcsInstances,omitempty" xml:"UdmEcsInstances,omitempty" type:"Repeated"`
+}
+
+func (s DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups) SetBackupCount(v int64) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups {
+	s.BackupCount = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups) SetBackupPlans(v []*DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsBackupPlans) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups {
+	s.BackupPlans = v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups) SetCompleteJobCount(v int64) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups {
+	s.CompleteJobCount = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups) SetDiskIdMap(v map[string]interface{}) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups {
+	s.DiskIdMap = v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups) SetDoBackup(v bool) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups {
+	s.DoBackup = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups) SetExcludeDiskIdMap(v map[string]interface{}) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups {
+	s.ExcludeDiskIdMap = v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups) SetFailedJobCount(v int64) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups {
+	s.FailedJobCount = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups) SetFirstNativeSnapshotTime(v int64) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups {
+	s.FirstNativeSnapshotTime = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups) SetInstanceGroupId(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups {
+	s.InstanceGroupId = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups) SetInstanceGroupName(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups {
+	s.InstanceGroupName = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups) SetNativeSnapshotCount(v int64) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups {
+	s.NativeSnapshotCount = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups) SetPlanCount(v int64) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups {
+	s.PlanCount = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups) SetRunningJobCount(v int64) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups {
+	s.RunningJobCount = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups) SetUdmEcsInstances(v []*DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroups {
+	s.UdmEcsInstances = v
+	return s
+}
+
+type DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsBackupPlans struct {
+	Disabled  *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	PlanId    *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	Retention *int64  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	Schedule  *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+}
+
+func (s DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsBackupPlans) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsBackupPlans) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsBackupPlans) SetDisabled(v bool) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsBackupPlans {
+	s.Disabled = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsBackupPlans) SetPlanId(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsBackupPlans {
+	s.PlanId = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsBackupPlans) SetRetention(v int64) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsBackupPlans {
+	s.Retention = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsBackupPlans) SetSchedule(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsBackupPlans {
+	s.Schedule = &v
+	return s
+}
+
+type DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances struct {
+	// return according planType
+	BackupCount      *int64                                                                                    `json:"BackupCount,omitempty" xml:"BackupCount,omitempty"`
+	BackupPlans      []*DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesBackupPlans `json:"BackupPlans,omitempty" xml:"BackupPlans,omitempty" type:"Repeated"`
+	CompleteJobCount *int64                                                                                    `json:"CompleteJobCount,omitempty" xml:"CompleteJobCount,omitempty"`
+	Disks            []*DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks       `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Repeated"`
+	DoBackup         *bool                                                                                     `json:"DoBackup,omitempty" xml:"DoBackup,omitempty"`
+	// Whether target ecs instance is deleted
+	EcsDeleted              *bool   `json:"EcsDeleted,omitempty" xml:"EcsDeleted,omitempty"`
+	EipAddress              *string `json:"EipAddress,omitempty" xml:"EipAddress,omitempty"`
+	FailedJobCount          *int64  `json:"FailedJobCount,omitempty" xml:"FailedJobCount,omitempty"`
+	FirstNativeSnapshotTime *int64  `json:"FirstNativeSnapshotTime,omitempty" xml:"FirstNativeSnapshotTime,omitempty"`
+	InnerIpAddress          *string `json:"InnerIpAddress,omitempty" xml:"InnerIpAddress,omitempty"`
+	InstanceGroupId         *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	InstanceId              *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName            *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// return according planType
+	NativeSnapshotCount *int64  `json:"NativeSnapshotCount,omitempty" xml:"NativeSnapshotCount,omitempty"`
+	PlanCount           *int64  `json:"PlanCount,omitempty" xml:"PlanCount,omitempty"`
+	PrivateIpAddress    *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	PublicIpAddress     *string `json:"PublicIpAddress,omitempty" xml:"PublicIpAddress,omitempty"`
+	Replicated          *bool   `json:"Replicated,omitempty" xml:"Replicated,omitempty"`
+	RunningJobCount     *int64  `json:"RunningJobCount,omitempty" xml:"RunningJobCount,omitempty"`
+	SourceRegionId      *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
+	VaultId             *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	VpcId               *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchId           *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	ZoneId              *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetBackupCount(v int64) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.BackupCount = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetBackupPlans(v []*DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesBackupPlans) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.BackupPlans = v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetCompleteJobCount(v int64) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.CompleteJobCount = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetDisks(v []*DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.Disks = v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetDoBackup(v bool) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.DoBackup = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetEcsDeleted(v bool) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.EcsDeleted = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetEipAddress(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.EipAddress = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetFailedJobCount(v int64) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.FailedJobCount = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetFirstNativeSnapshotTime(v int64) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.FirstNativeSnapshotTime = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetInnerIpAddress(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.InnerIpAddress = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetInstanceGroupId(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.InstanceGroupId = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetInstanceId(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetInstanceName(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetNativeSnapshotCount(v int64) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.NativeSnapshotCount = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetPlanCount(v int64) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.PlanCount = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetPrivateIpAddress(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetPublicIpAddress(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.PublicIpAddress = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetReplicated(v bool) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.Replicated = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetRunningJobCount(v int64) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.RunningJobCount = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetSourceRegionId(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.SourceRegionId = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetVaultId(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.VaultId = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetVpcId(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetVswitchId(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.VswitchId = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances) SetZoneId(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstances {
+	s.ZoneId = &v
+	return s
+}
+
+type DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesBackupPlans struct {
+	Disabled  *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	PlanId    *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	Retention *int64  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	Schedule  *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+}
+
+func (s DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesBackupPlans) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesBackupPlans) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesBackupPlans) SetDisabled(v bool) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesBackupPlans {
+	s.Disabled = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesBackupPlans) SetPlanId(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesBackupPlans {
+	s.PlanId = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesBackupPlans) SetRetention(v int64) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesBackupPlans {
+	s.Retention = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesBackupPlans) SetSchedule(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesBackupPlans {
+	s.Schedule = &v
+	return s
+}
+
+type DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks struct {
+	Activated      *bool   `json:"Activated,omitempty" xml:"Activated,omitempty"`
+	Category       *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	Device         *string `json:"Device,omitempty" xml:"Device,omitempty"`
+	DiskId         *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
+	DiskName       *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
+	Encrypted      *bool   `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
+	ImageId        *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	Size           *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
+	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	VaultId        *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks) SetActivated(v bool) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks {
+	s.Activated = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks) SetCategory(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks {
+	s.Category = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks) SetDevice(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks {
+	s.Device = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks) SetDiskId(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks {
+	s.DiskId = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks) SetDiskName(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks {
+	s.DiskName = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks) SetEncrypted(v bool) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks {
+	s.Encrypted = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks) SetImageId(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks {
+	s.ImageId = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks) SetSize(v int32) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks {
+	s.Size = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks) SetSourceRegionId(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks {
+	s.SourceRegionId = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks) SetType(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks) SetVaultId(v string) *DescribeUdmEcsInstanceGroupsResponseBodyUdmEcsInstanceGroupsUdmEcsInstancesDisks {
+	s.VaultId = &v
+	return s
+}
+
+type DescribeUdmEcsInstanceGroupsResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeUdmEcsInstanceGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeUdmEcsInstanceGroupsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUdmEcsInstanceGroupsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponse) SetHeaders(v map[string]*string) *DescribeUdmEcsInstanceGroupsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponse) SetStatusCode(v int32) *DescribeUdmEcsInstanceGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeUdmEcsInstanceGroupsResponse) SetBody(v *DescribeUdmEcsInstanceGroupsResponseBody) *DescribeUdmEcsInstanceGroupsResponse {
 	s.Body = v
 	return s
 }
@@ -4635,8 +11183,9 @@ func (s *DescribeUdmSnapshotsResponseBodySnapshotsDetail) SetVmName(v string) *D
 }
 
 type DescribeUdmSnapshotsResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeUdmSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeUdmSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeUdmSnapshotsResponse) String() string {
@@ -4649,6 +11198,11 @@ func (s DescribeUdmSnapshotsResponse) GoString() string {
 
 func (s *DescribeUdmSnapshotsResponse) SetHeaders(v map[string]*string) *DescribeUdmSnapshotsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeUdmSnapshotsResponse) SetStatusCode(v int32) *DescribeUdmSnapshotsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4739,8 +11293,9 @@ func (s *DescribeVaultReplicationRegionsResponseBodyRegions) SetRegionId(v []*st
 }
 
 type DescribeVaultReplicationRegionsResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVaultReplicationRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeVaultReplicationRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeVaultReplicationRegionsResponse) String() string {
@@ -4753,6 +11308,11 @@ func (s DescribeVaultReplicationRegionsResponse) GoString() string {
 
 func (s *DescribeVaultReplicationRegionsResponse) SetHeaders(v map[string]*string) *DescribeVaultReplicationRegionsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeVaultReplicationRegionsResponse) SetStatusCode(v int32) *DescribeVaultReplicationRegionsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4932,6 +11492,7 @@ type DescribeVaultsResponseBodyVaultsVault struct {
 	IndexAvailable            *bool                                                      `json:"IndexAvailable,omitempty" xml:"IndexAvailable,omitempty"`
 	IndexLevel                *string                                                    `json:"IndexLevel,omitempty" xml:"IndexLevel,omitempty"`
 	IndexUpdateTime           *int64                                                     `json:"IndexUpdateTime,omitempty" xml:"IndexUpdateTime,omitempty"`
+	KmsKeyId                  *string                                                    `json:"KmsKeyId,omitempty" xml:"KmsKeyId,omitempty"`
 	LatestReplicationTime     *int64                                                     `json:"LatestReplicationTime,omitempty" xml:"LatestReplicationTime,omitempty"`
 	RedundancyType            *string                                                    `json:"RedundancyType,omitempty" xml:"RedundancyType,omitempty"`
 	Replication               *bool                                                      `json:"Replication,omitempty" xml:"Replication,omitempty"`
@@ -5022,6 +11583,11 @@ func (s *DescribeVaultsResponseBodyVaultsVault) SetIndexLevel(v string) *Describ
 
 func (s *DescribeVaultsResponseBodyVaultsVault) SetIndexUpdateTime(v int64) *DescribeVaultsResponseBodyVaultsVault {
 	s.IndexUpdateTime = &v
+	return s
+}
+
+func (s *DescribeVaultsResponseBodyVaultsVault) SetKmsKeyId(v string) *DescribeVaultsResponseBodyVaultsVault {
+	s.KmsKeyId = &v
 	return s
 }
 
@@ -5345,8 +11911,9 @@ func (s *DescribeVaultsResponseBodyVaultsVaultTrialInfo) SetTrialVaultReleaseTim
 }
 
 type DescribeVaultsResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVaultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeVaultsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeVaultsResponse) String() string {
@@ -5359,6 +11926,11 @@ func (s DescribeVaultsResponse) GoString() string {
 
 func (s *DescribeVaultsResponse) SetHeaders(v map[string]*string) *DescribeVaultsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeVaultsResponse) SetStatusCode(v int32) *DescribeVaultsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5432,8 +12004,9 @@ func (s *DetachNasFileSystemResponseBody) SetTaskId(v string) *DetachNasFileSyst
 }
 
 type DetachNasFileSystemResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetachNasFileSystemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetachNasFileSystemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetachNasFileSystemResponse) String() string {
@@ -5446,6 +12019,11 @@ func (s DetachNasFileSystemResponse) GoString() string {
 
 func (s *DetachNasFileSystemResponse) SetHeaders(v map[string]*string) *DetachNasFileSystemResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetachNasFileSystemResponse) SetStatusCode(v int32) *DetachNasFileSystemResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5519,8 +12097,9 @@ func (s *DisableBackupPlanResponseBody) SetSuccess(v bool) *DisableBackupPlanRes
 }
 
 type DisableBackupPlanResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableBackupPlanResponse) String() string {
@@ -5536,7 +12115,111 @@ func (s *DisableBackupPlanResponse) SetHeaders(v map[string]*string) *DisableBac
 	return s
 }
 
+func (s *DisableBackupPlanResponse) SetStatusCode(v int32) *DisableBackupPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DisableBackupPlanResponse) SetBody(v *DisableBackupPlanResponseBody) *DisableBackupPlanResponse {
+	s.Body = v
+	return s
+}
+
+type DisableHanaBackupPlanRequest struct {
+	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	PlanId          *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	VaultId         *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s DisableHanaBackupPlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableHanaBackupPlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableHanaBackupPlanRequest) SetClusterId(v string) *DisableHanaBackupPlanRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DisableHanaBackupPlanRequest) SetPlanId(v string) *DisableHanaBackupPlanRequest {
+	s.PlanId = &v
+	return s
+}
+
+func (s *DisableHanaBackupPlanRequest) SetResourceGroupId(v string) *DisableHanaBackupPlanRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DisableHanaBackupPlanRequest) SetVaultId(v string) *DisableHanaBackupPlanRequest {
+	s.VaultId = &v
+	return s
+}
+
+type DisableHanaBackupPlanResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DisableHanaBackupPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableHanaBackupPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableHanaBackupPlanResponseBody) SetCode(v string) *DisableHanaBackupPlanResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DisableHanaBackupPlanResponseBody) SetMessage(v string) *DisableHanaBackupPlanResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DisableHanaBackupPlanResponseBody) SetRequestId(v string) *DisableHanaBackupPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DisableHanaBackupPlanResponseBody) SetSuccess(v bool) *DisableHanaBackupPlanResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DisableHanaBackupPlanResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableHanaBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisableHanaBackupPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableHanaBackupPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableHanaBackupPlanResponse) SetHeaders(v map[string]*string) *DisableHanaBackupPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableHanaBackupPlanResponse) SetStatusCode(v int32) *DisableHanaBackupPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableHanaBackupPlanResponse) SetBody(v *DisableHanaBackupPlanResponseBody) *DisableHanaBackupPlanResponse {
 	s.Body = v
 	return s
 }
@@ -5606,8 +12289,9 @@ func (s *EnableBackupPlanResponseBody) SetSuccess(v bool) *EnableBackupPlanRespo
 }
 
 type EnableBackupPlanResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableBackupPlanResponse) String() string {
@@ -5623,7 +12307,111 @@ func (s *EnableBackupPlanResponse) SetHeaders(v map[string]*string) *EnableBacku
 	return s
 }
 
+func (s *EnableBackupPlanResponse) SetStatusCode(v int32) *EnableBackupPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *EnableBackupPlanResponse) SetBody(v *EnableBackupPlanResponseBody) *EnableBackupPlanResponse {
+	s.Body = v
+	return s
+}
+
+type EnableHanaBackupPlanRequest struct {
+	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	PlanId          *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	VaultId         *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s EnableHanaBackupPlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableHanaBackupPlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableHanaBackupPlanRequest) SetClusterId(v string) *EnableHanaBackupPlanRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *EnableHanaBackupPlanRequest) SetPlanId(v string) *EnableHanaBackupPlanRequest {
+	s.PlanId = &v
+	return s
+}
+
+func (s *EnableHanaBackupPlanRequest) SetResourceGroupId(v string) *EnableHanaBackupPlanRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *EnableHanaBackupPlanRequest) SetVaultId(v string) *EnableHanaBackupPlanRequest {
+	s.VaultId = &v
+	return s
+}
+
+type EnableHanaBackupPlanResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s EnableHanaBackupPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableHanaBackupPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableHanaBackupPlanResponseBody) SetCode(v string) *EnableHanaBackupPlanResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *EnableHanaBackupPlanResponseBody) SetMessage(v string) *EnableHanaBackupPlanResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *EnableHanaBackupPlanResponseBody) SetRequestId(v string) *EnableHanaBackupPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *EnableHanaBackupPlanResponseBody) SetSuccess(v bool) *EnableHanaBackupPlanResponseBody {
+	s.Success = &v
+	return s
+}
+
+type EnableHanaBackupPlanResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableHanaBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableHanaBackupPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableHanaBackupPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableHanaBackupPlanResponse) SetHeaders(v map[string]*string) *EnableHanaBackupPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableHanaBackupPlanResponse) SetStatusCode(v int32) *EnableHanaBackupPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableHanaBackupPlanResponse) SetBody(v *EnableHanaBackupPlanResponseBody) *EnableHanaBackupPlanResponse {
 	s.Body = v
 	return s
 }
@@ -5705,8 +12493,9 @@ func (s *ExecuteBackupPlanResponseBody) SetSuccess(v bool) *ExecuteBackupPlanRes
 }
 
 type ExecuteBackupPlanResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExecuteBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExecuteBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ExecuteBackupPlanResponse) String() string {
@@ -5722,7 +12511,117 @@ func (s *ExecuteBackupPlanResponse) SetHeaders(v map[string]*string) *ExecuteBac
 	return s
 }
 
+func (s *ExecuteBackupPlanResponse) SetStatusCode(v int32) *ExecuteBackupPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ExecuteBackupPlanResponse) SetBody(v *ExecuteBackupPlanResponseBody) *ExecuteBackupPlanResponse {
+	s.Body = v
+	return s
+}
+
+type ExecutePolicy2Request struct {
+	DataSourceId *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	PolicyId     *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	RuleId       *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	SourceType   *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+}
+
+func (s ExecutePolicy2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecutePolicy2Request) GoString() string {
+	return s.String()
+}
+
+func (s *ExecutePolicy2Request) SetDataSourceId(v string) *ExecutePolicy2Request {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *ExecutePolicy2Request) SetPolicyId(v string) *ExecutePolicy2Request {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *ExecutePolicy2Request) SetRuleId(v string) *ExecutePolicy2Request {
+	s.RuleId = &v
+	return s
+}
+
+func (s *ExecutePolicy2Request) SetSourceType(v string) *ExecutePolicy2Request {
+	s.SourceType = &v
+	return s
+}
+
+type ExecutePolicy2ResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ExecutePolicy2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecutePolicy2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecutePolicy2ResponseBody) SetCode(v string) *ExecutePolicy2ResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ExecutePolicy2ResponseBody) SetJobId(v string) *ExecutePolicy2ResponseBody {
+	s.JobId = &v
+	return s
+}
+
+func (s *ExecutePolicy2ResponseBody) SetMessage(v string) *ExecutePolicy2ResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExecutePolicy2ResponseBody) SetRequestId(v string) *ExecutePolicy2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecutePolicy2ResponseBody) SetSuccess(v bool) *ExecutePolicy2ResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ExecutePolicy2Response struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExecutePolicy2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ExecutePolicy2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecutePolicy2Response) GoString() string {
+	return s.String()
+}
+
+func (s *ExecutePolicy2Response) SetHeaders(v map[string]*string) *ExecutePolicy2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecutePolicy2Response) SetStatusCode(v int32) *ExecutePolicy2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecutePolicy2Response) SetBody(v *ExecutePolicy2ResponseBody) *ExecutePolicy2Response {
 	s.Body = v
 	return s
 }
@@ -5804,8 +12703,9 @@ func (s *GenerateRamPolicyResponseBody) SetSuccess(v bool) *GenerateRamPolicyRes
 }
 
 type GenerateRamPolicyResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GenerateRamPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateRamPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GenerateRamPolicyResponse) String() string {
@@ -5821,7 +12721,105 @@ func (s *GenerateRamPolicyResponse) SetHeaders(v map[string]*string) *GenerateRa
 	return s
 }
 
+func (s *GenerateRamPolicyResponse) SetStatusCode(v int32) *GenerateRamPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GenerateRamPolicyResponse) SetBody(v *GenerateRamPolicyResponseBody) *GenerateRamPolicyResponse {
+	s.Body = v
+	return s
+}
+
+type GetObClusterConfigRequest struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
+}
+
+func (s GetObClusterConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetObClusterConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetObClusterConfigRequest) SetClusterId(v string) *GetObClusterConfigRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetObClusterConfigRequest) SetKey(v string) *GetObClusterConfigRequest {
+	s.Key = &v
+	return s
+}
+
+type GetObClusterConfigResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Config    *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetObClusterConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetObClusterConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetObClusterConfigResponseBody) SetCode(v string) *GetObClusterConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetObClusterConfigResponseBody) SetConfig(v string) *GetObClusterConfigResponseBody {
+	s.Config = &v
+	return s
+}
+
+func (s *GetObClusterConfigResponseBody) SetMessage(v string) *GetObClusterConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetObClusterConfigResponseBody) SetRequestId(v string) *GetObClusterConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetObClusterConfigResponseBody) SetSuccess(v bool) *GetObClusterConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetObClusterConfigResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetObClusterConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetObClusterConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetObClusterConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetObClusterConfigResponse) SetHeaders(v map[string]*string) *GetObClusterConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetObClusterConfigResponse) SetStatusCode(v int32) *GetObClusterConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetObClusterConfigResponse) SetBody(v *GetObClusterConfigResponseBody) *GetObClusterConfigResponse {
 	s.Body = v
 	return s
 }
@@ -5937,8 +12935,9 @@ func (s *InstallBackupClientsResponseBodyInstanceStatuses) SetValidInstance(v bo
 }
 
 type InstallBackupClientsResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *InstallBackupClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InstallBackupClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s InstallBackupClientsResponse) String() string {
@@ -5951,6 +12950,11 @@ func (s InstallBackupClientsResponse) GoString() string {
 
 func (s *InstallBackupClientsResponse) SetHeaders(v map[string]*string) *InstallBackupClientsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *InstallBackupClientsResponse) SetStatusCode(v int32) *InstallBackupClientsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6332,8 +13336,9 @@ func (s *SearchHistoricalSnapshotsResponseBodySnapshotsSnapshotPaths) SetPath(v 
 }
 
 type SearchHistoricalSnapshotsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SearchHistoricalSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchHistoricalSnapshotsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SearchHistoricalSnapshotsResponse) String() string {
@@ -6349,7 +13354,309 @@ func (s *SearchHistoricalSnapshotsResponse) SetHeaders(v map[string]*string) *Se
 	return s
 }
 
+func (s *SearchHistoricalSnapshotsResponse) SetStatusCode(v int32) *SearchHistoricalSnapshotsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SearchHistoricalSnapshotsResponse) SetBody(v *SearchHistoricalSnapshotsResponseBody) *SearchHistoricalSnapshotsResponse {
+	s.Body = v
+	return s
+}
+
+type SetObClusterConfigRequest struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Key       *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s SetObClusterConfigRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetObClusterConfigRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetObClusterConfigRequest) SetClusterId(v string) *SetObClusterConfigRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *SetObClusterConfigRequest) SetKey(v string) *SetObClusterConfigRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *SetObClusterConfigRequest) SetValue(v string) *SetObClusterConfigRequest {
+	s.Value = &v
+	return s
+}
+
+type SetObClusterConfigResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Config    *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SetObClusterConfigResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetObClusterConfigResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetObClusterConfigResponseBody) SetCode(v string) *SetObClusterConfigResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SetObClusterConfigResponseBody) SetConfig(v string) *SetObClusterConfigResponseBody {
+	s.Config = &v
+	return s
+}
+
+func (s *SetObClusterConfigResponseBody) SetMessage(v string) *SetObClusterConfigResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SetObClusterConfigResponseBody) SetRequestId(v string) *SetObClusterConfigResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SetObClusterConfigResponseBody) SetSuccess(v bool) *SetObClusterConfigResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SetObClusterConfigResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetObClusterConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetObClusterConfigResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetObClusterConfigResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetObClusterConfigResponse) SetHeaders(v map[string]*string) *SetObClusterConfigResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetObClusterConfigResponse) SetStatusCode(v int32) *SetObClusterConfigResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetObClusterConfigResponse) SetBody(v *SetObClusterConfigResponseBody) *SetObClusterConfigResponse {
+	s.Body = v
+	return s
+}
+
+type StartHanaDatabaseAsyncRequest struct {
+	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	VaultId      *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s StartHanaDatabaseAsyncRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartHanaDatabaseAsyncRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartHanaDatabaseAsyncRequest) SetClusterId(v string) *StartHanaDatabaseAsyncRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *StartHanaDatabaseAsyncRequest) SetDatabaseName(v string) *StartHanaDatabaseAsyncRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *StartHanaDatabaseAsyncRequest) SetVaultId(v string) *StartHanaDatabaseAsyncRequest {
+	s.VaultId = &v
+	return s
+}
+
+type StartHanaDatabaseAsyncResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s StartHanaDatabaseAsyncResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartHanaDatabaseAsyncResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartHanaDatabaseAsyncResponseBody) SetCode(v string) *StartHanaDatabaseAsyncResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StartHanaDatabaseAsyncResponseBody) SetMessage(v string) *StartHanaDatabaseAsyncResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StartHanaDatabaseAsyncResponseBody) SetRequestId(v string) *StartHanaDatabaseAsyncResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartHanaDatabaseAsyncResponseBody) SetSuccess(v bool) *StartHanaDatabaseAsyncResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *StartHanaDatabaseAsyncResponseBody) SetTaskId(v string) *StartHanaDatabaseAsyncResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type StartHanaDatabaseAsyncResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartHanaDatabaseAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartHanaDatabaseAsyncResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartHanaDatabaseAsyncResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartHanaDatabaseAsyncResponse) SetHeaders(v map[string]*string) *StartHanaDatabaseAsyncResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartHanaDatabaseAsyncResponse) SetStatusCode(v int32) *StartHanaDatabaseAsyncResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartHanaDatabaseAsyncResponse) SetBody(v *StartHanaDatabaseAsyncResponseBody) *StartHanaDatabaseAsyncResponse {
+	s.Body = v
+	return s
+}
+
+type StopHanaDatabaseAsyncRequest struct {
+	ClusterId    *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DatabaseName *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	VaultId      *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s StopHanaDatabaseAsyncRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopHanaDatabaseAsyncRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopHanaDatabaseAsyncRequest) SetClusterId(v string) *StopHanaDatabaseAsyncRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *StopHanaDatabaseAsyncRequest) SetDatabaseName(v string) *StopHanaDatabaseAsyncRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *StopHanaDatabaseAsyncRequest) SetVaultId(v string) *StopHanaDatabaseAsyncRequest {
+	s.VaultId = &v
+	return s
+}
+
+type StopHanaDatabaseAsyncResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s StopHanaDatabaseAsyncResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopHanaDatabaseAsyncResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopHanaDatabaseAsyncResponseBody) SetCode(v string) *StopHanaDatabaseAsyncResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StopHanaDatabaseAsyncResponseBody) SetMessage(v string) *StopHanaDatabaseAsyncResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StopHanaDatabaseAsyncResponseBody) SetRequestId(v string) *StopHanaDatabaseAsyncResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopHanaDatabaseAsyncResponseBody) SetSuccess(v bool) *StopHanaDatabaseAsyncResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *StopHanaDatabaseAsyncResponseBody) SetTaskId(v string) *StopHanaDatabaseAsyncResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type StopHanaDatabaseAsyncResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopHanaDatabaseAsyncResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopHanaDatabaseAsyncResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopHanaDatabaseAsyncResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopHanaDatabaseAsyncResponse) SetHeaders(v map[string]*string) *StopHanaDatabaseAsyncResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopHanaDatabaseAsyncResponse) SetStatusCode(v int32) *StopHanaDatabaseAsyncResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopHanaDatabaseAsyncResponse) SetBody(v *StopHanaDatabaseAsyncResponseBody) *StopHanaDatabaseAsyncResponse {
 	s.Body = v
 	return s
 }
@@ -6477,8 +13784,9 @@ func (s *UninstallBackupClientsResponseBodyInstanceStatuses) SetValidInstance(v 
 }
 
 type UninstallBackupClientsResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UninstallBackupClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UninstallBackupClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UninstallBackupClientsResponse) String() string {
@@ -6494,26 +13802,132 @@ func (s *UninstallBackupClientsResponse) SetHeaders(v map[string]*string) *Unins
 	return s
 }
 
+func (s *UninstallBackupClientsResponse) SetStatusCode(v int32) *UninstallBackupClientsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UninstallBackupClientsResponse) SetBody(v *UninstallBackupClientsResponseBody) *UninstallBackupClientsResponse {
 	s.Body = v
 	return s
 }
 
+type UninstallClientRequest struct {
+	ClientId        *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	VaultId         *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s UninstallClientRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UninstallClientRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UninstallClientRequest) SetClientId(v string) *UninstallClientRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *UninstallClientRequest) SetResourceGroupId(v string) *UninstallClientRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *UninstallClientRequest) SetVaultId(v string) *UninstallClientRequest {
+	s.VaultId = &v
+	return s
+}
+
+type UninstallClientResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s UninstallClientResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UninstallClientResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UninstallClientResponseBody) SetCode(v string) *UninstallClientResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UninstallClientResponseBody) SetMessage(v string) *UninstallClientResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UninstallClientResponseBody) SetRequestId(v string) *UninstallClientResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UninstallClientResponseBody) SetSuccess(v bool) *UninstallClientResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UninstallClientResponseBody) SetTaskId(v string) *UninstallClientResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type UninstallClientResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UninstallClientResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UninstallClientResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UninstallClientResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UninstallClientResponse) SetHeaders(v map[string]*string) *UninstallClientResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UninstallClientResponse) SetStatusCode(v int32) *UninstallClientResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UninstallClientResponse) SetBody(v *UninstallClientResponseBody) *UninstallClientResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateBackupPlanRequest struct {
-	Exclude     *string    `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	Include     *string    `json:"Include,omitempty" xml:"Include,omitempty"`
-	Options     *string    `json:"Options,omitempty" xml:"Options,omitempty"`
-	OtsDetail   *OtsDetail `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
-	Path        []*string  `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
-	PlanId      *string    `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	PlanName    *string    `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	Prefix      *string    `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	Retention   *int64     `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	Schedule    *string    `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	SourceType  *string    `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SpeedLimit  *string    `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
-	UpdatePaths *bool      `json:"UpdatePaths,omitempty" xml:"UpdatePaths,omitempty"`
-	VaultId     *string    `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	Detail      map[string]interface{}         `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	Exclude     *string                        `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	Include     *string                        `json:"Include,omitempty" xml:"Include,omitempty"`
+	Options     *string                        `json:"Options,omitempty" xml:"Options,omitempty"`
+	OtsDetail   *OtsDetail                     `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
+	Path        []*string                      `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
+	PlanId      *string                        `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	PlanName    *string                        `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	Prefix      *string                        `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	Retention   *int64                         `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	Rule        []*UpdateBackupPlanRequestRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
+	Schedule    *string                        `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	SourceType  *string                        `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SpeedLimit  *string                        `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
+	UpdatePaths *bool                          `json:"UpdatePaths,omitempty" xml:"UpdatePaths,omitempty"`
+	VaultId     *string                        `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s UpdateBackupPlanRequest) String() string {
@@ -6522,6 +13936,11 @@ func (s UpdateBackupPlanRequest) String() string {
 
 func (s UpdateBackupPlanRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateBackupPlanRequest) SetDetail(v map[string]interface{}) *UpdateBackupPlanRequest {
+	s.Detail = v
+	return s
 }
 
 func (s *UpdateBackupPlanRequest) SetExclude(v string) *UpdateBackupPlanRequest {
@@ -6569,6 +13988,11 @@ func (s *UpdateBackupPlanRequest) SetRetention(v int64) *UpdateBackupPlanRequest
 	return s
 }
 
+func (s *UpdateBackupPlanRequest) SetRule(v []*UpdateBackupPlanRequestRule) *UpdateBackupPlanRequest {
+	s.Rule = v
+	return s
+}
+
 func (s *UpdateBackupPlanRequest) SetSchedule(v string) *UpdateBackupPlanRequest {
 	s.Schedule = &v
 	return s
@@ -6594,21 +14018,82 @@ func (s *UpdateBackupPlanRequest) SetVaultId(v string) *UpdateBackupPlanRequest 
 	return s
 }
 
+type UpdateBackupPlanRequestRule struct {
+	BackupType           *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	DestinationRegionId  *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
+	DestinationRetention *int64  `json:"DestinationRetention,omitempty" xml:"DestinationRetention,omitempty"`
+	Disabled             *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	DoCopy               *bool   `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
+	Retention            *int64  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	RuleName             *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Schedule             *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+}
+
+func (s UpdateBackupPlanRequestRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBackupPlanRequestRule) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBackupPlanRequestRule) SetBackupType(v string) *UpdateBackupPlanRequestRule {
+	s.BackupType = &v
+	return s
+}
+
+func (s *UpdateBackupPlanRequestRule) SetDestinationRegionId(v string) *UpdateBackupPlanRequestRule {
+	s.DestinationRegionId = &v
+	return s
+}
+
+func (s *UpdateBackupPlanRequestRule) SetDestinationRetention(v int64) *UpdateBackupPlanRequestRule {
+	s.DestinationRetention = &v
+	return s
+}
+
+func (s *UpdateBackupPlanRequestRule) SetDisabled(v bool) *UpdateBackupPlanRequestRule {
+	s.Disabled = &v
+	return s
+}
+
+func (s *UpdateBackupPlanRequestRule) SetDoCopy(v bool) *UpdateBackupPlanRequestRule {
+	s.DoCopy = &v
+	return s
+}
+
+func (s *UpdateBackupPlanRequestRule) SetRetention(v int64) *UpdateBackupPlanRequestRule {
+	s.Retention = &v
+	return s
+}
+
+func (s *UpdateBackupPlanRequestRule) SetRuleName(v string) *UpdateBackupPlanRequestRule {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateBackupPlanRequestRule) SetSchedule(v string) *UpdateBackupPlanRequestRule {
+	s.Schedule = &v
+	return s
+}
+
 type UpdateBackupPlanShrinkRequest struct {
-	Exclude         *string   `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	Include         *string   `json:"Include,omitempty" xml:"Include,omitempty"`
-	Options         *string   `json:"Options,omitempty" xml:"Options,omitempty"`
-	OtsDetailShrink *string   `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
-	Path            []*string `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
-	PlanId          *string   `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
-	PlanName        *string   `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
-	Prefix          *string   `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
-	Retention       *int64    `json:"Retention,omitempty" xml:"Retention,omitempty"`
-	Schedule        *string   `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
-	SourceType      *string   `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	SpeedLimit      *string   `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
-	UpdatePaths     *bool     `json:"UpdatePaths,omitempty" xml:"UpdatePaths,omitempty"`
-	VaultId         *string   `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+	DetailShrink    *string                              `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	Exclude         *string                              `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	Include         *string                              `json:"Include,omitempty" xml:"Include,omitempty"`
+	Options         *string                              `json:"Options,omitempty" xml:"Options,omitempty"`
+	OtsDetailShrink *string                              `json:"OtsDetail,omitempty" xml:"OtsDetail,omitempty"`
+	Path            []*string                            `json:"Path,omitempty" xml:"Path,omitempty" type:"Repeated"`
+	PlanId          *string                              `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	PlanName        *string                              `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	Prefix          *string                              `json:"Prefix,omitempty" xml:"Prefix,omitempty"`
+	Retention       *int64                               `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	Rule            []*UpdateBackupPlanShrinkRequestRule `json:"Rule,omitempty" xml:"Rule,omitempty" type:"Repeated"`
+	Schedule        *string                              `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	SourceType      *string                              `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SpeedLimit      *string                              `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
+	UpdatePaths     *bool                                `json:"UpdatePaths,omitempty" xml:"UpdatePaths,omitempty"`
+	VaultId         *string                              `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
 }
 
 func (s UpdateBackupPlanShrinkRequest) String() string {
@@ -6617,6 +14102,11 @@ func (s UpdateBackupPlanShrinkRequest) String() string {
 
 func (s UpdateBackupPlanShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateBackupPlanShrinkRequest) SetDetailShrink(v string) *UpdateBackupPlanShrinkRequest {
+	s.DetailShrink = &v
+	return s
 }
 
 func (s *UpdateBackupPlanShrinkRequest) SetExclude(v string) *UpdateBackupPlanShrinkRequest {
@@ -6664,6 +14154,11 @@ func (s *UpdateBackupPlanShrinkRequest) SetRetention(v int64) *UpdateBackupPlanS
 	return s
 }
 
+func (s *UpdateBackupPlanShrinkRequest) SetRule(v []*UpdateBackupPlanShrinkRequestRule) *UpdateBackupPlanShrinkRequest {
+	s.Rule = v
+	return s
+}
+
 func (s *UpdateBackupPlanShrinkRequest) SetSchedule(v string) *UpdateBackupPlanShrinkRequest {
 	s.Schedule = &v
 	return s
@@ -6686,6 +14181,65 @@ func (s *UpdateBackupPlanShrinkRequest) SetUpdatePaths(v bool) *UpdateBackupPlan
 
 func (s *UpdateBackupPlanShrinkRequest) SetVaultId(v string) *UpdateBackupPlanShrinkRequest {
 	s.VaultId = &v
+	return s
+}
+
+type UpdateBackupPlanShrinkRequestRule struct {
+	BackupType           *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	DestinationRegionId  *string `json:"DestinationRegionId,omitempty" xml:"DestinationRegionId,omitempty"`
+	DestinationRetention *int64  `json:"DestinationRetention,omitempty" xml:"DestinationRetention,omitempty"`
+	Disabled             *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	DoCopy               *bool   `json:"DoCopy,omitempty" xml:"DoCopy,omitempty"`
+	Retention            *int64  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	RuleName             *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	Schedule             *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+}
+
+func (s UpdateBackupPlanShrinkRequestRule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBackupPlanShrinkRequestRule) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBackupPlanShrinkRequestRule) SetBackupType(v string) *UpdateBackupPlanShrinkRequestRule {
+	s.BackupType = &v
+	return s
+}
+
+func (s *UpdateBackupPlanShrinkRequestRule) SetDestinationRegionId(v string) *UpdateBackupPlanShrinkRequestRule {
+	s.DestinationRegionId = &v
+	return s
+}
+
+func (s *UpdateBackupPlanShrinkRequestRule) SetDestinationRetention(v int64) *UpdateBackupPlanShrinkRequestRule {
+	s.DestinationRetention = &v
+	return s
+}
+
+func (s *UpdateBackupPlanShrinkRequestRule) SetDisabled(v bool) *UpdateBackupPlanShrinkRequestRule {
+	s.Disabled = &v
+	return s
+}
+
+func (s *UpdateBackupPlanShrinkRequestRule) SetDoCopy(v bool) *UpdateBackupPlanShrinkRequestRule {
+	s.DoCopy = &v
+	return s
+}
+
+func (s *UpdateBackupPlanShrinkRequestRule) SetRetention(v int64) *UpdateBackupPlanShrinkRequestRule {
+	s.Retention = &v
+	return s
+}
+
+func (s *UpdateBackupPlanShrinkRequestRule) SetRuleName(v string) *UpdateBackupPlanShrinkRequestRule {
+	s.RuleName = &v
+	return s
+}
+
+func (s *UpdateBackupPlanShrinkRequestRule) SetSchedule(v string) *UpdateBackupPlanShrinkRequestRule {
+	s.Schedule = &v
 	return s
 }
 
@@ -6725,8 +14279,9 @@ func (s *UpdateBackupPlanResponseBody) SetSuccess(v bool) *UpdateBackupPlanRespo
 }
 
 type UpdateBackupPlanResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateBackupPlanResponse) String() string {
@@ -6739,6 +14294,11 @@ func (s UpdateBackupPlanResponse) GoString() string {
 
 func (s *UpdateBackupPlanResponse) SetHeaders(v map[string]*string) *UpdateBackupPlanResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateBackupPlanResponse) SetStatusCode(v int32) *UpdateBackupPlanResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6866,8 +14426,9 @@ func (s *UpdateClientSettingsResponseBody) SetSuccess(v bool) *UpdateClientSetti
 }
 
 type UpdateClientSettingsResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateClientSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateClientSettingsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateClientSettingsResponse) String() string {
@@ -6883,7 +14444,1254 @@ func (s *UpdateClientSettingsResponse) SetHeaders(v map[string]*string) *UpdateC
 	return s
 }
 
+func (s *UpdateClientSettingsResponse) SetStatusCode(v int32) *UpdateClientSettingsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateClientSettingsResponse) SetBody(v *UpdateClientSettingsResponseBody) *UpdateClientSettingsResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateHanaBackupPlanRequest struct {
+	BackupPrefix    *string `json:"BackupPrefix,omitempty" xml:"BackupPrefix,omitempty"`
+	ClusterId       *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	PlanId          *string `json:"PlanId,omitempty" xml:"PlanId,omitempty"`
+	PlanName        *string `json:"PlanName,omitempty" xml:"PlanName,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	Schedule        *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	VaultId         *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s UpdateHanaBackupPlanRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHanaBackupPlanRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHanaBackupPlanRequest) SetBackupPrefix(v string) *UpdateHanaBackupPlanRequest {
+	s.BackupPrefix = &v
+	return s
+}
+
+func (s *UpdateHanaBackupPlanRequest) SetClusterId(v string) *UpdateHanaBackupPlanRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdateHanaBackupPlanRequest) SetPlanId(v string) *UpdateHanaBackupPlanRequest {
+	s.PlanId = &v
+	return s
+}
+
+func (s *UpdateHanaBackupPlanRequest) SetPlanName(v string) *UpdateHanaBackupPlanRequest {
+	s.PlanName = &v
+	return s
+}
+
+func (s *UpdateHanaBackupPlanRequest) SetResourceGroupId(v string) *UpdateHanaBackupPlanRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *UpdateHanaBackupPlanRequest) SetSchedule(v string) *UpdateHanaBackupPlanRequest {
+	s.Schedule = &v
+	return s
+}
+
+func (s *UpdateHanaBackupPlanRequest) SetVaultId(v string) *UpdateHanaBackupPlanRequest {
+	s.VaultId = &v
+	return s
+}
+
+type UpdateHanaBackupPlanResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateHanaBackupPlanResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHanaBackupPlanResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHanaBackupPlanResponseBody) SetCode(v string) *UpdateHanaBackupPlanResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateHanaBackupPlanResponseBody) SetMessage(v string) *UpdateHanaBackupPlanResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateHanaBackupPlanResponseBody) SetRequestId(v string) *UpdateHanaBackupPlanResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateHanaBackupPlanResponseBody) SetSuccess(v bool) *UpdateHanaBackupPlanResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateHanaBackupPlanResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateHanaBackupPlanResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateHanaBackupPlanResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHanaBackupPlanResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHanaBackupPlanResponse) SetHeaders(v map[string]*string) *UpdateHanaBackupPlanResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateHanaBackupPlanResponse) SetStatusCode(v int32) *UpdateHanaBackupPlanResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateHanaBackupPlanResponse) SetBody(v *UpdateHanaBackupPlanResponseBody) *UpdateHanaBackupPlanResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateHanaBackupSettingRequest struct {
+	CatalogBackupParameterFile *string `json:"CatalogBackupParameterFile,omitempty" xml:"CatalogBackupParameterFile,omitempty"`
+	CatalogBackupUsingBackint  *bool   `json:"CatalogBackupUsingBackint,omitempty" xml:"CatalogBackupUsingBackint,omitempty"`
+	ClusterId                  *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DataBackupParameterFile    *string `json:"DataBackupParameterFile,omitempty" xml:"DataBackupParameterFile,omitempty"`
+	DatabaseName               *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	EnableAutoLogBackup        *bool   `json:"EnableAutoLogBackup,omitempty" xml:"EnableAutoLogBackup,omitempty"`
+	LogBackupParameterFile     *string `json:"LogBackupParameterFile,omitempty" xml:"LogBackupParameterFile,omitempty"`
+	LogBackupTimeout           *int64  `json:"LogBackupTimeout,omitempty" xml:"LogBackupTimeout,omitempty"`
+	LogBackupUsingBackint      *bool   `json:"LogBackupUsingBackint,omitempty" xml:"LogBackupUsingBackint,omitempty"`
+	VaultId                    *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s UpdateHanaBackupSettingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHanaBackupSettingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHanaBackupSettingRequest) SetCatalogBackupParameterFile(v string) *UpdateHanaBackupSettingRequest {
+	s.CatalogBackupParameterFile = &v
+	return s
+}
+
+func (s *UpdateHanaBackupSettingRequest) SetCatalogBackupUsingBackint(v bool) *UpdateHanaBackupSettingRequest {
+	s.CatalogBackupUsingBackint = &v
+	return s
+}
+
+func (s *UpdateHanaBackupSettingRequest) SetClusterId(v string) *UpdateHanaBackupSettingRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdateHanaBackupSettingRequest) SetDataBackupParameterFile(v string) *UpdateHanaBackupSettingRequest {
+	s.DataBackupParameterFile = &v
+	return s
+}
+
+func (s *UpdateHanaBackupSettingRequest) SetDatabaseName(v string) *UpdateHanaBackupSettingRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *UpdateHanaBackupSettingRequest) SetEnableAutoLogBackup(v bool) *UpdateHanaBackupSettingRequest {
+	s.EnableAutoLogBackup = &v
+	return s
+}
+
+func (s *UpdateHanaBackupSettingRequest) SetLogBackupParameterFile(v string) *UpdateHanaBackupSettingRequest {
+	s.LogBackupParameterFile = &v
+	return s
+}
+
+func (s *UpdateHanaBackupSettingRequest) SetLogBackupTimeout(v int64) *UpdateHanaBackupSettingRequest {
+	s.LogBackupTimeout = &v
+	return s
+}
+
+func (s *UpdateHanaBackupSettingRequest) SetLogBackupUsingBackint(v bool) *UpdateHanaBackupSettingRequest {
+	s.LogBackupUsingBackint = &v
+	return s
+}
+
+func (s *UpdateHanaBackupSettingRequest) SetVaultId(v string) *UpdateHanaBackupSettingRequest {
+	s.VaultId = &v
+	return s
+}
+
+type UpdateHanaBackupSettingResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateHanaBackupSettingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHanaBackupSettingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHanaBackupSettingResponseBody) SetCode(v string) *UpdateHanaBackupSettingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateHanaBackupSettingResponseBody) SetMessage(v string) *UpdateHanaBackupSettingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateHanaBackupSettingResponseBody) SetRequestId(v string) *UpdateHanaBackupSettingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateHanaBackupSettingResponseBody) SetSuccess(v bool) *UpdateHanaBackupSettingResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateHanaBackupSettingResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateHanaBackupSettingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateHanaBackupSettingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHanaBackupSettingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHanaBackupSettingResponse) SetHeaders(v map[string]*string) *UpdateHanaBackupSettingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateHanaBackupSettingResponse) SetStatusCode(v int32) *UpdateHanaBackupSettingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateHanaBackupSettingResponse) SetBody(v *UpdateHanaBackupSettingResponseBody) *UpdateHanaBackupSettingResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateHanaInstanceRequest struct {
+	AlertSetting        *string `json:"AlertSetting,omitempty" xml:"AlertSetting,omitempty"`
+	ClusterId           *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	HanaName            *string `json:"HanaName,omitempty" xml:"HanaName,omitempty"`
+	Host                *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	InstanceNumber      *int32  `json:"InstanceNumber,omitempty" xml:"InstanceNumber,omitempty"`
+	Password            *string `json:"Password,omitempty" xml:"Password,omitempty"`
+	ResourceGroupId     *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	UseSsl              *bool   `json:"UseSsl,omitempty" xml:"UseSsl,omitempty"`
+	UserName            *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	ValidateCertificate *bool   `json:"ValidateCertificate,omitempty" xml:"ValidateCertificate,omitempty"`
+	VaultId             *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s UpdateHanaInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHanaInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHanaInstanceRequest) SetAlertSetting(v string) *UpdateHanaInstanceRequest {
+	s.AlertSetting = &v
+	return s
+}
+
+func (s *UpdateHanaInstanceRequest) SetClusterId(v string) *UpdateHanaInstanceRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdateHanaInstanceRequest) SetHanaName(v string) *UpdateHanaInstanceRequest {
+	s.HanaName = &v
+	return s
+}
+
+func (s *UpdateHanaInstanceRequest) SetHost(v string) *UpdateHanaInstanceRequest {
+	s.Host = &v
+	return s
+}
+
+func (s *UpdateHanaInstanceRequest) SetInstanceNumber(v int32) *UpdateHanaInstanceRequest {
+	s.InstanceNumber = &v
+	return s
+}
+
+func (s *UpdateHanaInstanceRequest) SetPassword(v string) *UpdateHanaInstanceRequest {
+	s.Password = &v
+	return s
+}
+
+func (s *UpdateHanaInstanceRequest) SetResourceGroupId(v string) *UpdateHanaInstanceRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *UpdateHanaInstanceRequest) SetUseSsl(v bool) *UpdateHanaInstanceRequest {
+	s.UseSsl = &v
+	return s
+}
+
+func (s *UpdateHanaInstanceRequest) SetUserName(v string) *UpdateHanaInstanceRequest {
+	s.UserName = &v
+	return s
+}
+
+func (s *UpdateHanaInstanceRequest) SetValidateCertificate(v bool) *UpdateHanaInstanceRequest {
+	s.ValidateCertificate = &v
+	return s
+}
+
+func (s *UpdateHanaInstanceRequest) SetVaultId(v string) *UpdateHanaInstanceRequest {
+	s.VaultId = &v
+	return s
+}
+
+type UpdateHanaInstanceResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateHanaInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHanaInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHanaInstanceResponseBody) SetCode(v string) *UpdateHanaInstanceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateHanaInstanceResponseBody) SetMessage(v string) *UpdateHanaInstanceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateHanaInstanceResponseBody) SetRequestId(v string) *UpdateHanaInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateHanaInstanceResponseBody) SetSuccess(v bool) *UpdateHanaInstanceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateHanaInstanceResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateHanaInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateHanaInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHanaInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHanaInstanceResponse) SetHeaders(v map[string]*string) *UpdateHanaInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateHanaInstanceResponse) SetStatusCode(v int32) *UpdateHanaInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateHanaInstanceResponse) SetBody(v *UpdateHanaInstanceResponseBody) *UpdateHanaInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateHanaRetentionSettingRequest struct {
+	ClusterId     *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	DatabaseName  *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	Disabled      *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	RetentionDays *int64  `json:"RetentionDays,omitempty" xml:"RetentionDays,omitempty"`
+	Schedule      *string `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	VaultId       *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s UpdateHanaRetentionSettingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHanaRetentionSettingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHanaRetentionSettingRequest) SetClusterId(v string) *UpdateHanaRetentionSettingRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdateHanaRetentionSettingRequest) SetDatabaseName(v string) *UpdateHanaRetentionSettingRequest {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *UpdateHanaRetentionSettingRequest) SetDisabled(v bool) *UpdateHanaRetentionSettingRequest {
+	s.Disabled = &v
+	return s
+}
+
+func (s *UpdateHanaRetentionSettingRequest) SetRetentionDays(v int64) *UpdateHanaRetentionSettingRequest {
+	s.RetentionDays = &v
+	return s
+}
+
+func (s *UpdateHanaRetentionSettingRequest) SetSchedule(v string) *UpdateHanaRetentionSettingRequest {
+	s.Schedule = &v
+	return s
+}
+
+func (s *UpdateHanaRetentionSettingRequest) SetVaultId(v string) *UpdateHanaRetentionSettingRequest {
+	s.VaultId = &v
+	return s
+}
+
+type UpdateHanaRetentionSettingResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateHanaRetentionSettingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHanaRetentionSettingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHanaRetentionSettingResponseBody) SetCode(v string) *UpdateHanaRetentionSettingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateHanaRetentionSettingResponseBody) SetMessage(v string) *UpdateHanaRetentionSettingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateHanaRetentionSettingResponseBody) SetRequestId(v string) *UpdateHanaRetentionSettingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateHanaRetentionSettingResponseBody) SetSuccess(v bool) *UpdateHanaRetentionSettingResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateHanaRetentionSettingResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateHanaRetentionSettingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateHanaRetentionSettingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateHanaRetentionSettingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateHanaRetentionSettingResponse) SetHeaders(v map[string]*string) *UpdateHanaRetentionSettingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateHanaRetentionSettingResponse) SetStatusCode(v int32) *UpdateHanaRetentionSettingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateHanaRetentionSettingResponse) SetBody(v *UpdateHanaRetentionSettingResponseBody) *UpdateHanaRetentionSettingResponse {
+	s.Body = v
+	return s
+}
+
+type UpdatePolicy2Request struct {
+	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
+	// required parameters
+	PolicyId   *string                      `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName *string                      `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	Rules      []*UpdatePolicy2RequestRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+}
+
+func (s UpdatePolicy2Request) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicy2Request) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicy2Request) SetPolicyDescription(v string) *UpdatePolicy2Request {
+	s.PolicyDescription = &v
+	return s
+}
+
+func (s *UpdatePolicy2Request) SetPolicyId(v string) *UpdatePolicy2Request {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *UpdatePolicy2Request) SetPolicyName(v string) *UpdatePolicy2Request {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *UpdatePolicy2Request) SetRules(v []*UpdatePolicy2RequestRules) *UpdatePolicy2Request {
+	s.Rules = v
+	return s
+}
+
+type UpdatePolicy2RequestRules struct {
+	ArchiveDays *int64 `json:"ArchiveDays,omitempty" xml:"ArchiveDays,omitempty"`
+	// Transition
+	ArchiveVaultId *string `json:"ArchiveVaultId,omitempty" xml:"ArchiveVaultId,omitempty"`
+	// Backup Rule (COMPLETE: Complete backup type, INCREMENTAL: Incremental backup type, DIFFERENTIAL: Differential backup type, LOG: Transaction log backup type, INDEX: 不备份数据，只对元数据建立索引, ARCHIVE: 归档, ARCHIVE_BY_SEARCH: 根据搜索结果进行归档)
+	BackupType      *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	ColdArchiveDays *int64  `json:"ColdArchiveDays,omitempty" xml:"ColdArchiveDays,omitempty"`
+	Continuous      *bool   `json:"Continuous,omitempty" xml:"Continuous,omitempty"`
+	Cycles          *int64  `json:"Cycles,omitempty" xml:"Cycles,omitempty"`
+	// Replication
+	ReplicationRegionId *string `json:"ReplicationRegionId,omitempty" xml:"ReplicationRegionId,omitempty"`
+	ReplicationVaultId  *string `json:"ReplicationVaultId,omitempty" xml:"ReplicationVaultId,omitempty"`
+	// Expiration
+	Retention      *int64                                     `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	RetentionRules []*UpdatePolicy2RequestRulesRetentionRules `json:"RetentionRules,omitempty" xml:"RetentionRules,omitempty" type:"Repeated"`
+	RuleId         *string                                    `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// TRANSITION: 过渡类规则, BACKUP: 定时类规则, REPLICATION: 镜像类规则
+	RuleType *string                            `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
+	Schedule *string                            `json:"Schedule,omitempty" xml:"Schedule,omitempty"`
+	Selector *UpdatePolicy2RequestRulesSelector `json:"Selector,omitempty" xml:"Selector,omitempty" type:"Struct"`
+	VaultId  *string                            `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s UpdatePolicy2RequestRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicy2RequestRules) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicy2RequestRules) SetArchiveDays(v int64) *UpdatePolicy2RequestRules {
+	s.ArchiveDays = &v
+	return s
+}
+
+func (s *UpdatePolicy2RequestRules) SetArchiveVaultId(v string) *UpdatePolicy2RequestRules {
+	s.ArchiveVaultId = &v
+	return s
+}
+
+func (s *UpdatePolicy2RequestRules) SetBackupType(v string) *UpdatePolicy2RequestRules {
+	s.BackupType = &v
+	return s
+}
+
+func (s *UpdatePolicy2RequestRules) SetColdArchiveDays(v int64) *UpdatePolicy2RequestRules {
+	s.ColdArchiveDays = &v
+	return s
+}
+
+func (s *UpdatePolicy2RequestRules) SetContinuous(v bool) *UpdatePolicy2RequestRules {
+	s.Continuous = &v
+	return s
+}
+
+func (s *UpdatePolicy2RequestRules) SetCycles(v int64) *UpdatePolicy2RequestRules {
+	s.Cycles = &v
+	return s
+}
+
+func (s *UpdatePolicy2RequestRules) SetReplicationRegionId(v string) *UpdatePolicy2RequestRules {
+	s.ReplicationRegionId = &v
+	return s
+}
+
+func (s *UpdatePolicy2RequestRules) SetReplicationVaultId(v string) *UpdatePolicy2RequestRules {
+	s.ReplicationVaultId = &v
+	return s
+}
+
+func (s *UpdatePolicy2RequestRules) SetRetention(v int64) *UpdatePolicy2RequestRules {
+	s.Retention = &v
+	return s
+}
+
+func (s *UpdatePolicy2RequestRules) SetRetentionRules(v []*UpdatePolicy2RequestRulesRetentionRules) *UpdatePolicy2RequestRules {
+	s.RetentionRules = v
+	return s
+}
+
+func (s *UpdatePolicy2RequestRules) SetRuleId(v string) *UpdatePolicy2RequestRules {
+	s.RuleId = &v
+	return s
+}
+
+func (s *UpdatePolicy2RequestRules) SetRuleType(v string) *UpdatePolicy2RequestRules {
+	s.RuleType = &v
+	return s
+}
+
+func (s *UpdatePolicy2RequestRules) SetSchedule(v string) *UpdatePolicy2RequestRules {
+	s.Schedule = &v
+	return s
+}
+
+func (s *UpdatePolicy2RequestRules) SetSelector(v *UpdatePolicy2RequestRulesSelector) *UpdatePolicy2RequestRules {
+	s.Selector = v
+	return s
+}
+
+func (s *UpdatePolicy2RequestRules) SetVaultId(v string) *UpdatePolicy2RequestRules {
+	s.VaultId = &v
+	return s
+}
+
+type UpdatePolicy2RequestRulesRetentionRules struct {
+	Retention     *int64  `json:"Retention,omitempty" xml:"Retention,omitempty"`
+	ScheduleType  *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
+	WhichSnapshot *int64  `json:"WhichSnapshot,omitempty" xml:"WhichSnapshot,omitempty"`
+}
+
+func (s UpdatePolicy2RequestRulesRetentionRules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicy2RequestRulesRetentionRules) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicy2RequestRulesRetentionRules) SetRetention(v int64) *UpdatePolicy2RequestRulesRetentionRules {
+	s.Retention = &v
+	return s
+}
+
+func (s *UpdatePolicy2RequestRulesRetentionRules) SetScheduleType(v string) *UpdatePolicy2RequestRulesRetentionRules {
+	s.ScheduleType = &v
+	return s
+}
+
+func (s *UpdatePolicy2RequestRulesRetentionRules) SetWhichSnapshot(v int64) *UpdatePolicy2RequestRulesRetentionRules {
+	s.WhichSnapshot = &v
+	return s
+}
+
+type UpdatePolicy2RequestRulesSelector struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s UpdatePolicy2RequestRulesSelector) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicy2RequestRulesSelector) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicy2RequestRulesSelector) SetKey(v string) *UpdatePolicy2RequestRulesSelector {
+	s.Key = &v
+	return s
+}
+
+func (s *UpdatePolicy2RequestRulesSelector) SetValue(v string) *UpdatePolicy2RequestRulesSelector {
+	s.Value = &v
+	return s
+}
+
+type UpdatePolicy2ShrinkRequest struct {
+	PolicyDescription *string `json:"PolicyDescription,omitempty" xml:"PolicyDescription,omitempty"`
+	// required parameters
+	PolicyId    *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	PolicyName  *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
+	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
+}
+
+func (s UpdatePolicy2ShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicy2ShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicy2ShrinkRequest) SetPolicyDescription(v string) *UpdatePolicy2ShrinkRequest {
+	s.PolicyDescription = &v
+	return s
+}
+
+func (s *UpdatePolicy2ShrinkRequest) SetPolicyId(v string) *UpdatePolicy2ShrinkRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *UpdatePolicy2ShrinkRequest) SetPolicyName(v string) *UpdatePolicy2ShrinkRequest {
+	s.PolicyName = &v
+	return s
+}
+
+func (s *UpdatePolicy2ShrinkRequest) SetRulesShrink(v string) *UpdatePolicy2ShrinkRequest {
+	s.RulesShrink = &v
+	return s
+}
+
+type UpdatePolicy2ResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdatePolicy2ResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicy2ResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicy2ResponseBody) SetCode(v string) *UpdatePolicy2ResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdatePolicy2ResponseBody) SetMessage(v string) *UpdatePolicy2ResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdatePolicy2ResponseBody) SetRequestId(v string) *UpdatePolicy2ResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdatePolicy2ResponseBody) SetSuccess(v bool) *UpdatePolicy2ResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdatePolicy2Response struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdatePolicy2ResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdatePolicy2Response) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicy2Response) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicy2Response) SetHeaders(v map[string]*string) *UpdatePolicy2Response {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePolicy2Response) SetStatusCode(v int32) *UpdatePolicy2Response {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePolicy2Response) SetBody(v *UpdatePolicy2ResponseBody) *UpdatePolicy2Response {
+	s.Body = v
+	return s
+}
+
+type UpdatePolicyBindingRequest struct {
+	AdvancedOptions          *UpdatePolicyBindingRequestAdvancedOptions `json:"AdvancedOptions,omitempty" xml:"AdvancedOptions,omitempty" type:"Struct"`
+	DataSourceId             *string                                    `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	Disabled                 *bool                                      `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	Exclude                  *string                                    `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	Include                  *string                                    `json:"Include,omitempty" xml:"Include,omitempty"`
+	PolicyBindingDescription *string                                    `json:"PolicyBindingDescription,omitempty" xml:"PolicyBindingDescription,omitempty"`
+	PolicyId                 *string                                    `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	Source                   *string                                    `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceType               *string                                    `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SpeedLimit               *string                                    `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
+}
+
+func (s UpdatePolicyBindingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicyBindingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicyBindingRequest) SetAdvancedOptions(v *UpdatePolicyBindingRequestAdvancedOptions) *UpdatePolicyBindingRequest {
+	s.AdvancedOptions = v
+	return s
+}
+
+func (s *UpdatePolicyBindingRequest) SetDataSourceId(v string) *UpdatePolicyBindingRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingRequest) SetDisabled(v bool) *UpdatePolicyBindingRequest {
+	s.Disabled = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingRequest) SetExclude(v string) *UpdatePolicyBindingRequest {
+	s.Exclude = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingRequest) SetInclude(v string) *UpdatePolicyBindingRequest {
+	s.Include = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingRequest) SetPolicyBindingDescription(v string) *UpdatePolicyBindingRequest {
+	s.PolicyBindingDescription = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingRequest) SetPolicyId(v string) *UpdatePolicyBindingRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingRequest) SetSource(v string) *UpdatePolicyBindingRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingRequest) SetSourceType(v string) *UpdatePolicyBindingRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingRequest) SetSpeedLimit(v string) *UpdatePolicyBindingRequest {
+	s.SpeedLimit = &v
+	return s
+}
+
+type UpdatePolicyBindingRequestAdvancedOptions struct {
+	UdmDetail *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail `json:"UdmDetail,omitempty" xml:"UdmDetail,omitempty" type:"Struct"`
+}
+
+func (s UpdatePolicyBindingRequestAdvancedOptions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicyBindingRequestAdvancedOptions) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicyBindingRequestAdvancedOptions) SetUdmDetail(v *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail) *UpdatePolicyBindingRequestAdvancedOptions {
+	s.UdmDetail = v
+	return s
+}
+
+type UpdatePolicyBindingRequestAdvancedOptionsUdmDetail struct {
+	AppConsistent     *bool     `json:"AppConsistent,omitempty" xml:"AppConsistent,omitempty"`
+	DiskIdList        []*string `json:"DiskIdList,omitempty" xml:"DiskIdList,omitempty" type:"Repeated"`
+	EnableFsFreeze    *bool     `json:"EnableFsFreeze,omitempty" xml:"EnableFsFreeze,omitempty"`
+	EnableWriters     *bool     `json:"EnableWriters,omitempty" xml:"EnableWriters,omitempty"`
+	ExcludeDiskIdList []*string `json:"ExcludeDiskIdList,omitempty" xml:"ExcludeDiskIdList,omitempty" type:"Repeated"`
+	PostScriptPath    *string   `json:"PostScriptPath,omitempty" xml:"PostScriptPath,omitempty"`
+	PreScriptPath     *string   `json:"PreScriptPath,omitempty" xml:"PreScriptPath,omitempty"`
+	RamRoleName       *string   `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
+	SnapshotGroup     *bool     `json:"SnapshotGroup,omitempty" xml:"SnapshotGroup,omitempty"`
+	TimeoutInSeconds  *int64    `json:"TimeoutInSeconds,omitempty" xml:"TimeoutInSeconds,omitempty"`
+}
+
+func (s UpdatePolicyBindingRequestAdvancedOptionsUdmDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicyBindingRequestAdvancedOptionsUdmDetail) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail) SetAppConsistent(v bool) *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail {
+	s.AppConsistent = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail) SetDiskIdList(v []*string) *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail {
+	s.DiskIdList = v
+	return s
+}
+
+func (s *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail) SetEnableFsFreeze(v bool) *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail {
+	s.EnableFsFreeze = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail) SetEnableWriters(v bool) *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail {
+	s.EnableWriters = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail) SetExcludeDiskIdList(v []*string) *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail {
+	s.ExcludeDiskIdList = v
+	return s
+}
+
+func (s *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail) SetPostScriptPath(v string) *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail {
+	s.PostScriptPath = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail) SetPreScriptPath(v string) *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail {
+	s.PreScriptPath = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail) SetRamRoleName(v string) *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail {
+	s.RamRoleName = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail) SetSnapshotGroup(v bool) *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail {
+	s.SnapshotGroup = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail) SetTimeoutInSeconds(v int64) *UpdatePolicyBindingRequestAdvancedOptionsUdmDetail {
+	s.TimeoutInSeconds = &v
+	return s
+}
+
+type UpdatePolicyBindingShrinkRequest struct {
+	AdvancedOptionsShrink    *string `json:"AdvancedOptions,omitempty" xml:"AdvancedOptions,omitempty"`
+	DataSourceId             *string `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	Disabled                 *bool   `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
+	Exclude                  *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
+	Include                  *string `json:"Include,omitempty" xml:"Include,omitempty"`
+	PolicyBindingDescription *string `json:"PolicyBindingDescription,omitempty" xml:"PolicyBindingDescription,omitempty"`
+	PolicyId                 *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
+	Source                   *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceType               *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	SpeedLimit               *string `json:"SpeedLimit,omitempty" xml:"SpeedLimit,omitempty"`
+}
+
+func (s UpdatePolicyBindingShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicyBindingShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicyBindingShrinkRequest) SetAdvancedOptionsShrink(v string) *UpdatePolicyBindingShrinkRequest {
+	s.AdvancedOptionsShrink = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingShrinkRequest) SetDataSourceId(v string) *UpdatePolicyBindingShrinkRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingShrinkRequest) SetDisabled(v bool) *UpdatePolicyBindingShrinkRequest {
+	s.Disabled = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingShrinkRequest) SetExclude(v string) *UpdatePolicyBindingShrinkRequest {
+	s.Exclude = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingShrinkRequest) SetInclude(v string) *UpdatePolicyBindingShrinkRequest {
+	s.Include = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingShrinkRequest) SetPolicyBindingDescription(v string) *UpdatePolicyBindingShrinkRequest {
+	s.PolicyBindingDescription = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingShrinkRequest) SetPolicyId(v string) *UpdatePolicyBindingShrinkRequest {
+	s.PolicyId = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingShrinkRequest) SetSource(v string) *UpdatePolicyBindingShrinkRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingShrinkRequest) SetSourceType(v string) *UpdatePolicyBindingShrinkRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingShrinkRequest) SetSpeedLimit(v string) *UpdatePolicyBindingShrinkRequest {
+	s.SpeedLimit = &v
+	return s
+}
+
+type UpdatePolicyBindingResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdatePolicyBindingResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicyBindingResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicyBindingResponseBody) SetCode(v string) *UpdatePolicyBindingResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingResponseBody) SetMessage(v string) *UpdatePolicyBindingResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingResponseBody) SetRequestId(v string) *UpdatePolicyBindingResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingResponseBody) SetSuccess(v bool) *UpdatePolicyBindingResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdatePolicyBindingResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdatePolicyBindingResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdatePolicyBindingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdatePolicyBindingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePolicyBindingResponse) SetHeaders(v map[string]*string) *UpdatePolicyBindingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdatePolicyBindingResponse) SetStatusCode(v int32) *UpdatePolicyBindingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdatePolicyBindingResponse) SetBody(v *UpdatePolicyBindingResponseBody) *UpdatePolicyBindingResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateUdmEcsInstanceGroupRequest struct {
+	// required parameters
+	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	// optional parameters
+	InstanceGroupName *string                `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
+	InstanceIds       []*string              `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	DiskIdMap         map[string]interface{} `json:"diskIdMap,omitempty" xml:"diskIdMap,omitempty"`
+	ExcludeDiskIdMap  map[string]interface{} `json:"excludeDiskIdMap,omitempty" xml:"excludeDiskIdMap,omitempty"`
+}
+
+func (s UpdateUdmEcsInstanceGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUdmEcsInstanceGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUdmEcsInstanceGroupRequest) SetInstanceGroupId(v string) *UpdateUdmEcsInstanceGroupRequest {
+	s.InstanceGroupId = &v
+	return s
+}
+
+func (s *UpdateUdmEcsInstanceGroupRequest) SetInstanceGroupName(v string) *UpdateUdmEcsInstanceGroupRequest {
+	s.InstanceGroupName = &v
+	return s
+}
+
+func (s *UpdateUdmEcsInstanceGroupRequest) SetInstanceIds(v []*string) *UpdateUdmEcsInstanceGroupRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *UpdateUdmEcsInstanceGroupRequest) SetDiskIdMap(v map[string]interface{}) *UpdateUdmEcsInstanceGroupRequest {
+	s.DiskIdMap = v
+	return s
+}
+
+func (s *UpdateUdmEcsInstanceGroupRequest) SetExcludeDiskIdMap(v map[string]interface{}) *UpdateUdmEcsInstanceGroupRequest {
+	s.ExcludeDiskIdMap = v
+	return s
+}
+
+type UpdateUdmEcsInstanceGroupShrinkRequest struct {
+	// required parameters
+	InstanceGroupId *string `json:"InstanceGroupId,omitempty" xml:"InstanceGroupId,omitempty"`
+	// optional parameters
+	InstanceGroupName      *string   `json:"InstanceGroupName,omitempty" xml:"InstanceGroupName,omitempty"`
+	InstanceIds            []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	DiskIdMapShrink        *string   `json:"diskIdMap,omitempty" xml:"diskIdMap,omitempty"`
+	ExcludeDiskIdMapShrink *string   `json:"excludeDiskIdMap,omitempty" xml:"excludeDiskIdMap,omitempty"`
+}
+
+func (s UpdateUdmEcsInstanceGroupShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUdmEcsInstanceGroupShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUdmEcsInstanceGroupShrinkRequest) SetInstanceGroupId(v string) *UpdateUdmEcsInstanceGroupShrinkRequest {
+	s.InstanceGroupId = &v
+	return s
+}
+
+func (s *UpdateUdmEcsInstanceGroupShrinkRequest) SetInstanceGroupName(v string) *UpdateUdmEcsInstanceGroupShrinkRequest {
+	s.InstanceGroupName = &v
+	return s
+}
+
+func (s *UpdateUdmEcsInstanceGroupShrinkRequest) SetInstanceIds(v []*string) *UpdateUdmEcsInstanceGroupShrinkRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *UpdateUdmEcsInstanceGroupShrinkRequest) SetDiskIdMapShrink(v string) *UpdateUdmEcsInstanceGroupShrinkRequest {
+	s.DiskIdMapShrink = &v
+	return s
+}
+
+func (s *UpdateUdmEcsInstanceGroupShrinkRequest) SetExcludeDiskIdMapShrink(v string) *UpdateUdmEcsInstanceGroupShrinkRequest {
+	s.ExcludeDiskIdMapShrink = &v
+	return s
+}
+
+type UpdateUdmEcsInstanceGroupResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateUdmEcsInstanceGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUdmEcsInstanceGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUdmEcsInstanceGroupResponseBody) SetCode(v string) *UpdateUdmEcsInstanceGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateUdmEcsInstanceGroupResponseBody) SetMessage(v string) *UpdateUdmEcsInstanceGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateUdmEcsInstanceGroupResponseBody) SetRequestId(v string) *UpdateUdmEcsInstanceGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateUdmEcsInstanceGroupResponseBody) SetSuccess(v bool) *UpdateUdmEcsInstanceGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateUdmEcsInstanceGroupResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateUdmEcsInstanceGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateUdmEcsInstanceGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateUdmEcsInstanceGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateUdmEcsInstanceGroupResponse) SetHeaders(v map[string]*string) *UpdateUdmEcsInstanceGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateUdmEcsInstanceGroupResponse) SetStatusCode(v int32) *UpdateUdmEcsInstanceGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateUdmEcsInstanceGroupResponse) SetBody(v *UpdateUdmEcsInstanceGroupResponseBody) *UpdateUdmEcsInstanceGroupResponse {
 	s.Body = v
 	return s
 }
@@ -6959,8 +15767,9 @@ func (s *UpdateVaultResponseBody) SetSuccess(v bool) *UpdateVaultResponseBody {
 }
 
 type UpdateVaultResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateVaultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateVaultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateVaultResponse) String() string {
@@ -6973,6 +15782,11 @@ func (s UpdateVaultResponse) GoString() string {
 
 func (s *UpdateVaultResponse) SetHeaders(v map[string]*string) *UpdateVaultResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateVaultResponse) SetStatusCode(v int32) *UpdateVaultResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7104,8 +15918,9 @@ func (s *UpgradeBackupClientsResponseBodyInstanceStatuses) SetValidInstance(v bo
 }
 
 type UpgradeBackupClientsResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpgradeBackupClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpgradeBackupClientsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpgradeBackupClientsResponse) String() string {
@@ -7121,7 +15936,111 @@ func (s *UpgradeBackupClientsResponse) SetHeaders(v map[string]*string) *Upgrade
 	return s
 }
 
+func (s *UpgradeBackupClientsResponse) SetStatusCode(v int32) *UpgradeBackupClientsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpgradeBackupClientsResponse) SetBody(v *UpgradeBackupClientsResponseBody) *UpgradeBackupClientsResponse {
+	s.Body = v
+	return s
+}
+
+type UpgradeClientRequest struct {
+	ClientId        *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	VaultId         *string `json:"VaultId,omitempty" xml:"VaultId,omitempty"`
+}
+
+func (s UpgradeClientRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeClientRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeClientRequest) SetClientId(v string) *UpgradeClientRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *UpgradeClientRequest) SetResourceGroupId(v string) *UpgradeClientRequest {
+	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *UpgradeClientRequest) SetVaultId(v string) *UpgradeClientRequest {
+	s.VaultId = &v
+	return s
+}
+
+type UpgradeClientResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s UpgradeClientResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeClientResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeClientResponseBody) SetCode(v string) *UpgradeClientResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpgradeClientResponseBody) SetMessage(v string) *UpgradeClientResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpgradeClientResponseBody) SetRequestId(v string) *UpgradeClientResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpgradeClientResponseBody) SetSuccess(v bool) *UpgradeClientResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *UpgradeClientResponseBody) SetTaskId(v string) *UpgradeClientResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type UpgradeClientResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpgradeClientResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpgradeClientResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpgradeClientResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpgradeClientResponse) SetHeaders(v map[string]*string) *UpgradeClientResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpgradeClientResponse) SetStatusCode(v int32) *UpgradeClientResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpgradeClientResponse) SetBody(v *UpgradeClientResponseBody) *UpgradeClientResponse {
 	s.Body = v
 	return s
 }
@@ -7201,6 +16120,134 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddContainerClusterWithOptions(request *AddContainerClusterRequest, runtime *util.RuntimeOptions) (_result *AddContainerClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterType)) {
+		query["ClusterType"] = request.ClusterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Identifier)) {
+		query["Identifier"] = request.Identifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkType)) {
+		query["NetworkType"] = request.NetworkType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddContainerCluster"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddContainerClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddContainerCluster(request *AddContainerClusterRequest) (_result *AddContainerClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddContainerClusterResponse{}
+	_body, _err := client.AddContainerClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddObClusterWithOptions(request *AddObClusterRequest, runtime *util.RuntimeOptions) (_result *AddObClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		query["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterName)) {
+		query["ClusterName"] = request.ClusterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		query["Host"] = request.Host
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Username)) {
+		query["Username"] = request.Username
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddObCluster"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddObClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddObCluster(request *AddObClusterRequest) (_result *AddObClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddObClusterResponse{}
+	_body, _err := client.AddObClusterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7356,6 +16403,94 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 	return _result, _err
 }
 
+func (client *Client) CreateBackupJobWithOptions(request *CreateBackupJobRequest, runtime *util.RuntimeOptions) (_result *CreateBackupJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupType)) {
+		query["BackupType"] = request.BackupType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerClusterId)) {
+		query["ContainerClusterId"] = request.ContainerClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ContainerResources)) {
+		query["ContainerResources"] = request.ContainerResources
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Exclude)) {
+		query["Exclude"] = request.Exclude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Include)) {
+		query["Include"] = request.Include
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobName)) {
+		query["JobName"] = request.JobName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Options)) {
+		query["Options"] = request.Options
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Retention)) {
+		query["Retention"] = request.Retention
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeedLimit)) {
+		query["SpeedLimit"] = request.SpeedLimit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBackupJob"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateBackupJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateBackupJob(request *CreateBackupJobRequest) (_result *CreateBackupJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateBackupJobResponse{}
+	_body, _err := client.CreateBackupJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateBackupPlanWithOptions(tmpReq *CreateBackupPlanRequest, runtime *util.RuntimeOptions) (_result *CreateBackupPlanResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -7363,6 +16498,10 @@ func (client *Client) CreateBackupPlanWithOptions(tmpReq *CreateBackupPlanReques
 	}
 	request := &CreateBackupPlanShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Detail)) {
+		request.DetailShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Detail, tea.String("Detail"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.OtsDetail))) {
 		request.OtsDetailShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.OtsDetail), tea.String("OtsDetail"), tea.String("json"))
 	}
@@ -7378,6 +16517,22 @@ func (client *Client) CreateBackupPlanWithOptions(tmpReq *CreateBackupPlanReques
 
 	if !tea.BoolValue(util.IsUnset(request.CreateTime)) {
 		query["CreateTime"] = request.CreateTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountType)) {
+		query["CrossAccountType"] = request.CrossAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossOwnerId)) {
+		query["CrossOwnerId"] = request.CrossOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossRamRole)) {
+		query["CrossRamRole"] = request.CrossRamRole
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DetailShrink)) {
+		query["Detail"] = request.DetailShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.FileSystemId)) {
@@ -7402,6 +16557,10 @@ func (client *Client) CreateBackupPlanWithOptions(tmpReq *CreateBackupPlanReques
 
 	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
 		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UdmRegionId)) {
+		query["UdmRegionId"] = request.UdmRegionId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
@@ -7437,6 +16596,10 @@ func (client *Client) CreateBackupPlanWithOptions(tmpReq *CreateBackupPlanReques
 		body["Path"] = request.Path
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		body["Rule"] = request.Rule
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SpeedLimit)) {
 		body["SpeedLimit"] = request.SpeedLimit
 	}
@@ -7469,6 +16632,444 @@ func (client *Client) CreateBackupPlan(request *CreateBackupPlanRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateBackupPlanResponse{}
 	_body, _err := client.CreateBackupPlanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateClientsWithOptions(request *CreateClientsRequest, runtime *util.RuntimeOptions) (_result *CreateClientsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertSetting)) {
+		query["AlertSetting"] = request.AlertSetting
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientInfo)) {
+		query["ClientInfo"] = request.ClientInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseHttps)) {
+		query["UseHttps"] = request.UseHttps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateClients"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateClientsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateClients(request *CreateClientsRequest) (_result *CreateClientsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateClientsResponse{}
+	_body, _err := client.CreateClientsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateHanaBackupPlanWithOptions(request *CreateHanaBackupPlanRequest, runtime *util.RuntimeOptions) (_result *CreateHanaBackupPlanResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupPrefix)) {
+		query["BackupPrefix"] = request.BackupPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackupType)) {
+		query["BackupType"] = request.BackupType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanName)) {
+		query["PlanName"] = request.PlanName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schedule)) {
+		query["Schedule"] = request.Schedule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHanaBackupPlan"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateHanaBackupPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateHanaBackupPlan(request *CreateHanaBackupPlanRequest) (_result *CreateHanaBackupPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateHanaBackupPlanResponse{}
+	_body, _err := client.CreateHanaBackupPlanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateHanaInstanceWithOptions(request *CreateHanaInstanceRequest, runtime *util.RuntimeOptions) (_result *CreateHanaInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertSetting)) {
+		query["AlertSetting"] = request.AlertSetting
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EcsInstanceId)) {
+		query["EcsInstanceId"] = request.EcsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HanaName)) {
+		query["HanaName"] = request.HanaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		query["Host"] = request.Host
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceNumber)) {
+		query["InstanceNumber"] = request.InstanceNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sid)) {
+		query["Sid"] = request.Sid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseSsl)) {
+		query["UseSsl"] = request.UseSsl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValidateCertificate)) {
+		query["ValidateCertificate"] = request.ValidateCertificate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHanaInstance"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateHanaInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateHanaInstance(request *CreateHanaInstanceRequest) (_result *CreateHanaInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateHanaInstanceResponse{}
+	_body, _err := client.CreateHanaInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateHanaRestoreWithOptions(request *CreateHanaRestoreRequest, runtime *util.RuntimeOptions) (_result *CreateHanaRestoreResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupId)) {
+		query["BackupId"] = request.BackupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackupPrefix)) {
+		query["BackupPrefix"] = request.BackupPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckAccess)) {
+		query["CheckAccess"] = request.CheckAccess
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClearLog)) {
+		query["ClearLog"] = request.ClearLog
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogPosition)) {
+		query["LogPosition"] = request.LogPosition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecoveryPointInTime)) {
+		query["RecoveryPointInTime"] = request.RecoveryPointInTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SidAdmin)) {
+		query["SidAdmin"] = request.SidAdmin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceClusterId)) {
+		query["SourceClusterId"] = request.SourceClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemCopy)) {
+		query["SystemCopy"] = request.SystemCopy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseCatalog)) {
+		query["UseCatalog"] = request.UseCatalog
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseDelta)) {
+		query["UseDelta"] = request.UseDelta
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VolumeId)) {
+		query["VolumeId"] = request.VolumeId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHanaRestore"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateHanaRestoreResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateHanaRestore(request *CreateHanaRestoreRequest) (_result *CreateHanaRestoreResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateHanaRestoreResponse{}
+	_body, _err := client.CreateHanaRestoreWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreatePolicy2WithOptions(tmpReq *CreatePolicy2Request, runtime *util.RuntimeOptions) (_result *CreatePolicy2Response, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreatePolicy2ShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Rules)) {
+		request.RulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rules, tea.String("Rules"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyDescription)) {
+		body["PolicyDescription"] = request.PolicyDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		body["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RulesShrink)) {
+		body["Rules"] = request.RulesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePolicy2"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePolicy2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreatePolicy2(request *CreatePolicy2Request) (_result *CreatePolicy2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreatePolicy2Response{}
+	_body, _err := client.CreatePolicy2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreatePolicyBindingsWithOptions(tmpReq *CreatePolicyBindingsRequest, runtime *util.RuntimeOptions) (_result *CreatePolicyBindingsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreatePolicyBindingsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.PolicyBindingList)) {
+		request.PolicyBindingListShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PolicyBindingList, tea.String("PolicyBindingList"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyBindingListShrink)) {
+		query["PolicyBindingList"] = request.PolicyBindingListShrink
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		body["PolicyId"] = request.PolicyId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreatePolicyBindings"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreatePolicyBindingsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreatePolicyBindings(request *CreatePolicyBindingsRequest) (_result *CreatePolicyBindingsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreatePolicyBindingsResponse{}
+	_body, _err := client.CreatePolicyBindingsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7551,11 +17152,27 @@ func (client *Client) CreateRestoreJobWithOptions(tmpReq *CreateRestoreJobReques
 	}
 	request := &CreateRestoreJobShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.OtsDetail))) {
+		request.OtsDetailShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.OtsDetail), tea.String("OtsDetail"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.UdmDetail)) {
 		request.UdmDetailShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.UdmDetail, tea.String("UdmDetail"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrossAccountType)) {
+		query["CrossAccountType"] = request.CrossAccountType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossOwnerId)) {
+		query["CrossOwnerId"] = request.CrossOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossRamRole)) {
+		query["CrossRamRole"] = request.CrossRamRole
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RestoreType)) {
 		query["RestoreType"] = request.RestoreType
 	}
@@ -7617,9 +17234,8 @@ func (client *Client) CreateRestoreJobWithOptions(tmpReq *CreateRestoreJobReques
 		body["Include"] = request.Include
 	}
 
-	bodyFlat := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.OtsDetail))) {
-		bodyFlat["OtsDetail"] = request.OtsDetail
+	if !tea.BoolValue(util.IsUnset(request.OtsDetailShrink)) {
+		body["OtsDetail"] = request.OtsDetailShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TargetInstanceId)) {
@@ -7630,8 +17246,6 @@ func (client *Client) CreateRestoreJobWithOptions(tmpReq *CreateRestoreJobReques
 		body["TargetPath"] = request.TargetPath
 	}
 
-	body = tea.ToMap(body,
-		openapiutil.Query(bodyFlat))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 		Body:  openapiutil.ParseToMap(body),
@@ -7660,6 +17274,72 @@ func (client *Client) CreateRestoreJob(request *CreateRestoreJobRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRestoreJobResponse{}
 	_body, _err := client.CreateRestoreJobWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateUdmEcsInstanceGroupWithOptions(tmpReq *CreateUdmEcsInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *CreateUdmEcsInstanceGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateUdmEcsInstanceGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DiskIdMap)) {
+		request.DiskIdMapShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DiskIdMap, tea.String("DiskIdMap"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExcludeDiskIdMap)) {
+		request.ExcludeDiskIdMapShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExcludeDiskIdMap, tea.String("ExcludeDiskIdMap"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiskIdMapShrink)) {
+		query["DiskIdMap"] = request.DiskIdMapShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeDiskIdMapShrink)) {
+		query["ExcludeDiskIdMap"] = request.ExcludeDiskIdMapShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceGroupName)) {
+		query["InstanceGroupName"] = request.InstanceGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateUdmEcsInstanceGroup"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateUdmEcsInstanceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateUdmEcsInstanceGroup(request *CreateUdmEcsInstanceGroupRequest) (_result *CreateUdmEcsInstanceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateUdmEcsInstanceGroupResponse{}
+	_body, _err := client.CreateUdmEcsInstanceGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7897,6 +17577,314 @@ func (client *Client) DeleteBackupPlan(request *DeleteBackupPlanRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) DeleteCrossAccountWithOptions(request *DeleteCrossAccountRequest, runtime *util.RuntimeOptions) (_result *DeleteCrossAccountResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CrossOwnerId)) {
+		query["CrossOwnerId"] = request.CrossOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CrossRamRole)) {
+		query["CrossRamRole"] = request.CrossRamRole
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCrossAccount"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteCrossAccountResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteCrossAccount(request *DeleteCrossAccountRequest) (_result *DeleteCrossAccountResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteCrossAccountResponse{}
+	_body, _err := client.DeleteCrossAccountWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteHanaBackupPlanWithOptions(request *DeleteHanaBackupPlanRequest, runtime *util.RuntimeOptions) (_result *DeleteHanaBackupPlanResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanId)) {
+		query["PlanId"] = request.PlanId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHanaBackupPlan"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteHanaBackupPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteHanaBackupPlan(request *DeleteHanaBackupPlanRequest) (_result *DeleteHanaBackupPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteHanaBackupPlanResponse{}
+	_body, _err := client.DeleteHanaBackupPlanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteHanaInstanceWithOptions(request *DeleteHanaInstanceRequest, runtime *util.RuntimeOptions) (_result *DeleteHanaInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sid)) {
+		query["Sid"] = request.Sid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHanaInstance"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteHanaInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteHanaInstance(request *DeleteHanaInstanceRequest) (_result *DeleteHanaInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteHanaInstanceResponse{}
+	_body, _err := client.DeleteHanaInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteObClusterWithOptions(request *DeleteObClusterRequest, runtime *util.RuntimeOptions) (_result *DeleteObClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteObCluster"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteObClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteObCluster(request *DeleteObClusterRequest) (_result *DeleteObClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteObClusterResponse{}
+	_body, _err := client.DeleteObClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeletePolicy2WithOptions(request *DeletePolicy2Request, runtime *util.RuntimeOptions) (_result *DeletePolicy2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		body["PolicyId"] = request.PolicyId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePolicy2"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePolicy2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeletePolicy2(request *DeletePolicy2Request) (_result *DeletePolicy2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeletePolicy2Response{}
+	_body, _err := client.DeletePolicy2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeletePolicyBindingWithOptions(tmpReq *DeletePolicyBindingRequest, runtime *util.RuntimeOptions) (_result *DeletePolicyBindingResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DeletePolicyBindingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DataSourceIds)) {
+		request.DataSourceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataSourceIds, tea.String("DataSourceIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceIdsShrink)) {
+		body["DataSourceIds"] = request.DataSourceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		body["PolicyId"] = request.PolicyId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeletePolicyBinding"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeletePolicyBindingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeletePolicyBinding(request *DeletePolicyBindingRequest) (_result *DeletePolicyBindingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeletePolicyBindingResponse{}
+	_body, _err := client.DeletePolicyBindingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteSnapshotWithOptions(request *DeleteSnapshotRequest, runtime *util.RuntimeOptions) (_result *DeleteSnapshotResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7965,6 +17953,54 @@ func (client *Client) DeleteSnapshot(request *DeleteSnapshotRequest) (_result *D
 	return _result, _err
 }
 
+func (client *Client) DeleteUdmEcsInstanceGroupWithOptions(request *DeleteUdmEcsInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteUdmEcsInstanceGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeleteUdmEcsInstance)) {
+		query["DeleteUdmEcsInstance"] = request.DeleteUdmEcsInstance
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceGroupId)) {
+		query["InstanceGroupId"] = request.InstanceGroupId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteUdmEcsInstanceGroup"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteUdmEcsInstanceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteUdmEcsInstanceGroup(request *DeleteUdmEcsInstanceGroupRequest) (_result *DeleteUdmEcsInstanceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteUdmEcsInstanceGroupResponse{}
+	_body, _err := client.DeleteUdmEcsInstanceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteVaultWithOptions(request *DeleteVaultRequest, runtime *util.RuntimeOptions) (_result *DeleteVaultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7977,6 +18013,10 @@ func (client *Client) DeleteVaultWithOptions(request *DeleteVaultRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.Token)) {
 		query["Token"] = request.Token
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserAccountId)) {
+		query["UserAccountId"] = request.UserAccountId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
@@ -8209,6 +18249,760 @@ func (client *Client) DescribeBackupPlans(request *DescribeBackupPlansRequest) (
 	return _result, _err
 }
 
+func (client *Client) DescribeBackupSetWithOptions(request *DescribeBackupSetRequest, runtime *util.RuntimeOptions) (_result *DescribeBackupSetResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBackupSet"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeBackupSetResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeBackupSet(request *DescribeBackupSetRequest) (_result *DescribeBackupSetResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeBackupSetResponse{}
+	_body, _err := client.DescribeBackupSetWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeClientsWithOptions(request *DescribeClientsRequest, runtime *util.RuntimeOptions) (_result *DescribeClientsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		query["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientType)) {
+		query["ClientType"] = request.ClientType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeClients"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeClientsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeClients(request *DescribeClientsRequest) (_result *DescribeClientsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeClientsResponse{}
+	_body, _err := client.DescribeClientsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeContainerClusterWithOptions(request *DescribeContainerClusterRequest, runtime *util.RuntimeOptions) (_result *DescribeContainerClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeContainerCluster"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeContainerClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeContainerCluster(request *DescribeContainerClusterRequest) (_result *DescribeContainerClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeContainerClusterResponse{}
+	_body, _err := client.DescribeContainerClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeCrossAccountsWithOptions(request *DescribeCrossAccountsRequest, runtime *util.RuntimeOptions) (_result *DescribeCrossAccountsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCrossAccounts"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeCrossAccountsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeCrossAccounts(request *DescribeCrossAccountsRequest) (_result *DescribeCrossAccountsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeCrossAccountsResponse{}
+	_body, _err := client.DescribeCrossAccountsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeHanaBackupPlansWithOptions(request *DescribeHanaBackupPlansRequest, runtime *util.RuntimeOptions) (_result *DescribeHanaBackupPlansResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHanaBackupPlans"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHanaBackupPlansResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeHanaBackupPlans(request *DescribeHanaBackupPlansRequest) (_result *DescribeHanaBackupPlansResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHanaBackupPlansResponse{}
+	_body, _err := client.DescribeHanaBackupPlansWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeHanaBackupSettingWithOptions(request *DescribeHanaBackupSettingRequest, runtime *util.RuntimeOptions) (_result *DescribeHanaBackupSettingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHanaBackupSetting"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHanaBackupSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeHanaBackupSetting(request *DescribeHanaBackupSettingRequest) (_result *DescribeHanaBackupSettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHanaBackupSettingResponse{}
+	_body, _err := client.DescribeHanaBackupSettingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeHanaBackupsAsyncWithOptions(request *DescribeHanaBackupsAsyncRequest, runtime *util.RuntimeOptions) (_result *DescribeHanaBackupsAsyncResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeDifferential)) {
+		query["IncludeDifferential"] = request.IncludeDifferential
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeIncremental)) {
+		query["IncludeIncremental"] = request.IncludeIncremental
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeLog)) {
+		query["IncludeLog"] = request.IncludeLog
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogPosition)) {
+		query["LogPosition"] = request.LogPosition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mode)) {
+		query["Mode"] = request.Mode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecoveryPointInTime)) {
+		query["RecoveryPointInTime"] = request.RecoveryPointInTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceClusterId)) {
+		query["SourceClusterId"] = request.SourceClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SystemCopy)) {
+		query["SystemCopy"] = request.SystemCopy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseBackint)) {
+		query["UseBackint"] = request.UseBackint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VolumeId)) {
+		query["VolumeId"] = request.VolumeId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHanaBackupsAsync"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHanaBackupsAsyncResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeHanaBackupsAsync(request *DescribeHanaBackupsAsyncRequest) (_result *DescribeHanaBackupsAsyncResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHanaBackupsAsyncResponse{}
+	_body, _err := client.DescribeHanaBackupsAsyncWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeHanaDatabasesWithOptions(request *DescribeHanaDatabasesRequest, runtime *util.RuntimeOptions) (_result *DescribeHanaDatabasesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHanaDatabases"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHanaDatabasesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeHanaDatabases(request *DescribeHanaDatabasesRequest) (_result *DescribeHanaDatabasesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHanaDatabasesResponse{}
+	_body, _err := client.DescribeHanaDatabasesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeHanaInstancesWithOptions(request *DescribeHanaInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeHanaInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		body["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHanaInstances"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHanaInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeHanaInstances(request *DescribeHanaInstancesRequest) (_result *DescribeHanaInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHanaInstancesResponse{}
+	_body, _err := client.DescribeHanaInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeHanaRestoresWithOptions(request *DescribeHanaRestoresRequest, runtime *util.RuntimeOptions) (_result *DescribeHanaRestoresResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupId)) {
+		query["BackupId"] = request.BackupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RestoreId)) {
+		query["RestoreId"] = request.RestoreId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RestoreStatus)) {
+		query["RestoreStatus"] = request.RestoreStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHanaRestores"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHanaRestoresResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeHanaRestores(request *DescribeHanaRestoresRequest) (_result *DescribeHanaRestoresResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHanaRestoresResponse{}
+	_body, _err := client.DescribeHanaRestoresWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeHanaRetentionSettingWithOptions(request *DescribeHanaRetentionSettingRequest, runtime *util.RuntimeOptions) (_result *DescribeHanaRetentionSettingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHanaRetentionSetting"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHanaRetentionSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeHanaRetentionSetting(request *DescribeHanaRetentionSettingRequest) (_result *DescribeHanaRetentionSettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHanaRetentionSettingResponse{}
+	_body, _err := client.DescribeHanaRetentionSettingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeObClusterWithOptions(request *DescribeObClusterRequest, runtime *util.RuntimeOptions) (_result *DescribeObClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeObCluster"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeObClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeObCluster(request *DescribeObClusterRequest) (_result *DescribeObClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeObClusterResponse{}
+	_body, _err := client.DescribeObClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeOtsTableSnapshotsWithOptions(request *DescribeOtsTableSnapshotsRequest, runtime *util.RuntimeOptions) (_result *DescribeOtsTableSnapshotsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8269,6 +19063,126 @@ func (client *Client) DescribeOtsTableSnapshots(request *DescribeOtsTableSnapsho
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeOtsTableSnapshotsResponse{}
 	_body, _err := client.DescribeOtsTableSnapshotsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribePolicies2WithOptions(request *DescribePolicies2Request, runtime *util.RuntimeOptions) (_result *DescribePolicies2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		body["PolicyId"] = request.PolicyId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePolicies2"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePolicies2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePolicies2(request *DescribePolicies2Request) (_result *DescribePolicies2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePolicies2Response{}
+	_body, _err := client.DescribePolicies2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribePolicyBindingsWithOptions(tmpReq *DescribePolicyBindingsRequest, runtime *util.RuntimeOptions) (_result *DescribePolicyBindingsResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DescribePolicyBindingsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DataSourceIds)) {
+		request.DataSourceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DataSourceIds, tea.String("DataSourceIds"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceIdsShrink)) {
+		body["DataSourceIds"] = request.DataSourceIdsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		body["PolicyId"] = request.PolicyId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribePolicyBindings"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribePolicyBindingsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribePolicyBindings(request *DescribePolicyBindingsRequest) (_result *DescribePolicyBindingsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribePolicyBindingsResponse{}
+	_body, _err := client.DescribePolicyBindingsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8454,6 +19368,66 @@ func (client *Client) DescribeTask(request *DescribeTaskRequest) (_result *Descr
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeTaskResponse{}
 	_body, _err := client.DescribeTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeUdmEcsInstanceGroupsWithOptions(request *DescribeUdmEcsInstanceGroupsRequest, runtime *util.RuntimeOptions) (_result *DescribeUdmEcsInstanceGroupsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceGroupId)) {
+		query["InstanceGroupId"] = request.InstanceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceGroupName)) {
+		query["InstanceGroupName"] = request.InstanceGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UdmRegionId)) {
+		query["UdmRegionId"] = request.UdmRegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUdmEcsInstanceGroups"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUdmEcsInstanceGroupsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUdmEcsInstanceGroups(request *DescribeUdmEcsInstanceGroupsRequest) (_result *DescribeUdmEcsInstanceGroupsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUdmEcsInstanceGroupsResponse{}
+	_body, _err := client.DescribeUdmEcsInstanceGroupsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8763,6 +19737,62 @@ func (client *Client) DisableBackupPlan(request *DisableBackupPlanRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DisableHanaBackupPlanWithOptions(request *DisableHanaBackupPlanRequest, runtime *util.RuntimeOptions) (_result *DisableHanaBackupPlanResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanId)) {
+		query["PlanId"] = request.PlanId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableHanaBackupPlan"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableHanaBackupPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableHanaBackupPlan(request *DisableHanaBackupPlanRequest) (_result *DisableHanaBackupPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableHanaBackupPlanResponse{}
+	_body, _err := client.DisableHanaBackupPlanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) EnableBackupPlanWithOptions(request *EnableBackupPlanRequest, runtime *util.RuntimeOptions) (_result *EnableBackupPlanResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8808,6 +19838,62 @@ func (client *Client) EnableBackupPlan(request *EnableBackupPlanRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &EnableBackupPlanResponse{}
 	_body, _err := client.EnableBackupPlanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableHanaBackupPlanWithOptions(request *EnableHanaBackupPlanRequest, runtime *util.RuntimeOptions) (_result *EnableHanaBackupPlanResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanId)) {
+		query["PlanId"] = request.PlanId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableHanaBackupPlan"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableHanaBackupPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableHanaBackupPlan(request *EnableHanaBackupPlanRequest) (_result *EnableHanaBackupPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableHanaBackupPlanResponse{}
+	_body, _err := client.EnableHanaBackupPlanWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8871,6 +19957,64 @@ func (client *Client) ExecuteBackupPlan(request *ExecuteBackupPlanRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) ExecutePolicy2WithOptions(request *ExecutePolicy2Request, runtime *util.RuntimeOptions) (_result *ExecutePolicy2Response, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RuleId)) {
+		query["RuleId"] = request.RuleId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		body["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		body["PolicyId"] = request.PolicyId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecutePolicy2"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecutePolicy2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExecutePolicy2(request *ExecutePolicy2Request) (_result *ExecutePolicy2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ExecutePolicy2Response{}
+	_body, _err := client.ExecutePolicy2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GenerateRamPolicyWithOptions(request *GenerateRamPolicyRequest, runtime *util.RuntimeOptions) (_result *GenerateRamPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8920,6 +20064,54 @@ func (client *Client) GenerateRamPolicy(request *GenerateRamPolicyRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &GenerateRamPolicyResponse{}
 	_body, _err := client.GenerateRamPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetObClusterConfigWithOptions(request *GetObClusterConfigRequest, runtime *util.RuntimeOptions) (_result *GetObClusterConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetObClusterConfig"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetObClusterConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetObClusterConfig(request *GetObClusterConfigRequest) (_result *GetObClusterConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetObClusterConfigResponse{}
+	_body, _err := client.GetObClusterConfigWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9039,6 +20231,162 @@ func (client *Client) SearchHistoricalSnapshots(request *SearchHistoricalSnapsho
 	return _result, _err
 }
 
+func (client *Client) SetObClusterConfigWithOptions(request *SetObClusterConfigRequest, runtime *util.RuntimeOptions) (_result *SetObClusterConfigResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["Key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		query["Value"] = request.Value
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetObClusterConfig"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetObClusterConfigResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetObClusterConfig(request *SetObClusterConfigRequest) (_result *SetObClusterConfigResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetObClusterConfigResponse{}
+	_body, _err := client.SetObClusterConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartHanaDatabaseAsyncWithOptions(request *StartHanaDatabaseAsyncRequest, runtime *util.RuntimeOptions) (_result *StartHanaDatabaseAsyncResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartHanaDatabaseAsync"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartHanaDatabaseAsyncResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartHanaDatabaseAsync(request *StartHanaDatabaseAsyncRequest) (_result *StartHanaDatabaseAsyncResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartHanaDatabaseAsyncResponse{}
+	_body, _err := client.StartHanaDatabaseAsyncWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopHanaDatabaseAsyncWithOptions(request *StopHanaDatabaseAsyncRequest, runtime *util.RuntimeOptions) (_result *StopHanaDatabaseAsyncResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopHanaDatabaseAsync"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopHanaDatabaseAsyncResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopHanaDatabaseAsync(request *StopHanaDatabaseAsyncRequest) (_result *StopHanaDatabaseAsyncResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopHanaDatabaseAsyncResponse{}
+	_body, _err := client.StopHanaDatabaseAsyncWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UninstallBackupClientsWithOptions(tmpReq *UninstallBackupClientsRequest, runtime *util.RuntimeOptions) (_result *UninstallBackupClientsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -9097,6 +20445,58 @@ func (client *Client) UninstallBackupClients(request *UninstallBackupClientsRequ
 	return _result, _err
 }
 
+func (client *Client) UninstallClientWithOptions(request *UninstallClientRequest, runtime *util.RuntimeOptions) (_result *UninstallClientResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		query["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UninstallClient"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UninstallClientResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UninstallClient(request *UninstallClientRequest) (_result *UninstallClientResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UninstallClientResponse{}
+	_body, _err := client.UninstallClientWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateBackupPlanWithOptions(tmpReq *UpdateBackupPlanRequest, runtime *util.RuntimeOptions) (_result *UpdateBackupPlanResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -9104,11 +20504,19 @@ func (client *Client) UpdateBackupPlanWithOptions(tmpReq *UpdateBackupPlanReques
 	}
 	request := &UpdateBackupPlanShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Detail)) {
+		request.DetailShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Detail, tea.String("Detail"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.OtsDetail))) {
 		request.OtsDetailShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.OtsDetail), tea.String("OtsDetail"), tea.String("json"))
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DetailShrink)) {
+		query["Detail"] = request.DetailShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Path)) {
 		query["Path"] = request.Path
 	}
@@ -9164,6 +20572,10 @@ func (client *Client) UpdateBackupPlanWithOptions(tmpReq *UpdateBackupPlanReques
 
 	if !tea.BoolValue(util.IsUnset(request.OtsDetailShrink)) {
 		body["OtsDetail"] = request.OtsDetailShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Rule)) {
+		body["Rule"] = request.Rule
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -9289,6 +20701,524 @@ func (client *Client) UpdateClientSettings(request *UpdateClientSettingsRequest)
 	return _result, _err
 }
 
+func (client *Client) UpdateHanaBackupPlanWithOptions(request *UpdateHanaBackupPlanRequest, runtime *util.RuntimeOptions) (_result *UpdateHanaBackupPlanResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackupPrefix)) {
+		query["BackupPrefix"] = request.BackupPrefix
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanId)) {
+		query["PlanId"] = request.PlanId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PlanName)) {
+		query["PlanName"] = request.PlanName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schedule)) {
+		query["Schedule"] = request.Schedule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateHanaBackupPlan"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateHanaBackupPlanResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateHanaBackupPlan(request *UpdateHanaBackupPlanRequest) (_result *UpdateHanaBackupPlanResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateHanaBackupPlanResponse{}
+	_body, _err := client.UpdateHanaBackupPlanWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateHanaBackupSettingWithOptions(request *UpdateHanaBackupSettingRequest, runtime *util.RuntimeOptions) (_result *UpdateHanaBackupSettingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CatalogBackupParameterFile)) {
+		query["CatalogBackupParameterFile"] = request.CatalogBackupParameterFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CatalogBackupUsingBackint)) {
+		query["CatalogBackupUsingBackint"] = request.CatalogBackupUsingBackint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataBackupParameterFile)) {
+		query["DataBackupParameterFile"] = request.DataBackupParameterFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableAutoLogBackup)) {
+		query["EnableAutoLogBackup"] = request.EnableAutoLogBackup
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogBackupParameterFile)) {
+		query["LogBackupParameterFile"] = request.LogBackupParameterFile
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogBackupTimeout)) {
+		query["LogBackupTimeout"] = request.LogBackupTimeout
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogBackupUsingBackint)) {
+		query["LogBackupUsingBackint"] = request.LogBackupUsingBackint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateHanaBackupSetting"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateHanaBackupSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateHanaBackupSetting(request *UpdateHanaBackupSettingRequest) (_result *UpdateHanaBackupSettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateHanaBackupSettingResponse{}
+	_body, _err := client.UpdateHanaBackupSettingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateHanaInstanceWithOptions(request *UpdateHanaInstanceRequest, runtime *util.RuntimeOptions) (_result *UpdateHanaInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertSetting)) {
+		query["AlertSetting"] = request.AlertSetting
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HanaName)) {
+		query["HanaName"] = request.HanaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		query["Host"] = request.Host
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceNumber)) {
+		query["InstanceNumber"] = request.InstanceNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Password)) {
+		query["Password"] = request.Password
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UseSsl)) {
+		query["UseSsl"] = request.UseSsl
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserName)) {
+		query["UserName"] = request.UserName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ValidateCertificate)) {
+		query["ValidateCertificate"] = request.ValidateCertificate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateHanaInstance"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateHanaInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateHanaInstance(request *UpdateHanaInstanceRequest) (_result *UpdateHanaInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateHanaInstanceResponse{}
+	_body, _err := client.UpdateHanaInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateHanaRetentionSettingWithOptions(request *UpdateHanaRetentionSettingRequest, runtime *util.RuntimeOptions) (_result *UpdateHanaRetentionSettingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DatabaseName)) {
+		query["DatabaseName"] = request.DatabaseName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Disabled)) {
+		query["Disabled"] = request.Disabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RetentionDays)) {
+		query["RetentionDays"] = request.RetentionDays
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schedule)) {
+		query["Schedule"] = request.Schedule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateHanaRetentionSetting"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateHanaRetentionSettingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateHanaRetentionSetting(request *UpdateHanaRetentionSettingRequest) (_result *UpdateHanaRetentionSettingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateHanaRetentionSettingResponse{}
+	_body, _err := client.UpdateHanaRetentionSettingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdatePolicy2WithOptions(tmpReq *UpdatePolicy2Request, runtime *util.RuntimeOptions) (_result *UpdatePolicy2Response, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdatePolicy2ShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Rules)) {
+		request.RulesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Rules, tea.String("Rules"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PolicyDescription)) {
+		body["PolicyDescription"] = request.PolicyDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		body["PolicyId"] = request.PolicyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyName)) {
+		body["PolicyName"] = request.PolicyName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RulesShrink)) {
+		body["Rules"] = request.RulesShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePolicy2"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdatePolicy2Response{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdatePolicy2(request *UpdatePolicy2Request) (_result *UpdatePolicy2Response, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdatePolicy2Response{}
+	_body, _err := client.UpdatePolicy2WithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdatePolicyBindingWithOptions(tmpReq *UpdatePolicyBindingRequest, runtime *util.RuntimeOptions) (_result *UpdatePolicyBindingResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdatePolicyBindingShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.AdvancedOptions))) {
+		request.AdvancedOptionsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.AdvancedOptions), tea.String("AdvancedOptions"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AdvancedOptionsShrink)) {
+		query["AdvancedOptions"] = request.AdvancedOptionsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Disabled)) {
+		query["Disabled"] = request.Disabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Exclude)) {
+		query["Exclude"] = request.Exclude
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Include)) {
+		query["Include"] = request.Include
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyBindingDescription)) {
+		query["PolicyBindingDescription"] = request.PolicyBindingDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SpeedLimit)) {
+		query["SpeedLimit"] = request.SpeedLimit
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		body["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PolicyId)) {
+		body["PolicyId"] = request.PolicyId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdatePolicyBinding"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdatePolicyBindingResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdatePolicyBinding(request *UpdatePolicyBindingRequest) (_result *UpdatePolicyBindingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdatePolicyBindingResponse{}
+	_body, _err := client.UpdatePolicyBindingWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateUdmEcsInstanceGroupWithOptions(tmpReq *UpdateUdmEcsInstanceGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateUdmEcsInstanceGroupResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateUdmEcsInstanceGroupShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.DiskIdMap)) {
+		request.DiskIdMapShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DiskIdMap, tea.String("diskIdMap"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.ExcludeDiskIdMap)) {
+		request.ExcludeDiskIdMapShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExcludeDiskIdMap, tea.String("excludeDiskIdMap"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DiskIdMapShrink)) {
+		query["diskIdMap"] = request.DiskIdMapShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeDiskIdMapShrink)) {
+		query["excludeDiskIdMap"] = request.ExcludeDiskIdMapShrink
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceGroupId)) {
+		body["InstanceGroupId"] = request.InstanceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceGroupName)) {
+		body["InstanceGroupName"] = request.InstanceGroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		body["InstanceIds"] = request.InstanceIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateUdmEcsInstanceGroup"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateUdmEcsInstanceGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateUdmEcsInstanceGroup(request *UpdateUdmEcsInstanceGroupRequest) (_result *UpdateUdmEcsInstanceGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateUdmEcsInstanceGroupResponse{}
+	_body, _err := client.UpdateUdmEcsInstanceGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateVaultWithOptions(request *UpdateVaultRequest, runtime *util.RuntimeOptions) (_result *UpdateVaultResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9396,6 +21326,58 @@ func (client *Client) UpgradeBackupClients(request *UpgradeBackupClientsRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &UpgradeBackupClientsResponse{}
 	_body, _err := client.UpgradeBackupClientsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpgradeClientWithOptions(request *UpgradeClientRequest, runtime *util.RuntimeOptions) (_result *UpgradeClientResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		query["ClientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceGroupId)) {
+		query["ResourceGroupId"] = request.ResourceGroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VaultId)) {
+		query["VaultId"] = request.VaultId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpgradeClient"),
+		Version:     tea.String("2017-09-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpgradeClientResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpgradeClient(request *UpgradeClientRequest) (_result *UpgradeClientResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpgradeClientResponse{}
+	_body, _err := client.UpgradeClientWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
