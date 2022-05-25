@@ -3942,6 +3942,130 @@ func (s *GetSingleConnDataResponse) SetBody(v *GetSingleConnDataResponseBody) *G
 	return s
 }
 
+type GetSourcePackStatusRequest struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s GetSourcePackStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSourcePackStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetSourcePackStatusRequest) SetTaskId(v string) *GetSourcePackStatusRequest {
+	s.TaskId = &v
+	return s
+}
+
+type GetSourcePackStatusResponseBody struct {
+	// 返回码
+	Code *int64                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetSourcePackStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 是否请求成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 压缩包的地址
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+}
+
+func (s GetSourcePackStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSourcePackStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetSourcePackStatusResponseBody) SetCode(v int64) *GetSourcePackStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetSourcePackStatusResponseBody) SetData(v *GetSourcePackStatusResponseBodyData) *GetSourcePackStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetSourcePackStatusResponseBody) SetMessage(v string) *GetSourcePackStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetSourcePackStatusResponseBody) SetRequestId(v string) *GetSourcePackStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSourcePackStatusResponseBody) SetSuccess(v bool) *GetSourcePackStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *GetSourcePackStatusResponseBody) SetUrl(v string) *GetSourcePackStatusResponseBody {
+	s.Url = &v
+	return s
+}
+
+type GetSourcePackStatusResponseBodyData struct {
+	// 任务进度
+	Progress *int64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	// 任务状态
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetSourcePackStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSourcePackStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetSourcePackStatusResponseBodyData) SetProgress(v int64) *GetSourcePackStatusResponseBodyData {
+	s.Progress = &v
+	return s
+}
+
+func (s *GetSourcePackStatusResponseBodyData) SetStatus(v string) *GetSourcePackStatusResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetSourcePackStatusResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSourcePackStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetSourcePackStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetSourcePackStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetSourcePackStatusResponse) SetHeaders(v map[string]*string) *GetSourcePackStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetSourcePackStatusResponse) SetStatusCode(v int32) *GetSourcePackStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetSourcePackStatusResponse) SetBody(v *GetSourcePackStatusResponseBody) *GetSourcePackStatusResponse {
+	s.Body = v
+	return s
+}
+
 type GetSubSceneTaskStatusRequest struct {
 	// 子场景ID
 	SubSceneId *string `json:"SubSceneId,omitempty" xml:"SubSceneId,omitempty"`
@@ -4299,9 +4423,9 @@ func (s *GetWindowConfigResponse) SetBody(v *GetWindowConfigResponseBody) *GetWi
 type LabelBuildRequest struct {
 	// 重建模式：MANUAL：手动（云端），默认，SEMI_AUTOMATIC：半自动（移动端）
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// 模型效果 PASTER：切片模型（默认） DEPTH：深度模型 VIRTUAL：虚拟模型 MOBILE：移动重建模型
-	OptimizeModelEffect *string `json:"OptimizeModelEffect,omitempty" xml:"OptimizeModelEffect,omitempty"`
-	// 墙宽优化，SHUTDOWN:关闭（默认） STANDARD：标准 DEPTH：深度
+	// 模型效果 PATCH：切片模型（默认） DEPTH：深度模型 VIRTUAL：虚拟模型 MOBILE：移动重建模型
+	ModelStyle *string `json:"ModelStyle,omitempty" xml:"ModelStyle,omitempty"`
+	// 墙宽优化，OFF:关闭（默认） NORMAL：标准 ENHANCED：加强
 	OptimizeWallWidth *string `json:"OptimizeWallWidth,omitempty" xml:"OptimizeWallWidth,omitempty"`
 	// 户型图，DEFAULT（默认），STANDARD（标准）
 	PlanStyle *string `json:"PlanStyle,omitempty" xml:"PlanStyle,omitempty"`
@@ -4324,8 +4448,8 @@ func (s *LabelBuildRequest) SetMode(v string) *LabelBuildRequest {
 	return s
 }
 
-func (s *LabelBuildRequest) SetOptimizeModelEffect(v string) *LabelBuildRequest {
-	s.OptimizeModelEffect = &v
+func (s *LabelBuildRequest) SetModelStyle(v string) *LabelBuildRequest {
+	s.ModelStyle = &v
 	return s
 }
 
@@ -5423,6 +5547,116 @@ func (s *PackSceneResponse) SetBody(v *PackSceneResponseBody) *PackSceneResponse
 	return s
 }
 
+type PackSourceRequest struct {
+	// 场景ID
+	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
+}
+
+func (s PackSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PackSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PackSourceRequest) SetSceneId(v string) *PackSourceRequest {
+	s.SceneId = &v
+	return s
+}
+
+type PackSourceResponseBody struct {
+	// 返回码
+	Code *int64                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *PackSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 错误消息
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 是否请求成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s PackSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PackSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PackSourceResponseBody) SetCode(v int64) *PackSourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PackSourceResponseBody) SetData(v *PackSourceResponseBodyData) *PackSourceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *PackSourceResponseBody) SetMessage(v string) *PackSourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *PackSourceResponseBody) SetRequestId(v string) *PackSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PackSourceResponseBody) SetSuccess(v bool) *PackSourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type PackSourceResponseBodyData struct {
+	// 任务ID
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s PackSourceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PackSourceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *PackSourceResponseBodyData) SetTaskId(v string) *PackSourceResponseBodyData {
+	s.TaskId = &v
+	return s
+}
+
+type PackSourceResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PackSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PackSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PackSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PackSourceResponse) SetHeaders(v map[string]*string) *PackSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PackSourceResponse) SetStatusCode(v int32) *PackSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PackSourceResponse) SetBody(v *PackSourceResponseBody) *PackSourceResponse {
+	s.Body = v
+	return s
+}
+
 type PredImageRequest struct {
 	// 是否垂直矫正
 	CorrectVertical *bool `json:"CorrectVertical,omitempty" xml:"CorrectVertical,omitempty"`
@@ -5853,6 +6087,8 @@ type PublishStatusResponseBody struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 是否请求成功
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 文件同步状态
+	SyncStatus *string `json:"SyncStatus,omitempty" xml:"SyncStatus,omitempty"`
 }
 
 func (s PublishStatusResponseBody) String() string {
@@ -5885,6 +6121,11 @@ func (s *PublishStatusResponseBody) SetStatus(v string) *PublishStatusResponseBo
 
 func (s *PublishStatusResponseBody) SetSuccess(v bool) *PublishStatusResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *PublishStatusResponseBody) SetSyncStatus(v string) *PublishStatusResponseBody {
+	s.SyncStatus = &v
 	return s
 }
 
@@ -8855,6 +9096,50 @@ func (client *Client) GetSingleConnData(request *GetSingleConnDataRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) GetSourcePackStatusWithOptions(request *GetSourcePackStatusRequest, runtime *util.RuntimeOptions) (_result *GetSourcePackStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSourcePackStatus"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetSourcePackStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetSourcePackStatus(request *GetSourcePackStatusRequest) (_result *GetSourcePackStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetSourcePackStatusResponse{}
+	_body, _err := client.GetSourcePackStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetSubSceneTaskStatusWithOptions(request *GetSubSceneTaskStatusRequest, runtime *util.RuntimeOptions) (_result *GetSubSceneTaskStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8997,8 +9282,8 @@ func (client *Client) LabelBuildWithOptions(request *LabelBuildRequest, runtime 
 		query["Mode"] = request.Mode
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.OptimizeModelEffect)) {
-		query["OptimizeModelEffect"] = request.OptimizeModelEffect
+	if !tea.BoolValue(util.IsUnset(request.ModelStyle)) {
+		query["ModelStyle"] = request.ModelStyle
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OptimizeWallWidth)) {
@@ -9360,6 +9645,50 @@ func (client *Client) PackScene(request *PackSceneRequest) (_result *PackSceneRe
 	runtime := &util.RuntimeOptions{}
 	_result = &PackSceneResponse{}
 	_body, _err := client.PackSceneWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PackSourceWithOptions(request *PackSourceRequest, runtime *util.RuntimeOptions) (_result *PackSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SceneId)) {
+		query["SceneId"] = request.SceneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PackSource"),
+		Version:     tea.String("2020-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PackSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PackSource(request *PackSourceRequest) (_result *PackSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PackSourceResponse{}
+	_body, _err := client.PackSourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
