@@ -376,8 +376,6 @@ func (s *DeleteUserResponse) SetStatusCode(v int32) *DeleteUserResponse {
 }
 
 type GenerateDeviceCodeRequest struct {
-	// 客户端ID
-	ClientId *string `json:"client_id,omitempty" xml:"client_id,omitempty"`
 	// scope范围
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
 }
@@ -388,11 +386,6 @@ func (s GenerateDeviceCodeRequest) String() string {
 
 func (s GenerateDeviceCodeRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GenerateDeviceCodeRequest) SetClientId(v string) *GenerateDeviceCodeRequest {
-	s.ClientId = &v
-	return s
 }
 
 func (s *GenerateDeviceCodeRequest) SetScope(v string) *GenerateDeviceCodeRequest {
@@ -2610,10 +2603,6 @@ func (client *Client) GenerateDeviceCodeWithOptions(instanceId *string, applicat
 	instanceId = openapiutil.GetEncodeParam(instanceId)
 	applicationId = openapiutil.GetEncodeParam(applicationId)
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
-		query["client_id"] = request.ClientId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Scope)) {
 		query["scope"] = request.Scope
 	}
