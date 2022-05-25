@@ -151,8 +151,9 @@ func (s *DetectCardScreenshotResponseBodyDataSpoofResultResultMap) SetScreenThre
 }
 
 type DetectCardScreenshotResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectCardScreenshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectCardScreenshotResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectCardScreenshotResponse) String() string {
@@ -165,6 +166,11 @@ func (s DetectCardScreenshotResponse) GoString() string {
 
 func (s *DetectCardScreenshotResponse) SetHeaders(v map[string]*string) *DetectCardScreenshotResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectCardScreenshotResponse) SetStatusCode(v int32) *DetectCardScreenshotResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -255,8 +261,9 @@ func (s *GetAsyncJobResultResponseBodyData) SetStatus(v string) *GetAsyncJobResu
 }
 
 type GetAsyncJobResultResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetAsyncJobResultResponse) String() string {
@@ -269,6 +276,11 @@ func (s GetAsyncJobResultResponse) GoString() string {
 
 func (s *GetAsyncJobResultResponse) SetHeaders(v map[string]*string) *GetAsyncJobResultResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetAsyncJobResultResponse) SetStatusCode(v int32) *GetAsyncJobResultResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -605,8 +617,9 @@ func (s *RecognizeAccountPageResponseBodyDataUndertakeStampAreas) SetWidth(v int
 }
 
 type RecognizeAccountPageResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeAccountPageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeAccountPageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeAccountPageResponse) String() string {
@@ -619,6 +632,11 @@ func (s RecognizeAccountPageResponse) GoString() string {
 
 func (s *RecognizeAccountPageResponse) SetHeaders(v map[string]*string) *RecognizeAccountPageResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeAccountPageResponse) SetStatusCode(v int32) *RecognizeAccountPageResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -714,8 +732,9 @@ func (s *RecognizeBankCardResponseBodyData) SetValidDate(v string) *RecognizeBan
 }
 
 type RecognizeBankCardResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeBankCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeBankCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeBankCardResponse) String() string {
@@ -728,6 +747,11 @@ func (s RecognizeBankCardResponse) GoString() string {
 
 func (s *RecognizeBankCardResponse) SetHeaders(v map[string]*string) *RecognizeBankCardResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeBankCardResponse) SetStatusCode(v int32) *RecognizeBankCardResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -853,8 +877,9 @@ func (s *RecognizeBusinessCardResponseBodyData) SetTitles(v []*string) *Recogniz
 }
 
 type RecognizeBusinessCardResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeBusinessCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeBusinessCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeBusinessCardResponse) String() string {
@@ -867,6 +892,11 @@ func (s RecognizeBusinessCardResponse) GoString() string {
 
 func (s *RecognizeBusinessCardResponse) SetHeaders(v map[string]*string) *RecognizeBusinessCardResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeBusinessCardResponse) SetStatusCode(v int32) *RecognizeBusinessCardResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1168,8 +1198,9 @@ func (s *RecognizeBusinessLicenseResponseBodyDataTitle) SetWidth(v int32) *Recog
 }
 
 type RecognizeBusinessLicenseResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeBusinessLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeBusinessLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeBusinessLicenseResponse) String() string {
@@ -1182,6 +1213,11 @@ func (s RecognizeBusinessLicenseResponse) GoString() string {
 
 func (s *RecognizeBusinessLicenseResponse) SetHeaders(v map[string]*string) *RecognizeBusinessLicenseResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeBusinessLicenseResponse) SetStatusCode(v int32) *RecognizeBusinessLicenseResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1359,8 +1395,9 @@ func (s *RecognizeCharacterResponseBodyDataResultsTextRectangles) SetWidth(v int
 }
 
 type RecognizeCharacterResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeCharacterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeCharacterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeCharacterResponse) String() string {
@@ -1373,6 +1410,11 @@ func (s RecognizeCharacterResponse) GoString() string {
 
 func (s *RecognizeCharacterResponse) SetHeaders(v map[string]*string) *RecognizeCharacterResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeCharacterResponse) SetStatusCode(v int32) *RecognizeCharacterResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1582,8 +1624,9 @@ func (s *RecognizeChinapassportResponseBodyData) SetType(v string) *RecognizeChi
 }
 
 type RecognizeChinapassportResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeChinapassportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeChinapassportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeChinapassportResponse) String() string {
@@ -1596,6 +1639,11 @@ func (s RecognizeChinapassportResponse) GoString() string {
 
 func (s *RecognizeChinapassportResponse) SetHeaders(v map[string]*string) *RecognizeChinapassportResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeChinapassportResponse) SetStatusCode(v int32) *RecognizeChinapassportResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1797,8 +1845,9 @@ func (s *RecognizeDriverLicenseResponseBodyDataFaceResult) SetVehicleType(v stri
 }
 
 type RecognizeDriverLicenseResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeDriverLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeDriverLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeDriverLicenseResponse) String() string {
@@ -1811,6 +1860,11 @@ func (s RecognizeDriverLicenseResponse) GoString() string {
 
 func (s *RecognizeDriverLicenseResponse) SetHeaders(v map[string]*string) *RecognizeDriverLicenseResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeDriverLicenseResponse) SetStatusCode(v int32) *RecognizeDriverLicenseResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2054,8 +2108,9 @@ func (s *RecognizeDrivingLicenseResponseBodyDataFaceResult) SetVin(v string) *Re
 }
 
 type RecognizeDrivingLicenseResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeDrivingLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeDrivingLicenseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeDrivingLicenseResponse) String() string {
@@ -2068,6 +2123,11 @@ func (s RecognizeDrivingLicenseResponse) GoString() string {
 
 func (s *RecognizeDrivingLicenseResponse) SetHeaders(v map[string]*string) *RecognizeDrivingLicenseResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeDrivingLicenseResponse) SetStatusCode(v int32) *RecognizeDrivingLicenseResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2384,8 +2444,9 @@ func (s *RecognizeIdentityCardResponseBodyDataFrontResultFaceRectangleSize) SetW
 }
 
 type RecognizeIdentityCardResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeIdentityCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeIdentityCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeIdentityCardResponse) String() string {
@@ -2401,7 +2462,1386 @@ func (s *RecognizeIdentityCardResponse) SetHeaders(v map[string]*string) *Recogn
 	return s
 }
 
+func (s *RecognizeIdentityCardResponse) SetStatusCode(v int32) *RecognizeIdentityCardResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *RecognizeIdentityCardResponse) SetBody(v *RecognizeIdentityCardResponseBody) *RecognizeIdentityCardResponse {
+	s.Body = v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardRequest struct {
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardRequest) SetImageUrl(v string) *RecognizeIndonesiaIdentityCardRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardAdvanceRequest struct {
+	ImageUrlObject io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
+}
+
+func (s RecognizeIndonesiaIdentityCardAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardAdvanceRequest) SetImageUrlObject(v io.Reader) *RecognizeIndonesiaIdentityCardAdvanceRequest {
+	s.ImageUrlObject = v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBody struct {
+	Data *RecognizeIndonesiaIdentityCardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBody) SetData(v *RecognizeIndonesiaIdentityCardResponseBodyData) *RecognizeIndonesiaIdentityCardResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBody) SetRequestId(v string) *RecognizeIndonesiaIdentityCardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyData struct {
+	AddressFifthLine  *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFifthLine  `json:"AddressFifthLine,omitempty" xml:"AddressFifthLine,omitempty" type:"Struct"`
+	AddressFirstLine  *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFirstLine  `json:"AddressFirstLine,omitempty" xml:"AddressFirstLine,omitempty" type:"Struct"`
+	AddressFourthLine *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFourthLine `json:"AddressFourthLine,omitempty" xml:"AddressFourthLine,omitempty" type:"Struct"`
+	AddressSecondLine *RecognizeIndonesiaIdentityCardResponseBodyDataAddressSecondLine `json:"AddressSecondLine,omitempty" xml:"AddressSecondLine,omitempty" type:"Struct"`
+	AddressThirdLine  *RecognizeIndonesiaIdentityCardResponseBodyDataAddressThirdLine  `json:"AddressThirdLine,omitempty" xml:"AddressThirdLine,omitempty" type:"Struct"`
+	BirthDate         *RecognizeIndonesiaIdentityCardResponseBodyDataBirthDate         `json:"BirthDate,omitempty" xml:"BirthDate,omitempty" type:"Struct"`
+	BirthPlace        *RecognizeIndonesiaIdentityCardResponseBodyDataBirthPlace        `json:"BirthPlace,omitempty" xml:"BirthPlace,omitempty" type:"Struct"`
+	CardBox           *RecognizeIndonesiaIdentityCardResponseBodyDataCardBox           `json:"CardBox,omitempty" xml:"CardBox,omitempty" type:"Struct"`
+	ExpiryDate        *RecognizeIndonesiaIdentityCardResponseBodyDataExpiryDate        `json:"ExpiryDate,omitempty" xml:"ExpiryDate,omitempty" type:"Struct"`
+	Gender            *RecognizeIndonesiaIdentityCardResponseBodyDataGender            `json:"Gender,omitempty" xml:"Gender,omitempty" type:"Struct"`
+	Height            *RecognizeIndonesiaIdentityCardResponseBodyDataHeight            `json:"Height,omitempty" xml:"Height,omitempty" type:"Struct"`
+	IdNumber          *RecognizeIndonesiaIdentityCardResponseBodyDataIdNumber          `json:"IdNumber,omitempty" xml:"IdNumber,omitempty" type:"Struct"`
+	LicenseNumber     *RecognizeIndonesiaIdentityCardResponseBodyDataLicenseNumber     `json:"LicenseNumber,omitempty" xml:"LicenseNumber,omitempty" type:"Struct"`
+	MaritalStatus     *RecognizeIndonesiaIdentityCardResponseBodyDataMaritalStatus     `json:"MaritalStatus,omitempty" xml:"MaritalStatus,omitempty" type:"Struct"`
+	NameFirstLine     *RecognizeIndonesiaIdentityCardResponseBodyDataNameFirstLine     `json:"NameFirstLine,omitempty" xml:"NameFirstLine,omitempty" type:"Struct"`
+	NameSecondLine    *RecognizeIndonesiaIdentityCardResponseBodyDataNameSecondLine    `json:"NameSecondLine,omitempty" xml:"NameSecondLine,omitempty" type:"Struct"`
+	Nationality       *RecognizeIndonesiaIdentityCardResponseBodyDataNationality       `json:"Nationality,omitempty" xml:"Nationality,omitempty" type:"Struct"`
+	Occupation        *RecognizeIndonesiaIdentityCardResponseBodyDataOccupation        `json:"Occupation,omitempty" xml:"Occupation,omitempty" type:"Struct"`
+	PortraitBox       *RecognizeIndonesiaIdentityCardResponseBodyDataPortraitBox       `json:"PortraitBox,omitempty" xml:"PortraitBox,omitempty" type:"Struct"`
+	Province          *RecognizeIndonesiaIdentityCardResponseBodyDataProvince          `json:"Province,omitempty" xml:"Province,omitempty" type:"Struct"`
+	Religion          *RecognizeIndonesiaIdentityCardResponseBodyDataReligion          `json:"Religion,omitempty" xml:"Religion,omitempty" type:"Struct"`
+	Sex               *RecognizeIndonesiaIdentityCardResponseBodyDataSex               `json:"Sex,omitempty" xml:"Sex,omitempty" type:"Struct"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetAddressFifthLine(v *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFifthLine) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.AddressFifthLine = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetAddressFirstLine(v *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFirstLine) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.AddressFirstLine = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetAddressFourthLine(v *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFourthLine) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.AddressFourthLine = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetAddressSecondLine(v *RecognizeIndonesiaIdentityCardResponseBodyDataAddressSecondLine) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.AddressSecondLine = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetAddressThirdLine(v *RecognizeIndonesiaIdentityCardResponseBodyDataAddressThirdLine) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.AddressThirdLine = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetBirthDate(v *RecognizeIndonesiaIdentityCardResponseBodyDataBirthDate) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.BirthDate = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetBirthPlace(v *RecognizeIndonesiaIdentityCardResponseBodyDataBirthPlace) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.BirthPlace = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetCardBox(v *RecognizeIndonesiaIdentityCardResponseBodyDataCardBox) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.CardBox = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetExpiryDate(v *RecognizeIndonesiaIdentityCardResponseBodyDataExpiryDate) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.ExpiryDate = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetGender(v *RecognizeIndonesiaIdentityCardResponseBodyDataGender) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.Gender = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetHeight(v *RecognizeIndonesiaIdentityCardResponseBodyDataHeight) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.Height = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetIdNumber(v *RecognizeIndonesiaIdentityCardResponseBodyDataIdNumber) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.IdNumber = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetLicenseNumber(v *RecognizeIndonesiaIdentityCardResponseBodyDataLicenseNumber) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.LicenseNumber = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetMaritalStatus(v *RecognizeIndonesiaIdentityCardResponseBodyDataMaritalStatus) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.MaritalStatus = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetNameFirstLine(v *RecognizeIndonesiaIdentityCardResponseBodyDataNameFirstLine) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.NameFirstLine = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetNameSecondLine(v *RecognizeIndonesiaIdentityCardResponseBodyDataNameSecondLine) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.NameSecondLine = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetNationality(v *RecognizeIndonesiaIdentityCardResponseBodyDataNationality) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.Nationality = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetOccupation(v *RecognizeIndonesiaIdentityCardResponseBodyDataOccupation) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.Occupation = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetPortraitBox(v *RecognizeIndonesiaIdentityCardResponseBodyDataPortraitBox) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.PortraitBox = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetProvince(v *RecognizeIndonesiaIdentityCardResponseBodyDataProvince) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.Province = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetReligion(v *RecognizeIndonesiaIdentityCardResponseBodyDataReligion) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.Religion = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyData) SetSex(v *RecognizeIndonesiaIdentityCardResponseBodyDataSex) *RecognizeIndonesiaIdentityCardResponseBodyData {
+	s.Sex = v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataAddressFifthLine struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataAddressFifthLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                                   `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                    `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataAddressFifthLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataAddressFifthLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFifthLine) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataAddressFifthLineKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFifthLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFifthLine) SetScore(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFifthLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFifthLine) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFifthLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataAddressFifthLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataAddressFifthLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataAddressFifthLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFifthLineKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFifthLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFifthLineKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFifthLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataAddressFirstLine struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataAddressFirstLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                                   `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                    `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataAddressFirstLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataAddressFirstLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFirstLine) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataAddressFirstLineKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFirstLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFirstLine) SetScore(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFirstLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFirstLine) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFirstLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataAddressFirstLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataAddressFirstLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataAddressFirstLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFirstLineKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFirstLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFirstLineKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFirstLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataAddressFourthLine struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataAddressFourthLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                                    `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                     `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataAddressFourthLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataAddressFourthLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFourthLine) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataAddressFourthLineKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFourthLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFourthLine) SetScore(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFourthLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFourthLine) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFourthLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataAddressFourthLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataAddressFourthLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataAddressFourthLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFourthLineKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFourthLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFourthLineKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressFourthLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataAddressSecondLine struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataAddressSecondLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                                    `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                     `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataAddressSecondLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataAddressSecondLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressSecondLine) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataAddressSecondLineKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressSecondLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressSecondLine) SetScore(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressSecondLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressSecondLine) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressSecondLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataAddressSecondLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataAddressSecondLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataAddressSecondLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressSecondLineKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressSecondLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressSecondLineKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressSecondLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataAddressThirdLine struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataAddressThirdLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                                   `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                    `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataAddressThirdLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataAddressThirdLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressThirdLine) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataAddressThirdLineKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressThirdLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressThirdLine) SetScore(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressThirdLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressThirdLine) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressThirdLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataAddressThirdLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataAddressThirdLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataAddressThirdLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressThirdLineKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressThirdLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataAddressThirdLineKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataAddressThirdLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataBirthDate struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataBirthDateKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                             `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                             `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataBirthDate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataBirthDate) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataBirthDate) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataBirthDateKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataBirthDate {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataBirthDate) SetScore(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataBirthDate {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataBirthDate) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataBirthDate {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataBirthDateKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataBirthDateKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataBirthDateKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataBirthDateKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataBirthDateKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataBirthDateKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataBirthDateKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataBirthPlace struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataBirthPlaceKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                              `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                              `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataBirthPlace) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataBirthPlace) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataBirthPlace) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataBirthPlaceKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataBirthPlace {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataBirthPlace) SetScore(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataBirthPlace {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataBirthPlace) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataBirthPlace {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataBirthPlaceKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataBirthPlaceKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataBirthPlaceKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataBirthPlaceKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataBirthPlaceKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataBirthPlaceKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataBirthPlaceKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataCardBox struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataCardBoxKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                           `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                           `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataCardBox) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataCardBox) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataCardBox) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataCardBoxKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataCardBox {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataCardBox) SetScore(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataCardBox {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataCardBox) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataCardBox {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataCardBoxKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataCardBoxKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataCardBoxKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataCardBoxKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataCardBoxKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataCardBoxKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataCardBoxKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataExpiryDate struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataExpiryDateKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                              `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                              `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataExpiryDate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataExpiryDate) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataExpiryDate) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataExpiryDateKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataExpiryDate {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataExpiryDate) SetScore(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataExpiryDate {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataExpiryDate) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataExpiryDate {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataExpiryDateKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataExpiryDateKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataExpiryDateKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataExpiryDateKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataExpiryDateKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataExpiryDateKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataExpiryDateKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataGender struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataGenderKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                          `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                          `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataGender) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataGender) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataGender) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataGenderKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataGender {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataGender) SetScore(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataGender {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataGender) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataGender {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataGenderKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataGenderKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataGenderKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataGenderKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataGenderKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataGenderKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataGenderKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataHeight struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataHeightKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                          `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                          `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataHeight) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataHeight) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataHeight) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataHeightKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataHeight {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataHeight) SetScore(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataHeight {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataHeight) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataHeight {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataHeightKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataHeightKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataHeightKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataHeightKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataHeightKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataHeightKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataHeightKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataIdNumber struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataIdNumberKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                            `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                            `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataIdNumber) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataIdNumber) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataIdNumber) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataIdNumberKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataIdNumber {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataIdNumber) SetScore(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataIdNumber {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataIdNumber) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataIdNumber {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataIdNumberKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataIdNumberKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataIdNumberKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataIdNumberKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataIdNumberKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataIdNumberKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataIdNumberKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataLicenseNumber struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataLicenseNumberKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                                 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                 `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataLicenseNumber) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataLicenseNumber) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataLicenseNumber) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataLicenseNumberKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataLicenseNumber {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataLicenseNumber) SetScore(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataLicenseNumber {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataLicenseNumber) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataLicenseNumber {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataLicenseNumberKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataLicenseNumberKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataLicenseNumberKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataLicenseNumberKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataLicenseNumberKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataLicenseNumberKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataLicenseNumberKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataMaritalStatus struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataMaritalStatusKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                                 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                 `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataMaritalStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataMaritalStatus) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataMaritalStatus) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataMaritalStatusKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataMaritalStatus {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataMaritalStatus) SetScore(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataMaritalStatus {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataMaritalStatus) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataMaritalStatus {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataMaritalStatusKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataMaritalStatusKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataMaritalStatusKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataMaritalStatusKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataMaritalStatusKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataMaritalStatusKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataMaritalStatusKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataNameFirstLine struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataNameFirstLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                                 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                 `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataNameFirstLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataNameFirstLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataNameFirstLine) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataNameFirstLineKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataNameFirstLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataNameFirstLine) SetScore(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataNameFirstLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataNameFirstLine) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataNameFirstLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataNameFirstLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataNameFirstLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataNameFirstLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataNameFirstLineKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataNameFirstLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataNameFirstLineKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataNameFirstLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataNameSecondLine struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataNameSecondLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                                  `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                  `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataNameSecondLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataNameSecondLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataNameSecondLine) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataNameSecondLineKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataNameSecondLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataNameSecondLine) SetScore(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataNameSecondLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataNameSecondLine) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataNameSecondLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataNameSecondLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataNameSecondLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataNameSecondLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataNameSecondLineKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataNameSecondLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataNameSecondLineKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataNameSecondLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataNationality struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataNationalityKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                               `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                               `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataNationality) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataNationality) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataNationality) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataNationalityKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataNationality {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataNationality) SetScore(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataNationality {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataNationality) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataNationality {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataNationalityKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataNationalityKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataNationalityKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataNationalityKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataNationalityKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataNationalityKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataNationalityKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataOccupation struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataOccupationKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                              `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                              `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataOccupation) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataOccupation) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataOccupation) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataOccupationKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataOccupation {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataOccupation) SetScore(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataOccupation {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataOccupation) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataOccupation {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataOccupationKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataOccupationKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataOccupationKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataOccupationKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataOccupationKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataOccupationKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataOccupationKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataPortraitBox struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataPortraitBoxKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                               `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                               `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataPortraitBox) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataPortraitBox) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataPortraitBox) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataPortraitBoxKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataPortraitBox {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataPortraitBox) SetScore(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataPortraitBox {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataPortraitBox) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataPortraitBox {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataPortraitBoxKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataPortraitBoxKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataPortraitBoxKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataPortraitBoxKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataPortraitBoxKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataPortraitBoxKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataPortraitBoxKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataProvince struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataProvinceKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                            `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                            `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataProvince) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataProvince) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataProvince) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataProvinceKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataProvince {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataProvince) SetScore(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataProvince {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataProvince) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataProvince {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataProvinceKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataProvinceKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataProvinceKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataProvinceKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataProvinceKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataProvinceKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataProvinceKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataReligion struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataReligionKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                            `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                            `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataReligion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataReligion) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataReligion) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataReligionKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataReligion {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataReligion) SetScore(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataReligion {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataReligion) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataReligion {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataReligionKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataReligionKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataReligionKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataReligionKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataReligionKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataReligionKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataReligionKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataSex struct {
+	KeyPoints []*RecognizeIndonesiaIdentityCardResponseBodyDataSexKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                       `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                       `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataSex) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataSex) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataSex) SetKeyPoints(v []*RecognizeIndonesiaIdentityCardResponseBodyDataSexKeyPoints) *RecognizeIndonesiaIdentityCardResponseBodyDataSex {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataSex) SetScore(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataSex {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataSex) SetText(v string) *RecognizeIndonesiaIdentityCardResponseBodyDataSex {
+	s.Text = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponseBodyDataSexKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataSexKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponseBodyDataSexKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataSexKeyPoints) SetX(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataSexKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponseBodyDataSexKeyPoints) SetY(v float32) *RecognizeIndonesiaIdentityCardResponseBodyDataSexKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeIndonesiaIdentityCardResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeIndonesiaIdentityCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RecognizeIndonesiaIdentityCardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeIndonesiaIdentityCardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponse) SetHeaders(v map[string]*string) *RecognizeIndonesiaIdentityCardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponse) SetStatusCode(v int32) *RecognizeIndonesiaIdentityCardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RecognizeIndonesiaIdentityCardResponse) SetBody(v *RecognizeIndonesiaIdentityCardResponseBody) *RecognizeIndonesiaIdentityCardResponse {
 	s.Body = v
 	return s
 }
@@ -2586,8 +4026,9 @@ func (s *RecognizeLicensePlateResponseBodyDataPlatesRoi) SetY(v int32) *Recogniz
 }
 
 type RecognizeLicensePlateResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeLicensePlateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeLicensePlateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeLicensePlateResponse) String() string {
@@ -2603,7 +4044,980 @@ func (s *RecognizeLicensePlateResponse) SetHeaders(v map[string]*string) *Recogn
 	return s
 }
 
+func (s *RecognizeLicensePlateResponse) SetStatusCode(v int32) *RecognizeLicensePlateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *RecognizeLicensePlateResponse) SetBody(v *RecognizeLicensePlateResponseBody) *RecognizeLicensePlateResponse {
+	s.Body = v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardRequest struct {
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardRequest) SetImageUrl(v string) *RecognizeMalaysiaIdentityCardRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardAdvanceRequest struct {
+	ImageUrlObject io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
+}
+
+func (s RecognizeMalaysiaIdentityCardAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardAdvanceRequest) SetImageUrlObject(v io.Reader) *RecognizeMalaysiaIdentityCardAdvanceRequest {
+	s.ImageUrlObject = v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBody struct {
+	Data *RecognizeMalaysiaIdentityCardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBody) SetData(v *RecognizeMalaysiaIdentityCardResponseBodyData) *RecognizeMalaysiaIdentityCardResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBody) SetRequestId(v string) *RecognizeMalaysiaIdentityCardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyData struct {
+	AddressFifthLine  *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFifthLine  `json:"AddressFifthLine,omitempty" xml:"AddressFifthLine,omitempty" type:"Struct"`
+	AddressFirstLine  *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFirstLine  `json:"AddressFirstLine,omitempty" xml:"AddressFirstLine,omitempty" type:"Struct"`
+	AddressFourthLine *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFourthLine `json:"AddressFourthLine,omitempty" xml:"AddressFourthLine,omitempty" type:"Struct"`
+	AddressSecondLine *RecognizeMalaysiaIdentityCardResponseBodyDataAddressSecondLine `json:"AddressSecondLine,omitempty" xml:"AddressSecondLine,omitempty" type:"Struct"`
+	AddressThirdLine  *RecognizeMalaysiaIdentityCardResponseBodyDataAddressThirdLine  `json:"AddressThirdLine,omitempty" xml:"AddressThirdLine,omitempty" type:"Struct"`
+	CardBox           *RecognizeMalaysiaIdentityCardResponseBodyDataCardBox           `json:"CardBox,omitempty" xml:"CardBox,omitempty" type:"Struct"`
+	DriveClass        *RecognizeMalaysiaIdentityCardResponseBodyDataDriveClass        `json:"DriveClass,omitempty" xml:"DriveClass,omitempty" type:"Struct"`
+	ExpiryDate        *RecognizeMalaysiaIdentityCardResponseBodyDataExpiryDate        `json:"ExpiryDate,omitempty" xml:"ExpiryDate,omitempty" type:"Struct"`
+	IdNumber          *RecognizeMalaysiaIdentityCardResponseBodyDataIdNumber          `json:"IdNumber,omitempty" xml:"IdNumber,omitempty" type:"Struct"`
+	IssueDate         *RecognizeMalaysiaIdentityCardResponseBodyDataIssueDate         `json:"IssueDate,omitempty" xml:"IssueDate,omitempty" type:"Struct"`
+	NameFirstLine     *RecognizeMalaysiaIdentityCardResponseBodyDataNameFirstLine     `json:"NameFirstLine,omitempty" xml:"NameFirstLine,omitempty" type:"Struct"`
+	NameSecondLine    *RecognizeMalaysiaIdentityCardResponseBodyDataNameSecondLine    `json:"NameSecondLine,omitempty" xml:"NameSecondLine,omitempty" type:"Struct"`
+	Nationality       *RecognizeMalaysiaIdentityCardResponseBodyDataNationality       `json:"Nationality,omitempty" xml:"Nationality,omitempty" type:"Struct"`
+	PortraitBox       *RecognizeMalaysiaIdentityCardResponseBodyDataPortraitBox       `json:"PortraitBox,omitempty" xml:"PortraitBox,omitempty" type:"Struct"`
+	Sex               *RecognizeMalaysiaIdentityCardResponseBodyDataSex               `json:"Sex,omitempty" xml:"Sex,omitempty" type:"Struct"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyData) SetAddressFifthLine(v *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFifthLine) *RecognizeMalaysiaIdentityCardResponseBodyData {
+	s.AddressFifthLine = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyData) SetAddressFirstLine(v *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFirstLine) *RecognizeMalaysiaIdentityCardResponseBodyData {
+	s.AddressFirstLine = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyData) SetAddressFourthLine(v *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFourthLine) *RecognizeMalaysiaIdentityCardResponseBodyData {
+	s.AddressFourthLine = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyData) SetAddressSecondLine(v *RecognizeMalaysiaIdentityCardResponseBodyDataAddressSecondLine) *RecognizeMalaysiaIdentityCardResponseBodyData {
+	s.AddressSecondLine = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyData) SetAddressThirdLine(v *RecognizeMalaysiaIdentityCardResponseBodyDataAddressThirdLine) *RecognizeMalaysiaIdentityCardResponseBodyData {
+	s.AddressThirdLine = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyData) SetCardBox(v *RecognizeMalaysiaIdentityCardResponseBodyDataCardBox) *RecognizeMalaysiaIdentityCardResponseBodyData {
+	s.CardBox = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyData) SetDriveClass(v *RecognizeMalaysiaIdentityCardResponseBodyDataDriveClass) *RecognizeMalaysiaIdentityCardResponseBodyData {
+	s.DriveClass = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyData) SetExpiryDate(v *RecognizeMalaysiaIdentityCardResponseBodyDataExpiryDate) *RecognizeMalaysiaIdentityCardResponseBodyData {
+	s.ExpiryDate = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyData) SetIdNumber(v *RecognizeMalaysiaIdentityCardResponseBodyDataIdNumber) *RecognizeMalaysiaIdentityCardResponseBodyData {
+	s.IdNumber = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyData) SetIssueDate(v *RecognizeMalaysiaIdentityCardResponseBodyDataIssueDate) *RecognizeMalaysiaIdentityCardResponseBodyData {
+	s.IssueDate = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyData) SetNameFirstLine(v *RecognizeMalaysiaIdentityCardResponseBodyDataNameFirstLine) *RecognizeMalaysiaIdentityCardResponseBodyData {
+	s.NameFirstLine = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyData) SetNameSecondLine(v *RecognizeMalaysiaIdentityCardResponseBodyDataNameSecondLine) *RecognizeMalaysiaIdentityCardResponseBodyData {
+	s.NameSecondLine = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyData) SetNationality(v *RecognizeMalaysiaIdentityCardResponseBodyDataNationality) *RecognizeMalaysiaIdentityCardResponseBodyData {
+	s.Nationality = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyData) SetPortraitBox(v *RecognizeMalaysiaIdentityCardResponseBodyDataPortraitBox) *RecognizeMalaysiaIdentityCardResponseBodyData {
+	s.PortraitBox = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyData) SetSex(v *RecognizeMalaysiaIdentityCardResponseBodyDataSex) *RecognizeMalaysiaIdentityCardResponseBodyData {
+	s.Sex = v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataAddressFifthLine struct {
+	KeyPoints []*RecognizeMalaysiaIdentityCardResponseBodyDataAddressFifthLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                                  `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                   `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataAddressFifthLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataAddressFifthLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFifthLine) SetKeyPoints(v []*RecognizeMalaysiaIdentityCardResponseBodyDataAddressFifthLineKeyPoints) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFifthLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFifthLine) SetScore(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFifthLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFifthLine) SetText(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFifthLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataAddressFifthLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataAddressFifthLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataAddressFifthLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFifthLineKeyPoints) SetX(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFifthLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFifthLineKeyPoints) SetY(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFifthLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataAddressFirstLine struct {
+	KeyPoints []*RecognizeMalaysiaIdentityCardResponseBodyDataAddressFirstLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                                  `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                   `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataAddressFirstLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataAddressFirstLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFirstLine) SetKeyPoints(v []*RecognizeMalaysiaIdentityCardResponseBodyDataAddressFirstLineKeyPoints) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFirstLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFirstLine) SetScore(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFirstLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFirstLine) SetText(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFirstLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataAddressFirstLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataAddressFirstLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataAddressFirstLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFirstLineKeyPoints) SetX(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFirstLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFirstLineKeyPoints) SetY(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFirstLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataAddressFourthLine struct {
+	KeyPoints []*RecognizeMalaysiaIdentityCardResponseBodyDataAddressFourthLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                                   `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                    `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataAddressFourthLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataAddressFourthLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFourthLine) SetKeyPoints(v []*RecognizeMalaysiaIdentityCardResponseBodyDataAddressFourthLineKeyPoints) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFourthLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFourthLine) SetScore(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFourthLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFourthLine) SetText(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFourthLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataAddressFourthLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataAddressFourthLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataAddressFourthLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFourthLineKeyPoints) SetX(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFourthLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFourthLineKeyPoints) SetY(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressFourthLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataAddressSecondLine struct {
+	KeyPoints []*RecognizeMalaysiaIdentityCardResponseBodyDataAddressSecondLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                                   `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                    `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataAddressSecondLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataAddressSecondLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressSecondLine) SetKeyPoints(v []*RecognizeMalaysiaIdentityCardResponseBodyDataAddressSecondLineKeyPoints) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressSecondLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressSecondLine) SetScore(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressSecondLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressSecondLine) SetText(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressSecondLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataAddressSecondLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataAddressSecondLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataAddressSecondLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressSecondLineKeyPoints) SetX(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressSecondLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressSecondLineKeyPoints) SetY(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressSecondLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataAddressThirdLine struct {
+	KeyPoints []*RecognizeMalaysiaIdentityCardResponseBodyDataAddressThirdLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                                  `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                   `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataAddressThirdLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataAddressThirdLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressThirdLine) SetKeyPoints(v []*RecognizeMalaysiaIdentityCardResponseBodyDataAddressThirdLineKeyPoints) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressThirdLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressThirdLine) SetScore(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressThirdLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressThirdLine) SetText(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressThirdLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataAddressThirdLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataAddressThirdLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataAddressThirdLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressThirdLineKeyPoints) SetX(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressThirdLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataAddressThirdLineKeyPoints) SetY(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataAddressThirdLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataCardBox struct {
+	KeyPoints []*RecognizeMalaysiaIdentityCardResponseBodyDataCardBoxKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                          `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                          `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataCardBox) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataCardBox) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataCardBox) SetKeyPoints(v []*RecognizeMalaysiaIdentityCardResponseBodyDataCardBoxKeyPoints) *RecognizeMalaysiaIdentityCardResponseBodyDataCardBox {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataCardBox) SetScore(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataCardBox {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataCardBox) SetText(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataCardBox {
+	s.Text = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataCardBoxKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataCardBoxKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataCardBoxKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataCardBoxKeyPoints) SetX(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataCardBoxKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataCardBoxKeyPoints) SetY(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataCardBoxKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataDriveClass struct {
+	KeyPoints []*RecognizeMalaysiaIdentityCardResponseBodyDataDriveClassKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                             `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                             `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataDriveClass) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataDriveClass) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataDriveClass) SetKeyPoints(v []*RecognizeMalaysiaIdentityCardResponseBodyDataDriveClassKeyPoints) *RecognizeMalaysiaIdentityCardResponseBodyDataDriveClass {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataDriveClass) SetScore(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataDriveClass {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataDriveClass) SetText(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataDriveClass {
+	s.Text = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataDriveClassKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataDriveClassKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataDriveClassKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataDriveClassKeyPoints) SetX(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataDriveClassKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataDriveClassKeyPoints) SetY(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataDriveClassKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataExpiryDate struct {
+	KeyPoints []*RecognizeMalaysiaIdentityCardResponseBodyDataExpiryDateKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                             `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                             `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataExpiryDate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataExpiryDate) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataExpiryDate) SetKeyPoints(v []*RecognizeMalaysiaIdentityCardResponseBodyDataExpiryDateKeyPoints) *RecognizeMalaysiaIdentityCardResponseBodyDataExpiryDate {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataExpiryDate) SetScore(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataExpiryDate {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataExpiryDate) SetText(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataExpiryDate {
+	s.Text = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataExpiryDateKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataExpiryDateKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataExpiryDateKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataExpiryDateKeyPoints) SetX(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataExpiryDateKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataExpiryDateKeyPoints) SetY(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataExpiryDateKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataIdNumber struct {
+	KeyPoints []*RecognizeMalaysiaIdentityCardResponseBodyDataIdNumberKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                           `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                           `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataIdNumber) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataIdNumber) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataIdNumber) SetKeyPoints(v []*RecognizeMalaysiaIdentityCardResponseBodyDataIdNumberKeyPoints) *RecognizeMalaysiaIdentityCardResponseBodyDataIdNumber {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataIdNumber) SetScore(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataIdNumber {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataIdNumber) SetText(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataIdNumber {
+	s.Text = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataIdNumberKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataIdNumberKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataIdNumberKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataIdNumberKeyPoints) SetX(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataIdNumberKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataIdNumberKeyPoints) SetY(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataIdNumberKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataIssueDate struct {
+	KeyPoints []*RecognizeMalaysiaIdentityCardResponseBodyDataIssueDateKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                            `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                            `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataIssueDate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataIssueDate) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataIssueDate) SetKeyPoints(v []*RecognizeMalaysiaIdentityCardResponseBodyDataIssueDateKeyPoints) *RecognizeMalaysiaIdentityCardResponseBodyDataIssueDate {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataIssueDate) SetScore(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataIssueDate {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataIssueDate) SetText(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataIssueDate {
+	s.Text = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataIssueDateKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataIssueDateKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataIssueDateKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataIssueDateKeyPoints) SetX(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataIssueDateKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataIssueDateKeyPoints) SetY(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataIssueDateKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataNameFirstLine struct {
+	KeyPoints []*RecognizeMalaysiaIdentityCardResponseBodyDataNameFirstLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                                `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataNameFirstLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataNameFirstLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataNameFirstLine) SetKeyPoints(v []*RecognizeMalaysiaIdentityCardResponseBodyDataNameFirstLineKeyPoints) *RecognizeMalaysiaIdentityCardResponseBodyDataNameFirstLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataNameFirstLine) SetScore(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataNameFirstLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataNameFirstLine) SetText(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataNameFirstLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataNameFirstLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataNameFirstLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataNameFirstLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataNameFirstLineKeyPoints) SetX(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataNameFirstLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataNameFirstLineKeyPoints) SetY(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataNameFirstLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataNameSecondLine struct {
+	KeyPoints []*RecognizeMalaysiaIdentityCardResponseBodyDataNameSecondLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                                 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                 `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataNameSecondLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataNameSecondLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataNameSecondLine) SetKeyPoints(v []*RecognizeMalaysiaIdentityCardResponseBodyDataNameSecondLineKeyPoints) *RecognizeMalaysiaIdentityCardResponseBodyDataNameSecondLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataNameSecondLine) SetScore(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataNameSecondLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataNameSecondLine) SetText(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataNameSecondLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataNameSecondLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataNameSecondLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataNameSecondLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataNameSecondLineKeyPoints) SetX(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataNameSecondLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataNameSecondLineKeyPoints) SetY(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataNameSecondLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataNationality struct {
+	KeyPoints []*RecognizeMalaysiaIdentityCardResponseBodyDataNationalityKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                              `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                              `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataNationality) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataNationality) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataNationality) SetKeyPoints(v []*RecognizeMalaysiaIdentityCardResponseBodyDataNationalityKeyPoints) *RecognizeMalaysiaIdentityCardResponseBodyDataNationality {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataNationality) SetScore(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataNationality {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataNationality) SetText(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataNationality {
+	s.Text = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataNationalityKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataNationalityKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataNationalityKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataNationalityKeyPoints) SetX(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataNationalityKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataNationalityKeyPoints) SetY(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataNationalityKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataPortraitBox struct {
+	KeyPoints []*RecognizeMalaysiaIdentityCardResponseBodyDataPortraitBoxKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                              `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                              `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataPortraitBox) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataPortraitBox) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataPortraitBox) SetKeyPoints(v []*RecognizeMalaysiaIdentityCardResponseBodyDataPortraitBoxKeyPoints) *RecognizeMalaysiaIdentityCardResponseBodyDataPortraitBox {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataPortraitBox) SetScore(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataPortraitBox {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataPortraitBox) SetText(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataPortraitBox {
+	s.Text = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataPortraitBoxKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataPortraitBoxKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataPortraitBoxKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataPortraitBoxKeyPoints) SetX(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataPortraitBoxKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataPortraitBoxKeyPoints) SetY(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataPortraitBoxKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataSex struct {
+	KeyPoints []*RecognizeMalaysiaIdentityCardResponseBodyDataSexKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                      `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                      `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataSex) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataSex) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataSex) SetKeyPoints(v []*RecognizeMalaysiaIdentityCardResponseBodyDataSexKeyPoints) *RecognizeMalaysiaIdentityCardResponseBodyDataSex {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataSex) SetScore(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataSex {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataSex) SetText(v string) *RecognizeMalaysiaIdentityCardResponseBodyDataSex {
+	s.Text = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponseBodyDataSexKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataSexKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponseBodyDataSexKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataSexKeyPoints) SetX(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataSexKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponseBodyDataSexKeyPoints) SetY(v float32) *RecognizeMalaysiaIdentityCardResponseBodyDataSexKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeMalaysiaIdentityCardResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeMalaysiaIdentityCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RecognizeMalaysiaIdentityCardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeMalaysiaIdentityCardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponse) SetHeaders(v map[string]*string) *RecognizeMalaysiaIdentityCardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponse) SetStatusCode(v int32) *RecognizeMalaysiaIdentityCardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RecognizeMalaysiaIdentityCardResponse) SetBody(v *RecognizeMalaysiaIdentityCardResponseBody) *RecognizeMalaysiaIdentityCardResponse {
 	s.Body = v
 	return s
 }
@@ -2724,8 +5138,9 @@ func (s *RecognizePassportMRZResponseBodyDataRegions) SetRecognitionScore(v floa
 }
 
 type RecognizePassportMRZResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizePassportMRZResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizePassportMRZResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizePassportMRZResponse) String() string {
@@ -2738,6 +5153,11 @@ func (s RecognizePassportMRZResponse) GoString() string {
 
 func (s *RecognizePassportMRZResponse) SetHeaders(v map[string]*string) *RecognizePassportMRZResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizePassportMRZResponse) SetStatusCode(v int32) *RecognizePassportMRZResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2935,8 +5355,9 @@ func (s *RecognizePdfResponseBodyDataWordsInfoPositions) SetY(v int64) *Recogniz
 }
 
 type RecognizePdfResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizePdfResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizePdfResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizePdfResponse) String() string {
@@ -2949,6 +5370,11 @@ func (s RecognizePdfResponse) GoString() string {
 
 func (s *RecognizePdfResponse) SetHeaders(v map[string]*string) *RecognizePdfResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizePdfResponse) SetStatusCode(v int32) *RecognizePdfResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3119,8 +5545,9 @@ func (s *RecognizePoiNameResponseBodyDataSummary) SetScore(v float32) *Recognize
 }
 
 type RecognizePoiNameResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizePoiNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizePoiNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizePoiNameResponse) String() string {
@@ -3133,6 +5560,11 @@ func (s RecognizePoiNameResponse) GoString() string {
 
 func (s *RecognizePoiNameResponse) SetHeaders(v map[string]*string) *RecognizePoiNameResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizePoiNameResponse) SetStatusCode(v int32) *RecognizePoiNameResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3280,8 +5712,9 @@ func (s *RecognizeQrCodeResponseBodyDataElementsResults) SetSuggestion(v string)
 }
 
 type RecognizeQrCodeResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeQrCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeQrCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeQrCodeResponse) String() string {
@@ -3294,6 +5727,11 @@ func (s RecognizeQrCodeResponse) GoString() string {
 
 func (s *RecognizeQrCodeResponse) SetHeaders(v map[string]*string) *RecognizeQrCodeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeQrCodeResponse) SetStatusCode(v int32) *RecognizeQrCodeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3513,8 +5951,9 @@ func (s *RecognizeQuotaInvoiceResponseBodyDataKeyValueInfosValuePositions) SetY(
 }
 
 type RecognizeQuotaInvoiceResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeQuotaInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeQuotaInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeQuotaInvoiceResponse) String() string {
@@ -3530,7 +5969,806 @@ func (s *RecognizeQuotaInvoiceResponse) SetHeaders(v map[string]*string) *Recogn
 	return s
 }
 
+func (s *RecognizeQuotaInvoiceResponse) SetStatusCode(v int32) *RecognizeQuotaInvoiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *RecognizeQuotaInvoiceResponse) SetBody(v *RecognizeQuotaInvoiceResponseBody) *RecognizeQuotaInvoiceResponse {
+	s.Body = v
+	return s
+}
+
+type RecognizeRussiaIdentityCardRequest struct {
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardRequest) SetImageUrl(v string) *RecognizeRussiaIdentityCardRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardAdvanceRequest struct {
+	ImageUrlObject io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
+}
+
+func (s RecognizeRussiaIdentityCardAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardAdvanceRequest) SetImageUrlObject(v io.Reader) *RecognizeRussiaIdentityCardAdvanceRequest {
+	s.ImageUrlObject = v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBody struct {
+	Data *RecognizeRussiaIdentityCardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBody) SetData(v *RecognizeRussiaIdentityCardResponseBodyData) *RecognizeRussiaIdentityCardResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBody) SetRequestId(v string) *RecognizeRussiaIdentityCardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyData struct {
+	BirthDate            *RecognizeRussiaIdentityCardResponseBodyDataBirthDate            `json:"BirthDate,omitempty" xml:"BirthDate,omitempty" type:"Struct"`
+	BirthPlaceFirstLine  *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceFirstLine  `json:"BirthPlaceFirstLine,omitempty" xml:"BirthPlaceFirstLine,omitempty" type:"Struct"`
+	BirthPlaceSecondLine *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceSecondLine `json:"BirthPlaceSecondLine,omitempty" xml:"BirthPlaceSecondLine,omitempty" type:"Struct"`
+	BirthPlaceThirdLine  *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceThirdLine  `json:"BirthPlaceThirdLine,omitempty" xml:"BirthPlaceThirdLine,omitempty" type:"Struct"`
+	CardBox              *RecognizeRussiaIdentityCardResponseBodyDataCardBox              `json:"CardBox,omitempty" xml:"CardBox,omitempty" type:"Struct"`
+	GivenName            *RecognizeRussiaIdentityCardResponseBodyDataGivenName            `json:"GivenName,omitempty" xml:"GivenName,omitempty" type:"Struct"`
+	IdNumber             *RecognizeRussiaIdentityCardResponseBodyDataIdNumber             `json:"IdNumber,omitempty" xml:"IdNumber,omitempty" type:"Struct"`
+	PaternalName         *RecognizeRussiaIdentityCardResponseBodyDataPaternalName         `json:"PaternalName,omitempty" xml:"PaternalName,omitempty" type:"Struct"`
+	PortraitBox          *RecognizeRussiaIdentityCardResponseBodyDataPortraitBox          `json:"PortraitBox,omitempty" xml:"PortraitBox,omitempty" type:"Struct"`
+	Sex                  *RecognizeRussiaIdentityCardResponseBodyDataSex                  `json:"Sex,omitempty" xml:"Sex,omitempty" type:"Struct"`
+	SurnameFirstLine     *RecognizeRussiaIdentityCardResponseBodyDataSurnameFirstLine     `json:"SurnameFirstLine,omitempty" xml:"SurnameFirstLine,omitempty" type:"Struct"`
+	SurnameSecondLine    *RecognizeRussiaIdentityCardResponseBodyDataSurnameSecondLine    `json:"SurnameSecondLine,omitempty" xml:"SurnameSecondLine,omitempty" type:"Struct"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyData) SetBirthDate(v *RecognizeRussiaIdentityCardResponseBodyDataBirthDate) *RecognizeRussiaIdentityCardResponseBodyData {
+	s.BirthDate = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyData) SetBirthPlaceFirstLine(v *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceFirstLine) *RecognizeRussiaIdentityCardResponseBodyData {
+	s.BirthPlaceFirstLine = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyData) SetBirthPlaceSecondLine(v *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceSecondLine) *RecognizeRussiaIdentityCardResponseBodyData {
+	s.BirthPlaceSecondLine = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyData) SetBirthPlaceThirdLine(v *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceThirdLine) *RecognizeRussiaIdentityCardResponseBodyData {
+	s.BirthPlaceThirdLine = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyData) SetCardBox(v *RecognizeRussiaIdentityCardResponseBodyDataCardBox) *RecognizeRussiaIdentityCardResponseBodyData {
+	s.CardBox = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyData) SetGivenName(v *RecognizeRussiaIdentityCardResponseBodyDataGivenName) *RecognizeRussiaIdentityCardResponseBodyData {
+	s.GivenName = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyData) SetIdNumber(v *RecognizeRussiaIdentityCardResponseBodyDataIdNumber) *RecognizeRussiaIdentityCardResponseBodyData {
+	s.IdNumber = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyData) SetPaternalName(v *RecognizeRussiaIdentityCardResponseBodyDataPaternalName) *RecognizeRussiaIdentityCardResponseBodyData {
+	s.PaternalName = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyData) SetPortraitBox(v *RecognizeRussiaIdentityCardResponseBodyDataPortraitBox) *RecognizeRussiaIdentityCardResponseBodyData {
+	s.PortraitBox = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyData) SetSex(v *RecognizeRussiaIdentityCardResponseBodyDataSex) *RecognizeRussiaIdentityCardResponseBodyData {
+	s.Sex = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyData) SetSurnameFirstLine(v *RecognizeRussiaIdentityCardResponseBodyDataSurnameFirstLine) *RecognizeRussiaIdentityCardResponseBodyData {
+	s.SurnameFirstLine = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyData) SetSurnameSecondLine(v *RecognizeRussiaIdentityCardResponseBodyDataSurnameSecondLine) *RecognizeRussiaIdentityCardResponseBodyData {
+	s.SurnameSecondLine = v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataBirthDate struct {
+	KeyPoints []*RecognizeRussiaIdentityCardResponseBodyDataBirthDateKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                         `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                          `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataBirthDate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataBirthDate) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataBirthDate) SetKeyPoints(v []*RecognizeRussiaIdentityCardResponseBodyDataBirthDateKeyPoints) *RecognizeRussiaIdentityCardResponseBodyDataBirthDate {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataBirthDate) SetScore(v float32) *RecognizeRussiaIdentityCardResponseBodyDataBirthDate {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataBirthDate) SetText(v string) *RecognizeRussiaIdentityCardResponseBodyDataBirthDate {
+	s.Text = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataBirthDateKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataBirthDateKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataBirthDateKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataBirthDateKeyPoints) SetX(v float32) *RecognizeRussiaIdentityCardResponseBodyDataBirthDateKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataBirthDateKeyPoints) SetY(v float32) *RecognizeRussiaIdentityCardResponseBodyDataBirthDateKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceFirstLine struct {
+	KeyPoints []*RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceFirstLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                                   `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                    `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceFirstLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceFirstLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceFirstLine) SetKeyPoints(v []*RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceFirstLineKeyPoints) *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceFirstLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceFirstLine) SetScore(v float32) *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceFirstLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceFirstLine) SetText(v string) *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceFirstLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceFirstLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceFirstLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceFirstLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceFirstLineKeyPoints) SetX(v float32) *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceFirstLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceFirstLineKeyPoints) SetY(v float32) *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceFirstLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceSecondLine struct {
+	KeyPoints []*RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceSecondLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                                    `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                     `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceSecondLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceSecondLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceSecondLine) SetKeyPoints(v []*RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceSecondLineKeyPoints) *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceSecondLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceSecondLine) SetScore(v float32) *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceSecondLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceSecondLine) SetText(v string) *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceSecondLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceSecondLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceSecondLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceSecondLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceSecondLineKeyPoints) SetX(v float32) *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceSecondLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceSecondLineKeyPoints) SetY(v float32) *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceSecondLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceThirdLine struct {
+	KeyPoints []*RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceThirdLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                                   `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                    `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceThirdLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceThirdLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceThirdLine) SetKeyPoints(v []*RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceThirdLineKeyPoints) *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceThirdLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceThirdLine) SetScore(v float32) *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceThirdLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceThirdLine) SetText(v string) *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceThirdLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceThirdLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceThirdLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceThirdLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceThirdLineKeyPoints) SetX(v float32) *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceThirdLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceThirdLineKeyPoints) SetY(v float32) *RecognizeRussiaIdentityCardResponseBodyDataBirthPlaceThirdLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataCardBox struct {
+	KeyPoints []*RecognizeRussiaIdentityCardResponseBodyDataCardBoxKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                        `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                        `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataCardBox) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataCardBox) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataCardBox) SetKeyPoints(v []*RecognizeRussiaIdentityCardResponseBodyDataCardBoxKeyPoints) *RecognizeRussiaIdentityCardResponseBodyDataCardBox {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataCardBox) SetScore(v string) *RecognizeRussiaIdentityCardResponseBodyDataCardBox {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataCardBox) SetText(v string) *RecognizeRussiaIdentityCardResponseBodyDataCardBox {
+	s.Text = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataCardBoxKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataCardBoxKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataCardBoxKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataCardBoxKeyPoints) SetX(v float32) *RecognizeRussiaIdentityCardResponseBodyDataCardBoxKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataCardBoxKeyPoints) SetY(v float32) *RecognizeRussiaIdentityCardResponseBodyDataCardBoxKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataGivenName struct {
+	KeyPoints []*RecognizeRussiaIdentityCardResponseBodyDataGivenNameKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                          `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                          `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataGivenName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataGivenName) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataGivenName) SetKeyPoints(v []*RecognizeRussiaIdentityCardResponseBodyDataGivenNameKeyPoints) *RecognizeRussiaIdentityCardResponseBodyDataGivenName {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataGivenName) SetScore(v string) *RecognizeRussiaIdentityCardResponseBodyDataGivenName {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataGivenName) SetText(v string) *RecognizeRussiaIdentityCardResponseBodyDataGivenName {
+	s.Text = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataGivenNameKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataGivenNameKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataGivenNameKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataGivenNameKeyPoints) SetX(v float32) *RecognizeRussiaIdentityCardResponseBodyDataGivenNameKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataGivenNameKeyPoints) SetY(v float32) *RecognizeRussiaIdentityCardResponseBodyDataGivenNameKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataIdNumber struct {
+	KeyPoints []*RecognizeRussiaIdentityCardResponseBodyDataIdNumberKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                         `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                         `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataIdNumber) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataIdNumber) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataIdNumber) SetKeyPoints(v []*RecognizeRussiaIdentityCardResponseBodyDataIdNumberKeyPoints) *RecognizeRussiaIdentityCardResponseBodyDataIdNumber {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataIdNumber) SetScore(v string) *RecognizeRussiaIdentityCardResponseBodyDataIdNumber {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataIdNumber) SetText(v string) *RecognizeRussiaIdentityCardResponseBodyDataIdNumber {
+	s.Text = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataIdNumberKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataIdNumberKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataIdNumberKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataIdNumberKeyPoints) SetX(v float32) *RecognizeRussiaIdentityCardResponseBodyDataIdNumberKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataIdNumberKeyPoints) SetY(v float32) *RecognizeRussiaIdentityCardResponseBodyDataIdNumberKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataPaternalName struct {
+	KeyPoints []*RecognizeRussiaIdentityCardResponseBodyDataPaternalNameKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                             `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                             `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataPaternalName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataPaternalName) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataPaternalName) SetKeyPoints(v []*RecognizeRussiaIdentityCardResponseBodyDataPaternalNameKeyPoints) *RecognizeRussiaIdentityCardResponseBodyDataPaternalName {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataPaternalName) SetScore(v string) *RecognizeRussiaIdentityCardResponseBodyDataPaternalName {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataPaternalName) SetText(v string) *RecognizeRussiaIdentityCardResponseBodyDataPaternalName {
+	s.Text = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataPaternalNameKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataPaternalNameKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataPaternalNameKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataPaternalNameKeyPoints) SetX(v float32) *RecognizeRussiaIdentityCardResponseBodyDataPaternalNameKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataPaternalNameKeyPoints) SetY(v float32) *RecognizeRussiaIdentityCardResponseBodyDataPaternalNameKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataPortraitBox struct {
+	KeyPoints []*RecognizeRussiaIdentityCardResponseBodyDataPortraitBoxKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                            `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                            `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataPortraitBox) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataPortraitBox) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataPortraitBox) SetKeyPoints(v []*RecognizeRussiaIdentityCardResponseBodyDataPortraitBoxKeyPoints) *RecognizeRussiaIdentityCardResponseBodyDataPortraitBox {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataPortraitBox) SetScore(v string) *RecognizeRussiaIdentityCardResponseBodyDataPortraitBox {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataPortraitBox) SetText(v string) *RecognizeRussiaIdentityCardResponseBodyDataPortraitBox {
+	s.Text = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataPortraitBoxKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataPortraitBoxKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataPortraitBoxKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataPortraitBoxKeyPoints) SetX(v float32) *RecognizeRussiaIdentityCardResponseBodyDataPortraitBoxKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataPortraitBoxKeyPoints) SetY(v float32) *RecognizeRussiaIdentityCardResponseBodyDataPortraitBoxKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataSex struct {
+	KeyPoints []*RecognizeRussiaIdentityCardResponseBodyDataSexKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                    `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                    `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataSex) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataSex) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataSex) SetKeyPoints(v []*RecognizeRussiaIdentityCardResponseBodyDataSexKeyPoints) *RecognizeRussiaIdentityCardResponseBodyDataSex {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataSex) SetScore(v string) *RecognizeRussiaIdentityCardResponseBodyDataSex {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataSex) SetText(v string) *RecognizeRussiaIdentityCardResponseBodyDataSex {
+	s.Text = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataSexKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataSexKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataSexKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataSexKeyPoints) SetX(v float32) *RecognizeRussiaIdentityCardResponseBodyDataSexKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataSexKeyPoints) SetY(v float32) *RecognizeRussiaIdentityCardResponseBodyDataSexKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataSurnameFirstLine struct {
+	KeyPoints []*RecognizeRussiaIdentityCardResponseBodyDataSurnameFirstLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                                 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                 `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataSurnameFirstLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataSurnameFirstLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataSurnameFirstLine) SetKeyPoints(v []*RecognizeRussiaIdentityCardResponseBodyDataSurnameFirstLineKeyPoints) *RecognizeRussiaIdentityCardResponseBodyDataSurnameFirstLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataSurnameFirstLine) SetScore(v string) *RecognizeRussiaIdentityCardResponseBodyDataSurnameFirstLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataSurnameFirstLine) SetText(v string) *RecognizeRussiaIdentityCardResponseBodyDataSurnameFirstLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataSurnameFirstLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataSurnameFirstLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataSurnameFirstLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataSurnameFirstLineKeyPoints) SetX(v float32) *RecognizeRussiaIdentityCardResponseBodyDataSurnameFirstLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataSurnameFirstLineKeyPoints) SetY(v float32) *RecognizeRussiaIdentityCardResponseBodyDataSurnameFirstLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataSurnameSecondLine struct {
+	KeyPoints []*RecognizeRussiaIdentityCardResponseBodyDataSurnameSecondLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                                  `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                  `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataSurnameSecondLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataSurnameSecondLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataSurnameSecondLine) SetKeyPoints(v []*RecognizeRussiaIdentityCardResponseBodyDataSurnameSecondLineKeyPoints) *RecognizeRussiaIdentityCardResponseBodyDataSurnameSecondLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataSurnameSecondLine) SetScore(v string) *RecognizeRussiaIdentityCardResponseBodyDataSurnameSecondLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataSurnameSecondLine) SetText(v string) *RecognizeRussiaIdentityCardResponseBodyDataSurnameSecondLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponseBodyDataSurnameSecondLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataSurnameSecondLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponseBodyDataSurnameSecondLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataSurnameSecondLineKeyPoints) SetX(v float32) *RecognizeRussiaIdentityCardResponseBodyDataSurnameSecondLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponseBodyDataSurnameSecondLineKeyPoints) SetY(v float32) *RecognizeRussiaIdentityCardResponseBodyDataSurnameSecondLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeRussiaIdentityCardResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeRussiaIdentityCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RecognizeRussiaIdentityCardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeRussiaIdentityCardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeRussiaIdentityCardResponse) SetHeaders(v map[string]*string) *RecognizeRussiaIdentityCardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponse) SetStatusCode(v int32) *RecognizeRussiaIdentityCardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RecognizeRussiaIdentityCardResponse) SetBody(v *RecognizeRussiaIdentityCardResponseBody) *RecognizeRussiaIdentityCardResponse {
 	s.Body = v
 	return s
 }
@@ -3720,8 +6958,9 @@ func (s *RecognizeStampResponseBodyDataResultsText) SetContent(v string) *Recogn
 }
 
 type RecognizeStampResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeStampResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeStampResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeStampResponse) String() string {
@@ -3734,6 +6973,11 @@ func (s RecognizeStampResponse) GoString() string {
 
 func (s *RecognizeStampResponse) SetHeaders(v map[string]*string) *RecognizeStampResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeStampResponse) SetStatusCode(v int32) *RecognizeStampResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3982,8 +7226,9 @@ func (s *RecognizeTableResponseBodyDataTablesTableRowsTableColumns) SetWidth(v i
 }
 
 type RecognizeTableResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeTableResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeTableResponse) String() string {
@@ -3996,6 +7241,11 @@ func (s RecognizeTableResponse) GoString() string {
 
 func (s *RecognizeTableResponse) SetHeaders(v map[string]*string) *RecognizeTableResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeTableResponse) SetStatusCode(v int32) *RecognizeTableResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4114,8 +7364,9 @@ func (s *RecognizeTakeoutOrderResponseBodyDataElements) SetValue(v string) *Reco
 }
 
 type RecognizeTakeoutOrderResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeTakeoutOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeTakeoutOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeTakeoutOrderResponse) String() string {
@@ -4128,6 +7379,11 @@ func (s RecognizeTakeoutOrderResponse) GoString() string {
 
 func (s *RecognizeTakeoutOrderResponse) SetHeaders(v map[string]*string) *RecognizeTakeoutOrderResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeTakeoutOrderResponse) SetStatusCode(v int32) *RecognizeTakeoutOrderResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4373,8 +7629,9 @@ func (s *RecognizeTaxiInvoiceResponseBodyDataInvoicesItemsItemRoiSize) SetW(v fl
 }
 
 type RecognizeTaxiInvoiceResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeTaxiInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeTaxiInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeTaxiInvoiceResponse) String() string {
@@ -4387,6 +7644,11 @@ func (s RecognizeTaxiInvoiceResponse) GoString() string {
 
 func (s *RecognizeTaxiInvoiceResponse) SetHeaders(v map[string]*string) *RecognizeTaxiInvoiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeTaxiInvoiceResponse) SetStatusCode(v int32) *RecognizeTaxiInvoiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4689,8 +7951,9 @@ func (s *RecognizeTicketInvoiceResponseBodyDataResultsSliceRectangle) SetY(v int
 }
 
 type RecognizeTicketInvoiceResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeTicketInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeTicketInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeTicketInvoiceResponse) String() string {
@@ -4703,6 +7966,11 @@ func (s RecognizeTicketInvoiceResponse) GoString() string {
 
 func (s *RecognizeTicketInvoiceResponse) SetHeaders(v map[string]*string) *RecognizeTicketInvoiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeTicketInvoiceResponse) SetStatusCode(v int32) *RecognizeTicketInvoiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4828,8 +8096,9 @@ func (s *RecognizeTrainTicketResponseBodyData) SetSeat(v string) *RecognizeTrain
 }
 
 type RecognizeTrainTicketResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeTrainTicketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeTrainTicketResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeTrainTicketResponse) String() string {
@@ -4845,7 +8114,2674 @@ func (s *RecognizeTrainTicketResponse) SetHeaders(v map[string]*string) *Recogni
 	return s
 }
 
+func (s *RecognizeTrainTicketResponse) SetStatusCode(v int32) *RecognizeTrainTicketResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *RecognizeTrainTicketResponse) SetBody(v *RecognizeTrainTicketResponseBody) *RecognizeTrainTicketResponse {
+	s.Body = v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardRequest struct {
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardRequest) SetImageUrl(v string) *RecognizeTurkeyIdentityCardRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardAdvanceRequest struct {
+	ImageUrlObject io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
+}
+
+func (s RecognizeTurkeyIdentityCardAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardAdvanceRequest) SetImageUrlObject(v io.Reader) *RecognizeTurkeyIdentityCardAdvanceRequest {
+	s.ImageUrlObject = v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBody struct {
+	Code    *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *RecognizeTurkeyIdentityCardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBody) SetCode(v string) *RecognizeTurkeyIdentityCardResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBody) SetData(v *RecognizeTurkeyIdentityCardResponseBodyData) *RecognizeTurkeyIdentityCardResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBody) SetMessage(v string) *RecognizeTurkeyIdentityCardResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBody) SetRequestId(v string) *RecognizeTurkeyIdentityCardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyData struct {
+	AuxiliaryTools        *RecognizeTurkeyIdentityCardResponseBodyDataAuxiliaryTools        `json:"AuxiliaryTools,omitempty" xml:"AuxiliaryTools,omitempty" type:"Struct"`
+	BirthDate             *RecognizeTurkeyIdentityCardResponseBodyDataBirthDate             `json:"BirthDate,omitempty" xml:"BirthDate,omitempty" type:"Struct"`
+	BirthPlace            *RecognizeTurkeyIdentityCardResponseBodyDataBirthPlace            `json:"BirthPlace,omitempty" xml:"BirthPlace,omitempty" type:"Struct"`
+	BloodType             *RecognizeTurkeyIdentityCardResponseBodyDataBloodType             `json:"BloodType,omitempty" xml:"BloodType,omitempty" type:"Struct"`
+	CardBox               *RecognizeTurkeyIdentityCardResponseBodyDataCardBox               `json:"CardBox,omitempty" xml:"CardBox,omitempty" type:"Struct"`
+	Cilt                  *RecognizeTurkeyIdentityCardResponseBodyDataCilt                  `json:"Cilt,omitempty" xml:"Cilt,omitempty" type:"Struct"`
+	DocumentNumber        *RecognizeTurkeyIdentityCardResponseBodyDataDocumentNumber        `json:"DocumentNumber,omitempty" xml:"DocumentNumber,omitempty" type:"Struct"`
+	DriveClass            *RecognizeTurkeyIdentityCardResponseBodyDataDriveClass            `json:"DriveClass,omitempty" xml:"DriveClass,omitempty" type:"Struct"`
+	DueDate               *RecognizeTurkeyIdentityCardResponseBodyDataDueDate               `json:"DueDate,omitempty" xml:"DueDate,omitempty" type:"Struct"`
+	Duzenleyen            *RecognizeTurkeyIdentityCardResponseBodyDataDuzenleyen            `json:"Duzenleyen,omitempty" xml:"Duzenleyen,omitempty" type:"Struct"`
+	EntryNumber           *RecognizeTurkeyIdentityCardResponseBodyDataEntryNumber           `json:"EntryNumber,omitempty" xml:"EntryNumber,omitempty" type:"Struct"`
+	ExpiryDate            *RecognizeTurkeyIdentityCardResponseBodyDataExpiryDate            `json:"ExpiryDate,omitempty" xml:"ExpiryDate,omitempty" type:"Struct"`
+	FatherName            *RecognizeTurkeyIdentityCardResponseBodyDataFatherName            `json:"FatherName,omitempty" xml:"FatherName,omitempty" type:"Struct"`
+	ForeignersId          *RecognizeTurkeyIdentityCardResponseBodyDataForeignersId          `json:"ForeignersId,omitempty" xml:"ForeignersId,omitempty" type:"Struct"`
+	Gender                *RecognizeTurkeyIdentityCardResponseBodyDataGender                `json:"Gender,omitempty" xml:"Gender,omitempty" type:"Struct"`
+	GivenName             *RecognizeTurkeyIdentityCardResponseBodyDataGivenName             `json:"GivenName,omitempty" xml:"GivenName,omitempty" type:"Struct"`
+	IdNumber              *RecognizeTurkeyIdentityCardResponseBodyDataIdNumber              `json:"IdNumber,omitempty" xml:"IdNumber,omitempty" type:"Struct"`
+	IssueBy               *RecognizeTurkeyIdentityCardResponseBodyDataIssueBy               `json:"IssueBy,omitempty" xml:"IssueBy,omitempty" type:"Struct"`
+	IssueCounty           *RecognizeTurkeyIdentityCardResponseBodyDataIssueCounty           `json:"IssueCounty,omitempty" xml:"IssueCounty,omitempty" type:"Struct"`
+	IssueDate             *RecognizeTurkeyIdentityCardResponseBodyDataIssueDate             `json:"IssueDate,omitempty" xml:"IssueDate,omitempty" type:"Struct"`
+	IssuePlace            *RecognizeTurkeyIdentityCardResponseBodyDataIssuePlace            `json:"IssuePlace,omitempty" xml:"IssuePlace,omitempty" type:"Struct"`
+	Kutuk                 *RecognizeTurkeyIdentityCardResponseBodyDataKutuk                 `json:"Kutuk,omitempty" xml:"Kutuk,omitempty" type:"Struct"`
+	LicenseNumber         *RecognizeTurkeyIdentityCardResponseBodyDataLicenseNumber         `json:"LicenseNumber,omitempty" xml:"LicenseNumber,omitempty" type:"Struct"`
+	MaritalStatus         *RecognizeTurkeyIdentityCardResponseBodyDataMaritalStatus         `json:"MaritalStatus,omitempty" xml:"MaritalStatus,omitempty" type:"Struct"`
+	MotherName            *RecognizeTurkeyIdentityCardResponseBodyDataMotherName            `json:"MotherName,omitempty" xml:"MotherName,omitempty" type:"Struct"`
+	Name                  *RecognizeTurkeyIdentityCardResponseBodyDataName                  `json:"Name,omitempty" xml:"Name,omitempty" type:"Struct"`
+	Nationality           *RecognizeTurkeyIdentityCardResponseBodyDataNationality           `json:"Nationality,omitempty" xml:"Nationality,omitempty" type:"Struct"`
+	NeighborhoodVillage   *RecognizeTurkeyIdentityCardResponseBodyDataNeighborhoodVillage   `json:"NeighborhoodVillage,omitempty" xml:"NeighborhoodVillage,omitempty" type:"Struct"`
+	PageNumber            *RecognizeTurkeyIdentityCardResponseBodyDataPageNumber            `json:"PageNumber,omitempty" xml:"PageNumber,omitempty" type:"Struct"`
+	PassportNumber        *RecognizeTurkeyIdentityCardResponseBodyDataPassportNumber        `json:"PassportNumber,omitempty" xml:"PassportNumber,omitempty" type:"Struct"`
+	PortraitBox           *RecognizeTurkeyIdentityCardResponseBodyDataPortraitBox           `json:"PortraitBox,omitempty" xml:"PortraitBox,omitempty" type:"Struct"`
+	Province              *RecognizeTurkeyIdentityCardResponseBodyDataProvince              `json:"Province,omitempty" xml:"Province,omitempty" type:"Struct"`
+	ProvinceOfResidence   *RecognizeTurkeyIdentityCardResponseBodyDataProvinceOfResidence   `json:"ProvinceOfResidence,omitempty" xml:"ProvinceOfResidence,omitempty" type:"Struct"`
+	ReasonOfIssue         *RecognizeTurkeyIdentityCardResponseBodyDataReasonOfIssue         `json:"ReasonOfIssue,omitempty" xml:"ReasonOfIssue,omitempty" type:"Struct"`
+	RegisterNumber        *RecognizeTurkeyIdentityCardResponseBodyDataRegisterNumber        `json:"RegisterNumber,omitempty" xml:"RegisterNumber,omitempty" type:"Struct"`
+	Religion              *RecognizeTurkeyIdentityCardResponseBodyDataReligion              `json:"Religion,omitempty" xml:"Religion,omitempty" type:"Struct"`
+	Sayfa                 *RecognizeTurkeyIdentityCardResponseBodyDataSayfa                 `json:"Sayfa,omitempty" xml:"Sayfa,omitempty" type:"Struct"`
+	Seri                  *RecognizeTurkeyIdentityCardResponseBodyDataSeri                  `json:"Seri,omitempty" xml:"Seri,omitempty" type:"Struct"`
+	Sex                   *RecognizeTurkeyIdentityCardResponseBodyDataSex                   `json:"Sex,omitempty" xml:"Sex,omitempty" type:"Struct"`
+	Surname               *RecognizeTurkeyIdentityCardResponseBodyDataSurname               `json:"Surname,omitempty" xml:"Surname,omitempty" type:"Struct"`
+	TypeOfResidencePermit *RecognizeTurkeyIdentityCardResponseBodyDataTypeOfResidencePermit `json:"TypeOfResidencePermit,omitempty" xml:"TypeOfResidencePermit,omitempty" type:"Struct"`
+	ValidUntil            *RecognizeTurkeyIdentityCardResponseBodyDataValidUntil            `json:"ValidUntil,omitempty" xml:"ValidUntil,omitempty" type:"Struct"`
+	Village               *RecognizeTurkeyIdentityCardResponseBodyDataVillage               `json:"Village,omitempty" xml:"Village,omitempty" type:"Struct"`
+	VolumeNumber          *RecognizeTurkeyIdentityCardResponseBodyDataVolumeNumber          `json:"VolumeNumber,omitempty" xml:"VolumeNumber,omitempty" type:"Struct"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetAuxiliaryTools(v *RecognizeTurkeyIdentityCardResponseBodyDataAuxiliaryTools) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.AuxiliaryTools = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetBirthDate(v *RecognizeTurkeyIdentityCardResponseBodyDataBirthDate) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.BirthDate = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetBirthPlace(v *RecognizeTurkeyIdentityCardResponseBodyDataBirthPlace) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.BirthPlace = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetBloodType(v *RecognizeTurkeyIdentityCardResponseBodyDataBloodType) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.BloodType = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetCardBox(v *RecognizeTurkeyIdentityCardResponseBodyDataCardBox) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.CardBox = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetCilt(v *RecognizeTurkeyIdentityCardResponseBodyDataCilt) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.Cilt = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetDocumentNumber(v *RecognizeTurkeyIdentityCardResponseBodyDataDocumentNumber) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.DocumentNumber = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetDriveClass(v *RecognizeTurkeyIdentityCardResponseBodyDataDriveClass) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.DriveClass = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetDueDate(v *RecognizeTurkeyIdentityCardResponseBodyDataDueDate) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.DueDate = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetDuzenleyen(v *RecognizeTurkeyIdentityCardResponseBodyDataDuzenleyen) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.Duzenleyen = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetEntryNumber(v *RecognizeTurkeyIdentityCardResponseBodyDataEntryNumber) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.EntryNumber = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetExpiryDate(v *RecognizeTurkeyIdentityCardResponseBodyDataExpiryDate) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.ExpiryDate = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetFatherName(v *RecognizeTurkeyIdentityCardResponseBodyDataFatherName) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.FatherName = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetForeignersId(v *RecognizeTurkeyIdentityCardResponseBodyDataForeignersId) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.ForeignersId = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetGender(v *RecognizeTurkeyIdentityCardResponseBodyDataGender) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.Gender = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetGivenName(v *RecognizeTurkeyIdentityCardResponseBodyDataGivenName) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.GivenName = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetIdNumber(v *RecognizeTurkeyIdentityCardResponseBodyDataIdNumber) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.IdNumber = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetIssueBy(v *RecognizeTurkeyIdentityCardResponseBodyDataIssueBy) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.IssueBy = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetIssueCounty(v *RecognizeTurkeyIdentityCardResponseBodyDataIssueCounty) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.IssueCounty = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetIssueDate(v *RecognizeTurkeyIdentityCardResponseBodyDataIssueDate) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.IssueDate = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetIssuePlace(v *RecognizeTurkeyIdentityCardResponseBodyDataIssuePlace) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.IssuePlace = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetKutuk(v *RecognizeTurkeyIdentityCardResponseBodyDataKutuk) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.Kutuk = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetLicenseNumber(v *RecognizeTurkeyIdentityCardResponseBodyDataLicenseNumber) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.LicenseNumber = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetMaritalStatus(v *RecognizeTurkeyIdentityCardResponseBodyDataMaritalStatus) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.MaritalStatus = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetMotherName(v *RecognizeTurkeyIdentityCardResponseBodyDataMotherName) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.MotherName = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetName(v *RecognizeTurkeyIdentityCardResponseBodyDataName) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.Name = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetNationality(v *RecognizeTurkeyIdentityCardResponseBodyDataNationality) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.Nationality = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetNeighborhoodVillage(v *RecognizeTurkeyIdentityCardResponseBodyDataNeighborhoodVillage) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.NeighborhoodVillage = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetPageNumber(v *RecognizeTurkeyIdentityCardResponseBodyDataPageNumber) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.PageNumber = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetPassportNumber(v *RecognizeTurkeyIdentityCardResponseBodyDataPassportNumber) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.PassportNumber = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetPortraitBox(v *RecognizeTurkeyIdentityCardResponseBodyDataPortraitBox) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.PortraitBox = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetProvince(v *RecognizeTurkeyIdentityCardResponseBodyDataProvince) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.Province = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetProvinceOfResidence(v *RecognizeTurkeyIdentityCardResponseBodyDataProvinceOfResidence) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.ProvinceOfResidence = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetReasonOfIssue(v *RecognizeTurkeyIdentityCardResponseBodyDataReasonOfIssue) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.ReasonOfIssue = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetRegisterNumber(v *RecognizeTurkeyIdentityCardResponseBodyDataRegisterNumber) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.RegisterNumber = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetReligion(v *RecognizeTurkeyIdentityCardResponseBodyDataReligion) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.Religion = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetSayfa(v *RecognizeTurkeyIdentityCardResponseBodyDataSayfa) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.Sayfa = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetSeri(v *RecognizeTurkeyIdentityCardResponseBodyDataSeri) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.Seri = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetSex(v *RecognizeTurkeyIdentityCardResponseBodyDataSex) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.Sex = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetSurname(v *RecognizeTurkeyIdentityCardResponseBodyDataSurname) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.Surname = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetTypeOfResidencePermit(v *RecognizeTurkeyIdentityCardResponseBodyDataTypeOfResidencePermit) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.TypeOfResidencePermit = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetValidUntil(v *RecognizeTurkeyIdentityCardResponseBodyDataValidUntil) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.ValidUntil = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetVillage(v *RecognizeTurkeyIdentityCardResponseBodyDataVillage) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.Village = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyData) SetVolumeNumber(v *RecognizeTurkeyIdentityCardResponseBodyDataVolumeNumber) *RecognizeTurkeyIdentityCardResponseBodyData {
+	s.VolumeNumber = v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataAuxiliaryTools struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataAuxiliaryToolsKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                              `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                               `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataAuxiliaryTools) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataAuxiliaryTools) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataAuxiliaryTools) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataAuxiliaryToolsKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataAuxiliaryTools {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataAuxiliaryTools) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataAuxiliaryTools {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataAuxiliaryTools) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataAuxiliaryTools {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataAuxiliaryToolsKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataAuxiliaryToolsKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataAuxiliaryToolsKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataAuxiliaryToolsKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataAuxiliaryToolsKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataAuxiliaryToolsKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataAuxiliaryToolsKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataBirthDate struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataBirthDateKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                         `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                          `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataBirthDate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataBirthDate) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataBirthDate) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataBirthDateKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataBirthDate {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataBirthDate) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataBirthDate {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataBirthDate) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataBirthDate {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataBirthDateKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataBirthDateKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataBirthDateKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataBirthDateKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataBirthDateKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataBirthDateKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataBirthDateKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataBirthPlace struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataBirthPlaceKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                          `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                           `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataBirthPlace) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataBirthPlace) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataBirthPlace) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataBirthPlaceKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataBirthPlace {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataBirthPlace) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataBirthPlace {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataBirthPlace) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataBirthPlace {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataBirthPlaceKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataBirthPlaceKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataBirthPlaceKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataBirthPlaceKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataBirthPlaceKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataBirthPlaceKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataBirthPlaceKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataBloodType struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataBloodTypeKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                         `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                          `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataBloodType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataBloodType) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataBloodType) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataBloodTypeKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataBloodType {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataBloodType) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataBloodType {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataBloodType) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataBloodType {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataBloodTypeKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataBloodTypeKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataBloodTypeKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataBloodTypeKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataBloodTypeKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataBloodTypeKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataBloodTypeKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataCardBox struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataCardBoxKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                       `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                        `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataCardBox) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataCardBox) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataCardBox) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataCardBoxKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataCardBox {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataCardBox) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataCardBox {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataCardBox) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataCardBox {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataCardBoxKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataCardBoxKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataCardBoxKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataCardBoxKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataCardBoxKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataCardBoxKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataCardBoxKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataCilt struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataCiltKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                    `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                     `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataCilt) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataCilt) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataCilt) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataCiltKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataCilt {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataCilt) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataCilt {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataCilt) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataCilt {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataCiltKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataCiltKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataCiltKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataCiltKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataCiltKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataCiltKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataCiltKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataDocumentNumber struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataDocumentNumberKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                              `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                               `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataDocumentNumber) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataDocumentNumber) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataDocumentNumber) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataDocumentNumberKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataDocumentNumber {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataDocumentNumber) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataDocumentNumber {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataDocumentNumber) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataDocumentNumber {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataDocumentNumberKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataDocumentNumberKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataDocumentNumberKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataDocumentNumberKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataDocumentNumberKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataDocumentNumberKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataDocumentNumberKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataDriveClass struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataDriveClassKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                          `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                           `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataDriveClass) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataDriveClass) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataDriveClass) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataDriveClassKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataDriveClass {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataDriveClass) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataDriveClass {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataDriveClass) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataDriveClass {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataDriveClassKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataDriveClassKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataDriveClassKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataDriveClassKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataDriveClassKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataDriveClassKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataDriveClassKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataDueDate struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataDueDateKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                       `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                        `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataDueDate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataDueDate) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataDueDate) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataDueDateKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataDueDate {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataDueDate) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataDueDate {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataDueDate) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataDueDate {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataDueDateKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataDueDateKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataDueDateKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataDueDateKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataDueDateKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataDueDateKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataDueDateKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataDuzenleyen struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataDuzenleyenKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                          `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                           `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataDuzenleyen) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataDuzenleyen) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataDuzenleyen) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataDuzenleyenKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataDuzenleyen {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataDuzenleyen) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataDuzenleyen {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataDuzenleyen) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataDuzenleyen {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataDuzenleyenKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataDuzenleyenKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataDuzenleyenKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataDuzenleyenKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataDuzenleyenKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataDuzenleyenKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataDuzenleyenKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataEntryNumber struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataEntryNumberKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                           `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                            `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataEntryNumber) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataEntryNumber) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataEntryNumber) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataEntryNumberKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataEntryNumber {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataEntryNumber) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataEntryNumber {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataEntryNumber) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataEntryNumber {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataEntryNumberKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataEntryNumberKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataEntryNumberKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataEntryNumberKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataEntryNumberKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataEntryNumberKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataEntryNumberKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataExpiryDate struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataExpiryDateKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                          `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                           `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataExpiryDate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataExpiryDate) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataExpiryDate) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataExpiryDateKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataExpiryDate {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataExpiryDate) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataExpiryDate {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataExpiryDate) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataExpiryDate {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataExpiryDateKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataExpiryDateKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataExpiryDateKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataExpiryDateKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataExpiryDateKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataExpiryDateKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataExpiryDateKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataFatherName struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataFatherNameKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                          `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                           `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataFatherName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataFatherName) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataFatherName) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataFatherNameKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataFatherName {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataFatherName) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataFatherName {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataFatherName) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataFatherName {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataFatherNameKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataFatherNameKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataFatherNameKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataFatherNameKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataFatherNameKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataFatherNameKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataFatherNameKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataForeignersId struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataForeignersIdKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                            `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                             `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataForeignersId) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataForeignersId) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataForeignersId) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataForeignersIdKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataForeignersId {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataForeignersId) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataForeignersId {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataForeignersId) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataForeignersId {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataForeignersIdKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataForeignersIdKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataForeignersIdKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataForeignersIdKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataForeignersIdKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataForeignersIdKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataForeignersIdKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataGender struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataGenderKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                      `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                       `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataGender) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataGender) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataGender) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataGenderKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataGender {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataGender) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataGender {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataGender) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataGender {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataGenderKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataGenderKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataGenderKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataGenderKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataGenderKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataGenderKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataGenderKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataGivenName struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataGivenNameKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                         `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                          `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataGivenName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataGivenName) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataGivenName) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataGivenNameKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataGivenName {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataGivenName) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataGivenName {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataGivenName) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataGivenName {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataGivenNameKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataGivenNameKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataGivenNameKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataGivenNameKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataGivenNameKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataGivenNameKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataGivenNameKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataIdNumber struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataIdNumberKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                        `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                         `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataIdNumber) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataIdNumber) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIdNumber) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataIdNumberKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataIdNumber {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIdNumber) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataIdNumber {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIdNumber) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataIdNumber {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataIdNumberKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataIdNumberKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataIdNumberKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIdNumberKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataIdNumberKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIdNumberKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataIdNumberKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataIssueBy struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataIssueByKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                       `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                        `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataIssueBy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataIssueBy) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIssueBy) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataIssueByKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataIssueBy {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIssueBy) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataIssueBy {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIssueBy) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataIssueBy {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataIssueByKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataIssueByKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataIssueByKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIssueByKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataIssueByKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIssueByKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataIssueByKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataIssueCounty struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataIssueCountyKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                           `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                            `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataIssueCounty) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataIssueCounty) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIssueCounty) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataIssueCountyKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataIssueCounty {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIssueCounty) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataIssueCounty {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIssueCounty) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataIssueCounty {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataIssueCountyKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataIssueCountyKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataIssueCountyKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIssueCountyKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataIssueCountyKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIssueCountyKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataIssueCountyKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataIssueDate struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataIssueDateKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                         `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                          `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataIssueDate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataIssueDate) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIssueDate) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataIssueDateKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataIssueDate {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIssueDate) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataIssueDate {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIssueDate) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataIssueDate {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataIssueDateKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataIssueDateKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataIssueDateKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIssueDateKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataIssueDateKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIssueDateKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataIssueDateKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataIssuePlace struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataIssuePlaceKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                          `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                           `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataIssuePlace) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataIssuePlace) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIssuePlace) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataIssuePlaceKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataIssuePlace {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIssuePlace) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataIssuePlace {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIssuePlace) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataIssuePlace {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataIssuePlaceKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataIssuePlaceKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataIssuePlaceKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIssuePlaceKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataIssuePlaceKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataIssuePlaceKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataIssuePlaceKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataKutuk struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataKutukKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                     `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                      `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataKutuk) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataKutuk) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataKutuk) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataKutukKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataKutuk {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataKutuk) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataKutuk {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataKutuk) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataKutuk {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataKutukKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataKutukKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataKutukKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataKutukKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataKutukKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataKutukKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataKutukKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataLicenseNumber struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataLicenseNumberKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                             `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                              `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataLicenseNumber) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataLicenseNumber) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataLicenseNumber) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataLicenseNumberKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataLicenseNumber {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataLicenseNumber) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataLicenseNumber {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataLicenseNumber) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataLicenseNumber {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataLicenseNumberKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataLicenseNumberKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataLicenseNumberKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataLicenseNumberKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataLicenseNumberKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataLicenseNumberKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataLicenseNumberKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataMaritalStatus struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataMaritalStatusKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                             `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                              `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataMaritalStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataMaritalStatus) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataMaritalStatus) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataMaritalStatusKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataMaritalStatus {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataMaritalStatus) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataMaritalStatus {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataMaritalStatus) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataMaritalStatus {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataMaritalStatusKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataMaritalStatusKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataMaritalStatusKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataMaritalStatusKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataMaritalStatusKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataMaritalStatusKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataMaritalStatusKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataMotherName struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataMotherNameKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                          `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                           `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataMotherName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataMotherName) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataMotherName) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataMotherNameKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataMotherName {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataMotherName) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataMotherName {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataMotherName) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataMotherName {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataMotherNameKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataMotherNameKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataMotherNameKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataMotherNameKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataMotherNameKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataMotherNameKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataMotherNameKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataName struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataNameKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                    `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                     `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataName) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataName) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataNameKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataName {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataName) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataName {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataName) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataName {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataNameKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataNameKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataNameKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataNameKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataNameKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataNameKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataNameKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataNationality struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataNationalityKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                           `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                            `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataNationality) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataNationality) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataNationality) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataNationalityKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataNationality {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataNationality) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataNationality {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataNationality) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataNationality {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataNationalityKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataNationalityKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataNationalityKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataNationalityKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataNationalityKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataNationalityKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataNationalityKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataNeighborhoodVillage struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataNeighborhoodVillageKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                                   `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                    `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataNeighborhoodVillage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataNeighborhoodVillage) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataNeighborhoodVillage) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataNeighborhoodVillageKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataNeighborhoodVillage {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataNeighborhoodVillage) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataNeighborhoodVillage {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataNeighborhoodVillage) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataNeighborhoodVillage {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataNeighborhoodVillageKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataNeighborhoodVillageKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataNeighborhoodVillageKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataNeighborhoodVillageKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataNeighborhoodVillageKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataNeighborhoodVillageKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataNeighborhoodVillageKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataPageNumber struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataPageNumberKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                          `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                           `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataPageNumber) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataPageNumber) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataPageNumber) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataPageNumberKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataPageNumber {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataPageNumber) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataPageNumber {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataPageNumber) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataPageNumber {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataPageNumberKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataPageNumberKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataPageNumberKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataPageNumberKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataPageNumberKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataPageNumberKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataPageNumberKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataPassportNumber struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataPassportNumberKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                              `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                               `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataPassportNumber) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataPassportNumber) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataPassportNumber) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataPassportNumberKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataPassportNumber {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataPassportNumber) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataPassportNumber {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataPassportNumber) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataPassportNumber {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataPassportNumberKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataPassportNumberKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataPassportNumberKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataPassportNumberKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataPassportNumberKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataPassportNumberKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataPassportNumberKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataPortraitBox struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataPortraitBoxKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                           `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                            `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataPortraitBox) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataPortraitBox) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataPortraitBox) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataPortraitBoxKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataPortraitBox {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataPortraitBox) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataPortraitBox {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataPortraitBox) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataPortraitBox {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataPortraitBoxKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataPortraitBoxKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataPortraitBoxKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataPortraitBoxKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataPortraitBoxKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataPortraitBoxKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataPortraitBoxKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataProvince struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataProvinceKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                        `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                         `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataProvince) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataProvince) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataProvince) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataProvinceKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataProvince {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataProvince) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataProvince {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataProvince) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataProvince {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataProvinceKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataProvinceKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataProvinceKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataProvinceKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataProvinceKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataProvinceKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataProvinceKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataProvinceOfResidence struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataProvinceOfResidenceKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                                   `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                    `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataProvinceOfResidence) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataProvinceOfResidence) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataProvinceOfResidence) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataProvinceOfResidenceKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataProvinceOfResidence {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataProvinceOfResidence) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataProvinceOfResidence {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataProvinceOfResidence) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataProvinceOfResidence {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataProvinceOfResidenceKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataProvinceOfResidenceKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataProvinceOfResidenceKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataProvinceOfResidenceKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataProvinceOfResidenceKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataProvinceOfResidenceKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataProvinceOfResidenceKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataReasonOfIssue struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataReasonOfIssueKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                             `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                              `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataReasonOfIssue) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataReasonOfIssue) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataReasonOfIssue) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataReasonOfIssueKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataReasonOfIssue {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataReasonOfIssue) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataReasonOfIssue {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataReasonOfIssue) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataReasonOfIssue {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataReasonOfIssueKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataReasonOfIssueKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataReasonOfIssueKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataReasonOfIssueKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataReasonOfIssueKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataReasonOfIssueKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataReasonOfIssueKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataRegisterNumber struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataRegisterNumberKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                              `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                               `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataRegisterNumber) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataRegisterNumber) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataRegisterNumber) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataRegisterNumberKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataRegisterNumber {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataRegisterNumber) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataRegisterNumber {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataRegisterNumber) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataRegisterNumber {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataRegisterNumberKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataRegisterNumberKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataRegisterNumberKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataRegisterNumberKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataRegisterNumberKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataRegisterNumberKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataRegisterNumberKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataReligion struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataReligionKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                        `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                         `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataReligion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataReligion) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataReligion) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataReligionKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataReligion {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataReligion) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataReligion {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataReligion) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataReligion {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataReligionKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataReligionKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataReligionKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataReligionKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataReligionKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataReligionKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataReligionKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataSayfa struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataSayfaKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                     `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                      `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataSayfa) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataSayfa) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataSayfa) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataSayfaKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataSayfa {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataSayfa) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataSayfa {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataSayfa) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataSayfa {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataSayfaKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataSayfaKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataSayfaKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataSayfaKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataSayfaKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataSayfaKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataSayfaKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataSeri struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataSeriKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                    `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                     `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataSeri) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataSeri) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataSeri) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataSeriKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataSeri {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataSeri) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataSeri {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataSeri) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataSeri {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataSeriKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataSeriKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataSeriKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataSeriKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataSeriKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataSeriKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataSeriKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataSex struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataSexKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                   `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                    `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataSex) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataSex) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataSex) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataSexKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataSex {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataSex) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataSex {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataSex) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataSex {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataSexKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataSexKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataSexKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataSexKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataSexKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataSexKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataSexKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataSurname struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataSurnameKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                       `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                        `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataSurname) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataSurname) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataSurname) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataSurnameKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataSurname {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataSurname) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataSurname {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataSurname) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataSurname {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataSurnameKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataSurnameKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataSurnameKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataSurnameKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataSurnameKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataSurnameKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataSurnameKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataTypeOfResidencePermit struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataTypeOfResidencePermitKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                                     `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                      `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataTypeOfResidencePermit) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataTypeOfResidencePermit) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataTypeOfResidencePermit) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataTypeOfResidencePermitKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataTypeOfResidencePermit {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataTypeOfResidencePermit) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataTypeOfResidencePermit {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataTypeOfResidencePermit) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataTypeOfResidencePermit {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataTypeOfResidencePermitKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataTypeOfResidencePermitKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataTypeOfResidencePermitKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataTypeOfResidencePermitKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataTypeOfResidencePermitKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataTypeOfResidencePermitKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataTypeOfResidencePermitKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataValidUntil struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataValidUntilKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                          `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                           `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataValidUntil) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataValidUntil) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataValidUntil) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataValidUntilKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataValidUntil {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataValidUntil) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataValidUntil {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataValidUntil) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataValidUntil {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataValidUntilKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataValidUntilKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataValidUntilKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataValidUntilKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataValidUntilKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataValidUntilKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataValidUntilKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataVillage struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataVillageKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                       `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                        `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataVillage) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataVillage) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataVillage) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataVillageKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataVillage {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataVillage) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataVillage {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataVillage) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataVillage {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataVillageKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataVillageKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataVillageKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataVillageKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataVillageKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataVillageKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataVillageKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataVolumeNumber struct {
+	KeyPoints []*RecognizeTurkeyIdentityCardResponseBodyDataVolumeNumberKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                            `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                             `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataVolumeNumber) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataVolumeNumber) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataVolumeNumber) SetKeyPoints(v []*RecognizeTurkeyIdentityCardResponseBodyDataVolumeNumberKeyPoints) *RecognizeTurkeyIdentityCardResponseBodyDataVolumeNumber {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataVolumeNumber) SetScore(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataVolumeNumber {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataVolumeNumber) SetText(v string) *RecognizeTurkeyIdentityCardResponseBodyDataVolumeNumber {
+	s.Text = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponseBodyDataVolumeNumberKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataVolumeNumberKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponseBodyDataVolumeNumberKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataVolumeNumberKeyPoints) SetX(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataVolumeNumberKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponseBodyDataVolumeNumberKeyPoints) SetY(v float32) *RecognizeTurkeyIdentityCardResponseBodyDataVolumeNumberKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeTurkeyIdentityCardResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeTurkeyIdentityCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RecognizeTurkeyIdentityCardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeTurkeyIdentityCardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeTurkeyIdentityCardResponse) SetHeaders(v map[string]*string) *RecognizeTurkeyIdentityCardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponse) SetStatusCode(v int32) *RecognizeTurkeyIdentityCardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RecognizeTurkeyIdentityCardResponse) SetBody(v *RecognizeTurkeyIdentityCardResponseBody) *RecognizeTurkeyIdentityCardResponse {
 	s.Body = v
 	return s
 }
@@ -5674,8 +11610,9 @@ func (s *RecognizeUkraineIdentityCardResponseBodyDataSurnameUkraineKeyPoints) Se
 }
 
 type RecognizeUkraineIdentityCardResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeUkraineIdentityCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeUkraineIdentityCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeUkraineIdentityCardResponse) String() string {
@@ -5688,6 +11625,11 @@ func (s RecognizeUkraineIdentityCardResponse) GoString() string {
 
 func (s *RecognizeUkraineIdentityCardResponse) SetHeaders(v map[string]*string) *RecognizeUkraineIdentityCardResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeUkraineIdentityCardResponse) SetStatusCode(v int32) *RecognizeUkraineIdentityCardResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6039,8 +11981,9 @@ func (s *RecognizeVATInvoiceResponseBodyDataContent) SetWithoutTaxAmount(v strin
 }
 
 type RecognizeVATInvoiceResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeVATInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeVATInvoiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeVATInvoiceResponse) String() string {
@@ -6053,6 +11996,11 @@ func (s RecognizeVATInvoiceResponse) GoString() string {
 
 func (s *RecognizeVATInvoiceResponse) SetHeaders(v map[string]*string) *RecognizeVATInvoiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeVATInvoiceResponse) SetStatusCode(v int32) *RecognizeVATInvoiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6136,8 +12084,9 @@ func (s *RecognizeVINCodeResponseBodyData) SetVinCode(v string) *RecognizeVINCod
 }
 
 type RecognizeVINCodeResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeVINCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeVINCodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeVINCodeResponse) String() string {
@@ -6150,6 +12099,11 @@ func (s RecognizeVINCodeResponse) GoString() string {
 
 func (s *RecognizeVINCodeResponse) SetHeaders(v map[string]*string) *RecognizeVINCodeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeVINCodeResponse) SetStatusCode(v int32) *RecognizeVINCodeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6233,8 +12187,9 @@ func (s *RecognizeVerificationcodeResponseBodyData) SetContent(v string) *Recogn
 }
 
 type RecognizeVerificationcodeResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeVerificationcodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeVerificationcodeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeVerificationcodeResponse) String() string {
@@ -6247,6 +12202,11 @@ func (s RecognizeVerificationcodeResponse) GoString() string {
 
 func (s *RecognizeVerificationcodeResponse) SetHeaders(v map[string]*string) *RecognizeVerificationcodeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeVerificationcodeResponse) SetStatusCode(v int32) *RecognizeVerificationcodeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6722,8 +12682,9 @@ func (s *RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoPosi
 }
 
 type RecognizeVideoCastCrewListResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeVideoCastCrewListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeVideoCastCrewListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeVideoCastCrewListResponse) String() string {
@@ -6736,6 +12697,11 @@ func (s RecognizeVideoCastCrewListResponse) GoString() string {
 
 func (s *RecognizeVideoCastCrewListResponse) SetHeaders(v map[string]*string) *RecognizeVideoCastCrewListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeVideoCastCrewListResponse) SetStatusCode(v int32) *RecognizeVideoCastCrewListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6925,8 +12891,9 @@ func (s *RecognizeVideoCharacterResponseBodyDataFramesElementsTextRectangles) Se
 }
 
 type RecognizeVideoCharacterResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeVideoCharacterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeVideoCharacterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeVideoCharacterResponse) String() string {
@@ -6942,7 +12909,980 @@ func (s *RecognizeVideoCharacterResponse) SetHeaders(v map[string]*string) *Reco
 	return s
 }
 
+func (s *RecognizeVideoCharacterResponse) SetStatusCode(v int32) *RecognizeVideoCharacterResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *RecognizeVideoCharacterResponse) SetBody(v *RecognizeVideoCharacterResponseBody) *RecognizeVideoCharacterResponse {
+	s.Body = v
+	return s
+}
+
+type RecognizeVietnamIdentityCardRequest struct {
+	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardRequest) SetImageUrl(v string) *RecognizeVietnamIdentityCardRequest {
+	s.ImageUrl = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardAdvanceRequest struct {
+	ImageUrlObject io.Reader `json:"ImageUrlObject,omitempty" xml:"ImageUrlObject,omitempty" require:"true"`
+}
+
+func (s RecognizeVietnamIdentityCardAdvanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardAdvanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardAdvanceRequest) SetImageUrlObject(v io.Reader) *RecognizeVietnamIdentityCardAdvanceRequest {
+	s.ImageUrlObject = v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBody struct {
+	Data *RecognizeVietnamIdentityCardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBody) SetData(v *RecognizeVietnamIdentityCardResponseBodyData) *RecognizeVietnamIdentityCardResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBody) SetRequestId(v string) *RecognizeVietnamIdentityCardResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyData struct {
+	AddressFirstLine         *RecognizeVietnamIdentityCardResponseBodyDataAddressFirstLine         `json:"AddressFirstLine,omitempty" xml:"AddressFirstLine,omitempty" type:"Struct"`
+	AddressSecondLine        *RecognizeVietnamIdentityCardResponseBodyDataAddressSecondLine        `json:"AddressSecondLine,omitempty" xml:"AddressSecondLine,omitempty" type:"Struct"`
+	BirthDate                *RecognizeVietnamIdentityCardResponseBodyDataBirthDate                `json:"BirthDate,omitempty" xml:"BirthDate,omitempty" type:"Struct"`
+	CardBox                  *RecognizeVietnamIdentityCardResponseBodyDataCardBox                  `json:"CardBox,omitempty" xml:"CardBox,omitempty" type:"Struct"`
+	DriveClass               *RecognizeVietnamIdentityCardResponseBodyDataDriveClass               `json:"DriveClass,omitempty" xml:"DriveClass,omitempty" type:"Struct"`
+	ExpiryDate               *RecognizeVietnamIdentityCardResponseBodyDataExpiryDate               `json:"ExpiryDate,omitempty" xml:"ExpiryDate,omitempty" type:"Struct"`
+	FullName                 *RecognizeVietnamIdentityCardResponseBodyDataFullName                 `json:"FullName,omitempty" xml:"FullName,omitempty" type:"Struct"`
+	IdNumber                 *RecognizeVietnamIdentityCardResponseBodyDataIdNumber                 `json:"IdNumber,omitempty" xml:"IdNumber,omitempty" type:"Struct"`
+	Nationality              *RecognizeVietnamIdentityCardResponseBodyDataNationality              `json:"Nationality,omitempty" xml:"Nationality,omitempty" type:"Struct"`
+	OriginPlaceFirstLine     *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceFirstLine     `json:"OriginPlaceFirstLine,omitempty" xml:"OriginPlaceFirstLine,omitempty" type:"Struct"`
+	OriginPlaceSecondLine    *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceSecondLine    `json:"OriginPlaceSecondLine,omitempty" xml:"OriginPlaceSecondLine,omitempty" type:"Struct"`
+	PortraitBox              *RecognizeVietnamIdentityCardResponseBodyDataPortraitBox              `json:"PortraitBox,omitempty" xml:"PortraitBox,omitempty" type:"Struct"`
+	ResidencePlaceFirstLine  *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceFirstLine  `json:"ResidencePlaceFirstLine,omitempty" xml:"ResidencePlaceFirstLine,omitempty" type:"Struct"`
+	ResidencePlaceSecondLine *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceSecondLine `json:"ResidencePlaceSecondLine,omitempty" xml:"ResidencePlaceSecondLine,omitempty" type:"Struct"`
+	Sex                      *RecognizeVietnamIdentityCardResponseBodyDataSex                      `json:"Sex,omitempty" xml:"Sex,omitempty" type:"Struct"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyData) SetAddressFirstLine(v *RecognizeVietnamIdentityCardResponseBodyDataAddressFirstLine) *RecognizeVietnamIdentityCardResponseBodyData {
+	s.AddressFirstLine = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyData) SetAddressSecondLine(v *RecognizeVietnamIdentityCardResponseBodyDataAddressSecondLine) *RecognizeVietnamIdentityCardResponseBodyData {
+	s.AddressSecondLine = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyData) SetBirthDate(v *RecognizeVietnamIdentityCardResponseBodyDataBirthDate) *RecognizeVietnamIdentityCardResponseBodyData {
+	s.BirthDate = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyData) SetCardBox(v *RecognizeVietnamIdentityCardResponseBodyDataCardBox) *RecognizeVietnamIdentityCardResponseBodyData {
+	s.CardBox = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyData) SetDriveClass(v *RecognizeVietnamIdentityCardResponseBodyDataDriveClass) *RecognizeVietnamIdentityCardResponseBodyData {
+	s.DriveClass = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyData) SetExpiryDate(v *RecognizeVietnamIdentityCardResponseBodyDataExpiryDate) *RecognizeVietnamIdentityCardResponseBodyData {
+	s.ExpiryDate = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyData) SetFullName(v *RecognizeVietnamIdentityCardResponseBodyDataFullName) *RecognizeVietnamIdentityCardResponseBodyData {
+	s.FullName = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyData) SetIdNumber(v *RecognizeVietnamIdentityCardResponseBodyDataIdNumber) *RecognizeVietnamIdentityCardResponseBodyData {
+	s.IdNumber = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyData) SetNationality(v *RecognizeVietnamIdentityCardResponseBodyDataNationality) *RecognizeVietnamIdentityCardResponseBodyData {
+	s.Nationality = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyData) SetOriginPlaceFirstLine(v *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceFirstLine) *RecognizeVietnamIdentityCardResponseBodyData {
+	s.OriginPlaceFirstLine = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyData) SetOriginPlaceSecondLine(v *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceSecondLine) *RecognizeVietnamIdentityCardResponseBodyData {
+	s.OriginPlaceSecondLine = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyData) SetPortraitBox(v *RecognizeVietnamIdentityCardResponseBodyDataPortraitBox) *RecognizeVietnamIdentityCardResponseBodyData {
+	s.PortraitBox = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyData) SetResidencePlaceFirstLine(v *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceFirstLine) *RecognizeVietnamIdentityCardResponseBodyData {
+	s.ResidencePlaceFirstLine = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyData) SetResidencePlaceSecondLine(v *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceSecondLine) *RecognizeVietnamIdentityCardResponseBodyData {
+	s.ResidencePlaceSecondLine = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyData) SetSex(v *RecognizeVietnamIdentityCardResponseBodyDataSex) *RecognizeVietnamIdentityCardResponseBodyData {
+	s.Sex = v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataAddressFirstLine struct {
+	KeyPoints []*RecognizeVietnamIdentityCardResponseBodyDataAddressFirstLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                                 `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                  `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataAddressFirstLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataAddressFirstLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataAddressFirstLine) SetKeyPoints(v []*RecognizeVietnamIdentityCardResponseBodyDataAddressFirstLineKeyPoints) *RecognizeVietnamIdentityCardResponseBodyDataAddressFirstLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataAddressFirstLine) SetScore(v float32) *RecognizeVietnamIdentityCardResponseBodyDataAddressFirstLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataAddressFirstLine) SetText(v string) *RecognizeVietnamIdentityCardResponseBodyDataAddressFirstLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataAddressFirstLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataAddressFirstLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataAddressFirstLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataAddressFirstLineKeyPoints) SetX(v float32) *RecognizeVietnamIdentityCardResponseBodyDataAddressFirstLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataAddressFirstLineKeyPoints) SetY(v float32) *RecognizeVietnamIdentityCardResponseBodyDataAddressFirstLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataAddressSecondLine struct {
+	KeyPoints []*RecognizeVietnamIdentityCardResponseBodyDataAddressSecondLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                                  `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                   `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataAddressSecondLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataAddressSecondLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataAddressSecondLine) SetKeyPoints(v []*RecognizeVietnamIdentityCardResponseBodyDataAddressSecondLineKeyPoints) *RecognizeVietnamIdentityCardResponseBodyDataAddressSecondLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataAddressSecondLine) SetScore(v float32) *RecognizeVietnamIdentityCardResponseBodyDataAddressSecondLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataAddressSecondLine) SetText(v string) *RecognizeVietnamIdentityCardResponseBodyDataAddressSecondLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataAddressSecondLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataAddressSecondLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataAddressSecondLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataAddressSecondLineKeyPoints) SetX(v float32) *RecognizeVietnamIdentityCardResponseBodyDataAddressSecondLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataAddressSecondLineKeyPoints) SetY(v float32) *RecognizeVietnamIdentityCardResponseBodyDataAddressSecondLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataBirthDate struct {
+	KeyPoints []*RecognizeVietnamIdentityCardResponseBodyDataBirthDateKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *float32                                                          `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                           `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataBirthDate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataBirthDate) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataBirthDate) SetKeyPoints(v []*RecognizeVietnamIdentityCardResponseBodyDataBirthDateKeyPoints) *RecognizeVietnamIdentityCardResponseBodyDataBirthDate {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataBirthDate) SetScore(v float32) *RecognizeVietnamIdentityCardResponseBodyDataBirthDate {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataBirthDate) SetText(v string) *RecognizeVietnamIdentityCardResponseBodyDataBirthDate {
+	s.Text = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataBirthDateKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataBirthDateKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataBirthDateKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataBirthDateKeyPoints) SetX(v float32) *RecognizeVietnamIdentityCardResponseBodyDataBirthDateKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataBirthDateKeyPoints) SetY(v float32) *RecognizeVietnamIdentityCardResponseBodyDataBirthDateKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataCardBox struct {
+	KeyPoints []*RecognizeVietnamIdentityCardResponseBodyDataCardBoxKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                         `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                         `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataCardBox) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataCardBox) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataCardBox) SetKeyPoints(v []*RecognizeVietnamIdentityCardResponseBodyDataCardBoxKeyPoints) *RecognizeVietnamIdentityCardResponseBodyDataCardBox {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataCardBox) SetScore(v string) *RecognizeVietnamIdentityCardResponseBodyDataCardBox {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataCardBox) SetText(v string) *RecognizeVietnamIdentityCardResponseBodyDataCardBox {
+	s.Text = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataCardBoxKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataCardBoxKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataCardBoxKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataCardBoxKeyPoints) SetX(v float32) *RecognizeVietnamIdentityCardResponseBodyDataCardBoxKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataCardBoxKeyPoints) SetY(v float32) *RecognizeVietnamIdentityCardResponseBodyDataCardBoxKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataDriveClass struct {
+	KeyPoints []*RecognizeVietnamIdentityCardResponseBodyDataDriveClassKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                            `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                            `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataDriveClass) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataDriveClass) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataDriveClass) SetKeyPoints(v []*RecognizeVietnamIdentityCardResponseBodyDataDriveClassKeyPoints) *RecognizeVietnamIdentityCardResponseBodyDataDriveClass {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataDriveClass) SetScore(v string) *RecognizeVietnamIdentityCardResponseBodyDataDriveClass {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataDriveClass) SetText(v string) *RecognizeVietnamIdentityCardResponseBodyDataDriveClass {
+	s.Text = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataDriveClassKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataDriveClassKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataDriveClassKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataDriveClassKeyPoints) SetX(v float32) *RecognizeVietnamIdentityCardResponseBodyDataDriveClassKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataDriveClassKeyPoints) SetY(v float32) *RecognizeVietnamIdentityCardResponseBodyDataDriveClassKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataExpiryDate struct {
+	KeyPoints []*RecognizeVietnamIdentityCardResponseBodyDataExpiryDateKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                            `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                            `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataExpiryDate) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataExpiryDate) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataExpiryDate) SetKeyPoints(v []*RecognizeVietnamIdentityCardResponseBodyDataExpiryDateKeyPoints) *RecognizeVietnamIdentityCardResponseBodyDataExpiryDate {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataExpiryDate) SetScore(v string) *RecognizeVietnamIdentityCardResponseBodyDataExpiryDate {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataExpiryDate) SetText(v string) *RecognizeVietnamIdentityCardResponseBodyDataExpiryDate {
+	s.Text = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataExpiryDateKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataExpiryDateKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataExpiryDateKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataExpiryDateKeyPoints) SetX(v float32) *RecognizeVietnamIdentityCardResponseBodyDataExpiryDateKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataExpiryDateKeyPoints) SetY(v float32) *RecognizeVietnamIdentityCardResponseBodyDataExpiryDateKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataFullName struct {
+	KeyPoints []*RecognizeVietnamIdentityCardResponseBodyDataFullNameKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                          `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                          `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataFullName) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataFullName) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataFullName) SetKeyPoints(v []*RecognizeVietnamIdentityCardResponseBodyDataFullNameKeyPoints) *RecognizeVietnamIdentityCardResponseBodyDataFullName {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataFullName) SetScore(v string) *RecognizeVietnamIdentityCardResponseBodyDataFullName {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataFullName) SetText(v string) *RecognizeVietnamIdentityCardResponseBodyDataFullName {
+	s.Text = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataFullNameKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataFullNameKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataFullNameKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataFullNameKeyPoints) SetX(v float32) *RecognizeVietnamIdentityCardResponseBodyDataFullNameKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataFullNameKeyPoints) SetY(v float32) *RecognizeVietnamIdentityCardResponseBodyDataFullNameKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataIdNumber struct {
+	KeyPoints []*RecognizeVietnamIdentityCardResponseBodyDataIdNumberKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                          `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                          `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataIdNumber) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataIdNumber) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataIdNumber) SetKeyPoints(v []*RecognizeVietnamIdentityCardResponseBodyDataIdNumberKeyPoints) *RecognizeVietnamIdentityCardResponseBodyDataIdNumber {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataIdNumber) SetScore(v string) *RecognizeVietnamIdentityCardResponseBodyDataIdNumber {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataIdNumber) SetText(v string) *RecognizeVietnamIdentityCardResponseBodyDataIdNumber {
+	s.Text = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataIdNumberKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataIdNumberKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataIdNumberKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataIdNumberKeyPoints) SetX(v float32) *RecognizeVietnamIdentityCardResponseBodyDataIdNumberKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataIdNumberKeyPoints) SetY(v float32) *RecognizeVietnamIdentityCardResponseBodyDataIdNumberKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataNationality struct {
+	KeyPoints []*RecognizeVietnamIdentityCardResponseBodyDataNationalityKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                             `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                             `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataNationality) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataNationality) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataNationality) SetKeyPoints(v []*RecognizeVietnamIdentityCardResponseBodyDataNationalityKeyPoints) *RecognizeVietnamIdentityCardResponseBodyDataNationality {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataNationality) SetScore(v string) *RecognizeVietnamIdentityCardResponseBodyDataNationality {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataNationality) SetText(v string) *RecognizeVietnamIdentityCardResponseBodyDataNationality {
+	s.Text = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataNationalityKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataNationalityKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataNationalityKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataNationalityKeyPoints) SetX(v float32) *RecognizeVietnamIdentityCardResponseBodyDataNationalityKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataNationalityKeyPoints) SetY(v float32) *RecognizeVietnamIdentityCardResponseBodyDataNationalityKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceFirstLine struct {
+	KeyPoints []*RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceFirstLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                                      `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                      `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceFirstLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceFirstLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceFirstLine) SetKeyPoints(v []*RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceFirstLineKeyPoints) *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceFirstLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceFirstLine) SetScore(v string) *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceFirstLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceFirstLine) SetText(v string) *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceFirstLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceFirstLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceFirstLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceFirstLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceFirstLineKeyPoints) SetX(v float32) *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceFirstLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceFirstLineKeyPoints) SetY(v float32) *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceFirstLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceSecondLine struct {
+	KeyPoints []*RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceSecondLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                                       `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                       `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceSecondLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceSecondLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceSecondLine) SetKeyPoints(v []*RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceSecondLineKeyPoints) *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceSecondLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceSecondLine) SetScore(v string) *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceSecondLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceSecondLine) SetText(v string) *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceSecondLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceSecondLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceSecondLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceSecondLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceSecondLineKeyPoints) SetX(v float32) *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceSecondLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceSecondLineKeyPoints) SetY(v float32) *RecognizeVietnamIdentityCardResponseBodyDataOriginPlaceSecondLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataPortraitBox struct {
+	KeyPoints []*RecognizeVietnamIdentityCardResponseBodyDataPortraitBoxKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                             `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                             `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataPortraitBox) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataPortraitBox) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataPortraitBox) SetKeyPoints(v []*RecognizeVietnamIdentityCardResponseBodyDataPortraitBoxKeyPoints) *RecognizeVietnamIdentityCardResponseBodyDataPortraitBox {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataPortraitBox) SetScore(v string) *RecognizeVietnamIdentityCardResponseBodyDataPortraitBox {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataPortraitBox) SetText(v string) *RecognizeVietnamIdentityCardResponseBodyDataPortraitBox {
+	s.Text = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataPortraitBoxKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataPortraitBoxKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataPortraitBoxKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataPortraitBoxKeyPoints) SetX(v float32) *RecognizeVietnamIdentityCardResponseBodyDataPortraitBoxKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataPortraitBoxKeyPoints) SetY(v float32) *RecognizeVietnamIdentityCardResponseBodyDataPortraitBoxKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceFirstLine struct {
+	KeyPoints []*RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceFirstLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                                         `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                         `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceFirstLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceFirstLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceFirstLine) SetKeyPoints(v []*RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceFirstLineKeyPoints) *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceFirstLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceFirstLine) SetScore(v string) *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceFirstLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceFirstLine) SetText(v string) *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceFirstLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceFirstLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceFirstLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceFirstLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceFirstLineKeyPoints) SetX(v float32) *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceFirstLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceFirstLineKeyPoints) SetY(v float32) *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceFirstLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceSecondLine struct {
+	KeyPoints []*RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceSecondLineKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                                          `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                                          `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceSecondLine) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceSecondLine) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceSecondLine) SetKeyPoints(v []*RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceSecondLineKeyPoints) *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceSecondLine {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceSecondLine) SetScore(v string) *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceSecondLine {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceSecondLine) SetText(v string) *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceSecondLine {
+	s.Text = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceSecondLineKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceSecondLineKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceSecondLineKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceSecondLineKeyPoints) SetX(v float32) *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceSecondLineKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceSecondLineKeyPoints) SetY(v float32) *RecognizeVietnamIdentityCardResponseBodyDataResidencePlaceSecondLineKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataSex struct {
+	KeyPoints []*RecognizeVietnamIdentityCardResponseBodyDataSexKeyPoints `json:"KeyPoints,omitempty" xml:"KeyPoints,omitempty" type:"Repeated"`
+	Score     *string                                                     `json:"Score,omitempty" xml:"Score,omitempty"`
+	Text      *string                                                     `json:"Text,omitempty" xml:"Text,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataSex) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataSex) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataSex) SetKeyPoints(v []*RecognizeVietnamIdentityCardResponseBodyDataSexKeyPoints) *RecognizeVietnamIdentityCardResponseBodyDataSex {
+	s.KeyPoints = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataSex) SetScore(v string) *RecognizeVietnamIdentityCardResponseBodyDataSex {
+	s.Score = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataSex) SetText(v string) *RecognizeVietnamIdentityCardResponseBodyDataSex {
+	s.Text = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponseBodyDataSexKeyPoints struct {
+	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataSexKeyPoints) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponseBodyDataSexKeyPoints) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataSexKeyPoints) SetX(v float32) *RecognizeVietnamIdentityCardResponseBodyDataSexKeyPoints {
+	s.X = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponseBodyDataSexKeyPoints) SetY(v float32) *RecognizeVietnamIdentityCardResponseBodyDataSexKeyPoints {
+	s.Y = &v
+	return s
+}
+
+type RecognizeVietnamIdentityCardResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeVietnamIdentityCardResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RecognizeVietnamIdentityCardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RecognizeVietnamIdentityCardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RecognizeVietnamIdentityCardResponse) SetHeaders(v map[string]*string) *RecognizeVietnamIdentityCardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponse) SetStatusCode(v int32) *RecognizeVietnamIdentityCardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RecognizeVietnamIdentityCardResponse) SetBody(v *RecognizeVietnamIdentityCardResponseBody) *RecognizeVietnamIdentityCardResponse {
 	s.Body = v
 	return s
 }
@@ -7046,8 +13986,9 @@ func (s *TrimDocumentResponseBodyData) SetContent(v string) *TrimDocumentRespons
 }
 
 type TrimDocumentResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TrimDocumentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TrimDocumentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TrimDocumentResponse) String() string {
@@ -7060,6 +14001,11 @@ func (s TrimDocumentResponse) GoString() string {
 
 func (s *TrimDocumentResponse) SetHeaders(v map[string]*string) *TrimDocumentResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *TrimDocumentResponse) SetStatusCode(v int32) *TrimDocumentResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8679,6 +15625,156 @@ func (client *Client) RecognizeIdentityCardAdvance(request *RecognizeIdentityCar
 	return _result, _err
 }
 
+func (client *Client) RecognizeIndonesiaIdentityCardWithOptions(request *RecognizeIndonesiaIdentityCardRequest, runtime *util.RuntimeOptions) (_result *RecognizeIndonesiaIdentityCardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeIndonesiaIdentityCard"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecognizeIndonesiaIdentityCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RecognizeIndonesiaIdentityCard(request *RecognizeIndonesiaIdentityCardRequest) (_result *RecognizeIndonesiaIdentityCardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecognizeIndonesiaIdentityCardResponse{}
+	_body, _err := client.RecognizeIndonesiaIdentityCardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RecognizeIndonesiaIdentityCardAdvance(request *RecognizeIndonesiaIdentityCardAdvanceRequest, runtime *util.RuntimeOptions) (_result *RecognizeIndonesiaIdentityCardResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("ocr"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	recognizeIndonesiaIdentityCardReq := &RecognizeIndonesiaIdentityCardRequest{}
+	openapiutil.Convert(request, recognizeIndonesiaIdentityCardReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeIndonesiaIdentityCardReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	}
+
+	recognizeIndonesiaIdentityCardResp, _err := client.RecognizeIndonesiaIdentityCardWithOptions(recognizeIndonesiaIdentityCardReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = recognizeIndonesiaIdentityCardResp
+	return _result, _err
+}
+
 func (client *Client) RecognizeLicensePlateWithOptions(request *RecognizeLicensePlateRequest, runtime *util.RuntimeOptions) (_result *RecognizeLicensePlateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8826,6 +15922,156 @@ func (client *Client) RecognizeLicensePlateAdvance(request *RecognizeLicensePlat
 	}
 
 	_result = recognizeLicensePlateResp
+	return _result, _err
+}
+
+func (client *Client) RecognizeMalaysiaIdentityCardWithOptions(request *RecognizeMalaysiaIdentityCardRequest, runtime *util.RuntimeOptions) (_result *RecognizeMalaysiaIdentityCardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeMalaysiaIdentityCard"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecognizeMalaysiaIdentityCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RecognizeMalaysiaIdentityCard(request *RecognizeMalaysiaIdentityCardRequest) (_result *RecognizeMalaysiaIdentityCardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecognizeMalaysiaIdentityCardResponse{}
+	_body, _err := client.RecognizeMalaysiaIdentityCardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RecognizeMalaysiaIdentityCardAdvance(request *RecognizeMalaysiaIdentityCardAdvanceRequest, runtime *util.RuntimeOptions) (_result *RecognizeMalaysiaIdentityCardResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("ocr"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	recognizeMalaysiaIdentityCardReq := &RecognizeMalaysiaIdentityCardRequest{}
+	openapiutil.Convert(request, recognizeMalaysiaIdentityCardReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeMalaysiaIdentityCardReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	}
+
+	recognizeMalaysiaIdentityCardResp, _err := client.RecognizeMalaysiaIdentityCardWithOptions(recognizeMalaysiaIdentityCardReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = recognizeMalaysiaIdentityCardResp
 	return _result, _err
 }
 
@@ -9470,6 +16716,156 @@ func (client *Client) RecognizeQuotaInvoiceAdvance(request *RecognizeQuotaInvoic
 	}
 
 	_result = recognizeQuotaInvoiceResp
+	return _result, _err
+}
+
+func (client *Client) RecognizeRussiaIdentityCardWithOptions(request *RecognizeRussiaIdentityCardRequest, runtime *util.RuntimeOptions) (_result *RecognizeRussiaIdentityCardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeRussiaIdentityCard"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecognizeRussiaIdentityCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RecognizeRussiaIdentityCard(request *RecognizeRussiaIdentityCardRequest) (_result *RecognizeRussiaIdentityCardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecognizeRussiaIdentityCardResponse{}
+	_body, _err := client.RecognizeRussiaIdentityCardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RecognizeRussiaIdentityCardAdvance(request *RecognizeRussiaIdentityCardAdvanceRequest, runtime *util.RuntimeOptions) (_result *RecognizeRussiaIdentityCardResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("ocr"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	recognizeRussiaIdentityCardReq := &RecognizeRussiaIdentityCardRequest{}
+	openapiutil.Convert(request, recognizeRussiaIdentityCardReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeRussiaIdentityCardReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	}
+
+	recognizeRussiaIdentityCardResp, _err := client.RecognizeRussiaIdentityCardWithOptions(recognizeRussiaIdentityCardReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = recognizeRussiaIdentityCardResp
 	return _result, _err
 }
 
@@ -10393,6 +17789,156 @@ func (client *Client) RecognizeTrainTicketAdvance(request *RecognizeTrainTicketA
 	return _result, _err
 }
 
+func (client *Client) RecognizeTurkeyIdentityCardWithOptions(request *RecognizeTurkeyIdentityCardRequest, runtime *util.RuntimeOptions) (_result *RecognizeTurkeyIdentityCardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeTurkeyIdentityCard"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecognizeTurkeyIdentityCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RecognizeTurkeyIdentityCard(request *RecognizeTurkeyIdentityCardRequest) (_result *RecognizeTurkeyIdentityCardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecognizeTurkeyIdentityCardResponse{}
+	_body, _err := client.RecognizeTurkeyIdentityCardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RecognizeTurkeyIdentityCardAdvance(request *RecognizeTurkeyIdentityCardAdvanceRequest, runtime *util.RuntimeOptions) (_result *RecognizeTurkeyIdentityCardResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("ocr"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	recognizeTurkeyIdentityCardReq := &RecognizeTurkeyIdentityCardRequest{}
+	openapiutil.Convert(request, recognizeTurkeyIdentityCardReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeTurkeyIdentityCardReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	}
+
+	recognizeTurkeyIdentityCardResp, _err := client.RecognizeTurkeyIdentityCardWithOptions(recognizeTurkeyIdentityCardReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = recognizeTurkeyIdentityCardResp
+	return _result, _err
+}
+
 func (client *Client) RecognizeUkraineIdentityCardWithOptions(request *RecognizeUkraineIdentityCardRequest, runtime *util.RuntimeOptions) (_result *RecognizeUkraineIdentityCardResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11202,6 +18748,156 @@ func (client *Client) RecognizeVideoCharacter(request *RecognizeVideoCharacterRe
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RecognizeVietnamIdentityCardWithOptions(request *RecognizeVietnamIdentityCardRequest, runtime *util.RuntimeOptions) (_result *RecognizeVietnamIdentityCardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ImageUrl)) {
+		body["ImageUrl"] = request.ImageUrl
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RecognizeVietnamIdentityCard"),
+		Version:     tea.String("2019-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RecognizeVietnamIdentityCardResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RecognizeVietnamIdentityCard(request *RecognizeVietnamIdentityCardRequest) (_result *RecognizeVietnamIdentityCardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RecognizeVietnamIdentityCardResponse{}
+	_body, _err := client.RecognizeVietnamIdentityCardWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RecognizeVietnamIdentityCardAdvance(request *RecognizeVietnamIdentityCardAdvanceRequest, runtime *util.RuntimeOptions) (_result *RecognizeVietnamIdentityCardResponse, _err error) {
+	// Step 0: init client
+	accessKeyId, _err := client.Credential.GetAccessKeyId()
+	if _err != nil {
+		return _result, _err
+	}
+
+	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
+	if _err != nil {
+		return _result, _err
+	}
+
+	securityToken, _err := client.Credential.GetSecurityToken()
+	if _err != nil {
+		return _result, _err
+	}
+
+	credentialType := client.Credential.GetType()
+	openPlatformEndpoint := client.OpenPlatformEndpoint
+	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
+		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
+	}
+
+	if tea.BoolValue(util.IsUnset(credentialType)) {
+		credentialType = tea.String("access_key")
+	}
+
+	authConfig := &rpc.Config{
+		AccessKeyId:     accessKeyId,
+		AccessKeySecret: accessKeySecret,
+		SecurityToken:   securityToken,
+		Type:            credentialType,
+		Endpoint:        openPlatformEndpoint,
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	authClient, _err := openplatform.NewClient(authConfig)
+	if _err != nil {
+		return _result, _err
+	}
+
+	authRequest := &openplatform.AuthorizeFileUploadRequest{
+		Product:  tea.String("ocr"),
+		RegionId: client.RegionId,
+	}
+	authResponse := &openplatform.AuthorizeFileUploadResponse{}
+	ossConfig := &oss.Config{
+		AccessKeySecret: accessKeySecret,
+		Type:            tea.String("access_key"),
+		Protocol:        client.Protocol,
+		RegionId:        client.RegionId,
+	}
+	var ossClient *oss.Client
+	fileObj := &fileform.FileField{}
+	ossHeader := &oss.PostObjectRequestHeader{}
+	uploadRequest := &oss.PostObjectRequest{}
+	ossRuntime := &ossutil.RuntimeOptions{}
+	openapiutil.Convert(runtime, ossRuntime)
+	recognizeVietnamIdentityCardReq := &RecognizeVietnamIdentityCardRequest{}
+	openapiutil.Convert(request, recognizeVietnamIdentityCardReq)
+	if !tea.BoolValue(util.IsUnset(request.ImageUrlObject)) {
+		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
+		if _err != nil {
+			return _result, _err
+		}
+
+		ossConfig.AccessKeyId = authResponse.AccessKeyId
+		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
+		ossClient, _err = oss.NewClient(ossConfig)
+		if _err != nil {
+			return _result, _err
+		}
+
+		fileObj = &fileform.FileField{
+			Filename:    authResponse.ObjectKey,
+			Content:     request.ImageUrlObject,
+			ContentType: tea.String(""),
+		}
+		ossHeader = &oss.PostObjectRequestHeader{
+			AccessKeyId:         authResponse.AccessKeyId,
+			Policy:              authResponse.EncodedPolicy,
+			Signature:           authResponse.Signature,
+			Key:                 authResponse.ObjectKey,
+			File:                fileObj,
+			SuccessActionStatus: tea.String("201"),
+		}
+		uploadRequest = &oss.PostObjectRequest{
+			BucketName: authResponse.Bucket,
+			Header:     ossHeader,
+		}
+		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
+		if _err != nil {
+			return _result, _err
+		}
+		recognizeVietnamIdentityCardReq.ImageUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
+	}
+
+	recognizeVietnamIdentityCardResp, _err := client.RecognizeVietnamIdentityCardWithOptions(recognizeVietnamIdentityCardReq, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+
+	_result = recognizeVietnamIdentityCardResp
 	return _result, _err
 }
 
