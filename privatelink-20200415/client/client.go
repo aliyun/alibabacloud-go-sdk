@@ -71,8 +71,9 @@ func (s *AddUserToVpcEndpointServiceResponseBody) SetRequestId(v string) *AddUse
 }
 
 type AddUserToVpcEndpointServiceResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddUserToVpcEndpointServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddUserToVpcEndpointServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddUserToVpcEndpointServiceResponse) String() string {
@@ -85,6 +86,11 @@ func (s AddUserToVpcEndpointServiceResponse) GoString() string {
 
 func (s *AddUserToVpcEndpointServiceResponse) SetHeaders(v map[string]*string) *AddUserToVpcEndpointServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddUserToVpcEndpointServiceResponse) SetStatusCode(v int32) *AddUserToVpcEndpointServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -164,8 +170,9 @@ func (s *AddZoneToVpcEndpointResponseBody) SetRequestId(v string) *AddZoneToVpcE
 }
 
 type AddZoneToVpcEndpointResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddZoneToVpcEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddZoneToVpcEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddZoneToVpcEndpointResponse) String() string {
@@ -178,6 +185,11 @@ func (s AddZoneToVpcEndpointResponse) GoString() string {
 
 func (s *AddZoneToVpcEndpointResponse) SetHeaders(v map[string]*string) *AddZoneToVpcEndpointResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddZoneToVpcEndpointResponse) SetStatusCode(v int32) *AddZoneToVpcEndpointResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -251,8 +263,9 @@ func (s *AttachResourceToVpcEndpointServiceResponseBody) SetRequestId(v string) 
 }
 
 type AttachResourceToVpcEndpointServiceResponse struct {
-	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AttachResourceToVpcEndpointServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AttachResourceToVpcEndpointServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AttachResourceToVpcEndpointServiceResponse) String() string {
@@ -265,6 +278,11 @@ func (s AttachResourceToVpcEndpointServiceResponse) GoString() string {
 
 func (s *AttachResourceToVpcEndpointServiceResponse) SetHeaders(v map[string]*string) *AttachResourceToVpcEndpointServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AttachResourceToVpcEndpointServiceResponse) SetStatusCode(v int32) *AttachResourceToVpcEndpointServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -332,8 +350,9 @@ func (s *AttachSecurityGroupToVpcEndpointResponseBody) SetRequestId(v string) *A
 }
 
 type AttachSecurityGroupToVpcEndpointResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AttachSecurityGroupToVpcEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AttachSecurityGroupToVpcEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AttachSecurityGroupToVpcEndpointResponse) String() string {
@@ -346,6 +365,11 @@ func (s AttachSecurityGroupToVpcEndpointResponse) GoString() string {
 
 func (s *AttachSecurityGroupToVpcEndpointResponse) SetHeaders(v map[string]*string) *AttachSecurityGroupToVpcEndpointResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AttachSecurityGroupToVpcEndpointResponse) SetStatusCode(v int32) *AttachSecurityGroupToVpcEndpointResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -378,8 +402,9 @@ func (s *CheckProductOpenResponseBody) SetSuccess(v bool) *CheckProductOpenRespo
 }
 
 type CheckProductOpenResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CheckProductOpenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckProductOpenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CheckProductOpenResponse) String() string {
@@ -392,6 +417,11 @@ func (s CheckProductOpenResponse) GoString() string {
 
 func (s *CheckProductOpenResponse) SetHeaders(v map[string]*string) *CheckProductOpenResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CheckProductOpenResponse) SetStatusCode(v int32) *CheckProductOpenResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -608,8 +638,9 @@ func (s *CreateVpcEndpointResponseBody) SetVpcId(v string) *CreateVpcEndpointRes
 }
 
 type CreateVpcEndpointResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateVpcEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateVpcEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateVpcEndpointResponse) String() string {
@@ -622,6 +653,11 @@ func (s CreateVpcEndpointResponse) GoString() string {
 
 func (s *CreateVpcEndpointResponse) SetHeaders(v map[string]*string) *CreateVpcEndpointResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateVpcEndpointResponse) SetStatusCode(v int32) *CreateVpcEndpointResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -790,8 +826,9 @@ func (s *CreateVpcEndpointServiceResponseBody) SetZoneAffinityEnabled(v bool) *C
 }
 
 type CreateVpcEndpointServiceResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateVpcEndpointServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateVpcEndpointServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateVpcEndpointServiceResponse) String() string {
@@ -804,6 +841,11 @@ func (s CreateVpcEndpointServiceResponse) GoString() string {
 
 func (s *CreateVpcEndpointServiceResponse) SetHeaders(v map[string]*string) *CreateVpcEndpointServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateVpcEndpointServiceResponse) SetStatusCode(v int32) *CreateVpcEndpointServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -865,8 +907,9 @@ func (s *DeleteVpcEndpointResponseBody) SetRequestId(v string) *DeleteVpcEndpoin
 }
 
 type DeleteVpcEndpointResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteVpcEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteVpcEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteVpcEndpointResponse) String() string {
@@ -879,6 +922,11 @@ func (s DeleteVpcEndpointResponse) GoString() string {
 
 func (s *DeleteVpcEndpointResponse) SetHeaders(v map[string]*string) *DeleteVpcEndpointResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteVpcEndpointResponse) SetStatusCode(v int32) *DeleteVpcEndpointResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -940,8 +988,9 @@ func (s *DeleteVpcEndpointServiceResponseBody) SetRequestId(v string) *DeleteVpc
 }
 
 type DeleteVpcEndpointServiceResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteVpcEndpointServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteVpcEndpointServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteVpcEndpointServiceResponse) String() string {
@@ -954,6 +1003,11 @@ func (s DeleteVpcEndpointServiceResponse) GoString() string {
 
 func (s *DeleteVpcEndpointServiceResponse) SetHeaders(v map[string]*string) *DeleteVpcEndpointServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteVpcEndpointServiceResponse) SetStatusCode(v int32) *DeleteVpcEndpointServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1049,8 +1103,9 @@ func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionId(v string) *Descri
 }
 
 type DescribeRegionsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -1063,6 +1118,11 @@ func (s DescribeRegionsResponse) GoString() string {
 
 func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegionsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1152,8 +1212,9 @@ func (s *DescribeZonesResponseBodyZonesZone) SetZoneId(v string) *DescribeZonesR
 }
 
 type DescribeZonesResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeZonesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeZonesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeZonesResponse) String() string {
@@ -1166,6 +1227,11 @@ func (s DescribeZonesResponse) GoString() string {
 
 func (s *DescribeZonesResponse) SetHeaders(v map[string]*string) *DescribeZonesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeZonesResponse) SetStatusCode(v int32) *DescribeZonesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1239,8 +1305,9 @@ func (s *DetachResourceFromVpcEndpointServiceResponseBody) SetRequestId(v string
 }
 
 type DetachResourceFromVpcEndpointServiceResponse struct {
-	Headers map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetachResourceFromVpcEndpointServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetachResourceFromVpcEndpointServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetachResourceFromVpcEndpointServiceResponse) String() string {
@@ -1253,6 +1320,11 @@ func (s DetachResourceFromVpcEndpointServiceResponse) GoString() string {
 
 func (s *DetachResourceFromVpcEndpointServiceResponse) SetHeaders(v map[string]*string) *DetachResourceFromVpcEndpointServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetachResourceFromVpcEndpointServiceResponse) SetStatusCode(v int32) *DetachResourceFromVpcEndpointServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1320,8 +1392,9 @@ func (s *DetachSecurityGroupFromVpcEndpointResponseBody) SetRequestId(v string) 
 }
 
 type DetachSecurityGroupFromVpcEndpointResponse struct {
-	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetachSecurityGroupFromVpcEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetachSecurityGroupFromVpcEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetachSecurityGroupFromVpcEndpointResponse) String() string {
@@ -1334,6 +1407,11 @@ func (s DetachSecurityGroupFromVpcEndpointResponse) GoString() string {
 
 func (s *DetachSecurityGroupFromVpcEndpointResponse) SetHeaders(v map[string]*string) *DetachSecurityGroupFromVpcEndpointResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetachSecurityGroupFromVpcEndpointResponse) SetStatusCode(v int32) *DetachSecurityGroupFromVpcEndpointResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1401,8 +1479,9 @@ func (s *DisableVpcEndpointConnectionResponseBody) SetRequestId(v string) *Disab
 }
 
 type DisableVpcEndpointConnectionResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableVpcEndpointConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableVpcEndpointConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableVpcEndpointConnectionResponse) String() string {
@@ -1415,6 +1494,11 @@ func (s DisableVpcEndpointConnectionResponse) GoString() string {
 
 func (s *DisableVpcEndpointConnectionResponse) SetHeaders(v map[string]*string) *DisableVpcEndpointConnectionResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableVpcEndpointConnectionResponse) SetStatusCode(v int32) *DisableVpcEndpointConnectionResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1494,8 +1578,9 @@ func (s *DisableVpcEndpointZoneConnectionResponseBody) SetRequestId(v string) *D
 }
 
 type DisableVpcEndpointZoneConnectionResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableVpcEndpointZoneConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableVpcEndpointZoneConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableVpcEndpointZoneConnectionResponse) String() string {
@@ -1508,6 +1593,11 @@ func (s DisableVpcEndpointZoneConnectionResponse) GoString() string {
 
 func (s *DisableVpcEndpointZoneConnectionResponse) SetHeaders(v map[string]*string) *DisableVpcEndpointZoneConnectionResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableVpcEndpointZoneConnectionResponse) SetStatusCode(v int32) *DisableVpcEndpointZoneConnectionResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1581,8 +1671,9 @@ func (s *EnableVpcEndpointConnectionResponseBody) SetRequestId(v string) *Enable
 }
 
 type EnableVpcEndpointConnectionResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableVpcEndpointConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableVpcEndpointConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableVpcEndpointConnectionResponse) String() string {
@@ -1595,6 +1686,11 @@ func (s EnableVpcEndpointConnectionResponse) GoString() string {
 
 func (s *EnableVpcEndpointConnectionResponse) SetHeaders(v map[string]*string) *EnableVpcEndpointConnectionResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *EnableVpcEndpointConnectionResponse) SetStatusCode(v int32) *EnableVpcEndpointConnectionResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1668,8 +1764,9 @@ func (s *EnableVpcEndpointZoneConnectionResponseBody) SetRequestId(v string) *En
 }
 
 type EnableVpcEndpointZoneConnectionResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableVpcEndpointZoneConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableVpcEndpointZoneConnectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableVpcEndpointZoneConnectionResponse) String() string {
@@ -1682,6 +1779,11 @@ func (s EnableVpcEndpointZoneConnectionResponse) GoString() string {
 
 func (s *EnableVpcEndpointZoneConnectionResponse) SetHeaders(v map[string]*string) *EnableVpcEndpointZoneConnectionResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *EnableVpcEndpointZoneConnectionResponse) SetStatusCode(v int32) *EnableVpcEndpointZoneConnectionResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1839,8 +1941,9 @@ func (s *GetVpcEndpointAttributeResponseBody) SetZonePrivateIpAddressCount(v int
 }
 
 type GetVpcEndpointAttributeResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetVpcEndpointAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetVpcEndpointAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetVpcEndpointAttributeResponse) String() string {
@@ -1853,6 +1956,11 @@ func (s GetVpcEndpointAttributeResponse) GoString() string {
 
 func (s *GetVpcEndpointAttributeResponse) SetHeaders(v map[string]*string) *GetVpcEndpointAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetVpcEndpointAttributeResponse) SetStatusCode(v int32) *GetVpcEndpointAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2004,8 +2112,9 @@ func (s *GetVpcEndpointServiceAttributeResponseBody) SetZones(v []*string) *GetV
 }
 
 type GetVpcEndpointServiceAttributeResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetVpcEndpointServiceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetVpcEndpointServiceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetVpcEndpointServiceAttributeResponse) String() string {
@@ -2018,6 +2127,11 @@ func (s GetVpcEndpointServiceAttributeResponse) GoString() string {
 
 func (s *GetVpcEndpointServiceAttributeResponse) SetHeaders(v map[string]*string) *GetVpcEndpointServiceAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetVpcEndpointServiceAttributeResponse) SetStatusCode(v int32) *GetVpcEndpointServiceAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2099,7 +2213,7 @@ func (s *ListVpcEndpointConnectionsRequest) SetServiceId(v string) *ListVpcEndpo
 
 type ListVpcEndpointConnectionsResponseBody struct {
 	Connections []*ListVpcEndpointConnectionsResponseBodyConnections `json:"Connections,omitempty" xml:"Connections,omitempty" type:"Repeated"`
-	MaxResults  *string                                              `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MaxResults  *int32                                               `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken   *string                                              `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId   *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -2117,7 +2231,7 @@ func (s *ListVpcEndpointConnectionsResponseBody) SetConnections(v []*ListVpcEndp
 	return s
 }
 
-func (s *ListVpcEndpointConnectionsResponseBody) SetMaxResults(v string) *ListVpcEndpointConnectionsResponseBody {
+func (s *ListVpcEndpointConnectionsResponseBody) SetMaxResults(v int32) *ListVpcEndpointConnectionsResponseBody {
 	s.MaxResults = &v
 	return s
 }
@@ -2257,8 +2371,9 @@ func (s *ListVpcEndpointConnectionsResponseBodyConnectionsZones) SetZoneStatus(v
 }
 
 type ListVpcEndpointConnectionsResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListVpcEndpointConnectionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListVpcEndpointConnectionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListVpcEndpointConnectionsResponse) String() string {
@@ -2271,6 +2386,11 @@ func (s ListVpcEndpointConnectionsResponse) GoString() string {
 
 func (s *ListVpcEndpointConnectionsResponse) SetHeaders(v map[string]*string) *ListVpcEndpointConnectionsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListVpcEndpointConnectionsResponse) SetStatusCode(v int32) *ListVpcEndpointConnectionsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2315,7 +2435,7 @@ func (s *ListVpcEndpointSecurityGroupsRequest) SetRegionId(v string) *ListVpcEnd
 }
 
 type ListVpcEndpointSecurityGroupsResponseBody struct {
-	MaxResults     *string                                                    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MaxResults     *int32                                                     `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken      *string                                                    `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId      *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecurityGroups []*ListVpcEndpointSecurityGroupsResponseBodySecurityGroups `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
@@ -2329,7 +2449,7 @@ func (s ListVpcEndpointSecurityGroupsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListVpcEndpointSecurityGroupsResponseBody) SetMaxResults(v string) *ListVpcEndpointSecurityGroupsResponseBody {
+func (s *ListVpcEndpointSecurityGroupsResponseBody) SetMaxResults(v int32) *ListVpcEndpointSecurityGroupsResponseBody {
 	s.MaxResults = &v
 	return s
 }
@@ -2367,8 +2487,9 @@ func (s *ListVpcEndpointSecurityGroupsResponseBodySecurityGroups) SetSecurityGro
 }
 
 type ListVpcEndpointSecurityGroupsResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListVpcEndpointSecurityGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListVpcEndpointSecurityGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListVpcEndpointSecurityGroupsResponse) String() string {
@@ -2381,6 +2502,11 @@ func (s ListVpcEndpointSecurityGroupsResponse) GoString() string {
 
 func (s *ListVpcEndpointSecurityGroupsResponse) SetHeaders(v map[string]*string) *ListVpcEndpointSecurityGroupsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListVpcEndpointSecurityGroupsResponse) SetStatusCode(v int32) *ListVpcEndpointSecurityGroupsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2425,7 +2551,7 @@ func (s *ListVpcEndpointServiceResourcesRequest) SetServiceId(v string) *ListVpc
 }
 
 type ListVpcEndpointServiceResourcesResponseBody struct {
-	MaxResults *string                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MaxResults *int32                                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken  *string                                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId  *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Resources  []*ListVpcEndpointServiceResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
@@ -2439,7 +2565,7 @@ func (s ListVpcEndpointServiceResourcesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListVpcEndpointServiceResourcesResponseBody) SetMaxResults(v string) *ListVpcEndpointServiceResourcesResponseBody {
+func (s *ListVpcEndpointServiceResourcesResponseBody) SetMaxResults(v int32) *ListVpcEndpointServiceResourcesResponseBody {
 	s.MaxResults = &v
 	return s
 }
@@ -2531,8 +2657,9 @@ func (s *ListVpcEndpointServiceResourcesResponseBodyResources) SetZoneId(v strin
 }
 
 type ListVpcEndpointServiceResourcesResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListVpcEndpointServiceResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListVpcEndpointServiceResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListVpcEndpointServiceResourcesResponse) String() string {
@@ -2545,6 +2672,11 @@ func (s ListVpcEndpointServiceResourcesResponse) GoString() string {
 
 func (s *ListVpcEndpointServiceResourcesResponse) SetHeaders(v map[string]*string) *ListVpcEndpointServiceResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListVpcEndpointServiceResourcesResponse) SetStatusCode(v int32) *ListVpcEndpointServiceResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2595,7 +2727,7 @@ func (s *ListVpcEndpointServiceUsersRequest) SetUserId(v int64) *ListVpcEndpoint
 }
 
 type ListVpcEndpointServiceUsersResponseBody struct {
-	MaxResults *string                                         `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MaxResults *int32                                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken  *string                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Users      []*ListVpcEndpointServiceUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
@@ -2609,7 +2741,7 @@ func (s ListVpcEndpointServiceUsersResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListVpcEndpointServiceUsersResponseBody) SetMaxResults(v string) *ListVpcEndpointServiceUsersResponseBody {
+func (s *ListVpcEndpointServiceUsersResponseBody) SetMaxResults(v int32) *ListVpcEndpointServiceUsersResponseBody {
 	s.MaxResults = &v
 	return s
 }
@@ -2647,8 +2779,9 @@ func (s *ListVpcEndpointServiceUsersResponseBodyUsers) SetUserId(v int64) *ListV
 }
 
 type ListVpcEndpointServiceUsersResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListVpcEndpointServiceUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListVpcEndpointServiceUsersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListVpcEndpointServiceUsersResponse) String() string {
@@ -2661,6 +2794,11 @@ func (s ListVpcEndpointServiceUsersResponse) GoString() string {
 
 func (s *ListVpcEndpointServiceUsersResponse) SetHeaders(v map[string]*string) *ListVpcEndpointServiceUsersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListVpcEndpointServiceUsersResponse) SetStatusCode(v int32) *ListVpcEndpointServiceUsersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2741,7 +2879,7 @@ func (s *ListVpcEndpointServicesRequest) SetZoneAffinityEnabled(v bool) *ListVpc
 }
 
 type ListVpcEndpointServicesResponseBody struct {
-	MaxResults *string                                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MaxResults *int32                                         `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken  *string                                        `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Services   []*ListVpcEndpointServicesResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
@@ -2755,7 +2893,7 @@ func (s ListVpcEndpointServicesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListVpcEndpointServicesResponseBody) SetMaxResults(v string) *ListVpcEndpointServicesResponseBody {
+func (s *ListVpcEndpointServicesResponseBody) SetMaxResults(v int32) *ListVpcEndpointServicesResponseBody {
 	s.MaxResults = &v
 	return s
 }
@@ -2883,8 +3021,9 @@ func (s *ListVpcEndpointServicesResponseBodyServices) SetZoneAffinityEnabled(v b
 }
 
 type ListVpcEndpointServicesResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListVpcEndpointServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListVpcEndpointServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListVpcEndpointServicesResponse) String() string {
@@ -2897,6 +3036,11 @@ func (s ListVpcEndpointServicesResponse) GoString() string {
 
 func (s *ListVpcEndpointServicesResponse) SetHeaders(v map[string]*string) *ListVpcEndpointServicesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListVpcEndpointServicesResponse) SetStatusCode(v int32) *ListVpcEndpointServicesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2953,7 +3097,7 @@ func (s *ListVpcEndpointServicesByEndUserRequest) SetServiceType(v string) *List
 }
 
 type ListVpcEndpointServicesByEndUserResponseBody struct {
-	MaxResults *string                                                 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MaxResults *int32                                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken  *string                                                 `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId  *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Services   []*ListVpcEndpointServicesByEndUserResponseBodyServices `json:"Services,omitempty" xml:"Services,omitempty" type:"Repeated"`
@@ -2967,7 +3111,7 @@ func (s ListVpcEndpointServicesByEndUserResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListVpcEndpointServicesByEndUserResponseBody) SetMaxResults(v string) *ListVpcEndpointServicesByEndUserResponseBody {
+func (s *ListVpcEndpointServicesByEndUserResponseBody) SetMaxResults(v int32) *ListVpcEndpointServicesByEndUserResponseBody {
 	s.MaxResults = &v
 	return s
 }
@@ -3035,8 +3179,9 @@ func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) SetZones(v []*str
 }
 
 type ListVpcEndpointServicesByEndUserResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListVpcEndpointServicesByEndUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListVpcEndpointServicesByEndUserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListVpcEndpointServicesByEndUserResponse) String() string {
@@ -3049,6 +3194,11 @@ func (s ListVpcEndpointServicesByEndUserResponse) GoString() string {
 
 func (s *ListVpcEndpointServicesByEndUserResponse) SetHeaders(v map[string]*string) *ListVpcEndpointServicesByEndUserResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListVpcEndpointServicesByEndUserResponse) SetStatusCode(v int32) *ListVpcEndpointServicesByEndUserResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3093,7 +3243,7 @@ func (s *ListVpcEndpointZonesRequest) SetRegionId(v string) *ListVpcEndpointZone
 }
 
 type ListVpcEndpointZonesResponseBody struct {
-	MaxResults *string                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MaxResults *int32                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken  *string                                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Zones      []*ListVpcEndpointZonesResponseBodyZones `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
@@ -3107,7 +3257,7 @@ func (s ListVpcEndpointZonesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListVpcEndpointZonesResponseBody) SetMaxResults(v string) *ListVpcEndpointZonesResponseBody {
+func (s *ListVpcEndpointZonesResponseBody) SetMaxResults(v int32) *ListVpcEndpointZonesResponseBody {
 	s.MaxResults = &v
 	return s
 }
@@ -3187,8 +3337,9 @@ func (s *ListVpcEndpointZonesResponseBodyZones) SetZoneStatus(v string) *ListVpc
 }
 
 type ListVpcEndpointZonesResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListVpcEndpointZonesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListVpcEndpointZonesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListVpcEndpointZonesResponse) String() string {
@@ -3201,6 +3352,11 @@ func (s ListVpcEndpointZonesResponse) GoString() string {
 
 func (s *ListVpcEndpointZonesResponse) SetHeaders(v map[string]*string) *ListVpcEndpointZonesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListVpcEndpointZonesResponse) SetStatusCode(v int32) *ListVpcEndpointZonesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3282,7 +3438,7 @@ func (s *ListVpcEndpointsRequest) SetVpcId(v string) *ListVpcEndpointsRequest {
 
 type ListVpcEndpointsResponseBody struct {
 	Endpoints  []*ListVpcEndpointsResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	MaxResults *string                                  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	MaxResults *int32                                   `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken  *string                                  `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RequestId  *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -3300,7 +3456,7 @@ func (s *ListVpcEndpointsResponseBody) SetEndpoints(v []*ListVpcEndpointsRespons
 	return s
 }
 
-func (s *ListVpcEndpointsResponseBody) SetMaxResults(v string) *ListVpcEndpointsResponseBody {
+func (s *ListVpcEndpointsResponseBody) SetMaxResults(v int32) *ListVpcEndpointsResponseBody {
 	s.MaxResults = &v
 	return s
 }
@@ -3423,8 +3579,9 @@ func (s *ListVpcEndpointsResponseBodyEndpoints) SetZoneAffinityEnabled(v bool) *
 }
 
 type ListVpcEndpointsResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListVpcEndpointsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListVpcEndpointsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListVpcEndpointsResponse) String() string {
@@ -3437,6 +3594,11 @@ func (s ListVpcEndpointsResponse) GoString() string {
 
 func (s *ListVpcEndpointsResponse) SetHeaders(v map[string]*string) *ListVpcEndpointsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListVpcEndpointsResponse) SetStatusCode(v int32) *ListVpcEndpointsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3486,8 +3648,9 @@ func (s *OpenPrivateLinkServiceResponseBody) SetRequestId(v string) *OpenPrivate
 }
 
 type OpenPrivateLinkServiceResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *OpenPrivateLinkServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OpenPrivateLinkServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s OpenPrivateLinkServiceResponse) String() string {
@@ -3500,6 +3663,11 @@ func (s OpenPrivateLinkServiceResponse) GoString() string {
 
 func (s *OpenPrivateLinkServiceResponse) SetHeaders(v map[string]*string) *OpenPrivateLinkServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *OpenPrivateLinkServiceResponse) SetStatusCode(v int32) *OpenPrivateLinkServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3567,8 +3735,9 @@ func (s *RemoveUserFromVpcEndpointServiceResponseBody) SetRequestId(v string) *R
 }
 
 type RemoveUserFromVpcEndpointServiceResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveUserFromVpcEndpointServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveUserFromVpcEndpointServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RemoveUserFromVpcEndpointServiceResponse) String() string {
@@ -3581,6 +3750,11 @@ func (s RemoveUserFromVpcEndpointServiceResponse) GoString() string {
 
 func (s *RemoveUserFromVpcEndpointServiceResponse) SetHeaders(v map[string]*string) *RemoveUserFromVpcEndpointServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RemoveUserFromVpcEndpointServiceResponse) SetStatusCode(v int32) *RemoveUserFromVpcEndpointServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3648,8 +3822,9 @@ func (s *RemoveZoneFromVpcEndpointResponseBody) SetRequestId(v string) *RemoveZo
 }
 
 type RemoveZoneFromVpcEndpointResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveZoneFromVpcEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveZoneFromVpcEndpointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RemoveZoneFromVpcEndpointResponse) String() string {
@@ -3662,6 +3837,11 @@ func (s RemoveZoneFromVpcEndpointResponse) GoString() string {
 
 func (s *RemoveZoneFromVpcEndpointResponse) SetHeaders(v map[string]*string) *RemoveZoneFromVpcEndpointResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RemoveZoneFromVpcEndpointResponse) SetStatusCode(v int32) *RemoveZoneFromVpcEndpointResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3735,8 +3915,9 @@ func (s *UpdateVpcEndpointAttributeResponseBody) SetRequestId(v string) *UpdateV
 }
 
 type UpdateVpcEndpointAttributeResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateVpcEndpointAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateVpcEndpointAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateVpcEndpointAttributeResponse) String() string {
@@ -3749,6 +3930,11 @@ func (s UpdateVpcEndpointAttributeResponse) GoString() string {
 
 func (s *UpdateVpcEndpointAttributeResponse) SetHeaders(v map[string]*string) *UpdateVpcEndpointAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateVpcEndpointAttributeResponse) SetStatusCode(v int32) *UpdateVpcEndpointAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3822,8 +4008,9 @@ func (s *UpdateVpcEndpointConnectionAttributeResponseBody) SetRequestId(v string
 }
 
 type UpdateVpcEndpointConnectionAttributeResponse struct {
-	Headers map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateVpcEndpointConnectionAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateVpcEndpointConnectionAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateVpcEndpointConnectionAttributeResponse) String() string {
@@ -3836,6 +4023,11 @@ func (s UpdateVpcEndpointConnectionAttributeResponse) GoString() string {
 
 func (s *UpdateVpcEndpointConnectionAttributeResponse) SetHeaders(v map[string]*string) *UpdateVpcEndpointConnectionAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateVpcEndpointConnectionAttributeResponse) SetStatusCode(v int32) *UpdateVpcEndpointConnectionAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3921,8 +4113,9 @@ func (s *UpdateVpcEndpointServiceAttributeResponseBody) SetRequestId(v string) *
 }
 
 type UpdateVpcEndpointServiceAttributeResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateVpcEndpointServiceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateVpcEndpointServiceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateVpcEndpointServiceAttributeResponse) String() string {
@@ -3935,6 +4128,11 @@ func (s UpdateVpcEndpointServiceAttributeResponse) GoString() string {
 
 func (s *UpdateVpcEndpointServiceAttributeResponse) SetHeaders(v map[string]*string) *UpdateVpcEndpointServiceAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateVpcEndpointServiceAttributeResponse) SetStatusCode(v int32) *UpdateVpcEndpointServiceAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4008,8 +4206,9 @@ func (s *UpdateVpcEndpointServiceResourceAttributeResponseBody) SetRequestId(v s
 }
 
 type UpdateVpcEndpointServiceResourceAttributeResponse struct {
-	Headers map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateVpcEndpointServiceResourceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateVpcEndpointServiceResourceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateVpcEndpointServiceResourceAttributeResponse) String() string {
@@ -4022,6 +4221,11 @@ func (s UpdateVpcEndpointServiceResourceAttributeResponse) GoString() string {
 
 func (s *UpdateVpcEndpointServiceResourceAttributeResponse) SetHeaders(v map[string]*string) *UpdateVpcEndpointServiceResourceAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateVpcEndpointServiceResourceAttributeResponse) SetStatusCode(v int32) *UpdateVpcEndpointServiceResourceAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4119,8 +4323,9 @@ func (s *UpdateVpcEndpointZoneConnectionResourceAttributeResponseBody) SetReques
 }
 
 type UpdateVpcEndpointZoneConnectionResourceAttributeResponse struct {
-	Headers map[string]*string                                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateVpcEndpointZoneConnectionResourceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateVpcEndpointZoneConnectionResourceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateVpcEndpointZoneConnectionResourceAttributeResponse) String() string {
@@ -4133,6 +4338,11 @@ func (s UpdateVpcEndpointZoneConnectionResourceAttributeResponse) GoString() str
 
 func (s *UpdateVpcEndpointZoneConnectionResourceAttributeResponse) SetHeaders(v map[string]*string) *UpdateVpcEndpointZoneConnectionResourceAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateVpcEndpointZoneConnectionResourceAttributeResponse) SetStatusCode(v int32) *UpdateVpcEndpointZoneConnectionResourceAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
