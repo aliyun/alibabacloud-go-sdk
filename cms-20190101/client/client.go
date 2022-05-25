@@ -100,8 +100,9 @@ func (s *AddTagsResponseBody) SetSuccess(v bool) *AddTagsResponseBody {
 }
 
 type AddTagsResponse struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddTagsResponse) String() string {
@@ -114,6 +115,11 @@ func (s AddTagsResponse) GoString() string {
 
 func (s *AddTagsResponse) SetHeaders(v map[string]*string) *AddTagsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddTagsResponse) SetStatusCode(v int32) *AddTagsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -287,8 +293,9 @@ func (s *ApplyMetricRuleTemplateResponseBodyResourceAlertResults) SetSuccess(v b
 }
 
 type ApplyMetricRuleTemplateResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ApplyMetricRuleTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ApplyMetricRuleTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ApplyMetricRuleTemplateResponse) String() string {
@@ -301,6 +308,11 @@ func (s ApplyMetricRuleTemplateResponse) GoString() string {
 
 func (s *ApplyMetricRuleTemplateResponse) SetHeaders(v map[string]*string) *ApplyMetricRuleTemplateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ApplyMetricRuleTemplateResponse) SetStatusCode(v int32) *ApplyMetricRuleTemplateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -416,8 +428,9 @@ func (s *BatchCreateIntantSiteMonitorResponseBody) SetSuccess(v bool) *BatchCrea
 }
 
 type BatchCreateIntantSiteMonitorResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BatchCreateIntantSiteMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchCreateIntantSiteMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s BatchCreateIntantSiteMonitorResponse) String() string {
@@ -433,136 +446,12 @@ func (s *BatchCreateIntantSiteMonitorResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
+func (s *BatchCreateIntantSiteMonitorResponse) SetStatusCode(v int32) *BatchCreateIntantSiteMonitorResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *BatchCreateIntantSiteMonitorResponse) SetBody(v *BatchCreateIntantSiteMonitorResponseBody) *BatchCreateIntantSiteMonitorResponse {
-	s.Body = v
-	return s
-}
-
-type BatchCreateOnceSiteMonitorRequest struct {
-	RegionId *string                                      `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	TaskList []*BatchCreateOnceSiteMonitorRequestTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
-}
-
-func (s BatchCreateOnceSiteMonitorRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchCreateOnceSiteMonitorRequest) GoString() string {
-	return s.String()
-}
-
-func (s *BatchCreateOnceSiteMonitorRequest) SetRegionId(v string) *BatchCreateOnceSiteMonitorRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *BatchCreateOnceSiteMonitorRequest) SetTaskList(v []*BatchCreateOnceSiteMonitorRequestTaskList) *BatchCreateOnceSiteMonitorRequest {
-	s.TaskList = v
-	return s
-}
-
-type BatchCreateOnceSiteMonitorRequestTaskList struct {
-	Address     *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	IspCities   *string `json:"IspCities,omitempty" xml:"IspCities,omitempty"`
-	OptionsJson *string `json:"OptionsJson,omitempty" xml:"OptionsJson,omitempty"`
-	TaskName    *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TaskType    *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-}
-
-func (s BatchCreateOnceSiteMonitorRequestTaskList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchCreateOnceSiteMonitorRequestTaskList) GoString() string {
-	return s.String()
-}
-
-func (s *BatchCreateOnceSiteMonitorRequestTaskList) SetAddress(v string) *BatchCreateOnceSiteMonitorRequestTaskList {
-	s.Address = &v
-	return s
-}
-
-func (s *BatchCreateOnceSiteMonitorRequestTaskList) SetIspCities(v string) *BatchCreateOnceSiteMonitorRequestTaskList {
-	s.IspCities = &v
-	return s
-}
-
-func (s *BatchCreateOnceSiteMonitorRequestTaskList) SetOptionsJson(v string) *BatchCreateOnceSiteMonitorRequestTaskList {
-	s.OptionsJson = &v
-	return s
-}
-
-func (s *BatchCreateOnceSiteMonitorRequestTaskList) SetTaskName(v string) *BatchCreateOnceSiteMonitorRequestTaskList {
-	s.TaskName = &v
-	return s
-}
-
-func (s *BatchCreateOnceSiteMonitorRequestTaskList) SetTaskType(v string) *BatchCreateOnceSiteMonitorRequestTaskList {
-	s.TaskType = &v
-	return s
-}
-
-type BatchCreateOnceSiteMonitorResponseBody struct {
-	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s BatchCreateOnceSiteMonitorResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchCreateOnceSiteMonitorResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *BatchCreateOnceSiteMonitorResponseBody) SetCode(v string) *BatchCreateOnceSiteMonitorResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *BatchCreateOnceSiteMonitorResponseBody) SetData(v string) *BatchCreateOnceSiteMonitorResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *BatchCreateOnceSiteMonitorResponseBody) SetMessage(v string) *BatchCreateOnceSiteMonitorResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *BatchCreateOnceSiteMonitorResponseBody) SetRequestId(v string) *BatchCreateOnceSiteMonitorResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *BatchCreateOnceSiteMonitorResponseBody) SetSuccess(v bool) *BatchCreateOnceSiteMonitorResponseBody {
-	s.Success = &v
-	return s
-}
-
-type BatchCreateOnceSiteMonitorResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BatchCreateOnceSiteMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s BatchCreateOnceSiteMonitorResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s BatchCreateOnceSiteMonitorResponse) GoString() string {
-	return s.String()
-}
-
-func (s *BatchCreateOnceSiteMonitorResponse) SetHeaders(v map[string]*string) *BatchCreateOnceSiteMonitorResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *BatchCreateOnceSiteMonitorResponse) SetBody(v *BatchCreateOnceSiteMonitorResponseBody) *BatchCreateOnceSiteMonitorResponse {
 	s.Body = v
 	return s
 }
@@ -638,8 +527,9 @@ func (s *CreateCmsCallNumOrderResponseBody) SetRequestId(v string) *CreateCmsCal
 }
 
 type CreateCmsCallNumOrderResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateCmsCallNumOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCmsCallNumOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateCmsCallNumOrderResponse) String() string {
@@ -652,6 +542,11 @@ func (s CreateCmsCallNumOrderResponse) GoString() string {
 
 func (s *CreateCmsCallNumOrderResponse) SetHeaders(v map[string]*string) *CreateCmsCallNumOrderResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateCmsCallNumOrderResponse) SetStatusCode(v int32) *CreateCmsCallNumOrderResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -797,8 +692,9 @@ func (s *CreateCmsOrderResponseBody) SetRequestId(v string) *CreateCmsOrderRespo
 }
 
 type CreateCmsOrderResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateCmsOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCmsOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateCmsOrderResponse) String() string {
@@ -811,6 +707,11 @@ func (s CreateCmsOrderResponse) GoString() string {
 
 func (s *CreateCmsOrderResponse) SetHeaders(v map[string]*string) *CreateCmsOrderResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateCmsOrderResponse) SetStatusCode(v int32) *CreateCmsOrderResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -890,8 +791,9 @@ func (s *CreateCmsSmspackageOrderResponseBody) SetRequestId(v string) *CreateCms
 }
 
 type CreateCmsSmspackageOrderResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateCmsSmspackageOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCmsSmspackageOrderResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateCmsSmspackageOrderResponse) String() string {
@@ -904,6 +806,11 @@ func (s CreateCmsSmspackageOrderResponse) GoString() string {
 
 func (s *CreateCmsSmspackageOrderResponse) SetHeaders(v map[string]*string) *CreateCmsSmspackageOrderResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateCmsSmspackageOrderResponse) SetStatusCode(v int32) *CreateCmsSmspackageOrderResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1042,8 +949,9 @@ func (s *CreateDynamicTagGroupResponseBody) SetSuccess(v bool) *CreateDynamicTag
 }
 
 type CreateDynamicTagGroupResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDynamicTagGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDynamicTagGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateDynamicTagGroupResponse) String() string {
@@ -1056,6 +964,11 @@ func (s CreateDynamicTagGroupResponse) GoString() string {
 
 func (s *CreateDynamicTagGroupResponse) SetHeaders(v map[string]*string) *CreateDynamicTagGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateDynamicTagGroupResponse) SetStatusCode(v int32) *CreateDynamicTagGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1481,8 +1394,9 @@ func (s *CreateGroupMetricRulesResponseBodyResourcesAlertResult) SetSuccess(v bo
 }
 
 type CreateGroupMetricRulesResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateGroupMetricRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateGroupMetricRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateGroupMetricRulesResponse) String() string {
@@ -1495,6 +1409,11 @@ func (s CreateGroupMetricRulesResponse) GoString() string {
 
 func (s *CreateGroupMetricRulesResponse) SetHeaders(v map[string]*string) *CreateGroupMetricRulesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateGroupMetricRulesResponse) SetStatusCode(v int32) *CreateGroupMetricRulesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1680,8 +1599,9 @@ func (s *CreateGroupMonitoringAgentProcessResponseBody) SetSuccess(v bool) *Crea
 }
 
 type CreateGroupMonitoringAgentProcessResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateGroupMonitoringAgentProcessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateGroupMonitoringAgentProcessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateGroupMonitoringAgentProcessResponse) String() string {
@@ -1694,6 +1614,11 @@ func (s CreateGroupMonitoringAgentProcessResponse) GoString() string {
 
 func (s *CreateGroupMonitoringAgentProcessResponse) SetHeaders(v map[string]*string) *CreateGroupMonitoringAgentProcessResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateGroupMonitoringAgentProcessResponse) SetStatusCode(v int32) *CreateGroupMonitoringAgentProcessResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1956,8 +1881,9 @@ func (s *CreateHostAvailabilityResponseBody) SetTaskId(v int64) *CreateHostAvail
 }
 
 type CreateHostAvailabilityResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateHostAvailabilityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateHostAvailabilityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateHostAvailabilityResponse) String() string {
@@ -1973,7 +1899,595 @@ func (s *CreateHostAvailabilityResponse) SetHeaders(v map[string]*string) *Creat
 	return s
 }
 
+func (s *CreateHostAvailabilityResponse) SetStatusCode(v int32) *CreateHostAvailabilityResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateHostAvailabilityResponse) SetBody(v *CreateHostAvailabilityResponseBody) *CreateHostAvailabilityResponse {
+	s.Body = v
+	return s
+}
+
+type CreateHybridMonitorNamespaceRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Namespace   *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Spec        *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+}
+
+func (s CreateHybridMonitorNamespaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridMonitorNamespaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridMonitorNamespaceRequest) SetDescription(v string) *CreateHybridMonitorNamespaceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateHybridMonitorNamespaceRequest) SetNamespace(v string) *CreateHybridMonitorNamespaceRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateHybridMonitorNamespaceRequest) SetRegionId(v string) *CreateHybridMonitorNamespaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateHybridMonitorNamespaceRequest) SetSpec(v string) *CreateHybridMonitorNamespaceRequest {
+	s.Spec = &v
+	return s
+}
+
+type CreateHybridMonitorNamespaceResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateHybridMonitorNamespaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridMonitorNamespaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridMonitorNamespaceResponseBody) SetCode(v string) *CreateHybridMonitorNamespaceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateHybridMonitorNamespaceResponseBody) SetMessage(v string) *CreateHybridMonitorNamespaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateHybridMonitorNamespaceResponseBody) SetRequestId(v string) *CreateHybridMonitorNamespaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateHybridMonitorNamespaceResponseBody) SetSuccess(v string) *CreateHybridMonitorNamespaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateHybridMonitorNamespaceResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateHybridMonitorNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateHybridMonitorNamespaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridMonitorNamespaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridMonitorNamespaceResponse) SetHeaders(v map[string]*string) *CreateHybridMonitorNamespaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHybridMonitorNamespaceResponse) SetStatusCode(v int32) *CreateHybridMonitorNamespaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHybridMonitorNamespaceResponse) SetBody(v *CreateHybridMonitorNamespaceResponseBody) *CreateHybridMonitorNamespaceResponse {
+	s.Body = v
+	return s
+}
+
+type CreateHybridMonitorSLSGroupRequest struct {
+	RegionId            *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SLSGroupConfig      []*CreateHybridMonitorSLSGroupRequestSLSGroupConfig `json:"SLSGroupConfig,omitempty" xml:"SLSGroupConfig,omitempty" type:"Repeated"`
+	SLSGroupDescription *string                                             `json:"SLSGroupDescription,omitempty" xml:"SLSGroupDescription,omitempty"`
+	SLSGroupName        *string                                             `json:"SLSGroupName,omitempty" xml:"SLSGroupName,omitempty"`
+}
+
+func (s CreateHybridMonitorSLSGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridMonitorSLSGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridMonitorSLSGroupRequest) SetRegionId(v string) *CreateHybridMonitorSLSGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateHybridMonitorSLSGroupRequest) SetSLSGroupConfig(v []*CreateHybridMonitorSLSGroupRequestSLSGroupConfig) *CreateHybridMonitorSLSGroupRequest {
+	s.SLSGroupConfig = v
+	return s
+}
+
+func (s *CreateHybridMonitorSLSGroupRequest) SetSLSGroupDescription(v string) *CreateHybridMonitorSLSGroupRequest {
+	s.SLSGroupDescription = &v
+	return s
+}
+
+func (s *CreateHybridMonitorSLSGroupRequest) SetSLSGroupName(v string) *CreateHybridMonitorSLSGroupRequest {
+	s.SLSGroupName = &v
+	return s
+}
+
+type CreateHybridMonitorSLSGroupRequestSLSGroupConfig struct {
+	SLSLogstore *string `json:"SLSLogstore,omitempty" xml:"SLSLogstore,omitempty"`
+	SLSProject  *string `json:"SLSProject,omitempty" xml:"SLSProject,omitempty"`
+	SLSRegion   *string `json:"SLSRegion,omitempty" xml:"SLSRegion,omitempty"`
+	SLSUserId   *string `json:"SLSUserId,omitempty" xml:"SLSUserId,omitempty"`
+}
+
+func (s CreateHybridMonitorSLSGroupRequestSLSGroupConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridMonitorSLSGroupRequestSLSGroupConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridMonitorSLSGroupRequestSLSGroupConfig) SetSLSLogstore(v string) *CreateHybridMonitorSLSGroupRequestSLSGroupConfig {
+	s.SLSLogstore = &v
+	return s
+}
+
+func (s *CreateHybridMonitorSLSGroupRequestSLSGroupConfig) SetSLSProject(v string) *CreateHybridMonitorSLSGroupRequestSLSGroupConfig {
+	s.SLSProject = &v
+	return s
+}
+
+func (s *CreateHybridMonitorSLSGroupRequestSLSGroupConfig) SetSLSRegion(v string) *CreateHybridMonitorSLSGroupRequestSLSGroupConfig {
+	s.SLSRegion = &v
+	return s
+}
+
+func (s *CreateHybridMonitorSLSGroupRequestSLSGroupConfig) SetSLSUserId(v string) *CreateHybridMonitorSLSGroupRequestSLSGroupConfig {
+	s.SLSUserId = &v
+	return s
+}
+
+type CreateHybridMonitorSLSGroupResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateHybridMonitorSLSGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridMonitorSLSGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridMonitorSLSGroupResponseBody) SetCode(v string) *CreateHybridMonitorSLSGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateHybridMonitorSLSGroupResponseBody) SetMessage(v string) *CreateHybridMonitorSLSGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateHybridMonitorSLSGroupResponseBody) SetRequestId(v string) *CreateHybridMonitorSLSGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateHybridMonitorSLSGroupResponseBody) SetSuccess(v string) *CreateHybridMonitorSLSGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateHybridMonitorSLSGroupResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateHybridMonitorSLSGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateHybridMonitorSLSGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridMonitorSLSGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridMonitorSLSGroupResponse) SetHeaders(v map[string]*string) *CreateHybridMonitorSLSGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHybridMonitorSLSGroupResponse) SetStatusCode(v int32) *CreateHybridMonitorSLSGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHybridMonitorSLSGroupResponse) SetBody(v *CreateHybridMonitorSLSGroupResponseBody) *CreateHybridMonitorSLSGroupResponse {
+	s.Body = v
+	return s
+}
+
+type CreateHybridMonitorTaskRequest struct {
+	AttachLabels      []*CreateHybridMonitorTaskRequestAttachLabels   `json:"AttachLabels,omitempty" xml:"AttachLabels,omitempty" type:"Repeated"`
+	CollectInterval   *string                                         `json:"CollectInterval,omitempty" xml:"CollectInterval,omitempty"`
+	CollectTargetType *string                                         `json:"CollectTargetType,omitempty" xml:"CollectTargetType,omitempty"`
+	Description       *string                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	GroupId           *string                                         `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Namespace         *string                                         `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RegionId          *string                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SLSProcessConfig  *CreateHybridMonitorTaskRequestSLSProcessConfig `json:"SLSProcessConfig,omitempty" xml:"SLSProcessConfig,omitempty" type:"Struct"`
+	TargetUserId      *string                                         `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
+	TargetUserIdList  *string                                         `json:"TargetUserIdList,omitempty" xml:"TargetUserIdList,omitempty"`
+	TaskName          *string                                         `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskType          *string                                         `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	YARMConfig        *string                                         `json:"YARMConfig,omitempty" xml:"YARMConfig,omitempty"`
+}
+
+func (s CreateHybridMonitorTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridMonitorTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridMonitorTaskRequest) SetAttachLabels(v []*CreateHybridMonitorTaskRequestAttachLabels) *CreateHybridMonitorTaskRequest {
+	s.AttachLabels = v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequest) SetCollectInterval(v string) *CreateHybridMonitorTaskRequest {
+	s.CollectInterval = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequest) SetCollectTargetType(v string) *CreateHybridMonitorTaskRequest {
+	s.CollectTargetType = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequest) SetDescription(v string) *CreateHybridMonitorTaskRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequest) SetGroupId(v string) *CreateHybridMonitorTaskRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequest) SetNamespace(v string) *CreateHybridMonitorTaskRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequest) SetRegionId(v string) *CreateHybridMonitorTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequest) SetSLSProcessConfig(v *CreateHybridMonitorTaskRequestSLSProcessConfig) *CreateHybridMonitorTaskRequest {
+	s.SLSProcessConfig = v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequest) SetTargetUserId(v string) *CreateHybridMonitorTaskRequest {
+	s.TargetUserId = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequest) SetTargetUserIdList(v string) *CreateHybridMonitorTaskRequest {
+	s.TargetUserIdList = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequest) SetTaskName(v string) *CreateHybridMonitorTaskRequest {
+	s.TaskName = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequest) SetTaskType(v string) *CreateHybridMonitorTaskRequest {
+	s.TaskType = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequest) SetYARMConfig(v string) *CreateHybridMonitorTaskRequest {
+	s.YARMConfig = &v
+	return s
+}
+
+type CreateHybridMonitorTaskRequestAttachLabels struct {
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateHybridMonitorTaskRequestAttachLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridMonitorTaskRequestAttachLabels) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridMonitorTaskRequestAttachLabels) SetName(v string) *CreateHybridMonitorTaskRequestAttachLabels {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequestAttachLabels) SetValue(v string) *CreateHybridMonitorTaskRequestAttachLabels {
+	s.Value = &v
+	return s
+}
+
+type CreateHybridMonitorTaskRequestSLSProcessConfig struct {
+	Express    []*CreateHybridMonitorTaskRequestSLSProcessConfigExpress    `json:"Express,omitempty" xml:"Express,omitempty" type:"Repeated"`
+	Filter     *CreateHybridMonitorTaskRequestSLSProcessConfigFilter       `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	GroupBy    []*CreateHybridMonitorTaskRequestSLSProcessConfigGroupBy    `json:"GroupBy,omitempty" xml:"GroupBy,omitempty" type:"Repeated"`
+	Statistics []*CreateHybridMonitorTaskRequestSLSProcessConfigStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
+}
+
+func (s CreateHybridMonitorTaskRequestSLSProcessConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridMonitorTaskRequestSLSProcessConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridMonitorTaskRequestSLSProcessConfig) SetExpress(v []*CreateHybridMonitorTaskRequestSLSProcessConfigExpress) *CreateHybridMonitorTaskRequestSLSProcessConfig {
+	s.Express = v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequestSLSProcessConfig) SetFilter(v *CreateHybridMonitorTaskRequestSLSProcessConfigFilter) *CreateHybridMonitorTaskRequestSLSProcessConfig {
+	s.Filter = v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequestSLSProcessConfig) SetGroupBy(v []*CreateHybridMonitorTaskRequestSLSProcessConfigGroupBy) *CreateHybridMonitorTaskRequestSLSProcessConfig {
+	s.GroupBy = v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequestSLSProcessConfig) SetStatistics(v []*CreateHybridMonitorTaskRequestSLSProcessConfigStatistics) *CreateHybridMonitorTaskRequestSLSProcessConfig {
+	s.Statistics = v
+	return s
+}
+
+type CreateHybridMonitorTaskRequestSLSProcessConfigExpress struct {
+	Alias   *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	Express *string `json:"Express,omitempty" xml:"Express,omitempty"`
+}
+
+func (s CreateHybridMonitorTaskRequestSLSProcessConfigExpress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridMonitorTaskRequestSLSProcessConfigExpress) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridMonitorTaskRequestSLSProcessConfigExpress) SetAlias(v string) *CreateHybridMonitorTaskRequestSLSProcessConfigExpress {
+	s.Alias = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequestSLSProcessConfigExpress) SetExpress(v string) *CreateHybridMonitorTaskRequestSLSProcessConfigExpress {
+	s.Express = &v
+	return s
+}
+
+type CreateHybridMonitorTaskRequestSLSProcessConfigFilter struct {
+	Filters  []*CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	Relation *string                                                        `json:"Relation,omitempty" xml:"Relation,omitempty"`
+}
+
+func (s CreateHybridMonitorTaskRequestSLSProcessConfigFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridMonitorTaskRequestSLSProcessConfigFilter) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridMonitorTaskRequestSLSProcessConfigFilter) SetFilters(v []*CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters) *CreateHybridMonitorTaskRequestSLSProcessConfigFilter {
+	s.Filters = v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequestSLSProcessConfigFilter) SetRelation(v string) *CreateHybridMonitorTaskRequestSLSProcessConfigFilter {
+	s.Relation = &v
+	return s
+}
+
+type CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters struct {
+	Operator   *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	SLSKeyName *string `json:"SLSKeyName,omitempty" xml:"SLSKeyName,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters) SetOperator(v string) *CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters {
+	s.Operator = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters) SetSLSKeyName(v string) *CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters {
+	s.SLSKeyName = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters) SetValue(v string) *CreateHybridMonitorTaskRequestSLSProcessConfigFilterFilters {
+	s.Value = &v
+	return s
+}
+
+type CreateHybridMonitorTaskRequestSLSProcessConfigGroupBy struct {
+	Alias      *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	SLSKeyName *string `json:"SLSKeyName,omitempty" xml:"SLSKeyName,omitempty"`
+}
+
+func (s CreateHybridMonitorTaskRequestSLSProcessConfigGroupBy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridMonitorTaskRequestSLSProcessConfigGroupBy) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridMonitorTaskRequestSLSProcessConfigGroupBy) SetAlias(v string) *CreateHybridMonitorTaskRequestSLSProcessConfigGroupBy {
+	s.Alias = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequestSLSProcessConfigGroupBy) SetSLSKeyName(v string) *CreateHybridMonitorTaskRequestSLSProcessConfigGroupBy {
+	s.SLSKeyName = &v
+	return s
+}
+
+type CreateHybridMonitorTaskRequestSLSProcessConfigStatistics struct {
+	Alias      *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	Function   *string `json:"Function,omitempty" xml:"Function,omitempty"`
+	Parameter1 *string `json:"Parameter1,omitempty" xml:"Parameter1,omitempty"`
+	Parameter2 *string `json:"Parameter2,omitempty" xml:"Parameter2,omitempty"`
+	SLSKeyName *string `json:"SLSKeyName,omitempty" xml:"SLSKeyName,omitempty"`
+}
+
+func (s CreateHybridMonitorTaskRequestSLSProcessConfigStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridMonitorTaskRequestSLSProcessConfigStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridMonitorTaskRequestSLSProcessConfigStatistics) SetAlias(v string) *CreateHybridMonitorTaskRequestSLSProcessConfigStatistics {
+	s.Alias = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequestSLSProcessConfigStatistics) SetFunction(v string) *CreateHybridMonitorTaskRequestSLSProcessConfigStatistics {
+	s.Function = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequestSLSProcessConfigStatistics) SetParameter1(v string) *CreateHybridMonitorTaskRequestSLSProcessConfigStatistics {
+	s.Parameter1 = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequestSLSProcessConfigStatistics) SetParameter2(v string) *CreateHybridMonitorTaskRequestSLSProcessConfigStatistics {
+	s.Parameter2 = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskRequestSLSProcessConfigStatistics) SetSLSKeyName(v string) *CreateHybridMonitorTaskRequestSLSProcessConfigStatistics {
+	s.SLSKeyName = &v
+	return s
+}
+
+type CreateHybridMonitorTaskResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateHybridMonitorTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridMonitorTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridMonitorTaskResponseBody) SetCode(v string) *CreateHybridMonitorTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskResponseBody) SetMessage(v string) *CreateHybridMonitorTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskResponseBody) SetRequestId(v string) *CreateHybridMonitorTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskResponseBody) SetSuccess(v string) *CreateHybridMonitorTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateHybridMonitorTaskResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateHybridMonitorTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateHybridMonitorTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateHybridMonitorTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateHybridMonitorTaskResponse) SetHeaders(v map[string]*string) *CreateHybridMonitorTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskResponse) SetStatusCode(v int32) *CreateHybridMonitorTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskResponse) SetBody(v *CreateHybridMonitorTaskResponseBody) *CreateHybridMonitorTaskResponse {
 	s.Body = v
 	return s
 }
@@ -2096,8 +2610,9 @@ func (s *CreateInstantSiteMonitorResponseBodyCreateResultList) SetTaskName(v str
 }
 
 type CreateInstantSiteMonitorResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateInstantSiteMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateInstantSiteMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateInstantSiteMonitorResponse) String() string {
@@ -2110,6 +2625,11 @@ func (s CreateInstantSiteMonitorResponse) GoString() string {
 
 func (s *CreateInstantSiteMonitorResponse) SetHeaders(v map[string]*string) *CreateInstantSiteMonitorResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateInstantSiteMonitorResponse) SetStatusCode(v int32) *CreateInstantSiteMonitorResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2183,8 +2703,9 @@ func (s *CreateMetricRuleResourcesResponseBody) SetSuccess(v bool) *CreateMetric
 }
 
 type CreateMetricRuleResourcesResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateMetricRuleResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateMetricRuleResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateMetricRuleResourcesResponse) String() string {
@@ -2197,6 +2718,11 @@ func (s CreateMetricRuleResourcesResponse) GoString() string {
 
 func (s *CreateMetricRuleResourcesResponse) SetHeaders(v map[string]*string) *CreateMetricRuleResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateMetricRuleResourcesResponse) SetStatusCode(v int32) *CreateMetricRuleResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2475,8 +3001,9 @@ func (s *CreateMetricRuleTemplateResponseBody) SetSuccess(v bool) *CreateMetricR
 }
 
 type CreateMetricRuleTemplateResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateMetricRuleTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateMetricRuleTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateMetricRuleTemplateResponse) String() string {
@@ -2489,6 +3016,11 @@ func (s CreateMetricRuleTemplateResponse) GoString() string {
 
 func (s *CreateMetricRuleTemplateResponse) SetHeaders(v map[string]*string) *CreateMetricRuleTemplateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateMetricRuleTemplateResponse) SetStatusCode(v int32) *CreateMetricRuleTemplateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2574,8 +3106,9 @@ func (s *CreateMonitorAgentProcessResponseBody) SetSuccess(v bool) *CreateMonito
 }
 
 type CreateMonitorAgentProcessResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateMonitorAgentProcessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateMonitorAgentProcessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateMonitorAgentProcessResponse) String() string {
@@ -2588,6 +3121,11 @@ func (s CreateMonitorAgentProcessResponse) GoString() string {
 
 func (s *CreateMonitorAgentProcessResponse) SetHeaders(v map[string]*string) *CreateMonitorAgentProcessResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateMonitorAgentProcessResponse) SetStatusCode(v int32) *CreateMonitorAgentProcessResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2667,8 +3205,9 @@ func (s *CreateMonitorGroupResponseBody) SetSuccess(v bool) *CreateMonitorGroupR
 }
 
 type CreateMonitorGroupResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateMonitorGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateMonitorGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateMonitorGroupResponse) String() string {
@@ -2681,6 +3220,11 @@ func (s CreateMonitorGroupResponse) GoString() string {
 
 func (s *CreateMonitorGroupResponse) SetHeaders(v map[string]*string) *CreateMonitorGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateMonitorGroupResponse) SetStatusCode(v int32) *CreateMonitorGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2778,8 +3322,9 @@ func (s *CreateMonitorGroupByResourceGroupIdResponseBody) SetSuccess(v bool) *Cr
 }
 
 type CreateMonitorGroupByResourceGroupIdResponse struct {
-	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateMonitorGroupByResourceGroupIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateMonitorGroupByResourceGroupIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateMonitorGroupByResourceGroupIdResponse) String() string {
@@ -2792,6 +3337,11 @@ func (s CreateMonitorGroupByResourceGroupIdResponse) GoString() string {
 
 func (s *CreateMonitorGroupByResourceGroupIdResponse) SetHeaders(v map[string]*string) *CreateMonitorGroupByResourceGroupIdResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateMonitorGroupByResourceGroupIdResponse) SetStatusCode(v int32) *CreateMonitorGroupByResourceGroupIdResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2900,8 +3450,9 @@ func (s *CreateMonitorGroupInstancesResponseBody) SetSuccess(v bool) *CreateMoni
 }
 
 type CreateMonitorGroupInstancesResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateMonitorGroupInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateMonitorGroupInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateMonitorGroupInstancesResponse) String() string {
@@ -2914,6 +3465,11 @@ func (s CreateMonitorGroupInstancesResponse) GoString() string {
 
 func (s *CreateMonitorGroupInstancesResponse) SetHeaders(v map[string]*string) *CreateMonitorGroupInstancesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateMonitorGroupInstancesResponse) SetStatusCode(v int32) *CreateMonitorGroupInstancesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3005,8 +3561,9 @@ func (s *CreateMonitorGroupNotifyPolicyResponseBody) SetSuccess(v string) *Creat
 }
 
 type CreateMonitorGroupNotifyPolicyResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateMonitorGroupNotifyPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateMonitorGroupNotifyPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateMonitorGroupNotifyPolicyResponse) String() string {
@@ -3019,6 +3576,11 @@ func (s CreateMonitorGroupNotifyPolicyResponse) GoString() string {
 
 func (s *CreateMonitorGroupNotifyPolicyResponse) SetHeaders(v map[string]*string) *CreateMonitorGroupNotifyPolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateMonitorGroupNotifyPolicyResponse) SetStatusCode(v int32) *CreateMonitorGroupNotifyPolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3104,8 +3666,9 @@ func (s *CreateMonitoringAgentProcessResponseBody) SetSuccess(v bool) *CreateMon
 }
 
 type CreateMonitoringAgentProcessResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateMonitoringAgentProcessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateMonitoringAgentProcessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateMonitoringAgentProcessResponse) String() string {
@@ -3118,6 +3681,11 @@ func (s CreateMonitoringAgentProcessResponse) GoString() string {
 
 func (s *CreateMonitoringAgentProcessResponse) SetHeaders(v map[string]*string) *CreateMonitoringAgentProcessResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateMonitoringAgentProcessResponse) SetStatusCode(v int32) *CreateMonitoringAgentProcessResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3348,8 +3916,9 @@ func (s *CreateSiteMonitorResponseBodyDataAttachAlertResultContact) SetSuccess(v
 }
 
 type CreateSiteMonitorResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateSiteMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSiteMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateSiteMonitorResponse) String() string {
@@ -3362,6 +3931,11 @@ func (s CreateSiteMonitorResponse) GoString() string {
 
 func (s *CreateSiteMonitorResponse) SetHeaders(v map[string]*string) *CreateSiteMonitorResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateSiteMonitorResponse) SetStatusCode(v int32) *CreateSiteMonitorResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3423,8 +3997,9 @@ func (s *DeleteContactResponseBody) SetSuccess(v bool) *DeleteContactResponseBod
 }
 
 type DeleteContactResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteContactResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteContactResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteContactResponse) String() string {
@@ -3437,6 +4012,11 @@ func (s DeleteContactResponse) GoString() string {
 
 func (s *DeleteContactResponse) SetHeaders(v map[string]*string) *DeleteContactResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteContactResponse) SetStatusCode(v int32) *DeleteContactResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3498,8 +4078,9 @@ func (s *DeleteContactGroupResponseBody) SetSuccess(v bool) *DeleteContactGroupR
 }
 
 type DeleteContactGroupResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteContactGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteContactGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteContactGroupResponse) String() string {
@@ -3512,6 +4093,11 @@ func (s DeleteContactGroupResponse) GoString() string {
 
 func (s *DeleteContactGroupResponse) SetHeaders(v map[string]*string) *DeleteContactGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteContactGroupResponse) SetStatusCode(v int32) *DeleteContactGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3591,8 +4177,9 @@ func (s *DeleteCustomMetricResponseBody) SetRequestId(v string) *DeleteCustomMet
 }
 
 type DeleteCustomMetricResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteCustomMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCustomMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteCustomMetricResponse) String() string {
@@ -3605,6 +4192,11 @@ func (s DeleteCustomMetricResponse) GoString() string {
 
 func (s *DeleteCustomMetricResponse) SetHeaders(v map[string]*string) *DeleteCustomMetricResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteCustomMetricResponse) SetStatusCode(v int32) *DeleteCustomMetricResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3672,8 +4264,9 @@ func (s *DeleteDynamicTagGroupResponseBody) SetSuccess(v bool) *DeleteDynamicTag
 }
 
 type DeleteDynamicTagGroupResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDynamicTagGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDynamicTagGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteDynamicTagGroupResponse) String() string {
@@ -3686,6 +4279,11 @@ func (s DeleteDynamicTagGroupResponse) GoString() string {
 
 func (s *DeleteDynamicTagGroupResponse) SetHeaders(v map[string]*string) *DeleteDynamicTagGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteDynamicTagGroupResponse) SetStatusCode(v int32) *DeleteDynamicTagGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3759,8 +4357,9 @@ func (s *DeleteEventRuleTargetsResponseBody) SetSuccess(v bool) *DeleteEventRule
 }
 
 type DeleteEventRuleTargetsResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteEventRuleTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteEventRuleTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteEventRuleTargetsResponse) String() string {
@@ -3773,6 +4372,11 @@ func (s DeleteEventRuleTargetsResponse) GoString() string {
 
 func (s *DeleteEventRuleTargetsResponse) SetHeaders(v map[string]*string) *DeleteEventRuleTargetsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteEventRuleTargetsResponse) SetStatusCode(v int32) *DeleteEventRuleTargetsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3834,8 +4438,9 @@ func (s *DeleteEventRulesResponseBody) SetSuccess(v bool) *DeleteEventRulesRespo
 }
 
 type DeleteEventRulesResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteEventRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteEventRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteEventRulesResponse) String() string {
@@ -3848,6 +4453,11 @@ func (s DeleteEventRulesResponse) GoString() string {
 
 func (s *DeleteEventRulesResponse) SetHeaders(v map[string]*string) *DeleteEventRulesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteEventRulesResponse) SetStatusCode(v int32) *DeleteEventRulesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3915,8 +4525,9 @@ func (s *DeleteExporterOutputResponseBody) SetSuccess(v bool) *DeleteExporterOut
 }
 
 type DeleteExporterOutputResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteExporterOutputResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteExporterOutputResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteExporterOutputResponse) String() string {
@@ -3929,6 +4540,11 @@ func (s DeleteExporterOutputResponse) GoString() string {
 
 func (s *DeleteExporterOutputResponse) SetHeaders(v map[string]*string) *DeleteExporterOutputResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteExporterOutputResponse) SetStatusCode(v int32) *DeleteExporterOutputResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3996,8 +4612,9 @@ func (s *DeleteExporterRuleResponseBody) SetSuccess(v bool) *DeleteExporterRuleR
 }
 
 type DeleteExporterRuleResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteExporterRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteExporterRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteExporterRuleResponse) String() string {
@@ -4010,6 +4627,11 @@ func (s DeleteExporterRuleResponse) GoString() string {
 
 func (s *DeleteExporterRuleResponse) SetHeaders(v map[string]*string) *DeleteExporterRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteExporterRuleResponse) SetStatusCode(v int32) *DeleteExporterRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4083,8 +4705,9 @@ func (s *DeleteGroupMonitoringAgentProcessResponseBody) SetSuccess(v bool) *Dele
 }
 
 type DeleteGroupMonitoringAgentProcessResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteGroupMonitoringAgentProcessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteGroupMonitoringAgentProcessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteGroupMonitoringAgentProcessResponse) String() string {
@@ -4097,6 +4720,11 @@ func (s DeleteGroupMonitoringAgentProcessResponse) GoString() string {
 
 func (s *DeleteGroupMonitoringAgentProcessResponse) SetHeaders(v map[string]*string) *DeleteGroupMonitoringAgentProcessResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteGroupMonitoringAgentProcessResponse) SetStatusCode(v int32) *DeleteGroupMonitoringAgentProcessResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4164,8 +4792,9 @@ func (s *DeleteHostAvailabilityResponseBody) SetSuccess(v bool) *DeleteHostAvail
 }
 
 type DeleteHostAvailabilityResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteHostAvailabilityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteHostAvailabilityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteHostAvailabilityResponse) String() string {
@@ -4181,7 +4810,285 @@ func (s *DeleteHostAvailabilityResponse) SetHeaders(v map[string]*string) *Delet
 	return s
 }
 
+func (s *DeleteHostAvailabilityResponse) SetStatusCode(v int32) *DeleteHostAvailabilityResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteHostAvailabilityResponse) SetBody(v *DeleteHostAvailabilityResponseBody) *DeleteHostAvailabilityResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteHybridMonitorNamespaceRequest struct {
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteHybridMonitorNamespaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHybridMonitorNamespaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHybridMonitorNamespaceRequest) SetNamespace(v string) *DeleteHybridMonitorNamespaceRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DeleteHybridMonitorNamespaceRequest) SetRegionId(v string) *DeleteHybridMonitorNamespaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteHybridMonitorNamespaceResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteHybridMonitorNamespaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHybridMonitorNamespaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHybridMonitorNamespaceResponseBody) SetCode(v string) *DeleteHybridMonitorNamespaceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteHybridMonitorNamespaceResponseBody) SetMessage(v string) *DeleteHybridMonitorNamespaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteHybridMonitorNamespaceResponseBody) SetRequestId(v string) *DeleteHybridMonitorNamespaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteHybridMonitorNamespaceResponseBody) SetSuccess(v string) *DeleteHybridMonitorNamespaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteHybridMonitorNamespaceResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteHybridMonitorNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteHybridMonitorNamespaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHybridMonitorNamespaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHybridMonitorNamespaceResponse) SetHeaders(v map[string]*string) *DeleteHybridMonitorNamespaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteHybridMonitorNamespaceResponse) SetStatusCode(v int32) *DeleteHybridMonitorNamespaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteHybridMonitorNamespaceResponse) SetBody(v *DeleteHybridMonitorNamespaceResponseBody) *DeleteHybridMonitorNamespaceResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteHybridMonitorSLSGroupRequest struct {
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SLSGroupName *string `json:"SLSGroupName,omitempty" xml:"SLSGroupName,omitempty"`
+}
+
+func (s DeleteHybridMonitorSLSGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHybridMonitorSLSGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHybridMonitorSLSGroupRequest) SetRegionId(v string) *DeleteHybridMonitorSLSGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteHybridMonitorSLSGroupRequest) SetSLSGroupName(v string) *DeleteHybridMonitorSLSGroupRequest {
+	s.SLSGroupName = &v
+	return s
+}
+
+type DeleteHybridMonitorSLSGroupResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteHybridMonitorSLSGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHybridMonitorSLSGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHybridMonitorSLSGroupResponseBody) SetCode(v string) *DeleteHybridMonitorSLSGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteHybridMonitorSLSGroupResponseBody) SetMessage(v string) *DeleteHybridMonitorSLSGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteHybridMonitorSLSGroupResponseBody) SetRequestId(v string) *DeleteHybridMonitorSLSGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteHybridMonitorSLSGroupResponseBody) SetSuccess(v string) *DeleteHybridMonitorSLSGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteHybridMonitorSLSGroupResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteHybridMonitorSLSGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteHybridMonitorSLSGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHybridMonitorSLSGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHybridMonitorSLSGroupResponse) SetHeaders(v map[string]*string) *DeleteHybridMonitorSLSGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteHybridMonitorSLSGroupResponse) SetStatusCode(v int32) *DeleteHybridMonitorSLSGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteHybridMonitorSLSGroupResponse) SetBody(v *DeleteHybridMonitorSLSGroupResponseBody) *DeleteHybridMonitorSLSGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteHybridMonitorTaskRequest struct {
+	Namespace    *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TargetUserId *string `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
+	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s DeleteHybridMonitorTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHybridMonitorTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHybridMonitorTaskRequest) SetNamespace(v string) *DeleteHybridMonitorTaskRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DeleteHybridMonitorTaskRequest) SetRegionId(v string) *DeleteHybridMonitorTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteHybridMonitorTaskRequest) SetTargetUserId(v string) *DeleteHybridMonitorTaskRequest {
+	s.TargetUserId = &v
+	return s
+}
+
+func (s *DeleteHybridMonitorTaskRequest) SetTaskId(v string) *DeleteHybridMonitorTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+type DeleteHybridMonitorTaskResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteHybridMonitorTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHybridMonitorTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHybridMonitorTaskResponseBody) SetCode(v string) *DeleteHybridMonitorTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteHybridMonitorTaskResponseBody) SetMessage(v string) *DeleteHybridMonitorTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteHybridMonitorTaskResponseBody) SetRequestId(v string) *DeleteHybridMonitorTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteHybridMonitorTaskResponseBody) SetSuccess(v string) *DeleteHybridMonitorTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteHybridMonitorTaskResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteHybridMonitorTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteHybridMonitorTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteHybridMonitorTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteHybridMonitorTaskResponse) SetHeaders(v map[string]*string) *DeleteHybridMonitorTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteHybridMonitorTaskResponse) SetStatusCode(v int32) *DeleteHybridMonitorTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteHybridMonitorTaskResponse) SetBody(v *DeleteHybridMonitorTaskResponseBody) *DeleteHybridMonitorTaskResponse {
 	s.Body = v
 	return s
 }
@@ -4245,8 +5152,9 @@ func (s *DeleteLogMonitorResponseBody) SetSuccess(v bool) *DeleteLogMonitorRespo
 }
 
 type DeleteLogMonitorResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteLogMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteLogMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteLogMonitorResponse) String() string {
@@ -4259,6 +5167,11 @@ func (s DeleteLogMonitorResponse) GoString() string {
 
 func (s *DeleteLogMonitorResponse) SetHeaders(v map[string]*string) *DeleteLogMonitorResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteLogMonitorResponse) SetStatusCode(v int32) *DeleteLogMonitorResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4326,8 +5239,9 @@ func (s *DeleteMetricRuleResourcesResponseBody) SetSuccess(v bool) *DeleteMetric
 }
 
 type DeleteMetricRuleResourcesResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteMetricRuleResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMetricRuleResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteMetricRuleResourcesResponse) String() string {
@@ -4340,6 +5254,11 @@ func (s DeleteMetricRuleResourcesResponse) GoString() string {
 
 func (s *DeleteMetricRuleResourcesResponse) SetHeaders(v map[string]*string) *DeleteMetricRuleResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteMetricRuleResourcesResponse) SetStatusCode(v int32) *DeleteMetricRuleResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4453,8 +5372,9 @@ func (s *DeleteMetricRuleTargetsResponseBodyFailIdsTargetIds) SetTargetId(v []*s
 }
 
 type DeleteMetricRuleTargetsResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteMetricRuleTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMetricRuleTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteMetricRuleTargetsResponse) String() string {
@@ -4467,6 +5387,11 @@ func (s DeleteMetricRuleTargetsResponse) GoString() string {
 
 func (s *DeleteMetricRuleTargetsResponse) SetHeaders(v map[string]*string) *DeleteMetricRuleTargetsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteMetricRuleTargetsResponse) SetStatusCode(v int32) *DeleteMetricRuleTargetsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4557,8 +5482,9 @@ func (s *DeleteMetricRuleTemplateResponseBodyResource) SetTemplateId(v string) *
 }
 
 type DeleteMetricRuleTemplateResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteMetricRuleTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMetricRuleTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteMetricRuleTemplateResponse) String() string {
@@ -4571,6 +5497,11 @@ func (s DeleteMetricRuleTemplateResponse) GoString() string {
 
 func (s *DeleteMetricRuleTemplateResponse) SetHeaders(v map[string]*string) *DeleteMetricRuleTemplateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteMetricRuleTemplateResponse) SetStatusCode(v int32) *DeleteMetricRuleTemplateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4638,8 +5569,9 @@ func (s *DeleteMetricRulesResponseBody) SetSuccess(v bool) *DeleteMetricRulesRes
 }
 
 type DeleteMetricRulesResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteMetricRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMetricRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteMetricRulesResponse) String() string {
@@ -4652,6 +5584,11 @@ func (s DeleteMetricRulesResponse) GoString() string {
 
 func (s *DeleteMetricRulesResponse) SetHeaders(v map[string]*string) *DeleteMetricRulesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteMetricRulesResponse) SetStatusCode(v int32) *DeleteMetricRulesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4782,8 +5719,9 @@ func (s *DeleteMonitorGroupResponseBodyGroupContactGroupsContactGroup) SetName(v
 }
 
 type DeleteMonitorGroupResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteMonitorGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMonitorGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteMonitorGroupResponse) String() string {
@@ -4796,6 +5734,11 @@ func (s DeleteMonitorGroupResponse) GoString() string {
 
 func (s *DeleteMonitorGroupResponse) SetHeaders(v map[string]*string) *DeleteMonitorGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteMonitorGroupResponse) SetStatusCode(v int32) *DeleteMonitorGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4869,8 +5812,9 @@ func (s *DeleteMonitorGroupDynamicRuleResponseBody) SetSuccess(v bool) *DeleteMo
 }
 
 type DeleteMonitorGroupDynamicRuleResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteMonitorGroupDynamicRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMonitorGroupDynamicRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteMonitorGroupDynamicRuleResponse) String() string {
@@ -4883,6 +5827,11 @@ func (s DeleteMonitorGroupDynamicRuleResponse) GoString() string {
 
 func (s *DeleteMonitorGroupDynamicRuleResponse) SetHeaders(v map[string]*string) *DeleteMonitorGroupDynamicRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteMonitorGroupDynamicRuleResponse) SetStatusCode(v int32) *DeleteMonitorGroupDynamicRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4962,8 +5911,9 @@ func (s *DeleteMonitorGroupInstancesResponseBody) SetSuccess(v bool) *DeleteMoni
 }
 
 type DeleteMonitorGroupInstancesResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteMonitorGroupInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMonitorGroupInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteMonitorGroupInstancesResponse) String() string {
@@ -4976,6 +5926,11 @@ func (s DeleteMonitorGroupInstancesResponse) GoString() string {
 
 func (s *DeleteMonitorGroupInstancesResponse) SetHeaders(v map[string]*string) *DeleteMonitorGroupInstancesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteMonitorGroupInstancesResponse) SetStatusCode(v int32) *DeleteMonitorGroupInstancesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5055,8 +6010,9 @@ func (s *DeleteMonitorGroupNotifyPolicyResponseBody) SetSuccess(v string) *Delet
 }
 
 type DeleteMonitorGroupNotifyPolicyResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteMonitorGroupNotifyPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMonitorGroupNotifyPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteMonitorGroupNotifyPolicyResponse) String() string {
@@ -5069,6 +6025,11 @@ func (s DeleteMonitorGroupNotifyPolicyResponse) GoString() string {
 
 func (s *DeleteMonitorGroupNotifyPolicyResponse) SetHeaders(v map[string]*string) *DeleteMonitorGroupNotifyPolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteMonitorGroupNotifyPolicyResponse) SetStatusCode(v int32) *DeleteMonitorGroupNotifyPolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5148,8 +6109,9 @@ func (s *DeleteMonitoringAgentProcessResponseBody) SetSuccess(v bool) *DeleteMon
 }
 
 type DeleteMonitoringAgentProcessResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteMonitoringAgentProcessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteMonitoringAgentProcessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteMonitoringAgentProcessResponse) String() string {
@@ -5162,6 +6124,11 @@ func (s DeleteMonitoringAgentProcessResponse) GoString() string {
 
 func (s *DeleteMonitoringAgentProcessResponse) SetHeaders(v map[string]*string) *DeleteMonitoringAgentProcessResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteMonitoringAgentProcessResponse) SetStatusCode(v int32) *DeleteMonitoringAgentProcessResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5258,8 +6225,9 @@ func (s *DeleteSiteMonitorsResponseBodyData) SetCount(v int32) *DeleteSiteMonito
 }
 
 type DeleteSiteMonitorsResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteSiteMonitorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSiteMonitorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteSiteMonitorsResponse) String() string {
@@ -5272,6 +6240,11 @@ func (s DeleteSiteMonitorsResponse) GoString() string {
 
 func (s *DeleteSiteMonitorsResponse) SetHeaders(v map[string]*string) *DeleteSiteMonitorsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteSiteMonitorsResponse) SetStatusCode(v int32) *DeleteSiteMonitorsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5727,8 +6700,9 @@ func (s *DescribeActiveMetricRuleListResponseBodyDatapointsAlarm) SetWebhook(v s
 }
 
 type DescribeActiveMetricRuleListResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeActiveMetricRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeActiveMetricRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeActiveMetricRuleListResponse) String() string {
@@ -5741,6 +6715,11 @@ func (s DescribeActiveMetricRuleListResponse) GoString() string {
 
 func (s *DescribeActiveMetricRuleListResponse) SetHeaders(v map[string]*string) *DescribeActiveMetricRuleListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeActiveMetricRuleListResponse) SetStatusCode(v int32) *DescribeActiveMetricRuleListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6125,8 +7104,9 @@ func (s *DescribeAlertHistoryListResponseBodyAlarmHistoryListAlarmHistoryContact
 }
 
 type DescribeAlertHistoryListResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAlertHistoryListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAlertHistoryListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeAlertHistoryListResponse) String() string {
@@ -6139,6 +7119,11 @@ func (s DescribeAlertHistoryListResponse) GoString() string {
 
 func (s *DescribeAlertHistoryListResponse) SetHeaders(v map[string]*string) *DescribeAlertHistoryListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeAlertHistoryListResponse) SetStatusCode(v int32) *DescribeAlertHistoryListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6342,8 +7327,9 @@ func (s *DescribeAlertLogCountResponseBodyAlertLogCountLogs) SetValue(v string) 
 }
 
 type DescribeAlertLogCountResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAlertLogCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAlertLogCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeAlertLogCountResponse) String() string {
@@ -6356,6 +7342,11 @@ func (s DescribeAlertLogCountResponse) GoString() string {
 
 func (s *DescribeAlertLogCountResponse) SetHeaders(v map[string]*string) *DescribeAlertLogCountResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeAlertLogCountResponse) SetStatusCode(v int32) *DescribeAlertLogCountResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6542,8 +7533,9 @@ func (s *DescribeAlertLogHistogramResponseBodyAlertLogHistogramList) SetTo(v int
 }
 
 type DescribeAlertLogHistogramResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAlertLogHistogramResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAlertLogHistogramResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeAlertLogHistogramResponse) String() string {
@@ -6556,6 +7548,11 @@ func (s DescribeAlertLogHistogramResponse) GoString() string {
 
 func (s *DescribeAlertLogHistogramResponse) SetHeaders(v map[string]*string) *DescribeAlertLogHistogramResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeAlertLogHistogramResponse) SetStatusCode(v int32) *DescribeAlertLogHistogramResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7142,8 +8139,9 @@ func (s *DescribeAlertLogListResponseBodyAlertLogListWebhookList) SetUrl(v strin
 }
 
 type DescribeAlertLogListResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAlertLogListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAlertLogListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeAlertLogListResponse) String() string {
@@ -7156,6 +8154,11 @@ func (s DescribeAlertLogListResponse) GoString() string {
 
 func (s *DescribeAlertLogListResponse) SetHeaders(v map[string]*string) *DescribeAlertLogListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeAlertLogListResponse) SetStatusCode(v int32) *DescribeAlertLogListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7541,8 +8544,9 @@ func (s *DescribeAlertingMetricRuleResourcesResponseBodyResourcesResourceEscalat
 }
 
 type DescribeAlertingMetricRuleResourcesResponse struct {
-	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAlertingMetricRuleResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAlertingMetricRuleResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeAlertingMetricRuleResourcesResponse) String() string {
@@ -7555,6 +8559,11 @@ func (s DescribeAlertingMetricRuleResourcesResponse) GoString() string {
 
 func (s *DescribeAlertingMetricRuleResourcesResponse) SetHeaders(v map[string]*string) *DescribeAlertingMetricRuleResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeAlertingMetricRuleResourcesResponse) SetStatusCode(v int32) *DescribeAlertingMetricRuleResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7750,8 +8759,9 @@ func (s *DescribeContactGroupListResponseBodyContactGroups) SetContactGroup(v []
 }
 
 type DescribeContactGroupListResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeContactGroupListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeContactGroupListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeContactGroupListResponse) String() string {
@@ -7764,6 +8774,11 @@ func (s DescribeContactGroupListResponse) GoString() string {
 
 func (s *DescribeContactGroupListResponse) SetHeaders(v map[string]*string) *DescribeContactGroupListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeContactGroupListResponse) SetStatusCode(v int32) *DescribeContactGroupListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8030,8 +9045,9 @@ func (s *DescribeContactListResponseBodyContactsContactContactGroups) SetContact
 }
 
 type DescribeContactListResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeContactListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeContactListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeContactListResponse) String() string {
@@ -8044,6 +9060,11 @@ func (s DescribeContactListResponse) GoString() string {
 
 func (s *DescribeContactListResponse) SetHeaders(v map[string]*string) *DescribeContactListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeContactListResponse) SetStatusCode(v int32) *DescribeContactListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8210,8 +9231,9 @@ func (s *DescribeContactListByContactGroupResponseBodyContactsContactChannels) S
 }
 
 type DescribeContactListByContactGroupResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeContactListByContactGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeContactListByContactGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeContactListByContactGroupResponse) String() string {
@@ -8224,6 +9246,11 @@ func (s DescribeContactListByContactGroupResponse) GoString() string {
 
 func (s *DescribeContactListByContactGroupResponse) SetHeaders(v map[string]*string) *DescribeContactListByContactGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeContactListByContactGroupResponse) SetStatusCode(v int32) *DescribeContactListByContactGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8397,8 +9424,9 @@ func (s *DescribeCustomEventAttributeResponseBodyCustomEventsCustomEvent) SetTim
 }
 
 type DescribeCustomEventAttributeResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCustomEventAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCustomEventAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCustomEventAttributeResponse) String() string {
@@ -8411,6 +9439,11 @@ func (s DescribeCustomEventAttributeResponse) GoString() string {
 
 func (s *DescribeCustomEventAttributeResponse) SetHeaders(v map[string]*string) *DescribeCustomEventAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCustomEventAttributeResponse) SetStatusCode(v int32) *DescribeCustomEventAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8560,8 +9593,9 @@ func (s *DescribeCustomEventCountResponseBodyCustomEventCountsCustomEventCount) 
 }
 
 type DescribeCustomEventCountResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCustomEventCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCustomEventCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCustomEventCountResponse) String() string {
@@ -8574,6 +9608,11 @@ func (s DescribeCustomEventCountResponse) GoString() string {
 
 func (s *DescribeCustomEventCountResponse) SetHeaders(v map[string]*string) *DescribeCustomEventCountResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCustomEventCountResponse) SetStatusCode(v int32) *DescribeCustomEventCountResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8729,8 +9768,9 @@ func (s *DescribeCustomEventHistogramResponseBodyEventHistogramsEventHistogram) 
 }
 
 type DescribeCustomEventHistogramResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCustomEventHistogramResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCustomEventHistogramResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCustomEventHistogramResponse) String() string {
@@ -8743,6 +9783,11 @@ func (s DescribeCustomEventHistogramResponse) GoString() string {
 
 func (s *DescribeCustomEventHistogramResponse) SetHeaders(v map[string]*string) *DescribeCustomEventHistogramResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCustomEventHistogramResponse) SetStatusCode(v int32) *DescribeCustomEventHistogramResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8840,8 +9885,9 @@ func (s *DescribeCustomMetricListResponseBody) SetResult(v string) *DescribeCust
 }
 
 type DescribeCustomMetricListResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCustomMetricListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCustomMetricListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCustomMetricListResponse) String() string {
@@ -8854,6 +9900,11 @@ func (s DescribeCustomMetricListResponse) GoString() string {
 
 func (s *DescribeCustomMetricListResponse) SetHeaders(v map[string]*string) *DescribeCustomMetricListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCustomMetricListResponse) SetStatusCode(v int32) *DescribeCustomMetricListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9113,8 +10164,9 @@ func (s *DescribeDynamicTagRuleListResponseBodyTagGroupListTagGroupTemplateIdLis
 }
 
 type DescribeDynamicTagRuleListResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDynamicTagRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDynamicTagRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeDynamicTagRuleListResponse) String() string {
@@ -9127,6 +10179,11 @@ func (s DescribeDynamicTagRuleListResponse) GoString() string {
 
 func (s *DescribeDynamicTagRuleListResponse) SetHeaders(v map[string]*string) *DescribeDynamicTagRuleListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeDynamicTagRuleListResponse) SetStatusCode(v int32) *DescribeDynamicTagRuleListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9339,8 +10396,9 @@ func (s *DescribeEventRuleAttributeResponseBodyResultEventPatternStatusList) Set
 }
 
 type DescribeEventRuleAttributeResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeEventRuleAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeEventRuleAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeEventRuleAttributeResponse) String() string {
@@ -9353,6 +10411,11 @@ func (s DescribeEventRuleAttributeResponse) GoString() string {
 
 func (s *DescribeEventRuleAttributeResponse) SetHeaders(v map[string]*string) *DescribeEventRuleAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeEventRuleAttributeResponse) SetStatusCode(v int32) *DescribeEventRuleAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9681,8 +10744,9 @@ func (s *DescribeEventRuleListResponseBodyEventRulesEventRuleEventPatternEventPa
 }
 
 type DescribeEventRuleListResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeEventRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeEventRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeEventRuleListResponse) String() string {
@@ -9695,6 +10759,11 @@ func (s DescribeEventRuleListResponse) GoString() string {
 
 func (s *DescribeEventRuleListResponse) SetHeaders(v map[string]*string) *DescribeEventRuleListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeEventRuleListResponse) SetStatusCode(v int32) *DescribeEventRuleListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10134,8 +11203,9 @@ func (s *DescribeEventRuleTargetListResponseBodyWebhookParametersWebhookParamete
 }
 
 type DescribeEventRuleTargetListResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeEventRuleTargetListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeEventRuleTargetListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeEventRuleTargetListResponse) String() string {
@@ -10148,6 +11218,11 @@ func (s DescribeEventRuleTargetListResponse) GoString() string {
 
 func (s *DescribeEventRuleTargetListResponse) SetHeaders(v map[string]*string) *DescribeEventRuleTargetListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeEventRuleTargetListResponse) SetStatusCode(v int32) *DescribeEventRuleTargetListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10326,8 +11401,9 @@ func (s *DescribeExporterOutputListResponseBodyDatapointsDatapointConfigJson) Se
 }
 
 type DescribeExporterOutputListResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeExporterOutputListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeExporterOutputListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeExporterOutputListResponse) String() string {
@@ -10340,6 +11416,11 @@ func (s DescribeExporterOutputListResponse) GoString() string {
 
 func (s *DescribeExporterOutputListResponse) SetHeaders(v map[string]*string) *DescribeExporterOutputListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeExporterOutputListResponse) SetStatusCode(v int32) *DescribeExporterOutputListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10530,8 +11611,9 @@ func (s *DescribeExporterRuleListResponseBodyDatapointsDatapointDstName) SetDstN
 }
 
 type DescribeExporterRuleListResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeExporterRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeExporterRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeExporterRuleListResponse) String() string {
@@ -10544,6 +11626,11 @@ func (s DescribeExporterRuleListResponse) GoString() string {
 
 func (s *DescribeExporterRuleListResponse) SetHeaders(v map[string]*string) *DescribeExporterRuleListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeExporterRuleListResponse) SetStatusCode(v int32) *DescribeExporterRuleListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10845,8 +11932,9 @@ func (s *DescribeGroupMonitoringAgentProcessResponseBodyProcessesProcessMatchExp
 }
 
 type DescribeGroupMonitoringAgentProcessResponse struct {
-	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeGroupMonitoringAgentProcessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeGroupMonitoringAgentProcessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeGroupMonitoringAgentProcessResponse) String() string {
@@ -10859,6 +11947,11 @@ func (s DescribeGroupMonitoringAgentProcessResponse) GoString() string {
 
 func (s *DescribeGroupMonitoringAgentProcessResponse) SetHeaders(v map[string]*string) *DescribeGroupMonitoringAgentProcessResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeGroupMonitoringAgentProcessResponse) SetStatusCode(v int32) *DescribeGroupMonitoringAgentProcessResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -11237,8 +12330,9 @@ func (s *DescribeHostAvailabilityListResponseBodyTaskListNodeTaskConfigTaskOptio
 }
 
 type DescribeHostAvailabilityListResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeHostAvailabilityListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeHostAvailabilityListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeHostAvailabilityListResponse) String() string {
@@ -11254,7 +12348,1073 @@ func (s *DescribeHostAvailabilityListResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
+func (s *DescribeHostAvailabilityListResponse) SetStatusCode(v int32) *DescribeHostAvailabilityListResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeHostAvailabilityListResponse) SetBody(v *DescribeHostAvailabilityListResponseBody) *DescribeHostAvailabilityListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHybridMonitorDataListRequest struct {
+	End       *int64  `json:"End,omitempty" xml:"End,omitempty"`
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	Period    *string `json:"Period,omitempty" xml:"Period,omitempty"`
+	PromSQL   *string `json:"PromSQL,omitempty" xml:"PromSQL,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Start     *int64  `json:"Start,omitempty" xml:"Start,omitempty"`
+}
+
+func (s DescribeHybridMonitorDataListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorDataListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorDataListRequest) SetEnd(v int64) *DescribeHybridMonitorDataListRequest {
+	s.End = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorDataListRequest) SetNamespace(v string) *DescribeHybridMonitorDataListRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorDataListRequest) SetPeriod(v string) *DescribeHybridMonitorDataListRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorDataListRequest) SetPromSQL(v string) *DescribeHybridMonitorDataListRequest {
+	s.PromSQL = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorDataListRequest) SetRegionId(v string) *DescribeHybridMonitorDataListRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorDataListRequest) SetStart(v int64) *DescribeHybridMonitorDataListRequest {
+	s.Start = &v
+	return s
+}
+
+type DescribeHybridMonitorDataListResponseBody struct {
+	Code       *string                                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                                                `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId  *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *string                                                `json:"Success,omitempty" xml:"Success,omitempty"`
+	TimeSeries []*DescribeHybridMonitorDataListResponseBodyTimeSeries `json:"TimeSeries,omitempty" xml:"TimeSeries,omitempty" type:"Repeated"`
+}
+
+func (s DescribeHybridMonitorDataListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorDataListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorDataListResponseBody) SetCode(v string) *DescribeHybridMonitorDataListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorDataListResponseBody) SetMessage(v string) *DescribeHybridMonitorDataListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorDataListResponseBody) SetRequestId(v string) *DescribeHybridMonitorDataListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorDataListResponseBody) SetSuccess(v string) *DescribeHybridMonitorDataListResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorDataListResponseBody) SetTimeSeries(v []*DescribeHybridMonitorDataListResponseBodyTimeSeries) *DescribeHybridMonitorDataListResponseBody {
+	s.TimeSeries = v
+	return s
+}
+
+type DescribeHybridMonitorDataListResponseBodyTimeSeries struct {
+	Labels     []*DescribeHybridMonitorDataListResponseBodyTimeSeriesLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
+	MetricName *string                                                      `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
+	Values     []*DescribeHybridMonitorDataListResponseBodyTimeSeriesValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
+}
+
+func (s DescribeHybridMonitorDataListResponseBodyTimeSeries) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorDataListResponseBodyTimeSeries) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorDataListResponseBodyTimeSeries) SetLabels(v []*DescribeHybridMonitorDataListResponseBodyTimeSeriesLabels) *DescribeHybridMonitorDataListResponseBodyTimeSeries {
+	s.Labels = v
+	return s
+}
+
+func (s *DescribeHybridMonitorDataListResponseBodyTimeSeries) SetMetricName(v string) *DescribeHybridMonitorDataListResponseBodyTimeSeries {
+	s.MetricName = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorDataListResponseBodyTimeSeries) SetValues(v []*DescribeHybridMonitorDataListResponseBodyTimeSeriesValues) *DescribeHybridMonitorDataListResponseBodyTimeSeries {
+	s.Values = v
+	return s
+}
+
+type DescribeHybridMonitorDataListResponseBodyTimeSeriesLabels struct {
+	K *string `json:"K,omitempty" xml:"K,omitempty"`
+	V *string `json:"V,omitempty" xml:"V,omitempty"`
+}
+
+func (s DescribeHybridMonitorDataListResponseBodyTimeSeriesLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorDataListResponseBodyTimeSeriesLabels) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorDataListResponseBodyTimeSeriesLabels) SetK(v string) *DescribeHybridMonitorDataListResponseBodyTimeSeriesLabels {
+	s.K = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorDataListResponseBodyTimeSeriesLabels) SetV(v string) *DescribeHybridMonitorDataListResponseBodyTimeSeriesLabels {
+	s.V = &v
+	return s
+}
+
+type DescribeHybridMonitorDataListResponseBodyTimeSeriesValues struct {
+	Ts *string `json:"Ts,omitempty" xml:"Ts,omitempty"`
+	V  *string `json:"V,omitempty" xml:"V,omitempty"`
+}
+
+func (s DescribeHybridMonitorDataListResponseBodyTimeSeriesValues) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorDataListResponseBodyTimeSeriesValues) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorDataListResponseBodyTimeSeriesValues) SetTs(v string) *DescribeHybridMonitorDataListResponseBodyTimeSeriesValues {
+	s.Ts = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorDataListResponseBodyTimeSeriesValues) SetV(v string) *DescribeHybridMonitorDataListResponseBodyTimeSeriesValues {
+	s.V = &v
+	return s
+}
+
+type DescribeHybridMonitorDataListResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeHybridMonitorDataListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeHybridMonitorDataListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorDataListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorDataListResponse) SetHeaders(v map[string]*string) *DescribeHybridMonitorDataListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHybridMonitorDataListResponse) SetStatusCode(v int32) *DescribeHybridMonitorDataListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorDataListResponse) SetBody(v *DescribeHybridMonitorDataListResponseBody) *DescribeHybridMonitorDataListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHybridMonitorNamespaceListRequest struct {
+	Keyword           *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ShowTaskStatistic *bool   `json:"ShowTaskStatistic,omitempty" xml:"ShowTaskStatistic,omitempty"`
+}
+
+func (s DescribeHybridMonitorNamespaceListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorNamespaceListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorNamespaceListRequest) SetKeyword(v string) *DescribeHybridMonitorNamespaceListRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListRequest) SetNamespace(v string) *DescribeHybridMonitorNamespaceListRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListRequest) SetPageNumber(v int32) *DescribeHybridMonitorNamespaceListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListRequest) SetPageSize(v int32) *DescribeHybridMonitorNamespaceListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListRequest) SetRegionId(v string) *DescribeHybridMonitorNamespaceListRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListRequest) SetShowTaskStatistic(v bool) *DescribeHybridMonitorNamespaceListRequest {
+	s.ShowTaskStatistic = &v
+	return s
+}
+
+type DescribeHybridMonitorNamespaceListResponseBody struct {
+	Code                           *string                                                                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	DescribeHybridMonitorNamespace []*DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace `json:"DescribeHybridMonitorNamespace,omitempty" xml:"DescribeHybridMonitorNamespace,omitempty" type:"Repeated"`
+	Message                        *string                                                                         `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber                     *int32                                                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize                       *int32                                                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId                      *string                                                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success                        *string                                                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total                          *int32                                                                          `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeHybridMonitorNamespaceListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorNamespaceListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBody) SetCode(v string) *DescribeHybridMonitorNamespaceListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBody) SetDescribeHybridMonitorNamespace(v []*DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace) *DescribeHybridMonitorNamespaceListResponseBody {
+	s.DescribeHybridMonitorNamespace = v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBody) SetMessage(v string) *DescribeHybridMonitorNamespaceListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBody) SetPageNumber(v int32) *DescribeHybridMonitorNamespaceListResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBody) SetPageSize(v int32) *DescribeHybridMonitorNamespaceListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBody) SetRequestId(v string) *DescribeHybridMonitorNamespaceListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBody) SetSuccess(v string) *DescribeHybridMonitorNamespaceListResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBody) SetTotal(v int32) *DescribeHybridMonitorNamespaceListResponseBody {
+	s.Total = &v
+	return s
+}
+
+type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace struct {
+	AliyunProductMetricList []*DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricList `json:"AliyunProductMetricList,omitempty" xml:"AliyunProductMetricList,omitempty" type:"Repeated"`
+	CreateTime              *string                                                                                                `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description             *string                                                                                                `json:"Description,omitempty" xml:"Description,omitempty"`
+	Detail                  *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceDetail                    `json:"Detail,omitempty" xml:"Detail,omitempty" type:"Struct"`
+	Id                      *string                                                                                                `json:"Id,omitempty" xml:"Id,omitempty"`
+	IsDelete                *int32                                                                                                 `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
+	ModifyTime              *string                                                                                                `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
+	Namespace               *string                                                                                                `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NotAliyunTaskNumber     *int64                                                                                                 `json:"NotAliyunTaskNumber,omitempty" xml:"NotAliyunTaskNumber,omitempty"`
+}
+
+func (s DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace) SetAliyunProductMetricList(v []*DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricList) *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace {
+	s.AliyunProductMetricList = v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace) SetCreateTime(v string) *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace) SetDescription(v string) *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace) SetDetail(v *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceDetail) *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace {
+	s.Detail = v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace) SetId(v string) *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace) SetIsDelete(v int32) *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace {
+	s.IsDelete = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace) SetModifyTime(v string) *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace {
+	s.ModifyTime = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace) SetNamespace(v string) *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace) SetNotAliyunTaskNumber(v int64) *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespace {
+	s.NotAliyunTaskNumber = &v
+	return s
+}
+
+type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricList struct {
+	NamespaceList []*DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceList `json:"NamespaceList,omitempty" xml:"NamespaceList,omitempty" type:"Repeated"`
+	UserId        *int64                                                                                                              `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	YAMLConfig    *string                                                                                                             `json:"YAMLConfig,omitempty" xml:"YAMLConfig,omitempty"`
+}
+
+func (s DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricList) SetNamespaceList(v []*DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceList) *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricList {
+	s.NamespaceList = v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricList) SetUserId(v int64) *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricList {
+	s.UserId = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricList) SetYAMLConfig(v string) *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricList {
+	s.YAMLConfig = &v
+	return s
+}
+
+type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceList struct {
+	MetricList []*DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceListMetricList `json:"MetricList,omitempty" xml:"MetricList,omitempty" type:"Repeated"`
+	Namespace  *string                                                                                                                       `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceList) SetMetricList(v []*DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceListMetricList) *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceList {
+	s.MetricList = v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceList) SetNamespace(v string) *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceList {
+	s.Namespace = &v
+	return s
+}
+
+type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceListMetricList struct {
+	List   []*string `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Period *int64    `json:"Period,omitempty" xml:"Period,omitempty"`
+}
+
+func (s DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceListMetricList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceListMetricList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceListMetricList) SetList(v []*string) *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceListMetricList {
+	s.List = v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceListMetricList) SetPeriod(v int64) *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceAliyunProductMetricListNamespaceListMetricList {
+	s.Period = &v
+	return s
+}
+
+type DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceDetail struct {
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+}
+
+func (s DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceDetail) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceDetail) SetSpec(v string) *DescribeHybridMonitorNamespaceListResponseBodyDescribeHybridMonitorNamespaceDetail {
+	s.Spec = &v
+	return s
+}
+
+type DescribeHybridMonitorNamespaceListResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeHybridMonitorNamespaceListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeHybridMonitorNamespaceListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorNamespaceListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponse) SetHeaders(v map[string]*string) *DescribeHybridMonitorNamespaceListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponse) SetStatusCode(v int32) *DescribeHybridMonitorNamespaceListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorNamespaceListResponse) SetBody(v *DescribeHybridMonitorNamespaceListResponseBody) *DescribeHybridMonitorNamespaceListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHybridMonitorSLSGroupRequest struct {
+	Keyword      *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	PageNumber   *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SLSGroupName *string `json:"SLSGroupName,omitempty" xml:"SLSGroupName,omitempty"`
+}
+
+func (s DescribeHybridMonitorSLSGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorSLSGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorSLSGroupRequest) SetKeyword(v string) *DescribeHybridMonitorSLSGroupRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorSLSGroupRequest) SetPageNumber(v string) *DescribeHybridMonitorSLSGroupRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorSLSGroupRequest) SetPageSize(v string) *DescribeHybridMonitorSLSGroupRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorSLSGroupRequest) SetRegionId(v string) *DescribeHybridMonitorSLSGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorSLSGroupRequest) SetSLSGroupName(v string) *DescribeHybridMonitorSLSGroupRequest {
+	s.SLSGroupName = &v
+	return s
+}
+
+type DescribeHybridMonitorSLSGroupResponseBody struct {
+	Code       *string                                          `json:"Code,omitempty" xml:"Code,omitempty"`
+	List       []*DescribeHybridMonitorSLSGroupResponseBodyList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
+	Message    *string                                          `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber *int64                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int64                                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *string                                          `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total      *int64                                           `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeHybridMonitorSLSGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorSLSGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorSLSGroupResponseBody) SetCode(v string) *DescribeHybridMonitorSLSGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorSLSGroupResponseBody) SetList(v []*DescribeHybridMonitorSLSGroupResponseBodyList) *DescribeHybridMonitorSLSGroupResponseBody {
+	s.List = v
+	return s
+}
+
+func (s *DescribeHybridMonitorSLSGroupResponseBody) SetMessage(v string) *DescribeHybridMonitorSLSGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorSLSGroupResponseBody) SetPageNumber(v int64) *DescribeHybridMonitorSLSGroupResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorSLSGroupResponseBody) SetPageSize(v int64) *DescribeHybridMonitorSLSGroupResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorSLSGroupResponseBody) SetRequestId(v string) *DescribeHybridMonitorSLSGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorSLSGroupResponseBody) SetSuccess(v string) *DescribeHybridMonitorSLSGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorSLSGroupResponseBody) SetTotal(v int64) *DescribeHybridMonitorSLSGroupResponseBody {
+	s.Total = &v
+	return s
+}
+
+type DescribeHybridMonitorSLSGroupResponseBodyList struct {
+	CreateTime          *string                                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	SLSGroupConfig      []*DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig `json:"SLSGroupConfig,omitempty" xml:"SLSGroupConfig,omitempty" type:"Repeated"`
+	SLSGroupDescription *string                                                        `json:"SLSGroupDescription,omitempty" xml:"SLSGroupDescription,omitempty"`
+	SLSGroupName        *int64                                                         `json:"SLSGroupName,omitempty" xml:"SLSGroupName,omitempty"`
+	UpdateTime          *string                                                        `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s DescribeHybridMonitorSLSGroupResponseBodyList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorSLSGroupResponseBodyList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorSLSGroupResponseBodyList) SetCreateTime(v string) *DescribeHybridMonitorSLSGroupResponseBodyList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorSLSGroupResponseBodyList) SetSLSGroupConfig(v []*DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig) *DescribeHybridMonitorSLSGroupResponseBodyList {
+	s.SLSGroupConfig = v
+	return s
+}
+
+func (s *DescribeHybridMonitorSLSGroupResponseBodyList) SetSLSGroupDescription(v string) *DescribeHybridMonitorSLSGroupResponseBodyList {
+	s.SLSGroupDescription = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorSLSGroupResponseBodyList) SetSLSGroupName(v int64) *DescribeHybridMonitorSLSGroupResponseBodyList {
+	s.SLSGroupName = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorSLSGroupResponseBodyList) SetUpdateTime(v string) *DescribeHybridMonitorSLSGroupResponseBodyList {
+	s.UpdateTime = &v
+	return s
+}
+
+type DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig struct {
+	SLSLogstore *string `json:"SLSLogstore,omitempty" xml:"SLSLogstore,omitempty"`
+	SLSProject  *string `json:"SLSProject,omitempty" xml:"SLSProject,omitempty"`
+	SLSRegion   *string `json:"SLSRegion,omitempty" xml:"SLSRegion,omitempty"`
+	SLSUserId   *string `json:"SLSUserId,omitempty" xml:"SLSUserId,omitempty"`
+}
+
+func (s DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig) SetSLSLogstore(v string) *DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig {
+	s.SLSLogstore = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig) SetSLSProject(v string) *DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig {
+	s.SLSProject = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig) SetSLSRegion(v string) *DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig {
+	s.SLSRegion = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig) SetSLSUserId(v string) *DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig {
+	s.SLSUserId = &v
+	return s
+}
+
+type DescribeHybridMonitorSLSGroupResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeHybridMonitorSLSGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeHybridMonitorSLSGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorSLSGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorSLSGroupResponse) SetHeaders(v map[string]*string) *DescribeHybridMonitorSLSGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHybridMonitorSLSGroupResponse) SetStatusCode(v int32) *DescribeHybridMonitorSLSGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorSLSGroupResponse) SetBody(v *DescribeHybridMonitorSLSGroupResponseBody) *DescribeHybridMonitorSLSGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeHybridMonitorTaskListRequest struct {
+	GroupId           *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	IncludeAliyunTask *bool   `json:"IncludeAliyunTask,omitempty" xml:"IncludeAliyunTask,omitempty"`
+	Keyword           *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Namespace         *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	TaskId            *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskType          *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s DescribeHybridMonitorTaskListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorTaskListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorTaskListRequest) SetGroupId(v string) *DescribeHybridMonitorTaskListRequest {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListRequest) SetIncludeAliyunTask(v bool) *DescribeHybridMonitorTaskListRequest {
+	s.IncludeAliyunTask = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListRequest) SetKeyword(v string) *DescribeHybridMonitorTaskListRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListRequest) SetNamespace(v string) *DescribeHybridMonitorTaskListRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListRequest) SetPageNumber(v int32) *DescribeHybridMonitorTaskListRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListRequest) SetPageSize(v int32) *DescribeHybridMonitorTaskListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListRequest) SetRegionId(v string) *DescribeHybridMonitorTaskListRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListRequest) SetTaskId(v string) *DescribeHybridMonitorTaskListRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListRequest) SetTaskType(v string) *DescribeHybridMonitorTaskListRequest {
+	s.TaskType = &v
+	return s
+}
+
+type DescribeHybridMonitorTaskListResponseBody struct {
+	Code       *string                                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message    *string                                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageNumber *int32                                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success    *string                                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskList   []*DescribeHybridMonitorTaskListResponseBodyTaskList `json:"TaskList,omitempty" xml:"TaskList,omitempty" type:"Repeated"`
+	Total      *int32                                               `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeHybridMonitorTaskListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorTaskListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBody) SetCode(v string) *DescribeHybridMonitorTaskListResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBody) SetMessage(v string) *DescribeHybridMonitorTaskListResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBody) SetPageNumber(v int32) *DescribeHybridMonitorTaskListResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBody) SetPageSize(v int32) *DescribeHybridMonitorTaskListResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBody) SetRequestId(v string) *DescribeHybridMonitorTaskListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBody) SetSuccess(v string) *DescribeHybridMonitorTaskListResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBody) SetTaskList(v []*DescribeHybridMonitorTaskListResponseBodyTaskList) *DescribeHybridMonitorTaskListResponseBody {
+	s.TaskList = v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBody) SetTotal(v int32) *DescribeHybridMonitorTaskListResponseBody {
+	s.Total = &v
+	return s
+}
+
+type DescribeHybridMonitorTaskListResponseBodyTaskList struct {
+	AttachLabels          []*DescribeHybridMonitorTaskListResponseBodyTaskListAttachLabels `json:"AttachLabels,omitempty" xml:"AttachLabels,omitempty" type:"Repeated"`
+	CollectInterval       *int32                                                           `json:"CollectInterval,omitempty" xml:"CollectInterval,omitempty"`
+	CollectTargetEndpoint *string                                                          `json:"CollectTargetEndpoint,omitempty" xml:"CollectTargetEndpoint,omitempty"`
+	CollectTargetPath     *string                                                          `json:"CollectTargetPath,omitempty" xml:"CollectTargetPath,omitempty"`
+	CollectTargetType     *string                                                          `json:"CollectTargetType,omitempty" xml:"CollectTargetType,omitempty"`
+	CollectTimout         *int32                                                           `json:"CollectTimout,omitempty" xml:"CollectTimout,omitempty"`
+	CreateTime            *string                                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description           *string                                                          `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExtraInfo             *string                                                          `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	GroupId               *string                                                          `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Instances             []*string                                                        `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	LogFilePath           *string                                                          `json:"LogFilePath,omitempty" xml:"LogFilePath,omitempty"`
+	LogProcess            *string                                                          `json:"LogProcess,omitempty" xml:"LogProcess,omitempty"`
+	LogSample             *string                                                          `json:"LogSample,omitempty" xml:"LogSample,omitempty"`
+	LogSplit              *string                                                          `json:"LogSplit,omitempty" xml:"LogSplit,omitempty"`
+	MatchExpress          []*DescribeHybridMonitorTaskListResponseBodyTaskListMatchExpress `json:"MatchExpress,omitempty" xml:"MatchExpress,omitempty" type:"Repeated"`
+	MatchExpressRelation  *string                                                          `json:"MatchExpressRelation,omitempty" xml:"MatchExpressRelation,omitempty"`
+	Namespace             *string                                                          `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NetworkType           *string                                                          `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	SLSProcess            *string                                                          `json:"SLSProcess,omitempty" xml:"SLSProcess,omitempty"`
+	TargetUserId          *string                                                          `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
+	TaskId                *string                                                          `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName              *string                                                          `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskType              *string                                                          `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	UploadRegion          *string                                                          `json:"UploadRegion,omitempty" xml:"UploadRegion,omitempty"`
+	YARMConfig            *string                                                          `json:"YARMConfig,omitempty" xml:"YARMConfig,omitempty"`
+}
+
+func (s DescribeHybridMonitorTaskListResponseBodyTaskList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorTaskListResponseBodyTaskList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetAttachLabels(v []*DescribeHybridMonitorTaskListResponseBodyTaskListAttachLabels) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.AttachLabels = v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetCollectInterval(v int32) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.CollectInterval = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetCollectTargetEndpoint(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.CollectTargetEndpoint = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetCollectTargetPath(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.CollectTargetPath = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetCollectTargetType(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.CollectTargetType = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetCollectTimout(v int32) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.CollectTimout = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetCreateTime(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetDescription(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.Description = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetExtraInfo(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetGroupId(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.GroupId = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetInstances(v []*string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.Instances = v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetLogFilePath(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.LogFilePath = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetLogProcess(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.LogProcess = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetLogSample(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.LogSample = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetLogSplit(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.LogSplit = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetMatchExpress(v []*DescribeHybridMonitorTaskListResponseBodyTaskListMatchExpress) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.MatchExpress = v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetMatchExpressRelation(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.MatchExpressRelation = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetNamespace(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.Namespace = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetNetworkType(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.NetworkType = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetSLSProcess(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.SLSProcess = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetTargetUserId(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.TargetUserId = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetTaskId(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetTaskName(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.TaskName = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetTaskType(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.TaskType = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetUploadRegion(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.UploadRegion = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetYARMConfig(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.YARMConfig = &v
+	return s
+}
+
+type DescribeHybridMonitorTaskListResponseBodyTaskListAttachLabels struct {
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeHybridMonitorTaskListResponseBodyTaskListAttachLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorTaskListResponseBodyTaskListAttachLabels) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListAttachLabels) SetName(v string) *DescribeHybridMonitorTaskListResponseBodyTaskListAttachLabels {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListAttachLabels) SetValue(v string) *DescribeHybridMonitorTaskListResponseBodyTaskListAttachLabels {
+	s.Value = &v
+	return s
+}
+
+type DescribeHybridMonitorTaskListResponseBodyTaskListMatchExpress struct {
+	Function *string `json:"Function,omitempty" xml:"Function,omitempty"`
+	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value    *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeHybridMonitorTaskListResponseBodyTaskListMatchExpress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorTaskListResponseBodyTaskListMatchExpress) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListMatchExpress) SetFunction(v string) *DescribeHybridMonitorTaskListResponseBodyTaskListMatchExpress {
+	s.Function = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListMatchExpress) SetName(v string) *DescribeHybridMonitorTaskListResponseBodyTaskListMatchExpress {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListMatchExpress) SetValue(v string) *DescribeHybridMonitorTaskListResponseBodyTaskListMatchExpress {
+	s.Value = &v
+	return s
+}
+
+type DescribeHybridMonitorTaskListResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeHybridMonitorTaskListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeHybridMonitorTaskListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorTaskListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorTaskListResponse) SetHeaders(v map[string]*string) *DescribeHybridMonitorTaskListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponse) SetStatusCode(v int32) *DescribeHybridMonitorTaskListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponse) SetBody(v *DescribeHybridMonitorTaskListResponseBody) *DescribeHybridMonitorTaskListResponse {
 	s.Body = v
 	return s
 }
@@ -11483,8 +13643,9 @@ func (s *DescribeLogMonitorAttributeResponseBodyLogMonitorValueFilter) SetValue(
 }
 
 type DescribeLogMonitorAttributeResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeLogMonitorAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeLogMonitorAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeLogMonitorAttributeResponse) String() string {
@@ -11497,6 +13658,11 @@ func (s DescribeLogMonitorAttributeResponse) GoString() string {
 
 func (s *DescribeLogMonitorAttributeResponse) SetHeaders(v map[string]*string) *DescribeLogMonitorAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeLogMonitorAttributeResponse) SetStatusCode(v int32) *DescribeLogMonitorAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -11700,8 +13866,9 @@ func (s *DescribeLogMonitorListResponseBodyLogMonitorListValueFilter) SetValue(v
 }
 
 type DescribeLogMonitorListResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeLogMonitorListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeLogMonitorListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeLogMonitorListResponse) String() string {
@@ -11714,6 +13881,11 @@ func (s DescribeLogMonitorListResponse) GoString() string {
 
 func (s *DescribeLogMonitorListResponse) SetHeaders(v map[string]*string) *DescribeLogMonitorListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeLogMonitorListResponse) SetStatusCode(v int32) *DescribeLogMonitorListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -11829,8 +14001,9 @@ func (s *DescribeMetricDataResponseBody) SetRequestId(v string) *DescribeMetricD
 }
 
 type DescribeMetricDataResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMetricDataResponse) String() string {
@@ -11843,6 +14016,11 @@ func (s DescribeMetricDataResponse) GoString() string {
 
 func (s *DescribeMetricDataResponse) SetHeaders(v map[string]*string) *DescribeMetricDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMetricDataResponse) SetStatusCode(v int32) *DescribeMetricDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -11976,8 +14154,9 @@ func (s *DescribeMetricLastResponseBody) SetSuccess(v bool) *DescribeMetricLastR
 }
 
 type DescribeMetricLastResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMetricLastResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMetricLastResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMetricLastResponse) String() string {
@@ -11990,6 +14169,11 @@ func (s DescribeMetricLastResponse) GoString() string {
 
 func (s *DescribeMetricLastResponse) SetHeaders(v map[string]*string) *DescribeMetricLastResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMetricLastResponse) SetStatusCode(v int32) *DescribeMetricLastResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -12123,8 +14307,9 @@ func (s *DescribeMetricListResponseBody) SetSuccess(v bool) *DescribeMetricListR
 }
 
 type DescribeMetricListResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMetricListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMetricListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMetricListResponse) String() string {
@@ -12137,6 +14322,11 @@ func (s DescribeMetricListResponse) GoString() string {
 
 func (s *DescribeMetricListResponse) SetHeaders(v map[string]*string) *DescribeMetricListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMetricListResponse) SetStatusCode(v int32) *DescribeMetricListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -12316,8 +14506,9 @@ func (s *DescribeMetricMetaListResponseBodyResourcesResource) SetUnit(v string) 
 }
 
 type DescribeMetricMetaListResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMetricMetaListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMetricMetaListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMetricMetaListResponse) String() string {
@@ -12330,6 +14521,11 @@ func (s DescribeMetricMetaListResponse) GoString() string {
 
 func (s *DescribeMetricMetaListResponse) SetHeaders(v map[string]*string) *DescribeMetricMetaListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMetricMetaListResponse) SetStatusCode(v int32) *DescribeMetricMetaListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -12450,8 +14646,9 @@ func (s *DescribeMetricRuleCountResponseBodyMetricRuleCount) SetTotal(v int32) *
 }
 
 type DescribeMetricRuleCountResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMetricRuleCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMetricRuleCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMetricRuleCountResponse) String() string {
@@ -12464,6 +14661,11 @@ func (s DescribeMetricRuleCountResponse) GoString() string {
 
 func (s *DescribeMetricRuleCountResponse) SetHeaders(v map[string]*string) *DescribeMetricRuleCountResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMetricRuleCountResponse) SetStatusCode(v int32) *DescribeMetricRuleCountResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -12630,6 +14832,7 @@ type DescribeMetricRuleListResponseBodyAlarmsAlarm struct {
 	NoDataPolicy        *string                                                           `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
 	NoEffectiveInterval *string                                                           `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
 	Period              *string                                                           `json:"Period,omitempty" xml:"Period,omitempty"`
+	Prometheus          *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheus          `json:"Prometheus,omitempty" xml:"Prometheus,omitempty" type:"Struct"`
 	Resources           *string                                                           `json:"Resources,omitempty" xml:"Resources,omitempty"`
 	RuleId              *string                                                           `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	RuleName            *string                                                           `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
@@ -12723,6 +14926,11 @@ func (s *DescribeMetricRuleListResponseBodyAlarmsAlarm) SetNoEffectiveInterval(v
 
 func (s *DescribeMetricRuleListResponseBodyAlarmsAlarm) SetPeriod(v string) *DescribeMetricRuleListResponseBodyAlarmsAlarm {
 	s.Period = &v
+	return s
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarm) SetPrometheus(v *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheus) *DescribeMetricRuleListResponseBodyAlarmsAlarm {
+	s.Prometheus = v
 	return s
 }
 
@@ -13047,9 +15255,85 @@ func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmLabelsLabels) SetValue(v s
 	return s
 }
 
+type DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheus struct {
+	Annotations *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotations `json:"Annotations,omitempty" xml:"Annotations,omitempty" type:"Struct"`
+	Level       *string                                                             `json:"Level,omitempty" xml:"Level,omitempty"`
+	PromQL      *string                                                             `json:"PromQL,omitempty" xml:"PromQL,omitempty"`
+	Times       *int64                                                              `json:"Times,omitempty" xml:"Times,omitempty"`
+}
+
+func (s DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheus) SetAnnotations(v *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotations) *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheus {
+	s.Annotations = v
+	return s
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheus) SetLevel(v string) *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheus {
+	s.Level = &v
+	return s
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheus) SetPromQL(v string) *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheus {
+	s.PromQL = &v
+	return s
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheus) SetTimes(v int64) *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheus {
+	s.Times = &v
+	return s
+}
+
+type DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotations struct {
+	Annotations []*DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotationsAnnotations `json:"Annotations,omitempty" xml:"Annotations,omitempty" type:"Repeated"`
+}
+
+func (s DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotations) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotations) SetAnnotations(v []*DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotationsAnnotations) *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotations {
+	s.Annotations = v
+	return s
+}
+
+type DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotationsAnnotations struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotationsAnnotations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotationsAnnotations) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotationsAnnotations) SetKey(v string) *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotationsAnnotations {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotationsAnnotations) SetValue(v string) *DescribeMetricRuleListResponseBodyAlarmsAlarmPrometheusAnnotationsAnnotations {
+	s.Value = &v
+	return s
+}
+
 type DescribeMetricRuleListResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMetricRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMetricRuleListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMetricRuleListResponse) String() string {
@@ -13062,6 +15346,11 @@ func (s DescribeMetricRuleListResponse) GoString() string {
 
 func (s *DescribeMetricRuleListResponse) SetHeaders(v map[string]*string) *DescribeMetricRuleListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMetricRuleListResponse) SetStatusCode(v int32) *DescribeMetricRuleListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13187,8 +15476,9 @@ func (s *DescribeMetricRuleTargetsResponseBodyTargetsTarget) SetLevel(v string) 
 }
 
 type DescribeMetricRuleTargetsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMetricRuleTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMetricRuleTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMetricRuleTargetsResponse) String() string {
@@ -13201,6 +15491,11 @@ func (s DescribeMetricRuleTargetsResponse) GoString() string {
 
 func (s *DescribeMetricRuleTargetsResponse) SetHeaders(v map[string]*string) *DescribeMetricRuleTargetsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMetricRuleTargetsResponse) SetStatusCode(v int32) *DescribeMetricRuleTargetsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13531,8 +15826,9 @@ func (s *DescribeMetricRuleTemplateAttributeResponseBodyResourceAlertTemplatesAl
 }
 
 type DescribeMetricRuleTemplateAttributeResponse struct {
-	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMetricRuleTemplateAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMetricRuleTemplateAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMetricRuleTemplateAttributeResponse) String() string {
@@ -13545,6 +15841,11 @@ func (s DescribeMetricRuleTemplateAttributeResponse) GoString() string {
 
 func (s *DescribeMetricRuleTemplateAttributeResponse) SetHeaders(v map[string]*string) *DescribeMetricRuleTemplateAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMetricRuleTemplateAttributeResponse) SetStatusCode(v int32) *DescribeMetricRuleTemplateAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13782,8 +16083,9 @@ func (s *DescribeMetricRuleTemplateListResponseBodyTemplatesTemplateApplyHistori
 }
 
 type DescribeMetricRuleTemplateListResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMetricRuleTemplateListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMetricRuleTemplateListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMetricRuleTemplateListResponse) String() string {
@@ -13796,6 +16098,11 @@ func (s DescribeMetricRuleTemplateListResponse) GoString() string {
 
 func (s *DescribeMetricRuleTemplateListResponse) SetHeaders(v map[string]*string) *DescribeMetricRuleTemplateListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMetricRuleTemplateListResponse) SetStatusCode(v int32) *DescribeMetricRuleTemplateListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -13923,8 +16230,9 @@ func (s *DescribeMetricTopResponseBody) SetRequestId(v string) *DescribeMetricTo
 }
 
 type DescribeMetricTopResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMetricTopResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMetricTopResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMetricTopResponse) String() string {
@@ -13937,6 +16245,11 @@ func (s DescribeMetricTopResponse) GoString() string {
 
 func (s *DescribeMetricTopResponse) SetHeaders(v map[string]*string) *DescribeMetricTopResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMetricTopResponse) SetStatusCode(v int32) *DescribeMetricTopResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14073,8 +16386,9 @@ func (s *DescribeMonitorGroupCategoriesResponseBodyMonitorGroupCategoriesMonitor
 }
 
 type DescribeMonitorGroupCategoriesResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMonitorGroupCategoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMonitorGroupCategoriesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMonitorGroupCategoriesResponse) String() string {
@@ -14087,6 +16401,11 @@ func (s DescribeMonitorGroupCategoriesResponse) GoString() string {
 
 func (s *DescribeMonitorGroupCategoriesResponse) SetHeaders(v map[string]*string) *DescribeMonitorGroupCategoriesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMonitorGroupCategoriesResponse) SetStatusCode(v int32) *DescribeMonitorGroupCategoriesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14252,8 +16571,9 @@ func (s *DescribeMonitorGroupDynamicRulesResponseBodyResourceResourceFiltersFilt
 }
 
 type DescribeMonitorGroupDynamicRulesResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMonitorGroupDynamicRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMonitorGroupDynamicRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMonitorGroupDynamicRulesResponse) String() string {
@@ -14266,6 +16586,11 @@ func (s DescribeMonitorGroupDynamicRulesResponse) GoString() string {
 
 func (s *DescribeMonitorGroupDynamicRulesResponse) SetHeaders(v map[string]*string) *DescribeMonitorGroupDynamicRulesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMonitorGroupDynamicRulesResponse) SetStatusCode(v int32) *DescribeMonitorGroupDynamicRulesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14561,8 +16886,9 @@ func (s *DescribeMonitorGroupInstanceAttributeResponseBodyResourcesResourceVpc) 
 }
 
 type DescribeMonitorGroupInstanceAttributeResponse struct {
-	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMonitorGroupInstanceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMonitorGroupInstanceAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMonitorGroupInstanceAttributeResponse) String() string {
@@ -14575,6 +16901,11 @@ func (s DescribeMonitorGroupInstanceAttributeResponse) GoString() string {
 
 func (s *DescribeMonitorGroupInstanceAttributeResponse) SetHeaders(v map[string]*string) *DescribeMonitorGroupInstanceAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMonitorGroupInstanceAttributeResponse) SetStatusCode(v int32) *DescribeMonitorGroupInstanceAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14754,8 +17085,9 @@ func (s *DescribeMonitorGroupInstancesResponseBodyResourcesResource) SetRegionId
 }
 
 type DescribeMonitorGroupInstancesResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMonitorGroupInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMonitorGroupInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMonitorGroupInstancesResponse) String() string {
@@ -14768,6 +17100,11 @@ func (s DescribeMonitorGroupInstancesResponse) GoString() string {
 
 func (s *DescribeMonitorGroupInstancesResponse) SetHeaders(v map[string]*string) *DescribeMonitorGroupInstancesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMonitorGroupInstancesResponse) SetStatusCode(v int32) *DescribeMonitorGroupInstancesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -14923,8 +17260,9 @@ func (s *DescribeMonitorGroupNotifyPolicyListResponseBodyNotifyPolicyListNotifyP
 }
 
 type DescribeMonitorGroupNotifyPolicyListResponse struct {
-	Headers map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMonitorGroupNotifyPolicyListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMonitorGroupNotifyPolicyListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMonitorGroupNotifyPolicyListResponse) String() string {
@@ -14937,6 +17275,11 @@ func (s DescribeMonitorGroupNotifyPolicyListResponse) GoString() string {
 
 func (s *DescribeMonitorGroupNotifyPolicyListResponse) SetHeaders(v map[string]*string) *DescribeMonitorGroupNotifyPolicyListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMonitorGroupNotifyPolicyListResponse) SetStatusCode(v int32) *DescribeMonitorGroupNotifyPolicyListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15320,8 +17663,9 @@ func (s *DescribeMonitorGroupsResponseBodyResourcesResourceTemplateIds) SetTempl
 }
 
 type DescribeMonitorGroupsResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMonitorGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMonitorGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMonitorGroupsResponse) String() string {
@@ -15334,6 +17678,11 @@ func (s DescribeMonitorGroupsResponse) GoString() string {
 
 func (s *DescribeMonitorGroupsResponse) SetHeaders(v map[string]*string) *DescribeMonitorGroupsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMonitorGroupsResponse) SetStatusCode(v int32) *DescribeMonitorGroupsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15774,8 +18123,9 @@ func (s *DescribeMonitorResourceQuotaAttributeResponseBodyResourceQuotaSiteMonit
 }
 
 type DescribeMonitorResourceQuotaAttributeResponse struct {
-	Headers map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMonitorResourceQuotaAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMonitorResourceQuotaAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMonitorResourceQuotaAttributeResponse) String() string {
@@ -15788,6 +18138,11 @@ func (s DescribeMonitorResourceQuotaAttributeResponse) GoString() string {
 
 func (s *DescribeMonitorResourceQuotaAttributeResponse) SetHeaders(v map[string]*string) *DescribeMonitorResourceQuotaAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMonitorResourceQuotaAttributeResponse) SetStatusCode(v int32) *DescribeMonitorResourceQuotaAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15861,8 +18216,9 @@ func (s *DescribeMonitoringAgentAccessKeyResponseBody) SetSuccess(v bool) *Descr
 }
 
 type DescribeMonitoringAgentAccessKeyResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMonitoringAgentAccessKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMonitoringAgentAccessKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMonitoringAgentAccessKeyResponse) String() string {
@@ -15875,6 +18231,11 @@ func (s DescribeMonitoringAgentAccessKeyResponse) GoString() string {
 
 func (s *DescribeMonitoringAgentAccessKeyResponse) SetHeaders(v map[string]*string) *DescribeMonitoringAgentAccessKeyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMonitoringAgentAccessKeyResponse) SetStatusCode(v int32) *DescribeMonitoringAgentAccessKeyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15954,8 +18315,9 @@ func (s *DescribeMonitoringAgentConfigResponseBody) SetSuccess(v bool) *Describe
 }
 
 type DescribeMonitoringAgentConfigResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMonitoringAgentConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMonitoringAgentConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMonitoringAgentConfigResponse) String() string {
@@ -15968,6 +18330,11 @@ func (s DescribeMonitoringAgentConfigResponse) GoString() string {
 
 func (s *DescribeMonitoringAgentConfigResponse) SetHeaders(v map[string]*string) *DescribeMonitoringAgentConfigResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMonitoringAgentConfigResponse) SetStatusCode(v int32) *DescribeMonitoringAgentConfigResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -16225,8 +18592,9 @@ func (s *DescribeMonitoringAgentHostsResponseBodyHostsHost) SetIsAliyunHost(v bo
 }
 
 type DescribeMonitoringAgentHostsResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMonitoringAgentHostsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMonitoringAgentHostsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMonitoringAgentHostsResponse) String() string {
@@ -16239,6 +18607,11 @@ func (s DescribeMonitoringAgentHostsResponse) GoString() string {
 
 func (s *DescribeMonitoringAgentHostsResponse) SetHeaders(v map[string]*string) *DescribeMonitoringAgentHostsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMonitoringAgentHostsResponse) SetStatusCode(v int32) *DescribeMonitoringAgentHostsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -16376,8 +18749,9 @@ func (s *DescribeMonitoringAgentProcessesResponseBodyNodeProcessesNodeProcess) S
 }
 
 type DescribeMonitoringAgentProcessesResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMonitoringAgentProcessesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMonitoringAgentProcessesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMonitoringAgentProcessesResponse) String() string {
@@ -16390,6 +18764,11 @@ func (s DescribeMonitoringAgentProcessesResponse) GoString() string {
 
 func (s *DescribeMonitoringAgentProcessesResponse) SetHeaders(v map[string]*string) *DescribeMonitoringAgentProcessesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMonitoringAgentProcessesResponse) SetStatusCode(v int32) *DescribeMonitoringAgentProcessesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -16509,8 +18888,9 @@ func (s *DescribeMonitoringAgentStatusesResponseBodyNodeStatusListNodeStatus) Se
 }
 
 type DescribeMonitoringAgentStatusesResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMonitoringAgentStatusesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMonitoringAgentStatusesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMonitoringAgentStatusesResponse) String() string {
@@ -16523,6 +18903,11 @@ func (s DescribeMonitoringAgentStatusesResponse) GoString() string {
 
 func (s *DescribeMonitoringAgentStatusesResponse) SetHeaders(v map[string]*string) *DescribeMonitoringAgentStatusesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMonitoringAgentStatusesResponse) SetStatusCode(v int32) *DescribeMonitoringAgentStatusesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -16596,8 +18981,9 @@ func (s *DescribeMonitoringConfigResponseBody) SetSuccess(v bool) *DescribeMonit
 }
 
 type DescribeMonitoringConfigResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeMonitoringConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeMonitoringConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeMonitoringConfigResponse) String() string {
@@ -16610,6 +18996,11 @@ func (s DescribeMonitoringConfigResponse) GoString() string {
 
 func (s *DescribeMonitoringConfigResponse) SetHeaders(v map[string]*string) *DescribeMonitoringConfigResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeMonitoringConfigResponse) SetStatusCode(v int32) *DescribeMonitoringConfigResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -16706,8 +19097,9 @@ func (s *DescribeProductResourceTagKeyListResponseBodyTagKeys) SetTagKey(v []*st
 }
 
 type DescribeProductResourceTagKeyListResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeProductResourceTagKeyListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeProductResourceTagKeyListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeProductResourceTagKeyListResponse) String() string {
@@ -16720,6 +19112,11 @@ func (s DescribeProductResourceTagKeyListResponse) GoString() string {
 
 func (s *DescribeProductResourceTagKeyListResponse) SetHeaders(v map[string]*string) *DescribeProductResourceTagKeyListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeProductResourceTagKeyListResponse) SetStatusCode(v int32) *DescribeProductResourceTagKeyListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -16897,8 +19294,9 @@ func (s *DescribeProductsOfActiveMetricRuleResponseBodyAllProductInitMetricRuleL
 }
 
 type DescribeProductsOfActiveMetricRuleResponse struct {
-	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeProductsOfActiveMetricRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeProductsOfActiveMetricRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeProductsOfActiveMetricRuleResponse) String() string {
@@ -16911,6 +19309,11 @@ func (s DescribeProductsOfActiveMetricRuleResponse) GoString() string {
 
 func (s *DescribeProductsOfActiveMetricRuleResponse) SetHeaders(v map[string]*string) *DescribeProductsOfActiveMetricRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeProductsOfActiveMetricRuleResponse) SetStatusCode(v int32) *DescribeProductsOfActiveMetricRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -17054,8 +19457,9 @@ func (s *DescribeProjectMetaResponseBodyResourcesResource) SetNamespace(v string
 }
 
 type DescribeProjectMetaResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeProjectMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeProjectMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeProjectMetaResponse) String() string {
@@ -17068,6 +19472,11 @@ func (s DescribeProjectMetaResponse) GoString() string {
 
 func (s *DescribeProjectMetaResponse) SetHeaders(v map[string]*string) *DescribeProjectMetaResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeProjectMetaResponse) SetStatusCode(v int32) *DescribeProjectMetaResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -17531,8 +19940,9 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetUser
 }
 
 type DescribeSiteMonitorAttributeResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSiteMonitorAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSiteMonitorAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeSiteMonitorAttributeResponse) String() string {
@@ -17545,6 +19955,11 @@ func (s DescribeSiteMonitorAttributeResponse) GoString() string {
 
 func (s *DescribeSiteMonitorAttributeResponse) SetHeaders(v map[string]*string) *DescribeSiteMonitorAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponse) SetStatusCode(v int32) *DescribeSiteMonitorAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -17666,8 +20081,9 @@ func (s *DescribeSiteMonitorDataResponseBody) SetSuccess(v string) *DescribeSite
 }
 
 type DescribeSiteMonitorDataResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSiteMonitorDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSiteMonitorDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeSiteMonitorDataResponse) String() string {
@@ -17680,6 +20096,11 @@ func (s DescribeSiteMonitorDataResponse) GoString() string {
 
 func (s *DescribeSiteMonitorDataResponse) SetHeaders(v map[string]*string) *DescribeSiteMonitorDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeSiteMonitorDataResponse) SetStatusCode(v int32) *DescribeSiteMonitorDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -17918,8 +20339,9 @@ func (s *DescribeSiteMonitorISPCityListResponseBodyIspCityListIspCityIPPool) Set
 }
 
 type DescribeSiteMonitorISPCityListResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSiteMonitorISPCityListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSiteMonitorISPCityListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeSiteMonitorISPCityListResponse) String() string {
@@ -17932,6 +20354,11 @@ func (s DescribeSiteMonitorISPCityListResponse) GoString() string {
 
 func (s *DescribeSiteMonitorISPCityListResponse) SetHeaders(v map[string]*string) *DescribeSiteMonitorISPCityListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeSiteMonitorISPCityListResponse) SetStatusCode(v int32) *DescribeSiteMonitorISPCityListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -18260,8 +20687,9 @@ func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) 
 }
 
 type DescribeSiteMonitorListResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSiteMonitorListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSiteMonitorListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeSiteMonitorListResponse) String() string {
@@ -18274,6 +20702,11 @@ func (s DescribeSiteMonitorListResponse) GoString() string {
 
 func (s *DescribeSiteMonitorListResponse) SetHeaders(v map[string]*string) *DescribeSiteMonitorListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeSiteMonitorListResponse) SetStatusCode(v int32) *DescribeSiteMonitorListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -18401,8 +20834,9 @@ func (s *DescribeSiteMonitorLogResponseBody) SetSuccess(v string) *DescribeSiteM
 }
 
 type DescribeSiteMonitorLogResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSiteMonitorLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSiteMonitorLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeSiteMonitorLogResponse) String() string {
@@ -18415,6 +20849,11 @@ func (s DescribeSiteMonitorLogResponse) GoString() string {
 
 func (s *DescribeSiteMonitorLogResponse) SetHeaders(v map[string]*string) *DescribeSiteMonitorLogResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeSiteMonitorLogResponse) SetStatusCode(v int32) *DescribeSiteMonitorLogResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -18529,8 +20968,9 @@ func (s *DescribeSiteMonitorQuotaResponseBodyData) SetSiteMonitorVersion(v strin
 }
 
 type DescribeSiteMonitorQuotaResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSiteMonitorQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSiteMonitorQuotaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeSiteMonitorQuotaResponse) String() string {
@@ -18543,6 +20983,11 @@ func (s DescribeSiteMonitorQuotaResponse) GoString() string {
 
 func (s *DescribeSiteMonitorQuotaResponse) SetHeaders(v map[string]*string) *DescribeSiteMonitorQuotaResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeSiteMonitorQuotaResponse) SetStatusCode(v int32) *DescribeSiteMonitorQuotaResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -18634,8 +21079,9 @@ func (s *DescribeSiteMonitorStatisticsResponseBody) SetSuccess(v string) *Descri
 }
 
 type DescribeSiteMonitorStatisticsResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSiteMonitorStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSiteMonitorStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeSiteMonitorStatisticsResponse) String() string {
@@ -18648,6 +21094,11 @@ func (s DescribeSiteMonitorStatisticsResponse) GoString() string {
 
 func (s *DescribeSiteMonitorStatisticsResponse) SetHeaders(v map[string]*string) *DescribeSiteMonitorStatisticsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeSiteMonitorStatisticsResponse) SetStatusCode(v int32) *DescribeSiteMonitorStatisticsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -18869,8 +21320,9 @@ func (s *DescribeSystemEventAttributeResponseBodySystemEventsSystemEvent) SetTim
 }
 
 type DescribeSystemEventAttributeResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSystemEventAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSystemEventAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeSystemEventAttributeResponse) String() string {
@@ -18883,6 +21335,11 @@ func (s DescribeSystemEventAttributeResponse) GoString() string {
 
 func (s *DescribeSystemEventAttributeResponse) SetHeaders(v map[string]*string) *DescribeSystemEventAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeSystemEventAttributeResponse) SetStatusCode(v int32) *DescribeSystemEventAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -19098,8 +21555,9 @@ func (s *DescribeSystemEventCountResponseBodySystemEventCountsSystemEventCount) 
 }
 
 type DescribeSystemEventCountResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSystemEventCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSystemEventCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeSystemEventCountResponse) String() string {
@@ -19112,6 +21570,11 @@ func (s DescribeSystemEventCountResponse) GoString() string {
 
 func (s *DescribeSystemEventCountResponse) SetHeaders(v map[string]*string) *DescribeSystemEventCountResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeSystemEventCountResponse) SetStatusCode(v int32) *DescribeSystemEventCountResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -19279,8 +21742,9 @@ func (s *DescribeSystemEventHistogramResponseBodySystemEventHistogramsSystemEven
 }
 
 type DescribeSystemEventHistogramResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSystemEventHistogramResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSystemEventHistogramResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeSystemEventHistogramResponse) String() string {
@@ -19293,6 +21757,11 @@ func (s DescribeSystemEventHistogramResponse) GoString() string {
 
 func (s *DescribeSystemEventHistogramResponse) SetHeaders(v map[string]*string) *DescribeSystemEventHistogramResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeSystemEventHistogramResponse) SetStatusCode(v int32) *DescribeSystemEventHistogramResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -19436,8 +21905,9 @@ func (s *DescribeSystemEventMetaListResponseBodyDataResource) SetStatusDesc(v st
 }
 
 type DescribeSystemEventMetaListResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSystemEventMetaListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSystemEventMetaListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeSystemEventMetaListResponse) String() string {
@@ -19450,6 +21920,11 @@ func (s DescribeSystemEventMetaListResponse) GoString() string {
 
 func (s *DescribeSystemEventMetaListResponse) SetHeaders(v map[string]*string) *DescribeSystemEventMetaListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeSystemEventMetaListResponse) SetStatusCode(v int32) *DescribeSystemEventMetaListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -19546,8 +22021,9 @@ func (s *DescribeTagKeyListResponseBodyTagKeys) SetTagKey(v []*string) *Describe
 }
 
 type DescribeTagKeyListResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeTagKeyListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeTagKeyListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeTagKeyListResponse) String() string {
@@ -19560,6 +22036,11 @@ func (s DescribeTagKeyListResponse) GoString() string {
 
 func (s *DescribeTagKeyListResponse) SetHeaders(v map[string]*string) *DescribeTagKeyListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeTagKeyListResponse) SetStatusCode(v int32) *DescribeTagKeyListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -19662,8 +22143,9 @@ func (s *DescribeTagValueListResponseBodyTagValues) SetTagValue(v []*string) *De
 }
 
 type DescribeTagValueListResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeTagValueListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeTagValueListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeTagValueListResponse) String() string {
@@ -19676,6 +22158,11 @@ func (s DescribeTagValueListResponse) GoString() string {
 
 func (s *DescribeTagValueListResponse) SetHeaders(v map[string]*string) *DescribeTagValueListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeTagValueListResponse) SetStatusCode(v int32) *DescribeTagValueListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -19806,8 +22293,9 @@ func (s *DescribeUnhealthyHostAvailabilityResponseBodyUnhealthyListNodeTaskInsta
 }
 
 type DescribeUnhealthyHostAvailabilityResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeUnhealthyHostAvailabilityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeUnhealthyHostAvailabilityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeUnhealthyHostAvailabilityResponse) String() string {
@@ -19820,6 +22308,11 @@ func (s DescribeUnhealthyHostAvailabilityResponse) GoString() string {
 
 func (s *DescribeUnhealthyHostAvailabilityResponse) SetHeaders(v map[string]*string) *DescribeUnhealthyHostAvailabilityResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeUnhealthyHostAvailabilityResponse) SetStatusCode(v int32) *DescribeUnhealthyHostAvailabilityResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -19887,8 +22380,9 @@ func (s *DisableActiveMetricRuleResponseBody) SetSuccess(v bool) *DisableActiveM
 }
 
 type DisableActiveMetricRuleResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableActiveMetricRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableActiveMetricRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableActiveMetricRuleResponse) String() string {
@@ -19901,6 +22395,11 @@ func (s DisableActiveMetricRuleResponse) GoString() string {
 
 func (s *DisableActiveMetricRuleResponse) SetHeaders(v map[string]*string) *DisableActiveMetricRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableActiveMetricRuleResponse) SetStatusCode(v int32) *DisableActiveMetricRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -19968,8 +22467,9 @@ func (s *DisableEventRulesResponseBody) SetSuccess(v bool) *DisableEventRulesRes
 }
 
 type DisableEventRulesResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableEventRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableEventRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableEventRulesResponse) String() string {
@@ -19982,6 +22482,11 @@ func (s DisableEventRulesResponse) GoString() string {
 
 func (s *DisableEventRulesResponse) SetHeaders(v map[string]*string) *DisableEventRulesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableEventRulesResponse) SetStatusCode(v int32) *DisableEventRulesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -20049,8 +22554,9 @@ func (s *DisableHostAvailabilityResponseBody) SetSuccess(v bool) *DisableHostAva
 }
 
 type DisableHostAvailabilityResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableHostAvailabilityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableHostAvailabilityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableHostAvailabilityResponse) String() string {
@@ -20063,6 +22569,11 @@ func (s DisableHostAvailabilityResponse) GoString() string {
 
 func (s *DisableHostAvailabilityResponse) SetHeaders(v map[string]*string) *DisableHostAvailabilityResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableHostAvailabilityResponse) SetStatusCode(v int32) *DisableHostAvailabilityResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -20130,8 +22641,9 @@ func (s *DisableMetricRulesResponseBody) SetSuccess(v bool) *DisableMetricRulesR
 }
 
 type DisableMetricRulesResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableMetricRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableMetricRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableMetricRulesResponse) String() string {
@@ -20144,6 +22656,11 @@ func (s DisableMetricRulesResponse) GoString() string {
 
 func (s *DisableMetricRulesResponse) SetHeaders(v map[string]*string) *DisableMetricRulesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableMetricRulesResponse) SetStatusCode(v int32) *DisableMetricRulesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -20234,8 +22751,9 @@ func (s *DisableSiteMonitorsResponseBodyData) SetCount(v int32) *DisableSiteMoni
 }
 
 type DisableSiteMonitorsResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableSiteMonitorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableSiteMonitorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableSiteMonitorsResponse) String() string {
@@ -20248,6 +22766,11 @@ func (s DisableSiteMonitorsResponse) GoString() string {
 
 func (s *DisableSiteMonitorsResponse) SetHeaders(v map[string]*string) *DisableSiteMonitorsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableSiteMonitorsResponse) SetStatusCode(v int32) *DisableSiteMonitorsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -20315,8 +22838,9 @@ func (s *EnableActiveMetricRuleResponseBody) SetSuccess(v bool) *EnableActiveMet
 }
 
 type EnableActiveMetricRuleResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableActiveMetricRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableActiveMetricRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableActiveMetricRuleResponse) String() string {
@@ -20329,6 +22853,11 @@ func (s EnableActiveMetricRuleResponse) GoString() string {
 
 func (s *EnableActiveMetricRuleResponse) SetHeaders(v map[string]*string) *EnableActiveMetricRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *EnableActiveMetricRuleResponse) SetStatusCode(v int32) *EnableActiveMetricRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -20396,8 +22925,9 @@ func (s *EnableEventRulesResponseBody) SetSuccess(v bool) *EnableEventRulesRespo
 }
 
 type EnableEventRulesResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableEventRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableEventRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableEventRulesResponse) String() string {
@@ -20410,6 +22940,11 @@ func (s EnableEventRulesResponse) GoString() string {
 
 func (s *EnableEventRulesResponse) SetHeaders(v map[string]*string) *EnableEventRulesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *EnableEventRulesResponse) SetStatusCode(v int32) *EnableEventRulesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -20477,8 +23012,9 @@ func (s *EnableHostAvailabilityResponseBody) SetSuccess(v bool) *EnableHostAvail
 }
 
 type EnableHostAvailabilityResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableHostAvailabilityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableHostAvailabilityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableHostAvailabilityResponse) String() string {
@@ -20491,6 +23027,11 @@ func (s EnableHostAvailabilityResponse) GoString() string {
 
 func (s *EnableHostAvailabilityResponse) SetHeaders(v map[string]*string) *EnableHostAvailabilityResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *EnableHostAvailabilityResponse) SetStatusCode(v int32) *EnableHostAvailabilityResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -20558,8 +23099,9 @@ func (s *EnableMetricRulesResponseBody) SetSuccess(v bool) *EnableMetricRulesRes
 }
 
 type EnableMetricRulesResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableMetricRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableMetricRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableMetricRulesResponse) String() string {
@@ -20572,6 +23114,11 @@ func (s EnableMetricRulesResponse) GoString() string {
 
 func (s *EnableMetricRulesResponse) SetHeaders(v map[string]*string) *EnableMetricRulesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *EnableMetricRulesResponse) SetStatusCode(v int32) *EnableMetricRulesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -20662,8 +23209,9 @@ func (s *EnableSiteMonitorsResponseBodyData) SetCount(v int32) *EnableSiteMonito
 }
 
 type EnableSiteMonitorsResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableSiteMonitorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableSiteMonitorsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableSiteMonitorsResponse) String() string {
@@ -20676,6 +23224,11 @@ func (s EnableSiteMonitorsResponse) GoString() string {
 
 func (s *EnableSiteMonitorsResponse) SetHeaders(v map[string]*string) *EnableSiteMonitorsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *EnableSiteMonitorsResponse) SetStatusCode(v int32) *EnableSiteMonitorsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -20755,8 +23308,9 @@ func (s *InstallMonitoringAgentResponseBody) SetSuccess(v bool) *InstallMonitori
 }
 
 type InstallMonitoringAgentResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *InstallMonitoringAgentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InstallMonitoringAgentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s InstallMonitoringAgentResponse) String() string {
@@ -20769,6 +23323,11 @@ func (s InstallMonitoringAgentResponse) GoString() string {
 
 func (s *InstallMonitoringAgentResponse) SetHeaders(v map[string]*string) *InstallMonitoringAgentResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *InstallMonitoringAgentResponse) SetStatusCode(v int32) *InstallMonitoringAgentResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -20919,8 +23478,9 @@ func (s *ModifyGroupMonitoringAgentProcessResponseBody) SetSuccess(v bool) *Modi
 }
 
 type ModifyGroupMonitoringAgentProcessResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyGroupMonitoringAgentProcessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyGroupMonitoringAgentProcessResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyGroupMonitoringAgentProcessResponse) String() string {
@@ -20933,6 +23493,11 @@ func (s ModifyGroupMonitoringAgentProcessResponse) GoString() string {
 
 func (s *ModifyGroupMonitoringAgentProcessResponse) SetHeaders(v map[string]*string) *ModifyGroupMonitoringAgentProcessResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyGroupMonitoringAgentProcessResponse) SetStatusCode(v int32) *ModifyGroupMonitoringAgentProcessResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -21189,8 +23754,9 @@ func (s *ModifyHostAvailabilityResponseBody) SetSuccess(v bool) *ModifyHostAvail
 }
 
 type ModifyHostAvailabilityResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyHostAvailabilityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyHostAvailabilityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyHostAvailabilityResponse) String() string {
@@ -21203,6 +23769,11 @@ func (s ModifyHostAvailabilityResponse) GoString() string {
 
 func (s *ModifyHostAvailabilityResponse) SetHeaders(v map[string]*string) *ModifyHostAvailabilityResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyHostAvailabilityResponse) SetStatusCode(v int32) *ModifyHostAvailabilityResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -21276,8 +23847,9 @@ func (s *ModifyHostInfoResponseBody) SetSuccess(v bool) *ModifyHostInfoResponseB
 }
 
 type ModifyHostInfoResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyHostInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyHostInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyHostInfoResponse) String() string {
@@ -21293,7 +23865,559 @@ func (s *ModifyHostInfoResponse) SetHeaders(v map[string]*string) *ModifyHostInf
 	return s
 }
 
+func (s *ModifyHostInfoResponse) SetStatusCode(v int32) *ModifyHostInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifyHostInfoResponse) SetBody(v *ModifyHostInfoResponseBody) *ModifyHostInfoResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyHybridMonitorNamespaceRequest struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Namespace   *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Spec        *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+}
+
+func (s ModifyHybridMonitorNamespaceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridMonitorNamespaceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridMonitorNamespaceRequest) SetDescription(v string) *ModifyHybridMonitorNamespaceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorNamespaceRequest) SetNamespace(v string) *ModifyHybridMonitorNamespaceRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorNamespaceRequest) SetRegionId(v string) *ModifyHybridMonitorNamespaceRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorNamespaceRequest) SetSpec(v string) *ModifyHybridMonitorNamespaceRequest {
+	s.Spec = &v
+	return s
+}
+
+type ModifyHybridMonitorNamespaceResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyHybridMonitorNamespaceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridMonitorNamespaceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridMonitorNamespaceResponseBody) SetCode(v string) *ModifyHybridMonitorNamespaceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorNamespaceResponseBody) SetMessage(v string) *ModifyHybridMonitorNamespaceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorNamespaceResponseBody) SetRequestId(v string) *ModifyHybridMonitorNamespaceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorNamespaceResponseBody) SetSuccess(v string) *ModifyHybridMonitorNamespaceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyHybridMonitorNamespaceResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyHybridMonitorNamespaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyHybridMonitorNamespaceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridMonitorNamespaceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridMonitorNamespaceResponse) SetHeaders(v map[string]*string) *ModifyHybridMonitorNamespaceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyHybridMonitorNamespaceResponse) SetStatusCode(v int32) *ModifyHybridMonitorNamespaceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorNamespaceResponse) SetBody(v *ModifyHybridMonitorNamespaceResponseBody) *ModifyHybridMonitorNamespaceResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyHybridMonitorSLSGroupRequest struct {
+	RegionId            *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SLSGroupConfig      []*ModifyHybridMonitorSLSGroupRequestSLSGroupConfig `json:"SLSGroupConfig,omitempty" xml:"SLSGroupConfig,omitempty" type:"Repeated"`
+	SLSGroupDescription *string                                             `json:"SLSGroupDescription,omitempty" xml:"SLSGroupDescription,omitempty"`
+	SLSGroupName        *string                                             `json:"SLSGroupName,omitempty" xml:"SLSGroupName,omitempty"`
+}
+
+func (s ModifyHybridMonitorSLSGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridMonitorSLSGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridMonitorSLSGroupRequest) SetRegionId(v string) *ModifyHybridMonitorSLSGroupRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorSLSGroupRequest) SetSLSGroupConfig(v []*ModifyHybridMonitorSLSGroupRequestSLSGroupConfig) *ModifyHybridMonitorSLSGroupRequest {
+	s.SLSGroupConfig = v
+	return s
+}
+
+func (s *ModifyHybridMonitorSLSGroupRequest) SetSLSGroupDescription(v string) *ModifyHybridMonitorSLSGroupRequest {
+	s.SLSGroupDescription = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorSLSGroupRequest) SetSLSGroupName(v string) *ModifyHybridMonitorSLSGroupRequest {
+	s.SLSGroupName = &v
+	return s
+}
+
+type ModifyHybridMonitorSLSGroupRequestSLSGroupConfig struct {
+	SLSLogstore *string `json:"SLSLogstore,omitempty" xml:"SLSLogstore,omitempty"`
+	SLSProject  *string `json:"SLSProject,omitempty" xml:"SLSProject,omitempty"`
+	SLSRegion   *string `json:"SLSRegion,omitempty" xml:"SLSRegion,omitempty"`
+	SLSUserId   *string `json:"SLSUserId,omitempty" xml:"SLSUserId,omitempty"`
+}
+
+func (s ModifyHybridMonitorSLSGroupRequestSLSGroupConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridMonitorSLSGroupRequestSLSGroupConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridMonitorSLSGroupRequestSLSGroupConfig) SetSLSLogstore(v string) *ModifyHybridMonitorSLSGroupRequestSLSGroupConfig {
+	s.SLSLogstore = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorSLSGroupRequestSLSGroupConfig) SetSLSProject(v string) *ModifyHybridMonitorSLSGroupRequestSLSGroupConfig {
+	s.SLSProject = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorSLSGroupRequestSLSGroupConfig) SetSLSRegion(v string) *ModifyHybridMonitorSLSGroupRequestSLSGroupConfig {
+	s.SLSRegion = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorSLSGroupRequestSLSGroupConfig) SetSLSUserId(v string) *ModifyHybridMonitorSLSGroupRequestSLSGroupConfig {
+	s.SLSUserId = &v
+	return s
+}
+
+type ModifyHybridMonitorSLSGroupResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyHybridMonitorSLSGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridMonitorSLSGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridMonitorSLSGroupResponseBody) SetCode(v string) *ModifyHybridMonitorSLSGroupResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorSLSGroupResponseBody) SetMessage(v string) *ModifyHybridMonitorSLSGroupResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorSLSGroupResponseBody) SetRequestId(v string) *ModifyHybridMonitorSLSGroupResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorSLSGroupResponseBody) SetSuccess(v string) *ModifyHybridMonitorSLSGroupResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyHybridMonitorSLSGroupResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyHybridMonitorSLSGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyHybridMonitorSLSGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridMonitorSLSGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridMonitorSLSGroupResponse) SetHeaders(v map[string]*string) *ModifyHybridMonitorSLSGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyHybridMonitorSLSGroupResponse) SetStatusCode(v int32) *ModifyHybridMonitorSLSGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorSLSGroupResponse) SetBody(v *ModifyHybridMonitorSLSGroupResponseBody) *ModifyHybridMonitorSLSGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyHybridMonitorTaskRequest struct {
+	AttachLabels     []*ModifyHybridMonitorTaskRequestAttachLabels   `json:"AttachLabels,omitempty" xml:"AttachLabels,omitempty" type:"Repeated"`
+	CollectInterval  *string                                         `json:"CollectInterval,omitempty" xml:"CollectInterval,omitempty"`
+	Description      *string                                         `json:"Description,omitempty" xml:"Description,omitempty"`
+	RegionId         *string                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	SLSProcessConfig *ModifyHybridMonitorTaskRequestSLSProcessConfig `json:"SLSProcessConfig,omitempty" xml:"SLSProcessConfig,omitempty" type:"Struct"`
+	TaskId           *string                                         `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName         *string                                         `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+}
+
+func (s ModifyHybridMonitorTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridMonitorTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridMonitorTaskRequest) SetAttachLabels(v []*ModifyHybridMonitorTaskRequestAttachLabels) *ModifyHybridMonitorTaskRequest {
+	s.AttachLabels = v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskRequest) SetCollectInterval(v string) *ModifyHybridMonitorTaskRequest {
+	s.CollectInterval = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskRequest) SetDescription(v string) *ModifyHybridMonitorTaskRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskRequest) SetRegionId(v string) *ModifyHybridMonitorTaskRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskRequest) SetSLSProcessConfig(v *ModifyHybridMonitorTaskRequestSLSProcessConfig) *ModifyHybridMonitorTaskRequest {
+	s.SLSProcessConfig = v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskRequest) SetTaskId(v string) *ModifyHybridMonitorTaskRequest {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskRequest) SetTaskName(v string) *ModifyHybridMonitorTaskRequest {
+	s.TaskName = &v
+	return s
+}
+
+type ModifyHybridMonitorTaskRequestAttachLabels struct {
+	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ModifyHybridMonitorTaskRequestAttachLabels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridMonitorTaskRequestAttachLabels) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridMonitorTaskRequestAttachLabels) SetName(v string) *ModifyHybridMonitorTaskRequestAttachLabels {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskRequestAttachLabels) SetValue(v string) *ModifyHybridMonitorTaskRequestAttachLabels {
+	s.Value = &v
+	return s
+}
+
+type ModifyHybridMonitorTaskRequestSLSProcessConfig struct {
+	Express    []*ModifyHybridMonitorTaskRequestSLSProcessConfigExpress    `json:"Express,omitempty" xml:"Express,omitempty" type:"Repeated"`
+	Filter     *ModifyHybridMonitorTaskRequestSLSProcessConfigFilter       `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	GroupBy    []*ModifyHybridMonitorTaskRequestSLSProcessConfigGroupBy    `json:"GroupBy,omitempty" xml:"GroupBy,omitempty" type:"Repeated"`
+	Statistics []*ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
+}
+
+func (s ModifyHybridMonitorTaskRequestSLSProcessConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridMonitorTaskRequestSLSProcessConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridMonitorTaskRequestSLSProcessConfig) SetExpress(v []*ModifyHybridMonitorTaskRequestSLSProcessConfigExpress) *ModifyHybridMonitorTaskRequestSLSProcessConfig {
+	s.Express = v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskRequestSLSProcessConfig) SetFilter(v *ModifyHybridMonitorTaskRequestSLSProcessConfigFilter) *ModifyHybridMonitorTaskRequestSLSProcessConfig {
+	s.Filter = v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskRequestSLSProcessConfig) SetGroupBy(v []*ModifyHybridMonitorTaskRequestSLSProcessConfigGroupBy) *ModifyHybridMonitorTaskRequestSLSProcessConfig {
+	s.GroupBy = v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskRequestSLSProcessConfig) SetStatistics(v []*ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics) *ModifyHybridMonitorTaskRequestSLSProcessConfig {
+	s.Statistics = v
+	return s
+}
+
+type ModifyHybridMonitorTaskRequestSLSProcessConfigExpress struct {
+	Alias   *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	Express *string `json:"Express,omitempty" xml:"Express,omitempty"`
+}
+
+func (s ModifyHybridMonitorTaskRequestSLSProcessConfigExpress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridMonitorTaskRequestSLSProcessConfigExpress) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridMonitorTaskRequestSLSProcessConfigExpress) SetAlias(v string) *ModifyHybridMonitorTaskRequestSLSProcessConfigExpress {
+	s.Alias = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskRequestSLSProcessConfigExpress) SetExpress(v string) *ModifyHybridMonitorTaskRequestSLSProcessConfigExpress {
+	s.Express = &v
+	return s
+}
+
+type ModifyHybridMonitorTaskRequestSLSProcessConfigFilter struct {
+	Filters  []*ModifyHybridMonitorTaskRequestSLSProcessConfigFilterFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	Relation *string                                                        `json:"Relation,omitempty" xml:"Relation,omitempty"`
+}
+
+func (s ModifyHybridMonitorTaskRequestSLSProcessConfigFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridMonitorTaskRequestSLSProcessConfigFilter) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridMonitorTaskRequestSLSProcessConfigFilter) SetFilters(v []*ModifyHybridMonitorTaskRequestSLSProcessConfigFilterFilters) *ModifyHybridMonitorTaskRequestSLSProcessConfigFilter {
+	s.Filters = v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskRequestSLSProcessConfigFilter) SetRelation(v string) *ModifyHybridMonitorTaskRequestSLSProcessConfigFilter {
+	s.Relation = &v
+	return s
+}
+
+type ModifyHybridMonitorTaskRequestSLSProcessConfigFilterFilters struct {
+	Operator   *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	SLSKeyName *string `json:"SLSKeyName,omitempty" xml:"SLSKeyName,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ModifyHybridMonitorTaskRequestSLSProcessConfigFilterFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridMonitorTaskRequestSLSProcessConfigFilterFilters) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridMonitorTaskRequestSLSProcessConfigFilterFilters) SetOperator(v string) *ModifyHybridMonitorTaskRequestSLSProcessConfigFilterFilters {
+	s.Operator = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskRequestSLSProcessConfigFilterFilters) SetSLSKeyName(v string) *ModifyHybridMonitorTaskRequestSLSProcessConfigFilterFilters {
+	s.SLSKeyName = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskRequestSLSProcessConfigFilterFilters) SetValue(v string) *ModifyHybridMonitorTaskRequestSLSProcessConfigFilterFilters {
+	s.Value = &v
+	return s
+}
+
+type ModifyHybridMonitorTaskRequestSLSProcessConfigGroupBy struct {
+	Alias      *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	SLSKeyName *string `json:"SLSKeyName,omitempty" xml:"SLSKeyName,omitempty"`
+}
+
+func (s ModifyHybridMonitorTaskRequestSLSProcessConfigGroupBy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridMonitorTaskRequestSLSProcessConfigGroupBy) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridMonitorTaskRequestSLSProcessConfigGroupBy) SetAlias(v string) *ModifyHybridMonitorTaskRequestSLSProcessConfigGroupBy {
+	s.Alias = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskRequestSLSProcessConfigGroupBy) SetSLSKeyName(v string) *ModifyHybridMonitorTaskRequestSLSProcessConfigGroupBy {
+	s.SLSKeyName = &v
+	return s
+}
+
+type ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics struct {
+	Alias      *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	Function   *string `json:"Function,omitempty" xml:"Function,omitempty"`
+	Parameter1 *string `json:"Parameter1,omitempty" xml:"Parameter1,omitempty"`
+	Parameter2 *string `json:"Parameter2,omitempty" xml:"Parameter2,omitempty"`
+	SLSKeyName *string `json:"SLSKeyName,omitempty" xml:"SLSKeyName,omitempty"`
+}
+
+func (s ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics) SetAlias(v string) *ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics {
+	s.Alias = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics) SetFunction(v string) *ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics {
+	s.Function = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics) SetParameter1(v string) *ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics {
+	s.Parameter1 = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics) SetParameter2(v string) *ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics {
+	s.Parameter2 = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics) SetSLSKeyName(v string) *ModifyHybridMonitorTaskRequestSLSProcessConfigStatistics {
+	s.SLSKeyName = &v
+	return s
+}
+
+type ModifyHybridMonitorTaskResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ModifyHybridMonitorTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridMonitorTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridMonitorTaskResponseBody) SetCode(v string) *ModifyHybridMonitorTaskResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskResponseBody) SetMessage(v string) *ModifyHybridMonitorTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskResponseBody) SetRequestId(v string) *ModifyHybridMonitorTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskResponseBody) SetSuccess(v string) *ModifyHybridMonitorTaskResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ModifyHybridMonitorTaskResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyHybridMonitorTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyHybridMonitorTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyHybridMonitorTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyHybridMonitorTaskResponse) SetHeaders(v map[string]*string) *ModifyHybridMonitorTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskResponse) SetStatusCode(v int32) *ModifyHybridMonitorTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyHybridMonitorTaskResponse) SetBody(v *ModifyHybridMonitorTaskResponseBody) *ModifyHybridMonitorTaskResponse {
 	s.Body = v
 	return s
 }
@@ -21574,8 +24698,9 @@ func (s *ModifyMetricRuleTemplateResponseBody) SetSuccess(v bool) *ModifyMetricR
 }
 
 type ModifyMetricRuleTemplateResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyMetricRuleTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyMetricRuleTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyMetricRuleTemplateResponse) String() string {
@@ -21588,6 +24713,11 @@ func (s ModifyMetricRuleTemplateResponse) GoString() string {
 
 func (s *ModifyMetricRuleTemplateResponse) SetHeaders(v map[string]*string) *ModifyMetricRuleTemplateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyMetricRuleTemplateResponse) SetStatusCode(v int32) *ModifyMetricRuleTemplateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -21667,8 +24797,9 @@ func (s *ModifyMonitorGroupResponseBody) SetSuccess(v bool) *ModifyMonitorGroupR
 }
 
 type ModifyMonitorGroupResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyMonitorGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyMonitorGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyMonitorGroupResponse) String() string {
@@ -21681,6 +24812,11 @@ func (s ModifyMonitorGroupResponse) GoString() string {
 
 func (s *ModifyMonitorGroupResponse) SetHeaders(v map[string]*string) *ModifyMonitorGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyMonitorGroupResponse) SetStatusCode(v int32) *ModifyMonitorGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -21789,8 +24925,9 @@ func (s *ModifyMonitorGroupInstancesResponseBody) SetSuccess(v bool) *ModifyMoni
 }
 
 type ModifyMonitorGroupInstancesResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyMonitorGroupInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyMonitorGroupInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyMonitorGroupInstancesResponse) String() string {
@@ -21803,6 +24940,11 @@ func (s ModifyMonitorGroupInstancesResponse) GoString() string {
 
 func (s *ModifyMonitorGroupInstancesResponse) SetHeaders(v map[string]*string) *ModifyMonitorGroupInstancesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyMonitorGroupInstancesResponse) SetStatusCode(v int32) *ModifyMonitorGroupInstancesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -21935,8 +25077,9 @@ func (s *ModifySiteMonitorResponseBodyData) SetCount(v int32) *ModifySiteMonitor
 }
 
 type ModifySiteMonitorResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifySiteMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifySiteMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifySiteMonitorResponse) String() string {
@@ -21949,6 +25092,11 @@ func (s ModifySiteMonitorResponse) GoString() string {
 
 func (s *ModifySiteMonitorResponse) SetHeaders(v map[string]*string) *ModifySiteMonitorResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifySiteMonitorResponse) SetStatusCode(v int32) *ModifySiteMonitorResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -21981,8 +25129,9 @@ func (s *OpenCmsServiceResponseBody) SetRequestId(v string) *OpenCmsServiceRespo
 }
 
 type OpenCmsServiceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *OpenCmsServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OpenCmsServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s OpenCmsServiceResponse) String() string {
@@ -21995,6 +25144,11 @@ func (s OpenCmsServiceResponse) GoString() string {
 
 func (s *OpenCmsServiceResponse) SetHeaders(v map[string]*string) *OpenCmsServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *OpenCmsServiceResponse) SetStatusCode(v int32) *OpenCmsServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -22109,8 +25263,9 @@ func (s *PutContactResponseBody) SetSuccess(v bool) *PutContactResponseBody {
 }
 
 type PutContactResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutContactResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutContactResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutContactResponse) String() string {
@@ -22123,6 +25278,11 @@ func (s PutContactResponse) GoString() string {
 
 func (s *PutContactResponse) SetHeaders(v map[string]*string) *PutContactResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutContactResponse) SetStatusCode(v int32) *PutContactResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -22202,8 +25362,9 @@ func (s *PutContactGroupResponseBody) SetSuccess(v bool) *PutContactGroupRespons
 }
 
 type PutContactGroupResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutContactGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutContactGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutContactGroupResponse) String() string {
@@ -22216,6 +25377,11 @@ func (s PutContactGroupResponse) GoString() string {
 
 func (s *PutContactGroupResponse) SetHeaders(v map[string]*string) *PutContactGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutContactGroupResponse) SetStatusCode(v int32) *PutContactGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -22312,8 +25478,9 @@ func (s *PutCustomEventResponseBody) SetRequestId(v string) *PutCustomEventRespo
 }
 
 type PutCustomEventResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutCustomEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutCustomEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutCustomEventResponse) String() string {
@@ -22326,6 +25493,11 @@ func (s PutCustomEventResponse) GoString() string {
 
 func (s *PutCustomEventResponse) SetHeaders(v map[string]*string) *PutCustomEventResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutCustomEventResponse) SetStatusCode(v int32) *PutCustomEventResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -22447,8 +25619,9 @@ func (s *PutCustomEventRuleResponseBody) SetSuccess(v bool) *PutCustomEventRuleR
 }
 
 type PutCustomEventRuleResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutCustomEventRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutCustomEventRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutCustomEventRuleResponse) String() string {
@@ -22461,6 +25634,11 @@ func (s PutCustomEventRuleResponse) GoString() string {
 
 func (s *PutCustomEventRuleResponse) SetHeaders(v map[string]*string) *PutCustomEventRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutCustomEventRuleResponse) SetStatusCode(v int32) *PutCustomEventRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -22575,8 +25753,9 @@ func (s *PutCustomMetricResponseBody) SetRequestId(v string) *PutCustomMetricRes
 }
 
 type PutCustomMetricResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutCustomMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutCustomMetricResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutCustomMetricResponse) String() string {
@@ -22589,6 +25768,11 @@ func (s PutCustomMetricResponse) GoString() string {
 
 func (s *PutCustomMetricResponse) SetHeaders(v map[string]*string) *PutCustomMetricResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutCustomMetricResponse) SetStatusCode(v int32) *PutCustomMetricResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -22740,8 +25924,9 @@ func (s *PutCustomMetricRuleResponseBody) SetSuccess(v bool) *PutCustomMetricRul
 }
 
 type PutCustomMetricRuleResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutCustomMetricRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutCustomMetricRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutCustomMetricRuleResponse) String() string {
@@ -22754,6 +25939,11 @@ func (s PutCustomMetricRuleResponse) GoString() string {
 
 func (s *PutCustomMetricRuleResponse) SetHeaders(v map[string]*string) *PutCustomMetricRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutCustomMetricRuleResponse) SetStatusCode(v int32) *PutCustomMetricRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -22916,8 +26106,9 @@ func (s *PutEventRuleResponseBody) SetSuccess(v bool) *PutEventRuleResponseBody 
 }
 
 type PutEventRuleResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutEventRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutEventRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutEventRuleResponse) String() string {
@@ -22930,6 +26121,11 @@ func (s PutEventRuleResponse) GoString() string {
 
 func (s *PutEventRuleResponse) SetHeaders(v map[string]*string) *PutEventRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutEventRuleResponse) SetStatusCode(v int32) *PutEventRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -23429,8 +26625,9 @@ func (s *PutEventRuleTargetsResponseBodyFailedMnsParametersMnsParameter) SetRegi
 }
 
 type PutEventRuleTargetsResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutEventRuleTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutEventRuleTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutEventRuleTargetsResponse) String() string {
@@ -23443,6 +26640,11 @@ func (s PutEventRuleTargetsResponse) GoString() string {
 
 func (s *PutEventRuleTargetsResponse) SetHeaders(v map[string]*string) *PutEventRuleTargetsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutEventRuleTargetsResponse) SetStatusCode(v int32) *PutEventRuleTargetsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -23528,8 +26730,9 @@ func (s *PutExporterOutputResponseBody) SetSuccess(v bool) *PutExporterOutputRes
 }
 
 type PutExporterOutputResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutExporterOutputResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutExporterOutputResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutExporterOutputResponse) String() string {
@@ -23542,6 +26745,11 @@ func (s PutExporterOutputResponse) GoString() string {
 
 func (s *PutExporterOutputResponse) SetHeaders(v map[string]*string) *PutExporterOutputResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutExporterOutputResponse) SetStatusCode(v int32) *PutExporterOutputResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -23639,8 +26847,9 @@ func (s *PutExporterRuleResponseBody) SetSuccess(v bool) *PutExporterRuleRespons
 }
 
 type PutExporterRuleResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutExporterRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutExporterRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutExporterRuleResponse) String() string {
@@ -23653,6 +26862,11 @@ func (s PutExporterRuleResponse) GoString() string {
 
 func (s *PutExporterRuleResponse) SetHeaders(v map[string]*string) *PutExporterRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutExporterRuleResponse) SetStatusCode(v int32) *PutExporterRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -24002,8 +27216,9 @@ func (s *PutGroupMetricRuleResponseBodyResult) SetRuleId(v string) *PutGroupMetr
 }
 
 type PutGroupMetricRuleResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutGroupMetricRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutGroupMetricRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutGroupMetricRuleResponse) String() string {
@@ -24016,6 +27231,11 @@ func (s PutGroupMetricRuleResponse) GoString() string {
 
 func (s *PutGroupMetricRuleResponse) SetHeaders(v map[string]*string) *PutGroupMetricRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutGroupMetricRuleResponse) SetStatusCode(v int32) *PutGroupMetricRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -24175,8 +27395,9 @@ func (s *PutHybridMonitorMetricDataResponseBodyErrorDetail) SetIndex(v int64) *P
 }
 
 type PutHybridMonitorMetricDataResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutHybridMonitorMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutHybridMonitorMetricDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutHybridMonitorMetricDataResponse) String() string {
@@ -24189,6 +27410,11 @@ func (s PutHybridMonitorMetricDataResponse) GoString() string {
 
 func (s *PutHybridMonitorMetricDataResponse) SetHeaders(v map[string]*string) *PutHybridMonitorMetricDataResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutHybridMonitorMetricDataResponse) SetStatusCode(v int32) *PutHybridMonitorMetricDataResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -24415,8 +27641,9 @@ func (s *PutLogMonitorResponseBody) SetSuccess(v bool) *PutLogMonitorResponseBod
 }
 
 type PutLogMonitorResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutLogMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutLogMonitorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutLogMonitorResponse) String() string {
@@ -24429,6 +27656,11 @@ func (s PutLogMonitorResponse) GoString() string {
 
 func (s *PutLogMonitorResponse) SetHeaders(v map[string]*string) *PutLogMonitorResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutLogMonitorResponse) SetStatusCode(v int32) *PutLogMonitorResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -24606,8 +27838,9 @@ func (s *PutMetricRuleTargetsResponseBodyFailDataTargetsTarget) SetLevel(v strin
 }
 
 type PutMetricRuleTargetsResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutMetricRuleTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutMetricRuleTargetsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutMetricRuleTargetsResponse) String() string {
@@ -24620,6 +27853,11 @@ func (s PutMetricRuleTargetsResponse) GoString() string {
 
 func (s *PutMetricRuleTargetsResponse) SetHeaders(v map[string]*string) *PutMetricRuleTargetsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutMetricRuleTargetsResponse) SetStatusCode(v int32) *PutMetricRuleTargetsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -24757,8 +27995,9 @@ func (s *PutMonitorGroupDynamicRuleResponseBody) SetSuccess(v bool) *PutMonitorG
 }
 
 type PutMonitorGroupDynamicRuleResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutMonitorGroupDynamicRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutMonitorGroupDynamicRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutMonitorGroupDynamicRuleResponse) String() string {
@@ -24771,6 +28010,11 @@ func (s PutMonitorGroupDynamicRuleResponse) GoString() string {
 
 func (s *PutMonitorGroupDynamicRuleResponse) SetHeaders(v map[string]*string) *PutMonitorGroupDynamicRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutMonitorGroupDynamicRuleResponse) SetStatusCode(v int32) *PutMonitorGroupDynamicRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -24844,8 +28088,9 @@ func (s *PutMonitoringConfigResponseBody) SetSuccess(v bool) *PutMonitoringConfi
 }
 
 type PutMonitoringConfigResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutMonitoringConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutMonitoringConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutMonitoringConfigResponse) String() string {
@@ -24858,6 +28103,11 @@ func (s PutMonitoringConfigResponse) GoString() string {
 
 func (s *PutMonitoringConfigResponse) SetHeaders(v map[string]*string) *PutMonitoringConfigResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutMonitoringConfigResponse) SetStatusCode(v int32) *PutMonitoringConfigResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -24879,6 +28129,7 @@ type PutResourceMetricRuleRequest struct {
 	NoDataPolicy        *string                                          `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
 	NoEffectiveInterval *string                                          `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
 	Period              *string                                          `json:"Period,omitempty" xml:"Period,omitempty"`
+	Prometheus          *PutResourceMetricRuleRequestPrometheus          `json:"Prometheus,omitempty" xml:"Prometheus,omitempty" type:"Struct"`
 	Resources           *string                                          `json:"Resources,omitempty" xml:"Resources,omitempty"`
 	RuleId              *string                                          `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	RuleName            *string                                          `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
@@ -24951,6 +28202,11 @@ func (s *PutResourceMetricRuleRequest) SetNoEffectiveInterval(v string) *PutReso
 
 func (s *PutResourceMetricRuleRequest) SetPeriod(v string) *PutResourceMetricRuleRequest {
 	s.Period = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleRequest) SetPrometheus(v *PutResourceMetricRuleRequestPrometheus) *PutResourceMetricRuleRequest {
+	s.Prometheus = v
 	return s
 }
 
@@ -25218,6 +28474,64 @@ func (s *PutResourceMetricRuleRequestLabels) SetValue(v string) *PutResourceMetr
 	return s
 }
 
+type PutResourceMetricRuleRequestPrometheus struct {
+	Annotations []*PutResourceMetricRuleRequestPrometheusAnnotations `json:"Annotations,omitempty" xml:"Annotations,omitempty" type:"Repeated"`
+	Level       *string                                              `json:"Level,omitempty" xml:"Level,omitempty"`
+	PromQL      *string                                              `json:"PromQL,omitempty" xml:"PromQL,omitempty"`
+	Times       *int32                                               `json:"Times,omitempty" xml:"Times,omitempty"`
+}
+
+func (s PutResourceMetricRuleRequestPrometheus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutResourceMetricRuleRequestPrometheus) GoString() string {
+	return s.String()
+}
+
+func (s *PutResourceMetricRuleRequestPrometheus) SetAnnotations(v []*PutResourceMetricRuleRequestPrometheusAnnotations) *PutResourceMetricRuleRequestPrometheus {
+	s.Annotations = v
+	return s
+}
+
+func (s *PutResourceMetricRuleRequestPrometheus) SetLevel(v string) *PutResourceMetricRuleRequestPrometheus {
+	s.Level = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleRequestPrometheus) SetPromQL(v string) *PutResourceMetricRuleRequestPrometheus {
+	s.PromQL = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleRequestPrometheus) SetTimes(v int32) *PutResourceMetricRuleRequestPrometheus {
+	s.Times = &v
+	return s
+}
+
+type PutResourceMetricRuleRequestPrometheusAnnotations struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s PutResourceMetricRuleRequestPrometheusAnnotations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PutResourceMetricRuleRequestPrometheusAnnotations) GoString() string {
+	return s.String()
+}
+
+func (s *PutResourceMetricRuleRequestPrometheusAnnotations) SetKey(v string) *PutResourceMetricRuleRequestPrometheusAnnotations {
+	s.Key = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleRequestPrometheusAnnotations) SetValue(v string) *PutResourceMetricRuleRequestPrometheusAnnotations {
+	s.Value = &v
+	return s
+}
+
 type PutResourceMetricRuleShrinkRequest struct {
 	Escalations               *PutResourceMetricRuleShrinkRequestEscalations `json:"Escalations,omitempty" xml:"Escalations,omitempty" type:"Struct"`
 	CompositeExpressionShrink *string                                        `json:"CompositeExpression,omitempty" xml:"CompositeExpression,omitempty"`
@@ -25231,6 +28545,7 @@ type PutResourceMetricRuleShrinkRequest struct {
 	NoDataPolicy              *string                                        `json:"NoDataPolicy,omitempty" xml:"NoDataPolicy,omitempty"`
 	NoEffectiveInterval       *string                                        `json:"NoEffectiveInterval,omitempty" xml:"NoEffectiveInterval,omitempty"`
 	Period                    *string                                        `json:"Period,omitempty" xml:"Period,omitempty"`
+	PrometheusShrink          *string                                        `json:"Prometheus,omitempty" xml:"Prometheus,omitempty"`
 	Resources                 *string                                        `json:"Resources,omitempty" xml:"Resources,omitempty"`
 	RuleId                    *string                                        `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
 	RuleName                  *string                                        `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
@@ -25303,6 +28618,11 @@ func (s *PutResourceMetricRuleShrinkRequest) SetNoEffectiveInterval(v string) *P
 
 func (s *PutResourceMetricRuleShrinkRequest) SetPeriod(v string) *PutResourceMetricRuleShrinkRequest {
 	s.Period = &v
+	return s
+}
+
+func (s *PutResourceMetricRuleShrinkRequest) SetPrometheusShrink(v string) *PutResourceMetricRuleShrinkRequest {
+	s.PrometheusShrink = &v
 	return s
 }
 
@@ -25524,8 +28844,9 @@ func (s *PutResourceMetricRuleResponseBody) SetSuccess(v bool) *PutResourceMetri
 }
 
 type PutResourceMetricRuleResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutResourceMetricRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutResourceMetricRuleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutResourceMetricRuleResponse) String() string {
@@ -25538,6 +28859,11 @@ func (s PutResourceMetricRuleResponse) GoString() string {
 
 func (s *PutResourceMetricRuleResponse) SetHeaders(v map[string]*string) *PutResourceMetricRuleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutResourceMetricRuleResponse) SetStatusCode(v int32) *PutResourceMetricRuleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -25956,8 +29282,9 @@ func (s *PutResourceMetricRulesResponseBodyFailedListResultTargetResult) SetSucc
 }
 
 type PutResourceMetricRulesResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutResourceMetricRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutResourceMetricRulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutResourceMetricRulesResponse) String() string {
@@ -25970,6 +29297,11 @@ func (s PutResourceMetricRulesResponse) GoString() string {
 
 func (s *PutResourceMetricRulesResponse) SetHeaders(v map[string]*string) *PutResourceMetricRulesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutResourceMetricRulesResponse) SetStatusCode(v int32) *PutResourceMetricRulesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -26089,8 +29421,9 @@ func (s *RemoveTagsResponseBodyTag) SetTags(v []*string) *RemoveTagsResponseBody
 }
 
 type RemoveTagsResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RemoveTagsResponse) String() string {
@@ -26103,6 +29436,11 @@ func (s RemoveTagsResponse) GoString() string {
 
 func (s *RemoveTagsResponse) SetHeaders(v map[string]*string) *RemoveTagsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RemoveTagsResponse) SetStatusCode(v int32) *RemoveTagsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -26188,8 +29526,9 @@ func (s *SendDryRunSystemEventResponseBody) SetSuccess(v string) *SendDryRunSyst
 }
 
 type SendDryRunSystemEventResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SendDryRunSystemEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendDryRunSystemEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SendDryRunSystemEventResponse) String() string {
@@ -26202,6 +29541,11 @@ func (s SendDryRunSystemEventResponse) GoString() string {
 
 func (s *SendDryRunSystemEventResponse) SetHeaders(v map[string]*string) *SendDryRunSystemEventResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SendDryRunSystemEventResponse) SetStatusCode(v int32) *SendDryRunSystemEventResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -26269,8 +29613,9 @@ func (s *UninstallMonitoringAgentResponseBody) SetSuccess(v bool) *UninstallMoni
 }
 
 type UninstallMonitoringAgentResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UninstallMonitoringAgentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UninstallMonitoringAgentResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UninstallMonitoringAgentResponse) String() string {
@@ -26283,6 +29628,11 @@ func (s UninstallMonitoringAgentResponse) GoString() string {
 
 func (s *UninstallMonitoringAgentResponse) SetHeaders(v map[string]*string) *UninstallMonitoringAgentResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UninstallMonitoringAgentResponse) SetStatusCode(v int32) *UninstallMonitoringAgentResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -26495,50 +29845,6 @@ func (client *Client) BatchCreateIntantSiteMonitor(request *BatchCreateIntantSit
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchCreateIntantSiteMonitorResponse{}
 	_body, _err := client.BatchCreateIntantSiteMonitorWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) BatchCreateOnceSiteMonitorWithOptions(request *BatchCreateOnceSiteMonitorRequest, runtime *util.RuntimeOptions) (_result *BatchCreateOnceSiteMonitorResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.TaskList)) {
-		query["TaskList"] = request.TaskList
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("BatchCreateOnceSiteMonitor"),
-		Version:     tea.String("2019-01-01"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &BatchCreateOnceSiteMonitorResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) BatchCreateOnceSiteMonitor(request *BatchCreateOnceSiteMonitorRequest) (_result *BatchCreateOnceSiteMonitorResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &BatchCreateOnceSiteMonitorResponse{}
-	_body, _err := client.BatchCreateOnceSiteMonitorWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -27027,6 +30333,198 @@ func (client *Client) CreateHostAvailability(request *CreateHostAvailabilityRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateHostAvailabilityResponse{}
 	_body, _err := client.CreateHostAvailabilityWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateHybridMonitorNamespaceWithOptions(request *CreateHybridMonitorNamespaceRequest, runtime *util.RuntimeOptions) (_result *CreateHybridMonitorNamespaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Spec)) {
+		query["Spec"] = request.Spec
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHybridMonitorNamespace"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateHybridMonitorNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateHybridMonitorNamespace(request *CreateHybridMonitorNamespaceRequest) (_result *CreateHybridMonitorNamespaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateHybridMonitorNamespaceResponse{}
+	_body, _err := client.CreateHybridMonitorNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateHybridMonitorSLSGroupWithOptions(request *CreateHybridMonitorSLSGroupRequest, runtime *util.RuntimeOptions) (_result *CreateHybridMonitorSLSGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SLSGroupConfig)) {
+		query["SLSGroupConfig"] = request.SLSGroupConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SLSGroupDescription)) {
+		query["SLSGroupDescription"] = request.SLSGroupDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SLSGroupName)) {
+		query["SLSGroupName"] = request.SLSGroupName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHybridMonitorSLSGroup"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateHybridMonitorSLSGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateHybridMonitorSLSGroup(request *CreateHybridMonitorSLSGroupRequest) (_result *CreateHybridMonitorSLSGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateHybridMonitorSLSGroupResponse{}
+	_body, _err := client.CreateHybridMonitorSLSGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateHybridMonitorTaskWithOptions(request *CreateHybridMonitorTaskRequest, runtime *util.RuntimeOptions) (_result *CreateHybridMonitorTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AttachLabels)) {
+		query["AttachLabels"] = request.AttachLabels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CollectInterval)) {
+		query["CollectInterval"] = request.CollectInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CollectTargetType)) {
+		query["CollectTargetType"] = request.CollectTargetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SLSProcessConfig))) {
+		query["SLSProcessConfig"] = request.SLSProcessConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetUserId)) {
+		query["TargetUserId"] = request.TargetUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetUserIdList)) {
+		query["TargetUserIdList"] = request.TargetUserIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		query["TaskName"] = request.TaskName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.YARMConfig)) {
+		query["YARMConfig"] = request.YARMConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateHybridMonitorTask"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateHybridMonitorTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateHybridMonitorTask(request *CreateHybridMonitorTaskRequest) (_result *CreateHybridMonitorTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateHybridMonitorTaskResponse{}
+	_body, _err := client.CreateHybridMonitorTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28050,6 +31548,146 @@ func (client *Client) DeleteHostAvailability(request *DeleteHostAvailabilityRequ
 	return _result, _err
 }
 
+func (client *Client) DeleteHybridMonitorNamespaceWithOptions(request *DeleteHybridMonitorNamespaceRequest, runtime *util.RuntimeOptions) (_result *DeleteHybridMonitorNamespaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHybridMonitorNamespace"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteHybridMonitorNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteHybridMonitorNamespace(request *DeleteHybridMonitorNamespaceRequest) (_result *DeleteHybridMonitorNamespaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteHybridMonitorNamespaceResponse{}
+	_body, _err := client.DeleteHybridMonitorNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteHybridMonitorSLSGroupWithOptions(request *DeleteHybridMonitorSLSGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteHybridMonitorSLSGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SLSGroupName)) {
+		query["SLSGroupName"] = request.SLSGroupName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHybridMonitorSLSGroup"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteHybridMonitorSLSGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteHybridMonitorSLSGroup(request *DeleteHybridMonitorSLSGroupRequest) (_result *DeleteHybridMonitorSLSGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteHybridMonitorSLSGroupResponse{}
+	_body, _err := client.DeleteHybridMonitorSLSGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteHybridMonitorTaskWithOptions(request *DeleteHybridMonitorTaskRequest, runtime *util.RuntimeOptions) (_result *DeleteHybridMonitorTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetUserId)) {
+		query["TargetUserId"] = request.TargetUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteHybridMonitorTask"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteHybridMonitorTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteHybridMonitorTask(request *DeleteHybridMonitorTaskRequest) (_result *DeleteHybridMonitorTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteHybridMonitorTaskResponse{}
+	_body, _err := client.DeleteHybridMonitorTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteLogMonitorWithOptions(request *DeleteLogMonitorRequest, runtime *util.RuntimeOptions) (_result *DeleteLogMonitorResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28575,11 +32213,7 @@ func (client *Client) DescribeActiveMetricRuleListWithOptions(request *DescribeA
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Product)) {
-		query["Product"] = request.Product
-	}
-
+	query := openapiutil.Query(util.ToMap(request))
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -28588,7 +32222,7 @@ func (client *Client) DescribeActiveMetricRuleListWithOptions(request *DescribeA
 		Version:     tea.String("2019-01-01"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
+		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -29883,6 +33517,254 @@ func (client *Client) DescribeHostAvailabilityList(request *DescribeHostAvailabi
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHostAvailabilityListResponse{}
 	_body, _err := client.DescribeHostAvailabilityListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeHybridMonitorDataListWithOptions(request *DescribeHybridMonitorDataListRequest, runtime *util.RuntimeOptions) (_result *DescribeHybridMonitorDataListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.End)) {
+		query["End"] = request.End
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PromSQL)) {
+		query["PromSQL"] = request.PromSQL
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Start)) {
+		query["Start"] = request.Start
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHybridMonitorDataList"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHybridMonitorDataListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeHybridMonitorDataList(request *DescribeHybridMonitorDataListRequest) (_result *DescribeHybridMonitorDataListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHybridMonitorDataListResponse{}
+	_body, _err := client.DescribeHybridMonitorDataListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeHybridMonitorNamespaceListWithOptions(request *DescribeHybridMonitorNamespaceListRequest, runtime *util.RuntimeOptions) (_result *DescribeHybridMonitorNamespaceListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShowTaskStatistic)) {
+		query["ShowTaskStatistic"] = request.ShowTaskStatistic
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHybridMonitorNamespaceList"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHybridMonitorNamespaceListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeHybridMonitorNamespaceList(request *DescribeHybridMonitorNamespaceListRequest) (_result *DescribeHybridMonitorNamespaceListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHybridMonitorNamespaceListResponse{}
+	_body, _err := client.DescribeHybridMonitorNamespaceListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeHybridMonitorSLSGroupWithOptions(request *DescribeHybridMonitorSLSGroupRequest, runtime *util.RuntimeOptions) (_result *DescribeHybridMonitorSLSGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SLSGroupName)) {
+		query["SLSGroupName"] = request.SLSGroupName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHybridMonitorSLSGroup"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHybridMonitorSLSGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeHybridMonitorSLSGroup(request *DescribeHybridMonitorSLSGroupRequest) (_result *DescribeHybridMonitorSLSGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHybridMonitorSLSGroupResponse{}
+	_body, _err := client.DescribeHybridMonitorSLSGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeHybridMonitorTaskListWithOptions(request *DescribeHybridMonitorTaskListRequest, runtime *util.RuntimeOptions) (_result *DescribeHybridMonitorTaskListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupId)) {
+		query["GroupId"] = request.GroupId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IncludeAliyunTask)) {
+		query["IncludeAliyunTask"] = request.IncludeAliyunTask
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskType)) {
+		query["TaskType"] = request.TaskType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeHybridMonitorTaskList"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeHybridMonitorTaskListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeHybridMonitorTaskList(request *DescribeHybridMonitorTaskListRequest) (_result *DescribeHybridMonitorTaskListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeHybridMonitorTaskListResponse{}
+	_body, _err := client.DescribeHybridMonitorTaskListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -32944,6 +36826,174 @@ func (client *Client) ModifyHostInfo(request *ModifyHostInfoRequest) (_result *M
 	return _result, _err
 }
 
+func (client *Client) ModifyHybridMonitorNamespaceWithOptions(request *ModifyHybridMonitorNamespaceRequest, runtime *util.RuntimeOptions) (_result *ModifyHybridMonitorNamespaceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Spec)) {
+		query["Spec"] = request.Spec
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyHybridMonitorNamespace"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyHybridMonitorNamespaceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyHybridMonitorNamespace(request *ModifyHybridMonitorNamespaceRequest) (_result *ModifyHybridMonitorNamespaceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyHybridMonitorNamespaceResponse{}
+	_body, _err := client.ModifyHybridMonitorNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyHybridMonitorSLSGroupWithOptions(request *ModifyHybridMonitorSLSGroupRequest, runtime *util.RuntimeOptions) (_result *ModifyHybridMonitorSLSGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SLSGroupConfig)) {
+		query["SLSGroupConfig"] = request.SLSGroupConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SLSGroupDescription)) {
+		query["SLSGroupDescription"] = request.SLSGroupDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SLSGroupName)) {
+		query["SLSGroupName"] = request.SLSGroupName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyHybridMonitorSLSGroup"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyHybridMonitorSLSGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyHybridMonitorSLSGroup(request *ModifyHybridMonitorSLSGroupRequest) (_result *ModifyHybridMonitorSLSGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyHybridMonitorSLSGroupResponse{}
+	_body, _err := client.ModifyHybridMonitorSLSGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyHybridMonitorTaskWithOptions(request *ModifyHybridMonitorTaskRequest, runtime *util.RuntimeOptions) (_result *ModifyHybridMonitorTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AttachLabels)) {
+		query["AttachLabels"] = request.AttachLabels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CollectInterval)) {
+		query["CollectInterval"] = request.CollectInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.SLSProcessConfig))) {
+		query["SLSProcessConfig"] = request.SLSProcessConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
+		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskName)) {
+		query["TaskName"] = request.TaskName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyHybridMonitorTask"),
+		Version:     tea.String("2019-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyHybridMonitorTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyHybridMonitorTask(request *ModifyHybridMonitorTaskRequest) (_result *ModifyHybridMonitorTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyHybridMonitorTaskResponse{}
+	_body, _err := client.ModifyHybridMonitorTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyMetricRuleTemplateWithOptions(request *ModifyMetricRuleTemplateRequest, runtime *util.RuntimeOptions) (_result *ModifyMetricRuleTemplateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -34268,6 +38318,10 @@ func (client *Client) PutResourceMetricRuleWithOptions(tmpReq *PutResourceMetric
 		request.CompositeExpressionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CompositeExpression), tea.String("CompositeExpression"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Prometheus))) {
+		request.PrometheusShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Prometheus), tea.String("Prometheus"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CompositeExpressionShrink)) {
 		query["CompositeExpression"] = request.CompositeExpressionShrink
@@ -34311,6 +38365,10 @@ func (client *Client) PutResourceMetricRuleWithOptions(tmpReq *PutResourceMetric
 
 	if !tea.BoolValue(util.IsUnset(request.Period)) {
 		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrometheusShrink)) {
+		query["Prometheus"] = request.PrometheusShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Resources)) {
