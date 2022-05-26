@@ -11956,6 +11956,169 @@ func (s *ListWorkItemWorkFlowStatusResponse) SetBody(v *ListWorkItemWorkFlowStat
 	return s
 }
 
+type ListWorkitemTimeResponseBody struct {
+	// 接口返回code
+	Code *int64 `json:"code,omitempty" xml:"code,omitempty"`
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息
+	ErrorMsg *string `json:"errorMsg,omitempty" xml:"errorMsg,omitempty"`
+	// 请求id，每次请求都是唯一值，便于后续排查问题
+	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// true或者false
+	Success *bool `json:"success,omitempty" xml:"success,omitempty"`
+	// 工时信息
+	WorkitemTime []*ListWorkitemTimeResponseBodyWorkitemTime `json:"workitemTime,omitempty" xml:"workitemTime,omitempty" type:"Repeated"`
+}
+
+func (s ListWorkitemTimeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkitemTimeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkitemTimeResponseBody) SetCode(v int64) *ListWorkitemTimeResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListWorkitemTimeResponseBody) SetErrorCode(v string) *ListWorkitemTimeResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ListWorkitemTimeResponseBody) SetErrorMsg(v string) *ListWorkitemTimeResponseBody {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *ListWorkitemTimeResponseBody) SetRequestId(v string) *ListWorkitemTimeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListWorkitemTimeResponseBody) SetSuccess(v bool) *ListWorkitemTimeResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListWorkitemTimeResponseBody) SetWorkitemTime(v []*ListWorkitemTimeResponseBodyWorkitemTime) *ListWorkitemTimeResponseBody {
+	s.WorkitemTime = v
+	return s
+}
+
+type ListWorkitemTimeResponseBodyWorkitemTime struct {
+	// 实际工时，小时为单位
+	ActualTime *int64 `json:"actualTime,omitempty" xml:"actualTime,omitempty"`
+	// 工时描述信息
+	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 工时记录的创建时间
+	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
+	// 结束时间
+	GmtEnd *int64 `json:"gmtEnd,omitempty" xml:"gmtEnd,omitempty"`
+	// 工时记录的修改时间
+	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
+	// 开始时间
+	GmtStart *int64 `json:"gmtStart,omitempty" xml:"gmtStart,omitempty"`
+	// 工时唯一标识
+	Identifier *string `json:"identifier,omitempty" xml:"identifier,omitempty"`
+	// 登记人的account Id
+	RecordUser *string `json:"recordUser,omitempty" xml:"recordUser,omitempty"`
+	// 工时类型
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// 工作项id，唯一标识
+	WorkitemIdentifier *string `json:"workitemIdentifier,omitempty" xml:"workitemIdentifier,omitempty"`
+}
+
+func (s ListWorkitemTimeResponseBodyWorkitemTime) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkitemTimeResponseBodyWorkitemTime) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkitemTimeResponseBodyWorkitemTime) SetActualTime(v int64) *ListWorkitemTimeResponseBodyWorkitemTime {
+	s.ActualTime = &v
+	return s
+}
+
+func (s *ListWorkitemTimeResponseBodyWorkitemTime) SetDescription(v string) *ListWorkitemTimeResponseBodyWorkitemTime {
+	s.Description = &v
+	return s
+}
+
+func (s *ListWorkitemTimeResponseBodyWorkitemTime) SetGmtCreate(v int64) *ListWorkitemTimeResponseBodyWorkitemTime {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *ListWorkitemTimeResponseBodyWorkitemTime) SetGmtEnd(v int64) *ListWorkitemTimeResponseBodyWorkitemTime {
+	s.GmtEnd = &v
+	return s
+}
+
+func (s *ListWorkitemTimeResponseBodyWorkitemTime) SetGmtModified(v int64) *ListWorkitemTimeResponseBodyWorkitemTime {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *ListWorkitemTimeResponseBodyWorkitemTime) SetGmtStart(v int64) *ListWorkitemTimeResponseBodyWorkitemTime {
+	s.GmtStart = &v
+	return s
+}
+
+func (s *ListWorkitemTimeResponseBodyWorkitemTime) SetIdentifier(v string) *ListWorkitemTimeResponseBodyWorkitemTime {
+	s.Identifier = &v
+	return s
+}
+
+func (s *ListWorkitemTimeResponseBodyWorkitemTime) SetRecordUser(v string) *ListWorkitemTimeResponseBodyWorkitemTime {
+	s.RecordUser = &v
+	return s
+}
+
+func (s *ListWorkitemTimeResponseBodyWorkitemTime) SetType(v string) *ListWorkitemTimeResponseBodyWorkitemTime {
+	s.Type = &v
+	return s
+}
+
+func (s *ListWorkitemTimeResponseBodyWorkitemTime) SetWorkitemIdentifier(v string) *ListWorkitemTimeResponseBodyWorkitemTime {
+	s.WorkitemIdentifier = &v
+	return s
+}
+
+type ListWorkitemTimeResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListWorkitemTimeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListWorkitemTimeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListWorkitemTimeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListWorkitemTimeResponse) SetHeaders(v map[string]*string) *ListWorkitemTimeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListWorkitemTimeResponse) SetStatusCode(v int32) *ListWorkitemTimeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListWorkitemTimeResponse) SetBody(v *ListWorkitemTimeResponseBody) *ListWorkitemTimeResponse {
+	s.Body = v
+	return s
+}
+
 type ListWorkitemsRequest struct {
 	// 工作项类型，需求为Req，缺陷为Bug，任务为Task，风险为Risk
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
@@ -18229,6 +18392,44 @@ func (client *Client) ListWorkItemWorkFlowStatusWithOptions(organizationId *stri
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListWorkItemWorkFlowStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListWorkitemTime(organizationId *string, workitemId *string) (_result *ListWorkitemTimeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListWorkitemTimeResponse{}
+	_body, _err := client.ListWorkitemTimeWithOptions(organizationId, workitemId, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListWorkitemTimeWithOptions(organizationId *string, workitemId *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListWorkitemTimeResponse, _err error) {
+	organizationId = openapiutil.GetEncodeParam(organizationId)
+	workitemId = openapiutil.GetEncodeParam(workitemId)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListWorkitemTime"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/organization/" + tea.StringValue(organizationId) + "/workitems/" + tea.StringValue(workitemId) + "/time/list"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListWorkitemTimeResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
