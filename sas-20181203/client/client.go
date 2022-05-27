@@ -1437,6 +1437,183 @@ func (s *DeleteVpcHoneyPotResponse) SetBody(v *DeleteVpcHoneyPotResponseBody) *D
 	return s
 }
 
+type DescribeAccessKeyLeakDetailRequest struct {
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+}
+
+func (s DescribeAccessKeyLeakDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessKeyLeakDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessKeyLeakDetailRequest) SetId(v int64) *DescribeAccessKeyLeakDetailRequest {
+	s.Id = &v
+	return s
+}
+
+type DescribeAccessKeyLeakDetailResponseBody struct {
+	AccesskeyId          *string `json:"AccesskeyId,omitempty" xml:"AccesskeyId,omitempty"`
+	Asset                *string `json:"Asset,omitempty" xml:"Asset,omitempty"`
+	Code                 *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	DealTime             *string `json:"DealTime,omitempty" xml:"DealTime,omitempty"`
+	DealType             *string `json:"DealType,omitempty" xml:"DealType,omitempty"`
+	GithubFileName       *string `json:"GithubFileName,omitempty" xml:"GithubFileName,omitempty"`
+	GithubFileType       *string `json:"GithubFileType,omitempty" xml:"GithubFileType,omitempty"`
+	GithubFileUpdateTime *string `json:"GithubFileUpdateTime,omitempty" xml:"GithubFileUpdateTime,omitempty"`
+	GithubFileUrl        *string `json:"GithubFileUrl,omitempty" xml:"GithubFileUrl,omitempty"`
+	GithubRepoName       *string `json:"GithubRepoName,omitempty" xml:"GithubRepoName,omitempty"`
+	GithubRepoUrl        *string `json:"GithubRepoUrl,omitempty" xml:"GithubRepoUrl,omitempty"`
+	GithubUser           *string `json:"GithubUser,omitempty" xml:"GithubUser,omitempty"`
+	GithubUserPicUrl     *string `json:"GithubUserPicUrl,omitempty" xml:"GithubUserPicUrl,omitempty"`
+	GmtCreate            *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified          *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	Remark               *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Source               *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Type                 *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	WhitelistStatus      *string `json:"WhitelistStatus,omitempty" xml:"WhitelistStatus,omitempty"`
+}
+
+func (s DescribeAccessKeyLeakDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessKeyLeakDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetAccesskeyId(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.AccesskeyId = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetAsset(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.Asset = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetCode(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetDealTime(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.DealTime = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetDealType(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.DealType = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetGithubFileName(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.GithubFileName = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetGithubFileType(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.GithubFileType = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetGithubFileUpdateTime(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.GithubFileUpdateTime = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetGithubFileUrl(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.GithubFileUrl = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetGithubRepoName(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.GithubRepoName = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetGithubRepoUrl(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.GithubRepoUrl = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetGithubUser(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.GithubUser = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetGithubUserPicUrl(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.GithubUserPicUrl = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetGmtCreate(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.GmtCreate = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetGmtModified(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.GmtModified = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetRemark(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.Remark = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetRequestId(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetSource(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.Source = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetType(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponseBody) SetWhitelistStatus(v string) *DescribeAccessKeyLeakDetailResponseBody {
+	s.WhitelistStatus = &v
+	return s
+}
+
+type DescribeAccessKeyLeakDetailResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAccessKeyLeakDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAccessKeyLeakDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessKeyLeakDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessKeyLeakDetailResponse) SetHeaders(v map[string]*string) *DescribeAccessKeyLeakDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponse) SetStatusCode(v int32) *DescribeAccessKeyLeakDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAccessKeyLeakDetailResponse) SetBody(v *DescribeAccessKeyLeakDetailResponseBody) *DescribeAccessKeyLeakDetailResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeAccesskeyLeakListRequest struct {
 	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -2265,6 +2442,7 @@ type DescribeAlarmEventListRequest struct {
 	Remark               *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	SourceIp             *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	TacticId             *string   `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
+	UniqueInfo           *string   `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
 }
 
 func (s DescribeAlarmEventListRequest) String() string {
@@ -2342,6 +2520,11 @@ func (s *DescribeAlarmEventListRequest) SetSourceIp(v string) *DescribeAlarmEven
 
 func (s *DescribeAlarmEventListRequest) SetTacticId(v string) *DescribeAlarmEventListRequest {
 	s.TacticId = &v
+	return s
+}
+
+func (s *DescribeAlarmEventListRequest) SetUniqueInfo(v string) *DescribeAlarmEventListRequest {
+	s.UniqueInfo = &v
 	return s
 }
 
@@ -21454,6 +21637,8 @@ func (s *DescribeVulListResponseBody) SetVulRecords(v []*DescribeVulListResponse
 
 type DescribeVulListResponseBodyVulRecords struct {
 	AliasName         *string                                                 `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	AuthVersion       *string                                                 `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
+	Bind              *bool                                                   `json:"Bind,omitempty" xml:"Bind,omitempty"`
 	ExtendContentJson *DescribeVulListResponseBodyVulRecordsExtendContentJson `json:"ExtendContentJson,omitempty" xml:"ExtendContentJson,omitempty" type:"Struct"`
 	FirstTs           *int64                                                  `json:"FirstTs,omitempty" xml:"FirstTs,omitempty"`
 	GroupId           *int32                                                  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -21466,6 +21651,7 @@ type DescribeVulListResponseBodyVulRecords struct {
 	Name              *string                                                 `json:"Name,omitempty" xml:"Name,omitempty"`
 	Necessity         *string                                                 `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
 	Online            *bool                                                   `json:"Online,omitempty" xml:"Online,omitempty"`
+	OsName            *string                                                 `json:"OsName,omitempty" xml:"OsName,omitempty"`
 	OsVersion         *string                                                 `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
 	PrimaryId         *int64                                                  `json:"PrimaryId,omitempty" xml:"PrimaryId,omitempty"`
 	RegionId          *string                                                 `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -21489,6 +21675,16 @@ func (s DescribeVulListResponseBodyVulRecords) GoString() string {
 
 func (s *DescribeVulListResponseBodyVulRecords) SetAliasName(v string) *DescribeVulListResponseBodyVulRecords {
 	s.AliasName = &v
+	return s
+}
+
+func (s *DescribeVulListResponseBodyVulRecords) SetAuthVersion(v string) *DescribeVulListResponseBodyVulRecords {
+	s.AuthVersion = &v
+	return s
+}
+
+func (s *DescribeVulListResponseBodyVulRecords) SetBind(v bool) *DescribeVulListResponseBodyVulRecords {
+	s.Bind = &v
 	return s
 }
 
@@ -21549,6 +21745,11 @@ func (s *DescribeVulListResponseBodyVulRecords) SetNecessity(v string) *Describe
 
 func (s *DescribeVulListResponseBodyVulRecords) SetOnline(v bool) *DescribeVulListResponseBodyVulRecords {
 	s.Online = &v
+	return s
+}
+
+func (s *DescribeVulListResponseBodyVulRecords) SetOsName(v string) *DescribeVulListResponseBodyVulRecords {
+	s.OsName = &v
 	return s
 }
 
@@ -29421,6 +29622,50 @@ func (client *Client) DeleteVpcHoneyPot(request *DeleteVpcHoneyPotRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) DescribeAccessKeyLeakDetailWithOptions(request *DescribeAccessKeyLeakDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeAccessKeyLeakDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAccessKeyLeakDetail"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAccessKeyLeakDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAccessKeyLeakDetail(request *DescribeAccessKeyLeakDetailRequest) (_result *DescribeAccessKeyLeakDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAccessKeyLeakDetailResponse{}
+	_body, _err := client.DescribeAccessKeyLeakDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeAccesskeyLeakListWithOptions(request *DescribeAccesskeyLeakListRequest, runtime *util.RuntimeOptions) (_result *DescribeAccesskeyLeakListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -29689,6 +29934,10 @@ func (client *Client) DescribeAlarmEventListWithOptions(request *DescribeAlarmEv
 
 	if !tea.BoolValue(util.IsUnset(request.TacticId)) {
 		query["TacticId"] = request.TacticId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UniqueInfo)) {
+		query["UniqueInfo"] = request.UniqueInfo
 	}
 
 	req := &openapi.OpenApiRequest{
