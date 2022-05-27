@@ -230,8 +230,9 @@ func (s *AnalyzeChestVesselResponseBodyDataPulmonaryInfo) SetNearestAortaArea(v 
 }
 
 type AnalyzeChestVesselResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AnalyzeChestVesselResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AnalyzeChestVesselResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AnalyzeChestVesselResponse) String() string {
@@ -244,6 +245,11 @@ func (s AnalyzeChestVesselResponse) GoString() string {
 
 func (s *AnalyzeChestVesselResponse) SetHeaders(v map[string]*string) *AnalyzeChestVesselResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AnalyzeChestVesselResponse) SetStatusCode(v int32) *AnalyzeChestVesselResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -334,8 +340,10 @@ func (s *CalcCACSResponseBody) SetRequestId(v string) *CalcCACSResponseBody {
 }
 
 type CalcCACSResponseBodyData struct {
-	ResultUrl *string `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
-	Score     *string `json:"Score,omitempty" xml:"Score,omitempty"`
+	Detections  []*CalcCACSResponseBodyDataDetections `json:"Detections,omitempty" xml:"Detections,omitempty" type:"Repeated"`
+	ResultUrl   *string                               `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
+	Score       *string                               `json:"Score,omitempty" xml:"Score,omitempty"`
+	VolumeScore *string                               `json:"VolumeScore,omitempty" xml:"VolumeScore,omitempty"`
 }
 
 func (s CalcCACSResponseBodyData) String() string {
@@ -344,6 +352,11 @@ func (s CalcCACSResponseBodyData) String() string {
 
 func (s CalcCACSResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *CalcCACSResponseBodyData) SetDetections(v []*CalcCACSResponseBodyDataDetections) *CalcCACSResponseBodyData {
+	s.Detections = v
+	return s
 }
 
 func (s *CalcCACSResponseBodyData) SetResultUrl(v string) *CalcCACSResponseBodyData {
@@ -356,9 +369,44 @@ func (s *CalcCACSResponseBodyData) SetScore(v string) *CalcCACSResponseBodyData 
 	return s
 }
 
+func (s *CalcCACSResponseBodyData) SetVolumeScore(v string) *CalcCACSResponseBodyData {
+	s.VolumeScore = &v
+	return s
+}
+
+type CalcCACSResponseBodyDataDetections struct {
+	CalciumId     *int64   `json:"CalciumId,omitempty" xml:"CalciumId,omitempty"`
+	CalciumScore  *float32 `json:"CalciumScore,omitempty" xml:"CalciumScore,omitempty"`
+	CalciumVolume *float32 `json:"CalciumVolume,omitempty" xml:"CalciumVolume,omitempty"`
+}
+
+func (s CalcCACSResponseBodyDataDetections) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CalcCACSResponseBodyDataDetections) GoString() string {
+	return s.String()
+}
+
+func (s *CalcCACSResponseBodyDataDetections) SetCalciumId(v int64) *CalcCACSResponseBodyDataDetections {
+	s.CalciumId = &v
+	return s
+}
+
+func (s *CalcCACSResponseBodyDataDetections) SetCalciumScore(v float32) *CalcCACSResponseBodyDataDetections {
+	s.CalciumScore = &v
+	return s
+}
+
+func (s *CalcCACSResponseBodyDataDetections) SetCalciumVolume(v float32) *CalcCACSResponseBodyDataDetections {
+	s.CalciumVolume = &v
+	return s
+}
+
 type CalcCACSResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CalcCACSResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CalcCACSResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CalcCACSResponse) String() string {
@@ -371,6 +419,11 @@ func (s CalcCACSResponse) GoString() string {
 
 func (s *CalcCACSResponse) SetHeaders(v map[string]*string) *CalcCACSResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CalcCACSResponse) SetStatusCode(v int32) *CalcCACSResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -566,8 +619,9 @@ func (s *ClassifyFNFResponseBodyDataFracturesTag) SetLabel(v string) *ClassifyFN
 }
 
 type ClassifyFNFResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ClassifyFNFResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ClassifyFNFResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ClassifyFNFResponse) String() string {
@@ -580,6 +634,11 @@ func (s ClassifyFNFResponse) GoString() string {
 
 func (s *ClassifyFNFResponse) SetHeaders(v map[string]*string) *ClassifyFNFResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ClassifyFNFResponse) SetStatusCode(v int32) *ClassifyFNFResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -705,8 +764,9 @@ func (s *DetectCovid19CadResponseBodyData) SetOtherProbability(v string) *Detect
 }
 
 type DetectCovid19CadResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectCovid19CadResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectCovid19CadResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectCovid19CadResponse) String() string {
@@ -719,6 +779,11 @@ func (s DetectCovid19CadResponse) GoString() string {
 
 func (s *DetectCovid19CadResponse) SetHeaders(v map[string]*string) *DetectCovid19CadResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectCovid19CadResponse) SetStatusCode(v int32) *DetectCovid19CadResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -920,8 +985,9 @@ func (s *DetectHipKeypointXRayResponseBodyDataKeyPointsTag) SetLabel(v string) *
 }
 
 type DetectHipKeypointXRayResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectHipKeypointXRayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectHipKeypointXRayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectHipKeypointXRayResponse) String() string {
@@ -934,6 +1000,11 @@ func (s DetectHipKeypointXRayResponse) GoString() string {
 
 func (s *DetectHipKeypointXRayResponse) SetHeaders(v map[string]*string) *DetectHipKeypointXRayResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectHipKeypointXRayResponse) SetStatusCode(v int32) *DetectHipKeypointXRayResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1135,8 +1206,9 @@ func (s *DetectKneeKeypointXRayResponseBodyDataKeyPointsTag) SetLabel(v string) 
 }
 
 type DetectKneeKeypointXRayResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectKneeKeypointXRayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectKneeKeypointXRayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectKneeKeypointXRayResponse) String() string {
@@ -1149,6 +1221,11 @@ func (s DetectKneeKeypointXRayResponse) GoString() string {
 
 func (s *DetectKneeKeypointXRayResponse) SetHeaders(v map[string]*string) *DetectKneeKeypointXRayResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectKneeKeypointXRayResponse) SetStatusCode(v int32) *DetectKneeKeypointXRayResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1285,8 +1362,9 @@ func (s *DetectKneeXRayResponseBodyDataKLDetections) SetDetections(v []*float32)
 }
 
 type DetectKneeXRayResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectKneeXRayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectKneeXRayResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectKneeXRayResponse) String() string {
@@ -1299,6 +1377,11 @@ func (s DetectKneeXRayResponse) GoString() string {
 
 func (s *DetectKneeXRayResponse) SetHeaders(v map[string]*string) *DetectKneeXRayResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectKneeXRayResponse) SetStatusCode(v int32) *DetectKneeXRayResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1542,8 +1625,9 @@ func (s *DetectLungNoduleResponseBodyDataSeriesElements) SetZ(v float32) *Detect
 }
 
 type DetectLungNoduleResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectLungNoduleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectLungNoduleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectLungNoduleResponse) String() string {
@@ -1559,7 +1643,314 @@ func (s *DetectLungNoduleResponse) SetHeaders(v map[string]*string) *DetectLungN
 	return s
 }
 
+func (s *DetectLungNoduleResponse) SetStatusCode(v int32) *DetectLungNoduleResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DetectLungNoduleResponse) SetBody(v *DetectLungNoduleResponseBody) *DetectLungNoduleResponse {
+	s.Body = v
+	return s
+}
+
+type DetectLymphRequest struct {
+	DataSourceType *string                      `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	URLList        []*DetectLymphRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s DetectLymphRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectLymphRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectLymphRequest) SetDataSourceType(v string) *DetectLymphRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *DetectLymphRequest) SetURLList(v []*DetectLymphRequestURLList) *DetectLymphRequest {
+	s.URLList = v
+	return s
+}
+
+type DetectLymphRequestURLList struct {
+	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s DetectLymphRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectLymphRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *DetectLymphRequestURLList) SetURL(v string) *DetectLymphRequestURLList {
+	s.URL = &v
+	return s
+}
+
+type DetectLymphResponseBody struct {
+	Data *DetectLymphResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DetectLymphResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectLymphResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetectLymphResponseBody) SetData(v *DetectLymphResponseBodyData) *DetectLymphResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DetectLymphResponseBody) SetRequestId(v string) *DetectLymphResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DetectLymphResponseBodyData struct {
+	Lesions []*DetectLymphResponseBodyDataLesions `json:"Lesions,omitempty" xml:"Lesions,omitempty" type:"Repeated"`
+}
+
+func (s DetectLymphResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectLymphResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DetectLymphResponseBodyData) SetLesions(v []*DetectLymphResponseBodyDataLesions) *DetectLymphResponseBodyData {
+	s.Lesions = v
+	return s
+}
+
+type DetectLymphResponseBodyDataLesions struct {
+	Boxes      []*float32   `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
+	Diametermm []*float32   `json:"Diametermm,omitempty" xml:"Diametermm,omitempty" type:"Repeated"`
+	KeySlice   *int64       `json:"KeySlice,omitempty" xml:"KeySlice,omitempty"`
+	Recist     [][]*float32 `json:"Recist,omitempty" xml:"Recist,omitempty" type:"Repeated"`
+	Score      *float32     `json:"Score,omitempty" xml:"Score,omitempty"`
+}
+
+func (s DetectLymphResponseBodyDataLesions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectLymphResponseBodyDataLesions) GoString() string {
+	return s.String()
+}
+
+func (s *DetectLymphResponseBodyDataLesions) SetBoxes(v []*float32) *DetectLymphResponseBodyDataLesions {
+	s.Boxes = v
+	return s
+}
+
+func (s *DetectLymphResponseBodyDataLesions) SetDiametermm(v []*float32) *DetectLymphResponseBodyDataLesions {
+	s.Diametermm = v
+	return s
+}
+
+func (s *DetectLymphResponseBodyDataLesions) SetKeySlice(v int64) *DetectLymphResponseBodyDataLesions {
+	s.KeySlice = &v
+	return s
+}
+
+func (s *DetectLymphResponseBodyDataLesions) SetRecist(v [][]*float32) *DetectLymphResponseBodyDataLesions {
+	s.Recist = v
+	return s
+}
+
+func (s *DetectLymphResponseBodyDataLesions) SetScore(v float32) *DetectLymphResponseBodyDataLesions {
+	s.Score = &v
+	return s
+}
+
+type DetectLymphResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectLymphResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetectLymphResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectLymphResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetectLymphResponse) SetHeaders(v map[string]*string) *DetectLymphResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetectLymphResponse) SetStatusCode(v int32) *DetectLymphResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetectLymphResponse) SetBody(v *DetectLymphResponseBody) *DetectLymphResponse {
+	s.Body = v
+	return s
+}
+
+type DetectPancRequest struct {
+	DataSourceType *string                     `json:"DataSourceType,omitempty" xml:"DataSourceType,omitempty"`
+	URLList        []*DetectPancRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+}
+
+func (s DetectPancRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectPancRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectPancRequest) SetDataSourceType(v string) *DetectPancRequest {
+	s.DataSourceType = &v
+	return s
+}
+
+func (s *DetectPancRequest) SetURLList(v []*DetectPancRequestURLList) *DetectPancRequest {
+	s.URLList = v
+	return s
+}
+
+type DetectPancRequestURLList struct {
+	URL *string `json:"URL,omitempty" xml:"URL,omitempty"`
+}
+
+func (s DetectPancRequestURLList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectPancRequestURLList) GoString() string {
+	return s.String()
+}
+
+func (s *DetectPancRequestURLList) SetURL(v string) *DetectPancRequestURLList {
+	s.URL = &v
+	return s
+}
+
+type DetectPancResponseBody struct {
+	Data *DetectPancResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DetectPancResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectPancResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetectPancResponseBody) SetData(v *DetectPancResponseBodyData) *DetectPancResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DetectPancResponseBody) SetRequestId(v string) *DetectPancResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DetectPancResponseBodyData struct {
+	Lesion *DetectPancResponseBodyDataLesion `json:"Lesion,omitempty" xml:"Lesion,omitempty" type:"Struct"`
+}
+
+func (s DetectPancResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectPancResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DetectPancResponseBodyData) SetLesion(v *DetectPancResponseBodyDataLesion) *DetectPancResponseBodyData {
+	s.Lesion = v
+	return s
+}
+
+type DetectPancResponseBodyDataLesion struct {
+	Mask          *string   `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	NonPdacVol    *string   `json:"NonPdacVol,omitempty" xml:"NonPdacVol,omitempty"`
+	PancVol       *string   `json:"PancVol,omitempty" xml:"PancVol,omitempty"`
+	PdacVol       *string   `json:"PdacVol,omitempty" xml:"PdacVol,omitempty"`
+	Possibilities []*string `json:"Possibilities,omitempty" xml:"Possibilities,omitempty" type:"Repeated"`
+}
+
+func (s DetectPancResponseBodyDataLesion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectPancResponseBodyDataLesion) GoString() string {
+	return s.String()
+}
+
+func (s *DetectPancResponseBodyDataLesion) SetMask(v string) *DetectPancResponseBodyDataLesion {
+	s.Mask = &v
+	return s
+}
+
+func (s *DetectPancResponseBodyDataLesion) SetNonPdacVol(v string) *DetectPancResponseBodyDataLesion {
+	s.NonPdacVol = &v
+	return s
+}
+
+func (s *DetectPancResponseBodyDataLesion) SetPancVol(v string) *DetectPancResponseBodyDataLesion {
+	s.PancVol = &v
+	return s
+}
+
+func (s *DetectPancResponseBodyDataLesion) SetPdacVol(v string) *DetectPancResponseBodyDataLesion {
+	s.PdacVol = &v
+	return s
+}
+
+func (s *DetectPancResponseBodyDataLesion) SetPossibilities(v []*string) *DetectPancResponseBodyDataLesion {
+	s.Possibilities = v
+	return s
+}
+
+type DetectPancResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectPancResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetectPancResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectPancResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetectPancResponse) SetHeaders(v map[string]*string) *DetectPancResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetectPancResponse) SetStatusCode(v int32) *DetectPancResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetectPancResponse) SetBody(v *DetectPancResponseBody) *DetectPancResponse {
 	s.Body = v
 	return s
 }
@@ -1734,8 +2125,9 @@ func (s *DetectRibFractureResponseBodyDataDetections) SetFractureSegment(v int64
 }
 
 type DetectRibFractureResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectRibFractureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectRibFractureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectRibFractureResponse) String() string {
@@ -1748,6 +2140,11 @@ func (s DetectRibFractureResponse) GoString() string {
 
 func (s *DetectRibFractureResponse) SetHeaders(v map[string]*string) *DetectRibFractureResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectRibFractureResponse) SetStatusCode(v int32) *DetectRibFractureResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1855,8 +2252,9 @@ func (s *DetectSkinDiseaseResponseBodyData) SetResults(v map[string]interface{})
 }
 
 type DetectSkinDiseaseResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectSkinDiseaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectSkinDiseaseResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectSkinDiseaseResponse) String() string {
@@ -1869,6 +2267,11 @@ func (s DetectSkinDiseaseResponse) GoString() string {
 
 func (s *DetectSkinDiseaseResponse) SetHeaders(v map[string]*string) *DetectSkinDiseaseResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectSkinDiseaseResponse) SetStatusCode(v int32) *DetectSkinDiseaseResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2034,8 +2437,9 @@ func (s *DetectSpineMRIResponseBodyDataVertebras) SetLocation(v []*float32) *Det
 }
 
 type DetectSpineMRIResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectSpineMRIResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectSpineMRIResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectSpineMRIResponse) String() string {
@@ -2048,6 +2452,11 @@ func (s DetectSpineMRIResponse) GoString() string {
 
 func (s *DetectSpineMRIResponse) SetHeaders(v map[string]*string) *DetectSpineMRIResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectSpineMRIResponse) SetStatusCode(v int32) *DetectSpineMRIResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2098,8 +2507,9 @@ func (s *FeedbackSessionResponseBody) SetRequestId(v string) *FeedbackSessionRes
 }
 
 type FeedbackSessionResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FeedbackSessionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FeedbackSessionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FeedbackSessionResponse) String() string {
@@ -2112,6 +2522,11 @@ func (s FeedbackSessionResponse) GoString() string {
 
 func (s *FeedbackSessionResponse) SetHeaders(v map[string]*string) *FeedbackSessionResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *FeedbackSessionResponse) SetStatusCode(v int32) *FeedbackSessionResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2202,8 +2617,9 @@ func (s *GetAsyncJobResultResponseBodyData) SetStatus(v string) *GetAsyncJobResu
 }
 
 type GetAsyncJobResultResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAsyncJobResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetAsyncJobResultResponse) String() string {
@@ -2216,6 +2632,11 @@ func (s GetAsyncJobResultResponse) GoString() string {
 
 func (s *GetAsyncJobResultResponse) SetHeaders(v map[string]*string) *GetAsyncJobResultResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetAsyncJobResultResponse) SetStatusCode(v int32) *GetAsyncJobResultResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2352,8 +2773,9 @@ func (s *RunCTRegistrationResponseBodyData) SetNUrl(v string) *RunCTRegistration
 }
 
 type RunCTRegistrationResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RunCTRegistrationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RunCTRegistrationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RunCTRegistrationResponse) String() string {
@@ -2366,6 +2788,11 @@ func (s RunCTRegistrationResponse) GoString() string {
 
 func (s *RunCTRegistrationResponse) SetHeaders(v map[string]*string) *RunCTRegistrationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RunCTRegistrationResponse) SetStatusCode(v int32) *RunCTRegistrationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2555,8 +2982,9 @@ func (s *RunMedQAResponseBodyData) SetSessionId(v string) *RunMedQAResponseBodyD
 }
 
 type RunMedQAResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RunMedQAResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RunMedQAResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RunMedQAResponse) String() string {
@@ -2569,6 +2997,11 @@ func (s RunMedQAResponse) GoString() string {
 
 func (s *RunMedQAResponse) SetHeaders(v map[string]*string) *RunMedQAResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RunMedQAResponse) SetStatusCode(v int32) *RunMedQAResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3140,8 +3573,9 @@ func (s *ScreenChestCTResponseBodyDataLungNoduleSeriesElements) SetZ(v float32) 
 }
 
 type ScreenChestCTResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ScreenChestCTResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ScreenChestCTResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ScreenChestCTResponse) String() string {
@@ -3154,6 +3588,11 @@ func (s ScreenChestCTResponse) GoString() string {
 
 func (s *ScreenChestCTResponse) SetHeaders(v map[string]*string) *ScreenChestCTResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ScreenChestCTResponse) SetStatusCode(v int32) *ScreenChestCTResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3238,8 +3677,9 @@ func (s *TranslateMedResponseBodyData) SetWords(v int64) *TranslateMedResponseBo
 }
 
 type TranslateMedResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TranslateMedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TranslateMedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TranslateMedResponse) String() string {
@@ -3252,6 +3692,11 @@ func (s TranslateMedResponse) GoString() string {
 
 func (s *TranslateMedResponse) SetHeaders(v map[string]*string) *TranslateMedResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *TranslateMedResponse) SetStatusCode(v int32) *TranslateMedResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4196,6 +4641,102 @@ func (client *Client) DetectLungNodule(request *DetectLungNoduleRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DetectLungNoduleResponse{}
 	_body, _err := client.DetectLungNoduleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetectLymphWithOptions(request *DetectLymphRequest, runtime *util.RuntimeOptions) (_result *DetectLymphResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		body["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		body["URLList"] = request.URLList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectLymph"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetectLymphResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectLymph(request *DetectLymphRequest) (_result *DetectLymphResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectLymphResponse{}
+	_body, _err := client.DetectLymphWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetectPancWithOptions(request *DetectPancRequest, runtime *util.RuntimeOptions) (_result *DetectPancResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceType)) {
+		body["DataSourceType"] = request.DataSourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.URLList)) {
+		body["URLList"] = request.URLList
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectPanc"),
+		Version:     tea.String("2020-03-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetectPancResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectPanc(request *DetectPancRequest) (_result *DetectPancResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectPancResponse{}
+	_body, _err := client.DetectPancWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
