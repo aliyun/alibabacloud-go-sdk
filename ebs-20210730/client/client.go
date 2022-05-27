@@ -66,8 +66,9 @@ func (s *AddDiskReplicaPairResponseBody) SetRequestId(v string) *AddDiskReplicaP
 }
 
 type AddDiskReplicaPairResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddDiskReplicaPairResponse) String() string {
@@ -80,6 +81,11 @@ func (s AddDiskReplicaPairResponse) GoString() string {
 
 func (s *AddDiskReplicaPairResponse) SetHeaders(v map[string]*string) *AddDiskReplicaPairResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddDiskReplicaPairResponse) SetStatusCode(v int32) *AddDiskReplicaPairResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -171,8 +177,9 @@ func (s *CreateDiskReplicaGroupResponseBody) SetRequestId(v string) *CreateDiskR
 }
 
 type CreateDiskReplicaGroupResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateDiskReplicaGroupResponse) String() string {
@@ -185,6 +192,11 @@ func (s CreateDiskReplicaGroupResponse) GoString() string {
 
 func (s *CreateDiskReplicaGroupResponse) SetHeaders(v map[string]*string) *CreateDiskReplicaGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateDiskReplicaGroupResponse) SetStatusCode(v int32) *CreateDiskReplicaGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -318,8 +330,9 @@ func (s *CreateDiskReplicaPairResponseBody) SetRequestId(v string) *CreateDiskRe
 }
 
 type CreateDiskReplicaPairResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateDiskReplicaPairResponse) String() string {
@@ -332,6 +345,11 @@ func (s CreateDiskReplicaPairResponse) GoString() string {
 
 func (s *CreateDiskReplicaPairResponse) SetHeaders(v map[string]*string) *CreateDiskReplicaPairResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateDiskReplicaPairResponse) SetStatusCode(v int32) *CreateDiskReplicaPairResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -388,8 +406,9 @@ func (s *DeleteDiskReplicaGroupResponseBody) SetRequestId(v string) *DeleteDiskR
 }
 
 type DeleteDiskReplicaGroupResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteDiskReplicaGroupResponse) String() string {
@@ -402,6 +421,11 @@ func (s DeleteDiskReplicaGroupResponse) GoString() string {
 
 func (s *DeleteDiskReplicaGroupResponse) SetHeaders(v map[string]*string) *DeleteDiskReplicaGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteDiskReplicaGroupResponse) SetStatusCode(v int32) *DeleteDiskReplicaGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -458,8 +482,9 @@ func (s *DeleteDiskReplicaPairResponseBody) SetRequestId(v string) *DeleteDiskRe
 }
 
 type DeleteDiskReplicaPairResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteDiskReplicaPairResponse) String() string {
@@ -472,6 +497,11 @@ func (s DeleteDiskReplicaPairResponse) GoString() string {
 
 func (s *DeleteDiskReplicaPairResponse) SetHeaders(v map[string]*string) *DeleteDiskReplicaPairResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteDiskReplicaPairResponse) SetStatusCode(v int32) *DeleteDiskReplicaPairResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -644,8 +674,9 @@ func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) SetStatus(v string)
 }
 
 type DescribeDiskReplicaGroupsResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDiskReplicaGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDiskReplicaGroupsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeDiskReplicaGroupsResponse) String() string {
@@ -661,95 +692,31 @@ func (s *DescribeDiskReplicaGroupsResponse) SetHeaders(v map[string]*string) *De
 	return s
 }
 
+func (s *DescribeDiskReplicaGroupsResponse) SetStatusCode(v int32) *DescribeDiskReplicaGroupsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeDiskReplicaGroupsResponse) SetBody(v *DescribeDiskReplicaGroupsResponseBody) *DescribeDiskReplicaGroupsResponse {
 	s.Body = v
 	return s
 }
 
-type DescribeDiskReplicaPairProgressRequest struct {
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ReplicaPairId *string `json:"ReplicaPairId,omitempty" xml:"ReplicaPairId,omitempty"`
-}
-
-func (s DescribeDiskReplicaPairProgressRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDiskReplicaPairProgressRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDiskReplicaPairProgressRequest) SetRegionId(v string) *DescribeDiskReplicaPairProgressRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *DescribeDiskReplicaPairProgressRequest) SetReplicaPairId(v string) *DescribeDiskReplicaPairProgressRequest {
-	s.ReplicaPairId = &v
-	return s
-}
-
-type DescribeDiskReplicaPairProgressResponseBody struct {
-	// 同步进度
-	Progress *int32 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// 最近一次恢复点的时间戳。有条件返回，复制对start后，才会返回该字段。
-	RecoverPoint *int64  `json:"RecoverPoint,omitempty" xml:"RecoverPoint,omitempty"`
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s DescribeDiskReplicaPairProgressResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDiskReplicaPairProgressResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDiskReplicaPairProgressResponseBody) SetProgress(v int32) *DescribeDiskReplicaPairProgressResponseBody {
-	s.Progress = &v
-	return s
-}
-
-func (s *DescribeDiskReplicaPairProgressResponseBody) SetRecoverPoint(v int64) *DescribeDiskReplicaPairProgressResponseBody {
-	s.RecoverPoint = &v
-	return s
-}
-
-func (s *DescribeDiskReplicaPairProgressResponseBody) SetRequestId(v string) *DescribeDiskReplicaPairProgressResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type DescribeDiskReplicaPairProgressResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDiskReplicaPairProgressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeDiskReplicaPairProgressResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeDiskReplicaPairProgressResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeDiskReplicaPairProgressResponse) SetHeaders(v map[string]*string) *DescribeDiskReplicaPairProgressResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeDiskReplicaPairProgressResponse) SetBody(v *DescribeDiskReplicaPairProgressResponseBody) *DescribeDiskReplicaPairProgressResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeDiskReplicaPairsRequest struct {
-	MaxResults     *int64  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken      *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PairIds        *string `json:"PairIds,omitempty" xml:"PairIds,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 分页查询时每页的最大条目数。取值范围：1~500
+	//
+	// 默认值：10
+	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// 查询凭证（Token）。取值为上一次调用该接口返回的NextToken参数值，初次调用接口时无需设置该参数。
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 异步复制关系ID列表。您可以指定一个或多个异步复制关系ID进行查询。格式为：pair-cn-dsa****,pair-cn-asd****。
+	//
+	// 默认值为空，表示查询当前地域下所有的异步复制关系。
+	PairIds  *string `json:"PairIds,omitempty" xml:"PairIds,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// 所属复制组id。
 	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
-	// production或backup，表示数据从主或备站点获取，默认为production。
+	// production或backup，表示获取本地为主站点或备站点的复制对数据，默认为production。
 	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
 }
 
@@ -822,34 +789,65 @@ func (s *DescribeDiskReplicaPairsResponseBody) SetRequestId(v string) *DescribeD
 }
 
 type DescribeDiskReplicaPairsResponseBodyReplicaPairs struct {
-	Bandwidth  *int64  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// 异步复制时使用的带宽。单位为Kbps。
+	Bandwidth *int64 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	// 付费类型。PREPAY：预付费；POSTPAY：后付费。
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// 创建时间。1970年1月1日0点0分以来的毫秒数
+	// 创建时间。1970年1月1日0点0分以来的秒数。
 	CreateTime        *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DestinationDiskId *string `json:"DestinationDiskId,omitempty" xml:"DestinationDiskId,omitempty"`
 	DestinationRegion *string `json:"DestinationRegion,omitempty" xml:"DestinationRegion,omitempty"`
+	// 从盘所属的可用区。
 	DestinationZoneId *string `json:"DestinationZoneId,omitempty" xml:"DestinationZoneId,omitempty"`
-	LastRecoverPoint  *int64  `json:"LastRecoverPoint,omitempty" xml:"LastRecoverPoint,omitempty"`
-	PairName          *string `json:"PairName,omitempty" xml:"PairName,omitempty"`
-	// pair的初始源地域
+	ExpiredTime       *int64  `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	// 最近一次异步复制操作完成的时间。该参数以时间戳的形式提供返回值。单位为秒。
+	LastRecoverPoint *int64  `json:"LastRecoverPoint,omitempty" xml:"LastRecoverPoint,omitempty"`
+	PairName         *string `json:"PairName,omitempty" xml:"PairName,omitempty"`
+	// 复制对的初始源地域。
 	PrimaryRegion *string `json:"PrimaryRegion,omitempty" xml:"PrimaryRegion,omitempty"`
-	// pair的初始源可用区
-	PrimaryZone      *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
-	RPO              *int64  `json:"RPO,omitempty" xml:"RPO,omitempty"`
-	ReplicaGroupId   *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
+	// 复制对的初始源可用区。
+	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
+	// 复制对的RPO值。单位为秒。
+	RPO *int64 `json:"RPO,omitempty" xml:"RPO,omitempty"`
+	// 所属复制组id。
+	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
+	// 所属复制组名称。
 	ReplicaGroupName *string `json:"ReplicaGroupName,omitempty" xml:"ReplicaGroupName,omitempty"`
 	ReplicaPairId    *string `json:"ReplicaPairId,omitempty" xml:"ReplicaPairId,omitempty"`
-	// pair信息的后端站点来源，production或backup
+	// 复制对信息的后端站点来源，production或backup。
 	Site         *string `json:"Site,omitempty" xml:"Site,omitempty"`
 	SourceDiskId *string `json:"SourceDiskId,omitempty" xml:"SourceDiskId,omitempty"`
 	SourceRegion *string `json:"SourceRegion,omitempty" xml:"SourceRegion,omitempty"`
+	// 主盘所属的可用区。
 	SourceZoneId *string `json:"SourceZoneId,omitempty" xml:"SourceZoneId,omitempty"`
-	// pair的初始目的地域
+	// 复制对的初始目的地域。
 	StandbyRegion *string `json:"StandbyRegion,omitempty" xml:"StandbyRegion,omitempty"`
-	// pair的初始目的可用区
-	StandbyZone   *string `json:"StandbyZone,omitempty" xml:"StandbyZone,omitempty"`
-	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 复制对的初始目的可用区。
+	StandbyZone *string `json:"StandbyZone,omitempty" xml:"StandbyZone,omitempty"`
+	// 异步复制关系的状态。可能值：
+	//
+	// - invalid：失效。该状态表示异步复制关系存在异常。
+	// - creating：创建中。
+	// - created：已创建。
+	// - create_failed：创建失败。
+	// - initial_syncing：初始同步中。异步复制在创建并启动后，主盘数据初次异步复制到从盘的过程中，将处于该状态。
+	// - syncing：同步中。主盘和从盘之间非第一次进行异步复制数据时，将处于该状态。
+	// - manual_syncing：单次同步中。单次同步，同步完成后恢复到stopped状态。如果是第一次单次同步，则同步中也显示为状态manual_syncing。
+	// - normal：正常。当异步复制的当前周期内数据复制完成时，将处于该状态。
+	// - stopping：停止中。
+	// - stopped：已停止。
+	// - stop_failed：停止失败。
+	// - failovering：故障切换中。
+	// - failovered：故障切换完成。
+	// - failover_failed：故障切换失败。
+	// - reprotecting：反向复制操作中。
+	// - reprotect_failed：反向复制失败。
+	// - deleting：删除中。
+	// - delete_failed：删除失败。
+	// - deleted：已删除。
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 复制对的状态提示信息。比如invalid时，可能值：DeviceRemoved：主盘或者从盘被删除。DeviceKeyChanged：主盘或从盘的DeviceKey映射发生变化。
 	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
 }
 
@@ -893,6 +891,11 @@ func (s *DescribeDiskReplicaPairsResponseBodyReplicaPairs) SetDestinationRegion(
 
 func (s *DescribeDiskReplicaPairsResponseBodyReplicaPairs) SetDestinationZoneId(v string) *DescribeDiskReplicaPairsResponseBodyReplicaPairs {
 	s.DestinationZoneId = &v
+	return s
+}
+
+func (s *DescribeDiskReplicaPairsResponseBodyReplicaPairs) SetExpiredTime(v int64) *DescribeDiskReplicaPairsResponseBodyReplicaPairs {
+	s.ExpiredTime = &v
 	return s
 }
 
@@ -977,8 +980,9 @@ func (s *DescribeDiskReplicaPairsResponseBodyReplicaPairs) SetStatusMessage(v st
 }
 
 type DescribeDiskReplicaPairsResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDiskReplicaPairsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDiskReplicaPairsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeDiskReplicaPairsResponse) String() string {
@@ -991,6 +995,11 @@ func (s DescribeDiskReplicaPairsResponse) GoString() string {
 
 func (s *DescribeDiskReplicaPairsResponse) SetHeaders(v map[string]*string) *DescribeDiskReplicaPairsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeDiskReplicaPairsResponse) SetStatusCode(v int32) *DescribeDiskReplicaPairsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1111,8 +1120,9 @@ func (s *DescribeRegionsResponseBodyRegionsZones) SetZoneId(v string) *DescribeR
 }
 
 type DescribeRegionsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -1125,6 +1135,11 @@ func (s DescribeRegionsResponse) GoString() string {
 
 func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegionsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1181,8 +1196,9 @@ func (s *FailoverDiskReplicaGroupResponseBody) SetRequestId(v string) *FailoverD
 }
 
 type FailoverDiskReplicaGroupResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FailoverDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FailoverDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FailoverDiskReplicaGroupResponse) String() string {
@@ -1195,6 +1211,11 @@ func (s FailoverDiskReplicaGroupResponse) GoString() string {
 
 func (s *FailoverDiskReplicaGroupResponse) SetHeaders(v map[string]*string) *FailoverDiskReplicaGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *FailoverDiskReplicaGroupResponse) SetStatusCode(v int32) *FailoverDiskReplicaGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1251,8 +1272,9 @@ func (s *FailoverDiskReplicaPairResponseBody) SetRequestId(v string) *FailoverDi
 }
 
 type FailoverDiskReplicaPairResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FailoverDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FailoverDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FailoverDiskReplicaPairResponse) String() string {
@@ -1265,6 +1287,11 @@ func (s FailoverDiskReplicaPairResponse) GoString() string {
 
 func (s *FailoverDiskReplicaPairResponse) SetHeaders(v map[string]*string) *FailoverDiskReplicaPairResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *FailoverDiskReplicaPairResponse) SetStatusCode(v int32) *FailoverDiskReplicaPairResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1339,8 +1366,9 @@ func (s *ModifyDiskReplicaGroupResponseBody) SetRequestId(v string) *ModifyDiskR
 }
 
 type ModifyDiskReplicaGroupResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyDiskReplicaGroupResponse) String() string {
@@ -1353,6 +1381,11 @@ func (s ModifyDiskReplicaGroupResponse) GoString() string {
 
 func (s *ModifyDiskReplicaGroupResponse) SetHeaders(v map[string]*string) *ModifyDiskReplicaGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyDiskReplicaGroupResponse) SetStatusCode(v int32) *ModifyDiskReplicaGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1433,8 +1466,9 @@ func (s *ModifyDiskReplicaPairResponseBody) SetRequestId(v string) *ModifyDiskRe
 }
 
 type ModifyDiskReplicaPairResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyDiskReplicaPairResponse) String() string {
@@ -1447,6 +1481,11 @@ func (s ModifyDiskReplicaPairResponse) GoString() string {
 
 func (s *ModifyDiskReplicaPairResponse) SetHeaders(v map[string]*string) *ModifyDiskReplicaPairResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyDiskReplicaPairResponse) SetStatusCode(v int32) *ModifyDiskReplicaPairResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1509,8 +1548,9 @@ func (s *RemoveDiskReplicaPairResponseBody) SetRequestId(v string) *RemoveDiskRe
 }
 
 type RemoveDiskReplicaPairResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RemoveDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RemoveDiskReplicaPairResponse) String() string {
@@ -1523,6 +1563,11 @@ func (s RemoveDiskReplicaPairResponse) GoString() string {
 
 func (s *RemoveDiskReplicaPairResponse) SetHeaders(v map[string]*string) *RemoveDiskReplicaPairResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RemoveDiskReplicaPairResponse) SetStatusCode(v int32) *RemoveDiskReplicaPairResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1591,8 +1636,9 @@ func (s *ReprotectDiskReplicaGroupResponseBody) SetRequestId(v string) *Reprotec
 }
 
 type ReprotectDiskReplicaGroupResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ReprotectDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReprotectDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ReprotectDiskReplicaGroupResponse) String() string {
@@ -1605,6 +1651,11 @@ func (s ReprotectDiskReplicaGroupResponse) GoString() string {
 
 func (s *ReprotectDiskReplicaGroupResponse) SetHeaders(v map[string]*string) *ReprotectDiskReplicaGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ReprotectDiskReplicaGroupResponse) SetStatusCode(v int32) *ReprotectDiskReplicaGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1661,8 +1712,9 @@ func (s *ReprotectDiskReplicaPairResponseBody) SetRequestId(v string) *Reprotect
 }
 
 type ReprotectDiskReplicaPairResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ReprotectDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReprotectDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ReprotectDiskReplicaPairResponse) String() string {
@@ -1675,6 +1727,11 @@ func (s ReprotectDiskReplicaPairResponse) GoString() string {
 
 func (s *ReprotectDiskReplicaPairResponse) SetHeaders(v map[string]*string) *ReprotectDiskReplicaPairResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ReprotectDiskReplicaPairResponse) SetStatusCode(v int32) *ReprotectDiskReplicaPairResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1737,8 +1794,9 @@ func (s *StartDiskReplicaGroupResponseBody) SetRequestId(v string) *StartDiskRep
 }
 
 type StartDiskReplicaGroupResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StartDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StartDiskReplicaGroupResponse) String() string {
@@ -1751,6 +1809,11 @@ func (s StartDiskReplicaGroupResponse) GoString() string {
 
 func (s *StartDiskReplicaGroupResponse) SetHeaders(v map[string]*string) *StartDiskReplicaGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *StartDiskReplicaGroupResponse) SetStatusCode(v int32) *StartDiskReplicaGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1813,8 +1876,9 @@ func (s *StartDiskReplicaPairResponseBody) SetRequestId(v string) *StartDiskRepl
 }
 
 type StartDiskReplicaPairResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StartDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StartDiskReplicaPairResponse) String() string {
@@ -1827,6 +1891,11 @@ func (s StartDiskReplicaPairResponse) GoString() string {
 
 func (s *StartDiskReplicaPairResponse) SetHeaders(v map[string]*string) *StartDiskReplicaPairResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *StartDiskReplicaPairResponse) SetStatusCode(v int32) *StartDiskReplicaPairResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1883,8 +1952,9 @@ func (s *StopDiskReplicaGroupResponseBody) SetRequestId(v string) *StopDiskRepli
 }
 
 type StopDiskReplicaGroupResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StopDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopDiskReplicaGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StopDiskReplicaGroupResponse) String() string {
@@ -1897,6 +1967,11 @@ func (s StopDiskReplicaGroupResponse) GoString() string {
 
 func (s *StopDiskReplicaGroupResponse) SetHeaders(v map[string]*string) *StopDiskReplicaGroupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *StopDiskReplicaGroupResponse) SetStatusCode(v int32) *StopDiskReplicaGroupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1953,8 +2028,9 @@ func (s *StopDiskReplicaPairResponseBody) SetRequestId(v string) *StopDiskReplic
 }
 
 type StopDiskReplicaPairResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StopDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopDiskReplicaPairResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StopDiskReplicaPairResponse) String() string {
@@ -1967,6 +2043,11 @@ func (s StopDiskReplicaPairResponse) GoString() string {
 
 func (s *StopDiskReplicaPairResponse) SetHeaders(v map[string]*string) *StopDiskReplicaPairResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *StopDiskReplicaPairResponse) SetStatusCode(v int32) *StopDiskReplicaPairResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2403,54 +2484,6 @@ func (client *Client) DescribeDiskReplicaGroups(request *DescribeDiskReplicaGrou
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDiskReplicaGroupsResponse{}
 	_body, _err := client.DescribeDiskReplicaGroupsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeDiskReplicaPairProgressWithOptions(request *DescribeDiskReplicaPairProgressRequest, runtime *util.RuntimeOptions) (_result *DescribeDiskReplicaPairProgressResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ReplicaPairId)) {
-		query["ReplicaPairId"] = request.ReplicaPairId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeDiskReplicaPairProgress"),
-		Version:     tea.String("2021-07-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeDiskReplicaPairProgressResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeDiskReplicaPairProgress(request *DescribeDiskReplicaPairProgressRequest) (_result *DescribeDiskReplicaPairProgressResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeDiskReplicaPairProgressResponse{}
-	_body, _err := client.DescribeDiskReplicaPairProgressWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
