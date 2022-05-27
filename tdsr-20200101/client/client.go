@@ -1044,6 +1044,8 @@ func (s *DetailSceneRequest) SetId(v string) *DetailSceneRequest {
 type DetailSceneResponseBody struct {
 	// 返回码
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 封面地址
+	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
 	// 创建时间
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// 最后修改时间
@@ -1080,6 +1082,11 @@ func (s DetailSceneResponseBody) GoString() string {
 
 func (s *DetailSceneResponseBody) SetCode(v int64) *DetailSceneResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *DetailSceneResponseBody) SetCoverUrl(v string) *DetailSceneResponseBody {
+	s.CoverUrl = &v
 	return s
 }
 
@@ -4971,6 +4978,8 @@ func (s *ListSceneResponseBody) SetTotalPage(v int64) *ListSceneResponseBody {
 }
 
 type ListSceneResponseBodyList struct {
+	// 封面地址
+	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
 	// 创建时间
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// 最后修改时间
@@ -4997,6 +5006,11 @@ func (s ListSceneResponseBodyList) String() string {
 
 func (s ListSceneResponseBodyList) GoString() string {
 	return s.String()
+}
+
+func (s *ListSceneResponseBodyList) SetCoverUrl(v string) *ListSceneResponseBodyList {
+	s.CoverUrl = &v
+	return s
 }
 
 func (s *ListSceneResponseBodyList) SetGmtCreate(v int64) *ListSceneResponseBodyList {
