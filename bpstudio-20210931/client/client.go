@@ -13,11 +13,11 @@ import (
 )
 
 type CreateApplicationRequest struct {
-	ApplicationParams map[string]interface{} `json:"ApplicationParams,omitempty" xml:"ApplicationParams,omitempty"`
 	// 区域ID
 	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
 	// 幂等标记
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken   *string                `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Configuration map[string]interface{} `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
 	// 待替换实例列表
 	Instances []*CreateApplicationRequestInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
 	// 新建应用名
@@ -25,8 +25,8 @@ type CreateApplicationRequest struct {
 	// 应用所属资源组ID
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// 模板ID
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Variables  *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
+	TemplateId *string                `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	Variables  map[string]interface{} `json:"Variables,omitempty" xml:"Variables,omitempty"`
 }
 
 func (s CreateApplicationRequest) String() string {
@@ -37,11 +37,6 @@ func (s CreateApplicationRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateApplicationRequest) SetApplicationParams(v map[string]interface{}) *CreateApplicationRequest {
-	s.ApplicationParams = v
-	return s
-}
-
 func (s *CreateApplicationRequest) SetAreaId(v string) *CreateApplicationRequest {
 	s.AreaId = &v
 	return s
@@ -49,6 +44,11 @@ func (s *CreateApplicationRequest) SetAreaId(v string) *CreateApplicationRequest
 
 func (s *CreateApplicationRequest) SetClientToken(v string) *CreateApplicationRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetConfiguration(v map[string]interface{}) *CreateApplicationRequest {
+	s.Configuration = v
 	return s
 }
 
@@ -72,8 +72,8 @@ func (s *CreateApplicationRequest) SetTemplateId(v string) *CreateApplicationReq
 	return s
 }
 
-func (s *CreateApplicationRequest) SetVariables(v string) *CreateApplicationRequest {
-	s.Variables = &v
+func (s *CreateApplicationRequest) SetVariables(v map[string]interface{}) *CreateApplicationRequest {
+	s.Variables = v
 	return s
 }
 
@@ -110,11 +110,11 @@ func (s *CreateApplicationRequestInstances) SetNodeType(v string) *CreateApplica
 }
 
 type CreateApplicationShrinkRequest struct {
-	ApplicationParamsShrink *string `json:"ApplicationParams,omitempty" xml:"ApplicationParams,omitempty"`
 	// 区域ID
 	AreaId *string `json:"AreaId,omitempty" xml:"AreaId,omitempty"`
 	// 幂等标记
-	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ClientToken         *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	ConfigurationShrink *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
 	// 待替换实例列表
 	InstancesShrink *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
 	// 新建应用名
@@ -122,8 +122,8 @@ type CreateApplicationShrinkRequest struct {
 	// 应用所属资源组ID
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// 模板ID
-	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Variables  *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
+	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	VariablesShrink *string `json:"Variables,omitempty" xml:"Variables,omitempty"`
 }
 
 func (s CreateApplicationShrinkRequest) String() string {
@@ -134,11 +134,6 @@ func (s CreateApplicationShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateApplicationShrinkRequest) SetApplicationParamsShrink(v string) *CreateApplicationShrinkRequest {
-	s.ApplicationParamsShrink = &v
-	return s
-}
-
 func (s *CreateApplicationShrinkRequest) SetAreaId(v string) *CreateApplicationShrinkRequest {
 	s.AreaId = &v
 	return s
@@ -146,6 +141,11 @@ func (s *CreateApplicationShrinkRequest) SetAreaId(v string) *CreateApplicationS
 
 func (s *CreateApplicationShrinkRequest) SetClientToken(v string) *CreateApplicationShrinkRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateApplicationShrinkRequest) SetConfigurationShrink(v string) *CreateApplicationShrinkRequest {
+	s.ConfigurationShrink = &v
 	return s
 }
 
@@ -169,8 +169,8 @@ func (s *CreateApplicationShrinkRequest) SetTemplateId(v string) *CreateApplicat
 	return s
 }
 
-func (s *CreateApplicationShrinkRequest) SetVariables(v string) *CreateApplicationShrinkRequest {
-	s.Variables = &v
+func (s *CreateApplicationShrinkRequest) SetVariablesShrink(v string) *CreateApplicationShrinkRequest {
+	s.VariablesShrink = &v
 	return s
 }
 
@@ -1808,25 +1808,29 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 	}
 	request := &CreateApplicationShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.ApplicationParams)) {
-		request.ApplicationParamsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ApplicationParams, tea.String("ApplicationParams"), tea.String("json"))
+	if !tea.BoolValue(util.IsUnset(tmpReq.Configuration)) {
+		request.ConfigurationShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Configuration, tea.String("Configuration"), tea.String("json"))
 	}
 
 	if !tea.BoolValue(util.IsUnset(tmpReq.Instances)) {
 		request.InstancesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Instances, tea.String("Instances"), tea.String("json"))
 	}
 
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ApplicationParamsShrink)) {
-		body["ApplicationParams"] = request.ApplicationParamsShrink
+	if !tea.BoolValue(util.IsUnset(tmpReq.Variables)) {
+		request.VariablesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Variables, tea.String("Variables"), tea.String("json"))
 	}
 
+	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AreaId)) {
 		body["AreaId"] = request.AreaId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		body["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigurationShrink)) {
+		body["Configuration"] = request.ConfigurationShrink
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.InstancesShrink)) {
@@ -1845,8 +1849,8 @@ func (client *Client) CreateApplicationWithOptions(tmpReq *CreateApplicationRequ
 		body["TemplateId"] = request.TemplateId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Variables)) {
-		body["Variables"] = request.Variables
+	if !tea.BoolValue(util.IsUnset(request.VariablesShrink)) {
+		body["Variables"] = request.VariablesShrink
 	}
 
 	req := &openapi.OpenApiRequest{
