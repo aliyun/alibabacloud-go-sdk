@@ -12,6 +12,133 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
+type ChangeApplicationInfoRequest struct {
+	// 阿里UID
+	AliUid *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 应用名称
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// dynamic|static
+	AppTypeList *string `json:"AppTypeList,omitempty" xml:"AppTypeList,omitempty"`
+	// [
+	AppingList *string `json:"AppingList,omitempty" xml:"AppingList,omitempty"`
+	// 商品code
+	ItemCode *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
+}
+
+func (s ChangeApplicationInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeApplicationInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeApplicationInfoRequest) SetAliUid(v int64) *ChangeApplicationInfoRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *ChangeApplicationInfoRequest) SetAppId(v string) *ChangeApplicationInfoRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ChangeApplicationInfoRequest) SetAppName(v string) *ChangeApplicationInfoRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *ChangeApplicationInfoRequest) SetAppTypeList(v string) *ChangeApplicationInfoRequest {
+	s.AppTypeList = &v
+	return s
+}
+
+func (s *ChangeApplicationInfoRequest) SetAppingList(v string) *ChangeApplicationInfoRequest {
+	s.AppingList = &v
+	return s
+}
+
+func (s *ChangeApplicationInfoRequest) SetItemCode(v string) *ChangeApplicationInfoRequest {
+	s.ItemCode = &v
+	return s
+}
+
+type ChangeApplicationInfoResponseBody struct {
+	// 应用id
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 结果码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 结果描述
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 是否成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ChangeApplicationInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeApplicationInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeApplicationInfoResponseBody) SetAppId(v string) *ChangeApplicationInfoResponseBody {
+	s.AppId = &v
+	return s
+}
+
+func (s *ChangeApplicationInfoResponseBody) SetCode(v string) *ChangeApplicationInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ChangeApplicationInfoResponseBody) SetMessage(v string) *ChangeApplicationInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ChangeApplicationInfoResponseBody) SetRequestId(v string) *ChangeApplicationInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ChangeApplicationInfoResponseBody) SetSuccess(v bool) *ChangeApplicationInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ChangeApplicationInfoResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ChangeApplicationInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ChangeApplicationInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ChangeApplicationInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ChangeApplicationInfoResponse) SetHeaders(v map[string]*string) *ChangeApplicationInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ChangeApplicationInfoResponse) SetStatusCode(v int32) *ChangeApplicationInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ChangeApplicationInfoResponse) SetBody(v *ChangeApplicationInfoResponseBody) *ChangeApplicationInfoResponse {
+	s.Body = v
+	return s
+}
+
 type CreateApplicationInfoRequest struct {
 	// 阿里UID
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
@@ -204,9 +331,8 @@ func (s *GetApplicationRequest) SetAppCode(v string) *GetApplicationRequest {
 
 type GetApplicationResponseBody struct {
 	// 结果码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 结果
-	Data []*GetApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Code *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// 结果描述
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// 请求链路ID，如POP请求进来的requestId，返回时原样返回
@@ -230,7 +356,7 @@ func (s *GetApplicationResponseBody) SetCode(v string) *GetApplicationResponseBo
 	return s
 }
 
-func (s *GetApplicationResponseBody) SetData(v []*GetApplicationResponseBodyData) *GetApplicationResponseBody {
+func (s *GetApplicationResponseBody) SetData(v []map[string]interface{}) *GetApplicationResponseBody {
 	s.Data = v
 	return s
 }
@@ -252,128 +378,6 @@ func (s *GetApplicationResponseBody) SetRt(v int64) *GetApplicationResponseBody 
 
 func (s *GetApplicationResponseBody) SetSuccess(v bool) *GetApplicationResponseBody {
 	s.Success = &v
-	return s
-}
-
-type GetApplicationResponseBodyData struct {
-	// 用户编号
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// 应用编号
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 应用名称
-	AppName   *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	AppStatus *string `json:"AppStatus,omitempty" xml:"AppStatus,omitempty"`
-	// //dynamic（动态业务）/static（静态业务）  // 前端传递，参数3
-	AppTypeList *string                                     `json:"AppTypeList,omitempty" xml:"AppTypeList,omitempty"`
-	AppingList  []*GetApplicationResponseBodyDataAppingList `json:"AppingList,omitempty" xml:"AppingList,omitempty" type:"Repeated"`
-	EndTime     *string                                     `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Database Column Remarks:
-	ItemCode *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
-	// 开通时间
-	OpenTime  *string `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s GetApplicationResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetApplicationResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetApplicationResponseBodyData) SetAliUid(v int64) *GetApplicationResponseBodyData {
-	s.AliUid = &v
-	return s
-}
-
-func (s *GetApplicationResponseBodyData) SetAppId(v string) *GetApplicationResponseBodyData {
-	s.AppId = &v
-	return s
-}
-
-func (s *GetApplicationResponseBodyData) SetAppName(v string) *GetApplicationResponseBodyData {
-	s.AppName = &v
-	return s
-}
-
-func (s *GetApplicationResponseBodyData) SetAppStatus(v string) *GetApplicationResponseBodyData {
-	s.AppStatus = &v
-	return s
-}
-
-func (s *GetApplicationResponseBodyData) SetAppTypeList(v string) *GetApplicationResponseBodyData {
-	s.AppTypeList = &v
-	return s
-}
-
-func (s *GetApplicationResponseBodyData) SetAppingList(v []*GetApplicationResponseBodyDataAppingList) *GetApplicationResponseBodyData {
-	s.AppingList = v
-	return s
-}
-
-func (s *GetApplicationResponseBodyData) SetEndTime(v string) *GetApplicationResponseBodyData {
-	s.EndTime = &v
-	return s
-}
-
-func (s *GetApplicationResponseBodyData) SetItemCode(v string) *GetApplicationResponseBodyData {
-	s.ItemCode = &v
-	return s
-}
-
-func (s *GetApplicationResponseBodyData) SetOpenTime(v string) *GetApplicationResponseBodyData {
-	s.OpenTime = &v
-	return s
-}
-
-func (s *GetApplicationResponseBodyData) SetStartTime(v string) *GetApplicationResponseBodyData {
-	s.StartTime = &v
-	return s
-}
-
-type GetApplicationResponseBodyDataAppingList struct {
-	ExtId *int64 `json:"ExtId,omitempty" xml:"ExtId,omitempty"`
-	// cdn ip
-	FlowIp []*string `json:"FlowIp,omitempty" xml:"FlowIp,omitempty" type:"Repeated"`
-	// cdn 域名信息
-	FlowUrl []*string `json:"FlowUrl,omitempty" xml:"FlowUrl,omitempty" type:"Repeated"`
-	// 业务方ip集合
-	OriginalIpList []*string `json:"OriginalIpList,omitempty" xml:"OriginalIpList,omitempty" type:"Repeated"`
-	// 业务方域名集合
-	OriginalUrlList []*string `json:"OriginalUrlList,omitempty" xml:"OriginalUrlList,omitempty" type:"Repeated"`
-}
-
-func (s GetApplicationResponseBodyDataAppingList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetApplicationResponseBodyDataAppingList) GoString() string {
-	return s.String()
-}
-
-func (s *GetApplicationResponseBodyDataAppingList) SetExtId(v int64) *GetApplicationResponseBodyDataAppingList {
-	s.ExtId = &v
-	return s
-}
-
-func (s *GetApplicationResponseBodyDataAppingList) SetFlowIp(v []*string) *GetApplicationResponseBodyDataAppingList {
-	s.FlowIp = v
-	return s
-}
-
-func (s *GetApplicationResponseBodyDataAppingList) SetFlowUrl(v []*string) *GetApplicationResponseBodyDataAppingList {
-	s.FlowUrl = v
-	return s
-}
-
-func (s *GetApplicationResponseBodyDataAppingList) SetOriginalIpList(v []*string) *GetApplicationResponseBodyDataAppingList {
-	s.OriginalIpList = v
-	return s
-}
-
-func (s *GetApplicationResponseBodyDataAppingList) SetOriginalUrlList(v []*string) *GetApplicationResponseBodyDataAppingList {
-	s.OriginalUrlList = v
 	return s
 }
 
@@ -407,7 +411,7 @@ func (s *GetApplicationResponse) SetBody(v *GetApplicationResponseBody) *GetAppl
 }
 
 type GetFreeFlowInstanceRequest struct {
-	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	Aliuid *int64 `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
 	// 应用ID
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 实例ID
@@ -423,8 +427,8 @@ func (s GetFreeFlowInstanceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetFreeFlowInstanceRequest) SetAliUid(v int64) *GetFreeFlowInstanceRequest {
-	s.AliUid = &v
+func (s *GetFreeFlowInstanceRequest) SetAliuid(v int64) *GetFreeFlowInstanceRequest {
+	s.Aliuid = &v
 	return s
 }
 
@@ -619,8 +623,7 @@ func (s *GetFreeFlowProductListRequest) SetInstanceId(v string) *GetFreeFlowProd
 
 type GetFreeFlowProductListResponseBody struct {
 	// 结果码
-	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 结果
+	Code *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data []*GetFreeFlowProductListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// 结果描述
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
@@ -774,6 +777,773 @@ func (s *GetFreeFlowProductListResponse) SetStatusCode(v int32) *GetFreeFlowProd
 }
 
 func (s *GetFreeFlowProductListResponse) SetBody(v *GetFreeFlowProductListResponseBody) *GetFreeFlowProductListResponse {
+	s.Body = v
+	return s
+}
+
+type GetFreeFlowStatusRequest struct {
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// 应用ID
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 免流产品ID
+	FlowProductId *string `json:"FlowProductId,omitempty" xml:"FlowProductId,omitempty"`
+	// C端手机号
+	MobileNumber *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+	// 网络类型，如3G、4G、5G
+	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	// 取值包括cm（中国移动）/ct（中国电信）/cu（中国联通）
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// 手机端私网ip地址
+	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
+	// C端手机在运营商侧端伪码，如："75D35971BD"
+	PseudoCode *string `json:"PseudoCode,omitempty" xml:"PseudoCode,omitempty"`
+	// 手机端公网ip地址
+	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
+	// 通过云通信获取的token
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s GetFreeFlowStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFreeFlowStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFreeFlowStatusRequest) SetAliUid(v int64) *GetFreeFlowStatusRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *GetFreeFlowStatusRequest) SetAppId(v string) *GetFreeFlowStatusRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetFreeFlowStatusRequest) SetFlowProductId(v string) *GetFreeFlowStatusRequest {
+	s.FlowProductId = &v
+	return s
+}
+
+func (s *GetFreeFlowStatusRequest) SetMobileNumber(v string) *GetFreeFlowStatusRequest {
+	s.MobileNumber = &v
+	return s
+}
+
+func (s *GetFreeFlowStatusRequest) SetNetType(v string) *GetFreeFlowStatusRequest {
+	s.NetType = &v
+	return s
+}
+
+func (s *GetFreeFlowStatusRequest) SetOperator(v string) *GetFreeFlowStatusRequest {
+	s.Operator = &v
+	return s
+}
+
+func (s *GetFreeFlowStatusRequest) SetPrivateIP(v string) *GetFreeFlowStatusRequest {
+	s.PrivateIP = &v
+	return s
+}
+
+func (s *GetFreeFlowStatusRequest) SetPseudoCode(v string) *GetFreeFlowStatusRequest {
+	s.PseudoCode = &v
+	return s
+}
+
+func (s *GetFreeFlowStatusRequest) SetPublicIP(v string) *GetFreeFlowStatusRequest {
+	s.PublicIP = &v
+	return s
+}
+
+func (s *GetFreeFlowStatusRequest) SetToken(v string) *GetFreeFlowStatusRequest {
+	s.Token = &v
+	return s
+}
+
+type GetFreeFlowStatusResponseBody struct {
+	// 结果码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 结果
+	Data interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 结果描述
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求链路ID，如POP请求进来的requestId，返回时原样返回
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 服务端处理耗时，ms
+	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	// 是否成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetFreeFlowStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFreeFlowStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFreeFlowStatusResponseBody) SetCode(v string) *GetFreeFlowStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetFreeFlowStatusResponseBody) SetData(v interface{}) *GetFreeFlowStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetFreeFlowStatusResponseBody) SetMessage(v string) *GetFreeFlowStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetFreeFlowStatusResponseBody) SetRequestId(v string) *GetFreeFlowStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFreeFlowStatusResponseBody) SetRt(v int64) *GetFreeFlowStatusResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *GetFreeFlowStatusResponseBody) SetSuccess(v bool) *GetFreeFlowStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetFreeFlowStatusResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetFreeFlowStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFreeFlowStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFreeFlowStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFreeFlowStatusResponse) SetHeaders(v map[string]*string) *GetFreeFlowStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFreeFlowStatusResponse) SetStatusCode(v int32) *GetFreeFlowStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFreeFlowStatusResponse) SetBody(v *GetFreeFlowStatusResponseBody) *GetFreeFlowStatusResponse {
+	s.Body = v
+	return s
+}
+
+type GetFreeFlowUsageRequest struct {
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// 当前页
+	CurPageNum *int32 `json:"CurPageNum,omitempty" xml:"CurPageNum,omitempty"`
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 查询月份
+	Month *string `json:"Month,omitempty" xml:"Month,omitempty"`
+	// 每页的记录数量
+	NumPerPage *int32 `json:"NumPerPage,omitempty" xml:"NumPerPage,omitempty"`
+}
+
+func (s GetFreeFlowUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFreeFlowUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFreeFlowUsageRequest) SetAliUid(v int64) *GetFreeFlowUsageRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageRequest) SetCurPageNum(v int32) *GetFreeFlowUsageRequest {
+	s.CurPageNum = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageRequest) SetInstanceId(v string) *GetFreeFlowUsageRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageRequest) SetMonth(v string) *GetFreeFlowUsageRequest {
+	s.Month = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageRequest) SetNumPerPage(v int32) *GetFreeFlowUsageRequest {
+	s.NumPerPage = &v
+	return s
+}
+
+type GetFreeFlowUsageResponseBody struct {
+	// 结果码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 结果
+	Data *GetFreeFlowUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 结果描述
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求链路ID，如POP请求进来的requestId，返回时原样返回
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 服务端处理耗时，ms
+	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	// 是否成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetFreeFlowUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFreeFlowUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFreeFlowUsageResponseBody) SetCode(v string) *GetFreeFlowUsageResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBody) SetData(v *GetFreeFlowUsageResponseBodyData) *GetFreeFlowUsageResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBody) SetMessage(v string) *GetFreeFlowUsageResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBody) SetRequestId(v string) *GetFreeFlowUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBody) SetRt(v int64) *GetFreeFlowUsageResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBody) SetSuccess(v bool) *GetFreeFlowUsageResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetFreeFlowUsageResponseBodyData struct {
+	// 当前页数
+	CurPageNum *int32 `json:"CurPageNum,omitempty" xml:"CurPageNum,omitempty"`
+	// C端用户列表
+	CustomerList []*GetFreeFlowUsageResponseBodyDataCustomerList `json:"CustomerList,omitempty" xml:"CustomerList,omitempty" type:"Repeated"`
+	// 是否有下一页
+	HasNext *bool `json:"HasNext,omitempty" xml:"HasNext,omitempty"`
+	// 是否有上一页
+	HasPrev *bool `json:"HasPrev,omitempty" xml:"HasPrev,omitempty"`
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 每页的记录条数
+	NumPerPage *int32 `json:"NumPerPage,omitempty" xml:"NumPerPage,omitempty"`
+	// 总记录条数
+	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// 总页数
+	TotalPageNum *int32 `json:"TotalPageNum,omitempty" xml:"TotalPageNum,omitempty"`
+}
+
+func (s GetFreeFlowUsageResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFreeFlowUsageResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetFreeFlowUsageResponseBodyData) SetCurPageNum(v int32) *GetFreeFlowUsageResponseBodyData {
+	s.CurPageNum = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBodyData) SetCustomerList(v []*GetFreeFlowUsageResponseBodyDataCustomerList) *GetFreeFlowUsageResponseBodyData {
+	s.CustomerList = v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBodyData) SetHasNext(v bool) *GetFreeFlowUsageResponseBodyData {
+	s.HasNext = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBodyData) SetHasPrev(v bool) *GetFreeFlowUsageResponseBodyData {
+	s.HasPrev = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBodyData) SetInstanceId(v string) *GetFreeFlowUsageResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBodyData) SetNumPerPage(v int32) *GetFreeFlowUsageResponseBodyData {
+	s.NumPerPage = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBodyData) SetTotalNum(v int32) *GetFreeFlowUsageResponseBodyData {
+	s.TotalNum = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBodyData) SetTotalPageNum(v int32) *GetFreeFlowUsageResponseBodyData {
+	s.TotalPageNum = &v
+	return s
+}
+
+type GetFreeFlowUsageResponseBodyDataCustomerList struct {
+	// 购买渠道
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// C端产品失效时间
+	CustomerEndTime     *string `json:"CustomerEndTime,omitempty" xml:"CustomerEndTime,omitempty"`
+	CustomerFlowOrderId *string `json:"CustomerFlowOrderId,omitempty" xml:"CustomerFlowOrderId,omitempty"`
+	// C端免流状态，取值包括create/working/expiration
+	CustomerFlowStatus *string `json:"CustomerFlowStatus,omitempty" xml:"CustomerFlowStatus,omitempty"`
+	// C端产品开通时间
+	CustomerOpenTime *string `json:"CustomerOpenTime,omitempty" xml:"CustomerOpenTime,omitempty"`
+	// C端产品生效时间
+	CustomerStartTime *string `json:"CustomerStartTime,omitempty" xml:"CustomerStartTime,omitempty"`
+	// 免流产品ID
+	FlowProductId *string `json:"FlowProductId,omitempty" xml:"FlowProductId,omitempty"`
+	// 免流产品名
+	FlowProductName *string `json:"FlowProductName,omitempty" xml:"FlowProductName,omitempty"`
+	// 是否包月，true或false
+	IsLasting *bool `json:"IsLasting,omitempty" xml:"IsLasting,omitempty"`
+	// C端手机号
+	MobileNumber *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+	// 该流量包的计量单元数
+	UnitNum *int32 `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
+	// 流量包价格
+	UnitPrice *int32 `json:"UnitPrice,omitempty" xml:"UnitPrice,omitempty"`
+}
+
+func (s GetFreeFlowUsageResponseBodyDataCustomerList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFreeFlowUsageResponseBodyDataCustomerList) GoString() string {
+	return s.String()
+}
+
+func (s *GetFreeFlowUsageResponseBodyDataCustomerList) SetChannelId(v string) *GetFreeFlowUsageResponseBodyDataCustomerList {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBodyDataCustomerList) SetCustomerEndTime(v string) *GetFreeFlowUsageResponseBodyDataCustomerList {
+	s.CustomerEndTime = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBodyDataCustomerList) SetCustomerFlowOrderId(v string) *GetFreeFlowUsageResponseBodyDataCustomerList {
+	s.CustomerFlowOrderId = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBodyDataCustomerList) SetCustomerFlowStatus(v string) *GetFreeFlowUsageResponseBodyDataCustomerList {
+	s.CustomerFlowStatus = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBodyDataCustomerList) SetCustomerOpenTime(v string) *GetFreeFlowUsageResponseBodyDataCustomerList {
+	s.CustomerOpenTime = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBodyDataCustomerList) SetCustomerStartTime(v string) *GetFreeFlowUsageResponseBodyDataCustomerList {
+	s.CustomerStartTime = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBodyDataCustomerList) SetFlowProductId(v string) *GetFreeFlowUsageResponseBodyDataCustomerList {
+	s.FlowProductId = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBodyDataCustomerList) SetFlowProductName(v string) *GetFreeFlowUsageResponseBodyDataCustomerList {
+	s.FlowProductName = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBodyDataCustomerList) SetIsLasting(v bool) *GetFreeFlowUsageResponseBodyDataCustomerList {
+	s.IsLasting = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBodyDataCustomerList) SetMobileNumber(v string) *GetFreeFlowUsageResponseBodyDataCustomerList {
+	s.MobileNumber = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBodyDataCustomerList) SetUnitNum(v int32) *GetFreeFlowUsageResponseBodyDataCustomerList {
+	s.UnitNum = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponseBodyDataCustomerList) SetUnitPrice(v int32) *GetFreeFlowUsageResponseBodyDataCustomerList {
+	s.UnitPrice = &v
+	return s
+}
+
+type GetFreeFlowUsageResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetFreeFlowUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFreeFlowUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFreeFlowUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFreeFlowUsageResponse) SetHeaders(v map[string]*string) *GetFreeFlowUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponse) SetStatusCode(v int32) *GetFreeFlowUsageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageResponse) SetBody(v *GetFreeFlowUsageResponseBody) *GetFreeFlowUsageResponse {
+	s.Body = v
+	return s
+}
+
+type GetFreeFlowUsageStatisticRequest struct {
+	AliUid     *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Month      *int64  `json:"Month,omitempty" xml:"Month,omitempty"`
+}
+
+func (s GetFreeFlowUsageStatisticRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFreeFlowUsageStatisticRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFreeFlowUsageStatisticRequest) SetAliUid(v int64) *GetFreeFlowUsageStatisticRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageStatisticRequest) SetAppId(v string) *GetFreeFlowUsageStatisticRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageStatisticRequest) SetAppName(v string) *GetFreeFlowUsageStatisticRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageStatisticRequest) SetInstanceId(v string) *GetFreeFlowUsageStatisticRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageStatisticRequest) SetMonth(v int64) *GetFreeFlowUsageStatisticRequest {
+	s.Month = &v
+	return s
+}
+
+type GetFreeFlowUsageStatisticResponseBody struct {
+	// 结果码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 结果
+	Data []*GetFreeFlowUsageStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// 结果描述
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求链路ID，如POP请求进来的requestId，返回时原样返回
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 服务端处理耗时，ms
+	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	// 是否成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetFreeFlowUsageStatisticResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFreeFlowUsageStatisticResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFreeFlowUsageStatisticResponseBody) SetCode(v string) *GetFreeFlowUsageStatisticResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageStatisticResponseBody) SetData(v []*GetFreeFlowUsageStatisticResponseBodyData) *GetFreeFlowUsageStatisticResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetFreeFlowUsageStatisticResponseBody) SetMessage(v string) *GetFreeFlowUsageStatisticResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageStatisticResponseBody) SetRequestId(v string) *GetFreeFlowUsageStatisticResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageStatisticResponseBody) SetRt(v int64) *GetFreeFlowUsageStatisticResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageStatisticResponseBody) SetSuccess(v bool) *GetFreeFlowUsageStatisticResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetFreeFlowUsageStatisticResponseBodyData struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 该实例对应的包类型
+	SpecType   *string `json:"SpecType,omitempty" xml:"SpecType,omitempty"`
+	TotalMoney *string `json:"TotalMoney,omitempty" xml:"TotalMoney,omitempty"`
+	// 该实例的订单总数
+	TotalOrderNumber *int64 `json:"TotalOrderNumber,omitempty" xml:"TotalOrderNumber,omitempty"`
+	// 该实例的订单总计量单元数
+	TotalUnitNumber *int64 `json:"TotalUnitNumber,omitempty" xml:"TotalUnitNumber,omitempty"`
+	// 产品规格
+	YunOutProduct *string `json:"YunOutProduct,omitempty" xml:"YunOutProduct,omitempty"`
+}
+
+func (s GetFreeFlowUsageStatisticResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFreeFlowUsageStatisticResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetFreeFlowUsageStatisticResponseBodyData) SetInstanceId(v string) *GetFreeFlowUsageStatisticResponseBodyData {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageStatisticResponseBodyData) SetSpecType(v string) *GetFreeFlowUsageStatisticResponseBodyData {
+	s.SpecType = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageStatisticResponseBodyData) SetTotalMoney(v string) *GetFreeFlowUsageStatisticResponseBodyData {
+	s.TotalMoney = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageStatisticResponseBodyData) SetTotalOrderNumber(v int64) *GetFreeFlowUsageStatisticResponseBodyData {
+	s.TotalOrderNumber = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageStatisticResponseBodyData) SetTotalUnitNumber(v int64) *GetFreeFlowUsageStatisticResponseBodyData {
+	s.TotalUnitNumber = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageStatisticResponseBodyData) SetYunOutProduct(v string) *GetFreeFlowUsageStatisticResponseBodyData {
+	s.YunOutProduct = &v
+	return s
+}
+
+type GetFreeFlowUsageStatisticResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetFreeFlowUsageStatisticResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFreeFlowUsageStatisticResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFreeFlowUsageStatisticResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFreeFlowUsageStatisticResponse) SetHeaders(v map[string]*string) *GetFreeFlowUsageStatisticResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFreeFlowUsageStatisticResponse) SetStatusCode(v int32) *GetFreeFlowUsageStatisticResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFreeFlowUsageStatisticResponse) SetBody(v *GetFreeFlowUsageStatisticResponseBody) *GetFreeFlowUsageStatisticResponse {
+	s.Body = v
+	return s
+}
+
+type GetOrderFreeFlowProductStatusRequest struct {
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// 在订购接口2.1.9中引擎侧生成的id
+	CustomerFlowOrderId *string `json:"CustomerFlowOrderId,omitempty" xml:"CustomerFlowOrderId,omitempty"`
+}
+
+func (s GetOrderFreeFlowProductStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrderFreeFlowProductStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrderFreeFlowProductStatusRequest) SetAliUid(v int64) *GetOrderFreeFlowProductStatusRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *GetOrderFreeFlowProductStatusRequest) SetCustomerFlowOrderId(v string) *GetOrderFreeFlowProductStatusRequest {
+	s.CustomerFlowOrderId = &v
+	return s
+}
+
+type GetOrderFreeFlowProductStatusResponseBody struct {
+	// 结果码
+	Code *string                                        `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data *GetOrderFreeFlowProductStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 结果描述
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求链路ID，如POP请求进来的requestId，返回时原样返回
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 服务端处理耗时，ms
+	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	// 是否成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetOrderFreeFlowProductStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrderFreeFlowProductStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrderFreeFlowProductStatusResponseBody) SetCode(v string) *GetOrderFreeFlowProductStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetOrderFreeFlowProductStatusResponseBody) SetData(v *GetOrderFreeFlowProductStatusResponseBodyData) *GetOrderFreeFlowProductStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetOrderFreeFlowProductStatusResponseBody) SetMessage(v string) *GetOrderFreeFlowProductStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GetOrderFreeFlowProductStatusResponseBody) SetRequestId(v string) *GetOrderFreeFlowProductStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetOrderFreeFlowProductStatusResponseBody) SetRt(v int64) *GetOrderFreeFlowProductStatusResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *GetOrderFreeFlowProductStatusResponseBody) SetSuccess(v bool) *GetOrderFreeFlowProductStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetOrderFreeFlowProductStatusResponseBodyData struct {
+	// C端免流订单ID
+	CustomerFlowOrderId   *string `json:"CustomerFlowOrderId,omitempty" xml:"CustomerFlowOrderId,omitempty"`
+	CustomerFlowRequestId *string `json:"CustomerFlowRequestId,omitempty" xml:"CustomerFlowRequestId,omitempty"`
+	// status为fail时，描述fail的具体原因
+	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
+	// 执行中ordering、成功success、失败fail
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetOrderFreeFlowProductStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrderFreeFlowProductStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrderFreeFlowProductStatusResponseBodyData) SetCustomerFlowOrderId(v string) *GetOrderFreeFlowProductStatusResponseBodyData {
+	s.CustomerFlowOrderId = &v
+	return s
+}
+
+func (s *GetOrderFreeFlowProductStatusResponseBodyData) SetCustomerFlowRequestId(v string) *GetOrderFreeFlowProductStatusResponseBodyData {
+	s.CustomerFlowRequestId = &v
+	return s
+}
+
+func (s *GetOrderFreeFlowProductStatusResponseBodyData) SetError(v string) *GetOrderFreeFlowProductStatusResponseBodyData {
+	s.Error = &v
+	return s
+}
+
+func (s *GetOrderFreeFlowProductStatusResponseBodyData) SetStatus(v string) *GetOrderFreeFlowProductStatusResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetOrderFreeFlowProductStatusResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetOrderFreeFlowProductStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetOrderFreeFlowProductStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOrderFreeFlowProductStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOrderFreeFlowProductStatusResponse) SetHeaders(v map[string]*string) *GetOrderFreeFlowProductStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOrderFreeFlowProductStatusResponse) SetStatusCode(v int32) *GetOrderFreeFlowProductStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOrderFreeFlowProductStatusResponse) SetBody(v *GetOrderFreeFlowProductStatusResponseBody) *GetOrderFreeFlowProductStatusResponse {
 	s.Body = v
 	return s
 }
@@ -1137,6 +1907,337 @@ func (s *OrderFreeFlowProductResponse) SetBody(v *OrderFreeFlowProductResponseBo
 	return s
 }
 
+type SaveApplicationInfoRequest struct {
+	// 阿里UID
+	AliUid *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 应用名称
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// dynamic|static
+	AppTypeList *string `json:"AppTypeList,omitempty" xml:"AppTypeList,omitempty"`
+	// [
+	AppingList *string `json:"AppingList,omitempty" xml:"AppingList,omitempty"`
+	// 商品code
+	ItemCode *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
+}
+
+func (s SaveApplicationInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveApplicationInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveApplicationInfoRequest) SetAliUid(v int64) *SaveApplicationInfoRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *SaveApplicationInfoRequest) SetAppId(v string) *SaveApplicationInfoRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *SaveApplicationInfoRequest) SetAppName(v string) *SaveApplicationInfoRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *SaveApplicationInfoRequest) SetAppTypeList(v string) *SaveApplicationInfoRequest {
+	s.AppTypeList = &v
+	return s
+}
+
+func (s *SaveApplicationInfoRequest) SetAppingList(v string) *SaveApplicationInfoRequest {
+	s.AppingList = &v
+	return s
+}
+
+func (s *SaveApplicationInfoRequest) SetItemCode(v string) *SaveApplicationInfoRequest {
+	s.ItemCode = &v
+	return s
+}
+
+type SaveApplicationInfoResponseBody struct {
+	// 应用id
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// 结果码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 结果描述
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 是否成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SaveApplicationInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveApplicationInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveApplicationInfoResponseBody) SetAppId(v string) *SaveApplicationInfoResponseBody {
+	s.AppId = &v
+	return s
+}
+
+func (s *SaveApplicationInfoResponseBody) SetCode(v string) *SaveApplicationInfoResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SaveApplicationInfoResponseBody) SetMessage(v string) *SaveApplicationInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SaveApplicationInfoResponseBody) SetRequestId(v string) *SaveApplicationInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SaveApplicationInfoResponseBody) SetSuccess(v bool) *SaveApplicationInfoResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SaveApplicationInfoResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SaveApplicationInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SaveApplicationInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveApplicationInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveApplicationInfoResponse) SetHeaders(v map[string]*string) *SaveApplicationInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SaveApplicationInfoResponse) SetStatusCode(v int32) *SaveApplicationInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SaveApplicationInfoResponse) SetBody(v *SaveApplicationInfoResponseBody) *SaveApplicationInfoResponse {
+	s.Body = v
+	return s
+}
+
+type ValidateStatusRequest struct {
+	// 阿里UID
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// 应用名称
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// C端手机号
+	MobileNumber *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+	// 取值包括cm（中国移动）/ct（中国电信）/cu（中国联通）
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// 运营商伪码
+	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
+}
+
+func (s ValidateStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateStatusRequest) SetAliUid(v int64) *ValidateStatusRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *ValidateStatusRequest) SetAppId(v string) *ValidateStatusRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ValidateStatusRequest) SetMobileNumber(v string) *ValidateStatusRequest {
+	s.MobileNumber = &v
+	return s
+}
+
+func (s *ValidateStatusRequest) SetOperator(v string) *ValidateStatusRequest {
+	s.Operator = &v
+	return s
+}
+
+func (s *ValidateStatusRequest) SetProductCode(v string) *ValidateStatusRequest {
+	s.ProductCode = &v
+	return s
+}
+
+type ValidateStatusResponseBody struct {
+	// 结果码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 结果
+	Data *ValidateStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// 结果描述
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求链路ID，如POP请求进来的requestId，返回时原样返回
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 服务端处理耗时，ms
+	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	// 是否成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ValidateStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateStatusResponseBody) SetCode(v string) *ValidateStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ValidateStatusResponseBody) SetData(v *ValidateStatusResponseBodyData) *ValidateStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ValidateStatusResponseBody) SetMessage(v string) *ValidateStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ValidateStatusResponseBody) SetRequestId(v string) *ValidateStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ValidateStatusResponseBody) SetRt(v int64) *ValidateStatusResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *ValidateStatusResponseBody) SetSuccess(v bool) *ValidateStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ValidateStatusResponseBodyData struct {
+	AppExtPopList []*ValidateStatusResponseBodyDataAppExtPopList `json:"AppExtPopList,omitempty" xml:"AppExtPopList,omitempty" type:"Repeated"`
+	// 是否处于免流状态，取值范围为true/false
+	FreeFlow *bool `json:"FreeFlow,omitempty" xml:"FreeFlow,omitempty"`
+	// 伪码
+	PseudoCode *string `json:"PseudoCode,omitempty" xml:"PseudoCode,omitempty"`
+}
+
+func (s ValidateStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateStatusResponseBodyData) SetAppExtPopList(v []*ValidateStatusResponseBodyDataAppExtPopList) *ValidateStatusResponseBodyData {
+	s.AppExtPopList = v
+	return s
+}
+
+func (s *ValidateStatusResponseBodyData) SetFreeFlow(v bool) *ValidateStatusResponseBodyData {
+	s.FreeFlow = &v
+	return s
+}
+
+func (s *ValidateStatusResponseBodyData) SetPseudoCode(v string) *ValidateStatusResponseBodyData {
+	s.PseudoCode = &v
+	return s
+}
+
+type ValidateStatusResponseBodyDataAppExtPopList struct {
+	ExtId *int64 `json:"ExtId,omitempty" xml:"ExtId,omitempty"`
+	// cdn ip
+	FlowIp []*string `json:"FlowIp,omitempty" xml:"FlowIp,omitempty" type:"Repeated"`
+	// cdn 域名信息
+	FlowUrl []*string `json:"FlowUrl,omitempty" xml:"FlowUrl,omitempty" type:"Repeated"`
+	// 业务方ip集合
+	OriginalIpList []*string `json:"OriginalIpList,omitempty" xml:"OriginalIpList,omitempty" type:"Repeated"`
+	// 业务方域名集合
+	OriginalUrlList []*string `json:"OriginalUrlList,omitempty" xml:"OriginalUrlList,omitempty" type:"Repeated"`
+}
+
+func (s ValidateStatusResponseBodyDataAppExtPopList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateStatusResponseBodyDataAppExtPopList) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateStatusResponseBodyDataAppExtPopList) SetExtId(v int64) *ValidateStatusResponseBodyDataAppExtPopList {
+	s.ExtId = &v
+	return s
+}
+
+func (s *ValidateStatusResponseBodyDataAppExtPopList) SetFlowIp(v []*string) *ValidateStatusResponseBodyDataAppExtPopList {
+	s.FlowIp = v
+	return s
+}
+
+func (s *ValidateStatusResponseBodyDataAppExtPopList) SetFlowUrl(v []*string) *ValidateStatusResponseBodyDataAppExtPopList {
+	s.FlowUrl = v
+	return s
+}
+
+func (s *ValidateStatusResponseBodyDataAppExtPopList) SetOriginalIpList(v []*string) *ValidateStatusResponseBodyDataAppExtPopList {
+	s.OriginalIpList = v
+	return s
+}
+
+func (s *ValidateStatusResponseBodyDataAppExtPopList) SetOriginalUrlList(v []*string) *ValidateStatusResponseBodyDataAppExtPopList {
+	s.OriginalUrlList = v
+	return s
+}
+
+type ValidateStatusResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ValidateStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ValidateStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateStatusResponse) SetHeaders(v map[string]*string) *ValidateStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ValidateStatusResponse) SetStatusCode(v int32) *ValidateStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ValidateStatusResponse) SetBody(v *ValidateStatusResponseBody) *ValidateStatusResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -1184,34 +2285,98 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+func (client *Client) ChangeApplicationInfoWithOptions(request *ChangeApplicationInfoRequest, runtime *util.RuntimeOptions) (_result *ChangeApplicationInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
+		body["AliUid"] = request.AliUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		body["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppTypeList)) {
+		body["AppTypeList"] = request.AppTypeList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppingList)) {
+		body["AppingList"] = request.AppingList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemCode)) {
+		body["ItemCode"] = request.ItemCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ChangeApplicationInfo"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ChangeApplicationInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ChangeApplicationInfo(request *ChangeApplicationInfoRequest) (_result *ChangeApplicationInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ChangeApplicationInfoResponse{}
+	_body, _err := client.ChangeApplicationInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateApplicationInfoWithOptions(request *CreateApplicationInfoRequest, runtime *util.RuntimeOptions) (_result *CreateApplicationInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
-	query := map[string]interface{}{}
+	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
-		query["AliUid"] = request.AliUid
+		body["AliUid"] = request.AliUid
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AppName)) {
-		query["AppName"] = request.AppName
+		body["AppName"] = request.AppName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AppTypeList)) {
-		query["AppTypeList"] = request.AppTypeList
+		body["AppTypeList"] = request.AppTypeList
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.AppingList)) {
-		query["AppingList"] = request.AppingList
+		body["AppingList"] = request.AppingList
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ItemCode)) {
-		query["ItemCode"] = request.ItemCode
+		body["ItemCode"] = request.ItemCode
 	}
 
 	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
+		Body: openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateApplicationInfo"),
@@ -1364,6 +2529,166 @@ func (client *Client) GetFreeFlowProductList(request *GetFreeFlowProductListRequ
 	return _result, _err
 }
 
+func (client *Client) GetFreeFlowStatusWithOptions(request *GetFreeFlowStatusRequest, runtime *util.RuntimeOptions) (_result *GetFreeFlowStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFreeFlowStatus"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFreeFlowStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFreeFlowStatus(request *GetFreeFlowStatusRequest) (_result *GetFreeFlowStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFreeFlowStatusResponse{}
+	_body, _err := client.GetFreeFlowStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFreeFlowUsageWithOptions(request *GetFreeFlowUsageRequest, runtime *util.RuntimeOptions) (_result *GetFreeFlowUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFreeFlowUsage"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFreeFlowUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFreeFlowUsage(request *GetFreeFlowUsageRequest) (_result *GetFreeFlowUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFreeFlowUsageResponse{}
+	_body, _err := client.GetFreeFlowUsageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFreeFlowUsageStatisticWithOptions(request *GetFreeFlowUsageStatisticRequest, runtime *util.RuntimeOptions) (_result *GetFreeFlowUsageStatisticResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFreeFlowUsageStatistic"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFreeFlowUsageStatisticResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFreeFlowUsageStatistic(request *GetFreeFlowUsageStatisticRequest) (_result *GetFreeFlowUsageStatisticResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFreeFlowUsageStatisticResponse{}
+	_body, _err := client.GetFreeFlowUsageStatisticWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetOrderFreeFlowProductStatusWithOptions(request *GetOrderFreeFlowProductStatusRequest, runtime *util.RuntimeOptions) (_result *GetOrderFreeFlowProductStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetOrderFreeFlowProductStatus"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOrderFreeFlowProductStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetOrderFreeFlowProductStatus(request *GetOrderFreeFlowProductStatusRequest) (_result *GetOrderFreeFlowProductStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOrderFreeFlowProductStatusResponse{}
+	_body, _err := client.GetOrderFreeFlowProductStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyApplicationWithOptions(request *ModifyApplicationRequest, runtime *util.RuntimeOptions) (_result *ModifyApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -1497,6 +2822,110 @@ func (client *Client) OrderFreeFlowProduct(request *OrderFreeFlowProductRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &OrderFreeFlowProductResponse{}
 	_body, _err := client.OrderFreeFlowProductWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SaveApplicationInfoWithOptions(request *SaveApplicationInfoRequest, runtime *util.RuntimeOptions) (_result *SaveApplicationInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
+		body["AliUid"] = request.AliUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		body["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		body["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppTypeList)) {
+		body["AppTypeList"] = request.AppTypeList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppingList)) {
+		body["AppingList"] = request.AppingList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ItemCode)) {
+		body["ItemCode"] = request.ItemCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveApplicationInfo"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SaveApplicationInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SaveApplicationInfo(request *SaveApplicationInfoRequest) (_result *SaveApplicationInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SaveApplicationInfoResponse{}
+	_body, _err := client.SaveApplicationInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ValidateStatusWithOptions(request *ValidateStatusRequest, runtime *util.RuntimeOptions) (_result *ValidateStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ValidateStatus"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ValidateStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ValidateStatus(request *ValidateStatusRequest) (_result *ValidateStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ValidateStatusResponse{}
+	_body, _err := client.ValidateStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
