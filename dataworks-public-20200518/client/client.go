@@ -9805,6 +9805,134 @@ func (s *GetDataServiceApiResponse) SetBody(v *GetDataServiceApiResponseBody) *G
 	return s
 }
 
+type GetDataServiceApiTestRequest struct {
+	TestId *int64 `json:"TestId,omitempty" xml:"TestId,omitempty"`
+}
+
+func (s GetDataServiceApiTestRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataServiceApiTestRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataServiceApiTestRequest) SetTestId(v int64) *GetDataServiceApiTestRequest {
+	s.TestId = &v
+	return s
+}
+
+type GetDataServiceApiTestResponseBody struct {
+	Data      *GetDataServiceApiTestResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDataServiceApiTestResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataServiceApiTestResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataServiceApiTestResponseBody) SetData(v *GetDataServiceApiTestResponseBodyData) *GetDataServiceApiTestResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetDataServiceApiTestResponseBody) SetRequestId(v string) *GetDataServiceApiTestResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDataServiceApiTestResponseBodyData struct {
+	ApiId          *int64  `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	CostTime       *string `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	DebugInfo      *string `json:"DebugInfo,omitempty" xml:"DebugInfo,omitempty"`
+	NodesDebugInfo *string `json:"NodesDebugInfo,omitempty" xml:"NodesDebugInfo,omitempty"`
+	ParamMap       *string `json:"ParamMap,omitempty" xml:"ParamMap,omitempty"`
+	RetCode        *int64  `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+	RetResult      *string `json:"RetResult,omitempty" xml:"RetResult,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s GetDataServiceApiTestResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataServiceApiTestResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataServiceApiTestResponseBodyData) SetApiId(v int64) *GetDataServiceApiTestResponseBodyData {
+	s.ApiId = &v
+	return s
+}
+
+func (s *GetDataServiceApiTestResponseBodyData) SetCostTime(v string) *GetDataServiceApiTestResponseBodyData {
+	s.CostTime = &v
+	return s
+}
+
+func (s *GetDataServiceApiTestResponseBodyData) SetDebugInfo(v string) *GetDataServiceApiTestResponseBodyData {
+	s.DebugInfo = &v
+	return s
+}
+
+func (s *GetDataServiceApiTestResponseBodyData) SetNodesDebugInfo(v string) *GetDataServiceApiTestResponseBodyData {
+	s.NodesDebugInfo = &v
+	return s
+}
+
+func (s *GetDataServiceApiTestResponseBodyData) SetParamMap(v string) *GetDataServiceApiTestResponseBodyData {
+	s.ParamMap = &v
+	return s
+}
+
+func (s *GetDataServiceApiTestResponseBodyData) SetRetCode(v int64) *GetDataServiceApiTestResponseBodyData {
+	s.RetCode = &v
+	return s
+}
+
+func (s *GetDataServiceApiTestResponseBodyData) SetRetResult(v string) *GetDataServiceApiTestResponseBodyData {
+	s.RetResult = &v
+	return s
+}
+
+func (s *GetDataServiceApiTestResponseBodyData) SetStatus(v string) *GetDataServiceApiTestResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+type GetDataServiceApiTestResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDataServiceApiTestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDataServiceApiTestResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDataServiceApiTestResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDataServiceApiTestResponse) SetHeaders(v map[string]*string) *GetDataServiceApiTestResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDataServiceApiTestResponse) SetStatusCode(v int32) *GetDataServiceApiTestResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDataServiceApiTestResponse) SetBody(v *GetDataServiceApiTestResponseBody) *GetDataServiceApiTestResponse {
+	s.Body = v
+	return s
+}
+
 type GetDataServiceApplicationRequest struct {
 	ApplicationId *int64 `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	ProjectId     *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
@@ -11353,6 +11481,170 @@ func (s *GetDeploymentResponse) SetStatusCode(v int32) *GetDeploymentResponse {
 }
 
 func (s *GetDeploymentResponse) SetBody(v *GetDeploymentResponseBody) *GetDeploymentResponse {
+	s.Body = v
+	return s
+}
+
+type GetDutyRosterRequest struct {
+	BeginTime            *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	DutyRosterIdentifier *string `json:"DutyRosterIdentifier,omitempty" xml:"DutyRosterIdentifier,omitempty"`
+	EndTime              *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	UserType             *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
+	Watchkeeper          *string `json:"Watchkeeper,omitempty" xml:"Watchkeeper,omitempty"`
+}
+
+func (s GetDutyRosterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDutyRosterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDutyRosterRequest) SetBeginTime(v int64) *GetDutyRosterRequest {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *GetDutyRosterRequest) SetDutyRosterIdentifier(v string) *GetDutyRosterRequest {
+	s.DutyRosterIdentifier = &v
+	return s
+}
+
+func (s *GetDutyRosterRequest) SetEndTime(v int64) *GetDutyRosterRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *GetDutyRosterRequest) SetUserType(v string) *GetDutyRosterRequest {
+	s.UserType = &v
+	return s
+}
+
+func (s *GetDutyRosterRequest) SetWatchkeeper(v string) *GetDutyRosterRequest {
+	s.Watchkeeper = &v
+	return s
+}
+
+type GetDutyRosterResponseBody struct {
+	Paging *GetDutyRosterResponseBodyPaging `json:"Paging,omitempty" xml:"Paging,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetDutyRosterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDutyRosterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDutyRosterResponseBody) SetPaging(v *GetDutyRosterResponseBodyPaging) *GetDutyRosterResponseBody {
+	s.Paging = v
+	return s
+}
+
+func (s *GetDutyRosterResponseBody) SetRequestId(v string) *GetDutyRosterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetDutyRosterResponseBodyPaging struct {
+	DutyRoster []*GetDutyRosterResponseBodyPagingDutyRoster `json:"DutyRoster,omitempty" xml:"DutyRoster,omitempty" type:"Repeated"`
+	PageNumber *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s GetDutyRosterResponseBodyPaging) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDutyRosterResponseBodyPaging) GoString() string {
+	return s.String()
+}
+
+func (s *GetDutyRosterResponseBodyPaging) SetDutyRoster(v []*GetDutyRosterResponseBodyPagingDutyRoster) *GetDutyRosterResponseBodyPaging {
+	s.DutyRoster = v
+	return s
+}
+
+func (s *GetDutyRosterResponseBodyPaging) SetPageNumber(v int32) *GetDutyRosterResponseBodyPaging {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *GetDutyRosterResponseBodyPaging) SetPageSize(v int32) *GetDutyRosterResponseBodyPaging {
+	s.PageSize = &v
+	return s
+}
+
+func (s *GetDutyRosterResponseBodyPaging) SetTotalCount(v int32) *GetDutyRosterResponseBodyPaging {
+	s.TotalCount = &v
+	return s
+}
+
+type GetDutyRosterResponseBodyPagingDutyRoster struct {
+	EndLong         *int64  `json:"EndLong,omitempty" xml:"EndLong,omitempty"`
+	StartLong       *int64  `json:"StartLong,omitempty" xml:"StartLong,omitempty"`
+	Watchkeeper     *string `json:"Watchkeeper,omitempty" xml:"Watchkeeper,omitempty"`
+	WatchkeeperName *string `json:"WatchkeeperName,omitempty" xml:"WatchkeeperName,omitempty"`
+}
+
+func (s GetDutyRosterResponseBodyPagingDutyRoster) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDutyRosterResponseBodyPagingDutyRoster) GoString() string {
+	return s.String()
+}
+
+func (s *GetDutyRosterResponseBodyPagingDutyRoster) SetEndLong(v int64) *GetDutyRosterResponseBodyPagingDutyRoster {
+	s.EndLong = &v
+	return s
+}
+
+func (s *GetDutyRosterResponseBodyPagingDutyRoster) SetStartLong(v int64) *GetDutyRosterResponseBodyPagingDutyRoster {
+	s.StartLong = &v
+	return s
+}
+
+func (s *GetDutyRosterResponseBodyPagingDutyRoster) SetWatchkeeper(v string) *GetDutyRosterResponseBodyPagingDutyRoster {
+	s.Watchkeeper = &v
+	return s
+}
+
+func (s *GetDutyRosterResponseBodyPagingDutyRoster) SetWatchkeeperName(v string) *GetDutyRosterResponseBodyPagingDutyRoster {
+	s.WatchkeeperName = &v
+	return s
+}
+
+type GetDutyRosterResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDutyRosterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDutyRosterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDutyRosterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDutyRosterResponse) SetHeaders(v map[string]*string) *GetDutyRosterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDutyRosterResponse) SetStatusCode(v int32) *GetDutyRosterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDutyRosterResponse) SetBody(v *GetDutyRosterResponseBody) *GetDutyRosterResponse {
 	s.Body = v
 	return s
 }
@@ -23827,6 +24119,140 @@ func (s *ListDataServiceApiAuthoritiesResponse) SetBody(v *ListDataServiceApiAut
 	return s
 }
 
+type ListDataServiceApiTestRequest struct {
+	ApiId    *int64 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListDataServiceApiTestRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataServiceApiTestRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataServiceApiTestRequest) SetApiId(v int64) *ListDataServiceApiTestRequest {
+	s.ApiId = &v
+	return s
+}
+
+func (s *ListDataServiceApiTestRequest) SetPageSize(v int32) *ListDataServiceApiTestRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListDataServiceApiTestResponseBody struct {
+	Data      []*ListDataServiceApiTestResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDataServiceApiTestResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataServiceApiTestResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataServiceApiTestResponseBody) SetData(v []*ListDataServiceApiTestResponseBodyData) *ListDataServiceApiTestResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListDataServiceApiTestResponseBody) SetRequestId(v string) *ListDataServiceApiTestResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDataServiceApiTestResponseBodyData struct {
+	ApiId      *int64  `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	CostTime   *int32  `json:"CostTime,omitempty" xml:"CostTime,omitempty"`
+	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ParamMap   *string `json:"ParamMap,omitempty" xml:"ParamMap,omitempty"`
+	RetCode    *int64  `json:"RetCode,omitempty" xml:"RetCode,omitempty"`
+	RetResult  *string `json:"RetResult,omitempty" xml:"RetResult,omitempty"`
+	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TestId     *int64  `json:"TestId,omitempty" xml:"TestId,omitempty"`
+}
+
+func (s ListDataServiceApiTestResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataServiceApiTestResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataServiceApiTestResponseBodyData) SetApiId(v int64) *ListDataServiceApiTestResponseBodyData {
+	s.ApiId = &v
+	return s
+}
+
+func (s *ListDataServiceApiTestResponseBodyData) SetCostTime(v int32) *ListDataServiceApiTestResponseBodyData {
+	s.CostTime = &v
+	return s
+}
+
+func (s *ListDataServiceApiTestResponseBodyData) SetCreateTime(v int64) *ListDataServiceApiTestResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListDataServiceApiTestResponseBodyData) SetParamMap(v string) *ListDataServiceApiTestResponseBodyData {
+	s.ParamMap = &v
+	return s
+}
+
+func (s *ListDataServiceApiTestResponseBodyData) SetRetCode(v int64) *ListDataServiceApiTestResponseBodyData {
+	s.RetCode = &v
+	return s
+}
+
+func (s *ListDataServiceApiTestResponseBodyData) SetRetResult(v string) *ListDataServiceApiTestResponseBodyData {
+	s.RetResult = &v
+	return s
+}
+
+func (s *ListDataServiceApiTestResponseBodyData) SetStatus(v string) *ListDataServiceApiTestResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *ListDataServiceApiTestResponseBodyData) SetTestId(v int64) *ListDataServiceApiTestResponseBodyData {
+	s.TestId = &v
+	return s
+}
+
+type ListDataServiceApiTestResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDataServiceApiTestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDataServiceApiTestResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDataServiceApiTestResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDataServiceApiTestResponse) SetHeaders(v map[string]*string) *ListDataServiceApiTestResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDataServiceApiTestResponse) SetStatusCode(v int32) *ListDataServiceApiTestResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDataServiceApiTestResponse) SetBody(v *ListDataServiceApiTestResponseBody) *ListDataServiceApiTestResponse {
+	s.Body = v
+	return s
+}
+
 type ListDataServiceApisRequest struct {
 	ApiNameKeyword *string `json:"ApiNameKeyword,omitempty" xml:"ApiNameKeyword,omitempty"`
 	ApiPathKeyword *string `json:"ApiPathKeyword,omitempty" xml:"ApiPathKeyword,omitempty"`
@@ -26766,6 +27192,152 @@ func (s *ListDeploymentsResponse) SetStatusCode(v int32) *ListDeploymentsRespons
 }
 
 func (s *ListDeploymentsResponse) SetBody(v *ListDeploymentsResponseBody) *ListDeploymentsResponse {
+	s.Body = v
+	return s
+}
+
+type ListDutyRostersRequest struct {
+	DutyRosterName  *string `json:"DutyRosterName,omitempty" xml:"DutyRosterName,omitempty"`
+	DutyRosterOwner *string `json:"DutyRosterOwner,omitempty" xml:"DutyRosterOwner,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListDutyRostersRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDutyRostersRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDutyRostersRequest) SetDutyRosterName(v string) *ListDutyRostersRequest {
+	s.DutyRosterName = &v
+	return s
+}
+
+func (s *ListDutyRostersRequest) SetDutyRosterOwner(v string) *ListDutyRostersRequest {
+	s.DutyRosterOwner = &v
+	return s
+}
+
+func (s *ListDutyRostersRequest) SetPageNumber(v int32) *ListDutyRostersRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDutyRostersRequest) SetPageSize(v int32) *ListDutyRostersRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListDutyRostersResponseBody struct {
+	Paging *ListDutyRostersResponseBodyPaging `json:"Paging,omitempty" xml:"Paging,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListDutyRostersResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDutyRostersResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDutyRostersResponseBody) SetPaging(v *ListDutyRostersResponseBodyPaging) *ListDutyRostersResponseBody {
+	s.Paging = v
+	return s
+}
+
+func (s *ListDutyRostersResponseBody) SetRequestId(v string) *ListDutyRostersResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListDutyRostersResponseBodyPaging struct {
+	DutyRosters []*ListDutyRostersResponseBodyPagingDutyRosters `json:"DutyRosters,omitempty" xml:"DutyRosters,omitempty" type:"Repeated"`
+	PageNumber  *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListDutyRostersResponseBodyPaging) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDutyRostersResponseBodyPaging) GoString() string {
+	return s.String()
+}
+
+func (s *ListDutyRostersResponseBodyPaging) SetDutyRosters(v []*ListDutyRostersResponseBodyPagingDutyRosters) *ListDutyRostersResponseBodyPaging {
+	s.DutyRosters = v
+	return s
+}
+
+func (s *ListDutyRostersResponseBodyPaging) SetPageNumber(v int32) *ListDutyRostersResponseBodyPaging {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListDutyRostersResponseBodyPaging) SetPageSize(v int32) *ListDutyRostersResponseBodyPaging {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDutyRostersResponseBodyPaging) SetTotalCount(v int32) *ListDutyRostersResponseBodyPaging {
+	s.TotalCount = &v
+	return s
+}
+
+type ListDutyRostersResponseBodyPagingDutyRosters struct {
+	DutyRosterIdentifier *string `json:"DutyRosterIdentifier,omitempty" xml:"DutyRosterIdentifier,omitempty"`
+	DutyRosterName       *string `json:"DutyRosterName,omitempty" xml:"DutyRosterName,omitempty"`
+}
+
+func (s ListDutyRostersResponseBodyPagingDutyRosters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDutyRostersResponseBodyPagingDutyRosters) GoString() string {
+	return s.String()
+}
+
+func (s *ListDutyRostersResponseBodyPagingDutyRosters) SetDutyRosterIdentifier(v string) *ListDutyRostersResponseBodyPagingDutyRosters {
+	s.DutyRosterIdentifier = &v
+	return s
+}
+
+func (s *ListDutyRostersResponseBodyPagingDutyRosters) SetDutyRosterName(v string) *ListDutyRostersResponseBodyPagingDutyRosters {
+	s.DutyRosterName = &v
+	return s
+}
+
+type ListDutyRostersResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDutyRostersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDutyRostersResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDutyRostersResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDutyRostersResponse) SetHeaders(v map[string]*string) *ListDutyRostersResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDutyRostersResponse) SetStatusCode(v int32) *ListDutyRostersResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDutyRostersResponse) SetBody(v *ListDutyRostersResponseBody) *ListDutyRostersResponse {
 	s.Body = v
 	return s
 }
@@ -36429,6 +37001,214 @@ func (s *TerminateDISyncInstanceResponse) SetBody(v *TerminateDISyncInstanceResp
 	return s
 }
 
+type TestDataServiceApiRequest struct {
+	ApiId       *int64                                 `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
+	BodyContent *string                                `json:"BodyContent,omitempty" xml:"BodyContent,omitempty"`
+	BodyParams  []*TestDataServiceApiRequestBodyParams `json:"BodyParams,omitempty" xml:"BodyParams,omitempty" type:"Repeated"`
+	HeadParams  []*TestDataServiceApiRequestHeadParams `json:"HeadParams,omitempty" xml:"HeadParams,omitempty" type:"Repeated"`
+	PathParams  []*TestDataServiceApiRequestPathParams `json:"PathParams,omitempty" xml:"PathParams,omitempty" type:"Repeated"`
+	QueryParam  []*TestDataServiceApiRequestQueryParam `json:"QueryParam,omitempty" xml:"QueryParam,omitempty" type:"Repeated"`
+}
+
+func (s TestDataServiceApiRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestDataServiceApiRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TestDataServiceApiRequest) SetApiId(v int64) *TestDataServiceApiRequest {
+	s.ApiId = &v
+	return s
+}
+
+func (s *TestDataServiceApiRequest) SetBodyContent(v string) *TestDataServiceApiRequest {
+	s.BodyContent = &v
+	return s
+}
+
+func (s *TestDataServiceApiRequest) SetBodyParams(v []*TestDataServiceApiRequestBodyParams) *TestDataServiceApiRequest {
+	s.BodyParams = v
+	return s
+}
+
+func (s *TestDataServiceApiRequest) SetHeadParams(v []*TestDataServiceApiRequestHeadParams) *TestDataServiceApiRequest {
+	s.HeadParams = v
+	return s
+}
+
+func (s *TestDataServiceApiRequest) SetPathParams(v []*TestDataServiceApiRequestPathParams) *TestDataServiceApiRequest {
+	s.PathParams = v
+	return s
+}
+
+func (s *TestDataServiceApiRequest) SetQueryParam(v []*TestDataServiceApiRequestQueryParam) *TestDataServiceApiRequest {
+	s.QueryParam = v
+	return s
+}
+
+type TestDataServiceApiRequestBodyParams struct {
+	ParamKey   *string `json:"ParamKey,omitempty" xml:"ParamKey,omitempty"`
+	ParamValue *string `json:"ParamValue,omitempty" xml:"ParamValue,omitempty"`
+}
+
+func (s TestDataServiceApiRequestBodyParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestDataServiceApiRequestBodyParams) GoString() string {
+	return s.String()
+}
+
+func (s *TestDataServiceApiRequestBodyParams) SetParamKey(v string) *TestDataServiceApiRequestBodyParams {
+	s.ParamKey = &v
+	return s
+}
+
+func (s *TestDataServiceApiRequestBodyParams) SetParamValue(v string) *TestDataServiceApiRequestBodyParams {
+	s.ParamValue = &v
+	return s
+}
+
+type TestDataServiceApiRequestHeadParams struct {
+	ParamKey   *string `json:"ParamKey,omitempty" xml:"ParamKey,omitempty"`
+	ParamValue *string `json:"ParamValue,omitempty" xml:"ParamValue,omitempty"`
+}
+
+func (s TestDataServiceApiRequestHeadParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestDataServiceApiRequestHeadParams) GoString() string {
+	return s.String()
+}
+
+func (s *TestDataServiceApiRequestHeadParams) SetParamKey(v string) *TestDataServiceApiRequestHeadParams {
+	s.ParamKey = &v
+	return s
+}
+
+func (s *TestDataServiceApiRequestHeadParams) SetParamValue(v string) *TestDataServiceApiRequestHeadParams {
+	s.ParamValue = &v
+	return s
+}
+
+type TestDataServiceApiRequestPathParams struct {
+	ParamKey   *string `json:"ParamKey,omitempty" xml:"ParamKey,omitempty"`
+	ParamValue *string `json:"ParamValue,omitempty" xml:"ParamValue,omitempty"`
+}
+
+func (s TestDataServiceApiRequestPathParams) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestDataServiceApiRequestPathParams) GoString() string {
+	return s.String()
+}
+
+func (s *TestDataServiceApiRequestPathParams) SetParamKey(v string) *TestDataServiceApiRequestPathParams {
+	s.ParamKey = &v
+	return s
+}
+
+func (s *TestDataServiceApiRequestPathParams) SetParamValue(v string) *TestDataServiceApiRequestPathParams {
+	s.ParamValue = &v
+	return s
+}
+
+type TestDataServiceApiRequestQueryParam struct {
+	ParamKey   *string `json:"ParamKey,omitempty" xml:"ParamKey,omitempty"`
+	ParamValue *string `json:"ParamValue,omitempty" xml:"ParamValue,omitempty"`
+}
+
+func (s TestDataServiceApiRequestQueryParam) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestDataServiceApiRequestQueryParam) GoString() string {
+	return s.String()
+}
+
+func (s *TestDataServiceApiRequestQueryParam) SetParamKey(v string) *TestDataServiceApiRequestQueryParam {
+	s.ParamKey = &v
+	return s
+}
+
+func (s *TestDataServiceApiRequestQueryParam) SetParamValue(v string) *TestDataServiceApiRequestQueryParam {
+	s.ParamValue = &v
+	return s
+}
+
+type TestDataServiceApiResponseBody struct {
+	Data      *TestDataServiceApiResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TestDataServiceApiResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestDataServiceApiResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TestDataServiceApiResponseBody) SetData(v *TestDataServiceApiResponseBodyData) *TestDataServiceApiResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *TestDataServiceApiResponseBody) SetRequestId(v string) *TestDataServiceApiResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TestDataServiceApiResponseBodyData struct {
+	TestId *string `json:"TestId,omitempty" xml:"TestId,omitempty"`
+}
+
+func (s TestDataServiceApiResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestDataServiceApiResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *TestDataServiceApiResponseBodyData) SetTestId(v string) *TestDataServiceApiResponseBodyData {
+	s.TestId = &v
+	return s
+}
+
+type TestDataServiceApiResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TestDataServiceApiResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TestDataServiceApiResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TestDataServiceApiResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TestDataServiceApiResponse) SetHeaders(v map[string]*string) *TestDataServiceApiResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TestDataServiceApiResponse) SetStatusCode(v int32) *TestDataServiceApiResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TestDataServiceApiResponse) SetBody(v *TestDataServiceApiResponseBody) *TestDataServiceApiResponse {
+	s.Body = v
+	return s
+}
+
 type TestNetworkConnectionRequest struct {
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
 	EnvType        *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
@@ -44339,6 +45119,46 @@ func (client *Client) GetDataServiceApi(request *GetDataServiceApiRequest) (_res
 	return _result, _err
 }
 
+func (client *Client) GetDataServiceApiTestWithOptions(request *GetDataServiceApiTestRequest, runtime *util.RuntimeOptions) (_result *GetDataServiceApiTestResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDataServiceApiTest"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDataServiceApiTestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDataServiceApiTest(request *GetDataServiceApiTestRequest) (_result *GetDataServiceApiTestResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDataServiceApiTestResponse{}
+	_body, _err := client.GetDataServiceApiTestWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetDataServiceApplicationWithOptions(request *GetDataServiceApplicationRequest, runtime *util.RuntimeOptions) (_result *GetDataServiceApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -44652,6 +45472,66 @@ func (client *Client) GetDeployment(request *GetDeploymentRequest) (_result *Get
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDeploymentResponse{}
 	_body, _err := client.GetDeploymentWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetDutyRosterWithOptions(request *GetDutyRosterRequest, runtime *util.RuntimeOptions) (_result *GetDutyRosterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BeginTime)) {
+		body["BeginTime"] = request.BeginTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DutyRosterIdentifier)) {
+		body["DutyRosterIdentifier"] = request.DutyRosterIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserType)) {
+		body["UserType"] = request.UserType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Watchkeeper)) {
+		body["Watchkeeper"] = request.Watchkeeper
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDutyRoster"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDutyRosterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDutyRoster(request *GetDutyRosterRequest) (_result *GetDutyRosterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDutyRosterResponse{}
+	_body, _err := client.GetDutyRosterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -47849,6 +48729,46 @@ func (client *Client) ListDataServiceApiAuthorities(request *ListDataServiceApiA
 	return _result, _err
 }
 
+func (client *Client) ListDataServiceApiTestWithOptions(request *ListDataServiceApiTestRequest, runtime *util.RuntimeOptions) (_result *ListDataServiceApiTestResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDataServiceApiTest"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDataServiceApiTestResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDataServiceApiTest(request *ListDataServiceApiTestRequest) (_result *ListDataServiceApiTestResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDataServiceApiTestResponse{}
+	_body, _err := client.ListDataServiceApiTestWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListDataServiceApisWithOptions(request *ListDataServiceApisRequest, runtime *util.RuntimeOptions) (_result *ListDataServiceApisResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -48340,6 +49260,62 @@ func (client *Client) ListDeployments(request *ListDeploymentsRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDeploymentsResponse{}
 	_body, _err := client.ListDeploymentsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDutyRostersWithOptions(request *ListDutyRostersRequest, runtime *util.RuntimeOptions) (_result *ListDutyRostersResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DutyRosterName)) {
+		body["DutyRosterName"] = request.DutyRosterName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DutyRosterOwner)) {
+		body["DutyRosterOwner"] = request.DutyRosterOwner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDutyRosters"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDutyRostersResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDutyRosters(request *ListDutyRostersRequest) (_result *ListDutyRostersResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDutyRostersResponse{}
+	_body, _err := client.ListDutyRostersWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -51544,6 +52520,72 @@ func (client *Client) TerminateDISyncInstance(request *TerminateDISyncInstanceRe
 	runtime := &util.RuntimeOptions{}
 	_result = &TerminateDISyncInstanceResponse{}
 	_body, _err := client.TerminateDISyncInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TestDataServiceApiWithOptions(request *TestDataServiceApiRequest, runtime *util.RuntimeOptions) (_result *TestDataServiceApiResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ApiId)) {
+		query["ApiId"] = request.ApiId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BodyContent)) {
+		body["BodyContent"] = request.BodyContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BodyParams)) {
+		body["BodyParams"] = request.BodyParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HeadParams)) {
+		body["HeadParams"] = request.HeadParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PathParams)) {
+		body["PathParams"] = request.PathParams
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryParam)) {
+		body["QueryParam"] = request.QueryParam
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TestDataServiceApi"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TestDataServiceApiResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TestDataServiceApi(request *TestDataServiceApiRequest) (_result *TestDataServiceApiResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TestDataServiceApiResponse{}
+	_body, _err := client.TestDataServiceApiWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
