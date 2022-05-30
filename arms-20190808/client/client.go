@@ -4010,6 +4010,82 @@ func (s *CreateWebhookResponse) SetBody(v *CreateWebhookResponseBody) *CreateWeb
 	return s
 }
 
+type DeleteASMIntegrationRequest struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DeleteASMIntegrationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteASMIntegrationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteASMIntegrationRequest) SetClusterId(v string) *DeleteASMIntegrationRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *DeleteASMIntegrationRequest) SetRegionId(v string) *DeleteASMIntegrationRequest {
+	s.RegionId = &v
+	return s
+}
+
+type DeleteASMIntegrationResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	State     *bool   `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s DeleteASMIntegrationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteASMIntegrationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteASMIntegrationResponseBody) SetRequestId(v string) *DeleteASMIntegrationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteASMIntegrationResponseBody) SetState(v bool) *DeleteASMIntegrationResponseBody {
+	s.State = &v
+	return s
+}
+
+type DeleteASMIntegrationResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteASMIntegrationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteASMIntegrationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteASMIntegrationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteASMIntegrationResponse) SetHeaders(v map[string]*string) *DeleteASMIntegrationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteASMIntegrationResponse) SetStatusCode(v int32) *DeleteASMIntegrationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteASMIntegrationResponse) SetBody(v *DeleteASMIntegrationResponseBody) *DeleteASMIntegrationResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAlertContactRequest struct {
 	ContactId *int64  `json:"ContactId,omitempty" xml:"ContactId,omitempty"`
 	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -6661,9 +6737,9 @@ func (s *DescribeWebhookContactsResponseBodyPageBeanWebhookContacts) SetWebhookN
 
 type DescribeWebhookContactsResponseBodyPageBeanWebhookContactsWebhook struct {
 	// HTTP请求头
-	BizHeaders *string `json:"BizHeaders,omitempty" xml:"BizHeaders,omitempty"`
+	BizHeaders map[string]interface{} `json:"BizHeaders,omitempty" xml:"BizHeaders,omitempty"`
 	// HTTP请求参数
-	BizParams *string `json:"BizParams,omitempty" xml:"BizParams,omitempty"`
+	BizParams map[string]interface{} `json:"BizParams,omitempty" xml:"BizParams,omitempty"`
 	// 告警通知模板
 	Body *string `json:"Body,omitempty" xml:"Body,omitempty"`
 	// http请求方式
@@ -6682,13 +6758,13 @@ func (s DescribeWebhookContactsResponseBodyPageBeanWebhookContactsWebhook) GoStr
 	return s.String()
 }
 
-func (s *DescribeWebhookContactsResponseBodyPageBeanWebhookContactsWebhook) SetBizHeaders(v string) *DescribeWebhookContactsResponseBodyPageBeanWebhookContactsWebhook {
-	s.BizHeaders = &v
+func (s *DescribeWebhookContactsResponseBodyPageBeanWebhookContactsWebhook) SetBizHeaders(v map[string]interface{}) *DescribeWebhookContactsResponseBodyPageBeanWebhookContactsWebhook {
+	s.BizHeaders = v
 	return s
 }
 
-func (s *DescribeWebhookContactsResponseBodyPageBeanWebhookContactsWebhook) SetBizParams(v string) *DescribeWebhookContactsResponseBodyPageBeanWebhookContactsWebhook {
-	s.BizParams = &v
+func (s *DescribeWebhookContactsResponseBodyPageBeanWebhookContactsWebhook) SetBizParams(v map[string]interface{}) *DescribeWebhookContactsResponseBodyPageBeanWebhookContactsWebhook {
+	s.BizParams = v
 	return s
 }
 
@@ -7063,6 +7139,82 @@ func (s *ExploreTraceResponse) SetStatusCode(v int32) *ExploreTraceResponse {
 }
 
 func (s *ExploreTraceResponse) SetBody(v *ExploreTraceResponseBody) *ExploreTraceResponse {
+	s.Body = v
+	return s
+}
+
+type GetASMIntegrationStateRequest struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetASMIntegrationStateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetASMIntegrationStateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetASMIntegrationStateRequest) SetClusterId(v string) *GetASMIntegrationStateRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetASMIntegrationStateRequest) SetRegionId(v string) *GetASMIntegrationStateRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetASMIntegrationStateResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	State     *bool   `json:"State,omitempty" xml:"State,omitempty"`
+}
+
+func (s GetASMIntegrationStateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetASMIntegrationStateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetASMIntegrationStateResponseBody) SetRequestId(v string) *GetASMIntegrationStateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetASMIntegrationStateResponseBody) SetState(v bool) *GetASMIntegrationStateResponseBody {
+	s.State = &v
+	return s
+}
+
+type GetASMIntegrationStateResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetASMIntegrationStateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetASMIntegrationStateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetASMIntegrationStateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetASMIntegrationStateResponse) SetHeaders(v map[string]*string) *GetASMIntegrationStateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetASMIntegrationStateResponse) SetStatusCode(v int32) *GetASMIntegrationStateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetASMIntegrationStateResponse) SetBody(v *GetASMIntegrationStateResponseBody) *GetASMIntegrationStateResponse {
 	s.Body = v
 	return s
 }
@@ -7848,6 +8000,75 @@ func (s *GetAppApiByPageResponse) SetStatusCode(v int32) *GetAppApiByPageRespons
 }
 
 func (s *GetAppApiByPageResponse) SetBody(v *GetAppApiByPageResponseBody) *GetAppApiByPageResponse {
+	s.Body = v
+	return s
+}
+
+type GetArmsAgentDownLoadUrlRequest struct {
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s GetArmsAgentDownLoadUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArmsAgentDownLoadUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetArmsAgentDownLoadUrlRequest) SetRegionId(v string) *GetArmsAgentDownLoadUrlRequest {
+	s.RegionId = &v
+	return s
+}
+
+type GetArmsAgentDownLoadUrlResponseBody struct {
+	ArmsAgentDownloadUrl *string `json:"ArmsAgentDownloadUrl,omitempty" xml:"ArmsAgentDownloadUrl,omitempty"`
+	RequestId            *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetArmsAgentDownLoadUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArmsAgentDownLoadUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetArmsAgentDownLoadUrlResponseBody) SetArmsAgentDownloadUrl(v string) *GetArmsAgentDownLoadUrlResponseBody {
+	s.ArmsAgentDownloadUrl = &v
+	return s
+}
+
+func (s *GetArmsAgentDownLoadUrlResponseBody) SetRequestId(v string) *GetArmsAgentDownLoadUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetArmsAgentDownLoadUrlResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetArmsAgentDownLoadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetArmsAgentDownLoadUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetArmsAgentDownLoadUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetArmsAgentDownLoadUrlResponse) SetHeaders(v map[string]*string) *GetArmsAgentDownLoadUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetArmsAgentDownLoadUrlResponse) SetStatusCode(v int32) *GetArmsAgentDownLoadUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetArmsAgentDownLoadUrlResponse) SetBody(v *GetArmsAgentDownLoadUrlResponseBody) *GetArmsAgentDownLoadUrlResponse {
 	s.Body = v
 	return s
 }
@@ -9007,10 +9228,12 @@ func (s *GetRetcodeShareUrlResponse) SetBody(v *GetRetcodeShareUrlResponseBody) 
 }
 
 type GetStackRequest struct {
-	Pid      *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RpcID    *string `json:"RpcID,omitempty" xml:"RpcID,omitempty"`
-	TraceID  *string `json:"TraceID,omitempty" xml:"TraceID,omitempty"`
+	EndTime   *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Pid       *string `json:"Pid,omitempty" xml:"Pid,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RpcID     *string `json:"RpcID,omitempty" xml:"RpcID,omitempty"`
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TraceID   *string `json:"TraceID,omitempty" xml:"TraceID,omitempty"`
 }
 
 func (s GetStackRequest) String() string {
@@ -9019,6 +9242,11 @@ func (s GetStackRequest) String() string {
 
 func (s GetStackRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetStackRequest) SetEndTime(v int64) *GetStackRequest {
+	s.EndTime = &v
+	return s
 }
 
 func (s *GetStackRequest) SetPid(v string) *GetStackRequest {
@@ -9033,6 +9261,11 @@ func (s *GetStackRequest) SetRegionId(v string) *GetStackRequest {
 
 func (s *GetStackRequest) SetRpcID(v string) *GetStackRequest {
 	s.RpcID = &v
+	return s
+}
+
+func (s *GetStackRequest) SetStartTime(v int64) *GetStackRequest {
+	s.StartTime = &v
 	return s
 }
 
@@ -14139,6 +14372,99 @@ func (s *OpenXtraceDefaultSLRResponse) SetBody(v *OpenXtraceDefaultSLRResponseBo
 	return s
 }
 
+type PromVpcExporterManagerRequest struct {
+	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ExporterConfig *string `json:"ExporterConfig,omitempty" xml:"ExporterConfig,omitempty"`
+	ExporterType   *string `json:"ExporterType,omitempty" xml:"ExporterType,omitempty"`
+	Method         *string `json:"Method,omitempty" xml:"Method,omitempty"`
+	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s PromVpcExporterManagerRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PromVpcExporterManagerRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PromVpcExporterManagerRequest) SetClusterId(v string) *PromVpcExporterManagerRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *PromVpcExporterManagerRequest) SetExporterConfig(v string) *PromVpcExporterManagerRequest {
+	s.ExporterConfig = &v
+	return s
+}
+
+func (s *PromVpcExporterManagerRequest) SetExporterType(v string) *PromVpcExporterManagerRequest {
+	s.ExporterType = &v
+	return s
+}
+
+func (s *PromVpcExporterManagerRequest) SetMethod(v string) *PromVpcExporterManagerRequest {
+	s.Method = &v
+	return s
+}
+
+func (s *PromVpcExporterManagerRequest) SetRegionId(v string) *PromVpcExporterManagerRequest {
+	s.RegionId = &v
+	return s
+}
+
+type PromVpcExporterManagerResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Token     *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s PromVpcExporterManagerResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PromVpcExporterManagerResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PromVpcExporterManagerResponseBody) SetRequestId(v string) *PromVpcExporterManagerResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PromVpcExporterManagerResponseBody) SetToken(v string) *PromVpcExporterManagerResponseBody {
+	s.Token = &v
+	return s
+}
+
+type PromVpcExporterManagerResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PromVpcExporterManagerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PromVpcExporterManagerResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PromVpcExporterManagerResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PromVpcExporterManagerResponse) SetHeaders(v map[string]*string) *PromVpcExporterManagerResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PromVpcExporterManagerResponse) SetStatusCode(v int32) *PromVpcExporterManagerResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PromVpcExporterManagerResponse) SetBody(v *PromVpcExporterManagerResponseBody) *PromVpcExporterManagerResponse {
+	s.Body = v
+	return s
+}
+
 type QueryDatasetRequest struct {
 	DatasetId     *int64                             `json:"DatasetId,omitempty" xml:"DatasetId,omitempty"`
 	DateStr       *string                            `json:"DateStr,omitempty" xml:"DateStr,omitempty"`
@@ -15977,6 +16303,211 @@ func (s *SearchAlertHistoriesResponse) SetStatusCode(v int32) *SearchAlertHistor
 }
 
 func (s *SearchAlertHistoriesResponse) SetBody(v *SearchAlertHistoriesResponseBody) *SearchAlertHistoriesResponse {
+	s.Body = v
+	return s
+}
+
+type SearchAlertHistorysRequest struct {
+	AlertId     *int64  `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	AlertType   *int32  `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
+	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	EndTime     *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ProxyUserId *string `json:"ProxyUserId,omitempty" xml:"ProxyUserId,omitempty"`
+	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StartTime   *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s SearchAlertHistorysRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchAlertHistorysRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SearchAlertHistorysRequest) SetAlertId(v int64) *SearchAlertHistorysRequest {
+	s.AlertId = &v
+	return s
+}
+
+func (s *SearchAlertHistorysRequest) SetAlertType(v int32) *SearchAlertHistorysRequest {
+	s.AlertType = &v
+	return s
+}
+
+func (s *SearchAlertHistorysRequest) SetCurrentPage(v int32) *SearchAlertHistorysRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *SearchAlertHistorysRequest) SetEndTime(v int64) *SearchAlertHistorysRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *SearchAlertHistorysRequest) SetPageSize(v int32) *SearchAlertHistorysRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchAlertHistorysRequest) SetProxyUserId(v string) *SearchAlertHistorysRequest {
+	s.ProxyUserId = &v
+	return s
+}
+
+func (s *SearchAlertHistorysRequest) SetRegionId(v string) *SearchAlertHistorysRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SearchAlertHistorysRequest) SetStartTime(v int64) *SearchAlertHistorysRequest {
+	s.StartTime = &v
+	return s
+}
+
+type SearchAlertHistorysResponseBody struct {
+	PageBean  *SearchAlertHistorysResponseBodyPageBean `json:"PageBean,omitempty" xml:"PageBean,omitempty" type:"Struct"`
+	RequestId *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SearchAlertHistorysResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchAlertHistorysResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SearchAlertHistorysResponseBody) SetPageBean(v *SearchAlertHistorysResponseBodyPageBean) *SearchAlertHistorysResponseBody {
+	s.PageBean = v
+	return s
+}
+
+func (s *SearchAlertHistorysResponseBody) SetRequestId(v string) *SearchAlertHistorysResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SearchAlertHistorysResponseBodyPageBean struct {
+	AlertHistory []*SearchAlertHistorysResponseBodyPageBeanAlertHistory `json:"AlertHistory,omitempty" xml:"AlertHistory,omitempty" type:"Repeated"`
+	PageNumber   *int32                                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32                                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount   *int32                                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s SearchAlertHistorysResponseBodyPageBean) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchAlertHistorysResponseBodyPageBean) GoString() string {
+	return s.String()
+}
+
+func (s *SearchAlertHistorysResponseBodyPageBean) SetAlertHistory(v []*SearchAlertHistorysResponseBodyPageBeanAlertHistory) *SearchAlertHistorysResponseBodyPageBean {
+	s.AlertHistory = v
+	return s
+}
+
+func (s *SearchAlertHistorysResponseBodyPageBean) SetPageNumber(v int32) *SearchAlertHistorysResponseBodyPageBean {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *SearchAlertHistorysResponseBodyPageBean) SetPageSize(v int32) *SearchAlertHistorysResponseBodyPageBean {
+	s.PageSize = &v
+	return s
+}
+
+func (s *SearchAlertHistorysResponseBodyPageBean) SetTotalCount(v int32) *SearchAlertHistorysResponseBodyPageBean {
+	s.TotalCount = &v
+	return s
+}
+
+type SearchAlertHistorysResponseBodyPageBeanAlertHistory struct {
+	AlarmContent      *string `json:"AlarmContent,omitempty" xml:"AlarmContent,omitempty"`
+	AlarmResponseCode *string `json:"AlarmResponseCode,omitempty" xml:"AlarmResponseCode,omitempty"`
+	AlarmTime         *int64  `json:"AlarmTime,omitempty" xml:"AlarmTime,omitempty"`
+	AlarmType         *int32  `json:"AlarmType,omitempty" xml:"AlarmType,omitempty"`
+	AlertId           *int64  `json:"AlertId,omitempty" xml:"AlertId,omitempty"`
+	Id                *int32  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Phones            *string `json:"Phones,omitempty" xml:"Phones,omitempty"`
+	Tenant            *string `json:"Tenant,omitempty" xml:"Tenant,omitempty"`
+}
+
+func (s SearchAlertHistorysResponseBodyPageBeanAlertHistory) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchAlertHistorysResponseBodyPageBeanAlertHistory) GoString() string {
+	return s.String()
+}
+
+func (s *SearchAlertHistorysResponseBodyPageBeanAlertHistory) SetAlarmContent(v string) *SearchAlertHistorysResponseBodyPageBeanAlertHistory {
+	s.AlarmContent = &v
+	return s
+}
+
+func (s *SearchAlertHistorysResponseBodyPageBeanAlertHistory) SetAlarmResponseCode(v string) *SearchAlertHistorysResponseBodyPageBeanAlertHistory {
+	s.AlarmResponseCode = &v
+	return s
+}
+
+func (s *SearchAlertHistorysResponseBodyPageBeanAlertHistory) SetAlarmTime(v int64) *SearchAlertHistorysResponseBodyPageBeanAlertHistory {
+	s.AlarmTime = &v
+	return s
+}
+
+func (s *SearchAlertHistorysResponseBodyPageBeanAlertHistory) SetAlarmType(v int32) *SearchAlertHistorysResponseBodyPageBeanAlertHistory {
+	s.AlarmType = &v
+	return s
+}
+
+func (s *SearchAlertHistorysResponseBodyPageBeanAlertHistory) SetAlertId(v int64) *SearchAlertHistorysResponseBodyPageBeanAlertHistory {
+	s.AlertId = &v
+	return s
+}
+
+func (s *SearchAlertHistorysResponseBodyPageBeanAlertHistory) SetId(v int32) *SearchAlertHistorysResponseBodyPageBeanAlertHistory {
+	s.Id = &v
+	return s
+}
+
+func (s *SearchAlertHistorysResponseBodyPageBeanAlertHistory) SetPhones(v string) *SearchAlertHistorysResponseBodyPageBeanAlertHistory {
+	s.Phones = &v
+	return s
+}
+
+func (s *SearchAlertHistorysResponseBodyPageBeanAlertHistory) SetTenant(v string) *SearchAlertHistorysResponseBodyPageBeanAlertHistory {
+	s.Tenant = &v
+	return s
+}
+
+type SearchAlertHistorysResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchAlertHistorysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SearchAlertHistorysResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SearchAlertHistorysResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SearchAlertHistorysResponse) SetHeaders(v map[string]*string) *SearchAlertHistorysResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SearchAlertHistorysResponse) SetStatusCode(v int32) *SearchAlertHistorysResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SearchAlertHistorysResponse) SetBody(v *SearchAlertHistorysResponseBody) *SearchAlertHistorysResponse {
 	s.Body = v
 	return s
 }
@@ -21208,6 +21739,54 @@ func (client *Client) CreateWebhook(request *CreateWebhookRequest) (_result *Cre
 	return _result, _err
 }
 
+func (client *Client) DeleteASMIntegrationWithOptions(request *DeleteASMIntegrationRequest, runtime *util.RuntimeOptions) (_result *DeleteASMIntegrationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteASMIntegration"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteASMIntegrationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteASMIntegration(request *DeleteASMIntegrationRequest) (_result *DeleteASMIntegrationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteASMIntegrationResponse{}
+	_body, _err := client.DeleteASMIntegrationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteAlertContactWithOptions(request *DeleteAlertContactRequest, runtime *util.RuntimeOptions) (_result *DeleteAlertContactResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22540,6 +23119,54 @@ func (client *Client) ExploreTrace(request *ExploreTraceRequest) (_result *Explo
 	return _result, _err
 }
 
+func (client *Client) GetASMIntegrationStateWithOptions(request *GetASMIntegrationStateRequest, runtime *util.RuntimeOptions) (_result *GetASMIntegrationStateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetASMIntegrationState"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetASMIntegrationStateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetASMIntegrationState(request *GetASMIntegrationStateRequest) (_result *GetASMIntegrationStateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetASMIntegrationStateResponse{}
+	_body, _err := client.GetASMIntegrationStateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetAgentDownloadUrlWithOptions(request *GetAgentDownloadUrlRequest, runtime *util.RuntimeOptions) (_result *GetAgentDownloadUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22709,6 +23336,46 @@ func (client *Client) GetAppApiByPage(request *GetAppApiByPageRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAppApiByPageResponse{}
 	_body, _err := client.GetAppApiByPageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetArmsAgentDownLoadUrlWithOptions(request *GetArmsAgentDownLoadUrlRequest, runtime *util.RuntimeOptions) (_result *GetArmsAgentDownLoadUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetArmsAgentDownLoadUrl"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetArmsAgentDownLoadUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetArmsAgentDownLoadUrl(request *GetArmsAgentDownLoadUrlRequest) (_result *GetArmsAgentDownLoadUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetArmsAgentDownLoadUrlResponse{}
+	_body, _err := client.GetArmsAgentDownLoadUrlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -23254,6 +23921,10 @@ func (client *Client) GetStackWithOptions(request *GetStackRequest, runtime *uti
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Pid)) {
 		query["Pid"] = request.Pid
 	}
@@ -23264,6 +23935,10 @@ func (client *Client) GetStackWithOptions(request *GetStackRequest, runtime *uti
 
 	if !tea.BoolValue(util.IsUnset(request.RpcID)) {
 		query["RpcID"] = request.RpcID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TraceID)) {
@@ -24952,6 +25627,66 @@ func (client *Client) OpenXtraceDefaultSLR(request *OpenXtraceDefaultSLRRequest)
 	return _result, _err
 }
 
+func (client *Client) PromVpcExporterManagerWithOptions(request *PromVpcExporterManagerRequest, runtime *util.RuntimeOptions) (_result *PromVpcExporterManagerResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExporterConfig)) {
+		query["ExporterConfig"] = request.ExporterConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExporterType)) {
+		query["ExporterType"] = request.ExporterType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Method)) {
+		query["Method"] = request.Method
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PromVpcExporterManager"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PromVpcExporterManagerResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PromVpcExporterManager(request *PromVpcExporterManagerRequest) (_result *PromVpcExporterManagerResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PromVpcExporterManagerResponse{}
+	_body, _err := client.PromVpcExporterManagerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) QueryDatasetWithOptions(request *QueryDatasetRequest, runtime *util.RuntimeOptions) (_result *QueryDatasetResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -25669,6 +26404,78 @@ func (client *Client) SearchAlertHistories(request *SearchAlertHistoriesRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &SearchAlertHistoriesResponse{}
 	_body, _err := client.SearchAlertHistoriesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SearchAlertHistorysWithOptions(request *SearchAlertHistorysRequest, runtime *util.RuntimeOptions) (_result *SearchAlertHistorysResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertId)) {
+		query["AlertId"] = request.AlertId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertType)) {
+		query["AlertType"] = request.AlertType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProxyUserId)) {
+		query["ProxyUserId"] = request.ProxyUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SearchAlertHistorys"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SearchAlertHistorysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SearchAlertHistorys(request *SearchAlertHistorysRequest) (_result *SearchAlertHistorysResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SearchAlertHistorysResponse{}
+	_body, _err := client.SearchAlertHistorysWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
