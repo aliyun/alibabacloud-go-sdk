@@ -4162,6 +4162,221 @@ func (s *CreateFigureClustersMergingTaskResponse) SetBody(v *CreateFigureCluster
 	return s
 }
 
+type CreateImageModerationTaskRequest struct {
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Interval         *int64            `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	MaxFrames        *int64            `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
+	NotifyEndpoint   *string           `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
+	NotifyTopicName  *string           `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	// 项目名称
+	ProjectName *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Reviewer    *string                `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
+	Scenes      []*string              `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
+	SourceURI   *string                `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	Tags        map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData    *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateImageModerationTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageModerationTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageModerationTaskRequest) SetCredentialConfig(v *CredentialConfig) *CreateImageModerationTaskRequest {
+	s.CredentialConfig = v
+	return s
+}
+
+func (s *CreateImageModerationTaskRequest) SetInterval(v int64) *CreateImageModerationTaskRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskRequest) SetMaxFrames(v int64) *CreateImageModerationTaskRequest {
+	s.MaxFrames = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskRequest) SetNotifyEndpoint(v string) *CreateImageModerationTaskRequest {
+	s.NotifyEndpoint = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskRequest) SetNotifyTopicName(v string) *CreateImageModerationTaskRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskRequest) SetProjectName(v string) *CreateImageModerationTaskRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskRequest) SetReviewer(v string) *CreateImageModerationTaskRequest {
+	s.Reviewer = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskRequest) SetScenes(v []*string) *CreateImageModerationTaskRequest {
+	s.Scenes = v
+	return s
+}
+
+func (s *CreateImageModerationTaskRequest) SetSourceURI(v string) *CreateImageModerationTaskRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskRequest) SetTags(v map[string]interface{}) *CreateImageModerationTaskRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateImageModerationTaskRequest) SetUserData(v string) *CreateImageModerationTaskRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateImageModerationTaskShrinkRequest struct {
+	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Interval               *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	MaxFrames              *int64  `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
+	NotifyEndpoint         *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
+	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	// 项目名称
+	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Reviewer     *string `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
+	ScenesShrink *string `json:"Scenes,omitempty" xml:"Scenes,omitempty"`
+	SourceURI    *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	TagsShrink   *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateImageModerationTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageModerationTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageModerationTaskShrinkRequest) SetCredentialConfigShrink(v string) *CreateImageModerationTaskShrinkRequest {
+	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskShrinkRequest) SetInterval(v int64) *CreateImageModerationTaskShrinkRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskShrinkRequest) SetMaxFrames(v int64) *CreateImageModerationTaskShrinkRequest {
+	s.MaxFrames = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskShrinkRequest) SetNotifyEndpoint(v string) *CreateImageModerationTaskShrinkRequest {
+	s.NotifyEndpoint = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskShrinkRequest) SetNotifyTopicName(v string) *CreateImageModerationTaskShrinkRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskShrinkRequest) SetProjectName(v string) *CreateImageModerationTaskShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskShrinkRequest) SetReviewer(v string) *CreateImageModerationTaskShrinkRequest {
+	s.Reviewer = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskShrinkRequest) SetScenesShrink(v string) *CreateImageModerationTaskShrinkRequest {
+	s.ScenesShrink = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskShrinkRequest) SetSourceURI(v string) *CreateImageModerationTaskShrinkRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskShrinkRequest) SetTagsShrink(v string) *CreateImageModerationTaskShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskShrinkRequest) SetUserData(v string) *CreateImageModerationTaskShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateImageModerationTaskResponseBody struct {
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// RequestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateImageModerationTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageModerationTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageModerationTaskResponseBody) SetEventId(v string) *CreateImageModerationTaskResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskResponseBody) SetRequestId(v string) *CreateImageModerationTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskResponseBody) SetTaskId(v string) *CreateImageModerationTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateImageModerationTaskResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateImageModerationTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateImageModerationTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageModerationTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageModerationTaskResponse) SetHeaders(v map[string]*string) *CreateImageModerationTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateImageModerationTaskResponse) SetStatusCode(v int32) *CreateImageModerationTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateImageModerationTaskResponse) SetBody(v *CreateImageModerationTaskResponseBody) *CreateImageModerationTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateMediaConvertTaskRequest struct {
 	CredentialConfig *CredentialConfig                       `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	NotifyEndpoint   *string                                 `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
@@ -6056,6 +6271,221 @@ func (s *CreateStoryResponse) SetBody(v *CreateStoryResponseBody) *CreateStoryRe
 	return s
 }
 
+type CreateVideoModerationTaskRequest struct {
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Interval         *int64            `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	MaxFrames        *int64            `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
+	NotifyEndpoint   *string           `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
+	NotifyTopicName  *string           `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	// 项目名称
+	ProjectName *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Reviewer    *string                `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
+	Scenes      []*string              `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
+	SourceURI   *string                `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	Tags        map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData    *string                `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateVideoModerationTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVideoModerationTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVideoModerationTaskRequest) SetCredentialConfig(v *CredentialConfig) *CreateVideoModerationTaskRequest {
+	s.CredentialConfig = v
+	return s
+}
+
+func (s *CreateVideoModerationTaskRequest) SetInterval(v int64) *CreateVideoModerationTaskRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskRequest) SetMaxFrames(v int64) *CreateVideoModerationTaskRequest {
+	s.MaxFrames = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskRequest) SetNotifyEndpoint(v string) *CreateVideoModerationTaskRequest {
+	s.NotifyEndpoint = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskRequest) SetNotifyTopicName(v string) *CreateVideoModerationTaskRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskRequest) SetProjectName(v string) *CreateVideoModerationTaskRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskRequest) SetReviewer(v string) *CreateVideoModerationTaskRequest {
+	s.Reviewer = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskRequest) SetScenes(v []*string) *CreateVideoModerationTaskRequest {
+	s.Scenes = v
+	return s
+}
+
+func (s *CreateVideoModerationTaskRequest) SetSourceURI(v string) *CreateVideoModerationTaskRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskRequest) SetTags(v map[string]interface{}) *CreateVideoModerationTaskRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateVideoModerationTaskRequest) SetUserData(v string) *CreateVideoModerationTaskRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateVideoModerationTaskShrinkRequest struct {
+	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Interval               *int64  `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	MaxFrames              *int64  `json:"MaxFrames,omitempty" xml:"MaxFrames,omitempty"`
+	NotifyEndpoint         *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
+	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	// 项目名称
+	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Reviewer     *string `json:"Reviewer,omitempty" xml:"Reviewer,omitempty"`
+	ScenesShrink *string `json:"Scenes,omitempty" xml:"Scenes,omitempty"`
+	SourceURI    *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+	TagsShrink   *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UserData     *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateVideoModerationTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVideoModerationTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVideoModerationTaskShrinkRequest) SetCredentialConfigShrink(v string) *CreateVideoModerationTaskShrinkRequest {
+	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskShrinkRequest) SetInterval(v int64) *CreateVideoModerationTaskShrinkRequest {
+	s.Interval = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskShrinkRequest) SetMaxFrames(v int64) *CreateVideoModerationTaskShrinkRequest {
+	s.MaxFrames = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskShrinkRequest) SetNotifyEndpoint(v string) *CreateVideoModerationTaskShrinkRequest {
+	s.NotifyEndpoint = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskShrinkRequest) SetNotifyTopicName(v string) *CreateVideoModerationTaskShrinkRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskShrinkRequest) SetProjectName(v string) *CreateVideoModerationTaskShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskShrinkRequest) SetReviewer(v string) *CreateVideoModerationTaskShrinkRequest {
+	s.Reviewer = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskShrinkRequest) SetScenesShrink(v string) *CreateVideoModerationTaskShrinkRequest {
+	s.ScenesShrink = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskShrinkRequest) SetSourceURI(v string) *CreateVideoModerationTaskShrinkRequest {
+	s.SourceURI = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskShrinkRequest) SetTagsShrink(v string) *CreateVideoModerationTaskShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskShrinkRequest) SetUserData(v string) *CreateVideoModerationTaskShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateVideoModerationTaskResponseBody struct {
+	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	// RequestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateVideoModerationTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVideoModerationTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVideoModerationTaskResponseBody) SetEventId(v string) *CreateVideoModerationTaskResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskResponseBody) SetRequestId(v string) *CreateVideoModerationTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskResponseBody) SetTaskId(v string) *CreateVideoModerationTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateVideoModerationTaskResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateVideoModerationTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateVideoModerationTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateVideoModerationTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateVideoModerationTaskResponse) SetHeaders(v map[string]*string) *CreateVideoModerationTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateVideoModerationTaskResponse) SetStatusCode(v int32) *CreateVideoModerationTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateVideoModerationTaskResponse) SetBody(v *CreateVideoModerationTaskResponseBody) *CreateVideoModerationTaskResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteBindingRequest struct {
 	Cleanup     *bool   `json:"Cleanup,omitempty" xml:"Cleanup,omitempty"`
 	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
@@ -6986,6 +7416,83 @@ func (s *DetectImageScoreResponse) SetStatusCode(v int32) *DetectImageScoreRespo
 }
 
 func (s *DetectImageScoreResponse) SetBody(v *DetectImageScoreResponseBody) *DetectImageScoreResponse {
+	s.Body = v
+	return s
+}
+
+type DetectTextAnomalyRequest struct {
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s DetectTextAnomalyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectTextAnomalyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectTextAnomalyRequest) SetContent(v string) *DetectTextAnomalyRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *DetectTextAnomalyRequest) SetProjectName(v string) *DetectTextAnomalyRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type DetectTextAnomalyResponseBody struct {
+	// RequestId
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Suggestion *string `json:"Suggestion,omitempty" xml:"Suggestion,omitempty"`
+}
+
+func (s DetectTextAnomalyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectTextAnomalyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetectTextAnomalyResponseBody) SetRequestId(v string) *DetectTextAnomalyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DetectTextAnomalyResponseBody) SetSuggestion(v string) *DetectTextAnomalyResponseBody {
+	s.Suggestion = &v
+	return s
+}
+
+type DetectTextAnomalyResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectTextAnomalyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetectTextAnomalyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectTextAnomalyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetectTextAnomalyResponse) SetHeaders(v map[string]*string) *DetectTextAnomalyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetectTextAnomalyResponse) SetStatusCode(v int32) *DetectTextAnomalyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetectTextAnomalyResponse) SetBody(v *DetectTextAnomalyResponseBody) *DetectTextAnomalyResponse {
 	s.Body = v
 	return s
 }
@@ -11782,6 +12289,104 @@ func (client *Client) CreateFigureClustersMergingTask(request *CreateFigureClust
 	return _result, _err
 }
 
+func (client *Client) CreateImageModerationTaskWithOptions(tmpReq *CreateImageModerationTaskRequest, runtime *util.RuntimeOptions) (_result *CreateImageModerationTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateImageModerationTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Scenes)) {
+		request.ScenesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Scenes, tea.String("Scenes"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
+		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxFrames)) {
+		query["MaxFrames"] = request.MaxFrames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyEndpoint)) {
+		query["NotifyEndpoint"] = request.NotifyEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reviewer)) {
+		query["Reviewer"] = request.Reviewer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScenesShrink)) {
+		query["Scenes"] = request.ScenesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
+		query["SourceURI"] = request.SourceURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateImageModerationTask"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateImageModerationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateImageModerationTask(request *CreateImageModerationTaskRequest) (_result *CreateImageModerationTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateImageModerationTaskResponse{}
+	_body, _err := client.CreateImageModerationTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateMediaConvertTaskWithOptions(tmpReq *CreateMediaConvertTaskRequest, runtime *util.RuntimeOptions) (_result *CreateMediaConvertTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -12247,6 +12852,104 @@ func (client *Client) CreateStory(request *CreateStoryRequest) (_result *CreateS
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateStoryResponse{}
 	_body, _err := client.CreateStoryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateVideoModerationTaskWithOptions(tmpReq *CreateVideoModerationTaskRequest, runtime *util.RuntimeOptions) (_result *CreateVideoModerationTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateVideoModerationTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Scenes)) {
+		request.ScenesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Scenes, tea.String("Scenes"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
+		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Interval)) {
+		query["Interval"] = request.Interval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MaxFrames)) {
+		query["MaxFrames"] = request.MaxFrames
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyEndpoint)) {
+		query["NotifyEndpoint"] = request.NotifyEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reviewer)) {
+		query["Reviewer"] = request.Reviewer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScenesShrink)) {
+		query["Scenes"] = request.ScenesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
+		query["SourceURI"] = request.SourceURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateVideoModerationTask"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateVideoModerationTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateVideoModerationTask(request *CreateVideoModerationTaskRequest) (_result *CreateVideoModerationTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateVideoModerationTaskResponse{}
+	_body, _err := client.CreateVideoModerationTaskWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12783,6 +13486,54 @@ func (client *Client) DetectImageScore(request *DetectImageScoreRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &DetectImageScoreResponse{}
 	_body, _err := client.DetectImageScoreWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetectTextAnomalyWithOptions(request *DetectTextAnomalyRequest, runtime *util.RuntimeOptions) (_result *DetectTextAnomalyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Content)) {
+		query["Content"] = request.Content
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectTextAnomaly"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetectTextAnomalyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectTextAnomaly(request *DetectTextAnomalyRequest) (_result *DetectTextAnomalyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectTextAnomalyResponse{}
+	_body, _err := client.DetectTextAnomalyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
