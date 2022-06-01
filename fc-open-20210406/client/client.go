@@ -14397,53 +14397,112 @@ func (client *Client) UpdateTriggerWithOptions(serviceName *string, functionName
 
 func (client *Client) InvokeHTTPTrigger(url *string, method *string, body []byte, headers *http.Header) (_result interface{}, _err error) {
 	cred := client.Credential
+	utilClient, _err := fcutil.NewClient(cred)
+	if _err != nil {
+		return _result, _err
+	}
+
 	_result = interface{}(nil)
-	_body := fcutil.InvokeHTTPTrigger(cred, url, method, body, headers)
+	_body, _err := utilClient.InvokeHTTPTrigger(url, method, body, headers)
+	if _err != nil {
+		return _result, _err
+	}
 	_result = _body
 	return _result, _err
 }
 
 func (client *Client) InvokeAnonymousHTTPTrigger(url *string, method *string, body []byte, headers *http.Header) (_result interface{}, _err error) {
+	cred := client.Credential
+	utilClient, _err := fcutil.NewClient(cred)
+	if _err != nil {
+		return _result, _err
+	}
+
 	_result = interface{}(nil)
-	_body := fcutil.InvokeAnonymousHTTPTrigger(url, method, body, headers)
+	_body, _err := utilClient.InvokeAnonymousHTTPTrigger(url, method, body, headers)
+	if _err != nil {
+		return _result, _err
+	}
 	_result = _body
 	return _result, _err
 }
 
 func (client *Client) SendHTTPRequestWithAuthorization(req *http.Request) (_result interface{}, _err error) {
 	cred := client.Credential
+	utilClient, _err := fcutil.NewClient(cred)
+	if _err != nil {
+		return _result, _err
+	}
+
 	_result = interface{}(nil)
-	_body := fcutil.SendHTTPRequestWithAuthorization(cred, req)
+	_body, _err := utilClient.SendHTTPRequestWithAuthorization(req)
+	if _err != nil {
+		return _result, _err
+	}
 	_result = _body
 	return _result, _err
 }
 
 func (client *Client) SendHTTPRequest(req *http.Request) (_result interface{}, _err error) {
+	cred := client.Credential
+	utilClient, _err := fcutil.NewClient(cred)
+	if _err != nil {
+		return _result, _err
+	}
+
 	_result = interface{}(nil)
-	_body := fcutil.SendHTTPRequest(req)
+	_body, _err := utilClient.SendHTTPRequest(req)
+	if _err != nil {
+		return _result, _err
+	}
 	_result = _body
 	return _result, _err
 }
 
 func (client *Client) SignRequest(req *http.Request) (_result interface{}, _err error) {
 	cred := client.Credential
+	utilClient, _err := fcutil.NewClient(cred)
+	if _err != nil {
+		return _result, _err
+	}
+
 	_result = interface{}(nil)
-	_body := fcutil.SignRequest(cred, req)
+	_body, _err := utilClient.SignRequest(req)
+	if _err != nil {
+		return _result, _err
+	}
 	_result = _body
 	return _result, _err
 }
 
 func (client *Client) SignRequestWithContentMD5(req *http.Request, contentMD5 *string) (_result interface{}, _err error) {
 	cred := client.Credential
+	utilClient, _err := fcutil.NewClient(cred)
+	if _err != nil {
+		return _result, _err
+	}
+
 	_result = interface{}(nil)
-	_body := fcutil.SignRequestWithContentMD5(cred, req, contentMD5)
+	_body, _err := utilClient.SignRequestWithContentMD5(req, contentMD5)
+	if _err != nil {
+		return _result, _err
+	}
 	_result = _body
 	return _result, _err
 }
 
 func (client *Client) BuildHTTPRequest(url *string, method *string, body []byte, headers *http.Header) (_result interface{}, _err error) {
+	cred := client.Credential
+	utilClient, _err := fcutil.NewClient(cred)
+	if _err != nil {
+		return _result, _err
+	}
+
 	_result = interface{}(nil)
-	_body := fcutil.BuildHTTPRequest(url, method, body, headers)
+	_body, _err := utilClient.BuildHTTPRequest(url, method, body, headers)
+	if _err != nil {
+		return _result, _err
+	}
 	_result = _body
 	return _result, _err
 }
