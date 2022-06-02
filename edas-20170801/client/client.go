@@ -8811,6 +8811,7 @@ func (s *GetK8sApplicationResponseBodyApplcationDeployGroups) SetDeployGroup(v [
 
 type GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroup struct {
 	Components *GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroupComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Struct"`
+	Env        *string                                                                   `json:"Env,omitempty" xml:"Env,omitempty"`
 }
 
 func (s GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroup) String() string {
@@ -8823,6 +8824,11 @@ func (s GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroup) GoString
 
 func (s *GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroup) SetComponents(v *GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroupComponents) *GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroup {
 	s.Components = v
+	return s
+}
+
+func (s *GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroup) SetEnv(v string) *GetK8sApplicationResponseBodyApplcationDeployGroupsDeployGroup {
+	s.Env = &v
 	return s
 }
 
@@ -17082,6 +17088,106 @@ func (s *ListK8sIngressRulesResponse) SetStatusCode(v int32) *ListK8sIngressRule
 }
 
 func (s *ListK8sIngressRulesResponse) SetBody(v *ListK8sIngressRulesResponseBody) *ListK8sIngressRulesResponse {
+	s.Body = v
+	return s
+}
+
+type ListK8sNamespacesRequest struct {
+	// A short description of struct
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+}
+
+func (s ListK8sNamespacesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListK8sNamespacesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListK8sNamespacesRequest) SetClusterId(v string) *ListK8sNamespacesRequest {
+	s.ClusterId = &v
+	return s
+}
+
+type ListK8sNamespacesResponseBody struct {
+	Code    *int32                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    []*ListK8sNamespacesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message *string                              `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListK8sNamespacesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListK8sNamespacesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListK8sNamespacesResponseBody) SetCode(v int32) *ListK8sNamespacesResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListK8sNamespacesResponseBody) SetData(v []*ListK8sNamespacesResponseBodyData) *ListK8sNamespacesResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListK8sNamespacesResponseBody) SetMessage(v string) *ListK8sNamespacesResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ListK8sNamespacesResponseBody) SetRequestId(v string) *ListK8sNamespacesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListK8sNamespacesResponseBodyData struct {
+	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+}
+
+func (s ListK8sNamespacesResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListK8sNamespacesResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListK8sNamespacesResponseBodyData) SetNamespace(v string) *ListK8sNamespacesResponseBodyData {
+	s.Namespace = &v
+	return s
+}
+
+type ListK8sNamespacesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListK8sNamespacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListK8sNamespacesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListK8sNamespacesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListK8sNamespacesResponse) SetHeaders(v map[string]*string) *ListK8sNamespacesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListK8sNamespacesResponse) SetStatusCode(v int32) *ListK8sNamespacesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListK8sNamespacesResponse) SetBody(v *ListK8sNamespacesResponseBody) *ListK8sNamespacesResponse {
 	s.Body = v
 	return s
 }
@@ -32384,6 +32490,52 @@ func (client *Client) ListK8sIngressRulesWithOptions(request *ListK8sIngressRule
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListK8sIngressRulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListK8sNamespaces(request *ListK8sNamespacesRequest) (_result *ListK8sNamespacesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListK8sNamespacesResponse{}
+	_body, _err := client.ListK8sNamespacesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListK8sNamespacesWithOptions(request *ListK8sNamespacesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListK8sNamespacesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListK8sNamespaces"),
+		Version:     tea.String("2017-08-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v5/k8s/acs/k8s_namespace"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListK8sNamespacesResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
