@@ -293,6 +293,8 @@ type TrafficPolicyLoadBalancerSettings struct {
 	ConsistentHashLBConfig *TrafficPolicyLoadBalancerSettingsConsistentHashLBConfig `json:"ConsistentHashLBConfig,omitempty" xml:"ConsistentHashLBConfig,omitempty" type:"Struct"`
 	// 负载均衡类型，枚举类可为ROUND_ROBIN, LEAST_CONN,RANDOM, CONSISTENT_HASH
 	LoadbalancerType *string `json:"LoadbalancerType,omitempty" xml:"LoadbalancerType,omitempty"`
+	// 预热时间(单位/s)
+	WarmupDuration *int64 `json:"WarmupDuration,omitempty" xml:"WarmupDuration,omitempty"`
 }
 
 func (s TrafficPolicyLoadBalancerSettings) String() string {
@@ -310,6 +312,11 @@ func (s *TrafficPolicyLoadBalancerSettings) SetConsistentHashLBConfig(v *Traffic
 
 func (s *TrafficPolicyLoadBalancerSettings) SetLoadbalancerType(v string) *TrafficPolicyLoadBalancerSettings {
 	s.LoadbalancerType = &v
+	return s
+}
+
+func (s *TrafficPolicyLoadBalancerSettings) SetWarmupDuration(v int64) *TrafficPolicyLoadBalancerSettings {
+	s.WarmupDuration = &v
 	return s
 }
 
@@ -666,6 +673,12 @@ func (s *AddBlackWhiteListResponse) SetBody(v *AddBlackWhiteListResponseBody) *A
 
 type AddGatewayRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// 是否开启硬件加速
+	EnableHardwareAcceleration *bool `json:"EnableHardwareAcceleration,omitempty" xml:"EnableHardwareAcceleration,omitempty"`
+	// 是否开启SLS日志投递
+	EnableSls *bool `json:"EnableSls,omitempty" xml:"EnableSls,omitempty"`
+	// 是否开启xtrace
+	EnableXtrace *bool `json:"EnableXtrace,omitempty" xml:"EnableXtrace,omitempty"`
 	// 是否企业安全组类型
 	EnterpriseSecurityGroup *bool `json:"EnterpriseSecurityGroup,omitempty" xml:"EnterpriseSecurityGroup,omitempty"`
 	// 外网SLB规格
@@ -686,6 +699,8 @@ type AddGatewayRequest struct {
 	VSwitchId2 *string `json:"VSwitchId2,omitempty" xml:"VSwitchId2,omitempty"`
 	// 专有网络ID
 	Vpc *string `json:"Vpc,omitempty" xml:"Vpc,omitempty"`
+	// xtrace采样率，取值[0,100]
+	XtraceRatio *string `json:"XtraceRatio,omitempty" xml:"XtraceRatio,omitempty"`
 }
 
 func (s AddGatewayRequest) String() string {
@@ -698,6 +713,21 @@ func (s AddGatewayRequest) GoString() string {
 
 func (s *AddGatewayRequest) SetAcceptLanguage(v string) *AddGatewayRequest {
 	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *AddGatewayRequest) SetEnableHardwareAcceleration(v bool) *AddGatewayRequest {
+	s.EnableHardwareAcceleration = &v
+	return s
+}
+
+func (s *AddGatewayRequest) SetEnableSls(v bool) *AddGatewayRequest {
+	s.EnableSls = &v
+	return s
+}
+
+func (s *AddGatewayRequest) SetEnableXtrace(v bool) *AddGatewayRequest {
+	s.EnableXtrace = &v
 	return s
 }
 
@@ -748,6 +778,11 @@ func (s *AddGatewayRequest) SetVSwitchId2(v string) *AddGatewayRequest {
 
 func (s *AddGatewayRequest) SetVpc(v string) *AddGatewayRequest {
 	s.Vpc = &v
+	return s
+}
+
+func (s *AddGatewayRequest) SetXtraceRatio(v string) *AddGatewayRequest {
+	s.XtraceRatio = &v
 	return s
 }
 
@@ -2041,146 +2076,6 @@ func (s *AddSSLCertResponse) SetBody(v *AddSSLCertResponseBody) *AddSSLCertRespo
 	return s
 }
 
-type AddSeataServerRequest struct {
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// 集群名称
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	PrimaryUser *string `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
-	// 地域
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// 节点数量
-	Replica *int32 `json:"Replica,omitempty" xml:"Replica,omitempty"`
-	// 专有网络ID
-	Vpc     *string `json:"Vpc,omitempty" xml:"Vpc,omitempty"`
-	Vswitch *string `json:"Vswitch,omitempty" xml:"Vswitch,omitempty"`
-	ZoneId  *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-}
-
-func (s AddSeataServerRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddSeataServerRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddSeataServerRequest) SetAcceptLanguage(v string) *AddSeataServerRequest {
-	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *AddSeataServerRequest) SetName(v string) *AddSeataServerRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *AddSeataServerRequest) SetPrimaryUser(v string) *AddSeataServerRequest {
-	s.PrimaryUser = &v
-	return s
-}
-
-func (s *AddSeataServerRequest) SetRegion(v string) *AddSeataServerRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *AddSeataServerRequest) SetReplica(v int32) *AddSeataServerRequest {
-	s.Replica = &v
-	return s
-}
-
-func (s *AddSeataServerRequest) SetVpc(v string) *AddSeataServerRequest {
-	s.Vpc = &v
-	return s
-}
-
-func (s *AddSeataServerRequest) SetVswitch(v string) *AddSeataServerRequest {
-	s.Vswitch = &v
-	return s
-}
-
-func (s *AddSeataServerRequest) SetZoneId(v string) *AddSeataServerRequest {
-	s.ZoneId = &v
-	return s
-}
-
-type AddSeataServerResponseBody struct {
-	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s AddSeataServerResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddSeataServerResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddSeataServerResponseBody) SetCode(v int32) *AddSeataServerResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *AddSeataServerResponseBody) SetData(v string) *AddSeataServerResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *AddSeataServerResponseBody) SetHttpStatusCode(v int32) *AddSeataServerResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *AddSeataServerResponseBody) SetMessage(v string) *AddSeataServerResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *AddSeataServerResponseBody) SetRequestId(v string) *AddSeataServerResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AddSeataServerResponseBody) SetSuccess(v bool) *AddSeataServerResponseBody {
-	s.Success = &v
-	return s
-}
-
-type AddSeataServerResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddSeataServerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddSeataServerResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddSeataServerResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddSeataServerResponse) SetHeaders(v map[string]*string) *AddSeataServerResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddSeataServerResponse) SetStatusCode(v int32) *AddSeataServerResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *AddSeataServerResponse) SetBody(v *AddSeataServerResponseBody) *AddSeataServerResponse {
-	s.Body = v
-	return s
-}
-
 type AddSecurityGroupRuleRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	Description    *string `json:"Description,omitempty" xml:"Description,omitempty"`
@@ -2510,444 +2405,6 @@ func (s *AddServiceSourceResponse) SetStatusCode(v int32) *AddServiceSourceRespo
 }
 
 func (s *AddServiceSourceResponse) SetBody(v *AddServiceSourceResponseBody) *AddServiceSourceResponse {
-	s.Body = v
-	return s
-}
-
-type AddTestRequest struct {
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	DescSort       *bool   `json:"DescSort,omitempty" xml:"DescSort,omitempty"`
-	OrderItem      *string `json:"OrderItem,omitempty" xml:"OrderItem,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s AddTestRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddTestRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AddTestRequest) SetAcceptLanguage(v string) *AddTestRequest {
-	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *AddTestRequest) SetDescSort(v bool) *AddTestRequest {
-	s.DescSort = &v
-	return s
-}
-
-func (s *AddTestRequest) SetOrderItem(v string) *AddTestRequest {
-	s.OrderItem = &v
-	return s
-}
-
-func (s *AddTestRequest) SetPageNumber(v int32) *AddTestRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *AddTestRequest) SetPageSize(v int32) *AddTestRequest {
-	s.PageSize = &v
-	return s
-}
-
-type AddTestResponseBody struct {
-	Code           *int32                   `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *AddTestResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                   `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                  `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s AddTestResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddTestResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *AddTestResponseBody) SetCode(v int32) *AddTestResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *AddTestResponseBody) SetData(v *AddTestResponseBodyData) *AddTestResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *AddTestResponseBody) SetHttpStatusCode(v int32) *AddTestResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *AddTestResponseBody) SetMessage(v string) *AddTestResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *AddTestResponseBody) SetRequestId(v string) *AddTestResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AddTestResponseBody) SetSuccess(v bool) *AddTestResponseBody {
-	s.Success = &v
-	return s
-}
-
-type AddTestResponseBodyData struct {
-	PageNumber *int32                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                           `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result     []*AddTestResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	TotalSize  *int64                           `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
-}
-
-func (s AddTestResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddTestResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *AddTestResponseBodyData) SetPageNumber(v int32) *AddTestResponseBodyData {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *AddTestResponseBodyData) SetPageSize(v int32) *AddTestResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *AddTestResponseBodyData) SetResult(v []*AddTestResponseBodyDataResult) *AddTestResponseBodyData {
-	s.Result = v
-	return s
-}
-
-func (s *AddTestResponseBodyData) SetTotalSize(v int64) *AddTestResponseBodyData {
-	s.TotalSize = &v
-	return s
-}
-
-type AddTestResponseBodyDataResult struct {
-	AhasOn          *bool                                       `json:"AhasOn,omitempty" xml:"AhasOn,omitempty"`
-	ArmsOn          *bool                                       `json:"ArmsOn,omitempty" xml:"ArmsOn,omitempty"`
-	ChargeType      *string                                     `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	CurrentVersion  *string                                     `json:"CurrentVersion,omitempty" xml:"CurrentVersion,omitempty"`
-	EndDate         *string                                     `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	GatewayType     *string                                     `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
-	GatewayUniqueId *string                                     `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
-	GmtCreate       *string                                     `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified     *string                                     `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id              *int64                                      `json:"Id,omitempty" xml:"Id,omitempty"`
-	InstanceId      *string                                     `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InternetSlb     []*AddTestResponseBodyDataResultInternetSlb `json:"InternetSlb,omitempty" xml:"InternetSlb,omitempty" type:"Repeated"`
-	LatestVersion   *string                                     `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
-	MustUpgrade     *bool                                       `json:"MustUpgrade,omitempty" xml:"MustUpgrade,omitempty"`
-	Name            *string                                     `json:"Name,omitempty" xml:"Name,omitempty"`
-	PrimaryUser     *string                                     `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
-	Region          *string                                     `json:"Region,omitempty" xml:"Region,omitempty"`
-	Replica         *int32                                      `json:"Replica,omitempty" xml:"Replica,omitempty"`
-	Slb             []*AddTestResponseBodyDataResultSlb         `json:"Slb,omitempty" xml:"Slb,omitempty" type:"Repeated"`
-	Spec            *string                                     `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	Status          *int32                                      `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusDesc      *string                                     `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	Tag             *string                                     `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Upgrade         *bool                                       `json:"Upgrade,omitempty" xml:"Upgrade,omitempty"`
-	Vswitch2        *string                                     `json:"Vswitch2,omitempty" xml:"Vswitch2,omitempty"`
-}
-
-func (s AddTestResponseBodyDataResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddTestResponseBodyDataResult) GoString() string {
-	return s.String()
-}
-
-func (s *AddTestResponseBodyDataResult) SetAhasOn(v bool) *AddTestResponseBodyDataResult {
-	s.AhasOn = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetArmsOn(v bool) *AddTestResponseBodyDataResult {
-	s.ArmsOn = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetChargeType(v string) *AddTestResponseBodyDataResult {
-	s.ChargeType = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetCurrentVersion(v string) *AddTestResponseBodyDataResult {
-	s.CurrentVersion = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetEndDate(v string) *AddTestResponseBodyDataResult {
-	s.EndDate = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetGatewayType(v string) *AddTestResponseBodyDataResult {
-	s.GatewayType = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetGatewayUniqueId(v string) *AddTestResponseBodyDataResult {
-	s.GatewayUniqueId = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetGmtCreate(v string) *AddTestResponseBodyDataResult {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetGmtModified(v string) *AddTestResponseBodyDataResult {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetId(v int64) *AddTestResponseBodyDataResult {
-	s.Id = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetInstanceId(v string) *AddTestResponseBodyDataResult {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetInternetSlb(v []*AddTestResponseBodyDataResultInternetSlb) *AddTestResponseBodyDataResult {
-	s.InternetSlb = v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetLatestVersion(v string) *AddTestResponseBodyDataResult {
-	s.LatestVersion = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetMustUpgrade(v bool) *AddTestResponseBodyDataResult {
-	s.MustUpgrade = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetName(v string) *AddTestResponseBodyDataResult {
-	s.Name = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetPrimaryUser(v string) *AddTestResponseBodyDataResult {
-	s.PrimaryUser = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetRegion(v string) *AddTestResponseBodyDataResult {
-	s.Region = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetReplica(v int32) *AddTestResponseBodyDataResult {
-	s.Replica = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetSlb(v []*AddTestResponseBodyDataResultSlb) *AddTestResponseBodyDataResult {
-	s.Slb = v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetSpec(v string) *AddTestResponseBodyDataResult {
-	s.Spec = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetStatus(v int32) *AddTestResponseBodyDataResult {
-	s.Status = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetStatusDesc(v string) *AddTestResponseBodyDataResult {
-	s.StatusDesc = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetTag(v string) *AddTestResponseBodyDataResult {
-	s.Tag = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetUpgrade(v bool) *AddTestResponseBodyDataResult {
-	s.Upgrade = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResult) SetVswitch2(v string) *AddTestResponseBodyDataResult {
-	s.Vswitch2 = &v
-	return s
-}
-
-type AddTestResponseBodyDataResultInternetSlb struct {
-	GatewaySlbMode      *string `json:"GatewaySlbMode,omitempty" xml:"GatewaySlbMode,omitempty"`
-	GatewaySlbStatus    *string `json:"GatewaySlbStatus,omitempty" xml:"GatewaySlbStatus,omitempty"`
-	InternetNetworkFlow *string `json:"InternetNetworkFlow,omitempty" xml:"InternetNetworkFlow,omitempty"`
-	SlbId               *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	SlbIp               *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
-	SlbPort             *string `json:"SlbPort,omitempty" xml:"SlbPort,omitempty"`
-	SlbSpec             *string `json:"SlbSpec,omitempty" xml:"SlbSpec,omitempty"`
-	StatusDesc          *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	Type                *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s AddTestResponseBodyDataResultInternetSlb) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddTestResponseBodyDataResultInternetSlb) GoString() string {
-	return s.String()
-}
-
-func (s *AddTestResponseBodyDataResultInternetSlb) SetGatewaySlbMode(v string) *AddTestResponseBodyDataResultInternetSlb {
-	s.GatewaySlbMode = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResultInternetSlb) SetGatewaySlbStatus(v string) *AddTestResponseBodyDataResultInternetSlb {
-	s.GatewaySlbStatus = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResultInternetSlb) SetInternetNetworkFlow(v string) *AddTestResponseBodyDataResultInternetSlb {
-	s.InternetNetworkFlow = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResultInternetSlb) SetSlbId(v string) *AddTestResponseBodyDataResultInternetSlb {
-	s.SlbId = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResultInternetSlb) SetSlbIp(v string) *AddTestResponseBodyDataResultInternetSlb {
-	s.SlbIp = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResultInternetSlb) SetSlbPort(v string) *AddTestResponseBodyDataResultInternetSlb {
-	s.SlbPort = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResultInternetSlb) SetSlbSpec(v string) *AddTestResponseBodyDataResultInternetSlb {
-	s.SlbSpec = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResultInternetSlb) SetStatusDesc(v string) *AddTestResponseBodyDataResultInternetSlb {
-	s.StatusDesc = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResultInternetSlb) SetType(v string) *AddTestResponseBodyDataResultInternetSlb {
-	s.Type = &v
-	return s
-}
-
-type AddTestResponseBodyDataResultSlb struct {
-	GatewaySlbMode   *string `json:"GatewaySlbMode,omitempty" xml:"GatewaySlbMode,omitempty"`
-	GatewaySlbStatus *string `json:"GatewaySlbStatus,omitempty" xml:"GatewaySlbStatus,omitempty"`
-	SlbId            *string `json:"SlbId,omitempty" xml:"SlbId,omitempty"`
-	SlbIp            *string `json:"SlbIp,omitempty" xml:"SlbIp,omitempty"`
-	SlbPort          *string `json:"SlbPort,omitempty" xml:"SlbPort,omitempty"`
-	SlbSpec          *string `json:"SlbSpec,omitempty" xml:"SlbSpec,omitempty"`
-	StatusDesc       *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	Type             *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s AddTestResponseBodyDataResultSlb) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddTestResponseBodyDataResultSlb) GoString() string {
-	return s.String()
-}
-
-func (s *AddTestResponseBodyDataResultSlb) SetGatewaySlbMode(v string) *AddTestResponseBodyDataResultSlb {
-	s.GatewaySlbMode = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResultSlb) SetGatewaySlbStatus(v string) *AddTestResponseBodyDataResultSlb {
-	s.GatewaySlbStatus = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResultSlb) SetSlbId(v string) *AddTestResponseBodyDataResultSlb {
-	s.SlbId = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResultSlb) SetSlbIp(v string) *AddTestResponseBodyDataResultSlb {
-	s.SlbIp = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResultSlb) SetSlbPort(v string) *AddTestResponseBodyDataResultSlb {
-	s.SlbPort = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResultSlb) SetSlbSpec(v string) *AddTestResponseBodyDataResultSlb {
-	s.SlbSpec = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResultSlb) SetStatusDesc(v string) *AddTestResponseBodyDataResultSlb {
-	s.StatusDesc = &v
-	return s
-}
-
-func (s *AddTestResponseBodyDataResultSlb) SetType(v string) *AddTestResponseBodyDataResultSlb {
-	s.Type = &v
-	return s
-}
-
-type AddTestResponse struct {
-	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *AddTestResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s AddTestResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AddTestResponse) GoString() string {
-	return s.String()
-}
-
-func (s *AddTestResponse) SetHeaders(v map[string]*string) *AddTestResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *AddTestResponse) SetStatusCode(v int32) *AddTestResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *AddTestResponse) SetBody(v *AddTestResponseBody) *AddTestResponse {
 	s.Body = v
 	return s
 }
@@ -4052,6 +3509,224 @@ func (s *CreateEngineNamespaceResponse) SetBody(v *CreateEngineNamespaceResponse
 	return s
 }
 
+type CreateMseServiceApplicationRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	ExtraInfo      *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	Language       *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	SentinelEnable *string `json:"SentinelEnable,omitempty" xml:"SentinelEnable,omitempty"`
+	Source         *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SwitchEnable   *string `json:"SwitchEnable,omitempty" xml:"SwitchEnable,omitempty"`
+}
+
+func (s CreateMseServiceApplicationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMseServiceApplicationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMseServiceApplicationRequest) SetAcceptLanguage(v string) *CreateMseServiceApplicationRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationRequest) SetAppName(v string) *CreateMseServiceApplicationRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationRequest) SetExtraInfo(v string) *CreateMseServiceApplicationRequest {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationRequest) SetLanguage(v string) *CreateMseServiceApplicationRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationRequest) SetRegion(v string) *CreateMseServiceApplicationRequest {
+	s.Region = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationRequest) SetSentinelEnable(v string) *CreateMseServiceApplicationRequest {
+	s.SentinelEnable = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationRequest) SetSource(v string) *CreateMseServiceApplicationRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationRequest) SetSwitchEnable(v string) *CreateMseServiceApplicationRequest {
+	s.SwitchEnable = &v
+	return s
+}
+
+type CreateMseServiceApplicationResponseBody struct {
+	Code           *int32                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *CreateMseServiceApplicationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	HttpStatusCode *int32                                       `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *string                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateMseServiceApplicationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMseServiceApplicationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMseServiceApplicationResponseBody) SetCode(v int32) *CreateMseServiceApplicationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationResponseBody) SetData(v *CreateMseServiceApplicationResponseBodyData) *CreateMseServiceApplicationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateMseServiceApplicationResponseBody) SetHttpStatusCode(v int32) *CreateMseServiceApplicationResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationResponseBody) SetMessage(v string) *CreateMseServiceApplicationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationResponseBody) SetRequestId(v string) *CreateMseServiceApplicationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationResponseBody) SetSuccess(v string) *CreateMseServiceApplicationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateMseServiceApplicationResponseBodyData struct {
+	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName    *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	CreateTime *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	ExtraInfo  *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	Language   *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	LicenseKey *string `json:"LicenseKey,omitempty" xml:"LicenseKey,omitempty"`
+	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Source     *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	UpdateTime *int64  `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	UserId     *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	Version    *string `json:"Version,omitempty" xml:"Version,omitempty"`
+}
+
+func (s CreateMseServiceApplicationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMseServiceApplicationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMseServiceApplicationResponseBodyData) SetAppId(v string) *CreateMseServiceApplicationResponseBodyData {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationResponseBodyData) SetAppName(v string) *CreateMseServiceApplicationResponseBodyData {
+	s.AppName = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationResponseBodyData) SetCreateTime(v int64) *CreateMseServiceApplicationResponseBodyData {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationResponseBodyData) SetExtraInfo(v string) *CreateMseServiceApplicationResponseBodyData {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationResponseBodyData) SetLanguage(v string) *CreateMseServiceApplicationResponseBodyData {
+	s.Language = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationResponseBodyData) SetLicenseKey(v string) *CreateMseServiceApplicationResponseBodyData {
+	s.LicenseKey = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationResponseBodyData) SetRegionId(v string) *CreateMseServiceApplicationResponseBodyData {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationResponseBodyData) SetSource(v string) *CreateMseServiceApplicationResponseBodyData {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationResponseBodyData) SetStatus(v int32) *CreateMseServiceApplicationResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationResponseBodyData) SetUpdateTime(v int64) *CreateMseServiceApplicationResponseBodyData {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationResponseBodyData) SetUserId(v string) *CreateMseServiceApplicationResponseBodyData {
+	s.UserId = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationResponseBodyData) SetVersion(v string) *CreateMseServiceApplicationResponseBodyData {
+	s.Version = &v
+	return s
+}
+
+type CreateMseServiceApplicationResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateMseServiceApplicationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateMseServiceApplicationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMseServiceApplicationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMseServiceApplicationResponse) SetHeaders(v map[string]*string) *CreateMseServiceApplicationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMseServiceApplicationResponse) SetStatusCode(v int32) *CreateMseServiceApplicationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateMseServiceApplicationResponse) SetBody(v *CreateMseServiceApplicationResponseBody) *CreateMseServiceApplicationResponse {
+	s.Body = v
+	return s
+}
+
 type CreateNacosConfigRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	AppName        *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
@@ -5026,128 +4701,6 @@ func (s *CreateOrUpdateSwimmingLaneGroupResponse) SetStatusCode(v int32) *Create
 }
 
 func (s *CreateOrUpdateSwimmingLaneGroupResponse) SetBody(v *CreateOrUpdateSwimmingLaneGroupResponseBody) *CreateOrUpdateSwimmingLaneGroupResponse {
-	s.Body = v
-	return s
-}
-
-type CreateVGroupRequest struct {
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// 集群名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 用户ID
-	PrimaryUser *string `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
-	// 地域
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// 实例ID
-	SeataServerUniqueId *string `json:"SeataServerUniqueId,omitempty" xml:"SeataServerUniqueId,omitempty"`
-}
-
-func (s CreateVGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateVGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CreateVGroupRequest) SetAcceptLanguage(v string) *CreateVGroupRequest {
-	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *CreateVGroupRequest) SetName(v string) *CreateVGroupRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CreateVGroupRequest) SetPrimaryUser(v string) *CreateVGroupRequest {
-	s.PrimaryUser = &v
-	return s
-}
-
-func (s *CreateVGroupRequest) SetRegion(v string) *CreateVGroupRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *CreateVGroupRequest) SetSeataServerUniqueId(v string) *CreateVGroupRequest {
-	s.SeataServerUniqueId = &v
-	return s
-}
-
-type CreateVGroupResponseBody struct {
-	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s CreateVGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateVGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CreateVGroupResponseBody) SetCode(v int32) *CreateVGroupResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *CreateVGroupResponseBody) SetData(v string) *CreateVGroupResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CreateVGroupResponseBody) SetHttpStatusCode(v int32) *CreateVGroupResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *CreateVGroupResponseBody) SetMessage(v string) *CreateVGroupResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *CreateVGroupResponseBody) SetRequestId(v string) *CreateVGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *CreateVGroupResponseBody) SetSuccess(v bool) *CreateVGroupResponseBody {
-	s.Success = &v
-	return s
-}
-
-type CreateVGroupResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CreateVGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CreateVGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CreateVGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CreateVGroupResponse) SetHeaders(v map[string]*string) *CreateVGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CreateVGroupResponse) SetStatusCode(v int32) *CreateVGroupResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CreateVGroupResponse) SetBody(v *CreateVGroupResponseBody) *CreateVGroupResponse {
 	s.Body = v
 	return s
 }
@@ -7153,107 +6706,6 @@ func (s *DeleteNacosServiceResponse) SetBody(v *DeleteNacosServiceResponseBody) 
 	return s
 }
 
-type DeleteSeataServerRequest struct {
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// 集群名称
-	SeataServerUniqueId *string `json:"SeataServerUniqueId,omitempty" xml:"SeataServerUniqueId,omitempty"`
-}
-
-func (s DeleteSeataServerRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteSeataServerRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteSeataServerRequest) SetAcceptLanguage(v string) *DeleteSeataServerRequest {
-	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *DeleteSeataServerRequest) SetSeataServerUniqueId(v string) *DeleteSeataServerRequest {
-	s.SeataServerUniqueId = &v
-	return s
-}
-
-type DeleteSeataServerResponseBody struct {
-	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeleteSeataServerResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteSeataServerResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteSeataServerResponseBody) SetCode(v int32) *DeleteSeataServerResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteSeataServerResponseBody) SetData(v string) *DeleteSeataServerResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *DeleteSeataServerResponseBody) SetHttpStatusCode(v int32) *DeleteSeataServerResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *DeleteSeataServerResponseBody) SetMessage(v string) *DeleteSeataServerResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteSeataServerResponseBody) SetRequestId(v string) *DeleteSeataServerResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteSeataServerResponseBody) SetSuccess(v bool) *DeleteSeataServerResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DeleteSeataServerResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteSeataServerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteSeataServerResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteSeataServerResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteSeataServerResponse) SetHeaders(v map[string]*string) *DeleteSeataServerResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteSeataServerResponse) SetStatusCode(v int32) *DeleteSeataServerResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteSeataServerResponse) SetBody(v *DeleteSeataServerResponseBody) *DeleteSeataServerResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteSecurityGroupRuleRequest struct {
 	AcceptLanguage  *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
@@ -7747,107 +7199,6 @@ func (s *DeleteSwimmingLaneGroupResponse) SetStatusCode(v int32) *DeleteSwimming
 }
 
 func (s *DeleteSwimmingLaneGroupResponse) SetBody(v *DeleteSwimmingLaneGroupResponseBody) *DeleteSwimmingLaneGroupResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteVGroupRequest struct {
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// 集群名称
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-}
-
-func (s DeleteVGroupRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteVGroupRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteVGroupRequest) SetAcceptLanguage(v string) *DeleteVGroupRequest {
-	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *DeleteVGroupRequest) SetName(v string) *DeleteVGroupRequest {
-	s.Name = &v
-	return s
-}
-
-type DeleteVGroupResponseBody struct {
-	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeleteVGroupResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteVGroupResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteVGroupResponseBody) SetCode(v int32) *DeleteVGroupResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteVGroupResponseBody) SetData(v string) *DeleteVGroupResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *DeleteVGroupResponseBody) SetHttpStatusCode(v int32) *DeleteVGroupResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *DeleteVGroupResponseBody) SetMessage(v string) *DeleteVGroupResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteVGroupResponseBody) SetRequestId(v string) *DeleteVGroupResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteVGroupResponseBody) SetSuccess(v bool) *DeleteVGroupResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DeleteVGroupResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteVGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteVGroupResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteVGroupResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteVGroupResponse) SetHeaders(v map[string]*string) *DeleteVGroupResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteVGroupResponse) SetStatusCode(v int32) *DeleteVGroupResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteVGroupResponse) SetBody(v *DeleteVGroupResponseBody) *DeleteVGroupResponse {
 	s.Body = v
 	return s
 }
@@ -8744,140 +8095,6 @@ func (s *GetBlackWhiteListResponse) SetBody(v *GetBlackWhiteListResponseBody) *G
 	return s
 }
 
-type GetDashBoardUrlRequest struct {
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-}
-
-func (s GetDashBoardUrlRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDashBoardUrlRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDashBoardUrlRequest) SetAcceptLanguage(v string) *GetDashBoardUrlRequest {
-	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *GetDashBoardUrlRequest) SetInstanceId(v string) *GetDashBoardUrlRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetDashBoardUrlRequest) SetRegionId(v string) *GetDashBoardUrlRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *GetDashBoardUrlRequest) SetRequestPars(v string) *GetDashBoardUrlRequest {
-	s.RequestPars = &v
-	return s
-}
-
-type GetDashBoardUrlResponseBody struct {
-	Data      *GetDashBoardUrlResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	ErrorCode *string                          `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	HttpCode  *string                          `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Message   *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                            `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetDashBoardUrlResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDashBoardUrlResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDashBoardUrlResponseBody) SetData(v *GetDashBoardUrlResponseBodyData) *GetDashBoardUrlResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetDashBoardUrlResponseBody) SetErrorCode(v string) *GetDashBoardUrlResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *GetDashBoardUrlResponseBody) SetHttpCode(v string) *GetDashBoardUrlResponseBody {
-	s.HttpCode = &v
-	return s
-}
-
-func (s *GetDashBoardUrlResponseBody) SetMessage(v string) *GetDashBoardUrlResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetDashBoardUrlResponseBody) SetRequestId(v string) *GetDashBoardUrlResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetDashBoardUrlResponseBody) SetSuccess(v bool) *GetDashBoardUrlResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetDashBoardUrlResponseBodyData struct {
-	Message *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	UrlMap  map[string]interface{} `json:"UrlMap,omitempty" xml:"UrlMap,omitempty"`
-}
-
-func (s GetDashBoardUrlResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDashBoardUrlResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetDashBoardUrlResponseBodyData) SetMessage(v string) *GetDashBoardUrlResponseBodyData {
-	s.Message = &v
-	return s
-}
-
-func (s *GetDashBoardUrlResponseBodyData) SetUrlMap(v map[string]interface{}) *GetDashBoardUrlResponseBodyData {
-	s.UrlMap = v
-	return s
-}
-
-type GetDashBoardUrlResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDashBoardUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDashBoardUrlResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDashBoardUrlResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDashBoardUrlResponse) SetHeaders(v map[string]*string) *GetDashBoardUrlResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDashBoardUrlResponse) SetStatusCode(v int32) *GetDashBoardUrlResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetDashBoardUrlResponse) SetBody(v *GetDashBoardUrlResponseBody) *GetDashBoardUrlResponse {
-	s.Body = v
-	return s
-}
-
 type GetEngineNamepaceRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -9705,6 +8922,7 @@ func (s *GetGatewayRouteDetailResponseBody) SetSuccess(v bool) *GetGatewayRouteD
 }
 
 type GetGatewayRouteDetailResponseBodyData struct {
+	AhasStatus         *int32                                                `json:"AhasStatus,omitempty" xml:"AhasStatus,omitempty"`
 	Cors               *GetGatewayRouteDetailResponseBodyDataCors            `json:"Cors,omitempty" xml:"Cors,omitempty" type:"Struct"`
 	DefaultServiceId   *int64                                                `json:"DefaultServiceId,omitempty" xml:"DefaultServiceId,omitempty"`
 	DefaultServiceName *string                                               `json:"DefaultServiceName,omitempty" xml:"DefaultServiceName,omitempty"`
@@ -9740,6 +8958,11 @@ func (s GetGatewayRouteDetailResponseBodyData) String() string {
 
 func (s GetGatewayRouteDetailResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetGatewayRouteDetailResponseBodyData) SetAhasStatus(v int32) *GetGatewayRouteDetailResponseBodyData {
+	s.AhasStatus = &v
+	return s
 }
 
 func (s *GetGatewayRouteDetailResponseBodyData) SetCors(v *GetGatewayRouteDetailResponseBodyDataCors) *GetGatewayRouteDetailResponseBodyData {
@@ -10896,205 +10119,6 @@ func (s *GetGovernanceKubernetesClusterResponse) SetStatusCode(v int32) *GetGove
 }
 
 func (s *GetGovernanceKubernetesClusterResponse) SetBody(v *GetGovernanceKubernetesClusterResponseBody) *GetGovernanceKubernetesClusterResponse {
-	s.Body = v
-	return s
-}
-
-type GetGovernanceKubernetesClusterListRequest struct {
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName    *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s GetGovernanceKubernetesClusterListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetGovernanceKubernetesClusterListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetGovernanceKubernetesClusterListRequest) SetAcceptLanguage(v string) *GetGovernanceKubernetesClusterListRequest {
-	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *GetGovernanceKubernetesClusterListRequest) SetClusterId(v string) *GetGovernanceKubernetesClusterListRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *GetGovernanceKubernetesClusterListRequest) SetClusterName(v string) *GetGovernanceKubernetesClusterListRequest {
-	s.ClusterName = &v
-	return s
-}
-
-func (s *GetGovernanceKubernetesClusterListRequest) SetPageNumber(v int32) *GetGovernanceKubernetesClusterListRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *GetGovernanceKubernetesClusterListRequest) SetPageSize(v int32) *GetGovernanceKubernetesClusterListRequest {
-	s.PageSize = &v
-	return s
-}
-
-type GetGovernanceKubernetesClusterListResponseBody struct {
-	Code           *int32                                              `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *GetGovernanceKubernetesClusterListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	HttpStatusCode *int32                                              `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                                             `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId      *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                               `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetGovernanceKubernetesClusterListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetGovernanceKubernetesClusterListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetGovernanceKubernetesClusterListResponseBody) SetCode(v int32) *GetGovernanceKubernetesClusterListResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetGovernanceKubernetesClusterListResponseBody) SetData(v *GetGovernanceKubernetesClusterListResponseBodyData) *GetGovernanceKubernetesClusterListResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetGovernanceKubernetesClusterListResponseBody) SetHttpStatusCode(v int32) *GetGovernanceKubernetesClusterListResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *GetGovernanceKubernetesClusterListResponseBody) SetMessage(v string) *GetGovernanceKubernetesClusterListResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetGovernanceKubernetesClusterListResponseBody) SetRequestId(v string) *GetGovernanceKubernetesClusterListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetGovernanceKubernetesClusterListResponseBody) SetSuccess(v bool) *GetGovernanceKubernetesClusterListResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetGovernanceKubernetesClusterListResponseBodyData struct {
-	PageNumber *int32                                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result     []*GetGovernanceKubernetesClusterListResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	TotalSize  *int32                                                      `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
-}
-
-func (s GetGovernanceKubernetesClusterListResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetGovernanceKubernetesClusterListResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetGovernanceKubernetesClusterListResponseBodyData) SetPageNumber(v int32) *GetGovernanceKubernetesClusterListResponseBodyData {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *GetGovernanceKubernetesClusterListResponseBodyData) SetPageSize(v int32) *GetGovernanceKubernetesClusterListResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *GetGovernanceKubernetesClusterListResponseBodyData) SetResult(v []*GetGovernanceKubernetesClusterListResponseBodyDataResult) *GetGovernanceKubernetesClusterListResponseBodyData {
-	s.Result = v
-	return s
-}
-
-func (s *GetGovernanceKubernetesClusterListResponseBodyData) SetTotalSize(v int32) *GetGovernanceKubernetesClusterListResponseBodyData {
-	s.TotalSize = &v
-	return s
-}
-
-type GetGovernanceKubernetesClusterListResponseBodyDataResult struct {
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName    *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	K8sVersion     *string `json:"K8sVersion,omitempty" xml:"K8sVersion,omitempty"`
-	NamespaceInfos *string `json:"NamespaceInfos,omitempty" xml:"NamespaceInfos,omitempty"`
-	PilotStartTime *string `json:"PilotStartTime,omitempty" xml:"PilotStartTime,omitempty"`
-	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
-}
-
-func (s GetGovernanceKubernetesClusterListResponseBodyDataResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetGovernanceKubernetesClusterListResponseBodyDataResult) GoString() string {
-	return s.String()
-}
-
-func (s *GetGovernanceKubernetesClusterListResponseBodyDataResult) SetClusterId(v string) *GetGovernanceKubernetesClusterListResponseBodyDataResult {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *GetGovernanceKubernetesClusterListResponseBodyDataResult) SetClusterName(v string) *GetGovernanceKubernetesClusterListResponseBodyDataResult {
-	s.ClusterName = &v
-	return s
-}
-
-func (s *GetGovernanceKubernetesClusterListResponseBodyDataResult) SetK8sVersion(v string) *GetGovernanceKubernetesClusterListResponseBodyDataResult {
-	s.K8sVersion = &v
-	return s
-}
-
-func (s *GetGovernanceKubernetesClusterListResponseBodyDataResult) SetNamespaceInfos(v string) *GetGovernanceKubernetesClusterListResponseBodyDataResult {
-	s.NamespaceInfos = &v
-	return s
-}
-
-func (s *GetGovernanceKubernetesClusterListResponseBodyDataResult) SetPilotStartTime(v string) *GetGovernanceKubernetesClusterListResponseBodyDataResult {
-	s.PilotStartTime = &v
-	return s
-}
-
-func (s *GetGovernanceKubernetesClusterListResponseBodyDataResult) SetRegion(v string) *GetGovernanceKubernetesClusterListResponseBodyDataResult {
-	s.Region = &v
-	return s
-}
-
-type GetGovernanceKubernetesClusterListResponse struct {
-	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetGovernanceKubernetesClusterListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetGovernanceKubernetesClusterListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetGovernanceKubernetesClusterListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetGovernanceKubernetesClusterListResponse) SetHeaders(v map[string]*string) *GetGovernanceKubernetesClusterListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetGovernanceKubernetesClusterListResponse) SetStatusCode(v int32) *GetGovernanceKubernetesClusterListResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetGovernanceKubernetesClusterListResponse) SetBody(v *GetGovernanceKubernetesClusterListResponseBody) *GetGovernanceKubernetesClusterListResponse {
 	s.Body = v
 	return s
 }
@@ -14233,158 +13257,6 @@ func (s *ListClusterConnectionTypesResponse) SetBody(v *ListClusterConnectionTyp
 	return s
 }
 
-type ListClusterDetailFeatureRequest struct {
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestPars    *string `json:"RequestPars,omitempty" xml:"RequestPars,omitempty"`
-}
-
-func (s ListClusterDetailFeatureRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListClusterDetailFeatureRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListClusterDetailFeatureRequest) SetAcceptLanguage(v string) *ListClusterDetailFeatureRequest {
-	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *ListClusterDetailFeatureRequest) SetInstanceId(v string) *ListClusterDetailFeatureRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListClusterDetailFeatureRequest) SetRegionId(v string) *ListClusterDetailFeatureRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListClusterDetailFeatureRequest) SetRequestPars(v string) *ListClusterDetailFeatureRequest {
-	s.RequestPars = &v
-	return s
-}
-
-type ListClusterDetailFeatureResponseBody struct {
-	Data      []*ListClusterDetailFeatureResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	ErrorCode *string                                     `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	HttpCode  *string                                     `json:"HttpCode,omitempty" xml:"HttpCode,omitempty"`
-	Message   *string                                     `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListClusterDetailFeatureResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListClusterDetailFeatureResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListClusterDetailFeatureResponseBody) SetData(v []*ListClusterDetailFeatureResponseBodyData) *ListClusterDetailFeatureResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListClusterDetailFeatureResponseBody) SetErrorCode(v string) *ListClusterDetailFeatureResponseBody {
-	s.ErrorCode = &v
-	return s
-}
-
-func (s *ListClusterDetailFeatureResponseBody) SetHttpCode(v string) *ListClusterDetailFeatureResponseBody {
-	s.HttpCode = &v
-	return s
-}
-
-func (s *ListClusterDetailFeatureResponseBody) SetMessage(v string) *ListClusterDetailFeatureResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListClusterDetailFeatureResponseBody) SetRequestId(v string) *ListClusterDetailFeatureResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListClusterDetailFeatureResponseBody) SetSuccess(v bool) *ListClusterDetailFeatureResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListClusterDetailFeatureResponseBodyData struct {
-	Extend    map[string]interface{} `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	FeatureId *string                `json:"FeatureId,omitempty" xml:"FeatureId,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	OrderNum  *string                `json:"OrderNum,omitempty" xml:"OrderNum,omitempty"`
-	Status    *string                `json:"Status,omitempty" xml:"Status,omitempty"`
-}
-
-func (s ListClusterDetailFeatureResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListClusterDetailFeatureResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListClusterDetailFeatureResponseBodyData) SetExtend(v map[string]interface{}) *ListClusterDetailFeatureResponseBodyData {
-	s.Extend = v
-	return s
-}
-
-func (s *ListClusterDetailFeatureResponseBodyData) SetFeatureId(v string) *ListClusterDetailFeatureResponseBodyData {
-	s.FeatureId = &v
-	return s
-}
-
-func (s *ListClusterDetailFeatureResponseBodyData) SetMessage(v string) *ListClusterDetailFeatureResponseBodyData {
-	s.Message = &v
-	return s
-}
-
-func (s *ListClusterDetailFeatureResponseBodyData) SetOrderNum(v string) *ListClusterDetailFeatureResponseBodyData {
-	s.OrderNum = &v
-	return s
-}
-
-func (s *ListClusterDetailFeatureResponseBodyData) SetStatus(v string) *ListClusterDetailFeatureResponseBodyData {
-	s.Status = &v
-	return s
-}
-
-type ListClusterDetailFeatureResponse struct {
-	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListClusterDetailFeatureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListClusterDetailFeatureResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListClusterDetailFeatureResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListClusterDetailFeatureResponse) SetHeaders(v map[string]*string) *ListClusterDetailFeatureResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListClusterDetailFeatureResponse) SetStatusCode(v int32) *ListClusterDetailFeatureResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListClusterDetailFeatureResponse) SetBody(v *ListClusterDetailFeatureResponseBody) *ListClusterDetailFeatureResponse {
-	s.Body = v
-	return s
-}
-
 type ListClusterTypesRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// 网络连接类型
@@ -15717,6 +14589,7 @@ type ListGatewayResponseBodyDataResult struct {
 	EndDate         *string                                         `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
 	GatewayType     *string                                         `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
 	GatewayUniqueId *string                                         `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	GatewayVersion  *string                                         `json:"GatewayVersion,omitempty" xml:"GatewayVersion,omitempty"`
 	GmtCreate       *string                                         `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	GmtModified     *string                                         `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	Id              *int64                                          `json:"Id,omitempty" xml:"Id,omitempty"`
@@ -15729,6 +14602,7 @@ type ListGatewayResponseBodyDataResult struct {
 	PrimaryUser     *string                                         `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
 	Region          *string                                         `json:"Region,omitempty" xml:"Region,omitempty"`
 	Replica         *int32                                          `json:"Replica,omitempty" xml:"Replica,omitempty"`
+	RollBack        *bool                                           `json:"RollBack,omitempty" xml:"RollBack,omitempty"`
 	Slb             []*ListGatewayResponseBodyDataResultSlb         `json:"Slb,omitempty" xml:"Slb,omitempty" type:"Repeated"`
 	Spec            *string                                         `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	Status          *int32                                          `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -15784,6 +14658,11 @@ func (s *ListGatewayResponseBodyDataResult) SetGatewayType(v string) *ListGatewa
 
 func (s *ListGatewayResponseBodyDataResult) SetGatewayUniqueId(v string) *ListGatewayResponseBodyDataResult {
 	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyDataResult) SetGatewayVersion(v string) *ListGatewayResponseBodyDataResult {
+	s.GatewayVersion = &v
 	return s
 }
 
@@ -15844,6 +14723,11 @@ func (s *ListGatewayResponseBodyDataResult) SetRegion(v string) *ListGatewayResp
 
 func (s *ListGatewayResponseBodyDataResult) SetReplica(v int32) *ListGatewayResponseBodyDataResult {
 	s.Replica = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyDataResult) SetRollBack(v bool) *ListGatewayResponseBodyDataResult {
+	s.RollBack = &v
 	return s
 }
 
@@ -17483,309 +16367,6 @@ func (s *ListGatewaySlbResponse) SetStatusCode(v int32) *ListGatewaySlbResponse 
 }
 
 func (s *ListGatewaySlbResponse) SetBody(v *ListGatewaySlbResponseBody) *ListGatewaySlbResponse {
-	s.Body = v
-	return s
-}
-
-type ListInstancesRequest struct {
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s ListInstancesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListInstancesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListInstancesRequest) SetAcceptLanguage(v string) *ListInstancesRequest {
-	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *ListInstancesRequest) SetRegion(v string) *ListInstancesRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *ListInstancesRequest) SetUserId(v string) *ListInstancesRequest {
-	s.UserId = &v
-	return s
-}
-
-type ListInstancesResponseBody struct {
-	Code           *int32                           `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           []*ListInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	HttpStatusCode *int32                           `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                          `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ListInstancesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListInstancesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListInstancesResponseBody) SetCode(v int32) *ListInstancesResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *ListInstancesResponseBody) SetData(v []*ListInstancesResponseBodyData) *ListInstancesResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *ListInstancesResponseBody) SetHttpStatusCode(v int32) *ListInstancesResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *ListInstancesResponseBody) SetMessage(v string) *ListInstancesResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *ListInstancesResponseBody) SetRequestId(v string) *ListInstancesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListInstancesResponseBody) SetSuccess(v bool) *ListInstancesResponseBody {
-	s.Success = &v
-	return s
-}
-
-type ListInstancesResponseBodyData struct {
-	AppClusterId        *string `json:"AppClusterId,omitempty" xml:"AppClusterId,omitempty"`
-	AppVersion          *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	DbPassword          *string `json:"DbPassword,omitempty" xml:"DbPassword,omitempty"`
-	DbUrl               *string `json:"DbUrl,omitempty" xml:"DbUrl,omitempty"`
-	DbUserName          *string `json:"DbUserName,omitempty" xml:"DbUserName,omitempty"`
-	EndDate             *int64  `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	EnvironmentId       *int64  `json:"EnvironmentId,omitempty" xml:"EnvironmentId,omitempty"`
-	GmtCreate           *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	GmtModified         *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	Id                  *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
-	ImageVersion        *string `json:"ImageVersion,omitempty" xml:"ImageVersion,omitempty"`
-	InstanceId          *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	IsCreatedRedis      *bool   `json:"IsCreatedRedis,omitempty" xml:"IsCreatedRedis,omitempty"`
-	K8sResourceId       *int64  `json:"K8sResourceId,omitempty" xml:"K8sResourceId,omitempty"`
-	Name                *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	NameServer          *string `json:"NameServer,omitempty" xml:"NameServer,omitempty"`
-	OrderId             *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	PodCidr             *string `json:"PodCidr,omitempty" xml:"PodCidr,omitempty"`
-	PrimaryUser         *string `json:"PrimaryUser,omitempty" xml:"PrimaryUser,omitempty"`
-	Region              *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	Replica             *int64  `json:"Replica,omitempty" xml:"Replica,omitempty"`
-	SeataServerUniqueId *string `json:"SeataServerUniqueId,omitempty" xml:"SeataServerUniqueId,omitempty"`
-	SecurityGroup       *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
-	Spec                *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
-	StartDate           *string `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
-	Status              *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
-	StatusDesc          *string `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
-	StoreMode           *string `json:"StoreMode,omitempty" xml:"StoreMode,omitempty"`
-	Vpc                 *string `json:"Vpc,omitempty" xml:"Vpc,omitempty"`
-	Vswitch             *string `json:"Vswitch,omitempty" xml:"Vswitch,omitempty"`
-	ZoneId              *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-}
-
-func (s ListInstancesResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListInstancesResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *ListInstancesResponseBodyData) SetAppClusterId(v string) *ListInstancesResponseBodyData {
-	s.AppClusterId = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetAppVersion(v string) *ListInstancesResponseBodyData {
-	s.AppVersion = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetDbPassword(v string) *ListInstancesResponseBodyData {
-	s.DbPassword = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetDbUrl(v string) *ListInstancesResponseBodyData {
-	s.DbUrl = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetDbUserName(v string) *ListInstancesResponseBodyData {
-	s.DbUserName = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetEndDate(v int64) *ListInstancesResponseBodyData {
-	s.EndDate = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetEnvironmentId(v int64) *ListInstancesResponseBodyData {
-	s.EnvironmentId = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetGmtCreate(v string) *ListInstancesResponseBodyData {
-	s.GmtCreate = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetGmtModified(v string) *ListInstancesResponseBodyData {
-	s.GmtModified = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetId(v int64) *ListInstancesResponseBodyData {
-	s.Id = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetImageVersion(v string) *ListInstancesResponseBodyData {
-	s.ImageVersion = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetInstanceId(v string) *ListInstancesResponseBodyData {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetIsCreatedRedis(v bool) *ListInstancesResponseBodyData {
-	s.IsCreatedRedis = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetK8sResourceId(v int64) *ListInstancesResponseBodyData {
-	s.K8sResourceId = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetName(v string) *ListInstancesResponseBodyData {
-	s.Name = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetNameServer(v string) *ListInstancesResponseBodyData {
-	s.NameServer = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetOrderId(v string) *ListInstancesResponseBodyData {
-	s.OrderId = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetPodCidr(v string) *ListInstancesResponseBodyData {
-	s.PodCidr = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetPrimaryUser(v string) *ListInstancesResponseBodyData {
-	s.PrimaryUser = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetRegion(v string) *ListInstancesResponseBodyData {
-	s.Region = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetReplica(v int64) *ListInstancesResponseBodyData {
-	s.Replica = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetSeataServerUniqueId(v string) *ListInstancesResponseBodyData {
-	s.SeataServerUniqueId = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetSecurityGroup(v string) *ListInstancesResponseBodyData {
-	s.SecurityGroup = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetSpec(v string) *ListInstancesResponseBodyData {
-	s.Spec = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetStartDate(v string) *ListInstancesResponseBodyData {
-	s.StartDate = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetStatus(v int64) *ListInstancesResponseBodyData {
-	s.Status = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetStatusDesc(v string) *ListInstancesResponseBodyData {
-	s.StatusDesc = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetStoreMode(v string) *ListInstancesResponseBodyData {
-	s.StoreMode = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetVpc(v string) *ListInstancesResponseBodyData {
-	s.Vpc = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetVswitch(v string) *ListInstancesResponseBodyData {
-	s.Vswitch = &v
-	return s
-}
-
-func (s *ListInstancesResponseBodyData) SetZoneId(v string) *ListInstancesResponseBodyData {
-	s.ZoneId = &v
-	return s
-}
-
-type ListInstancesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListInstancesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListInstancesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListInstancesResponse) SetHeaders(v map[string]*string) *ListInstancesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListInstancesResponse) SetStatusCode(v int32) *ListInstancesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInstancesResponse {
 	s.Body = v
 	return s
 }
@@ -21280,10 +19861,14 @@ func (s *QueryGatewayTypeResponse) SetBody(v *QueryGatewayTypeResponseBody) *Que
 
 type QueryGovernanceKubernetesClusterRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName    *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Kubernetes集群Id
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Kubernetes集群名
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// 当前页码
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 每页元素数量
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s QueryGovernanceKubernetesClusterRequest) String() string {
@@ -21320,12 +19905,14 @@ func (s *QueryGovernanceKubernetesClusterRequest) SetPageSize(v int32) *QueryGov
 }
 
 type QueryGovernanceKubernetesClusterResponseBody struct {
+	// 后端状态码
 	Code           *int32                                            `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data           *QueryGovernanceKubernetesClusterResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	HttpStatusCode *int32                                            `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	Message        *string                                           `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId      *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success        *bool                                             `json:"Success,omitempty" xml:"Success,omitempty"`
+	// 是否成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s QueryGovernanceKubernetesClusterResponseBody) String() string {
@@ -21367,10 +19954,13 @@ func (s *QueryGovernanceKubernetesClusterResponseBody) SetSuccess(v bool) *Query
 }
 
 type QueryGovernanceKubernetesClusterResponseBodyData struct {
-	PageNumber *int32                                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Result     []*QueryGovernanceKubernetesClusterResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
-	TotalSize  *int32                                                    `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+	// 当前页码
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 页大小
+	PageSize *int32                                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Result   []*QueryGovernanceKubernetesClusterResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Repeated"`
+	// 页码总数
+	TotalSize *int32 `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
 }
 
 func (s QueryGovernanceKubernetesClusterResponseBodyData) String() string {
@@ -21402,12 +19992,18 @@ func (s *QueryGovernanceKubernetesClusterResponseBodyData) SetTotalSize(v int32)
 }
 
 type QueryGovernanceKubernetesClusterResponseBodyDataResult struct {
-	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	ClusterName    *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	K8sVersion     *string `json:"K8sVersion,omitempty" xml:"K8sVersion,omitempty"`
+	// Kubernetes集群Id
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	// Kubernetes集群名
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	// Kubernetes集群版本
+	K8sVersion *string `json:"K8sVersion,omitempty" xml:"K8sVersion,omitempty"`
+	// Kubernetes集群命名空间信息（json格式）
 	NamespaceInfos *string `json:"NamespaceInfos,omitempty" xml:"NamespaceInfos,omitempty"`
+	// pilot启动时间
 	PilotStartTime *string `json:"PilotStartTime,omitempty" xml:"PilotStartTime,omitempty"`
-	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Kubernetes集群所在的地域
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s QueryGovernanceKubernetesClusterResponseBodyDataResult) String() string {
@@ -21883,170 +20479,6 @@ func (s *QuerySwimmingLaneByIdResponse) SetBody(v *QuerySwimmingLaneByIdResponse
 	return s
 }
 
-type QueryUserVpcRequest struct {
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-}
-
-func (s QueryUserVpcRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryUserVpcRequest) GoString() string {
-	return s.String()
-}
-
-func (s *QueryUserVpcRequest) SetAcceptLanguage(v string) *QueryUserVpcRequest {
-	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *QueryUserVpcRequest) SetRegion(v string) *QueryUserVpcRequest {
-	s.Region = &v
-	return s
-}
-
-func (s *QueryUserVpcRequest) SetUserId(v string) *QueryUserVpcRequest {
-	s.UserId = &v
-	return s
-}
-
-type QueryUserVpcResponseBody struct {
-	Code           *int32                          `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           []*QueryUserVpcResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	HttpStatusCode *int32                          `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s QueryUserVpcResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryUserVpcResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *QueryUserVpcResponseBody) SetCode(v int32) *QueryUserVpcResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *QueryUserVpcResponseBody) SetData(v []*QueryUserVpcResponseBodyData) *QueryUserVpcResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *QueryUserVpcResponseBody) SetHttpStatusCode(v int32) *QueryUserVpcResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *QueryUserVpcResponseBody) SetMessage(v string) *QueryUserVpcResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *QueryUserVpcResponseBody) SetRequestId(v string) *QueryUserVpcResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *QueryUserVpcResponseBody) SetSuccess(v bool) *QueryUserVpcResponseBody {
-	s.Success = &v
-	return s
-}
-
-type QueryUserVpcResponseBodyData struct {
-	VSwitchList []*QueryUserVpcResponseBodyDataVSwitchList `json:"VSwitchList,omitempty" xml:"VSwitchList,omitempty" type:"Repeated"`
-	VpcId       *string                                    `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VpcName     *string                                    `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-}
-
-func (s QueryUserVpcResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryUserVpcResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *QueryUserVpcResponseBodyData) SetVSwitchList(v []*QueryUserVpcResponseBodyDataVSwitchList) *QueryUserVpcResponseBodyData {
-	s.VSwitchList = v
-	return s
-}
-
-func (s *QueryUserVpcResponseBodyData) SetVpcId(v string) *QueryUserVpcResponseBodyData {
-	s.VpcId = &v
-	return s
-}
-
-func (s *QueryUserVpcResponseBodyData) SetVpcName(v string) *QueryUserVpcResponseBodyData {
-	s.VpcName = &v
-	return s
-}
-
-type QueryUserVpcResponseBodyDataVSwitchList struct {
-	VswitchId   *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	VswitchName *string `json:"VswitchName,omitempty" xml:"VswitchName,omitempty"`
-	ZoneId      *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-}
-
-func (s QueryUserVpcResponseBodyDataVSwitchList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryUserVpcResponseBodyDataVSwitchList) GoString() string {
-	return s.String()
-}
-
-func (s *QueryUserVpcResponseBodyDataVSwitchList) SetVswitchId(v string) *QueryUserVpcResponseBodyDataVSwitchList {
-	s.VswitchId = &v
-	return s
-}
-
-func (s *QueryUserVpcResponseBodyDataVSwitchList) SetVswitchName(v string) *QueryUserVpcResponseBodyDataVSwitchList {
-	s.VswitchName = &v
-	return s
-}
-
-func (s *QueryUserVpcResponseBodyDataVSwitchList) SetZoneId(v string) *QueryUserVpcResponseBodyDataVSwitchList {
-	s.ZoneId = &v
-	return s
-}
-
-type QueryUserVpcResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *QueryUserVpcResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s QueryUserVpcResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s QueryUserVpcResponse) GoString() string {
-	return s.String()
-}
-
-func (s *QueryUserVpcResponse) SetHeaders(v map[string]*string) *QueryUserVpcResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *QueryUserVpcResponse) SetStatusCode(v int32) *QueryUserVpcResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *QueryUserVpcResponse) SetBody(v *QueryUserVpcResponseBody) *QueryUserVpcResponse {
-	s.Body = v
-	return s
-}
-
 type QueryZnodeDetailRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	ClusterId      *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
@@ -22294,107 +20726,6 @@ func (s *RestartClusterResponse) SetStatusCode(v int32) *RestartClusterResponse 
 }
 
 func (s *RestartClusterResponse) SetBody(v *RestartClusterResponseBody) *RestartClusterResponse {
-	s.Body = v
-	return s
-}
-
-type RestartSeataServerRequest struct {
-	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
-	// 集群名称
-	SeataServerUniqueId *string `json:"SeataServerUniqueId,omitempty" xml:"SeataServerUniqueId,omitempty"`
-}
-
-func (s RestartSeataServerRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RestartSeataServerRequest) GoString() string {
-	return s.String()
-}
-
-func (s *RestartSeataServerRequest) SetAcceptLanguage(v string) *RestartSeataServerRequest {
-	s.AcceptLanguage = &v
-	return s
-}
-
-func (s *RestartSeataServerRequest) SetSeataServerUniqueId(v string) *RestartSeataServerRequest {
-	s.SeataServerUniqueId = &v
-	return s
-}
-
-type RestartSeataServerResponseBody struct {
-	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s RestartSeataServerResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RestartSeataServerResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *RestartSeataServerResponseBody) SetCode(v int32) *RestartSeataServerResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *RestartSeataServerResponseBody) SetData(v string) *RestartSeataServerResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *RestartSeataServerResponseBody) SetHttpStatusCode(v int32) *RestartSeataServerResponseBody {
-	s.HttpStatusCode = &v
-	return s
-}
-
-func (s *RestartSeataServerResponseBody) SetMessage(v string) *RestartSeataServerResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *RestartSeataServerResponseBody) SetRequestId(v string) *RestartSeataServerResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *RestartSeataServerResponseBody) SetSuccess(v bool) *RestartSeataServerResponseBody {
-	s.Success = &v
-	return s
-}
-
-type RestartSeataServerResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *RestartSeataServerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s RestartSeataServerResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s RestartSeataServerResponse) GoString() string {
-	return s.String()
-}
-
-func (s *RestartSeataServerResponse) SetHeaders(v map[string]*string) *RestartSeataServerResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *RestartSeataServerResponse) SetStatusCode(v int32) *RestartSeataServerResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *RestartSeataServerResponse) SetBody(v *RestartSeataServerResponseBody) *RestartSeataServerResponse {
 	s.Body = v
 	return s
 }
@@ -27250,6 +25581,7 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.SignatureAlgorithm = tea.String("v2")
 	client.EndpointRule = tea.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -27420,6 +25752,18 @@ func (client *Client) AddGatewayWithOptions(request *AddGatewayRequest, runtime 
 		query["AcceptLanguage"] = request.AcceptLanguage
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.EnableHardwareAcceleration)) {
+		query["EnableHardwareAcceleration"] = request.EnableHardwareAcceleration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableSls)) {
+		query["EnableSls"] = request.EnableSls
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableXtrace)) {
+		query["EnableXtrace"] = request.EnableXtrace
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.EnterpriseSecurityGroup)) {
 		query["EnterpriseSecurityGroup"] = request.EnterpriseSecurityGroup
 	}
@@ -27458,6 +25802,10 @@ func (client *Client) AddGatewayWithOptions(request *AddGatewayRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.Vpc)) {
 		query["Vpc"] = request.Vpc
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.XtraceRatio)) {
+		query["XtraceRatio"] = request.XtraceRatio
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -27924,78 +26272,6 @@ func (client *Client) AddSSLCert(request *AddSSLCertRequest) (_result *AddSSLCer
 	return _result, _err
 }
 
-func (client *Client) AddSeataServerWithOptions(request *AddSeataServerRequest, runtime *util.RuntimeOptions) (_result *AddSeataServerResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
-		query["AcceptLanguage"] = request.AcceptLanguage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		query["Name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PrimaryUser)) {
-		query["PrimaryUser"] = request.PrimaryUser
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Replica)) {
-		query["Replica"] = request.Replica
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Vpc)) {
-		query["Vpc"] = request.Vpc
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Vswitch)) {
-		query["Vswitch"] = request.Vswitch
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
-		query["ZoneId"] = request.ZoneId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AddSeataServer"),
-		Version:     tea.String("2019-05-31"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &AddSeataServerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AddSeataServer(request *AddSeataServerRequest) (_result *AddSeataServerResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AddSeataServerResponse{}
-	_body, _err := client.AddSeataServerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) AddSecurityGroupRuleWithOptions(request *AddSecurityGroupRuleRequest, runtime *util.RuntimeOptions) (_result *AddSecurityGroupRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -28123,66 +26399,6 @@ func (client *Client) AddServiceSource(request *AddServiceSourceRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &AddServiceSourceResponse{}
 	_body, _err := client.AddServiceSourceWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) AddTestWithOptions(request *AddTestRequest, runtime *util.RuntimeOptions) (_result *AddTestResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
-		query["AcceptLanguage"] = request.AcceptLanguage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DescSort)) {
-		query["DescSort"] = request.DescSort
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OrderItem)) {
-		query["OrderItem"] = request.OrderItem
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("AddTest"),
-		Version:     tea.String("2019-05-31"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &AddTestResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) AddTest(request *AddTestRequest) (_result *AddTestResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &AddTestResponse{}
-	_body, _err := client.AddTestWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28611,6 +26827,78 @@ func (client *Client) CreateEngineNamespace(request *CreateEngineNamespaceReques
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateEngineNamespaceResponse{}
 	_body, _err := client.CreateEngineNamespaceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateMseServiceApplicationWithOptions(request *CreateMseServiceApplicationRequest, runtime *util.RuntimeOptions) (_result *CreateMseServiceApplicationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraInfo)) {
+		query["ExtraInfo"] = request.ExtraInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Region)) {
+		query["Region"] = request.Region
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SentinelEnable)) {
+		query["SentinelEnable"] = request.SentinelEnable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SwitchEnable)) {
+		query["SwitchEnable"] = request.SwitchEnable
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMseServiceApplication"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateMseServiceApplicationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateMseServiceApplication(request *CreateMseServiceApplicationRequest) (_result *CreateMseServiceApplicationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateMseServiceApplicationResponse{}
+	_body, _err := client.CreateMseServiceApplicationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29053,66 +27341,6 @@ func (client *Client) CreateOrUpdateSwimmingLaneGroup(request *CreateOrUpdateSwi
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateOrUpdateSwimmingLaneGroupResponse{}
 	_body, _err := client.CreateOrUpdateSwimmingLaneGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) CreateVGroupWithOptions(request *CreateVGroupRequest, runtime *util.RuntimeOptions) (_result *CreateVGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
-		query["AcceptLanguage"] = request.AcceptLanguage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		query["Name"] = request.Name
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PrimaryUser)) {
-		query["PrimaryUser"] = request.PrimaryUser
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Region)) {
-		query["Region"] = request.Region
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SeataServerUniqueId)) {
-		query["SeataServerUniqueId"] = request.SeataServerUniqueId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CreateVGroup"),
-		Version:     tea.String("2019-05-31"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CreateVGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CreateVGroup(request *CreateVGroupRequest) (_result *CreateVGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CreateVGroupResponse{}
-	_body, _err := client.CreateVGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -29912,54 +28140,6 @@ func (client *Client) DeleteNacosService(request *DeleteNacosServiceRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) DeleteSeataServerWithOptions(request *DeleteSeataServerRequest, runtime *util.RuntimeOptions) (_result *DeleteSeataServerResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
-		query["AcceptLanguage"] = request.AcceptLanguage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SeataServerUniqueId)) {
-		query["SeataServerUniqueId"] = request.SeataServerUniqueId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteSeataServer"),
-		Version:     tea.String("2019-05-31"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteSeataServerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteSeataServer(request *DeleteSeataServerRequest) (_result *DeleteSeataServerResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteSeataServerResponse{}
-	_body, _err := client.DeleteSeataServerWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DeleteSecurityGroupRuleWithOptions(request *DeleteSecurityGroupRuleRequest, runtime *util.RuntimeOptions) (_result *DeleteSecurityGroupRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30153,54 +28333,6 @@ func (client *Client) DeleteSwimmingLaneGroup(request *DeleteSwimmingLaneGroupRe
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSwimmingLaneGroupResponse{}
 	_body, _err := client.DeleteSwimmingLaneGroupWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteVGroupWithOptions(request *DeleteVGroupRequest, runtime *util.RuntimeOptions) (_result *DeleteVGroupResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
-		query["AcceptLanguage"] = request.AcceptLanguage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Name)) {
-		query["Name"] = request.Name
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteVGroup"),
-		Version:     tea.String("2019-05-31"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteVGroupResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteVGroup(request *DeleteVGroupRequest) (_result *DeleteVGroupResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteVGroupResponse{}
-	_body, _err := client.DeleteVGroupWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30517,62 +28649,6 @@ func (client *Client) GetBlackWhiteList(request *GetBlackWhiteListRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &GetBlackWhiteListResponse{}
 	_body, _err := client.GetBlackWhiteListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetDashBoardUrlWithOptions(request *GetDashBoardUrlRequest, runtime *util.RuntimeOptions) (_result *GetDashBoardUrlResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
-		query["AcceptLanguage"] = request.AcceptLanguage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RequestPars)) {
-		query["RequestPars"] = request.RequestPars
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetDashBoardUrl"),
-		Version:     tea.String("2019-05-31"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetDashBoardUrlResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetDashBoardUrl(request *GetDashBoardUrlRequest) (_result *GetDashBoardUrlResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetDashBoardUrlResponse{}
-	_body, _err := client.GetDashBoardUrlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30937,66 +29013,6 @@ func (client *Client) GetGovernanceKubernetesCluster(request *GetGovernanceKuber
 	runtime := &util.RuntimeOptions{}
 	_result = &GetGovernanceKubernetesClusterResponse{}
 	_body, _err := client.GetGovernanceKubernetesClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetGovernanceKubernetesClusterListWithOptions(request *GetGovernanceKubernetesClusterListRequest, runtime *util.RuntimeOptions) (_result *GetGovernanceKubernetesClusterListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
-		query["AcceptLanguage"] = request.AcceptLanguage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
-		query["ClusterId"] = request.ClusterId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ClusterName)) {
-		query["ClusterName"] = request.ClusterName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetGovernanceKubernetesClusterList"),
-		Version:     tea.String("2019-05-31"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetGovernanceKubernetesClusterListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetGovernanceKubernetesClusterList(request *GetGovernanceKubernetesClusterListRequest) (_result *GetGovernanceKubernetesClusterListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetGovernanceKubernetesClusterListResponse{}
-	_body, _err := client.GetGovernanceKubernetesClusterListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -31914,62 +29930,6 @@ func (client *Client) ListClusterConnectionTypes(request *ListClusterConnectionT
 	return _result, _err
 }
 
-func (client *Client) ListClusterDetailFeatureWithOptions(request *ListClusterDetailFeatureRequest, runtime *util.RuntimeOptions) (_result *ListClusterDetailFeatureResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
-		query["AcceptLanguage"] = request.AcceptLanguage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RequestPars)) {
-		query["RequestPars"] = request.RequestPars
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListClusterDetailFeature"),
-		Version:     tea.String("2019-05-31"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListClusterDetailFeatureResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListClusterDetailFeature(request *ListClusterDetailFeatureRequest) (_result *ListClusterDetailFeatureResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListClusterDetailFeatureResponse{}
-	_body, _err := client.ListClusterDetailFeatureWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListClusterTypesWithOptions(request *ListClusterTypesRequest, runtime *util.RuntimeOptions) (_result *ListClusterTypesResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -32533,46 +30493,6 @@ func (client *Client) ListGatewaySlb(request *ListGatewaySlbRequest) (_result *L
 	runtime := &util.RuntimeOptions{}
 	_result = &ListGatewaySlbResponse{}
 	_body, _err := client.ListGatewaySlbWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListInstances"),
-		Version:     tea.String("2019-05-31"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListInstancesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListInstances(request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListInstancesResponse{}
-	_body, _err := client.ListInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33828,46 +31748,6 @@ func (client *Client) QuerySwimmingLaneById(request *QuerySwimmingLaneByIdReques
 	return _result, _err
 }
 
-func (client *Client) QueryUserVpcWithOptions(request *QueryUserVpcRequest, runtime *util.RuntimeOptions) (_result *QueryUserVpcResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("QueryUserVpc"),
-		Version:     tea.String("2019-05-31"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &QueryUserVpcResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) QueryUserVpc(request *QueryUserVpcRequest) (_result *QueryUserVpcResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &QueryUserVpcResponse{}
-	_body, _err := client.QueryUserVpcWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) QueryZnodeDetailWithOptions(request *QueryZnodeDetailRequest, runtime *util.RuntimeOptions) (_result *QueryZnodeDetailResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33961,54 +31841,6 @@ func (client *Client) RestartCluster(request *RestartClusterRequest) (_result *R
 	runtime := &util.RuntimeOptions{}
 	_result = &RestartClusterResponse{}
 	_body, _err := client.RestartClusterWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) RestartSeataServerWithOptions(request *RestartSeataServerRequest, runtime *util.RuntimeOptions) (_result *RestartSeataServerResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
-		query["AcceptLanguage"] = request.AcceptLanguage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SeataServerUniqueId)) {
-		query["SeataServerUniqueId"] = request.SeataServerUniqueId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("RestartSeataServer"),
-		Version:     tea.String("2019-05-31"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &RestartSeataServerResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) RestartSeataServer(request *RestartSeataServerRequest) (_result *RestartSeataServerResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &RestartSeataServerResponse{}
-	_body, _err := client.RestartSeataServerWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
