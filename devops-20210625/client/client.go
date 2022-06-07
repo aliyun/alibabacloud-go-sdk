@@ -747,6 +747,165 @@ func (s *CreateHostGroupResponse) SetBody(v *CreateHostGroupResponseBody) *Creat
 	return s
 }
 
+type CreateOAuthTokenRequest struct {
+	// clientId
+	ClientId *string `json:"clientId,omitempty" xml:"clientId,omitempty"`
+	// client_secret
+	ClientSecret *string `json:"clientSecret,omitempty" xml:"clientSecret,omitempty"`
+	// 当前grantType=code时必传
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// 授权类型：code，token
+	GrantType *string `json:"grantType,omitempty" xml:"grantType,omitempty"`
+	// code = token时必传
+	Login *string `json:"login,omitempty" xml:"login,omitempty"`
+	// 授权范围.例如：read:repo,write:repo
+	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
+}
+
+func (s CreateOAuthTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOAuthTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOAuthTokenRequest) SetClientId(v string) *CreateOAuthTokenRequest {
+	s.ClientId = &v
+	return s
+}
+
+func (s *CreateOAuthTokenRequest) SetClientSecret(v string) *CreateOAuthTokenRequest {
+	s.ClientSecret = &v
+	return s
+}
+
+func (s *CreateOAuthTokenRequest) SetCode(v string) *CreateOAuthTokenRequest {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateOAuthTokenRequest) SetGrantType(v string) *CreateOAuthTokenRequest {
+	s.GrantType = &v
+	return s
+}
+
+func (s *CreateOAuthTokenRequest) SetLogin(v string) *CreateOAuthTokenRequest {
+	s.Login = &v
+	return s
+}
+
+func (s *CreateOAuthTokenRequest) SetScope(v string) *CreateOAuthTokenRequest {
+	s.Scope = &v
+	return s
+}
+
+type CreateOAuthTokenResponseBody struct {
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// Id of the request
+	ErrorMessage *string                             `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	RequestId    *string                             `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	Result       *CreateOAuthTokenResponseBodyResult `json:"result,omitempty" xml:"result,omitempty" type:"Struct"`
+	Success      *string                             `json:"success,omitempty" xml:"success,omitempty"`
+}
+
+func (s CreateOAuthTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOAuthTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOAuthTokenResponseBody) SetErrorCode(v string) *CreateOAuthTokenResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *CreateOAuthTokenResponseBody) SetErrorMessage(v string) *CreateOAuthTokenResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateOAuthTokenResponseBody) SetRequestId(v string) *CreateOAuthTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateOAuthTokenResponseBody) SetResult(v *CreateOAuthTokenResponseBodyResult) *CreateOAuthTokenResponseBody {
+	s.Result = v
+	return s
+}
+
+func (s *CreateOAuthTokenResponseBody) SetSuccess(v string) *CreateOAuthTokenResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateOAuthTokenResponseBodyResult struct {
+	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
+	Id          *string `json:"id,omitempty" xml:"id,omitempty"`
+	Scope       *string `json:"scope,omitempty" xml:"scope,omitempty"`
+	TokenType   *string `json:"tokenType,omitempty" xml:"tokenType,omitempty"`
+}
+
+func (s CreateOAuthTokenResponseBodyResult) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOAuthTokenResponseBodyResult) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOAuthTokenResponseBodyResult) SetAccessToken(v string) *CreateOAuthTokenResponseBodyResult {
+	s.AccessToken = &v
+	return s
+}
+
+func (s *CreateOAuthTokenResponseBodyResult) SetId(v string) *CreateOAuthTokenResponseBodyResult {
+	s.Id = &v
+	return s
+}
+
+func (s *CreateOAuthTokenResponseBodyResult) SetScope(v string) *CreateOAuthTokenResponseBodyResult {
+	s.Scope = &v
+	return s
+}
+
+func (s *CreateOAuthTokenResponseBodyResult) SetTokenType(v string) *CreateOAuthTokenResponseBodyResult {
+	s.TokenType = &v
+	return s
+}
+
+type CreateOAuthTokenResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateOAuthTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateOAuthTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateOAuthTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateOAuthTokenResponse) SetHeaders(v map[string]*string) *CreateOAuthTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateOAuthTokenResponse) SetStatusCode(v int32) *CreateOAuthTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateOAuthTokenResponse) SetBody(v *CreateOAuthTokenResponseBody) *CreateOAuthTokenResponse {
+	s.Body = v
+	return s
+}
+
 type CreateProjectRequest struct {
 	CustomCode         *string `json:"customCode,omitempty" xml:"customCode,omitempty"`
 	Name               *string `json:"name,omitempty" xml:"name,omitempty"`
@@ -15412,6 +15571,72 @@ func (client *Client) CreateHostGroupWithOptions(organizationId *string, request
 		BodyType:    tea.String("json"),
 	}
 	_result = &CreateHostGroupResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateOAuthToken(request *CreateOAuthTokenRequest) (_result *CreateOAuthTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateOAuthTokenResponse{}
+	_body, _err := client.CreateOAuthTokenWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateOAuthTokenWithOptions(request *CreateOAuthTokenRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateOAuthTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientId)) {
+		body["clientId"] = request.ClientId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClientSecret)) {
+		body["clientSecret"] = request.ClientSecret
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Code)) {
+		body["code"] = request.Code
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GrantType)) {
+		body["grantType"] = request.GrantType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Login)) {
+		body["login"] = request.Login
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		body["scope"] = request.Scope
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateOAuthToken"),
+		Version:     tea.String("2021-06-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/login/oauth/create"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateOAuthTokenResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
