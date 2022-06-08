@@ -1848,6 +1848,7 @@ func (s *OrderFreeFlowProductResponseBody) SetSuccess(v bool) *OrderFreeFlowProd
 }
 
 type OrderFreeFlowProductResponseBodyData struct {
+	BizCode *string `json:"BizCode,omitempty" xml:"BizCode,omitempty"`
 	// C端免流订单ID
 	CustomerFlowOrderId   *string `json:"CustomerFlowOrderId,omitempty" xml:"CustomerFlowOrderId,omitempty"`
 	CustomerFlowRequestId *string `json:"CustomerFlowRequestId,omitempty" xml:"CustomerFlowRequestId,omitempty"`
@@ -1861,6 +1862,11 @@ func (s OrderFreeFlowProductResponseBodyData) String() string {
 
 func (s OrderFreeFlowProductResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *OrderFreeFlowProductResponseBodyData) SetBizCode(v string) *OrderFreeFlowProductResponseBodyData {
+	s.BizCode = &v
+	return s
 }
 
 func (s *OrderFreeFlowProductResponseBodyData) SetCustomerFlowOrderId(v string) *OrderFreeFlowProductResponseBodyData {
@@ -2039,12 +2045,12 @@ type ValidateStatusRequest struct {
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
 	// 应用名称
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// C端手机号
-	MobileNumber *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+	// 凭证类型
+	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
+	// mobile=150xxxx4661
+	CredentialValue *string `json:"CredentialValue,omitempty" xml:"CredentialValue,omitempty"`
 	// 取值包括cm（中国移动）/ct（中国电信）/cu（中国联通）
 	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	// 运营商伪码
-	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 }
 
 func (s ValidateStatusRequest) String() string {
@@ -2065,18 +2071,18 @@ func (s *ValidateStatusRequest) SetAppId(v string) *ValidateStatusRequest {
 	return s
 }
 
-func (s *ValidateStatusRequest) SetMobileNumber(v string) *ValidateStatusRequest {
-	s.MobileNumber = &v
+func (s *ValidateStatusRequest) SetCredentialType(v string) *ValidateStatusRequest {
+	s.CredentialType = &v
+	return s
+}
+
+func (s *ValidateStatusRequest) SetCredentialValue(v string) *ValidateStatusRequest {
+	s.CredentialValue = &v
 	return s
 }
 
 func (s *ValidateStatusRequest) SetOperator(v string) *ValidateStatusRequest {
 	s.Operator = &v
-	return s
-}
-
-func (s *ValidateStatusRequest) SetProductCode(v string) *ValidateStatusRequest {
-	s.ProductCode = &v
 	return s
 }
 
