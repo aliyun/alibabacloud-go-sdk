@@ -13,10 +13,10 @@ import (
 )
 
 type AsymmetricDecryptRequest struct {
+	Algorithm      *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
 	KeyId          *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeyVersionId   *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
-	Algorithm      *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 }
 
 func (s AsymmetricDecryptRequest) String() string {
@@ -25,6 +25,11 @@ func (s AsymmetricDecryptRequest) String() string {
 
 func (s AsymmetricDecryptRequest) GoString() string {
 	return s.String()
+}
+
+func (s *AsymmetricDecryptRequest) SetAlgorithm(v string) *AsymmetricDecryptRequest {
+	s.Algorithm = &v
+	return s
 }
 
 func (s *AsymmetricDecryptRequest) SetCiphertextBlob(v string) *AsymmetricDecryptRequest {
@@ -42,16 +47,11 @@ func (s *AsymmetricDecryptRequest) SetKeyVersionId(v string) *AsymmetricDecryptR
 	return s
 }
 
-func (s *AsymmetricDecryptRequest) SetAlgorithm(v string) *AsymmetricDecryptRequest {
-	s.Algorithm = &v
-	return s
-}
-
 type AsymmetricDecryptResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Plaintext    *string `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
 	KeyId        *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
+	Plaintext    *string `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AsymmetricDecryptResponseBody) String() string {
@@ -60,16 +60,6 @@ func (s AsymmetricDecryptResponseBody) String() string {
 
 func (s AsymmetricDecryptResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *AsymmetricDecryptResponseBody) SetRequestId(v string) *AsymmetricDecryptResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AsymmetricDecryptResponseBody) SetPlaintext(v string) *AsymmetricDecryptResponseBody {
-	s.Plaintext = &v
-	return s
 }
 
 func (s *AsymmetricDecryptResponseBody) SetKeyId(v string) *AsymmetricDecryptResponseBody {
@@ -82,9 +72,20 @@ func (s *AsymmetricDecryptResponseBody) SetKeyVersionId(v string) *AsymmetricDec
 	return s
 }
 
+func (s *AsymmetricDecryptResponseBody) SetPlaintext(v string) *AsymmetricDecryptResponseBody {
+	s.Plaintext = &v
+	return s
+}
+
+func (s *AsymmetricDecryptResponseBody) SetRequestId(v string) *AsymmetricDecryptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type AsymmetricDecryptResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AsymmetricDecryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AsymmetricDecryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AsymmetricDecryptResponse) String() string {
@@ -100,16 +101,21 @@ func (s *AsymmetricDecryptResponse) SetHeaders(v map[string]*string) *Asymmetric
 	return s
 }
 
+func (s *AsymmetricDecryptResponse) SetStatusCode(v int32) *AsymmetricDecryptResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AsymmetricDecryptResponse) SetBody(v *AsymmetricDecryptResponseBody) *AsymmetricDecryptResponse {
 	s.Body = v
 	return s
 }
 
 type AsymmetricEncryptRequest struct {
-	Plaintext    *string `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
+	Algorithm    *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	KeyId        *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
-	Algorithm    *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	Plaintext    *string `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
 }
 
 func (s AsymmetricEncryptRequest) String() string {
@@ -120,8 +126,8 @@ func (s AsymmetricEncryptRequest) GoString() string {
 	return s.String()
 }
 
-func (s *AsymmetricEncryptRequest) SetPlaintext(v string) *AsymmetricEncryptRequest {
-	s.Plaintext = &v
+func (s *AsymmetricEncryptRequest) SetAlgorithm(v string) *AsymmetricEncryptRequest {
+	s.Algorithm = &v
 	return s
 }
 
@@ -135,16 +141,16 @@ func (s *AsymmetricEncryptRequest) SetKeyVersionId(v string) *AsymmetricEncryptR
 	return s
 }
 
-func (s *AsymmetricEncryptRequest) SetAlgorithm(v string) *AsymmetricEncryptRequest {
-	s.Algorithm = &v
+func (s *AsymmetricEncryptRequest) SetPlaintext(v string) *AsymmetricEncryptRequest {
+	s.Plaintext = &v
 	return s
 }
 
 type AsymmetricEncryptResponseBody struct {
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
 	KeyId          *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeyVersionId   *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s AsymmetricEncryptResponseBody) String() string {
@@ -153,11 +159,6 @@ func (s AsymmetricEncryptResponseBody) String() string {
 
 func (s AsymmetricEncryptResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *AsymmetricEncryptResponseBody) SetRequestId(v string) *AsymmetricEncryptResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *AsymmetricEncryptResponseBody) SetCiphertextBlob(v string) *AsymmetricEncryptResponseBody {
@@ -175,9 +176,15 @@ func (s *AsymmetricEncryptResponseBody) SetKeyVersionId(v string) *AsymmetricEnc
 	return s
 }
 
+func (s *AsymmetricEncryptResponseBody) SetRequestId(v string) *AsymmetricEncryptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type AsymmetricEncryptResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AsymmetricEncryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AsymmetricEncryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AsymmetricEncryptResponse) String() string {
@@ -193,16 +200,21 @@ func (s *AsymmetricEncryptResponse) SetHeaders(v map[string]*string) *Asymmetric
 	return s
 }
 
+func (s *AsymmetricEncryptResponse) SetStatusCode(v int32) *AsymmetricEncryptResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AsymmetricEncryptResponse) SetBody(v *AsymmetricEncryptResponseBody) *AsymmetricEncryptResponse {
 	s.Body = v
 	return s
 }
 
 type AsymmetricSignRequest struct {
-	KeyId        *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
 	Algorithm    *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	Digest       *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	KeyId        *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
 }
 
 func (s AsymmetricSignRequest) String() string {
@@ -211,16 +223,6 @@ func (s AsymmetricSignRequest) String() string {
 
 func (s AsymmetricSignRequest) GoString() string {
 	return s.String()
-}
-
-func (s *AsymmetricSignRequest) SetKeyId(v string) *AsymmetricSignRequest {
-	s.KeyId = &v
-	return s
-}
-
-func (s *AsymmetricSignRequest) SetKeyVersionId(v string) *AsymmetricSignRequest {
-	s.KeyVersionId = &v
-	return s
 }
 
 func (s *AsymmetricSignRequest) SetAlgorithm(v string) *AsymmetricSignRequest {
@@ -233,11 +235,21 @@ func (s *AsymmetricSignRequest) SetDigest(v string) *AsymmetricSignRequest {
 	return s
 }
 
+func (s *AsymmetricSignRequest) SetKeyId(v string) *AsymmetricSignRequest {
+	s.KeyId = &v
+	return s
+}
+
+func (s *AsymmetricSignRequest) SetKeyVersionId(v string) *AsymmetricSignRequest {
+	s.KeyVersionId = &v
+	return s
+}
+
 type AsymmetricSignResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
 	KeyId        *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s AsymmetricSignResponseBody) String() string {
@@ -246,16 +258,6 @@ func (s AsymmetricSignResponseBody) String() string {
 
 func (s AsymmetricSignResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *AsymmetricSignResponseBody) SetRequestId(v string) *AsymmetricSignResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AsymmetricSignResponseBody) SetValue(v string) *AsymmetricSignResponseBody {
-	s.Value = &v
-	return s
 }
 
 func (s *AsymmetricSignResponseBody) SetKeyId(v string) *AsymmetricSignResponseBody {
@@ -268,9 +270,20 @@ func (s *AsymmetricSignResponseBody) SetKeyVersionId(v string) *AsymmetricSignRe
 	return s
 }
 
+func (s *AsymmetricSignResponseBody) SetRequestId(v string) *AsymmetricSignResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AsymmetricSignResponseBody) SetValue(v string) *AsymmetricSignResponseBody {
+	s.Value = &v
+	return s
+}
+
 type AsymmetricSignResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AsymmetricSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AsymmetricSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AsymmetricSignResponse) String() string {
@@ -286,16 +299,21 @@ func (s *AsymmetricSignResponse) SetHeaders(v map[string]*string) *AsymmetricSig
 	return s
 }
 
+func (s *AsymmetricSignResponse) SetStatusCode(v int32) *AsymmetricSignResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AsymmetricSignResponse) SetBody(v *AsymmetricSignResponseBody) *AsymmetricSignResponse {
 	s.Body = v
 	return s
 }
 
 type AsymmetricVerifyRequest struct {
-	KeyId        *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
 	Algorithm    *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
 	Digest       *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
+	KeyId        *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
 	Value        *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -305,16 +323,6 @@ func (s AsymmetricVerifyRequest) String() string {
 
 func (s AsymmetricVerifyRequest) GoString() string {
 	return s.String()
-}
-
-func (s *AsymmetricVerifyRequest) SetKeyId(v string) *AsymmetricVerifyRequest {
-	s.KeyId = &v
-	return s
-}
-
-func (s *AsymmetricVerifyRequest) SetKeyVersionId(v string) *AsymmetricVerifyRequest {
-	s.KeyVersionId = &v
-	return s
 }
 
 func (s *AsymmetricVerifyRequest) SetAlgorithm(v string) *AsymmetricVerifyRequest {
@@ -327,16 +335,26 @@ func (s *AsymmetricVerifyRequest) SetDigest(v string) *AsymmetricVerifyRequest {
 	return s
 }
 
+func (s *AsymmetricVerifyRequest) SetKeyId(v string) *AsymmetricVerifyRequest {
+	s.KeyId = &v
+	return s
+}
+
+func (s *AsymmetricVerifyRequest) SetKeyVersionId(v string) *AsymmetricVerifyRequest {
+	s.KeyVersionId = &v
+	return s
+}
+
 func (s *AsymmetricVerifyRequest) SetValue(v string) *AsymmetricVerifyRequest {
 	s.Value = &v
 	return s
 }
 
 type AsymmetricVerifyResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Value        *bool   `json:"Value,omitempty" xml:"Value,omitempty"`
 	KeyId        *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Value        *bool   `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s AsymmetricVerifyResponseBody) String() string {
@@ -345,16 +363,6 @@ func (s AsymmetricVerifyResponseBody) String() string {
 
 func (s AsymmetricVerifyResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *AsymmetricVerifyResponseBody) SetRequestId(v string) *AsymmetricVerifyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *AsymmetricVerifyResponseBody) SetValue(v bool) *AsymmetricVerifyResponseBody {
-	s.Value = &v
-	return s
 }
 
 func (s *AsymmetricVerifyResponseBody) SetKeyId(v string) *AsymmetricVerifyResponseBody {
@@ -367,9 +375,20 @@ func (s *AsymmetricVerifyResponseBody) SetKeyVersionId(v string) *AsymmetricVeri
 	return s
 }
 
+func (s *AsymmetricVerifyResponseBody) SetRequestId(v string) *AsymmetricVerifyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AsymmetricVerifyResponseBody) SetValue(v bool) *AsymmetricVerifyResponseBody {
+	s.Value = &v
+	return s
+}
+
 type AsymmetricVerifyResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AsymmetricVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AsymmetricVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AsymmetricVerifyResponse) String() string {
@@ -382,6 +401,11 @@ func (s AsymmetricVerifyResponse) GoString() string {
 
 func (s *AsymmetricVerifyResponse) SetHeaders(v map[string]*string) *AsymmetricVerifyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AsymmetricVerifyResponse) SetStatusCode(v int32) *AsymmetricVerifyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -425,8 +449,9 @@ func (s *CancelKeyDeletionResponseBody) SetRequestId(v string) *CancelKeyDeletio
 }
 
 type CancelKeyDeletionResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CancelKeyDeletionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelKeyDeletionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CancelKeyDeletionResponse) String() string {
@@ -442,14 +467,19 @@ func (s *CancelKeyDeletionResponse) SetHeaders(v map[string]*string) *CancelKeyD
 	return s
 }
 
+func (s *CancelKeyDeletionResponse) SetStatusCode(v int32) *CancelKeyDeletionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CancelKeyDeletionResponse) SetBody(v *CancelKeyDeletionResponseBody) *CancelKeyDeletionResponse {
 	s.Body = v
 	return s
 }
 
 type CertificatePrivateKeyDecryptRequest struct {
-	CertificateId  *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	Algorithm      *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CertificateId  *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
 }
 
@@ -461,13 +491,13 @@ func (s CertificatePrivateKeyDecryptRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CertificatePrivateKeyDecryptRequest) SetCertificateId(v string) *CertificatePrivateKeyDecryptRequest {
-	s.CertificateId = &v
+func (s *CertificatePrivateKeyDecryptRequest) SetAlgorithm(v string) *CertificatePrivateKeyDecryptRequest {
+	s.Algorithm = &v
 	return s
 }
 
-func (s *CertificatePrivateKeyDecryptRequest) SetAlgorithm(v string) *CertificatePrivateKeyDecryptRequest {
-	s.Algorithm = &v
+func (s *CertificatePrivateKeyDecryptRequest) SetCertificateId(v string) *CertificatePrivateKeyDecryptRequest {
+	s.CertificateId = &v
 	return s
 }
 
@@ -477,9 +507,9 @@ func (s *CertificatePrivateKeyDecryptRequest) SetCiphertextBlob(v string) *Certi
 }
 
 type CertificatePrivateKeyDecryptResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	Plaintext     *string `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CertificatePrivateKeyDecryptResponseBody) String() string {
@@ -488,11 +518,6 @@ func (s CertificatePrivateKeyDecryptResponseBody) String() string {
 
 func (s CertificatePrivateKeyDecryptResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *CertificatePrivateKeyDecryptResponseBody) SetRequestId(v string) *CertificatePrivateKeyDecryptResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *CertificatePrivateKeyDecryptResponseBody) SetCertificateId(v string) *CertificatePrivateKeyDecryptResponseBody {
@@ -505,9 +530,15 @@ func (s *CertificatePrivateKeyDecryptResponseBody) SetPlaintext(v string) *Certi
 	return s
 }
 
+func (s *CertificatePrivateKeyDecryptResponseBody) SetRequestId(v string) *CertificatePrivateKeyDecryptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type CertificatePrivateKeyDecryptResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CertificatePrivateKeyDecryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CertificatePrivateKeyDecryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CertificatePrivateKeyDecryptResponse) String() string {
@@ -523,16 +554,21 @@ func (s *CertificatePrivateKeyDecryptResponse) SetHeaders(v map[string]*string) 
 	return s
 }
 
+func (s *CertificatePrivateKeyDecryptResponse) SetStatusCode(v int32) *CertificatePrivateKeyDecryptResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CertificatePrivateKeyDecryptResponse) SetBody(v *CertificatePrivateKeyDecryptResponseBody) *CertificatePrivateKeyDecryptResponse {
 	s.Body = v
 	return s
 }
 
 type CertificatePrivateKeySignRequest struct {
-	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	Algorithm     *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
-	MessageType   *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
+	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	Message       *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	MessageType   *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
 }
 
 func (s CertificatePrivateKeySignRequest) String() string {
@@ -543,18 +579,13 @@ func (s CertificatePrivateKeySignRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CertificatePrivateKeySignRequest) SetCertificateId(v string) *CertificatePrivateKeySignRequest {
-	s.CertificateId = &v
-	return s
-}
-
 func (s *CertificatePrivateKeySignRequest) SetAlgorithm(v string) *CertificatePrivateKeySignRequest {
 	s.Algorithm = &v
 	return s
 }
 
-func (s *CertificatePrivateKeySignRequest) SetMessageType(v string) *CertificatePrivateKeySignRequest {
-	s.MessageType = &v
+func (s *CertificatePrivateKeySignRequest) SetCertificateId(v string) *CertificatePrivateKeySignRequest {
+	s.CertificateId = &v
 	return s
 }
 
@@ -563,10 +594,15 @@ func (s *CertificatePrivateKeySignRequest) SetMessage(v string) *CertificatePriv
 	return s
 }
 
+func (s *CertificatePrivateKeySignRequest) SetMessageType(v string) *CertificatePrivateKeySignRequest {
+	s.MessageType = &v
+	return s
+}
+
 type CertificatePrivateKeySignResponseBody struct {
-	SignatureValue *string `json:"SignatureValue,omitempty" xml:"SignatureValue,omitempty"`
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CertificateId  *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SignatureValue *string `json:"SignatureValue,omitempty" xml:"SignatureValue,omitempty"`
 }
 
 func (s CertificatePrivateKeySignResponseBody) String() string {
@@ -577,8 +613,8 @@ func (s CertificatePrivateKeySignResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CertificatePrivateKeySignResponseBody) SetSignatureValue(v string) *CertificatePrivateKeySignResponseBody {
-	s.SignatureValue = &v
+func (s *CertificatePrivateKeySignResponseBody) SetCertificateId(v string) *CertificatePrivateKeySignResponseBody {
+	s.CertificateId = &v
 	return s
 }
 
@@ -587,14 +623,15 @@ func (s *CertificatePrivateKeySignResponseBody) SetRequestId(v string) *Certific
 	return s
 }
 
-func (s *CertificatePrivateKeySignResponseBody) SetCertificateId(v string) *CertificatePrivateKeySignResponseBody {
-	s.CertificateId = &v
+func (s *CertificatePrivateKeySignResponseBody) SetSignatureValue(v string) *CertificatePrivateKeySignResponseBody {
+	s.SignatureValue = &v
 	return s
 }
 
 type CertificatePrivateKeySignResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CertificatePrivateKeySignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CertificatePrivateKeySignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CertificatePrivateKeySignResponse) String() string {
@@ -610,14 +647,19 @@ func (s *CertificatePrivateKeySignResponse) SetHeaders(v map[string]*string) *Ce
 	return s
 }
 
+func (s *CertificatePrivateKeySignResponse) SetStatusCode(v int32) *CertificatePrivateKeySignResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CertificatePrivateKeySignResponse) SetBody(v *CertificatePrivateKeySignResponseBody) *CertificatePrivateKeySignResponse {
 	s.Body = v
 	return s
 }
 
 type CertificatePublicKeyEncryptRequest struct {
-	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	Algorithm     *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	Plaintext     *string `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
 }
 
@@ -629,13 +671,13 @@ func (s CertificatePublicKeyEncryptRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CertificatePublicKeyEncryptRequest) SetCertificateId(v string) *CertificatePublicKeyEncryptRequest {
-	s.CertificateId = &v
+func (s *CertificatePublicKeyEncryptRequest) SetAlgorithm(v string) *CertificatePublicKeyEncryptRequest {
+	s.Algorithm = &v
 	return s
 }
 
-func (s *CertificatePublicKeyEncryptRequest) SetAlgorithm(v string) *CertificatePublicKeyEncryptRequest {
-	s.Algorithm = &v
+func (s *CertificatePublicKeyEncryptRequest) SetCertificateId(v string) *CertificatePublicKeyEncryptRequest {
+	s.CertificateId = &v
 	return s
 }
 
@@ -645,9 +687,9 @@ func (s *CertificatePublicKeyEncryptRequest) SetPlaintext(v string) *Certificate
 }
 
 type CertificatePublicKeyEncryptResponseBody struct {
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
 	CertificateId  *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CertificatePublicKeyEncryptResponseBody) String() string {
@@ -658,8 +700,8 @@ func (s CertificatePublicKeyEncryptResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CertificatePublicKeyEncryptResponseBody) SetRequestId(v string) *CertificatePublicKeyEncryptResponseBody {
-	s.RequestId = &v
+func (s *CertificatePublicKeyEncryptResponseBody) SetCertificateId(v string) *CertificatePublicKeyEncryptResponseBody {
+	s.CertificateId = &v
 	return s
 }
 
@@ -668,14 +710,15 @@ func (s *CertificatePublicKeyEncryptResponseBody) SetCiphertextBlob(v string) *C
 	return s
 }
 
-func (s *CertificatePublicKeyEncryptResponseBody) SetCertificateId(v string) *CertificatePublicKeyEncryptResponseBody {
-	s.CertificateId = &v
+func (s *CertificatePublicKeyEncryptResponseBody) SetRequestId(v string) *CertificatePublicKeyEncryptResponseBody {
+	s.RequestId = &v
 	return s
 }
 
 type CertificatePublicKeyEncryptResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CertificatePublicKeyEncryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CertificatePublicKeyEncryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CertificatePublicKeyEncryptResponse) String() string {
@@ -691,14 +734,19 @@ func (s *CertificatePublicKeyEncryptResponse) SetHeaders(v map[string]*string) *
 	return s
 }
 
+func (s *CertificatePublicKeyEncryptResponse) SetStatusCode(v int32) *CertificatePublicKeyEncryptResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CertificatePublicKeyEncryptResponse) SetBody(v *CertificatePublicKeyEncryptResponseBody) *CertificatePublicKeyEncryptResponse {
 	s.Body = v
 	return s
 }
 
 type CertificatePublicKeyVerifyRequest struct {
-	CertificateId  *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	Algorithm      *string `json:"Algorithm,omitempty" xml:"Algorithm,omitempty"`
+	CertificateId  *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	MessageType    *string `json:"MessageType,omitempty" xml:"MessageType,omitempty"`
 	SignatureValue *string `json:"SignatureValue,omitempty" xml:"SignatureValue,omitempty"`
@@ -712,13 +760,13 @@ func (s CertificatePublicKeyVerifyRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CertificatePublicKeyVerifyRequest) SetCertificateId(v string) *CertificatePublicKeyVerifyRequest {
-	s.CertificateId = &v
+func (s *CertificatePublicKeyVerifyRequest) SetAlgorithm(v string) *CertificatePublicKeyVerifyRequest {
+	s.Algorithm = &v
 	return s
 }
 
-func (s *CertificatePublicKeyVerifyRequest) SetAlgorithm(v string) *CertificatePublicKeyVerifyRequest {
-	s.Algorithm = &v
+func (s *CertificatePublicKeyVerifyRequest) SetCertificateId(v string) *CertificatePublicKeyVerifyRequest {
+	s.CertificateId = &v
 	return s
 }
 
@@ -738,8 +786,8 @@ func (s *CertificatePublicKeyVerifyRequest) SetSignatureValue(v string) *Certifi
 }
 
 type CertificatePublicKeyVerifyResponseBody struct {
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CertificateId  *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SignatureValid *bool   `json:"SignatureValid,omitempty" xml:"SignatureValid,omitempty"`
 }
 
@@ -751,13 +799,13 @@ func (s CertificatePublicKeyVerifyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CertificatePublicKeyVerifyResponseBody) SetRequestId(v string) *CertificatePublicKeyVerifyResponseBody {
-	s.RequestId = &v
+func (s *CertificatePublicKeyVerifyResponseBody) SetCertificateId(v string) *CertificatePublicKeyVerifyResponseBody {
+	s.CertificateId = &v
 	return s
 }
 
-func (s *CertificatePublicKeyVerifyResponseBody) SetCertificateId(v string) *CertificatePublicKeyVerifyResponseBody {
-	s.CertificateId = &v
+func (s *CertificatePublicKeyVerifyResponseBody) SetRequestId(v string) *CertificatePublicKeyVerifyResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -767,8 +815,9 @@ func (s *CertificatePublicKeyVerifyResponseBody) SetSignatureValid(v bool) *Cert
 }
 
 type CertificatePublicKeyVerifyResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CertificatePublicKeyVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CertificatePublicKeyVerifyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CertificatePublicKeyVerifyResponse) String() string {
@@ -784,14 +833,19 @@ func (s *CertificatePublicKeyVerifyResponse) SetHeaders(v map[string]*string) *C
 	return s
 }
 
+func (s *CertificatePublicKeyVerifyResponse) SetStatusCode(v int32) *CertificatePublicKeyVerifyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CertificatePublicKeyVerifyResponse) SetBody(v *CertificatePublicKeyVerifyResponseBody) *CertificatePublicKeyVerifyResponse {
 	s.Body = v
 	return s
 }
 
 type CreateAliasRequest struct {
-	KeyId     *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	KeyId     *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 }
 
 func (s CreateAliasRequest) String() string {
@@ -802,13 +856,13 @@ func (s CreateAliasRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateAliasRequest) SetKeyId(v string) *CreateAliasRequest {
-	s.KeyId = &v
+func (s *CreateAliasRequest) SetAliasName(v string) *CreateAliasRequest {
+	s.AliasName = &v
 	return s
 }
 
-func (s *CreateAliasRequest) SetAliasName(v string) *CreateAliasRequest {
-	s.AliasName = &v
+func (s *CreateAliasRequest) SetKeyId(v string) *CreateAliasRequest {
+	s.KeyId = &v
 	return s
 }
 
@@ -830,8 +884,9 @@ func (s *CreateAliasResponseBody) SetRequestId(v string) *CreateAliasResponseBod
 }
 
 type CreateAliasResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateAliasResponse) String() string {
@@ -847,16 +902,21 @@ func (s *CreateAliasResponse) SetHeaders(v map[string]*string) *CreateAliasRespo
 	return s
 }
 
+func (s *CreateAliasResponse) SetStatusCode(v int32) *CreateAliasResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateAliasResponse) SetBody(v *CreateAliasResponseBody) *CreateAliasResponse {
 	s.Body = v
 	return s
 }
 
 type CreateCertificateRequest struct {
+	ExportablePrivateKey    *bool                  `json:"ExportablePrivateKey,omitempty" xml:"ExportablePrivateKey,omitempty"`
+	KeySpec                 *string                `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
 	Subject                 *string                `json:"Subject,omitempty" xml:"Subject,omitempty"`
 	SubjectAlternativeNames map[string]interface{} `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty"`
-	KeySpec                 *string                `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
-	ProtectionLevel         *string                `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
 }
 
 func (s CreateCertificateRequest) String() string {
@@ -865,6 +925,16 @@ func (s CreateCertificateRequest) String() string {
 
 func (s CreateCertificateRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCertificateRequest) SetExportablePrivateKey(v bool) *CreateCertificateRequest {
+	s.ExportablePrivateKey = &v
+	return s
+}
+
+func (s *CreateCertificateRequest) SetKeySpec(v string) *CreateCertificateRequest {
+	s.KeySpec = &v
+	return s
 }
 
 func (s *CreateCertificateRequest) SetSubject(v string) *CreateCertificateRequest {
@@ -877,21 +947,11 @@ func (s *CreateCertificateRequest) SetSubjectAlternativeNames(v map[string]inter
 	return s
 }
 
-func (s *CreateCertificateRequest) SetKeySpec(v string) *CreateCertificateRequest {
-	s.KeySpec = &v
-	return s
-}
-
-func (s *CreateCertificateRequest) SetProtectionLevel(v string) *CreateCertificateRequest {
-	s.ProtectionLevel = &v
-	return s
-}
-
 type CreateCertificateShrinkRequest struct {
+	ExportablePrivateKey          *bool   `json:"ExportablePrivateKey,omitempty" xml:"ExportablePrivateKey,omitempty"`
+	KeySpec                       *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
 	Subject                       *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
 	SubjectAlternativeNamesShrink *string `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty"`
-	KeySpec                       *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
-	ProtectionLevel               *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
 }
 
 func (s CreateCertificateShrinkRequest) String() string {
@@ -900,6 +960,16 @@ func (s CreateCertificateShrinkRequest) String() string {
 
 func (s CreateCertificateShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCertificateShrinkRequest) SetExportablePrivateKey(v bool) *CreateCertificateShrinkRequest {
+	s.ExportablePrivateKey = &v
+	return s
+}
+
+func (s *CreateCertificateShrinkRequest) SetKeySpec(v string) *CreateCertificateShrinkRequest {
+	s.KeySpec = &v
+	return s
 }
 
 func (s *CreateCertificateShrinkRequest) SetSubject(v string) *CreateCertificateShrinkRequest {
@@ -912,21 +982,11 @@ func (s *CreateCertificateShrinkRequest) SetSubjectAlternativeNamesShrink(v stri
 	return s
 }
 
-func (s *CreateCertificateShrinkRequest) SetKeySpec(v string) *CreateCertificateShrinkRequest {
-	s.KeySpec = &v
-	return s
-}
-
-func (s *CreateCertificateShrinkRequest) SetProtectionLevel(v string) *CreateCertificateShrinkRequest {
-	s.ProtectionLevel = &v
-	return s
-}
-
 type CreateCertificateResponseBody struct {
+	Arn           *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	Csr           *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	Arn           *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 }
 
 func (s CreateCertificateResponseBody) String() string {
@@ -935,6 +995,16 @@ func (s CreateCertificateResponseBody) String() string {
 
 func (s CreateCertificateResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCertificateResponseBody) SetArn(v string) *CreateCertificateResponseBody {
+	s.Arn = &v
+	return s
+}
+
+func (s *CreateCertificateResponseBody) SetCertificateId(v string) *CreateCertificateResponseBody {
+	s.CertificateId = &v
+	return s
 }
 
 func (s *CreateCertificateResponseBody) SetCsr(v string) *CreateCertificateResponseBody {
@@ -947,19 +1017,10 @@ func (s *CreateCertificateResponseBody) SetRequestId(v string) *CreateCertificat
 	return s
 }
 
-func (s *CreateCertificateResponseBody) SetCertificateId(v string) *CreateCertificateResponseBody {
-	s.CertificateId = &v
-	return s
-}
-
-func (s *CreateCertificateResponseBody) SetArn(v string) *CreateCertificateResponseBody {
-	s.Arn = &v
-	return s
-}
-
 type CreateCertificateResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateCertificateResponse) String() string {
@@ -975,6 +1036,11 @@ func (s *CreateCertificateResponse) SetHeaders(v map[string]*string) *CreateCert
 	return s
 }
 
+func (s *CreateCertificateResponse) SetStatusCode(v int32) *CreateCertificateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateCertificateResponse) SetBody(v *CreateCertificateResponseBody) *CreateCertificateResponse {
 	s.Body = v
 	return s
@@ -982,12 +1048,12 @@ func (s *CreateCertificateResponse) SetBody(v *CreateCertificateResponseBody) *C
 
 type CreateKeyRequest struct {
 	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableAutomaticRotation *bool   `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
+	KeySpec                 *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
 	KeyUsage                *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
 	Origin                  *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
 	ProtectionLevel         *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
-	EnableAutomaticRotation *bool   `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
 	RotationInterval        *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
-	KeySpec                 *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
 }
 
 func (s CreateKeyRequest) String() string {
@@ -1000,6 +1066,16 @@ func (s CreateKeyRequest) GoString() string {
 
 func (s *CreateKeyRequest) SetDescription(v string) *CreateKeyRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateKeyRequest) SetEnableAutomaticRotation(v bool) *CreateKeyRequest {
+	s.EnableAutomaticRotation = &v
+	return s
+}
+
+func (s *CreateKeyRequest) SetKeySpec(v string) *CreateKeyRequest {
+	s.KeySpec = &v
 	return s
 }
 
@@ -1018,24 +1094,14 @@ func (s *CreateKeyRequest) SetProtectionLevel(v string) *CreateKeyRequest {
 	return s
 }
 
-func (s *CreateKeyRequest) SetEnableAutomaticRotation(v bool) *CreateKeyRequest {
-	s.EnableAutomaticRotation = &v
-	return s
-}
-
 func (s *CreateKeyRequest) SetRotationInterval(v string) *CreateKeyRequest {
 	s.RotationInterval = &v
 	return s
 }
 
-func (s *CreateKeyRequest) SetKeySpec(v string) *CreateKeyRequest {
-	s.KeySpec = &v
-	return s
-}
-
 type CreateKeyResponseBody struct {
-	RequestId   *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	KeyMetadata *CreateKeyResponseBodyKeyMetadata `json:"KeyMetadata,omitempty" xml:"KeyMetadata,omitempty" type:"Struct"`
+	RequestId   *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateKeyResponseBody) String() string {
@@ -1046,34 +1112,34 @@ func (s CreateKeyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateKeyResponseBody) SetRequestId(v string) *CreateKeyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *CreateKeyResponseBody) SetKeyMetadata(v *CreateKeyResponseBodyKeyMetadata) *CreateKeyResponseBody {
 	s.KeyMetadata = v
 	return s
 }
 
+func (s *CreateKeyResponseBody) SetRequestId(v string) *CreateKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type CreateKeyResponseBodyKeyMetadata struct {
-	KeyId              *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	NextRotationDate   *string `json:"NextRotationDate,omitempty" xml:"NextRotationDate,omitempty"`
-	KeyState           *string `json:"KeyState,omitempty" xml:"KeyState,omitempty"`
-	RotationInterval   *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
 	Arn                *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	AutomaticRotation  *string `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
+	CreationDate       *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
 	Creator            *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
 	DeleteDate         *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
-	LastRotationDate   *string `json:"LastRotationDate,omitempty" xml:"LastRotationDate,omitempty"`
 	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PrimaryKeyVersion  *string `json:"PrimaryKeyVersion,omitempty" xml:"PrimaryKeyVersion,omitempty"`
-	Origin             *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	KeyId              *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeySpec            *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
-	MaterialExpireTime *string `json:"MaterialExpireTime,omitempty" xml:"MaterialExpireTime,omitempty"`
-	AutomaticRotation  *string `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
-	ProtectionLevel    *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
+	KeyState           *string `json:"KeyState,omitempty" xml:"KeyState,omitempty"`
 	KeyUsage           *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
-	CreationDate       *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
+	LastRotationDate   *string `json:"LastRotationDate,omitempty" xml:"LastRotationDate,omitempty"`
+	MaterialExpireTime *string `json:"MaterialExpireTime,omitempty" xml:"MaterialExpireTime,omitempty"`
+	NextRotationDate   *string `json:"NextRotationDate,omitempty" xml:"NextRotationDate,omitempty"`
+	Origin             *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	PrimaryKeyVersion  *string `json:"PrimaryKeyVersion,omitempty" xml:"PrimaryKeyVersion,omitempty"`
+	ProtectionLevel    *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
+	RotationInterval   *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
 }
 
 func (s CreateKeyResponseBodyKeyMetadata) String() string {
@@ -1084,28 +1150,18 @@ func (s CreateKeyResponseBodyKeyMetadata) GoString() string {
 	return s.String()
 }
 
-func (s *CreateKeyResponseBodyKeyMetadata) SetKeyId(v string) *CreateKeyResponseBodyKeyMetadata {
-	s.KeyId = &v
-	return s
-}
-
-func (s *CreateKeyResponseBodyKeyMetadata) SetNextRotationDate(v string) *CreateKeyResponseBodyKeyMetadata {
-	s.NextRotationDate = &v
-	return s
-}
-
-func (s *CreateKeyResponseBodyKeyMetadata) SetKeyState(v string) *CreateKeyResponseBodyKeyMetadata {
-	s.KeyState = &v
-	return s
-}
-
-func (s *CreateKeyResponseBodyKeyMetadata) SetRotationInterval(v string) *CreateKeyResponseBodyKeyMetadata {
-	s.RotationInterval = &v
-	return s
-}
-
 func (s *CreateKeyResponseBodyKeyMetadata) SetArn(v string) *CreateKeyResponseBodyKeyMetadata {
 	s.Arn = &v
+	return s
+}
+
+func (s *CreateKeyResponseBodyKeyMetadata) SetAutomaticRotation(v string) *CreateKeyResponseBodyKeyMetadata {
+	s.AutomaticRotation = &v
+	return s
+}
+
+func (s *CreateKeyResponseBodyKeyMetadata) SetCreationDate(v string) *CreateKeyResponseBodyKeyMetadata {
+	s.CreationDate = &v
 	return s
 }
 
@@ -1119,23 +1175,13 @@ func (s *CreateKeyResponseBodyKeyMetadata) SetDeleteDate(v string) *CreateKeyRes
 	return s
 }
 
-func (s *CreateKeyResponseBodyKeyMetadata) SetLastRotationDate(v string) *CreateKeyResponseBodyKeyMetadata {
-	s.LastRotationDate = &v
-	return s
-}
-
 func (s *CreateKeyResponseBodyKeyMetadata) SetDescription(v string) *CreateKeyResponseBodyKeyMetadata {
 	s.Description = &v
 	return s
 }
 
-func (s *CreateKeyResponseBodyKeyMetadata) SetPrimaryKeyVersion(v string) *CreateKeyResponseBodyKeyMetadata {
-	s.PrimaryKeyVersion = &v
-	return s
-}
-
-func (s *CreateKeyResponseBodyKeyMetadata) SetOrigin(v string) *CreateKeyResponseBodyKeyMetadata {
-	s.Origin = &v
+func (s *CreateKeyResponseBodyKeyMetadata) SetKeyId(v string) *CreateKeyResponseBodyKeyMetadata {
+	s.KeyId = &v
 	return s
 }
 
@@ -1144,18 +1190,8 @@ func (s *CreateKeyResponseBodyKeyMetadata) SetKeySpec(v string) *CreateKeyRespon
 	return s
 }
 
-func (s *CreateKeyResponseBodyKeyMetadata) SetMaterialExpireTime(v string) *CreateKeyResponseBodyKeyMetadata {
-	s.MaterialExpireTime = &v
-	return s
-}
-
-func (s *CreateKeyResponseBodyKeyMetadata) SetAutomaticRotation(v string) *CreateKeyResponseBodyKeyMetadata {
-	s.AutomaticRotation = &v
-	return s
-}
-
-func (s *CreateKeyResponseBodyKeyMetadata) SetProtectionLevel(v string) *CreateKeyResponseBodyKeyMetadata {
-	s.ProtectionLevel = &v
+func (s *CreateKeyResponseBodyKeyMetadata) SetKeyState(v string) *CreateKeyResponseBodyKeyMetadata {
+	s.KeyState = &v
 	return s
 }
 
@@ -1164,14 +1200,45 @@ func (s *CreateKeyResponseBodyKeyMetadata) SetKeyUsage(v string) *CreateKeyRespo
 	return s
 }
 
-func (s *CreateKeyResponseBodyKeyMetadata) SetCreationDate(v string) *CreateKeyResponseBodyKeyMetadata {
-	s.CreationDate = &v
+func (s *CreateKeyResponseBodyKeyMetadata) SetLastRotationDate(v string) *CreateKeyResponseBodyKeyMetadata {
+	s.LastRotationDate = &v
+	return s
+}
+
+func (s *CreateKeyResponseBodyKeyMetadata) SetMaterialExpireTime(v string) *CreateKeyResponseBodyKeyMetadata {
+	s.MaterialExpireTime = &v
+	return s
+}
+
+func (s *CreateKeyResponseBodyKeyMetadata) SetNextRotationDate(v string) *CreateKeyResponseBodyKeyMetadata {
+	s.NextRotationDate = &v
+	return s
+}
+
+func (s *CreateKeyResponseBodyKeyMetadata) SetOrigin(v string) *CreateKeyResponseBodyKeyMetadata {
+	s.Origin = &v
+	return s
+}
+
+func (s *CreateKeyResponseBodyKeyMetadata) SetPrimaryKeyVersion(v string) *CreateKeyResponseBodyKeyMetadata {
+	s.PrimaryKeyVersion = &v
+	return s
+}
+
+func (s *CreateKeyResponseBodyKeyMetadata) SetProtectionLevel(v string) *CreateKeyResponseBodyKeyMetadata {
+	s.ProtectionLevel = &v
+	return s
+}
+
+func (s *CreateKeyResponseBodyKeyMetadata) SetRotationInterval(v string) *CreateKeyResponseBodyKeyMetadata {
+	s.RotationInterval = &v
 	return s
 }
 
 type CreateKeyResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateKeyResponse) String() string {
@@ -1184,6 +1251,11 @@ func (s CreateKeyResponse) GoString() string {
 
 func (s *CreateKeyResponse) SetHeaders(v map[string]*string) *CreateKeyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateKeyResponse) SetStatusCode(v int32) *CreateKeyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1210,8 +1282,8 @@ func (s *CreateKeyVersionRequest) SetKeyId(v string) *CreateKeyVersionRequest {
 }
 
 type CreateKeyVersionResponseBody struct {
-	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	KeyVersion *CreateKeyVersionResponseBodyKeyVersion `json:"KeyVersion,omitempty" xml:"KeyVersion,omitempty" type:"Struct"`
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s CreateKeyVersionResponseBody) String() string {
@@ -1222,20 +1294,20 @@ func (s CreateKeyVersionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateKeyVersionResponseBody) SetRequestId(v string) *CreateKeyVersionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *CreateKeyVersionResponseBody) SetKeyVersion(v *CreateKeyVersionResponseBodyKeyVersion) *CreateKeyVersionResponseBody {
 	s.KeyVersion = v
 	return s
 }
 
+func (s *CreateKeyVersionResponseBody) SetRequestId(v string) *CreateKeyVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type CreateKeyVersionResponseBodyKeyVersion struct {
-	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
-	KeyId        *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	CreationDate *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
+	KeyId        *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
 }
 
 func (s CreateKeyVersionResponseBodyKeyVersion) String() string {
@@ -1246,8 +1318,8 @@ func (s CreateKeyVersionResponseBodyKeyVersion) GoString() string {
 	return s.String()
 }
 
-func (s *CreateKeyVersionResponseBodyKeyVersion) SetKeyVersionId(v string) *CreateKeyVersionResponseBodyKeyVersion {
-	s.KeyVersionId = &v
+func (s *CreateKeyVersionResponseBodyKeyVersion) SetCreationDate(v string) *CreateKeyVersionResponseBodyKeyVersion {
+	s.CreationDate = &v
 	return s
 }
 
@@ -1256,14 +1328,15 @@ func (s *CreateKeyVersionResponseBodyKeyVersion) SetKeyId(v string) *CreateKeyVe
 	return s
 }
 
-func (s *CreateKeyVersionResponseBodyKeyVersion) SetCreationDate(v string) *CreateKeyVersionResponseBodyKeyVersion {
-	s.CreationDate = &v
+func (s *CreateKeyVersionResponseBodyKeyVersion) SetKeyVersionId(v string) *CreateKeyVersionResponseBodyKeyVersion {
+	s.KeyVersionId = &v
 	return s
 }
 
 type CreateKeyVersionResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateKeyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateKeyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateKeyVersionResponse) String() string {
@@ -1279,23 +1352,28 @@ func (s *CreateKeyVersionResponse) SetHeaders(v map[string]*string) *CreateKeyVe
 	return s
 }
 
+func (s *CreateKeyVersionResponse) SetStatusCode(v int32) *CreateKeyVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateKeyVersionResponse) SetBody(v *CreateKeyVersionResponseBody) *CreateKeyVersionResponse {
 	s.Body = v
 	return s
 }
 
 type CreateSecretRequest struct {
-	SecretName              *string                `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	VersionId               *string                `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	Description             *string                `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableAutomaticRotation *bool                  `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
 	EncryptionKeyId         *string                `json:"EncryptionKeyId,omitempty" xml:"EncryptionKeyId,omitempty"`
+	ExtendedConfig          map[string]interface{} `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
+	RotationInterval        *string                `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
 	SecretData              *string                `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
 	SecretDataType          *string                `json:"SecretDataType,omitempty" xml:"SecretDataType,omitempty"`
-	Description             *string                `json:"Description,omitempty" xml:"Description,omitempty"`
-	Tags                    *string                `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	SecretName              *string                `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	SecretType              *string                `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
-	ExtendedConfig          map[string]interface{} `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
-	EnableAutomaticRotation *bool                  `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
-	RotationInterval        *string                `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
+	Tags                    *string                `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	VersionId               *string                `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s CreateSecretRequest) String() string {
@@ -1306,18 +1384,28 @@ func (s CreateSecretRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateSecretRequest) SetSecretName(v string) *CreateSecretRequest {
-	s.SecretName = &v
+func (s *CreateSecretRequest) SetDescription(v string) *CreateSecretRequest {
+	s.Description = &v
 	return s
 }
 
-func (s *CreateSecretRequest) SetVersionId(v string) *CreateSecretRequest {
-	s.VersionId = &v
+func (s *CreateSecretRequest) SetEnableAutomaticRotation(v bool) *CreateSecretRequest {
+	s.EnableAutomaticRotation = &v
 	return s
 }
 
 func (s *CreateSecretRequest) SetEncryptionKeyId(v string) *CreateSecretRequest {
 	s.EncryptionKeyId = &v
+	return s
+}
+
+func (s *CreateSecretRequest) SetExtendedConfig(v map[string]interface{}) *CreateSecretRequest {
+	s.ExtendedConfig = v
+	return s
+}
+
+func (s *CreateSecretRequest) SetRotationInterval(v string) *CreateSecretRequest {
+	s.RotationInterval = &v
 	return s
 }
 
@@ -1331,13 +1419,8 @@ func (s *CreateSecretRequest) SetSecretDataType(v string) *CreateSecretRequest {
 	return s
 }
 
-func (s *CreateSecretRequest) SetDescription(v string) *CreateSecretRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateSecretRequest) SetTags(v string) *CreateSecretRequest {
-	s.Tags = &v
+func (s *CreateSecretRequest) SetSecretName(v string) *CreateSecretRequest {
+	s.SecretName = &v
 	return s
 }
 
@@ -1346,33 +1429,28 @@ func (s *CreateSecretRequest) SetSecretType(v string) *CreateSecretRequest {
 	return s
 }
 
-func (s *CreateSecretRequest) SetExtendedConfig(v map[string]interface{}) *CreateSecretRequest {
-	s.ExtendedConfig = v
+func (s *CreateSecretRequest) SetTags(v string) *CreateSecretRequest {
+	s.Tags = &v
 	return s
 }
 
-func (s *CreateSecretRequest) SetEnableAutomaticRotation(v bool) *CreateSecretRequest {
-	s.EnableAutomaticRotation = &v
-	return s
-}
-
-func (s *CreateSecretRequest) SetRotationInterval(v string) *CreateSecretRequest {
-	s.RotationInterval = &v
+func (s *CreateSecretRequest) SetVersionId(v string) *CreateSecretRequest {
+	s.VersionId = &v
 	return s
 }
 
 type CreateSecretShrinkRequest struct {
-	SecretName              *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	VersionId               *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnableAutomaticRotation *bool   `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
 	EncryptionKeyId         *string `json:"EncryptionKeyId,omitempty" xml:"EncryptionKeyId,omitempty"`
+	ExtendedConfigShrink    *string `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
+	RotationInterval        *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
 	SecretData              *string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
 	SecretDataType          *string `json:"SecretDataType,omitempty" xml:"SecretDataType,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	Tags                    *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	SecretName              *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	SecretType              *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
-	ExtendedConfigShrink    *string `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
-	EnableAutomaticRotation *bool   `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
-	RotationInterval        *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
+	Tags                    *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	VersionId               *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s CreateSecretShrinkRequest) String() string {
@@ -1383,18 +1461,28 @@ func (s CreateSecretShrinkRequest) GoString() string {
 	return s.String()
 }
 
-func (s *CreateSecretShrinkRequest) SetSecretName(v string) *CreateSecretShrinkRequest {
-	s.SecretName = &v
+func (s *CreateSecretShrinkRequest) SetDescription(v string) *CreateSecretShrinkRequest {
+	s.Description = &v
 	return s
 }
 
-func (s *CreateSecretShrinkRequest) SetVersionId(v string) *CreateSecretShrinkRequest {
-	s.VersionId = &v
+func (s *CreateSecretShrinkRequest) SetEnableAutomaticRotation(v bool) *CreateSecretShrinkRequest {
+	s.EnableAutomaticRotation = &v
 	return s
 }
 
 func (s *CreateSecretShrinkRequest) SetEncryptionKeyId(v string) *CreateSecretShrinkRequest {
 	s.EncryptionKeyId = &v
+	return s
+}
+
+func (s *CreateSecretShrinkRequest) SetExtendedConfigShrink(v string) *CreateSecretShrinkRequest {
+	s.ExtendedConfigShrink = &v
+	return s
+}
+
+func (s *CreateSecretShrinkRequest) SetRotationInterval(v string) *CreateSecretShrinkRequest {
+	s.RotationInterval = &v
 	return s
 }
 
@@ -1408,13 +1496,8 @@ func (s *CreateSecretShrinkRequest) SetSecretDataType(v string) *CreateSecretShr
 	return s
 }
 
-func (s *CreateSecretShrinkRequest) SetDescription(v string) *CreateSecretShrinkRequest {
-	s.Description = &v
-	return s
-}
-
-func (s *CreateSecretShrinkRequest) SetTags(v string) *CreateSecretShrinkRequest {
-	s.Tags = &v
+func (s *CreateSecretShrinkRequest) SetSecretName(v string) *CreateSecretShrinkRequest {
+	s.SecretName = &v
 	return s
 }
 
@@ -1423,31 +1506,26 @@ func (s *CreateSecretShrinkRequest) SetSecretType(v string) *CreateSecretShrinkR
 	return s
 }
 
-func (s *CreateSecretShrinkRequest) SetExtendedConfigShrink(v string) *CreateSecretShrinkRequest {
-	s.ExtendedConfigShrink = &v
+func (s *CreateSecretShrinkRequest) SetTags(v string) *CreateSecretShrinkRequest {
+	s.Tags = &v
 	return s
 }
 
-func (s *CreateSecretShrinkRequest) SetEnableAutomaticRotation(v bool) *CreateSecretShrinkRequest {
-	s.EnableAutomaticRotation = &v
-	return s
-}
-
-func (s *CreateSecretShrinkRequest) SetRotationInterval(v string) *CreateSecretShrinkRequest {
-	s.RotationInterval = &v
+func (s *CreateSecretShrinkRequest) SetVersionId(v string) *CreateSecretShrinkRequest {
+	s.VersionId = &v
 	return s
 }
 
 type CreateSecretResponseBody struct {
-	SecretName        *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	VersionId         *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	NextRotationDate  *string `json:"NextRotationDate,omitempty" xml:"NextRotationDate,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SecretType        *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
-	RotationInterval  *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
-	ExtendedConfig    *string `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
 	Arn               *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	AutomaticRotation *string `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
+	ExtendedConfig    *string `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
+	NextRotationDate  *string `json:"NextRotationDate,omitempty" xml:"NextRotationDate,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RotationInterval  *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
+	SecretName        *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	SecretType        *string `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
+	VersionId         *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s CreateSecretResponseBody) String() string {
@@ -1458,13 +1536,18 @@ func (s CreateSecretResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *CreateSecretResponseBody) SetSecretName(v string) *CreateSecretResponseBody {
-	s.SecretName = &v
+func (s *CreateSecretResponseBody) SetArn(v string) *CreateSecretResponseBody {
+	s.Arn = &v
 	return s
 }
 
-func (s *CreateSecretResponseBody) SetVersionId(v string) *CreateSecretResponseBody {
-	s.VersionId = &v
+func (s *CreateSecretResponseBody) SetAutomaticRotation(v string) *CreateSecretResponseBody {
+	s.AutomaticRotation = &v
+	return s
+}
+
+func (s *CreateSecretResponseBody) SetExtendedConfig(v string) *CreateSecretResponseBody {
+	s.ExtendedConfig = &v
 	return s
 }
 
@@ -1478,34 +1561,30 @@ func (s *CreateSecretResponseBody) SetRequestId(v string) *CreateSecretResponseB
 	return s
 }
 
-func (s *CreateSecretResponseBody) SetSecretType(v string) *CreateSecretResponseBody {
-	s.SecretType = &v
-	return s
-}
-
 func (s *CreateSecretResponseBody) SetRotationInterval(v string) *CreateSecretResponseBody {
 	s.RotationInterval = &v
 	return s
 }
 
-func (s *CreateSecretResponseBody) SetExtendedConfig(v string) *CreateSecretResponseBody {
-	s.ExtendedConfig = &v
+func (s *CreateSecretResponseBody) SetSecretName(v string) *CreateSecretResponseBody {
+	s.SecretName = &v
 	return s
 }
 
-func (s *CreateSecretResponseBody) SetArn(v string) *CreateSecretResponseBody {
-	s.Arn = &v
+func (s *CreateSecretResponseBody) SetSecretType(v string) *CreateSecretResponseBody {
+	s.SecretType = &v
 	return s
 }
 
-func (s *CreateSecretResponseBody) SetAutomaticRotation(v string) *CreateSecretResponseBody {
-	s.AutomaticRotation = &v
+func (s *CreateSecretResponseBody) SetVersionId(v string) *CreateSecretResponseBody {
+	s.VersionId = &v
 	return s
 }
 
 type CreateSecretResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateSecretResponse) String() string {
@@ -1518,6 +1597,11 @@ func (s CreateSecretResponse) GoString() string {
 
 func (s *CreateSecretResponse) SetHeaders(v map[string]*string) *CreateSecretResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateSecretResponse) SetStatusCode(v int32) *CreateSecretResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1573,10 +1657,10 @@ func (s *DecryptShrinkRequest) SetEncryptionContextShrink(v string) *DecryptShri
 }
 
 type DecryptResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Plaintext    *string `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
 	KeyId        *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
+	Plaintext    *string `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DecryptResponseBody) String() string {
@@ -1585,16 +1669,6 @@ func (s DecryptResponseBody) String() string {
 
 func (s DecryptResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *DecryptResponseBody) SetRequestId(v string) *DecryptResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DecryptResponseBody) SetPlaintext(v string) *DecryptResponseBody {
-	s.Plaintext = &v
-	return s
 }
 
 func (s *DecryptResponseBody) SetKeyId(v string) *DecryptResponseBody {
@@ -1607,9 +1681,20 @@ func (s *DecryptResponseBody) SetKeyVersionId(v string) *DecryptResponseBody {
 	return s
 }
 
+func (s *DecryptResponseBody) SetPlaintext(v string) *DecryptResponseBody {
+	s.Plaintext = &v
+	return s
+}
+
+func (s *DecryptResponseBody) SetRequestId(v string) *DecryptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type DecryptResponse struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DecryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DecryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DecryptResponse) String() string {
@@ -1622,6 +1707,11 @@ func (s DecryptResponse) GoString() string {
 
 func (s *DecryptResponse) SetHeaders(v map[string]*string) *DecryptResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DecryptResponse) SetStatusCode(v int32) *DecryptResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1665,8 +1755,9 @@ func (s *DeleteAliasResponseBody) SetRequestId(v string) *DeleteAliasResponseBod
 }
 
 type DeleteAliasResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteAliasResponse) String() string {
@@ -1679,6 +1770,11 @@ func (s DeleteAliasResponse) GoString() string {
 
 func (s *DeleteAliasResponse) SetHeaders(v map[string]*string) *DeleteAliasResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteAliasResponse) SetStatusCode(v int32) *DeleteAliasResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1722,8 +1818,9 @@ func (s *DeleteCertificateResponseBody) SetRequestId(v string) *DeleteCertificat
 }
 
 type DeleteCertificateResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteCertificateResponse) String() string {
@@ -1736,6 +1833,11 @@ func (s DeleteCertificateResponse) GoString() string {
 
 func (s *DeleteCertificateResponse) SetHeaders(v map[string]*string) *DeleteCertificateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteCertificateResponse) SetStatusCode(v int32) *DeleteCertificateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1779,8 +1881,9 @@ func (s *DeleteKeyMaterialResponseBody) SetRequestId(v string) *DeleteKeyMateria
 }
 
 type DeleteKeyMaterialResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteKeyMaterialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteKeyMaterialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteKeyMaterialResponse) String() string {
@@ -1796,15 +1899,20 @@ func (s *DeleteKeyMaterialResponse) SetHeaders(v map[string]*string) *DeleteKeyM
 	return s
 }
 
+func (s *DeleteKeyMaterialResponse) SetStatusCode(v int32) *DeleteKeyMaterialResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteKeyMaterialResponse) SetBody(v *DeleteKeyMaterialResponseBody) *DeleteKeyMaterialResponse {
 	s.Body = v
 	return s
 }
 
 type DeleteSecretRequest struct {
-	SecretName                 *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	ForceDeleteWithoutRecovery *string `json:"ForceDeleteWithoutRecovery,omitempty" xml:"ForceDeleteWithoutRecovery,omitempty"`
 	RecoveryWindowInDays       *string `json:"RecoveryWindowInDays,omitempty" xml:"RecoveryWindowInDays,omitempty"`
+	SecretName                 *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 }
 
 func (s DeleteSecretRequest) String() string {
@@ -1813,11 +1921,6 @@ func (s DeleteSecretRequest) String() string {
 
 func (s DeleteSecretRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteSecretRequest) SetSecretName(v string) *DeleteSecretRequest {
-	s.SecretName = &v
-	return s
 }
 
 func (s *DeleteSecretRequest) SetForceDeleteWithoutRecovery(v string) *DeleteSecretRequest {
@@ -1830,10 +1933,15 @@ func (s *DeleteSecretRequest) SetRecoveryWindowInDays(v string) *DeleteSecretReq
 	return s
 }
 
+func (s *DeleteSecretRequest) SetSecretName(v string) *DeleteSecretRequest {
+	s.SecretName = &v
+	return s
+}
+
 type DeleteSecretResponseBody struct {
-	SecretName        *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	PlannedDeleteTime *string `json:"PlannedDeleteTime,omitempty" xml:"PlannedDeleteTime,omitempty"`
+	RequestId         *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecretName        *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 }
 
 func (s DeleteSecretResponseBody) String() string {
@@ -1844,8 +1952,8 @@ func (s DeleteSecretResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteSecretResponseBody) SetSecretName(v string) *DeleteSecretResponseBody {
-	s.SecretName = &v
+func (s *DeleteSecretResponseBody) SetPlannedDeleteTime(v string) *DeleteSecretResponseBody {
+	s.PlannedDeleteTime = &v
 	return s
 }
 
@@ -1854,14 +1962,15 @@ func (s *DeleteSecretResponseBody) SetRequestId(v string) *DeleteSecretResponseB
 	return s
 }
 
-func (s *DeleteSecretResponseBody) SetPlannedDeleteTime(v string) *DeleteSecretResponseBody {
-	s.PlannedDeleteTime = &v
+func (s *DeleteSecretResponseBody) SetSecretName(v string) *DeleteSecretResponseBody {
+	s.SecretName = &v
 	return s
 }
 
 type DeleteSecretResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteSecretResponse) String() string {
@@ -1874,6 +1983,11 @@ func (s DeleteSecretResponse) GoString() string {
 
 func (s *DeleteSecretResponse) SetHeaders(v map[string]*string) *DeleteSecretResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteSecretResponse) SetStatusCode(v int32) *DeleteSecretResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1906,8 +2020,9 @@ func (s *DescribeAccountKmsStatusResponseBody) SetRequestId(v string) *DescribeA
 }
 
 type DescribeAccountKmsStatusResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAccountKmsStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAccountKmsStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeAccountKmsStatusResponse) String() string {
@@ -1920,6 +2035,11 @@ func (s DescribeAccountKmsStatusResponse) GoString() string {
 
 func (s *DescribeAccountKmsStatusResponse) SetHeaders(v map[string]*string) *DescribeAccountKmsStatusResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeAccountKmsStatusResponse) SetStatusCode(v int32) *DescribeAccountKmsStatusResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1946,24 +2066,24 @@ func (s *DescribeCertificateRequest) SetCertificateId(v string) *DescribeCertifi
 }
 
 type DescribeCertificateResponseBody struct {
-	Status                  *string                `json:"Status,omitempty" xml:"Status,omitempty"`
-	ProtectionLevel         *string                `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
-	RequestId               *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Issuer                  *string                `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
+	Arn                     *string                `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	CertificateId           *string                `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	CreatedAt               *string                `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	ExportablePrivateKey    *bool                  `json:"ExportablePrivateKey,omitempty" xml:"ExportablePrivateKey,omitempty"`
+	Issuer                  *string                `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
 	KeySpec                 *string                `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
-	SubjectAlternativeNames []*string              `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty" type:"Repeated"`
-	SignatureAlgorithm      *string                `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
-	SubjectKeyIdentifier    *string                `json:"SubjectKeyIdentifier,omitempty" xml:"SubjectKeyIdentifier,omitempty"`
 	NotAfter                *string                `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	UpdatedAt               *string                `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
-	Subject                 *string                `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	Serial                  *string                `json:"Serial,omitempty" xml:"Serial,omitempty"`
-	SubjectPublicKey        *string                `json:"SubjectPublicKey,omitempty" xml:"SubjectPublicKey,omitempty"`
-	Arn                     *string                `json:"Arn,omitempty" xml:"Arn,omitempty"`
 	NotBefore               *string                `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
+	RequestId               *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Serial                  *string                `json:"Serial,omitempty" xml:"Serial,omitempty"`
+	SignatureAlgorithm      *string                `json:"SignatureAlgorithm,omitempty" xml:"SignatureAlgorithm,omitempty"`
+	Status                  *string                `json:"Status,omitempty" xml:"Status,omitempty"`
+	Subject                 *string                `json:"Subject,omitempty" xml:"Subject,omitempty"`
+	SubjectAlternativeNames []*string              `json:"SubjectAlternativeNames,omitempty" xml:"SubjectAlternativeNames,omitempty" type:"Repeated"`
+	SubjectKeyIdentifier    *string                `json:"SubjectKeyIdentifier,omitempty" xml:"SubjectKeyIdentifier,omitempty"`
+	SubjectPublicKey        *string                `json:"SubjectPublicKey,omitempty" xml:"SubjectPublicKey,omitempty"`
 	Tags                    map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	UpdatedAt               *string                `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
 }
 
 func (s DescribeCertificateResponseBody) String() string {
@@ -1974,23 +2094,8 @@ func (s DescribeCertificateResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeCertificateResponseBody) SetStatus(v string) *DescribeCertificateResponseBody {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeCertificateResponseBody) SetProtectionLevel(v string) *DescribeCertificateResponseBody {
-	s.ProtectionLevel = &v
-	return s
-}
-
-func (s *DescribeCertificateResponseBody) SetRequestId(v string) *DescribeCertificateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeCertificateResponseBody) SetIssuer(v string) *DescribeCertificateResponseBody {
-	s.Issuer = &v
+func (s *DescribeCertificateResponseBody) SetArn(v string) *DescribeCertificateResponseBody {
+	s.Arn = &v
 	return s
 }
 
@@ -2004,23 +2109,18 @@ func (s *DescribeCertificateResponseBody) SetCreatedAt(v string) *DescribeCertif
 	return s
 }
 
+func (s *DescribeCertificateResponseBody) SetExportablePrivateKey(v bool) *DescribeCertificateResponseBody {
+	s.ExportablePrivateKey = &v
+	return s
+}
+
+func (s *DescribeCertificateResponseBody) SetIssuer(v string) *DescribeCertificateResponseBody {
+	s.Issuer = &v
+	return s
+}
+
 func (s *DescribeCertificateResponseBody) SetKeySpec(v string) *DescribeCertificateResponseBody {
 	s.KeySpec = &v
-	return s
-}
-
-func (s *DescribeCertificateResponseBody) SetSubjectAlternativeNames(v []*string) *DescribeCertificateResponseBody {
-	s.SubjectAlternativeNames = v
-	return s
-}
-
-func (s *DescribeCertificateResponseBody) SetSignatureAlgorithm(v string) *DescribeCertificateResponseBody {
-	s.SignatureAlgorithm = &v
-	return s
-}
-
-func (s *DescribeCertificateResponseBody) SetSubjectKeyIdentifier(v string) *DescribeCertificateResponseBody {
-	s.SubjectKeyIdentifier = &v
 	return s
 }
 
@@ -2029,13 +2129,13 @@ func (s *DescribeCertificateResponseBody) SetNotAfter(v string) *DescribeCertifi
 	return s
 }
 
-func (s *DescribeCertificateResponseBody) SetUpdatedAt(v string) *DescribeCertificateResponseBody {
-	s.UpdatedAt = &v
+func (s *DescribeCertificateResponseBody) SetNotBefore(v string) *DescribeCertificateResponseBody {
+	s.NotBefore = &v
 	return s
 }
 
-func (s *DescribeCertificateResponseBody) SetSubject(v string) *DescribeCertificateResponseBody {
-	s.Subject = &v
+func (s *DescribeCertificateResponseBody) SetRequestId(v string) *DescribeCertificateResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2044,18 +2144,33 @@ func (s *DescribeCertificateResponseBody) SetSerial(v string) *DescribeCertifica
 	return s
 }
 
+func (s *DescribeCertificateResponseBody) SetSignatureAlgorithm(v string) *DescribeCertificateResponseBody {
+	s.SignatureAlgorithm = &v
+	return s
+}
+
+func (s *DescribeCertificateResponseBody) SetStatus(v string) *DescribeCertificateResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeCertificateResponseBody) SetSubject(v string) *DescribeCertificateResponseBody {
+	s.Subject = &v
+	return s
+}
+
+func (s *DescribeCertificateResponseBody) SetSubjectAlternativeNames(v []*string) *DescribeCertificateResponseBody {
+	s.SubjectAlternativeNames = v
+	return s
+}
+
+func (s *DescribeCertificateResponseBody) SetSubjectKeyIdentifier(v string) *DescribeCertificateResponseBody {
+	s.SubjectKeyIdentifier = &v
+	return s
+}
+
 func (s *DescribeCertificateResponseBody) SetSubjectPublicKey(v string) *DescribeCertificateResponseBody {
 	s.SubjectPublicKey = &v
-	return s
-}
-
-func (s *DescribeCertificateResponseBody) SetArn(v string) *DescribeCertificateResponseBody {
-	s.Arn = &v
-	return s
-}
-
-func (s *DescribeCertificateResponseBody) SetNotBefore(v string) *DescribeCertificateResponseBody {
-	s.NotBefore = &v
 	return s
 }
 
@@ -2064,9 +2179,15 @@ func (s *DescribeCertificateResponseBody) SetTags(v map[string]interface{}) *Des
 	return s
 }
 
+func (s *DescribeCertificateResponseBody) SetUpdatedAt(v string) *DescribeCertificateResponseBody {
+	s.UpdatedAt = &v
+	return s
+}
+
 type DescribeCertificateResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCertificateResponse) String() string {
@@ -2079,6 +2200,11 @@ func (s DescribeCertificateResponse) GoString() string {
 
 func (s *DescribeCertificateResponse) SetHeaders(v map[string]*string) *DescribeCertificateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCertificateResponse) SetStatusCode(v int32) *DescribeCertificateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2105,8 +2231,8 @@ func (s *DescribeKeyRequest) SetKeyId(v string) *DescribeKeyRequest {
 }
 
 type DescribeKeyResponseBody struct {
-	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	KeyMetadata *DescribeKeyResponseBodyKeyMetadata `json:"KeyMetadata,omitempty" xml:"KeyMetadata,omitempty" type:"Struct"`
+	RequestId   *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeKeyResponseBody) String() string {
@@ -2117,34 +2243,36 @@ func (s DescribeKeyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeKeyResponseBody) SetRequestId(v string) *DescribeKeyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *DescribeKeyResponseBody) SetKeyMetadata(v *DescribeKeyResponseBodyKeyMetadata) *DescribeKeyResponseBody {
 	s.KeyMetadata = v
 	return s
 }
 
+func (s *DescribeKeyResponseBody) SetRequestId(v string) *DescribeKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type DescribeKeyResponseBodyKeyMetadata struct {
-	KeyId              *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	NextRotationDate   *string `json:"NextRotationDate,omitempty" xml:"NextRotationDate,omitempty"`
-	KeyState           *string `json:"KeyState,omitempty" xml:"KeyState,omitempty"`
-	RotationInterval   *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
-	Arn                *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	Creator            *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	DeleteDate         *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
-	LastRotationDate   *string `json:"LastRotationDate,omitempty" xml:"LastRotationDate,omitempty"`
-	Description        *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	PrimaryKeyVersion  *string `json:"PrimaryKeyVersion,omitempty" xml:"PrimaryKeyVersion,omitempty"`
-	Origin             *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	KeySpec            *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
-	MaterialExpireTime *string `json:"MaterialExpireTime,omitempty" xml:"MaterialExpireTime,omitempty"`
-	AutomaticRotation  *string `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
-	ProtectionLevel    *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
-	KeyUsage           *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
-	CreationDate       *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
+	Arn                           *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	AutomaticRotation             *string `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
+	CreationDate                  *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
+	Creator                       *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
+	DeleteDate                    *string `json:"DeleteDate,omitempty" xml:"DeleteDate,omitempty"`
+	DeletionProtection            *string `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	DeletionProtectionDescription *string `json:"DeletionProtectionDescription,omitempty" xml:"DeletionProtectionDescription,omitempty"`
+	Description                   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	KeyId                         *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	KeySpec                       *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
+	KeyState                      *string `json:"KeyState,omitempty" xml:"KeyState,omitempty"`
+	KeyUsage                      *string `json:"KeyUsage,omitempty" xml:"KeyUsage,omitempty"`
+	LastRotationDate              *string `json:"LastRotationDate,omitempty" xml:"LastRotationDate,omitempty"`
+	MaterialExpireTime            *string `json:"MaterialExpireTime,omitempty" xml:"MaterialExpireTime,omitempty"`
+	NextRotationDate              *string `json:"NextRotationDate,omitempty" xml:"NextRotationDate,omitempty"`
+	Origin                        *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
+	PrimaryKeyVersion             *string `json:"PrimaryKeyVersion,omitempty" xml:"PrimaryKeyVersion,omitempty"`
+	ProtectionLevel               *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
+	RotationInterval              *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
 }
 
 func (s DescribeKeyResponseBodyKeyMetadata) String() string {
@@ -2155,28 +2283,18 @@ func (s DescribeKeyResponseBodyKeyMetadata) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeKeyResponseBodyKeyMetadata) SetKeyId(v string) *DescribeKeyResponseBodyKeyMetadata {
-	s.KeyId = &v
-	return s
-}
-
-func (s *DescribeKeyResponseBodyKeyMetadata) SetNextRotationDate(v string) *DescribeKeyResponseBodyKeyMetadata {
-	s.NextRotationDate = &v
-	return s
-}
-
-func (s *DescribeKeyResponseBodyKeyMetadata) SetKeyState(v string) *DescribeKeyResponseBodyKeyMetadata {
-	s.KeyState = &v
-	return s
-}
-
-func (s *DescribeKeyResponseBodyKeyMetadata) SetRotationInterval(v string) *DescribeKeyResponseBodyKeyMetadata {
-	s.RotationInterval = &v
-	return s
-}
-
 func (s *DescribeKeyResponseBodyKeyMetadata) SetArn(v string) *DescribeKeyResponseBodyKeyMetadata {
 	s.Arn = &v
+	return s
+}
+
+func (s *DescribeKeyResponseBodyKeyMetadata) SetAutomaticRotation(v string) *DescribeKeyResponseBodyKeyMetadata {
+	s.AutomaticRotation = &v
+	return s
+}
+
+func (s *DescribeKeyResponseBodyKeyMetadata) SetCreationDate(v string) *DescribeKeyResponseBodyKeyMetadata {
+	s.CreationDate = &v
 	return s
 }
 
@@ -2190,8 +2308,13 @@ func (s *DescribeKeyResponseBodyKeyMetadata) SetDeleteDate(v string) *DescribeKe
 	return s
 }
 
-func (s *DescribeKeyResponseBodyKeyMetadata) SetLastRotationDate(v string) *DescribeKeyResponseBodyKeyMetadata {
-	s.LastRotationDate = &v
+func (s *DescribeKeyResponseBodyKeyMetadata) SetDeletionProtection(v string) *DescribeKeyResponseBodyKeyMetadata {
+	s.DeletionProtection = &v
+	return s
+}
+
+func (s *DescribeKeyResponseBodyKeyMetadata) SetDeletionProtectionDescription(v string) *DescribeKeyResponseBodyKeyMetadata {
+	s.DeletionProtectionDescription = &v
 	return s
 }
 
@@ -2200,13 +2323,8 @@ func (s *DescribeKeyResponseBodyKeyMetadata) SetDescription(v string) *DescribeK
 	return s
 }
 
-func (s *DescribeKeyResponseBodyKeyMetadata) SetPrimaryKeyVersion(v string) *DescribeKeyResponseBodyKeyMetadata {
-	s.PrimaryKeyVersion = &v
-	return s
-}
-
-func (s *DescribeKeyResponseBodyKeyMetadata) SetOrigin(v string) *DescribeKeyResponseBodyKeyMetadata {
-	s.Origin = &v
+func (s *DescribeKeyResponseBodyKeyMetadata) SetKeyId(v string) *DescribeKeyResponseBodyKeyMetadata {
+	s.KeyId = &v
 	return s
 }
 
@@ -2215,18 +2333,8 @@ func (s *DescribeKeyResponseBodyKeyMetadata) SetKeySpec(v string) *DescribeKeyRe
 	return s
 }
 
-func (s *DescribeKeyResponseBodyKeyMetadata) SetMaterialExpireTime(v string) *DescribeKeyResponseBodyKeyMetadata {
-	s.MaterialExpireTime = &v
-	return s
-}
-
-func (s *DescribeKeyResponseBodyKeyMetadata) SetAutomaticRotation(v string) *DescribeKeyResponseBodyKeyMetadata {
-	s.AutomaticRotation = &v
-	return s
-}
-
-func (s *DescribeKeyResponseBodyKeyMetadata) SetProtectionLevel(v string) *DescribeKeyResponseBodyKeyMetadata {
-	s.ProtectionLevel = &v
+func (s *DescribeKeyResponseBodyKeyMetadata) SetKeyState(v string) *DescribeKeyResponseBodyKeyMetadata {
+	s.KeyState = &v
 	return s
 }
 
@@ -2235,14 +2343,45 @@ func (s *DescribeKeyResponseBodyKeyMetadata) SetKeyUsage(v string) *DescribeKeyR
 	return s
 }
 
-func (s *DescribeKeyResponseBodyKeyMetadata) SetCreationDate(v string) *DescribeKeyResponseBodyKeyMetadata {
-	s.CreationDate = &v
+func (s *DescribeKeyResponseBodyKeyMetadata) SetLastRotationDate(v string) *DescribeKeyResponseBodyKeyMetadata {
+	s.LastRotationDate = &v
+	return s
+}
+
+func (s *DescribeKeyResponseBodyKeyMetadata) SetMaterialExpireTime(v string) *DescribeKeyResponseBodyKeyMetadata {
+	s.MaterialExpireTime = &v
+	return s
+}
+
+func (s *DescribeKeyResponseBodyKeyMetadata) SetNextRotationDate(v string) *DescribeKeyResponseBodyKeyMetadata {
+	s.NextRotationDate = &v
+	return s
+}
+
+func (s *DescribeKeyResponseBodyKeyMetadata) SetOrigin(v string) *DescribeKeyResponseBodyKeyMetadata {
+	s.Origin = &v
+	return s
+}
+
+func (s *DescribeKeyResponseBodyKeyMetadata) SetPrimaryKeyVersion(v string) *DescribeKeyResponseBodyKeyMetadata {
+	s.PrimaryKeyVersion = &v
+	return s
+}
+
+func (s *DescribeKeyResponseBodyKeyMetadata) SetProtectionLevel(v string) *DescribeKeyResponseBodyKeyMetadata {
+	s.ProtectionLevel = &v
+	return s
+}
+
+func (s *DescribeKeyResponseBodyKeyMetadata) SetRotationInterval(v string) *DescribeKeyResponseBodyKeyMetadata {
+	s.RotationInterval = &v
 	return s
 }
 
 type DescribeKeyResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeKeyResponse) String() string {
@@ -2255,6 +2394,11 @@ func (s DescribeKeyResponse) GoString() string {
 
 func (s *DescribeKeyResponse) SetHeaders(v map[string]*string) *DescribeKeyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeKeyResponse) SetStatusCode(v int32) *DescribeKeyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2287,8 +2431,8 @@ func (s *DescribeKeyVersionRequest) SetKeyVersionId(v string) *DescribeKeyVersio
 }
 
 type DescribeKeyVersionResponseBody struct {
-	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	KeyVersion *DescribeKeyVersionResponseBodyKeyVersion `json:"KeyVersion,omitempty" xml:"KeyVersion,omitempty" type:"Struct"`
+	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeKeyVersionResponseBody) String() string {
@@ -2299,20 +2443,20 @@ func (s DescribeKeyVersionResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeKeyVersionResponseBody) SetRequestId(v string) *DescribeKeyVersionResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *DescribeKeyVersionResponseBody) SetKeyVersion(v *DescribeKeyVersionResponseBodyKeyVersion) *DescribeKeyVersionResponseBody {
 	s.KeyVersion = v
 	return s
 }
 
+func (s *DescribeKeyVersionResponseBody) SetRequestId(v string) *DescribeKeyVersionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type DescribeKeyVersionResponseBodyKeyVersion struct {
-	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
-	KeyId        *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	CreationDate *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
+	KeyId        *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
 }
 
 func (s DescribeKeyVersionResponseBodyKeyVersion) String() string {
@@ -2323,8 +2467,8 @@ func (s DescribeKeyVersionResponseBodyKeyVersion) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeKeyVersionResponseBodyKeyVersion) SetKeyVersionId(v string) *DescribeKeyVersionResponseBodyKeyVersion {
-	s.KeyVersionId = &v
+func (s *DescribeKeyVersionResponseBodyKeyVersion) SetCreationDate(v string) *DescribeKeyVersionResponseBodyKeyVersion {
+	s.CreationDate = &v
 	return s
 }
 
@@ -2333,14 +2477,15 @@ func (s *DescribeKeyVersionResponseBodyKeyVersion) SetKeyId(v string) *DescribeK
 	return s
 }
 
-func (s *DescribeKeyVersionResponseBodyKeyVersion) SetCreationDate(v string) *DescribeKeyVersionResponseBodyKeyVersion {
-	s.CreationDate = &v
+func (s *DescribeKeyVersionResponseBodyKeyVersion) SetKeyVersionId(v string) *DescribeKeyVersionResponseBodyKeyVersion {
+	s.KeyVersionId = &v
 	return s
 }
 
 type DescribeKeyVersionResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeKeyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeKeyVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeKeyVersionResponse) String() string {
@@ -2356,14 +2501,19 @@ func (s *DescribeKeyVersionResponse) SetHeaders(v map[string]*string) *DescribeK
 	return s
 }
 
+func (s *DescribeKeyVersionResponse) SetStatusCode(v int32) *DescribeKeyVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeKeyVersionResponse) SetBody(v *DescribeKeyVersionResponseBody) *DescribeKeyVersionResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeRegionsResponseBody struct {
-	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Regions   *DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s DescribeRegionsResponseBody) String() string {
@@ -2374,13 +2524,13 @@ func (s DescribeRegionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsResponseBody {
-	s.RequestId = &v
+func (s *DescribeRegionsResponseBody) SetRegions(v *DescribeRegionsResponseBodyRegions) *DescribeRegionsResponseBody {
+	s.Regions = v
 	return s
 }
 
-func (s *DescribeRegionsResponseBody) SetRegions(v *DescribeRegionsResponseBodyRegions) *DescribeRegionsResponseBody {
-	s.Regions = v
+func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsResponseBody {
+	s.RequestId = &v
 	return s
 }
 
@@ -2419,8 +2569,9 @@ func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionId(v string) *Descri
 }
 
 type DescribeRegionsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -2436,14 +2587,19 @@ func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegi
 	return s
 }
 
+func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeSecretRequest struct {
-	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	FetchTags  *string `json:"FetchTags,omitempty" xml:"FetchTags,omitempty"`
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 }
 
 func (s DescribeSecretRequest) String() string {
@@ -2454,32 +2610,32 @@ func (s DescribeSecretRequest) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSecretRequest) SetSecretName(v string) *DescribeSecretRequest {
-	s.SecretName = &v
-	return s
-}
-
 func (s *DescribeSecretRequest) SetFetchTags(v string) *DescribeSecretRequest {
 	s.FetchTags = &v
 	return s
 }
 
+func (s *DescribeSecretRequest) SetSecretName(v string) *DescribeSecretRequest {
+	s.SecretName = &v
+	return s
+}
+
 type DescribeSecretResponseBody struct {
-	Description       *string                         `json:"Description,omitempty" xml:"Description,omitempty"`
-	RotationInterval  *string                         `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
-	LastRotationDate  *string                         `json:"LastRotationDate,omitempty" xml:"LastRotationDate,omitempty"`
-	RequestId         *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SecretType        *string                         `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
-	CreateTime        *string                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	AutomaticRotation *string                         `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
-	SecretName        *string                         `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	NextRotationDate  *string                         `json:"NextRotationDate,omitempty" xml:"NextRotationDate,omitempty"`
-	UpdateTime        *string                         `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	ExtendedConfig    *string                         `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
-	PlannedDeleteTime *string                         `json:"PlannedDeleteTime,omitempty" xml:"PlannedDeleteTime,omitempty"`
 	Arn               *string                         `json:"Arn,omitempty" xml:"Arn,omitempty"`
-	Tags              *DescribeSecretResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	AutomaticRotation *string                         `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
+	CreateTime        *string                         `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description       *string                         `json:"Description,omitempty" xml:"Description,omitempty"`
 	EncryptionKeyId   *string                         `json:"EncryptionKeyId,omitempty" xml:"EncryptionKeyId,omitempty"`
+	ExtendedConfig    *string                         `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
+	LastRotationDate  *string                         `json:"LastRotationDate,omitempty" xml:"LastRotationDate,omitempty"`
+	NextRotationDate  *string                         `json:"NextRotationDate,omitempty" xml:"NextRotationDate,omitempty"`
+	PlannedDeleteTime *string                         `json:"PlannedDeleteTime,omitempty" xml:"PlannedDeleteTime,omitempty"`
+	RequestId         *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RotationInterval  *string                         `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
+	SecretName        *string                         `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	SecretType        *string                         `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
+	Tags              *DescribeSecretResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	UpdateTime        *string                         `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s DescribeSecretResponseBody) String() string {
@@ -2490,33 +2646,8 @@ func (s DescribeSecretResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSecretResponseBody) SetDescription(v string) *DescribeSecretResponseBody {
-	s.Description = &v
-	return s
-}
-
-func (s *DescribeSecretResponseBody) SetRotationInterval(v string) *DescribeSecretResponseBody {
-	s.RotationInterval = &v
-	return s
-}
-
-func (s *DescribeSecretResponseBody) SetLastRotationDate(v string) *DescribeSecretResponseBody {
-	s.LastRotationDate = &v
-	return s
-}
-
-func (s *DescribeSecretResponseBody) SetRequestId(v string) *DescribeSecretResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeSecretResponseBody) SetSecretType(v string) *DescribeSecretResponseBody {
-	s.SecretType = &v
-	return s
-}
-
-func (s *DescribeSecretResponseBody) SetCreateTime(v string) *DescribeSecretResponseBody {
-	s.CreateTime = &v
+func (s *DescribeSecretResponseBody) SetArn(v string) *DescribeSecretResponseBody {
+	s.Arn = &v
 	return s
 }
 
@@ -2525,18 +2656,18 @@ func (s *DescribeSecretResponseBody) SetAutomaticRotation(v string) *DescribeSec
 	return s
 }
 
-func (s *DescribeSecretResponseBody) SetSecretName(v string) *DescribeSecretResponseBody {
-	s.SecretName = &v
+func (s *DescribeSecretResponseBody) SetCreateTime(v string) *DescribeSecretResponseBody {
+	s.CreateTime = &v
 	return s
 }
 
-func (s *DescribeSecretResponseBody) SetNextRotationDate(v string) *DescribeSecretResponseBody {
-	s.NextRotationDate = &v
+func (s *DescribeSecretResponseBody) SetDescription(v string) *DescribeSecretResponseBody {
+	s.Description = &v
 	return s
 }
 
-func (s *DescribeSecretResponseBody) SetUpdateTime(v string) *DescribeSecretResponseBody {
-	s.UpdateTime = &v
+func (s *DescribeSecretResponseBody) SetEncryptionKeyId(v string) *DescribeSecretResponseBody {
+	s.EncryptionKeyId = &v
 	return s
 }
 
@@ -2545,13 +2676,38 @@ func (s *DescribeSecretResponseBody) SetExtendedConfig(v string) *DescribeSecret
 	return s
 }
 
+func (s *DescribeSecretResponseBody) SetLastRotationDate(v string) *DescribeSecretResponseBody {
+	s.LastRotationDate = &v
+	return s
+}
+
+func (s *DescribeSecretResponseBody) SetNextRotationDate(v string) *DescribeSecretResponseBody {
+	s.NextRotationDate = &v
+	return s
+}
+
 func (s *DescribeSecretResponseBody) SetPlannedDeleteTime(v string) *DescribeSecretResponseBody {
 	s.PlannedDeleteTime = &v
 	return s
 }
 
-func (s *DescribeSecretResponseBody) SetArn(v string) *DescribeSecretResponseBody {
-	s.Arn = &v
+func (s *DescribeSecretResponseBody) SetRequestId(v string) *DescribeSecretResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeSecretResponseBody) SetRotationInterval(v string) *DescribeSecretResponseBody {
+	s.RotationInterval = &v
+	return s
+}
+
+func (s *DescribeSecretResponseBody) SetSecretName(v string) *DescribeSecretResponseBody {
+	s.SecretName = &v
+	return s
+}
+
+func (s *DescribeSecretResponseBody) SetSecretType(v string) *DescribeSecretResponseBody {
+	s.SecretType = &v
 	return s
 }
 
@@ -2560,8 +2716,8 @@ func (s *DescribeSecretResponseBody) SetTags(v *DescribeSecretResponseBodyTags) 
 	return s
 }
 
-func (s *DescribeSecretResponseBody) SetEncryptionKeyId(v string) *DescribeSecretResponseBody {
-	s.EncryptionKeyId = &v
+func (s *DescribeSecretResponseBody) SetUpdateTime(v string) *DescribeSecretResponseBody {
+	s.UpdateTime = &v
 	return s
 }
 
@@ -2583,8 +2739,8 @@ func (s *DescribeSecretResponseBodyTags) SetTag(v []*DescribeSecretResponseBodyT
 }
 
 type DescribeSecretResponseBodyTagsTag struct {
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s DescribeSecretResponseBodyTagsTag) String() string {
@@ -2595,19 +2751,20 @@ func (s DescribeSecretResponseBodyTagsTag) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeSecretResponseBodyTagsTag) SetTagValue(v string) *DescribeSecretResponseBodyTagsTag {
-	s.TagValue = &v
-	return s
-}
-
 func (s *DescribeSecretResponseBodyTagsTag) SetTagKey(v string) *DescribeSecretResponseBodyTagsTag {
 	s.TagKey = &v
 	return s
 }
 
+func (s *DescribeSecretResponseBodyTagsTag) SetTagValue(v string) *DescribeSecretResponseBodyTagsTag {
+	s.TagValue = &v
+	return s
+}
+
 type DescribeSecretResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeSecretResponse) String() string {
@@ -2623,173 +2780,12 @@ func (s *DescribeSecretResponse) SetHeaders(v map[string]*string) *DescribeSecre
 	return s
 }
 
+func (s *DescribeSecretResponse) SetStatusCode(v int32) *DescribeSecretResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeSecretResponse) SetBody(v *DescribeSecretResponseBody) *DescribeSecretResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeServiceResponseBody struct {
-	ProtectionLevels *DescribeServiceResponseBodyProtectionLevels `json:"ProtectionLevels,omitempty" xml:"ProtectionLevels,omitempty" type:"Struct"`
-	RequestId        *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	KeySpecs         *DescribeServiceResponseBodyKeySpecs         `json:"KeySpecs,omitempty" xml:"KeySpecs,omitempty" type:"Struct"`
-}
-
-func (s DescribeServiceResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceResponseBody) SetProtectionLevels(v *DescribeServiceResponseBodyProtectionLevels) *DescribeServiceResponseBody {
-	s.ProtectionLevels = v
-	return s
-}
-
-func (s *DescribeServiceResponseBody) SetRequestId(v string) *DescribeServiceResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeServiceResponseBody) SetKeySpecs(v *DescribeServiceResponseBodyKeySpecs) *DescribeServiceResponseBody {
-	s.KeySpecs = v
-	return s
-}
-
-type DescribeServiceResponseBodyProtectionLevels struct {
-	ProtectionLevel []*DescribeServiceResponseBodyProtectionLevelsProtectionLevel `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty" type:"Repeated"`
-}
-
-func (s DescribeServiceResponseBodyProtectionLevels) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceResponseBodyProtectionLevels) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceResponseBodyProtectionLevels) SetProtectionLevel(v []*DescribeServiceResponseBodyProtectionLevelsProtectionLevel) *DescribeServiceResponseBodyProtectionLevels {
-	s.ProtectionLevel = v
-	return s
-}
-
-type DescribeServiceResponseBodyProtectionLevelsProtectionLevel struct {
-	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s DescribeServiceResponseBodyProtectionLevelsProtectionLevel) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceResponseBodyProtectionLevelsProtectionLevel) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceResponseBodyProtectionLevelsProtectionLevel) SetType(v string) *DescribeServiceResponseBodyProtectionLevelsProtectionLevel {
-	s.Type = &v
-	return s
-}
-
-type DescribeServiceResponseBodyKeySpecs struct {
-	KeySpec []*DescribeServiceResponseBodyKeySpecsKeySpec `json:"KeySpec,omitempty" xml:"KeySpec,omitempty" type:"Repeated"`
-}
-
-func (s DescribeServiceResponseBodyKeySpecs) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceResponseBodyKeySpecs) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceResponseBodyKeySpecs) SetKeySpec(v []*DescribeServiceResponseBodyKeySpecsKeySpec) *DescribeServiceResponseBodyKeySpecs {
-	s.KeySpec = v
-	return s
-}
-
-type DescribeServiceResponseBodyKeySpecsKeySpec struct {
-	SupportedProtectionLevels *DescribeServiceResponseBodyKeySpecsKeySpecSupportedProtectionLevels `json:"SupportedProtectionLevels,omitempty" xml:"SupportedProtectionLevels,omitempty" type:"Struct"`
-	Name                      *string                                                              `json:"Name,omitempty" xml:"Name,omitempty"`
-	Usages                    *DescribeServiceResponseBodyKeySpecsKeySpecUsages                    `json:"Usages,omitempty" xml:"Usages,omitempty" type:"Struct"`
-}
-
-func (s DescribeServiceResponseBodyKeySpecsKeySpec) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceResponseBodyKeySpecsKeySpec) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceResponseBodyKeySpecsKeySpec) SetSupportedProtectionLevels(v *DescribeServiceResponseBodyKeySpecsKeySpecSupportedProtectionLevels) *DescribeServiceResponseBodyKeySpecsKeySpec {
-	s.SupportedProtectionLevels = v
-	return s
-}
-
-func (s *DescribeServiceResponseBodyKeySpecsKeySpec) SetName(v string) *DescribeServiceResponseBodyKeySpecsKeySpec {
-	s.Name = &v
-	return s
-}
-
-func (s *DescribeServiceResponseBodyKeySpecsKeySpec) SetUsages(v *DescribeServiceResponseBodyKeySpecsKeySpecUsages) *DescribeServiceResponseBodyKeySpecsKeySpec {
-	s.Usages = v
-	return s
-}
-
-type DescribeServiceResponseBodyKeySpecsKeySpecSupportedProtectionLevels struct {
-	SupportedProtectionLevel []*string `json:"SupportedProtectionLevel,omitempty" xml:"SupportedProtectionLevel,omitempty" type:"Repeated"`
-}
-
-func (s DescribeServiceResponseBodyKeySpecsKeySpecSupportedProtectionLevels) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceResponseBodyKeySpecsKeySpecSupportedProtectionLevels) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceResponseBodyKeySpecsKeySpecSupportedProtectionLevels) SetSupportedProtectionLevel(v []*string) *DescribeServiceResponseBodyKeySpecsKeySpecSupportedProtectionLevels {
-	s.SupportedProtectionLevel = v
-	return s
-}
-
-type DescribeServiceResponseBodyKeySpecsKeySpecUsages struct {
-	Usage []*string `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Repeated"`
-}
-
-func (s DescribeServiceResponseBodyKeySpecsKeySpecUsages) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceResponseBodyKeySpecsKeySpecUsages) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceResponseBodyKeySpecsKeySpecUsages) SetUsage(v []*string) *DescribeServiceResponseBodyKeySpecsKeySpecUsages {
-	s.Usage = v
-	return s
-}
-
-type DescribeServiceResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeServiceResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceResponse) SetHeaders(v map[string]*string) *DescribeServiceResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeServiceResponse) SetBody(v *DescribeServiceResponseBody) *DescribeServiceResponse {
 	s.Body = v
 	return s
 }
@@ -2829,8 +2825,9 @@ func (s *DisableKeyResponseBody) SetRequestId(v string) *DisableKeyResponseBody 
 }
 
 type DisableKeyResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DisableKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DisableKeyResponse) String() string {
@@ -2843,6 +2840,11 @@ func (s DisableKeyResponse) GoString() string {
 
 func (s *DisableKeyResponse) SetHeaders(v map[string]*string) *DisableKeyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DisableKeyResponse) SetStatusCode(v int32) *DisableKeyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2886,8 +2888,9 @@ func (s *EnableKeyResponseBody) SetRequestId(v string) *EnableKeyResponseBody {
 }
 
 type EnableKeyResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnableKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnableKeyResponse) String() string {
@@ -2903,15 +2906,20 @@ func (s *EnableKeyResponse) SetHeaders(v map[string]*string) *EnableKeyResponse 
 	return s
 }
 
+func (s *EnableKeyResponse) SetStatusCode(v int32) *EnableKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *EnableKeyResponse) SetBody(v *EnableKeyResponseBody) *EnableKeyResponse {
 	s.Body = v
 	return s
 }
 
 type EncryptRequest struct {
+	EncryptionContext map[string]interface{} `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 	KeyId             *string                `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	Plaintext         *string                `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
-	EncryptionContext map[string]interface{} `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 }
 
 func (s EncryptRequest) String() string {
@@ -2920,6 +2928,11 @@ func (s EncryptRequest) String() string {
 
 func (s EncryptRequest) GoString() string {
 	return s.String()
+}
+
+func (s *EncryptRequest) SetEncryptionContext(v map[string]interface{}) *EncryptRequest {
+	s.EncryptionContext = v
+	return s
 }
 
 func (s *EncryptRequest) SetKeyId(v string) *EncryptRequest {
@@ -2932,15 +2945,10 @@ func (s *EncryptRequest) SetPlaintext(v string) *EncryptRequest {
 	return s
 }
 
-func (s *EncryptRequest) SetEncryptionContext(v map[string]interface{}) *EncryptRequest {
-	s.EncryptionContext = v
-	return s
-}
-
 type EncryptShrinkRequest struct {
+	EncryptionContextShrink *string `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 	KeyId                   *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	Plaintext               *string `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
-	EncryptionContextShrink *string `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 }
 
 func (s EncryptShrinkRequest) String() string {
@@ -2949,6 +2957,11 @@ func (s EncryptShrinkRequest) String() string {
 
 func (s EncryptShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *EncryptShrinkRequest) SetEncryptionContextShrink(v string) *EncryptShrinkRequest {
+	s.EncryptionContextShrink = &v
+	return s
 }
 
 func (s *EncryptShrinkRequest) SetKeyId(v string) *EncryptShrinkRequest {
@@ -2961,16 +2974,11 @@ func (s *EncryptShrinkRequest) SetPlaintext(v string) *EncryptShrinkRequest {
 	return s
 }
 
-func (s *EncryptShrinkRequest) SetEncryptionContextShrink(v string) *EncryptShrinkRequest {
-	s.EncryptionContextShrink = &v
-	return s
-}
-
 type EncryptResponseBody struct {
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
 	KeyId          *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeyVersionId   *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s EncryptResponseBody) String() string {
@@ -2979,11 +2987,6 @@ func (s EncryptResponseBody) String() string {
 
 func (s EncryptResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *EncryptResponseBody) SetRequestId(v string) *EncryptResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *EncryptResponseBody) SetCiphertextBlob(v string) *EncryptResponseBody {
@@ -3001,9 +3004,15 @@ func (s *EncryptResponseBody) SetKeyVersionId(v string) *EncryptResponseBody {
 	return s
 }
 
+func (s *EncryptResponseBody) SetRequestId(v string) *EncryptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type EncryptResponse struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EncryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EncryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EncryptResponse) String() string {
@@ -3019,106 +3028,12 @@ func (s *EncryptResponse) SetHeaders(v map[string]*string) *EncryptResponse {
 	return s
 }
 
+func (s *EncryptResponse) SetStatusCode(v int32) *EncryptResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *EncryptResponse) SetBody(v *EncryptResponseBody) *EncryptResponse {
-	s.Body = v
-	return s
-}
-
-type ExportCertificateRequest struct {
-	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	Passphrase    *string `json:"Passphrase,omitempty" xml:"Passphrase,omitempty"`
-	ExportFormat  *string `json:"ExportFormat,omitempty" xml:"ExportFormat,omitempty"`
-}
-
-func (s ExportCertificateRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExportCertificateRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ExportCertificateRequest) SetCertificateId(v string) *ExportCertificateRequest {
-	s.CertificateId = &v
-	return s
-}
-
-func (s *ExportCertificateRequest) SetPassphrase(v string) *ExportCertificateRequest {
-	s.Passphrase = &v
-	return s
-}
-
-func (s *ExportCertificateRequest) SetExportFormat(v string) *ExportCertificateRequest {
-	s.ExportFormat = &v
-	return s
-}
-
-type ExportCertificateResponseBody struct {
-	PrivateKey       *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
-	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CertificateId    *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	CertificateChain *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
-	PKCS12Blob       *string `json:"PKCS12Blob,omitempty" xml:"PKCS12Blob,omitempty"`
-	Certificate      *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-}
-
-func (s ExportCertificateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExportCertificateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ExportCertificateResponseBody) SetPrivateKey(v string) *ExportCertificateResponseBody {
-	s.PrivateKey = &v
-	return s
-}
-
-func (s *ExportCertificateResponseBody) SetRequestId(v string) *ExportCertificateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ExportCertificateResponseBody) SetCertificateId(v string) *ExportCertificateResponseBody {
-	s.CertificateId = &v
-	return s
-}
-
-func (s *ExportCertificateResponseBody) SetCertificateChain(v string) *ExportCertificateResponseBody {
-	s.CertificateChain = &v
-	return s
-}
-
-func (s *ExportCertificateResponseBody) SetPKCS12Blob(v string) *ExportCertificateResponseBody {
-	s.PKCS12Blob = &v
-	return s
-}
-
-func (s *ExportCertificateResponseBody) SetCertificate(v string) *ExportCertificateResponseBody {
-	s.Certificate = &v
-	return s
-}
-
-type ExportCertificateResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExportCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ExportCertificateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExportCertificateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ExportCertificateResponse) SetHeaders(v map[string]*string) *ExportCertificateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ExportCertificateResponse) SetBody(v *ExportCertificateResponseBody) *ExportCertificateResponse {
 	s.Body = v
 	return s
 }
@@ -3127,8 +3042,8 @@ type ExportDataKeyRequest struct {
 	CiphertextBlob    *string                `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
 	EncryptionContext map[string]interface{} `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 	PublicKeyBlob     *string                `json:"PublicKeyBlob,omitempty" xml:"PublicKeyBlob,omitempty"`
-	WrappingKeySpec   *string                `json:"WrappingKeySpec,omitempty" xml:"WrappingKeySpec,omitempty"`
 	WrappingAlgorithm *string                `json:"WrappingAlgorithm,omitempty" xml:"WrappingAlgorithm,omitempty"`
+	WrappingKeySpec   *string                `json:"WrappingKeySpec,omitempty" xml:"WrappingKeySpec,omitempty"`
 }
 
 func (s ExportDataKeyRequest) String() string {
@@ -3154,13 +3069,13 @@ func (s *ExportDataKeyRequest) SetPublicKeyBlob(v string) *ExportDataKeyRequest 
 	return s
 }
 
-func (s *ExportDataKeyRequest) SetWrappingKeySpec(v string) *ExportDataKeyRequest {
-	s.WrappingKeySpec = &v
+func (s *ExportDataKeyRequest) SetWrappingAlgorithm(v string) *ExportDataKeyRequest {
+	s.WrappingAlgorithm = &v
 	return s
 }
 
-func (s *ExportDataKeyRequest) SetWrappingAlgorithm(v string) *ExportDataKeyRequest {
-	s.WrappingAlgorithm = &v
+func (s *ExportDataKeyRequest) SetWrappingKeySpec(v string) *ExportDataKeyRequest {
+	s.WrappingKeySpec = &v
 	return s
 }
 
@@ -3168,8 +3083,8 @@ type ExportDataKeyShrinkRequest struct {
 	CiphertextBlob          *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
 	EncryptionContextShrink *string `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 	PublicKeyBlob           *string `json:"PublicKeyBlob,omitempty" xml:"PublicKeyBlob,omitempty"`
-	WrappingKeySpec         *string `json:"WrappingKeySpec,omitempty" xml:"WrappingKeySpec,omitempty"`
 	WrappingAlgorithm       *string `json:"WrappingAlgorithm,omitempty" xml:"WrappingAlgorithm,omitempty"`
+	WrappingKeySpec         *string `json:"WrappingKeySpec,omitempty" xml:"WrappingKeySpec,omitempty"`
 }
 
 func (s ExportDataKeyShrinkRequest) String() string {
@@ -3195,21 +3110,21 @@ func (s *ExportDataKeyShrinkRequest) SetPublicKeyBlob(v string) *ExportDataKeySh
 	return s
 }
 
-func (s *ExportDataKeyShrinkRequest) SetWrappingKeySpec(v string) *ExportDataKeyShrinkRequest {
-	s.WrappingKeySpec = &v
-	return s
-}
-
 func (s *ExportDataKeyShrinkRequest) SetWrappingAlgorithm(v string) *ExportDataKeyShrinkRequest {
 	s.WrappingAlgorithm = &v
 	return s
 }
 
+func (s *ExportDataKeyShrinkRequest) SetWrappingKeySpec(v string) *ExportDataKeyShrinkRequest {
+	s.WrappingKeySpec = &v
+	return s
+}
+
 type ExportDataKeyResponseBody struct {
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ExportedDataKey *string `json:"ExportedDataKey,omitempty" xml:"ExportedDataKey,omitempty"`
 	KeyId           *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeyVersionId    *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ExportDataKeyResponseBody) String() string {
@@ -3218,11 +3133,6 @@ func (s ExportDataKeyResponseBody) String() string {
 
 func (s ExportDataKeyResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *ExportDataKeyResponseBody) SetRequestId(v string) *ExportDataKeyResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *ExportDataKeyResponseBody) SetExportedDataKey(v string) *ExportDataKeyResponseBody {
@@ -3240,9 +3150,15 @@ func (s *ExportDataKeyResponseBody) SetKeyVersionId(v string) *ExportDataKeyResp
 	return s
 }
 
+func (s *ExportDataKeyResponseBody) SetRequestId(v string) *ExportDataKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ExportDataKeyResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExportDataKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExportDataKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ExportDataKeyResponse) String() string {
@@ -3258,19 +3174,24 @@ func (s *ExportDataKeyResponse) SetHeaders(v map[string]*string) *ExportDataKeyR
 	return s
 }
 
+func (s *ExportDataKeyResponse) SetStatusCode(v int32) *ExportDataKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ExportDataKeyResponse) SetBody(v *ExportDataKeyResponseBody) *ExportDataKeyResponse {
 	s.Body = v
 	return s
 }
 
 type GenerateAndExportDataKeyRequest struct {
+	EncryptionContext map[string]interface{} `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 	KeyId             *string                `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeySpec           *string                `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
 	NumberOfBytes     *int32                 `json:"NumberOfBytes,omitempty" xml:"NumberOfBytes,omitempty"`
-	EncryptionContext map[string]interface{} `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 	PublicKeyBlob     *string                `json:"PublicKeyBlob,omitempty" xml:"PublicKeyBlob,omitempty"`
-	WrappingKeySpec   *string                `json:"WrappingKeySpec,omitempty" xml:"WrappingKeySpec,omitempty"`
 	WrappingAlgorithm *string                `json:"WrappingAlgorithm,omitempty" xml:"WrappingAlgorithm,omitempty"`
+	WrappingKeySpec   *string                `json:"WrappingKeySpec,omitempty" xml:"WrappingKeySpec,omitempty"`
 }
 
 func (s GenerateAndExportDataKeyRequest) String() string {
@@ -3279,6 +3200,11 @@ func (s GenerateAndExportDataKeyRequest) String() string {
 
 func (s GenerateAndExportDataKeyRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GenerateAndExportDataKeyRequest) SetEncryptionContext(v map[string]interface{}) *GenerateAndExportDataKeyRequest {
+	s.EncryptionContext = v
+	return s
 }
 
 func (s *GenerateAndExportDataKeyRequest) SetKeyId(v string) *GenerateAndExportDataKeyRequest {
@@ -3296,18 +3222,8 @@ func (s *GenerateAndExportDataKeyRequest) SetNumberOfBytes(v int32) *GenerateAnd
 	return s
 }
 
-func (s *GenerateAndExportDataKeyRequest) SetEncryptionContext(v map[string]interface{}) *GenerateAndExportDataKeyRequest {
-	s.EncryptionContext = v
-	return s
-}
-
 func (s *GenerateAndExportDataKeyRequest) SetPublicKeyBlob(v string) *GenerateAndExportDataKeyRequest {
 	s.PublicKeyBlob = &v
-	return s
-}
-
-func (s *GenerateAndExportDataKeyRequest) SetWrappingKeySpec(v string) *GenerateAndExportDataKeyRequest {
-	s.WrappingKeySpec = &v
 	return s
 }
 
@@ -3316,14 +3232,19 @@ func (s *GenerateAndExportDataKeyRequest) SetWrappingAlgorithm(v string) *Genera
 	return s
 }
 
+func (s *GenerateAndExportDataKeyRequest) SetWrappingKeySpec(v string) *GenerateAndExportDataKeyRequest {
+	s.WrappingKeySpec = &v
+	return s
+}
+
 type GenerateAndExportDataKeyShrinkRequest struct {
+	EncryptionContextShrink *string `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 	KeyId                   *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeySpec                 *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
 	NumberOfBytes           *int32  `json:"NumberOfBytes,omitempty" xml:"NumberOfBytes,omitempty"`
-	EncryptionContextShrink *string `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 	PublicKeyBlob           *string `json:"PublicKeyBlob,omitempty" xml:"PublicKeyBlob,omitempty"`
-	WrappingKeySpec         *string `json:"WrappingKeySpec,omitempty" xml:"WrappingKeySpec,omitempty"`
 	WrappingAlgorithm       *string `json:"WrappingAlgorithm,omitempty" xml:"WrappingAlgorithm,omitempty"`
+	WrappingKeySpec         *string `json:"WrappingKeySpec,omitempty" xml:"WrappingKeySpec,omitempty"`
 }
 
 func (s GenerateAndExportDataKeyShrinkRequest) String() string {
@@ -3332,6 +3253,11 @@ func (s GenerateAndExportDataKeyShrinkRequest) String() string {
 
 func (s GenerateAndExportDataKeyShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GenerateAndExportDataKeyShrinkRequest) SetEncryptionContextShrink(v string) *GenerateAndExportDataKeyShrinkRequest {
+	s.EncryptionContextShrink = &v
+	return s
 }
 
 func (s *GenerateAndExportDataKeyShrinkRequest) SetKeyId(v string) *GenerateAndExportDataKeyShrinkRequest {
@@ -3349,18 +3275,8 @@ func (s *GenerateAndExportDataKeyShrinkRequest) SetNumberOfBytes(v int32) *Gener
 	return s
 }
 
-func (s *GenerateAndExportDataKeyShrinkRequest) SetEncryptionContextShrink(v string) *GenerateAndExportDataKeyShrinkRequest {
-	s.EncryptionContextShrink = &v
-	return s
-}
-
 func (s *GenerateAndExportDataKeyShrinkRequest) SetPublicKeyBlob(v string) *GenerateAndExportDataKeyShrinkRequest {
 	s.PublicKeyBlob = &v
-	return s
-}
-
-func (s *GenerateAndExportDataKeyShrinkRequest) SetWrappingKeySpec(v string) *GenerateAndExportDataKeyShrinkRequest {
-	s.WrappingKeySpec = &v
 	return s
 }
 
@@ -3369,12 +3285,17 @@ func (s *GenerateAndExportDataKeyShrinkRequest) SetWrappingAlgorithm(v string) *
 	return s
 }
 
+func (s *GenerateAndExportDataKeyShrinkRequest) SetWrappingKeySpec(v string) *GenerateAndExportDataKeyShrinkRequest {
+	s.WrappingKeySpec = &v
+	return s
+}
+
 type GenerateAndExportDataKeyResponseBody struct {
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CiphertextBlob  *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
 	ExportedDataKey *string `json:"ExportedDataKey,omitempty" xml:"ExportedDataKey,omitempty"`
 	KeyId           *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeyVersionId    *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GenerateAndExportDataKeyResponseBody) String() string {
@@ -3383,11 +3304,6 @@ func (s GenerateAndExportDataKeyResponseBody) String() string {
 
 func (s GenerateAndExportDataKeyResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *GenerateAndExportDataKeyResponseBody) SetRequestId(v string) *GenerateAndExportDataKeyResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *GenerateAndExportDataKeyResponseBody) SetCiphertextBlob(v string) *GenerateAndExportDataKeyResponseBody {
@@ -3410,9 +3326,15 @@ func (s *GenerateAndExportDataKeyResponseBody) SetKeyVersionId(v string) *Genera
 	return s
 }
 
+func (s *GenerateAndExportDataKeyResponseBody) SetRequestId(v string) *GenerateAndExportDataKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type GenerateAndExportDataKeyResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GenerateAndExportDataKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateAndExportDataKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GenerateAndExportDataKeyResponse) String() string {
@@ -3428,16 +3350,21 @@ func (s *GenerateAndExportDataKeyResponse) SetHeaders(v map[string]*string) *Gen
 	return s
 }
 
+func (s *GenerateAndExportDataKeyResponse) SetStatusCode(v int32) *GenerateAndExportDataKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GenerateAndExportDataKeyResponse) SetBody(v *GenerateAndExportDataKeyResponseBody) *GenerateAndExportDataKeyResponse {
 	s.Body = v
 	return s
 }
 
 type GenerateDataKeyRequest struct {
+	EncryptionContext map[string]interface{} `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 	KeyId             *string                `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeySpec           *string                `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
 	NumberOfBytes     *int32                 `json:"NumberOfBytes,omitempty" xml:"NumberOfBytes,omitempty"`
-	EncryptionContext map[string]interface{} `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 }
 
 func (s GenerateDataKeyRequest) String() string {
@@ -3446,6 +3373,11 @@ func (s GenerateDataKeyRequest) String() string {
 
 func (s GenerateDataKeyRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GenerateDataKeyRequest) SetEncryptionContext(v map[string]interface{}) *GenerateDataKeyRequest {
+	s.EncryptionContext = v
+	return s
 }
 
 func (s *GenerateDataKeyRequest) SetKeyId(v string) *GenerateDataKeyRequest {
@@ -3463,16 +3395,11 @@ func (s *GenerateDataKeyRequest) SetNumberOfBytes(v int32) *GenerateDataKeyReque
 	return s
 }
 
-func (s *GenerateDataKeyRequest) SetEncryptionContext(v map[string]interface{}) *GenerateDataKeyRequest {
-	s.EncryptionContext = v
-	return s
-}
-
 type GenerateDataKeyShrinkRequest struct {
+	EncryptionContextShrink *string `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 	KeyId                   *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeySpec                 *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
 	NumberOfBytes           *int32  `json:"NumberOfBytes,omitempty" xml:"NumberOfBytes,omitempty"`
-	EncryptionContextShrink *string `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 }
 
 func (s GenerateDataKeyShrinkRequest) String() string {
@@ -3481,6 +3408,11 @@ func (s GenerateDataKeyShrinkRequest) String() string {
 
 func (s GenerateDataKeyShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GenerateDataKeyShrinkRequest) SetEncryptionContextShrink(v string) *GenerateDataKeyShrinkRequest {
+	s.EncryptionContextShrink = &v
+	return s
 }
 
 func (s *GenerateDataKeyShrinkRequest) SetKeyId(v string) *GenerateDataKeyShrinkRequest {
@@ -3498,17 +3430,12 @@ func (s *GenerateDataKeyShrinkRequest) SetNumberOfBytes(v int32) *GenerateDataKe
 	return s
 }
 
-func (s *GenerateDataKeyShrinkRequest) SetEncryptionContextShrink(v string) *GenerateDataKeyShrinkRequest {
-	s.EncryptionContextShrink = &v
-	return s
-}
-
 type GenerateDataKeyResponseBody struct {
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
-	Plaintext      *string `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
 	KeyId          *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeyVersionId   *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
+	Plaintext      *string `json:"Plaintext,omitempty" xml:"Plaintext,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GenerateDataKeyResponseBody) String() string {
@@ -3519,18 +3446,8 @@ func (s GenerateDataKeyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GenerateDataKeyResponseBody) SetRequestId(v string) *GenerateDataKeyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
 func (s *GenerateDataKeyResponseBody) SetCiphertextBlob(v string) *GenerateDataKeyResponseBody {
 	s.CiphertextBlob = &v
-	return s
-}
-
-func (s *GenerateDataKeyResponseBody) SetPlaintext(v string) *GenerateDataKeyResponseBody {
-	s.Plaintext = &v
 	return s
 }
 
@@ -3544,9 +3461,20 @@ func (s *GenerateDataKeyResponseBody) SetKeyVersionId(v string) *GenerateDataKey
 	return s
 }
 
+func (s *GenerateDataKeyResponseBody) SetPlaintext(v string) *GenerateDataKeyResponseBody {
+	s.Plaintext = &v
+	return s
+}
+
+func (s *GenerateDataKeyResponseBody) SetRequestId(v string) *GenerateDataKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type GenerateDataKeyResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GenerateDataKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateDataKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GenerateDataKeyResponse) String() string {
@@ -3562,16 +3490,21 @@ func (s *GenerateDataKeyResponse) SetHeaders(v map[string]*string) *GenerateData
 	return s
 }
 
+func (s *GenerateDataKeyResponse) SetStatusCode(v int32) *GenerateDataKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GenerateDataKeyResponse) SetBody(v *GenerateDataKeyResponseBody) *GenerateDataKeyResponse {
 	s.Body = v
 	return s
 }
 
 type GenerateDataKeyWithoutPlaintextRequest struct {
+	EncryptionContext map[string]interface{} `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 	KeyId             *string                `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeySpec           *string                `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
 	NumberOfBytes     *int32                 `json:"NumberOfBytes,omitempty" xml:"NumberOfBytes,omitempty"`
-	EncryptionContext map[string]interface{} `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 }
 
 func (s GenerateDataKeyWithoutPlaintextRequest) String() string {
@@ -3580,6 +3513,11 @@ func (s GenerateDataKeyWithoutPlaintextRequest) String() string {
 
 func (s GenerateDataKeyWithoutPlaintextRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GenerateDataKeyWithoutPlaintextRequest) SetEncryptionContext(v map[string]interface{}) *GenerateDataKeyWithoutPlaintextRequest {
+	s.EncryptionContext = v
+	return s
 }
 
 func (s *GenerateDataKeyWithoutPlaintextRequest) SetKeyId(v string) *GenerateDataKeyWithoutPlaintextRequest {
@@ -3597,16 +3535,11 @@ func (s *GenerateDataKeyWithoutPlaintextRequest) SetNumberOfBytes(v int32) *Gene
 	return s
 }
 
-func (s *GenerateDataKeyWithoutPlaintextRequest) SetEncryptionContext(v map[string]interface{}) *GenerateDataKeyWithoutPlaintextRequest {
-	s.EncryptionContext = v
-	return s
-}
-
 type GenerateDataKeyWithoutPlaintextShrinkRequest struct {
+	EncryptionContextShrink *string `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 	KeyId                   *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeySpec                 *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
 	NumberOfBytes           *int32  `json:"NumberOfBytes,omitempty" xml:"NumberOfBytes,omitempty"`
-	EncryptionContextShrink *string `json:"EncryptionContext,omitempty" xml:"EncryptionContext,omitempty"`
 }
 
 func (s GenerateDataKeyWithoutPlaintextShrinkRequest) String() string {
@@ -3615,6 +3548,11 @@ func (s GenerateDataKeyWithoutPlaintextShrinkRequest) String() string {
 
 func (s GenerateDataKeyWithoutPlaintextShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GenerateDataKeyWithoutPlaintextShrinkRequest) SetEncryptionContextShrink(v string) *GenerateDataKeyWithoutPlaintextShrinkRequest {
+	s.EncryptionContextShrink = &v
+	return s
 }
 
 func (s *GenerateDataKeyWithoutPlaintextShrinkRequest) SetKeyId(v string) *GenerateDataKeyWithoutPlaintextShrinkRequest {
@@ -3632,16 +3570,11 @@ func (s *GenerateDataKeyWithoutPlaintextShrinkRequest) SetNumberOfBytes(v int32)
 	return s
 }
 
-func (s *GenerateDataKeyWithoutPlaintextShrinkRequest) SetEncryptionContextShrink(v string) *GenerateDataKeyWithoutPlaintextShrinkRequest {
-	s.EncryptionContextShrink = &v
-	return s
-}
-
 type GenerateDataKeyWithoutPlaintextResponseBody struct {
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
 	KeyId          *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeyVersionId   *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GenerateDataKeyWithoutPlaintextResponseBody) String() string {
@@ -3650,11 +3583,6 @@ func (s GenerateDataKeyWithoutPlaintextResponseBody) String() string {
 
 func (s GenerateDataKeyWithoutPlaintextResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *GenerateDataKeyWithoutPlaintextResponseBody) SetRequestId(v string) *GenerateDataKeyWithoutPlaintextResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *GenerateDataKeyWithoutPlaintextResponseBody) SetCiphertextBlob(v string) *GenerateDataKeyWithoutPlaintextResponseBody {
@@ -3672,9 +3600,15 @@ func (s *GenerateDataKeyWithoutPlaintextResponseBody) SetKeyVersionId(v string) 
 	return s
 }
 
+func (s *GenerateDataKeyWithoutPlaintextResponseBody) SetRequestId(v string) *GenerateDataKeyWithoutPlaintextResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type GenerateDataKeyWithoutPlaintextResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GenerateDataKeyWithoutPlaintextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateDataKeyWithoutPlaintextResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GenerateDataKeyWithoutPlaintextResponse) String() string {
@@ -3687,6 +3621,11 @@ func (s GenerateDataKeyWithoutPlaintextResponse) GoString() string {
 
 func (s *GenerateDataKeyWithoutPlaintextResponse) SetHeaders(v map[string]*string) *GenerateDataKeyWithoutPlaintextResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GenerateDataKeyWithoutPlaintextResponse) SetStatusCode(v int32) *GenerateDataKeyWithoutPlaintextResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3713,11 +3652,11 @@ func (s *GetCertificateRequest) SetCertificateId(v string) *GetCertificateReques
 }
 
 type GetCertificateResponseBody struct {
+	Certificate      *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	CertificateChain *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
+	CertificateId    *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	Csr              *string `json:"Csr,omitempty" xml:"Csr,omitempty"`
 	RequestId        *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CertificateId    *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	CertificateChain *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
-	Certificate      *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
 }
 
 func (s GetCertificateResponseBody) String() string {
@@ -3726,6 +3665,21 @@ func (s GetCertificateResponseBody) String() string {
 
 func (s GetCertificateResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *GetCertificateResponseBody) SetCertificate(v string) *GetCertificateResponseBody {
+	s.Certificate = &v
+	return s
+}
+
+func (s *GetCertificateResponseBody) SetCertificateChain(v string) *GetCertificateResponseBody {
+	s.CertificateChain = &v
+	return s
+}
+
+func (s *GetCertificateResponseBody) SetCertificateId(v string) *GetCertificateResponseBody {
+	s.CertificateId = &v
+	return s
 }
 
 func (s *GetCertificateResponseBody) SetCsr(v string) *GetCertificateResponseBody {
@@ -3738,24 +3692,10 @@ func (s *GetCertificateResponseBody) SetRequestId(v string) *GetCertificateRespo
 	return s
 }
 
-func (s *GetCertificateResponseBody) SetCertificateId(v string) *GetCertificateResponseBody {
-	s.CertificateId = &v
-	return s
-}
-
-func (s *GetCertificateResponseBody) SetCertificateChain(v string) *GetCertificateResponseBody {
-	s.CertificateChain = &v
-	return s
-}
-
-func (s *GetCertificateResponseBody) SetCertificate(v string) *GetCertificateResponseBody {
-	s.Certificate = &v
-	return s
-}
-
 type GetCertificateResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetCertificateResponse) String() string {
@@ -3768,6 +3708,11 @@ func (s GetCertificateResponse) GoString() string {
 
 func (s *GetCertificateResponse) SetHeaders(v map[string]*string) *GetCertificateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetCertificateResponse) SetStatusCode(v int32) *GetCertificateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3806,11 +3751,11 @@ func (s *GetParametersForImportRequest) SetWrappingKeySpec(v string) *GetParamet
 }
 
 type GetParametersForImportResponseBody struct {
-	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PublicKey       *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
-	KeyId           *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	TokenExpireTime *string `json:"TokenExpireTime,omitempty" xml:"TokenExpireTime,omitempty"`
 	ImportToken     *string `json:"ImportToken,omitempty" xml:"ImportToken,omitempty"`
+	KeyId           *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	PublicKey       *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
+	RequestId       *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TokenExpireTime *string `json:"TokenExpireTime,omitempty" xml:"TokenExpireTime,omitempty"`
 }
 
 func (s GetParametersForImportResponseBody) String() string {
@@ -3821,13 +3766,8 @@ func (s GetParametersForImportResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetParametersForImportResponseBody) SetRequestId(v string) *GetParametersForImportResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetParametersForImportResponseBody) SetPublicKey(v string) *GetParametersForImportResponseBody {
-	s.PublicKey = &v
+func (s *GetParametersForImportResponseBody) SetImportToken(v string) *GetParametersForImportResponseBody {
+	s.ImportToken = &v
 	return s
 }
 
@@ -3836,19 +3776,25 @@ func (s *GetParametersForImportResponseBody) SetKeyId(v string) *GetParametersFo
 	return s
 }
 
+func (s *GetParametersForImportResponseBody) SetPublicKey(v string) *GetParametersForImportResponseBody {
+	s.PublicKey = &v
+	return s
+}
+
+func (s *GetParametersForImportResponseBody) SetRequestId(v string) *GetParametersForImportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 func (s *GetParametersForImportResponseBody) SetTokenExpireTime(v string) *GetParametersForImportResponseBody {
 	s.TokenExpireTime = &v
 	return s
 }
 
-func (s *GetParametersForImportResponseBody) SetImportToken(v string) *GetParametersForImportResponseBody {
-	s.ImportToken = &v
-	return s
-}
-
 type GetParametersForImportResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetParametersForImportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetParametersForImportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetParametersForImportResponse) String() string {
@@ -3861,6 +3807,11 @@ func (s GetParametersForImportResponse) GoString() string {
 
 func (s *GetParametersForImportResponse) SetHeaders(v map[string]*string) *GetParametersForImportResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetParametersForImportResponse) SetStatusCode(v int32) *GetParametersForImportResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3893,10 +3844,10 @@ func (s *GetPublicKeyRequest) SetKeyVersionId(v string) *GetPublicKeyRequest {
 }
 
 type GetPublicKeyResponseBody struct {
-	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PublicKey    *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
 	KeyId        *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
+	PublicKey    *string `json:"PublicKey,omitempty" xml:"PublicKey,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s GetPublicKeyResponseBody) String() string {
@@ -3905,16 +3856,6 @@ func (s GetPublicKeyResponseBody) String() string {
 
 func (s GetPublicKeyResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *GetPublicKeyResponseBody) SetRequestId(v string) *GetPublicKeyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetPublicKeyResponseBody) SetPublicKey(v string) *GetPublicKeyResponseBody {
-	s.PublicKey = &v
-	return s
 }
 
 func (s *GetPublicKeyResponseBody) SetKeyId(v string) *GetPublicKeyResponseBody {
@@ -3927,9 +3868,20 @@ func (s *GetPublicKeyResponseBody) SetKeyVersionId(v string) *GetPublicKeyRespon
 	return s
 }
 
+func (s *GetPublicKeyResponseBody) SetPublicKey(v string) *GetPublicKeyResponseBody {
+	s.PublicKey = &v
+	return s
+}
+
+func (s *GetPublicKeyResponseBody) SetRequestId(v string) *GetPublicKeyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type GetPublicKeyResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetPublicKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetPublicKeyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetPublicKeyResponse) String() string {
@@ -3945,18 +3897,23 @@ func (s *GetPublicKeyResponse) SetHeaders(v map[string]*string) *GetPublicKeyRes
 	return s
 }
 
+func (s *GetPublicKeyResponse) SetStatusCode(v int32) *GetPublicKeyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetPublicKeyResponse) SetBody(v *GetPublicKeyResponseBody) *GetPublicKeyResponse {
 	s.Body = v
 	return s
 }
 
 type GetRandomPasswordRequest struct {
-	PasswordLength          *string `json:"PasswordLength,omitempty" xml:"PasswordLength,omitempty"`
 	ExcludeCharacters       *string `json:"ExcludeCharacters,omitempty" xml:"ExcludeCharacters,omitempty"`
 	ExcludeLowercase        *string `json:"ExcludeLowercase,omitempty" xml:"ExcludeLowercase,omitempty"`
-	ExcludeUppercase        *string `json:"ExcludeUppercase,omitempty" xml:"ExcludeUppercase,omitempty"`
 	ExcludeNumbers          *string `json:"ExcludeNumbers,omitempty" xml:"ExcludeNumbers,omitempty"`
 	ExcludePunctuation      *string `json:"ExcludePunctuation,omitempty" xml:"ExcludePunctuation,omitempty"`
+	ExcludeUppercase        *string `json:"ExcludeUppercase,omitempty" xml:"ExcludeUppercase,omitempty"`
+	PasswordLength          *string `json:"PasswordLength,omitempty" xml:"PasswordLength,omitempty"`
 	RequireEachIncludedType *string `json:"RequireEachIncludedType,omitempty" xml:"RequireEachIncludedType,omitempty"`
 }
 
@@ -3966,11 +3923,6 @@ func (s GetRandomPasswordRequest) String() string {
 
 func (s GetRandomPasswordRequest) GoString() string {
 	return s.String()
-}
-
-func (s *GetRandomPasswordRequest) SetPasswordLength(v string) *GetRandomPasswordRequest {
-	s.PasswordLength = &v
-	return s
 }
 
 func (s *GetRandomPasswordRequest) SetExcludeCharacters(v string) *GetRandomPasswordRequest {
@@ -3983,11 +3935,6 @@ func (s *GetRandomPasswordRequest) SetExcludeLowercase(v string) *GetRandomPassw
 	return s
 }
 
-func (s *GetRandomPasswordRequest) SetExcludeUppercase(v string) *GetRandomPasswordRequest {
-	s.ExcludeUppercase = &v
-	return s
-}
-
 func (s *GetRandomPasswordRequest) SetExcludeNumbers(v string) *GetRandomPasswordRequest {
 	s.ExcludeNumbers = &v
 	return s
@@ -3995,6 +3942,16 @@ func (s *GetRandomPasswordRequest) SetExcludeNumbers(v string) *GetRandomPasswor
 
 func (s *GetRandomPasswordRequest) SetExcludePunctuation(v string) *GetRandomPasswordRequest {
 	s.ExcludePunctuation = &v
+	return s
+}
+
+func (s *GetRandomPasswordRequest) SetExcludeUppercase(v string) *GetRandomPasswordRequest {
+	s.ExcludeUppercase = &v
+	return s
+}
+
+func (s *GetRandomPasswordRequest) SetPasswordLength(v string) *GetRandomPasswordRequest {
+	s.PasswordLength = &v
 	return s
 }
 
@@ -4027,8 +3984,9 @@ func (s *GetRandomPasswordResponseBody) SetRequestId(v string) *GetRandomPasswor
 }
 
 type GetRandomPasswordResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetRandomPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetRandomPasswordResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetRandomPasswordResponse) String() string {
@@ -4044,16 +4002,21 @@ func (s *GetRandomPasswordResponse) SetHeaders(v map[string]*string) *GetRandomP
 	return s
 }
 
+func (s *GetRandomPasswordResponse) SetStatusCode(v int32) *GetRandomPasswordResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetRandomPasswordResponse) SetBody(v *GetRandomPasswordResponseBody) *GetRandomPasswordResponse {
 	s.Body = v
 	return s
 }
 
 type GetSecretValueRequest struct {
-	SecretName          *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	VersionStage        *string `json:"VersionStage,omitempty" xml:"VersionStage,omitempty"`
-	VersionId           *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 	FetchExtendedConfig *bool   `json:"FetchExtendedConfig,omitempty" xml:"FetchExtendedConfig,omitempty"`
+	SecretName          *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	VersionId           *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	VersionStage        *string `json:"VersionStage,omitempty" xml:"VersionStage,omitempty"`
 }
 
 func (s GetSecretValueRequest) String() string {
@@ -4064,13 +4027,13 @@ func (s GetSecretValueRequest) GoString() string {
 	return s.String()
 }
 
-func (s *GetSecretValueRequest) SetSecretName(v string) *GetSecretValueRequest {
-	s.SecretName = &v
+func (s *GetSecretValueRequest) SetFetchExtendedConfig(v bool) *GetSecretValueRequest {
+	s.FetchExtendedConfig = &v
 	return s
 }
 
-func (s *GetSecretValueRequest) SetVersionStage(v string) *GetSecretValueRequest {
-	s.VersionStage = &v
+func (s *GetSecretValueRequest) SetSecretName(v string) *GetSecretValueRequest {
+	s.SecretName = &v
 	return s
 }
 
@@ -4079,25 +4042,25 @@ func (s *GetSecretValueRequest) SetVersionId(v string) *GetSecretValueRequest {
 	return s
 }
 
-func (s *GetSecretValueRequest) SetFetchExtendedConfig(v bool) *GetSecretValueRequest {
-	s.FetchExtendedConfig = &v
+func (s *GetSecretValueRequest) SetVersionStage(v string) *GetSecretValueRequest {
+	s.VersionStage = &v
 	return s
 }
 
 type GetSecretValueResponseBody struct {
-	VersionId         *string                                  `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	RotationInterval  *string                                  `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
-	LastRotationDate  *string                                  `json:"LastRotationDate,omitempty" xml:"LastRotationDate,omitempty"`
-	RequestId         *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SecretType        *string                                  `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
-	CreateTime        *string                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	SecretDataType    *string                                  `json:"SecretDataType,omitempty" xml:"SecretDataType,omitempty"`
-	VersionStages     *GetSecretValueResponseBodyVersionStages `json:"VersionStages,omitempty" xml:"VersionStages,omitempty" type:"Struct"`
 	AutomaticRotation *string                                  `json:"AutomaticRotation,omitempty" xml:"AutomaticRotation,omitempty"`
-	SecretName        *string                                  `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	NextRotationDate  *string                                  `json:"NextRotationDate,omitempty" xml:"NextRotationDate,omitempty"`
+	CreateTime        *string                                  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	ExtendedConfig    *string                                  `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty"`
+	LastRotationDate  *string                                  `json:"LastRotationDate,omitempty" xml:"LastRotationDate,omitempty"`
+	NextRotationDate  *string                                  `json:"NextRotationDate,omitempty" xml:"NextRotationDate,omitempty"`
+	RequestId         *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RotationInterval  *string                                  `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
 	SecretData        *string                                  `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
+	SecretDataType    *string                                  `json:"SecretDataType,omitempty" xml:"SecretDataType,omitempty"`
+	SecretName        *string                                  `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	SecretType        *string                                  `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
+	VersionId         *string                                  `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
+	VersionStages     *GetSecretValueResponseBodyVersionStages `json:"VersionStages,omitempty" xml:"VersionStages,omitempty" type:"Struct"`
 }
 
 func (s GetSecretValueResponseBody) String() string {
@@ -4108,28 +4071,8 @@ func (s GetSecretValueResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *GetSecretValueResponseBody) SetVersionId(v string) *GetSecretValueResponseBody {
-	s.VersionId = &v
-	return s
-}
-
-func (s *GetSecretValueResponseBody) SetRotationInterval(v string) *GetSecretValueResponseBody {
-	s.RotationInterval = &v
-	return s
-}
-
-func (s *GetSecretValueResponseBody) SetLastRotationDate(v string) *GetSecretValueResponseBody {
-	s.LastRotationDate = &v
-	return s
-}
-
-func (s *GetSecretValueResponseBody) SetRequestId(v string) *GetSecretValueResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetSecretValueResponseBody) SetSecretType(v string) *GetSecretValueResponseBody {
-	s.SecretType = &v
+func (s *GetSecretValueResponseBody) SetAutomaticRotation(v string) *GetSecretValueResponseBody {
+	s.AutomaticRotation = &v
 	return s
 }
 
@@ -4138,23 +4081,13 @@ func (s *GetSecretValueResponseBody) SetCreateTime(v string) *GetSecretValueResp
 	return s
 }
 
-func (s *GetSecretValueResponseBody) SetSecretDataType(v string) *GetSecretValueResponseBody {
-	s.SecretDataType = &v
+func (s *GetSecretValueResponseBody) SetExtendedConfig(v string) *GetSecretValueResponseBody {
+	s.ExtendedConfig = &v
 	return s
 }
 
-func (s *GetSecretValueResponseBody) SetVersionStages(v *GetSecretValueResponseBodyVersionStages) *GetSecretValueResponseBody {
-	s.VersionStages = v
-	return s
-}
-
-func (s *GetSecretValueResponseBody) SetAutomaticRotation(v string) *GetSecretValueResponseBody {
-	s.AutomaticRotation = &v
-	return s
-}
-
-func (s *GetSecretValueResponseBody) SetSecretName(v string) *GetSecretValueResponseBody {
-	s.SecretName = &v
+func (s *GetSecretValueResponseBody) SetLastRotationDate(v string) *GetSecretValueResponseBody {
+	s.LastRotationDate = &v
 	return s
 }
 
@@ -4163,13 +4096,43 @@ func (s *GetSecretValueResponseBody) SetNextRotationDate(v string) *GetSecretVal
 	return s
 }
 
-func (s *GetSecretValueResponseBody) SetExtendedConfig(v string) *GetSecretValueResponseBody {
-	s.ExtendedConfig = &v
+func (s *GetSecretValueResponseBody) SetRequestId(v string) *GetSecretValueResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetSecretValueResponseBody) SetRotationInterval(v string) *GetSecretValueResponseBody {
+	s.RotationInterval = &v
 	return s
 }
 
 func (s *GetSecretValueResponseBody) SetSecretData(v string) *GetSecretValueResponseBody {
 	s.SecretData = &v
+	return s
+}
+
+func (s *GetSecretValueResponseBody) SetSecretDataType(v string) *GetSecretValueResponseBody {
+	s.SecretDataType = &v
+	return s
+}
+
+func (s *GetSecretValueResponseBody) SetSecretName(v string) *GetSecretValueResponseBody {
+	s.SecretName = &v
+	return s
+}
+
+func (s *GetSecretValueResponseBody) SetSecretType(v string) *GetSecretValueResponseBody {
+	s.SecretType = &v
+	return s
+}
+
+func (s *GetSecretValueResponseBody) SetVersionId(v string) *GetSecretValueResponseBody {
+	s.VersionId = &v
+	return s
+}
+
+func (s *GetSecretValueResponseBody) SetVersionStages(v *GetSecretValueResponseBodyVersionStages) *GetSecretValueResponseBody {
+	s.VersionStages = v
 	return s
 }
 
@@ -4191,8 +4154,9 @@ func (s *GetSecretValueResponseBodyVersionStages) SetVersionStage(v []*string) *
 }
 
 type GetSecretValueResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetSecretValueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetSecretValueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetSecretValueResponse) String() string {
@@ -4208,195 +4172,20 @@ func (s *GetSecretValueResponse) SetHeaders(v map[string]*string) *GetSecretValu
 	return s
 }
 
+func (s *GetSecretValueResponse) SetStatusCode(v int32) *GetSecretValueResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *GetSecretValueResponse) SetBody(v *GetSecretValueResponseBody) *GetSecretValueResponse {
 	s.Body = v
 	return s
 }
 
-type ImportCertificateRequest struct {
-	PKCS12Blob *string `json:"PKCS12Blob,omitempty" xml:"PKCS12Blob,omitempty"`
-	Passphrase *string `json:"Passphrase,omitempty" xml:"Passphrase,omitempty"`
-}
-
-func (s ImportCertificateRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportCertificateRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ImportCertificateRequest) SetPKCS12Blob(v string) *ImportCertificateRequest {
-	s.PKCS12Blob = &v
-	return s
-}
-
-func (s *ImportCertificateRequest) SetPassphrase(v string) *ImportCertificateRequest {
-	s.Passphrase = &v
-	return s
-}
-
-type ImportCertificateResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	Arn           *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-}
-
-func (s ImportCertificateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportCertificateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ImportCertificateResponseBody) SetRequestId(v string) *ImportCertificateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ImportCertificateResponseBody) SetCertificateId(v string) *ImportCertificateResponseBody {
-	s.CertificateId = &v
-	return s
-}
-
-func (s *ImportCertificateResponseBody) SetArn(v string) *ImportCertificateResponseBody {
-	s.Arn = &v
-	return s
-}
-
-type ImportCertificateResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ImportCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ImportCertificateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportCertificateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ImportCertificateResponse) SetHeaders(v map[string]*string) *ImportCertificateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ImportCertificateResponse) SetBody(v *ImportCertificateResponseBody) *ImportCertificateResponse {
-	s.Body = v
-	return s
-}
-
-type ImportEncryptionCertificateRequest struct {
-	CertificateId         *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	EncryptedSymmetricKey *string `json:"EncryptedSymmetricKey,omitempty" xml:"EncryptedSymmetricKey,omitempty"`
-	EncryptedPrivateKey   *string `json:"EncryptedPrivateKey,omitempty" xml:"EncryptedPrivateKey,omitempty"`
-	SymmetricAlgorithm    *string `json:"SymmetricAlgorithm,omitempty" xml:"SymmetricAlgorithm,omitempty"`
-	AsymmetricAlgorithm   *string `json:"AsymmetricAlgorithm,omitempty" xml:"AsymmetricAlgorithm,omitempty"`
-	Certificate           *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
-	CertificateChain      *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
-}
-
-func (s ImportEncryptionCertificateRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportEncryptionCertificateRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ImportEncryptionCertificateRequest) SetCertificateId(v string) *ImportEncryptionCertificateRequest {
-	s.CertificateId = &v
-	return s
-}
-
-func (s *ImportEncryptionCertificateRequest) SetEncryptedSymmetricKey(v string) *ImportEncryptionCertificateRequest {
-	s.EncryptedSymmetricKey = &v
-	return s
-}
-
-func (s *ImportEncryptionCertificateRequest) SetEncryptedPrivateKey(v string) *ImportEncryptionCertificateRequest {
-	s.EncryptedPrivateKey = &v
-	return s
-}
-
-func (s *ImportEncryptionCertificateRequest) SetSymmetricAlgorithm(v string) *ImportEncryptionCertificateRequest {
-	s.SymmetricAlgorithm = &v
-	return s
-}
-
-func (s *ImportEncryptionCertificateRequest) SetAsymmetricAlgorithm(v string) *ImportEncryptionCertificateRequest {
-	s.AsymmetricAlgorithm = &v
-	return s
-}
-
-func (s *ImportEncryptionCertificateRequest) SetCertificate(v string) *ImportEncryptionCertificateRequest {
-	s.Certificate = &v
-	return s
-}
-
-func (s *ImportEncryptionCertificateRequest) SetCertificateChain(v string) *ImportEncryptionCertificateRequest {
-	s.CertificateChain = &v
-	return s
-}
-
-type ImportEncryptionCertificateResponseBody struct {
-	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
-	Arn           *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
-}
-
-func (s ImportEncryptionCertificateResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportEncryptionCertificateResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ImportEncryptionCertificateResponseBody) SetRequestId(v string) *ImportEncryptionCertificateResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ImportEncryptionCertificateResponseBody) SetCertificateId(v string) *ImportEncryptionCertificateResponseBody {
-	s.CertificateId = &v
-	return s
-}
-
-func (s *ImportEncryptionCertificateResponseBody) SetArn(v string) *ImportEncryptionCertificateResponseBody {
-	s.Arn = &v
-	return s
-}
-
-type ImportEncryptionCertificateResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ImportEncryptionCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ImportEncryptionCertificateResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ImportEncryptionCertificateResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ImportEncryptionCertificateResponse) SetHeaders(v map[string]*string) *ImportEncryptionCertificateResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ImportEncryptionCertificateResponse) SetBody(v *ImportEncryptionCertificateResponseBody) *ImportEncryptionCertificateResponse {
-	s.Body = v
-	return s
-}
-
 type ImportKeyMaterialRequest struct {
-	KeyId                 *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	EncryptedKeyMaterial  *string `json:"EncryptedKeyMaterial,omitempty" xml:"EncryptedKeyMaterial,omitempty"`
 	ImportToken           *string `json:"ImportToken,omitempty" xml:"ImportToken,omitempty"`
+	KeyId                 *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeyMaterialExpireUnix *int64  `json:"KeyMaterialExpireUnix,omitempty" xml:"KeyMaterialExpireUnix,omitempty"`
 }
 
@@ -4408,11 +4197,6 @@ func (s ImportKeyMaterialRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ImportKeyMaterialRequest) SetKeyId(v string) *ImportKeyMaterialRequest {
-	s.KeyId = &v
-	return s
-}
-
 func (s *ImportKeyMaterialRequest) SetEncryptedKeyMaterial(v string) *ImportKeyMaterialRequest {
 	s.EncryptedKeyMaterial = &v
 	return s
@@ -4420,6 +4204,11 @@ func (s *ImportKeyMaterialRequest) SetEncryptedKeyMaterial(v string) *ImportKeyM
 
 func (s *ImportKeyMaterialRequest) SetImportToken(v string) *ImportKeyMaterialRequest {
 	s.ImportToken = &v
+	return s
+}
+
+func (s *ImportKeyMaterialRequest) SetKeyId(v string) *ImportKeyMaterialRequest {
+	s.KeyId = &v
 	return s
 }
 
@@ -4446,8 +4235,9 @@ func (s *ImportKeyMaterialResponseBody) SetRequestId(v string) *ImportKeyMateria
 }
 
 type ImportKeyMaterialResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ImportKeyMaterialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ImportKeyMaterialResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ImportKeyMaterialResponse) String() string {
@@ -4460,6 +4250,11 @@ func (s ImportKeyMaterialResponse) GoString() string {
 
 func (s *ImportKeyMaterialResponse) SetHeaders(v map[string]*string) *ImportKeyMaterialResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ImportKeyMaterialResponse) SetStatusCode(v int32) *ImportKeyMaterialResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4492,11 +4287,11 @@ func (s *ListAliasesRequest) SetPageSize(v int32) *ListAliasesRequest {
 }
 
 type ListAliasesResponseBody struct {
-	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	Aliases    *ListAliasesResponseBodyAliases `json:"Aliases,omitempty" xml:"Aliases,omitempty" type:"Struct"`
+	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAliasesResponseBody) String() string {
@@ -4507,18 +4302,8 @@ func (s ListAliasesResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListAliasesResponseBody) SetTotalCount(v int32) *ListAliasesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListAliasesResponseBody) SetRequestId(v string) *ListAliasesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListAliasesResponseBody) SetPageSize(v int32) *ListAliasesResponseBody {
-	s.PageSize = &v
+func (s *ListAliasesResponseBody) SetAliases(v *ListAliasesResponseBodyAliases) *ListAliasesResponseBody {
+	s.Aliases = v
 	return s
 }
 
@@ -4527,8 +4312,18 @@ func (s *ListAliasesResponseBody) SetPageNumber(v int32) *ListAliasesResponseBod
 	return s
 }
 
-func (s *ListAliasesResponseBody) SetAliases(v *ListAliasesResponseBodyAliases) *ListAliasesResponseBody {
-	s.Aliases = v
+func (s *ListAliasesResponseBody) SetPageSize(v int32) *ListAliasesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAliasesResponseBody) SetRequestId(v string) *ListAliasesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAliasesResponseBody) SetTotalCount(v int32) *ListAliasesResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -4551,8 +4346,8 @@ func (s *ListAliasesResponseBodyAliases) SetAlias(v []*ListAliasesResponseBodyAl
 
 type ListAliasesResponseBodyAliasesAlias struct {
 	AliasArn  *string `json:"AliasArn,omitempty" xml:"AliasArn,omitempty"`
-	KeyId     *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	KeyId     *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 }
 
 func (s ListAliasesResponseBodyAliasesAlias) String() string {
@@ -4568,19 +4363,20 @@ func (s *ListAliasesResponseBodyAliasesAlias) SetAliasArn(v string) *ListAliases
 	return s
 }
 
-func (s *ListAliasesResponseBodyAliasesAlias) SetKeyId(v string) *ListAliasesResponseBodyAliasesAlias {
-	s.KeyId = &v
-	return s
-}
-
 func (s *ListAliasesResponseBodyAliasesAlias) SetAliasName(v string) *ListAliasesResponseBodyAliasesAlias {
 	s.AliasName = &v
 	return s
 }
 
+func (s *ListAliasesResponseBodyAliasesAlias) SetKeyId(v string) *ListAliasesResponseBodyAliasesAlias {
+	s.KeyId = &v
+	return s
+}
+
 type ListAliasesResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAliasesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAliasesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAliasesResponse) String() string {
@@ -4593,6 +4389,11 @@ func (s ListAliasesResponse) GoString() string {
 
 func (s *ListAliasesResponse) SetHeaders(v map[string]*string) *ListAliasesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListAliasesResponse) SetStatusCode(v int32) *ListAliasesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4631,11 +4432,11 @@ func (s *ListAliasesByKeyIdRequest) SetPageSize(v int32) *ListAliasesByKeyIdRequ
 }
 
 type ListAliasesByKeyIdResponseBody struct {
-	TotalCount *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	Aliases    *ListAliasesByKeyIdResponseBodyAliases `json:"Aliases,omitempty" xml:"Aliases,omitempty" type:"Struct"`
+	PageNumber *int32                                 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListAliasesByKeyIdResponseBody) String() string {
@@ -4646,18 +4447,8 @@ func (s ListAliasesByKeyIdResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListAliasesByKeyIdResponseBody) SetTotalCount(v int32) *ListAliasesByKeyIdResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListAliasesByKeyIdResponseBody) SetRequestId(v string) *ListAliasesByKeyIdResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListAliasesByKeyIdResponseBody) SetPageSize(v int32) *ListAliasesByKeyIdResponseBody {
-	s.PageSize = &v
+func (s *ListAliasesByKeyIdResponseBody) SetAliases(v *ListAliasesByKeyIdResponseBodyAliases) *ListAliasesByKeyIdResponseBody {
+	s.Aliases = v
 	return s
 }
 
@@ -4666,8 +4457,18 @@ func (s *ListAliasesByKeyIdResponseBody) SetPageNumber(v int32) *ListAliasesByKe
 	return s
 }
 
-func (s *ListAliasesByKeyIdResponseBody) SetAliases(v *ListAliasesByKeyIdResponseBodyAliases) *ListAliasesByKeyIdResponseBody {
-	s.Aliases = v
+func (s *ListAliasesByKeyIdResponseBody) SetPageSize(v int32) *ListAliasesByKeyIdResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListAliasesByKeyIdResponseBody) SetRequestId(v string) *ListAliasesByKeyIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListAliasesByKeyIdResponseBody) SetTotalCount(v int32) *ListAliasesByKeyIdResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -4690,8 +4491,8 @@ func (s *ListAliasesByKeyIdResponseBodyAliases) SetAlias(v []*ListAliasesByKeyId
 
 type ListAliasesByKeyIdResponseBodyAliasesAlias struct {
 	AliasArn  *string `json:"AliasArn,omitempty" xml:"AliasArn,omitempty"`
-	KeyId     *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	KeyId     *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 }
 
 func (s ListAliasesByKeyIdResponseBodyAliasesAlias) String() string {
@@ -4707,19 +4508,20 @@ func (s *ListAliasesByKeyIdResponseBodyAliasesAlias) SetAliasArn(v string) *List
 	return s
 }
 
-func (s *ListAliasesByKeyIdResponseBodyAliasesAlias) SetKeyId(v string) *ListAliasesByKeyIdResponseBodyAliasesAlias {
-	s.KeyId = &v
-	return s
-}
-
 func (s *ListAliasesByKeyIdResponseBodyAliasesAlias) SetAliasName(v string) *ListAliasesByKeyIdResponseBodyAliasesAlias {
 	s.AliasName = &v
 	return s
 }
 
+func (s *ListAliasesByKeyIdResponseBodyAliasesAlias) SetKeyId(v string) *ListAliasesByKeyIdResponseBodyAliasesAlias {
+	s.KeyId = &v
+	return s
+}
+
 type ListAliasesByKeyIdResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListAliasesByKeyIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListAliasesByKeyIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListAliasesByKeyIdResponse) String() string {
@@ -4735,196 +4537,165 @@ func (s *ListAliasesByKeyIdResponse) SetHeaders(v map[string]*string) *ListAlias
 	return s
 }
 
+func (s *ListAliasesByKeyIdResponse) SetStatusCode(v int32) *ListAliasesByKeyIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListAliasesByKeyIdResponse) SetBody(v *ListAliasesByKeyIdResponseBody) *ListAliasesByKeyIdResponse {
 	s.Body = v
 	return s
 }
 
-type ListCertificatesRequest struct {
-	Subject    *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	Issuer     *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	Status     *string `json:"Status,omitempty" xml:"Status,omitempty"`
+type ListKeyVersionsRequest struct {
+	KeyId      *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
-func (s ListCertificatesRequest) String() string {
+func (s ListKeyVersionsRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListCertificatesRequest) GoString() string {
+func (s ListKeyVersionsRequest) GoString() string {
 	return s.String()
 }
 
-func (s *ListCertificatesRequest) SetSubject(v string) *ListCertificatesRequest {
-	s.Subject = &v
+func (s *ListKeyVersionsRequest) SetKeyId(v string) *ListKeyVersionsRequest {
+	s.KeyId = &v
 	return s
 }
 
-func (s *ListCertificatesRequest) SetIssuer(v string) *ListCertificatesRequest {
-	s.Issuer = &v
-	return s
-}
-
-func (s *ListCertificatesRequest) SetStatus(v string) *ListCertificatesRequest {
-	s.Status = &v
-	return s
-}
-
-func (s *ListCertificatesRequest) SetPageNumber(v int32) *ListCertificatesRequest {
+func (s *ListKeyVersionsRequest) SetPageNumber(v int32) *ListKeyVersionsRequest {
 	s.PageNumber = &v
 	return s
 }
 
-func (s *ListCertificatesRequest) SetPageSize(v int32) *ListCertificatesRequest {
+func (s *ListKeyVersionsRequest) SetPageSize(v int32) *ListKeyVersionsRequest {
 	s.PageSize = &v
 	return s
 }
 
-type ListCertificatesResponseBody struct {
-	PageSize               *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId              *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber             *int32                                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	CertificateSummaryList *ListCertificatesResponseBodyCertificateSummaryList `json:"CertificateSummaryList,omitempty" xml:"CertificateSummaryList,omitempty" type:"Struct"`
-	TotalSize              *int32                                              `json:"TotalSize,omitempty" xml:"TotalSize,omitempty"`
+type ListKeyVersionsResponseBody struct {
+	KeyVersions *ListKeyVersionsResponseBodyKeyVersions `json:"KeyVersions,omitempty" xml:"KeyVersions,omitempty" type:"Struct"`
+	PageNumber  *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize    *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId   *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount  *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
-func (s ListCertificatesResponseBody) String() string {
+func (s ListKeyVersionsResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListCertificatesResponseBody) GoString() string {
+func (s ListKeyVersionsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListCertificatesResponseBody) SetPageSize(v int32) *ListCertificatesResponseBody {
+func (s *ListKeyVersionsResponseBody) SetKeyVersions(v *ListKeyVersionsResponseBodyKeyVersions) *ListKeyVersionsResponseBody {
+	s.KeyVersions = v
+	return s
+}
+
+func (s *ListKeyVersionsResponseBody) SetPageNumber(v int32) *ListKeyVersionsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListKeyVersionsResponseBody) SetPageSize(v int32) *ListKeyVersionsResponseBody {
 	s.PageSize = &v
 	return s
 }
 
-func (s *ListCertificatesResponseBody) SetRequestId(v string) *ListCertificatesResponseBody {
+func (s *ListKeyVersionsResponseBody) SetRequestId(v string) *ListKeyVersionsResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-func (s *ListCertificatesResponseBody) SetPageNumber(v int32) *ListCertificatesResponseBody {
-	s.PageNumber = &v
+func (s *ListKeyVersionsResponseBody) SetTotalCount(v int32) *ListKeyVersionsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
-func (s *ListCertificatesResponseBody) SetCertificateSummaryList(v *ListCertificatesResponseBodyCertificateSummaryList) *ListCertificatesResponseBody {
-	s.CertificateSummaryList = v
-	return s
+type ListKeyVersionsResponseBodyKeyVersions struct {
+	KeyVersion []*ListKeyVersionsResponseBodyKeyVersionsKeyVersion `json:"KeyVersion,omitempty" xml:"KeyVersion,omitempty" type:"Repeated"`
 }
 
-func (s *ListCertificatesResponseBody) SetTotalSize(v int32) *ListCertificatesResponseBody {
-	s.TotalSize = &v
-	return s
-}
-
-type ListCertificatesResponseBodyCertificateSummaryList struct {
-	CertificateSummary []*ListCertificatesResponseBodyCertificateSummaryListCertificateSummary `json:"CertificateSummary,omitempty" xml:"CertificateSummary,omitempty" type:"Repeated"`
-}
-
-func (s ListCertificatesResponseBodyCertificateSummaryList) String() string {
+func (s ListKeyVersionsResponseBodyKeyVersions) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListCertificatesResponseBodyCertificateSummaryList) GoString() string {
+func (s ListKeyVersionsResponseBodyKeyVersions) GoString() string {
 	return s.String()
 }
 
-func (s *ListCertificatesResponseBodyCertificateSummaryList) SetCertificateSummary(v []*ListCertificatesResponseBodyCertificateSummaryListCertificateSummary) *ListCertificatesResponseBodyCertificateSummaryList {
-	s.CertificateSummary = v
+func (s *ListKeyVersionsResponseBodyKeyVersions) SetKeyVersion(v []*ListKeyVersionsResponseBodyKeyVersionsKeyVersion) *ListKeyVersionsResponseBodyKeyVersions {
+	s.KeyVersion = v
 	return s
 }
 
-type ListCertificatesResponseBodyCertificateSummaryListCertificateSummary struct {
-	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	KeySpec         *string `json:"KeySpec,omitempty" xml:"KeySpec,omitempty"`
-	Subject         *string `json:"Subject,omitempty" xml:"Subject,omitempty"`
-	ProtectionLevel *string `json:"ProtectionLevel,omitempty" xml:"ProtectionLevel,omitempty"`
-	Issuer          *string `json:"Issuer,omitempty" xml:"Issuer,omitempty"`
-	NotBefore       *string `json:"NotBefore,omitempty" xml:"NotBefore,omitempty"`
-	NotAfter        *string `json:"NotAfter,omitempty" xml:"NotAfter,omitempty"`
-	CertificateId   *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+type ListKeyVersionsResponseBodyKeyVersionsKeyVersion struct {
+	CreationDate *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
+	KeyId        *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
 }
 
-func (s ListCertificatesResponseBodyCertificateSummaryListCertificateSummary) String() string {
+func (s ListKeyVersionsResponseBodyKeyVersionsKeyVersion) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListCertificatesResponseBodyCertificateSummaryListCertificateSummary) GoString() string {
+func (s ListKeyVersionsResponseBodyKeyVersionsKeyVersion) GoString() string {
 	return s.String()
 }
 
-func (s *ListCertificatesResponseBodyCertificateSummaryListCertificateSummary) SetStatus(v string) *ListCertificatesResponseBodyCertificateSummaryListCertificateSummary {
-	s.Status = &v
+func (s *ListKeyVersionsResponseBodyKeyVersionsKeyVersion) SetCreationDate(v string) *ListKeyVersionsResponseBodyKeyVersionsKeyVersion {
+	s.CreationDate = &v
 	return s
 }
 
-func (s *ListCertificatesResponseBodyCertificateSummaryListCertificateSummary) SetKeySpec(v string) *ListCertificatesResponseBodyCertificateSummaryListCertificateSummary {
-	s.KeySpec = &v
+func (s *ListKeyVersionsResponseBodyKeyVersionsKeyVersion) SetKeyId(v string) *ListKeyVersionsResponseBodyKeyVersionsKeyVersion {
+	s.KeyId = &v
 	return s
 }
 
-func (s *ListCertificatesResponseBodyCertificateSummaryListCertificateSummary) SetSubject(v string) *ListCertificatesResponseBodyCertificateSummaryListCertificateSummary {
-	s.Subject = &v
+func (s *ListKeyVersionsResponseBodyKeyVersionsKeyVersion) SetKeyVersionId(v string) *ListKeyVersionsResponseBodyKeyVersionsKeyVersion {
+	s.KeyVersionId = &v
 	return s
 }
 
-func (s *ListCertificatesResponseBodyCertificateSummaryListCertificateSummary) SetProtectionLevel(v string) *ListCertificatesResponseBodyCertificateSummaryListCertificateSummary {
-	s.ProtectionLevel = &v
-	return s
+type ListKeyVersionsResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListKeyVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s *ListCertificatesResponseBodyCertificateSummaryListCertificateSummary) SetIssuer(v string) *ListCertificatesResponseBodyCertificateSummaryListCertificateSummary {
-	s.Issuer = &v
-	return s
-}
-
-func (s *ListCertificatesResponseBodyCertificateSummaryListCertificateSummary) SetNotBefore(v string) *ListCertificatesResponseBodyCertificateSummaryListCertificateSummary {
-	s.NotBefore = &v
-	return s
-}
-
-func (s *ListCertificatesResponseBodyCertificateSummaryListCertificateSummary) SetNotAfter(v string) *ListCertificatesResponseBodyCertificateSummaryListCertificateSummary {
-	s.NotAfter = &v
-	return s
-}
-
-func (s *ListCertificatesResponseBodyCertificateSummaryListCertificateSummary) SetCertificateId(v string) *ListCertificatesResponseBodyCertificateSummaryListCertificateSummary {
-	s.CertificateId = &v
-	return s
-}
-
-type ListCertificatesResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListCertificatesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListCertificatesResponse) String() string {
+func (s ListKeyVersionsResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s ListCertificatesResponse) GoString() string {
+func (s ListKeyVersionsResponse) GoString() string {
 	return s.String()
 }
 
-func (s *ListCertificatesResponse) SetHeaders(v map[string]*string) *ListCertificatesResponse {
+func (s *ListKeyVersionsResponse) SetHeaders(v map[string]*string) *ListKeyVersionsResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *ListCertificatesResponse) SetBody(v *ListCertificatesResponseBody) *ListCertificatesResponse {
+func (s *ListKeyVersionsResponse) SetStatusCode(v int32) *ListKeyVersionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListKeyVersionsResponse) SetBody(v *ListKeyVersionsResponseBody) *ListKeyVersionsResponse {
 	s.Body = v
 	return s
 }
 
 type ListKeysRequest struct {
+	Filters    *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
 	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Filters    *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
 }
 
 func (s ListKeysRequest) String() string {
@@ -4933,6 +4704,11 @@ func (s ListKeysRequest) String() string {
 
 func (s ListKeysRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListKeysRequest) SetFilters(v string) *ListKeysRequest {
+	s.Filters = &v
+	return s
 }
 
 func (s *ListKeysRequest) SetPageNumber(v int32) *ListKeysRequest {
@@ -4945,17 +4721,12 @@ func (s *ListKeysRequest) SetPageSize(v int32) *ListKeysRequest {
 	return s
 }
 
-func (s *ListKeysRequest) SetFilters(v string) *ListKeysRequest {
-	s.Filters = &v
-	return s
-}
-
 type ListKeysResponseBody struct {
-	TotalCount *int32                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	Keys       *ListKeysResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Struct"`
+	PageNumber *int32                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId  *string                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber *int32                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	Keys       *ListKeysResponseBodyKeys `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Struct"`
+	TotalCount *int32                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListKeysResponseBody) String() string {
@@ -4966,8 +4737,13 @@ func (s ListKeysResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListKeysResponseBody) SetTotalCount(v int32) *ListKeysResponseBody {
-	s.TotalCount = &v
+func (s *ListKeysResponseBody) SetKeys(v *ListKeysResponseBodyKeys) *ListKeysResponseBody {
+	s.Keys = v
+	return s
+}
+
+func (s *ListKeysResponseBody) SetPageNumber(v int32) *ListKeysResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -4981,13 +4757,8 @@ func (s *ListKeysResponseBody) SetRequestId(v string) *ListKeysResponseBody {
 	return s
 }
 
-func (s *ListKeysResponseBody) SetPageNumber(v int32) *ListKeysResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListKeysResponseBody) SetKeys(v *ListKeysResponseBodyKeys) *ListKeysResponseBody {
-	s.Keys = v
+func (s *ListKeysResponseBody) SetTotalCount(v int32) *ListKeysResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -5032,8 +4803,9 @@ func (s *ListKeysResponseBodyKeysKey) SetKeyId(v string) *ListKeysResponseBodyKe
 }
 
 type ListKeysResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListKeysResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListKeysResponse) String() string {
@@ -5049,146 +4821,12 @@ func (s *ListKeysResponse) SetHeaders(v map[string]*string) *ListKeysResponse {
 	return s
 }
 
+func (s *ListKeysResponse) SetStatusCode(v int32) *ListKeysResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListKeysResponse) SetBody(v *ListKeysResponseBody) *ListKeysResponse {
-	s.Body = v
-	return s
-}
-
-type ListKeyVersionsRequest struct {
-	KeyId      *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s ListKeyVersionsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListKeyVersionsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListKeyVersionsRequest) SetKeyId(v string) *ListKeyVersionsRequest {
-	s.KeyId = &v
-	return s
-}
-
-func (s *ListKeyVersionsRequest) SetPageNumber(v int32) *ListKeyVersionsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListKeyVersionsRequest) SetPageSize(v int32) *ListKeyVersionsRequest {
-	s.PageSize = &v
-	return s
-}
-
-type ListKeyVersionsResponseBody struct {
-	KeyVersions *ListKeyVersionsResponseBodyKeyVersions `json:"KeyVersions,omitempty" xml:"KeyVersions,omitempty" type:"Struct"`
-	TotalCount  *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize    *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId   *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageNumber  *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-}
-
-func (s ListKeyVersionsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListKeyVersionsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListKeyVersionsResponseBody) SetKeyVersions(v *ListKeyVersionsResponseBodyKeyVersions) *ListKeyVersionsResponseBody {
-	s.KeyVersions = v
-	return s
-}
-
-func (s *ListKeyVersionsResponseBody) SetTotalCount(v int32) *ListKeyVersionsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListKeyVersionsResponseBody) SetPageSize(v int32) *ListKeyVersionsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListKeyVersionsResponseBody) SetRequestId(v string) *ListKeyVersionsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListKeyVersionsResponseBody) SetPageNumber(v int32) *ListKeyVersionsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-type ListKeyVersionsResponseBodyKeyVersions struct {
-	KeyVersion []*ListKeyVersionsResponseBodyKeyVersionsKeyVersion `json:"KeyVersion,omitempty" xml:"KeyVersion,omitempty" type:"Repeated"`
-}
-
-func (s ListKeyVersionsResponseBodyKeyVersions) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListKeyVersionsResponseBodyKeyVersions) GoString() string {
-	return s.String()
-}
-
-func (s *ListKeyVersionsResponseBodyKeyVersions) SetKeyVersion(v []*ListKeyVersionsResponseBodyKeyVersionsKeyVersion) *ListKeyVersionsResponseBodyKeyVersions {
-	s.KeyVersion = v
-	return s
-}
-
-type ListKeyVersionsResponseBodyKeyVersionsKeyVersion struct {
-	KeyVersionId *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
-	KeyId        *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	CreationDate *string `json:"CreationDate,omitempty" xml:"CreationDate,omitempty"`
-}
-
-func (s ListKeyVersionsResponseBodyKeyVersionsKeyVersion) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListKeyVersionsResponseBodyKeyVersionsKeyVersion) GoString() string {
-	return s.String()
-}
-
-func (s *ListKeyVersionsResponseBodyKeyVersionsKeyVersion) SetKeyVersionId(v string) *ListKeyVersionsResponseBodyKeyVersionsKeyVersion {
-	s.KeyVersionId = &v
-	return s
-}
-
-func (s *ListKeyVersionsResponseBodyKeyVersionsKeyVersion) SetKeyId(v string) *ListKeyVersionsResponseBodyKeyVersionsKeyVersion {
-	s.KeyId = &v
-	return s
-}
-
-func (s *ListKeyVersionsResponseBodyKeyVersionsKeyVersion) SetCreationDate(v string) *ListKeyVersionsResponseBodyKeyVersionsKeyVersion {
-	s.CreationDate = &v
-	return s
-}
-
-type ListKeyVersionsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListKeyVersionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListKeyVersionsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListKeyVersionsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListKeyVersionsResponse) SetHeaders(v map[string]*string) *ListKeyVersionsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListKeyVersionsResponse) SetBody(v *ListKeyVersionsResponseBody) *ListKeyVersionsResponse {
 	s.Body = v
 	return s
 }
@@ -5252,8 +4890,8 @@ func (s *ListResourceTagsResponseBodyTags) SetTag(v []*ListResourceTagsResponseB
 
 type ListResourceTagsResponseBodyTagsTag struct {
 	KeyId    *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
 }
 
 func (s ListResourceTagsResponseBodyTagsTag) String() string {
@@ -5269,19 +4907,20 @@ func (s *ListResourceTagsResponseBodyTagsTag) SetKeyId(v string) *ListResourceTa
 	return s
 }
 
-func (s *ListResourceTagsResponseBodyTagsTag) SetTagValue(v string) *ListResourceTagsResponseBodyTagsTag {
-	s.TagValue = &v
-	return s
-}
-
 func (s *ListResourceTagsResponseBodyTagsTag) SetTagKey(v string) *ListResourceTagsResponseBodyTagsTag {
 	s.TagKey = &v
 	return s
 }
 
+func (s *ListResourceTagsResponseBodyTagsTag) SetTagValue(v string) *ListResourceTagsResponseBodyTagsTag {
+	s.TagValue = &v
+	return s
+}
+
 type ListResourceTagsResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListResourceTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListResourceTagsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListResourceTagsResponse) String() string {
@@ -5297,219 +4936,21 @@ func (s *ListResourceTagsResponse) SetHeaders(v map[string]*string) *ListResourc
 	return s
 }
 
+func (s *ListResourceTagsResponse) SetStatusCode(v int32) *ListResourceTagsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListResourceTagsResponse) SetBody(v *ListResourceTagsResponseBody) *ListResourceTagsResponse {
 	s.Body = v
 	return s
 }
 
-type ListSecretsRequest struct {
-	FetchTags  *string `json:"FetchTags,omitempty" xml:"FetchTags,omitempty"`
-	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Filters    *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
-}
-
-func (s ListSecretsRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSecretsRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListSecretsRequest) SetFetchTags(v string) *ListSecretsRequest {
-	s.FetchTags = &v
-	return s
-}
-
-func (s *ListSecretsRequest) SetPageNumber(v int32) *ListSecretsRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListSecretsRequest) SetPageSize(v int32) *ListSecretsRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListSecretsRequest) SetFilters(v string) *ListSecretsRequest {
-	s.Filters = &v
-	return s
-}
-
-type ListSecretsResponseBody struct {
-	TotalCount *int32                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	PageSize   *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SecretList *ListSecretsResponseBodySecretList `json:"SecretList,omitempty" xml:"SecretList,omitempty" type:"Struct"`
-	PageNumber *int32                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-}
-
-func (s ListSecretsResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSecretsResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListSecretsResponseBody) SetTotalCount(v int32) *ListSecretsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListSecretsResponseBody) SetPageSize(v int32) *ListSecretsResponseBody {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListSecretsResponseBody) SetRequestId(v string) *ListSecretsResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListSecretsResponseBody) SetSecretList(v *ListSecretsResponseBodySecretList) *ListSecretsResponseBody {
-	s.SecretList = v
-	return s
-}
-
-func (s *ListSecretsResponseBody) SetPageNumber(v int32) *ListSecretsResponseBody {
-	s.PageNumber = &v
-	return s
-}
-
-type ListSecretsResponseBodySecretList struct {
-	Secret []*ListSecretsResponseBodySecretListSecret `json:"Secret,omitempty" xml:"Secret,omitempty" type:"Repeated"`
-}
-
-func (s ListSecretsResponseBodySecretList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSecretsResponseBodySecretList) GoString() string {
-	return s.String()
-}
-
-func (s *ListSecretsResponseBodySecretList) SetSecret(v []*ListSecretsResponseBodySecretListSecret) *ListSecretsResponseBodySecretList {
-	s.Secret = v
-	return s
-}
-
-type ListSecretsResponseBodySecretListSecret struct {
-	UpdateTime        *string                                      `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	CreateTime        *string                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	SecretName        *string                                      `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	Tags              *ListSecretsResponseBodySecretListSecretTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	SecretType        *string                                      `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
-	PlannedDeleteTime *string                                      `json:"PlannedDeleteTime,omitempty" xml:"PlannedDeleteTime,omitempty"`
-}
-
-func (s ListSecretsResponseBodySecretListSecret) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSecretsResponseBodySecretListSecret) GoString() string {
-	return s.String()
-}
-
-func (s *ListSecretsResponseBodySecretListSecret) SetUpdateTime(v string) *ListSecretsResponseBodySecretListSecret {
-	s.UpdateTime = &v
-	return s
-}
-
-func (s *ListSecretsResponseBodySecretListSecret) SetCreateTime(v string) *ListSecretsResponseBodySecretListSecret {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *ListSecretsResponseBodySecretListSecret) SetSecretName(v string) *ListSecretsResponseBodySecretListSecret {
-	s.SecretName = &v
-	return s
-}
-
-func (s *ListSecretsResponseBodySecretListSecret) SetTags(v *ListSecretsResponseBodySecretListSecretTags) *ListSecretsResponseBodySecretListSecret {
-	s.Tags = v
-	return s
-}
-
-func (s *ListSecretsResponseBodySecretListSecret) SetSecretType(v string) *ListSecretsResponseBodySecretListSecret {
-	s.SecretType = &v
-	return s
-}
-
-func (s *ListSecretsResponseBodySecretListSecret) SetPlannedDeleteTime(v string) *ListSecretsResponseBodySecretListSecret {
-	s.PlannedDeleteTime = &v
-	return s
-}
-
-type ListSecretsResponseBodySecretListSecretTags struct {
-	Tag []*ListSecretsResponseBodySecretListSecretTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-}
-
-func (s ListSecretsResponseBodySecretListSecretTags) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSecretsResponseBodySecretListSecretTags) GoString() string {
-	return s.String()
-}
-
-func (s *ListSecretsResponseBodySecretListSecretTags) SetTag(v []*ListSecretsResponseBodySecretListSecretTagsTag) *ListSecretsResponseBodySecretListSecretTags {
-	s.Tag = v
-	return s
-}
-
-type ListSecretsResponseBodySecretListSecretTagsTag struct {
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-}
-
-func (s ListSecretsResponseBodySecretListSecretTagsTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSecretsResponseBodySecretListSecretTagsTag) GoString() string {
-	return s.String()
-}
-
-func (s *ListSecretsResponseBodySecretListSecretTagsTag) SetTagValue(v string) *ListSecretsResponseBodySecretListSecretTagsTag {
-	s.TagValue = &v
-	return s
-}
-
-func (s *ListSecretsResponseBodySecretListSecretTagsTag) SetTagKey(v string) *ListSecretsResponseBodySecretListSecretTagsTag {
-	s.TagKey = &v
-	return s
-}
-
-type ListSecretsResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSecretsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListSecretsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListSecretsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListSecretsResponse) SetHeaders(v map[string]*string) *ListSecretsResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListSecretsResponse) SetBody(v *ListSecretsResponseBody) *ListSecretsResponse {
-	s.Body = v
-	return s
-}
-
 type ListSecretVersionIdsRequest struct {
-	SecretName        *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	IncludeDeprecated *string `json:"IncludeDeprecated,omitempty" xml:"IncludeDeprecated,omitempty"`
 	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecretName        *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 }
 
 func (s ListSecretVersionIdsRequest) String() string {
@@ -5518,11 +4959,6 @@ func (s ListSecretVersionIdsRequest) String() string {
 
 func (s ListSecretVersionIdsRequest) GoString() string {
 	return s.String()
-}
-
-func (s *ListSecretVersionIdsRequest) SetSecretName(v string) *ListSecretVersionIdsRequest {
-	s.SecretName = &v
-	return s
 }
 
 func (s *ListSecretVersionIdsRequest) SetIncludeDeprecated(v string) *ListSecretVersionIdsRequest {
@@ -5540,12 +4976,17 @@ func (s *ListSecretVersionIdsRequest) SetPageSize(v int32) *ListSecretVersionIds
 	return s
 }
 
+func (s *ListSecretVersionIdsRequest) SetSecretName(v string) *ListSecretVersionIdsRequest {
+	s.SecretName = &v
+	return s
+}
+
 type ListSecretVersionIdsResponseBody struct {
+	PageNumber *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecretName *string                                     `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	TotalCount *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	PageNumber *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	VersionIds *ListSecretVersionIdsResponseBodyVersionIds `json:"VersionIds,omitempty" xml:"VersionIds,omitempty" type:"Struct"`
 }
 
@@ -5557,18 +4998,8 @@ func (s ListSecretVersionIdsResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *ListSecretVersionIdsResponseBody) SetSecretName(v string) *ListSecretVersionIdsResponseBody {
-	s.SecretName = &v
-	return s
-}
-
-func (s *ListSecretVersionIdsResponseBody) SetTotalCount(v int32) *ListSecretVersionIdsResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-func (s *ListSecretVersionIdsResponseBody) SetRequestId(v string) *ListSecretVersionIdsResponseBody {
-	s.RequestId = &v
+func (s *ListSecretVersionIdsResponseBody) SetPageNumber(v int32) *ListSecretVersionIdsResponseBody {
+	s.PageNumber = &v
 	return s
 }
 
@@ -5577,8 +5008,18 @@ func (s *ListSecretVersionIdsResponseBody) SetPageSize(v int32) *ListSecretVersi
 	return s
 }
 
-func (s *ListSecretVersionIdsResponseBody) SetPageNumber(v int32) *ListSecretVersionIdsResponseBody {
-	s.PageNumber = &v
+func (s *ListSecretVersionIdsResponseBody) SetRequestId(v string) *ListSecretVersionIdsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSecretVersionIdsResponseBody) SetSecretName(v string) *ListSecretVersionIdsResponseBody {
+	s.SecretName = &v
+	return s
+}
+
+func (s *ListSecretVersionIdsResponseBody) SetTotalCount(v int32) *ListSecretVersionIdsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -5651,8 +5092,9 @@ func (s *ListSecretVersionIdsResponseBodyVersionIdsVersionIdVersionStages) SetVe
 }
 
 type ListSecretVersionIdsResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListSecretVersionIdsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSecretVersionIdsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListSecretVersionIdsResponse) String() string {
@@ -5668,7 +5110,221 @@ func (s *ListSecretVersionIdsResponse) SetHeaders(v map[string]*string) *ListSec
 	return s
 }
 
+func (s *ListSecretVersionIdsResponse) SetStatusCode(v int32) *ListSecretVersionIdsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListSecretVersionIdsResponse) SetBody(v *ListSecretVersionIdsResponseBody) *ListSecretVersionIdsResponse {
+	s.Body = v
+	return s
+}
+
+type ListSecretsRequest struct {
+	FetchTags  *string `json:"FetchTags,omitempty" xml:"FetchTags,omitempty"`
+	Filters    *string `json:"Filters,omitempty" xml:"Filters,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListSecretsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSecretsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListSecretsRequest) SetFetchTags(v string) *ListSecretsRequest {
+	s.FetchTags = &v
+	return s
+}
+
+func (s *ListSecretsRequest) SetFilters(v string) *ListSecretsRequest {
+	s.Filters = &v
+	return s
+}
+
+func (s *ListSecretsRequest) SetPageNumber(v int32) *ListSecretsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSecretsRequest) SetPageSize(v int32) *ListSecretsRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListSecretsResponseBody struct {
+	PageNumber *int32                             `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecretList *ListSecretsResponseBodySecretList `json:"SecretList,omitempty" xml:"SecretList,omitempty" type:"Struct"`
+	TotalCount *int32                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListSecretsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSecretsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListSecretsResponseBody) SetPageNumber(v int32) *ListSecretsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListSecretsResponseBody) SetPageSize(v int32) *ListSecretsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListSecretsResponseBody) SetRequestId(v string) *ListSecretsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListSecretsResponseBody) SetSecretList(v *ListSecretsResponseBodySecretList) *ListSecretsResponseBody {
+	s.SecretList = v
+	return s
+}
+
+func (s *ListSecretsResponseBody) SetTotalCount(v int32) *ListSecretsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListSecretsResponseBodySecretList struct {
+	Secret []*ListSecretsResponseBodySecretListSecret `json:"Secret,omitempty" xml:"Secret,omitempty" type:"Repeated"`
+}
+
+func (s ListSecretsResponseBodySecretList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSecretsResponseBodySecretList) GoString() string {
+	return s.String()
+}
+
+func (s *ListSecretsResponseBodySecretList) SetSecret(v []*ListSecretsResponseBodySecretListSecret) *ListSecretsResponseBodySecretList {
+	s.Secret = v
+	return s
+}
+
+type ListSecretsResponseBodySecretListSecret struct {
+	CreateTime        *string                                      `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	PlannedDeleteTime *string                                      `json:"PlannedDeleteTime,omitempty" xml:"PlannedDeleteTime,omitempty"`
+	SecretName        *string                                      `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	SecretType        *string                                      `json:"SecretType,omitempty" xml:"SecretType,omitempty"`
+	Tags              *ListSecretsResponseBodySecretListSecretTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
+	UpdateTime        *string                                      `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListSecretsResponseBodySecretListSecret) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSecretsResponseBodySecretListSecret) GoString() string {
+	return s.String()
+}
+
+func (s *ListSecretsResponseBodySecretListSecret) SetCreateTime(v string) *ListSecretsResponseBodySecretListSecret {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListSecretsResponseBodySecretListSecret) SetPlannedDeleteTime(v string) *ListSecretsResponseBodySecretListSecret {
+	s.PlannedDeleteTime = &v
+	return s
+}
+
+func (s *ListSecretsResponseBodySecretListSecret) SetSecretName(v string) *ListSecretsResponseBodySecretListSecret {
+	s.SecretName = &v
+	return s
+}
+
+func (s *ListSecretsResponseBodySecretListSecret) SetSecretType(v string) *ListSecretsResponseBodySecretListSecret {
+	s.SecretType = &v
+	return s
+}
+
+func (s *ListSecretsResponseBodySecretListSecret) SetTags(v *ListSecretsResponseBodySecretListSecretTags) *ListSecretsResponseBodySecretListSecret {
+	s.Tags = v
+	return s
+}
+
+func (s *ListSecretsResponseBodySecretListSecret) SetUpdateTime(v string) *ListSecretsResponseBodySecretListSecret {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListSecretsResponseBodySecretListSecretTags struct {
+	Tag []*ListSecretsResponseBodySecretListSecretTagsTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s ListSecretsResponseBodySecretListSecretTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSecretsResponseBodySecretListSecretTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListSecretsResponseBodySecretListSecretTags) SetTag(v []*ListSecretsResponseBodySecretListSecretTagsTag) *ListSecretsResponseBodySecretListSecretTags {
+	s.Tag = v
+	return s
+}
+
+type ListSecretsResponseBodySecretListSecretTagsTag struct {
+	TagKey   *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
+	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
+}
+
+func (s ListSecretsResponseBodySecretListSecretTagsTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSecretsResponseBodySecretListSecretTagsTag) GoString() string {
+	return s.String()
+}
+
+func (s *ListSecretsResponseBodySecretListSecretTagsTag) SetTagKey(v string) *ListSecretsResponseBodySecretListSecretTagsTag {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListSecretsResponseBodySecretListSecretTagsTag) SetTagValue(v string) *ListSecretsResponseBodySecretListSecretTagsTag {
+	s.TagValue = &v
+	return s
+}
+
+type ListSecretsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListSecretsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListSecretsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListSecretsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListSecretsResponse) SetHeaders(v map[string]*string) *ListSecretsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListSecretsResponse) SetStatusCode(v int32) *ListSecretsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListSecretsResponse) SetBody(v *ListSecretsResponseBody) *ListSecretsResponse {
 	s.Body = v
 	return s
 }
@@ -5691,8 +5347,9 @@ func (s *OpenKmsServiceResponseBody) SetRequestId(v string) *OpenKmsServiceRespo
 }
 
 type OpenKmsServiceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *OpenKmsServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OpenKmsServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s OpenKmsServiceResponse) String() string {
@@ -5708,16 +5365,21 @@ func (s *OpenKmsServiceResponse) SetHeaders(v map[string]*string) *OpenKmsServic
 	return s
 }
 
+func (s *OpenKmsServiceResponse) SetStatusCode(v int32) *OpenKmsServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *OpenKmsServiceResponse) SetBody(v *OpenKmsServiceResponseBody) *OpenKmsServiceResponse {
 	s.Body = v
 	return s
 }
 
 type PutSecretValueRequest struct {
-	VersionId      *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	SecretName     *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	SecretData     *string `json:"SecretData,omitempty" xml:"SecretData,omitempty"`
 	SecretDataType *string `json:"SecretDataType,omitempty" xml:"SecretDataType,omitempty"`
+	SecretName     *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	VersionId      *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 	VersionStages  *string `json:"VersionStages,omitempty" xml:"VersionStages,omitempty"`
 }
 
@@ -5727,16 +5389,6 @@ func (s PutSecretValueRequest) String() string {
 
 func (s PutSecretValueRequest) GoString() string {
 	return s.String()
-}
-
-func (s *PutSecretValueRequest) SetVersionId(v string) *PutSecretValueRequest {
-	s.VersionId = &v
-	return s
-}
-
-func (s *PutSecretValueRequest) SetSecretName(v string) *PutSecretValueRequest {
-	s.SecretName = &v
-	return s
 }
 
 func (s *PutSecretValueRequest) SetSecretData(v string) *PutSecretValueRequest {
@@ -5749,15 +5401,25 @@ func (s *PutSecretValueRequest) SetSecretDataType(v string) *PutSecretValueReque
 	return s
 }
 
+func (s *PutSecretValueRequest) SetSecretName(v string) *PutSecretValueRequest {
+	s.SecretName = &v
+	return s
+}
+
+func (s *PutSecretValueRequest) SetVersionId(v string) *PutSecretValueRequest {
+	s.VersionId = &v
+	return s
+}
+
 func (s *PutSecretValueRequest) SetVersionStages(v string) *PutSecretValueRequest {
 	s.VersionStages = &v
 	return s
 }
 
 type PutSecretValueResponseBody struct {
+	RequestId     *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SecretName    *string                                  `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	VersionId     *string                                  `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	RequestId     *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	VersionStages *PutSecretValueResponseBodyVersionStages `json:"VersionStages,omitempty" xml:"VersionStages,omitempty" type:"Struct"`
 }
 
@@ -5769,6 +5431,11 @@ func (s PutSecretValueResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *PutSecretValueResponseBody) SetRequestId(v string) *PutSecretValueResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 func (s *PutSecretValueResponseBody) SetSecretName(v string) *PutSecretValueResponseBody {
 	s.SecretName = &v
 	return s
@@ -5776,11 +5443,6 @@ func (s *PutSecretValueResponseBody) SetSecretName(v string) *PutSecretValueResp
 
 func (s *PutSecretValueResponseBody) SetVersionId(v string) *PutSecretValueResponseBody {
 	s.VersionId = &v
-	return s
-}
-
-func (s *PutSecretValueResponseBody) SetRequestId(v string) *PutSecretValueResponseBody {
-	s.RequestId = &v
 	return s
 }
 
@@ -5807,8 +5469,9 @@ func (s *PutSecretValueResponseBodyVersionStages) SetVersionStage(v []*string) *
 }
 
 type PutSecretValueResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutSecretValueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutSecretValueResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutSecretValueResponse) String() string {
@@ -5824,6 +5487,11 @@ func (s *PutSecretValueResponse) SetHeaders(v map[string]*string) *PutSecretValu
 	return s
 }
 
+func (s *PutSecretValueResponse) SetStatusCode(v int32) *PutSecretValueResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *PutSecretValueResponse) SetBody(v *PutSecretValueResponseBody) *PutSecretValueResponse {
 	s.Body = v
 	return s
@@ -5831,12 +5499,12 @@ func (s *PutSecretValueResponse) SetBody(v *PutSecretValueResponseBody) *PutSecr
 
 type ReEncryptRequest struct {
 	CiphertextBlob               *string                `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
-	SourceKeyId                  *string                `json:"SourceKeyId,omitempty" xml:"SourceKeyId,omitempty"`
-	SourceKeyVersionId           *string                `json:"SourceKeyVersionId,omitempty" xml:"SourceKeyVersionId,omitempty"`
+	DestinationEncryptionContext map[string]interface{} `json:"DestinationEncryptionContext,omitempty" xml:"DestinationEncryptionContext,omitempty"`
+	DestinationKeyId             *string                `json:"DestinationKeyId,omitempty" xml:"DestinationKeyId,omitempty"`
 	SourceEncryptionAlgorithm    *string                `json:"SourceEncryptionAlgorithm,omitempty" xml:"SourceEncryptionAlgorithm,omitempty"`
 	SourceEncryptionContext      map[string]interface{} `json:"SourceEncryptionContext,omitempty" xml:"SourceEncryptionContext,omitempty"`
-	DestinationKeyId             *string                `json:"DestinationKeyId,omitempty" xml:"DestinationKeyId,omitempty"`
-	DestinationEncryptionContext map[string]interface{} `json:"DestinationEncryptionContext,omitempty" xml:"DestinationEncryptionContext,omitempty"`
+	SourceKeyId                  *string                `json:"SourceKeyId,omitempty" xml:"SourceKeyId,omitempty"`
+	SourceKeyVersionId           *string                `json:"SourceKeyVersionId,omitempty" xml:"SourceKeyVersionId,omitempty"`
 }
 
 func (s ReEncryptRequest) String() string {
@@ -5852,13 +5520,13 @@ func (s *ReEncryptRequest) SetCiphertextBlob(v string) *ReEncryptRequest {
 	return s
 }
 
-func (s *ReEncryptRequest) SetSourceKeyId(v string) *ReEncryptRequest {
-	s.SourceKeyId = &v
+func (s *ReEncryptRequest) SetDestinationEncryptionContext(v map[string]interface{}) *ReEncryptRequest {
+	s.DestinationEncryptionContext = v
 	return s
 }
 
-func (s *ReEncryptRequest) SetSourceKeyVersionId(v string) *ReEncryptRequest {
-	s.SourceKeyVersionId = &v
+func (s *ReEncryptRequest) SetDestinationKeyId(v string) *ReEncryptRequest {
+	s.DestinationKeyId = &v
 	return s
 }
 
@@ -5872,24 +5540,24 @@ func (s *ReEncryptRequest) SetSourceEncryptionContext(v map[string]interface{}) 
 	return s
 }
 
-func (s *ReEncryptRequest) SetDestinationKeyId(v string) *ReEncryptRequest {
-	s.DestinationKeyId = &v
+func (s *ReEncryptRequest) SetSourceKeyId(v string) *ReEncryptRequest {
+	s.SourceKeyId = &v
 	return s
 }
 
-func (s *ReEncryptRequest) SetDestinationEncryptionContext(v map[string]interface{}) *ReEncryptRequest {
-	s.DestinationEncryptionContext = v
+func (s *ReEncryptRequest) SetSourceKeyVersionId(v string) *ReEncryptRequest {
+	s.SourceKeyVersionId = &v
 	return s
 }
 
 type ReEncryptShrinkRequest struct {
 	CiphertextBlob                     *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
-	SourceKeyId                        *string `json:"SourceKeyId,omitempty" xml:"SourceKeyId,omitempty"`
-	SourceKeyVersionId                 *string `json:"SourceKeyVersionId,omitempty" xml:"SourceKeyVersionId,omitempty"`
+	DestinationEncryptionContextShrink *string `json:"DestinationEncryptionContext,omitempty" xml:"DestinationEncryptionContext,omitempty"`
+	DestinationKeyId                   *string `json:"DestinationKeyId,omitempty" xml:"DestinationKeyId,omitempty"`
 	SourceEncryptionAlgorithm          *string `json:"SourceEncryptionAlgorithm,omitempty" xml:"SourceEncryptionAlgorithm,omitempty"`
 	SourceEncryptionContextShrink      *string `json:"SourceEncryptionContext,omitempty" xml:"SourceEncryptionContext,omitempty"`
-	DestinationKeyId                   *string `json:"DestinationKeyId,omitempty" xml:"DestinationKeyId,omitempty"`
-	DestinationEncryptionContextShrink *string `json:"DestinationEncryptionContext,omitempty" xml:"DestinationEncryptionContext,omitempty"`
+	SourceKeyId                        *string `json:"SourceKeyId,omitempty" xml:"SourceKeyId,omitempty"`
+	SourceKeyVersionId                 *string `json:"SourceKeyVersionId,omitempty" xml:"SourceKeyVersionId,omitempty"`
 }
 
 func (s ReEncryptShrinkRequest) String() string {
@@ -5905,13 +5573,13 @@ func (s *ReEncryptShrinkRequest) SetCiphertextBlob(v string) *ReEncryptShrinkReq
 	return s
 }
 
-func (s *ReEncryptShrinkRequest) SetSourceKeyId(v string) *ReEncryptShrinkRequest {
-	s.SourceKeyId = &v
+func (s *ReEncryptShrinkRequest) SetDestinationEncryptionContextShrink(v string) *ReEncryptShrinkRequest {
+	s.DestinationEncryptionContextShrink = &v
 	return s
 }
 
-func (s *ReEncryptShrinkRequest) SetSourceKeyVersionId(v string) *ReEncryptShrinkRequest {
-	s.SourceKeyVersionId = &v
+func (s *ReEncryptShrinkRequest) SetDestinationKeyId(v string) *ReEncryptShrinkRequest {
+	s.DestinationKeyId = &v
 	return s
 }
 
@@ -5925,21 +5593,21 @@ func (s *ReEncryptShrinkRequest) SetSourceEncryptionContextShrink(v string) *ReE
 	return s
 }
 
-func (s *ReEncryptShrinkRequest) SetDestinationKeyId(v string) *ReEncryptShrinkRequest {
-	s.DestinationKeyId = &v
+func (s *ReEncryptShrinkRequest) SetSourceKeyId(v string) *ReEncryptShrinkRequest {
+	s.SourceKeyId = &v
 	return s
 }
 
-func (s *ReEncryptShrinkRequest) SetDestinationEncryptionContextShrink(v string) *ReEncryptShrinkRequest {
-	s.DestinationEncryptionContextShrink = &v
+func (s *ReEncryptShrinkRequest) SetSourceKeyVersionId(v string) *ReEncryptShrinkRequest {
+	s.SourceKeyVersionId = &v
 	return s
 }
 
 type ReEncryptResponseBody struct {
-	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	CiphertextBlob *string `json:"CiphertextBlob,omitempty" xml:"CiphertextBlob,omitempty"`
 	KeyId          *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	KeyVersionId   *string `json:"KeyVersionId,omitempty" xml:"KeyVersionId,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
 func (s ReEncryptResponseBody) String() string {
@@ -5948,11 +5616,6 @@ func (s ReEncryptResponseBody) String() string {
 
 func (s ReEncryptResponseBody) GoString() string {
 	return s.String()
-}
-
-func (s *ReEncryptResponseBody) SetRequestId(v string) *ReEncryptResponseBody {
-	s.RequestId = &v
-	return s
 }
 
 func (s *ReEncryptResponseBody) SetCiphertextBlob(v string) *ReEncryptResponseBody {
@@ -5970,9 +5633,15 @@ func (s *ReEncryptResponseBody) SetKeyVersionId(v string) *ReEncryptResponseBody
 	return s
 }
 
+func (s *ReEncryptResponseBody) SetRequestId(v string) *ReEncryptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
 type ReEncryptResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ReEncryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReEncryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ReEncryptResponse) String() string {
@@ -5985,6 +5654,11 @@ func (s ReEncryptResponse) GoString() string {
 
 func (s *ReEncryptResponse) SetHeaders(v map[string]*string) *ReEncryptResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ReEncryptResponse) SetStatusCode(v int32) *ReEncryptResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6011,8 +5685,8 @@ func (s *RestoreSecretRequest) SetSecretName(v string) *RestoreSecretRequest {
 }
 
 type RestoreSecretResponseBody struct {
-	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 }
 
 func (s RestoreSecretResponseBody) String() string {
@@ -6023,19 +5697,20 @@ func (s RestoreSecretResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RestoreSecretResponseBody) SetSecretName(v string) *RestoreSecretResponseBody {
-	s.SecretName = &v
-	return s
-}
-
 func (s *RestoreSecretResponseBody) SetRequestId(v string) *RestoreSecretResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *RestoreSecretResponseBody) SetSecretName(v string) *RestoreSecretResponseBody {
+	s.SecretName = &v
+	return s
+}
+
 type RestoreSecretResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RestoreSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RestoreSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RestoreSecretResponse) String() string {
@@ -6048,6 +5723,11 @@ func (s RestoreSecretResponse) GoString() string {
 
 func (s *RestoreSecretResponse) SetHeaders(v map[string]*string) *RestoreSecretResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RestoreSecretResponse) SetStatusCode(v int32) *RestoreSecretResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6080,10 +5760,10 @@ func (s *RotateSecretRequest) SetVersionId(v string) *RotateSecretRequest {
 }
 
 type RotateSecretResponseBody struct {
-	VersionId  *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
-	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
-	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Arn        *string `json:"Arn,omitempty" xml:"Arn,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	VersionId  *string `json:"VersionId,omitempty" xml:"VersionId,omitempty"`
 }
 
 func (s RotateSecretResponseBody) String() string {
@@ -6094,13 +5774,8 @@ func (s RotateSecretResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RotateSecretResponseBody) SetVersionId(v string) *RotateSecretResponseBody {
-	s.VersionId = &v
-	return s
-}
-
-func (s *RotateSecretResponseBody) SetSecretName(v string) *RotateSecretResponseBody {
-	s.SecretName = &v
+func (s *RotateSecretResponseBody) SetArn(v string) *RotateSecretResponseBody {
+	s.Arn = &v
 	return s
 }
 
@@ -6109,14 +5784,20 @@ func (s *RotateSecretResponseBody) SetRequestId(v string) *RotateSecretResponseB
 	return s
 }
 
-func (s *RotateSecretResponseBody) SetArn(v string) *RotateSecretResponseBody {
-	s.Arn = &v
+func (s *RotateSecretResponseBody) SetSecretName(v string) *RotateSecretResponseBody {
+	s.SecretName = &v
+	return s
+}
+
+func (s *RotateSecretResponseBody) SetVersionId(v string) *RotateSecretResponseBody {
+	s.VersionId = &v
 	return s
 }
 
 type RotateSecretResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RotateSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RotateSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RotateSecretResponse) String() string {
@@ -6129,6 +5810,11 @@ func (s RotateSecretResponse) GoString() string {
 
 func (s *RotateSecretResponse) SetHeaders(v map[string]*string) *RotateSecretResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RotateSecretResponse) SetStatusCode(v int32) *RotateSecretResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6178,8 +5864,9 @@ func (s *ScheduleKeyDeletionResponseBody) SetRequestId(v string) *ScheduleKeyDel
 }
 
 type ScheduleKeyDeletionResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ScheduleKeyDeletionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ScheduleKeyDeletionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ScheduleKeyDeletionResponse) String() string {
@@ -6195,16 +5882,96 @@ func (s *ScheduleKeyDeletionResponse) SetHeaders(v map[string]*string) *Schedule
 	return s
 }
 
+func (s *ScheduleKeyDeletionResponse) SetStatusCode(v int32) *ScheduleKeyDeletionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ScheduleKeyDeletionResponse) SetBody(v *ScheduleKeyDeletionResponseBody) *ScheduleKeyDeletionResponse {
 	s.Body = v
 	return s
 }
 
+type SetDeletionProtectionRequest struct {
+	DeletionProtectionDescription *string `json:"DeletionProtectionDescription,omitempty" xml:"DeletionProtectionDescription,omitempty"`
+	EnableDeletionProtection      *bool   `json:"EnableDeletionProtection,omitempty" xml:"EnableDeletionProtection,omitempty"`
+	ProtectedResourceArn          *string `json:"ProtectedResourceArn,omitempty" xml:"ProtectedResourceArn,omitempty"`
+}
+
+func (s SetDeletionProtectionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDeletionProtectionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetDeletionProtectionRequest) SetDeletionProtectionDescription(v string) *SetDeletionProtectionRequest {
+	s.DeletionProtectionDescription = &v
+	return s
+}
+
+func (s *SetDeletionProtectionRequest) SetEnableDeletionProtection(v bool) *SetDeletionProtectionRequest {
+	s.EnableDeletionProtection = &v
+	return s
+}
+
+func (s *SetDeletionProtectionRequest) SetProtectedResourceArn(v string) *SetDeletionProtectionRequest {
+	s.ProtectedResourceArn = &v
+	return s
+}
+
+type SetDeletionProtectionResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetDeletionProtectionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDeletionProtectionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetDeletionProtectionResponseBody) SetRequestId(v string) *SetDeletionProtectionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetDeletionProtectionResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetDeletionProtectionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetDeletionProtectionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDeletionProtectionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetDeletionProtectionResponse) SetHeaders(v map[string]*string) *SetDeletionProtectionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetDeletionProtectionResponse) SetStatusCode(v int32) *SetDeletionProtectionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetDeletionProtectionResponse) SetBody(v *SetDeletionProtectionResponseBody) *SetDeletionProtectionResponse {
+	s.Body = v
+	return s
+}
+
 type TagResourceRequest struct {
-	KeyId         *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	Tags          *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	SecretName    *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	KeyId         *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	SecretName    *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	Tags          *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 
 func (s TagResourceRequest) String() string {
@@ -6215,13 +5982,13 @@ func (s TagResourceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *TagResourceRequest) SetKeyId(v string) *TagResourceRequest {
-	s.KeyId = &v
+func (s *TagResourceRequest) SetCertificateId(v string) *TagResourceRequest {
+	s.CertificateId = &v
 	return s
 }
 
-func (s *TagResourceRequest) SetTags(v string) *TagResourceRequest {
-	s.Tags = &v
+func (s *TagResourceRequest) SetKeyId(v string) *TagResourceRequest {
+	s.KeyId = &v
 	return s
 }
 
@@ -6230,8 +5997,8 @@ func (s *TagResourceRequest) SetSecretName(v string) *TagResourceRequest {
 	return s
 }
 
-func (s *TagResourceRequest) SetCertificateId(v string) *TagResourceRequest {
-	s.CertificateId = &v
+func (s *TagResourceRequest) SetTags(v string) *TagResourceRequest {
+	s.Tags = &v
 	return s
 }
 
@@ -6253,8 +6020,9 @@ func (s *TagResourceResponseBody) SetRequestId(v string) *TagResourceResponseBod
 }
 
 type TagResourceResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TagResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TagResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TagResourceResponse) String() string {
@@ -6270,16 +6038,21 @@ func (s *TagResourceResponse) SetHeaders(v map[string]*string) *TagResourceRespo
 	return s
 }
 
+func (s *TagResourceResponse) SetStatusCode(v int32) *TagResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *TagResourceResponse) SetBody(v *TagResourceResponseBody) *TagResourceResponse {
 	s.Body = v
 	return s
 }
 
 type UntagResourceRequest struct {
-	KeyId         *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
-	TagKeys       *string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty"`
-	SecretName    *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	CertificateId *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
+	KeyId         *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
+	SecretName    *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+	TagKeys       *string `json:"TagKeys,omitempty" xml:"TagKeys,omitempty"`
 }
 
 func (s UntagResourceRequest) String() string {
@@ -6290,13 +6063,13 @@ func (s UntagResourceRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UntagResourceRequest) SetKeyId(v string) *UntagResourceRequest {
-	s.KeyId = &v
+func (s *UntagResourceRequest) SetCertificateId(v string) *UntagResourceRequest {
+	s.CertificateId = &v
 	return s
 }
 
-func (s *UntagResourceRequest) SetTagKeys(v string) *UntagResourceRequest {
-	s.TagKeys = &v
+func (s *UntagResourceRequest) SetKeyId(v string) *UntagResourceRequest {
+	s.KeyId = &v
 	return s
 }
 
@@ -6305,8 +6078,8 @@ func (s *UntagResourceRequest) SetSecretName(v string) *UntagResourceRequest {
 	return s
 }
 
-func (s *UntagResourceRequest) SetCertificateId(v string) *UntagResourceRequest {
-	s.CertificateId = &v
+func (s *UntagResourceRequest) SetTagKeys(v string) *UntagResourceRequest {
+	s.TagKeys = &v
 	return s
 }
 
@@ -6328,8 +6101,9 @@ func (s *UntagResourceResponseBody) SetRequestId(v string) *UntagResourceRespons
 }
 
 type UntagResourceResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UntagResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UntagResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UntagResourceResponse) String() string {
@@ -6345,14 +6119,19 @@ func (s *UntagResourceResponse) SetHeaders(v map[string]*string) *UntagResourceR
 	return s
 }
 
+func (s *UntagResourceResponse) SetStatusCode(v int32) *UntagResourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UntagResourceResponse) SetBody(v *UntagResourceResponseBody) *UntagResourceResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateAliasRequest struct {
-	KeyId     *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
+	KeyId     *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 }
 
 func (s UpdateAliasRequest) String() string {
@@ -6363,13 +6142,13 @@ func (s UpdateAliasRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateAliasRequest) SetKeyId(v string) *UpdateAliasRequest {
-	s.KeyId = &v
+func (s *UpdateAliasRequest) SetAliasName(v string) *UpdateAliasRequest {
+	s.AliasName = &v
 	return s
 }
 
-func (s *UpdateAliasRequest) SetAliasName(v string) *UpdateAliasRequest {
-	s.AliasName = &v
+func (s *UpdateAliasRequest) SetKeyId(v string) *UpdateAliasRequest {
+	s.KeyId = &v
 	return s
 }
 
@@ -6391,8 +6170,9 @@ func (s *UpdateAliasResponseBody) SetRequestId(v string) *UpdateAliasResponseBod
 }
 
 type UpdateAliasResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateAliasResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateAliasResponse) String() string {
@@ -6405,6 +6185,11 @@ func (s UpdateAliasResponse) GoString() string {
 
 func (s *UpdateAliasResponse) SetHeaders(v map[string]*string) *UpdateAliasResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateAliasResponse) SetStatusCode(v int32) *UpdateAliasResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6454,8 +6239,9 @@ func (s *UpdateCertificateStatusResponseBody) SetRequestId(v string) *UpdateCert
 }
 
 type UpdateCertificateStatusResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateCertificateStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateCertificateStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateCertificateStatusResponse) String() string {
@@ -6471,14 +6257,19 @@ func (s *UpdateCertificateStatusResponse) SetHeaders(v map[string]*string) *Upda
 	return s
 }
 
+func (s *UpdateCertificateStatusResponse) SetStatusCode(v int32) *UpdateCertificateStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateCertificateStatusResponse) SetBody(v *UpdateCertificateStatusResponseBody) *UpdateCertificateStatusResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateKeyDescriptionRequest struct {
-	KeyId       *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	KeyId       *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 }
 
 func (s UpdateKeyDescriptionRequest) String() string {
@@ -6489,13 +6280,13 @@ func (s UpdateKeyDescriptionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateKeyDescriptionRequest) SetKeyId(v string) *UpdateKeyDescriptionRequest {
-	s.KeyId = &v
+func (s *UpdateKeyDescriptionRequest) SetDescription(v string) *UpdateKeyDescriptionRequest {
+	s.Description = &v
 	return s
 }
 
-func (s *UpdateKeyDescriptionRequest) SetDescription(v string) *UpdateKeyDescriptionRequest {
-	s.Description = &v
+func (s *UpdateKeyDescriptionRequest) SetKeyId(v string) *UpdateKeyDescriptionRequest {
+	s.KeyId = &v
 	return s
 }
 
@@ -6517,8 +6308,9 @@ func (s *UpdateKeyDescriptionResponseBody) SetRequestId(v string) *UpdateKeyDesc
 }
 
 type UpdateKeyDescriptionResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateKeyDescriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateKeyDescriptionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateKeyDescriptionResponse) String() string {
@@ -6534,14 +6326,19 @@ func (s *UpdateKeyDescriptionResponse) SetHeaders(v map[string]*string) *UpdateK
 	return s
 }
 
+func (s *UpdateKeyDescriptionResponse) SetStatusCode(v int32) *UpdateKeyDescriptionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateKeyDescriptionResponse) SetBody(v *UpdateKeyDescriptionResponseBody) *UpdateKeyDescriptionResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateRotationPolicyRequest struct {
-	KeyId                   *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	EnableAutomaticRotation *bool   `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
+	KeyId                   *string `json:"KeyId,omitempty" xml:"KeyId,omitempty"`
 	RotationInterval        *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
 }
 
@@ -6553,13 +6350,13 @@ func (s UpdateRotationPolicyRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateRotationPolicyRequest) SetKeyId(v string) *UpdateRotationPolicyRequest {
-	s.KeyId = &v
+func (s *UpdateRotationPolicyRequest) SetEnableAutomaticRotation(v bool) *UpdateRotationPolicyRequest {
+	s.EnableAutomaticRotation = &v
 	return s
 }
 
-func (s *UpdateRotationPolicyRequest) SetEnableAutomaticRotation(v bool) *UpdateRotationPolicyRequest {
-	s.EnableAutomaticRotation = &v
+func (s *UpdateRotationPolicyRequest) SetKeyId(v string) *UpdateRotationPolicyRequest {
+	s.KeyId = &v
 	return s
 }
 
@@ -6586,8 +6383,9 @@ func (s *UpdateRotationPolicyResponseBody) SetRequestId(v string) *UpdateRotatio
 }
 
 type UpdateRotationPolicyResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateRotationPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateRotationPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateRotationPolicyResponse) String() string {
@@ -6603,15 +6401,164 @@ func (s *UpdateRotationPolicyResponse) SetHeaders(v map[string]*string) *UpdateR
 	return s
 }
 
+func (s *UpdateRotationPolicyResponse) SetStatusCode(v int32) *UpdateRotationPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateRotationPolicyResponse) SetBody(v *UpdateRotationPolicyResponseBody) *UpdateRotationPolicyResponse {
 	s.Body = v
 	return s
 }
 
+type UpdateSecretRequest struct {
+	ExtendedConfig *UpdateSecretRequestExtendedConfig `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty" type:"Struct"`
+	Description    *string                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	SecretName     *string                            `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+}
+
+func (s UpdateSecretRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSecretRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSecretRequest) SetExtendedConfig(v *UpdateSecretRequestExtendedConfig) *UpdateSecretRequest {
+	s.ExtendedConfig = v
+	return s
+}
+
+func (s *UpdateSecretRequest) SetDescription(v string) *UpdateSecretRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateSecretRequest) SetSecretName(v string) *UpdateSecretRequest {
+	s.SecretName = &v
+	return s
+}
+
+type UpdateSecretRequestExtendedConfig struct {
+	CustomData map[string]interface{} `json:"CustomData,omitempty" xml:"CustomData,omitempty"`
+}
+
+func (s UpdateSecretRequestExtendedConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSecretRequestExtendedConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSecretRequestExtendedConfig) SetCustomData(v map[string]interface{}) *UpdateSecretRequestExtendedConfig {
+	s.CustomData = v
+	return s
+}
+
+type UpdateSecretShrinkRequest struct {
+	ExtendedConfig *UpdateSecretShrinkRequestExtendedConfig `json:"ExtendedConfig,omitempty" xml:"ExtendedConfig,omitempty" type:"Struct"`
+	Description    *string                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	SecretName     *string                                  `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+}
+
+func (s UpdateSecretShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSecretShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSecretShrinkRequest) SetExtendedConfig(v *UpdateSecretShrinkRequestExtendedConfig) *UpdateSecretShrinkRequest {
+	s.ExtendedConfig = v
+	return s
+}
+
+func (s *UpdateSecretShrinkRequest) SetDescription(v string) *UpdateSecretShrinkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateSecretShrinkRequest) SetSecretName(v string) *UpdateSecretShrinkRequest {
+	s.SecretName = &v
+	return s
+}
+
+type UpdateSecretShrinkRequestExtendedConfig struct {
+	CustomData *string `json:"CustomData,omitempty" xml:"CustomData,omitempty"`
+}
+
+func (s UpdateSecretShrinkRequestExtendedConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSecretShrinkRequestExtendedConfig) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSecretShrinkRequestExtendedConfig) SetCustomData(v string) *UpdateSecretShrinkRequestExtendedConfig {
+	s.CustomData = &v
+	return s
+}
+
+type UpdateSecretResponseBody struct {
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
+}
+
+func (s UpdateSecretResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSecretResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSecretResponseBody) SetRequestId(v string) *UpdateSecretResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateSecretResponseBody) SetSecretName(v string) *UpdateSecretResponseBody {
+	s.SecretName = &v
+	return s
+}
+
+type UpdateSecretResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSecretResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateSecretResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateSecretResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateSecretResponse) SetHeaders(v map[string]*string) *UpdateSecretResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateSecretResponse) SetStatusCode(v int32) *UpdateSecretResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateSecretResponse) SetBody(v *UpdateSecretResponseBody) *UpdateSecretResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateSecretRotationPolicyRequest struct {
-	SecretName              *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	EnableAutomaticRotation *bool   `json:"EnableAutomaticRotation,omitempty" xml:"EnableAutomaticRotation,omitempty"`
 	RotationInterval        *string `json:"RotationInterval,omitempty" xml:"RotationInterval,omitempty"`
+	SecretName              *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 }
 
 func (s UpdateSecretRotationPolicyRequest) String() string {
@@ -6620,11 +6567,6 @@ func (s UpdateSecretRotationPolicyRequest) String() string {
 
 func (s UpdateSecretRotationPolicyRequest) GoString() string {
 	return s.String()
-}
-
-func (s *UpdateSecretRotationPolicyRequest) SetSecretName(v string) *UpdateSecretRotationPolicyRequest {
-	s.SecretName = &v
-	return s
 }
 
 func (s *UpdateSecretRotationPolicyRequest) SetEnableAutomaticRotation(v bool) *UpdateSecretRotationPolicyRequest {
@@ -6637,9 +6579,14 @@ func (s *UpdateSecretRotationPolicyRequest) SetRotationInterval(v string) *Updat
 	return s
 }
 
+func (s *UpdateSecretRotationPolicyRequest) SetSecretName(v string) *UpdateSecretRotationPolicyRequest {
+	s.SecretName = &v
+	return s
+}
+
 type UpdateSecretRotationPolicyResponseBody struct {
-	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 }
 
 func (s UpdateSecretRotationPolicyResponseBody) String() string {
@@ -6650,19 +6597,20 @@ func (s UpdateSecretRotationPolicyResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateSecretRotationPolicyResponseBody) SetSecretName(v string) *UpdateSecretRotationPolicyResponseBody {
-	s.SecretName = &v
-	return s
-}
-
 func (s *UpdateSecretRotationPolicyResponseBody) SetRequestId(v string) *UpdateSecretRotationPolicyResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *UpdateSecretRotationPolicyResponseBody) SetSecretName(v string) *UpdateSecretRotationPolicyResponseBody {
+	s.SecretName = &v
+	return s
+}
+
 type UpdateSecretRotationPolicyResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateSecretRotationPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSecretRotationPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateSecretRotationPolicyResponse) String() string {
@@ -6678,16 +6626,21 @@ func (s *UpdateSecretRotationPolicyResponse) SetHeaders(v map[string]*string) *U
 	return s
 }
 
+func (s *UpdateSecretRotationPolicyResponse) SetStatusCode(v int32) *UpdateSecretRotationPolicyResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateSecretRotationPolicyResponse) SetBody(v *UpdateSecretRotationPolicyResponseBody) *UpdateSecretRotationPolicyResponse {
 	s.Body = v
 	return s
 }
 
 type UpdateSecretVersionStageRequest struct {
+	MoveToVersion     *string `json:"MoveToVersion,omitempty" xml:"MoveToVersion,omitempty"`
+	RemoveFromVersion *string `json:"RemoveFromVersion,omitempty" xml:"RemoveFromVersion,omitempty"`
 	SecretName        *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	VersionStage      *string `json:"VersionStage,omitempty" xml:"VersionStage,omitempty"`
-	RemoveFromVersion *string `json:"RemoveFromVersion,omitempty" xml:"RemoveFromVersion,omitempty"`
-	MoveToVersion     *string `json:"MoveToVersion,omitempty" xml:"MoveToVersion,omitempty"`
 }
 
 func (s UpdateSecretVersionStageRequest) String() string {
@@ -6696,6 +6649,16 @@ func (s UpdateSecretVersionStageRequest) String() string {
 
 func (s UpdateSecretVersionStageRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateSecretVersionStageRequest) SetMoveToVersion(v string) *UpdateSecretVersionStageRequest {
+	s.MoveToVersion = &v
+	return s
+}
+
+func (s *UpdateSecretVersionStageRequest) SetRemoveFromVersion(v string) *UpdateSecretVersionStageRequest {
+	s.RemoveFromVersion = &v
+	return s
 }
 
 func (s *UpdateSecretVersionStageRequest) SetSecretName(v string) *UpdateSecretVersionStageRequest {
@@ -6708,19 +6671,9 @@ func (s *UpdateSecretVersionStageRequest) SetVersionStage(v string) *UpdateSecre
 	return s
 }
 
-func (s *UpdateSecretVersionStageRequest) SetRemoveFromVersion(v string) *UpdateSecretVersionStageRequest {
-	s.RemoveFromVersion = &v
-	return s
-}
-
-func (s *UpdateSecretVersionStageRequest) SetMoveToVersion(v string) *UpdateSecretVersionStageRequest {
-	s.MoveToVersion = &v
-	return s
-}
-
 type UpdateSecretVersionStageResponseBody struct {
-	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SecretName *string `json:"SecretName,omitempty" xml:"SecretName,omitempty"`
 }
 
 func (s UpdateSecretVersionStageResponseBody) String() string {
@@ -6731,19 +6684,20 @@ func (s UpdateSecretVersionStageResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *UpdateSecretVersionStageResponseBody) SetSecretName(v string) *UpdateSecretVersionStageResponseBody {
-	s.SecretName = &v
-	return s
-}
-
 func (s *UpdateSecretVersionStageResponseBody) SetRequestId(v string) *UpdateSecretVersionStageResponseBody {
 	s.RequestId = &v
 	return s
 }
 
+func (s *UpdateSecretVersionStageResponseBody) SetSecretName(v string) *UpdateSecretVersionStageResponseBody {
+	s.SecretName = &v
+	return s
+}
+
 type UpdateSecretVersionStageResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateSecretVersionStageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateSecretVersionStageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateSecretVersionStageResponse) String() string {
@@ -6759,15 +6713,20 @@ func (s *UpdateSecretVersionStageResponse) SetHeaders(v map[string]*string) *Upd
 	return s
 }
 
+func (s *UpdateSecretVersionStageResponse) SetStatusCode(v int32) *UpdateSecretVersionStageResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateSecretVersionStageResponse) SetBody(v *UpdateSecretVersionStageResponseBody) *UpdateSecretVersionStageResponse {
 	s.Body = v
 	return s
 }
 
 type UploadCertificateRequest struct {
-	CertificateId    *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 	Certificate      *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
 	CertificateChain *string `json:"CertificateChain,omitempty" xml:"CertificateChain,omitempty"`
+	CertificateId    *string `json:"CertificateId,omitempty" xml:"CertificateId,omitempty"`
 }
 
 func (s UploadCertificateRequest) String() string {
@@ -6778,11 +6737,6 @@ func (s UploadCertificateRequest) GoString() string {
 	return s.String()
 }
 
-func (s *UploadCertificateRequest) SetCertificateId(v string) *UploadCertificateRequest {
-	s.CertificateId = &v
-	return s
-}
-
 func (s *UploadCertificateRequest) SetCertificate(v string) *UploadCertificateRequest {
 	s.Certificate = &v
 	return s
@@ -6790,6 +6744,11 @@ func (s *UploadCertificateRequest) SetCertificate(v string) *UploadCertificateRe
 
 func (s *UploadCertificateRequest) SetCertificateChain(v string) *UploadCertificateRequest {
 	s.CertificateChain = &v
+	return s
+}
+
+func (s *UploadCertificateRequest) SetCertificateId(v string) *UploadCertificateRequest {
+	s.CertificateId = &v
 	return s
 }
 
@@ -6811,8 +6770,9 @@ func (s *UploadCertificateResponseBody) SetRequestId(v string) *UploadCertificat
 }
 
 type UploadCertificateResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UploadCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UploadCertificateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UploadCertificateResponse) String() string {
@@ -6825,6 +6785,11 @@ func (s UploadCertificateResponse) GoString() string {
 
 func (s *UploadCertificateResponse) SetHeaders(v map[string]*string) *UploadCertificateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UploadCertificateResponse) SetStatusCode(v int32) *UploadCertificateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6885,11 +6850,39 @@ func (client *Client) AsymmetricDecryptWithOptions(request *AsymmetricDecryptReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CiphertextBlob)) {
+		query["CiphertextBlob"] = request.CiphertextBlob
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyVersionId)) {
+		query["KeyVersionId"] = request.KeyVersionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AsymmetricDecrypt"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AsymmetricDecryptResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AsymmetricDecrypt"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6913,11 +6906,39 @@ func (client *Client) AsymmetricEncryptWithOptions(request *AsymmetricEncryptReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyVersionId)) {
+		query["KeyVersionId"] = request.KeyVersionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Plaintext)) {
+		query["Plaintext"] = request.Plaintext
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AsymmetricEncrypt"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AsymmetricEncryptResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AsymmetricEncrypt"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6941,11 +6962,39 @@ func (client *Client) AsymmetricSignWithOptions(request *AsymmetricSignRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Digest)) {
+		query["Digest"] = request.Digest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyVersionId)) {
+		query["KeyVersionId"] = request.KeyVersionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AsymmetricSign"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AsymmetricSignResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AsymmetricSign"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6969,11 +7018,43 @@ func (client *Client) AsymmetricVerifyWithOptions(request *AsymmetricVerifyReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Digest)) {
+		query["Digest"] = request.Digest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyVersionId)) {
+		query["KeyVersionId"] = request.KeyVersionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Value)) {
+		query["Value"] = request.Value
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AsymmetricVerify"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &AsymmetricVerifyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("AsymmetricVerify"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6997,11 +7078,27 @@ func (client *Client) CancelKeyDeletionWithOptions(request *CancelKeyDeletionReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelKeyDeletion"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CancelKeyDeletionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CancelKeyDeletion"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7025,11 +7122,35 @@ func (client *Client) CertificatePrivateKeyDecryptWithOptions(request *Certifica
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertificateId)) {
+		query["CertificateId"] = request.CertificateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CiphertextBlob)) {
+		query["CiphertextBlob"] = request.CiphertextBlob
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CertificatePrivateKeyDecrypt"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CertificatePrivateKeyDecryptResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CertificatePrivateKeyDecrypt"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7053,11 +7174,39 @@ func (client *Client) CertificatePrivateKeySignWithOptions(request *CertificateP
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertificateId)) {
+		query["CertificateId"] = request.CertificateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Message)) {
+		query["Message"] = request.Message
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageType)) {
+		query["MessageType"] = request.MessageType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CertificatePrivateKeySign"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CertificatePrivateKeySignResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CertificatePrivateKeySign"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7081,11 +7230,35 @@ func (client *Client) CertificatePublicKeyEncryptWithOptions(request *Certificat
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertificateId)) {
+		query["CertificateId"] = request.CertificateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Plaintext)) {
+		query["Plaintext"] = request.Plaintext
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CertificatePublicKeyEncrypt"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CertificatePublicKeyEncryptResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CertificatePublicKeyEncrypt"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7109,11 +7282,43 @@ func (client *Client) CertificatePublicKeyVerifyWithOptions(request *Certificate
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Algorithm)) {
+		query["Algorithm"] = request.Algorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertificateId)) {
+		query["CertificateId"] = request.CertificateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Message)) {
+		query["Message"] = request.Message
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MessageType)) {
+		query["MessageType"] = request.MessageType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignatureValue)) {
+		query["SignatureValue"] = request.SignatureValue
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CertificatePublicKeyVerify"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CertificatePublicKeyVerifyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CertificatePublicKeyVerify"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7137,11 +7342,31 @@ func (client *Client) CreateAliasWithOptions(request *CreateAliasRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliasName)) {
+		query["AliasName"] = request.AliasName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAlias"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateAliasResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateAlias"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7171,11 +7396,39 @@ func (client *Client) CreateCertificateWithOptions(tmpReq *CreateCertificateRequ
 		request.SubjectAlternativeNamesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SubjectAlternativeNames, tea.String("SubjectAlternativeNames"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExportablePrivateKey)) {
+		query["ExportablePrivateKey"] = request.ExportablePrivateKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeySpec)) {
+		query["KeySpec"] = request.KeySpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Subject)) {
+		query["Subject"] = request.Subject
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SubjectAlternativeNamesShrink)) {
+		query["SubjectAlternativeNames"] = request.SubjectAlternativeNamesShrink
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCertificate"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateCertificateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateCertificate"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7199,11 +7452,51 @@ func (client *Client) CreateKeyWithOptions(request *CreateKeyRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableAutomaticRotation)) {
+		query["EnableAutomaticRotation"] = request.EnableAutomaticRotation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeySpec)) {
+		query["KeySpec"] = request.KeySpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyUsage)) {
+		query["KeyUsage"] = request.KeyUsage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Origin)) {
+		query["Origin"] = request.Origin
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProtectionLevel)) {
+		query["ProtectionLevel"] = request.ProtectionLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RotationInterval)) {
+		query["RotationInterval"] = request.RotationInterval
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateKey"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateKeyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateKey"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7227,11 +7520,27 @@ func (client *Client) CreateKeyVersionWithOptions(request *CreateKeyVersionReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateKeyVersion"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateKeyVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateKeyVersion"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7261,11 +7570,67 @@ func (client *Client) CreateSecretWithOptions(tmpReq *CreateSecretRequest, runti
 		request.ExtendedConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ExtendedConfig, tea.String("ExtendedConfig"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableAutomaticRotation)) {
+		query["EnableAutomaticRotation"] = request.EnableAutomaticRotation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncryptionKeyId)) {
+		query["EncryptionKeyId"] = request.EncryptionKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtendedConfigShrink)) {
+		query["ExtendedConfig"] = request.ExtendedConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RotationInterval)) {
+		query["RotationInterval"] = request.RotationInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretData)) {
+		query["SecretData"] = request.SecretData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretDataType)) {
+		query["SecretDataType"] = request.SecretDataType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
+		query["SecretName"] = request.SecretName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretType)) {
+		query["SecretType"] = request.SecretType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateSecret"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &CreateSecretResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("CreateSecret"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7295,11 +7660,31 @@ func (client *Client) DecryptWithOptions(tmpReq *DecryptRequest, runtime *util.R
 		request.EncryptionContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EncryptionContext, tea.String("EncryptionContext"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CiphertextBlob)) {
+		query["CiphertextBlob"] = request.CiphertextBlob
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncryptionContextShrink)) {
+		query["EncryptionContext"] = request.EncryptionContextShrink
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Decrypt"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DecryptResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("Decrypt"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7323,11 +7708,27 @@ func (client *Client) DeleteAliasWithOptions(request *DeleteAliasRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliasName)) {
+		query["AliasName"] = request.AliasName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAlias"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteAliasResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteAlias"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7351,11 +7752,27 @@ func (client *Client) DeleteCertificateWithOptions(request *DeleteCertificateReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertificateId)) {
+		query["CertificateId"] = request.CertificateId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteCertificate"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteCertificateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteCertificate"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7379,11 +7796,27 @@ func (client *Client) DeleteKeyMaterialWithOptions(request *DeleteKeyMaterialReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteKeyMaterial"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteKeyMaterialResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteKeyMaterial"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7407,11 +7840,35 @@ func (client *Client) DeleteSecretWithOptions(request *DeleteSecretRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ForceDeleteWithoutRecovery)) {
+		query["ForceDeleteWithoutRecovery"] = request.ForceDeleteWithoutRecovery
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RecoveryWindowInDays)) {
+		query["RecoveryWindowInDays"] = request.RecoveryWindowInDays
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
+		query["SecretName"] = request.SecretName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSecret"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DeleteSecretResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DeleteSecret"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7432,8 +7889,19 @@ func (client *Client) DeleteSecret(request *DeleteSecretRequest) (_result *Delet
 
 func (client *Client) DescribeAccountKmsStatusWithOptions(runtime *util.RuntimeOptions) (_result *DescribeAccountKmsStatusResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAccountKmsStatus"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeAccountKmsStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeAccountKmsStatus"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7457,11 +7925,27 @@ func (client *Client) DescribeCertificateWithOptions(request *DescribeCertificat
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertificateId)) {
+		query["CertificateId"] = request.CertificateId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCertificate"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCertificateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeCertificate"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7485,11 +7969,27 @@ func (client *Client) DescribeKeyWithOptions(request *DescribeKeyRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeKey"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeKeyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeKey"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7513,11 +8013,31 @@ func (client *Client) DescribeKeyVersionWithOptions(request *DescribeKeyVersionR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyVersionId)) {
+		query["KeyVersionId"] = request.KeyVersionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeKeyVersion"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeKeyVersionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeKeyVersion"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7538,8 +8058,19 @@ func (client *Client) DescribeKeyVersion(request *DescribeKeyVersionRequest) (_r
 
 func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRegions"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRegions"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7563,11 +8094,31 @@ func (client *Client) DescribeSecretWithOptions(request *DescribeSecretRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FetchTags)) {
+		query["FetchTags"] = request.FetchTags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
+		query["SecretName"] = request.SecretName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeSecret"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeSecretResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeSecret"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7586,38 +8137,32 @@ func (client *Client) DescribeSecret(request *DescribeSecretRequest) (_result *D
 	return _result, _err
 }
 
-func (client *Client) DescribeServiceWithOptions(runtime *util.RuntimeOptions) (_result *DescribeServiceResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
-	_result = &DescribeServiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeService"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeService() (_result *DescribeServiceResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeServiceResponse{}
-	_body, _err := client.DescribeServiceWithOptions(runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DisableKeyWithOptions(request *DisableKeyRequest, runtime *util.RuntimeOptions) (_result *DisableKeyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableKey"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DisableKeyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DisableKey"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7641,11 +8186,27 @@ func (client *Client) EnableKeyWithOptions(request *EnableKeyRequest, runtime *u
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableKey"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &EnableKeyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("EnableKey"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7675,11 +8236,35 @@ func (client *Client) EncryptWithOptions(tmpReq *EncryptRequest, runtime *util.R
 		request.EncryptionContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EncryptionContext, tea.String("EncryptionContext"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EncryptionContextShrink)) {
+		query["EncryptionContext"] = request.EncryptionContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Plaintext)) {
+		query["Plaintext"] = request.Plaintext
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("Encrypt"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &EncryptResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("Encrypt"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7698,34 +8283,6 @@ func (client *Client) Encrypt(request *EncryptRequest) (_result *EncryptResponse
 	return _result, _err
 }
 
-func (client *Client) ExportCertificateWithOptions(request *ExportCertificateRequest, runtime *util.RuntimeOptions) (_result *ExportCertificateResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ExportCertificateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ExportCertificate"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ExportCertificate(request *ExportCertificateRequest) (_result *ExportCertificateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ExportCertificateResponse{}
-	_body, _err := client.ExportCertificateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ExportDataKeyWithOptions(tmpReq *ExportDataKeyRequest, runtime *util.RuntimeOptions) (_result *ExportDataKeyResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -7737,11 +8294,43 @@ func (client *Client) ExportDataKeyWithOptions(tmpReq *ExportDataKeyRequest, run
 		request.EncryptionContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EncryptionContext, tea.String("EncryptionContext"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CiphertextBlob)) {
+		query["CiphertextBlob"] = request.CiphertextBlob
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EncryptionContextShrink)) {
+		query["EncryptionContext"] = request.EncryptionContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublicKeyBlob)) {
+		query["PublicKeyBlob"] = request.PublicKeyBlob
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WrappingAlgorithm)) {
+		query["WrappingAlgorithm"] = request.WrappingAlgorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WrappingKeySpec)) {
+		query["WrappingKeySpec"] = request.WrappingKeySpec
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExportDataKey"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ExportDataKeyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ExportDataKey"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7771,11 +8360,51 @@ func (client *Client) GenerateAndExportDataKeyWithOptions(tmpReq *GenerateAndExp
 		request.EncryptionContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EncryptionContext, tea.String("EncryptionContext"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EncryptionContextShrink)) {
+		query["EncryptionContext"] = request.EncryptionContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeySpec)) {
+		query["KeySpec"] = request.KeySpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NumberOfBytes)) {
+		query["NumberOfBytes"] = request.NumberOfBytes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublicKeyBlob)) {
+		query["PublicKeyBlob"] = request.PublicKeyBlob
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WrappingAlgorithm)) {
+		query["WrappingAlgorithm"] = request.WrappingAlgorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WrappingKeySpec)) {
+		query["WrappingKeySpec"] = request.WrappingKeySpec
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateAndExportDataKey"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GenerateAndExportDataKeyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GenerateAndExportDataKey"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7805,11 +8434,39 @@ func (client *Client) GenerateDataKeyWithOptions(tmpReq *GenerateDataKeyRequest,
 		request.EncryptionContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EncryptionContext, tea.String("EncryptionContext"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EncryptionContextShrink)) {
+		query["EncryptionContext"] = request.EncryptionContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeySpec)) {
+		query["KeySpec"] = request.KeySpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NumberOfBytes)) {
+		query["NumberOfBytes"] = request.NumberOfBytes
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateDataKey"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GenerateDataKeyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GenerateDataKey"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7839,11 +8496,39 @@ func (client *Client) GenerateDataKeyWithoutPlaintextWithOptions(tmpReq *Generat
 		request.EncryptionContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.EncryptionContext, tea.String("EncryptionContext"), tea.String("json"))
 	}
 
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EncryptionContextShrink)) {
+		query["EncryptionContext"] = request.EncryptionContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeySpec)) {
+		query["KeySpec"] = request.KeySpec
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NumberOfBytes)) {
+		query["NumberOfBytes"] = request.NumberOfBytes
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateDataKeyWithoutPlaintext"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GenerateDataKeyWithoutPlaintextResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GenerateDataKeyWithoutPlaintext"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7867,11 +8552,27 @@ func (client *Client) GetCertificateWithOptions(request *GetCertificateRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertificateId)) {
+		query["CertificateId"] = request.CertificateId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCertificate"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetCertificateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetCertificate"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7895,11 +8596,35 @@ func (client *Client) GetParametersForImportWithOptions(request *GetParametersFo
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WrappingAlgorithm)) {
+		query["WrappingAlgorithm"] = request.WrappingAlgorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WrappingKeySpec)) {
+		query["WrappingKeySpec"] = request.WrappingKeySpec
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetParametersForImport"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetParametersForImportResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetParametersForImport"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7923,11 +8648,31 @@ func (client *Client) GetPublicKeyWithOptions(request *GetPublicKeyRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyVersionId)) {
+		query["KeyVersionId"] = request.KeyVersionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetPublicKey"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetPublicKeyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetPublicKey"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7951,11 +8696,51 @@ func (client *Client) GetRandomPasswordWithOptions(request *GetRandomPasswordReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExcludeCharacters)) {
+		query["ExcludeCharacters"] = request.ExcludeCharacters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeLowercase)) {
+		query["ExcludeLowercase"] = request.ExcludeLowercase
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeNumbers)) {
+		query["ExcludeNumbers"] = request.ExcludeNumbers
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludePunctuation)) {
+		query["ExcludePunctuation"] = request.ExcludePunctuation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExcludeUppercase)) {
+		query["ExcludeUppercase"] = request.ExcludeUppercase
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PasswordLength)) {
+		query["PasswordLength"] = request.PasswordLength
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequireEachIncludedType)) {
+		query["RequireEachIncludedType"] = request.RequireEachIncludedType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetRandomPassword"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetRandomPasswordResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetRandomPassword"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7979,11 +8764,39 @@ func (client *Client) GetSecretValueWithOptions(request *GetSecretValueRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FetchExtendedConfig)) {
+		query["FetchExtendedConfig"] = request.FetchExtendedConfig
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
+		query["SecretName"] = request.SecretName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionStage)) {
+		query["VersionStage"] = request.VersionStage
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetSecretValue"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &GetSecretValueResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("GetSecretValue"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8002,72 +8815,44 @@ func (client *Client) GetSecretValue(request *GetSecretValueRequest) (_result *G
 	return _result, _err
 }
 
-func (client *Client) ImportCertificateWithOptions(request *ImportCertificateRequest, runtime *util.RuntimeOptions) (_result *ImportCertificateResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ImportCertificateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ImportCertificate"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ImportCertificate(request *ImportCertificateRequest) (_result *ImportCertificateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ImportCertificateResponse{}
-	_body, _err := client.ImportCertificateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ImportEncryptionCertificateWithOptions(request *ImportEncryptionCertificateRequest, runtime *util.RuntimeOptions) (_result *ImportEncryptionCertificateResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ImportEncryptionCertificateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ImportEncryptionCertificate"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ImportEncryptionCertificate(request *ImportEncryptionCertificateRequest) (_result *ImportEncryptionCertificateResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ImportEncryptionCertificateResponse{}
-	_body, _err := client.ImportEncryptionCertificateWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ImportKeyMaterialWithOptions(request *ImportKeyMaterialRequest, runtime *util.RuntimeOptions) (_result *ImportKeyMaterialResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EncryptedKeyMaterial)) {
+		query["EncryptedKeyMaterial"] = request.EncryptedKeyMaterial
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImportToken)) {
+		query["ImportToken"] = request.ImportToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyMaterialExpireUnix)) {
+		query["KeyMaterialExpireUnix"] = request.KeyMaterialExpireUnix
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ImportKeyMaterial"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ImportKeyMaterialResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ImportKeyMaterial"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8091,11 +8876,31 @@ func (client *Client) ListAliasesWithOptions(request *ListAliasesRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAliases"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAliasesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAliases"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8119,11 +8924,35 @@ func (client *Client) ListAliasesByKeyIdWithOptions(request *ListAliasesByKeyIdR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListAliasesByKeyId"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListAliasesByKeyIdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListAliasesByKeyId"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8142,72 +8971,40 @@ func (client *Client) ListAliasesByKeyId(request *ListAliasesByKeyIdRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) ListCertificatesWithOptions(request *ListCertificatesRequest, runtime *util.RuntimeOptions) (_result *ListCertificatesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListCertificatesResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListCertificates"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListCertificates(request *ListCertificatesRequest) (_result *ListCertificatesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListCertificatesResponse{}
-	_body, _err := client.ListCertificatesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListKeysWithOptions(request *ListKeysRequest, runtime *util.RuntimeOptions) (_result *ListKeysResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListKeysResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListKeys"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListKeys(request *ListKeysRequest) (_result *ListKeysResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListKeysResponse{}
-	_body, _err := client.ListKeysWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListKeyVersionsWithOptions(request *ListKeyVersionsRequest, runtime *util.RuntimeOptions) (_result *ListKeyVersionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListKeyVersions"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListKeyVersionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListKeyVersions"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8226,16 +9023,84 @@ func (client *Client) ListKeyVersions(request *ListKeyVersionsRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) ListKeysWithOptions(request *ListKeysRequest, runtime *util.RuntimeOptions) (_result *ListKeysResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Filters)) {
+		query["Filters"] = request.Filters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListKeys"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListKeysResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListKeys(request *ListKeysRequest) (_result *ListKeysResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListKeysResponse{}
+	_body, _err := client.ListKeysWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListResourceTagsWithOptions(request *ListResourceTagsRequest, runtime *util.RuntimeOptions) (_result *ListResourceTagsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListResourceTags"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListResourceTagsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListResourceTags"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8254,44 +9119,44 @@ func (client *Client) ListResourceTags(request *ListResourceTagsRequest) (_resul
 	return _result, _err
 }
 
-func (client *Client) ListSecretsWithOptions(request *ListSecretsRequest, runtime *util.RuntimeOptions) (_result *ListSecretsResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
-	}
-	_result = &ListSecretsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListSecrets"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListSecrets(request *ListSecretsRequest) (_result *ListSecretsResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListSecretsResponse{}
-	_body, _err := client.ListSecretsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListSecretVersionIdsWithOptions(request *ListSecretVersionIdsRequest, runtime *util.RuntimeOptions) (_result *ListSecretVersionIdsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IncludeDeprecated)) {
+		query["IncludeDeprecated"] = request.IncludeDeprecated
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
+		query["SecretName"] = request.SecretName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSecretVersionIds"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ListSecretVersionIdsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ListSecretVersionIds"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8310,10 +9175,77 @@ func (client *Client) ListSecretVersionIds(request *ListSecretVersionIdsRequest)
 	return _result, _err
 }
 
+func (client *Client) ListSecretsWithOptions(request *ListSecretsRequest, runtime *util.RuntimeOptions) (_result *ListSecretsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.FetchTags)) {
+		query["FetchTags"] = request.FetchTags
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Filters)) {
+		query["Filters"] = request.Filters
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListSecrets"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListSecretsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListSecrets(request *ListSecretsRequest) (_result *ListSecretsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListSecretsResponse{}
+	_body, _err := client.ListSecretsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) OpenKmsServiceWithOptions(runtime *util.RuntimeOptions) (_result *OpenKmsServiceResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("OpenKmsService"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &OpenKmsServiceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("OpenKmsService"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8337,11 +9269,43 @@ func (client *Client) PutSecretValueWithOptions(request *PutSecretValueRequest, 
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SecretData)) {
+		query["SecretData"] = request.SecretData
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretDataType)) {
+		query["SecretDataType"] = request.SecretDataType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
+		query["SecretName"] = request.SecretName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionStages)) {
+		query["VersionStages"] = request.VersionStages
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PutSecretValue"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &PutSecretValueResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("PutSecretValue"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8367,19 +9331,59 @@ func (client *Client) ReEncryptWithOptions(tmpReq *ReEncryptRequest, runtime *ut
 	}
 	request := &ReEncryptShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
-	if !tea.BoolValue(util.IsUnset(tmpReq.SourceEncryptionContext)) {
-		request.SourceEncryptionContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceEncryptionContext, tea.String("SourceEncryptionContext"), tea.String("json"))
-	}
-
 	if !tea.BoolValue(util.IsUnset(tmpReq.DestinationEncryptionContext)) {
 		request.DestinationEncryptionContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.DestinationEncryptionContext, tea.String("DestinationEncryptionContext"), tea.String("json"))
 	}
 
+	if !tea.BoolValue(util.IsUnset(tmpReq.SourceEncryptionContext)) {
+		request.SourceEncryptionContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.SourceEncryptionContext, tea.String("SourceEncryptionContext"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CiphertextBlob)) {
+		query["CiphertextBlob"] = request.CiphertextBlob
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationEncryptionContextShrink)) {
+		query["DestinationEncryptionContext"] = request.DestinationEncryptionContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationKeyId)) {
+		query["DestinationKeyId"] = request.DestinationKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEncryptionAlgorithm)) {
+		query["SourceEncryptionAlgorithm"] = request.SourceEncryptionAlgorithm
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceEncryptionContextShrink)) {
+		query["SourceEncryptionContext"] = request.SourceEncryptionContextShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceKeyId)) {
+		query["SourceKeyId"] = request.SourceKeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceKeyVersionId)) {
+		query["SourceKeyVersionId"] = request.SourceKeyVersionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReEncrypt"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ReEncryptResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ReEncrypt"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8403,11 +9407,27 @@ func (client *Client) RestoreSecretWithOptions(request *RestoreSecretRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
+		query["SecretName"] = request.SecretName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RestoreSecret"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RestoreSecretResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RestoreSecret"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8431,11 +9451,31 @@ func (client *Client) RotateSecretWithOptions(request *RotateSecretRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
+		query["SecretName"] = request.SecretName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionId)) {
+		query["VersionId"] = request.VersionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RotateSecret"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &RotateSecretResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("RotateSecret"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8459,11 +9499,31 @@ func (client *Client) ScheduleKeyDeletionWithOptions(request *ScheduleKeyDeletio
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PendingWindowInDays)) {
+		query["PendingWindowInDays"] = request.PendingWindowInDays
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ScheduleKeyDeletion"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ScheduleKeyDeletionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ScheduleKeyDeletion"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8482,16 +9542,96 @@ func (client *Client) ScheduleKeyDeletion(request *ScheduleKeyDeletionRequest) (
 	return _result, _err
 }
 
+func (client *Client) SetDeletionProtectionWithOptions(request *SetDeletionProtectionRequest, runtime *util.RuntimeOptions) (_result *SetDeletionProtectionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DeletionProtectionDescription)) {
+		query["DeletionProtectionDescription"] = request.DeletionProtectionDescription
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnableDeletionProtection)) {
+		query["EnableDeletionProtection"] = request.EnableDeletionProtection
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProtectedResourceArn)) {
+		query["ProtectedResourceArn"] = request.ProtectedResourceArn
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetDeletionProtection"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetDeletionProtectionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetDeletionProtection(request *SetDeletionProtectionRequest) (_result *SetDeletionProtectionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetDeletionProtectionResponse{}
+	_body, _err := client.SetDeletionProtectionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) TagResourceWithOptions(request *TagResourceRequest, runtime *util.RuntimeOptions) (_result *TagResourceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertificateId)) {
+		query["CertificateId"] = request.CertificateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
+		query["SecretName"] = request.SecretName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		query["Tags"] = request.Tags
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResource"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &TagResourceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("TagResource"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8515,11 +9655,39 @@ func (client *Client) UntagResourceWithOptions(request *UntagResourceRequest, ru
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertificateId)) {
+		query["CertificateId"] = request.CertificateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
+		query["SecretName"] = request.SecretName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagKeys)) {
+		query["TagKeys"] = request.TagKeys
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UntagResource"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UntagResourceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UntagResource"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8543,11 +9711,31 @@ func (client *Client) UpdateAliasWithOptions(request *UpdateAliasRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliasName)) {
+		query["AliasName"] = request.AliasName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAlias"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateAliasResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateAlias"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8571,11 +9759,31 @@ func (client *Client) UpdateCertificateStatusWithOptions(request *UpdateCertific
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CertificateId)) {
+		query["CertificateId"] = request.CertificateId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCertificateStatus"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateCertificateStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateCertificateStatus"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8599,11 +9807,31 @@ func (client *Client) UpdateKeyDescriptionWithOptions(request *UpdateKeyDescript
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateKeyDescription"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateKeyDescriptionResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateKeyDescription"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8627,11 +9855,35 @@ func (client *Client) UpdateRotationPolicyWithOptions(request *UpdateRotationPol
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnableAutomaticRotation)) {
+		query["EnableAutomaticRotation"] = request.EnableAutomaticRotation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyId)) {
+		query["KeyId"] = request.KeyId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RotationInterval)) {
+		query["RotationInterval"] = request.RotationInterval
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateRotationPolicy"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateRotationPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateRotationPolicy"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8650,16 +9902,92 @@ func (client *Client) UpdateRotationPolicy(request *UpdateRotationPolicyRequest)
 	return _result, _err
 }
 
+func (client *Client) UpdateSecretWithOptions(request *UpdateSecretRequest, runtime *util.RuntimeOptions) (_result *UpdateSecretResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
+		query["SecretName"] = request.SecretName
+	}
+
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.ExtendedConfig))) {
+		query["ExtendedConfig"] = request.ExtendedConfig
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSecret"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateSecretResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateSecret(request *UpdateSecretRequest) (_result *UpdateSecretResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateSecretResponse{}
+	_body, _err := client.UpdateSecretWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateSecretRotationPolicyWithOptions(request *UpdateSecretRotationPolicyRequest, runtime *util.RuntimeOptions) (_result *UpdateSecretRotationPolicyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnableAutomaticRotation)) {
+		query["EnableAutomaticRotation"] = request.EnableAutomaticRotation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RotationInterval)) {
+		query["RotationInterval"] = request.RotationInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
+		query["SecretName"] = request.SecretName
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSecretRotationPolicy"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateSecretRotationPolicyResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateSecretRotationPolicy"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8683,11 +10011,39 @@ func (client *Client) UpdateSecretVersionStageWithOptions(request *UpdateSecretV
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MoveToVersion)) {
+		query["MoveToVersion"] = request.MoveToVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RemoveFromVersion)) {
+		query["RemoveFromVersion"] = request.RemoveFromVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecretName)) {
+		query["SecretName"] = request.SecretName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VersionStage)) {
+		query["VersionStage"] = request.VersionStage
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateSecretVersionStage"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateSecretVersionStageResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UpdateSecretVersionStage"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -8711,11 +10067,35 @@ func (client *Client) UploadCertificateWithOptions(request *UploadCertificateReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Certificate)) {
+		query["Certificate"] = request.Certificate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertificateChain)) {
+		query["CertificateChain"] = request.CertificateChain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertificateId)) {
+		query["CertificateId"] = request.CertificateId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UploadCertificate"),
+		Version:     tea.String("2016-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &UploadCertificateResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("UploadCertificate"), tea.String("2016-01-20"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
