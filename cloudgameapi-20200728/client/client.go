@@ -5629,6 +5629,150 @@ func (s *SkipTrialPolicyResponse) SetBody(v *SkipTrialPolicyResponseBody) *SkipT
 	return s
 }
 
+type StartGameLiveRequest struct {
+	GameSession      *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
+	VideoPushAddress *string `json:"VideoPushAddress,omitempty" xml:"VideoPushAddress,omitempty"`
+}
+
+func (s StartGameLiveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartGameLiveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartGameLiveRequest) SetGameSession(v string) *StartGameLiveRequest {
+	s.GameSession = &v
+	return s
+}
+
+func (s *StartGameLiveRequest) SetVideoPushAddress(v string) *StartGameLiveRequest {
+	s.VideoPushAddress = &v
+	return s
+}
+
+type StartGameLiveResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartGameLiveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartGameLiveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartGameLiveResponseBody) SetData(v bool) *StartGameLiveResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *StartGameLiveResponseBody) SetRequestId(v string) *StartGameLiveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartGameLiveResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartGameLiveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartGameLiveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartGameLiveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartGameLiveResponse) SetHeaders(v map[string]*string) *StartGameLiveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartGameLiveResponse) SetStatusCode(v int32) *StartGameLiveResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartGameLiveResponse) SetBody(v *StartGameLiveResponseBody) *StartGameLiveResponse {
+	s.Body = v
+	return s
+}
+
+type StopGameLiveRequest struct {
+	GameSession *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
+}
+
+func (s StopGameLiveRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopGameLiveRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopGameLiveRequest) SetGameSession(v string) *StopGameLiveRequest {
+	s.GameSession = &v
+	return s
+}
+
+type StopGameLiveResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopGameLiveResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopGameLiveResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopGameLiveResponseBody) SetData(v bool) *StopGameLiveResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *StopGameLiveResponseBody) SetRequestId(v string) *StopGameLiveResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopGameLiveResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopGameLiveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopGameLiveResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopGameLiveResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopGameLiveResponse) SetHeaders(v map[string]*string) *StopGameLiveResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopGameLiveResponse) SetStatusCode(v int32) *StopGameLiveResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopGameLiveResponse) SetBody(v *StopGameLiveResponseBody) *StopGameLiveResponse {
+	s.Body = v
+	return s
+}
+
 type StopGameSessionRequest struct {
 	AccessKey   *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
 	BizParam    *string `json:"BizParam,omitempty" xml:"BizParam,omitempty"`
@@ -8877,6 +9021,98 @@ func (client *Client) SkipTrialPolicy(request *SkipTrialPolicyRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &SkipTrialPolicyResponse{}
 	_body, _err := client.SkipTrialPolicyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartGameLiveWithOptions(request *StartGameLiveRequest, runtime *util.RuntimeOptions) (_result *StartGameLiveResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GameSession)) {
+		query["GameSession"] = request.GameSession
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VideoPushAddress)) {
+		query["VideoPushAddress"] = request.VideoPushAddress
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartGameLive"),
+		Version:     tea.String("2020-07-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartGameLiveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartGameLive(request *StartGameLiveRequest) (_result *StartGameLiveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartGameLiveResponse{}
+	_body, _err := client.StartGameLiveWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopGameLiveWithOptions(request *StopGameLiveRequest, runtime *util.RuntimeOptions) (_result *StopGameLiveResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GameSession)) {
+		query["GameSession"] = request.GameSession
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopGameLive"),
+		Version:     tea.String("2020-07-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopGameLiveResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopGameLive(request *StopGameLiveRequest) (_result *StopGameLiveResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopGameLiveResponse{}
+	_body, _err := client.StopGameLiveWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
