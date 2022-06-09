@@ -3344,6 +3344,7 @@ func (s *GetFeatureDetailsRequest) SetRegionId(v string) *GetFeatureDetailsReque
 
 type GetFeatureDetailsResponseBody struct {
 	RequestId       *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceCleaner *GetFeatureDetailsResponseBodyResourceCleaner `json:"ResourceCleaner,omitempty" xml:"ResourceCleaner,omitempty" type:"Struct"`
 	TemplateScratch *GetFeatureDetailsResponseBodyTemplateScratch `json:"TemplateScratch,omitempty" xml:"TemplateScratch,omitempty" type:"Struct"`
 	Terraform       *GetFeatureDetailsResponseBodyTerraform       `json:"Terraform,omitempty" xml:"Terraform,omitempty" type:"Struct"`
 }
@@ -3361,6 +3362,11 @@ func (s *GetFeatureDetailsResponseBody) SetRequestId(v string) *GetFeatureDetail
 	return s
 }
 
+func (s *GetFeatureDetailsResponseBody) SetResourceCleaner(v *GetFeatureDetailsResponseBodyResourceCleaner) *GetFeatureDetailsResponseBody {
+	s.ResourceCleaner = v
+	return s
+}
+
 func (s *GetFeatureDetailsResponseBody) SetTemplateScratch(v *GetFeatureDetailsResponseBodyTemplateScratch) *GetFeatureDetailsResponseBody {
 	s.TemplateScratch = v
 	return s
@@ -3368,6 +3374,52 @@ func (s *GetFeatureDetailsResponseBody) SetTemplateScratch(v *GetFeatureDetailsR
 
 func (s *GetFeatureDetailsResponseBody) SetTerraform(v *GetFeatureDetailsResponseBodyTerraform) *GetFeatureDetailsResponseBody {
 	s.Terraform = v
+	return s
+}
+
+type GetFeatureDetailsResponseBodyResourceCleaner struct {
+	SupportedResourceTypes []*GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes `json:"SupportedResourceTypes,omitempty" xml:"SupportedResourceTypes,omitempty" type:"Repeated"`
+}
+
+func (s GetFeatureDetailsResponseBodyResourceCleaner) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureDetailsResponseBodyResourceCleaner) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureDetailsResponseBodyResourceCleaner) SetSupportedResourceTypes(v []*GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes) *GetFeatureDetailsResponseBodyResourceCleaner {
+	s.SupportedResourceTypes = v
+	return s
+}
+
+type GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes struct {
+	ResourceType     *string   `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	SideEffects      []*string `json:"SideEffects,omitempty" xml:"SideEffects,omitempty" type:"Repeated"`
+	SupportedFilters []*string `json:"SupportedFilters,omitempty" xml:"SupportedFilters,omitempty" type:"Repeated"`
+}
+
+func (s GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes) GoString() string {
+	return s.String()
+}
+
+func (s *GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes) SetResourceType(v string) *GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes) SetSideEffects(v []*string) *GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes {
+	s.SideEffects = v
+	return s
+}
+
+func (s *GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes) SetSupportedFilters(v []*string) *GetFeatureDetailsResponseBodyResourceCleanerSupportedResourceTypes {
+	s.SupportedFilters = v
 	return s
 }
 
@@ -5572,6 +5624,7 @@ func (s *GetStackResourceResponse) SetBody(v *GetStackResourceResponseBody) *Get
 type GetTemplateRequest struct {
 	ChangeSetId       *string `json:"ChangeSetId,omitempty" xml:"ChangeSetId,omitempty"`
 	IncludePermission *string `json:"IncludePermission,omitempty" xml:"IncludePermission,omitempty"`
+	IncludeTags       *string `json:"IncludeTags,omitempty" xml:"IncludeTags,omitempty"`
 	RegionId          *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	StackGroupName    *string `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 	StackId           *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
@@ -5595,6 +5648,11 @@ func (s *GetTemplateRequest) SetChangeSetId(v string) *GetTemplateRequest {
 
 func (s *GetTemplateRequest) SetIncludePermission(v string) *GetTemplateRequest {
 	s.IncludePermission = &v
+	return s
+}
+
+func (s *GetTemplateRequest) SetIncludeTags(v string) *GetTemplateRequest {
+	s.IncludeTags = &v
 	return s
 }
 
@@ -5641,6 +5699,7 @@ type GetTemplateResponseBody struct {
 	ShareType       *string                               `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
 	StackGroupName  *string                               `json:"StackGroupName,omitempty" xml:"StackGroupName,omitempty"`
 	StackId         *string                               `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	Tags            []*GetTemplateResponseBodyTags        `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	TemplateARN     *string                               `json:"TemplateARN,omitempty" xml:"TemplateARN,omitempty"`
 	TemplateBody    *string                               `json:"TemplateBody,omitempty" xml:"TemplateBody,omitempty"`
 	TemplateId      *string                               `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
@@ -5717,6 +5776,11 @@ func (s *GetTemplateResponseBody) SetStackId(v string) *GetTemplateResponseBody 
 	return s
 }
 
+func (s *GetTemplateResponseBody) SetTags(v []*GetTemplateResponseBodyTags) *GetTemplateResponseBody {
+	s.Tags = v
+	return s
+}
+
 func (s *GetTemplateResponseBody) SetTemplateARN(v string) *GetTemplateResponseBody {
 	s.TemplateARN = &v
 	return s
@@ -5785,6 +5849,29 @@ func (s *GetTemplateResponseBodyPermissions) SetTemplateVersion(v string) *GetTe
 
 func (s *GetTemplateResponseBodyPermissions) SetVersionOption(v string) *GetTemplateResponseBodyPermissions {
 	s.VersionOption = &v
+	return s
+}
+
+type GetTemplateResponseBodyTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s GetTemplateResponseBodyTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetTemplateResponseBodyTags) GoString() string {
+	return s.String()
+}
+
+func (s *GetTemplateResponseBodyTags) SetKey(v string) *GetTemplateResponseBodyTags {
+	s.Key = &v
+	return s
+}
+
+func (s *GetTemplateResponseBodyTags) SetValue(v string) *GetTemplateResponseBodyTags {
+	s.Value = &v
 	return s
 }
 
@@ -9473,6 +9560,7 @@ func (s *ListTemplateVersionsResponse) SetBody(v *ListTemplateVersionsResponseBo
 }
 
 type ListTemplatesRequest struct {
+	IncludeTags     *string                    `json:"IncludeTags,omitempty" xml:"IncludeTags,omitempty"`
 	PageNumber      *int64                     `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize        *int64                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceGroupId *string                    `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
@@ -9487,6 +9575,11 @@ func (s ListTemplatesRequest) String() string {
 
 func (s ListTemplatesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListTemplatesRequest) SetIncludeTags(v string) *ListTemplatesRequest {
+	s.IncludeTags = &v
+	return s
 }
 
 func (s *ListTemplatesRequest) SetPageNumber(v int64) *ListTemplatesRequest {
@@ -9584,16 +9677,17 @@ func (s *ListTemplatesResponseBody) SetTotalCount(v int32) *ListTemplatesRespons
 }
 
 type ListTemplatesResponseBodyTemplates struct {
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description     *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	OwnerId         *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ShareType       *string `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
-	TemplateARN     *string `json:"TemplateARN,omitempty" xml:"TemplateARN,omitempty"`
-	TemplateId      *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	TemplateName    *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	TemplateVersion *string `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
-	UpdateTime      *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	CreateTime      *string                                   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description     *string                                   `json:"Description,omitempty" xml:"Description,omitempty"`
+	OwnerId         *string                                   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceGroupId *string                                   `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ShareType       *string                                   `json:"ShareType,omitempty" xml:"ShareType,omitempty"`
+	Tags            []*ListTemplatesResponseBodyTemplatesTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	TemplateARN     *string                                   `json:"TemplateARN,omitempty" xml:"TemplateARN,omitempty"`
+	TemplateId      *string                                   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateName    *string                                   `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateVersion *string                                   `json:"TemplateVersion,omitempty" xml:"TemplateVersion,omitempty"`
+	UpdateTime      *string                                   `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
 func (s ListTemplatesResponseBodyTemplates) String() string {
@@ -9629,6 +9723,11 @@ func (s *ListTemplatesResponseBodyTemplates) SetShareType(v string) *ListTemplat
 	return s
 }
 
+func (s *ListTemplatesResponseBodyTemplates) SetTags(v []*ListTemplatesResponseBodyTemplatesTags) *ListTemplatesResponseBodyTemplates {
+	s.Tags = v
+	return s
+}
+
 func (s *ListTemplatesResponseBodyTemplates) SetTemplateARN(v string) *ListTemplatesResponseBodyTemplates {
 	s.TemplateARN = &v
 	return s
@@ -9651,6 +9750,29 @@ func (s *ListTemplatesResponseBodyTemplates) SetTemplateVersion(v string) *ListT
 
 func (s *ListTemplatesResponseBodyTemplates) SetUpdateTime(v string) *ListTemplatesResponseBodyTemplates {
 	s.UpdateTime = &v
+	return s
+}
+
+type ListTemplatesResponseBodyTemplatesTags struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ListTemplatesResponseBodyTemplatesTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTemplatesResponseBodyTemplatesTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListTemplatesResponseBodyTemplatesTags) SetKey(v string) *ListTemplatesResponseBodyTemplatesTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTemplatesResponseBodyTemplatesTags) SetValue(v string) *ListTemplatesResponseBodyTemplatesTags {
+	s.Value = &v
 	return s
 }
 
@@ -14385,6 +14507,10 @@ func (client *Client) GetTemplateWithOptions(request *GetTemplateRequest, runtim
 		query["IncludePermission"] = request.IncludePermission
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.IncludeTags)) {
+		query["IncludeTags"] = request.IncludeTags
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
 	}
@@ -15691,6 +15817,10 @@ func (client *Client) ListTemplatesWithOptions(request *ListTemplatesRequest, ru
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IncludeTags)) {
+		query["IncludeTags"] = request.IncludeTags
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
