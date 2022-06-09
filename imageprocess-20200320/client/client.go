@@ -3016,6 +3016,7 @@ type ScreenChestCTRequest struct {
 	OrgId      *string                        `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	OrgName    *string                        `json:"OrgName,omitempty" xml:"OrgName,omitempty"`
 	URLList    []*ScreenChestCTRequestURLList `json:"URLList,omitempty" xml:"URLList,omitempty" type:"Repeated"`
+	Verbose    *int64                         `json:"Verbose,omitempty" xml:"Verbose,omitempty"`
 }
 
 func (s ScreenChestCTRequest) String() string {
@@ -3048,6 +3049,11 @@ func (s *ScreenChestCTRequest) SetOrgName(v string) *ScreenChestCTRequest {
 
 func (s *ScreenChestCTRequest) SetURLList(v []*ScreenChestCTRequestURLList) *ScreenChestCTRequest {
 	s.URLList = v
+	return s
+}
+
+func (s *ScreenChestCTRequest) SetVerbose(v int64) *ScreenChestCTRequest {
+	s.Verbose = &v
 	return s
 }
 
@@ -3098,6 +3104,7 @@ type ScreenChestCTResponseBodyData struct {
 	DetectRibFracture  *ScreenChestCTResponseBodyDataDetectRibFracture  `json:"DetectRibFracture,omitempty" xml:"DetectRibFracture,omitempty" type:"Struct"`
 	ErrorMessage       *string                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	LungNodule         *ScreenChestCTResponseBodyDataLungNodule         `json:"LungNodule,omitempty" xml:"LungNodule,omitempty" type:"Struct"`
+	URLList            map[string]interface{}                           `json:"URLList,omitempty" xml:"URLList,omitempty"`
 }
 
 func (s ScreenChestCTResponseBodyData) String() string {
@@ -3135,6 +3142,11 @@ func (s *ScreenChestCTResponseBodyData) SetErrorMessage(v string) *ScreenChestCT
 
 func (s *ScreenChestCTResponseBodyData) SetLungNodule(v *ScreenChestCTResponseBodyDataLungNodule) *ScreenChestCTResponseBodyData {
 	s.LungNodule = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyData) SetURLList(v map[string]interface{}) *ScreenChestCTResponseBodyData {
+	s.URLList = v
 	return s
 }
 
@@ -5270,6 +5282,10 @@ func (client *Client) ScreenChestCTWithOptions(request *ScreenChestCTRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.URLList)) {
 		body["URLList"] = request.URLList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Verbose)) {
+		body["Verbose"] = request.Verbose
 	}
 
 	req := &openapi.OpenApiRequest{
