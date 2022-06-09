@@ -1442,6 +1442,7 @@ func (s *CreateDcdnDeliverTaskRequest) SetSchedule(v string) *CreateDcdnDeliverT
 }
 
 type CreateDcdnDeliverTaskResponseBody struct {
+	DeliverId *string `json:"DeliverId,omitempty" xml:"DeliverId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -1451,6 +1452,11 @@ func (s CreateDcdnDeliverTaskResponseBody) String() string {
 
 func (s CreateDcdnDeliverTaskResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDcdnDeliverTaskResponseBody) SetDeliverId(v string) *CreateDcdnDeliverTaskResponseBody {
+	s.DeliverId = &v
+	return s
 }
 
 func (s *CreateDcdnDeliverTaskResponseBody) SetRequestId(v string) *CreateDcdnDeliverTaskResponseBody {
@@ -6620,6 +6626,157 @@ func (s *DescribeDcdnDomainIpaBpsDataResponse) SetStatusCode(v int32) *DescribeD
 }
 
 func (s *DescribeDcdnDomainIpaBpsDataResponse) SetBody(v *DescribeDcdnDomainIpaBpsDataResponseBody) *DescribeDcdnDomainIpaBpsDataResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDcdnDomainIpaConnDataRequest struct {
+	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	EndTime    *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	SplitBy    *string `json:"SplitBy,omitempty" xml:"SplitBy,omitempty"`
+	StartTime  *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDcdnDomainIpaConnDataRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainIpaConnDataRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainIpaConnDataRequest) SetDomainName(v string) *DescribeDcdnDomainIpaConnDataRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainIpaConnDataRequest) SetEndTime(v string) *DescribeDcdnDomainIpaConnDataRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainIpaConnDataRequest) SetOwnerId(v int64) *DescribeDcdnDomainIpaConnDataRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainIpaConnDataRequest) SetSplitBy(v string) *DescribeDcdnDomainIpaConnDataRequest {
+	s.SplitBy = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainIpaConnDataRequest) SetStartTime(v string) *DescribeDcdnDomainIpaConnDataRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDcdnDomainIpaConnDataResponseBody struct {
+	ConnectionDataPerInterval *DescribeDcdnDomainIpaConnDataResponseBodyConnectionDataPerInterval `json:"ConnectionDataPerInterval,omitempty" xml:"ConnectionDataPerInterval,omitempty" type:"Struct"`
+	EndTime                   *string                                                             `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	RequestId                 *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime                 *string                                                             `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeDcdnDomainIpaConnDataResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainIpaConnDataResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainIpaConnDataResponseBody) SetConnectionDataPerInterval(v *DescribeDcdnDomainIpaConnDataResponseBodyConnectionDataPerInterval) *DescribeDcdnDomainIpaConnDataResponseBody {
+	s.ConnectionDataPerInterval = v
+	return s
+}
+
+func (s *DescribeDcdnDomainIpaConnDataResponseBody) SetEndTime(v string) *DescribeDcdnDomainIpaConnDataResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainIpaConnDataResponseBody) SetRequestId(v string) *DescribeDcdnDomainIpaConnDataResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainIpaConnDataResponseBody) SetStartTime(v string) *DescribeDcdnDomainIpaConnDataResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeDcdnDomainIpaConnDataResponseBodyConnectionDataPerInterval struct {
+	DataModule []*DescribeDcdnDomainIpaConnDataResponseBodyConnectionDataPerIntervalDataModule `json:"DataModule,omitempty" xml:"DataModule,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDcdnDomainIpaConnDataResponseBodyConnectionDataPerInterval) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainIpaConnDataResponseBodyConnectionDataPerInterval) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainIpaConnDataResponseBodyConnectionDataPerInterval) SetDataModule(v []*DescribeDcdnDomainIpaConnDataResponseBodyConnectionDataPerIntervalDataModule) *DescribeDcdnDomainIpaConnDataResponseBodyConnectionDataPerInterval {
+	s.DataModule = v
+	return s
+}
+
+type DescribeDcdnDomainIpaConnDataResponseBodyConnectionDataPerIntervalDataModule struct {
+	Connections *int64  `json:"Connections,omitempty" xml:"Connections,omitempty"`
+	Domain      *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	TimeStamp   *string `json:"TimeStamp,omitempty" xml:"TimeStamp,omitempty"`
+}
+
+func (s DescribeDcdnDomainIpaConnDataResponseBodyConnectionDataPerIntervalDataModule) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainIpaConnDataResponseBodyConnectionDataPerIntervalDataModule) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainIpaConnDataResponseBodyConnectionDataPerIntervalDataModule) SetConnections(v int64) *DescribeDcdnDomainIpaConnDataResponseBodyConnectionDataPerIntervalDataModule {
+	s.Connections = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainIpaConnDataResponseBodyConnectionDataPerIntervalDataModule) SetDomain(v string) *DescribeDcdnDomainIpaConnDataResponseBodyConnectionDataPerIntervalDataModule {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainIpaConnDataResponseBodyConnectionDataPerIntervalDataModule) SetTimeStamp(v string) *DescribeDcdnDomainIpaConnDataResponseBodyConnectionDataPerIntervalDataModule {
+	s.TimeStamp = &v
+	return s
+}
+
+type DescribeDcdnDomainIpaConnDataResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDcdnDomainIpaConnDataResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnDomainIpaConnDataResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnDomainIpaConnDataResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnDomainIpaConnDataResponse) SetHeaders(v map[string]*string) *DescribeDcdnDomainIpaConnDataResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnDomainIpaConnDataResponse) SetStatusCode(v int32) *DescribeDcdnDomainIpaConnDataResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDcdnDomainIpaConnDataResponse) SetBody(v *DescribeDcdnDomainIpaConnDataResponseBody) *DescribeDcdnDomainIpaConnDataResponse {
 	s.Body = v
 	return s
 }
@@ -22150,6 +22307,99 @@ func (s *SetDcdnDomainStagingConfigResponse) SetBody(v *SetDcdnDomainStagingConf
 	return s
 }
 
+type SetDcdnFullDomainsBlockIPRequest struct {
+	BlockInterval *int32  `json:"BlockInterval,omitempty" xml:"BlockInterval,omitempty"`
+	IPList        *string `json:"IPList,omitempty" xml:"IPList,omitempty"`
+	OperationType *string `json:"OperationType,omitempty" xml:"OperationType,omitempty"`
+	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s SetDcdnFullDomainsBlockIPRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDcdnFullDomainsBlockIPRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetDcdnFullDomainsBlockIPRequest) SetBlockInterval(v int32) *SetDcdnFullDomainsBlockIPRequest {
+	s.BlockInterval = &v
+	return s
+}
+
+func (s *SetDcdnFullDomainsBlockIPRequest) SetIPList(v string) *SetDcdnFullDomainsBlockIPRequest {
+	s.IPList = &v
+	return s
+}
+
+func (s *SetDcdnFullDomainsBlockIPRequest) SetOperationType(v string) *SetDcdnFullDomainsBlockIPRequest {
+	s.OperationType = &v
+	return s
+}
+
+func (s *SetDcdnFullDomainsBlockIPRequest) SetOwnerId(v int64) *SetDcdnFullDomainsBlockIPRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type SetDcdnFullDomainsBlockIPResponseBody struct {
+	Code      *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetDcdnFullDomainsBlockIPResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDcdnFullDomainsBlockIPResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetDcdnFullDomainsBlockIPResponseBody) SetCode(v int32) *SetDcdnFullDomainsBlockIPResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SetDcdnFullDomainsBlockIPResponseBody) SetMessage(v string) *SetDcdnFullDomainsBlockIPResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *SetDcdnFullDomainsBlockIPResponseBody) SetRequestId(v string) *SetDcdnFullDomainsBlockIPResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetDcdnFullDomainsBlockIPResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetDcdnFullDomainsBlockIPResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetDcdnFullDomainsBlockIPResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetDcdnFullDomainsBlockIPResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetDcdnFullDomainsBlockIPResponse) SetHeaders(v map[string]*string) *SetDcdnFullDomainsBlockIPResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetDcdnFullDomainsBlockIPResponse) SetStatusCode(v int32) *SetDcdnFullDomainsBlockIPResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetDcdnFullDomainsBlockIPResponse) SetBody(v *SetDcdnFullDomainsBlockIPResponseBody) *SetDcdnFullDomainsBlockIPResponse {
+	s.Body = v
+	return s
+}
+
 type SetDcdnUserConfigRequest struct {
 	Configs       *string `json:"Configs,omitempty" xml:"Configs,omitempty"`
 	FunctionId    *int32  `json:"FunctionId,omitempty" xml:"FunctionId,omitempty"`
@@ -27133,6 +27383,66 @@ func (client *Client) DescribeDcdnDomainIpaBpsData(request *DescribeDcdnDomainIp
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDcdnDomainIpaBpsDataResponse{}
 	_body, _err := client.DescribeDcdnDomainIpaBpsDataWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnDomainIpaConnDataWithOptions(request *DescribeDcdnDomainIpaConnDataRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnDomainIpaConnDataResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["DomainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SplitBy)) {
+		query["SplitBy"] = request.SplitBy
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnDomainIpaConnData"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnDomainIpaConnDataResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnDomainIpaConnData(request *DescribeDcdnDomainIpaConnDataRequest) (_result *DescribeDcdnDomainIpaConnDataResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnDomainIpaConnDataResponse{}
+	_body, _err := client.DescribeDcdnDomainIpaConnDataWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33255,6 +33565,64 @@ func (client *Client) SetDcdnDomainStagingConfig(request *SetDcdnDomainStagingCo
 	runtime := &util.RuntimeOptions{}
 	_result = &SetDcdnDomainStagingConfigResponse{}
 	_body, _err := client.SetDcdnDomainStagingConfigWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetDcdnFullDomainsBlockIPWithOptions(request *SetDcdnFullDomainsBlockIPRequest, runtime *util.RuntimeOptions) (_result *SetDcdnFullDomainsBlockIPResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BlockInterval)) {
+		body["BlockInterval"] = request.BlockInterval
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IPList)) {
+		body["IPList"] = request.IPList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperationType)) {
+		body["OperationType"] = request.OperationType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetDcdnFullDomainsBlockIP"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetDcdnFullDomainsBlockIPResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetDcdnFullDomainsBlockIP(request *SetDcdnFullDomainsBlockIPRequest) (_result *SetDcdnFullDomainsBlockIPResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetDcdnFullDomainsBlockIPResponse{}
+	_body, _err := client.SetDcdnFullDomainsBlockIPWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
