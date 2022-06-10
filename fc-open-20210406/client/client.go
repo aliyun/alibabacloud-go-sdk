@@ -5,14 +5,11 @@
 package client
 
 import (
-	fcutil "github.com/alibabacloud-go/alibabacloud-gateway-fc-util/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
 	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
-	
-	"net/http"
 )
 
 type AccelerationInfo struct {
@@ -62,6 +59,63 @@ func (s *AsyncConfigMeta) SetQualifier(v string) *AsyncConfigMeta {
 
 func (s *AsyncConfigMeta) SetServiceName(v string) *AsyncConfigMeta {
 	s.ServiceName = &v
+	return s
+}
+
+type AvailableAZ struct {
+	// az
+	AvailableAZs *string `json:"availableAZs,omitempty" xml:"availableAZs,omitempty"`
+}
+
+func (s AvailableAZ) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AvailableAZ) GoString() string {
+	return s.String()
+}
+
+func (s *AvailableAZ) SetAvailableAZs(v string) *AvailableAZ {
+	s.AvailableAZs = &v
+	return s
+}
+
+type CDNEventsTriggerConfig struct {
+	// eventName
+	EventName *string `json:"eventName,omitempty" xml:"eventName,omitempty"`
+	// eventVersion
+	EventVersion *string `json:"eventVersion,omitempty" xml:"eventVersion,omitempty"`
+	// filter
+	Filter map[string][]*string `json:"filter,omitempty" xml:"filter,omitempty"`
+	// notes
+	Notes *string `json:"notes,omitempty" xml:"notes,omitempty"`
+}
+
+func (s CDNEventsTriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CDNEventsTriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CDNEventsTriggerConfig) SetEventName(v string) *CDNEventsTriggerConfig {
+	s.EventName = &v
+	return s
+}
+
+func (s *CDNEventsTriggerConfig) SetEventVersion(v string) *CDNEventsTriggerConfig {
+	s.EventVersion = &v
+	return s
+}
+
+func (s *CDNEventsTriggerConfig) SetFilter(v map[string][]*string) *CDNEventsTriggerConfig {
+	s.Filter = v
+	return s
+}
+
+func (s *CDNEventsTriggerConfig) SetNotes(v string) *CDNEventsTriggerConfig {
+	s.Notes = &v
 	return s
 }
 
@@ -350,6 +404,81 @@ func (s *DestinationConfig) SetOnSuccess(v *Destination) *DestinationConfig {
 	return s
 }
 
+type Error struct {
+	// 错误码
+	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
+	// 错误信息描述
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+}
+
+func (s Error) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Error) GoString() string {
+	return s.String()
+}
+
+func (s *Error) SetErrorCode(v string) *Error {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *Error) SetErrorMessage(v string) *Error {
+	s.ErrorMessage = &v
+	return s
+}
+
+type ErrorInfo struct {
+	// 错误信息
+	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	// 错误堆栈
+	StackTrace *string `json:"stackTrace,omitempty" xml:"stackTrace,omitempty"`
+}
+
+func (s ErrorInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ErrorInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ErrorInfo) SetErrorMessage(v string) *ErrorInfo {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ErrorInfo) SetStackTrace(v string) *ErrorInfo {
+	s.StackTrace = &v
+	return s
+}
+
+type HTTPTriggerConfig struct {
+	// 认证类型
+	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
+	// 允许的HTTP方法列表
+	Methods []*string `json:"methods,omitempty" xml:"methods,omitempty" type:"Repeated"`
+}
+
+func (s HTTPTriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s HTTPTriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *HTTPTriggerConfig) SetAuthType(v string) *HTTPTriggerConfig {
+	s.AuthType = &v
+	return s
+}
+
+func (s *HTTPTriggerConfig) SetMethods(v []*string) *HTTPTriggerConfig {
+	s.Methods = v
+	return s
+}
+
 type InstanceLifecycleConfig struct {
 	PreFreeze *LifecycleHook `json:"preFreeze,omitempty" xml:"preFreeze,omitempty"`
 	PreStop   *LifecycleHook `json:"preStop,omitempty" xml:"preStop,omitempty"`
@@ -388,6 +517,56 @@ func (s JaegerConfig) GoString() string {
 
 func (s *JaegerConfig) SetEndpoint(v string) *JaegerConfig {
 	s.Endpoint = &v
+	return s
+}
+
+type JobConfig struct {
+	// maxRetryTime
+	MaxRetryTime *int64 `json:"maxRetryTime,omitempty" xml:"maxRetryTime,omitempty"`
+	// triggerInterval
+	TriggerInterval *int64 `json:"triggerInterval,omitempty" xml:"triggerInterval,omitempty"`
+}
+
+func (s JobConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JobConfig) GoString() string {
+	return s.String()
+}
+
+func (s *JobConfig) SetMaxRetryTime(v int64) *JobConfig {
+	s.MaxRetryTime = &v
+	return s
+}
+
+func (s *JobConfig) SetTriggerInterval(v int64) *JobConfig {
+	s.TriggerInterval = &v
+	return s
+}
+
+type JobLogConfig struct {
+	// logstore
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// project
+	Project *string `json:"project,omitempty" xml:"project,omitempty"`
+}
+
+func (s JobLogConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s JobLogConfig) GoString() string {
+	return s.String()
+}
+
+func (s *JobLogConfig) SetLogstore(v string) *JobLogConfig {
+	s.Logstore = &v
+	return s
+}
+
+func (s *JobLogConfig) SetProject(v string) *JobLogConfig {
+	s.Project = &v
 	return s
 }
 
@@ -568,6 +747,49 @@ func (s *LogConfig) SetProject(v string) *LogConfig {
 	return s
 }
 
+type LogTriggerConfig struct {
+	// enable
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// functionParameter
+	FunctionParameter map[string]*string `json:"functionParameter,omitempty" xml:"functionParameter,omitempty"`
+	JobConfig         *JobConfig         `json:"jobConfig,omitempty" xml:"jobConfig,omitempty"`
+	LogConfig         *JobLogConfig      `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
+	SourceConfig      *SourceConfig      `json:"sourceConfig,omitempty" xml:"sourceConfig,omitempty"`
+}
+
+func (s LogTriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogTriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *LogTriggerConfig) SetEnable(v bool) *LogTriggerConfig {
+	s.Enable = &v
+	return s
+}
+
+func (s *LogTriggerConfig) SetFunctionParameter(v map[string]*string) *LogTriggerConfig {
+	s.FunctionParameter = v
+	return s
+}
+
+func (s *LogTriggerConfig) SetJobConfig(v *JobConfig) *LogTriggerConfig {
+	s.JobConfig = v
+	return s
+}
+
+func (s *LogTriggerConfig) SetLogConfig(v *JobLogConfig) *LogTriggerConfig {
+	s.LogConfig = v
+	return s
+}
+
+func (s *LogTriggerConfig) SetSourceConfig(v *SourceConfig) *LogTriggerConfig {
+	s.SourceConfig = v
+	return s
+}
+
 type MeteringConfig struct {
 	// 日志仓库
 	LogConfig *LogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty"`
@@ -597,6 +819,38 @@ func (s *MeteringConfig) SetPayerId(v string) *MeteringConfig {
 
 func (s *MeteringConfig) SetRole(v string) *MeteringConfig {
 	s.Role = &v
+	return s
+}
+
+type MnsTopicTriggerConfig struct {
+	// filterTag
+	FilterTag *string `json:"filterTag,omitempty" xml:"filterTag,omitempty"`
+	// notifyContentFormat
+	NotifyContentFormat *string `json:"notifyContentFormat,omitempty" xml:"notifyContentFormat,omitempty"`
+	// notifyStrategy
+	NotifyStrategy *string `json:"notifyStrategy,omitempty" xml:"notifyStrategy,omitempty"`
+}
+
+func (s MnsTopicTriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MnsTopicTriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *MnsTopicTriggerConfig) SetFilterTag(v string) *MnsTopicTriggerConfig {
+	s.FilterTag = &v
+	return s
+}
+
+func (s *MnsTopicTriggerConfig) SetNotifyContentFormat(v string) *MnsTopicTriggerConfig {
+	s.NotifyContentFormat = &v
+	return s
+}
+
+func (s *MnsTopicTriggerConfig) SetNotifyStrategy(v string) *MnsTopicTriggerConfig {
+	s.NotifyStrategy = &v
 	return s
 }
 
@@ -654,6 +908,72 @@ func (s *NASConfigMountPoints) SetMountDir(v string) *NASConfigMountPoints {
 
 func (s *NASConfigMountPoints) SetServerAddr(v string) *NASConfigMountPoints {
 	s.ServerAddr = &v
+	return s
+}
+
+type OSSTriggerConfig struct {
+	// events
+	Events []*string         `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
+	Filter *OSSTriggerFilter `json:"filter,omitempty" xml:"filter,omitempty"`
+}
+
+func (s OSSTriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OSSTriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *OSSTriggerConfig) SetEvents(v []*string) *OSSTriggerConfig {
+	s.Events = v
+	return s
+}
+
+func (s *OSSTriggerConfig) SetFilter(v *OSSTriggerFilter) *OSSTriggerConfig {
+	s.Filter = v
+	return s
+}
+
+type OSSTriggerFilter struct {
+	Key *OSSTriggerKey `json:"key,omitempty" xml:"key,omitempty"`
+}
+
+func (s OSSTriggerFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OSSTriggerFilter) GoString() string {
+	return s.String()
+}
+
+func (s *OSSTriggerFilter) SetKey(v *OSSTriggerKey) *OSSTriggerFilter {
+	s.Key = v
+	return s
+}
+
+type OSSTriggerKey struct {
+	// prefix
+	Prefix *string `json:"prefix,omitempty" xml:"prefix,omitempty"`
+	// suffix
+	Suffix *string `json:"suffix,omitempty" xml:"suffix,omitempty"`
+}
+
+func (s OSSTriggerKey) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OSSTriggerKey) GoString() string {
+	return s.String()
+}
+
+func (s *OSSTriggerKey) SetPrefix(v string) *OSSTriggerKey {
+	s.Prefix = &v
+	return s
+}
+
+func (s *OSSTriggerKey) SetSuffix(v string) *OSSTriggerKey {
+	s.Suffix = &v
 	return s
 }
 
@@ -806,6 +1126,95 @@ func (s *PathConfig) SetServiceName(v string) *PathConfig {
 	return s
 }
 
+type PreFreeze struct {
+	// preFreeze handler name
+	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
+	// handler timeout
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+}
+
+func (s PreFreeze) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreFreeze) GoString() string {
+	return s.String()
+}
+
+func (s *PreFreeze) SetHandler(v string) *PreFreeze {
+	s.Handler = &v
+	return s
+}
+
+func (s *PreFreeze) SetTimeout(v int32) *PreFreeze {
+	s.Timeout = &v
+	return s
+}
+
+type PreStop struct {
+	// PreStop handler
+	Handler *string `json:"handler,omitempty" xml:"handler,omitempty"`
+	// PreStop hander timeout
+	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
+}
+
+func (s PreStop) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PreStop) GoString() string {
+	return s.String()
+}
+
+func (s *PreStop) SetHandler(v string) *PreStop {
+	s.Handler = &v
+	return s
+}
+
+func (s *PreStop) SetTimeout(v int32) *PreStop {
+	s.Timeout = &v
+	return s
+}
+
+type RdsTriggerConfig struct {
+	// concurrency
+	Concurrency *int64 `json:"concurrency,omitempty" xml:"concurrency,omitempty"`
+	// eventFormat
+	EventFormat *string `json:"eventFormat,omitempty" xml:"eventFormat,omitempty"`
+	// retry
+	Retry *int64 `json:"retry,omitempty" xml:"retry,omitempty"`
+	// subscriptionObjects
+	SubscriptionObjects []*string `json:"subscriptionObjects,omitempty" xml:"subscriptionObjects,omitempty" type:"Repeated"`
+}
+
+func (s RdsTriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RdsTriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *RdsTriggerConfig) SetConcurrency(v int64) *RdsTriggerConfig {
+	s.Concurrency = &v
+	return s
+}
+
+func (s *RdsTriggerConfig) SetEventFormat(v string) *RdsTriggerConfig {
+	s.EventFormat = &v
+	return s
+}
+
+func (s *RdsTriggerConfig) SetRetry(v int64) *RdsTriggerConfig {
+	s.Retry = &v
+	return s
+}
+
+func (s *RdsTriggerConfig) SetSubscriptionObjects(v []*string) *RdsTriggerConfig {
+	s.SubscriptionObjects = v
+	return s
+}
+
 type Resource struct {
 	// resourceArn
 	ResourceArn *string `json:"resourceArn,omitempty" xml:"resourceArn,omitempty"`
@@ -892,6 +1301,24 @@ func (s *ScheduledActions) SetStartTime(v string) *ScheduledActions {
 
 func (s *ScheduledActions) SetTarget(v int64) *ScheduledActions {
 	s.Target = &v
+	return s
+}
+
+type SourceConfig struct {
+	// logstore
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+}
+
+func (s SourceConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SourceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *SourceConfig) SetLogstore(v string) *SourceConfig {
+	s.Logstore = &v
 	return s
 }
 
@@ -1135,11 +1562,42 @@ func (s *TargetTrackingPolicies) SetStartTime(v string) *TargetTrackingPolicies 
 	return s
 }
 
+type TimeTriggerConfig struct {
+	// cronExpression
+	CronExpression *string `json:"cronExpression,omitempty" xml:"cronExpression,omitempty"`
+	// enable
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// payload
+	Payload *string `json:"payload,omitempty" xml:"payload,omitempty"`
+}
+
+func (s TimeTriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TimeTriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *TimeTriggerConfig) SetCronExpression(v string) *TimeTriggerConfig {
+	s.CronExpression = &v
+	return s
+}
+
+func (s *TimeTriggerConfig) SetEnable(v bool) *TimeTriggerConfig {
+	s.Enable = &v
+	return s
+}
+
+func (s *TimeTriggerConfig) SetPayload(v string) *TimeTriggerConfig {
+	s.Payload = &v
+	return s
+}
+
 type TracingConfig struct {
-	JaegerConfig *JaegerConfig `json:"jaegerConfig,omitempty" xml:"jaegerConfig,omitempty"`
-	// 链路追踪参数
+	// 链路追踪参数。当协议类型为 Jaeger 时，参数为 map[string]string，其中 key 为 "endpoint"，value 为您的链路追踪内网接入点。例如 endpoint: http://tracing-analysis-dc-hz.aliyuncs.com/adapt_xxx/api/otlp/traces
 	Params map[string]*string `json:"params,omitempty" xml:"params,omitempty"`
-	// 链路追踪类型
+	// 链路追踪协议类型，目前只支持 Jaeger
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -1149,11 +1607,6 @@ func (s TracingConfig) String() string {
 
 func (s TracingConfig) GoString() string {
 	return s.String()
-}
-
-func (s *TracingConfig) SetJaegerConfig(v *JaegerConfig) *TracingConfig {
-	s.JaegerConfig = v
-	return s
 }
 
 func (s *TracingConfig) SetParams(v map[string]*string) *TracingConfig {
@@ -2120,7 +2573,6 @@ type CreateServiceRequest struct {
 	// 服务名称
 	ServiceName   *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VendorConfig  *VendorConfig  `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
 	VpcConfig     *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
@@ -2167,11 +2619,6 @@ func (s *CreateServiceRequest) SetTracingConfig(v *TracingConfig) *CreateService
 	return s
 }
 
-func (s *CreateServiceRequest) SetVendorConfig(v *VendorConfig) *CreateServiceRequest {
-	s.VendorConfig = v
-	return s
-}
-
 func (s *CreateServiceRequest) SetVpcConfig(v *VPCConfig) *CreateServiceRequest {
 	s.VpcConfig = v
 	return s
@@ -2195,7 +2642,6 @@ type CreateServiceResponseBody struct {
 	// 服务名称
 	ServiceName   *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VendorConfig  *VendorConfig  `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
 	VpcConfig     *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
@@ -2254,11 +2700,6 @@ func (s *CreateServiceResponseBody) SetServiceName(v string) *CreateServiceRespo
 
 func (s *CreateServiceResponseBody) SetTracingConfig(v *TracingConfig) *CreateServiceResponseBody {
 	s.TracingConfig = v
-	return s
-}
-
-func (s *CreateServiceResponseBody) SetVendorConfig(v *VendorConfig) *CreateServiceResponseBody {
-	s.VendorConfig = v
 	return s
 }
 
@@ -2411,6 +2852,10 @@ type CreateTriggerResponseBody struct {
 	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
 	// trigger类型，如 oss, log, tablestore, timer, http, cdn_events, mns_topic
 	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
+	// 公网域名地址。在互联网可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
+	UrlInternet *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
+	// 私网域名地址。在VPC可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
+	UrlIntranet *string `json:"urlIntranet,omitempty" xml:"urlIntranet,omitempty"`
 }
 
 func (s CreateTriggerResponseBody) String() string {
@@ -2473,6 +2918,16 @@ func (s *CreateTriggerResponseBody) SetTriggerName(v string) *CreateTriggerRespo
 
 func (s *CreateTriggerResponseBody) SetTriggerType(v string) *CreateTriggerResponseBody {
 	s.TriggerType = &v
+	return s
+}
+
+func (s *CreateTriggerResponseBody) SetUrlInternet(v string) *CreateTriggerResponseBody {
+	s.UrlInternet = &v
+	return s
+}
+
+func (s *CreateTriggerResponseBody) SetUrlIntranet(v string) *CreateTriggerResponseBody {
+	s.UrlIntranet = &v
 	return s
 }
 
@@ -4633,7 +5088,6 @@ type GetServiceResponseBody struct {
 	// 服务名称
 	ServiceName   *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VendorConfig  *VendorConfig  `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
 	VpcConfig     *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
@@ -4692,11 +5146,6 @@ func (s *GetServiceResponseBody) SetServiceName(v string) *GetServiceResponseBod
 
 func (s *GetServiceResponseBody) SetTracingConfig(v *TracingConfig) *GetServiceResponseBody {
 	s.TracingConfig = v
-	return s
-}
-
-func (s *GetServiceResponseBody) SetVendorConfig(v *VendorConfig) *GetServiceResponseBody {
-	s.VendorConfig = v
 	return s
 }
 
@@ -4889,6 +5338,10 @@ type GetTriggerResponseBody struct {
 	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
 	// trigger类型，如 oss, log, tablestore, timer, http, cdn_events, mns_topic
 	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
+	// 公网域名地址。在互联网可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
+	UrlInternet *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
+	// 私网域名地址。在VPC可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
+	UrlIntranet *string `json:"urlIntranet,omitempty" xml:"urlIntranet,omitempty"`
 }
 
 func (s GetTriggerResponseBody) String() string {
@@ -4951,6 +5404,16 @@ func (s *GetTriggerResponseBody) SetTriggerName(v string) *GetTriggerResponseBod
 
 func (s *GetTriggerResponseBody) SetTriggerType(v string) *GetTriggerResponseBody {
 	s.TriggerType = &v
+	return s
+}
+
+func (s *GetTriggerResponseBody) SetUrlInternet(v string) *GetTriggerResponseBody {
+	s.UrlInternet = &v
+	return s
+}
+
+func (s *GetTriggerResponseBody) SetUrlIntranet(v string) *GetTriggerResponseBody {
+	s.UrlIntranet = &v
 	return s
 }
 
@@ -6070,6 +6533,136 @@ func (s *ListFunctionsResponse) SetBody(v *ListFunctionsResponseBody) *ListFunct
 	return s
 }
 
+type ListInstancesHeaders struct {
+	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
+	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+}
+
+func (s ListInstancesHeaders) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesHeaders) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesHeaders) SetCommonHeaders(v map[string]*string) *ListInstancesHeaders {
+	s.CommonHeaders = v
+	return s
+}
+
+func (s *ListInstancesHeaders) SetXFcAccountId(v string) *ListInstancesHeaders {
+	s.XFcAccountId = &v
+	return s
+}
+
+type ListInstancesRequest struct {
+	// 实例ID
+	InstanceIds []*string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty" type:"Repeated"`
+	// 限定此次返回资源的数量，取值范围[0,1000]。
+	//
+	// 返回结果可以小于指定的数量，但不能多于指定的数量。
+	Limit *int32 `json:"limit,omitempty" xml:"limit,omitempty"`
+	// 服务的版本或别名。默认是LATEST。
+	//
+	// 此处的qualifier同InvokeFunction的qualifier含义一致，即调用ListInstances时指定qualifier=test查询出来的实例，就是调用InvokeFunction时qualifier=test链路上的实例。
+	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
+}
+
+func (s ListInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesRequest) SetInstanceIds(v []*string) *ListInstancesRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *ListInstancesRequest) SetLimit(v int32) *ListInstancesRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetQualifier(v string) *ListInstancesRequest {
+	s.Qualifier = &v
+	return s
+}
+
+type ListInstancesResponseBody struct {
+	Instances []*ListInstancesResponseBodyInstances `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
+}
+
+func (s ListInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBody) SetInstances(v []*ListInstancesResponseBodyInstances) *ListInstancesResponseBody {
+	s.Instances = v
+	return s
+}
+
+type ListInstancesResponseBodyInstances struct {
+	// 实例ID。
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// 实例所属的服务版本。如果是LATEST别名下的函数实例，则返回版本号为0。
+	VersionId *string `json:"versionId,omitempty" xml:"versionId,omitempty"`
+}
+
+func (s ListInstancesResponseBodyInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponseBodyInstances) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponseBodyInstances) SetInstanceId(v string) *ListInstancesResponseBodyInstances {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetVersionId(v string) *ListInstancesResponseBodyInstances {
+	s.VersionId = &v
+	return s
+}
+
+type ListInstancesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListInstancesResponse) SetHeaders(v map[string]*string) *ListInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListInstancesResponse) SetStatusCode(v int32) *ListInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListInstancesResponse) SetBody(v *ListInstancesResponseBody) *ListInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type ListLayerVersionsHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
@@ -7032,7 +7625,6 @@ type ListServicesResponseBodyServices struct {
 	// 服务信息
 	ServiceName   *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VendorConfig  *VendorConfig  `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
 	VpcConfig     *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
@@ -7091,11 +7683,6 @@ func (s *ListServicesResponseBodyServices) SetServiceName(v string) *ListService
 
 func (s *ListServicesResponseBodyServices) SetTracingConfig(v *TracingConfig) *ListServicesResponseBodyServices {
 	s.TracingConfig = v
-	return s
-}
-
-func (s *ListServicesResponseBodyServices) SetVendorConfig(v *VendorConfig) *ListServicesResponseBodyServices {
-	s.VendorConfig = v
 	return s
 }
 
@@ -7650,6 +8237,10 @@ type ListTriggersResponseBodyTriggers struct {
 	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
 	// trigger类型，如 oss, log, tablestore, timer, http, cdn_events, mns_topic
 	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
+	// 公网域名地址。在互联网可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
+	UrlInternet *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
+	// 私网域名地址。在VPC可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
+	UrlIntranet *string `json:"urlIntranet,omitempty" xml:"urlIntranet,omitempty"`
 }
 
 func (s ListTriggersResponseBodyTriggers) String() string {
@@ -7712,6 +8303,16 @@ func (s *ListTriggersResponseBodyTriggers) SetTriggerName(v string) *ListTrigger
 
 func (s *ListTriggersResponseBodyTriggers) SetTriggerType(v string) *ListTriggersResponseBodyTriggers {
 	s.TriggerType = &v
+	return s
+}
+
+func (s *ListTriggersResponseBodyTriggers) SetUrlInternet(v string) *ListTriggersResponseBodyTriggers {
+	s.UrlInternet = &v
+	return s
+}
+
+func (s *ListTriggersResponseBodyTriggers) SetUrlIntranet(v string) *ListTriggersResponseBodyTriggers {
+	s.UrlIntranet = &v
 	return s
 }
 
@@ -9498,7 +10099,6 @@ type UpdateServiceRequest struct {
 	// 服务角色
 	Role          *string        `json:"role,omitempty" xml:"role,omitempty"`
 	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VendorConfig  *VendorConfig  `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
 	VpcConfig     *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
@@ -9540,11 +10140,6 @@ func (s *UpdateServiceRequest) SetTracingConfig(v *TracingConfig) *UpdateService
 	return s
 }
 
-func (s *UpdateServiceRequest) SetVendorConfig(v *VendorConfig) *UpdateServiceRequest {
-	s.VendorConfig = v
-	return s
-}
-
 func (s *UpdateServiceRequest) SetVpcConfig(v *VPCConfig) *UpdateServiceRequest {
 	s.VpcConfig = v
 	return s
@@ -9568,7 +10163,6 @@ type UpdateServiceResponseBody struct {
 	// 服务名称
 	ServiceName   *string        `json:"serviceName,omitempty" xml:"serviceName,omitempty"`
 	TracingConfig *TracingConfig `json:"tracingConfig,omitempty" xml:"tracingConfig,omitempty"`
-	VendorConfig  *VendorConfig  `json:"vendorConfig,omitempty" xml:"vendorConfig,omitempty"`
 	VpcConfig     *VPCConfig     `json:"vpcConfig,omitempty" xml:"vpcConfig,omitempty"`
 }
 
@@ -9627,11 +10221,6 @@ func (s *UpdateServiceResponseBody) SetServiceName(v string) *UpdateServiceRespo
 
 func (s *UpdateServiceResponseBody) SetTracingConfig(v *TracingConfig) *UpdateServiceResponseBody {
 	s.TracingConfig = v
-	return s
-}
-
-func (s *UpdateServiceResponseBody) SetVendorConfig(v *VendorConfig) *UpdateServiceResponseBody {
-	s.VendorConfig = v
 	return s
 }
 
@@ -9770,6 +10359,10 @@ type UpdateTriggerResponseBody struct {
 	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
 	// trigger类型，如 oss, log, tablestore, timer, http, cdn_events, mns_topic
 	TriggerType *string `json:"triggerType,omitempty" xml:"triggerType,omitempty"`
+	// 公网域名地址。在互联网可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
+	UrlInternet *string `json:"urlInternet,omitempty" xml:"urlInternet,omitempty"`
+	// 私网域名地址。在VPC可以通过HTTP协议或者HTTPS协议访问HTTP Trigger。
+	UrlIntranet *string `json:"urlIntranet,omitempty" xml:"urlIntranet,omitempty"`
 }
 
 func (s UpdateTriggerResponseBody) String() string {
@@ -9832,6 +10425,16 @@ func (s *UpdateTriggerResponseBody) SetTriggerName(v string) *UpdateTriggerRespo
 
 func (s *UpdateTriggerResponseBody) SetTriggerType(v string) *UpdateTriggerResponseBody {
 	s.TriggerType = &v
+	return s
+}
+
+func (s *UpdateTriggerResponseBody) SetUrlInternet(v string) *UpdateTriggerResponseBody {
+	s.UrlInternet = &v
+	return s
+}
+
+func (s *UpdateTriggerResponseBody) SetUrlIntranet(v string) *UpdateTriggerResponseBody {
+	s.UrlIntranet = &v
 	return s
 }
 
@@ -10341,10 +10944,6 @@ func (client *Client) CreateServiceWithOptions(request *CreateServiceRequest, he
 
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.TracingConfig))) {
 		body["tracingConfig"] = request.TracingConfig
-	}
-
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.VendorConfig))) {
-		body["vendorConfig"] = request.VendorConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.VpcConfig))) {
@@ -12458,6 +13057,71 @@ func (client *Client) ListFunctionsWithOptions(serviceName *string, request *Lis
 	return _result, _err
 }
 
+func (client *Client) ListInstances(serviceName *string, functionName *string, request *ListInstancesRequest) (_result *ListInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := &ListInstancesHeaders{}
+	_result = &ListInstancesResponse{}
+	_body, _err := client.ListInstancesWithOptions(serviceName, functionName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListInstancesWithOptions(serviceName *string, functionName *string, request *ListInstancesRequest, headers *ListInstancesHeaders, runtime *util.RuntimeOptions) (_result *ListInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	serviceName = openapiutil.GetEncodeParam(serviceName)
+	functionName = openapiutil.GetEncodeParam(functionName)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["instanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Qualifier)) {
+		query["qualifier"] = request.Qualifier
+	}
+
+	realHeaders := make(map[string]*string)
+	if !tea.BoolValue(util.IsUnset(headers.CommonHeaders)) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
+		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: realHeaders,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListInstances"),
+		Version:     tea.String("2021-04-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/2021-04-06/services/" + tea.StringValue(serviceName) + "/functions/" + tea.StringValue(functionName) + "/instances"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ListLayerVersions(layerName *string, request *ListLayerVersionsRequest) (_result *ListLayerVersionsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := &ListLayerVersionsHeaders{}
@@ -14260,10 +14924,6 @@ func (client *Client) UpdateServiceWithOptions(serviceName *string, request *Upd
 		body["tracingConfig"] = request.TracingConfig
 	}
 
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.VendorConfig))) {
-		body["vendorConfig"] = request.VendorConfig
-	}
-
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.VpcConfig))) {
 		body["vpcConfig"] = request.VpcConfig
 	}
@@ -14392,117 +15052,5 @@ func (client *Client) UpdateTriggerWithOptions(serviceName *string, functionName
 		return _result, _err
 	}
 	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) InvokeHTTPTrigger(url *string, method *string, body []byte, headers *http.Header) (_result interface{}, _err error) {
-	cred := client.Credential
-	utilClient, _err := fcutil.NewClient(cred)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = interface{}(nil)
-	_body, _err := utilClient.InvokeHTTPTrigger(url, method, body, headers)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) InvokeAnonymousHTTPTrigger(url *string, method *string, body []byte, headers *http.Header) (_result interface{}, _err error) {
-	cred := client.Credential
-	utilClient, _err := fcutil.NewClient(cred)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = interface{}(nil)
-	_body, _err := utilClient.InvokeAnonymousHTTPTrigger(url, method, body, headers)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SendHTTPRequestWithAuthorization(req *http.Request) (_result interface{}, _err error) {
-	cred := client.Credential
-	utilClient, _err := fcutil.NewClient(cred)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = interface{}(nil)
-	_body, _err := utilClient.SendHTTPRequestWithAuthorization(req)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SendHTTPRequest(req *http.Request) (_result interface{}, _err error) {
-	cred := client.Credential
-	utilClient, _err := fcutil.NewClient(cred)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = interface{}(nil)
-	_body, _err := utilClient.SendHTTPRequest(req)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SignRequest(req *http.Request) (_result interface{}, _err error) {
-	cred := client.Credential
-	utilClient, _err := fcutil.NewClient(cred)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = interface{}(nil)
-	_body, _err := utilClient.SignRequest(req)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) SignRequestWithContentMD5(req *http.Request, contentMD5 *string) (_result interface{}, _err error) {
-	cred := client.Credential
-	utilClient, _err := fcutil.NewClient(cred)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = interface{}(nil)
-	_body, _err := utilClient.SignRequestWithContentMD5(req, contentMD5)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) BuildHTTPRequest(url *string, method *string, body []byte, headers *http.Header) (_result interface{}, _err error) {
-	cred := client.Credential
-	utilClient, _err := fcutil.NewClient(cred)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = interface{}(nil)
-	_body, _err := utilClient.BuildHTTPRequest(url, method, body, headers)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
 	return _result, _err
 }
