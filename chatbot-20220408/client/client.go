@@ -6329,6 +6329,9 @@ type ListDsMenusRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 1-正式环境，2-测试环境（默认）
 	RobotEnv *int32 `json:"RobotEnv,omitempty" xml:"RobotEnv,omitempty"`
+	// 业务来源标识：
+	// 1-集团内部aliyun域名；2-外部使用4service域名（默认）
+	Source *int32 `json:"Source,omitempty" xml:"Source,omitempty"`
 	// 功能标识，为空表示所有；支持的tag有：Dialog / Intent / Entity / Var / TaskCenter；传入多个时通过英文逗号分隔
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
@@ -6353,6 +6356,11 @@ func (s *ListDsMenusRequest) SetInstanceId(v string) *ListDsMenusRequest {
 
 func (s *ListDsMenusRequest) SetRobotEnv(v int32) *ListDsMenusRequest {
 	s.RobotEnv = &v
+	return s
+}
+
+func (s *ListDsMenusRequest) SetSource(v int32) *ListDsMenusRequest {
+	s.Source = &v
 	return s
 }
 
@@ -12436,6 +12444,10 @@ func (client *Client) ListDsMenusWithOptions(request *ListDsMenusRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.RobotEnv)) {
 		query["RobotEnv"] = request.RobotEnv
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Tags)) {
