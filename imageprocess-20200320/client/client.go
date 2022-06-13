@@ -3101,6 +3101,8 @@ type ScreenChestCTResponseBodyData struct {
 	AnalyzeChestVessel *ScreenChestCTResponseBodyDataAnalyzeChestVessel `json:"AnalyzeChestVessel,omitempty" xml:"AnalyzeChestVessel,omitempty" type:"Struct"`
 	CACS               *ScreenChestCTResponseBodyDataCACS               `json:"CACS,omitempty" xml:"CACS,omitempty" type:"Struct"`
 	Covid              *ScreenChestCTResponseBodyDataCovid              `json:"Covid,omitempty" xml:"Covid,omitempty" type:"Struct"`
+	DetectLymph        *ScreenChestCTResponseBodyDataDetectLymph        `json:"DetectLymph,omitempty" xml:"DetectLymph,omitempty" type:"Struct"`
+	DetectPdac         *ScreenChestCTResponseBodyDataDetectPdac         `json:"DetectPdac,omitempty" xml:"DetectPdac,omitempty" type:"Struct"`
 	DetectRibFracture  *ScreenChestCTResponseBodyDataDetectRibFracture  `json:"DetectRibFracture,omitempty" xml:"DetectRibFracture,omitempty" type:"Struct"`
 	ErrorMessage       *string                                          `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
 	LungNodule         *ScreenChestCTResponseBodyDataLungNodule         `json:"LungNodule,omitempty" xml:"LungNodule,omitempty" type:"Struct"`
@@ -3127,6 +3129,16 @@ func (s *ScreenChestCTResponseBodyData) SetCACS(v *ScreenChestCTResponseBodyData
 
 func (s *ScreenChestCTResponseBodyData) SetCovid(v *ScreenChestCTResponseBodyDataCovid) *ScreenChestCTResponseBodyData {
 	s.Covid = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyData) SetDetectLymph(v *ScreenChestCTResponseBodyDataDetectLymph) *ScreenChestCTResponseBodyData {
+	s.DetectLymph = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyData) SetDetectPdac(v *ScreenChestCTResponseBodyDataDetectPdac) *ScreenChestCTResponseBodyData {
+	s.DetectPdac = v
 	return s
 }
 
@@ -3280,8 +3292,10 @@ func (s *ScreenChestCTResponseBodyDataAnalyzeChestVesselPulmonaryInfo) SetNeares
 }
 
 type ScreenChestCTResponseBodyDataCACS struct {
-	ResultUrl *string `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
-	Score     *string `json:"Score,omitempty" xml:"Score,omitempty"`
+	Detections  []*ScreenChestCTResponseBodyDataCACSDetections `json:"Detections,omitempty" xml:"Detections,omitempty" type:"Repeated"`
+	ResultUrl   *string                                        `json:"ResultUrl,omitempty" xml:"ResultUrl,omitempty"`
+	Score       *string                                        `json:"Score,omitempty" xml:"Score,omitempty"`
+	VolumeScore *string                                        `json:"VolumeScore,omitempty" xml:"VolumeScore,omitempty"`
 }
 
 func (s ScreenChestCTResponseBodyDataCACS) String() string {
@@ -3292,6 +3306,11 @@ func (s ScreenChestCTResponseBodyDataCACS) GoString() string {
 	return s.String()
 }
 
+func (s *ScreenChestCTResponseBodyDataCACS) SetDetections(v []*ScreenChestCTResponseBodyDataCACSDetections) *ScreenChestCTResponseBodyDataCACS {
+	s.Detections = v
+	return s
+}
+
 func (s *ScreenChestCTResponseBodyDataCACS) SetResultUrl(v string) *ScreenChestCTResponseBodyDataCACS {
 	s.ResultUrl = &v
 	return s
@@ -3299,6 +3318,40 @@ func (s *ScreenChestCTResponseBodyDataCACS) SetResultUrl(v string) *ScreenChestC
 
 func (s *ScreenChestCTResponseBodyDataCACS) SetScore(v string) *ScreenChestCTResponseBodyDataCACS {
 	s.Score = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataCACS) SetVolumeScore(v string) *ScreenChestCTResponseBodyDataCACS {
+	s.VolumeScore = &v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataCACSDetections struct {
+	CalciumId     *int64   `json:"CalciumId,omitempty" xml:"CalciumId,omitempty"`
+	CalciumScore  *float32 `json:"CalciumScore,omitempty" xml:"CalciumScore,omitempty"`
+	CalciumVolume *float32 `json:"CalciumVolume,omitempty" xml:"CalciumVolume,omitempty"`
+}
+
+func (s ScreenChestCTResponseBodyDataCACSDetections) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataCACSDetections) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataCACSDetections) SetCalciumId(v int64) *ScreenChestCTResponseBodyDataCACSDetections {
+	s.CalciumId = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataCACSDetections) SetCalciumScore(v float32) *ScreenChestCTResponseBodyDataCACSDetections {
+	s.CalciumScore = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataCACSDetections) SetCalciumVolume(v float32) *ScreenChestCTResponseBodyDataCACSDetections {
+	s.CalciumVolume = &v
 	return s
 }
 
@@ -3340,6 +3393,122 @@ func (s *ScreenChestCTResponseBodyDataCovid) SetNormalProbability(v string) *Scr
 
 func (s *ScreenChestCTResponseBodyDataCovid) SetOtherProbability(v string) *ScreenChestCTResponseBodyDataCovid {
 	s.OtherProbability = &v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataDetectLymph struct {
+	Lesions []*ScreenChestCTResponseBodyDataDetectLymphLesions `json:"Lesions,omitempty" xml:"Lesions,omitempty" type:"Repeated"`
+}
+
+func (s ScreenChestCTResponseBodyDataDetectLymph) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataDetectLymph) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLymph) SetLesions(v []*ScreenChestCTResponseBodyDataDetectLymphLesions) *ScreenChestCTResponseBodyDataDetectLymph {
+	s.Lesions = v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataDetectLymphLesions struct {
+	Boxes      []*float32   `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
+	Diametermm []*float32   `json:"Diametermm,omitempty" xml:"Diametermm,omitempty" type:"Repeated"`
+	KeySlice   *int64       `json:"KeySlice,omitempty" xml:"KeySlice,omitempty"`
+	Recist     [][]*float32 `json:"Recist,omitempty" xml:"Recist,omitempty" type:"Repeated"`
+	Score      *float32     `json:"Score,omitempty" xml:"Score,omitempty"`
+}
+
+func (s ScreenChestCTResponseBodyDataDetectLymphLesions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataDetectLymphLesions) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLymphLesions) SetBoxes(v []*float32) *ScreenChestCTResponseBodyDataDetectLymphLesions {
+	s.Boxes = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLymphLesions) SetDiametermm(v []*float32) *ScreenChestCTResponseBodyDataDetectLymphLesions {
+	s.Diametermm = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLymphLesions) SetKeySlice(v int64) *ScreenChestCTResponseBodyDataDetectLymphLesions {
+	s.KeySlice = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLymphLesions) SetRecist(v [][]*float32) *ScreenChestCTResponseBodyDataDetectLymphLesions {
+	s.Recist = v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectLymphLesions) SetScore(v float32) *ScreenChestCTResponseBodyDataDetectLymphLesions {
+	s.Score = &v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataDetectPdac struct {
+	Lesion *ScreenChestCTResponseBodyDataDetectPdacLesion `json:"Lesion,omitempty" xml:"Lesion,omitempty" type:"Struct"`
+}
+
+func (s ScreenChestCTResponseBodyDataDetectPdac) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataDetectPdac) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectPdac) SetLesion(v *ScreenChestCTResponseBodyDataDetectPdacLesion) *ScreenChestCTResponseBodyDataDetectPdac {
+	s.Lesion = v
+	return s
+}
+
+type ScreenChestCTResponseBodyDataDetectPdacLesion struct {
+	Mask          *string   `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	NonPdacVol    *string   `json:"NonPdacVol,omitempty" xml:"NonPdacVol,omitempty"`
+	PancVol       *string   `json:"PancVol,omitempty" xml:"PancVol,omitempty"`
+	PdacVol       *string   `json:"PdacVol,omitempty" xml:"PdacVol,omitempty"`
+	Possibilities []*string `json:"Possibilities,omitempty" xml:"Possibilities,omitempty" type:"Repeated"`
+}
+
+func (s ScreenChestCTResponseBodyDataDetectPdacLesion) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ScreenChestCTResponseBodyDataDetectPdacLesion) GoString() string {
+	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectPdacLesion) SetMask(v string) *ScreenChestCTResponseBodyDataDetectPdacLesion {
+	s.Mask = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectPdacLesion) SetNonPdacVol(v string) *ScreenChestCTResponseBodyDataDetectPdacLesion {
+	s.NonPdacVol = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectPdacLesion) SetPancVol(v string) *ScreenChestCTResponseBodyDataDetectPdacLesion {
+	s.PancVol = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectPdacLesion) SetPdacVol(v string) *ScreenChestCTResponseBodyDataDetectPdacLesion {
+	s.PdacVol = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectPdacLesion) SetPossibilities(v []*string) *ScreenChestCTResponseBodyDataDetectPdacLesion {
+	s.Possibilities = v
 	return s
 }
 
