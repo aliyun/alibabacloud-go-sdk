@@ -1,3 +1,6 @@
+2022-06-14 Version: v2.0.5
+- Support ResetDesktops.
+
 2022-05-13 Version: v2.0.4
 - DescribeUserConnectionRecords add some filter
 
