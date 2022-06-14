@@ -920,112 +920,6 @@ func (s *ApplyScenarioResponse) SetBody(v *ApplyScenarioResponseBody) *ApplyScen
 	return s
 }
 
-type CMonitorAlertEventRequest struct {
-	ClusterId   *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	Kind        *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace   *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Page        *string `json:"Page,omitempty" xml:"Page,omitempty"`
-	PageSize    *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ProxyUserId *string `json:"ProxyUserId,omitempty" xml:"ProxyUserId,omitempty"`
-}
-
-func (s CMonitorAlertEventRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CMonitorAlertEventRequest) GoString() string {
-	return s.String()
-}
-
-func (s *CMonitorAlertEventRequest) SetClusterId(v string) *CMonitorAlertEventRequest {
-	s.ClusterId = &v
-	return s
-}
-
-func (s *CMonitorAlertEventRequest) SetKind(v string) *CMonitorAlertEventRequest {
-	s.Kind = &v
-	return s
-}
-
-func (s *CMonitorAlertEventRequest) SetName(v string) *CMonitorAlertEventRequest {
-	s.Name = &v
-	return s
-}
-
-func (s *CMonitorAlertEventRequest) SetNamespace(v string) *CMonitorAlertEventRequest {
-	s.Namespace = &v
-	return s
-}
-
-func (s *CMonitorAlertEventRequest) SetPage(v string) *CMonitorAlertEventRequest {
-	s.Page = &v
-	return s
-}
-
-func (s *CMonitorAlertEventRequest) SetPageSize(v string) *CMonitorAlertEventRequest {
-	s.PageSize = &v
-	return s
-}
-
-func (s *CMonitorAlertEventRequest) SetProxyUserId(v string) *CMonitorAlertEventRequest {
-	s.ProxyUserId = &v
-	return s
-}
-
-type CMonitorAlertEventResponseBody struct {
-	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s CMonitorAlertEventResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CMonitorAlertEventResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *CMonitorAlertEventResponseBody) SetData(v string) *CMonitorAlertEventResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *CMonitorAlertEventResponseBody) SetRequestId(v string) *CMonitorAlertEventResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type CMonitorAlertEventResponse struct {
-	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *CMonitorAlertEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s CMonitorAlertEventResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CMonitorAlertEventResponse) GoString() string {
-	return s.String()
-}
-
-func (s *CMonitorAlertEventResponse) SetHeaders(v map[string]*string) *CMonitorAlertEventResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *CMonitorAlertEventResponse) SetStatusCode(v int32) *CMonitorAlertEventResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *CMonitorAlertEventResponse) SetBody(v *CMonitorAlertEventResponseBody) *CMonitorAlertEventResponse {
-	s.Body = v
-	return s
-}
-
 type CheckServiceStatusRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SvcCode  *string `json:"SvcCode,omitempty" xml:"SvcCode,omitempty"`
@@ -1358,6 +1252,111 @@ func (s *CreateAlertContactGroupResponse) SetStatusCode(v int32) *CreateAlertCon
 }
 
 func (s *CreateAlertContactGroupResponse) SetBody(v *CreateAlertContactGroupResponseBody) *CreateAlertContactGroupResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAppRequest struct {
+	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName  *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	Config   *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Source   *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Type     *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateAppRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppRequest) SetAppId(v string) *CreateAppRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetAppName(v string) *CreateAppRequest {
+	s.AppName = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetConfig(v string) *CreateAppRequest {
+	s.Config = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetLanguage(v string) *CreateAppRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetRegionId(v string) *CreateAppRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetSource(v string) *CreateAppRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetType(v string) *CreateAppRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateAppResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAppResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponseBody) SetData(v string) *CreateAppResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateAppResponseBody) SetRequestId(v string) *CreateAppResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAppResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAppResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateAppResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAppResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAppResponse) SetHeaders(v map[string]*string) *CreateAppResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAppResponse) SetStatusCode(v int32) *CreateAppResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAppResponse) SetBody(v *CreateAppResponseBody) *CreateAppResponse {
 	s.Body = v
 	return s
 }
@@ -7677,6 +7676,111 @@ func (s *GetAuthTokenResponse) SetStatusCode(v int32) *GetAuthTokenResponse {
 }
 
 func (s *GetAuthTokenResponse) SetBody(v *GetAuthTokenResponseBody) *GetAuthTokenResponse {
+	s.Body = v
+	return s
+}
+
+type GetClusterInfoForArmsRequest struct {
+	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	Md5       *string `json:"Md5,omitempty" xml:"Md5,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UserId    *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s GetClusterInfoForArmsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterInfoForArmsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterInfoForArmsRequest) SetClusterId(v string) *GetClusterInfoForArmsRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *GetClusterInfoForArmsRequest) SetMd5(v string) *GetClusterInfoForArmsRequest {
+	s.Md5 = &v
+	return s
+}
+
+func (s *GetClusterInfoForArmsRequest) SetRegionId(v string) *GetClusterInfoForArmsRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetClusterInfoForArmsRequest) SetUserId(v string) *GetClusterInfoForArmsRequest {
+	s.UserId = &v
+	return s
+}
+
+type GetClusterInfoForArmsResponseBody struct {
+	Data *GetClusterInfoForArmsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s GetClusterInfoForArmsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterInfoForArmsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterInfoForArmsResponseBody) SetData(v *GetClusterInfoForArmsResponseBodyData) *GetClusterInfoForArmsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetClusterInfoForArmsResponseBody) SetRequestId(v string) *GetClusterInfoForArmsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type GetClusterInfoForArmsResponseBodyData struct {
+	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+}
+
+func (s GetClusterInfoForArmsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterInfoForArmsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterInfoForArmsResponseBodyData) SetClusterName(v string) *GetClusterInfoForArmsResponseBodyData {
+	s.ClusterName = &v
+	return s
+}
+
+type GetClusterInfoForArmsResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetClusterInfoForArmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetClusterInfoForArmsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetClusterInfoForArmsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetClusterInfoForArmsResponse) SetHeaders(v map[string]*string) *GetClusterInfoForArmsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetClusterInfoForArmsResponse) SetStatusCode(v int32) *GetClusterInfoForArmsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetClusterInfoForArmsResponse) SetBody(v *GetClusterInfoForArmsResponseBody) *GetClusterInfoForArmsResponse {
 	s.Body = v
 	return s
 }
@@ -19280,46 +19384,6 @@ func (client *Client) ApplyScenario(request *ApplyScenarioRequest) (_result *App
 	return _result, _err
 }
 
-func (client *Client) CMonitorAlertEventWithOptions(request *CMonitorAlertEventRequest, runtime *util.RuntimeOptions) (_result *CMonitorAlertEventResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := openapiutil.Query(util.ToMap(request))
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("CMonitorAlertEvent"),
-		Version:     tea.String("2019-08-08"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &CMonitorAlertEventResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) CMonitorAlertEvent(request *CMonitorAlertEventRequest) (_result *CMonitorAlertEventResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &CMonitorAlertEventResponse{}
-	_body, _err := client.CMonitorAlertEventWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) CheckServiceStatusWithOptions(request *CheckServiceStatusRequest, runtime *util.RuntimeOptions) (_result *CheckServiceStatusResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19529,6 +19593,74 @@ func (client *Client) CreateAlertContactGroup(request *CreateAlertContactGroupRe
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateAlertContactGroupResponse{}
 	_body, _err := client.CreateAlertContactGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *util.RuntimeOptions) (_result *CreateAppResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppName)) {
+		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Config)) {
+		query["Config"] = request.Config
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateApp"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAppResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateApp(request *CreateAppRequest) (_result *CreateAppResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAppResponse{}
+	_body, _err := client.CreateAppWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -21923,6 +22055,62 @@ func (client *Client) GetAuthToken(request *GetAuthTokenRequest) (_result *GetAu
 	runtime := &util.RuntimeOptions{}
 	_result = &GetAuthTokenResponse{}
 	_body, _err := client.GetAuthTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetClusterInfoForArmsWithOptions(request *GetClusterInfoForArmsRequest, runtime *util.RuntimeOptions) (_result *GetClusterInfoForArmsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Md5)) {
+		query["Md5"] = request.Md5
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserId)) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetClusterInfoForArms"),
+		Version:     tea.String("2019-08-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetClusterInfoForArmsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetClusterInfoForArms(request *GetClusterInfoForArmsRequest) (_result *GetClusterInfoForArmsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetClusterInfoForArmsResponse{}
+	_body, _err := client.GetClusterInfoForArmsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
