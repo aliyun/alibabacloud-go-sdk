@@ -746,6 +746,7 @@ type CreateGroupAuthorizationRuleRequest struct {
 	Policy                       *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	RegionId                     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	SourceCidrs                  []*string `json:"SourceCidrs,omitempty" xml:"SourceCidrs,omitempty" type:"Repeated"`
+	Type                         *string   `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateGroupAuthorizationRuleRequest) String() string {
@@ -803,6 +804,11 @@ func (s *CreateGroupAuthorizationRuleRequest) SetRegionId(v string) *CreateGroup
 
 func (s *CreateGroupAuthorizationRuleRequest) SetSourceCidrs(v []*string) *CreateGroupAuthorizationRuleRequest {
 	s.SourceCidrs = v
+	return s
+}
+
+func (s *CreateGroupAuthorizationRuleRequest) SetType(v string) *CreateGroupAuthorizationRuleRequest {
+	s.Type = &v
 	return s
 }
 
@@ -996,6 +1002,7 @@ type CreateIoTCloudConnectorRequest struct {
 	IoTCloudConnectorName        *string `json:"IoTCloudConnectorName,omitempty" xml:"IoTCloudConnectorName,omitempty"`
 	RegionId                     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceUid                  *int64  `json:"ResourceUid,omitempty" xml:"ResourceUid,omitempty"`
+	Type                         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	WildcardDomainEnabled        *bool   `json:"WildcardDomainEnabled,omitempty" xml:"WildcardDomainEnabled,omitempty"`
 }
 
@@ -1044,6 +1051,11 @@ func (s *CreateIoTCloudConnectorRequest) SetRegionId(v string) *CreateIoTCloudCo
 
 func (s *CreateIoTCloudConnectorRequest) SetResourceUid(v int64) *CreateIoTCloudConnectorRequest {
 	s.ResourceUid = &v
+	return s
+}
+
+func (s *CreateIoTCloudConnectorRequest) SetType(v string) *CreateIoTCloudConnectorRequest {
+	s.Type = &v
 	return s
 }
 
@@ -1197,6 +1209,7 @@ type CreateIoTCloudConnectorGroupRequest struct {
 	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s CreateIoTCloudConnectorGroupRequest) String() string {
@@ -1229,6 +1242,11 @@ func (s *CreateIoTCloudConnectorGroupRequest) SetName(v string) *CreateIoTCloudC
 
 func (s *CreateIoTCloudConnectorGroupRequest) SetRegionId(v string) *CreateIoTCloudConnectorGroupRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *CreateIoTCloudConnectorGroupRequest) SetType(v string) *CreateIoTCloudConnectorGroupRequest {
+	s.Type = &v
 	return s
 }
 
@@ -4547,6 +4565,7 @@ type ListGroupAuthorizationRulesRequest struct {
 	NextToken                *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	Policy                   []*string `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Repeated"`
 	RegionId                 *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Type                     *string   `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListGroupAuthorizationRulesRequest) String() string {
@@ -4607,6 +4626,11 @@ func (s *ListGroupAuthorizationRulesRequest) SetRegionId(v string) *ListGroupAut
 	return s
 }
 
+func (s *ListGroupAuthorizationRulesRequest) SetType(v string) *ListGroupAuthorizationRulesRequest {
+	s.Type = &v
+	return s
+}
+
 type ListGroupAuthorizationRulesResponseBody struct {
 	GroupAuthorizationRules []*ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules `json:"GroupAuthorizationRules,omitempty" xml:"GroupAuthorizationRules,omitempty" type:"Repeated"`
 	MaxResults              *int32                                                            `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -4658,6 +4682,7 @@ type ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules struct {
 	IoTCloudConnectorGroupId     *string   `json:"IoTCloudConnectorGroupId,omitempty" xml:"IoTCloudConnectorGroupId,omitempty"`
 	Policy                       *string   `json:"Policy,omitempty" xml:"Policy,omitempty"`
 	SourceCidrs                  []*string `json:"SourceCidrs,omitempty" xml:"SourceCidrs,omitempty" type:"Repeated"`
+	Type                         *string   `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) String() string {
@@ -4710,6 +4735,11 @@ func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetPoli
 
 func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetSourceCidrs(v []*string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
 	s.SourceCidrs = v
+	return s
+}
+
+func (s *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules) SetType(v string) *ListGroupAuthorizationRulesResponseBodyGroupAuthorizationRules {
+	s.Type = &v
 	return s
 }
 
@@ -5218,6 +5248,7 @@ type ListIoTCloudConnectorGroupsRequest struct {
 	MaxResults                   *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken                    *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RegionId                     *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Type                         *string   `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListIoTCloudConnectorGroupsRequest) String() string {
@@ -5255,6 +5286,11 @@ func (s *ListIoTCloudConnectorGroupsRequest) SetNextToken(v string) *ListIoTClou
 
 func (s *ListIoTCloudConnectorGroupsRequest) SetRegionId(v string) *ListIoTCloudConnectorGroupsRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsRequest) SetType(v string) *ListIoTCloudConnectorGroupsRequest {
+	s.Type = &v
 	return s
 }
 
@@ -5306,6 +5342,7 @@ type ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups struct {
 	IoTCloudConnectorGroupStatus *string                                                                             `json:"IoTCloudConnectorGroupStatus,omitempty" xml:"IoTCloudConnectorGroupStatus,omitempty"`
 	IoTCloudConnectors           []*ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroupsIoTCloudConnectors `json:"IoTCloudConnectors,omitempty" xml:"IoTCloudConnectors,omitempty" type:"Repeated"`
 	Name                         *string                                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type                         *string                                                                             `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups) String() string {
@@ -5343,6 +5380,11 @@ func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups) SetIoTC
 
 func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups) SetName(v string) *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups {
 	s.Name = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups) SetType(v string) *ListIoTCloudConnectorGroupsResponseBodyIoTCloudConnectorGroups {
+	s.Type = &v
 	return s
 }
 
@@ -5560,6 +5602,7 @@ type ListIoTCloudConnectorsResponseBodyIoTCloudConnectors struct {
 	Mode                            *string   `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	ModifyTime                      *int64    `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
 	RateLimit                       *int64    `json:"RateLimit,omitempty" xml:"RateLimit,omitempty"`
+	Type                            *string   `json:"Type,omitempty" xml:"Type,omitempty"`
 	VSwitchList                     []*string `json:"VSwitchList,omitempty" xml:"VSwitchList,omitempty" type:"Repeated"`
 	VpcId                           *string   `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	WildcardDomainEnabled           *bool     `json:"WildcardDomainEnabled,omitempty" xml:"WildcardDomainEnabled,omitempty"`
@@ -5635,6 +5678,11 @@ func (s *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors) SetModifyTime(v i
 
 func (s *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors) SetRateLimit(v int64) *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors {
 	s.RateLimit = &v
+	return s
+}
+
+func (s *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors) SetType(v string) *ListIoTCloudConnectorsResponseBodyIoTCloudConnectors {
+	s.Type = &v
 	return s
 }
 
@@ -8313,6 +8361,10 @@ func (client *Client) CreateGroupAuthorizationRuleWithOptions(request *CreateGro
 		query["SourceCidrs"] = request.SourceCidrs
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -8461,6 +8513,10 @@ func (client *Client) CreateIoTCloudConnectorWithOptions(request *CreateIoTCloud
 		query["ResourceUid"] = request.ResourceUid
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.WildcardDomainEnabled)) {
 		query["WildcardDomainEnabled"] = request.WildcardDomainEnabled
 	}
@@ -8579,6 +8635,10 @@ func (client *Client) CreateIoTCloudConnectorGroupWithOptions(request *CreateIoT
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -10397,6 +10457,10 @@ func (client *Client) ListGroupAuthorizationRulesWithOptions(request *ListGroupA
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -10659,6 +10723,10 @@ func (client *Client) ListIoTCloudConnectorGroupsWithOptions(request *ListIoTClo
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
 	}
 
 	req := &openapi.OpenApiRequest{
