@@ -112,8 +112,9 @@ func (s *DescribeEmptyNumberDetectResponseBodyData) SetStatus(v string) *Describ
 }
 
 type DescribeEmptyNumberDetectResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeEmptyNumberDetectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeEmptyNumberDetectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeEmptyNumberDetectResponse) String() string {
@@ -126,6 +127,11 @@ func (s DescribeEmptyNumberDetectResponse) GoString() string {
 
 func (s *DescribeEmptyNumberDetectResponse) SetHeaders(v map[string]*string) *DescribeEmptyNumberDetectResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeEmptyNumberDetectResponse) SetStatusCode(v int32) *DescribeEmptyNumberDetectResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -252,8 +258,9 @@ func (s *DescribePhoneNumberAnalysisResponseBodyData) SetNumber(v string) *Descr
 }
 
 type DescribePhoneNumberAnalysisResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribePhoneNumberAnalysisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePhoneNumberAnalysisResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribePhoneNumberAnalysisResponse) String() string {
@@ -266,6 +273,11 @@ func (s DescribePhoneNumberAnalysisResponse) GoString() string {
 
 func (s *DescribePhoneNumberAnalysisResponse) SetHeaders(v map[string]*string) *DescribePhoneNumberAnalysisResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribePhoneNumberAnalysisResponse) SetStatusCode(v int32) *DescribePhoneNumberAnalysisResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -392,8 +404,9 @@ func (s *DescribePhoneNumberAttributeResponseBodyPhoneNumberAttribute) SetProvin
 }
 
 type DescribePhoneNumberAttributeResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribePhoneNumberAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePhoneNumberAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribePhoneNumberAttributeResponse) String() string {
@@ -406,6 +419,11 @@ func (s DescribePhoneNumberAttributeResponse) GoString() string {
 
 func (s *DescribePhoneNumberAttributeResponse) SetHeaders(v map[string]*string) *DescribePhoneNumberAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribePhoneNumberAttributeResponse) SetStatusCode(v int32) *DescribePhoneNumberAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -520,8 +538,9 @@ func (s *DescribePhoneNumberOnlineTimeResponseBodyData) SetVerifyResult(v string
 }
 
 type DescribePhoneNumberOnlineTimeResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribePhoneNumberOnlineTimeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePhoneNumberOnlineTimeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribePhoneNumberOnlineTimeResponse) String() string {
@@ -534,6 +553,11 @@ func (s DescribePhoneNumberOnlineTimeResponse) GoString() string {
 
 func (s *DescribePhoneNumberOnlineTimeResponse) SetHeaders(v map[string]*string) *DescribePhoneNumberOnlineTimeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribePhoneNumberOnlineTimeResponse) SetStatusCode(v int32) *DescribePhoneNumberOnlineTimeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -642,8 +666,9 @@ func (s *DescribePhoneNumberResaleResponseBodyTwiceTelVerify) SetVerifyResult(v 
 }
 
 type DescribePhoneNumberResaleResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribePhoneNumberResaleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePhoneNumberResaleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribePhoneNumberResaleResponse) String() string {
@@ -656,6 +681,11 @@ func (s DescribePhoneNumberResaleResponse) GoString() string {
 
 func (s *DescribePhoneNumberResaleResponse) SetHeaders(v map[string]*string) *DescribePhoneNumberResaleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribePhoneNumberResaleResponse) SetStatusCode(v int32) *DescribePhoneNumberResaleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -764,8 +794,9 @@ func (s *DescribePhoneNumberStatusResponseBodyPhoneStatus) SetStatus(v string) *
 }
 
 type DescribePhoneNumberStatusResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribePhoneNumberStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePhoneNumberStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribePhoneNumberStatusResponse) String() string {
@@ -778,6 +809,11 @@ func (s DescribePhoneNumberStatusResponse) GoString() string {
 
 func (s *DescribePhoneNumberStatusResponse) SetHeaders(v map[string]*string) *DescribePhoneNumberStatusResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribePhoneNumberStatusResponse) SetStatusCode(v int32) *DescribePhoneNumberStatusResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -904,8 +940,9 @@ func (s *InvalidPhoneNumberFilterResponseBodyData) SetOriginalNumber(v string) *
 }
 
 type InvalidPhoneNumberFilterResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *InvalidPhoneNumberFilterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InvalidPhoneNumberFilterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s InvalidPhoneNumberFilterResponse) String() string {
@@ -918,6 +955,11 @@ func (s InvalidPhoneNumberFilterResponse) GoString() string {
 
 func (s *InvalidPhoneNumberFilterResponse) SetHeaders(v map[string]*string) *InvalidPhoneNumberFilterResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *InvalidPhoneNumberFilterResponse) SetStatusCode(v int32) *InvalidPhoneNumberFilterResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1038,8 +1080,9 @@ func (s *PhoneNumberEncryptResponseBodyData) SetOriginalNumber(v string) *PhoneN
 }
 
 type PhoneNumberEncryptResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PhoneNumberEncryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PhoneNumberEncryptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PhoneNumberEncryptResponse) String() string {
@@ -1055,25 +1098,299 @@ func (s *PhoneNumberEncryptResponse) SetHeaders(v map[string]*string) *PhoneNumb
 	return s
 }
 
+func (s *PhoneNumberEncryptResponse) SetStatusCode(v int32) *PhoneNumberEncryptResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *PhoneNumberEncryptResponse) SetBody(v *PhoneNumberEncryptResponseBody) *PhoneNumberEncryptResponse {
 	s.Body = v
 	return s
 }
 
-type PvrCallbackFCUResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+type ThreeElementsVerificationRequest struct {
+	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	CertCode             *string `json:"CertCode,omitempty" xml:"CertCode,omitempty"`
+	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 }
 
-func (s PvrCallbackFCUResponse) String() string {
+func (s ThreeElementsVerificationRequest) String() string {
 	return tea.Prettify(s)
 }
 
-func (s PvrCallbackFCUResponse) GoString() string {
+func (s ThreeElementsVerificationRequest) GoString() string {
 	return s.String()
 }
 
-func (s *PvrCallbackFCUResponse) SetHeaders(v map[string]*string) *PvrCallbackFCUResponse {
+func (s *ThreeElementsVerificationRequest) SetAuthCode(v string) *ThreeElementsVerificationRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *ThreeElementsVerificationRequest) SetCertCode(v string) *ThreeElementsVerificationRequest {
+	s.CertCode = &v
+	return s
+}
+
+func (s *ThreeElementsVerificationRequest) SetInputNumber(v string) *ThreeElementsVerificationRequest {
+	s.InputNumber = &v
+	return s
+}
+
+func (s *ThreeElementsVerificationRequest) SetMask(v string) *ThreeElementsVerificationRequest {
+	s.Mask = &v
+	return s
+}
+
+func (s *ThreeElementsVerificationRequest) SetName(v string) *ThreeElementsVerificationRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ThreeElementsVerificationRequest) SetOwnerId(v int64) *ThreeElementsVerificationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *ThreeElementsVerificationRequest) SetResourceOwnerAccount(v string) *ThreeElementsVerificationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *ThreeElementsVerificationRequest) SetResourceOwnerId(v int64) *ThreeElementsVerificationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ThreeElementsVerificationResponseBody struct {
+	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*ThreeElementsVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ThreeElementsVerificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ThreeElementsVerificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ThreeElementsVerificationResponseBody) SetCode(v string) *ThreeElementsVerificationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ThreeElementsVerificationResponseBody) SetData(v []*ThreeElementsVerificationResponseBodyData) *ThreeElementsVerificationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ThreeElementsVerificationResponseBody) SetMessage(v string) *ThreeElementsVerificationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ThreeElementsVerificationResponseBody) SetRequestId(v string) *ThreeElementsVerificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ThreeElementsVerificationResponseBodyData struct {
+	BasicCarrier *string `json:"BasicCarrier,omitempty" xml:"BasicCarrier,omitempty"`
+	IsConsistent *int32  `json:"IsConsistent,omitempty" xml:"IsConsistent,omitempty"`
+}
+
+func (s ThreeElementsVerificationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ThreeElementsVerificationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ThreeElementsVerificationResponseBodyData) SetBasicCarrier(v string) *ThreeElementsVerificationResponseBodyData {
+	s.BasicCarrier = &v
+	return s
+}
+
+func (s *ThreeElementsVerificationResponseBodyData) SetIsConsistent(v int32) *ThreeElementsVerificationResponseBodyData {
+	s.IsConsistent = &v
+	return s
+}
+
+type ThreeElementsVerificationResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ThreeElementsVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ThreeElementsVerificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ThreeElementsVerificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ThreeElementsVerificationResponse) SetHeaders(v map[string]*string) *ThreeElementsVerificationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ThreeElementsVerificationResponse) SetStatusCode(v int32) *ThreeElementsVerificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ThreeElementsVerificationResponse) SetBody(v *ThreeElementsVerificationResponseBody) *ThreeElementsVerificationResponse {
+	s.Body = v
+	return s
+}
+
+type TwoElementsVerificationRequest struct {
+	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
+	InputNumber          *string `json:"InputNumber,omitempty" xml:"InputNumber,omitempty"`
+	Mask                 *string `json:"Mask,omitempty" xml:"Mask,omitempty"`
+	Name                 *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s TwoElementsVerificationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TwoElementsVerificationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TwoElementsVerificationRequest) SetAuthCode(v string) *TwoElementsVerificationRequest {
+	s.AuthCode = &v
+	return s
+}
+
+func (s *TwoElementsVerificationRequest) SetInputNumber(v string) *TwoElementsVerificationRequest {
+	s.InputNumber = &v
+	return s
+}
+
+func (s *TwoElementsVerificationRequest) SetMask(v string) *TwoElementsVerificationRequest {
+	s.Mask = &v
+	return s
+}
+
+func (s *TwoElementsVerificationRequest) SetName(v string) *TwoElementsVerificationRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *TwoElementsVerificationRequest) SetOwnerId(v int64) *TwoElementsVerificationRequest {
+	s.OwnerId = &v
+	return s
+}
+
+func (s *TwoElementsVerificationRequest) SetResourceOwnerAccount(v string) *TwoElementsVerificationRequest {
+	s.ResourceOwnerAccount = &v
+	return s
+}
+
+func (s *TwoElementsVerificationRequest) SetResourceOwnerId(v int64) *TwoElementsVerificationRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type TwoElementsVerificationResponseBody struct {
+	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []*TwoElementsVerificationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	Message   *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s TwoElementsVerificationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TwoElementsVerificationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *TwoElementsVerificationResponseBody) SetCode(v string) *TwoElementsVerificationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *TwoElementsVerificationResponseBody) SetData(v []*TwoElementsVerificationResponseBodyData) *TwoElementsVerificationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *TwoElementsVerificationResponseBody) SetMessage(v string) *TwoElementsVerificationResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *TwoElementsVerificationResponseBody) SetRequestId(v string) *TwoElementsVerificationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type TwoElementsVerificationResponseBodyData struct {
+	BasicCarrier *string `json:"BasicCarrier,omitempty" xml:"BasicCarrier,omitempty"`
+	IsConsistent *int32  `json:"IsConsistent,omitempty" xml:"IsConsistent,omitempty"`
+}
+
+func (s TwoElementsVerificationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TwoElementsVerificationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *TwoElementsVerificationResponseBodyData) SetBasicCarrier(v string) *TwoElementsVerificationResponseBodyData {
+	s.BasicCarrier = &v
+	return s
+}
+
+func (s *TwoElementsVerificationResponseBodyData) SetIsConsistent(v int32) *TwoElementsVerificationResponseBodyData {
+	s.IsConsistent = &v
+	return s
+}
+
+type TwoElementsVerificationResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TwoElementsVerificationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s TwoElementsVerificationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TwoElementsVerificationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TwoElementsVerificationResponse) SetHeaders(v map[string]*string) *TwoElementsVerificationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TwoElementsVerificationResponse) SetStatusCode(v int32) *TwoElementsVerificationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *TwoElementsVerificationResponse) SetBody(v *TwoElementsVerificationResponseBody) *TwoElementsVerificationResponse {
+	s.Body = v
 	return s
 }
 
@@ -1624,10 +1941,49 @@ func (client *Client) PhoneNumberEncrypt(request *PhoneNumberEncryptRequest) (_r
 	return _result, _err
 }
 
-func (client *Client) PvrCallbackFCUWithOptions(runtime *util.RuntimeOptions) (_result *PvrCallbackFCUResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) ThreeElementsVerificationWithOptions(request *ThreeElementsVerificationRequest, runtime *util.RuntimeOptions) (_result *ThreeElementsVerificationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CertCode)) {
+		query["CertCode"] = request.CertCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
+		query["InputNumber"] = request.InputNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mask)) {
+		query["Mask"] = request.Mask
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
 	params := &openapi.Params{
-		Action:      tea.String("PvrCallbackFCU"),
+		Action:      tea.String("ThreeElementsVerification"),
 		Version:     tea.String("2020-02-17"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
@@ -1635,9 +1991,9 @@ func (client *Client) PvrCallbackFCUWithOptions(runtime *util.RuntimeOptions) (_
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("none"),
+		BodyType:    tea.String("json"),
 	}
-	_result = &PvrCallbackFCUResponse{}
+	_result = &ThreeElementsVerificationResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1646,10 +2002,78 @@ func (client *Client) PvrCallbackFCUWithOptions(runtime *util.RuntimeOptions) (_
 	return _result, _err
 }
 
-func (client *Client) PvrCallbackFCU() (_result *PvrCallbackFCUResponse, _err error) {
+func (client *Client) ThreeElementsVerification(request *ThreeElementsVerificationRequest) (_result *ThreeElementsVerificationResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
-	_result = &PvrCallbackFCUResponse{}
-	_body, _err := client.PvrCallbackFCUWithOptions(runtime)
+	_result = &ThreeElementsVerificationResponse{}
+	_body, _err := client.ThreeElementsVerificationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TwoElementsVerificationWithOptions(request *TwoElementsVerificationRequest, runtime *util.RuntimeOptions) (_result *TwoElementsVerificationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AuthCode)) {
+		query["AuthCode"] = request.AuthCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InputNumber)) {
+		query["InputNumber"] = request.InputNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Mask)) {
+		query["Mask"] = request.Mask
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
+		query["OwnerId"] = request.OwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
+		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TwoElementsVerification"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &TwoElementsVerificationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TwoElementsVerification(request *TwoElementsVerificationRequest) (_result *TwoElementsVerificationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &TwoElementsVerificationResponse{}
+	_body, _err := client.TwoElementsVerificationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
