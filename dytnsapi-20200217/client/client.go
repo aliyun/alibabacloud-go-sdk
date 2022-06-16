@@ -1108,6 +1108,29 @@ func (s *PhoneNumberEncryptResponse) SetBody(v *PhoneNumberEncryptResponseBody) 
 	return s
 }
 
+type PvrCallbackFCUResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s PvrCallbackFCUResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PvrCallbackFCUResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PvrCallbackFCUResponse) SetHeaders(v map[string]*string) *PvrCallbackFCUResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PvrCallbackFCUResponse) SetStatusCode(v int32) *PvrCallbackFCUResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type ThreeElementsVerificationRequest struct {
 	AuthCode             *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
 	CertCode             *string `json:"CertCode,omitempty" xml:"CertCode,omitempty"`
@@ -1934,6 +1957,39 @@ func (client *Client) PhoneNumberEncrypt(request *PhoneNumberEncryptRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &PhoneNumberEncryptResponse{}
 	_body, _err := client.PhoneNumberEncryptWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PvrCallbackFCUWithOptions(runtime *util.RuntimeOptions) (_result *PvrCallbackFCUResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("PvrCallbackFCU"),
+		Version:     tea.String("2020-02-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &PvrCallbackFCUResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PvrCallbackFCU() (_result *PvrCallbackFCUResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PvrCallbackFCUResponse{}
+	_body, _err := client.PvrCallbackFCUWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
