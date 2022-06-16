@@ -9436,7 +9436,8 @@ type DescribeApisByAppRequest struct {
 	// API的ID
 	ApiUid *string `json:"ApiUid,omitempty" xml:"ApiUid,omitempty"`
 	// APP的ID
-	AppId *int64 `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId       *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// API的请求HTTP Method
 	Method *string `json:"Method,omitempty" xml:"Method,omitempty"`
 	// 当前页码
@@ -9468,6 +9469,11 @@ func (s *DescribeApisByAppRequest) SetApiUid(v string) *DescribeApisByAppRequest
 
 func (s *DescribeApisByAppRequest) SetAppId(v int64) *DescribeApisByAppRequest {
 	s.AppId = &v
+	return s
+}
+
+func (s *DescribeApisByAppRequest) SetDescription(v string) *DescribeApisByAppRequest {
+	s.Description = &v
 	return s
 }
 
@@ -13859,6 +13865,358 @@ func (s *DescribeHistoryApisResponse) SetStatusCode(v int32) *DescribeHistoryApi
 }
 
 func (s *DescribeHistoryApisResponse) SetBody(v *DescribeHistoryApisResponseBody) *DescribeHistoryApisResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInstancesRequest struct {
+	EnableTagAuthorization *bool                          `json:"EnableTagAuthorization,omitempty" xml:"EnableTagAuthorization,omitempty"`
+	InstanceId             *string                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Language               *string                        `json:"Language,omitempty" xml:"Language,omitempty"`
+	SecurityToken          *string                        `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	Tag                    []*DescribeInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesRequest) SetEnableTagAuthorization(v bool) *DescribeInstancesRequest {
+	s.EnableTagAuthorization = &v
+	return s
+}
+
+func (s *DescribeInstancesRequest) SetInstanceId(v string) *DescribeInstancesRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstancesRequest) SetLanguage(v string) *DescribeInstancesRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *DescribeInstancesRequest) SetSecurityToken(v string) *DescribeInstancesRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+func (s *DescribeInstancesRequest) SetTag(v []*DescribeInstancesRequestTag) *DescribeInstancesRequest {
+	s.Tag = v
+	return s
+}
+
+type DescribeInstancesRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeInstancesRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesRequestTag) SetKey(v string) *DescribeInstancesRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeInstancesRequestTag) SetValue(v string) *DescribeInstancesRequestTag {
+	s.Value = &v
+	return s
+}
+
+type DescribeInstancesResponseBody struct {
+	Instances  *DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
+	PageNumber *int32                                  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBody) SetInstances(v *DescribeInstancesResponseBodyInstances) *DescribeInstancesResponseBody {
+	s.Instances = v
+	return s
+}
+
+func (s *DescribeInstancesResponseBody) SetPageNumber(v int32) *DescribeInstancesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBody) SetPageSize(v int32) *DescribeInstancesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBody) SetRequestId(v string) *DescribeInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBody) SetTotalCount(v int32) *DescribeInstancesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstances struct {
+	InstanceAttribute []*DescribeInstancesResponseBodyInstancesInstanceAttribute `json:"InstanceAttribute,omitempty" xml:"InstanceAttribute,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstancesResponseBodyInstances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstances) SetInstanceAttribute(v []*DescribeInstancesResponseBodyInstancesInstanceAttribute) *DescribeInstancesResponseBodyInstances {
+	s.InstanceAttribute = v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesInstanceAttribute struct {
+	ClassicEgressAddress   *string                                                                        `json:"ClassicEgressAddress,omitempty" xml:"ClassicEgressAddress,omitempty"`
+	CreatedTime            *string                                                                        `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
+	EgressIpv6Enable       *bool                                                                          `json:"EgressIpv6Enable,omitempty" xml:"EgressIpv6Enable,omitempty"`
+	ExpiredTime            *string                                                                        `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	HttpsPolicies          *string                                                                        `json:"HttpsPolicies,omitempty" xml:"HttpsPolicies,omitempty"`
+	InstanceChargeType     *string                                                                        `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
+	InstanceId             *string                                                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName           *string                                                                        `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceRpsLimit       *int32                                                                         `json:"InstanceRpsLimit,omitempty" xml:"InstanceRpsLimit,omitempty"`
+	InstanceSpec           *string                                                                        `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	InstanceSpecAttributes *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributes `json:"InstanceSpecAttributes,omitempty" xml:"InstanceSpecAttributes,omitempty" type:"Struct"`
+	InstanceType           *string                                                                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetEgressAddress  *string                                                                        `json:"InternetEgressAddress,omitempty" xml:"InternetEgressAddress,omitempty"`
+	RegionId               *string                                                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Status                 *string                                                                        `json:"Status,omitempty" xml:"Status,omitempty"`
+	SupportIpv6            *bool                                                                          `json:"SupportIpv6,omitempty" xml:"SupportIpv6,omitempty"`
+	UserVpcId              *string                                                                        `json:"UserVpcId,omitempty" xml:"UserVpcId,omitempty"`
+	UserVswitchId          *string                                                                        `json:"UserVswitchId,omitempty" xml:"UserVswitchId,omitempty"`
+	VipTypeList            *string                                                                        `json:"VipTypeList,omitempty" xml:"VipTypeList,omitempty"`
+	VpcEgressAddress       *string                                                                        `json:"VpcEgressAddress,omitempty" xml:"VpcEgressAddress,omitempty"`
+	VpcIntranetEnable      *bool                                                                          `json:"VpcIntranetEnable,omitempty" xml:"VpcIntranetEnable,omitempty"`
+	VpcOwnerId             *int64                                                                         `json:"VpcOwnerId,omitempty" xml:"VpcOwnerId,omitempty"`
+	VpcSlbIntranetEnable   *bool                                                                          `json:"VpcSlbIntranetEnable,omitempty" xml:"VpcSlbIntranetEnable,omitempty"`
+	ZoneId                 *string                                                                        `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneLocalName          *string                                                                        `json:"ZoneLocalName,omitempty" xml:"ZoneLocalName,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceAttribute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetClassicEgressAddress(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.ClassicEgressAddress = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetCreatedTime(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.CreatedTime = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetEgressIpv6Enable(v bool) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.EgressIpv6Enable = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetExpiredTime(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.ExpiredTime = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetHttpsPolicies(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.HttpsPolicies = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetInstanceChargeType(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.InstanceChargeType = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetInstanceId(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetInstanceName(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetInstanceRpsLimit(v int32) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.InstanceRpsLimit = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetInstanceSpec(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.InstanceSpec = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetInstanceSpecAttributes(v *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributes) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.InstanceSpecAttributes = v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetInstanceType(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetInternetEgressAddress(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.InternetEgressAddress = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetRegionId(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetStatus(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetSupportIpv6(v bool) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.SupportIpv6 = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetUserVpcId(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.UserVpcId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetUserVswitchId(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.UserVswitchId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetVipTypeList(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.VipTypeList = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetVpcEgressAddress(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.VpcEgressAddress = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetVpcIntranetEnable(v bool) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.VpcIntranetEnable = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetVpcOwnerId(v int64) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.VpcOwnerId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetVpcSlbIntranetEnable(v bool) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.VpcSlbIntranetEnable = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetZoneId(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.ZoneId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetZoneLocalName(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.ZoneLocalName = &v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributes struct {
+	SpecAttribute []*DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributesSpecAttribute `json:"SpecAttribute,omitempty" xml:"SpecAttribute,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributes) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributes) SetSpecAttribute(v []*DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributesSpecAttribute) *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributes {
+	s.SpecAttribute = v
+	return s
+}
+
+type DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributesSpecAttribute struct {
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	Value     *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributesSpecAttribute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributesSpecAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributesSpecAttribute) SetLocalName(v string) *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributesSpecAttribute {
+	s.LocalName = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributesSpecAttribute) SetValue(v string) *DescribeInstancesResponseBodyInstancesInstanceAttributeInstanceSpecAttributesSpecAttribute {
+	s.Value = &v
+	return s
+}
+
+type DescribeInstancesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstancesResponse) SetHeaders(v map[string]*string) *DescribeInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstancesResponse) SetStatusCode(v int32) *DescribeInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstancesResponse) SetBody(v *DescribeInstancesResponseBody) *DescribeInstancesResponse {
 	s.Body = v
 	return s
 }
@@ -21412,6 +21770,87 @@ func (s *SdkGenerateByAppResponse) SetBody(v *SdkGenerateByAppResponseBody) *Sdk
 	return s
 }
 
+type SdkGenerateByAppForRegionRequest struct {
+	AppId         *int64  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s SdkGenerateByAppForRegionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SdkGenerateByAppForRegionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SdkGenerateByAppForRegionRequest) SetAppId(v int64) *SdkGenerateByAppForRegionRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *SdkGenerateByAppForRegionRequest) SetLanguage(v string) *SdkGenerateByAppForRegionRequest {
+	s.Language = &v
+	return s
+}
+
+func (s *SdkGenerateByAppForRegionRequest) SetSecurityToken(v string) *SdkGenerateByAppForRegionRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type SdkGenerateByAppForRegionResponseBody struct {
+	DownloadLink *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SdkGenerateByAppForRegionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SdkGenerateByAppForRegionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SdkGenerateByAppForRegionResponseBody) SetDownloadLink(v string) *SdkGenerateByAppForRegionResponseBody {
+	s.DownloadLink = &v
+	return s
+}
+
+func (s *SdkGenerateByAppForRegionResponseBody) SetRequestId(v string) *SdkGenerateByAppForRegionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SdkGenerateByAppForRegionResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SdkGenerateByAppForRegionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SdkGenerateByAppForRegionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SdkGenerateByAppForRegionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SdkGenerateByAppForRegionResponse) SetHeaders(v map[string]*string) *SdkGenerateByAppForRegionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SdkGenerateByAppForRegionResponse) SetStatusCode(v int32) *SdkGenerateByAppForRegionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SdkGenerateByAppForRegionResponse) SetBody(v *SdkGenerateByAppForRegionResponseBody) *SdkGenerateByAppForRegionResponse {
+	s.Body = v
+	return s
+}
+
 type SdkGenerateByGroupRequest struct {
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	Language      *string `json:"Language,omitempty" xml:"Language,omitempty"`
@@ -26122,6 +26561,10 @@ func (client *Client) DescribeApisByAppWithOptions(request *DescribeApisByAppReq
 		query["AppId"] = request.AppId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Method)) {
 		query["Method"] = request.Method
 	}
@@ -27177,6 +27620,66 @@ func (client *Client) DescribeHistoryApis(request *DescribeHistoryApisRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeHistoryApisResponse{}
 	_body, _err := client.DescribeHistoryApisWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeInstancesWithOptions(request *DescribeInstancesRequest, runtime *util.RuntimeOptions) (_result *DescribeInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EnableTagAuthorization)) {
+		query["EnableTagAuthorization"] = request.EnableTagAuthorization
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstances"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstances(request *DescribeInstancesRequest) (_result *DescribeInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstancesResponse{}
+	_body, _err := client.DescribeInstancesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30530,6 +31033,58 @@ func (client *Client) SdkGenerateByApp(request *SdkGenerateByAppRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &SdkGenerateByAppResponse{}
 	_body, _err := client.SdkGenerateByAppWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SdkGenerateByAppForRegionWithOptions(request *SdkGenerateByAppForRegionRequest, runtime *util.RuntimeOptions) (_result *SdkGenerateByAppForRegionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Language)) {
+		query["Language"] = request.Language
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SdkGenerateByAppForRegion"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SdkGenerateByAppForRegionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SdkGenerateByAppForRegion(request *SdkGenerateByAppForRegionRequest) (_result *SdkGenerateByAppForRegionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SdkGenerateByAppForRegionResponse{}
+	_body, _err := client.SdkGenerateByAppForRegionWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
