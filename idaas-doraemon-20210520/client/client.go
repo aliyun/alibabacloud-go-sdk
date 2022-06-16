@@ -1554,6 +1554,170 @@ func (s *ListCostUnitOrdersResponse) SetBody(v *ListCostUnitOrdersResponseBody) 
 	return s
 }
 
+type ListOrderConsumeStatisticRecordsRequest struct {
+	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StatisticTimeMax *string `json:"StatisticTimeMax,omitempty" xml:"StatisticTimeMax,omitempty"`
+	// 结束创建时间
+	StatisticTimeMin *string `json:"StatisticTimeMin,omitempty" xml:"StatisticTimeMin,omitempty"`
+}
+
+func (s ListOrderConsumeStatisticRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrderConsumeStatisticRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrderConsumeStatisticRecordsRequest) SetPageNumber(v int32) *ListOrderConsumeStatisticRecordsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListOrderConsumeStatisticRecordsRequest) SetPageSize(v int32) *ListOrderConsumeStatisticRecordsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListOrderConsumeStatisticRecordsRequest) SetStatisticTimeMax(v string) *ListOrderConsumeStatisticRecordsRequest {
+	s.StatisticTimeMax = &v
+	return s
+}
+
+func (s *ListOrderConsumeStatisticRecordsRequest) SetStatisticTimeMin(v string) *ListOrderConsumeStatisticRecordsRequest {
+	s.StatisticTimeMin = &v
+	return s
+}
+
+type ListOrderConsumeStatisticRecordsResponseBody struct {
+	Items         []*ListOrderConsumeStatisticRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PageSize      *int64                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId     *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalElements *int64                                               `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
+	TotalPages    *int64                                               `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+}
+
+func (s ListOrderConsumeStatisticRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrderConsumeStatisticRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrderConsumeStatisticRecordsResponseBody) SetItems(v []*ListOrderConsumeStatisticRecordsResponseBodyItems) *ListOrderConsumeStatisticRecordsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListOrderConsumeStatisticRecordsResponseBody) SetPageSize(v int64) *ListOrderConsumeStatisticRecordsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListOrderConsumeStatisticRecordsResponseBody) SetRequestId(v string) *ListOrderConsumeStatisticRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListOrderConsumeStatisticRecordsResponseBody) SetTotalElements(v int64) *ListOrderConsumeStatisticRecordsResponseBody {
+	s.TotalElements = &v
+	return s
+}
+
+func (s *ListOrderConsumeStatisticRecordsResponseBody) SetTotalPages(v int64) *ListOrderConsumeStatisticRecordsResponseBody {
+	s.TotalPages = &v
+	return s
+}
+
+type ListOrderConsumeStatisticRecordsResponseBodyItems struct {
+	// 阿里云订单编号
+	AliOrderCode          *string `json:"AliOrderCode,omitempty" xml:"AliOrderCode,omitempty"`
+	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
+	// 过期时间
+	ChargedCount *int64  `json:"ChargedCount,omitempty" xml:"ChargedCount,omitempty"`
+	ServiceCode  *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// 创建时间
+	StatisticTime *int64 `json:"StatisticTime,omitempty" xml:"StatisticTime,omitempty"`
+	// 退款时间，毫秒时间戳，退款时才有值
+	TotalPrice *int64 `json:"TotalPrice,omitempty" xml:"TotalPrice,omitempty"`
+	// 已用 CU 值，单位厘，实际使用 CU 乘以 1000
+	UnitPrice *int64 `json:"UnitPrice,omitempty" xml:"UnitPrice,omitempty"`
+}
+
+func (s ListOrderConsumeStatisticRecordsResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrderConsumeStatisticRecordsResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrderConsumeStatisticRecordsResponseBodyItems) SetAliOrderCode(v string) *ListOrderConsumeStatisticRecordsResponseBodyItems {
+	s.AliOrderCode = &v
+	return s
+}
+
+func (s *ListOrderConsumeStatisticRecordsResponseBodyItems) SetApplicationExternalId(v string) *ListOrderConsumeStatisticRecordsResponseBodyItems {
+	s.ApplicationExternalId = &v
+	return s
+}
+
+func (s *ListOrderConsumeStatisticRecordsResponseBodyItems) SetChargedCount(v int64) *ListOrderConsumeStatisticRecordsResponseBodyItems {
+	s.ChargedCount = &v
+	return s
+}
+
+func (s *ListOrderConsumeStatisticRecordsResponseBodyItems) SetServiceCode(v string) *ListOrderConsumeStatisticRecordsResponseBodyItems {
+	s.ServiceCode = &v
+	return s
+}
+
+func (s *ListOrderConsumeStatisticRecordsResponseBodyItems) SetStatisticTime(v int64) *ListOrderConsumeStatisticRecordsResponseBodyItems {
+	s.StatisticTime = &v
+	return s
+}
+
+func (s *ListOrderConsumeStatisticRecordsResponseBodyItems) SetTotalPrice(v int64) *ListOrderConsumeStatisticRecordsResponseBodyItems {
+	s.TotalPrice = &v
+	return s
+}
+
+func (s *ListOrderConsumeStatisticRecordsResponseBodyItems) SetUnitPrice(v int64) *ListOrderConsumeStatisticRecordsResponseBodyItems {
+	s.UnitPrice = &v
+	return s
+}
+
+type ListOrderConsumeStatisticRecordsResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListOrderConsumeStatisticRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListOrderConsumeStatisticRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListOrderConsumeStatisticRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListOrderConsumeStatisticRecordsResponse) SetHeaders(v map[string]*string) *ListOrderConsumeStatisticRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListOrderConsumeStatisticRecordsResponse) SetStatusCode(v int32) *ListOrderConsumeStatisticRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListOrderConsumeStatisticRecordsResponse) SetBody(v *ListOrderConsumeStatisticRecordsResponseBody) *ListOrderConsumeStatisticRecordsResponse {
+	s.Body = v
+	return s
+}
+
 type ListPwnedPasswordsRequest struct {
 	PrefixHexPasswordSha1Hash *string `json:"PrefixHexPasswordSha1Hash,omitempty" xml:"PrefixHexPasswordSha1Hash,omitempty"`
 }
@@ -3043,6 +3207,62 @@ func (client *Client) ListCostUnitOrders(request *ListCostUnitOrdersRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &ListCostUnitOrdersResponse{}
 	_body, _err := client.ListCostUnitOrdersWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListOrderConsumeStatisticRecordsWithOptions(request *ListOrderConsumeStatisticRecordsRequest, runtime *util.RuntimeOptions) (_result *ListOrderConsumeStatisticRecordsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatisticTimeMax)) {
+		query["StatisticTimeMax"] = request.StatisticTimeMax
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StatisticTimeMin)) {
+		query["StatisticTimeMin"] = request.StatisticTimeMin
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListOrderConsumeStatisticRecords"),
+		Version:     tea.String("2021-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListOrderConsumeStatisticRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListOrderConsumeStatisticRecords(request *ListOrderConsumeStatisticRecordsRequest) (_result *ListOrderConsumeStatisticRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListOrderConsumeStatisticRecordsResponse{}
+	_body, _err := client.ListOrderConsumeStatisticRecordsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
