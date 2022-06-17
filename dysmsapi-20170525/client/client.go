@@ -124,8 +124,9 @@ func (s *AddShortUrlResponseBodyData) SetSourceUrl(v string) *AddShortUrlRespons
 }
 
 type AddShortUrlResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddShortUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddShortUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddShortUrlResponse) String() string {
@@ -138,6 +139,11 @@ func (s AddShortUrlResponse) GoString() string {
 
 func (s *AddShortUrlResponse) SetHeaders(v map[string]*string) *AddShortUrlResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddShortUrlResponse) SetStatusCode(v int32) *AddShortUrlResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -258,8 +264,9 @@ func (s *AddSmsSignResponseBody) SetSignName(v string) *AddSmsSignResponseBody {
 }
 
 type AddSmsSignResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddSmsSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddSmsSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddSmsSignResponse) String() string {
@@ -272,6 +279,11 @@ func (s AddSmsSignResponse) GoString() string {
 
 func (s *AddSmsSignResponse) SetHeaders(v map[string]*string) *AddSmsSignResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddSmsSignResponse) SetStatusCode(v int32) *AddSmsSignResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -369,8 +381,9 @@ func (s *AddSmsTemplateResponseBody) SetTemplateCode(v string) *AddSmsTemplateRe
 }
 
 type AddSmsTemplateResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddSmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddSmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddSmsTemplateResponse) String() string {
@@ -386,7 +399,238 @@ func (s *AddSmsTemplateResponse) SetHeaders(v map[string]*string) *AddSmsTemplat
 	return s
 }
 
+func (s *AddSmsTemplateResponse) SetStatusCode(v int32) *AddSmsTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AddSmsTemplateResponse) SetBody(v *AddSmsTemplateResponseBody) *AddSmsTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type CheckMobilesCardSupportRequest struct {
+	Mobiles      []map[string]interface{} `json:"Mobiles,omitempty" xml:"Mobiles,omitempty" type:"Repeated"`
+	TemplateCode *string                  `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+}
+
+func (s CheckMobilesCardSupportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckMobilesCardSupportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckMobilesCardSupportRequest) SetMobiles(v []map[string]interface{}) *CheckMobilesCardSupportRequest {
+	s.Mobiles = v
+	return s
+}
+
+func (s *CheckMobilesCardSupportRequest) SetTemplateCode(v string) *CheckMobilesCardSupportRequest {
+	s.TemplateCode = &v
+	return s
+}
+
+type CheckMobilesCardSupportResponseBody struct {
+	Code      *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CheckMobilesCardSupportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckMobilesCardSupportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckMobilesCardSupportResponseBody) SetCode(v string) *CheckMobilesCardSupportResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CheckMobilesCardSupportResponseBody) SetData(v []map[string]interface{}) *CheckMobilesCardSupportResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CheckMobilesCardSupportResponseBody) SetRequestId(v string) *CheckMobilesCardSupportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckMobilesCardSupportResponseBody) SetSuccess(v bool) *CheckMobilesCardSupportResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CheckMobilesCardSupportResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckMobilesCardSupportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckMobilesCardSupportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckMobilesCardSupportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckMobilesCardSupportResponse) SetHeaders(v map[string]*string) *CheckMobilesCardSupportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckMobilesCardSupportResponse) SetStatusCode(v int32) *CheckMobilesCardSupportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckMobilesCardSupportResponse) SetBody(v *CheckMobilesCardSupportResponseBody) *CheckMobilesCardSupportResponse {
+	s.Body = v
+	return s
+}
+
+type CreateCardSmsTemplateRequest struct {
+	Memo         *string                `json:"Memo,omitempty" xml:"Memo,omitempty"`
+	Template     map[string]interface{} `json:"Template,omitempty" xml:"Template,omitempty"`
+	TemplateName *string                `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s CreateCardSmsTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCardSmsTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCardSmsTemplateRequest) SetMemo(v string) *CreateCardSmsTemplateRequest {
+	s.Memo = &v
+	return s
+}
+
+func (s *CreateCardSmsTemplateRequest) SetTemplate(v map[string]interface{}) *CreateCardSmsTemplateRequest {
+	s.Template = v
+	return s
+}
+
+func (s *CreateCardSmsTemplateRequest) SetTemplateName(v string) *CreateCardSmsTemplateRequest {
+	s.TemplateName = &v
+	return s
+}
+
+type CreateCardSmsTemplateShrinkRequest struct {
+	Memo           *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
+	TemplateShrink *string `json:"Template,omitempty" xml:"Template,omitempty"`
+	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+}
+
+func (s CreateCardSmsTemplateShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCardSmsTemplateShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCardSmsTemplateShrinkRequest) SetMemo(v string) *CreateCardSmsTemplateShrinkRequest {
+	s.Memo = &v
+	return s
+}
+
+func (s *CreateCardSmsTemplateShrinkRequest) SetTemplateShrink(v string) *CreateCardSmsTemplateShrinkRequest {
+	s.TemplateShrink = &v
+	return s
+}
+
+func (s *CreateCardSmsTemplateShrinkRequest) SetTemplateName(v string) *CreateCardSmsTemplateShrinkRequest {
+	s.TemplateName = &v
+	return s
+}
+
+type CreateCardSmsTemplateResponseBody struct {
+	Code      *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *CreateCardSmsTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateCardSmsTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCardSmsTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCardSmsTemplateResponseBody) SetCode(v string) *CreateCardSmsTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateCardSmsTemplateResponseBody) SetData(v *CreateCardSmsTemplateResponseBodyData) *CreateCardSmsTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *CreateCardSmsTemplateResponseBody) SetRequestId(v string) *CreateCardSmsTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateCardSmsTemplateResponseBody) SetSuccess(v bool) *CreateCardSmsTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateCardSmsTemplateResponseBodyData struct {
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+}
+
+func (s CreateCardSmsTemplateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCardSmsTemplateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCardSmsTemplateResponseBodyData) SetTemplateCode(v string) *CreateCardSmsTemplateResponseBodyData {
+	s.TemplateCode = &v
+	return s
+}
+
+type CreateCardSmsTemplateResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateCardSmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateCardSmsTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateCardSmsTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateCardSmsTemplateResponse) SetHeaders(v map[string]*string) *CreateCardSmsTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateCardSmsTemplateResponse) SetStatusCode(v int32) *CreateCardSmsTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateCardSmsTemplateResponse) SetBody(v *CreateCardSmsTemplateResponseBody) *CreateCardSmsTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -456,8 +700,9 @@ func (s *DeleteShortUrlResponseBody) SetRequestId(v string) *DeleteShortUrlRespo
 }
 
 type DeleteShortUrlResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteShortUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteShortUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteShortUrlResponse) String() string {
@@ -470,6 +715,11 @@ func (s DeleteShortUrlResponse) GoString() string {
 
 func (s *DeleteShortUrlResponse) SetHeaders(v map[string]*string) *DeleteShortUrlResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteShortUrlResponse) SetStatusCode(v int32) *DeleteShortUrlResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -549,8 +799,9 @@ func (s *DeleteSmsSignResponseBody) SetSignName(v string) *DeleteSmsSignResponse
 }
 
 type DeleteSmsSignResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteSmsSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSmsSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteSmsSignResponse) String() string {
@@ -563,6 +814,11 @@ func (s DeleteSmsSignResponse) GoString() string {
 
 func (s *DeleteSmsSignResponse) SetHeaders(v map[string]*string) *DeleteSmsSignResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteSmsSignResponse) SetStatusCode(v int32) *DeleteSmsSignResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -642,8 +898,9 @@ func (s *DeleteSmsTemplateResponseBody) SetTemplateCode(v string) *DeleteSmsTemp
 }
 
 type DeleteSmsTemplateResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteSmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteSmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteSmsTemplateResponse) String() string {
@@ -659,7 +916,403 @@ func (s *DeleteSmsTemplateResponse) SetHeaders(v map[string]*string) *DeleteSmsT
 	return s
 }
 
+func (s *DeleteSmsTemplateResponse) SetStatusCode(v int32) *DeleteSmsTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteSmsTemplateResponse) SetBody(v *DeleteSmsTemplateResponseBody) *DeleteSmsTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type GetCardSmsLinkRequest struct {
+	CardTemplateCode      *string `json:"CardTemplateCode,omitempty" xml:"CardTemplateCode,omitempty"`
+	CardTemplateParamJson *string `json:"CardTemplateParamJson,omitempty" xml:"CardTemplateParamJson,omitempty"`
+	OutId                 *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	PhoneNumberJson       *string `json:"PhoneNumberJson,omitempty" xml:"PhoneNumberJson,omitempty"`
+	SignNameJson          *string `json:"SignNameJson,omitempty" xml:"SignNameJson,omitempty"`
+}
+
+func (s GetCardSmsLinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardSmsLinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardSmsLinkRequest) SetCardTemplateCode(v string) *GetCardSmsLinkRequest {
+	s.CardTemplateCode = &v
+	return s
+}
+
+func (s *GetCardSmsLinkRequest) SetCardTemplateParamJson(v string) *GetCardSmsLinkRequest {
+	s.CardTemplateParamJson = &v
+	return s
+}
+
+func (s *GetCardSmsLinkRequest) SetOutId(v string) *GetCardSmsLinkRequest {
+	s.OutId = &v
+	return s
+}
+
+func (s *GetCardSmsLinkRequest) SetPhoneNumberJson(v string) *GetCardSmsLinkRequest {
+	s.PhoneNumberJson = &v
+	return s
+}
+
+func (s *GetCardSmsLinkRequest) SetSignNameJson(v string) *GetCardSmsLinkRequest {
+	s.SignNameJson = &v
+	return s
+}
+
+type GetCardSmsLinkResponseBody struct {
+	Code      *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetCardSmsLinkResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                           `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetCardSmsLinkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardSmsLinkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardSmsLinkResponseBody) SetCode(v string) *GetCardSmsLinkResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetCardSmsLinkResponseBody) SetData(v *GetCardSmsLinkResponseBodyData) *GetCardSmsLinkResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetCardSmsLinkResponseBody) SetRequestId(v string) *GetCardSmsLinkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetCardSmsLinkResponseBody) SetSuccess(v bool) *GetCardSmsLinkResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetCardSmsLinkResponseBodyData struct {
+	CardPhoneNumbers *string `json:"CardPhoneNumbers,omitempty" xml:"CardPhoneNumbers,omitempty"`
+	CardSignNames    *string `json:"CardSignNames,omitempty" xml:"CardSignNames,omitempty"`
+	CardSmsLinks     *string `json:"CardSmsLinks,omitempty" xml:"CardSmsLinks,omitempty"`
+	CardTmpState     *int32  `json:"CardTmpState,omitempty" xml:"CardTmpState,omitempty"`
+	NotMediaMobiles  *string `json:"NotMediaMobiles,omitempty" xml:"NotMediaMobiles,omitempty"`
+}
+
+func (s GetCardSmsLinkResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardSmsLinkResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardSmsLinkResponseBodyData) SetCardPhoneNumbers(v string) *GetCardSmsLinkResponseBodyData {
+	s.CardPhoneNumbers = &v
+	return s
+}
+
+func (s *GetCardSmsLinkResponseBodyData) SetCardSignNames(v string) *GetCardSmsLinkResponseBodyData {
+	s.CardSignNames = &v
+	return s
+}
+
+func (s *GetCardSmsLinkResponseBodyData) SetCardSmsLinks(v string) *GetCardSmsLinkResponseBodyData {
+	s.CardSmsLinks = &v
+	return s
+}
+
+func (s *GetCardSmsLinkResponseBodyData) SetCardTmpState(v int32) *GetCardSmsLinkResponseBodyData {
+	s.CardTmpState = &v
+	return s
+}
+
+func (s *GetCardSmsLinkResponseBodyData) SetNotMediaMobiles(v string) *GetCardSmsLinkResponseBodyData {
+	s.NotMediaMobiles = &v
+	return s
+}
+
+type GetCardSmsLinkResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCardSmsLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCardSmsLinkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCardSmsLinkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCardSmsLinkResponse) SetHeaders(v map[string]*string) *GetCardSmsLinkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCardSmsLinkResponse) SetStatusCode(v int32) *GetCardSmsLinkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCardSmsLinkResponse) SetBody(v *GetCardSmsLinkResponseBody) *GetCardSmsLinkResponse {
+	s.Body = v
+	return s
+}
+
+type GetMediaResourceIdRequest struct {
+	ExtendInfo   *string `json:"ExtendInfo,omitempty" xml:"ExtendInfo,omitempty"`
+	FileSize     *int64  `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	Memo         *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
+	OssKey       *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+	ResourceType *int32  `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s GetMediaResourceIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaResourceIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaResourceIdRequest) SetExtendInfo(v string) *GetMediaResourceIdRequest {
+	s.ExtendInfo = &v
+	return s
+}
+
+func (s *GetMediaResourceIdRequest) SetFileSize(v int64) *GetMediaResourceIdRequest {
+	s.FileSize = &v
+	return s
+}
+
+func (s *GetMediaResourceIdRequest) SetMemo(v string) *GetMediaResourceIdRequest {
+	s.Memo = &v
+	return s
+}
+
+func (s *GetMediaResourceIdRequest) SetOssKey(v string) *GetMediaResourceIdRequest {
+	s.OssKey = &v
+	return s
+}
+
+func (s *GetMediaResourceIdRequest) SetResourceType(v int32) *GetMediaResourceIdRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type GetMediaResourceIdResponseBody struct {
+	Code      *string                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetMediaResourceIdResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                               `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetMediaResourceIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaResourceIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaResourceIdResponseBody) SetCode(v string) *GetMediaResourceIdResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetMediaResourceIdResponseBody) SetData(v *GetMediaResourceIdResponseBodyData) *GetMediaResourceIdResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetMediaResourceIdResponseBody) SetRequestId(v string) *GetMediaResourceIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetMediaResourceIdResponseBody) SetSuccess(v bool) *GetMediaResourceIdResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetMediaResourceIdResponseBodyData struct {
+	ResourceId *int64 `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+}
+
+func (s GetMediaResourceIdResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaResourceIdResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaResourceIdResponseBodyData) SetResourceId(v int64) *GetMediaResourceIdResponseBodyData {
+	s.ResourceId = &v
+	return s
+}
+
+type GetMediaResourceIdResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetMediaResourceIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMediaResourceIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMediaResourceIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMediaResourceIdResponse) SetHeaders(v map[string]*string) *GetMediaResourceIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMediaResourceIdResponse) SetStatusCode(v int32) *GetMediaResourceIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMediaResourceIdResponse) SetBody(v *GetMediaResourceIdResponseBody) *GetMediaResourceIdResponse {
+	s.Body = v
+	return s
+}
+
+type GetOSSInfoForCardTemplateResponseBody struct {
+	Code      *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *GetOSSInfoForCardTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetOSSInfoForCardTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOSSInfoForCardTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetOSSInfoForCardTemplateResponseBody) SetCode(v string) *GetOSSInfoForCardTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetOSSInfoForCardTemplateResponseBody) SetData(v *GetOSSInfoForCardTemplateResponseBodyData) *GetOSSInfoForCardTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetOSSInfoForCardTemplateResponseBody) SetRequestId(v string) *GetOSSInfoForCardTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetOSSInfoForCardTemplateResponseBody) SetSuccess(v bool) *GetOSSInfoForCardTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetOSSInfoForCardTemplateResponseBodyData struct {
+	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
+	AliUid      *string `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	Bucket      *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	ExpireTime  *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	Host        *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Policy      *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Signature   *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+	StartPath   *string `json:"StartPath,omitempty" xml:"StartPath,omitempty"`
+}
+
+func (s GetOSSInfoForCardTemplateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOSSInfoForCardTemplateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetOSSInfoForCardTemplateResponseBodyData) SetAccessKeyId(v string) *GetOSSInfoForCardTemplateResponseBodyData {
+	s.AccessKeyId = &v
+	return s
+}
+
+func (s *GetOSSInfoForCardTemplateResponseBodyData) SetAliUid(v string) *GetOSSInfoForCardTemplateResponseBodyData {
+	s.AliUid = &v
+	return s
+}
+
+func (s *GetOSSInfoForCardTemplateResponseBodyData) SetBucket(v string) *GetOSSInfoForCardTemplateResponseBodyData {
+	s.Bucket = &v
+	return s
+}
+
+func (s *GetOSSInfoForCardTemplateResponseBodyData) SetExpireTime(v string) *GetOSSInfoForCardTemplateResponseBodyData {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *GetOSSInfoForCardTemplateResponseBodyData) SetHost(v string) *GetOSSInfoForCardTemplateResponseBodyData {
+	s.Host = &v
+	return s
+}
+
+func (s *GetOSSInfoForCardTemplateResponseBodyData) SetPolicy(v string) *GetOSSInfoForCardTemplateResponseBodyData {
+	s.Policy = &v
+	return s
+}
+
+func (s *GetOSSInfoForCardTemplateResponseBodyData) SetSignature(v string) *GetOSSInfoForCardTemplateResponseBodyData {
+	s.Signature = &v
+	return s
+}
+
+func (s *GetOSSInfoForCardTemplateResponseBodyData) SetStartPath(v string) *GetOSSInfoForCardTemplateResponseBodyData {
+	s.StartPath = &v
+	return s
+}
+
+type GetOSSInfoForCardTemplateResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetOSSInfoForCardTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetOSSInfoForCardTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetOSSInfoForCardTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetOSSInfoForCardTemplateResponse) SetHeaders(v map[string]*string) *GetOSSInfoForCardTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetOSSInfoForCardTemplateResponse) SetStatusCode(v int32) *GetOSSInfoForCardTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetOSSInfoForCardTemplateResponse) SetBody(v *GetOSSInfoForCardTemplateResponseBody) *GetOSSInfoForCardTemplateResponse {
 	s.Body = v
 	return s
 }
@@ -846,8 +1499,9 @@ func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v stri
 }
 
 type ListTagResourcesResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListTagResourcesResponse) String() string {
@@ -860,6 +1514,11 @@ func (s ListTagResourcesResponse) GoString() string {
 
 func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -980,8 +1639,9 @@ func (s *ModifySmsSignResponseBody) SetSignName(v string) *ModifySmsSignResponse
 }
 
 type ModifySmsSignResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifySmsSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifySmsSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifySmsSignResponse) String() string {
@@ -994,6 +1654,11 @@ func (s ModifySmsSignResponse) GoString() string {
 
 func (s *ModifySmsSignResponse) SetHeaders(v map[string]*string) *ModifySmsSignResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifySmsSignResponse) SetStatusCode(v int32) *ModifySmsSignResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1097,8 +1762,9 @@ func (s *ModifySmsTemplateResponseBody) SetTemplateCode(v string) *ModifySmsTemp
 }
 
 type ModifySmsTemplateResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifySmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifySmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifySmsTemplateResponse) String() string {
@@ -1114,7 +1780,203 @@ func (s *ModifySmsTemplateResponse) SetHeaders(v map[string]*string) *ModifySmsT
 	return s
 }
 
+func (s *ModifySmsTemplateResponse) SetStatusCode(v int32) *ModifySmsTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifySmsTemplateResponse) SetBody(v *ModifySmsTemplateResponseBody) *ModifySmsTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type QueryCardSmsTemplateRequest struct {
+	TemplateCode *string `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+}
+
+func (s QueryCardSmsTemplateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCardSmsTemplateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCardSmsTemplateRequest) SetTemplateCode(v string) *QueryCardSmsTemplateRequest {
+	s.TemplateCode = &v
+	return s
+}
+
+type QueryCardSmsTemplateResponseBody struct {
+	Code      *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *QueryCardSmsTemplateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryCardSmsTemplateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCardSmsTemplateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCardSmsTemplateResponseBody) SetCode(v string) *QueryCardSmsTemplateResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryCardSmsTemplateResponseBody) SetData(v *QueryCardSmsTemplateResponseBodyData) *QueryCardSmsTemplateResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryCardSmsTemplateResponseBody) SetRequestId(v string) *QueryCardSmsTemplateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryCardSmsTemplateResponseBody) SetSuccess(v bool) *QueryCardSmsTemplateResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryCardSmsTemplateResponseBodyData struct {
+	Templates []map[string]interface{} `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+}
+
+func (s QueryCardSmsTemplateResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCardSmsTemplateResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCardSmsTemplateResponseBodyData) SetTemplates(v []map[string]interface{}) *QueryCardSmsTemplateResponseBodyData {
+	s.Templates = v
+	return s
+}
+
+type QueryCardSmsTemplateResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryCardSmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryCardSmsTemplateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCardSmsTemplateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCardSmsTemplateResponse) SetHeaders(v map[string]*string) *QueryCardSmsTemplateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryCardSmsTemplateResponse) SetStatusCode(v int32) *QueryCardSmsTemplateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryCardSmsTemplateResponse) SetBody(v *QueryCardSmsTemplateResponseBody) *QueryCardSmsTemplateResponse {
+	s.Body = v
+	return s
+}
+
+type QueryCardSmsTemplateReportRequest struct {
+	EndDate       *string   `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	StartDate     *string   `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	TemplateCodes []*string `json:"TemplateCodes,omitempty" xml:"TemplateCodes,omitempty" type:"Repeated"`
+}
+
+func (s QueryCardSmsTemplateReportRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCardSmsTemplateReportRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCardSmsTemplateReportRequest) SetEndDate(v string) *QueryCardSmsTemplateReportRequest {
+	s.EndDate = &v
+	return s
+}
+
+func (s *QueryCardSmsTemplateReportRequest) SetStartDate(v string) *QueryCardSmsTemplateReportRequest {
+	s.StartDate = &v
+	return s
+}
+
+func (s *QueryCardSmsTemplateReportRequest) SetTemplateCodes(v []*string) *QueryCardSmsTemplateReportRequest {
+	s.TemplateCodes = v
+	return s
+}
+
+type QueryCardSmsTemplateReportResponseBody struct {
+	Code      *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      []map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                    `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryCardSmsTemplateReportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCardSmsTemplateReportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCardSmsTemplateReportResponseBody) SetCode(v string) *QueryCardSmsTemplateReportResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *QueryCardSmsTemplateReportResponseBody) SetData(v []map[string]interface{}) *QueryCardSmsTemplateReportResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *QueryCardSmsTemplateReportResponseBody) SetRequestId(v string) *QueryCardSmsTemplateReportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryCardSmsTemplateReportResponseBody) SetSuccess(v bool) *QueryCardSmsTemplateReportResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryCardSmsTemplateReportResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryCardSmsTemplateReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryCardSmsTemplateReportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryCardSmsTemplateReportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCardSmsTemplateReportResponse) SetHeaders(v map[string]*string) *QueryCardSmsTemplateReportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryCardSmsTemplateReportResponse) SetStatusCode(v int32) *QueryCardSmsTemplateReportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryCardSmsTemplateReportResponse) SetBody(v *QueryCardSmsTemplateReportResponseBody) *QueryCardSmsTemplateReportResponse {
 	s.Body = v
 	return s
 }
@@ -1296,8 +2158,9 @@ func (s *QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO) SetTempl
 }
 
 type QuerySendDetailsResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QuerySendDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySendDetailsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QuerySendDetailsResponse) String() string {
@@ -1310,6 +2173,11 @@ func (s QuerySendDetailsResponse) GoString() string {
 
 func (s *QuerySendDetailsResponse) SetHeaders(v map[string]*string) *QuerySendDetailsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *QuerySendDetailsResponse) SetStatusCode(v int32) *QuerySendDetailsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1477,8 +2345,9 @@ func (s *QuerySendStatisticsResponseBodyDataTargetList) SetTotalCount(v int64) *
 }
 
 type QuerySendStatisticsResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QuerySendStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySendStatisticsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QuerySendStatisticsResponse) String() string {
@@ -1491,6 +2360,11 @@ func (s QuerySendStatisticsResponse) GoString() string {
 
 func (s *QuerySendStatisticsResponse) SetHeaders(v map[string]*string) *QuerySendStatisticsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *QuerySendStatisticsResponse) SetStatusCode(v int32) *QuerySendStatisticsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1629,8 +2503,9 @@ func (s *QueryShortUrlResponseBodyData) SetUniqueVisitorCount(v string) *QuerySh
 }
 
 type QueryShortUrlResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryShortUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryShortUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QueryShortUrlResponse) String() string {
@@ -1643,6 +2518,11 @@ func (s QueryShortUrlResponse) GoString() string {
 
 func (s *QueryShortUrlResponse) SetHeaders(v map[string]*string) *QueryShortUrlResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *QueryShortUrlResponse) SetStatusCode(v int32) *QueryShortUrlResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1740,8 +2620,9 @@ func (s *QuerySmsSignResponseBody) SetSignStatus(v int32) *QuerySmsSignResponseB
 }
 
 type QuerySmsSignResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QuerySmsSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySmsSignResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QuerySmsSignResponse) String() string {
@@ -1754,6 +2635,11 @@ func (s QuerySmsSignResponse) GoString() string {
 
 func (s *QuerySmsSignResponse) SetHeaders(v map[string]*string) *QuerySmsSignResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *QuerySmsSignResponse) SetStatusCode(v int32) *QuerySmsSignResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1915,8 +2801,9 @@ func (s *QuerySmsSignListResponseBodySmsSignListReason) SetRejectSubInfo(v strin
 }
 
 type QuerySmsSignListResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QuerySmsSignListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySmsSignListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QuerySmsSignListResponse) String() string {
@@ -1929,6 +2816,11 @@ func (s QuerySmsSignListResponse) GoString() string {
 
 func (s *QuerySmsSignListResponse) SetHeaders(v map[string]*string) *QuerySmsSignListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *QuerySmsSignListResponse) SetStatusCode(v int32) *QuerySmsSignListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2044,8 +2936,9 @@ func (s *QuerySmsTemplateResponseBody) SetTemplateType(v int32) *QuerySmsTemplat
 }
 
 type QuerySmsTemplateResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QuerySmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySmsTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QuerySmsTemplateResponse) String() string {
@@ -2058,6 +2951,11 @@ func (s QuerySmsTemplateResponse) GoString() string {
 
 func (s *QuerySmsTemplateResponse) SetHeaders(v map[string]*string) *QuerySmsTemplateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *QuerySmsTemplateResponse) SetStatusCode(v int32) *QuerySmsTemplateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2231,8 +3129,9 @@ func (s *QuerySmsTemplateListResponseBodySmsTemplateListReason) SetRejectSubInfo
 }
 
 type QuerySmsTemplateListResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QuerySmsTemplateListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QuerySmsTemplateListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QuerySmsTemplateListResponse) String() string {
@@ -2248,7 +3147,200 @@ func (s *QuerySmsTemplateListResponse) SetHeaders(v map[string]*string) *QuerySm
 	return s
 }
 
+func (s *QuerySmsTemplateListResponse) SetStatusCode(v int32) *QuerySmsTemplateListResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *QuerySmsTemplateListResponse) SetBody(v *QuerySmsTemplateListResponseBody) *QuerySmsTemplateListResponse {
+	s.Body = v
+	return s
+}
+
+type SendBatchCardSmsRequest struct {
+	CardTemplateCode         *string `json:"CardTemplateCode,omitempty" xml:"CardTemplateCode,omitempty"`
+	CardTemplateParamJson    *string `json:"CardTemplateParamJson,omitempty" xml:"CardTemplateParamJson,omitempty"`
+	DigitalTemplateCode      *string `json:"DigitalTemplateCode,omitempty" xml:"DigitalTemplateCode,omitempty"`
+	DigitalTemplateParamJson *string `json:"DigitalTemplateParamJson,omitempty" xml:"DigitalTemplateParamJson,omitempty"`
+	FallbackType             *string `json:"FallbackType,omitempty" xml:"FallbackType,omitempty"`
+	OutId                    *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	PhoneNumberJson          *string `json:"PhoneNumberJson,omitempty" xml:"PhoneNumberJson,omitempty"`
+	SignNameJson             *string `json:"SignNameJson,omitempty" xml:"SignNameJson,omitempty"`
+	SmsTemplateCode          *string `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
+	SmsTemplateParamJson     *string `json:"SmsTemplateParamJson,omitempty" xml:"SmsTemplateParamJson,omitempty"`
+	SmsUpExtendCodeJson      *string `json:"SmsUpExtendCodeJson,omitempty" xml:"SmsUpExtendCodeJson,omitempty"`
+}
+
+func (s SendBatchCardSmsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendBatchCardSmsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendBatchCardSmsRequest) SetCardTemplateCode(v string) *SendBatchCardSmsRequest {
+	s.CardTemplateCode = &v
+	return s
+}
+
+func (s *SendBatchCardSmsRequest) SetCardTemplateParamJson(v string) *SendBatchCardSmsRequest {
+	s.CardTemplateParamJson = &v
+	return s
+}
+
+func (s *SendBatchCardSmsRequest) SetDigitalTemplateCode(v string) *SendBatchCardSmsRequest {
+	s.DigitalTemplateCode = &v
+	return s
+}
+
+func (s *SendBatchCardSmsRequest) SetDigitalTemplateParamJson(v string) *SendBatchCardSmsRequest {
+	s.DigitalTemplateParamJson = &v
+	return s
+}
+
+func (s *SendBatchCardSmsRequest) SetFallbackType(v string) *SendBatchCardSmsRequest {
+	s.FallbackType = &v
+	return s
+}
+
+func (s *SendBatchCardSmsRequest) SetOutId(v string) *SendBatchCardSmsRequest {
+	s.OutId = &v
+	return s
+}
+
+func (s *SendBatchCardSmsRequest) SetPhoneNumberJson(v string) *SendBatchCardSmsRequest {
+	s.PhoneNumberJson = &v
+	return s
+}
+
+func (s *SendBatchCardSmsRequest) SetSignNameJson(v string) *SendBatchCardSmsRequest {
+	s.SignNameJson = &v
+	return s
+}
+
+func (s *SendBatchCardSmsRequest) SetSmsTemplateCode(v string) *SendBatchCardSmsRequest {
+	s.SmsTemplateCode = &v
+	return s
+}
+
+func (s *SendBatchCardSmsRequest) SetSmsTemplateParamJson(v string) *SendBatchCardSmsRequest {
+	s.SmsTemplateParamJson = &v
+	return s
+}
+
+func (s *SendBatchCardSmsRequest) SetSmsUpExtendCodeJson(v string) *SendBatchCardSmsRequest {
+	s.SmsUpExtendCodeJson = &v
+	return s
+}
+
+type SendBatchCardSmsResponseBody struct {
+	Code      *string                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *SendBatchCardSmsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                             `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SendBatchCardSmsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendBatchCardSmsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendBatchCardSmsResponseBody) SetCode(v string) *SendBatchCardSmsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SendBatchCardSmsResponseBody) SetData(v *SendBatchCardSmsResponseBodyData) *SendBatchCardSmsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SendBatchCardSmsResponseBody) SetRequestId(v string) *SendBatchCardSmsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendBatchCardSmsResponseBody) SetSuccess(v bool) *SendBatchCardSmsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SendBatchCardSmsResponseBodyData struct {
+	BizCardId       *string `json:"BizCardId,omitempty" xml:"BizCardId,omitempty"`
+	BizDigitalId    *string `json:"BizDigitalId,omitempty" xml:"BizDigitalId,omitempty"`
+	BizSmsId        *string `json:"BizSmsId,omitempty" xml:"BizSmsId,omitempty"`
+	CardTmpState    *int32  `json:"CardTmpState,omitempty" xml:"CardTmpState,omitempty"`
+	MediaMobiles    *string `json:"MediaMobiles,omitempty" xml:"MediaMobiles,omitempty"`
+	NotMediaMobiles *string `json:"NotMediaMobiles,omitempty" xml:"NotMediaMobiles,omitempty"`
+}
+
+func (s SendBatchCardSmsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendBatchCardSmsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SendBatchCardSmsResponseBodyData) SetBizCardId(v string) *SendBatchCardSmsResponseBodyData {
+	s.BizCardId = &v
+	return s
+}
+
+func (s *SendBatchCardSmsResponseBodyData) SetBizDigitalId(v string) *SendBatchCardSmsResponseBodyData {
+	s.BizDigitalId = &v
+	return s
+}
+
+func (s *SendBatchCardSmsResponseBodyData) SetBizSmsId(v string) *SendBatchCardSmsResponseBodyData {
+	s.BizSmsId = &v
+	return s
+}
+
+func (s *SendBatchCardSmsResponseBodyData) SetCardTmpState(v int32) *SendBatchCardSmsResponseBodyData {
+	s.CardTmpState = &v
+	return s
+}
+
+func (s *SendBatchCardSmsResponseBodyData) SetMediaMobiles(v string) *SendBatchCardSmsResponseBodyData {
+	s.MediaMobiles = &v
+	return s
+}
+
+func (s *SendBatchCardSmsResponseBodyData) SetNotMediaMobiles(v string) *SendBatchCardSmsResponseBodyData {
+	s.NotMediaMobiles = &v
+	return s
+}
+
+type SendBatchCardSmsResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendBatchCardSmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendBatchCardSmsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendBatchCardSmsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendBatchCardSmsResponse) SetHeaders(v map[string]*string) *SendBatchCardSmsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendBatchCardSmsResponse) SetStatusCode(v int32) *SendBatchCardSmsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendBatchCardSmsResponse) SetBody(v *SendBatchCardSmsResponseBody) *SendBatchCardSmsResponse {
 	s.Body = v
 	return s
 }
@@ -2348,8 +3440,9 @@ func (s *SendBatchSmsResponseBody) SetRequestId(v string) *SendBatchSmsResponseB
 }
 
 type SendBatchSmsResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SendBatchSmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendBatchSmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SendBatchSmsResponse) String() string {
@@ -2365,7 +3458,223 @@ func (s *SendBatchSmsResponse) SetHeaders(v map[string]*string) *SendBatchSmsRes
 	return s
 }
 
+func (s *SendBatchSmsResponse) SetStatusCode(v int32) *SendBatchSmsResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *SendBatchSmsResponse) SetBody(v *SendBatchSmsResponseBody) *SendBatchSmsResponse {
+	s.Body = v
+	return s
+}
+
+type SendCardSmsRequest struct {
+	CardObjects          []*SendCardSmsRequestCardObjects `json:"CardObjects,omitempty" xml:"CardObjects,omitempty" type:"Repeated"`
+	CardTemplateCode     *string                          `json:"CardTemplateCode,omitempty" xml:"CardTemplateCode,omitempty"`
+	DigitalTemplateCode  *string                          `json:"DigitalTemplateCode,omitempty" xml:"DigitalTemplateCode,omitempty"`
+	DigitalTemplateParam *string                          `json:"DigitalTemplateParam,omitempty" xml:"DigitalTemplateParam,omitempty"`
+	FallbackType         *string                          `json:"FallbackType,omitempty" xml:"FallbackType,omitempty"`
+	OutId                *string                          `json:"OutId,omitempty" xml:"OutId,omitempty"`
+	SignName             *string                          `json:"SignName,omitempty" xml:"SignName,omitempty"`
+	SmsTemplateCode      *string                          `json:"SmsTemplateCode,omitempty" xml:"SmsTemplateCode,omitempty"`
+	SmsTemplateParam     *string                          `json:"SmsTemplateParam,omitempty" xml:"SmsTemplateParam,omitempty"`
+	SmsUpExtendCode      *string                          `json:"SmsUpExtendCode,omitempty" xml:"SmsUpExtendCode,omitempty"`
+}
+
+func (s SendCardSmsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCardSmsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SendCardSmsRequest) SetCardObjects(v []*SendCardSmsRequestCardObjects) *SendCardSmsRequest {
+	s.CardObjects = v
+	return s
+}
+
+func (s *SendCardSmsRequest) SetCardTemplateCode(v string) *SendCardSmsRequest {
+	s.CardTemplateCode = &v
+	return s
+}
+
+func (s *SendCardSmsRequest) SetDigitalTemplateCode(v string) *SendCardSmsRequest {
+	s.DigitalTemplateCode = &v
+	return s
+}
+
+func (s *SendCardSmsRequest) SetDigitalTemplateParam(v string) *SendCardSmsRequest {
+	s.DigitalTemplateParam = &v
+	return s
+}
+
+func (s *SendCardSmsRequest) SetFallbackType(v string) *SendCardSmsRequest {
+	s.FallbackType = &v
+	return s
+}
+
+func (s *SendCardSmsRequest) SetOutId(v string) *SendCardSmsRequest {
+	s.OutId = &v
+	return s
+}
+
+func (s *SendCardSmsRequest) SetSignName(v string) *SendCardSmsRequest {
+	s.SignName = &v
+	return s
+}
+
+func (s *SendCardSmsRequest) SetSmsTemplateCode(v string) *SendCardSmsRequest {
+	s.SmsTemplateCode = &v
+	return s
+}
+
+func (s *SendCardSmsRequest) SetSmsTemplateParam(v string) *SendCardSmsRequest {
+	s.SmsTemplateParam = &v
+	return s
+}
+
+func (s *SendCardSmsRequest) SetSmsUpExtendCode(v string) *SendCardSmsRequest {
+	s.SmsUpExtendCode = &v
+	return s
+}
+
+type SendCardSmsRequestCardObjects struct {
+	CustomUrl  *string `json:"customUrl,omitempty" xml:"customUrl,omitempty"`
+	DyncParams *string `json:"dyncParams,omitempty" xml:"dyncParams,omitempty"`
+	Mobile     *string `json:"mobile,omitempty" xml:"mobile,omitempty"`
+}
+
+func (s SendCardSmsRequestCardObjects) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCardSmsRequestCardObjects) GoString() string {
+	return s.String()
+}
+
+func (s *SendCardSmsRequestCardObjects) SetCustomUrl(v string) *SendCardSmsRequestCardObjects {
+	s.CustomUrl = &v
+	return s
+}
+
+func (s *SendCardSmsRequestCardObjects) SetDyncParams(v string) *SendCardSmsRequestCardObjects {
+	s.DyncParams = &v
+	return s
+}
+
+func (s *SendCardSmsRequestCardObjects) SetMobile(v string) *SendCardSmsRequestCardObjects {
+	s.Mobile = &v
+	return s
+}
+
+type SendCardSmsResponseBody struct {
+	Code      *string                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *SendCardSmsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	RequestId *string                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                        `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SendCardSmsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCardSmsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SendCardSmsResponseBody) SetCode(v string) *SendCardSmsResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SendCardSmsResponseBody) SetData(v *SendCardSmsResponseBodyData) *SendCardSmsResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *SendCardSmsResponseBody) SetRequestId(v string) *SendCardSmsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SendCardSmsResponseBody) SetSuccess(v bool) *SendCardSmsResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SendCardSmsResponseBodyData struct {
+	BizCardId       *string `json:"BizCardId,omitempty" xml:"BizCardId,omitempty"`
+	BizDigitalId    *string `json:"BizDigitalId,omitempty" xml:"BizDigitalId,omitempty"`
+	BizSmsId        *string `json:"BizSmsId,omitempty" xml:"BizSmsId,omitempty"`
+	CardTmpState    *int32  `json:"CardTmpState,omitempty" xml:"CardTmpState,omitempty"`
+	MediaMobiles    *string `json:"MediaMobiles,omitempty" xml:"MediaMobiles,omitempty"`
+	NotMediaMobiles *string `json:"NotMediaMobiles,omitempty" xml:"NotMediaMobiles,omitempty"`
+}
+
+func (s SendCardSmsResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCardSmsResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *SendCardSmsResponseBodyData) SetBizCardId(v string) *SendCardSmsResponseBodyData {
+	s.BizCardId = &v
+	return s
+}
+
+func (s *SendCardSmsResponseBodyData) SetBizDigitalId(v string) *SendCardSmsResponseBodyData {
+	s.BizDigitalId = &v
+	return s
+}
+
+func (s *SendCardSmsResponseBodyData) SetBizSmsId(v string) *SendCardSmsResponseBodyData {
+	s.BizSmsId = &v
+	return s
+}
+
+func (s *SendCardSmsResponseBodyData) SetCardTmpState(v int32) *SendCardSmsResponseBodyData {
+	s.CardTmpState = &v
+	return s
+}
+
+func (s *SendCardSmsResponseBodyData) SetMediaMobiles(v string) *SendCardSmsResponseBodyData {
+	s.MediaMobiles = &v
+	return s
+}
+
+func (s *SendCardSmsResponseBodyData) SetNotMediaMobiles(v string) *SendCardSmsResponseBodyData {
+	s.NotMediaMobiles = &v
+	return s
+}
+
+type SendCardSmsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendCardSmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SendCardSmsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SendCardSmsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SendCardSmsResponse) SetHeaders(v map[string]*string) *SendCardSmsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SendCardSmsResponse) SetStatusCode(v int32) *SendCardSmsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SendCardSmsResponse) SetBody(v *SendCardSmsResponseBody) *SendCardSmsResponse {
 	s.Body = v
 	return s
 }
@@ -2471,8 +3780,9 @@ func (s *SendSmsResponseBody) SetRequestId(v string) *SendSmsResponseBody {
 }
 
 type SendSmsResponse struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SendSmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SendSmsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SendSmsResponse) String() string {
@@ -2485,6 +3795,11 @@ func (s SendSmsResponse) GoString() string {
 
 func (s *SendSmsResponse) SetHeaders(v map[string]*string) *SendSmsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SendSmsResponse) SetStatusCode(v int32) *SendSmsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2605,8 +3920,9 @@ func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseB
 }
 
 type TagResourcesResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TagResourcesResponse) String() string {
@@ -2619,6 +3935,11 @@ func (s TagResourcesResponse) GoString() string {
 
 func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2722,8 +4043,9 @@ func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesRespo
 }
 
 type UntagResourcesResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UntagResourcesResponse) String() string {
@@ -2736,6 +4058,11 @@ func (s UntagResourcesResponse) GoString() string {
 
 func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3001,6 +4328,112 @@ func (client *Client) AddSmsTemplate(request *AddSmsTemplateRequest) (_result *A
 	return _result, _err
 }
 
+func (client *Client) CheckMobilesCardSupportWithOptions(request *CheckMobilesCardSupportRequest, runtime *util.RuntimeOptions) (_result *CheckMobilesCardSupportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Mobiles)) {
+		query["Mobiles"] = request.Mobiles
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
+		query["TemplateCode"] = request.TemplateCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckMobilesCardSupport"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckMobilesCardSupportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckMobilesCardSupport(request *CheckMobilesCardSupportRequest) (_result *CheckMobilesCardSupportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckMobilesCardSupportResponse{}
+	_body, _err := client.CheckMobilesCardSupportWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateCardSmsTemplateWithOptions(tmpReq *CreateCardSmsTemplateRequest, runtime *util.RuntimeOptions) (_result *CreateCardSmsTemplateResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateCardSmsTemplateShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Template)) {
+		request.TemplateShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Template, tea.String("Template"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Memo)) {
+		query["Memo"] = request.Memo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateShrink)) {
+		query["Template"] = request.TemplateShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateName)) {
+		query["TemplateName"] = request.TemplateName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateCardSmsTemplate"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateCardSmsTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateCardSmsTemplate(request *CreateCardSmsTemplateRequest) (_result *CreateCardSmsTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateCardSmsTemplateResponse{}
+	_body, _err := client.CreateCardSmsTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteShortUrlWithOptions(request *DeleteShortUrlRequest, runtime *util.RuntimeOptions) (_result *DeleteShortUrlResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3164,6 +4597,159 @@ func (client *Client) DeleteSmsTemplate(request *DeleteSmsTemplateRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteSmsTemplateResponse{}
 	_body, _err := client.DeleteSmsTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetCardSmsLinkWithOptions(request *GetCardSmsLinkRequest, runtime *util.RuntimeOptions) (_result *GetCardSmsLinkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CardTemplateCode)) {
+		query["CardTemplateCode"] = request.CardTemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CardTemplateParamJson)) {
+		query["CardTemplateParamJson"] = request.CardTemplateParamJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumberJson)) {
+		query["PhoneNumberJson"] = request.PhoneNumberJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignNameJson)) {
+		query["SignNameJson"] = request.SignNameJson
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCardSmsLink"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCardSmsLinkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCardSmsLink(request *GetCardSmsLinkRequest) (_result *GetCardSmsLinkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetCardSmsLinkResponse{}
+	_body, _err := client.GetCardSmsLinkWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetMediaResourceIdWithOptions(request *GetMediaResourceIdRequest, runtime *util.RuntimeOptions) (_result *GetMediaResourceIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExtendInfo)) {
+		query["ExtendInfo"] = request.ExtendInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FileSize)) {
+		query["FileSize"] = request.FileSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Memo)) {
+		query["Memo"] = request.Memo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssKey)) {
+		query["OssKey"] = request.OssKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMediaResourceId"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMediaResourceIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMediaResourceId(request *GetMediaResourceIdRequest) (_result *GetMediaResourceIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetMediaResourceIdResponse{}
+	_body, _err := client.GetMediaResourceIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetOSSInfoForCardTemplateWithOptions(runtime *util.RuntimeOptions) (_result *GetOSSInfoForCardTemplateResponse, _err error) {
+	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("GetOSSInfoForCardTemplate"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetOSSInfoForCardTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetOSSInfoForCardTemplate() (_result *GetOSSInfoForCardTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetOSSInfoForCardTemplateResponse{}
+	_body, _err := client.GetOSSInfoForCardTemplateWithOptions(runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3386,6 +4972,102 @@ func (client *Client) ModifySmsTemplate(request *ModifySmsTemplateRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifySmsTemplateResponse{}
 	_body, _err := client.ModifySmsTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryCardSmsTemplateWithOptions(request *QueryCardSmsTemplateRequest, runtime *util.RuntimeOptions) (_result *QueryCardSmsTemplateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.TemplateCode)) {
+		query["TemplateCode"] = request.TemplateCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCardSmsTemplate"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryCardSmsTemplateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryCardSmsTemplate(request *QueryCardSmsTemplateRequest) (_result *QueryCardSmsTemplateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryCardSmsTemplateResponse{}
+	_body, _err := client.QueryCardSmsTemplateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryCardSmsTemplateReportWithOptions(request *QueryCardSmsTemplateReportRequest, runtime *util.RuntimeOptions) (_result *QueryCardSmsTemplateReportResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EndDate)) {
+		query["EndDate"] = request.EndDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartDate)) {
+		query["StartDate"] = request.StartDate
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TemplateCodes)) {
+		query["TemplateCodes"] = request.TemplateCodes
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryCardSmsTemplateReport"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryCardSmsTemplateReportResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryCardSmsTemplateReport(request *QueryCardSmsTemplateReportRequest) (_result *QueryCardSmsTemplateReportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryCardSmsTemplateReportResponse{}
+	_body, _err := client.QueryCardSmsTemplateReportWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -3827,6 +5509,90 @@ func (client *Client) QuerySmsTemplateList(request *QuerySmsTemplateListRequest)
 	return _result, _err
 }
 
+func (client *Client) SendBatchCardSmsWithOptions(request *SendBatchCardSmsRequest, runtime *util.RuntimeOptions) (_result *SendBatchCardSmsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CardTemplateCode)) {
+		query["CardTemplateCode"] = request.CardTemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CardTemplateParamJson)) {
+		query["CardTemplateParamJson"] = request.CardTemplateParamJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DigitalTemplateCode)) {
+		query["DigitalTemplateCode"] = request.DigitalTemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DigitalTemplateParamJson)) {
+		query["DigitalTemplateParamJson"] = request.DigitalTemplateParamJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FallbackType)) {
+		query["FallbackType"] = request.FallbackType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PhoneNumberJson)) {
+		query["PhoneNumberJson"] = request.PhoneNumberJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignNameJson)) {
+		query["SignNameJson"] = request.SignNameJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmsTemplateCode)) {
+		query["SmsTemplateCode"] = request.SmsTemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmsTemplateParamJson)) {
+		query["SmsTemplateParamJson"] = request.SmsTemplateParamJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmsUpExtendCodeJson)) {
+		query["SmsUpExtendCodeJson"] = request.SmsUpExtendCodeJson
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendBatchCardSms"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendBatchCardSmsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendBatchCardSms(request *SendBatchCardSmsRequest) (_result *SendBatchCardSmsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendBatchCardSmsResponse{}
+	_body, _err := client.SendBatchCardSmsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SendBatchSmsWithOptions(request *SendBatchSmsRequest, runtime *util.RuntimeOptions) (_result *SendBatchSmsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3892,6 +5658,86 @@ func (client *Client) SendBatchSms(request *SendBatchSmsRequest) (_result *SendB
 	runtime := &util.RuntimeOptions{}
 	_result = &SendBatchSmsResponse{}
 	_body, _err := client.SendBatchSmsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SendCardSmsWithOptions(request *SendCardSmsRequest, runtime *util.RuntimeOptions) (_result *SendCardSmsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CardObjects)) {
+		query["CardObjects"] = request.CardObjects
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CardTemplateCode)) {
+		query["CardTemplateCode"] = request.CardTemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DigitalTemplateCode)) {
+		query["DigitalTemplateCode"] = request.DigitalTemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DigitalTemplateParam)) {
+		query["DigitalTemplateParam"] = request.DigitalTemplateParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FallbackType)) {
+		query["FallbackType"] = request.FallbackType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OutId)) {
+		query["OutId"] = request.OutId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignName)) {
+		query["SignName"] = request.SignName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmsTemplateCode)) {
+		query["SmsTemplateCode"] = request.SmsTemplateCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmsTemplateParam)) {
+		query["SmsTemplateParam"] = request.SmsTemplateParam
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SmsUpExtendCode)) {
+		query["SmsUpExtendCode"] = request.SmsUpExtendCode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SendCardSms"),
+		Version:     tea.String("2017-05-25"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SendCardSmsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SendCardSms(request *SendCardSmsRequest) (_result *SendCardSmsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SendCardSmsResponse{}
+	_body, _err := client.SendCardSmsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
