@@ -1555,10 +1555,15 @@ func (s *ListCostUnitOrdersResponse) SetBody(v *ListCostUnitOrdersResponseBody) 
 }
 
 type ListOrderConsumeStatisticRecordsRequest struct {
-	PageNumber       *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize         *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 阿里订单编号
+	AliOrderCode *string `json:"AliOrderCode,omitempty" xml:"AliOrderCode,omitempty"`
+	// 页码
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 每页记录数
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 统计时间最大值
 	StatisticTimeMax *string `json:"StatisticTimeMax,omitempty" xml:"StatisticTimeMax,omitempty"`
-	// 结束创建时间
+	// 统计时间最小值
 	StatisticTimeMin *string `json:"StatisticTimeMin,omitempty" xml:"StatisticTimeMin,omitempty"`
 }
 
@@ -1568,6 +1573,11 @@ func (s ListOrderConsumeStatisticRecordsRequest) String() string {
 
 func (s ListOrderConsumeStatisticRecordsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListOrderConsumeStatisticRecordsRequest) SetAliOrderCode(v string) *ListOrderConsumeStatisticRecordsRequest {
+	s.AliOrderCode = &v
+	return s
 }
 
 func (s *ListOrderConsumeStatisticRecordsRequest) SetPageNumber(v int32) *ListOrderConsumeStatisticRecordsRequest {
@@ -1591,11 +1601,16 @@ func (s *ListOrderConsumeStatisticRecordsRequest) SetStatisticTimeMin(v string) 
 }
 
 type ListOrderConsumeStatisticRecordsResponseBody struct {
-	Items         []*ListOrderConsumeStatisticRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	PageSize      *int64                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequestId     *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalElements *int64                                               `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
-	TotalPages    *int64                                               `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// 数据项列表
+	Items []*ListOrderConsumeStatisticRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// 每页记录数
+	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 请求 ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 总记录数
+	TotalElements *int64 `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
+	// 总页数
+	TotalPages *int64 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
 func (s ListOrderConsumeStatisticRecordsResponseBody) String() string {
@@ -1633,16 +1648,18 @@ func (s *ListOrderConsumeStatisticRecordsResponseBody) SetTotalPages(v int64) *L
 
 type ListOrderConsumeStatisticRecordsResponseBodyItems struct {
 	// 阿里云订单编号
-	AliOrderCode          *string `json:"AliOrderCode,omitempty" xml:"AliOrderCode,omitempty"`
+	AliOrderCode *string `json:"AliOrderCode,omitempty" xml:"AliOrderCode,omitempty"`
+	// 应用外部标志
 	ApplicationExternalId *string `json:"ApplicationExternalId,omitempty" xml:"ApplicationExternalId,omitempty"`
-	// 过期时间
-	ChargedCount *int64  `json:"ChargedCount,omitempty" xml:"ChargedCount,omitempty"`
-	ServiceCode  *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
-	// 创建时间
+	// 计费数目
+	ChargedCount *int64 `json:"ChargedCount,omitempty" xml:"ChargedCount,omitempty"`
+	// 服务码
+	ServiceCode *string `json:"ServiceCode,omitempty" xml:"ServiceCode,omitempty"`
+	// 统计日期，时间戳，精确到秒
 	StatisticTime *int64 `json:"StatisticTime,omitempty" xml:"StatisticTime,omitempty"`
-	// 退款时间，毫秒时间戳，退款时才有值
+	// 总价
 	TotalPrice *int64 `json:"TotalPrice,omitempty" xml:"TotalPrice,omitempty"`
-	// 已用 CU 值，单位厘，实际使用 CU 乘以 1000
+	// 单价
 	UnitPrice *int64 `json:"UnitPrice,omitempty" xml:"UnitPrice,omitempty"`
 }
 
@@ -3220,6 +3237,10 @@ func (client *Client) ListOrderConsumeStatisticRecordsWithOptions(request *ListO
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliOrderCode)) {
+		query["AliOrderCode"] = request.AliOrderCode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
