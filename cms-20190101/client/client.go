@@ -2433,6 +2433,7 @@ type CreateHybridMonitorTaskResponseBody struct {
 	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+	TaskId    *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 
 func (s CreateHybridMonitorTaskResponseBody) String() string {
@@ -2460,6 +2461,11 @@ func (s *CreateHybridMonitorTaskResponseBody) SetRequestId(v string) *CreateHybr
 
 func (s *CreateHybridMonitorTaskResponseBody) SetSuccess(v string) *CreateHybridMonitorTaskResponseBody {
 	s.Success = &v
+	return s
+}
+
+func (s *CreateHybridMonitorTaskResponseBody) SetTaskId(v int64) *CreateHybridMonitorTaskResponseBody {
+	s.TaskId = &v
 	return s
 }
 
@@ -12946,7 +12952,7 @@ type DescribeHybridMonitorSLSGroupResponseBodyList struct {
 	CreateTime          *string                                                        `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	SLSGroupConfig      []*DescribeHybridMonitorSLSGroupResponseBodyListSLSGroupConfig `json:"SLSGroupConfig,omitempty" xml:"SLSGroupConfig,omitempty" type:"Repeated"`
 	SLSGroupDescription *string                                                        `json:"SLSGroupDescription,omitempty" xml:"SLSGroupDescription,omitempty"`
-	SLSGroupName        *int64                                                         `json:"SLSGroupName,omitempty" xml:"SLSGroupName,omitempty"`
+	SLSGroupName        *string                                                        `json:"SLSGroupName,omitempty" xml:"SLSGroupName,omitempty"`
 	UpdateTime          *string                                                        `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 
@@ -12973,7 +12979,7 @@ func (s *DescribeHybridMonitorSLSGroupResponseBodyList) SetSLSGroupDescription(v
 	return s
 }
 
-func (s *DescribeHybridMonitorSLSGroupResponseBodyList) SetSLSGroupName(v int64) *DescribeHybridMonitorSLSGroupResponseBodyList {
+func (s *DescribeHybridMonitorSLSGroupResponseBodyList) SetSLSGroupName(v string) *DescribeHybridMonitorSLSGroupResponseBodyList {
 	s.SLSGroupName = &v
 	return s
 }
@@ -13172,32 +13178,33 @@ func (s *DescribeHybridMonitorTaskListResponseBody) SetTotal(v int32) *DescribeH
 }
 
 type DescribeHybridMonitorTaskListResponseBodyTaskList struct {
-	AttachLabels          []*DescribeHybridMonitorTaskListResponseBodyTaskListAttachLabels `json:"AttachLabels,omitempty" xml:"AttachLabels,omitempty" type:"Repeated"`
-	CollectInterval       *int32                                                           `json:"CollectInterval,omitempty" xml:"CollectInterval,omitempty"`
-	CollectTargetEndpoint *string                                                          `json:"CollectTargetEndpoint,omitempty" xml:"CollectTargetEndpoint,omitempty"`
-	CollectTargetPath     *string                                                          `json:"CollectTargetPath,omitempty" xml:"CollectTargetPath,omitempty"`
-	CollectTargetType     *string                                                          `json:"CollectTargetType,omitempty" xml:"CollectTargetType,omitempty"`
-	CollectTimout         *int32                                                           `json:"CollectTimout,omitempty" xml:"CollectTimout,omitempty"`
-	CreateTime            *string                                                          `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	Description           *string                                                          `json:"Description,omitempty" xml:"Description,omitempty"`
-	ExtraInfo             *string                                                          `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
-	GroupId               *string                                                          `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	Instances             []*string                                                        `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	LogFilePath           *string                                                          `json:"LogFilePath,omitempty" xml:"LogFilePath,omitempty"`
-	LogProcess            *string                                                          `json:"LogProcess,omitempty" xml:"LogProcess,omitempty"`
-	LogSample             *string                                                          `json:"LogSample,omitempty" xml:"LogSample,omitempty"`
-	LogSplit              *string                                                          `json:"LogSplit,omitempty" xml:"LogSplit,omitempty"`
-	MatchExpress          []*DescribeHybridMonitorTaskListResponseBodyTaskListMatchExpress `json:"MatchExpress,omitempty" xml:"MatchExpress,omitempty" type:"Repeated"`
-	MatchExpressRelation  *string                                                          `json:"MatchExpressRelation,omitempty" xml:"MatchExpressRelation,omitempty"`
-	Namespace             *string                                                          `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	NetworkType           *string                                                          `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	SLSProcess            *string                                                          `json:"SLSProcess,omitempty" xml:"SLSProcess,omitempty"`
-	TargetUserId          *string                                                          `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
-	TaskId                *string                                                          `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TaskName              *string                                                          `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
-	TaskType              *string                                                          `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	UploadRegion          *string                                                          `json:"UploadRegion,omitempty" xml:"UploadRegion,omitempty"`
-	YARMConfig            *string                                                          `json:"YARMConfig,omitempty" xml:"YARMConfig,omitempty"`
+	AttachLabels          []*DescribeHybridMonitorTaskListResponseBodyTaskListAttachLabels   `json:"AttachLabels,omitempty" xml:"AttachLabels,omitempty" type:"Repeated"`
+	CollectInterval       *int32                                                             `json:"CollectInterval,omitempty" xml:"CollectInterval,omitempty"`
+	CollectTargetEndpoint *string                                                            `json:"CollectTargetEndpoint,omitempty" xml:"CollectTargetEndpoint,omitempty"`
+	CollectTargetPath     *string                                                            `json:"CollectTargetPath,omitempty" xml:"CollectTargetPath,omitempty"`
+	CollectTargetType     *string                                                            `json:"CollectTargetType,omitempty" xml:"CollectTargetType,omitempty"`
+	CollectTimout         *int32                                                             `json:"CollectTimout,omitempty" xml:"CollectTimout,omitempty"`
+	CreateTime            *string                                                            `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Description           *string                                                            `json:"Description,omitempty" xml:"Description,omitempty"`
+	ExtraInfo             *string                                                            `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	GroupId               *string                                                            `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	Instances             []*string                                                          `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
+	LogFilePath           *string                                                            `json:"LogFilePath,omitempty" xml:"LogFilePath,omitempty"`
+	LogProcess            *string                                                            `json:"LogProcess,omitempty" xml:"LogProcess,omitempty"`
+	LogSample             *string                                                            `json:"LogSample,omitempty" xml:"LogSample,omitempty"`
+	LogSplit              *string                                                            `json:"LogSplit,omitempty" xml:"LogSplit,omitempty"`
+	MatchExpress          []*DescribeHybridMonitorTaskListResponseBodyTaskListMatchExpress   `json:"MatchExpress,omitempty" xml:"MatchExpress,omitempty" type:"Repeated"`
+	MatchExpressRelation  *string                                                            `json:"MatchExpressRelation,omitempty" xml:"MatchExpressRelation,omitempty"`
+	Namespace             *string                                                            `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	NetworkType           *string                                                            `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	SLSProcess            *string                                                            `json:"SLSProcess,omitempty" xml:"SLSProcess,omitempty"`
+	SLSProcessConfig      *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfig `json:"SLSProcessConfig,omitempty" xml:"SLSProcessConfig,omitempty" type:"Struct"`
+	TargetUserId          *string                                                            `json:"TargetUserId,omitempty" xml:"TargetUserId,omitempty"`
+	TaskId                *string                                                            `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName              *string                                                            `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	TaskType              *string                                                            `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+	UploadRegion          *string                                                            `json:"UploadRegion,omitempty" xml:"UploadRegion,omitempty"`
+	YARMConfig            *string                                                            `json:"YARMConfig,omitempty" xml:"YARMConfig,omitempty"`
 }
 
 func (s DescribeHybridMonitorTaskListResponseBodyTaskList) String() string {
@@ -13308,6 +13315,11 @@ func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetSLSProcess(v stri
 	return s
 }
 
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetSLSProcessConfig(v *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfig) *DescribeHybridMonitorTaskListResponseBodyTaskList {
+	s.SLSProcessConfig = v
+	return s
+}
+
 func (s *DescribeHybridMonitorTaskListResponseBodyTaskList) SetTargetUserId(v string) *DescribeHybridMonitorTaskListResponseBodyTaskList {
 	s.TargetUserId = &v
 	return s
@@ -13387,6 +13399,180 @@ func (s *DescribeHybridMonitorTaskListResponseBodyTaskListMatchExpress) SetName(
 
 func (s *DescribeHybridMonitorTaskListResponseBodyTaskListMatchExpress) SetValue(v string) *DescribeHybridMonitorTaskListResponseBodyTaskListMatchExpress {
 	s.Value = &v
+	return s
+}
+
+type DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfig struct {
+	Express    []*DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigExpress    `json:"Express,omitempty" xml:"Express,omitempty" type:"Repeated"`
+	Filter     *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilter       `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	GroupBy    []*DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigGroupBy    `json:"GroupBy,omitempty" xml:"GroupBy,omitempty" type:"Repeated"`
+	Statistics []*DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigStatistics `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Repeated"`
+}
+
+func (s DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfig) SetExpress(v []*DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigExpress) *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfig {
+	s.Express = v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfig) SetFilter(v *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilter) *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfig {
+	s.Filter = v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfig) SetGroupBy(v []*DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigGroupBy) *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfig {
+	s.GroupBy = v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfig) SetStatistics(v []*DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigStatistics) *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfig {
+	s.Statistics = v
+	return s
+}
+
+type DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigExpress struct {
+	Alias   *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	Express *string `json:"Express,omitempty" xml:"Express,omitempty"`
+}
+
+func (s DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigExpress) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigExpress) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigExpress) SetAlias(v string) *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigExpress {
+	s.Alias = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigExpress) SetExpress(v string) *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigExpress {
+	s.Express = &v
+	return s
+}
+
+type DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilter struct {
+	Filters  []*DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilterFilters `json:"Filters,omitempty" xml:"Filters,omitempty" type:"Repeated"`
+	Relation *string                                                                           `json:"Relation,omitempty" xml:"Relation,omitempty"`
+}
+
+func (s DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilter) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilter) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilter) SetFilters(v []*DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilterFilters) *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilter {
+	s.Filters = v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilter) SetRelation(v string) *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilter {
+	s.Relation = &v
+	return s
+}
+
+type DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilterFilters struct {
+	Operator   *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	SLSKeyName *string `json:"SLSKeyName,omitempty" xml:"SLSKeyName,omitempty"`
+	Value      *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilterFilters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilterFilters) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilterFilters) SetOperator(v string) *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilterFilters {
+	s.Operator = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilterFilters) SetSLSKeyName(v string) *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilterFilters {
+	s.SLSKeyName = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilterFilters) SetValue(v string) *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigFilterFilters {
+	s.Value = &v
+	return s
+}
+
+type DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigGroupBy struct {
+	Alias      *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	SLSKeyName *string `json:"SLSKeyName,omitempty" xml:"SLSKeyName,omitempty"`
+}
+
+func (s DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigGroupBy) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigGroupBy) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigGroupBy) SetAlias(v string) *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigGroupBy {
+	s.Alias = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigGroupBy) SetSLSKeyName(v string) *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigGroupBy {
+	s.SLSKeyName = &v
+	return s
+}
+
+type DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigStatistics struct {
+	Alias      *string `json:"Alias,omitempty" xml:"Alias,omitempty"`
+	Function   *string `json:"Function,omitempty" xml:"Function,omitempty"`
+	Parameter1 *string `json:"Parameter1,omitempty" xml:"Parameter1,omitempty"`
+	Parameter2 *string `json:"Parameter2,omitempty" xml:"Parameter2,omitempty"`
+	SLSKeyName *string `json:"SLSKeyName,omitempty" xml:"SLSKeyName,omitempty"`
+}
+
+func (s DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigStatistics) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigStatistics) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigStatistics) SetAlias(v string) *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigStatistics {
+	s.Alias = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigStatistics) SetFunction(v string) *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigStatistics {
+	s.Function = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigStatistics) SetParameter1(v string) *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigStatistics {
+	s.Parameter1 = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigStatistics) SetParameter2(v string) *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigStatistics {
+	s.Parameter2 = &v
+	return s
+}
+
+func (s *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigStatistics) SetSLSKeyName(v string) *DescribeHybridMonitorTaskListResponseBodyTaskListSLSProcessConfigStatistics {
+	s.SLSKeyName = &v
 	return s
 }
 
@@ -19800,6 +19986,8 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	Attempts        *int64   `json:"attempts,omitempty" xml:"attempts,omitempty"`
 	Authentication  *int32   `json:"authentication,omitempty" xml:"authentication,omitempty"`
 	Cookie          *string  `json:"cookie,omitempty" xml:"cookie,omitempty"`
+	DiagnosisMtr    *bool    `json:"diagnosis_mtr,omitempty" xml:"diagnosis_mtr,omitempty"`
+	DiagnosisPing   *bool    `json:"diagnosis_ping,omitempty" xml:"diagnosis_ping,omitempty"`
 	DnsMatchRule    *string  `json:"dns_match_rule,omitempty" xml:"dns_match_rule,omitempty"`
 	DnsServer       *string  `json:"dns_server,omitempty" xml:"dns_server,omitempty"`
 	DnsType         *string  `json:"dns_type,omitempty" xml:"dns_type,omitempty"`
@@ -19817,6 +20005,7 @@ type DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson struct {
 	RequestFormat   *string  `json:"request_format,omitempty" xml:"request_format,omitempty"`
 	ResponseContent *string  `json:"response_content,omitempty" xml:"response_content,omitempty"`
 	ResponseFormat  *string  `json:"response_format,omitempty" xml:"response_format,omitempty"`
+	RetryDelay      *int32   `json:"retry_delay,omitempty" xml:"retry_delay,omitempty"`
 	TimeOut         *int64   `json:"time_out,omitempty" xml:"time_out,omitempty"`
 	Username        *string  `json:"username,omitempty" xml:"username,omitempty"`
 }
@@ -19841,6 +20030,16 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetAuth
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetCookie(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
 	s.Cookie = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetDiagnosisMtr(v bool) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.DiagnosisMtr = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetDiagnosisPing(v bool) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.DiagnosisPing = &v
 	return s
 }
 
@@ -19926,6 +20125,11 @@ func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetResp
 
 func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetResponseFormat(v string) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
 	s.ResponseFormat = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson) SetRetryDelay(v int32) *DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson {
+	s.RetryDelay = &v
 	return s
 }
 
@@ -20556,26 +20760,35 @@ func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitor) SetUpdateTi
 }
 
 type DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson struct {
-	Attempts        *int64   `json:"attempts,omitempty" xml:"attempts,omitempty"`
-	Authentication  *int32   `json:"authentication,omitempty" xml:"authentication,omitempty"`
-	Cookie          *string  `json:"cookie,omitempty" xml:"cookie,omitempty"`
-	DnsMatchRule    *string  `json:"dns_match_rule,omitempty" xml:"dns_match_rule,omitempty"`
-	DnsServer       *string  `json:"dns_server,omitempty" xml:"dns_server,omitempty"`
-	DnsType         *string  `json:"dns_type,omitempty" xml:"dns_type,omitempty"`
-	FailureRate     *float32 `json:"failure_rate,omitempty" xml:"failure_rate,omitempty"`
-	Header          *string  `json:"header,omitempty" xml:"header,omitempty"`
-	HttpMethod      *string  `json:"http_method,omitempty" xml:"http_method,omitempty"`
-	MatchRule       *int32   `json:"match_rule,omitempty" xml:"match_rule,omitempty"`
-	Password        *string  `json:"password,omitempty" xml:"password,omitempty"`
-	PingNum         *int32   `json:"ping_num,omitempty" xml:"ping_num,omitempty"`
-	Port            *int32   `json:"port,omitempty" xml:"port,omitempty"`
-	Protocol        *string  `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	RequestContent  *string  `json:"request_content,omitempty" xml:"request_content,omitempty"`
-	RequestFormat   *string  `json:"request_format,omitempty" xml:"request_format,omitempty"`
-	ResponseContent *string  `json:"response_content,omitempty" xml:"response_content,omitempty"`
-	ResponseFormat  *string  `json:"response_format,omitempty" xml:"response_format,omitempty"`
-	TimeOut         *int64   `json:"time_out,omitempty" xml:"time_out,omitempty"`
-	Username        *string  `json:"username,omitempty" xml:"username,omitempty"`
+	AcceptableResponseCode *string  `json:"acceptable_response_code,omitempty" xml:"acceptable_response_code,omitempty"`
+	Attempts               *int64   `json:"attempts,omitempty" xml:"attempts,omitempty"`
+	Authentication         *int32   `json:"authentication,omitempty" xml:"authentication,omitempty"`
+	CertVerify             *bool    `json:"cert_verify,omitempty" xml:"cert_verify,omitempty"`
+	Cookie                 *string  `json:"cookie,omitempty" xml:"cookie,omitempty"`
+	DiagnosisMtr           *bool    `json:"diagnosis_mtr,omitempty" xml:"diagnosis_mtr,omitempty"`
+	DiagnosisPing          *bool    `json:"diagnosis_ping,omitempty" xml:"diagnosis_ping,omitempty"`
+	DnsMatchRule           *string  `json:"dns_match_rule,omitempty" xml:"dns_match_rule,omitempty"`
+	DnsServer              *string  `json:"dns_server,omitempty" xml:"dns_server,omitempty"`
+	DnsType                *string  `json:"dns_type,omitempty" xml:"dns_type,omitempty"`
+	EnableOperatorDns      *bool    `json:"enable_operator_dns,omitempty" xml:"enable_operator_dns,omitempty"`
+	FailureRate            *float32 `json:"failure_rate,omitempty" xml:"failure_rate,omitempty"`
+	Header                 *string  `json:"header,omitempty" xml:"header,omitempty"`
+	HttpMethod             *string  `json:"http_method,omitempty" xml:"http_method,omitempty"`
+	IsBase64Encode         *string  `json:"isBase64Encode,omitempty" xml:"isBase64Encode,omitempty"`
+	MatchRule              *int32   `json:"match_rule,omitempty" xml:"match_rule,omitempty"`
+	Password               *string  `json:"password,omitempty" xml:"password,omitempty"`
+	PingNum                *int32   `json:"ping_num,omitempty" xml:"ping_num,omitempty"`
+	Port                   *int32   `json:"port,omitempty" xml:"port,omitempty"`
+	Protocol               *string  `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	ProxyProtocol          *bool    `json:"proxy_protocol,omitempty" xml:"proxy_protocol,omitempty"`
+	RequestContent         *string  `json:"request_content,omitempty" xml:"request_content,omitempty"`
+	RequestFormat          *string  `json:"request_format,omitempty" xml:"request_format,omitempty"`
+	ResponseContent        *string  `json:"response_content,omitempty" xml:"response_content,omitempty"`
+	ResponseFormat         *string  `json:"response_format,omitempty" xml:"response_format,omitempty"`
+	RetryDelay             *int32   `json:"retry_delay,omitempty" xml:"retry_delay,omitempty"`
+	TimeOut                *int64   `json:"time_out,omitempty" xml:"time_out,omitempty"`
+	UnfollowRedirect       *bool    `json:"unfollow_redirect,omitempty" xml:"unfollow_redirect,omitempty"`
+	Username               *string  `json:"username,omitempty" xml:"username,omitempty"`
 }
 
 func (s DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) String() string {
@@ -20584,6 +20797,11 @@ func (s DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) S
 
 func (s DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) SetAcceptableResponseCode(v string) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson {
+	s.AcceptableResponseCode = &v
+	return s
 }
 
 func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) SetAttempts(v int64) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson {
@@ -20596,8 +20814,23 @@ func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) 
 	return s
 }
 
+func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) SetCertVerify(v bool) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson {
+	s.CertVerify = &v
+	return s
+}
+
 func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) SetCookie(v string) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson {
 	s.Cookie = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) SetDiagnosisMtr(v bool) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson {
+	s.DiagnosisMtr = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) SetDiagnosisPing(v bool) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson {
+	s.DiagnosisPing = &v
 	return s
 }
 
@@ -20616,6 +20849,11 @@ func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) 
 	return s
 }
 
+func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) SetEnableOperatorDns(v bool) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson {
+	s.EnableOperatorDns = &v
+	return s
+}
+
 func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) SetFailureRate(v float32) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson {
 	s.FailureRate = &v
 	return s
@@ -20628,6 +20866,11 @@ func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) 
 
 func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) SetHttpMethod(v string) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson {
 	s.HttpMethod = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) SetIsBase64Encode(v string) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson {
+	s.IsBase64Encode = &v
 	return s
 }
 
@@ -20656,6 +20899,11 @@ func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) 
 	return s
 }
 
+func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) SetProxyProtocol(v bool) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson {
+	s.ProxyProtocol = &v
+	return s
+}
+
 func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) SetRequestContent(v string) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson {
 	s.RequestContent = &v
 	return s
@@ -20676,8 +20924,18 @@ func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) 
 	return s
 }
 
+func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) SetRetryDelay(v int32) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson {
+	s.RetryDelay = &v
+	return s
+}
+
 func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) SetTimeOut(v int64) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson {
 	s.TimeOut = &v
+	return s
+}
+
+func (s *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson) SetUnfollowRedirect(v bool) *DescribeSiteMonitorListResponseBodySiteMonitorsSiteMonitorOptionsJson {
+	s.UnfollowRedirect = &v
 	return s
 }
 
