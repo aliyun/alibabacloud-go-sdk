@@ -1623,8 +1623,10 @@ func (s *DeleteFlowCategoryRequest) SetRegionId(v string) *DeleteFlowCategoryReq
 }
 
 type DeleteFlowCategoryResponseBody struct {
-	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	FlowId    *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	JobId     *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
 }
 
 func (s DeleteFlowCategoryResponseBody) String() string {
@@ -1635,13 +1637,23 @@ func (s DeleteFlowCategoryResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DeleteFlowCategoryResponseBody) SetData(v bool) *DeleteFlowCategoryResponseBody {
-	s.Data = &v
+func (s *DeleteFlowCategoryResponseBody) SetFlowId(v string) *DeleteFlowCategoryResponseBody {
+	s.FlowId = &v
+	return s
+}
+
+func (s *DeleteFlowCategoryResponseBody) SetJobId(v string) *DeleteFlowCategoryResponseBody {
+	s.JobId = &v
 	return s
 }
 
 func (s *DeleteFlowCategoryResponseBody) SetRequestId(v string) *DeleteFlowCategoryResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteFlowCategoryResponseBody) SetResult(v bool) *DeleteFlowCategoryResponseBody {
+	s.Result = &v
 	return s
 }
 
@@ -6103,6 +6115,189 @@ func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *Lis
 	return s
 }
 
+type ModifyFlowForWebRequest struct {
+	AlertConf               *string `json:"AlertConf,omitempty" xml:"AlertConf,omitempty"`
+	AlertDingDingGroupBizId *string `json:"AlertDingDingGroupBizId,omitempty" xml:"AlertDingDingGroupBizId,omitempty"`
+	AlertUserGroupBizId     *string `json:"AlertUserGroupBizId,omitempty" xml:"AlertUserGroupBizId,omitempty"`
+	ClusterId               *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	CreateCluster           *bool   `json:"CreateCluster,omitempty" xml:"CreateCluster,omitempty"`
+	CronExpr                *string `json:"CronExpr,omitempty" xml:"CronExpr,omitempty"`
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EndSchedule             *int64  `json:"EndSchedule,omitempty" xml:"EndSchedule,omitempty"`
+	Graph                   *string `json:"Graph,omitempty" xml:"Graph,omitempty"`
+	HostName                *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
+	Id                      *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Name                    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Namespace               *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
+	ParentCategory          *string `json:"ParentCategory,omitempty" xml:"ParentCategory,omitempty"`
+	ParentFlowList          *string `json:"ParentFlowList,omitempty" xml:"ParentFlowList,omitempty"`
+	Periodic                *bool   `json:"Periodic,omitempty" xml:"Periodic,omitempty"`
+	ProjectId               *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StartSchedule           *int64  `json:"StartSchedule,omitempty" xml:"StartSchedule,omitempty"`
+	Status                  *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ModifyFlowForWebRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFlowForWebRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFlowForWebRequest) SetAlertConf(v string) *ModifyFlowForWebRequest {
+	s.AlertConf = &v
+	return s
+}
+
+func (s *ModifyFlowForWebRequest) SetAlertDingDingGroupBizId(v string) *ModifyFlowForWebRequest {
+	s.AlertDingDingGroupBizId = &v
+	return s
+}
+
+func (s *ModifyFlowForWebRequest) SetAlertUserGroupBizId(v string) *ModifyFlowForWebRequest {
+	s.AlertUserGroupBizId = &v
+	return s
+}
+
+func (s *ModifyFlowForWebRequest) SetClusterId(v string) *ModifyFlowForWebRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *ModifyFlowForWebRequest) SetCreateCluster(v bool) *ModifyFlowForWebRequest {
+	s.CreateCluster = &v
+	return s
+}
+
+func (s *ModifyFlowForWebRequest) SetCronExpr(v string) *ModifyFlowForWebRequest {
+	s.CronExpr = &v
+	return s
+}
+
+func (s *ModifyFlowForWebRequest) SetDescription(v string) *ModifyFlowForWebRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *ModifyFlowForWebRequest) SetEndSchedule(v int64) *ModifyFlowForWebRequest {
+	s.EndSchedule = &v
+	return s
+}
+
+func (s *ModifyFlowForWebRequest) SetGraph(v string) *ModifyFlowForWebRequest {
+	s.Graph = &v
+	return s
+}
+
+func (s *ModifyFlowForWebRequest) SetHostName(v string) *ModifyFlowForWebRequest {
+	s.HostName = &v
+	return s
+}
+
+func (s *ModifyFlowForWebRequest) SetId(v string) *ModifyFlowForWebRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *ModifyFlowForWebRequest) SetName(v string) *ModifyFlowForWebRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *ModifyFlowForWebRequest) SetNamespace(v string) *ModifyFlowForWebRequest {
+	s.Namespace = &v
+	return s
+}
+
+func (s *ModifyFlowForWebRequest) SetParentCategory(v string) *ModifyFlowForWebRequest {
+	s.ParentCategory = &v
+	return s
+}
+
+func (s *ModifyFlowForWebRequest) SetParentFlowList(v string) *ModifyFlowForWebRequest {
+	s.ParentFlowList = &v
+	return s
+}
+
+func (s *ModifyFlowForWebRequest) SetPeriodic(v bool) *ModifyFlowForWebRequest {
+	s.Periodic = &v
+	return s
+}
+
+func (s *ModifyFlowForWebRequest) SetProjectId(v string) *ModifyFlowForWebRequest {
+	s.ProjectId = &v
+	return s
+}
+
+func (s *ModifyFlowForWebRequest) SetRegionId(v string) *ModifyFlowForWebRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyFlowForWebRequest) SetStartSchedule(v int64) *ModifyFlowForWebRequest {
+	s.StartSchedule = &v
+	return s
+}
+
+func (s *ModifyFlowForWebRequest) SetStatus(v string) *ModifyFlowForWebRequest {
+	s.Status = &v
+	return s
+}
+
+type ModifyFlowForWebResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyFlowForWebResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFlowForWebResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFlowForWebResponseBody) SetData(v bool) *ModifyFlowForWebResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ModifyFlowForWebResponseBody) SetRequestId(v string) *ModifyFlowForWebResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyFlowForWebResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyFlowForWebResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyFlowForWebResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyFlowForWebResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyFlowForWebResponse) SetHeaders(v map[string]*string) *ModifyFlowForWebResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyFlowForWebResponse) SetStatusCode(v int32) *ModifyFlowForWebResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyFlowForWebResponse) SetBody(v *ModifyFlowForWebResponseBody) *ModifyFlowForWebResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyFlowJobRequest struct {
 	// 保留参数。
 	AlertConf *string `json:"AlertConf,omitempty" xml:"AlertConf,omitempty"`
@@ -8995,6 +9190,126 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListTagResourcesResponse{}
 	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyFlowForWebWithOptions(request *ModifyFlowForWebRequest, runtime *util.RuntimeOptions) (_result *ModifyFlowForWebResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AlertConf)) {
+		query["AlertConf"] = request.AlertConf
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertDingDingGroupBizId)) {
+		query["AlertDingDingGroupBizId"] = request.AlertDingDingGroupBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AlertUserGroupBizId)) {
+		query["AlertUserGroupBizId"] = request.AlertUserGroupBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CreateCluster)) {
+		query["CreateCluster"] = request.CreateCluster
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CronExpr)) {
+		query["CronExpr"] = request.CronExpr
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndSchedule)) {
+		query["EndSchedule"] = request.EndSchedule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Graph)) {
+		query["Graph"] = request.Graph
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.HostName)) {
+		query["HostName"] = request.HostName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
+		query["Namespace"] = request.Namespace
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentCategory)) {
+		query["ParentCategory"] = request.ParentCategory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParentFlowList)) {
+		query["ParentFlowList"] = request.ParentFlowList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Periodic)) {
+		query["Periodic"] = request.Periodic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
+		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartSchedule)) {
+		query["StartSchedule"] = request.StartSchedule
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyFlowForWeb"),
+		Version:     tea.String("2020-06-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyFlowForWebResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyFlowForWeb(request *ModifyFlowForWebRequest) (_result *ModifyFlowForWebResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyFlowForWebResponse{}
+	_body, _err := client.ModifyFlowForWebWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
