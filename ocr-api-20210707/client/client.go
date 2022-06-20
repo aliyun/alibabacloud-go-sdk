@@ -1567,6 +1567,7 @@ func (s *RecognizeCosmeticProduceLicenseResponse) SetBody(v *RecognizeCosmeticPr
 }
 
 type RecognizeCovidTestReportRequest struct {
+	MultipleResult *bool `json:"MultipleResult,omitempty" xml:"MultipleResult,omitempty"`
 	// 图片链接（长度不超 2048，不支持 base64）
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	// 图片二进制字节流，最大10MB
@@ -1579,6 +1580,11 @@ func (s RecognizeCovidTestReportRequest) String() string {
 
 func (s RecognizeCovidTestReportRequest) GoString() string {
 	return s.String()
+}
+
+func (s *RecognizeCovidTestReportRequest) SetMultipleResult(v bool) *RecognizeCovidTestReportRequest {
+	s.MultipleResult = &v
+	return s
 }
 
 func (s *RecognizeCovidTestReportRequest) SetUrl(v string) *RecognizeCovidTestReportRequest {
@@ -7835,6 +7841,10 @@ func (client *Client) RecognizeCovidTestReportWithOptions(request *RecognizeCovi
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MultipleResult)) {
+		query["MultipleResult"] = request.MultipleResult
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Url)) {
 		query["Url"] = request.Url
 	}
