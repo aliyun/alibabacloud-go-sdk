@@ -375,6 +375,7 @@ func (s *CalcCACSResponseBodyData) SetVolumeScore(v string) *CalcCACSResponseBod
 }
 
 type CalcCACSResponseBodyDataDetections struct {
+	CalciumCenter []*int64 `json:"CalciumCenter,omitempty" xml:"CalciumCenter,omitempty" type:"Repeated"`
 	CalciumId     *int64   `json:"CalciumId,omitempty" xml:"CalciumId,omitempty"`
 	CalciumScore  *float32 `json:"CalciumScore,omitempty" xml:"CalciumScore,omitempty"`
 	CalciumVolume *float32 `json:"CalciumVolume,omitempty" xml:"CalciumVolume,omitempty"`
@@ -386,6 +387,11 @@ func (s CalcCACSResponseBodyDataDetections) String() string {
 
 func (s CalcCACSResponseBodyDataDetections) GoString() string {
 	return s.String()
+}
+
+func (s *CalcCACSResponseBodyDataDetections) SetCalciumCenter(v []*int64) *CalcCACSResponseBodyDataDetections {
+	s.CalciumCenter = v
+	return s
 }
 
 func (s *CalcCACSResponseBodyDataDetections) SetCalciumId(v int64) *CalcCACSResponseBodyDataDetections {
@@ -3327,6 +3333,7 @@ func (s *ScreenChestCTResponseBodyDataCACS) SetVolumeScore(v string) *ScreenChes
 }
 
 type ScreenChestCTResponseBodyDataCACSDetections struct {
+	CalciumCenter []*int64 `json:"CalciumCenter,omitempty" xml:"CalciumCenter,omitempty" type:"Repeated"`
 	CalciumId     *int64   `json:"CalciumId,omitempty" xml:"CalciumId,omitempty"`
 	CalciumScore  *float32 `json:"CalciumScore,omitempty" xml:"CalciumScore,omitempty"`
 	CalciumVolume *float32 `json:"CalciumVolume,omitempty" xml:"CalciumVolume,omitempty"`
@@ -3338,6 +3345,11 @@ func (s ScreenChestCTResponseBodyDataCACSDetections) String() string {
 
 func (s ScreenChestCTResponseBodyDataCACSDetections) GoString() string {
 	return s.String()
+}
+
+func (s *ScreenChestCTResponseBodyDataCACSDetections) SetCalciumCenter(v []*int64) *ScreenChestCTResponseBodyDataCACSDetections {
+	s.CalciumCenter = v
+	return s
 }
 
 func (s *ScreenChestCTResponseBodyDataCACSDetections) SetCalciumId(v int64) *ScreenChestCTResponseBodyDataCACSDetections {
