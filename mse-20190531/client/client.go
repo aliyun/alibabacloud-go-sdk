@@ -8323,6 +8323,7 @@ type GetGatewayResponseBodyData struct {
 	SecurityGroup    *string                                     `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
 	Spec             *string                                     `json:"Spec,omitempty" xml:"Spec,omitempty"`
 	Status           *int32                                      `json:"Status,omitempty" xml:"Status,omitempty"`
+	StatusDesc       *string                                     `json:"StatusDesc,omitempty" xml:"StatusDesc,omitempty"`
 	Vpc              *string                                     `json:"Vpc,omitempty" xml:"Vpc,omitempty"`
 	Vswitch          *string                                     `json:"Vswitch,omitempty" xml:"Vswitch,omitempty"`
 	Vswitch2         *string                                     `json:"Vswitch2,omitempty" xml:"Vswitch2,omitempty"`
@@ -8409,6 +8410,11 @@ func (s *GetGatewayResponseBodyData) SetSpec(v string) *GetGatewayResponseBodyDa
 
 func (s *GetGatewayResponseBodyData) SetStatus(v int32) *GetGatewayResponseBodyData {
 	s.Status = &v
+	return s
+}
+
+func (s *GetGatewayResponseBodyData) SetStatusDesc(v string) *GetGatewayResponseBodyData {
+	s.StatusDesc = &v
 	return s
 }
 
@@ -13032,7 +13038,7 @@ func (s *ListApplicationsWithTagRulesResponseBodyDataResult) SetRouteStatus(v in
 type ListApplicationsWithTagRulesResponseBodyDataResultRouteRules struct {
 	CarryData   *bool   `json:"CarryData,omitempty" xml:"CarryData,omitempty"`
 	Enable      *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	GmtModified *int64  `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	Id          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
 	InstanceNum *int32  `json:"InstanceNum,omitempty" xml:"InstanceNum,omitempty"`
 	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
@@ -13061,7 +13067,7 @@ func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetEnable
 	return s
 }
 
-func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetGmtModified(v int64) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules {
+func (s *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules) SetGmtModified(v string) *ListApplicationsWithTagRulesResponseBodyDataResultRouteRules {
 	s.GmtModified = &v
 	return s
 }
@@ -18837,6 +18843,7 @@ type QueryClusterDetailResponseBodyData struct {
 	MemoryCapacity       *int64                                              `json:"MemoryCapacity,omitempty" xml:"MemoryCapacity,omitempty"`
 	MseVersion           *string                                             `json:"MseVersion,omitempty" xml:"MseVersion,omitempty"`
 	NetType              *string                                             `json:"NetType,omitempty" xml:"NetType,omitempty"`
+	OrderClusterVersion  *string                                             `json:"OrderClusterVersion,omitempty" xml:"OrderClusterVersion,omitempty"`
 	PayInfo              *string                                             `json:"PayInfo,omitempty" xml:"PayInfo,omitempty"`
 	PubNetworkFlow       *string                                             `json:"PubNetworkFlow,omitempty" xml:"PubNetworkFlow,omitempty"`
 	RegionId             *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -18994,6 +19001,11 @@ func (s *QueryClusterDetailResponseBodyData) SetMseVersion(v string) *QueryClust
 
 func (s *QueryClusterDetailResponseBodyData) SetNetType(v string) *QueryClusterDetailResponseBodyData {
 	s.NetType = &v
+	return s
+}
+
+func (s *QueryClusterDetailResponseBodyData) SetOrderClusterVersion(v string) *QueryClusterDetailResponseBodyData {
+	s.OrderClusterVersion = &v
 	return s
 }
 
@@ -21282,6 +21294,127 @@ func (s *UpdateClusterResponse) SetStatusCode(v int32) *UpdateClusterResponse {
 }
 
 func (s *UpdateClusterResponse) SetBody(v *UpdateClusterResponseBody) *UpdateClusterResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateClusterSpecRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// 网关名称
+	ClusterId            *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
+	ClusterSpecification *string `json:"ClusterSpecification,omitempty" xml:"ClusterSpecification,omitempty"`
+	// 节点数量
+	InstanceCount *int32 `json:"InstanceCount,omitempty" xml:"InstanceCount,omitempty"`
+	// 节点规格
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s UpdateClusterSpecRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClusterSpecRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClusterSpecRequest) SetAcceptLanguage(v string) *UpdateClusterSpecRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateClusterSpecRequest) SetClusterId(v string) *UpdateClusterSpecRequest {
+	s.ClusterId = &v
+	return s
+}
+
+func (s *UpdateClusterSpecRequest) SetClusterSpecification(v string) *UpdateClusterSpecRequest {
+	s.ClusterSpecification = &v
+	return s
+}
+
+func (s *UpdateClusterSpecRequest) SetInstanceCount(v int32) *UpdateClusterSpecRequest {
+	s.InstanceCount = &v
+	return s
+}
+
+func (s *UpdateClusterSpecRequest) SetInstanceId(v string) *UpdateClusterSpecRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type UpdateClusterSpecResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateClusterSpecResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClusterSpecResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClusterSpecResponseBody) SetCode(v int32) *UpdateClusterSpecResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateClusterSpecResponseBody) SetData(v string) *UpdateClusterSpecResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateClusterSpecResponseBody) SetHttpStatusCode(v int32) *UpdateClusterSpecResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateClusterSpecResponseBody) SetMessage(v string) *UpdateClusterSpecResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateClusterSpecResponseBody) SetRequestId(v string) *UpdateClusterSpecResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateClusterSpecResponseBody) SetSuccess(v bool) *UpdateClusterSpecResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateClusterSpecResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateClusterSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateClusterSpecResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateClusterSpecResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateClusterSpecResponse) SetHeaders(v map[string]*string) *UpdateClusterSpecResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateClusterSpecResponse) SetStatusCode(v int32) *UpdateClusterSpecResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateClusterSpecResponse) SetBody(v *UpdateClusterSpecResponseBody) *UpdateClusterSpecResponse {
 	s.Body = v
 	return s
 }
@@ -24371,6 +24504,121 @@ func (s *UpdateGatewayServiceVersionResponse) SetBody(v *UpdateGatewayServiceVer
 	return s
 }
 
+type UpdateGatewaySpecRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	// 网关名称
+	GatewayUniqueId *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	// 节点数量
+	Replica *int32 `json:"Replica,omitempty" xml:"Replica,omitempty"`
+	// 节点规格
+	Spec *string `json:"Spec,omitempty" xml:"Spec,omitempty"`
+}
+
+func (s UpdateGatewaySpecRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewaySpecRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewaySpecRequest) SetAcceptLanguage(v string) *UpdateGatewaySpecRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateGatewaySpecRequest) SetGatewayUniqueId(v string) *UpdateGatewaySpecRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateGatewaySpecRequest) SetReplica(v int32) *UpdateGatewaySpecRequest {
+	s.Replica = &v
+	return s
+}
+
+func (s *UpdateGatewaySpecRequest) SetSpec(v string) *UpdateGatewaySpecRequest {
+	s.Spec = &v
+	return s
+}
+
+type UpdateGatewaySpecResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateGatewaySpecResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewaySpecResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewaySpecResponseBody) SetCode(v int32) *UpdateGatewaySpecResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateGatewaySpecResponseBody) SetData(v string) *UpdateGatewaySpecResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateGatewaySpecResponseBody) SetHttpStatusCode(v int32) *UpdateGatewaySpecResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewaySpecResponseBody) SetMessage(v string) *UpdateGatewaySpecResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateGatewaySpecResponseBody) SetRequestId(v string) *UpdateGatewaySpecResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateGatewaySpecResponseBody) SetSuccess(v bool) *UpdateGatewaySpecResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateGatewaySpecResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateGatewaySpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateGatewaySpecResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateGatewaySpecResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateGatewaySpecResponse) SetHeaders(v map[string]*string) *UpdateGatewaySpecResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateGatewaySpecResponse) SetStatusCode(v int32) *UpdateGatewaySpecResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateGatewaySpecResponse) SetBody(v *UpdateGatewaySpecResponseBody) *UpdateGatewaySpecResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateImageRequest struct {
 	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
 	// 目标集群的id
@@ -25352,6 +25600,242 @@ func (s *UpdateSSLCertResponse) SetStatusCode(v int32) *UpdateSSLCertResponse {
 }
 
 func (s *UpdateSSLCertResponse) SetBody(v *UpdateSSLCertResponseBody) *UpdateSSLCertResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateServiceSourceRequest struct {
+	AcceptLanguage        *string                                          `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	Address               *string                                          `json:"Address,omitempty" xml:"Address,omitempty"`
+	GatewayId             *int64                                           `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId       *string                                          `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id                    *int64                                           `json:"Id,omitempty" xml:"Id,omitempty"`
+	IngressOptionsRequest *UpdateServiceSourceRequestIngressOptionsRequest `json:"IngressOptionsRequest,omitempty" xml:"IngressOptionsRequest,omitempty" type:"Struct"`
+	Name                  *string                                          `json:"Name,omitempty" xml:"Name,omitempty"`
+	Source                *string                                          `json:"Source,omitempty" xml:"Source,omitempty"`
+	Type                  *string                                          `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateServiceSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceSourceRequest) SetAcceptLanguage(v string) *UpdateServiceSourceRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateServiceSourceRequest) SetAddress(v string) *UpdateServiceSourceRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *UpdateServiceSourceRequest) SetGatewayId(v int64) *UpdateServiceSourceRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateServiceSourceRequest) SetGatewayUniqueId(v string) *UpdateServiceSourceRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateServiceSourceRequest) SetId(v int64) *UpdateServiceSourceRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateServiceSourceRequest) SetIngressOptionsRequest(v *UpdateServiceSourceRequestIngressOptionsRequest) *UpdateServiceSourceRequest {
+	s.IngressOptionsRequest = v
+	return s
+}
+
+func (s *UpdateServiceSourceRequest) SetName(v string) *UpdateServiceSourceRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateServiceSourceRequest) SetSource(v string) *UpdateServiceSourceRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *UpdateServiceSourceRequest) SetType(v string) *UpdateServiceSourceRequest {
+	s.Type = &v
+	return s
+}
+
+type UpdateServiceSourceRequestIngressOptionsRequest struct {
+	EnableIngress  *bool   `json:"EnableIngress,omitempty" xml:"EnableIngress,omitempty"`
+	IngressClass   *string `json:"IngressClass,omitempty" xml:"IngressClass,omitempty"`
+	WatchNamespace *string `json:"WatchNamespace,omitempty" xml:"WatchNamespace,omitempty"`
+}
+
+func (s UpdateServiceSourceRequestIngressOptionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceSourceRequestIngressOptionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceSourceRequestIngressOptionsRequest) SetEnableIngress(v bool) *UpdateServiceSourceRequestIngressOptionsRequest {
+	s.EnableIngress = &v
+	return s
+}
+
+func (s *UpdateServiceSourceRequestIngressOptionsRequest) SetIngressClass(v string) *UpdateServiceSourceRequestIngressOptionsRequest {
+	s.IngressClass = &v
+	return s
+}
+
+func (s *UpdateServiceSourceRequestIngressOptionsRequest) SetWatchNamespace(v string) *UpdateServiceSourceRequestIngressOptionsRequest {
+	s.WatchNamespace = &v
+	return s
+}
+
+type UpdateServiceSourceShrinkRequest struct {
+	AcceptLanguage              *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+	Address                     *string `json:"Address,omitempty" xml:"Address,omitempty"`
+	GatewayId                   *int64  `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
+	GatewayUniqueId             *string `json:"GatewayUniqueId,omitempty" xml:"GatewayUniqueId,omitempty"`
+	Id                          *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	IngressOptionsRequestShrink *string `json:"IngressOptionsRequest,omitempty" xml:"IngressOptionsRequest,omitempty"`
+	Name                        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Source                      *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	Type                        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateServiceSourceShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceSourceShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceSourceShrinkRequest) SetAcceptLanguage(v string) *UpdateServiceSourceShrinkRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+func (s *UpdateServiceSourceShrinkRequest) SetAddress(v string) *UpdateServiceSourceShrinkRequest {
+	s.Address = &v
+	return s
+}
+
+func (s *UpdateServiceSourceShrinkRequest) SetGatewayId(v int64) *UpdateServiceSourceShrinkRequest {
+	s.GatewayId = &v
+	return s
+}
+
+func (s *UpdateServiceSourceShrinkRequest) SetGatewayUniqueId(v string) *UpdateServiceSourceShrinkRequest {
+	s.GatewayUniqueId = &v
+	return s
+}
+
+func (s *UpdateServiceSourceShrinkRequest) SetId(v int64) *UpdateServiceSourceShrinkRequest {
+	s.Id = &v
+	return s
+}
+
+func (s *UpdateServiceSourceShrinkRequest) SetIngressOptionsRequestShrink(v string) *UpdateServiceSourceShrinkRequest {
+	s.IngressOptionsRequestShrink = &v
+	return s
+}
+
+func (s *UpdateServiceSourceShrinkRequest) SetName(v string) *UpdateServiceSourceShrinkRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateServiceSourceShrinkRequest) SetSource(v string) *UpdateServiceSourceShrinkRequest {
+	s.Source = &v
+	return s
+}
+
+func (s *UpdateServiceSourceShrinkRequest) SetType(v string) *UpdateServiceSourceShrinkRequest {
+	s.Type = &v
+	return s
+}
+
+type UpdateServiceSourceResponseBody struct {
+	Code           *int32  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data           *int64  `json:"Data,omitempty" xml:"Data,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateServiceSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceSourceResponseBody) SetCode(v int32) *UpdateServiceSourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateServiceSourceResponseBody) SetData(v int64) *UpdateServiceSourceResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateServiceSourceResponseBody) SetHttpStatusCode(v int32) *UpdateServiceSourceResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *UpdateServiceSourceResponseBody) SetMessage(v string) *UpdateServiceSourceResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateServiceSourceResponseBody) SetRequestId(v string) *UpdateServiceSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateServiceSourceResponseBody) SetSuccess(v bool) *UpdateServiceSourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateServiceSourceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateServiceSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateServiceSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateServiceSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateServiceSourceResponse) SetHeaders(v map[string]*string) *UpdateServiceSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateServiceSourceResponse) SetStatusCode(v int32) *UpdateServiceSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateServiceSourceResponse) SetBody(v *UpdateServiceSourceResponseBody) *UpdateServiceSourceResponse {
 	s.Body = v
 	return s
 }
@@ -29221,7 +29705,15 @@ func (client *Client) GetMseSourceWithOptions(request *GetMseSourceRequest, runt
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29230,7 +29722,7 @@ func (client *Client) GetMseSourceWithOptions(request *GetMseSourceRequest, runt
 		Version:     tea.String("2019-05-31"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -30885,7 +31377,15 @@ func (client *Client) ListSecurityGroupRuleWithOptions(request *ListSecurityGrou
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -30894,7 +31394,7 @@ func (client *Client) ListSecurityGroupRuleWithOptions(request *ListSecurityGrou
 		Version:     tea.String("2019-05-31"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -31905,7 +32405,23 @@ func (client *Client) SelectGatewaySlbWithOptions(request *SelectGatewaySlbReque
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -31914,7 +32430,7 @@ func (client *Client) SelectGatewaySlbWithOptions(request *SelectGatewaySlbReque
 		Version:     tea.String("2019-05-31"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -32113,6 +32629,66 @@ func (client *Client) UpdateCluster(request *UpdateClusterRequest) (_result *Upd
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateClusterResponse{}
 	_body, _err := client.UpdateClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateClusterSpecWithOptions(request *UpdateClusterSpecRequest, runtime *util.RuntimeOptions) (_result *UpdateClusterSpecResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterId)) {
+		query["ClusterId"] = request.ClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ClusterSpecification)) {
+		query["ClusterSpecification"] = request.ClusterSpecification
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceCount)) {
+		query["InstanceCount"] = request.InstanceCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateClusterSpec"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateClusterSpecResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateClusterSpec(request *UpdateClusterSpecRequest) (_result *UpdateClusterSpecResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateClusterSpecResponse{}
+	_body, _err := client.UpdateClusterSpecWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -33094,6 +33670,62 @@ func (client *Client) UpdateGatewayServiceVersion(request *UpdateGatewayServiceV
 	return _result, _err
 }
 
+func (client *Client) UpdateGatewaySpecWithOptions(request *UpdateGatewaySpecRequest, runtime *util.RuntimeOptions) (_result *UpdateGatewaySpecResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Replica)) {
+		query["Replica"] = request.Replica
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Spec)) {
+		query["Spec"] = request.Spec
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateGatewaySpec"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateGatewaySpecResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateGatewaySpec(request *UpdateGatewaySpecRequest) (_result *UpdateGatewaySpecResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateGatewaySpecResponse{}
+	_body, _err := client.UpdateGatewaySpecWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateImageWithOptions(request *UpdateImageRequest, runtime *util.RuntimeOptions) (_result *UpdateImageResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -33587,6 +34219,88 @@ func (client *Client) UpdateSSLCert(request *UpdateSSLCertRequest) (_result *Upd
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateSSLCertResponse{}
 	_body, _err := client.UpdateSSLCertWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateServiceSourceWithOptions(tmpReq *UpdateServiceSourceRequest, runtime *util.RuntimeOptions) (_result *UpdateServiceSourceResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &UpdateServiceSourceShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.IngressOptionsRequest))) {
+		request.IngressOptionsRequestShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.IngressOptionsRequest), tea.String("IngressOptionsRequest"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Address)) {
+		query["Address"] = request.Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayId)) {
+		query["GatewayId"] = request.GatewayId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GatewayUniqueId)) {
+		query["GatewayUniqueId"] = request.GatewayUniqueId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Id)) {
+		query["Id"] = request.Id
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IngressOptionsRequestShrink)) {
+		query["IngressOptionsRequest"] = request.IngressOptionsRequestShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Source)) {
+		query["Source"] = request.Source
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateServiceSource"),
+		Version:     tea.String("2019-05-31"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateServiceSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateServiceSource(request *UpdateServiceSourceRequest) (_result *UpdateServiceSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateServiceSourceResponse{}
+	_body, _err := client.UpdateServiceSourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
