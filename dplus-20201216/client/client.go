@@ -53,8 +53,9 @@ func (s *AePredictCategoryAdvanceRequest) SetPicUrlObject(v io.Reader) *AePredic
 }
 
 type AePredictCategoryResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AePredictCategoryResponse) String() string {
@@ -67,6 +68,11 @@ func (s AePredictCategoryResponse) GoString() string {
 
 func (s *AePredictCategoryResponse) SetHeaders(v map[string]*string) *AePredictCategoryResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AePredictCategoryResponse) SetStatusCode(v int32) *AePredictCategoryResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -110,8 +116,9 @@ func (s *AePropRecAdvanceRequest) SetPicUrlObject(v io.Reader) *AePropRecAdvance
 }
 
 type AePropRecResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AePropRecResponse) String() string {
@@ -127,6 +134,11 @@ func (s *AePropRecResponse) SetHeaders(v map[string]*string) *AePropRecResponse 
 	return s
 }
 
+func (s *AePropRecResponse) SetStatusCode(v int32) *AePropRecResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *AePropRecResponse) SetBody(v map[string]interface{}) *AePropRecResponse {
 	s.Body = v
 	return s
@@ -136,8 +148,8 @@ type AlivisionImgdupRequest struct {
 	ImageHeight    *int32  `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
 	ImageWidth     *int32  `json:"ImageWidth,omitempty" xml:"ImageWidth,omitempty"`
 	OutputImageNum *int32  `json:"OutputImageNum,omitempty" xml:"OutputImageNum,omitempty"`
-	PicNum         *int32  `json:"PicNum,omitempty" xml:"PicNum,omitempty"`
-	PicUrl         *string `json:"PicUrl,omitempty" xml:"PicUrl,omitempty"`
+	PicNumList     *string `json:"PicNumList,omitempty" xml:"PicNumList,omitempty"`
+	PicUrlList     *string `json:"PicUrlList,omitempty" xml:"PicUrlList,omitempty"`
 }
 
 func (s AlivisionImgdupRequest) String() string {
@@ -163,60 +175,20 @@ func (s *AlivisionImgdupRequest) SetOutputImageNum(v int32) *AlivisionImgdupRequ
 	return s
 }
 
-func (s *AlivisionImgdupRequest) SetPicNum(v int32) *AlivisionImgdupRequest {
-	s.PicNum = &v
+func (s *AlivisionImgdupRequest) SetPicNumList(v string) *AlivisionImgdupRequest {
+	s.PicNumList = &v
 	return s
 }
 
-func (s *AlivisionImgdupRequest) SetPicUrl(v string) *AlivisionImgdupRequest {
-	s.PicUrl = &v
-	return s
-}
-
-type AlivisionImgdupAdvanceRequest struct {
-	PicUrlObject   io.Reader `json:"PicUrlObject,omitempty" xml:"PicUrlObject,omitempty" require:"true"`
-	ImageHeight    *int32    `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
-	ImageWidth     *int32    `json:"ImageWidth,omitempty" xml:"ImageWidth,omitempty"`
-	OutputImageNum *int32    `json:"OutputImageNum,omitempty" xml:"OutputImageNum,omitempty"`
-	PicNum         *int32    `json:"PicNum,omitempty" xml:"PicNum,omitempty"`
-}
-
-func (s AlivisionImgdupAdvanceRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AlivisionImgdupAdvanceRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AlivisionImgdupAdvanceRequest) SetPicUrlObject(v io.Reader) *AlivisionImgdupAdvanceRequest {
-	s.PicUrlObject = v
-	return s
-}
-
-func (s *AlivisionImgdupAdvanceRequest) SetImageHeight(v int32) *AlivisionImgdupAdvanceRequest {
-	s.ImageHeight = &v
-	return s
-}
-
-func (s *AlivisionImgdupAdvanceRequest) SetImageWidth(v int32) *AlivisionImgdupAdvanceRequest {
-	s.ImageWidth = &v
-	return s
-}
-
-func (s *AlivisionImgdupAdvanceRequest) SetOutputImageNum(v int32) *AlivisionImgdupAdvanceRequest {
-	s.OutputImageNum = &v
-	return s
-}
-
-func (s *AlivisionImgdupAdvanceRequest) SetPicNum(v int32) *AlivisionImgdupAdvanceRequest {
-	s.PicNum = &v
+func (s *AlivisionImgdupRequest) SetPicUrlList(v string) *AlivisionImgdupRequest {
+	s.PicUrlList = &v
 	return s
 }
 
 type AlivisionImgdupResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AlivisionImgdupResponse) String() string {
@@ -229,6 +201,11 @@ func (s AlivisionImgdupResponse) GoString() string {
 
 func (s *AlivisionImgdupResponse) SetHeaders(v map[string]*string) *AlivisionImgdupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AlivisionImgdupResponse) SetStatusCode(v int32) *AlivisionImgdupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -350,8 +327,9 @@ func (s *CreateImageAmazonTaskResponseBody) SetSuccessResponse(v bool) *CreateIm
 }
 
 type CreateImageAmazonTaskResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateImageAmazonTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateImageAmazonTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateImageAmazonTaskResponse) String() string {
@@ -364,6 +342,11 @@ func (s CreateImageAmazonTaskResponse) GoString() string {
 
 func (s *CreateImageAmazonTaskResponse) SetHeaders(v map[string]*string) *CreateImageAmazonTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateImageAmazonTaskResponse) SetStatusCode(v int32) *CreateImageAmazonTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -461,8 +444,9 @@ func (s *CreateRemoveWorkTaskResponseBody) SetSuccessResponse(v bool) *CreateRem
 }
 
 type CreateRemoveWorkTaskResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateRemoveWorkTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateRemoveWorkTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateRemoveWorkTaskResponse) String() string {
@@ -475,6 +459,11 @@ func (s CreateRemoveWorkTaskResponse) GoString() string {
 
 func (s *CreateRemoveWorkTaskResponse) SetHeaders(v map[string]*string) *CreateRemoveWorkTaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateRemoveWorkTaskResponse) SetStatusCode(v int32) *CreateRemoveWorkTaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -554,8 +543,9 @@ func (s *FaceshifterTAdvanceRequest) SetRace(v int32) *FaceshifterTAdvanceReques
 }
 
 type FaceshifterTResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FaceshifterTResponse) String() string {
@@ -568,6 +558,11 @@ func (s FaceshifterTResponse) GoString() string {
 
 func (s *FaceshifterTResponse) SetHeaders(v map[string]*string) *FaceshifterTResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *FaceshifterTResponse) SetStatusCode(v int32) *FaceshifterTResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -636,7 +631,7 @@ func (s *GetTaskResultResponseBody) SetSuccessResponse(v bool) *GetTaskResultRes
 }
 
 type GetTaskResultResponseBodyData struct {
-	Resuslt    *string `json:"Resuslt,omitempty" xml:"Resuslt,omitempty"`
+	Result     *string `json:"Result,omitempty" xml:"Result,omitempty"`
 	Status     *int64  `json:"Status,omitempty" xml:"Status,omitempty"`
 	StatusName *string `json:"StatusName,omitempty" xml:"StatusName,omitempty"`
 	TaskId     *int64  `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
@@ -650,8 +645,8 @@ func (s GetTaskResultResponseBodyData) GoString() string {
 	return s.String()
 }
 
-func (s *GetTaskResultResponseBodyData) SetResuslt(v string) *GetTaskResultResponseBodyData {
-	s.Resuslt = &v
+func (s *GetTaskResultResponseBodyData) SetResult(v string) *GetTaskResultResponseBodyData {
+	s.Result = &v
 	return s
 }
 
@@ -671,8 +666,9 @@ func (s *GetTaskResultResponseBodyData) SetTaskId(v int64) *GetTaskResultRespons
 }
 
 type GetTaskResultResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTaskResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTaskResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetTaskResultResponse) String() string {
@@ -685,6 +681,11 @@ func (s GetTaskResultResponse) GoString() string {
 
 func (s *GetTaskResultResponse) SetHeaders(v map[string]*string) *GetTaskResultResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetTaskResultResponse) SetStatusCode(v int32) *GetTaskResultResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -782,8 +783,9 @@ func (s *GetTaskStatusResponseBodyData) SetTaskId(v int64) *GetTaskStatusRespons
 }
 
 type GetTaskStatusResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetTaskStatusResponse) String() string {
@@ -796,6 +798,11 @@ func (s GetTaskStatusResponse) GoString() string {
 
 func (s *GetTaskStatusResponse) SetHeaders(v map[string]*string) *GetTaskStatusResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetTaskStatusResponse) SetStatusCode(v int32) *GetTaskStatusResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -863,8 +870,9 @@ func (s *KuajingSegAdvanceRequest) SetReturnPicType(v string) *KuajingSegAdvance
 }
 
 type KuajingSegResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s KuajingSegResponse) String() string {
@@ -877,6 +885,11 @@ func (s KuajingSegResponse) GoString() string {
 
 func (s *KuajingSegResponse) SetHeaders(v map[string]*string) *KuajingSegResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *KuajingSegResponse) SetStatusCode(v int32) *KuajingSegResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -920,8 +933,9 @@ func (s *RemoveWordsAdvanceRequest) SetPicUrlObject(v io.Reader) *RemoveWordsAdv
 }
 
 type RemoveWordsResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RemoveWordsResponse) String() string {
@@ -934,6 +948,11 @@ func (s RemoveWordsResponse) GoString() string {
 
 func (s *RemoveWordsResponse) SetHeaders(v map[string]*string) *RemoveWordsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RemoveWordsResponse) SetStatusCode(v int32) *RemoveWordsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1016,8 +1035,9 @@ func (s *ReplaceBackgroundAdvanceRequest) SetPicBackgroundUrl(v string) *Replace
 }
 
 type ReplaceBackgroundResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ReplaceBackgroundResponse) String() string {
@@ -1030,6 +1050,11 @@ func (s ReplaceBackgroundResponse) GoString() string {
 
 func (s *ReplaceBackgroundResponse) SetHeaders(v map[string]*string) *ReplaceBackgroundResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ReplaceBackgroundResponse) SetStatusCode(v int32) *ReplaceBackgroundResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1074,8 +1099,9 @@ func (s *SeleteCommodityRequest) SetStart(v int32) *SeleteCommodityRequest {
 }
 
 type SeleteCommodityResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SeleteCommodityResponse) String() string {
@@ -1088,6 +1114,11 @@ func (s SeleteCommodityResponse) GoString() string {
 
 func (s *SeleteCommodityResponse) SetHeaders(v map[string]*string) *SeleteCommodityResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SeleteCommodityResponse) SetStatusCode(v int32) *SeleteCommodityResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1132,8 +1163,9 @@ func (s *SeleteCommodityByBToBRequest) SetStart(v int32) *SeleteCommodityByBToBR
 }
 
 type SeleteCommodityByBToBResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SeleteCommodityByBToBResponse) String() string {
@@ -1146,6 +1178,11 @@ func (s SeleteCommodityByBToBResponse) GoString() string {
 
 func (s *SeleteCommodityByBToBResponse) SetHeaders(v map[string]*string) *SeleteCommodityByBToBResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SeleteCommodityByBToBResponse) SetStatusCode(v int32) *SeleteCommodityByBToBResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1189,8 +1226,9 @@ func (s *TbPredictCategoryAdvanceRequest) SetPicUrlObject(v io.Reader) *TbPredic
 }
 
 type TbPredictCategoryResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TbPredictCategoryResponse) String() string {
@@ -1203,6 +1241,11 @@ func (s TbPredictCategoryResponse) GoString() string {
 
 func (s *TbPredictCategoryResponse) SetHeaders(v map[string]*string) *TbPredictCategoryResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *TbPredictCategoryResponse) SetStatusCode(v int32) *TbPredictCategoryResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1246,8 +1289,9 @@ func (s *TbPropRecAdvanceRequest) SetPicUrlObject(v io.Reader) *TbPropRecAdvance
 }
 
 type TbPropRecResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TbPropRecResponse) String() string {
@@ -1260,6 +1304,11 @@ func (s TbPropRecResponse) GoString() string {
 
 func (s *TbPropRecResponse) SetHeaders(v map[string]*string) *TbPropRecResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *TbPropRecResponse) SetStatusCode(v int32) *TbPropRecResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1292,8 +1341,9 @@ func (s *TransferUrlByBtoBRequest) SetPid(v string) *TransferUrlByBtoBRequest {
 }
 
 type TransferUrlByBtoBResponse struct {
-	Headers map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s TransferUrlByBtoBResponse) String() string {
@@ -1306,6 +1356,11 @@ func (s TransferUrlByBtoBResponse) GoString() string {
 
 func (s *TransferUrlByBtoBResponse) SetHeaders(v map[string]*string) *TransferUrlByBtoBResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *TransferUrlByBtoBResponse) SetStatusCode(v int32) *TransferUrlByBtoBResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1679,12 +1734,12 @@ func (client *Client) AlivisionImgdupWithOptions(request *AlivisionImgdupRequest
 		body["OutputImageNum"] = request.OutputImageNum
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PicNum)) {
-		body["PicNum"] = request.PicNum
+	if !tea.BoolValue(util.IsUnset(request.PicNumList)) {
+		body["PicNumList"] = request.PicNumList
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.PicUrl)) {
-		body["PicUrl"] = request.PicUrl
+	if !tea.BoolValue(util.IsUnset(request.PicUrlList)) {
+		body["PicUrlList"] = request.PicUrlList
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -1718,112 +1773,6 @@ func (client *Client) AlivisionImgdup(request *AlivisionImgdupRequest) (_result 
 		return _result, _err
 	}
 	_result = _body
-	return _result, _err
-}
-
-func (client *Client) AlivisionImgdupAdvance(request *AlivisionImgdupAdvanceRequest, runtime *util.RuntimeOptions) (_result *AlivisionImgdupResponse, _err error) {
-	// Step 0: init client
-	accessKeyId, _err := client.Credential.GetAccessKeyId()
-	if _err != nil {
-		return _result, _err
-	}
-
-	accessKeySecret, _err := client.Credential.GetAccessKeySecret()
-	if _err != nil {
-		return _result, _err
-	}
-
-	securityToken, _err := client.Credential.GetSecurityToken()
-	if _err != nil {
-		return _result, _err
-	}
-
-	credentialType := client.Credential.GetType()
-	openPlatformEndpoint := client.OpenPlatformEndpoint
-	if tea.BoolValue(util.IsUnset(openPlatformEndpoint)) {
-		openPlatformEndpoint = tea.String("openplatform.aliyuncs.com")
-	}
-
-	if tea.BoolValue(util.IsUnset(credentialType)) {
-		credentialType = tea.String("access_key")
-	}
-
-	authConfig := &rpc.Config{
-		AccessKeyId:     accessKeyId,
-		AccessKeySecret: accessKeySecret,
-		SecurityToken:   securityToken,
-		Type:            credentialType,
-		Endpoint:        openPlatformEndpoint,
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	authClient, _err := openplatform.NewClient(authConfig)
-	if _err != nil {
-		return _result, _err
-	}
-
-	authRequest := &openplatform.AuthorizeFileUploadRequest{
-		Product:  tea.String("dplus"),
-		RegionId: client.RegionId,
-	}
-	authResponse := &openplatform.AuthorizeFileUploadResponse{}
-	ossConfig := &oss.Config{
-		AccessKeySecret: accessKeySecret,
-		Type:            tea.String("access_key"),
-		Protocol:        client.Protocol,
-		RegionId:        client.RegionId,
-	}
-	var ossClient *oss.Client
-	fileObj := &fileform.FileField{}
-	ossHeader := &oss.PostObjectRequestHeader{}
-	uploadRequest := &oss.PostObjectRequest{}
-	ossRuntime := &ossutil.RuntimeOptions{}
-	openapiutil.Convert(runtime, ossRuntime)
-	alivisionImgdupReq := &AlivisionImgdupRequest{}
-	openapiutil.Convert(request, alivisionImgdupReq)
-	if !tea.BoolValue(util.IsUnset(request.PicUrlObject)) {
-		authResponse, _err = authClient.AuthorizeFileUploadWithOptions(authRequest, runtime)
-		if _err != nil {
-			return _result, _err
-		}
-
-		ossConfig.AccessKeyId = authResponse.AccessKeyId
-		ossConfig.Endpoint = openapiutil.GetEndpoint(authResponse.Endpoint, authResponse.UseAccelerate, client.EndpointType)
-		ossClient, _err = oss.NewClient(ossConfig)
-		if _err != nil {
-			return _result, _err
-		}
-
-		fileObj = &fileform.FileField{
-			Filename:    authResponse.ObjectKey,
-			Content:     request.PicUrlObject,
-			ContentType: tea.String(""),
-		}
-		ossHeader = &oss.PostObjectRequestHeader{
-			AccessKeyId:         authResponse.AccessKeyId,
-			Policy:              authResponse.EncodedPolicy,
-			Signature:           authResponse.Signature,
-			Key:                 authResponse.ObjectKey,
-			File:                fileObj,
-			SuccessActionStatus: tea.String("201"),
-		}
-		uploadRequest = &oss.PostObjectRequest{
-			BucketName: authResponse.Bucket,
-			Header:     ossHeader,
-		}
-		_, _err = ossClient.PostObject(uploadRequest, ossRuntime)
-		if _err != nil {
-			return _result, _err
-		}
-		alivisionImgdupReq.PicUrl = tea.String("http://" + tea.StringValue(authResponse.Bucket) + "." + tea.StringValue(authResponse.Endpoint) + "/" + tea.StringValue(authResponse.ObjectKey))
-	}
-
-	alivisionImgdupResp, _err := client.AlivisionImgdupWithOptions(alivisionImgdupReq, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-
-	_result = alivisionImgdupResp
 	return _result, _err
 }
 
