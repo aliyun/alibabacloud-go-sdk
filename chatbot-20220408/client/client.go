@@ -750,8 +750,6 @@ type ChatResponseBodyMessages struct {
 	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
 	// 本条消息的类型
 	AnswerType *string `json:"AnswerType,omitempty" xml:"AnswerType,omitempty"`
-	// 当AnswerType为CardAnswer时，此字段包含机器人返回的Card的列表
-	CardList []*ChatResponseBodyMessagesCardList `json:"CardList,omitempty" xml:"CardList,omitempty" type:"Repeated"`
 	// 当AnswerType为Knowledge时，此字段包含机器人返回的Knowledge对象
 	Knowledge *ChatResponseBodyMessagesKnowledge `json:"Knowledge,omitempty" xml:"Knowledge,omitempty" type:"Struct"`
 	// 当AnswerType为Recommend时，此字段包含机器人返回的Recommend的列表
@@ -782,11 +780,6 @@ func (s *ChatResponseBodyMessages) SetAnswerType(v string) *ChatResponseBodyMess
 	return s
 }
 
-func (s *ChatResponseBodyMessages) SetCardList(v []*ChatResponseBodyMessagesCardList) *ChatResponseBodyMessages {
-	s.CardList = v
-	return s
-}
-
 func (s *ChatResponseBodyMessages) SetKnowledge(v *ChatResponseBodyMessagesKnowledge) *ChatResponseBodyMessages {
 	s.Knowledge = v
 	return s
@@ -809,38 +802,6 @@ func (s *ChatResponseBodyMessages) SetTitle(v string) *ChatResponseBodyMessages 
 
 func (s *ChatResponseBodyMessages) SetVoiceTitle(v string) *ChatResponseBodyMessages {
 	s.VoiceTitle = &v
-	return s
-}
-
-type ChatResponseBodyMessagesCardList struct {
-	// 区分答案类型：cardAnswer
-	AnswerSource *string `json:"AnswerSource,omitempty" xml:"AnswerSource,omitempty"`
-	// 消息类型：card
-	MsgType *string `json:"MsgType,omitempty" xml:"MsgType,omitempty"`
-	// 平台类型：beebot
-	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-}
-
-func (s ChatResponseBodyMessagesCardList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ChatResponseBodyMessagesCardList) GoString() string {
-	return s.String()
-}
-
-func (s *ChatResponseBodyMessagesCardList) SetAnswerSource(v string) *ChatResponseBodyMessagesCardList {
-	s.AnswerSource = &v
-	return s
-}
-
-func (s *ChatResponseBodyMessagesCardList) SetMsgType(v string) *ChatResponseBodyMessagesCardList {
-	s.MsgType = &v
-	return s
-}
-
-func (s *ChatResponseBodyMessagesCardList) SetPlatform(v string) *ChatResponseBodyMessagesCardList {
-	s.Platform = &v
 	return s
 }
 
@@ -1657,6 +1618,50 @@ func (s *CreateDSEntityValueRequest) SetInstanceId(v string) *CreateDSEntityValu
 
 func (s *CreateDSEntityValueRequest) SetSynonyms(v []*string) *CreateDSEntityValueRequest {
 	s.Synonyms = v
+	return s
+}
+
+type CreateDSEntityValueShrinkRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Content  *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// 实体ID，修改实体成员时可为空
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// 机器人ID
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SynonymsShrink *string `json:"Synonyms,omitempty" xml:"Synonyms,omitempty"`
+}
+
+func (s CreateDSEntityValueShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDSEntityValueShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDSEntityValueShrinkRequest) SetAgentKey(v string) *CreateDSEntityValueShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *CreateDSEntityValueShrinkRequest) SetContent(v string) *CreateDSEntityValueShrinkRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *CreateDSEntityValueShrinkRequest) SetEntityId(v int64) *CreateDSEntityValueShrinkRequest {
+	s.EntityId = &v
+	return s
+}
+
+func (s *CreateDSEntityValueShrinkRequest) SetInstanceId(v string) *CreateDSEntityValueShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *CreateDSEntityValueShrinkRequest) SetSynonymsShrink(v string) *CreateDSEntityValueShrinkRequest {
+	s.SynonymsShrink = &v
 	return s
 }
 
@@ -6322,146 +6327,6 @@ func (s *ListDSEntityValueResponse) SetBody(v *ListDSEntityValueResponseBody) *L
 	return s
 }
 
-type ListDsMenusRequest struct {
-	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
-	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
-	// 机器人ID
-	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// 1-正式环境，2-测试环境（默认）
-	RobotEnv *int32 `json:"RobotEnv,omitempty" xml:"RobotEnv,omitempty"`
-	// 业务来源标识：
-	// 1-集团内部aliyun域名；2-外部使用4service域名（默认）
-	Source *int32 `json:"Source,omitempty" xml:"Source,omitempty"`
-	// 功能标识，为空表示所有；支持的tag有：Dialog / Intent / Entity / Var / TaskCenter；传入多个时通过英文逗号分隔
-	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-}
-
-func (s ListDsMenusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDsMenusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDsMenusRequest) SetAgentKey(v string) *ListDsMenusRequest {
-	s.AgentKey = &v
-	return s
-}
-
-func (s *ListDsMenusRequest) SetInstanceId(v string) *ListDsMenusRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ListDsMenusRequest) SetRobotEnv(v int32) *ListDsMenusRequest {
-	s.RobotEnv = &v
-	return s
-}
-
-func (s *ListDsMenusRequest) SetSource(v int32) *ListDsMenusRequest {
-	s.Source = &v
-	return s
-}
-
-func (s *ListDsMenusRequest) SetTags(v string) *ListDsMenusRequest {
-	s.Tags = &v
-	return s
-}
-
-type ListDsMenusResponseBody struct {
-	Ext       *string                         `json:"Ext,omitempty" xml:"Ext,omitempty"`
-	Menus     []*ListDsMenusResponseBodyMenus `json:"Menus,omitempty" xml:"Menus,omitempty" type:"Repeated"`
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListDsMenusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDsMenusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDsMenusResponseBody) SetExt(v string) *ListDsMenusResponseBody {
-	s.Ext = &v
-	return s
-}
-
-func (s *ListDsMenusResponseBody) SetMenus(v []*ListDsMenusResponseBodyMenus) *ListDsMenusResponseBody {
-	s.Menus = v
-	return s
-}
-
-func (s *ListDsMenusResponseBody) SetRequestId(v string) *ListDsMenusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListDsMenusResponseBodyMenus struct {
-	Tag     *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	Title   *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	TitleEn *string `json:"TitleEn,omitempty" xml:"TitleEn,omitempty"`
-	Url     *string `json:"Url,omitempty" xml:"Url,omitempty"`
-}
-
-func (s ListDsMenusResponseBodyMenus) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDsMenusResponseBodyMenus) GoString() string {
-	return s.String()
-}
-
-func (s *ListDsMenusResponseBodyMenus) SetTag(v string) *ListDsMenusResponseBodyMenus {
-	s.Tag = &v
-	return s
-}
-
-func (s *ListDsMenusResponseBodyMenus) SetTitle(v string) *ListDsMenusResponseBodyMenus {
-	s.Title = &v
-	return s
-}
-
-func (s *ListDsMenusResponseBodyMenus) SetTitleEn(v string) *ListDsMenusResponseBodyMenus {
-	s.TitleEn = &v
-	return s
-}
-
-func (s *ListDsMenusResponseBodyMenus) SetUrl(v string) *ListDsMenusResponseBodyMenus {
-	s.Url = &v
-	return s
-}
-
-type ListDsMenusResponse struct {
-	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDsMenusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDsMenusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDsMenusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListDsMenusResponse) SetHeaders(v map[string]*string) *ListDsMenusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDsMenusResponse) SetStatusCode(v int32) *ListDsMenusResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListDsMenusResponse) SetBody(v *ListDsMenusResponseBody) *ListDsMenusResponse {
-	s.Body = v
-	return s
-}
-
 type ListInstanceRequest struct {
 	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
@@ -6650,6 +6515,8 @@ type ListIntentRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// 意图名称
 	IntentName *string `json:"IntentName,omitempty" xml:"IntentName,omitempty"`
+	PageNumber *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
 func (s ListIntentRequest) String() string {
@@ -6672,6 +6539,16 @@ func (s *ListIntentRequest) SetInstanceId(v string) *ListIntentRequest {
 
 func (s *ListIntentRequest) SetIntentName(v string) *ListIntentRequest {
 	s.IntentName = &v
+	return s
+}
+
+func (s *ListIntentRequest) SetPageNumber(v int32) *ListIntentRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListIntentRequest) SetPageSize(v int32) *ListIntentRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -8712,6 +8589,59 @@ func (s *UpdateDSEntityValueRequest) SetSynonyms(v []*string) *UpdateDSEntityVal
 	return s
 }
 
+type UpdateDSEntityValueShrinkRequest struct {
+	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
+	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	// 实体类型为synonyms时，表示实体归一化值；当实体类型为regex时，表示正则表达式文本
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// 实体ID，修改实体成员时可为空
+	EntityId *int64 `json:"EntityId,omitempty" xml:"EntityId,omitempty"`
+	// 实体成员ID，创建实体成员时为空
+	EntityValueId *int64 `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
+	// 机器人ID
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// 实体同义词
+	SynonymsShrink *string `json:"Synonyms,omitempty" xml:"Synonyms,omitempty"`
+}
+
+func (s UpdateDSEntityValueShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDSEntityValueShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDSEntityValueShrinkRequest) SetAgentKey(v string) *UpdateDSEntityValueShrinkRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *UpdateDSEntityValueShrinkRequest) SetContent(v string) *UpdateDSEntityValueShrinkRequest {
+	s.Content = &v
+	return s
+}
+
+func (s *UpdateDSEntityValueShrinkRequest) SetEntityId(v int64) *UpdateDSEntityValueShrinkRequest {
+	s.EntityId = &v
+	return s
+}
+
+func (s *UpdateDSEntityValueShrinkRequest) SetEntityValueId(v int64) *UpdateDSEntityValueShrinkRequest {
+	s.EntityValueId = &v
+	return s
+}
+
+func (s *UpdateDSEntityValueShrinkRequest) SetInstanceId(v string) *UpdateDSEntityValueShrinkRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *UpdateDSEntityValueShrinkRequest) SetSynonymsShrink(v string) *UpdateDSEntityValueShrinkRequest {
+	s.SynonymsShrink = &v
+	return s
+}
+
 type UpdateDSEntityValueResponseBody struct {
 	EntityValueId *int64  `json:"EntityValueId,omitempty" xml:"EntityValueId,omitempty"`
 	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -10324,11 +10254,17 @@ func (client *Client) CreateDSEntity(request *CreateDSEntityRequest) (_result *C
 	return _result, _err
 }
 
-func (client *Client) CreateDSEntityValueWithOptions(request *CreateDSEntityValueRequest, runtime *util.RuntimeOptions) (_result *CreateDSEntityValueResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) CreateDSEntityValueWithOptions(tmpReq *CreateDSEntityValueRequest, runtime *util.RuntimeOptions) (_result *CreateDSEntityValueResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &CreateDSEntityValueShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Synonyms)) {
+		request.SynonymsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Synonyms, tea.String("Synonyms"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
 		query["AgentKey"] = request.AgentKey
@@ -10346,12 +10282,14 @@ func (client *Client) CreateDSEntityValueWithOptions(request *CreateDSEntityValu
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Synonyms)) {
-		query["Synonyms"] = request.Synonyms
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SynonymsShrink)) {
+		body["Synonyms"] = request.SynonymsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("CreateDSEntityValue"),
@@ -12428,66 +12366,6 @@ func (client *Client) ListDSEntityValue(request *ListDSEntityValueRequest) (_res
 	return _result, _err
 }
 
-func (client *Client) ListDsMenusWithOptions(request *ListDsMenusRequest, runtime *util.RuntimeOptions) (_result *ListDsMenusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
-		query["AgentKey"] = request.AgentKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RobotEnv)) {
-		query["RobotEnv"] = request.RobotEnv
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Source)) {
-		query["Source"] = request.Source
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tags)) {
-		query["Tags"] = request.Tags
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListDsMenus"),
-		Version:     tea.String("2022-04-08"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListDsMenusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDsMenus(request *ListDsMenusRequest) (_result *ListDsMenusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListDsMenusResponse{}
-	_body, _err := client.ListDsMenusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, runtime *util.RuntimeOptions) (_result *ListInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -12564,6 +12442,14 @@ func (client *Client) ListIntentWithOptions(request *ListIntentRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.IntentName)) {
 		query["IntentName"] = request.IntentName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -13208,11 +13094,17 @@ func (client *Client) UpdateDSEntity(request *UpdateDSEntityRequest) (_result *U
 	return _result, _err
 }
 
-func (client *Client) UpdateDSEntityValueWithOptions(request *UpdateDSEntityValueRequest, runtime *util.RuntimeOptions) (_result *UpdateDSEntityValueResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) UpdateDSEntityValueWithOptions(tmpReq *UpdateDSEntityValueRequest, runtime *util.RuntimeOptions) (_result *UpdateDSEntityValueResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &UpdateDSEntityValueShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Synonyms)) {
+		request.SynonymsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Synonyms, tea.String("Synonyms"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
 		query["AgentKey"] = request.AgentKey
@@ -13234,12 +13126,14 @@ func (client *Client) UpdateDSEntityValueWithOptions(request *UpdateDSEntityValu
 		query["InstanceId"] = request.InstanceId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Synonyms)) {
-		query["Synonyms"] = request.Synonyms
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SynonymsShrink)) {
+		body["Synonyms"] = request.SynonymsShrink
 	}
 
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("UpdateDSEntityValue"),
