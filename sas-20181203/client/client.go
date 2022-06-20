@@ -11519,6 +11519,7 @@ type DescribeInstanceStatisticsResponseBodyData struct {
 	Trojan     *int32  `json:"Trojan,omitempty" xml:"Trojan,omitempty"`
 	Uuid       *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 	Vul        *int32  `json:"Vul,omitempty" xml:"Vul,omitempty"`
+	WeakPWNum  *int32  `json:"WeakPWNum,omitempty" xml:"WeakPWNum,omitempty"`
 }
 
 func (s DescribeInstanceStatisticsResponseBodyData) String() string {
@@ -11586,6 +11587,11 @@ func (s *DescribeInstanceStatisticsResponseBodyData) SetUuid(v string) *Describe
 
 func (s *DescribeInstanceStatisticsResponseBodyData) SetVul(v int32) *DescribeInstanceStatisticsResponseBodyData {
 	s.Vul = &v
+	return s
+}
+
+func (s *DescribeInstanceStatisticsResponseBodyData) SetWeakPWNum(v int32) *DescribeInstanceStatisticsResponseBodyData {
+	s.WeakPWNum = &v
 	return s
 }
 
@@ -21518,6 +21524,7 @@ type DescribeVulListRequest struct {
 	Dealed         *string `json:"Dealed,omitempty" xml:"Dealed,omitempty"`
 	GroupId        *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	Necessity      *string `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Remark         *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
@@ -21561,6 +21568,11 @@ func (s *DescribeVulListRequest) SetGroupId(v string) *DescribeVulListRequest {
 
 func (s *DescribeVulListRequest) SetLang(v string) *DescribeVulListRequest {
 	s.Lang = &v
+	return s
+}
+
+func (s *DescribeVulListRequest) SetName(v string) *DescribeVulListRequest {
+	s.Name = &v
 	return s
 }
 
@@ -27049,6 +27061,100 @@ func (s *OperateVulsResponse) SetBody(v *OperateVulsResponseBody) *OperateVulsRe
 	return s
 }
 
+type OperationCancelIgnoreSuspEventRequest struct {
+	// 告警编号集合
+	SecurityEventIds []*int64 `json:"SecurityEventIds,omitempty" xml:"SecurityEventIds,omitempty" type:"Repeated"`
+}
+
+func (s OperationCancelIgnoreSuspEventRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperationCancelIgnoreSuspEventRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OperationCancelIgnoreSuspEventRequest) SetSecurityEventIds(v []*int64) *OperationCancelIgnoreSuspEventRequest {
+	s.SecurityEventIds = v
+	return s
+}
+
+type OperationCancelIgnoreSuspEventResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TimeCost       *int64  `json:"TimeCost,omitempty" xml:"TimeCost,omitempty"`
+}
+
+func (s OperationCancelIgnoreSuspEventResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperationCancelIgnoreSuspEventResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OperationCancelIgnoreSuspEventResponseBody) SetCode(v string) *OperationCancelIgnoreSuspEventResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *OperationCancelIgnoreSuspEventResponseBody) SetHttpStatusCode(v int32) *OperationCancelIgnoreSuspEventResponseBody {
+	s.HttpStatusCode = &v
+	return s
+}
+
+func (s *OperationCancelIgnoreSuspEventResponseBody) SetMessage(v string) *OperationCancelIgnoreSuspEventResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *OperationCancelIgnoreSuspEventResponseBody) SetRequestId(v string) *OperationCancelIgnoreSuspEventResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *OperationCancelIgnoreSuspEventResponseBody) SetSuccess(v bool) *OperationCancelIgnoreSuspEventResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *OperationCancelIgnoreSuspEventResponseBody) SetTimeCost(v int64) *OperationCancelIgnoreSuspEventResponseBody {
+	s.TimeCost = &v
+	return s
+}
+
+type OperationCancelIgnoreSuspEventResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OperationCancelIgnoreSuspEventResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s OperationCancelIgnoreSuspEventResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OperationCancelIgnoreSuspEventResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OperationCancelIgnoreSuspEventResponse) SetHeaders(v map[string]*string) *OperationCancelIgnoreSuspEventResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OperationCancelIgnoreSuspEventResponse) SetStatusCode(v int32) *OperationCancelIgnoreSuspEventResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OperationCancelIgnoreSuspEventResponse) SetBody(v *OperationCancelIgnoreSuspEventResponseBody) *OperationCancelIgnoreSuspEventResponse {
+	s.Body = v
+	return s
+}
+
 type OperationSuspEventsRequest struct {
 	From               *string `json:"From,omitempty" xml:"From,omitempty"`
 	Operation          *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
@@ -27765,6 +27871,8 @@ func (s *QueryGroupIdByGroupNameResponse) SetBody(v *QueryGroupIdByGroupNameResp
 
 type QueryGroupedSecurityEventMarkMissListRequest struct {
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// 加白方式
+	DisposalWay *string `json:"DisposalWay,omitempty" xml:"DisposalWay,omitempty"`
 	// 告警事件名称（子类型）
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	From      *string `json:"From,omitempty" xml:"From,omitempty"`
@@ -27785,6 +27893,11 @@ func (s QueryGroupedSecurityEventMarkMissListRequest) GoString() string {
 
 func (s *QueryGroupedSecurityEventMarkMissListRequest) SetCurrentPage(v int32) *QueryGroupedSecurityEventMarkMissListRequest {
 	s.CurrentPage = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListRequest) SetDisposalWay(v string) *QueryGroupedSecurityEventMarkMissListRequest {
+	s.DisposalWay = &v
 	return s
 }
 
@@ -27868,6 +27981,8 @@ func (s *QueryGroupedSecurityEventMarkMissListResponseBody) SetSuccess(v bool) *
 type QueryGroupedSecurityEventMarkMissListResponseBodyList struct {
 	// 用户统一编号
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// 处置方式
+	DisposalWay *string `json:"DisposalWay,omitempty" xml:"DisposalWay,omitempty"`
 	// 告警事件名称（子类型）
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
 	// 告警事件名称（子类型）
@@ -27898,6 +28013,11 @@ func (s QueryGroupedSecurityEventMarkMissListResponseBodyList) GoString() string
 
 func (s *QueryGroupedSecurityEventMarkMissListResponseBodyList) SetAliUid(v int64) *QueryGroupedSecurityEventMarkMissListResponseBodyList {
 	s.AliUid = &v
+	return s
+}
+
+func (s *QueryGroupedSecurityEventMarkMissListResponseBodyList) SetDisposalWay(v string) *QueryGroupedSecurityEventMarkMissListResponseBodyList {
+	s.DisposalWay = &v
 	return s
 }
 
@@ -36134,6 +36254,10 @@ func (client *Client) DescribeVulListWithOptions(request *DescribeVulListRequest
 		query["Lang"] = request.Lang
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Necessity)) {
 		query["Necessity"] = request.Necessity
 	}
@@ -39027,6 +39151,50 @@ func (client *Client) OperateVuls(request *OperateVulsRequest) (_result *Operate
 	return _result, _err
 }
 
+func (client *Client) OperationCancelIgnoreSuspEventWithOptions(request *OperationCancelIgnoreSuspEventRequest, runtime *util.RuntimeOptions) (_result *OperationCancelIgnoreSuspEventResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.SecurityEventIds)) {
+		query["SecurityEventIds"] = request.SecurityEventIds
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OperationCancelIgnoreSuspEvent"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OperationCancelIgnoreSuspEventResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OperationCancelIgnoreSuspEvent(request *OperationCancelIgnoreSuspEventRequest) (_result *OperationCancelIgnoreSuspEventResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OperationCancelIgnoreSuspEventResponse{}
+	_body, _err := client.OperationCancelIgnoreSuspEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) OperationSuspEventsWithOptions(request *OperationSuspEventsRequest, runtime *util.RuntimeOptions) (_result *OperationSuspEventsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -39393,6 +39561,10 @@ func (client *Client) QueryGroupedSecurityEventMarkMissListWithOptions(request *
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DisposalWay)) {
+		query["DisposalWay"] = request.DisposalWay
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
 		query["SourceIp"] = request.SourceIp
 	}
