@@ -8159,9 +8159,7 @@ func (s *RecognizeTurkeyIdentityCardAdvanceRequest) SetImageUrlObject(v io.Reade
 }
 
 type RecognizeTurkeyIdentityCardResponseBody struct {
-	Code    *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data    *RecognizeTurkeyIdentityCardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	Data *RecognizeTurkeyIdentityCardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -8174,18 +8172,8 @@ func (s RecognizeTurkeyIdentityCardResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *RecognizeTurkeyIdentityCardResponseBody) SetCode(v string) *RecognizeTurkeyIdentityCardResponseBody {
-	s.Code = &v
-	return s
-}
-
 func (s *RecognizeTurkeyIdentityCardResponseBody) SetData(v *RecognizeTurkeyIdentityCardResponseBodyData) *RecognizeTurkeyIdentityCardResponseBody {
 	s.Data = v
-	return s
-}
-
-func (s *RecognizeTurkeyIdentityCardResponseBody) SetMessage(v string) *RecognizeTurkeyIdentityCardResponseBody {
-	s.Message = &v
 	return s
 }
 
