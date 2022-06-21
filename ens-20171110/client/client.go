@@ -842,6 +842,105 @@ func (s *AddNetworkInterfaceToInstanceResponse) SetBody(v *AddNetworkInterfaceTo
 	return s
 }
 
+type AssignPrivateIpAddressesRequest struct {
+	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+}
+
+func (s AssignPrivateIpAddressesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignPrivateIpAddressesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AssignPrivateIpAddressesRequest) SetNetworkInterfaceId(v string) *AssignPrivateIpAddressesRequest {
+	s.NetworkInterfaceId = &v
+	return s
+}
+
+func (s *AssignPrivateIpAddressesRequest) SetVSwitchId(v string) *AssignPrivateIpAddressesRequest {
+	s.VSwitchId = &v
+	return s
+}
+
+type AssignPrivateIpAddressesResponseBody struct {
+	AssignedPrivateIpAddressesSet *AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet `json:"AssignedPrivateIpAddressesSet,omitempty" xml:"AssignedPrivateIpAddressesSet,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AssignPrivateIpAddressesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignPrivateIpAddressesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AssignPrivateIpAddressesResponseBody) SetAssignedPrivateIpAddressesSet(v *AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet) *AssignPrivateIpAddressesResponseBody {
+	s.AssignedPrivateIpAddressesSet = v
+	return s
+}
+
+func (s *AssignPrivateIpAddressesResponseBody) SetRequestId(v string) *AssignPrivateIpAddressesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet struct {
+	NetworkInterfaceId *string   `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	PrivateIpSet       []*string `json:"PrivateIpSet,omitempty" xml:"PrivateIpSet,omitempty" type:"Repeated"`
+}
+
+func (s AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet) GoString() string {
+	return s.String()
+}
+
+func (s *AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet) SetNetworkInterfaceId(v string) *AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet {
+	s.NetworkInterfaceId = &v
+	return s
+}
+
+func (s *AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet) SetPrivateIpSet(v []*string) *AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet {
+	s.PrivateIpSet = v
+	return s
+}
+
+type AssignPrivateIpAddressesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AssignPrivateIpAddressesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AssignPrivateIpAddressesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AssignPrivateIpAddressesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AssignPrivateIpAddressesResponse) SetHeaders(v map[string]*string) *AssignPrivateIpAddressesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AssignPrivateIpAddressesResponse) SetStatusCode(v int32) *AssignPrivateIpAddressesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AssignPrivateIpAddressesResponse) SetBody(v *AssignPrivateIpAddressesResponseBody) *AssignPrivateIpAddressesResponse {
+	s.Body = v
+	return s
+}
+
 type AssociateEnsEipAddressRequest struct {
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -1002,7 +1101,6 @@ func (s *AttachDiskResponse) SetBody(v *AttachDiskResponseBody) *AttachDiskRespo
 type AttachEnsInstancesRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	Scripts    *string `json:"Scripts,omitempty" xml:"Scripts,omitempty"`
-	Version    *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s AttachEnsInstancesRequest) String() string {
@@ -1020,11 +1118,6 @@ func (s *AttachEnsInstancesRequest) SetInstanceId(v string) *AttachEnsInstancesR
 
 func (s *AttachEnsInstancesRequest) SetScripts(v string) *AttachEnsInstancesRequest {
 	s.Scripts = &v
-	return s
-}
-
-func (s *AttachEnsInstancesRequest) SetVersion(v string) *AttachEnsInstancesRequest {
-	s.Version = &v
 	return s
 }
 
@@ -1355,6 +1448,94 @@ func (s *CreateApplicationResponse) SetStatusCode(v int32) *CreateApplicationRes
 }
 
 func (s *CreateApplicationResponse) SetBody(v *CreateApplicationResponseBody) *CreateApplicationResponse {
+	s.Body = v
+	return s
+}
+
+type CreateClassicNetworkRequest struct {
+	CidrBlock   *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	NetworkName *string `json:"NetworkName,omitempty" xml:"NetworkName,omitempty"`
+}
+
+func (s CreateClassicNetworkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClassicNetworkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClassicNetworkRequest) SetCidrBlock(v string) *CreateClassicNetworkRequest {
+	s.CidrBlock = &v
+	return s
+}
+
+func (s *CreateClassicNetworkRequest) SetDescription(v string) *CreateClassicNetworkRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateClassicNetworkRequest) SetEnsRegionId(v string) *CreateClassicNetworkRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *CreateClassicNetworkRequest) SetNetworkName(v string) *CreateClassicNetworkRequest {
+	s.NetworkName = &v
+	return s
+}
+
+type CreateClassicNetworkResponseBody struct {
+	NetworkId *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateClassicNetworkResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClassicNetworkResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClassicNetworkResponseBody) SetNetworkId(v string) *CreateClassicNetworkResponseBody {
+	s.NetworkId = &v
+	return s
+}
+
+func (s *CreateClassicNetworkResponseBody) SetRequestId(v string) *CreateClassicNetworkResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateClassicNetworkResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateClassicNetworkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateClassicNetworkResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateClassicNetworkResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateClassicNetworkResponse) SetHeaders(v map[string]*string) *CreateClassicNetworkResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateClassicNetworkResponse) SetStatusCode(v int32) *CreateClassicNetworkResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateClassicNetworkResponse) SetBody(v *CreateClassicNetworkResponseBody) *CreateClassicNetworkResponse {
 	s.Body = v
 	return s
 }
@@ -3604,7 +3785,6 @@ type CreateVSwitchRequest struct {
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
 	NetworkId   *string `json:"NetworkId,omitempty" xml:"NetworkId,omitempty"`
 	VSwitchName *string `json:"VSwitchName,omitempty" xml:"VSwitchName,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s CreateVSwitchRequest) String() string {
@@ -3637,11 +3817,6 @@ func (s *CreateVSwitchRequest) SetNetworkId(v string) *CreateVSwitchRequest {
 
 func (s *CreateVSwitchRequest) SetVSwitchName(v string) *CreateVSwitchRequest {
 	s.VSwitchName = &v
-	return s
-}
-
-func (s *CreateVSwitchRequest) SetVersion(v string) *CreateVSwitchRequest {
-	s.Version = &v
 	return s
 }
 
@@ -14226,15 +14401,16 @@ func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSets) SetNetworkIn
 }
 
 type DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet struct {
-	CreationTime       *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	EnsRegionId        *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	MacAddress         *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
-	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	PrimaryIp          *string `json:"PrimaryIp,omitempty" xml:"PrimaryIp,omitempty"`
-	PrimaryIpType      *string `json:"PrimaryIpType,omitempty" xml:"PrimaryIpType,omitempty"`
-	Status             *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	VSwitchId          *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	CreationTime       *string                                                                                    `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	EnsRegionId        *string                                                                                    `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	InstanceId         *string                                                                                    `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	MacAddress         *string                                                                                    `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
+	NetworkInterfaceId *string                                                                                    `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	PrimaryIp          *string                                                                                    `json:"PrimaryIp,omitempty" xml:"PrimaryIp,omitempty"`
+	PrimaryIpType      *string                                                                                    `json:"PrimaryIpType,omitempty" xml:"PrimaryIpType,omitempty"`
+	PrivateIpSets      *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSets `json:"PrivateIpSets,omitempty" xml:"PrivateIpSets,omitempty" type:"Struct"`
+	Status             *string                                                                                    `json:"Status,omitempty" xml:"Status,omitempty"`
+	VSwitchId          *string                                                                                    `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 }
 
 func (s DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet) String() string {
@@ -14280,6 +14456,11 @@ func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfa
 	return s
 }
 
+func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet) SetPrivateIpSets(v *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSets) *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet {
+	s.PrivateIpSets = v
+	return s
+}
+
 func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet) SetStatus(v string) *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet {
 	s.Status = &v
 	return s
@@ -14287,6 +14468,46 @@ func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfa
 
 func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet) SetVSwitchId(v string) *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSet {
 	s.VSwitchId = &v
+	return s
+}
+
+type DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSets struct {
+	PrivateIpSet []*DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSetsPrivateIpSet `json:"PrivateIpSet,omitempty" xml:"PrivateIpSet,omitempty" type:"Repeated"`
+}
+
+func (s DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSets) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSets) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSets) SetPrivateIpSet(v []*DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSetsPrivateIpSet) *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSets {
+	s.PrivateIpSet = v
+	return s
+}
+
+type DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSetsPrivateIpSet struct {
+	Primary          *bool   `json:"Primary,omitempty" xml:"Primary,omitempty"`
+	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+}
+
+func (s DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSetsPrivateIpSet) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSetsPrivateIpSet) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSetsPrivateIpSet) SetPrimary(v bool) *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSetsPrivateIpSet {
+	s.Primary = &v
+	return s
+}
+
+func (s *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSetsPrivateIpSet) SetPrivateIpAddress(v string) *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceSetPrivateIpSetsPrivateIpSet {
+	s.PrivateIpAddress = &v
 	return s
 }
 
@@ -17208,7 +17429,6 @@ func (s *JoinPublicIpsToEpnInstanceResponse) SetBody(v *JoinPublicIpsToEpnInstan
 type JoinSecurityGroupRequest struct {
 	InstanceId      *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	Version         *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s JoinSecurityGroupRequest) String() string {
@@ -17226,11 +17446,6 @@ func (s *JoinSecurityGroupRequest) SetInstanceId(v string) *JoinSecurityGroupReq
 
 func (s *JoinSecurityGroupRequest) SetSecurityGroupId(v string) *JoinSecurityGroupRequest {
 	s.SecurityGroupId = &v
-	return s
-}
-
-func (s *JoinSecurityGroupRequest) SetVersion(v string) *JoinSecurityGroupRequest {
-	s.Version = &v
 	return s
 }
 
@@ -18522,7 +18737,6 @@ type PreCreateEnsServiceRequest struct {
 	SchedulingStrategy      *string `json:"SchedulingStrategy,omitempty" xml:"SchedulingStrategy,omitempty"`
 	SystemDiskSize          *string `json:"SystemDiskSize,omitempty" xml:"SystemDiskSize,omitempty"`
 	UserData                *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	Version                 *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s PreCreateEnsServiceRequest) String() string {
@@ -18600,11 +18814,6 @@ func (s *PreCreateEnsServiceRequest) SetSystemDiskSize(v string) *PreCreateEnsSe
 
 func (s *PreCreateEnsServiceRequest) SetUserData(v string) *PreCreateEnsServiceRequest {
 	s.UserData = &v
-	return s
-}
-
-func (s *PreCreateEnsServiceRequest) SetVersion(v string) *PreCreateEnsServiceRequest {
-	s.Version = &v
 	return s
 }
 
@@ -20354,7 +20563,8 @@ type RunInstancesRequest struct {
 	// Day：按天计费的价格单位。
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// 私网ip
-	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	PrivateIpAddress       *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	PublicIpIdentification *bool   `json:"PublicIpIdentification,omitempty" xml:"PublicIpIdentification,omitempty"`
 	// 调度层级
 	ScheduleAreaLevel *string `json:"ScheduleAreaLevel,omitempty" xml:"ScheduleAreaLevel,omitempty"`
 	// 调度价格策略
@@ -20473,6 +20683,11 @@ func (s *RunInstancesRequest) SetPeriodUnit(v string) *RunInstancesRequest {
 
 func (s *RunInstancesRequest) SetPrivateIpAddress(v string) *RunInstancesRequest {
 	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *RunInstancesRequest) SetPublicIpIdentification(v bool) *RunInstancesRequest {
+	s.PublicIpIdentification = &v
 	return s
 }
 
@@ -20596,7 +20811,8 @@ type RunInstancesShrinkRequest struct {
 	// Day：按天计费的价格单位。
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
 	// 私网ip
-	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	PrivateIpAddress       *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
+	PublicIpIdentification *bool   `json:"PublicIpIdentification,omitempty" xml:"PublicIpIdentification,omitempty"`
 	// 调度层级
 	ScheduleAreaLevel *string `json:"ScheduleAreaLevel,omitempty" xml:"ScheduleAreaLevel,omitempty"`
 	// 调度价格策略
@@ -20715,6 +20931,11 @@ func (s *RunInstancesShrinkRequest) SetPeriodUnit(v string) *RunInstancesShrinkR
 
 func (s *RunInstancesShrinkRequest) SetPrivateIpAddress(v string) *RunInstancesShrinkRequest {
 	s.PrivateIpAddress = &v
+	return s
+}
+
+func (s *RunInstancesShrinkRequest) SetPublicIpIdentification(v bool) *RunInstancesShrinkRequest {
+	s.PublicIpIdentification = &v
 	return s
 }
 
@@ -22426,6 +22647,76 @@ func (s *UnAssociateEnsEipAddressResponse) SetBody(v *UnAssociateEnsEipAddressRe
 	return s
 }
 
+type UnassignPrivateIpAddressesRequest struct {
+	NetworkInterfaceId *string   `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
+	PrivateIpAddress   []*string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty" type:"Repeated"`
+}
+
+func (s UnassignPrivateIpAddressesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnassignPrivateIpAddressesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnassignPrivateIpAddressesRequest) SetNetworkInterfaceId(v string) *UnassignPrivateIpAddressesRequest {
+	s.NetworkInterfaceId = &v
+	return s
+}
+
+func (s *UnassignPrivateIpAddressesRequest) SetPrivateIpAddress(v []*string) *UnassignPrivateIpAddressesRequest {
+	s.PrivateIpAddress = v
+	return s
+}
+
+type UnassignPrivateIpAddressesResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UnassignPrivateIpAddressesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnassignPrivateIpAddressesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UnassignPrivateIpAddressesResponseBody) SetRequestId(v string) *UnassignPrivateIpAddressesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UnassignPrivateIpAddressesResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UnassignPrivateIpAddressesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UnassignPrivateIpAddressesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnassignPrivateIpAddressesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnassignPrivateIpAddressesResponse) SetHeaders(v map[string]*string) *UnassignPrivateIpAddressesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnassignPrivateIpAddressesResponse) SetStatusCode(v int32) *UnassignPrivateIpAddressesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UnassignPrivateIpAddressesResponse) SetBody(v *UnassignPrivateIpAddressesResponseBody) *UnassignPrivateIpAddressesResponse {
+	s.Body = v
+	return s
+}
+
 type UpgradeApplicationRequest struct {
 	AppId    *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
@@ -22694,6 +22985,54 @@ func (client *Client) AddNetworkInterfaceToInstance(request *AddNetworkInterface
 	return _result, _err
 }
 
+func (client *Client) AssignPrivateIpAddressesWithOptions(request *AssignPrivateIpAddressesRequest, runtime *util.RuntimeOptions) (_result *AssignPrivateIpAddressesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceId)) {
+		query["NetworkInterfaceId"] = request.NetworkInterfaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.VSwitchId)) {
+		query["VSwitchId"] = request.VSwitchId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AssignPrivateIpAddresses"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AssignPrivateIpAddressesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AssignPrivateIpAddresses(request *AssignPrivateIpAddressesRequest) (_result *AssignPrivateIpAddressesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AssignPrivateIpAddressesResponse{}
+	_body, _err := client.AssignPrivateIpAddressesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AssociateEnsEipAddressWithOptions(request *AssociateEnsEipAddressRequest, runtime *util.RuntimeOptions) (_result *AssociateEnsEipAddressResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -22810,10 +23149,6 @@ func (client *Client) AttachEnsInstancesWithOptions(request *AttachEnsInstancesR
 
 	if !tea.BoolValue(util.IsUnset(request.Scripts)) {
 		query["Scripts"] = request.Scripts
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -23035,6 +23370,62 @@ func (client *Client) CreateApplication(request *CreateApplicationRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateApplicationResponse{}
 	_body, _err := client.CreateApplicationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateClassicNetworkWithOptions(request *CreateClassicNetworkRequest, runtime *util.RuntimeOptions) (_result *CreateClassicNetworkResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CidrBlock)) {
+		query["CidrBlock"] = request.CidrBlock
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetworkName)) {
+		query["NetworkName"] = request.NetworkName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateClassicNetwork"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateClassicNetworkResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateClassicNetwork(request *CreateClassicNetworkRequest) (_result *CreateClassicNetworkResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateClassicNetworkResponse{}
+	_body, _err := client.CreateClassicNetworkWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24398,10 +24789,6 @@ func (client *Client) CreateVSwitchWithOptions(request *CreateVSwitchRequest, ru
 
 	if !tea.BoolValue(util.IsUnset(request.VSwitchName)) {
 		query["VSwitchName"] = request.VSwitchName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -28936,10 +29323,6 @@ func (client *Client) JoinSecurityGroupWithOptions(request *JoinSecurityGroupReq
 		query["SecurityGroupId"] = request.SecurityGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
-	}
-
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -29794,10 +30177,6 @@ func (client *Client) PreCreateEnsServiceWithOptions(request *PreCreateEnsServic
 
 	if !tea.BoolValue(util.IsUnset(request.UserData)) {
 		query["UserData"] = request.UserData
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -30838,6 +31217,10 @@ func (client *Client) RunInstancesWithOptions(tmpReq *RunInstancesRequest, runti
 		query["PrivateIpAddress"] = request.PrivateIpAddress
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.PublicIpIdentification)) {
+		query["PublicIpIdentification"] = request.PublicIpIdentification
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ScheduleAreaLevel)) {
 		query["ScheduleAreaLevel"] = request.ScheduleAreaLevel
 	}
@@ -31815,6 +32198,54 @@ func (client *Client) UnAssociateEnsEipAddress(request *UnAssociateEnsEipAddress
 	runtime := &util.RuntimeOptions{}
 	_result = &UnAssociateEnsEipAddressResponse{}
 	_body, _err := client.UnAssociateEnsEipAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UnassignPrivateIpAddressesWithOptions(request *UnassignPrivateIpAddressesRequest, runtime *util.RuntimeOptions) (_result *UnassignPrivateIpAddressesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.NetworkInterfaceId)) {
+		query["NetworkInterfaceId"] = request.NetworkInterfaceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateIpAddress)) {
+		query["PrivateIpAddress"] = request.PrivateIpAddress
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnassignPrivateIpAddresses"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UnassignPrivateIpAddressesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UnassignPrivateIpAddresses(request *UnassignPrivateIpAddressesRequest) (_result *UnassignPrivateIpAddressesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UnassignPrivateIpAddressesResponse{}
+	_body, _err := client.UnassignPrivateIpAddressesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
