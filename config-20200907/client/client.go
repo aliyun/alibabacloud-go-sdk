@@ -4289,6 +4289,8 @@ func (s *GetAggregateConfigRuleResponseBody) SetRequestId(v string) *GetAggregat
 }
 
 type GetAggregateConfigRuleResponseBodyConfigRule struct {
+	AccountId                  *int64                                                                  `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	Compliance                 *GetAggregateConfigRuleResponseBodyConfigRuleCompliance                 `json:"Compliance,omitempty" xml:"Compliance,omitempty" type:"Struct"`
 	ConfigRuleArn              *string                                                                 `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
 	ConfigRuleEvaluationStatus *GetAggregateConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus `json:"ConfigRuleEvaluationStatus,omitempty" xml:"ConfigRuleEvaluationStatus,omitempty" type:"Struct"`
 	ConfigRuleId               *string                                                                 `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
@@ -4322,6 +4324,16 @@ func (s GetAggregateConfigRuleResponseBodyConfigRule) String() string {
 
 func (s GetAggregateConfigRuleResponseBodyConfigRule) GoString() string {
 	return s.String()
+}
+
+func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetAccountId(v int64) *GetAggregateConfigRuleResponseBodyConfigRule {
+	s.AccountId = &v
+	return s
+}
+
+func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetCompliance(v *GetAggregateConfigRuleResponseBodyConfigRuleCompliance) *GetAggregateConfigRuleResponseBodyConfigRule {
+	s.Compliance = v
+	return s
 }
 
 func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetConfigRuleArn(v string) *GetAggregateConfigRuleResponseBodyConfigRule {
@@ -4446,6 +4458,29 @@ func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetTagKeyScope(v string) 
 
 func (s *GetAggregateConfigRuleResponseBodyConfigRule) SetTagValueScope(v string) *GetAggregateConfigRuleResponseBodyConfigRule {
 	s.TagValueScope = &v
+	return s
+}
+
+type GetAggregateConfigRuleResponseBodyConfigRuleCompliance struct {
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	Count          *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s GetAggregateConfigRuleResponseBodyConfigRuleCompliance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAggregateConfigRuleResponseBodyConfigRuleCompliance) GoString() string {
+	return s.String()
+}
+
+func (s *GetAggregateConfigRuleResponseBodyConfigRuleCompliance) SetComplianceType(v string) *GetAggregateConfigRuleResponseBodyConfigRuleCompliance {
+	s.ComplianceType = &v
+	return s
+}
+
+func (s *GetAggregateConfigRuleResponseBodyConfigRuleCompliance) SetCount(v int32) *GetAggregateConfigRuleResponseBodyConfigRuleCompliance {
+	s.Count = &v
 	return s
 }
 
@@ -7136,6 +7171,8 @@ func (s *GetConfigRuleResponseBody) SetRequestId(v string) *GetConfigRuleRespons
 }
 
 type GetConfigRuleResponseBodyConfigRule struct {
+	AccountId                  *int64                                                         `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
+	Compliance                 *GetConfigRuleResponseBodyConfigRuleCompliance                 `json:"Compliance,omitempty" xml:"Compliance,omitempty" type:"Struct"`
 	ConfigRuleArn              *string                                                        `json:"ConfigRuleArn,omitempty" xml:"ConfigRuleArn,omitempty"`
 	ConfigRuleEvaluationStatus *GetConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus `json:"ConfigRuleEvaluationStatus,omitempty" xml:"ConfigRuleEvaluationStatus,omitempty" type:"Struct"`
 	ConfigRuleId               *string                                                        `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
@@ -7166,6 +7203,16 @@ func (s GetConfigRuleResponseBodyConfigRule) String() string {
 
 func (s GetConfigRuleResponseBodyConfigRule) GoString() string {
 	return s.String()
+}
+
+func (s *GetConfigRuleResponseBodyConfigRule) SetAccountId(v int64) *GetConfigRuleResponseBodyConfigRule {
+	s.AccountId = &v
+	return s
+}
+
+func (s *GetConfigRuleResponseBodyConfigRule) SetCompliance(v *GetConfigRuleResponseBodyConfigRuleCompliance) *GetConfigRuleResponseBodyConfigRule {
+	s.Compliance = v
+	return s
 }
 
 func (s *GetConfigRuleResponseBodyConfigRule) SetConfigRuleArn(v string) *GetConfigRuleResponseBodyConfigRule {
@@ -7275,6 +7322,29 @@ func (s *GetConfigRuleResponseBodyConfigRule) SetTagKeyScope(v string) *GetConfi
 
 func (s *GetConfigRuleResponseBodyConfigRule) SetTagValueScope(v string) *GetConfigRuleResponseBodyConfigRule {
 	s.TagValueScope = &v
+	return s
+}
+
+type GetConfigRuleResponseBodyConfigRuleCompliance struct {
+	ComplianceType *string `json:"ComplianceType,omitempty" xml:"ComplianceType,omitempty"`
+	Count          *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
+}
+
+func (s GetConfigRuleResponseBodyConfigRuleCompliance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetConfigRuleResponseBodyConfigRuleCompliance) GoString() string {
+	return s.String()
+}
+
+func (s *GetConfigRuleResponseBodyConfigRuleCompliance) SetComplianceType(v string) *GetConfigRuleResponseBodyConfigRuleCompliance {
+	s.ComplianceType = &v
+	return s
+}
+
+func (s *GetConfigRuleResponseBodyConfigRuleCompliance) SetCount(v int32) *GetConfigRuleResponseBodyConfigRuleCompliance {
+	s.Count = &v
 	return s
 }
 
@@ -13102,193 +13172,6 @@ func (s *ListResourceEvaluationResultsResponse) SetBody(v *ListResourceEvaluatio
 	return s
 }
 
-type ListTagResourcesRequest struct {
-	// 下一个查询开始Token
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// 地域
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 资源ID,最多 50个子项
-	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 标签列表，最多包含20个子项
-	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-}
-
-func (s ListTagResourcesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTagResourcesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListTagResourcesRequest) SetNextToken(v string) *ListTagResourcesRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetRegionId(v string) *ListTagResourcesRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
-	s.ResourceId = v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *ListTagResourcesRequest) SetTag(v []*ListTagResourcesRequestTag) *ListTagResourcesRequest {
-	s.Tag = v
-	return s
-}
-
-type ListTagResourcesRequestTag struct {
-	// 标签键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签值
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s ListTagResourcesRequestTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTagResourcesRequestTag) GoString() string {
-	return s.String()
-}
-
-func (s *ListTagResourcesRequestTag) SetKey(v string) *ListTagResourcesRequestTag {
-	s.Key = &v
-	return s
-}
-
-func (s *ListTagResourcesRequestTag) SetValue(v string) *ListTagResourcesRequestTag {
-	s.Value = &v
-	return s
-}
-
-type ListTagResourcesResponseBody struct {
-	// 下一个查询开始Token，NextToken为空说明没有下一个
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// 资源列表
-	TagResources *ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Struct"`
-}
-
-func (s ListTagResourcesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTagResourcesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListTagResourcesResponseBody) SetRequestId(v string) *ListTagResourcesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListTagResourcesResponseBody) SetTagResources(v *ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
-	s.TagResources = v
-	return s
-}
-
-type ListTagResourcesResponseBodyTagResources struct {
-	TagResource []*ListTagResourcesResponseBodyTagResourcesTagResource `json:"TagResource,omitempty" xml:"TagResource,omitempty" type:"Repeated"`
-}
-
-func (s ListTagResourcesResponseBodyTagResources) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTagResourcesResponseBodyTagResources) GoString() string {
-	return s.String()
-}
-
-func (s *ListTagResourcesResponseBodyTagResources) SetTagResource(v []*ListTagResourcesResponseBodyTagResourcesTagResource) *ListTagResourcesResponseBodyTagResources {
-	s.TagResource = v
-	return s
-}
-
-type ListTagResourcesResponseBodyTagResourcesTagResource struct {
-	// 资源ID
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 标签键
-	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// 标签值
-	TagValue *string `json:"TagValue,omitempty" xml:"TagValue,omitempty"`
-}
-
-func (s ListTagResourcesResponseBodyTagResourcesTagResource) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTagResourcesResponseBodyTagResourcesTagResource) GoString() string {
-	return s.String()
-}
-
-func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceId(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
-	s.ResourceId = &v
-	return s
-}
-
-func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetResourceType(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagKey(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
-	s.TagKey = &v
-	return s
-}
-
-func (s *ListTagResourcesResponseBodyTagResourcesTagResource) SetTagValue(v string) *ListTagResourcesResponseBodyTagResourcesTagResource {
-	s.TagValue = &v
-	return s
-}
-
-type ListTagResourcesResponse struct {
-	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListTagResourcesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListTagResourcesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
-	s.Body = v
-	return s
-}
-
 type RevertAggregateEvaluationResultsRequest struct {
 	AggregatorId *string                                             `json:"AggregatorId,omitempty" xml:"AggregatorId,omitempty"`
 	ConfigRuleId *string                                             `json:"ConfigRuleId,omitempty" xml:"ConfigRuleId,omitempty"`
@@ -13782,208 +13665,6 @@ func (s *StartRemediationResponse) SetStatusCode(v int32) *StartRemediationRespo
 }
 
 func (s *StartRemediationResponse) SetBody(v *StartRemediationResponseBody) *StartRemediationResponse {
-	s.Body = v
-	return s
-}
-
-type TagResourcesRequest struct {
-	// 地域
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 资源ID,最多 50个子项
-	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 标签列表，最多包含20个子项
-	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-}
-
-func (s TagResourcesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TagResourcesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *TagResourcesRequest) SetRegionId(v string) *TagResourcesRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
-	s.ResourceId = v
-	return s
-}
-
-func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *TagResourcesRequest) SetTag(v []*TagResourcesRequestTag) *TagResourcesRequest {
-	s.Tag = v
-	return s
-}
-
-type TagResourcesRequestTag struct {
-	// 标签键
-	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// 标签值
-	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-}
-
-func (s TagResourcesRequestTag) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TagResourcesRequestTag) GoString() string {
-	return s.String()
-}
-
-func (s *TagResourcesRequestTag) SetKey(v string) *TagResourcesRequestTag {
-	s.Key = &v
-	return s
-}
-
-func (s *TagResourcesRequestTag) SetValue(v string) *TagResourcesRequestTag {
-	s.Value = &v
-	return s
-}
-
-type TagResourcesResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s TagResourcesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TagResourcesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *TagResourcesResponseBody) SetRequestId(v string) *TagResourcesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type TagResourcesResponse struct {
-	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *TagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s TagResourcesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s TagResourcesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResourcesResponse {
-	s.Body = v
-	return s
-}
-
-type UntagResourcesRequest struct {
-	// 是否全部删除，只针对TagKey.N为空时有效。 取值范围： true  false True False  默认是 false
-	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// 地域
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// 资源ID，最多50个子项
-	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// 资源类型
-	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// 标签键，最多20个子项
-	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
-}
-
-func (s UntagResourcesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UntagResourcesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *UntagResourcesRequest) SetAll(v bool) *UntagResourcesRequest {
-	s.All = &v
-	return s
-}
-
-func (s *UntagResourcesRequest) SetRegionId(v string) *UntagResourcesRequest {
-	s.RegionId = &v
-	return s
-}
-
-func (s *UntagResourcesRequest) SetResourceId(v []*string) *UntagResourcesRequest {
-	s.ResourceId = v
-	return s
-}
-
-func (s *UntagResourcesRequest) SetResourceType(v string) *UntagResourcesRequest {
-	s.ResourceType = &v
-	return s
-}
-
-func (s *UntagResourcesRequest) SetTagKey(v []*string) *UntagResourcesRequest {
-	s.TagKey = v
-	return s
-}
-
-type UntagResourcesResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s UntagResourcesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UntagResourcesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *UntagResourcesResponseBody) SetRequestId(v string) *UntagResourcesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type UntagResourcesResponse struct {
-	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *UntagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s UntagResourcesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s UntagResourcesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *UntagResourcesResponse) SetHeaders(v map[string]*string) *UntagResourcesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *UntagResourcesResponse) SetStatusCode(v int32) *UntagResourcesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagResourcesResponse {
 	s.Body = v
 	return s
 }
@@ -18771,7 +18452,23 @@ func (client *Client) ListAggregateCompliancePacksWithOptions(request *ListAggre
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18780,7 +18477,7 @@ func (client *Client) ListAggregateCompliancePacksWithOptions(request *ListAggre
 		Version:     tea.String("2020-09-07"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -18899,7 +18596,35 @@ func (client *Client) ListAggregateConfigRulesWithOptions(request *ListAggregate
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AggregatorId)) {
+		query["AggregatorId"] = request.AggregatorId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ComplianceType)) {
+		query["ComplianceType"] = request.ComplianceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleName)) {
+		query["ConfigRuleName"] = request.ConfigRuleName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ConfigRuleState)) {
+		query["ConfigRuleState"] = request.ConfigRuleState
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
+		query["RiskLevel"] = request.RiskLevel
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -18908,7 +18633,7 @@ func (client *Client) ListAggregateConfigRulesWithOptions(request *ListAggregate
 		Version:     tea.String("2020-09-07"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -19127,7 +18852,15 @@ func (client *Client) ListAggregatorsWithOptions(request *ListAggregatorsRequest
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19136,7 +18869,7 @@ func (client *Client) ListAggregatorsWithOptions(request *ListAggregatorsRequest
 		Version:     tea.String("2020-09-07"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -19207,7 +18940,19 @@ func (client *Client) ListCompliancePacksWithOptions(request *ListCompliancePack
 	if _err != nil {
 		return _result, _err
 	}
-	query := openapiutil.Query(util.ToMap(request))
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -19216,7 +18961,7 @@ func (client *Client) ListCompliancePacksWithOptions(request *ListCompliancePack
 		Version:     tea.String("2020-09-07"),
 		Protocol:    tea.String("HTTPS"),
 		Pathname:    tea.String("/"),
-		Method:      tea.String("GET"),
+		Method:      tea.String("POST"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("RPC"),
 		ReqBodyType: tea.String("formData"),
@@ -19602,66 +19347,6 @@ func (client *Client) ListResourceEvaluationResults(request *ListResourceEvaluat
 	return _result, _err
 }
 
-func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesRequest, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
-		query["NextToken"] = request.NextToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
-		query["ResourceId"] = request.ResourceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
-		query["ResourceType"] = request.ResourceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
-		query["Tag"] = request.Tag
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListTagResources"),
-		Version:     tea.String("2020-09-07"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListTagResourcesResponse{}
-	_body, _err := client.ListTagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) RevertAggregateEvaluationResultsWithOptions(tmpReq *RevertAggregateEvaluationResultsRequest, runtime *util.RuntimeOptions) (_result *RevertAggregateEvaluationResultsResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -19915,122 +19600,6 @@ func (client *Client) StartRemediation(request *StartRemediationRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &StartRemediationResponse{}
 	_body, _err := client.StartRemediationWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
-		query["ResourceId"] = request.ResourceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
-		query["ResourceType"] = request.ResourceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Tag)) {
-		query["Tag"] = request.Tag
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("TagResources"),
-		Version:     tea.String("2020-09-07"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &TagResourcesResponse{}
-	_body, _err := client.TagResourcesWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, runtime *util.RuntimeOptions) (_result *UntagResourcesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.All)) {
-		query["All"] = request.All
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
-		query["ResourceId"] = request.ResourceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
-		query["ResourceType"] = request.ResourceType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TagKey)) {
-		query["TagKey"] = request.TagKey
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("UntagResources"),
-		Version:     tea.String("2020-09-07"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *UntagResourcesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &UntagResourcesResponse{}
-	_body, _err := client.UntagResourcesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
