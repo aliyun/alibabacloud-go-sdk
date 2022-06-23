@@ -481,6 +481,252 @@ func (s *CreateBackupPolicyResponse) SetBody(v *CreateBackupPolicyResponseBody) 
 	return s
 }
 
+type CreateFileDetectRequest struct {
+	HashKey  *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
+	OssKey   *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Type     *int32  `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateFileDetectRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileDetectRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileDetectRequest) SetHashKey(v string) *CreateFileDetectRequest {
+	s.HashKey = &v
+	return s
+}
+
+func (s *CreateFileDetectRequest) SetOssKey(v string) *CreateFileDetectRequest {
+	s.OssKey = &v
+	return s
+}
+
+func (s *CreateFileDetectRequest) SetSourceIp(v string) *CreateFileDetectRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *CreateFileDetectRequest) SetType(v int32) *CreateFileDetectRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateFileDetectResponseBody struct {
+	HashKey *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateFileDetectResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileDetectResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileDetectResponseBody) SetHashKey(v string) *CreateFileDetectResponseBody {
+	s.HashKey = &v
+	return s
+}
+
+func (s *CreateFileDetectResponseBody) SetRequestId(v string) *CreateFileDetectResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateFileDetectResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateFileDetectResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFileDetectResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileDetectResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileDetectResponse) SetHeaders(v map[string]*string) *CreateFileDetectResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFileDetectResponse) SetStatusCode(v int32) *CreateFileDetectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateFileDetectResponse) SetBody(v *CreateFileDetectResponseBody) *CreateFileDetectResponse {
+	s.Body = v
+	return s
+}
+
+type CreateFileDetectUploadUrlRequest struct {
+	HashKeyList []*string `json:"HashKeyList,omitempty" xml:"HashKeyList,omitempty" type:"Repeated"`
+	Type        *int32    `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateFileDetectUploadUrlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileDetectUploadUrlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileDetectUploadUrlRequest) SetHashKeyList(v []*string) *CreateFileDetectUploadUrlRequest {
+	s.HashKeyList = v
+	return s
+}
+
+func (s *CreateFileDetectUploadUrlRequest) SetType(v int32) *CreateFileDetectUploadUrlRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateFileDetectUploadUrlResponseBody struct {
+	// Id of the request
+	RequestId     *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UploadUrlList []*CreateFileDetectUploadUrlResponseBodyUploadUrlList `json:"UploadUrlList,omitempty" xml:"UploadUrlList,omitempty" type:"Repeated"`
+}
+
+func (s CreateFileDetectUploadUrlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileDetectUploadUrlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileDetectUploadUrlResponseBody) SetRequestId(v string) *CreateFileDetectUploadUrlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateFileDetectUploadUrlResponseBody) SetUploadUrlList(v []*CreateFileDetectUploadUrlResponseBodyUploadUrlList) *CreateFileDetectUploadUrlResponseBody {
+	s.UploadUrlList = v
+	return s
+}
+
+type CreateFileDetectUploadUrlResponseBodyUploadUrlList struct {
+	Context     *CreateFileDetectUploadUrlResponseBodyUploadUrlListContext `json:"Context,omitempty" xml:"Context,omitempty" type:"Struct"`
+	Expire      *string                                                    `json:"Expire,omitempty" xml:"Expire,omitempty"`
+	FileExist   *bool                                                      `json:"FileExist,omitempty" xml:"FileExist,omitempty"`
+	HashKey     *string                                                    `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
+	InternalUrl *string                                                    `json:"InternalUrl,omitempty" xml:"InternalUrl,omitempty"`
+	PublicUrl   *string                                                    `json:"PublicUrl,omitempty" xml:"PublicUrl,omitempty"`
+}
+
+func (s CreateFileDetectUploadUrlResponseBodyUploadUrlList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileDetectUploadUrlResponseBodyUploadUrlList) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileDetectUploadUrlResponseBodyUploadUrlList) SetContext(v *CreateFileDetectUploadUrlResponseBodyUploadUrlListContext) *CreateFileDetectUploadUrlResponseBodyUploadUrlList {
+	s.Context = v
+	return s
+}
+
+func (s *CreateFileDetectUploadUrlResponseBodyUploadUrlList) SetExpire(v string) *CreateFileDetectUploadUrlResponseBodyUploadUrlList {
+	s.Expire = &v
+	return s
+}
+
+func (s *CreateFileDetectUploadUrlResponseBodyUploadUrlList) SetFileExist(v bool) *CreateFileDetectUploadUrlResponseBodyUploadUrlList {
+	s.FileExist = &v
+	return s
+}
+
+func (s *CreateFileDetectUploadUrlResponseBodyUploadUrlList) SetHashKey(v string) *CreateFileDetectUploadUrlResponseBodyUploadUrlList {
+	s.HashKey = &v
+	return s
+}
+
+func (s *CreateFileDetectUploadUrlResponseBodyUploadUrlList) SetInternalUrl(v string) *CreateFileDetectUploadUrlResponseBodyUploadUrlList {
+	s.InternalUrl = &v
+	return s
+}
+
+func (s *CreateFileDetectUploadUrlResponseBodyUploadUrlList) SetPublicUrl(v string) *CreateFileDetectUploadUrlResponseBodyUploadUrlList {
+	s.PublicUrl = &v
+	return s
+}
+
+type CreateFileDetectUploadUrlResponseBodyUploadUrlListContext struct {
+	AccessId  *string `json:"AccessId,omitempty" xml:"AccessId,omitempty"`
+	OssKey    *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
+	Policy    *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
+}
+
+func (s CreateFileDetectUploadUrlResponseBodyUploadUrlListContext) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileDetectUploadUrlResponseBodyUploadUrlListContext) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileDetectUploadUrlResponseBodyUploadUrlListContext) SetAccessId(v string) *CreateFileDetectUploadUrlResponseBodyUploadUrlListContext {
+	s.AccessId = &v
+	return s
+}
+
+func (s *CreateFileDetectUploadUrlResponseBodyUploadUrlListContext) SetOssKey(v string) *CreateFileDetectUploadUrlResponseBodyUploadUrlListContext {
+	s.OssKey = &v
+	return s
+}
+
+func (s *CreateFileDetectUploadUrlResponseBodyUploadUrlListContext) SetPolicy(v string) *CreateFileDetectUploadUrlResponseBodyUploadUrlListContext {
+	s.Policy = &v
+	return s
+}
+
+func (s *CreateFileDetectUploadUrlResponseBodyUploadUrlListContext) SetSignature(v string) *CreateFileDetectUploadUrlResponseBodyUploadUrlListContext {
+	s.Signature = &v
+	return s
+}
+
+type CreateFileDetectUploadUrlResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateFileDetectUploadUrlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateFileDetectUploadUrlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateFileDetectUploadUrlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateFileDetectUploadUrlResponse) SetHeaders(v map[string]*string) *CreateFileDetectUploadUrlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateFileDetectUploadUrlResponse) SetStatusCode(v int32) *CreateFileDetectUploadUrlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateFileDetectUploadUrlResponse) SetBody(v *CreateFileDetectUploadUrlResponseBody) *CreateFileDetectUploadUrlResponse {
+	s.Body = v
+	return s
+}
+
 type CreateOrUpdateAssetGroupRequest struct {
 	GroupId   *int64  `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
@@ -2443,6 +2689,7 @@ type DescribeAlarmEventListRequest struct {
 	SourceIp             *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	TacticId             *string   `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
 	UniqueInfo           *string   `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
+	Uuids                *string   `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 
 func (s DescribeAlarmEventListRequest) String() string {
@@ -2525,6 +2772,11 @@ func (s *DescribeAlarmEventListRequest) SetTacticId(v string) *DescribeAlarmEven
 
 func (s *DescribeAlarmEventListRequest) SetUniqueInfo(v string) *DescribeAlarmEventListRequest {
 	s.UniqueInfo = &v
+	return s
+}
+
+func (s *DescribeAlarmEventListRequest) SetUuids(v string) *DescribeAlarmEventListRequest {
+	s.Uuids = &v
 	return s
 }
 
@@ -3785,7 +4037,9 @@ func (s *DescribeAssetSummaryResponseBody) SetRequestId(v string) *DescribeAsset
 }
 
 type DescribeAssetSummaryResponseBodyAssetsSummary struct {
-	TotalCoreNum *int32 `json:"TotalCoreNum,omitempty" xml:"TotalCoreNum,omitempty"`
+	TotalAssetAllRegion *int32 `json:"TotalAssetAllRegion,omitempty" xml:"TotalAssetAllRegion,omitempty"`
+	TotalCoreAllRegion  *int32 `json:"TotalCoreAllRegion,omitempty" xml:"TotalCoreAllRegion,omitempty"`
+	TotalCoreNum        *int32 `json:"TotalCoreNum,omitempty" xml:"TotalCoreNum,omitempty"`
 }
 
 func (s DescribeAssetSummaryResponseBodyAssetsSummary) String() string {
@@ -3794,6 +4048,16 @@ func (s DescribeAssetSummaryResponseBodyAssetsSummary) String() string {
 
 func (s DescribeAssetSummaryResponseBodyAssetsSummary) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeAssetSummaryResponseBodyAssetsSummary) SetTotalAssetAllRegion(v int32) *DescribeAssetSummaryResponseBodyAssetsSummary {
+	s.TotalAssetAllRegion = &v
+	return s
+}
+
+func (s *DescribeAssetSummaryResponseBodyAssetsSummary) SetTotalCoreAllRegion(v int32) *DescribeAssetSummaryResponseBodyAssetsSummary {
+	s.TotalCoreAllRegion = &v
+	return s
 }
 
 func (s *DescribeAssetSummaryResponseBodyAssetsSummary) SetTotalCoreNum(v int32) *DescribeAssetSummaryResponseBodyAssetsSummary {
@@ -19388,16 +19652,20 @@ type DescribeSuspEventsRequest struct {
 	Levels               *string   `json:"Levels,omitempty" xml:"Levels,omitempty"`
 	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	OperateErrorCodeList []*string `json:"OperateErrorCodeList,omitempty" xml:"OperateErrorCodeList,omitempty" type:"Repeated"`
-	PageSize             *string   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	ParentEventTypes     *string   `json:"ParentEventTypes,omitempty" xml:"ParentEventTypes,omitempty"`
-	Remark               *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	Source               *string   `json:"Source,omitempty" xml:"Source,omitempty"`
-	SourceIp             *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	Status               *string   `json:"Status,omitempty" xml:"Status,omitempty"`
-	TacticId             *string   `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
-	TargetType           *string   `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	UniqueInfo           *string   `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
-	Uuids                *string   `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+	// 处理时间结束时间
+	OperateTimeEnd *int64 `json:"OperateTimeEnd,omitempty" xml:"OperateTimeEnd,omitempty"`
+	// 处理时间开始时间
+	OperateTimeStart *int64  `json:"OperateTimeStart,omitempty" xml:"OperateTimeStart,omitempty"`
+	PageSize         *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ParentEventTypes *string `json:"ParentEventTypes,omitempty" xml:"ParentEventTypes,omitempty"`
+	Remark           *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	Source           *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	SourceIp         *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TacticId         *string `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
+	TargetType       *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	UniqueInfo       *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
+	Uuids            *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 
 func (s DescribeSuspEventsRequest) String() string {
@@ -19475,6 +19743,16 @@ func (s *DescribeSuspEventsRequest) SetName(v string) *DescribeSuspEventsRequest
 
 func (s *DescribeSuspEventsRequest) SetOperateErrorCodeList(v []*string) *DescribeSuspEventsRequest {
 	s.OperateErrorCodeList = v
+	return s
+}
+
+func (s *DescribeSuspEventsRequest) SetOperateTimeEnd(v int64) *DescribeSuspEventsRequest {
+	s.OperateTimeEnd = &v
+	return s
+}
+
+func (s *DescribeSuspEventsRequest) SetOperateTimeStart(v int64) *DescribeSuspEventsRequest {
+	s.OperateTimeStart = &v
 	return s
 }
 
@@ -20564,11 +20842,13 @@ type DescribeVersionConfigResponseBody struct {
 	HoneypotCapacity      *int64  `json:"HoneypotCapacity,omitempty" xml:"HoneypotCapacity,omitempty"`
 	ImageScanCapacity     *int64  `json:"ImageScanCapacity,omitempty" xml:"ImageScanCapacity,omitempty"`
 	InstanceId            *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	IsNewContainerVersion *bool   `json:"IsNewContainerVersion,omitempty" xml:"IsNewContainerVersion,omitempty"`
 	IsOverBalance         *bool   `json:"IsOverBalance,omitempty" xml:"IsOverBalance,omitempty"`
 	IsTrialVersion        *int32  `json:"IsTrialVersion,omitempty" xml:"IsTrialVersion,omitempty"`
 	LastTrailEndTime      *int64  `json:"LastTrailEndTime,omitempty" xml:"LastTrailEndTime,omitempty"`
 	MVAuthCount           *int32  `json:"MVAuthCount,omitempty" xml:"MVAuthCount,omitempty"`
 	MVUnusedAuthCount     *int32  `json:"MVUnusedAuthCount,omitempty" xml:"MVUnusedAuthCount,omitempty"`
+	OpenTime              *int64  `json:"OpenTime,omitempty" xml:"OpenTime,omitempty"`
 	ReleaseTime           *int64  `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
 	RequestId             *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SasLog                *int32  `json:"SasLog,omitempty" xml:"SasLog,omitempty"`
@@ -20629,6 +20909,11 @@ func (s *DescribeVersionConfigResponseBody) SetInstanceId(v string) *DescribeVer
 	return s
 }
 
+func (s *DescribeVersionConfigResponseBody) SetIsNewContainerVersion(v bool) *DescribeVersionConfigResponseBody {
+	s.IsNewContainerVersion = &v
+	return s
+}
+
 func (s *DescribeVersionConfigResponseBody) SetIsOverBalance(v bool) *DescribeVersionConfigResponseBody {
 	s.IsOverBalance = &v
 	return s
@@ -20651,6 +20936,11 @@ func (s *DescribeVersionConfigResponseBody) SetMVAuthCount(v int32) *DescribeVer
 
 func (s *DescribeVersionConfigResponseBody) SetMVUnusedAuthCount(v int32) *DescribeVersionConfigResponseBody {
 	s.MVUnusedAuthCount = &v
+	return s
+}
+
+func (s *DescribeVersionConfigResponseBody) SetOpenTime(v int64) *DescribeVersionConfigResponseBody {
+	s.OpenTime = &v
 	return s
 }
 
@@ -23347,6 +23637,134 @@ func (s *GetBackupStorageCountResponse) SetStatusCode(v int32) *GetBackupStorage
 }
 
 func (s *GetBackupStorageCountResponse) SetBody(v *GetBackupStorageCountResponseBody) *GetBackupStorageCountResponse {
+	s.Body = v
+	return s
+}
+
+type GetFileDetectResultRequest struct {
+	HashKeyList []*string `json:"HashKeyList,omitempty" xml:"HashKeyList,omitempty" type:"Repeated"`
+	SourceIp    *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Type        *int32    `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s GetFileDetectResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileDetectResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileDetectResultRequest) SetHashKeyList(v []*string) *GetFileDetectResultRequest {
+	s.HashKeyList = v
+	return s
+}
+
+func (s *GetFileDetectResultRequest) SetSourceIp(v string) *GetFileDetectResultRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *GetFileDetectResultRequest) SetType(v int32) *GetFileDetectResultRequest {
+	s.Type = &v
+	return s
+}
+
+type GetFileDetectResultResponseBody struct {
+	// Id of the request
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResultList []*GetFileDetectResultResponseBodyResultList `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Repeated"`
+}
+
+func (s GetFileDetectResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileDetectResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileDetectResultResponseBody) SetRequestId(v string) *GetFileDetectResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetFileDetectResultResponseBody) SetResultList(v []*GetFileDetectResultResponseBodyResultList) *GetFileDetectResultResponseBody {
+	s.ResultList = v
+	return s
+}
+
+type GetFileDetectResultResponseBodyResultList struct {
+	Ext     *GetFileDetectResultResponseBodyResultListExt `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
+	HashKey *string                                       `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
+	Result  *int32                                        `json:"Result,omitempty" xml:"Result,omitempty"`
+}
+
+func (s GetFileDetectResultResponseBodyResultList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileDetectResultResponseBodyResultList) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileDetectResultResponseBodyResultList) SetExt(v *GetFileDetectResultResponseBodyResultListExt) *GetFileDetectResultResponseBodyResultList {
+	s.Ext = v
+	return s
+}
+
+func (s *GetFileDetectResultResponseBodyResultList) SetHashKey(v string) *GetFileDetectResultResponseBodyResultList {
+	s.HashKey = &v
+	return s
+}
+
+func (s *GetFileDetectResultResponseBodyResultList) SetResult(v int32) *GetFileDetectResultResponseBodyResultList {
+	s.Result = &v
+	return s
+}
+
+type GetFileDetectResultResponseBodyResultListExt struct {
+	VirusName *string `json:"VirusName,omitempty" xml:"VirusName,omitempty"`
+}
+
+func (s GetFileDetectResultResponseBodyResultListExt) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileDetectResultResponseBodyResultListExt) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileDetectResultResponseBodyResultListExt) SetVirusName(v string) *GetFileDetectResultResponseBodyResultListExt {
+	s.VirusName = &v
+	return s
+}
+
+type GetFileDetectResultResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetFileDetectResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetFileDetectResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetFileDetectResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetFileDetectResultResponse) SetHeaders(v map[string]*string) *GetFileDetectResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetFileDetectResultResponse) SetStatusCode(v int32) *GetFileDetectResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetFileDetectResultResponse) SetBody(v *GetFileDetectResultResponseBody) *GetFileDetectResultResponse {
 	s.Body = v
 	return s
 }
@@ -29153,6 +29571,110 @@ func (client *Client) CreateBackupPolicy(request *CreateBackupPolicyRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) CreateFileDetectWithOptions(request *CreateFileDetectRequest, runtime *util.RuntimeOptions) (_result *CreateFileDetectResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HashKey)) {
+		query["HashKey"] = request.HashKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OssKey)) {
+		query["OssKey"] = request.OssKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFileDetect"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFileDetectResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateFileDetect(request *CreateFileDetectRequest) (_result *CreateFileDetectResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateFileDetectResponse{}
+	_body, _err := client.CreateFileDetectWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateFileDetectUploadUrlWithOptions(request *CreateFileDetectUploadUrlRequest, runtime *util.RuntimeOptions) (_result *CreateFileDetectUploadUrlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HashKeyList)) {
+		query["HashKeyList"] = request.HashKeyList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateFileDetectUploadUrl"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateFileDetectUploadUrlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateFileDetectUploadUrl(request *CreateFileDetectUploadUrlRequest) (_result *CreateFileDetectUploadUrlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateFileDetectUploadUrlResponse{}
+	_body, _err := client.CreateFileDetectUploadUrlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateOrUpdateAssetGroupWithOptions(request *CreateOrUpdateAssetGroupRequest, runtime *util.RuntimeOptions) (_result *CreateOrUpdateAssetGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30058,6 +30580,10 @@ func (client *Client) DescribeAlarmEventListWithOptions(request *DescribeAlarmEv
 
 	if !tea.BoolValue(util.IsUnset(request.UniqueInfo)) {
 		query["UniqueInfo"] = request.UniqueInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -35589,6 +36115,14 @@ func (client *Client) DescribeSuspEventsWithOptions(request *DescribeSuspEventsR
 		query["OperateErrorCodeList"] = request.OperateErrorCodeList
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OperateTimeEnd)) {
+		query["OperateTimeEnd"] = request.OperateTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperateTimeStart)) {
+		query["OperateTimeStart"] = request.OperateTimeStart
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
 	}
@@ -36870,6 +37404,58 @@ func (client *Client) GetBackupStorageCount() (_result *GetBackupStorageCountRes
 	runtime := &util.RuntimeOptions{}
 	_result = &GetBackupStorageCountResponse{}
 	_body, _err := client.GetBackupStorageCountWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetFileDetectResultWithOptions(request *GetFileDetectResultRequest, runtime *util.RuntimeOptions) (_result *GetFileDetectResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.HashKeyList)) {
+		query["HashKeyList"] = request.HashKeyList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetFileDetectResult"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetFileDetectResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetFileDetectResult(request *GetFileDetectResultRequest) (_result *GetFileDetectResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetFileDetectResultResponse{}
+	_body, _err := client.GetFileDetectResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
