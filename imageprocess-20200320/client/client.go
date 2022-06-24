@@ -3525,10 +3525,12 @@ func (s *ScreenChestCTResponseBodyDataDetectPdacLesion) SetPossibilities(v []*st
 }
 
 type ScreenChestCTResponseBodyDataDetectRibFracture struct {
-	Detections []*ScreenChestCTResponseBodyDataDetectRibFractureDetections `json:"Detections,omitempty" xml:"Detections,omitempty" type:"Repeated"`
-	Origin     []*float32                                                  `json:"Origin,omitempty" xml:"Origin,omitempty" type:"Repeated"`
-	ResultURL  *string                                                     `json:"ResultURL,omitempty" xml:"ResultURL,omitempty"`
-	Spacing    []*float32                                                  `json:"Spacing,omitempty" xml:"Spacing,omitempty" type:"Repeated"`
+	Detections        []*ScreenChestCTResponseBodyDataDetectRibFractureDetections `json:"Detections,omitempty" xml:"Detections,omitempty" type:"Repeated"`
+	FractureMaskURL   *string                                                     `json:"FractureMaskURL,omitempty" xml:"FractureMaskURL,omitempty"`
+	Origin            []*float32                                                  `json:"Origin,omitempty" xml:"Origin,omitempty" type:"Repeated"`
+	ResultURL         *string                                                     `json:"ResultURL,omitempty" xml:"ResultURL,omitempty"`
+	RibSegmentMaskURL *string                                                     `json:"RibSegmentMaskURL,omitempty" xml:"RibSegmentMaskURL,omitempty"`
+	Spacing           []*float32                                                  `json:"Spacing,omitempty" xml:"Spacing,omitempty" type:"Repeated"`
 }
 
 func (s ScreenChestCTResponseBodyDataDetectRibFracture) String() string {
@@ -3544,6 +3546,11 @@ func (s *ScreenChestCTResponseBodyDataDetectRibFracture) SetDetections(v []*Scre
 	return s
 }
 
+func (s *ScreenChestCTResponseBodyDataDetectRibFracture) SetFractureMaskURL(v string) *ScreenChestCTResponseBodyDataDetectRibFracture {
+	s.FractureMaskURL = &v
+	return s
+}
+
 func (s *ScreenChestCTResponseBodyDataDetectRibFracture) SetOrigin(v []*float32) *ScreenChestCTResponseBodyDataDetectRibFracture {
 	s.Origin = v
 	return s
@@ -3551,6 +3558,11 @@ func (s *ScreenChestCTResponseBodyDataDetectRibFracture) SetOrigin(v []*float32)
 
 func (s *ScreenChestCTResponseBodyDataDetectRibFracture) SetResultURL(v string) *ScreenChestCTResponseBodyDataDetectRibFracture {
 	s.ResultURL = &v
+	return s
+}
+
+func (s *ScreenChestCTResponseBodyDataDetectRibFracture) SetRibSegmentMaskURL(v string) *ScreenChestCTResponseBodyDataDetectRibFracture {
+	s.RibSegmentMaskURL = &v
 	return s
 }
 
