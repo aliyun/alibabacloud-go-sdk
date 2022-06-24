@@ -5403,6 +5403,8 @@ type CreateOfficeConversionTaskRequest struct {
 	Tags map[string]interface{} `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// 输出文件格式
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// 文档转换输出地址模式
+	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
 	// 文档转换输出文件地址前缀
 	TargetURIPrefix *string `json:"TargetURIPrefix,omitempty" xml:"TargetURIPrefix,omitempty"`
 	// 表格瘦身
@@ -5559,6 +5561,11 @@ func (s *CreateOfficeConversionTaskRequest) SetTargetType(v string) *CreateOffic
 	return s
 }
 
+func (s *CreateOfficeConversionTaskRequest) SetTargetURI(v string) *CreateOfficeConversionTaskRequest {
+	s.TargetURI = &v
+	return s
+}
+
 func (s *CreateOfficeConversionTaskRequest) SetTargetURIPrefix(v string) *CreateOfficeConversionTaskRequest {
 	s.TargetURIPrefix = &v
 	return s
@@ -5630,6 +5637,8 @@ type CreateOfficeConversionTaskShrinkRequest struct {
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 	// 输出文件格式
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
+	// 文档转换输出地址模式
+	TargetURI *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
 	// 文档转换输出文件地址前缀
 	TargetURIPrefix *string `json:"TargetURIPrefix,omitempty" xml:"TargetURIPrefix,omitempty"`
 	// 表格瘦身
@@ -5783,6 +5792,11 @@ func (s *CreateOfficeConversionTaskShrinkRequest) SetTagsShrink(v string) *Creat
 
 func (s *CreateOfficeConversionTaskShrinkRequest) SetTargetType(v string) *CreateOfficeConversionTaskShrinkRequest {
 	s.TargetType = &v
+	return s
+}
+
+func (s *CreateOfficeConversionTaskShrinkRequest) SetTargetURI(v string) *CreateOfficeConversionTaskShrinkRequest {
+	s.TargetURI = &v
 	return s
 }
 
@@ -12607,6 +12621,10 @@ func (client *Client) CreateOfficeConversionTaskWithOptions(tmpReq *CreateOffice
 
 	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
 		query["TargetType"] = request.TargetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetURI)) {
+		query["TargetURI"] = request.TargetURI
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TargetURIPrefix)) {
