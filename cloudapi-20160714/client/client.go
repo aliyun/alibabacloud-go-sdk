@@ -93,6 +93,81 @@ func (s *AbolishApiResponse) SetBody(v *AbolishApiResponseBody) *AbolishApiRespo
 	return s
 }
 
+type AddAccessControlListEntryRequest struct {
+	AclEntrys     *string `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty"`
+	AclId         *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s AddAccessControlListEntryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAccessControlListEntryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddAccessControlListEntryRequest) SetAclEntrys(v string) *AddAccessControlListEntryRequest {
+	s.AclEntrys = &v
+	return s
+}
+
+func (s *AddAccessControlListEntryRequest) SetAclId(v string) *AddAccessControlListEntryRequest {
+	s.AclId = &v
+	return s
+}
+
+func (s *AddAccessControlListEntryRequest) SetSecurityToken(v string) *AddAccessControlListEntryRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type AddAccessControlListEntryResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddAccessControlListEntryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAccessControlListEntryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddAccessControlListEntryResponseBody) SetRequestId(v string) *AddAccessControlListEntryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddAccessControlListEntryResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddAccessControlListEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddAccessControlListEntryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddAccessControlListEntryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddAccessControlListEntryResponse) SetHeaders(v map[string]*string) *AddAccessControlListEntryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddAccessControlListEntryResponse) SetStatusCode(v int32) *AddAccessControlListEntryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddAccessControlListEntryResponse) SetBody(v *AddAccessControlListEntryResponseBody) *AddAccessControlListEntryResponse {
+	s.Body = v
+	return s
+}
+
 type AddIpControlPolicyItemRequest struct {
 	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	CidrIp        *string `json:"CidrIp,omitempty" xml:"CidrIp,omitempty"`
@@ -570,6 +645,75 @@ func (s *BatchDeployApisResponse) SetStatusCode(v int32) *BatchDeployApisRespons
 }
 
 func (s *BatchDeployApisResponse) SetBody(v *BatchDeployApisResponseBody) *BatchDeployApisResponse {
+	s.Body = v
+	return s
+}
+
+type CreateAccessControlListRequest struct {
+	AclName       *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s CreateAccessControlListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccessControlListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccessControlListRequest) SetAclName(v string) *CreateAccessControlListRequest {
+	s.AclName = &v
+	return s
+}
+
+func (s *CreateAccessControlListRequest) SetSecurityToken(v string) *CreateAccessControlListRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type CreateAccessControlListResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateAccessControlListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccessControlListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccessControlListResponseBody) SetRequestId(v string) *CreateAccessControlListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateAccessControlListResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateAccessControlListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateAccessControlListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateAccessControlListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateAccessControlListResponse) SetHeaders(v map[string]*string) *CreateAccessControlListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateAccessControlListResponse) SetStatusCode(v int32) *CreateAccessControlListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateAccessControlListResponse) SetBody(v *CreateAccessControlListResponseBody) *CreateAccessControlListResponse {
 	s.Body = v
 	return s
 }
@@ -2313,6 +2457,75 @@ func (s *CreateTrafficControlResponse) SetBody(v *CreateTrafficControlResponseBo
 	return s
 }
 
+type DeleteAccessControlListRequest struct {
+	AclId         *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DeleteAccessControlListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccessControlListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccessControlListRequest) SetAclId(v string) *DeleteAccessControlListRequest {
+	s.AclId = &v
+	return s
+}
+
+func (s *DeleteAccessControlListRequest) SetSecurityToken(v string) *DeleteAccessControlListRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DeleteAccessControlListResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteAccessControlListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccessControlListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccessControlListResponseBody) SetRequestId(v string) *DeleteAccessControlListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteAccessControlListResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAccessControlListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteAccessControlListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteAccessControlListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteAccessControlListResponse) SetHeaders(v map[string]*string) *DeleteAccessControlListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteAccessControlListResponse) SetStatusCode(v int32) *DeleteAccessControlListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteAccessControlListResponse) SetBody(v *DeleteAccessControlListResponseBody) *DeleteAccessControlListResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteAllTrafficSpecialControlRequest struct {
 	SecurityToken    *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	TrafficControlId *string `json:"TrafficControlId,omitempty" xml:"TrafficControlId,omitempty"`
@@ -3971,6 +4184,284 @@ func (s *DescribeAbolishApiTaskResponse) SetStatusCode(v int32) *DescribeAbolish
 }
 
 func (s *DescribeAbolishApiTaskResponse) SetBody(v *DescribeAbolishApiTaskResponseBody) *DescribeAbolishApiTaskResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAccessControlListAttributeRequest struct {
+	AclId         *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeAccessControlListAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessControlListAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessControlListAttributeRequest) SetAclId(v string) *DescribeAccessControlListAttributeRequest {
+	s.AclId = &v
+	return s
+}
+
+func (s *DescribeAccessControlListAttributeRequest) SetSecurityToken(v string) *DescribeAccessControlListAttributeRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeAccessControlListAttributeResponseBody struct {
+	AclEntrys *DescribeAccessControlListAttributeResponseBodyAclEntrys `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty" type:"Struct"`
+	AclId     *string                                                  `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclName   *string                                                  `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	IsUsed    *string                                                  `json:"IsUsed,omitempty" xml:"IsUsed,omitempty"`
+	RequestId *string                                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeAccessControlListAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessControlListAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessControlListAttributeResponseBody) SetAclEntrys(v *DescribeAccessControlListAttributeResponseBodyAclEntrys) *DescribeAccessControlListAttributeResponseBody {
+	s.AclEntrys = v
+	return s
+}
+
+func (s *DescribeAccessControlListAttributeResponseBody) SetAclId(v string) *DescribeAccessControlListAttributeResponseBody {
+	s.AclId = &v
+	return s
+}
+
+func (s *DescribeAccessControlListAttributeResponseBody) SetAclName(v string) *DescribeAccessControlListAttributeResponseBody {
+	s.AclName = &v
+	return s
+}
+
+func (s *DescribeAccessControlListAttributeResponseBody) SetIsUsed(v string) *DescribeAccessControlListAttributeResponseBody {
+	s.IsUsed = &v
+	return s
+}
+
+func (s *DescribeAccessControlListAttributeResponseBody) SetRequestId(v string) *DescribeAccessControlListAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeAccessControlListAttributeResponseBodyAclEntrys struct {
+	AclEntry []*DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry `json:"AclEntry,omitempty" xml:"AclEntry,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAccessControlListAttributeResponseBodyAclEntrys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessControlListAttributeResponseBodyAclEntrys) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessControlListAttributeResponseBodyAclEntrys) SetAclEntry(v []*DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry) *DescribeAccessControlListAttributeResponseBodyAclEntrys {
+	s.AclEntry = v
+	return s
+}
+
+type DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry struct {
+	AclEntryComment *string `json:"AclEntryComment,omitempty" xml:"AclEntryComment,omitempty"`
+	AclEntryIp      *string `json:"AclEntryIp,omitempty" xml:"AclEntryIp,omitempty"`
+}
+
+func (s DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry) SetAclEntryComment(v string) *DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry {
+	s.AclEntryComment = &v
+	return s
+}
+
+func (s *DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry) SetAclEntryIp(v string) *DescribeAccessControlListAttributeResponseBodyAclEntrysAclEntry {
+	s.AclEntryIp = &v
+	return s
+}
+
+type DescribeAccessControlListAttributeResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAccessControlListAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAccessControlListAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessControlListAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessControlListAttributeResponse) SetHeaders(v map[string]*string) *DescribeAccessControlListAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAccessControlListAttributeResponse) SetStatusCode(v int32) *DescribeAccessControlListAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAccessControlListAttributeResponse) SetBody(v *DescribeAccessControlListAttributeResponseBody) *DescribeAccessControlListAttributeResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeAccessControlListsRequest struct {
+	AclName       *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	PageNumber    *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DescribeAccessControlListsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessControlListsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessControlListsRequest) SetAclName(v string) *DescribeAccessControlListsRequest {
+	s.AclName = &v
+	return s
+}
+
+func (s *DescribeAccessControlListsRequest) SetPageNumber(v int32) *DescribeAccessControlListsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeAccessControlListsRequest) SetPageSize(v int32) *DescribeAccessControlListsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAccessControlListsRequest) SetSecurityToken(v string) *DescribeAccessControlListsRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DescribeAccessControlListsResponseBody struct {
+	Acls       *DescribeAccessControlListsResponseBodyAcls `json:"Acls,omitempty" xml:"Acls,omitempty" type:"Struct"`
+	PageNumber *int32                                      `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                      `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                      `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeAccessControlListsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessControlListsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessControlListsResponseBody) SetAcls(v *DescribeAccessControlListsResponseBodyAcls) *DescribeAccessControlListsResponseBody {
+	s.Acls = v
+	return s
+}
+
+func (s *DescribeAccessControlListsResponseBody) SetPageNumber(v int32) *DescribeAccessControlListsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeAccessControlListsResponseBody) SetPageSize(v int32) *DescribeAccessControlListsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeAccessControlListsResponseBody) SetRequestId(v string) *DescribeAccessControlListsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeAccessControlListsResponseBody) SetTotalCount(v int32) *DescribeAccessControlListsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeAccessControlListsResponseBodyAcls struct {
+	Acl []*DescribeAccessControlListsResponseBodyAclsAcl `json:"Acl,omitempty" xml:"Acl,omitempty" type:"Repeated"`
+}
+
+func (s DescribeAccessControlListsResponseBodyAcls) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessControlListsResponseBodyAcls) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessControlListsResponseBodyAcls) SetAcl(v []*DescribeAccessControlListsResponseBodyAclsAcl) *DescribeAccessControlListsResponseBodyAcls {
+	s.Acl = v
+	return s
+}
+
+type DescribeAccessControlListsResponseBodyAclsAcl struct {
+	AclId   *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclName *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+}
+
+func (s DescribeAccessControlListsResponseBodyAclsAcl) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessControlListsResponseBodyAclsAcl) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessControlListsResponseBodyAclsAcl) SetAclId(v string) *DescribeAccessControlListsResponseBodyAclsAcl {
+	s.AclId = &v
+	return s
+}
+
+func (s *DescribeAccessControlListsResponseBodyAclsAcl) SetAclName(v string) *DescribeAccessControlListsResponseBodyAclsAcl {
+	s.AclName = &v
+	return s
+}
+
+type DescribeAccessControlListsResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAccessControlListsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeAccessControlListsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeAccessControlListsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeAccessControlListsResponse) SetHeaders(v map[string]*string) *DescribeAccessControlListsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeAccessControlListsResponse) SetStatusCode(v int32) *DescribeAccessControlListsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeAccessControlListsResponse) SetBody(v *DescribeAccessControlListsResponseBody) *DescribeAccessControlListsResponse {
 	s.Body = v
 	return s
 }
@@ -13992,6 +14483,10 @@ func (s *DescribeInstancesResponseBodyInstances) SetInstanceAttribute(v []*Descr
 }
 
 type DescribeInstancesResponseBodyInstancesInstanceAttribute struct {
+	AclId                  *string                                                                        `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclName                *string                                                                        `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	AclStatus              *string                                                                        `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	AclType                *string                                                                        `json:"AclType,omitempty" xml:"AclType,omitempty"`
 	ClassicEgressAddress   *string                                                                        `json:"ClassicEgressAddress,omitempty" xml:"ClassicEgressAddress,omitempty"`
 	CreatedTime            *string                                                                        `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
 	EgressIpv6Enable       *bool                                                                          `json:"EgressIpv6Enable,omitempty" xml:"EgressIpv6Enable,omitempty"`
@@ -14025,6 +14520,26 @@ func (s DescribeInstancesResponseBodyInstancesInstanceAttribute) String() string
 
 func (s DescribeInstancesResponseBodyInstancesInstanceAttribute) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetAclId(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.AclId = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetAclName(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.AclName = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetAclStatus(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.AclStatus = &v
+	return s
+}
+
+func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetAclType(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
+	s.AclType = &v
+	return s
 }
 
 func (s *DescribeInstancesResponseBodyInstancesInstanceAttribute) SetClassicEgressAddress(v string) *DescribeInstancesResponseBodyInstancesInstanceAttribute {
@@ -17964,6 +18479,81 @@ func (s *DetachPluginResponse) SetBody(v *DetachPluginResponseBody) *DetachPlugi
 	return s
 }
 
+type DisableInstanceAccessControlRequest struct {
+	AclId         *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s DisableInstanceAccessControlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableInstanceAccessControlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DisableInstanceAccessControlRequest) SetAclId(v string) *DisableInstanceAccessControlRequest {
+	s.AclId = &v
+	return s
+}
+
+func (s *DisableInstanceAccessControlRequest) SetInstanceId(v string) *DisableInstanceAccessControlRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DisableInstanceAccessControlRequest) SetSecurityToken(v string) *DisableInstanceAccessControlRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type DisableInstanceAccessControlResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DisableInstanceAccessControlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableInstanceAccessControlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DisableInstanceAccessControlResponseBody) SetRequestId(v string) *DisableInstanceAccessControlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DisableInstanceAccessControlResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DisableInstanceAccessControlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DisableInstanceAccessControlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DisableInstanceAccessControlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DisableInstanceAccessControlResponse) SetHeaders(v map[string]*string) *DisableInstanceAccessControlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DisableInstanceAccessControlResponse) SetStatusCode(v int32) *DisableInstanceAccessControlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DisableInstanceAccessControlResponse) SetBody(v *DisableInstanceAccessControlResponseBody) *DisableInstanceAccessControlResponse {
+	s.Body = v
+	return s
+}
+
 type DryRunSwaggerRequest struct {
 	Data            *string                `json:"Data,omitempty" xml:"Data,omitempty"`
 	DataFormat      *string                `json:"DataFormat,omitempty" xml:"DataFormat,omitempty"`
@@ -18332,6 +18922,87 @@ func (s *DryRunSwaggerResponse) SetStatusCode(v int32) *DryRunSwaggerResponse {
 }
 
 func (s *DryRunSwaggerResponse) SetBody(v *DryRunSwaggerResponseBody) *DryRunSwaggerResponse {
+	s.Body = v
+	return s
+}
+
+type EnableInstanceAccessControlRequest struct {
+	AclId         *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclType       *string `json:"AclType,omitempty" xml:"AclType,omitempty"`
+	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s EnableInstanceAccessControlRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableInstanceAccessControlRequest) GoString() string {
+	return s.String()
+}
+
+func (s *EnableInstanceAccessControlRequest) SetAclId(v string) *EnableInstanceAccessControlRequest {
+	s.AclId = &v
+	return s
+}
+
+func (s *EnableInstanceAccessControlRequest) SetAclType(v string) *EnableInstanceAccessControlRequest {
+	s.AclType = &v
+	return s
+}
+
+func (s *EnableInstanceAccessControlRequest) SetInstanceId(v string) *EnableInstanceAccessControlRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *EnableInstanceAccessControlRequest) SetSecurityToken(v string) *EnableInstanceAccessControlRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type EnableInstanceAccessControlResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s EnableInstanceAccessControlResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableInstanceAccessControlResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *EnableInstanceAccessControlResponseBody) SetRequestId(v string) *EnableInstanceAccessControlResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type EnableInstanceAccessControlResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnableInstanceAccessControlResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s EnableInstanceAccessControlResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EnableInstanceAccessControlResponse) GoString() string {
+	return s.String()
+}
+
+func (s *EnableInstanceAccessControlResponse) SetHeaders(v map[string]*string) *EnableInstanceAccessControlResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *EnableInstanceAccessControlResponse) SetStatusCode(v int32) *EnableInstanceAccessControlResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *EnableInstanceAccessControlResponse) SetBody(v *EnableInstanceAccessControlResponseBody) *EnableInstanceAccessControlResponse {
 	s.Body = v
 	return s
 }
@@ -20799,6 +21470,81 @@ func (s *ReactivateDomainResponse) SetStatusCode(v int32) *ReactivateDomainRespo
 }
 
 func (s *ReactivateDomainResponse) SetBody(v *ReactivateDomainResponseBody) *ReactivateDomainResponse {
+	s.Body = v
+	return s
+}
+
+type RemoveAccessControlListEntryRequest struct {
+	AclEntrys     *string `json:"AclEntrys,omitempty" xml:"AclEntrys,omitempty"`
+	AclId         *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s RemoveAccessControlListEntryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveAccessControlListEntryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveAccessControlListEntryRequest) SetAclEntrys(v string) *RemoveAccessControlListEntryRequest {
+	s.AclEntrys = &v
+	return s
+}
+
+func (s *RemoveAccessControlListEntryRequest) SetAclId(v string) *RemoveAccessControlListEntryRequest {
+	s.AclId = &v
+	return s
+}
+
+func (s *RemoveAccessControlListEntryRequest) SetSecurityToken(v string) *RemoveAccessControlListEntryRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type RemoveAccessControlListEntryResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RemoveAccessControlListEntryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveAccessControlListEntryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveAccessControlListEntryResponseBody) SetRequestId(v string) *RemoveAccessControlListEntryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RemoveAccessControlListEntryResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveAccessControlListEntryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RemoveAccessControlListEntryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveAccessControlListEntryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveAccessControlListEntryResponse) SetHeaders(v map[string]*string) *RemoveAccessControlListEntryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveAccessControlListEntryResponse) SetStatusCode(v int32) *RemoveAccessControlListEntryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveAccessControlListEntryResponse) SetBody(v *RemoveAccessControlListEntryResponseBody) *RemoveAccessControlListEntryResponse {
 	s.Body = v
 	return s
 }
@@ -23299,6 +24045,58 @@ func (client *Client) AbolishApi(request *AbolishApiRequest) (_result *AbolishAp
 	return _result, _err
 }
 
+func (client *Client) AddAccessControlListEntryWithOptions(request *AddAccessControlListEntryRequest, runtime *util.RuntimeOptions) (_result *AddAccessControlListEntryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclEntrys)) {
+		query["AclEntrys"] = request.AclEntrys
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AclId)) {
+		query["AclId"] = request.AclId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddAccessControlListEntry"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddAccessControlListEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddAccessControlListEntry(request *AddAccessControlListEntryRequest) (_result *AddAccessControlListEntryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddAccessControlListEntryResponse{}
+	_body, _err := client.AddAccessControlListEntryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) AddIpControlPolicyItemWithOptions(request *AddIpControlPolicyItemRequest, runtime *util.RuntimeOptions) (_result *AddIpControlPolicyItemResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -23576,6 +24374,54 @@ func (client *Client) BatchDeployApis(request *BatchDeployApisRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &BatchDeployApisResponse{}
 	_body, _err := client.BatchDeployApisWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateAccessControlListWithOptions(request *CreateAccessControlListRequest, runtime *util.RuntimeOptions) (_result *CreateAccessControlListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclName)) {
+		query["AclName"] = request.AclName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateAccessControlList"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateAccessControlListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateAccessControlList(request *CreateAccessControlListRequest) (_result *CreateAccessControlListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateAccessControlListResponse{}
+	_body, _err := client.CreateAccessControlListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -24580,6 +25426,54 @@ func (client *Client) CreateTrafficControl(request *CreateTrafficControlRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateTrafficControlResponse{}
 	_body, _err := client.CreateTrafficControlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteAccessControlListWithOptions(request *DeleteAccessControlListRequest, runtime *util.RuntimeOptions) (_result *DeleteAccessControlListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclId)) {
+		query["AclId"] = request.AclId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteAccessControlList"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteAccessControlListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteAccessControlList(request *DeleteAccessControlListRequest) (_result *DeleteAccessControlListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteAccessControlListResponse{}
+	_body, _err := client.DeleteAccessControlListWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25608,6 +26502,110 @@ func (client *Client) DescribeAbolishApiTask(request *DescribeAbolishApiTaskRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeAbolishApiTaskResponse{}
 	_body, _err := client.DescribeAbolishApiTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAccessControlListAttributeWithOptions(request *DescribeAccessControlListAttributeRequest, runtime *util.RuntimeOptions) (_result *DescribeAccessControlListAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclId)) {
+		query["AclId"] = request.AclId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAccessControlListAttribute"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAccessControlListAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAccessControlListAttribute(request *DescribeAccessControlListAttributeRequest) (_result *DescribeAccessControlListAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAccessControlListAttributeResponse{}
+	_body, _err := client.DescribeAccessControlListAttributeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeAccessControlListsWithOptions(request *DescribeAccessControlListsRequest, runtime *util.RuntimeOptions) (_result *DescribeAccessControlListsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclName)) {
+		query["AclName"] = request.AclName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeAccessControlLists"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeAccessControlListsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeAccessControlLists(request *DescribeAccessControlListsRequest) (_result *DescribeAccessControlListsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeAccessControlListsResponse{}
+	_body, _err := client.DescribeAccessControlListsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -28975,6 +29973,58 @@ func (client *Client) DetachPlugin(request *DetachPluginRequest) (_result *Detac
 	return _result, _err
 }
 
+func (client *Client) DisableInstanceAccessControlWithOptions(request *DisableInstanceAccessControlRequest, runtime *util.RuntimeOptions) (_result *DisableInstanceAccessControlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclId)) {
+		query["AclId"] = request.AclId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DisableInstanceAccessControl"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DisableInstanceAccessControlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DisableInstanceAccessControl(request *DisableInstanceAccessControlRequest) (_result *DisableInstanceAccessControlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DisableInstanceAccessControlResponse{}
+	_body, _err := client.DisableInstanceAccessControlWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DryRunSwaggerWithOptions(tmpReq *DryRunSwaggerRequest, runtime *util.RuntimeOptions) (_result *DryRunSwaggerResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -29040,6 +30090,62 @@ func (client *Client) DryRunSwagger(request *DryRunSwaggerRequest) (_result *Dry
 	runtime := &util.RuntimeOptions{}
 	_result = &DryRunSwaggerResponse{}
 	_body, _err := client.DryRunSwaggerWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) EnableInstanceAccessControlWithOptions(request *EnableInstanceAccessControlRequest, runtime *util.RuntimeOptions) (_result *EnableInstanceAccessControlResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclId)) {
+		query["AclId"] = request.AclId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AclType)) {
+		query["AclType"] = request.AclType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("EnableInstanceAccessControl"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &EnableInstanceAccessControlResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) EnableInstanceAccessControl(request *EnableInstanceAccessControlRequest) (_result *EnableInstanceAccessControlResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &EnableInstanceAccessControlResponse{}
+	_body, _err := client.EnableInstanceAccessControlWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -30409,6 +31515,58 @@ func (client *Client) ReactivateDomain(request *ReactivateDomainRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ReactivateDomainResponse{}
 	_body, _err := client.ReactivateDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RemoveAccessControlListEntryWithOptions(request *RemoveAccessControlListEntryRequest, runtime *util.RuntimeOptions) (_result *RemoveAccessControlListEntryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclEntrys)) {
+		query["AclEntrys"] = request.AclEntrys
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AclId)) {
+		query["AclId"] = request.AclId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveAccessControlListEntry"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveAccessControlListEntryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RemoveAccessControlListEntry(request *RemoveAccessControlListEntryRequest) (_result *RemoveAccessControlListEntryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveAccessControlListEntryResponse{}
+	_body, _err := client.RemoveAccessControlListEntryWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
