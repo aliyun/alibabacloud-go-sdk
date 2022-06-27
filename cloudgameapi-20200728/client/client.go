@@ -3516,6 +3516,102 @@ func (s *ListDeployableInstancesResponse) SetBody(v *ListDeployableInstancesResp
 	return s
 }
 
+type ListGameServerIpRequest struct {
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s ListGameServerIpRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGameServerIpRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListGameServerIpRequest) SetPageNumber(v int32) *ListGameServerIpRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListGameServerIpRequest) SetPageSize(v int32) *ListGameServerIpRequest {
+	s.PageSize = &v
+	return s
+}
+
+type ListGameServerIpResponseBody struct {
+	Items      []*string `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PageNumber *int32    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// MaxResults本次请求所返回的最大记录条数
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListGameServerIpResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGameServerIpResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListGameServerIpResponseBody) SetItems(v []*string) *ListGameServerIpResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListGameServerIpResponseBody) SetPageNumber(v int32) *ListGameServerIpResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListGameServerIpResponseBody) SetPageSize(v int32) *ListGameServerIpResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListGameServerIpResponseBody) SetRequestId(v string) *ListGameServerIpResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListGameServerIpResponseBody) SetTotalCount(v int64) *ListGameServerIpResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListGameServerIpResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListGameServerIpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListGameServerIpResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListGameServerIpResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListGameServerIpResponse) SetHeaders(v map[string]*string) *ListGameServerIpResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListGameServerIpResponse) SetStatusCode(v int32) *ListGameServerIpResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListGameServerIpResponse) SetBody(v *ListGameServerIpResponseBody) *ListGameServerIpResponse {
+	s.Body = v
+	return s
+}
+
 type ListGameVersionsRequest struct {
 	// 游戏ID
 	GameId *string `json:"GameId,omitempty" xml:"GameId,omitempty"`
@@ -8253,6 +8349,54 @@ func (client *Client) ListDeployableInstances(request *ListDeployableInstancesRe
 	runtime := &util.RuntimeOptions{}
 	_result = &ListDeployableInstancesResponse{}
 	_body, _err := client.ListDeployableInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListGameServerIpWithOptions(request *ListGameServerIpRequest, runtime *util.RuntimeOptions) (_result *ListGameServerIpResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListGameServerIp"),
+		Version:     tea.String("2020-07-28"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListGameServerIpResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListGameServerIp(request *ListGameServerIpRequest) (_result *ListGameServerIpResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListGameServerIpResponse{}
+	_body, _err := client.ListGameServerIpWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
