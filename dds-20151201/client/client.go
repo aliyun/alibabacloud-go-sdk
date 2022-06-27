@@ -841,6 +841,8 @@ func (s *CreateDBInstanceResponse) SetBody(v *CreateDBInstanceResponseBody) *Cre
 }
 
 type CreateNodeRequest struct {
+	AccountName          *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountPassword      *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	AutoPay              *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	BusinessInfo         *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -855,6 +857,7 @@ type CreateNodeRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	ShardDirect          *bool   `json:"ShardDirect,omitempty" xml:"ShardDirect,omitempty"`
 }
 
 func (s CreateNodeRequest) String() string {
@@ -863,6 +866,16 @@ func (s CreateNodeRequest) String() string {
 
 func (s CreateNodeRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateNodeRequest) SetAccountName(v string) *CreateNodeRequest {
+	s.AccountName = &v
+	return s
+}
+
+func (s *CreateNodeRequest) SetAccountPassword(v string) *CreateNodeRequest {
+	s.AccountPassword = &v
+	return s
 }
 
 func (s *CreateNodeRequest) SetAutoPay(v bool) *CreateNodeRequest {
@@ -935,6 +948,11 @@ func (s *CreateNodeRequest) SetSecurityToken(v string) *CreateNodeRequest {
 	return s
 }
 
+func (s *CreateNodeRequest) SetShardDirect(v bool) *CreateNodeRequest {
+	s.ShardDirect = &v
+	return s
+}
+
 type CreateNodeResponseBody struct {
 	NodeId    *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
 	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
@@ -994,6 +1012,8 @@ func (s *CreateNodeResponse) SetBody(v *CreateNodeResponseBody) *CreateNodeRespo
 }
 
 type CreateNodeBatchRequest struct {
+	AccountName          *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
+	AccountPassword      *string `json:"AccountPassword,omitempty" xml:"AccountPassword,omitempty"`
 	AutoPay              *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	BusinessInfo         *string `json:"BusinessInfo,omitempty" xml:"BusinessInfo,omitempty"`
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
@@ -1006,6 +1026,7 @@ type CreateNodeBatchRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	ShardDirect          *bool   `json:"ShardDirect,omitempty" xml:"ShardDirect,omitempty"`
 }
 
 func (s CreateNodeBatchRequest) String() string {
@@ -1014,6 +1035,16 @@ func (s CreateNodeBatchRequest) String() string {
 
 func (s CreateNodeBatchRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateNodeBatchRequest) SetAccountName(v string) *CreateNodeBatchRequest {
+	s.AccountName = &v
+	return s
+}
+
+func (s *CreateNodeBatchRequest) SetAccountPassword(v string) *CreateNodeBatchRequest {
+	s.AccountPassword = &v
+	return s
 }
 
 func (s *CreateNodeBatchRequest) SetAutoPay(v bool) *CreateNodeBatchRequest {
@@ -1073,6 +1104,11 @@ func (s *CreateNodeBatchRequest) SetResourceOwnerId(v int64) *CreateNodeBatchReq
 
 func (s *CreateNodeBatchRequest) SetSecurityToken(v string) *CreateNodeBatchRequest {
 	s.SecurityToken = &v
+	return s
+}
+
+func (s *CreateNodeBatchRequest) SetShardDirect(v bool) *CreateNodeBatchRequest {
+	s.ShardDirect = &v
 	return s
 }
 
@@ -1344,6 +1380,7 @@ type CreateShardingDBInstanceRequest struct {
 	DBInstanceDescription *string                                        `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	Engine                *string                                        `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	EngineVersion         *string                                        `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
+	HiddenZoneId          *string                                        `json:"HiddenZoneId,omitempty" xml:"HiddenZoneId,omitempty"`
 	Mongos                []*CreateShardingDBInstanceRequestMongos       `json:"Mongos,omitempty" xml:"Mongos,omitempty" type:"Repeated"`
 	NetworkType           *string                                        `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	OwnerAccount          *string                                        `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -1356,6 +1393,7 @@ type CreateShardingDBInstanceRequest struct {
 	ResourceOwnerAccount  *string                                        `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId       *int64                                         `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	RestoreTime           *string                                        `json:"RestoreTime,omitempty" xml:"RestoreTime,omitempty"`
+	SecondaryZoneId       *string                                        `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
 	SecurityIPList        *string                                        `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	SecurityToken         *string                                        `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	SrcDBInstanceId       *string                                        `json:"SrcDBInstanceId,omitempty" xml:"SrcDBInstanceId,omitempty"`
@@ -1410,6 +1448,11 @@ func (s *CreateShardingDBInstanceRequest) SetEngine(v string) *CreateShardingDBI
 
 func (s *CreateShardingDBInstanceRequest) SetEngineVersion(v string) *CreateShardingDBInstanceRequest {
 	s.EngineVersion = &v
+	return s
+}
+
+func (s *CreateShardingDBInstanceRequest) SetHiddenZoneId(v string) *CreateShardingDBInstanceRequest {
+	s.HiddenZoneId = &v
 	return s
 }
 
@@ -1470,6 +1513,11 @@ func (s *CreateShardingDBInstanceRequest) SetResourceOwnerId(v int64) *CreateSha
 
 func (s *CreateShardingDBInstanceRequest) SetRestoreTime(v string) *CreateShardingDBInstanceRequest {
 	s.RestoreTime = &v
+	return s
+}
+
+func (s *CreateShardingDBInstanceRequest) SetSecondaryZoneId(v string) *CreateShardingDBInstanceRequest {
+	s.SecondaryZoneId = &v
 	return s
 }
 
@@ -3920,6 +3968,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	Engine                      *string                                                                       `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	EngineVersion               *string                                                                       `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	ExpireTime                  *string                                                                       `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HiddenZoneId                *string                                                                       `json:"HiddenZoneId,omitempty" xml:"HiddenZoneId,omitempty"`
 	KindCode                    *string                                                                       `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
 	LastDowngradeTime           *string                                                                       `json:"LastDowngradeTime,omitempty" xml:"LastDowngradeTime,omitempty"`
 	LockMode                    *string                                                                       `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
@@ -3937,6 +3986,7 @@ type DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance struct {
 	ReplicaSets                 *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceReplicaSets      `json:"ReplicaSets,omitempty" xml:"ReplicaSets,omitempty" type:"Struct"`
 	ReplicationFactor           *string                                                                       `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
 	ResourceGroupId             *string                                                                       `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecondaryZoneId             *string                                                                       `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
 	ShardList                   *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceShardList        `json:"ShardList,omitempty" xml:"ShardList,omitempty" type:"Struct"`
 	StorageEngine               *string                                                                       `json:"StorageEngine,omitempty" xml:"StorageEngine,omitempty"`
 	Tags                        *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstanceTags             `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
@@ -4030,6 +4080,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetExpire
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetHiddenZoneId(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
+	s.HiddenZoneId = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetKindCode(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
 	s.KindCode = &v
 	return s
@@ -4112,6 +4167,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetReplic
 
 func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetResourceGroupId(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance) SetSecondaryZoneId(v string) *DescribeDBInstanceAttributeResponseBodyDBInstancesDBInstance {
+	s.SecondaryZoneId = &v
 	return s
 }
 
@@ -5515,6 +5575,7 @@ type DescribeDBInstancesResponseBodyDBInstancesDBInstance struct {
 	Engine                *string                                                         `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	EngineVersion         *string                                                         `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	ExpireTime            *string                                                         `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	HiddenZoneId          *string                                                         `json:"HiddenZoneId,omitempty" xml:"HiddenZoneId,omitempty"`
 	KindCode              *string                                                         `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
 	LastDowngradeTime     *string                                                         `json:"LastDowngradeTime,omitempty" xml:"LastDowngradeTime,omitempty"`
 	LockMode              *string                                                         `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
@@ -5523,6 +5584,7 @@ type DescribeDBInstancesResponseBodyDBInstancesDBInstance struct {
 	RegionId              *string                                                         `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReplicationFactor     *string                                                         `json:"ReplicationFactor,omitempty" xml:"ReplicationFactor,omitempty"`
 	ResourceGroupId       *string                                                         `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecondaryZoneId       *string                                                         `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
 	ShardList             *DescribeDBInstancesResponseBodyDBInstancesDBInstanceShardList  `json:"ShardList,omitempty" xml:"ShardList,omitempty" type:"Struct"`
 	StorageType           *string                                                         `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
 	Tags                  *DescribeDBInstancesResponseBodyDBInstancesDBInstanceTags       `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
@@ -5603,6 +5665,11 @@ func (s *DescribeDBInstancesResponseBodyDBInstancesDBInstance) SetExpireTime(v s
 	return s
 }
 
+func (s *DescribeDBInstancesResponseBodyDBInstancesDBInstance) SetHiddenZoneId(v string) *DescribeDBInstancesResponseBodyDBInstancesDBInstance {
+	s.HiddenZoneId = &v
+	return s
+}
+
 func (s *DescribeDBInstancesResponseBodyDBInstancesDBInstance) SetKindCode(v string) *DescribeDBInstancesResponseBodyDBInstancesDBInstance {
 	s.KindCode = &v
 	return s
@@ -5640,6 +5707,11 @@ func (s *DescribeDBInstancesResponseBodyDBInstancesDBInstance) SetReplicationFac
 
 func (s *DescribeDBInstancesResponseBodyDBInstancesDBInstance) SetResourceGroupId(v string) *DescribeDBInstancesResponseBodyDBInstancesDBInstance {
 	s.ResourceGroupId = &v
+	return s
+}
+
+func (s *DescribeDBInstancesResponseBodyDBInstancesDBInstance) SetSecondaryZoneId(v string) *DescribeDBInstancesResponseBodyDBInstancesDBInstance {
+	s.SecondaryZoneId = &v
 	return s
 }
 
@@ -12414,6 +12486,7 @@ func (s *ModifyDBInstanceNetworkTypeResponse) SetBody(v *ModifyDBInstanceNetwork
 
 type ModifyDBInstanceSSLRequest struct {
 	DBInstanceId         *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	DisableTlsProtocol   *string `json:"DisableTlsProtocol,omitempty" xml:"DisableTlsProtocol,omitempty"`
 	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
@@ -12432,6 +12505,11 @@ func (s ModifyDBInstanceSSLRequest) GoString() string {
 
 func (s *ModifyDBInstanceSSLRequest) SetDBInstanceId(v string) *ModifyDBInstanceSSLRequest {
 	s.DBInstanceId = &v
+	return s
+}
+
+func (s *ModifyDBInstanceSSLRequest) SetDisableTlsProtocol(v string) *ModifyDBInstanceSSLRequest {
+	s.DisableTlsProtocol = &v
 	return s
 }
 
@@ -15661,6 +15739,14 @@ func (client *Client) CreateNodeWithOptions(request *CreateNodeRequest, runtime 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccountPassword)) {
+		query["AccountPassword"] = request.AccountPassword
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
 		query["AutoPay"] = request.AutoPay
 	}
@@ -15717,6 +15803,10 @@ func (client *Client) CreateNodeWithOptions(request *CreateNodeRequest, runtime 
 		query["SecurityToken"] = request.SecurityToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ShardDirect)) {
+		query["ShardDirect"] = request.ShardDirect
+	}
+
 	req := &openapi.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -15757,6 +15847,14 @@ func (client *Client) CreateNodeBatchWithOptions(request *CreateNodeBatchRequest
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AccountName)) {
+		query["AccountName"] = request.AccountName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AccountPassword)) {
+		query["AccountPassword"] = request.AccountPassword
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
 		query["AutoPay"] = request.AutoPay
 	}
@@ -15803,6 +15901,10 @@ func (client *Client) CreateNodeBatchWithOptions(request *CreateNodeBatchRequest
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
 		query["SecurityToken"] = request.SecurityToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShardDirect)) {
+		query["ShardDirect"] = request.ShardDirect
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -16005,6 +16107,10 @@ func (client *Client) CreateShardingDBInstanceWithOptions(request *CreateShardin
 		query["EngineVersion"] = request.EngineVersion
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.HiddenZoneId)) {
+		query["HiddenZoneId"] = request.HiddenZoneId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Mongos)) {
 		query["Mongos"] = request.Mongos
 	}
@@ -16051,6 +16157,10 @@ func (client *Client) CreateShardingDBInstanceWithOptions(request *CreateShardin
 
 	if !tea.BoolValue(util.IsUnset(request.RestoreTime)) {
 		query["RestoreTime"] = request.RestoreTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecondaryZoneId)) {
+		query["SecondaryZoneId"] = request.SecondaryZoneId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityIPList)) {
@@ -20427,6 +20537,10 @@ func (client *Client) ModifyDBInstanceSSLWithOptions(request *ModifyDBInstanceSS
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DisableTlsProtocol)) {
+		query["DisableTlsProtocol"] = request.DisableTlsProtocol
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OwnerAccount)) {
