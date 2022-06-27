@@ -1900,9 +1900,11 @@ type DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute struct {
 	Port                  *string                                                              `json:"Port,omitempty" xml:"Port,omitempty"`
 	ReadDelayTime         *string                                                              `json:"ReadDelayTime,omitempty" xml:"ReadDelayTime,omitempty"`
 	RegionId              *string                                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RunningTime           *string                                                              `json:"RunningTime,omitempty" xml:"RunningTime,omitempty"`
 	SecurityIPList        *string                                                              `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
 	SegNodeNum            *int32                                                               `json:"SegNodeNum,omitempty" xml:"SegNodeNum,omitempty"`
 	SegmentCounts         *int32                                                               `json:"SegmentCounts,omitempty" xml:"SegmentCounts,omitempty"`
+	StartTime             *string                                                              `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	StoragePerNode        *int32                                                               `json:"StoragePerNode,omitempty" xml:"StoragePerNode,omitempty"`
 	StorageSize           *int64                                                               `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
 	StorageType           *string                                                              `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
@@ -2127,6 +2129,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetReg
 	return s
 }
 
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetRunningTime(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.RunningTime = &v
+	return s
+}
+
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetSecurityIPList(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.SecurityIPList = &v
 	return s
@@ -2139,6 +2146,11 @@ func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetSeg
 
 func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetSegmentCounts(v int32) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
 	s.SegmentCounts = &v
+	return s
+}
+
+func (s *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute) SetStartTime(v string) *DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute {
+	s.StartTime = &v
 	return s
 }
 
@@ -2256,6 +2268,816 @@ func (s *DescribeDBInstanceAttributeResponse) SetBody(v *DescribeDBInstanceAttri
 	return s
 }
 
+type DescribeDBInstanceDataBloatRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeDBInstanceDataBloatRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceDataBloatRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceDataBloatRequest) SetDBInstanceId(v string) *DescribeDBInstanceDataBloatRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataBloatRequest) SetPageNumber(v int32) *DescribeDBInstanceDataBloatRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataBloatRequest) SetPageSize(v int32) *DescribeDBInstanceDataBloatRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeDBInstanceDataBloatResponseBody struct {
+	Items      []*DescribeDBInstanceDataBloatResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PageNumber *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDBInstanceDataBloatResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceDataBloatResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceDataBloatResponseBody) SetItems(v []*DescribeDBInstanceDataBloatResponseBodyItems) *DescribeDBInstanceDataBloatResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeDBInstanceDataBloatResponseBody) SetPageNumber(v int32) *DescribeDBInstanceDataBloatResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataBloatResponseBody) SetRequestId(v string) *DescribeDBInstanceDataBloatResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataBloatResponseBody) SetTotalCount(v int32) *DescribeDBInstanceDataBloatResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDBInstanceDataBloatResponseBodyItems struct {
+	BloatCeoff       *string `json:"BloatCeoff,omitempty" xml:"BloatCeoff,omitempty"`
+	BloatSize        *string `json:"BloatSize,omitempty" xml:"BloatSize,omitempty"`
+	DatabaseName     *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	ExpectTableSize  *string `json:"ExpectTableSize,omitempty" xml:"ExpectTableSize,omitempty"`
+	RealTableSize    *string `json:"RealTableSize,omitempty" xml:"RealTableSize,omitempty"`
+	SchemaName       *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	Sequence         *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	StorageType      *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
+	SuggestedAction  *string `json:"SuggestedAction,omitempty" xml:"SuggestedAction,omitempty"`
+	TableName        *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TimeLastUpdated  *string `json:"TimeLastUpdated,omitempty" xml:"TimeLastUpdated,omitempty"`
+	TimeLastVacuumed *string `json:"TimeLastVacuumed,omitempty" xml:"TimeLastVacuumed,omitempty"`
+}
+
+func (s DescribeDBInstanceDataBloatResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceDataBloatResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceDataBloatResponseBodyItems) SetBloatCeoff(v string) *DescribeDBInstanceDataBloatResponseBodyItems {
+	s.BloatCeoff = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataBloatResponseBodyItems) SetBloatSize(v string) *DescribeDBInstanceDataBloatResponseBodyItems {
+	s.BloatSize = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataBloatResponseBodyItems) SetDatabaseName(v string) *DescribeDBInstanceDataBloatResponseBodyItems {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataBloatResponseBodyItems) SetExpectTableSize(v string) *DescribeDBInstanceDataBloatResponseBodyItems {
+	s.ExpectTableSize = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataBloatResponseBodyItems) SetRealTableSize(v string) *DescribeDBInstanceDataBloatResponseBodyItems {
+	s.RealTableSize = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataBloatResponseBodyItems) SetSchemaName(v string) *DescribeDBInstanceDataBloatResponseBodyItems {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataBloatResponseBodyItems) SetSequence(v int32) *DescribeDBInstanceDataBloatResponseBodyItems {
+	s.Sequence = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataBloatResponseBodyItems) SetStorageType(v string) *DescribeDBInstanceDataBloatResponseBodyItems {
+	s.StorageType = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataBloatResponseBodyItems) SetSuggestedAction(v string) *DescribeDBInstanceDataBloatResponseBodyItems {
+	s.SuggestedAction = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataBloatResponseBodyItems) SetTableName(v string) *DescribeDBInstanceDataBloatResponseBodyItems {
+	s.TableName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataBloatResponseBodyItems) SetTimeLastUpdated(v string) *DescribeDBInstanceDataBloatResponseBodyItems {
+	s.TimeLastUpdated = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataBloatResponseBodyItems) SetTimeLastVacuumed(v string) *DescribeDBInstanceDataBloatResponseBodyItems {
+	s.TimeLastVacuumed = &v
+	return s
+}
+
+type DescribeDBInstanceDataBloatResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDBInstanceDataBloatResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDBInstanceDataBloatResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceDataBloatResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceDataBloatResponse) SetHeaders(v map[string]*string) *DescribeDBInstanceDataBloatResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBInstanceDataBloatResponse) SetStatusCode(v int32) *DescribeDBInstanceDataBloatResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataBloatResponse) SetBody(v *DescribeDBInstanceDataBloatResponseBody) *DescribeDBInstanceDataBloatResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDBInstanceDataSkewRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeDBInstanceDataSkewRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceDataSkewRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceDataSkewRequest) SetDBInstanceId(v string) *DescribeDBInstanceDataSkewRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataSkewRequest) SetPageNumber(v int32) *DescribeDBInstanceDataSkewRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataSkewRequest) SetPageSize(v int32) *DescribeDBInstanceDataSkewRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeDBInstanceDataSkewResponseBody struct {
+	Items      []*DescribeDBInstanceDataSkewResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PageNumber *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDBInstanceDataSkewResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceDataSkewResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceDataSkewResponseBody) SetItems(v []*DescribeDBInstanceDataSkewResponseBodyItems) *DescribeDBInstanceDataSkewResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeDBInstanceDataSkewResponseBody) SetPageNumber(v int32) *DescribeDBInstanceDataSkewResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataSkewResponseBody) SetRequestId(v string) *DescribeDBInstanceDataSkewResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataSkewResponseBody) SetTotalCount(v int32) *DescribeDBInstanceDataSkewResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDBInstanceDataSkewResponseBodyItems struct {
+	DatabaseName    *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	DistributeKey   *string `json:"DistributeKey,omitempty" xml:"DistributeKey,omitempty"`
+	Owner           *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	SchemaName      *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	Sequence        *int32  `json:"Sequence,omitempty" xml:"Sequence,omitempty"`
+	TableName       *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TableSize       *string `json:"TableSize,omitempty" xml:"TableSize,omitempty"`
+	TableSkew       *string `json:"TableSkew,omitempty" xml:"TableSkew,omitempty"`
+	TimeLastUpdated *string `json:"TimeLastUpdated,omitempty" xml:"TimeLastUpdated,omitempty"`
+}
+
+func (s DescribeDBInstanceDataSkewResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceDataSkewResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceDataSkewResponseBodyItems) SetDatabaseName(v string) *DescribeDBInstanceDataSkewResponseBodyItems {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataSkewResponseBodyItems) SetDistributeKey(v string) *DescribeDBInstanceDataSkewResponseBodyItems {
+	s.DistributeKey = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataSkewResponseBodyItems) SetOwner(v string) *DescribeDBInstanceDataSkewResponseBodyItems {
+	s.Owner = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataSkewResponseBodyItems) SetSchemaName(v string) *DescribeDBInstanceDataSkewResponseBodyItems {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataSkewResponseBodyItems) SetSequence(v int32) *DescribeDBInstanceDataSkewResponseBodyItems {
+	s.Sequence = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataSkewResponseBodyItems) SetTableName(v string) *DescribeDBInstanceDataSkewResponseBodyItems {
+	s.TableName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataSkewResponseBodyItems) SetTableSize(v string) *DescribeDBInstanceDataSkewResponseBodyItems {
+	s.TableSize = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataSkewResponseBodyItems) SetTableSkew(v string) *DescribeDBInstanceDataSkewResponseBodyItems {
+	s.TableSkew = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataSkewResponseBodyItems) SetTimeLastUpdated(v string) *DescribeDBInstanceDataSkewResponseBodyItems {
+	s.TimeLastUpdated = &v
+	return s
+}
+
+type DescribeDBInstanceDataSkewResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDBInstanceDataSkewResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDBInstanceDataSkewResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceDataSkewResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceDataSkewResponse) SetHeaders(v map[string]*string) *DescribeDBInstanceDataSkewResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBInstanceDataSkewResponse) SetStatusCode(v int32) *DescribeDBInstanceDataSkewResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDataSkewResponse) SetBody(v *DescribeDBInstanceDataSkewResponseBody) *DescribeDBInstanceDataSkewResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDBInstanceDiagnosisSummaryRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RolePreferd  *string `json:"RolePreferd,omitempty" xml:"RolePreferd,omitempty"`
+	StartStatus  *string `json:"StartStatus,omitempty" xml:"StartStatus,omitempty"`
+	SyncMode     *string `json:"SyncMode,omitempty" xml:"SyncMode,omitempty"`
+}
+
+func (s DescribeDBInstanceDiagnosisSummaryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceDiagnosisSummaryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryRequest) SetDBInstanceId(v string) *DescribeDBInstanceDiagnosisSummaryRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryRequest) SetPageNumber(v int32) *DescribeDBInstanceDiagnosisSummaryRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryRequest) SetPageSize(v int32) *DescribeDBInstanceDiagnosisSummaryRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryRequest) SetRolePreferd(v string) *DescribeDBInstanceDiagnosisSummaryRequest {
+	s.RolePreferd = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryRequest) SetStartStatus(v string) *DescribeDBInstanceDiagnosisSummaryRequest {
+	s.StartStatus = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryRequest) SetSyncMode(v string) *DescribeDBInstanceDiagnosisSummaryRequest {
+	s.SyncMode = &v
+	return s
+}
+
+type DescribeDBInstanceDiagnosisSummaryResponseBody struct {
+	Items             []*DescribeDBInstanceDiagnosisSummaryResponseBodyItems           `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	MasterStatusInfo  *DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo  `json:"MasterStatusInfo,omitempty" xml:"MasterStatusInfo,omitempty" type:"Struct"`
+	PageNumber        *string                                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId         *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SegmentStatusInfo *DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo `json:"SegmentStatusInfo,omitempty" xml:"SegmentStatusInfo,omitempty" type:"Struct"`
+	TotalCount        *string                                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDBInstanceDiagnosisSummaryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceDiagnosisSummaryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBody) SetItems(v []*DescribeDBInstanceDiagnosisSummaryResponseBodyItems) *DescribeDBInstanceDiagnosisSummaryResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBody) SetMasterStatusInfo(v *DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo) *DescribeDBInstanceDiagnosisSummaryResponseBody {
+	s.MasterStatusInfo = v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBody) SetPageNumber(v string) *DescribeDBInstanceDiagnosisSummaryResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBody) SetRequestId(v string) *DescribeDBInstanceDiagnosisSummaryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBody) SetSegmentStatusInfo(v *DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo) *DescribeDBInstanceDiagnosisSummaryResponseBody {
+	s.SegmentStatusInfo = v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBody) SetTotalCount(v string) *DescribeDBInstanceDiagnosisSummaryResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDBInstanceDiagnosisSummaryResponseBodyItems struct {
+	Hostname            *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	NodeAddress         *string `json:"NodeAddress,omitempty" xml:"NodeAddress,omitempty"`
+	NodeCID             *string `json:"NodeCID,omitempty" xml:"NodeCID,omitempty"`
+	NodeID              *string `json:"NodeID,omitempty" xml:"NodeID,omitempty"`
+	NodeName            *string `json:"NodeName,omitempty" xml:"NodeName,omitempty"`
+	NodePort            *string `json:"NodePort,omitempty" xml:"NodePort,omitempty"`
+	NodePreferredRole   *string `json:"NodePreferredRole,omitempty" xml:"NodePreferredRole,omitempty"`
+	NodeReplicationMode *string `json:"NodeReplicationMode,omitempty" xml:"NodeReplicationMode,omitempty"`
+	NodeRole            *string `json:"NodeRole,omitempty" xml:"NodeRole,omitempty"`
+	NodeStatus          *string `json:"NodeStatus,omitempty" xml:"NodeStatus,omitempty"`
+	NodeType            *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
+}
+
+func (s DescribeDBInstanceDiagnosisSummaryResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceDiagnosisSummaryResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodyItems) SetHostname(v string) *DescribeDBInstanceDiagnosisSummaryResponseBodyItems {
+	s.Hostname = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodyItems) SetNodeAddress(v string) *DescribeDBInstanceDiagnosisSummaryResponseBodyItems {
+	s.NodeAddress = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodyItems) SetNodeCID(v string) *DescribeDBInstanceDiagnosisSummaryResponseBodyItems {
+	s.NodeCID = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodyItems) SetNodeID(v string) *DescribeDBInstanceDiagnosisSummaryResponseBodyItems {
+	s.NodeID = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodyItems) SetNodeName(v string) *DescribeDBInstanceDiagnosisSummaryResponseBodyItems {
+	s.NodeName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodyItems) SetNodePort(v string) *DescribeDBInstanceDiagnosisSummaryResponseBodyItems {
+	s.NodePort = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodyItems) SetNodePreferredRole(v string) *DescribeDBInstanceDiagnosisSummaryResponseBodyItems {
+	s.NodePreferredRole = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodyItems) SetNodeReplicationMode(v string) *DescribeDBInstanceDiagnosisSummaryResponseBodyItems {
+	s.NodeReplicationMode = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodyItems) SetNodeRole(v string) *DescribeDBInstanceDiagnosisSummaryResponseBodyItems {
+	s.NodeRole = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodyItems) SetNodeStatus(v string) *DescribeDBInstanceDiagnosisSummaryResponseBodyItems {
+	s.NodeStatus = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodyItems) SetNodeType(v string) *DescribeDBInstanceDiagnosisSummaryResponseBodyItems {
+	s.NodeType = &v
+	return s
+}
+
+type DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo struct {
+	ExceptionNodeNum    *int32 `json:"ExceptionNodeNum,omitempty" xml:"ExceptionNodeNum,omitempty"`
+	NormalNodeNum       *int32 `json:"NormalNodeNum,omitempty" xml:"NormalNodeNum,omitempty"`
+	NotPreferredNodeNum *int32 `json:"NotPreferredNodeNum,omitempty" xml:"NotPreferredNodeNum,omitempty"`
+	NotSyncingNodeNum   *int32 `json:"NotSyncingNodeNum,omitempty" xml:"NotSyncingNodeNum,omitempty"`
+	PreferredNodeNum    *int32 `json:"PreferredNodeNum,omitempty" xml:"PreferredNodeNum,omitempty"`
+	SyncedNodeNum       *int32 `json:"SyncedNodeNum,omitempty" xml:"SyncedNodeNum,omitempty"`
+}
+
+func (s DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo) SetExceptionNodeNum(v int32) *DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo {
+	s.ExceptionNodeNum = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo) SetNormalNodeNum(v int32) *DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo {
+	s.NormalNodeNum = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo) SetNotPreferredNodeNum(v int32) *DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo {
+	s.NotPreferredNodeNum = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo) SetNotSyncingNodeNum(v int32) *DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo {
+	s.NotSyncingNodeNum = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo) SetPreferredNodeNum(v int32) *DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo {
+	s.PreferredNodeNum = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo) SetSyncedNodeNum(v int32) *DescribeDBInstanceDiagnosisSummaryResponseBodyMasterStatusInfo {
+	s.SyncedNodeNum = &v
+	return s
+}
+
+type DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo struct {
+	ExceptionNodeNum    *int32 `json:"ExceptionNodeNum,omitempty" xml:"ExceptionNodeNum,omitempty"`
+	NormalNodeNum       *int32 `json:"NormalNodeNum,omitempty" xml:"NormalNodeNum,omitempty"`
+	NotPreferredNodeNum *int32 `json:"NotPreferredNodeNum,omitempty" xml:"NotPreferredNodeNum,omitempty"`
+	NotSyncingNodeNum   *int32 `json:"NotSyncingNodeNum,omitempty" xml:"NotSyncingNodeNum,omitempty"`
+	PreferredNodeNum    *int32 `json:"PreferredNodeNum,omitempty" xml:"PreferredNodeNum,omitempty"`
+	SyncedNodeNum       *int32 `json:"SyncedNodeNum,omitempty" xml:"SyncedNodeNum,omitempty"`
+}
+
+func (s DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo) SetExceptionNodeNum(v int32) *DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo {
+	s.ExceptionNodeNum = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo) SetNormalNodeNum(v int32) *DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo {
+	s.NormalNodeNum = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo) SetNotPreferredNodeNum(v int32) *DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo {
+	s.NotPreferredNodeNum = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo) SetNotSyncingNodeNum(v int32) *DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo {
+	s.NotSyncingNodeNum = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo) SetPreferredNodeNum(v int32) *DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo {
+	s.PreferredNodeNum = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo) SetSyncedNodeNum(v int32) *DescribeDBInstanceDiagnosisSummaryResponseBodySegmentStatusInfo {
+	s.SyncedNodeNum = &v
+	return s
+}
+
+type DescribeDBInstanceDiagnosisSummaryResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDBInstanceDiagnosisSummaryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDBInstanceDiagnosisSummaryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceDiagnosisSummaryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponse) SetHeaders(v map[string]*string) *DescribeDBInstanceDiagnosisSummaryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponse) SetStatusCode(v int32) *DescribeDBInstanceDiagnosisSummaryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDBInstanceDiagnosisSummaryResponse) SetBody(v *DescribeDBInstanceDiagnosisSummaryResponseBody) *DescribeDBInstanceDiagnosisSummaryResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDBInstanceErrorLogRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Database     *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Host         *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	Keywords     *string `json:"Keywords,omitempty" xml:"Keywords,omitempty"`
+	LogLevel     *string `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	StartTime    *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	User         *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s DescribeDBInstanceErrorLogRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceErrorLogRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceErrorLogRequest) SetDBInstanceId(v string) *DescribeDBInstanceErrorLogRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceErrorLogRequest) SetDatabase(v string) *DescribeDBInstanceErrorLogRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeDBInstanceErrorLogRequest) SetEndTime(v string) *DescribeDBInstanceErrorLogRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDBInstanceErrorLogRequest) SetHost(v string) *DescribeDBInstanceErrorLogRequest {
+	s.Host = &v
+	return s
+}
+
+func (s *DescribeDBInstanceErrorLogRequest) SetKeywords(v string) *DescribeDBInstanceErrorLogRequest {
+	s.Keywords = &v
+	return s
+}
+
+func (s *DescribeDBInstanceErrorLogRequest) SetLogLevel(v string) *DescribeDBInstanceErrorLogRequest {
+	s.LogLevel = &v
+	return s
+}
+
+func (s *DescribeDBInstanceErrorLogRequest) SetPageNumber(v int32) *DescribeDBInstanceErrorLogRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDBInstanceErrorLogRequest) SetPageSize(v int32) *DescribeDBInstanceErrorLogRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDBInstanceErrorLogRequest) SetStartTime(v string) *DescribeDBInstanceErrorLogRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDBInstanceErrorLogRequest) SetUser(v string) *DescribeDBInstanceErrorLogRequest {
+	s.User = &v
+	return s
+}
+
+type DescribeDBInstanceErrorLogResponseBody struct {
+	Items      []*DescribeDBInstanceErrorLogResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PageNumber *int32                                         `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId  *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                         `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDBInstanceErrorLogResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceErrorLogResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceErrorLogResponseBody) SetItems(v []*DescribeDBInstanceErrorLogResponseBodyItems) *DescribeDBInstanceErrorLogResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeDBInstanceErrorLogResponseBody) SetPageNumber(v int32) *DescribeDBInstanceErrorLogResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDBInstanceErrorLogResponseBody) SetRequestId(v string) *DescribeDBInstanceErrorLogResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceErrorLogResponseBody) SetTotalCount(v int32) *DescribeDBInstanceErrorLogResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDBInstanceErrorLogResponseBodyItems struct {
+	Database   *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	Host       *string `json:"Host,omitempty" xml:"Host,omitempty"`
+	LogContext *string `json:"LogContext,omitempty" xml:"LogContext,omitempty"`
+	LogLevel   *string `json:"LogLevel,omitempty" xml:"LogLevel,omitempty"`
+	Time       *int64  `json:"Time,omitempty" xml:"Time,omitempty"`
+	User       *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s DescribeDBInstanceErrorLogResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceErrorLogResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceErrorLogResponseBodyItems) SetDatabase(v string) *DescribeDBInstanceErrorLogResponseBodyItems {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeDBInstanceErrorLogResponseBodyItems) SetHost(v string) *DescribeDBInstanceErrorLogResponseBodyItems {
+	s.Host = &v
+	return s
+}
+
+func (s *DescribeDBInstanceErrorLogResponseBodyItems) SetLogContext(v string) *DescribeDBInstanceErrorLogResponseBodyItems {
+	s.LogContext = &v
+	return s
+}
+
+func (s *DescribeDBInstanceErrorLogResponseBodyItems) SetLogLevel(v string) *DescribeDBInstanceErrorLogResponseBodyItems {
+	s.LogLevel = &v
+	return s
+}
+
+func (s *DescribeDBInstanceErrorLogResponseBodyItems) SetTime(v int64) *DescribeDBInstanceErrorLogResponseBodyItems {
+	s.Time = &v
+	return s
+}
+
+func (s *DescribeDBInstanceErrorLogResponseBodyItems) SetUser(v string) *DescribeDBInstanceErrorLogResponseBodyItems {
+	s.User = &v
+	return s
+}
+
+type DescribeDBInstanceErrorLogResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDBInstanceErrorLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDBInstanceErrorLogResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceErrorLogResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceErrorLogResponse) SetHeaders(v map[string]*string) *DescribeDBInstanceErrorLogResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBInstanceErrorLogResponse) SetStatusCode(v int32) *DescribeDBInstanceErrorLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDBInstanceErrorLogResponse) SetBody(v *DescribeDBInstanceErrorLogResponseBody) *DescribeDBInstanceErrorLogResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeDBInstanceIPArrayListRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 }
@@ -2367,6 +3189,170 @@ func (s *DescribeDBInstanceIPArrayListResponse) SetStatusCode(v int32) *Describe
 }
 
 func (s *DescribeDBInstanceIPArrayListResponse) SetBody(v *DescribeDBInstanceIPArrayListResponseBody) *DescribeDBInstanceIPArrayListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDBInstanceIndexUsageRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	PageNumber   *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeDBInstanceIndexUsageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceIndexUsageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceIndexUsageRequest) SetDBInstanceId(v string) *DescribeDBInstanceIndexUsageRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceIndexUsageRequest) SetPageNumber(v int32) *DescribeDBInstanceIndexUsageRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDBInstanceIndexUsageRequest) SetPageSize(v int32) *DescribeDBInstanceIndexUsageRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeDBInstanceIndexUsageResponseBody struct {
+	Items      []*DescribeDBInstanceIndexUsageResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PageNumber *int32                                           `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId  *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                           `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDBInstanceIndexUsageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceIndexUsageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceIndexUsageResponseBody) SetItems(v []*DescribeDBInstanceIndexUsageResponseBodyItems) *DescribeDBInstanceIndexUsageResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeDBInstanceIndexUsageResponseBody) SetPageNumber(v int32) *DescribeDBInstanceIndexUsageResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDBInstanceIndexUsageResponseBody) SetRequestId(v string) *DescribeDBInstanceIndexUsageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDBInstanceIndexUsageResponseBody) SetTotalCount(v int32) *DescribeDBInstanceIndexUsageResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDBInstanceIndexUsageResponseBodyItems struct {
+	DatabaseName     *string `json:"DatabaseName,omitempty" xml:"DatabaseName,omitempty"`
+	IndexDef         *string `json:"IndexDef,omitempty" xml:"IndexDef,omitempty"`
+	IndexName        *string `json:"IndexName,omitempty" xml:"IndexName,omitempty"`
+	IndexScanTimes   *int32  `json:"IndexScanTimes,omitempty" xml:"IndexScanTimes,omitempty"`
+	IndexSize        *string `json:"IndexSize,omitempty" xml:"IndexSize,omitempty"`
+	IsPartitionTable *bool   `json:"IsPartitionTable,omitempty" xml:"IsPartitionTable,omitempty"`
+	ParentTableName  *string `json:"ParentTableName,omitempty" xml:"ParentTableName,omitempty"`
+	SchemaName       *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
+	TableName        *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
+	TimeLastUpdated  *string `json:"TimeLastUpdated,omitempty" xml:"TimeLastUpdated,omitempty"`
+}
+
+func (s DescribeDBInstanceIndexUsageResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceIndexUsageResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceIndexUsageResponseBodyItems) SetDatabaseName(v string) *DescribeDBInstanceIndexUsageResponseBodyItems {
+	s.DatabaseName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceIndexUsageResponseBodyItems) SetIndexDef(v string) *DescribeDBInstanceIndexUsageResponseBodyItems {
+	s.IndexDef = &v
+	return s
+}
+
+func (s *DescribeDBInstanceIndexUsageResponseBodyItems) SetIndexName(v string) *DescribeDBInstanceIndexUsageResponseBodyItems {
+	s.IndexName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceIndexUsageResponseBodyItems) SetIndexScanTimes(v int32) *DescribeDBInstanceIndexUsageResponseBodyItems {
+	s.IndexScanTimes = &v
+	return s
+}
+
+func (s *DescribeDBInstanceIndexUsageResponseBodyItems) SetIndexSize(v string) *DescribeDBInstanceIndexUsageResponseBodyItems {
+	s.IndexSize = &v
+	return s
+}
+
+func (s *DescribeDBInstanceIndexUsageResponseBodyItems) SetIsPartitionTable(v bool) *DescribeDBInstanceIndexUsageResponseBodyItems {
+	s.IsPartitionTable = &v
+	return s
+}
+
+func (s *DescribeDBInstanceIndexUsageResponseBodyItems) SetParentTableName(v string) *DescribeDBInstanceIndexUsageResponseBodyItems {
+	s.ParentTableName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceIndexUsageResponseBodyItems) SetSchemaName(v string) *DescribeDBInstanceIndexUsageResponseBodyItems {
+	s.SchemaName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceIndexUsageResponseBodyItems) SetTableName(v string) *DescribeDBInstanceIndexUsageResponseBodyItems {
+	s.TableName = &v
+	return s
+}
+
+func (s *DescribeDBInstanceIndexUsageResponseBodyItems) SetTimeLastUpdated(v string) *DescribeDBInstanceIndexUsageResponseBodyItems {
+	s.TimeLastUpdated = &v
+	return s
+}
+
+type DescribeDBInstanceIndexUsageResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDBInstanceIndexUsageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDBInstanceIndexUsageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDBInstanceIndexUsageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDBInstanceIndexUsageResponse) SetHeaders(v map[string]*string) *DescribeDBInstanceIndexUsageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDBInstanceIndexUsageResponse) SetStatusCode(v int32) *DescribeDBInstanceIndexUsageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDBInstanceIndexUsageResponse) SetBody(v *DescribeDBInstanceIndexUsageResponseBody) *DescribeDBInstanceIndexUsageResponse {
 	s.Body = v
 	return s
 }
@@ -4268,6 +5254,702 @@ func (s *DescribeDataSharePerformanceResponse) SetBody(v *DescribeDataSharePerfo
 	return s
 }
 
+type DescribeDiagnosisDimensionsRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+}
+
+func (s DescribeDiagnosisDimensionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosisDimensionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosisDimensionsRequest) SetDBInstanceId(v string) *DescribeDiagnosisDimensionsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+type DescribeDiagnosisDimensionsResponseBody struct {
+	Databases []*string `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
+	RequestId *string   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserNames []*string `json:"UserNames,omitempty" xml:"UserNames,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDiagnosisDimensionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosisDimensionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosisDimensionsResponseBody) SetDatabases(v []*string) *DescribeDiagnosisDimensionsResponseBody {
+	s.Databases = v
+	return s
+}
+
+func (s *DescribeDiagnosisDimensionsResponseBody) SetRequestId(v string) *DescribeDiagnosisDimensionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDiagnosisDimensionsResponseBody) SetUserNames(v []*string) *DescribeDiagnosisDimensionsResponseBody {
+	s.UserNames = v
+	return s
+}
+
+type DescribeDiagnosisDimensionsResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDiagnosisDimensionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDiagnosisDimensionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosisDimensionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosisDimensionsResponse) SetHeaders(v map[string]*string) *DescribeDiagnosisDimensionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDiagnosisDimensionsResponse) SetStatusCode(v int32) *DescribeDiagnosisDimensionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDiagnosisDimensionsResponse) SetBody(v *DescribeDiagnosisDimensionsResponseBody) *DescribeDiagnosisDimensionsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDiagnosisMonitorPerformanceRequest struct {
+	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Database       *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	QueryCondition *string `json:"QueryCondition,omitempty" xml:"QueryCondition,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	User           *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s DescribeDiagnosisMonitorPerformanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosisMonitorPerformanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosisMonitorPerformanceRequest) SetDBInstanceId(v string) *DescribeDiagnosisMonitorPerformanceRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDiagnosisMonitorPerformanceRequest) SetDatabase(v string) *DescribeDiagnosisMonitorPerformanceRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeDiagnosisMonitorPerformanceRequest) SetEndTime(v string) *DescribeDiagnosisMonitorPerformanceRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDiagnosisMonitorPerformanceRequest) SetQueryCondition(v string) *DescribeDiagnosisMonitorPerformanceRequest {
+	s.QueryCondition = &v
+	return s
+}
+
+func (s *DescribeDiagnosisMonitorPerformanceRequest) SetStartTime(v string) *DescribeDiagnosisMonitorPerformanceRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDiagnosisMonitorPerformanceRequest) SetUser(v string) *DescribeDiagnosisMonitorPerformanceRequest {
+	s.User = &v
+	return s
+}
+
+type DescribeDiagnosisMonitorPerformanceResponseBody struct {
+	Performances          []*DescribeDiagnosisMonitorPerformanceResponseBodyPerformances `json:"Performances,omitempty" xml:"Performances,omitempty" type:"Repeated"`
+	PerformancesThreshold *int32                                                         `json:"PerformancesThreshold,omitempty" xml:"PerformancesThreshold,omitempty"`
+	PerformancesTruncated *bool                                                          `json:"PerformancesTruncated,omitempty" xml:"PerformancesTruncated,omitempty"`
+	RequestId             *string                                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDiagnosisMonitorPerformanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosisMonitorPerformanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosisMonitorPerformanceResponseBody) SetPerformances(v []*DescribeDiagnosisMonitorPerformanceResponseBodyPerformances) *DescribeDiagnosisMonitorPerformanceResponseBody {
+	s.Performances = v
+	return s
+}
+
+func (s *DescribeDiagnosisMonitorPerformanceResponseBody) SetPerformancesThreshold(v int32) *DescribeDiagnosisMonitorPerformanceResponseBody {
+	s.PerformancesThreshold = &v
+	return s
+}
+
+func (s *DescribeDiagnosisMonitorPerformanceResponseBody) SetPerformancesTruncated(v bool) *DescribeDiagnosisMonitorPerformanceResponseBody {
+	s.PerformancesTruncated = &v
+	return s
+}
+
+func (s *DescribeDiagnosisMonitorPerformanceResponseBody) SetRequestId(v string) *DescribeDiagnosisMonitorPerformanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDiagnosisMonitorPerformanceResponseBodyPerformances struct {
+	Cost      *int32  `json:"Cost,omitempty" xml:"Cost,omitempty"`
+	Database  *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	QueryID   *string `json:"QueryID,omitempty" xml:"QueryID,omitempty"`
+	StartTime *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	User      *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s DescribeDiagnosisMonitorPerformanceResponseBodyPerformances) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosisMonitorPerformanceResponseBodyPerformances) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosisMonitorPerformanceResponseBodyPerformances) SetCost(v int32) *DescribeDiagnosisMonitorPerformanceResponseBodyPerformances {
+	s.Cost = &v
+	return s
+}
+
+func (s *DescribeDiagnosisMonitorPerformanceResponseBodyPerformances) SetDatabase(v string) *DescribeDiagnosisMonitorPerformanceResponseBodyPerformances {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeDiagnosisMonitorPerformanceResponseBodyPerformances) SetQueryID(v string) *DescribeDiagnosisMonitorPerformanceResponseBodyPerformances {
+	s.QueryID = &v
+	return s
+}
+
+func (s *DescribeDiagnosisMonitorPerformanceResponseBodyPerformances) SetStartTime(v int64) *DescribeDiagnosisMonitorPerformanceResponseBodyPerformances {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDiagnosisMonitorPerformanceResponseBodyPerformances) SetStatus(v string) *DescribeDiagnosisMonitorPerformanceResponseBodyPerformances {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDiagnosisMonitorPerformanceResponseBodyPerformances) SetUser(v string) *DescribeDiagnosisMonitorPerformanceResponseBodyPerformances {
+	s.User = &v
+	return s
+}
+
+type DescribeDiagnosisMonitorPerformanceResponse struct {
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDiagnosisMonitorPerformanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDiagnosisMonitorPerformanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosisMonitorPerformanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosisMonitorPerformanceResponse) SetHeaders(v map[string]*string) *DescribeDiagnosisMonitorPerformanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDiagnosisMonitorPerformanceResponse) SetStatusCode(v int32) *DescribeDiagnosisMonitorPerformanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDiagnosisMonitorPerformanceResponse) SetBody(v *DescribeDiagnosisMonitorPerformanceResponseBody) *DescribeDiagnosisMonitorPerformanceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDiagnosisRecordsRequest struct {
+	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Database       *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Keyword        *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
+	Order          *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	QueryCondition *string `json:"QueryCondition,omitempty" xml:"QueryCondition,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	User           *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s DescribeDiagnosisRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosisRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosisRecordsRequest) SetDBInstanceId(v string) *DescribeDiagnosisRecordsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsRequest) SetDatabase(v string) *DescribeDiagnosisRecordsRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsRequest) SetEndTime(v string) *DescribeDiagnosisRecordsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsRequest) SetKeyword(v string) *DescribeDiagnosisRecordsRequest {
+	s.Keyword = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsRequest) SetOrder(v string) *DescribeDiagnosisRecordsRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsRequest) SetPageNumber(v int32) *DescribeDiagnosisRecordsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsRequest) SetPageSize(v int32) *DescribeDiagnosisRecordsRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsRequest) SetQueryCondition(v string) *DescribeDiagnosisRecordsRequest {
+	s.QueryCondition = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsRequest) SetStartTime(v string) *DescribeDiagnosisRecordsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsRequest) SetUser(v string) *DescribeDiagnosisRecordsRequest {
+	s.User = &v
+	return s
+}
+
+type DescribeDiagnosisRecordsResponseBody struct {
+	Items      []*DescribeDiagnosisRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	PageNumber *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeDiagnosisRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosisRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosisRecordsResponseBody) SetItems(v []*DescribeDiagnosisRecordsResponseBodyItems) *DescribeDiagnosisRecordsResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsResponseBody) SetPageNumber(v int32) *DescribeDiagnosisRecordsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsResponseBody) SetRequestId(v string) *DescribeDiagnosisRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsResponseBody) SetTotalCount(v int32) *DescribeDiagnosisRecordsResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeDiagnosisRecordsResponseBodyItems struct {
+	Database              *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	Duration              *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	QueryID               *string `json:"QueryID,omitempty" xml:"QueryID,omitempty"`
+	SQLStmt               *string `json:"SQLStmt,omitempty" xml:"SQLStmt,omitempty"`
+	SQLTruncated          *bool   `json:"SQLTruncated,omitempty" xml:"SQLTruncated,omitempty"`
+	SQLTruncatedThreshold *int32  `json:"SQLTruncatedThreshold,omitempty" xml:"SQLTruncatedThreshold,omitempty"`
+	SessionID             *string `json:"SessionID,omitempty" xml:"SessionID,omitempty"`
+	StartTime             *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status                *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	User                  *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s DescribeDiagnosisRecordsResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosisRecordsResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosisRecordsResponseBodyItems) SetDatabase(v string) *DescribeDiagnosisRecordsResponseBodyItems {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsResponseBodyItems) SetDuration(v int32) *DescribeDiagnosisRecordsResponseBodyItems {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsResponseBodyItems) SetQueryID(v string) *DescribeDiagnosisRecordsResponseBodyItems {
+	s.QueryID = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsResponseBodyItems) SetSQLStmt(v string) *DescribeDiagnosisRecordsResponseBodyItems {
+	s.SQLStmt = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsResponseBodyItems) SetSQLTruncated(v bool) *DescribeDiagnosisRecordsResponseBodyItems {
+	s.SQLTruncated = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsResponseBodyItems) SetSQLTruncatedThreshold(v int32) *DescribeDiagnosisRecordsResponseBodyItems {
+	s.SQLTruncatedThreshold = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsResponseBodyItems) SetSessionID(v string) *DescribeDiagnosisRecordsResponseBodyItems {
+	s.SessionID = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsResponseBodyItems) SetStartTime(v int64) *DescribeDiagnosisRecordsResponseBodyItems {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsResponseBodyItems) SetStatus(v string) *DescribeDiagnosisRecordsResponseBodyItems {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsResponseBodyItems) SetUser(v string) *DescribeDiagnosisRecordsResponseBodyItems {
+	s.User = &v
+	return s
+}
+
+type DescribeDiagnosisRecordsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDiagnosisRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDiagnosisRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosisRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosisRecordsResponse) SetHeaders(v map[string]*string) *DescribeDiagnosisRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsResponse) SetStatusCode(v int32) *DescribeDiagnosisRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDiagnosisRecordsResponse) SetBody(v *DescribeDiagnosisRecordsResponseBody) *DescribeDiagnosisRecordsResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDiagnosisSQLInfoRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Database     *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	QueryID      *string `json:"QueryID,omitempty" xml:"QueryID,omitempty"`
+}
+
+func (s DescribeDiagnosisSQLInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosisSQLInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosisSQLInfoRequest) SetDBInstanceId(v string) *DescribeDiagnosisSQLInfoRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DescribeDiagnosisSQLInfoRequest) SetDatabase(v string) *DescribeDiagnosisSQLInfoRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeDiagnosisSQLInfoRequest) SetQueryID(v string) *DescribeDiagnosisSQLInfoRequest {
+	s.QueryID = &v
+	return s
+}
+
+type DescribeDiagnosisSQLInfoResponseBody struct {
+	Database      *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	Duration      *int32  `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	MaxOutputRows *string `json:"MaxOutputRows,omitempty" xml:"MaxOutputRows,omitempty"`
+	QueryID       *string `json:"QueryID,omitempty" xml:"QueryID,omitempty"`
+	QueryPlan     *string `json:"QueryPlan,omitempty" xml:"QueryPlan,omitempty"`
+	RequestId     *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SQLStmt       *string `json:"SQLStmt,omitempty" xml:"SQLStmt,omitempty"`
+	SessionID     *string `json:"SessionID,omitempty" xml:"SessionID,omitempty"`
+	SortedMetrics *string `json:"SortedMetrics,omitempty" xml:"SortedMetrics,omitempty"`
+	StartTime     *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Status        *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TextPlan      *string `json:"TextPlan,omitempty" xml:"TextPlan,omitempty"`
+	User          *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s DescribeDiagnosisSQLInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosisSQLInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosisSQLInfoResponseBody) SetDatabase(v string) *DescribeDiagnosisSQLInfoResponseBody {
+	s.Database = &v
+	return s
+}
+
+func (s *DescribeDiagnosisSQLInfoResponseBody) SetDuration(v int32) *DescribeDiagnosisSQLInfoResponseBody {
+	s.Duration = &v
+	return s
+}
+
+func (s *DescribeDiagnosisSQLInfoResponseBody) SetMaxOutputRows(v string) *DescribeDiagnosisSQLInfoResponseBody {
+	s.MaxOutputRows = &v
+	return s
+}
+
+func (s *DescribeDiagnosisSQLInfoResponseBody) SetQueryID(v string) *DescribeDiagnosisSQLInfoResponseBody {
+	s.QueryID = &v
+	return s
+}
+
+func (s *DescribeDiagnosisSQLInfoResponseBody) SetQueryPlan(v string) *DescribeDiagnosisSQLInfoResponseBody {
+	s.QueryPlan = &v
+	return s
+}
+
+func (s *DescribeDiagnosisSQLInfoResponseBody) SetRequestId(v string) *DescribeDiagnosisSQLInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDiagnosisSQLInfoResponseBody) SetSQLStmt(v string) *DescribeDiagnosisSQLInfoResponseBody {
+	s.SQLStmt = &v
+	return s
+}
+
+func (s *DescribeDiagnosisSQLInfoResponseBody) SetSessionID(v string) *DescribeDiagnosisSQLInfoResponseBody {
+	s.SessionID = &v
+	return s
+}
+
+func (s *DescribeDiagnosisSQLInfoResponseBody) SetSortedMetrics(v string) *DescribeDiagnosisSQLInfoResponseBody {
+	s.SortedMetrics = &v
+	return s
+}
+
+func (s *DescribeDiagnosisSQLInfoResponseBody) SetStartTime(v int64) *DescribeDiagnosisSQLInfoResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeDiagnosisSQLInfoResponseBody) SetStatus(v string) *DescribeDiagnosisSQLInfoResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeDiagnosisSQLInfoResponseBody) SetTextPlan(v string) *DescribeDiagnosisSQLInfoResponseBody {
+	s.TextPlan = &v
+	return s
+}
+
+func (s *DescribeDiagnosisSQLInfoResponseBody) SetUser(v string) *DescribeDiagnosisSQLInfoResponseBody {
+	s.User = &v
+	return s
+}
+
+type DescribeDiagnosisSQLInfoResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDiagnosisSQLInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDiagnosisSQLInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDiagnosisSQLInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDiagnosisSQLInfoResponse) SetHeaders(v map[string]*string) *DescribeDiagnosisSQLInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDiagnosisSQLInfoResponse) SetStatusCode(v int32) *DescribeDiagnosisSQLInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDiagnosisSQLInfoResponse) SetBody(v *DescribeDiagnosisSQLInfoResponseBody) *DescribeDiagnosisSQLInfoResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDownloadRecordsRequest struct {
+	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+}
+
+func (s DescribeDownloadRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDownloadRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDownloadRecordsRequest) SetDBInstanceId(v string) *DescribeDownloadRecordsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+type DescribeDownloadRecordsResponseBody struct {
+	Records   []*DescribeDownloadRecordsResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDownloadRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDownloadRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDownloadRecordsResponseBody) SetRecords(v []*DescribeDownloadRecordsResponseBodyRecords) *DescribeDownloadRecordsResponseBody {
+	s.Records = v
+	return s
+}
+
+func (s *DescribeDownloadRecordsResponseBody) SetRequestId(v string) *DescribeDownloadRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDownloadRecordsResponseBodyRecords struct {
+	DownloadId   *int64  `json:"DownloadId,omitempty" xml:"DownloadId,omitempty"`
+	DownloadUrl  *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
+	ExceptionMsg *string `json:"ExceptionMsg,omitempty" xml:"ExceptionMsg,omitempty"`
+	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s DescribeDownloadRecordsResponseBodyRecords) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDownloadRecordsResponseBodyRecords) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDownloadRecordsResponseBodyRecords) SetDownloadId(v int64) *DescribeDownloadRecordsResponseBodyRecords {
+	s.DownloadId = &v
+	return s
+}
+
+func (s *DescribeDownloadRecordsResponseBodyRecords) SetDownloadUrl(v string) *DescribeDownloadRecordsResponseBodyRecords {
+	s.DownloadUrl = &v
+	return s
+}
+
+func (s *DescribeDownloadRecordsResponseBodyRecords) SetExceptionMsg(v string) *DescribeDownloadRecordsResponseBodyRecords {
+	s.ExceptionMsg = &v
+	return s
+}
+
+func (s *DescribeDownloadRecordsResponseBodyRecords) SetFileName(v string) *DescribeDownloadRecordsResponseBodyRecords {
+	s.FileName = &v
+	return s
+}
+
+func (s *DescribeDownloadRecordsResponseBodyRecords) SetStatus(v string) *DescribeDownloadRecordsResponseBodyRecords {
+	s.Status = &v
+	return s
+}
+
+type DescribeDownloadRecordsResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDownloadRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDownloadRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDownloadRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDownloadRecordsResponse) SetHeaders(v map[string]*string) *DescribeDownloadRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDownloadRecordsResponse) SetStatusCode(v int32) *DescribeDownloadRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDownloadRecordsResponse) SetBody(v *DescribeDownloadRecordsResponseBody) *DescribeDownloadRecordsResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeHealthStatusRequest struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	Key          *string `json:"Key,omitempty" xml:"Key,omitempty"`
@@ -4326,6 +6008,8 @@ type DescribeHealthStatusResponseBodyStatus struct {
 	AdbpgDiskStatus                 *DescribeHealthStatusResponseBodyStatusAdbpgDiskStatus                 `json:"adbpg_disk_status,omitempty" xml:"adbpg_disk_status,omitempty" type:"Struct"`
 	AdbpgDiskUsagePercent           *DescribeHealthStatusResponseBodyStatusAdbpgDiskUsagePercent           `json:"adbpg_disk_usage_percent,omitempty" xml:"adbpg_disk_usage_percent,omitempty" type:"Struct"`
 	AdbpgMasterDiskUsagePercentMax  *DescribeHealthStatusResponseBodyStatusAdbpgMasterDiskUsagePercentMax  `json:"adbpg_master_disk_usage_percent_max,omitempty" xml:"adbpg_master_disk_usage_percent_max,omitempty" type:"Struct"`
+	AdbpgMasterStatus               *DescribeHealthStatusResponseBodyStatusAdbpgMasterStatus               `json:"adbpg_master_status,omitempty" xml:"adbpg_master_status,omitempty" type:"Struct"`
+	AdbpgSegmentStatus              *DescribeHealthStatusResponseBodyStatusAdbpgSegmentStatus              `json:"adbpg_segment_status,omitempty" xml:"adbpg_segment_status,omitempty" type:"Struct"`
 	AdbpgStatus                     *DescribeHealthStatusResponseBodyStatusAdbpgStatus                     `json:"adbpg_status,omitempty" xml:"adbpg_status,omitempty" type:"Struct"`
 	NodeMasterConnectionStatus      *DescribeHealthStatusResponseBodyStatusNodeMasterConnectionStatus      `json:"node_master_connection_status,omitempty" xml:"node_master_connection_status,omitempty" type:"Struct"`
 	NodeMasterStatus                *DescribeHealthStatusResponseBodyStatusNodeMasterStatus                `json:"node_master_status,omitempty" xml:"node_master_status,omitempty" type:"Struct"`
@@ -4363,6 +6047,16 @@ func (s *DescribeHealthStatusResponseBodyStatus) SetAdbpgDiskUsagePercent(v *Des
 
 func (s *DescribeHealthStatusResponseBodyStatus) SetAdbpgMasterDiskUsagePercentMax(v *DescribeHealthStatusResponseBodyStatusAdbpgMasterDiskUsagePercentMax) *DescribeHealthStatusResponseBodyStatus {
 	s.AdbpgMasterDiskUsagePercentMax = v
+	return s
+}
+
+func (s *DescribeHealthStatusResponseBodyStatus) SetAdbpgMasterStatus(v *DescribeHealthStatusResponseBodyStatusAdbpgMasterStatus) *DescribeHealthStatusResponseBodyStatus {
+	s.AdbpgMasterStatus = v
+	return s
+}
+
+func (s *DescribeHealthStatusResponseBodyStatus) SetAdbpgSegmentStatus(v *DescribeHealthStatusResponseBodyStatusAdbpgSegmentStatus) *DescribeHealthStatusResponseBodyStatus {
+	s.AdbpgSegmentStatus = v
 	return s
 }
 
@@ -4502,6 +6196,52 @@ func (s *DescribeHealthStatusResponseBodyStatusAdbpgMasterDiskUsagePercentMax) S
 }
 
 func (s *DescribeHealthStatusResponseBodyStatusAdbpgMasterDiskUsagePercentMax) SetValue(v float32) *DescribeHealthStatusResponseBodyStatusAdbpgMasterDiskUsagePercentMax {
+	s.Value = &v
+	return s
+}
+
+type DescribeHealthStatusResponseBodyStatusAdbpgMasterStatus struct {
+	Status *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Value  *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeHealthStatusResponseBodyStatusAdbpgMasterStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHealthStatusResponseBodyStatusAdbpgMasterStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHealthStatusResponseBodyStatusAdbpgMasterStatus) SetStatus(v string) *DescribeHealthStatusResponseBodyStatusAdbpgMasterStatus {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeHealthStatusResponseBodyStatusAdbpgMasterStatus) SetValue(v float32) *DescribeHealthStatusResponseBodyStatusAdbpgMasterStatus {
+	s.Value = &v
+	return s
+}
+
+type DescribeHealthStatusResponseBodyStatusAdbpgSegmentStatus struct {
+	Status *string  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Value  *float32 `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeHealthStatusResponseBodyStatusAdbpgSegmentStatus) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeHealthStatusResponseBodyStatusAdbpgSegmentStatus) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeHealthStatusResponseBodyStatusAdbpgSegmentStatus) SetStatus(v string) *DescribeHealthStatusResponseBodyStatusAdbpgSegmentStatus {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeHealthStatusResponseBodyStatusAdbpgSegmentStatus) SetValue(v float32) *DescribeHealthStatusResponseBodyStatusAdbpgSegmentStatus {
 	s.Value = &v
 	return s
 }
@@ -7917,6 +9657,111 @@ func (s *DescribeUserEncryptionKeyListResponse) SetBody(v *DescribeUserEncryptio
 	return s
 }
 
+type DownloadDiagnosisRecordsRequest struct {
+	DBInstanceId   *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
+	Database       *string `json:"Database,omitempty" xml:"Database,omitempty"`
+	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	Lang           *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	QueryCondition *string `json:"QueryCondition,omitempty" xml:"QueryCondition,omitempty"`
+	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	User           *string `json:"User,omitempty" xml:"User,omitempty"`
+}
+
+func (s DownloadDiagnosisRecordsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadDiagnosisRecordsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadDiagnosisRecordsRequest) SetDBInstanceId(v string) *DownloadDiagnosisRecordsRequest {
+	s.DBInstanceId = &v
+	return s
+}
+
+func (s *DownloadDiagnosisRecordsRequest) SetDatabase(v string) *DownloadDiagnosisRecordsRequest {
+	s.Database = &v
+	return s
+}
+
+func (s *DownloadDiagnosisRecordsRequest) SetEndTime(v string) *DownloadDiagnosisRecordsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DownloadDiagnosisRecordsRequest) SetLang(v string) *DownloadDiagnosisRecordsRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DownloadDiagnosisRecordsRequest) SetQueryCondition(v string) *DownloadDiagnosisRecordsRequest {
+	s.QueryCondition = &v
+	return s
+}
+
+func (s *DownloadDiagnosisRecordsRequest) SetStartTime(v string) *DownloadDiagnosisRecordsRequest {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DownloadDiagnosisRecordsRequest) SetUser(v string) *DownloadDiagnosisRecordsRequest {
+	s.User = &v
+	return s
+}
+
+type DownloadDiagnosisRecordsResponseBody struct {
+	DownloadId *string `json:"DownloadId,omitempty" xml:"DownloadId,omitempty"`
+	RequestId  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DownloadDiagnosisRecordsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadDiagnosisRecordsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadDiagnosisRecordsResponseBody) SetDownloadId(v string) *DownloadDiagnosisRecordsResponseBody {
+	s.DownloadId = &v
+	return s
+}
+
+func (s *DownloadDiagnosisRecordsResponseBody) SetRequestId(v string) *DownloadDiagnosisRecordsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DownloadDiagnosisRecordsResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DownloadDiagnosisRecordsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DownloadDiagnosisRecordsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DownloadDiagnosisRecordsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DownloadDiagnosisRecordsResponse) SetHeaders(v map[string]*string) *DownloadDiagnosisRecordsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DownloadDiagnosisRecordsResponse) SetStatusCode(v int32) *DownloadDiagnosisRecordsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DownloadDiagnosisRecordsResponse) SetBody(v *DownloadDiagnosisRecordsResponseBody) *DownloadDiagnosisRecordsResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagResourcesRequest struct {
 	NextToken            *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount         *string                       `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
@@ -10968,6 +12813,254 @@ func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAtt
 	return _result, _err
 }
 
+func (client *Client) DescribeDBInstanceDataBloatWithOptions(request *DescribeDBInstanceDataBloatRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceDataBloatResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBInstanceDataBloat"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDBInstanceDataBloatResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDBInstanceDataBloat(request *DescribeDBInstanceDataBloatRequest) (_result *DescribeDBInstanceDataBloatResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBInstanceDataBloatResponse{}
+	_body, _err := client.DescribeDBInstanceDataBloatWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDBInstanceDataSkewWithOptions(request *DescribeDBInstanceDataSkewRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceDataSkewResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBInstanceDataSkew"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDBInstanceDataSkewResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDBInstanceDataSkew(request *DescribeDBInstanceDataSkewRequest) (_result *DescribeDBInstanceDataSkewResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBInstanceDataSkewResponse{}
+	_body, _err := client.DescribeDBInstanceDataSkewWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDBInstanceDiagnosisSummaryWithOptions(request *DescribeDBInstanceDiagnosisSummaryRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceDiagnosisSummaryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RolePreferd)) {
+		query["RolePreferd"] = request.RolePreferd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartStatus)) {
+		query["StartStatus"] = request.StartStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SyncMode)) {
+		query["SyncMode"] = request.SyncMode
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBInstanceDiagnosisSummary"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDBInstanceDiagnosisSummaryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDBInstanceDiagnosisSummary(request *DescribeDBInstanceDiagnosisSummaryRequest) (_result *DescribeDBInstanceDiagnosisSummaryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBInstanceDiagnosisSummaryResponse{}
+	_body, _err := client.DescribeDBInstanceDiagnosisSummaryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDBInstanceErrorLogWithOptions(request *DescribeDBInstanceErrorLogRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceErrorLogResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Host)) {
+		query["Host"] = request.Host
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keywords)) {
+		query["Keywords"] = request.Keywords
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LogLevel)) {
+		query["LogLevel"] = request.LogLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.User)) {
+		query["User"] = request.User
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBInstanceErrorLog"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDBInstanceErrorLogResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDBInstanceErrorLog(request *DescribeDBInstanceErrorLogRequest) (_result *DescribeDBInstanceErrorLogResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBInstanceErrorLogResponse{}
+	_body, _err := client.DescribeDBInstanceErrorLogWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeDBInstanceIPArrayListWithOptions(request *DescribeDBInstanceIPArrayListRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceIPArrayListResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11005,6 +13098,58 @@ func (client *Client) DescribeDBInstanceIPArrayList(request *DescribeDBInstanceI
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDBInstanceIPArrayListResponse{}
 	_body, _err := client.DescribeDBInstanceIPArrayListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDBInstanceIndexUsageWithOptions(request *DescribeDBInstanceIndexUsageRequest, runtime *util.RuntimeOptions) (_result *DescribeDBInstanceIndexUsageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDBInstanceIndexUsage"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDBInstanceIndexUsageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDBInstanceIndexUsage(request *DescribeDBInstanceIndexUsageRequest) (_result *DescribeDBInstanceIndexUsageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDBInstanceIndexUsageResponse{}
+	_body, _err := client.DescribeDBInstanceIndexUsageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11563,6 +13708,290 @@ func (client *Client) DescribeDataSharePerformance(request *DescribeDataSharePer
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeDataSharePerformanceResponse{}
 	_body, _err := client.DescribeDataSharePerformanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDiagnosisDimensionsWithOptions(request *DescribeDiagnosisDimensionsRequest, runtime *util.RuntimeOptions) (_result *DescribeDiagnosisDimensionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDiagnosisDimensions"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDiagnosisDimensionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDiagnosisDimensions(request *DescribeDiagnosisDimensionsRequest) (_result *DescribeDiagnosisDimensionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDiagnosisDimensionsResponse{}
+	_body, _err := client.DescribeDiagnosisDimensionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDiagnosisMonitorPerformanceWithOptions(request *DescribeDiagnosisMonitorPerformanceRequest, runtime *util.RuntimeOptions) (_result *DescribeDiagnosisMonitorPerformanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryCondition)) {
+		query["QueryCondition"] = request.QueryCondition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.User)) {
+		query["User"] = request.User
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDiagnosisMonitorPerformance"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDiagnosisMonitorPerformanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDiagnosisMonitorPerformance(request *DescribeDiagnosisMonitorPerformanceRequest) (_result *DescribeDiagnosisMonitorPerformanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDiagnosisMonitorPerformanceResponse{}
+	_body, _err := client.DescribeDiagnosisMonitorPerformanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDiagnosisRecordsWithOptions(request *DescribeDiagnosisRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeDiagnosisRecordsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Keyword)) {
+		query["Keyword"] = request.Keyword
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryCondition)) {
+		query["QueryCondition"] = request.QueryCondition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.User)) {
+		query["User"] = request.User
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDiagnosisRecords"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDiagnosisRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDiagnosisRecords(request *DescribeDiagnosisRecordsRequest) (_result *DescribeDiagnosisRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDiagnosisRecordsResponse{}
+	_body, _err := client.DescribeDiagnosisRecordsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDiagnosisSQLInfoWithOptions(request *DescribeDiagnosisSQLInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeDiagnosisSQLInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryID)) {
+		query["QueryID"] = request.QueryID
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDiagnosisSQLInfo"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDiagnosisSQLInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDiagnosisSQLInfo(request *DescribeDiagnosisSQLInfoRequest) (_result *DescribeDiagnosisSQLInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDiagnosisSQLInfoResponse{}
+	_body, _err := client.DescribeDiagnosisSQLInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeDownloadRecordsWithOptions(request *DescribeDownloadRecordsRequest, runtime *util.RuntimeOptions) (_result *DescribeDownloadRecordsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDownloadRecords"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDownloadRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDownloadRecords(request *DescribeDownloadRecordsRequest) (_result *DescribeDownloadRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDownloadRecordsResponse{}
+	_body, _err := client.DescribeDownloadRecordsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12823,6 +15252,74 @@ func (client *Client) DescribeUserEncryptionKeyList(request *DescribeUserEncrypt
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeUserEncryptionKeyListResponse{}
 	_body, _err := client.DescribeUserEncryptionKeyListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DownloadDiagnosisRecordsWithOptions(request *DownloadDiagnosisRecordsRequest, runtime *util.RuntimeOptions) (_result *DownloadDiagnosisRecordsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DBInstanceId)) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Database)) {
+		query["Database"] = request.Database
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QueryCondition)) {
+		query["QueryCondition"] = request.QueryCondition
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.User)) {
+		query["User"] = request.User
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DownloadDiagnosisRecords"),
+		Version:     tea.String("2016-05-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DownloadDiagnosisRecordsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DownloadDiagnosisRecords(request *DownloadDiagnosisRecordsRequest) (_result *DownloadDiagnosisRecordsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DownloadDiagnosisRecordsResponse{}
+	_body, _err := client.DownloadDiagnosisRecordsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
