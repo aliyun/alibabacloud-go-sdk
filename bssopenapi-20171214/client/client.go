@@ -15907,6 +15907,7 @@ type QuerySavingsPlansDeductLogResponseBodyDataItems struct {
 	DiscountRate     *string `json:"DiscountRate,omitempty" xml:"DiscountRate,omitempty"`
 	EndTime          *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	InstanceId       *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerId          *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	SavingsType      *string `json:"SavingsType,omitempty" xml:"SavingsType,omitempty"`
 	StartTime        *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	UserId           *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
@@ -15957,6 +15958,11 @@ func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetEndTime(v string) *
 
 func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetInstanceId(v string) *QuerySavingsPlansDeductLogResponseBodyDataItems {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *QuerySavingsPlansDeductLogResponseBodyDataItems) SetOwnerId(v int64) *QuerySavingsPlansDeductLogResponseBodyDataItems {
+	s.OwnerId = &v
 	return s
 }
 
@@ -20010,10 +20016,13 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	}
 	client.EndpointRule = tea.String("regional")
 	client.EndpointMap = map[string]*string{
+		"cn-hangzhou":                 tea.String("business.aliyuncs.com"),
+		"cn-shanghai":                 tea.String("business.aliyuncs.com"),
+		"ap-southeast-1":              tea.String("business.ap-southeast-1.aliyuncs.com"),
 		"ap-northeast-1":              tea.String("business.ap-southeast-1.aliyuncs.com"),
+		"ap-northeast-2":              tea.String("business.ap-southeast-1.aliyuncs.com"),
 		"ap-northeast-2-pop":          tea.String("business.ap-southeast-1.aliyuncs.com"),
 		"ap-south-1":                  tea.String("business.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-1":              tea.String("business.ap-southeast-1.aliyuncs.com"),
 		"ap-southeast-2":              tea.String("business.ap-southeast-1.aliyuncs.com"),
 		"ap-southeast-3":              tea.String("business.ap-southeast-1.aliyuncs.com"),
 		"ap-southeast-5":              tea.String("business.ap-southeast-1.aliyuncs.com"),
@@ -20026,7 +20035,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"cn-edge-1":                   tea.String("business.aliyuncs.com"),
 		"cn-fujian":                   tea.String("business.aliyuncs.com"),
 		"cn-haidian-cm12-c01":         tea.String("business.aliyuncs.com"),
-		"cn-hangzhou":                 tea.String("business.aliyuncs.com"),
 		"cn-hangzhou-bj-b01":          tea.String("business.aliyuncs.com"),
 		"cn-hangzhou-finance":         tea.String("business.aliyuncs.com"),
 		"cn-hangzhou-internal-prod-1": tea.String("business.aliyuncs.com"),
@@ -20037,10 +20045,10 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"cn-hongkong":                 tea.String("business.aliyuncs.com"),
 		"cn-hongkong-finance-pop":     tea.String("business.aliyuncs.com"),
 		"cn-huhehaote":                tea.String("business.aliyuncs.com"),
+		"cn-huhehaote-nebula-1":       tea.String("business.aliyuncs.com"),
 		"cn-north-2-gov-1":            tea.String("business.aliyuncs.com"),
 		"cn-qingdao":                  tea.String("business.aliyuncs.com"),
 		"cn-qingdao-nebula":           tea.String("business.aliyuncs.com"),
-		"cn-shanghai":                 tea.String("business.aliyuncs.com"),
 		"cn-shanghai-et15-b01":        tea.String("business.aliyuncs.com"),
 		"cn-shanghai-et2-b01":         tea.String("business.aliyuncs.com"),
 		"cn-shanghai-finance-1":       tea.String("business.aliyuncs.com"),
@@ -20052,7 +20060,9 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 		"cn-shenzhen-st4-d01":         tea.String("business.aliyuncs.com"),
 		"cn-shenzhen-su18-b01":        tea.String("business.aliyuncs.com"),
 		"cn-wuhan":                    tea.String("business.aliyuncs.com"),
+		"cn-wulanchabu":               tea.String("business.aliyuncs.com"),
 		"cn-yushanfang":               tea.String("business.aliyuncs.com"),
+		"cn-zhangbei":                 tea.String("business.aliyuncs.com"),
 		"cn-zhangbei-na61-b01":        tea.String("business.aliyuncs.com"),
 		"cn-zhangjiakou":              tea.String("business.aliyuncs.com"),
 		"cn-zhangjiakou-na62-a01":     tea.String("business.aliyuncs.com"),
