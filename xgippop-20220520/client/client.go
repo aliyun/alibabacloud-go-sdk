@@ -1833,6 +1833,202 @@ func (s *OrderFreeFlowProductResponse) SetBody(v *OrderFreeFlowProductResponseBo
 	return s
 }
 
+type OrderQosProductRequest struct {
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// 渠道ID
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// C端v6 IP（移动场景下可以携带）
+	IPv6 *string `json:"IPv6,omitempty" xml:"IPv6,omitempty"`
+	// 实例ID
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// IP类型
+	IpType *string `json:"IpType,omitempty" xml:"IpType,omitempty"`
+	// C端手机号
+	MobileNumber *string `json:"MobileNumber,omitempty" xml:"MobileNumber,omitempty"`
+	// 取值包括cm（中国移动）/ct（中国电信）/cu（中国联通）
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// C端用户私网IP（联通场景下必须携带)
+	PrivateIpv4 *string `json:"PrivateIpv4,omitempty" xml:"PrivateIpv4,omitempty"`
+	// 产品ID
+	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
+	Provice   *string `json:"Provice,omitempty" xml:"Provice,omitempty"`
+	// C端用户公网IP（联通场景下必须携带）
+	PublicIpv4 *string `json:"PublicIpv4,omitempty" xml:"PublicIpv4,omitempty"`
+	// 客户侧生成的QoS请求ID，需要保证请求幂等性，确保不同请求间该参数值唯一
+	QosRequestId *string `json:"QosRequestId,omitempty" xml:"QosRequestId,omitempty"`
+	// 移动场景目前ip
+	TargetIpList []*string `json:"TargetIpList,omitempty" xml:"TargetIpList,omitempty" type:"Repeated"`
+	// token获取
+	Token *string `json:"Token,omitempty" xml:"Token,omitempty"`
+	// 请求次数
+	UnitNum *int32 `json:"UnitNum,omitempty" xml:"UnitNum,omitempty"`
+}
+
+func (s OrderQosProductRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OrderQosProductRequest) GoString() string {
+	return s.String()
+}
+
+func (s *OrderQosProductRequest) SetAliUid(v int64) *OrderQosProductRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *OrderQosProductRequest) SetChannelId(v string) *OrderQosProductRequest {
+	s.ChannelId = &v
+	return s
+}
+
+func (s *OrderQosProductRequest) SetIPv6(v string) *OrderQosProductRequest {
+	s.IPv6 = &v
+	return s
+}
+
+func (s *OrderQosProductRequest) SetInstanceId(v string) *OrderQosProductRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *OrderQosProductRequest) SetIpType(v string) *OrderQosProductRequest {
+	s.IpType = &v
+	return s
+}
+
+func (s *OrderQosProductRequest) SetMobileNumber(v string) *OrderQosProductRequest {
+	s.MobileNumber = &v
+	return s
+}
+
+func (s *OrderQosProductRequest) SetOperator(v string) *OrderQosProductRequest {
+	s.Operator = &v
+	return s
+}
+
+func (s *OrderQosProductRequest) SetPrivateIpv4(v string) *OrderQosProductRequest {
+	s.PrivateIpv4 = &v
+	return s
+}
+
+func (s *OrderQosProductRequest) SetProductId(v string) *OrderQosProductRequest {
+	s.ProductId = &v
+	return s
+}
+
+func (s *OrderQosProductRequest) SetProvice(v string) *OrderQosProductRequest {
+	s.Provice = &v
+	return s
+}
+
+func (s *OrderQosProductRequest) SetPublicIpv4(v string) *OrderQosProductRequest {
+	s.PublicIpv4 = &v
+	return s
+}
+
+func (s *OrderQosProductRequest) SetQosRequestId(v string) *OrderQosProductRequest {
+	s.QosRequestId = &v
+	return s
+}
+
+func (s *OrderQosProductRequest) SetTargetIpList(v []*string) *OrderQosProductRequest {
+	s.TargetIpList = v
+	return s
+}
+
+func (s *OrderQosProductRequest) SetToken(v string) *OrderQosProductRequest {
+	s.Token = &v
+	return s
+}
+
+func (s *OrderQosProductRequest) SetUnitNum(v int32) *OrderQosProductRequest {
+	s.UnitNum = &v
+	return s
+}
+
+type OrderQosProductResponseBody struct {
+	// 结果码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 结果
+	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 结果描述
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求链路ID，如POP请求进来的requestId，返回时原样返回
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 服务端处理耗时，ms
+	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	// 是否成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s OrderQosProductResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OrderQosProductResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *OrderQosProductResponseBody) SetCode(v string) *OrderQosProductResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *OrderQosProductResponseBody) SetData(v string) *OrderQosProductResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *OrderQosProductResponseBody) SetMessage(v string) *OrderQosProductResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *OrderQosProductResponseBody) SetRequestId(v string) *OrderQosProductResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *OrderQosProductResponseBody) SetRt(v int64) *OrderQosProductResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *OrderQosProductResponseBody) SetSuccess(v bool) *OrderQosProductResponseBody {
+	s.Success = &v
+	return s
+}
+
+type OrderQosProductResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *OrderQosProductResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s OrderQosProductResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s OrderQosProductResponse) GoString() string {
+	return s.String()
+}
+
+func (s *OrderQosProductResponse) SetHeaders(v map[string]*string) *OrderQosProductResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *OrderQosProductResponse) SetStatusCode(v int32) *OrderQosProductResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *OrderQosProductResponse) SetBody(v *OrderQosProductResponseBody) *OrderQosProductResponse {
+	s.Body = v
+	return s
+}
+
 type SaveApplicationInfoRequest struct {
 	// 阿里UID
 	AliUid *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
@@ -2159,6 +2355,112 @@ func (s *SdkValidateStatusResponse) SetStatusCode(v int32) *SdkValidateStatusRes
 }
 
 func (s *SdkValidateStatusResponse) SetBody(v *SdkValidateStatusResponseBody) *SdkValidateStatusResponse {
+	s.Body = v
+	return s
+}
+
+type ValidControllerAuthorRequest struct {
+	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	// 商品code
+	ItemCode *string `json:"ItemCode,omitempty" xml:"ItemCode,omitempty"`
+}
+
+func (s ValidControllerAuthorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidControllerAuthorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ValidControllerAuthorRequest) SetAliUid(v int64) *ValidControllerAuthorRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *ValidControllerAuthorRequest) SetItemCode(v string) *ValidControllerAuthorRequest {
+	s.ItemCode = &v
+	return s
+}
+
+type ValidControllerAuthorResponseBody struct {
+	// 结果码
+	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// 结果
+	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// 结果描述
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// 请求链路ID，如POP请求进来的requestId，返回时原样返回
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 服务端处理耗时，ms
+	Rt *int64 `json:"Rt,omitempty" xml:"Rt,omitempty"`
+	// 是否成功
+	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ValidControllerAuthorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidControllerAuthorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ValidControllerAuthorResponseBody) SetCode(v string) *ValidControllerAuthorResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ValidControllerAuthorResponseBody) SetData(v bool) *ValidControllerAuthorResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ValidControllerAuthorResponseBody) SetMessage(v string) *ValidControllerAuthorResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ValidControllerAuthorResponseBody) SetRequestId(v string) *ValidControllerAuthorResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ValidControllerAuthorResponseBody) SetRt(v int64) *ValidControllerAuthorResponseBody {
+	s.Rt = &v
+	return s
+}
+
+func (s *ValidControllerAuthorResponseBody) SetSuccess(v bool) *ValidControllerAuthorResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ValidControllerAuthorResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ValidControllerAuthorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ValidControllerAuthorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidControllerAuthorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ValidControllerAuthorResponse) SetHeaders(v map[string]*string) *ValidControllerAuthorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ValidControllerAuthorResponse) SetStatusCode(v int32) *ValidControllerAuthorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ValidControllerAuthorResponse) SetBody(v *ValidControllerAuthorResponseBody) *ValidControllerAuthorResponse {
 	s.Body = v
 	return s
 }
@@ -2952,6 +3254,108 @@ func (client *Client) OrderFreeFlowProduct(request *OrderFreeFlowProductRequest)
 	return _result, _err
 }
 
+func (client *Client) OrderQosProductWithOptions(request *OrderQosProductRequest, runtime *util.RuntimeOptions) (_result *OrderQosProductResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Provice)) {
+		query["Provice"] = request.Provice
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
+		body["AliUid"] = request.AliUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ChannelId)) {
+		body["ChannelId"] = request.ChannelId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IPv6)) {
+		body["IPv6"] = request.IPv6
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		body["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IpType)) {
+		body["IpType"] = request.IpType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MobileNumber)) {
+		body["MobileNumber"] = request.MobileNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Operator)) {
+		body["Operator"] = request.Operator
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateIpv4)) {
+		body["PrivateIpv4"] = request.PrivateIpv4
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductId)) {
+		body["ProductId"] = request.ProductId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublicIpv4)) {
+		body["PublicIpv4"] = request.PublicIpv4
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.QosRequestId)) {
+		body["QosRequestId"] = request.QosRequestId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetIpList)) {
+		body["TargetIpList"] = request.TargetIpList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Token)) {
+		body["Token"] = request.Token
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UnitNum)) {
+		body["UnitNum"] = request.UnitNum
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("OrderQosProduct"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &OrderQosProductResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) OrderQosProduct(request *OrderQosProductRequest) (_result *OrderQosProductResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &OrderQosProductResponse{}
+	_body, _err := client.OrderQosProductWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SaveApplicationInfoWithOptions(request *SaveApplicationInfoRequest, runtime *util.RuntimeOptions) (_result *SaveApplicationInfoResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -3049,6 +3453,46 @@ func (client *Client) SdkValidateStatus(request *SdkValidateStatusRequest) (_res
 	runtime := &util.RuntimeOptions{}
 	_result = &SdkValidateStatusResponse{}
 	_body, _err := client.SdkValidateStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ValidControllerAuthorWithOptions(request *ValidControllerAuthorRequest, runtime *util.RuntimeOptions) (_result *ValidControllerAuthorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ValidControllerAuthor"),
+		Version:     tea.String("2022-05-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ValidControllerAuthorResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ValidControllerAuthor(request *ValidControllerAuthorRequest) (_result *ValidControllerAuthorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ValidControllerAuthorResponse{}
+	_body, _err := client.ValidControllerAuthorWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
