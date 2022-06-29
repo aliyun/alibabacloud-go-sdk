@@ -1965,6 +1965,87 @@ func (s *DeleteFlowProjectUserResponse) SetBody(v *DeleteFlowProjectUserResponse
 	return s
 }
 
+type DeleteLibrariesRequest struct {
+	LibraryBizIdList []*string `json:"LibraryBizIdList,omitempty" xml:"LibraryBizIdList,omitempty" type:"Repeated"`
+	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId  *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DeleteLibrariesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLibrariesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLibrariesRequest) SetLibraryBizIdList(v []*string) *DeleteLibrariesRequest {
+	s.LibraryBizIdList = v
+	return s
+}
+
+func (s *DeleteLibrariesRequest) SetRegionId(v string) *DeleteLibrariesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DeleteLibrariesRequest) SetResourceOwnerId(v int64) *DeleteLibrariesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DeleteLibrariesResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteLibrariesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLibrariesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLibrariesResponseBody) SetData(v bool) *DeleteLibrariesResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *DeleteLibrariesResponseBody) SetRequestId(v string) *DeleteLibrariesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteLibrariesResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteLibrariesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteLibrariesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLibrariesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLibrariesResponse) SetHeaders(v map[string]*string) *DeleteLibrariesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLibrariesResponse) SetStatusCode(v int32) *DeleteLibrariesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteLibrariesResponse) SetBody(v *DeleteLibrariesResponseBody) *DeleteLibrariesResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeClusterV2Request struct {
 	Id              *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -4400,6 +4481,93 @@ func (s *DescribeLibraryInstallTaskDetailResponse) SetBody(v *DescribeLibraryIns
 	return s
 }
 
+type InstallLibrariesRequest struct {
+	ClusterBizIdList []*string `json:"ClusterBizIdList,omitempty" xml:"ClusterBizIdList,omitempty" type:"Repeated"`
+	LibraryBizId     *string   `json:"LibraryBizId,omitempty" xml:"LibraryBizId,omitempty"`
+	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId  *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s InstallLibrariesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallLibrariesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *InstallLibrariesRequest) SetClusterBizIdList(v []*string) *InstallLibrariesRequest {
+	s.ClusterBizIdList = v
+	return s
+}
+
+func (s *InstallLibrariesRequest) SetLibraryBizId(v string) *InstallLibrariesRequest {
+	s.LibraryBizId = &v
+	return s
+}
+
+func (s *InstallLibrariesRequest) SetRegionId(v string) *InstallLibrariesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *InstallLibrariesRequest) SetResourceOwnerId(v int64) *InstallLibrariesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type InstallLibrariesResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s InstallLibrariesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallLibrariesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *InstallLibrariesResponseBody) SetData(v string) *InstallLibrariesResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *InstallLibrariesResponseBody) SetRequestId(v string) *InstallLibrariesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type InstallLibrariesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *InstallLibrariesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s InstallLibrariesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s InstallLibrariesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *InstallLibrariesResponse) SetHeaders(v map[string]*string) *InstallLibrariesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *InstallLibrariesResponse) SetStatusCode(v int32) *InstallLibrariesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *InstallLibrariesResponse) SetBody(v *InstallLibrariesResponseBody) *InstallLibrariesResponse {
+	s.Body = v
+	return s
+}
+
 type KillFlowJobRequest struct {
 	// 作业实例ID。您可以调用DescribeFlowJob查看作业实例ID。
 	JobInstanceId *string `json:"JobInstanceId,omitempty" xml:"JobInstanceId,omitempty"`
@@ -6320,6 +6488,241 @@ func (s *ListFlowProjectsResponse) SetBody(v *ListFlowProjectsResponseBody) *Lis
 	return s
 }
 
+type ListLibrariesRequest struct {
+	ClusterBizId    *string `json:"ClusterBizId,omitempty" xml:"ClusterBizId,omitempty"`
+	CurrentSize     *int32  `json:"CurrentSize,omitempty" xml:"CurrentSize,omitempty"`
+	Limit           *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	OrderField      *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
+	OrderMode       *string `json:"OrderMode,omitempty" xml:"OrderMode,omitempty"`
+	PageCount       *int32  `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ListLibrariesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLibrariesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLibrariesRequest) SetClusterBizId(v string) *ListLibrariesRequest {
+	s.ClusterBizId = &v
+	return s
+}
+
+func (s *ListLibrariesRequest) SetCurrentSize(v int32) *ListLibrariesRequest {
+	s.CurrentSize = &v
+	return s
+}
+
+func (s *ListLibrariesRequest) SetLimit(v int32) *ListLibrariesRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListLibrariesRequest) SetOrderField(v string) *ListLibrariesRequest {
+	s.OrderField = &v
+	return s
+}
+
+func (s *ListLibrariesRequest) SetOrderMode(v string) *ListLibrariesRequest {
+	s.OrderMode = &v
+	return s
+}
+
+func (s *ListLibrariesRequest) SetPageCount(v int32) *ListLibrariesRequest {
+	s.PageCount = &v
+	return s
+}
+
+func (s *ListLibrariesRequest) SetPageNumber(v int32) *ListLibrariesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLibrariesRequest) SetPageSize(v int32) *ListLibrariesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLibrariesRequest) SetRegionId(v string) *ListLibrariesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListLibrariesRequest) SetResourceOwnerId(v int64) *ListLibrariesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ListLibrariesResponseBody struct {
+	Items      *ListLibrariesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	NextToken  *string                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNumber *int32                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListLibrariesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLibrariesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLibrariesResponseBody) SetItems(v *ListLibrariesResponseBodyItems) *ListLibrariesResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListLibrariesResponseBody) SetNextToken(v string) *ListLibrariesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListLibrariesResponseBody) SetPageNumber(v int32) *ListLibrariesResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLibrariesResponseBody) SetPageSize(v int32) *ListLibrariesResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLibrariesResponseBody) SetRequestId(v string) *ListLibrariesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListLibrariesResponseBody) SetTotalCount(v int32) *ListLibrariesResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListLibrariesResponseBodyItems struct {
+	Item []*ListLibrariesResponseBodyItemsItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Repeated"`
+}
+
+func (s ListLibrariesResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLibrariesResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListLibrariesResponseBodyItems) SetItem(v []*ListLibrariesResponseBodyItemsItem) *ListLibrariesResponseBodyItems {
+	s.Item = v
+	return s
+}
+
+type ListLibrariesResponseBodyItemsItem struct {
+	BizId          *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	CreateTime     *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	LibraryVersion *string `json:"LibraryVersion,omitempty" xml:"LibraryVersion,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Properties     *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	Scope          *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	SourceLocation *string `json:"SourceLocation,omitempty" xml:"SourceLocation,omitempty"`
+	SourceType     *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s ListLibrariesResponseBodyItemsItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLibrariesResponseBodyItemsItem) GoString() string {
+	return s.String()
+}
+
+func (s *ListLibrariesResponseBodyItemsItem) SetBizId(v string) *ListLibrariesResponseBodyItemsItem {
+	s.BizId = &v
+	return s
+}
+
+func (s *ListLibrariesResponseBodyItemsItem) SetCreateTime(v int64) *ListLibrariesResponseBodyItemsItem {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListLibrariesResponseBodyItemsItem) SetLibraryVersion(v string) *ListLibrariesResponseBodyItemsItem {
+	s.LibraryVersion = &v
+	return s
+}
+
+func (s *ListLibrariesResponseBodyItemsItem) SetName(v string) *ListLibrariesResponseBodyItemsItem {
+	s.Name = &v
+	return s
+}
+
+func (s *ListLibrariesResponseBodyItemsItem) SetProperties(v string) *ListLibrariesResponseBodyItemsItem {
+	s.Properties = &v
+	return s
+}
+
+func (s *ListLibrariesResponseBodyItemsItem) SetScope(v string) *ListLibrariesResponseBodyItemsItem {
+	s.Scope = &v
+	return s
+}
+
+func (s *ListLibrariesResponseBodyItemsItem) SetSourceLocation(v string) *ListLibrariesResponseBodyItemsItem {
+	s.SourceLocation = &v
+	return s
+}
+
+func (s *ListLibrariesResponseBodyItemsItem) SetSourceType(v string) *ListLibrariesResponseBodyItemsItem {
+	s.SourceType = &v
+	return s
+}
+
+func (s *ListLibrariesResponseBodyItemsItem) SetType(v string) *ListLibrariesResponseBodyItemsItem {
+	s.Type = &v
+	return s
+}
+
+func (s *ListLibrariesResponseBodyItemsItem) SetUserId(v string) *ListLibrariesResponseBodyItemsItem {
+	s.UserId = &v
+	return s
+}
+
+type ListLibrariesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListLibrariesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListLibrariesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLibrariesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLibrariesResponse) SetHeaders(v map[string]*string) *ListLibrariesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLibrariesResponse) SetStatusCode(v int32) *ListLibrariesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLibrariesResponse) SetBody(v *ListLibrariesResponseBody) *ListLibrariesResponse {
+	s.Body = v
+	return s
+}
+
 type ListLibraryInstallTasksRequest struct {
 	ClusterBizId    *string `json:"ClusterBizId,omitempty" xml:"ClusterBizId,omitempty"`
 	CurrentSize     *int32  `json:"CurrentSize,omitempty" xml:"CurrentSize,omitempty"`
@@ -8099,6 +8502,93 @@ func (s *TagResourcesResponse) SetBody(v *TagResourcesResponseBody) *TagResource
 	return s
 }
 
+type UninstallLibrariesRequest struct {
+	ClusterBizIdList []*string `json:"ClusterBizIdList,omitempty" xml:"ClusterBizIdList,omitempty" type:"Repeated"`
+	LibraryBizId     *string   `json:"LibraryBizId,omitempty" xml:"LibraryBizId,omitempty"`
+	RegionId         *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId  *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s UninstallLibrariesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UninstallLibrariesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UninstallLibrariesRequest) SetClusterBizIdList(v []*string) *UninstallLibrariesRequest {
+	s.ClusterBizIdList = v
+	return s
+}
+
+func (s *UninstallLibrariesRequest) SetLibraryBizId(v string) *UninstallLibrariesRequest {
+	s.LibraryBizId = &v
+	return s
+}
+
+func (s *UninstallLibrariesRequest) SetRegionId(v string) *UninstallLibrariesRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UninstallLibrariesRequest) SetResourceOwnerId(v int64) *UninstallLibrariesRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type UninstallLibrariesResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UninstallLibrariesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UninstallLibrariesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UninstallLibrariesResponseBody) SetData(v string) *UninstallLibrariesResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UninstallLibrariesResponseBody) SetRequestId(v string) *UninstallLibrariesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UninstallLibrariesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UninstallLibrariesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UninstallLibrariesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UninstallLibrariesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UninstallLibrariesResponse) SetHeaders(v map[string]*string) *UninstallLibrariesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UninstallLibrariesResponse) SetStatusCode(v int32) *UninstallLibrariesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UninstallLibrariesResponse) SetBody(v *UninstallLibrariesResponseBody) *UninstallLibrariesResponse {
+	s.Body = v
+	return s
+}
+
 type UntagResourcesRequest struct {
 	// 是否解绑资源的所有标签
 	All             *bool   `json:"All,omitempty" xml:"All,omitempty"`
@@ -9365,6 +9855,58 @@ func (client *Client) DeleteFlowProjectUser(request *DeleteFlowProjectUserReques
 	return _result, _err
 }
 
+func (client *Client) DeleteLibrariesWithOptions(request *DeleteLibrariesRequest, runtime *util.RuntimeOptions) (_result *DeleteLibrariesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LibraryBizIdList)) {
+		query["LibraryBizIdList"] = request.LibraryBizIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLibraries"),
+		Version:     tea.String("2020-06-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteLibrariesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteLibraries(request *DeleteLibrariesRequest) (_result *DeleteLibrariesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteLibrariesResponse{}
+	_body, _err := client.DeleteLibrariesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeClusterV2WithOptions(request *DescribeClusterV2Request, runtime *util.RuntimeOptions) (_result *DescribeClusterV2Response, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9782,6 +10324,62 @@ func (client *Client) DescribeLibraryInstallTaskDetail(request *DescribeLibraryI
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeLibraryInstallTaskDetailResponse{}
 	_body, _err := client.DescribeLibraryInstallTaskDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) InstallLibrariesWithOptions(request *InstallLibrariesRequest, runtime *util.RuntimeOptions) (_result *InstallLibrariesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterBizIdList)) {
+		query["ClusterBizIdList"] = request.ClusterBizIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibraryBizId)) {
+		query["LibraryBizId"] = request.LibraryBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("InstallLibraries"),
+		Version:     tea.String("2020-06-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &InstallLibrariesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) InstallLibraries(request *InstallLibrariesRequest) (_result *InstallLibrariesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &InstallLibrariesResponse{}
+	_body, _err := client.InstallLibrariesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -10290,6 +10888,86 @@ func (client *Client) ListFlowProjects(request *ListFlowProjectsRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListFlowProjectsResponse{}
 	_body, _err := client.ListFlowProjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListLibrariesWithOptions(request *ListLibrariesRequest, runtime *util.RuntimeOptions) (_result *ListLibrariesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterBizId)) {
+		query["ClusterBizId"] = request.ClusterBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentSize)) {
+		query["CurrentSize"] = request.CurrentSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderField)) {
+		query["OrderField"] = request.OrderField
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderMode)) {
+		query["OrderMode"] = request.OrderMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageCount)) {
+		query["PageCount"] = request.PageCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLibraries"),
+		Version:     tea.String("2020-06-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListLibrariesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListLibraries(request *ListLibrariesRequest) (_result *ListLibrariesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLibrariesResponse{}
+	_body, _err := client.ListLibrariesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11138,6 +11816,62 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 	runtime := &util.RuntimeOptions{}
 	_result = &TagResourcesResponse{}
 	_body, _err := client.TagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UninstallLibrariesWithOptions(request *UninstallLibrariesRequest, runtime *util.RuntimeOptions) (_result *UninstallLibrariesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterBizIdList)) {
+		query["ClusterBizIdList"] = request.ClusterBizIdList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibraryBizId)) {
+		query["LibraryBizId"] = request.LibraryBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UninstallLibraries"),
+		Version:     tea.String("2020-06-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UninstallLibrariesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UninstallLibraries(request *UninstallLibrariesRequest) (_result *UninstallLibrariesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UninstallLibrariesResponse{}
+	_body, _err := client.UninstallLibrariesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
