@@ -22877,11 +22877,12 @@ func (s *SetAppsAuthoritiesResponse) SetBody(v *SetAppsAuthoritiesResponseBody) 
 }
 
 type SetDomainRequest struct {
-	BindStageName    *string `json:"BindStageName,omitempty" xml:"BindStageName,omitempty"`
-	CustomDomainType *string `json:"CustomDomainType,omitempty" xml:"CustomDomainType,omitempty"`
-	DomainName       *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	GroupId          *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	IsForce          *bool   `json:"IsForce,omitempty" xml:"IsForce,omitempty"`
+	BindStageName         *string `json:"BindStageName,omitempty" xml:"BindStageName,omitempty"`
+	CustomDomainType      *string `json:"CustomDomainType,omitempty" xml:"CustomDomainType,omitempty"`
+	DomainName            *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
+	GroupId               *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	IsForce               *bool   `json:"IsForce,omitempty" xml:"IsForce,omitempty"`
+	IsHttpRedirectToHttps *bool   `json:"IsHttpRedirectToHttps,omitempty" xml:"IsHttpRedirectToHttps,omitempty"`
 }
 
 func (s SetDomainRequest) String() string {
@@ -22914,6 +22915,11 @@ func (s *SetDomainRequest) SetGroupId(v string) *SetDomainRequest {
 
 func (s *SetDomainRequest) SetIsForce(v bool) *SetDomainRequest {
 	s.IsForce = &v
+	return s
+}
+
+func (s *SetDomainRequest) SetIsHttpRedirectToHttps(v bool) *SetDomainRequest {
+	s.IsHttpRedirectToHttps = &v
 	return s
 }
 
@@ -32462,6 +32468,10 @@ func (client *Client) SetDomainWithOptions(request *SetDomainRequest, runtime *u
 
 	if !tea.BoolValue(util.IsUnset(request.IsForce)) {
 		query["IsForce"] = request.IsForce
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsHttpRedirectToHttps)) {
+		query["IsHttpRedirectToHttps"] = request.IsHttpRedirectToHttps
 	}
 
 	req := &openapi.OpenApiRequest{
