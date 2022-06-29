@@ -2691,9 +2691,12 @@ func (s *QuerySmsSignListRequest) SetResourceOwnerId(v int64) *QuerySmsSignListR
 
 type QuerySmsSignListResponseBody struct {
 	Code        *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	CurrentPage *int32                                     `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Message     *string                                    `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageSize    *int32                                     `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId   *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SmsSignList []*QuerySmsSignListResponseBodySmsSignList `json:"SmsSignList,omitempty" xml:"SmsSignList,omitempty" type:"Repeated"`
+	TotalCount  *int64                                     `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QuerySmsSignListResponseBody) String() string {
@@ -2709,8 +2712,18 @@ func (s *QuerySmsSignListResponseBody) SetCode(v string) *QuerySmsSignListRespon
 	return s
 }
 
+func (s *QuerySmsSignListResponseBody) SetCurrentPage(v int32) *QuerySmsSignListResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
 func (s *QuerySmsSignListResponseBody) SetMessage(v string) *QuerySmsSignListResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *QuerySmsSignListResponseBody) SetPageSize(v int32) *QuerySmsSignListResponseBody {
+	s.PageSize = &v
 	return s
 }
 
@@ -2721,6 +2734,11 @@ func (s *QuerySmsSignListResponseBody) SetRequestId(v string) *QuerySmsSignListR
 
 func (s *QuerySmsSignListResponseBody) SetSmsSignList(v []*QuerySmsSignListResponseBodySmsSignList) *QuerySmsSignListResponseBody {
 	s.SmsSignList = v
+	return s
+}
+
+func (s *QuerySmsSignListResponseBody) SetTotalCount(v int64) *QuerySmsSignListResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -3007,9 +3025,12 @@ func (s *QuerySmsTemplateListRequest) SetResourceOwnerId(v int64) *QuerySmsTempl
 
 type QuerySmsTemplateListResponseBody struct {
 	Code            *string                                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	CurrentPage     *int32                                             `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Message         *string                                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	PageSize        *int32                                             `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	RequestId       *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	SmsTemplateList []*QuerySmsTemplateListResponseBodySmsTemplateList `json:"SmsTemplateList,omitempty" xml:"SmsTemplateList,omitempty" type:"Repeated"`
+	TotalCount      *int64                                             `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s QuerySmsTemplateListResponseBody) String() string {
@@ -3025,8 +3046,18 @@ func (s *QuerySmsTemplateListResponseBody) SetCode(v string) *QuerySmsTemplateLi
 	return s
 }
 
+func (s *QuerySmsTemplateListResponseBody) SetCurrentPage(v int32) *QuerySmsTemplateListResponseBody {
+	s.CurrentPage = &v
+	return s
+}
+
 func (s *QuerySmsTemplateListResponseBody) SetMessage(v string) *QuerySmsTemplateListResponseBody {
 	s.Message = &v
+	return s
+}
+
+func (s *QuerySmsTemplateListResponseBody) SetPageSize(v int32) *QuerySmsTemplateListResponseBody {
+	s.PageSize = &v
 	return s
 }
 
@@ -3037,6 +3068,11 @@ func (s *QuerySmsTemplateListResponseBody) SetRequestId(v string) *QuerySmsTempl
 
 func (s *QuerySmsTemplateListResponseBody) SetSmsTemplateList(v []*QuerySmsTemplateListResponseBodySmsTemplateList) *QuerySmsTemplateListResponseBody {
 	s.SmsTemplateList = v
+	return s
+}
+
+func (s *QuerySmsTemplateListResponseBody) SetTotalCount(v int64) *QuerySmsTemplateListResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
