@@ -1512,6 +1512,129 @@ func (s *CreateFlowProjectUserResponse) SetBody(v *CreateFlowProjectUserResponse
 	return s
 }
 
+type CreateLibraryRequest struct {
+	ClientToken     *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	LibraryVersion  *string `json:"LibraryVersion,omitempty" xml:"LibraryVersion,omitempty"`
+	Name            *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Properties      *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Scope           *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	SourceLocation  *string `json:"SourceLocation,omitempty" xml:"SourceLocation,omitempty"`
+	SourceType      *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Type            *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateLibraryRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLibraryRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLibraryRequest) SetClientToken(v string) *CreateLibraryRequest {
+	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateLibraryRequest) SetLibraryVersion(v string) *CreateLibraryRequest {
+	s.LibraryVersion = &v
+	return s
+}
+
+func (s *CreateLibraryRequest) SetName(v string) *CreateLibraryRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateLibraryRequest) SetProperties(v string) *CreateLibraryRequest {
+	s.Properties = &v
+	return s
+}
+
+func (s *CreateLibraryRequest) SetRegionId(v string) *CreateLibraryRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CreateLibraryRequest) SetResourceOwnerId(v int64) *CreateLibraryRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *CreateLibraryRequest) SetScope(v string) *CreateLibraryRequest {
+	s.Scope = &v
+	return s
+}
+
+func (s *CreateLibraryRequest) SetSourceLocation(v string) *CreateLibraryRequest {
+	s.SourceLocation = &v
+	return s
+}
+
+func (s *CreateLibraryRequest) SetSourceType(v string) *CreateLibraryRequest {
+	s.SourceType = &v
+	return s
+}
+
+func (s *CreateLibraryRequest) SetType(v string) *CreateLibraryRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateLibraryResponseBody struct {
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateLibraryResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLibraryResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLibraryResponseBody) SetData(v string) *CreateLibraryResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *CreateLibraryResponseBody) SetRequestId(v string) *CreateLibraryResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateLibraryResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateLibraryResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateLibraryResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLibraryResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLibraryResponse) SetHeaders(v map[string]*string) *CreateLibraryResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLibraryResponse) SetStatusCode(v int32) *CreateLibraryResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateLibraryResponse) SetBody(v *CreateLibraryResponseBody) *CreateLibraryResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteFlowRequest struct {
 	Id        *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
@@ -3995,6 +4118,288 @@ func (s *DescribeFlowProjectResponse) SetBody(v *DescribeFlowProjectResponseBody
 	return s
 }
 
+type DescribeLibraryDetailRequest struct {
+	LibraryBizId    *string `json:"LibraryBizId,omitempty" xml:"LibraryBizId,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s DescribeLibraryDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLibraryDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLibraryDetailRequest) SetLibraryBizId(v string) *DescribeLibraryDetailRequest {
+	s.LibraryBizId = &v
+	return s
+}
+
+func (s *DescribeLibraryDetailRequest) SetRegionId(v string) *DescribeLibraryDetailRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeLibraryDetailRequest) SetResourceOwnerId(v int64) *DescribeLibraryDetailRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type DescribeLibraryDetailResponseBody struct {
+	BizId          *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
+	CreateTime     *int64  `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	LibraryVersion *string `json:"LibraryVersion,omitempty" xml:"LibraryVersion,omitempty"`
+	Name           *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Properties     *string `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Scope          *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
+	SourceLocation *string `json:"SourceLocation,omitempty" xml:"SourceLocation,omitempty"`
+	SourceType     *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+}
+
+func (s DescribeLibraryDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLibraryDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLibraryDetailResponseBody) SetBizId(v string) *DescribeLibraryDetailResponseBody {
+	s.BizId = &v
+	return s
+}
+
+func (s *DescribeLibraryDetailResponseBody) SetCreateTime(v int64) *DescribeLibraryDetailResponseBody {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *DescribeLibraryDetailResponseBody) SetLibraryVersion(v string) *DescribeLibraryDetailResponseBody {
+	s.LibraryVersion = &v
+	return s
+}
+
+func (s *DescribeLibraryDetailResponseBody) SetName(v string) *DescribeLibraryDetailResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *DescribeLibraryDetailResponseBody) SetProperties(v string) *DescribeLibraryDetailResponseBody {
+	s.Properties = &v
+	return s
+}
+
+func (s *DescribeLibraryDetailResponseBody) SetRequestId(v string) *DescribeLibraryDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLibraryDetailResponseBody) SetScope(v string) *DescribeLibraryDetailResponseBody {
+	s.Scope = &v
+	return s
+}
+
+func (s *DescribeLibraryDetailResponseBody) SetSourceLocation(v string) *DescribeLibraryDetailResponseBody {
+	s.SourceLocation = &v
+	return s
+}
+
+func (s *DescribeLibraryDetailResponseBody) SetSourceType(v string) *DescribeLibraryDetailResponseBody {
+	s.SourceType = &v
+	return s
+}
+
+func (s *DescribeLibraryDetailResponseBody) SetType(v string) *DescribeLibraryDetailResponseBody {
+	s.Type = &v
+	return s
+}
+
+func (s *DescribeLibraryDetailResponseBody) SetUserId(v string) *DescribeLibraryDetailResponseBody {
+	s.UserId = &v
+	return s
+}
+
+type DescribeLibraryDetailResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeLibraryDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeLibraryDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLibraryDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLibraryDetailResponse) SetHeaders(v map[string]*string) *DescribeLibraryDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLibraryDetailResponse) SetStatusCode(v int32) *DescribeLibraryDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeLibraryDetailResponse) SetBody(v *DescribeLibraryDetailResponseBody) *DescribeLibraryDetailResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeLibraryInstallTaskDetailRequest struct {
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	TaskBizId       *string `json:"TaskBizId,omitempty" xml:"TaskBizId,omitempty"`
+}
+
+func (s DescribeLibraryInstallTaskDetailRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLibraryInstallTaskDetailRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLibraryInstallTaskDetailRequest) SetRegionId(v string) *DescribeLibraryInstallTaskDetailRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeLibraryInstallTaskDetailRequest) SetResourceOwnerId(v int64) *DescribeLibraryInstallTaskDetailRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *DescribeLibraryInstallTaskDetailRequest) SetTaskBizId(v string) *DescribeLibraryInstallTaskDetailRequest {
+	s.TaskBizId = &v
+	return s
+}
+
+type DescribeLibraryInstallTaskDetailResponseBody struct {
+	ClusterBizId *string `json:"ClusterBizId,omitempty" xml:"ClusterBizId,omitempty"`
+	Detail       *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExecuteTime  *int64  `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	Hostname     *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	LibraryBizId *string `json:"LibraryBizId,omitempty" xml:"LibraryBizId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TaskGroupId  *string `json:"TaskGroupId,omitempty" xml:"TaskGroupId,omitempty"`
+	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskProcess  *int32  `json:"TaskProcess,omitempty" xml:"TaskProcess,omitempty"`
+	TaskStatus   *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TaskType     *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s DescribeLibraryInstallTaskDetailResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLibraryInstallTaskDetailResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLibraryInstallTaskDetailResponseBody) SetClusterBizId(v string) *DescribeLibraryInstallTaskDetailResponseBody {
+	s.ClusterBizId = &v
+	return s
+}
+
+func (s *DescribeLibraryInstallTaskDetailResponseBody) SetDetail(v string) *DescribeLibraryInstallTaskDetailResponseBody {
+	s.Detail = &v
+	return s
+}
+
+func (s *DescribeLibraryInstallTaskDetailResponseBody) SetEndTime(v int64) *DescribeLibraryInstallTaskDetailResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeLibraryInstallTaskDetailResponseBody) SetExecuteTime(v int64) *DescribeLibraryInstallTaskDetailResponseBody {
+	s.ExecuteTime = &v
+	return s
+}
+
+func (s *DescribeLibraryInstallTaskDetailResponseBody) SetHostname(v string) *DescribeLibraryInstallTaskDetailResponseBody {
+	s.Hostname = &v
+	return s
+}
+
+func (s *DescribeLibraryInstallTaskDetailResponseBody) SetLibraryBizId(v string) *DescribeLibraryInstallTaskDetailResponseBody {
+	s.LibraryBizId = &v
+	return s
+}
+
+func (s *DescribeLibraryInstallTaskDetailResponseBody) SetRequestId(v string) *DescribeLibraryInstallTaskDetailResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeLibraryInstallTaskDetailResponseBody) SetStartTime(v int64) *DescribeLibraryInstallTaskDetailResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeLibraryInstallTaskDetailResponseBody) SetTaskGroupId(v string) *DescribeLibraryInstallTaskDetailResponseBody {
+	s.TaskGroupId = &v
+	return s
+}
+
+func (s *DescribeLibraryInstallTaskDetailResponseBody) SetTaskId(v string) *DescribeLibraryInstallTaskDetailResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeLibraryInstallTaskDetailResponseBody) SetTaskProcess(v int32) *DescribeLibraryInstallTaskDetailResponseBody {
+	s.TaskProcess = &v
+	return s
+}
+
+func (s *DescribeLibraryInstallTaskDetailResponseBody) SetTaskStatus(v string) *DescribeLibraryInstallTaskDetailResponseBody {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *DescribeLibraryInstallTaskDetailResponseBody) SetTaskType(v string) *DescribeLibraryInstallTaskDetailResponseBody {
+	s.TaskType = &v
+	return s
+}
+
+type DescribeLibraryInstallTaskDetailResponse struct {
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeLibraryInstallTaskDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeLibraryInstallTaskDetailResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeLibraryInstallTaskDetailResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeLibraryInstallTaskDetailResponse) SetHeaders(v map[string]*string) *DescribeLibraryInstallTaskDetailResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeLibraryInstallTaskDetailResponse) SetStatusCode(v int32) *DescribeLibraryInstallTaskDetailResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeLibraryInstallTaskDetailResponse) SetBody(v *DescribeLibraryInstallTaskDetailResponseBody) *DescribeLibraryInstallTaskDetailResponse {
+	s.Body = v
+	return s
+}
+
 type KillFlowJobRequest struct {
 	// 作业实例ID。您可以调用DescribeFlowJob查看作业实例ID。
 	JobInstanceId *string `json:"JobInstanceId,omitempty" xml:"JobInstanceId,omitempty"`
@@ -5915,6 +6320,470 @@ func (s *ListFlowProjectsResponse) SetBody(v *ListFlowProjectsResponseBody) *Lis
 	return s
 }
 
+type ListLibraryInstallTasksRequest struct {
+	ClusterBizId    *string `json:"ClusterBizId,omitempty" xml:"ClusterBizId,omitempty"`
+	CurrentSize     *int32  `json:"CurrentSize,omitempty" xml:"CurrentSize,omitempty"`
+	LibraryBizId    *string `json:"LibraryBizId,omitempty" xml:"LibraryBizId,omitempty"`
+	Limit           *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	OrderField      *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
+	OrderMode       *string `json:"OrderMode,omitempty" xml:"OrderMode,omitempty"`
+	PageCount       *int32  `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ListLibraryInstallTasksRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLibraryInstallTasksRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLibraryInstallTasksRequest) SetClusterBizId(v string) *ListLibraryInstallTasksRequest {
+	s.ClusterBizId = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksRequest) SetCurrentSize(v int32) *ListLibraryInstallTasksRequest {
+	s.CurrentSize = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksRequest) SetLibraryBizId(v string) *ListLibraryInstallTasksRequest {
+	s.LibraryBizId = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksRequest) SetLimit(v int32) *ListLibraryInstallTasksRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksRequest) SetOrderField(v string) *ListLibraryInstallTasksRequest {
+	s.OrderField = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksRequest) SetOrderMode(v string) *ListLibraryInstallTasksRequest {
+	s.OrderMode = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksRequest) SetPageCount(v int32) *ListLibraryInstallTasksRequest {
+	s.PageCount = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksRequest) SetPageNumber(v int32) *ListLibraryInstallTasksRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksRequest) SetPageSize(v int32) *ListLibraryInstallTasksRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksRequest) SetRegionId(v string) *ListLibraryInstallTasksRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksRequest) SetResourceOwnerId(v int64) *ListLibraryInstallTasksRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ListLibraryInstallTasksResponseBody struct {
+	Items      *ListLibraryInstallTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	NextToken  *string                                   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNumber *int32                                    `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                                    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListLibraryInstallTasksResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLibraryInstallTasksResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLibraryInstallTasksResponseBody) SetItems(v *ListLibraryInstallTasksResponseBodyItems) *ListLibraryInstallTasksResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListLibraryInstallTasksResponseBody) SetNextToken(v string) *ListLibraryInstallTasksResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksResponseBody) SetPageNumber(v int32) *ListLibraryInstallTasksResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksResponseBody) SetPageSize(v int32) *ListLibraryInstallTasksResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksResponseBody) SetRequestId(v string) *ListLibraryInstallTasksResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksResponseBody) SetTotalCount(v int32) *ListLibraryInstallTasksResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListLibraryInstallTasksResponseBodyItems struct {
+	Item []*ListLibraryInstallTasksResponseBodyItemsItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Repeated"`
+}
+
+func (s ListLibraryInstallTasksResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLibraryInstallTasksResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListLibraryInstallTasksResponseBodyItems) SetItem(v []*ListLibraryInstallTasksResponseBodyItemsItem) *ListLibraryInstallTasksResponseBodyItems {
+	s.Item = v
+	return s
+}
+
+type ListLibraryInstallTasksResponseBodyItemsItem struct {
+	ClusterBizId *string `json:"ClusterBizId,omitempty" xml:"ClusterBizId,omitempty"`
+	Detail       *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
+	EndTime      *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ExecuteTime  *int64  `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
+	Hostname     *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	LibraryBizId *string `json:"LibraryBizId,omitempty" xml:"LibraryBizId,omitempty"`
+	StartTime    *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	TaskGroupId  *string `json:"TaskGroupId,omitempty" xml:"TaskGroupId,omitempty"`
+	TaskId       *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskProcess  *int32  `json:"TaskProcess,omitempty" xml:"TaskProcess,omitempty"`
+	TaskStatus   *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
+	TaskType     *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
+}
+
+func (s ListLibraryInstallTasksResponseBodyItemsItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLibraryInstallTasksResponseBodyItemsItem) GoString() string {
+	return s.String()
+}
+
+func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetClusterBizId(v string) *ListLibraryInstallTasksResponseBodyItemsItem {
+	s.ClusterBizId = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetDetail(v string) *ListLibraryInstallTasksResponseBodyItemsItem {
+	s.Detail = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetEndTime(v int64) *ListLibraryInstallTasksResponseBodyItemsItem {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetExecuteTime(v int64) *ListLibraryInstallTasksResponseBodyItemsItem {
+	s.ExecuteTime = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetHostname(v string) *ListLibraryInstallTasksResponseBodyItemsItem {
+	s.Hostname = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetLibraryBizId(v string) *ListLibraryInstallTasksResponseBodyItemsItem {
+	s.LibraryBizId = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetStartTime(v int64) *ListLibraryInstallTasksResponseBodyItemsItem {
+	s.StartTime = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetTaskGroupId(v string) *ListLibraryInstallTasksResponseBodyItemsItem {
+	s.TaskGroupId = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetTaskId(v string) *ListLibraryInstallTasksResponseBodyItemsItem {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetTaskProcess(v int32) *ListLibraryInstallTasksResponseBodyItemsItem {
+	s.TaskProcess = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetTaskStatus(v string) *ListLibraryInstallTasksResponseBodyItemsItem {
+	s.TaskStatus = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksResponseBodyItemsItem) SetTaskType(v string) *ListLibraryInstallTasksResponseBodyItemsItem {
+	s.TaskType = &v
+	return s
+}
+
+type ListLibraryInstallTasksResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListLibraryInstallTasksResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListLibraryInstallTasksResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLibraryInstallTasksResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLibraryInstallTasksResponse) SetHeaders(v map[string]*string) *ListLibraryInstallTasksResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLibraryInstallTasksResponse) SetStatusCode(v int32) *ListLibraryInstallTasksResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLibraryInstallTasksResponse) SetBody(v *ListLibraryInstallTasksResponseBody) *ListLibraryInstallTasksResponse {
+	s.Body = v
+	return s
+}
+
+type ListLibraryStatusRequest struct {
+	ClusterBizId    *string `json:"ClusterBizId,omitempty" xml:"ClusterBizId,omitempty"`
+	CurrentSize     *int32  `json:"CurrentSize,omitempty" xml:"CurrentSize,omitempty"`
+	LibraryBizId    *string `json:"LibraryBizId,omitempty" xml:"LibraryBizId,omitempty"`
+	Limit           *int32  `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	OrderField      *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
+	OrderMode       *string `json:"OrderMode,omitempty" xml:"OrderMode,omitempty"`
+	PageCount       *int32  `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+}
+
+func (s ListLibraryStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLibraryStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListLibraryStatusRequest) SetClusterBizId(v string) *ListLibraryStatusRequest {
+	s.ClusterBizId = &v
+	return s
+}
+
+func (s *ListLibraryStatusRequest) SetCurrentSize(v int32) *ListLibraryStatusRequest {
+	s.CurrentSize = &v
+	return s
+}
+
+func (s *ListLibraryStatusRequest) SetLibraryBizId(v string) *ListLibraryStatusRequest {
+	s.LibraryBizId = &v
+	return s
+}
+
+func (s *ListLibraryStatusRequest) SetLimit(v int32) *ListLibraryStatusRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListLibraryStatusRequest) SetOrderField(v string) *ListLibraryStatusRequest {
+	s.OrderField = &v
+	return s
+}
+
+func (s *ListLibraryStatusRequest) SetOrderMode(v string) *ListLibraryStatusRequest {
+	s.OrderMode = &v
+	return s
+}
+
+func (s *ListLibraryStatusRequest) SetPageCount(v int32) *ListLibraryStatusRequest {
+	s.PageCount = &v
+	return s
+}
+
+func (s *ListLibraryStatusRequest) SetPageNumber(v int32) *ListLibraryStatusRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLibraryStatusRequest) SetPageSize(v int32) *ListLibraryStatusRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLibraryStatusRequest) SetRegionId(v string) *ListLibraryStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ListLibraryStatusRequest) SetResourceOwnerId(v int64) *ListLibraryStatusRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+type ListLibraryStatusResponseBody struct {
+	Items      *ListLibraryStatusResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
+	NextToken  *string                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	PageNumber *int32                              `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize   *int32                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId  *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount *int32                              `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListLibraryStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLibraryStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListLibraryStatusResponseBody) SetItems(v *ListLibraryStatusResponseBodyItems) *ListLibraryStatusResponseBody {
+	s.Items = v
+	return s
+}
+
+func (s *ListLibraryStatusResponseBody) SetNextToken(v string) *ListLibraryStatusResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListLibraryStatusResponseBody) SetPageNumber(v int32) *ListLibraryStatusResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListLibraryStatusResponseBody) SetPageSize(v int32) *ListLibraryStatusResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListLibraryStatusResponseBody) SetRequestId(v string) *ListLibraryStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListLibraryStatusResponseBody) SetTotalCount(v int32) *ListLibraryStatusResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type ListLibraryStatusResponseBodyItems struct {
+	Item []*ListLibraryStatusResponseBodyItemsItem `json:"Item,omitempty" xml:"Item,omitempty" type:"Repeated"`
+}
+
+func (s ListLibraryStatusResponseBodyItems) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLibraryStatusResponseBodyItems) GoString() string {
+	return s.String()
+}
+
+func (s *ListLibraryStatusResponseBodyItems) SetItem(v []*ListLibraryStatusResponseBodyItemsItem) *ListLibraryStatusResponseBodyItems {
+	s.Item = v
+	return s
+}
+
+type ListLibraryStatusResponseBodyItemsItem struct {
+	ClusterBizId *string `json:"ClusterBizId,omitempty" xml:"ClusterBizId,omitempty"`
+	ClusterName  *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
+	LibraryBizId *string `json:"LibraryBizId,omitempty" xml:"LibraryBizId,omitempty"`
+	LibraryName  *string `json:"LibraryName,omitempty" xml:"LibraryName,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s ListLibraryStatusResponseBodyItemsItem) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLibraryStatusResponseBodyItemsItem) GoString() string {
+	return s.String()
+}
+
+func (s *ListLibraryStatusResponseBodyItemsItem) SetClusterBizId(v string) *ListLibraryStatusResponseBodyItemsItem {
+	s.ClusterBizId = &v
+	return s
+}
+
+func (s *ListLibraryStatusResponseBodyItemsItem) SetClusterName(v string) *ListLibraryStatusResponseBodyItemsItem {
+	s.ClusterName = &v
+	return s
+}
+
+func (s *ListLibraryStatusResponseBodyItemsItem) SetLibraryBizId(v string) *ListLibraryStatusResponseBodyItemsItem {
+	s.LibraryBizId = &v
+	return s
+}
+
+func (s *ListLibraryStatusResponseBodyItemsItem) SetLibraryName(v string) *ListLibraryStatusResponseBodyItemsItem {
+	s.LibraryName = &v
+	return s
+}
+
+func (s *ListLibraryStatusResponseBodyItemsItem) SetStatus(v string) *ListLibraryStatusResponseBodyItemsItem {
+	s.Status = &v
+	return s
+}
+
+type ListLibraryStatusResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListLibraryStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListLibraryStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLibraryStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListLibraryStatusResponse) SetHeaders(v map[string]*string) *ListLibraryStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListLibraryStatusResponse) SetStatusCode(v int32) *ListLibraryStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListLibraryStatusResponse) SetBody(v *ListLibraryStatusResponseBody) *ListLibraryStatusResponse {
+	s.Body = v
+	return s
+}
+
 type ListTagResourcesRequest struct {
 	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -7362,6 +8231,93 @@ func (s *UntagResourcesResponse) SetBody(v *UntagResourcesResponseBody) *UntagRe
 	return s
 }
 
+type UpdateLibraryInstallTaskStatusRequest struct {
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskBizId       *string `json:"TaskBizId,omitempty" xml:"TaskBizId,omitempty"`
+}
+
+func (s UpdateLibraryInstallTaskStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLibraryInstallTaskStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLibraryInstallTaskStatusRequest) SetRegionId(v string) *UpdateLibraryInstallTaskStatusRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *UpdateLibraryInstallTaskStatusRequest) SetResourceOwnerId(v int64) *UpdateLibraryInstallTaskStatusRequest {
+	s.ResourceOwnerId = &v
+	return s
+}
+
+func (s *UpdateLibraryInstallTaskStatusRequest) SetStatus(v string) *UpdateLibraryInstallTaskStatusRequest {
+	s.Status = &v
+	return s
+}
+
+func (s *UpdateLibraryInstallTaskStatusRequest) SetTaskBizId(v string) *UpdateLibraryInstallTaskStatusRequest {
+	s.TaskBizId = &v
+	return s
+}
+
+type UpdateLibraryInstallTaskStatusResponseBody struct {
+	Data      *bool   `json:"Data,omitempty" xml:"Data,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateLibraryInstallTaskStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLibraryInstallTaskStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLibraryInstallTaskStatusResponseBody) SetData(v bool) *UpdateLibraryInstallTaskStatusResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *UpdateLibraryInstallTaskStatusResponseBody) SetRequestId(v string) *UpdateLibraryInstallTaskStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateLibraryInstallTaskStatusResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateLibraryInstallTaskStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateLibraryInstallTaskStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLibraryInstallTaskStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLibraryInstallTaskStatusResponse) SetHeaders(v map[string]*string) *UpdateLibraryInstallTaskStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateLibraryInstallTaskStatusResponse) SetStatusCode(v int32) *UpdateLibraryInstallTaskStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateLibraryInstallTaskStatusResponse) SetBody(v *UpdateLibraryInstallTaskStatusResponseBody) *UpdateLibraryInstallTaskStatusResponse {
+	s.Body = v
+	return s
+}
+
 type Client struct {
 	openapi.Client
 }
@@ -8125,6 +9081,86 @@ func (client *Client) CreateFlowProjectUser(request *CreateFlowProjectUserReques
 	return _result, _err
 }
 
+func (client *Client) CreateLibraryWithOptions(request *CreateLibraryRequest, runtime *util.RuntimeOptions) (_result *CreateLibraryResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibraryVersion)) {
+		query["LibraryVersion"] = request.LibraryVersion
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Properties)) {
+		query["Properties"] = request.Properties
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Scope)) {
+		query["Scope"] = request.Scope
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceLocation)) {
+		query["SourceLocation"] = request.SourceLocation
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceType)) {
+		query["SourceType"] = request.SourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLibrary"),
+		Version:     tea.String("2020-06-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateLibraryResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateLibrary(request *CreateLibraryRequest) (_result *CreateLibraryResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateLibraryResponse{}
+	_body, _err := client.CreateLibraryWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteFlowWithOptions(request *DeleteFlowRequest, runtime *util.RuntimeOptions) (_result *DeleteFlowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -8649,6 +9685,110 @@ func (client *Client) DescribeFlowProject(request *DescribeFlowProjectRequest) (
 	return _result, _err
 }
 
+func (client *Client) DescribeLibraryDetailWithOptions(request *DescribeLibraryDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeLibraryDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LibraryBizId)) {
+		query["LibraryBizId"] = request.LibraryBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLibraryDetail"),
+		Version:     tea.String("2020-06-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeLibraryDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLibraryDetail(request *DescribeLibraryDetailRequest) (_result *DescribeLibraryDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLibraryDetailResponse{}
+	_body, _err := client.DescribeLibraryDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeLibraryInstallTaskDetailWithOptions(request *DescribeLibraryInstallTaskDetailRequest, runtime *util.RuntimeOptions) (_result *DescribeLibraryInstallTaskDetailResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskBizId)) {
+		query["TaskBizId"] = request.TaskBizId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeLibraryInstallTaskDetail"),
+		Version:     tea.String("2020-06-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeLibraryInstallTaskDetailResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeLibraryInstallTaskDetail(request *DescribeLibraryInstallTaskDetailRequest) (_result *DescribeLibraryInstallTaskDetailResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeLibraryInstallTaskDetailResponse{}
+	_body, _err := client.DescribeLibraryInstallTaskDetailWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) KillFlowJobWithOptions(request *KillFlowJobRequest, runtime *util.RuntimeOptions) (_result *KillFlowJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -9150,6 +10290,174 @@ func (client *Client) ListFlowProjects(request *ListFlowProjectsRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &ListFlowProjectsResponse{}
 	_body, _err := client.ListFlowProjectsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListLibraryInstallTasksWithOptions(request *ListLibraryInstallTasksRequest, runtime *util.RuntimeOptions) (_result *ListLibraryInstallTasksResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterBizId)) {
+		query["ClusterBizId"] = request.ClusterBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentSize)) {
+		query["CurrentSize"] = request.CurrentSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibraryBizId)) {
+		query["LibraryBizId"] = request.LibraryBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderField)) {
+		query["OrderField"] = request.OrderField
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderMode)) {
+		query["OrderMode"] = request.OrderMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageCount)) {
+		query["PageCount"] = request.PageCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLibraryInstallTasks"),
+		Version:     tea.String("2020-06-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListLibraryInstallTasksResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListLibraryInstallTasks(request *ListLibraryInstallTasksRequest) (_result *ListLibraryInstallTasksResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLibraryInstallTasksResponse{}
+	_body, _err := client.ListLibraryInstallTasksWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListLibraryStatusWithOptions(request *ListLibraryStatusRequest, runtime *util.RuntimeOptions) (_result *ListLibraryStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ClusterBizId)) {
+		query["ClusterBizId"] = request.ClusterBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentSize)) {
+		query["CurrentSize"] = request.CurrentSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LibraryBizId)) {
+		query["LibraryBizId"] = request.LibraryBizId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		query["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderField)) {
+		query["OrderField"] = request.OrderField
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OrderMode)) {
+		query["OrderMode"] = request.OrderMode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageCount)) {
+		query["PageCount"] = request.PageCount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListLibraryStatus"),
+		Version:     tea.String("2020-06-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListLibraryStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListLibraryStatus(request *ListLibraryStatusRequest) (_result *ListLibraryStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListLibraryStatusResponse{}
+	_body, _err := client.ListLibraryStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -9898,6 +11206,62 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 	runtime := &util.RuntimeOptions{}
 	_result = &UntagResourcesResponse{}
 	_body, _err := client.UntagResourcesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateLibraryInstallTaskStatusWithOptions(request *UpdateLibraryInstallTaskStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateLibraryInstallTaskStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
+		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TaskBizId)) {
+		query["TaskBizId"] = request.TaskBizId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLibraryInstallTaskStatus"),
+		Version:     tea.String("2020-06-17"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateLibraryInstallTaskStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateLibraryInstallTaskStatus(request *UpdateLibraryInstallTaskStatusRequest) (_result *UpdateLibraryInstallTaskStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateLibraryInstallTaskStatusResponse{}
+	_body, _err := client.UpdateLibraryInstallTaskStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
