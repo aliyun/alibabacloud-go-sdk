@@ -652,6 +652,7 @@ type GetApplicationResponseBodyDataPriceList struct {
 	PriceUnit *string `json:"PriceUnit,omitempty" xml:"PriceUnit,omitempty"`
 	// 区域
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	// 产品code
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
 	// 规格
@@ -713,6 +714,11 @@ func (s *GetApplicationResponseBodyDataPriceList) SetPriceUnit(v string) *GetApp
 
 func (s *GetApplicationResponseBodyDataPriceList) SetRegion(v string) *GetApplicationResponseBodyDataPriceList {
 	s.Region = &v
+	return s
+}
+
+func (s *GetApplicationResponseBodyDataPriceList) SetRemark(v string) *GetApplicationResponseBodyDataPriceList {
+	s.Remark = &v
 	return s
 }
 
