@@ -457,6 +457,97 @@ func (s *ErrorInfo) SetStackTrace(v string) *ErrorInfo {
 	return s
 }
 
+type EventBridgeTriggerConfig struct {
+	// asyncInvocationType
+	AsyncInvocationType *bool `json:"asyncInvocationType,omitempty" xml:"asyncInvocationType,omitempty"`
+	// eventRuleFilterPattern
+	EventRuleFilterPattern *string            `json:"eventRuleFilterPattern,omitempty" xml:"eventRuleFilterPattern,omitempty"`
+	EventSourceConfig      *EventSourceConfig `json:"eventSourceConfig,omitempty" xml:"eventSourceConfig,omitempty"`
+	// triggerEnable
+	TriggerEnable *bool `json:"triggerEnable,omitempty" xml:"triggerEnable,omitempty"`
+}
+
+func (s EventBridgeTriggerConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EventBridgeTriggerConfig) GoString() string {
+	return s.String()
+}
+
+func (s *EventBridgeTriggerConfig) SetAsyncInvocationType(v bool) *EventBridgeTriggerConfig {
+	s.AsyncInvocationType = &v
+	return s
+}
+
+func (s *EventBridgeTriggerConfig) SetEventRuleFilterPattern(v string) *EventBridgeTriggerConfig {
+	s.EventRuleFilterPattern = &v
+	return s
+}
+
+func (s *EventBridgeTriggerConfig) SetEventSourceConfig(v *EventSourceConfig) *EventBridgeTriggerConfig {
+	s.EventSourceConfig = v
+	return s
+}
+
+func (s *EventBridgeTriggerConfig) SetTriggerEnable(v bool) *EventBridgeTriggerConfig {
+	s.TriggerEnable = &v
+	return s
+}
+
+type EventSourceConfig struct {
+	EventSourceParameters *EventSourceParameters `json:"eventSourceParameters,omitempty" xml:"eventSourceParameters,omitempty"`
+	// eventSourceType
+	EventSourceType *string `json:"eventSourceType,omitempty" xml:"eventSourceType,omitempty"`
+}
+
+func (s EventSourceConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EventSourceConfig) GoString() string {
+	return s.String()
+}
+
+func (s *EventSourceConfig) SetEventSourceParameters(v *EventSourceParameters) *EventSourceConfig {
+	s.EventSourceParameters = v
+	return s
+}
+
+func (s *EventSourceConfig) SetEventSourceType(v string) *EventSourceConfig {
+	s.EventSourceType = &v
+	return s
+}
+
+type EventSourceParameters struct {
+	SourceMNSParameters      *SourceMNSParameters      `json:"sourceMNSParameters,omitempty" xml:"sourceMNSParameters,omitempty"`
+	SourceRabbitMQParameters *SourceRabbitMQParameters `json:"sourceRabbitMQParameters,omitempty" xml:"sourceRabbitMQParameters,omitempty"`
+	SourceRocketMQParameters *SourceRocketMQParameters `json:"sourceRocketMQParameters,omitempty" xml:"sourceRocketMQParameters,omitempty"`
+}
+
+func (s EventSourceParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s EventSourceParameters) GoString() string {
+	return s.String()
+}
+
+func (s *EventSourceParameters) SetSourceMNSParameters(v *SourceMNSParameters) *EventSourceParameters {
+	s.SourceMNSParameters = v
+	return s
+}
+
+func (s *EventSourceParameters) SetSourceRabbitMQParameters(v *SourceRabbitMQParameters) *EventSourceParameters {
+	s.SourceRabbitMQParameters = v
+	return s
+}
+
+func (s *EventSourceParameters) SetSourceRocketMQParameters(v *SourceRocketMQParameters) *EventSourceParameters {
+	s.SourceRocketMQParameters = v
+	return s
+}
+
 type HTTPTriggerConfig struct {
 	// 认证类型
 	AuthType *string `json:"authType,omitempty" xml:"authType,omitempty"`
@@ -1322,6 +1413,137 @@ func (s SourceConfig) GoString() string {
 
 func (s *SourceConfig) SetLogstore(v string) *SourceConfig {
 	s.Logstore = &v
+	return s
+}
+
+type SourceMNSParameters struct {
+	// IsBase64Decode
+	IsBase64Decode *bool `json:"IsBase64Decode,omitempty" xml:"IsBase64Decode,omitempty"`
+	// QueueName
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// RegionId
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s SourceMNSParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SourceMNSParameters) GoString() string {
+	return s.String()
+}
+
+func (s *SourceMNSParameters) SetIsBase64Decode(v bool) *SourceMNSParameters {
+	s.IsBase64Decode = &v
+	return s
+}
+
+func (s *SourceMNSParameters) SetQueueName(v string) *SourceMNSParameters {
+	s.QueueName = &v
+	return s
+}
+
+func (s *SourceMNSParameters) SetRegionId(v string) *SourceMNSParameters {
+	s.RegionId = &v
+	return s
+}
+
+type SourceRabbitMQParameters struct {
+	// InstanceId
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// QueueName
+	QueueName *string `json:"QueueName,omitempty" xml:"QueueName,omitempty"`
+	// RegionId
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// VirtualHostName
+	VirtualHostName *string `json:"VirtualHostName,omitempty" xml:"VirtualHostName,omitempty"`
+}
+
+func (s SourceRabbitMQParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SourceRabbitMQParameters) GoString() string {
+	return s.String()
+}
+
+func (s *SourceRabbitMQParameters) SetInstanceId(v string) *SourceRabbitMQParameters {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SourceRabbitMQParameters) SetQueueName(v string) *SourceRabbitMQParameters {
+	s.QueueName = &v
+	return s
+}
+
+func (s *SourceRabbitMQParameters) SetRegionId(v string) *SourceRabbitMQParameters {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SourceRabbitMQParameters) SetVirtualHostName(v string) *SourceRabbitMQParameters {
+	s.VirtualHostName = &v
+	return s
+}
+
+type SourceRocketMQParameters struct {
+	// GroupID
+	GroupID *string `json:"GroupID,omitempty" xml:"GroupID,omitempty"`
+	// InstanceId
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// Offset
+	Offset *string `json:"Offset,omitempty" xml:"Offset,omitempty"`
+	// RegionId
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Tag
+	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
+	// Timestamp
+	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// Topic
+	Topic *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
+}
+
+func (s SourceRocketMQParameters) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SourceRocketMQParameters) GoString() string {
+	return s.String()
+}
+
+func (s *SourceRocketMQParameters) SetGroupID(v string) *SourceRocketMQParameters {
+	s.GroupID = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetInstanceId(v string) *SourceRocketMQParameters {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetOffset(v string) *SourceRocketMQParameters {
+	s.Offset = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetRegionId(v string) *SourceRocketMQParameters {
+	s.RegionId = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetTag(v string) *SourceRocketMQParameters {
+	s.Tag = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetTimestamp(v int64) *SourceRocketMQParameters {
+	s.Timestamp = &v
+	return s
+}
+
+func (s *SourceRocketMQParameters) SetTopic(v string) *SourceRocketMQParameters {
+	s.Topic = &v
 	return s
 }
 
@@ -2782,9 +3004,8 @@ type CreateTriggerRequest struct {
 	// service版本
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 	// event source的Aliyun Resource Name（ARN
-	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
-	// trigger配置，针对不同的trigger类型，trigger配置会有所不同
-	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+	SourceArn     *string     `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
+	TriggerConfig interface{} `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
 	// trigger名称
 	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
 	// trigger类型，如 oss, log, tablestore, timer, http, cdn_events, mns_topic
@@ -2819,8 +3040,8 @@ func (s *CreateTriggerRequest) SetSourceArn(v string) *CreateTriggerRequest {
 	return s
 }
 
-func (s *CreateTriggerRequest) SetTriggerConfig(v string) *CreateTriggerRequest {
-	s.TriggerConfig = &v
+func (s *CreateTriggerRequest) SetTriggerConfig(v interface{}) *CreateTriggerRequest {
+	s.TriggerConfig = v
 	return s
 }
 
@@ -5505,8 +5726,8 @@ func (s *InvokeFunctionHeaders) SetXFcTraceId(v string) *InvokeFunctionHeaders {
 }
 
 type InvokeFunctionRequest struct {
-	// 事件（event），binary type。函数计算服务将event传递给用户function来处理
-	Body []byte `json:"body,omitempty" xml:"body,omitempty"`
+	// anything
+	Body interface{} `json:"body,omitempty" xml:"body,omitempty"`
 	// service版本, 可以是versionId或者aliasName
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
@@ -5519,7 +5740,7 @@ func (s InvokeFunctionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeFunctionRequest) SetBody(v []byte) *InvokeFunctionRequest {
+func (s *InvokeFunctionRequest) SetBody(v interface{}) *InvokeFunctionRequest {
 	s.Body = v
 	return s
 }
@@ -6539,6 +6760,8 @@ func (s *ListFunctionsResponse) SetBody(v *ListFunctionsResponseBody) *ListFunct
 type ListInstancesHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
+	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
+	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListInstancesHeaders) String() string {
@@ -6556,6 +6779,16 @@ func (s *ListInstancesHeaders) SetCommonHeaders(v map[string]*string) *ListInsta
 
 func (s *ListInstancesHeaders) SetXFcAccountId(v string) *ListInstancesHeaders {
 	s.XFcAccountId = &v
+	return s
+}
+
+func (s *ListInstancesHeaders) SetXFcDate(v string) *ListInstancesHeaders {
+	s.XFcDate = &v
+	return s
+}
+
+func (s *ListInstancesHeaders) SetXFcTraceId(v string) *ListInstancesHeaders {
+	s.XFcTraceId = &v
 	return s
 }
 
@@ -13099,6 +13332,14 @@ func (client *Client) ListInstancesWithOptions(serviceName *string, functionName
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
+		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
+	}
+
+	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
+		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
 	}
 
 	req := &openapi.OpenApiRequest{
