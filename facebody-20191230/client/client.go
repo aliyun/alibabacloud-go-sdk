@@ -163,8 +163,9 @@ func (s *AddBodyTraceResponseBodyData) SetId(v int64) *AddBodyTraceResponseBodyD
 }
 
 type AddBodyTraceResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddBodyTraceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddBodyTraceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddBodyTraceResponse) String() string {
@@ -177,6 +178,11 @@ func (s AddBodyTraceResponse) GoString() string {
 
 func (s *AddBodyTraceResponse) SetHeaders(v map[string]*string) *AddBodyTraceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddBodyTraceResponse) SetStatusCode(v int32) *AddBodyTraceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -338,8 +344,9 @@ func (s *AddFaceResponseBodyData) SetQualitieScore(v float32) *AddFaceResponseBo
 }
 
 type AddFaceResponse struct {
-	Headers map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddFaceResponse) String() string {
@@ -352,6 +359,11 @@ func (s AddFaceResponse) GoString() string {
 
 func (s *AddFaceResponse) SetHeaders(v map[string]*string) *AddFaceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddFaceResponse) SetStatusCode(v int32) *AddFaceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -407,8 +419,9 @@ func (s *AddFaceEntityResponseBody) SetRequestId(v string) *AddFaceEntityRespons
 }
 
 type AddFaceEntityResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddFaceEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddFaceEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddFaceEntityResponse) String() string {
@@ -421,6 +434,11 @@ func (s AddFaceEntityResponse) GoString() string {
 
 func (s *AddFaceEntityResponse) SetHeaders(v map[string]*string) *AddFaceEntityResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddFaceEntityResponse) SetStatusCode(v int32) *AddFaceEntityResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -519,8 +537,9 @@ func (s *AddFaceImageTemplateResponseBodyData) SetTemplateId(v string) *AddFaceI
 }
 
 type AddFaceImageTemplateResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddFaceImageTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddFaceImageTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddFaceImageTemplateResponse) String() string {
@@ -533,6 +552,11 @@ func (s AddFaceImageTemplateResponse) GoString() string {
 
 func (s *AddFaceImageTemplateResponse) SetHeaders(v map[string]*string) *AddFaceImageTemplateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddFaceImageTemplateResponse) SetStatusCode(v int32) *AddFaceImageTemplateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -764,8 +788,9 @@ func (s *BatchAddFacesResponseBodyDataInsertedFaces) SetQualitieScore(v float32)
 }
 
 type BatchAddFacesResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BatchAddFacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchAddFacesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s BatchAddFacesResponse) String() string {
@@ -778,6 +803,11 @@ func (s BatchAddFacesResponse) GoString() string {
 
 func (s *BatchAddFacesResponse) SetHeaders(v map[string]*string) *BatchAddFacesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *BatchAddFacesResponse) SetStatusCode(v int32) *BatchAddFacesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1425,8 +1455,9 @@ func (s *BeautifyBodyResponseBodyData) SetYFlowURL(v string) *BeautifyBodyRespon
 }
 
 type BeautifyBodyResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BeautifyBodyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BeautifyBodyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s BeautifyBodyResponse) String() string {
@@ -1439,6 +1470,11 @@ func (s BeautifyBodyResponse) GoString() string {
 
 func (s *BeautifyBodyResponse) SetHeaders(v map[string]*string) *BeautifyBodyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *BeautifyBodyResponse) SetStatusCode(v int32) *BeautifyBodyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1522,8 +1558,9 @@ func (s *BlurFaceResponseBodyData) SetImageURL(v string) *BlurFaceResponseBodyDa
 }
 
 type BlurFaceResponse struct {
-	Headers map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BlurFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BlurFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s BlurFaceResponse) String() string {
@@ -1536,6 +1573,11 @@ func (s BlurFaceResponse) GoString() string {
 
 func (s *BlurFaceResponse) SetHeaders(v map[string]*string) *BlurFaceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *BlurFaceResponse) SetStatusCode(v int32) *BlurFaceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1734,8 +1776,9 @@ func (s *BodyPostureResponseBodyDataOutputsResultsBodiesPositions) SetPoints(v [
 }
 
 type BodyPostureResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BodyPostureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BodyPostureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s BodyPostureResponse) String() string {
@@ -1748,6 +1791,11 @@ func (s BodyPostureResponse) GoString() string {
 
 func (s *BodyPostureResponse) SetHeaders(v map[string]*string) *BodyPostureResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *BodyPostureResponse) SetStatusCode(v int32) *BodyPostureResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1878,8 +1926,9 @@ func (s *CompareFaceResponseBodyData) SetThresholds(v []*float32) *CompareFaceRe
 }
 
 type CompareFaceResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CompareFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CompareFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CompareFaceResponse) String() string {
@@ -1892,6 +1941,11 @@ func (s CompareFaceResponse) GoString() string {
 
 func (s *CompareFaceResponse) SetHeaders(v map[string]*string) *CompareFaceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CompareFaceResponse) SetStatusCode(v int32) *CompareFaceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1993,8 +2047,9 @@ func (s *CountCrowdResponseBodyData) SetPeopleNumber(v int32) *CountCrowdRespons
 }
 
 type CountCrowdResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CountCrowdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CountCrowdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CountCrowdResponse) String() string {
@@ -2007,6 +2062,11 @@ func (s CountCrowdResponse) GoString() string {
 
 func (s *CountCrowdResponse) SetHeaders(v map[string]*string) *CountCrowdResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CountCrowdResponse) SetStatusCode(v int32) *CountCrowdResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2076,8 +2136,9 @@ func (s *CreateBodyDbResponseBodyData) SetId(v int64) *CreateBodyDbResponseBodyD
 }
 
 type CreateBodyDbResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateBodyDbResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateBodyDbResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateBodyDbResponse) String() string {
@@ -2090,6 +2151,11 @@ func (s CreateBodyDbResponse) GoString() string {
 
 func (s *CreateBodyDbResponse) SetHeaders(v map[string]*string) *CreateBodyDbResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateBodyDbResponse) SetStatusCode(v int32) *CreateBodyDbResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2166,8 +2232,9 @@ func (s *CreateBodyPersonResponseBodyData) SetId(v int64) *CreateBodyPersonRespo
 }
 
 type CreateBodyPersonResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateBodyPersonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateBodyPersonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateBodyPersonResponse) String() string {
@@ -2180,6 +2247,11 @@ func (s CreateBodyPersonResponse) GoString() string {
 
 func (s *CreateBodyPersonResponse) SetHeaders(v map[string]*string) *CreateBodyPersonResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateBodyPersonResponse) SetStatusCode(v int32) *CreateBodyPersonResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2223,8 +2295,9 @@ func (s *CreateFaceDbResponseBody) SetRequestId(v string) *CreateFaceDbResponseB
 }
 
 type CreateFaceDbResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateFaceDbResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateFaceDbResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateFaceDbResponse) String() string {
@@ -2237,6 +2310,11 @@ func (s CreateFaceDbResponse) GoString() string {
 
 func (s *CreateFaceDbResponse) SetHeaders(v map[string]*string) *CreateFaceDbResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateFaceDbResponse) SetStatusCode(v int32) *CreateFaceDbResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2282,8 +2360,9 @@ func (s *DeleteBodyDbResponseBody) SetRequestId(v string) *DeleteBodyDbResponseB
 }
 
 type DeleteBodyDbResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteBodyDbResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteBodyDbResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteBodyDbResponse) String() string {
@@ -2296,6 +2375,11 @@ func (s DeleteBodyDbResponse) GoString() string {
 
 func (s *DeleteBodyDbResponse) SetHeaders(v map[string]*string) *DeleteBodyDbResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteBodyDbResponse) SetStatusCode(v int32) *DeleteBodyDbResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2348,8 +2432,9 @@ func (s *DeleteBodyPersonResponseBody) SetRequestId(v string) *DeleteBodyPersonR
 }
 
 type DeleteBodyPersonResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteBodyPersonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteBodyPersonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteBodyPersonResponse) String() string {
@@ -2362,6 +2447,11 @@ func (s DeleteBodyPersonResponse) GoString() string {
 
 func (s *DeleteBodyPersonResponse) SetHeaders(v map[string]*string) *DeleteBodyPersonResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteBodyPersonResponse) SetStatusCode(v int32) *DeleteBodyPersonResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2411,8 +2501,9 @@ func (s *DeleteFaceResponseBody) SetRequestId(v string) *DeleteFaceResponseBody 
 }
 
 type DeleteFaceResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteFaceResponse) String() string {
@@ -2425,6 +2516,11 @@ func (s DeleteFaceResponse) GoString() string {
 
 func (s *DeleteFaceResponse) SetHeaders(v map[string]*string) *DeleteFaceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteFaceResponse) SetStatusCode(v int32) *DeleteFaceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2468,8 +2564,9 @@ func (s *DeleteFaceDbResponseBody) SetRequestId(v string) *DeleteFaceDbResponseB
 }
 
 type DeleteFaceDbResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteFaceDbResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteFaceDbResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteFaceDbResponse) String() string {
@@ -2482,6 +2579,11 @@ func (s DeleteFaceDbResponse) GoString() string {
 
 func (s *DeleteFaceDbResponse) SetHeaders(v map[string]*string) *DeleteFaceDbResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteFaceDbResponse) SetStatusCode(v int32) *DeleteFaceDbResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2531,8 +2633,9 @@ func (s *DeleteFaceEntityResponseBody) SetRequestId(v string) *DeleteFaceEntityR
 }
 
 type DeleteFaceEntityResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteFaceEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteFaceEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteFaceEntityResponse) String() string {
@@ -2545,6 +2648,11 @@ func (s DeleteFaceEntityResponse) GoString() string {
 
 func (s *DeleteFaceEntityResponse) SetHeaders(v map[string]*string) *DeleteFaceEntityResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteFaceEntityResponse) SetStatusCode(v int32) *DeleteFaceEntityResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2596,8 +2704,9 @@ func (s *DeleteFaceImageTemplateResponseBody) SetRequestId(v string) *DeleteFace
 }
 
 type DeleteFaceImageTemplateResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteFaceImageTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteFaceImageTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteFaceImageTemplateResponse) String() string {
@@ -2610,6 +2719,11 @@ func (s DeleteFaceImageTemplateResponse) GoString() string {
 
 func (s *DeleteFaceImageTemplateResponse) SetHeaders(v map[string]*string) *DeleteFaceImageTemplateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteFaceImageTemplateResponse) SetStatusCode(v int32) *DeleteFaceImageTemplateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2693,8 +2807,9 @@ func (s *DetectBodyCountResponseBodyData) SetPersonNumber(v int32) *DetectBodyCo
 }
 
 type DetectBodyCountResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectBodyCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectBodyCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectBodyCountResponse) String() string {
@@ -2707,6 +2822,11 @@ func (s DetectBodyCountResponse) GoString() string {
 
 func (s *DetectBodyCountResponse) SetHeaders(v map[string]*string) *DetectBodyCountResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectBodyCountResponse) SetStatusCode(v int32) *DetectBodyCountResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2825,8 +2945,9 @@ func (s *DetectCelebrityResponseBodyDataFaceRecognizeResults) SetName(v string) 
 }
 
 type DetectCelebrityResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectCelebrityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectCelebrityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectCelebrityResponse) String() string {
@@ -2839,6 +2960,11 @@ func (s DetectCelebrityResponse) GoString() string {
 
 func (s *DetectCelebrityResponse) SetHeaders(v map[string]*string) *DetectCelebrityResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectCelebrityResponse) SetStatusCode(v int32) *DetectCelebrityResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2951,8 +3077,9 @@ func (s *DetectChefCapResponseBodyDataElements) SetConfidence(v float32) *Detect
 }
 
 type DetectChefCapResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectChefCapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectChefCapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectChefCapResponse) String() string {
@@ -2965,6 +3092,11 @@ func (s DetectChefCapResponse) GoString() string {
 
 func (s *DetectChefCapResponse) SetHeaders(v map[string]*string) *DetectChefCapResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectChefCapResponse) SetStatusCode(v int32) *DetectChefCapResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3197,8 +3329,9 @@ func (s *DetectFaceResponseBodyDataQualities) SetScoreList(v []*float32) *Detect
 }
 
 type DetectFaceResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectFaceResponse) String() string {
@@ -3211,6 +3344,11 @@ func (s DetectFaceResponse) GoString() string {
 
 func (s *DetectFaceResponse) SetHeaders(v map[string]*string) *DetectFaceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectFaceResponse) SetStatusCode(v int32) *DetectFaceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3370,8 +3508,9 @@ func (s *DetectIPCPedestrianResponseBodyDataImageInfoListElements) SetScore(v fl
 }
 
 type DetectIPCPedestrianResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectIPCPedestrianResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectIPCPedestrianResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectIPCPedestrianResponse) String() string {
@@ -3384,6 +3523,11 @@ func (s DetectIPCPedestrianResponse) GoString() string {
 
 func (s *DetectIPCPedestrianResponse) SetHeaders(v map[string]*string) *DetectIPCPedestrianResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectIPCPedestrianResponse) SetStatusCode(v int32) *DetectIPCPedestrianResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3560,8 +3704,9 @@ func (s *DetectLivingFaceResponseBodyDataElementsResultsFrames) SetUrl(v string)
 }
 
 type DetectLivingFaceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectLivingFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectLivingFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectLivingFaceResponse) String() string {
@@ -3574,6 +3719,11 @@ func (s DetectLivingFaceResponse) GoString() string {
 
 func (s *DetectLivingFaceResponse) SetHeaders(v map[string]*string) *DetectLivingFaceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectLivingFaceResponse) SetStatusCode(v int32) *DetectLivingFaceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3698,8 +3848,9 @@ func (s *DetectPedestrianResponseBodyDataElements) SetType(v string) *DetectPede
 }
 
 type DetectPedestrianResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectPedestrianResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectPedestrianResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectPedestrianResponse) String() string {
@@ -3712,6 +3863,11 @@ func (s DetectPedestrianResponse) GoString() string {
 
 func (s *DetectPedestrianResponse) SetHeaders(v map[string]*string) *DetectPedestrianResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectPedestrianResponse) SetStatusCode(v int32) *DetectPedestrianResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4122,8 +4278,9 @@ func (s *DetectPedestrianIntrusionResponseBodyDataElementsBox) SetTop(v int64) *
 }
 
 type DetectPedestrianIntrusionResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectPedestrianIntrusionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectPedestrianIntrusionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectPedestrianIntrusionResponse) String() string {
@@ -4136,6 +4293,11 @@ func (s DetectPedestrianIntrusionResponse) GoString() string {
 
 func (s *DetectPedestrianIntrusionResponse) SetHeaders(v map[string]*string) *DetectPedestrianIntrusionResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectPedestrianIntrusionResponse) SetStatusCode(v int32) *DetectPedestrianIntrusionResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4248,8 +4410,9 @@ func (s *DetectVideoLivingFaceResponseBodyDataElements) SetRect(v []*int32) *Det
 }
 
 type DetectVideoLivingFaceResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DetectVideoLivingFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectVideoLivingFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DetectVideoLivingFaceResponse) String() string {
@@ -4262,6 +4425,11 @@ func (s DetectVideoLivingFaceResponse) GoString() string {
 
 func (s *DetectVideoLivingFaceResponse) SetHeaders(v map[string]*string) *DetectVideoLivingFaceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DetectVideoLivingFaceResponse) SetStatusCode(v int32) *DetectVideoLivingFaceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4345,8 +4513,9 @@ func (s *EnhanceFaceResponseBodyData) SetImageURL(v string) *EnhanceFaceResponse
 }
 
 type EnhanceFaceResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *EnhanceFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *EnhanceFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s EnhanceFaceResponse) String() string {
@@ -4359,6 +4528,11 @@ func (s EnhanceFaceResponse) GoString() string {
 
 func (s *EnhanceFaceResponse) SetHeaders(v map[string]*string) *EnhanceFaceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *EnhanceFaceResponse) SetStatusCode(v int32) *EnhanceFaceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4455,8 +4629,9 @@ func (s *ExtractFingerPrintResponseBodyData) SetFingerPrint(v []byte) *ExtractFi
 }
 
 type ExtractFingerPrintResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExtractFingerPrintResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExtractFingerPrintResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ExtractFingerPrintResponse) String() string {
@@ -4469,6 +4644,11 @@ func (s ExtractFingerPrintResponse) GoString() string {
 
 func (s *ExtractFingerPrintResponse) SetHeaders(v map[string]*string) *ExtractFingerPrintResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ExtractFingerPrintResponse) SetStatusCode(v int32) *ExtractFingerPrintResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4690,8 +4870,9 @@ func (s *ExtractPedestrianFeatureAttrResponseBodyData) SetUpperTypeScore(v float
 }
 
 type ExtractPedestrianFeatureAttrResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExtractPedestrianFeatureAttrResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExtractPedestrianFeatureAttrResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ExtractPedestrianFeatureAttrResponse) String() string {
@@ -4704,6 +4885,11 @@ func (s ExtractPedestrianFeatureAttrResponse) GoString() string {
 
 func (s *ExtractPedestrianFeatureAttrResponse) SetHeaders(v map[string]*string) *ExtractPedestrianFeatureAttrResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ExtractPedestrianFeatureAttrResponse) SetStatusCode(v int32) *ExtractPedestrianFeatureAttrResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5026,8 +5212,9 @@ func (s *ExtractPedestrianFeatureAttributeResponseBodyDataElements) SetUpperType
 }
 
 type ExtractPedestrianFeatureAttributeResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ExtractPedestrianFeatureAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExtractPedestrianFeatureAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ExtractPedestrianFeatureAttributeResponse) String() string {
@@ -5040,6 +5227,11 @@ func (s ExtractPedestrianFeatureAttributeResponse) GoString() string {
 
 func (s *ExtractPedestrianFeatureAttributeResponse) SetHeaders(v map[string]*string) *ExtractPedestrianFeatureAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ExtractPedestrianFeatureAttributeResponse) SetStatusCode(v int32) *ExtractPedestrianFeatureAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5159,8 +5351,9 @@ func (s *FaceBeautyResponseBodyData) SetImageURL(v string) *FaceBeautyResponseBo
 }
 
 type FaceBeautyResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FaceBeautyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FaceBeautyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FaceBeautyResponse) String() string {
@@ -5173,6 +5366,11 @@ func (s FaceBeautyResponse) GoString() string {
 
 func (s *FaceBeautyResponse) SetHeaders(v map[string]*string) *FaceBeautyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *FaceBeautyResponse) SetStatusCode(v int32) *FaceBeautyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5280,8 +5478,9 @@ func (s *FaceFilterResponseBodyData) SetImageURL(v string) *FaceFilterResponseBo
 }
 
 type FaceFilterResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FaceFilterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FaceFilterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FaceFilterResponse) String() string {
@@ -5294,6 +5493,11 @@ func (s FaceFilterResponse) GoString() string {
 
 func (s *FaceFilterResponse) SetHeaders(v map[string]*string) *FaceFilterResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *FaceFilterResponse) SetStatusCode(v int32) *FaceFilterResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5413,8 +5617,9 @@ func (s *FaceMakeupResponseBodyData) SetImageURL(v string) *FaceMakeupResponseBo
 }
 
 type FaceMakeupResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FaceMakeupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FaceMakeupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FaceMakeupResponse) String() string {
@@ -5427,6 +5632,11 @@ func (s FaceMakeupResponse) GoString() string {
 
 func (s *FaceMakeupResponse) SetHeaders(v map[string]*string) *FaceMakeupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *FaceMakeupResponse) SetStatusCode(v int32) *FaceMakeupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5534,8 +5744,9 @@ func (s *FaceTidyupResponseBodyData) SetImageURL(v string) *FaceTidyupResponseBo
 }
 
 type FaceTidyupResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *FaceTidyupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *FaceTidyupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s FaceTidyupResponse) String() string {
@@ -5548,6 +5759,11 @@ func (s FaceTidyupResponse) GoString() string {
 
 func (s *FaceTidyupResponse) SetHeaders(v map[string]*string) *FaceTidyupResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *FaceTidyupResponse) SetStatusCode(v int32) *FaceTidyupResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5626,8 +5842,9 @@ func (s *GenRealPersonVerificationTokenResponseBodyData) SetVerificationToken(v 
 }
 
 type GenRealPersonVerificationTokenResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GenRealPersonVerificationTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenRealPersonVerificationTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GenRealPersonVerificationTokenResponse) String() string {
@@ -5640,6 +5857,11 @@ func (s GenRealPersonVerificationTokenResponse) GoString() string {
 
 func (s *GenRealPersonVerificationTokenResponse) SetHeaders(v map[string]*string) *GenRealPersonVerificationTokenResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GenRealPersonVerificationTokenResponse) SetStatusCode(v int32) *GenRealPersonVerificationTokenResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5735,8 +5957,9 @@ func (s *GenerateHumanAnimeStyleResponseBodyData) SetImageURL(v string) *Generat
 }
 
 type GenerateHumanAnimeStyleResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GenerateHumanAnimeStyleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateHumanAnimeStyleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GenerateHumanAnimeStyleResponse) String() string {
@@ -5749,6 +5972,11 @@ func (s GenerateHumanAnimeStyleResponse) GoString() string {
 
 func (s *GenerateHumanAnimeStyleResponse) SetHeaders(v map[string]*string) *GenerateHumanAnimeStyleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GenerateHumanAnimeStyleResponse) SetStatusCode(v int32) *GenerateHumanAnimeStyleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5847,8 +6075,9 @@ func (s *GenerateHumanSketchStyleResponseBodyData) SetImageURL(v string) *Genera
 }
 
 type GenerateHumanSketchStyleResponse struct {
-	Headers map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GenerateHumanSketchStyleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateHumanSketchStyleResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GenerateHumanSketchStyleResponse) String() string {
@@ -5861,6 +6090,11 @@ func (s GenerateHumanSketchStyleResponse) GoString() string {
 
 func (s *GenerateHumanSketchStyleResponse) SetHeaders(v map[string]*string) *GenerateHumanSketchStyleResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GenerateHumanSketchStyleResponse) SetStatusCode(v int32) *GenerateHumanSketchStyleResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5990,8 +6224,9 @@ func (s *GetBodyPersonResponseBodyDataTraceList) SetId(v int64) *GetBodyPersonRe
 }
 
 type GetBodyPersonResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetBodyPersonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetBodyPersonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetBodyPersonResponse) String() string {
@@ -6004,6 +6239,11 @@ func (s GetBodyPersonResponse) GoString() string {
 
 func (s *GetBodyPersonResponse) SetHeaders(v map[string]*string) *GetBodyPersonResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetBodyPersonResponse) SetStatusCode(v int32) *GetBodyPersonResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6111,8 +6351,9 @@ func (s *GetFaceEntityResponseBodyDataFaces) SetFaceId(v string) *GetFaceEntityR
 }
 
 type GetFaceEntityResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetFaceEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetFaceEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetFaceEntityResponse) String() string {
@@ -6125,6 +6366,11 @@ func (s GetFaceEntityResponse) GoString() string {
 
 func (s *GetFaceEntityResponse) SetHeaders(v map[string]*string) *GetFaceEntityResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetFaceEntityResponse) SetStatusCode(v int32) *GetFaceEntityResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6209,8 +6455,9 @@ func (s *GetRealPersonVerificationResultResponseBodyData) SetPassed(v bool) *Get
 }
 
 type GetRealPersonVerificationResultResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *GetRealPersonVerificationResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetRealPersonVerificationResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s GetRealPersonVerificationResultResponse) String() string {
@@ -6223,6 +6470,11 @@ func (s GetRealPersonVerificationResultResponse) GoString() string {
 
 func (s *GetRealPersonVerificationResultResponse) SetHeaders(v map[string]*string) *GetRealPersonVerificationResultResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *GetRealPersonVerificationResultResponse) SetStatusCode(v int32) *GetRealPersonVerificationResultResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6484,8 +6736,9 @@ func (s *HandPostureResponseBodyDataOutputsResultsHandsKeyPointsPositions) SetPo
 }
 
 type HandPostureResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *HandPostureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *HandPostureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s HandPostureResponse) String() string {
@@ -6498,6 +6751,11 @@ func (s HandPostureResponse) GoString() string {
 
 func (s *HandPostureResponse) SetHeaders(v map[string]*string) *HandPostureResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *HandPostureResponse) SetStatusCode(v int32) *HandPostureResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6594,8 +6852,9 @@ func (s *LiquifyFaceResponseBodyData) SetImageURL(v string) *LiquifyFaceResponse
 }
 
 type LiquifyFaceResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *LiquifyFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *LiquifyFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s LiquifyFaceResponse) String() string {
@@ -6608,6 +6867,11 @@ func (s LiquifyFaceResponse) GoString() string {
 
 func (s *LiquifyFaceResponse) SetHeaders(v map[string]*string) *LiquifyFaceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *LiquifyFaceResponse) SetStatusCode(v int32) *LiquifyFaceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6715,8 +6979,9 @@ func (s *ListBodyDbsResponseBodyDataDbList) SetName(v string) *ListBodyDbsRespon
 }
 
 type ListBodyDbsResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListBodyDbsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListBodyDbsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListBodyDbsResponse) String() string {
@@ -6729,6 +6994,11 @@ func (s ListBodyDbsResponse) GoString() string {
 
 func (s *ListBodyDbsResponse) SetHeaders(v map[string]*string) *ListBodyDbsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListBodyDbsResponse) SetStatusCode(v int32) *ListBodyDbsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6857,8 +7127,9 @@ func (s *ListBodyPersonResponseBodyDataPersonList) SetTraceCount(v int64) *ListB
 }
 
 type ListBodyPersonResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListBodyPersonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListBodyPersonResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListBodyPersonResponse) String() string {
@@ -6874,8 +7145,36 @@ func (s *ListBodyPersonResponse) SetHeaders(v map[string]*string) *ListBodyPerso
 	return s
 }
 
+func (s *ListBodyPersonResponse) SetStatusCode(v int32) *ListBodyPersonResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListBodyPersonResponse) SetBody(v *ListBodyPersonResponseBody) *ListBodyPersonResponse {
 	s.Body = v
+	return s
+}
+
+type ListFaceDbsRequest struct {
+	Limit  *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
+	Offset *int64 `json:"Offset,omitempty" xml:"Offset,omitempty"`
+}
+
+func (s ListFaceDbsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListFaceDbsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListFaceDbsRequest) SetLimit(v int64) *ListFaceDbsRequest {
+	s.Limit = &v
+	return s
+}
+
+func (s *ListFaceDbsRequest) SetOffset(v int64) *ListFaceDbsRequest {
+	s.Offset = &v
 	return s
 }
 
@@ -6937,8 +7236,9 @@ func (s *ListFaceDbsResponseBodyDataDbList) SetName(v string) *ListFaceDbsRespon
 }
 
 type ListFaceDbsResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListFaceDbsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListFaceDbsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListFaceDbsResponse) String() string {
@@ -6951,6 +7251,11 @@ func (s ListFaceDbsResponse) GoString() string {
 
 func (s *ListFaceDbsResponse) SetHeaders(v map[string]*string) *ListFaceDbsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListFaceDbsResponse) SetStatusCode(v int32) *ListFaceDbsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7112,8 +7417,9 @@ func (s *ListFaceEntitiesResponseBodyDataEntities) SetUpdatedAt(v int64) *ListFa
 }
 
 type ListFaceEntitiesResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListFaceEntitiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListFaceEntitiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListFaceEntitiesResponse) String() string {
@@ -7126,6 +7432,11 @@ func (s ListFaceEntitiesResponse) GoString() string {
 
 func (s *ListFaceEntitiesResponse) SetHeaders(v map[string]*string) *ListFaceEntitiesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListFaceEntitiesResponse) SetStatusCode(v int32) *ListFaceEntitiesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7236,8 +7547,9 @@ func (s *MergeImageFaceResponseBodyData) SetImageURL(v string) *MergeImageFaceRe
 }
 
 type MergeImageFaceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *MergeImageFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *MergeImageFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s MergeImageFaceResponse) String() string {
@@ -7250,6 +7562,11 @@ func (s MergeImageFaceResponse) GoString() string {
 
 func (s *MergeImageFaceResponse) SetHeaders(v map[string]*string) *MergeImageFaceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *MergeImageFaceResponse) SetStatusCode(v int32) *MergeImageFaceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7499,8 +7816,9 @@ func (s *MonitorExaminationResponseBodyDataPersonInfoEarPhone) SetThreshold(v fl
 }
 
 type MonitorExaminationResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *MonitorExaminationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *MonitorExaminationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s MonitorExaminationResponse) String() string {
@@ -7513,6 +7831,11 @@ func (s MonitorExaminationResponse) GoString() string {
 
 func (s *MonitorExaminationResponse) SetHeaders(v map[string]*string) *MonitorExaminationResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *MonitorExaminationResponse) SetStatusCode(v int32) *MonitorExaminationResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8020,8 +8343,9 @@ func (s *PedestrianDetectAttributeResponseBodyDataBoxes) SetTopLeftY(v float32) 
 }
 
 type PedestrianDetectAttributeResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PedestrianDetectAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PedestrianDetectAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PedestrianDetectAttributeResponse) String() string {
@@ -8034,6 +8358,11 @@ func (s PedestrianDetectAttributeResponse) GoString() string {
 
 func (s *PedestrianDetectAttributeResponse) SetHeaders(v map[string]*string) *PedestrianDetectAttributeResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PedestrianDetectAttributeResponse) SetStatusCode(v int32) *PedestrianDetectAttributeResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8149,8 +8478,9 @@ func (s *QueryFaceImageTemplateResponseBodyDataElements) SetUserId(v string) *Qu
 }
 
 type QueryFaceImageTemplateResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *QueryFaceImageTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryFaceImageTemplateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s QueryFaceImageTemplateResponse) String() string {
@@ -8163,6 +8493,11 @@ func (s QueryFaceImageTemplateResponse) GoString() string {
 
 func (s *QueryFaceImageTemplateResponse) SetHeaders(v map[string]*string) *QueryFaceImageTemplateResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *QueryFaceImageTemplateResponse) SetStatusCode(v int32) *QueryFaceImageTemplateResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8322,8 +8657,9 @@ func (s *RecognizeActionResponseBodyDataElementsBoxes) SetBox(v []*int32) *Recog
 }
 
 type RecognizeActionResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeActionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeActionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeActionResponse) String() string {
@@ -8336,6 +8672,11 @@ func (s RecognizeActionResponse) GoString() string {
 
 func (s *RecognizeActionResponse) SetHeaders(v map[string]*string) *RecognizeActionResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeActionResponse) SetStatusCode(v int32) *RecognizeActionResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8483,8 +8824,9 @@ func (s *RecognizeExpressionResponseBodyDataElementsFaceRectangle) SetWidth(v in
 }
 
 type RecognizeExpressionResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeExpressionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeExpressionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeExpressionResponse) String() string {
@@ -8497,6 +8839,11 @@ func (s RecognizeExpressionResponse) GoString() string {
 
 func (s *RecognizeExpressionResponse) SetHeaders(v map[string]*string) *RecognizeExpressionResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeExpressionResponse) SetStatusCode(v int32) *RecognizeExpressionResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8843,8 +9190,9 @@ func (s *RecognizeFaceResponseBodyDataQualities) SetScoreList(v []*float32) *Rec
 }
 
 type RecognizeFaceResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeFaceResponse) String() string {
@@ -8857,6 +9205,11 @@ func (s RecognizeFaceResponse) GoString() string {
 
 func (s *RecognizeFaceResponse) SetHeaders(v map[string]*string) *RecognizeFaceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeFaceResponse) SetStatusCode(v int32) *RecognizeFaceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -8997,8 +9350,9 @@ func (s *RecognizeHandGestureResponseBodyData) SetY(v int64) *RecognizeHandGestu
 }
 
 type RecognizeHandGestureResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizeHandGestureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizeHandGestureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizeHandGestureResponse) String() string {
@@ -9011,6 +9365,11 @@ func (s RecognizeHandGestureResponse) GoString() string {
 
 func (s *RecognizeHandGestureResponse) SetHeaders(v map[string]*string) *RecognizeHandGestureResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizeHandGestureResponse) SetStatusCode(v int32) *RecognizeHandGestureResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9234,8 +9593,9 @@ func (s *RecognizePublicFaceResponseBodyDataElementsResultsSubResultsFaces) SetR
 }
 
 type RecognizePublicFaceResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RecognizePublicFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RecognizePublicFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RecognizePublicFaceResponse) String() string {
@@ -9248,6 +9608,11 @@ func (s RecognizePublicFaceResponse) GoString() string {
 
 func (s *RecognizePublicFaceResponse) SetHeaders(v map[string]*string) *RecognizePublicFaceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RecognizePublicFaceResponse) SetStatusCode(v int32) *RecognizePublicFaceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9355,8 +9720,9 @@ func (s *RetouchBodyResponseBodyData) SetImageURL(v string) *RetouchBodyResponse
 }
 
 type RetouchBodyResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RetouchBodyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RetouchBodyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RetouchBodyResponse) String() string {
@@ -9369,6 +9735,11 @@ func (s RetouchBodyResponse) GoString() string {
 
 func (s *RetouchBodyResponse) SetHeaders(v map[string]*string) *RetouchBodyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RetouchBodyResponse) SetStatusCode(v int32) *RetouchBodyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9477,8 +9848,9 @@ func (s *RetouchSkinResponseBodyData) SetImageURL(v string) *RetouchSkinResponse
 }
 
 type RetouchSkinResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *RetouchSkinResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RetouchSkinResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s RetouchSkinResponse) String() string {
@@ -9491,6 +9863,11 @@ func (s RetouchSkinResponse) GoString() string {
 
 func (s *RetouchSkinResponse) SetHeaders(v map[string]*string) *RetouchSkinResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *RetouchSkinResponse) SetStatusCode(v int32) *RetouchSkinResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9691,8 +10068,9 @@ func (s *SearchBodyTraceResponseBodyDataMatchList) SetTraceId(v int64) *SearchBo
 }
 
 type SearchBodyTraceResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SearchBodyTraceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchBodyTraceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SearchBodyTraceResponse) String() string {
@@ -9705,6 +10083,11 @@ func (s SearchBodyTraceResponse) GoString() string {
 
 func (s *SearchBodyTraceResponse) SetHeaders(v map[string]*string) *SearchBodyTraceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SearchBodyTraceResponse) SetStatusCode(v int32) *SearchBodyTraceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -9959,8 +10342,9 @@ func (s *SearchFaceResponseBodyDataMatchListLocation) SetY(v int32) *SearchFaceR
 }
 
 type SearchFaceResponse struct {
-	Headers map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SearchFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SearchFaceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SearchFaceResponse) String() string {
@@ -9973,6 +10357,11 @@ func (s SearchFaceResponse) GoString() string {
 
 func (s *SearchFaceResponse) SetHeaders(v map[string]*string) *SearchFaceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SearchFaceResponse) SetStatusCode(v int32) *SearchFaceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10063,8 +10452,9 @@ func (s *SwapFacialFeaturesResponseBodyData) SetImageURL(v string) *SwapFacialFe
 }
 
 type SwapFacialFeaturesResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *SwapFacialFeaturesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SwapFacialFeaturesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s SwapFacialFeaturesResponse) String() string {
@@ -10077,6 +10467,11 @@ func (s SwapFacialFeaturesResponse) GoString() string {
 
 func (s *SwapFacialFeaturesResponse) SetHeaders(v map[string]*string) *SwapFacialFeaturesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *SwapFacialFeaturesResponse) SetStatusCode(v int32) *SwapFacialFeaturesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10132,8 +10527,9 @@ func (s *UpdateFaceEntityResponseBody) SetRequestId(v string) *UpdateFaceEntityR
 }
 
 type UpdateFaceEntityResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateFaceEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateFaceEntityResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateFaceEntityResponse) String() string {
@@ -10146,6 +10542,11 @@ func (s UpdateFaceEntityResponse) GoString() string {
 
 func (s *UpdateFaceEntityResponse) SetHeaders(v map[string]*string) *UpdateFaceEntityResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateFaceEntityResponse) SetStatusCode(v int32) *UpdateFaceEntityResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -10260,8 +10661,9 @@ func (s *VerifyFaceMaskResponseBodyData) SetThresholds(v []*float32) *VerifyFace
 }
 
 type VerifyFaceMaskResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *VerifyFaceMaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *VerifyFaceMaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s VerifyFaceMaskResponse) String() string {
@@ -10274,6 +10676,11 @@ func (s VerifyFaceMaskResponse) GoString() string {
 
 func (s *VerifyFaceMaskResponse) SetHeaders(v map[string]*string) *VerifyFaceMaskResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *VerifyFaceMaskResponse) SetStatusCode(v int32) *VerifyFaceMaskResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -15303,8 +15710,23 @@ func (client *Client) ListBodyPerson(request *ListBodyPersonRequest) (_result *L
 	return _result, _err
 }
 
-func (client *Client) ListFaceDbsWithOptions(runtime *util.RuntimeOptions) (_result *ListFaceDbsResponse, _err error) {
-	req := &openapi.OpenApiRequest{}
+func (client *Client) ListFaceDbsWithOptions(request *ListFaceDbsRequest, runtime *util.RuntimeOptions) (_result *ListFaceDbsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Limit)) {
+		body["Limit"] = request.Limit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		body["Offset"] = request.Offset
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
 	params := &openapi.Params{
 		Action:      tea.String("ListFaceDbs"),
 		Version:     tea.String("2019-12-30"),
@@ -15325,10 +15747,10 @@ func (client *Client) ListFaceDbsWithOptions(runtime *util.RuntimeOptions) (_res
 	return _result, _err
 }
 
-func (client *Client) ListFaceDbs() (_result *ListFaceDbsResponse, _err error) {
+func (client *Client) ListFaceDbs(request *ListFaceDbsRequest) (_result *ListFaceDbsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	_result = &ListFaceDbsResponse{}
-	_body, _err := client.ListFaceDbsWithOptions(runtime)
+	_body, _err := client.ListFaceDbsWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
