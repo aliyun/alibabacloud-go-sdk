@@ -4046,6 +4046,7 @@ func (s *GetServiceProvisionsResponse) SetBody(v *GetServiceProvisionsResponseBo
 
 type GetStackRequest struct {
 	ClientToken          *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	LogOption            *string `json:"LogOption,omitempty" xml:"LogOption,omitempty"`
 	OutputOption         *string `json:"OutputOption,omitempty" xml:"OutputOption,omitempty"`
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ShowResourceProgress *string `json:"ShowResourceProgress,omitempty" xml:"ShowResourceProgress,omitempty"`
@@ -4062,6 +4063,11 @@ func (s GetStackRequest) GoString() string {
 
 func (s *GetStackRequest) SetClientToken(v string) *GetStackRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *GetStackRequest) SetLogOption(v string) *GetStackRequest {
+	s.LogOption = &v
 	return s
 }
 
@@ -4295,6 +4301,7 @@ func (s *GetStackResponseBody) SetUpdateTime(v string) *GetStackResponseBody {
 }
 
 type GetStackResponseBodyLog struct {
+	ResourceLogs  []*GetStackResponseBodyLogResourceLogs  `json:"ResourceLogs,omitempty" xml:"ResourceLogs,omitempty" type:"Repeated"`
 	TerraformLogs []*GetStackResponseBodyLogTerraformLogs `json:"TerraformLogs,omitempty" xml:"TerraformLogs,omitempty" type:"Repeated"`
 }
 
@@ -4306,8 +4313,59 @@ func (s GetStackResponseBodyLog) GoString() string {
 	return s.String()
 }
 
+func (s *GetStackResponseBodyLog) SetResourceLogs(v []*GetStackResponseBodyLogResourceLogs) *GetStackResponseBodyLog {
+	s.ResourceLogs = v
+	return s
+}
+
 func (s *GetStackResponseBodyLog) SetTerraformLogs(v []*GetStackResponseBodyLogTerraformLogs) *GetStackResponseBodyLog {
 	s.TerraformLogs = v
+	return s
+}
+
+type GetStackResponseBodyLogResourceLogs struct {
+	Logs         []*GetStackResponseBodyLogResourceLogsLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
+	ResourceName *string                                    `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+}
+
+func (s GetStackResponseBodyLogResourceLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStackResponseBodyLogResourceLogs) GoString() string {
+	return s.String()
+}
+
+func (s *GetStackResponseBodyLogResourceLogs) SetLogs(v []*GetStackResponseBodyLogResourceLogsLogs) *GetStackResponseBodyLogResourceLogs {
+	s.Logs = v
+	return s
+}
+
+func (s *GetStackResponseBodyLogResourceLogs) SetResourceName(v string) *GetStackResponseBodyLogResourceLogs {
+	s.ResourceName = &v
+	return s
+}
+
+type GetStackResponseBodyLogResourceLogsLogs struct {
+	Content *string   `json:"Content,omitempty" xml:"Content,omitempty"`
+	Keys    []*string `json:"Keys,omitempty" xml:"Keys,omitempty" type:"Repeated"`
+}
+
+func (s GetStackResponseBodyLogResourceLogsLogs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetStackResponseBodyLogResourceLogsLogs) GoString() string {
+	return s.String()
+}
+
+func (s *GetStackResponseBodyLogResourceLogsLogs) SetContent(v string) *GetStackResponseBodyLogResourceLogsLogs {
+	s.Content = &v
+	return s
+}
+
+func (s *GetStackResponseBodyLogResourceLogsLogs) SetKeys(v []*string) *GetStackResponseBodyLogResourceLogsLogs {
+	s.Keys = v
 	return s
 }
 
@@ -5451,11 +5509,12 @@ func (s *GetStackPolicyResponse) SetBody(v *GetStackPolicyResponseBody) *GetStac
 }
 
 type GetStackResourceRequest struct {
-	ClientToken            *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	LogicalResourceId      *string `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
-	RegionId               *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ShowResourceAttributes *bool   `json:"ShowResourceAttributes,omitempty" xml:"ShowResourceAttributes,omitempty"`
-	StackId                *string `json:"StackId,omitempty" xml:"StackId,omitempty"`
+	ClientToken            *string   `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	LogicalResourceId      *string   `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
+	RegionId               *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceAttributes     []*string `json:"ResourceAttributes,omitempty" xml:"ResourceAttributes,omitempty" type:"Repeated"`
+	ShowResourceAttributes *bool     `json:"ShowResourceAttributes,omitempty" xml:"ShowResourceAttributes,omitempty"`
+	StackId                *string   `json:"StackId,omitempty" xml:"StackId,omitempty"`
 }
 
 func (s GetStackResourceRequest) String() string {
@@ -5478,6 +5537,11 @@ func (s *GetStackResourceRequest) SetLogicalResourceId(v string) *GetStackResour
 
 func (s *GetStackResourceRequest) SetRegionId(v string) *GetStackResourceRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *GetStackResourceRequest) SetResourceAttributes(v []*string) *GetStackResourceRequest {
+	s.ResourceAttributes = v
 	return s
 }
 
@@ -12246,10 +12310,11 @@ func (s *ValidateTemplateRequest) SetValidationOption(v string) *ValidateTemplat
 }
 
 type ValidateTemplateResponseBody struct {
-	Description *string                                `json:"Description,omitempty" xml:"Description,omitempty"`
-	Outputs     []*ValidateTemplateResponseBodyOutputs `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
-	Parameters  []map[string]interface{}               `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
-	RequestId   *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Description   *string                                    `json:"Description,omitempty" xml:"Description,omitempty"`
+	Outputs       []*ValidateTemplateResponseBodyOutputs     `json:"Outputs,omitempty" xml:"Outputs,omitempty" type:"Repeated"`
+	Parameters    []map[string]interface{}                   `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
+	RequestId     *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceTypes *ValidateTemplateResponseBodyResourceTypes `json:"ResourceTypes,omitempty" xml:"ResourceTypes,omitempty" type:"Struct"`
 }
 
 func (s ValidateTemplateResponseBody) String() string {
@@ -12280,6 +12345,11 @@ func (s *ValidateTemplateResponseBody) SetRequestId(v string) *ValidateTemplateR
 	return s
 }
 
+func (s *ValidateTemplateResponseBody) SetResourceTypes(v *ValidateTemplateResponseBodyResourceTypes) *ValidateTemplateResponseBody {
+	s.ResourceTypes = v
+	return s
+}
+
 type ValidateTemplateResponseBodyOutputs struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	OutputKey   *string `json:"OutputKey,omitempty" xml:"OutputKey,omitempty"`
@@ -12300,6 +12370,29 @@ func (s *ValidateTemplateResponseBodyOutputs) SetDescription(v string) *Validate
 
 func (s *ValidateTemplateResponseBodyOutputs) SetOutputKey(v string) *ValidateTemplateResponseBodyOutputs {
 	s.OutputKey = &v
+	return s
+}
+
+type ValidateTemplateResponseBodyResourceTypes struct {
+	DataSources []*string `json:"DataSources,omitempty" xml:"DataSources,omitempty" type:"Repeated"`
+	Resources   []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
+}
+
+func (s ValidateTemplateResponseBodyResourceTypes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ValidateTemplateResponseBodyResourceTypes) GoString() string {
+	return s.String()
+}
+
+func (s *ValidateTemplateResponseBodyResourceTypes) SetDataSources(v []*string) *ValidateTemplateResponseBodyResourceTypes {
+	s.DataSources = v
+	return s
+}
+
+func (s *ValidateTemplateResponseBodyResourceTypes) SetResources(v []*string) *ValidateTemplateResponseBodyResourceTypes {
+	s.Resources = v
 	return s
 }
 
@@ -14131,6 +14224,10 @@ func (client *Client) GetStackWithOptions(request *GetStackRequest, runtime *uti
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.LogOption)) {
+		query["LogOption"] = request.LogOption
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OutputOption)) {
 		query["OutputOption"] = request.OutputOption
 	}
@@ -14449,6 +14546,10 @@ func (client *Client) GetStackResourceWithOptions(request *GetStackResourceReque
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceAttributes)) {
+		query["ResourceAttributes"] = request.ResourceAttributes
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ShowResourceAttributes)) {
