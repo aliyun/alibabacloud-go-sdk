@@ -7,6 +7,7 @@ package client
 import (
 	openapi "github.com/alibabacloud-go/darabonba-openapi/client"
 	endpointutil "github.com/alibabacloud-go/endpoint-util/service"
+	openapiutil "github.com/alibabacloud-go/openapi-util/service"
 	util "github.com/alibabacloud-go/tea-utils/service"
 	"github.com/alibabacloud-go/tea/tea"
 )
@@ -99,8 +100,9 @@ func (s *DescribeBgpPackByIpResponseBodyDdosbgpInfo) SetIp(v string) *DescribeBg
 }
 
 type DescribeBgpPackByIpResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeBgpPackByIpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeBgpPackByIpResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeBgpPackByIpResponse) String() string {
@@ -116,6 +118,11 @@ func (s *DescribeBgpPackByIpResponse) SetHeaders(v map[string]*string) *Describe
 	return s
 }
 
+func (s *DescribeBgpPackByIpResponse) SetStatusCode(v int32) *DescribeBgpPackByIpResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeBgpPackByIpResponse) SetBody(v *DescribeBgpPackByIpResponseBody) *DescribeBgpPackByIpResponse {
 	s.Body = v
 	return s
@@ -126,6 +133,7 @@ type DescribeCapRequest struct {
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetIp   *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 }
 
 func (s DescribeCapRequest) String() string {
@@ -153,6 +161,11 @@ func (s *DescribeCapRequest) SetInstanceId(v string) *DescribeCapRequest {
 
 func (s *DescribeCapRequest) SetInstanceType(v string) *DescribeCapRequest {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeCapRequest) SetInternetIp(v string) *DescribeCapRequest {
+	s.InternetIp = &v
 	return s
 }
 
@@ -197,8 +210,9 @@ func (s *DescribeCapResponseBodyCapUrl) SetUrl(v string) *DescribeCapResponseBod
 }
 
 type DescribeCapResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeCapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeCapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeCapResponse) String() string {
@@ -211,6 +225,11 @@ func (s DescribeCapResponse) GoString() string {
 
 func (s *DescribeCapResponse) SetHeaders(v map[string]*string) *DescribeCapResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeCapResponse) SetStatusCode(v int32) *DescribeCapResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -295,8 +314,9 @@ func (s *DescribeDdosCountResponseBodyDdosCount) SetInstacenCount(v int32) *Desc
 }
 
 type DescribeDdosCountResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDdosCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDdosCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeDdosCountResponse) String() string {
@@ -309,6 +329,11 @@ func (s DescribeDdosCountResponse) GoString() string {
 
 func (s *DescribeDdosCountResponse) SetHeaders(v map[string]*string) *DescribeDdosCountResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeDdosCountResponse) SetStatusCode(v int32) *DescribeDdosCountResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -393,8 +418,9 @@ func (s *DescribeDdosCreditResponseBodyDdosCredit) SetScoreLevel(v string) *Desc
 }
 
 type DescribeDdosCreditResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDdosCreditResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDdosCreditResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeDdosCreditResponse) String() string {
@@ -410,6 +436,11 @@ func (s *DescribeDdosCreditResponse) SetHeaders(v map[string]*string) *DescribeD
 	return s
 }
 
+func (s *DescribeDdosCreditResponse) SetStatusCode(v int32) *DescribeDdosCreditResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeDdosCreditResponse) SetBody(v *DescribeDdosCreditResponseBody) *DescribeDdosCreditResponse {
 	s.Body = v
 	return s
@@ -420,6 +451,7 @@ type DescribeDdosEventListRequest struct {
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetIp   *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -448,6 +480,11 @@ func (s *DescribeDdosEventListRequest) SetInstanceId(v string) *DescribeDdosEven
 
 func (s *DescribeDdosEventListRequest) SetInstanceType(v string) *DescribeDdosEventListRequest {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeDdosEventListRequest) SetInternetIp(v string) *DescribeDdosEventListRequest {
+	s.InternetIp = &v
 	return s
 }
 
@@ -550,8 +587,9 @@ func (s *DescribeDdosEventListResponseBodyDdosEventListDdosEvent) SetUnBlackhole
 }
 
 type DescribeDdosEventListResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDdosEventListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDdosEventListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeDdosEventListResponse) String() string {
@@ -564,6 +602,11 @@ func (s DescribeDdosEventListResponse) GoString() string {
 
 func (s *DescribeDdosEventListResponse) SetHeaders(v map[string]*string) *DescribeDdosEventListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeDdosEventListResponse) SetStatusCode(v int32) *DescribeDdosEventListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -652,6 +695,7 @@ type DescribeDdosThresholdResponseBodyThresholdsThreshold struct {
 	DdosType   *string `json:"DdosType,omitempty" xml:"DdosType,omitempty"`
 	ElasticBps *int32  `json:"ElasticBps,omitempty" xml:"ElasticBps,omitempty"`
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	IsAuto     *bool   `json:"IsAuto,omitempty" xml:"IsAuto,omitempty"`
 	MaxBps     *int32  `json:"MaxBps,omitempty" xml:"MaxBps,omitempty"`
 	MaxPps     *int32  `json:"MaxPps,omitempty" xml:"MaxPps,omitempty"`
@@ -686,6 +730,11 @@ func (s *DescribeDdosThresholdResponseBodyThresholdsThreshold) SetInstanceId(v s
 	return s
 }
 
+func (s *DescribeDdosThresholdResponseBodyThresholdsThreshold) SetInternetIp(v string) *DescribeDdosThresholdResponseBodyThresholdsThreshold {
+	s.InternetIp = &v
+	return s
+}
+
 func (s *DescribeDdosThresholdResponseBodyThresholdsThreshold) SetIsAuto(v bool) *DescribeDdosThresholdResponseBodyThresholdsThreshold {
 	s.IsAuto = &v
 	return s
@@ -707,8 +756,9 @@ func (s *DescribeDdosThresholdResponseBodyThresholdsThreshold) SetPps(v int32) *
 }
 
 type DescribeDdosThresholdResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDdosThresholdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDdosThresholdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeDdosThresholdResponse) String() string {
@@ -721,6 +771,11 @@ func (s DescribeDdosThresholdResponse) GoString() string {
 
 func (s *DescribeDdosThresholdResponse) SetHeaders(v map[string]*string) *DescribeDdosThresholdResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeDdosThresholdResponse) SetStatusCode(v int32) *DescribeDdosThresholdResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -912,8 +967,9 @@ func (s *DescribeInstanceResponseBodyInstanceListInstance) SetIsBgppack(v bool) 
 }
 
 type DescribeInstanceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeInstanceResponse) String() string {
@@ -929,7 +985,506 @@ func (s *DescribeInstanceResponse) SetHeaders(v map[string]*string) *DescribeIns
 	return s
 }
 
+func (s *DescribeInstanceResponse) SetStatusCode(v int32) *DescribeInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeInstanceResponse) SetBody(v *DescribeInstanceResponseBody) *DescribeInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInstanceIpAddressRequest struct {
+	CurrentPage  *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
+	DdosStatus   *string `json:"DdosStatus,omitempty" xml:"DdosStatus,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceIp   *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	PageSize     *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+}
+
+func (s DescribeInstanceIpAddressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceIpAddressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceIpAddressRequest) SetCurrentPage(v int32) *DescribeInstanceIpAddressRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressRequest) SetDdosRegionId(v string) *DescribeInstanceIpAddressRequest {
+	s.DdosRegionId = &v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressRequest) SetDdosStatus(v string) *DescribeInstanceIpAddressRequest {
+	s.DdosStatus = &v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressRequest) SetInstanceId(v string) *DescribeInstanceIpAddressRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressRequest) SetInstanceIp(v string) *DescribeInstanceIpAddressRequest {
+	s.InstanceIp = &v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressRequest) SetInstanceName(v string) *DescribeInstanceIpAddressRequest {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressRequest) SetInstanceType(v string) *DescribeInstanceIpAddressRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressRequest) SetPageSize(v int32) *DescribeInstanceIpAddressRequest {
+	s.PageSize = &v
+	return s
+}
+
+type DescribeInstanceIpAddressResponseBody struct {
+	InstanceList []*DescribeInstanceIpAddressResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
+	RequestId    *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Total        *int32                                               `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s DescribeInstanceIpAddressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceIpAddressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceIpAddressResponseBody) SetInstanceList(v []*DescribeInstanceIpAddressResponseBodyInstanceList) *DescribeInstanceIpAddressResponseBody {
+	s.InstanceList = v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressResponseBody) SetRequestId(v string) *DescribeInstanceIpAddressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressResponseBody) SetTotal(v int32) *DescribeInstanceIpAddressResponseBody {
+	s.Total = &v
+	return s
+}
+
+type DescribeInstanceIpAddressResponseBodyInstanceList struct {
+	InstanceId      *string                                                             `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName    *string                                                             `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceStatus  *string                                                             `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InstanceType    *string                                                             `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	IpAddressConfig []*DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig `json:"IpAddressConfig,omitempty" xml:"IpAddressConfig,omitempty" type:"Repeated"`
+}
+
+func (s DescribeInstanceIpAddressResponseBodyInstanceList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceIpAddressResponseBodyInstanceList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceIpAddressResponseBodyInstanceList) SetInstanceId(v string) *DescribeInstanceIpAddressResponseBodyInstanceList {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressResponseBodyInstanceList) SetInstanceName(v string) *DescribeInstanceIpAddressResponseBodyInstanceList {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressResponseBodyInstanceList) SetInstanceStatus(v string) *DescribeInstanceIpAddressResponseBodyInstanceList {
+	s.InstanceStatus = &v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressResponseBodyInstanceList) SetInstanceType(v string) *DescribeInstanceIpAddressResponseBodyInstanceList {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressResponseBodyInstanceList) SetIpAddressConfig(v []*DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig) *DescribeInstanceIpAddressResponseBodyInstanceList {
+	s.IpAddressConfig = v
+	return s
+}
+
+type DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig struct {
+	BlackholeThreshold  *int32  `json:"BlackholeThreshold,omitempty" xml:"BlackholeThreshold,omitempty"`
+	DefenseBpsThreshold *int32  `json:"DefenseBpsThreshold,omitempty" xml:"DefenseBpsThreshold,omitempty"`
+	DefensePpsThreshold *int32  `json:"DefensePpsThreshold,omitempty" xml:"DefensePpsThreshold,omitempty"`
+	ElasticThreshold    *int32  `json:"ElasticThreshold,omitempty" xml:"ElasticThreshold,omitempty"`
+	InstanceIp          *string `json:"InstanceIp,omitempty" xml:"InstanceIp,omitempty"`
+	IpStatus            *string `json:"IpStatus,omitempty" xml:"IpStatus,omitempty"`
+	IpVersion           *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	IsBgppack           *bool   `json:"IsBgppack,omitempty" xml:"IsBgppack,omitempty"`
+	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig) SetBlackholeThreshold(v int32) *DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig {
+	s.BlackholeThreshold = &v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig) SetDefenseBpsThreshold(v int32) *DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig {
+	s.DefenseBpsThreshold = &v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig) SetDefensePpsThreshold(v int32) *DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig {
+	s.DefensePpsThreshold = &v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig) SetElasticThreshold(v int32) *DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig {
+	s.ElasticThreshold = &v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig) SetInstanceIp(v string) *DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig {
+	s.InstanceIp = &v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig) SetIpStatus(v string) *DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig {
+	s.IpStatus = &v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig) SetIpVersion(v string) *DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig {
+	s.IpVersion = &v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig) SetIsBgppack(v bool) *DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig {
+	s.IsBgppack = &v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig) SetRegionId(v string) *DescribeInstanceIpAddressResponseBodyInstanceListIpAddressConfig {
+	s.RegionId = &v
+	return s
+}
+
+type DescribeInstanceIpAddressResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceIpAddressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstanceIpAddressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceIpAddressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceIpAddressResponse) SetHeaders(v map[string]*string) *DescribeInstanceIpAddressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressResponse) SetStatusCode(v int32) *DescribeInstanceIpAddressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceIpAddressResponse) SetBody(v *DescribeInstanceIpAddressResponseBody) *DescribeInstanceIpAddressResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeIpDdosThresholdRequest struct {
+	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
+	DdosType     *string `json:"DdosType,omitempty" xml:"DdosType,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetIp   *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+}
+
+func (s DescribeIpDdosThresholdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpDdosThresholdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpDdosThresholdRequest) SetDdosRegionId(v string) *DescribeIpDdosThresholdRequest {
+	s.DdosRegionId = &v
+	return s
+}
+
+func (s *DescribeIpDdosThresholdRequest) SetDdosType(v string) *DescribeIpDdosThresholdRequest {
+	s.DdosType = &v
+	return s
+}
+
+func (s *DescribeIpDdosThresholdRequest) SetInstanceId(v string) *DescribeIpDdosThresholdRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeIpDdosThresholdRequest) SetInstanceType(v string) *DescribeIpDdosThresholdRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeIpDdosThresholdRequest) SetInternetIp(v string) *DescribeIpDdosThresholdRequest {
+	s.InternetIp = &v
+	return s
+}
+
+type DescribeIpDdosThresholdResponseBody struct {
+	// Id of the request
+	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Threshold *DescribeIpDdosThresholdResponseBodyThreshold `json:"Threshold,omitempty" xml:"Threshold,omitempty" type:"Struct"`
+}
+
+func (s DescribeIpDdosThresholdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpDdosThresholdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpDdosThresholdResponseBody) SetRequestId(v string) *DescribeIpDdosThresholdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeIpDdosThresholdResponseBody) SetThreshold(v *DescribeIpDdosThresholdResponseBodyThreshold) *DescribeIpDdosThresholdResponseBody {
+	s.Threshold = v
+	return s
+}
+
+type DescribeIpDdosThresholdResponseBodyThreshold struct {
+	Bps        *int32  `json:"Bps,omitempty" xml:"Bps,omitempty"`
+	DdosType   *string `json:"DdosType,omitempty" xml:"DdosType,omitempty"`
+	ElasticBps *int32  `json:"ElasticBps,omitempty" xml:"ElasticBps,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	IsAuto     *bool   `json:"IsAuto,omitempty" xml:"IsAuto,omitempty"`
+	MaxBps     *int32  `json:"MaxBps,omitempty" xml:"MaxBps,omitempty"`
+	MaxPps     *int32  `json:"MaxPps,omitempty" xml:"MaxPps,omitempty"`
+	Pps        *int32  `json:"Pps,omitempty" xml:"Pps,omitempty"`
+}
+
+func (s DescribeIpDdosThresholdResponseBodyThreshold) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpDdosThresholdResponseBodyThreshold) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpDdosThresholdResponseBodyThreshold) SetBps(v int32) *DescribeIpDdosThresholdResponseBodyThreshold {
+	s.Bps = &v
+	return s
+}
+
+func (s *DescribeIpDdosThresholdResponseBodyThreshold) SetDdosType(v string) *DescribeIpDdosThresholdResponseBodyThreshold {
+	s.DdosType = &v
+	return s
+}
+
+func (s *DescribeIpDdosThresholdResponseBodyThreshold) SetElasticBps(v int32) *DescribeIpDdosThresholdResponseBodyThreshold {
+	s.ElasticBps = &v
+	return s
+}
+
+func (s *DescribeIpDdosThresholdResponseBodyThreshold) SetInstanceId(v string) *DescribeIpDdosThresholdResponseBodyThreshold {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeIpDdosThresholdResponseBodyThreshold) SetInternetIp(v string) *DescribeIpDdosThresholdResponseBodyThreshold {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *DescribeIpDdosThresholdResponseBodyThreshold) SetIsAuto(v bool) *DescribeIpDdosThresholdResponseBodyThreshold {
+	s.IsAuto = &v
+	return s
+}
+
+func (s *DescribeIpDdosThresholdResponseBodyThreshold) SetMaxBps(v int32) *DescribeIpDdosThresholdResponseBodyThreshold {
+	s.MaxBps = &v
+	return s
+}
+
+func (s *DescribeIpDdosThresholdResponseBodyThreshold) SetMaxPps(v int32) *DescribeIpDdosThresholdResponseBodyThreshold {
+	s.MaxPps = &v
+	return s
+}
+
+func (s *DescribeIpDdosThresholdResponseBodyThreshold) SetPps(v int32) *DescribeIpDdosThresholdResponseBodyThreshold {
+	s.Pps = &v
+	return s
+}
+
+type DescribeIpDdosThresholdResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeIpDdosThresholdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeIpDdosThresholdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpDdosThresholdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpDdosThresholdResponse) SetHeaders(v map[string]*string) *DescribeIpDdosThresholdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeIpDdosThresholdResponse) SetStatusCode(v int32) *DescribeIpDdosThresholdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeIpDdosThresholdResponse) SetBody(v *DescribeIpDdosThresholdResponseBody) *DescribeIpDdosThresholdResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeIpLocationServiceRequest struct {
+	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+}
+
+func (s DescribeIpLocationServiceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpLocationServiceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpLocationServiceRequest) SetInternetIp(v string) *DescribeIpLocationServiceRequest {
+	s.InternetIp = &v
+	return s
+}
+
+type DescribeIpLocationServiceResponseBody struct {
+	// instance model
+	Instance *DescribeIpLocationServiceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeIpLocationServiceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpLocationServiceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpLocationServiceResponseBody) SetInstance(v *DescribeIpLocationServiceResponseBodyInstance) *DescribeIpLocationServiceResponseBody {
+	s.Instance = v
+	return s
+}
+
+func (s *DescribeIpLocationServiceResponseBody) SetRequestId(v string) *DescribeIpLocationServiceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeIpLocationServiceResponseBodyInstance struct {
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetIp   *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
+}
+
+func (s DescribeIpLocationServiceResponseBodyInstance) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpLocationServiceResponseBodyInstance) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpLocationServiceResponseBodyInstance) SetInstanceId(v string) *DescribeIpLocationServiceResponseBodyInstance {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *DescribeIpLocationServiceResponseBodyInstance) SetInstanceName(v string) *DescribeIpLocationServiceResponseBodyInstance {
+	s.InstanceName = &v
+	return s
+}
+
+func (s *DescribeIpLocationServiceResponseBodyInstance) SetInstanceType(v string) *DescribeIpLocationServiceResponseBodyInstance {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *DescribeIpLocationServiceResponseBodyInstance) SetInternetIp(v string) *DescribeIpLocationServiceResponseBodyInstance {
+	s.InternetIp = &v
+	return s
+}
+
+func (s *DescribeIpLocationServiceResponseBodyInstance) SetRegion(v string) *DescribeIpLocationServiceResponseBodyInstance {
+	s.Region = &v
+	return s
+}
+
+type DescribeIpLocationServiceResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeIpLocationServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeIpLocationServiceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeIpLocationServiceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeIpLocationServiceResponse) SetHeaders(v map[string]*string) *DescribeIpLocationServiceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeIpLocationServiceResponse) SetStatusCode(v int32) *DescribeIpLocationServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeIpLocationServiceResponse) SetBody(v *DescribeIpLocationServiceResponseBody) *DescribeIpLocationServiceResponse {
 	s.Body = v
 	return s
 }
@@ -1010,8 +1565,9 @@ func (s *DescribeRegionsResponseBodyRegionsRegion) SetRegionNoAlias(v string) *D
 }
 
 type DescribeRegionsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRegionsResponse) String() string {
@@ -1024,6 +1580,11 @@ func (s DescribeRegionsResponse) GoString() string {
 
 func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegionsResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeRegionsResponse) SetStatusCode(v int32) *DescribeRegionsResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1079,8 +1640,9 @@ func (s *ModifyDdosStatusResponseBody) SetRequestId(v string) *ModifyDdosStatusR
 }
 
 type ModifyDdosStatusResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyDdosStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDdosStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyDdosStatusResponse) String() string {
@@ -1096,6 +1658,11 @@ func (s *ModifyDdosStatusResponse) SetHeaders(v map[string]*string) *ModifyDdosS
 	return s
 }
 
+func (s *ModifyDdosStatusResponse) SetStatusCode(v int32) *ModifyDdosStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ModifyDdosStatusResponse) SetBody(v *ModifyDdosStatusResponseBody) *ModifyDdosStatusResponse {
 	s.Body = v
 	return s
@@ -1106,6 +1673,7 @@ type ModifyDefenseThresholdRequest struct {
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetIp   *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 	IsAuto       *bool   `json:"IsAuto,omitempty" xml:"IsAuto,omitempty"`
 	Pps          *int32  `json:"Pps,omitempty" xml:"Pps,omitempty"`
 }
@@ -1138,6 +1706,11 @@ func (s *ModifyDefenseThresholdRequest) SetInstanceType(v string) *ModifyDefense
 	return s
 }
 
+func (s *ModifyDefenseThresholdRequest) SetInternetIp(v string) *ModifyDefenseThresholdRequest {
+	s.InternetIp = &v
+	return s
+}
+
 func (s *ModifyDefenseThresholdRequest) SetIsAuto(v bool) *ModifyDefenseThresholdRequest {
 	s.IsAuto = &v
 	return s
@@ -1166,8 +1739,9 @@ func (s *ModifyDefenseThresholdResponseBody) SetRequestId(v string) *ModifyDefen
 }
 
 type ModifyDefenseThresholdResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyDefenseThresholdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDefenseThresholdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyDefenseThresholdResponse) String() string {
@@ -1180,6 +1754,11 @@ func (s ModifyDefenseThresholdResponse) GoString() string {
 
 func (s *ModifyDefenseThresholdResponse) SetHeaders(v map[string]*string) *ModifyDefenseThresholdResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyDefenseThresholdResponse) SetStatusCode(v int32) *ModifyDefenseThresholdResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1240,11 +1819,31 @@ func (client *Client) DescribeBgpPackByIpWithOptions(request *DescribeBgpPackByI
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DdosRegionId)) {
+		query["DdosRegionId"] = request.DdosRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ip)) {
+		query["Ip"] = request.Ip
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBgpPackByIp"),
+		Version:     tea.String("2017-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeBgpPackByIpResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeBgpPackByIp"), tea.String("2017-05-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1268,11 +1867,43 @@ func (client *Client) DescribeCapWithOptions(request *DescribeCapRequest, runtim
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BegTime)) {
+		query["BegTime"] = request.BegTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DdosRegionId)) {
+		query["DdosRegionId"] = request.DdosRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetIp)) {
+		query["InternetIp"] = request.InternetIp
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeCap"),
+		Version:     tea.String("2017-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeCapResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeCap"), tea.String("2017-05-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1296,11 +1927,31 @@ func (client *Client) DescribeDdosCountWithOptions(request *DescribeDdosCountReq
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DdosRegionId)) {
+		query["DdosRegionId"] = request.DdosRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDdosCount"),
+		Version:     tea.String("2017-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDdosCountResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDdosCount"), tea.String("2017-05-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1324,11 +1975,27 @@ func (client *Client) DescribeDdosCreditWithOptions(request *DescribeDdosCreditR
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DdosRegionId)) {
+		query["DdosRegionId"] = request.DdosRegionId
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDdosCredit"),
+		Version:     tea.String("2017-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDdosCreditResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDdosCredit"), tea.String("2017-05-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1352,11 +2019,47 @@ func (client *Client) DescribeDdosEventListWithOptions(request *DescribeDdosEven
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DdosRegionId)) {
+		query["DdosRegionId"] = request.DdosRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetIp)) {
+		query["InternetIp"] = request.InternetIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDdosEventList"),
+		Version:     tea.String("2017-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDdosEventListResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDdosEventList"), tea.String("2017-05-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1380,11 +2083,39 @@ func (client *Client) DescribeDdosThresholdWithOptions(request *DescribeDdosThre
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DdosRegionId)) {
+		query["DdosRegionId"] = request.DdosRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DdosType)) {
+		query["DdosType"] = request.DdosType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDdosThreshold"),
+		Version:     tea.String("2017-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeDdosThresholdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeDdosThreshold"), tea.String("2017-05-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1408,11 +2139,55 @@ func (client *Client) DescribeInstanceWithOptions(request *DescribeInstanceReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DdosRegionId)) {
+		query["DdosRegionId"] = request.DdosRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DdosStatus)) {
+		query["DdosStatus"] = request.DdosStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIp)) {
+		query["InstanceIp"] = request.InstanceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstance"),
+		Version:     tea.String("2017-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeInstance"), tea.String("2017-05-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1431,10 +2206,197 @@ func (client *Client) DescribeInstance(request *DescribeInstanceRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) DescribeInstanceIpAddressWithOptions(request *DescribeInstanceIpAddressRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceIpAddressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DdosRegionId)) {
+		query["DdosRegionId"] = request.DdosRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DdosStatus)) {
+		query["DdosStatus"] = request.DdosStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIp)) {
+		query["InstanceIp"] = request.InstanceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceName)) {
+		query["InstanceName"] = request.InstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceIpAddress"),
+		Version:     tea.String("2017-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceIpAddressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceIpAddress(request *DescribeInstanceIpAddressRequest) (_result *DescribeInstanceIpAddressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceIpAddressResponse{}
+	_body, _err := client.DescribeInstanceIpAddressWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeIpDdosThresholdWithOptions(request *DescribeIpDdosThresholdRequest, runtime *util.RuntimeOptions) (_result *DescribeIpDdosThresholdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DdosRegionId)) {
+		query["DdosRegionId"] = request.DdosRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DdosType)) {
+		query["DdosType"] = request.DdosType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetIp)) {
+		query["InternetIp"] = request.InternetIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeIpDdosThreshold"),
+		Version:     tea.String("2017-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeIpDdosThresholdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeIpDdosThreshold(request *DescribeIpDdosThresholdRequest) (_result *DescribeIpDdosThresholdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeIpDdosThresholdResponse{}
+	_body, _err := client.DescribeIpDdosThresholdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeIpLocationServiceWithOptions(request *DescribeIpLocationServiceRequest, runtime *util.RuntimeOptions) (_result *DescribeIpLocationServiceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InternetIp)) {
+		query["InternetIp"] = request.InternetIp
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeIpLocationService"),
+		Version:     tea.String("2017-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeIpLocationServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeIpLocationService(request *DescribeIpLocationServiceRequest) (_result *DescribeIpLocationServiceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeIpLocationServiceResponse{}
+	_body, _err := client.DescribeIpLocationServiceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeRegionsWithOptions(runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
 	req := &openapi.OpenApiRequest{}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeRegions"),
+		Version:     tea.String("2017-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
 	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("DescribeRegions"), tea.String("2017-05-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1458,11 +2420,35 @@ func (client *Client) ModifyDdosStatusWithOptions(request *ModifyDdosStatusReque
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DdosRegionId)) {
+		query["DdosRegionId"] = request.DdosRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDdosStatus"),
+		Version:     tea.String("2017-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyDdosStatusResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyDdosStatus"), tea.String("2017-05-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1486,11 +2472,51 @@ func (client *Client) ModifyDefenseThresholdWithOptions(request *ModifyDefenseTh
 	if _err != nil {
 		return _result, _err
 	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Bps)) {
+		query["Bps"] = request.Bps
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DdosRegionId)) {
+		query["DdosRegionId"] = request.DdosRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetIp)) {
+		query["InternetIp"] = request.InternetIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsAuto)) {
+		query["IsAuto"] = request.IsAuto
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Pps)) {
+		query["Pps"] = request.Pps
+	}
+
 	req := &openapi.OpenApiRequest{
-		Body: util.ToMap(request),
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDefenseThreshold"),
+		Version:     tea.String("2017-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
 	}
 	_result = &ModifyDefenseThresholdResponse{}
-	_body, _err := client.DoRPCRequest(tea.String("ModifyDefenseThreshold"), tea.String("2017-05-18"), tea.String("HTTPS"), tea.String("POST"), tea.String("AK"), tea.String("json"), req, runtime)
+	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
 	}
