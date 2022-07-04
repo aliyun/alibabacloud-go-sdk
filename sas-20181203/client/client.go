@@ -517,8 +517,7 @@ func (s *CreateFileDetectRequest) SetType(v int32) *CreateFileDetectRequest {
 }
 
 type CreateFileDetectResponseBody struct {
-	HashKey *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
-	// Id of the request
+	HashKey   *string `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
@@ -593,7 +592,6 @@ func (s *CreateFileDetectUploadUrlRequest) SetType(v int32) *CreateFileDetectUpl
 }
 
 type CreateFileDetectUploadUrlResponseBody struct {
-	// Id of the request
 	RequestId     *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	UploadUrlList []*CreateFileDetectUploadUrlResponseBodyUploadUrlList `json:"UploadUrlList,omitempty" xml:"UploadUrlList,omitempty" type:"Repeated"`
 }
@@ -15933,8 +15931,8 @@ func (s *DescribeRiskCheckResultResponseBodyList) SetType(v string) *DescribeRis
 }
 
 type DescribeRiskCheckResultResponseBodyListRiskItemResources struct {
-	ContentResource map[string]*string `json:"ContentResource,omitempty" xml:"ContentResource,omitempty"`
-	ResourceName    *string            `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ContentResource map[string]interface{} `json:"ContentResource,omitempty" xml:"ContentResource,omitempty"`
+	ResourceName    *string                `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 }
 
 func (s DescribeRiskCheckResultResponseBodyListRiskItemResources) String() string {
@@ -15945,7 +15943,7 @@ func (s DescribeRiskCheckResultResponseBodyListRiskItemResources) GoString() str
 	return s.String()
 }
 
-func (s *DescribeRiskCheckResultResponseBodyListRiskItemResources) SetContentResource(v map[string]*string) *DescribeRiskCheckResultResponseBodyListRiskItemResources {
+func (s *DescribeRiskCheckResultResponseBodyListRiskItemResources) SetContentResource(v map[string]interface{}) *DescribeRiskCheckResultResponseBodyListRiskItemResources {
 	s.ContentResource = v
 	return s
 }
@@ -22492,6 +22490,117 @@ func (s *DescribeVulWhitelistResponse) SetBody(v *DescribeVulWhitelistResponseBo
 	return s
 }
 
+type DescribeWarningExportInfoRequest struct {
+	ExportId *int64 `json:"ExportId,omitempty" xml:"ExportId,omitempty"`
+}
+
+func (s DescribeWarningExportInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWarningExportInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWarningExportInfoRequest) SetExportId(v int64) *DescribeWarningExportInfoRequest {
+	s.ExportId = &v
+	return s
+}
+
+type DescribeWarningExportInfoResponseBody struct {
+	CurrentCount *int32  `json:"CurrentCount,omitempty" xml:"CurrentCount,omitempty"`
+	ExportStatus *string `json:"ExportStatus,omitempty" xml:"ExportStatus,omitempty"`
+	FileName     *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
+	Id           *int64  `json:"Id,omitempty" xml:"Id,omitempty"`
+	Link         *string `json:"Link,omitempty" xml:"Link,omitempty"`
+	Message      *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Progress     *int32  `json:"Progress,omitempty" xml:"Progress,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount   *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeWarningExportInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWarningExportInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWarningExportInfoResponseBody) SetCurrentCount(v int32) *DescribeWarningExportInfoResponseBody {
+	s.CurrentCount = &v
+	return s
+}
+
+func (s *DescribeWarningExportInfoResponseBody) SetExportStatus(v string) *DescribeWarningExportInfoResponseBody {
+	s.ExportStatus = &v
+	return s
+}
+
+func (s *DescribeWarningExportInfoResponseBody) SetFileName(v string) *DescribeWarningExportInfoResponseBody {
+	s.FileName = &v
+	return s
+}
+
+func (s *DescribeWarningExportInfoResponseBody) SetId(v int64) *DescribeWarningExportInfoResponseBody {
+	s.Id = &v
+	return s
+}
+
+func (s *DescribeWarningExportInfoResponseBody) SetLink(v string) *DescribeWarningExportInfoResponseBody {
+	s.Link = &v
+	return s
+}
+
+func (s *DescribeWarningExportInfoResponseBody) SetMessage(v string) *DescribeWarningExportInfoResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeWarningExportInfoResponseBody) SetProgress(v int32) *DescribeWarningExportInfoResponseBody {
+	s.Progress = &v
+	return s
+}
+
+func (s *DescribeWarningExportInfoResponseBody) SetRequestId(v string) *DescribeWarningExportInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeWarningExportInfoResponseBody) SetTotalCount(v int32) *DescribeWarningExportInfoResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeWarningExportInfoResponse struct {
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeWarningExportInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeWarningExportInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeWarningExportInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeWarningExportInfoResponse) SetHeaders(v map[string]*string) *DescribeWarningExportInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeWarningExportInfoResponse) SetStatusCode(v int32) *DescribeWarningExportInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeWarningExportInfoResponse) SetBody(v *DescribeWarningExportInfoResponseBody) *DescribeWarningExportInfoResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeWarningMachinesRequest struct {
 	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -23671,7 +23780,6 @@ func (s *GetFileDetectResultRequest) SetType(v int32) *GetFileDetectResultReques
 }
 
 type GetFileDetectResultResponseBody struct {
-	// Id of the request
 	RequestId  *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	ResultList []*GetFileDetectResultResponseBodyResultList `json:"ResultList,omitempty" xml:"ResultList,omitempty" type:"Repeated"`
 }
@@ -36891,6 +36999,50 @@ func (client *Client) DescribeVulWhitelist(request *DescribeVulWhitelistRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeVulWhitelistResponse{}
 	_body, _err := client.DescribeVulWhitelistWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeWarningExportInfoWithOptions(request *DescribeWarningExportInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeWarningExportInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExportId)) {
+		query["ExportId"] = request.ExportId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeWarningExportInfo"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeWarningExportInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeWarningExportInfo(request *DescribeWarningExportInfoRequest) (_result *DescribeWarningExportInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeWarningExportInfoResponse{}
+	_body, _err := client.DescribeWarningExportInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
