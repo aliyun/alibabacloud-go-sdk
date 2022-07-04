@@ -66,8 +66,6 @@ type AddServersToServerGroupRequestServers struct {
 	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
 	// 后端权重
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	// 服务器对应的zoneId
-	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s AddServersToServerGroupRequestServers) String() string {
@@ -105,11 +103,6 @@ func (s *AddServersToServerGroupRequestServers) SetServerType(v string) *AddServ
 
 func (s *AddServersToServerGroupRequestServers) SetWeight(v int32) *AddServersToServerGroupRequestServers {
 	s.Weight = &v
-	return s
-}
-
-func (s *AddServersToServerGroupRequestServers) SetZoneId(v string) *AddServersToServerGroupRequestServers {
-	s.ZoneId = &v
 	return s
 }
 
@@ -577,22 +570,22 @@ func (s *CreateListenerResponse) SetBody(v *CreateListenerResponseBody) *CreateL
 }
 
 type CreateLoadBalancerRequest struct {
-	AddressIpVersion         *string                                  `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	AddressType              *string                                  `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	BillingConfig            *CreateLoadBalancerRequestBillingConfig  `json:"BillingConfig,omitempty" xml:"BillingConfig,omitempty" type:"Struct"`
-	BizFlag                  *string                                  `json:"BizFlag,omitempty" xml:"BizFlag,omitempty"`
-	ClientToken              *string                                  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	CommonBandwidthPackageId *string                                  `json:"CommonBandwidthPackageId,omitempty" xml:"CommonBandwidthPackageId,omitempty"`
-	CrossZoneEnabled         *bool                                    `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
-	DryRun                   *bool                                    `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	LoadBalancerName         *string                                  `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
-	LoadBalancerType         *string                                  `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
-	RegionId                 *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId          *string                                  `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SecurityGroups           []*string                                `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
-	TrafficAffinityEnabled   *bool                                    `json:"TrafficAffinityEnabled,omitempty" xml:"TrafficAffinityEnabled,omitempty"`
-	VpcId                    *string                                  `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	ZoneMappings             []*CreateLoadBalancerRequestZoneMappings `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
+	AddressIpVersion          *string                                             `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
+	AddressType               *string                                             `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	BandwidthPackageId        *string                                             `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	BizFlag                   *string                                             `json:"BizFlag,omitempty" xml:"BizFlag,omitempty"`
+	ClientToken               *string                                             `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	CrossZoneEnabled          *bool                                               `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
+	DryRun                    *bool                                               `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	LoadBalancerBillingConfig *CreateLoadBalancerRequestLoadBalancerBillingConfig `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
+	LoadBalancerName          *string                                             `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
+	LoadBalancerType          *string                                             `json:"LoadBalancerType,omitempty" xml:"LoadBalancerType,omitempty"`
+	RegionId                  *string                                             `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId           *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SecurityGroupIds          []*string                                           `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
+	TrafficAffinityEnabled    *bool                                               `json:"TrafficAffinityEnabled,omitempty" xml:"TrafficAffinityEnabled,omitempty"`
+	VpcId                     *string                                             `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneMappings              []*CreateLoadBalancerRequestZoneMappings            `json:"ZoneMappings,omitempty" xml:"ZoneMappings,omitempty" type:"Repeated"`
 }
 
 func (s CreateLoadBalancerRequest) String() string {
@@ -613,8 +606,8 @@ func (s *CreateLoadBalancerRequest) SetAddressType(v string) *CreateLoadBalancer
 	return s
 }
 
-func (s *CreateLoadBalancerRequest) SetBillingConfig(v *CreateLoadBalancerRequestBillingConfig) *CreateLoadBalancerRequest {
-	s.BillingConfig = v
+func (s *CreateLoadBalancerRequest) SetBandwidthPackageId(v string) *CreateLoadBalancerRequest {
+	s.BandwidthPackageId = &v
 	return s
 }
 
@@ -628,11 +621,6 @@ func (s *CreateLoadBalancerRequest) SetClientToken(v string) *CreateLoadBalancer
 	return s
 }
 
-func (s *CreateLoadBalancerRequest) SetCommonBandwidthPackageId(v string) *CreateLoadBalancerRequest {
-	s.CommonBandwidthPackageId = &v
-	return s
-}
-
 func (s *CreateLoadBalancerRequest) SetCrossZoneEnabled(v bool) *CreateLoadBalancerRequest {
 	s.CrossZoneEnabled = &v
 	return s
@@ -640,6 +628,11 @@ func (s *CreateLoadBalancerRequest) SetCrossZoneEnabled(v bool) *CreateLoadBalan
 
 func (s *CreateLoadBalancerRequest) SetDryRun(v bool) *CreateLoadBalancerRequest {
 	s.DryRun = &v
+	return s
+}
+
+func (s *CreateLoadBalancerRequest) SetLoadBalancerBillingConfig(v *CreateLoadBalancerRequestLoadBalancerBillingConfig) *CreateLoadBalancerRequest {
+	s.LoadBalancerBillingConfig = v
 	return s
 }
 
@@ -663,8 +656,8 @@ func (s *CreateLoadBalancerRequest) SetResourceGroupId(v string) *CreateLoadBala
 	return s
 }
 
-func (s *CreateLoadBalancerRequest) SetSecurityGroups(v []*string) *CreateLoadBalancerRequest {
-	s.SecurityGroups = v
+func (s *CreateLoadBalancerRequest) SetSecurityGroupIds(v []*string) *CreateLoadBalancerRequest {
+	s.SecurityGroupIds = v
 	return s
 }
 
@@ -683,53 +676,21 @@ func (s *CreateLoadBalancerRequest) SetZoneMappings(v []*CreateLoadBalancerReque
 	return s
 }
 
-type CreateLoadBalancerRequestBillingConfig struct {
-	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// PayByTraffic, PayByBandwidth, PayByLcu, PayBy95, PayByOld95, PayBy96
-	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
+type CreateLoadBalancerRequestLoadBalancerBillingConfig struct {
 	// PrePay, PostPay
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	Period  *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
-	// Month, Year, Day
-	PricingCycle  *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	Specification *string `json:"Specification,omitempty" xml:"Specification,omitempty"`
 }
 
-func (s CreateLoadBalancerRequestBillingConfig) String() string {
+func (s CreateLoadBalancerRequestLoadBalancerBillingConfig) String() string {
 	return tea.Prettify(s)
 }
 
-func (s CreateLoadBalancerRequestBillingConfig) GoString() string {
+func (s CreateLoadBalancerRequestLoadBalancerBillingConfig) GoString() string {
 	return s.String()
 }
 
-func (s *CreateLoadBalancerRequestBillingConfig) SetAutoPay(v bool) *CreateLoadBalancerRequestBillingConfig {
-	s.AutoPay = &v
-	return s
-}
-
-func (s *CreateLoadBalancerRequestBillingConfig) SetInternetChargeType(v string) *CreateLoadBalancerRequestBillingConfig {
-	s.InternetChargeType = &v
-	return s
-}
-
-func (s *CreateLoadBalancerRequestBillingConfig) SetPayType(v string) *CreateLoadBalancerRequestBillingConfig {
+func (s *CreateLoadBalancerRequestLoadBalancerBillingConfig) SetPayType(v string) *CreateLoadBalancerRequestLoadBalancerBillingConfig {
 	s.PayType = &v
-	return s
-}
-
-func (s *CreateLoadBalancerRequestBillingConfig) SetPeriod(v int32) *CreateLoadBalancerRequestBillingConfig {
-	s.Period = &v
-	return s
-}
-
-func (s *CreateLoadBalancerRequestBillingConfig) SetPricingCycle(v string) *CreateLoadBalancerRequestBillingConfig {
-	s.PricingCycle = &v
-	return s
-}
-
-func (s *CreateLoadBalancerRequestBillingConfig) SetSpecification(v string) *CreateLoadBalancerRequestBillingConfig {
-	s.Specification = &v
 	return s
 }
 
@@ -2663,7 +2624,9 @@ type GetListenerAttributeResponseBody struct {
 	Cps            *int32    `json:"Cps,omitempty" xml:"Cps,omitempty"`
 	DynamicCode    *string   `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
 	DynamicMessage *string   `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode *int32    `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	// anyPort监听结束端口
+	EndPort        *string `json:"EndPort,omitempty" xml:"EndPort,omitempty"`
+	HttpStatusCode *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// 空闲超时时间
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// 监听描述
@@ -2687,7 +2650,9 @@ type GetListenerAttributeResponseBody struct {
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	// servergroupId
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
-	Success       *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	// anyPort监听起始端口
+	StartPort *string `json:"StartPort,omitempty" xml:"StartPort,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s GetListenerAttributeResponseBody) String() string {
@@ -2745,6 +2710,11 @@ func (s *GetListenerAttributeResponseBody) SetDynamicCode(v string) *GetListener
 
 func (s *GetListenerAttributeResponseBody) SetDynamicMessage(v string) *GetListenerAttributeResponseBody {
 	s.DynamicMessage = &v
+	return s
+}
+
+func (s *GetListenerAttributeResponseBody) SetEndPort(v string) *GetListenerAttributeResponseBody {
+	s.EndPort = &v
 	return s
 }
 
@@ -2820,6 +2790,11 @@ func (s *GetListenerAttributeResponseBody) SetSecurityPolicyId(v string) *GetLis
 
 func (s *GetListenerAttributeResponseBody) SetServerGroupId(v string) *GetListenerAttributeResponseBody {
 	s.ServerGroupId = &v
+	return s
+}
+
+func (s *GetListenerAttributeResponseBody) SetStartPort(v string) *GetListenerAttributeResponseBody {
+	s.StartPort = &v
 	return s
 }
 
@@ -3249,18 +3224,18 @@ func (s *GetLoadBalancerAttributeRequest) SetRegionId(v string) *GetLoadBalancer
 }
 
 type GetLoadBalancerAttributeResponseBody struct {
-	AddressIpVersion         *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
-	AddressType              *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
-	CapacityUnitCount        *int64  `json:"CapacityUnitCount,omitempty" xml:"CapacityUnitCount,omitempty"`
-	Code                     *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	CommonBandwidthPackageId *string `json:"CommonBandwidthPackageId,omitempty" xml:"CommonBandwidthPackageId,omitempty"`
-	Cps                      *int32  `json:"Cps,omitempty" xml:"Cps,omitempty"`
-	CreateTime               *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CrossZoneEnable          *bool   `json:"CrossZoneEnable,omitempty" xml:"CrossZoneEnable,omitempty"`
-	DNSName                  *string `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
-	DynamicCode              *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	DynamicMessage           *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	HttpStatusCode           *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
+	AddressIpVersion   *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
+	AddressType        *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	CapacityUnitCount  *int64  `json:"CapacityUnitCount,omitempty" xml:"CapacityUnitCount,omitempty"`
+	Code               *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Cps                *int32  `json:"Cps,omitempty" xml:"Cps,omitempty"`
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CrossZoneEnable    *bool   `json:"CrossZoneEnable,omitempty" xml:"CrossZoneEnable,omitempty"`
+	DNSName            *string `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
+	DynamicCode        *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
+	DynamicMessage     *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
+	HttpStatusCode     *int32  `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// 计费相关属性
 	LoadBalancerBillingConfig  *GetLoadBalancerAttributeResponseBodyLoadBalancerBillingConfig `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
 	LoadBalancerBusinessStatus *string                                                        `json:"LoadBalancerBusinessStatus,omitempty" xml:"LoadBalancerBusinessStatus,omitempty"`
@@ -3299,6 +3274,11 @@ func (s *GetLoadBalancerAttributeResponseBody) SetAddressType(v string) *GetLoad
 	return s
 }
 
+func (s *GetLoadBalancerAttributeResponseBody) SetBandwidthPackageId(v string) *GetLoadBalancerAttributeResponseBody {
+	s.BandwidthPackageId = &v
+	return s
+}
+
 func (s *GetLoadBalancerAttributeResponseBody) SetCapacityUnitCount(v int64) *GetLoadBalancerAttributeResponseBody {
 	s.CapacityUnitCount = &v
 	return s
@@ -3306,11 +3286,6 @@ func (s *GetLoadBalancerAttributeResponseBody) SetCapacityUnitCount(v int64) *Ge
 
 func (s *GetLoadBalancerAttributeResponseBody) SetCode(v string) *GetLoadBalancerAttributeResponseBody {
 	s.Code = &v
-	return s
-}
-
-func (s *GetLoadBalancerAttributeResponseBody) SetCommonBandwidthPackageId(v string) *GetLoadBalancerAttributeResponseBody {
-	s.CommonBandwidthPackageId = &v
 	return s
 }
 
@@ -3471,15 +3446,9 @@ func (s *GetLoadBalancerAttributeResponseBodyOperationLocks) SetLockType(v strin
 }
 
 type GetLoadBalancerAttributeResponseBodyZoneMappings struct {
-	// 公网ipId
-	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	EniId        *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
-	// 私网ip
-	PrivateIPv4Address *string `json:"PrivateIPv4Address,omitempty" xml:"PrivateIPv4Address,omitempty"`
-	// 公网ip地址：仅Get的时候有值
-	PublicIPv4Address *string `json:"PublicIPv4Address,omitempty" xml:"PublicIPv4Address,omitempty"`
-	VSwitchId         *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId            *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	LoadBalancerAddresses []*GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses `json:"LoadBalancerAddresses,omitempty" xml:"LoadBalancerAddresses,omitempty" type:"Repeated"`
+	VSwitchId             *string                                                                  `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId                *string                                                                  `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetLoadBalancerAttributeResponseBodyZoneMappings) String() string {
@@ -3490,23 +3459,8 @@ func (s GetLoadBalancerAttributeResponseBodyZoneMappings) GoString() string {
 	return s.String()
 }
 
-func (s *GetLoadBalancerAttributeResponseBodyZoneMappings) SetAllocationId(v string) *GetLoadBalancerAttributeResponseBodyZoneMappings {
-	s.AllocationId = &v
-	return s
-}
-
-func (s *GetLoadBalancerAttributeResponseBodyZoneMappings) SetEniId(v string) *GetLoadBalancerAttributeResponseBodyZoneMappings {
-	s.EniId = &v
-	return s
-}
-
-func (s *GetLoadBalancerAttributeResponseBodyZoneMappings) SetPrivateIPv4Address(v string) *GetLoadBalancerAttributeResponseBodyZoneMappings {
-	s.PrivateIPv4Address = &v
-	return s
-}
-
-func (s *GetLoadBalancerAttributeResponseBodyZoneMappings) SetPublicIPv4Address(v string) *GetLoadBalancerAttributeResponseBodyZoneMappings {
-	s.PublicIPv4Address = &v
+func (s *GetLoadBalancerAttributeResponseBodyZoneMappings) SetLoadBalancerAddresses(v []*GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses) *GetLoadBalancerAttributeResponseBodyZoneMappings {
+	s.LoadBalancerAddresses = v
 	return s
 }
 
@@ -3517,6 +3471,50 @@ func (s *GetLoadBalancerAttributeResponseBodyZoneMappings) SetVSwitchId(v string
 
 func (s *GetLoadBalancerAttributeResponseBodyZoneMappings) SetZoneId(v string) *GetLoadBalancerAttributeResponseBodyZoneMappings {
 	s.ZoneId = &v
+	return s
+}
+
+type GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses struct {
+	// 公网ipId
+	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	EniId        *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
+	Ipv6Address  *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
+	// 私网ip
+	PrivateIPv4Address *string `json:"PrivateIPv4Address,omitempty" xml:"PrivateIPv4Address,omitempty"`
+	// 公网ip地址：仅Get的时候有值
+	PublicIPv4Address *string `json:"PublicIPv4Address,omitempty" xml:"PublicIPv4Address,omitempty"`
+}
+
+func (s GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses) GoString() string {
+	return s.String()
+}
+
+func (s *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses) SetAllocationId(v string) *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses {
+	s.AllocationId = &v
+	return s
+}
+
+func (s *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses) SetEniId(v string) *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses {
+	s.EniId = &v
+	return s
+}
+
+func (s *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses) SetIpv6Address(v string) *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses {
+	s.Ipv6Address = &v
+	return s
+}
+
+func (s *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses) SetPrivateIPv4Address(v string) *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses {
+	s.PrivateIPv4Address = &v
+	return s
+}
+
+func (s *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses) SetPublicIPv4Address(v string) *GetLoadBalancerAttributeResponseBodyZoneMappingsLoadBalancerAddresses {
+	s.PublicIPv4Address = &v
 	return s
 }
 
@@ -3839,6 +3837,8 @@ type ListListenersResponseBodyListeners struct {
 	CaEnabled        *bool     `json:"CaEnabled,omitempty" xml:"CaEnabled,omitempty"`
 	// server证书列表
 	CertificateIds []*string `json:"CertificateIds,omitempty" xml:"CertificateIds,omitempty" type:"Repeated"`
+	// anyPort监听结束端口
+	EndPort *string `json:"EndPort,omitempty" xml:"EndPort,omitempty"`
 	// 空闲超时时间
 	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// 监听描述
@@ -3859,6 +3859,8 @@ type ListListenersResponseBodyListeners struct {
 	SecurityPolicyId *string `json:"SecurityPolicyId,omitempty" xml:"SecurityPolicyId,omitempty"`
 	// servergroupId
 	ServerGroupId *string `json:"ServerGroupId,omitempty" xml:"ServerGroupId,omitempty"`
+	// anyPort监听起始端口
+	StartPort *string `json:"StartPort,omitempty" xml:"StartPort,omitempty"`
 }
 
 func (s ListListenersResponseBodyListeners) String() string {
@@ -3896,6 +3898,11 @@ func (s *ListListenersResponseBodyListeners) SetCaEnabled(v bool) *ListListeners
 
 func (s *ListListenersResponseBodyListeners) SetCertificateIds(v []*string) *ListListenersResponseBodyListeners {
 	s.CertificateIds = v
+	return s
+}
+
+func (s *ListListenersResponseBodyListeners) SetEndPort(v string) *ListListenersResponseBodyListeners {
+	s.EndPort = &v
 	return s
 }
 
@@ -3956,6 +3963,11 @@ func (s *ListListenersResponseBodyListeners) SetSecurityPolicyId(v string) *List
 
 func (s *ListListenersResponseBodyListeners) SetServerGroupId(v string) *ListListenersResponseBodyListeners {
 	s.ServerGroupId = &v
+	return s
+}
+
+func (s *ListListenersResponseBodyListeners) SetStartPort(v string) *ListListenersResponseBodyListeners {
+	s.StartPort = &v
 	return s
 }
 
@@ -4211,12 +4223,12 @@ type ListLoadBalancersResponseBodyLoadBalancers struct {
 	AddressIpVersion *string `json:"AddressIpVersion,omitempty" xml:"AddressIpVersion,omitempty"`
 	AddressType      *string `json:"AddressType,omitempty" xml:"AddressType,omitempty"`
 	// 用户uid
-	AliUid                   *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	CapacityUnitCount        *int64  `json:"CapacityUnitCount,omitempty" xml:"CapacityUnitCount,omitempty"`
-	CommonBandwidthPackageId *string `json:"CommonBandwidthPackageId,omitempty" xml:"CommonBandwidthPackageId,omitempty"`
-	CreateTime               *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	CrossZoneEnabled         *bool   `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
-	DNSName                  *string `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
+	AliUid             *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
+	CapacityUnitCount  *int64  `json:"CapacityUnitCount,omitempty" xml:"CapacityUnitCount,omitempty"`
+	CreateTime         *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	CrossZoneEnabled   *bool   `json:"CrossZoneEnabled,omitempty" xml:"CrossZoneEnabled,omitempty"`
+	DNSName            *string `json:"DNSName,omitempty" xml:"DNSName,omitempty"`
 	// 计费相关属性
 	LoadBalancerBillingConfig  *ListLoadBalancersResponseBodyLoadBalancersLoadBalancerBillingConfig `json:"LoadBalancerBillingConfig,omitempty" xml:"LoadBalancerBillingConfig,omitempty" type:"Struct"`
 	LoadBalancerBusinessStatus *string                                                              `json:"LoadBalancerBusinessStatus,omitempty" xml:"LoadBalancerBusinessStatus,omitempty"`
@@ -4259,13 +4271,13 @@ func (s *ListLoadBalancersResponseBodyLoadBalancers) SetAliUid(v int64) *ListLoa
 	return s
 }
 
-func (s *ListLoadBalancersResponseBodyLoadBalancers) SetCapacityUnitCount(v int64) *ListLoadBalancersResponseBodyLoadBalancers {
-	s.CapacityUnitCount = &v
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetBandwidthPackageId(v string) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.BandwidthPackageId = &v
 	return s
 }
 
-func (s *ListLoadBalancersResponseBodyLoadBalancers) SetCommonBandwidthPackageId(v string) *ListLoadBalancersResponseBodyLoadBalancers {
-	s.CommonBandwidthPackageId = &v
+func (s *ListLoadBalancersResponseBodyLoadBalancers) SetCapacityUnitCount(v int64) *ListLoadBalancersResponseBodyLoadBalancers {
+	s.CapacityUnitCount = &v
 	return s
 }
 
@@ -4419,15 +4431,9 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersTags) SetValue(v string) *Lis
 }
 
 type ListLoadBalancersResponseBodyLoadBalancersZoneMappings struct {
-	// 公网ipId
-	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	EniId        *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
-	// 私网ip
-	PrivateIPv4Address *string `json:"PrivateIPv4Address,omitempty" xml:"PrivateIPv4Address,omitempty"`
-	// 公网ip地址：仅Get的时候有值
-	PublicIPv4Address *string `json:"PublicIPv4Address,omitempty" xml:"PublicIPv4Address,omitempty"`
-	VSwitchId         *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneId            *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	LoadBalancerAddresses []*ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses `json:"LoadBalancerAddresses,omitempty" xml:"LoadBalancerAddresses,omitempty" type:"Repeated"`
+	VSwitchId             *string                                                                        `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneId                *string                                                                        `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s ListLoadBalancersResponseBodyLoadBalancersZoneMappings) String() string {
@@ -4438,23 +4444,8 @@ func (s ListLoadBalancersResponseBodyLoadBalancersZoneMappings) GoString() strin
 	return s.String()
 }
 
-func (s *ListLoadBalancersResponseBodyLoadBalancersZoneMappings) SetAllocationId(v string) *ListLoadBalancersResponseBodyLoadBalancersZoneMappings {
-	s.AllocationId = &v
-	return s
-}
-
-func (s *ListLoadBalancersResponseBodyLoadBalancersZoneMappings) SetEniId(v string) *ListLoadBalancersResponseBodyLoadBalancersZoneMappings {
-	s.EniId = &v
-	return s
-}
-
-func (s *ListLoadBalancersResponseBodyLoadBalancersZoneMappings) SetPrivateIPv4Address(v string) *ListLoadBalancersResponseBodyLoadBalancersZoneMappings {
-	s.PrivateIPv4Address = &v
-	return s
-}
-
-func (s *ListLoadBalancersResponseBodyLoadBalancersZoneMappings) SetPublicIPv4Address(v string) *ListLoadBalancersResponseBodyLoadBalancersZoneMappings {
-	s.PublicIPv4Address = &v
+func (s *ListLoadBalancersResponseBodyLoadBalancersZoneMappings) SetLoadBalancerAddresses(v []*ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses) *ListLoadBalancersResponseBodyLoadBalancersZoneMappings {
+	s.LoadBalancerAddresses = v
 	return s
 }
 
@@ -4465,6 +4456,50 @@ func (s *ListLoadBalancersResponseBodyLoadBalancersZoneMappings) SetVSwitchId(v 
 
 func (s *ListLoadBalancersResponseBodyLoadBalancersZoneMappings) SetZoneId(v string) *ListLoadBalancersResponseBodyLoadBalancersZoneMappings {
 	s.ZoneId = &v
+	return s
+}
+
+type ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses struct {
+	// 公网ipId
+	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	EniId        *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
+	Ipv6Address  *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
+	// 私网ip
+	PrivateIPv4Address *string `json:"PrivateIPv4Address,omitempty" xml:"PrivateIPv4Address,omitempty"`
+	// 公网ip地址：仅Get的时候有值
+	PublicIPv4Address *string `json:"PublicIPv4Address,omitempty" xml:"PublicIPv4Address,omitempty"`
+}
+
+func (s ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses) GoString() string {
+	return s.String()
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses) SetAllocationId(v string) *ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses {
+	s.AllocationId = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses) SetEniId(v string) *ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses {
+	s.EniId = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses) SetIpv6Address(v string) *ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses {
+	s.Ipv6Address = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses) SetPrivateIPv4Address(v string) *ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses {
+	s.PrivateIPv4Address = &v
+	return s
+}
+
+func (s *ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses) SetPublicIPv4Address(v string) *ListLoadBalancersResponseBodyLoadBalancersZoneMappingsLoadBalancerAddresses {
+	s.PublicIPv4Address = &v
 	return s
 }
 
@@ -6983,7 +7018,7 @@ type UpdateLoadBalancerAttributeRequest struct {
 	LoadBalancerId         *string   `json:"LoadBalancerId,omitempty" xml:"LoadBalancerId,omitempty"`
 	LoadBalancerName       *string   `json:"LoadBalancerName,omitempty" xml:"LoadBalancerName,omitempty"`
 	RegionId               *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SecurityGroups         []*string `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
+	SecurityGroupIds       []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
 	TrafficAffinityEnabled *bool     `json:"TrafficAffinityEnabled,omitempty" xml:"TrafficAffinityEnabled,omitempty"`
 }
 
@@ -7030,8 +7065,8 @@ func (s *UpdateLoadBalancerAttributeRequest) SetRegionId(v string) *UpdateLoadBa
 	return s
 }
 
-func (s *UpdateLoadBalancerAttributeRequest) SetSecurityGroups(v []*string) *UpdateLoadBalancerAttributeRequest {
-	s.SecurityGroups = v
+func (s *UpdateLoadBalancerAttributeRequest) SetSecurityGroupIds(v []*string) *UpdateLoadBalancerAttributeRequest {
+	s.SecurityGroupIds = v
 	return s
 }
 
@@ -8211,9 +8246,8 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 		body["AddressType"] = request.AddressType
 	}
 
-	bodyFlat := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.BillingConfig))) {
-		bodyFlat["BillingConfig"] = request.BillingConfig
+	if !tea.BoolValue(util.IsUnset(request.BandwidthPackageId)) {
+		body["BandwidthPackageId"] = request.BandwidthPackageId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.BizFlag)) {
@@ -8224,16 +8258,17 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 		body["ClientToken"] = request.ClientToken
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.CommonBandwidthPackageId)) {
-		body["CommonBandwidthPackageId"] = request.CommonBandwidthPackageId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.CrossZoneEnabled)) {
 		body["CrossZoneEnabled"] = request.CrossZoneEnabled
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
 		body["DryRun"] = request.DryRun
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.LoadBalancerBillingConfig))) {
+		bodyFlat["LoadBalancerBillingConfig"] = request.LoadBalancerBillingConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.LoadBalancerName)) {
@@ -8252,8 +8287,8 @@ func (client *Client) CreateLoadBalancerWithOptions(request *CreateLoadBalancerR
 		body["ResourceGroupId"] = request.ResourceGroupId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SecurityGroups)) {
-		body["SecurityGroups"] = request.SecurityGroups
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupIds)) {
+		body["SecurityGroupIds"] = request.SecurityGroupIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TrafficAffinityEnabled)) {
@@ -10328,8 +10363,8 @@ func (client *Client) UpdateLoadBalancerAttributeWithOptions(request *UpdateLoad
 		body["RegionId"] = request.RegionId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SecurityGroups)) {
-		body["SecurityGroups"] = request.SecurityGroups
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupIds)) {
+		body["SecurityGroupIds"] = request.SecurityGroupIds
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TrafficAffinityEnabled)) {
