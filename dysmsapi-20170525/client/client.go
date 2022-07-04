@@ -497,6 +497,7 @@ func (s *CheckMobilesCardSupportResponse) SetBody(v *CheckMobilesCardSupportResp
 }
 
 type CreateCardSmsTemplateRequest struct {
+	Factorys     *string                `json:"Factorys,omitempty" xml:"Factorys,omitempty"`
 	Memo         *string                `json:"Memo,omitempty" xml:"Memo,omitempty"`
 	Template     map[string]interface{} `json:"Template,omitempty" xml:"Template,omitempty"`
 	TemplateName *string                `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
@@ -508,6 +509,11 @@ func (s CreateCardSmsTemplateRequest) String() string {
 
 func (s CreateCardSmsTemplateRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCardSmsTemplateRequest) SetFactorys(v string) *CreateCardSmsTemplateRequest {
+	s.Factorys = &v
+	return s
 }
 
 func (s *CreateCardSmsTemplateRequest) SetMemo(v string) *CreateCardSmsTemplateRequest {
@@ -526,6 +532,7 @@ func (s *CreateCardSmsTemplateRequest) SetTemplateName(v string) *CreateCardSmsT
 }
 
 type CreateCardSmsTemplateShrinkRequest struct {
+	Factorys       *string `json:"Factorys,omitempty" xml:"Factorys,omitempty"`
 	Memo           *string `json:"Memo,omitempty" xml:"Memo,omitempty"`
 	TemplateShrink *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	TemplateName   *string `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
@@ -537,6 +544,11 @@ func (s CreateCardSmsTemplateShrinkRequest) String() string {
 
 func (s CreateCardSmsTemplateShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateCardSmsTemplateShrinkRequest) SetFactorys(v string) *CreateCardSmsTemplateShrinkRequest {
+	s.Factorys = &v
+	return s
 }
 
 func (s *CreateCardSmsTemplateShrinkRequest) SetMemo(v string) *CreateCardSmsTemplateShrinkRequest {
@@ -927,8 +939,12 @@ func (s *DeleteSmsTemplateResponse) SetBody(v *DeleteSmsTemplateResponseBody) *D
 }
 
 type GetCardSmsLinkRequest struct {
+	CardCodeType          *int32  `json:"CardCodeType,omitempty" xml:"CardCodeType,omitempty"`
+	CardLinkType          *int32  `json:"CardLinkType,omitempty" xml:"CardLinkType,omitempty"`
 	CardTemplateCode      *string `json:"CardTemplateCode,omitempty" xml:"CardTemplateCode,omitempty"`
 	CardTemplateParamJson *string `json:"CardTemplateParamJson,omitempty" xml:"CardTemplateParamJson,omitempty"`
+	CustomShortCodeJson   *string `json:"CustomShortCodeJson,omitempty" xml:"CustomShortCodeJson,omitempty"`
+	Domain                *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	OutId                 *string `json:"OutId,omitempty" xml:"OutId,omitempty"`
 	PhoneNumberJson       *string `json:"PhoneNumberJson,omitempty" xml:"PhoneNumberJson,omitempty"`
 	SignNameJson          *string `json:"SignNameJson,omitempty" xml:"SignNameJson,omitempty"`
@@ -942,6 +958,16 @@ func (s GetCardSmsLinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetCardSmsLinkRequest) SetCardCodeType(v int32) *GetCardSmsLinkRequest {
+	s.CardCodeType = &v
+	return s
+}
+
+func (s *GetCardSmsLinkRequest) SetCardLinkType(v int32) *GetCardSmsLinkRequest {
+	s.CardLinkType = &v
+	return s
+}
+
 func (s *GetCardSmsLinkRequest) SetCardTemplateCode(v string) *GetCardSmsLinkRequest {
 	s.CardTemplateCode = &v
 	return s
@@ -949,6 +975,16 @@ func (s *GetCardSmsLinkRequest) SetCardTemplateCode(v string) *GetCardSmsLinkReq
 
 func (s *GetCardSmsLinkRequest) SetCardTemplateParamJson(v string) *GetCardSmsLinkRequest {
 	s.CardTemplateParamJson = &v
+	return s
+}
+
+func (s *GetCardSmsLinkRequest) SetCustomShortCodeJson(v string) *GetCardSmsLinkRequest {
+	s.CustomShortCodeJson = &v
+	return s
+}
+
+func (s *GetCardSmsLinkRequest) SetDomain(v string) *GetCardSmsLinkRequest {
+	s.Domain = &v
 	return s
 }
 
@@ -4424,6 +4460,10 @@ func (client *Client) CreateCardSmsTemplateWithOptions(tmpReq *CreateCardSmsTemp
 	}
 
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Factorys)) {
+		query["Factorys"] = request.Factorys
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Memo)) {
 		query["Memo"] = request.Memo
 	}
@@ -4646,12 +4686,28 @@ func (client *Client) GetCardSmsLinkWithOptions(request *GetCardSmsLinkRequest, 
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CardCodeType)) {
+		query["CardCodeType"] = request.CardCodeType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CardLinkType)) {
+		query["CardLinkType"] = request.CardLinkType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CardTemplateCode)) {
 		query["CardTemplateCode"] = request.CardTemplateCode
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CardTemplateParamJson)) {
 		query["CardTemplateParamJson"] = request.CardTemplateParamJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CustomShortCodeJson)) {
+		query["CustomShortCodeJson"] = request.CustomShortCodeJson
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.OutId)) {
