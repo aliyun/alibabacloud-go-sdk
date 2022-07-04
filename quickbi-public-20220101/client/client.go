@@ -5253,6 +5253,81 @@ func (s *QueryEmbeddedInfoResponse) SetBody(v *QueryEmbeddedInfoResponseBody) *Q
 	return s
 }
 
+type QueryEmbeddedStatusRequest struct {
+	WorksId *string `json:"WorksId,omitempty" xml:"WorksId,omitempty"`
+}
+
+func (s QueryEmbeddedStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryEmbeddedStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *QueryEmbeddedStatusRequest) SetWorksId(v string) *QueryEmbeddedStatusRequest {
+	s.WorksId = &v
+	return s
+}
+
+type QueryEmbeddedStatusResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Result    *bool   `json:"Result,omitempty" xml:"Result,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s QueryEmbeddedStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryEmbeddedStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *QueryEmbeddedStatusResponseBody) SetRequestId(v string) *QueryEmbeddedStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *QueryEmbeddedStatusResponseBody) SetResult(v bool) *QueryEmbeddedStatusResponseBody {
+	s.Result = &v
+	return s
+}
+
+func (s *QueryEmbeddedStatusResponseBody) SetSuccess(v bool) *QueryEmbeddedStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type QueryEmbeddedStatusResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *QueryEmbeddedStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s QueryEmbeddedStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s QueryEmbeddedStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *QueryEmbeddedStatusResponse) SetHeaders(v map[string]*string) *QueryEmbeddedStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *QueryEmbeddedStatusResponse) SetStatusCode(v int32) *QueryEmbeddedStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *QueryEmbeddedStatusResponse) SetBody(v *QueryEmbeddedStatusResponseBody) *QueryEmbeddedStatusResponse {
+	s.Body = v
+	return s
+}
+
 type QueryOrganizationWorkspaceListRequest struct {
 	Keyword  *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	PageNum  *int32  `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
@@ -11937,6 +12012,50 @@ func (client *Client) QueryEmbeddedInfo() (_result *QueryEmbeddedInfoResponse, _
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryEmbeddedInfoResponse{}
 	_body, _err := client.QueryEmbeddedInfoWithOptions(runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) QueryEmbeddedStatusWithOptions(request *QueryEmbeddedStatusRequest, runtime *util.RuntimeOptions) (_result *QueryEmbeddedStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.WorksId)) {
+		query["WorksId"] = request.WorksId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("QueryEmbeddedStatus"),
+		Version:     tea.String("2022-01-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &QueryEmbeddedStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) QueryEmbeddedStatus(request *QueryEmbeddedStatusRequest) (_result *QueryEmbeddedStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &QueryEmbeddedStatusResponse{}
+	_body, _err := client.QueryEmbeddedStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
