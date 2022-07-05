@@ -3004,8 +3004,9 @@ type CreateTriggerRequest struct {
 	// service版本
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 	// event source的Aliyun Resource Name（ARN
-	SourceArn     *string     `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
-	TriggerConfig interface{} `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
+	SourceArn *string `json:"sourceArn,omitempty" xml:"sourceArn,omitempty"`
+	// trigger配置，针对不同的trigger类型，trigger配置会有所不同
+	TriggerConfig *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
 	// trigger名称
 	TriggerName *string `json:"triggerName,omitempty" xml:"triggerName,omitempty"`
 	// trigger类型，如 oss, log, tablestore, timer, http, cdn_events, mns_topic
@@ -3040,8 +3041,8 @@ func (s *CreateTriggerRequest) SetSourceArn(v string) *CreateTriggerRequest {
 	return s
 }
 
-func (s *CreateTriggerRequest) SetTriggerConfig(v interface{}) *CreateTriggerRequest {
-	s.TriggerConfig = v
+func (s *CreateTriggerRequest) SetTriggerConfig(v string) *CreateTriggerRequest {
+	s.TriggerConfig = &v
 	return s
 }
 
@@ -5726,8 +5727,8 @@ func (s *InvokeFunctionHeaders) SetXFcTraceId(v string) *InvokeFunctionHeaders {
 }
 
 type InvokeFunctionRequest struct {
-	// anything
-	Body interface{} `json:"body,omitempty" xml:"body,omitempty"`
+	// 事件（event），binary type。函数计算服务将event传递给用户function来处理
+	Body []byte `json:"body,omitempty" xml:"body,omitempty"`
 	// service版本, 可以是versionId或者aliasName
 	Qualifier *string `json:"qualifier,omitempty" xml:"qualifier,omitempty"`
 }
@@ -5740,7 +5741,7 @@ func (s InvokeFunctionRequest) GoString() string {
 	return s.String()
 }
 
-func (s *InvokeFunctionRequest) SetBody(v interface{}) *InvokeFunctionRequest {
+func (s *InvokeFunctionRequest) SetBody(v []byte) *InvokeFunctionRequest {
 	s.Body = v
 	return s
 }
@@ -6760,8 +6761,6 @@ func (s *ListFunctionsResponse) SetBody(v *ListFunctionsResponseBody) *ListFunct
 type ListInstancesHeaders struct {
 	CommonHeaders map[string]*string `json:"commonHeaders,omitempty" xml:"commonHeaders,omitempty"`
 	XFcAccountId  *string            `json:"X-Fc-Account-Id,omitempty" xml:"X-Fc-Account-Id,omitempty"`
-	XFcDate       *string            `json:"X-Fc-Date,omitempty" xml:"X-Fc-Date,omitempty"`
-	XFcTraceId    *string            `json:"X-Fc-Trace-Id,omitempty" xml:"X-Fc-Trace-Id,omitempty"`
 }
 
 func (s ListInstancesHeaders) String() string {
@@ -6779,16 +6778,6 @@ func (s *ListInstancesHeaders) SetCommonHeaders(v map[string]*string) *ListInsta
 
 func (s *ListInstancesHeaders) SetXFcAccountId(v string) *ListInstancesHeaders {
 	s.XFcAccountId = &v
-	return s
-}
-
-func (s *ListInstancesHeaders) SetXFcDate(v string) *ListInstancesHeaders {
-	s.XFcDate = &v
-	return s
-}
-
-func (s *ListInstancesHeaders) SetXFcTraceId(v string) *ListInstancesHeaders {
-	s.XFcTraceId = &v
 	return s
 }
 
@@ -12894,7 +12883,7 @@ func (client *Client) InvokeFunctionWithOptions(serviceName *string, functionNam
 	req := &openapi.OpenApiRequest{
 		Headers: realHeaders,
 		Query:   openapiutil.Query(query),
-		Body:    request.Body,
+		Body:    util.ToString(request.Body),
 	}
 	params := &openapi.Params{
 		Action:      tea.String("InvokeFunction"),
@@ -13332,14 +13321,6 @@ func (client *Client) ListInstancesWithOptions(serviceName *string, functionName
 
 	if !tea.BoolValue(util.IsUnset(headers.XFcAccountId)) {
 		realHeaders["X-Fc-Account-Id"] = util.ToJSONString(headers.XFcAccountId)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcDate)) {
-		realHeaders["X-Fc-Date"] = util.ToJSONString(headers.XFcDate)
-	}
-
-	if !tea.BoolValue(util.IsUnset(headers.XFcTraceId)) {
-		realHeaders["X-Fc-Trace-Id"] = util.ToJSONString(headers.XFcTraceId)
 	}
 
 	req := &openapi.OpenApiRequest{
