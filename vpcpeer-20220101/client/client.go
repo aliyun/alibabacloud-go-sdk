@@ -835,6 +835,7 @@ func (s *ListVpcPeerConnectionsResponse) SetBody(v *ListVpcPeerConnectionsRespon
 }
 
 type ModifyVpcPeerConnectionRequest struct {
+	Bandwidth   *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
@@ -848,6 +849,11 @@ func (s ModifyVpcPeerConnectionRequest) String() string {
 
 func (s ModifyVpcPeerConnectionRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyVpcPeerConnectionRequest) SetBandwidth(v int32) *ModifyVpcPeerConnectionRequest {
+	s.Bandwidth = &v
+	return s
 }
 
 func (s *ModifyVpcPeerConnectionRequest) SetClientToken(v string) *ModifyVpcPeerConnectionRequest {
@@ -1361,6 +1367,10 @@ func (client *Client) ModifyVpcPeerConnectionWithOptions(request *ModifyVpcPeerC
 		return _result, _err
 	}
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Bandwidth)) {
+		body["Bandwidth"] = request.Bandwidth
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		body["ClientToken"] = request.ClientToken
 	}
