@@ -1903,6 +1903,273 @@ func (s *DeleteProjectResponse) SetStatusCode(v int32) *DeleteProjectResponse {
 	return s
 }
 
+type GetContextLogsRequest struct {
+	// 指定起始日志往前（上文）的日志条数，取值范围为(0,100]。
+	BackLines *int64 `json:"back_lines,omitempty" xml:"back_lines,omitempty"`
+	// 指定起始日志往后（下文）的日志条数，取值范围为(0,100]。
+	ForwardLines *int64 `json:"forward_lines,omitempty" xml:"forward_lines,omitempty"`
+	// 起始日志所属的LogGroup的唯一身份标识。
+	PackId *string `json:"pack_id,omitempty" xml:"pack_id,omitempty"`
+	// 起始日志在对应LogGroup内的唯一上下文结构标识。
+	PackMeta *string `json:"pack_meta,omitempty" xml:"pack_meta,omitempty"`
+	// Logstore中数据的类型。该接口中该参数固定为context_log。
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetContextLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetContextLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetContextLogsRequest) SetBackLines(v int64) *GetContextLogsRequest {
+	s.BackLines = &v
+	return s
+}
+
+func (s *GetContextLogsRequest) SetForwardLines(v int64) *GetContextLogsRequest {
+	s.ForwardLines = &v
+	return s
+}
+
+func (s *GetContextLogsRequest) SetPackId(v string) *GetContextLogsRequest {
+	s.PackId = &v
+	return s
+}
+
+func (s *GetContextLogsRequest) SetPackMeta(v string) *GetContextLogsRequest {
+	s.PackMeta = &v
+	return s
+}
+
+func (s *GetContextLogsRequest) SetType(v string) *GetContextLogsRequest {
+	s.Type = &v
+	return s
+}
+
+type GetContextLogsResponseBody struct {
+	// 向前查询到的日志条数。
+	BackLines *int64 `json:"back_lines,omitempty" xml:"back_lines,omitempty"`
+	// 向后查询到的日志条数。
+	ForwardLines *int64 `json:"forward_lines,omitempty" xml:"forward_lines,omitempty"`
+	// 获取到的日志，按上下文顺序排列。当根据指定起始日志查询不到上下文日志时，此参数为空。
+	Logs []map[string]interface{} `json:"logs,omitempty" xml:"logs,omitempty" type:"Repeated"`
+	// 查询的结果是否完整。
+	// Complete：查询已经完成，返回结果为完整结果。
+	// Incomplete：查询已经完成，返回结果为不完整结果，需要重复请求以获得完整结果。
+	Progress *string `json:"progress,omitempty" xml:"progress,omitempty"`
+	// 返回的总日志条数，包含请求参数中所指定的起始日志。
+	TotalLines *int64 `json:"total_lines,omitempty" xml:"total_lines,omitempty"`
+}
+
+func (s GetContextLogsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetContextLogsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetContextLogsResponseBody) SetBackLines(v int64) *GetContextLogsResponseBody {
+	s.BackLines = &v
+	return s
+}
+
+func (s *GetContextLogsResponseBody) SetForwardLines(v int64) *GetContextLogsResponseBody {
+	s.ForwardLines = &v
+	return s
+}
+
+func (s *GetContextLogsResponseBody) SetLogs(v []map[string]interface{}) *GetContextLogsResponseBody {
+	s.Logs = v
+	return s
+}
+
+func (s *GetContextLogsResponseBody) SetProgress(v string) *GetContextLogsResponseBody {
+	s.Progress = &v
+	return s
+}
+
+func (s *GetContextLogsResponseBody) SetTotalLines(v int64) *GetContextLogsResponseBody {
+	s.TotalLines = &v
+	return s
+}
+
+type GetContextLogsResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetContextLogsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetContextLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetContextLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetContextLogsResponse) SetHeaders(v map[string]*string) *GetContextLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetContextLogsResponse) SetStatusCode(v int32) *GetContextLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetContextLogsResponse) SetBody(v *GetContextLogsResponseBody) *GetContextLogsResponse {
+	s.Body = v
+	return s
+}
+
+type GetCursorRequest struct {
+	// 时间点（Unix时间戳）或者字符串begin、end。
+	From *string `json:"from,omitempty" xml:"from,omitempty"`
+	// 这里固定为 cursor。
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetCursorRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCursorRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCursorRequest) SetFrom(v string) *GetCursorRequest {
+	s.From = &v
+	return s
+}
+
+func (s *GetCursorRequest) SetType(v string) *GetCursorRequest {
+	s.Type = &v
+	return s
+}
+
+type GetCursorResponseBody struct {
+	// 游标位置。
+	Cursor *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
+}
+
+func (s GetCursorResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCursorResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCursorResponseBody) SetCursor(v string) *GetCursorResponseBody {
+	s.Cursor = &v
+	return s
+}
+
+type GetCursorResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCursorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCursorResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCursorResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCursorResponse) SetHeaders(v map[string]*string) *GetCursorResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCursorResponse) SetStatusCode(v int32) *GetCursorResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCursorResponse) SetBody(v *GetCursorResponseBody) *GetCursorResponse {
+	s.Body = v
+	return s
+}
+
+type GetCursorTimeRequest struct {
+	// 游标。
+	Cursor *string `json:"cursor,omitempty" xml:"cursor,omitempty"`
+	// 固定为 cursor_time 。
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetCursorTimeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCursorTimeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCursorTimeRequest) SetCursor(v string) *GetCursorTimeRequest {
+	s.Cursor = &v
+	return s
+}
+
+func (s *GetCursorTimeRequest) SetType(v string) *GetCursorTimeRequest {
+	s.Type = &v
+	return s
+}
+
+type GetCursorTimeResponseBody struct {
+	// Cursor的服务端时间。Unix时间戳格式，表示从1970-1-1 00:00:00 UTC计算起的秒数。
+	CursorTime *string `json:"cursor_time,omitempty" xml:"cursor_time,omitempty"`
+}
+
+func (s GetCursorTimeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCursorTimeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCursorTimeResponseBody) SetCursorTime(v string) *GetCursorTimeResponseBody {
+	s.CursorTime = &v
+	return s
+}
+
+type GetCursorTimeResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetCursorTimeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetCursorTimeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCursorTimeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCursorTimeResponse) SetHeaders(v map[string]*string) *GetCursorTimeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCursorTimeResponse) SetStatusCode(v int32) *GetCursorTimeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCursorTimeResponse) SetBody(v *GetCursorTimeResponseBody) *GetCursorTimeResponse {
+	s.Body = v
+	return s
+}
+
 type GetHistogramsRequest struct {
 	// 查询开始时间点。UNIX时间戳格式，表示从1970-1-1 00:00:00 UTC计算起的秒数。
 	//
@@ -2210,6 +2477,131 @@ func (s *GetLogStoreResponse) SetStatusCode(v int32) *GetLogStoreResponse {
 }
 
 func (s *GetLogStoreResponse) SetBody(v *Logstore) *GetLogStoreResponse {
+	s.Body = v
+	return s
+}
+
+type GetLogsRequest struct {
+	// 查询开始时间点。该时间是指写入日志数据时指定的日志时间。
+	//
+	// 请求参数from和to定义的时间区间遵循左闭右开原则，即该时间区间包括区间开始时间点，但不包括区间结束时间点。如果from和to的值相同，则为无效区间，函数直接返回错误。
+	// Unix时间戳格式，表示从1970-1-1 00:00:00 UTC计算起的秒数。
+	From *int64 `json:"from,omitempty" xml:"from,omitempty"`
+	// 仅当query参数为查询语句时，该参数有效，表示请求返回的最大日志条数。最小值为0，最大值为100，默认值为100。
+	Line *int64 `json:"line,omitempty" xml:"line,omitempty"`
+	// 仅当query参数为查询语句时，该参数有效，表示查询开始行。默认值为0。
+	Offset *int64 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// 用于指定返回结果是否按日志时间戳降序返回日志，精确到分钟级别。
+	//
+	// true：按照日志时间戳降序返回日志。
+	// false（默认值）：按照日志时间戳升序返回日志。
+	// 注意
+	// 当query参数为查询语句时，参数reverse有效，用于指定返回日志排序方式。
+	// 当query参数为查询和分析语句时，参数reverse无效，由SQL分析语句中order by语法指定排序方式。如果order by为asc（默认），则为升序；如果order by为desc，则为降序。
+	PowerSql *bool `json:"powerSql,omitempty" xml:"powerSql,omitempty"`
+	// 查询语句或者分析语句。更多信息，请参见查询概述和分析概述。
+	//
+	// 在query参数的分析语句中加上set session parallel_sql=true;，表示使用SQL独享版。例如* | set session parallel_sql=true; select count(*) as pv 。
+	//
+	// 说明 当query参数中有分析语句（SQL语句）时，该接口的line参数和offset参数无效，建议设置为0，需通过SQL语句的LIMIT语法实现翻页。更多信息，请参见分页显示查询分析结果。
+	Query *string `json:"query,omitempty" xml:"query,omitempty"`
+	// 用于指定返回结果是否按日志时间戳降序返回日志，精确到分钟级别。
+	//
+	// true：按照日志时间戳降序返回日志。
+	// false（默认值）：按照日志时间戳升序返回日志。
+	// 注意
+	// 当query参数为查询语句时，参数reverse有效，用于指定返回日志排序方式。
+	// 当query参数为查询和分析语句时，参数reverse无效，由SQL分析语句中order by语法指定排序方式。如果order by为asc（默认），则为升序；如果order by为desc，则为降序。
+	Reverse *bool `json:"reverse,omitempty" xml:"reverse,omitempty"`
+	// 查询结束时间点。该时间是指写入日志数据时指定的日志时间。
+	//
+	// 请求参数from和to定义的时间区间遵循左闭右开原则，即该时间区间包括区间开始时间点，但不包括区间结束时间点。如果from和to的值相同，则为无效区间，函数直接返回错误。
+	// Unix时间戳格式，表示从1970-1-1 00:00:00 UTC计算起的秒数。
+	To *int64 `json:"to,omitempty" xml:"to,omitempty"`
+	// status: 401 | SELECT remote_addr,COUNT(*) as pv GROUP by remote_addr ORDER by pv desc limit 5
+	Topic *string `json:"topic,omitempty" xml:"topic,omitempty"`
+	// 查询Logstore数据的类型。在该接口中固定取值为log。
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s GetLogsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogsRequest) SetFrom(v int64) *GetLogsRequest {
+	s.From = &v
+	return s
+}
+
+func (s *GetLogsRequest) SetLine(v int64) *GetLogsRequest {
+	s.Line = &v
+	return s
+}
+
+func (s *GetLogsRequest) SetOffset(v int64) *GetLogsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *GetLogsRequest) SetPowerSql(v bool) *GetLogsRequest {
+	s.PowerSql = &v
+	return s
+}
+
+func (s *GetLogsRequest) SetQuery(v string) *GetLogsRequest {
+	s.Query = &v
+	return s
+}
+
+func (s *GetLogsRequest) SetReverse(v bool) *GetLogsRequest {
+	s.Reverse = &v
+	return s
+}
+
+func (s *GetLogsRequest) SetTo(v int64) *GetLogsRequest {
+	s.To = &v
+	return s
+}
+
+func (s *GetLogsRequest) SetTopic(v string) *GetLogsRequest {
+	s.Topic = &v
+	return s
+}
+
+func (s *GetLogsRequest) SetType(v string) *GetLogsRequest {
+	s.Type = &v
+	return s
+}
+
+type GetLogsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       []map[string]interface{} `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s GetLogsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLogsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLogsResponse) SetHeaders(v map[string]*string) *GetLogsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLogsResponse) SetStatusCode(v int32) *GetLogsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLogsResponse) SetBody(v []map[string]interface{}) *GetLogsResponse {
 	s.Body = v
 	return s
 }
@@ -2610,6 +3002,143 @@ func (s *ListSavedSearchResponse) SetStatusCode(v int32) *ListSavedSearchRespons
 }
 
 func (s *ListSavedSearchResponse) SetBody(v *ListSavedSearchResponseBody) *ListSavedSearchResponse {
+	s.Body = v
+	return s
+}
+
+type ListShardsResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       []*Shard           `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s ListShardsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListShardsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListShardsResponse) SetHeaders(v map[string]*string) *ListShardsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListShardsResponse) SetStatusCode(v int32) *ListShardsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListShardsResponse) SetBody(v []*Shard) *ListShardsResponse {
+	s.Body = v
+	return s
+}
+
+type MergeShardsRequest struct {
+	// 固定为 merge。
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+}
+
+func (s MergeShardsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MergeShardsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *MergeShardsRequest) SetAction(v string) *MergeShardsRequest {
+	s.Action = &v
+	return s
+}
+
+type MergeShardsResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       []*Shard           `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s MergeShardsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s MergeShardsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *MergeShardsResponse) SetHeaders(v map[string]*string) *MergeShardsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *MergeShardsResponse) SetStatusCode(v int32) *MergeShardsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *MergeShardsResponse) SetBody(v []*Shard) *MergeShardsResponse {
+	s.Body = v
+	return s
+}
+
+type SplitShardRequest struct {
+	// 这里固定为 split。
+	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// 分裂的位置。
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// 要分裂成的 shard 数量，默认为 2。
+	ShardCount *int32 `json:"shardCount,omitempty" xml:"shardCount,omitempty"`
+}
+
+func (s SplitShardRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SplitShardRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SplitShardRequest) SetAction(v string) *SplitShardRequest {
+	s.Action = &v
+	return s
+}
+
+func (s *SplitShardRequest) SetKey(v string) *SplitShardRequest {
+	s.Key = &v
+	return s
+}
+
+func (s *SplitShardRequest) SetShardCount(v int32) *SplitShardRequest {
+	s.ShardCount = &v
+	return s
+}
+
+type SplitShardResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       []*Shard           `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s SplitShardResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SplitShardResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SplitShardResponse) SetHeaders(v map[string]*string) *SplitShardResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SplitShardResponse) SetStatusCode(v int32) *SplitShardResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SplitShardResponse) SetBody(v []*Shard) *SplitShardResponse {
 	s.Body = v
 	return s
 }
@@ -3568,6 +4097,182 @@ func (client *Client) DeleteProjectWithOptions(project *string, headers map[stri
 	return _result, _err
 }
 
+func (client *Client) GetContextLogs(project *string, logstore *string, request *GetContextLogsRequest) (_result *GetContextLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetContextLogsResponse{}
+	_body, _err := client.GetContextLogsWithOptions(project, logstore, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetContextLogsWithOptions(project *string, logstore *string, request *GetContextLogsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetContextLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	logstore = openapiutil.GetEncodeParam(logstore)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BackLines)) {
+		query["back_lines"] = request.BackLines
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForwardLines)) {
+		query["forward_lines"] = request.ForwardLines
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackId)) {
+		query["pack_id"] = request.PackId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PackMeta)) {
+		query["pack_meta"] = request.PackMeta
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetContextLogs"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetContextLogsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCursor(project *string, logstore *string, shardId *string, request *GetCursorRequest) (_result *GetCursorResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetCursorResponse{}
+	_body, _err := client.GetCursorWithOptions(project, logstore, shardId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetCursorWithOptions(project *string, logstore *string, shardId *string, request *GetCursorRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCursorResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	logstore = openapiutil.GetEncodeParam(logstore)
+	shardId = openapiutil.GetEncodeParam(shardId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["from"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCursor"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shards/" + tea.StringValue(shardId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCursorResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCursorTime(project *string, logstore *string, shardId *string, request *GetCursorTimeRequest) (_result *GetCursorTimeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetCursorTimeResponse{}
+	_body, _err := client.GetCursorTimeWithOptions(project, logstore, shardId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetCursorTimeWithOptions(project *string, logstore *string, shardId *string, request *GetCursorTimeRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCursorTimeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	logstore = openapiutil.GetEncodeParam(logstore)
+	shardId = openapiutil.GetEncodeParam(shardId)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Cursor)) {
+		query["cursor"] = request.Cursor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCursorTime"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shards/" + tea.StringValue(shardId)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetCursorTimeResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) GetHistograms(project *string, logstore *string, request *GetHistogramsRequest) (_result *GetHistogramsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3706,6 +4411,88 @@ func (client *Client) GetLogStoreWithOptions(project *string, logstore *string, 
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetLogStoreResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetLogs(project *string, logstore *string, request *GetLogsRequest) (_result *GetLogsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetLogsResponse{}
+	_body, _err := client.GetLogsWithOptions(project, logstore, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetLogsWithOptions(project *string, logstore *string, request *GetLogsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLogsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	logstore = openapiutil.GetEncodeParam(logstore)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["from"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Line)) {
+		query["line"] = request.Line
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PowerSql)) {
+		query["powerSql"] = request.PowerSql
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Query)) {
+		query["query"] = request.Query
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Reverse)) {
+		query["reverse"] = request.Reverse
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.To)) {
+		query["to"] = request.To
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Topic)) {
+		query["topic"] = request.Topic
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLogs"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/index"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
+	_result = &GetLogsResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4046,6 +4833,156 @@ func (client *Client) ListSavedSearchWithOptions(project *string, request *ListS
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListSavedSearchResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListShards(project *string, logstore *string) (_result *ListShardsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListShardsResponse{}
+	_body, _err := client.ListShardsWithOptions(project, logstore, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListShardsWithOptions(project *string, logstore *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListShardsResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	logstore = openapiutil.GetEncodeParam(logstore)
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListShards"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shards"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
+	_result = &ListShardsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) MergeShards(project *string, logstore *string, shardID *string, request *MergeShardsRequest) (_result *MergeShardsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &MergeShardsResponse{}
+	_body, _err := client.MergeShardsWithOptions(project, logstore, shardID, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) MergeShardsWithOptions(project *string, logstore *string, shardID *string, request *MergeShardsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *MergeShardsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	logstore = openapiutil.GetEncodeParam(logstore)
+	shardID = openapiutil.GetEncodeParam(shardID)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Action)) {
+		query["action"] = request.Action
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("MergeShards"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shards/" + tea.StringValue(shardID)),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
+	_result = &MergeShardsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SplitShard(project *string, logstore *string, shardID *string, request *SplitShardRequest) (_result *SplitShardResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &SplitShardResponse{}
+	_body, _err := client.SplitShardWithOptions(project, logstore, shardID, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SplitShardWithOptions(project *string, logstore *string, shardID *string, request *SplitShardRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *SplitShardResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	logstore = openapiutil.GetEncodeParam(logstore)
+	shardID = openapiutil.GetEncodeParam(shardID)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Action)) {
+		query["action"] = request.Action
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Key)) {
+		query["key"] = request.Key
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShardCount)) {
+		query["shardCount"] = request.ShardCount
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SplitShard"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/shards/" + tea.StringValue(shardID)),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
+	_result = &SplitShardResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
