@@ -1953,8 +1953,9 @@ func (s *CreateRoutineResponse) SetBody(v *CreateRoutineResponseBody) *CreateRou
 }
 
 type CreateSlrAndSlsProjectRequest struct {
-	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Region  *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Region       *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 
 func (s CreateSlrAndSlsProjectRequest) String() string {
@@ -1963,6 +1964,11 @@ func (s CreateSlrAndSlsProjectRequest) String() string {
 
 func (s CreateSlrAndSlsProjectRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateSlrAndSlsProjectRequest) SetBusinessType(v string) *CreateSlrAndSlsProjectRequest {
+	s.BusinessType = &v
+	return s
 }
 
 func (s *CreateSlrAndSlsProjectRequest) SetOwnerId(v int64) *CreateSlrAndSlsProjectRequest {
@@ -2456,9 +2462,8 @@ func (s *DeleteDcdnIpaSpecificConfigResponse) SetBody(v *DeleteDcdnIpaSpecificCo
 }
 
 type DeleteDcdnRealTimeLogProjectRequest struct {
-	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s DeleteDcdnRealTimeLogProjectRequest) String() string {
@@ -2467,11 +2472,6 @@ func (s DeleteDcdnRealTimeLogProjectRequest) String() string {
 
 func (s DeleteDcdnRealTimeLogProjectRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DeleteDcdnRealTimeLogProjectRequest) SetBusinessType(v string) *DeleteDcdnRealTimeLogProjectRequest {
-	s.BusinessType = &v
-	return s
 }
 
 func (s *DeleteDcdnRealTimeLogProjectRequest) SetOwnerId(v int64) *DeleteDcdnRealTimeLogProjectRequest {
@@ -14494,10 +14494,118 @@ func (s *DescribeDcdnReportListResponse) SetBody(v *DescribeDcdnReportListRespon
 	return s
 }
 
-type DescribeDcdnSLSRealtimeLogDeliveryRequest struct {
+type DescribeDcdnSLSRealTimeLogTypeRequest struct {
+	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+}
+
+func (s DescribeDcdnSLSRealTimeLogTypeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnSLSRealTimeLogTypeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnSLSRealTimeLogTypeRequest) SetOwnerId(v int64) *DescribeDcdnSLSRealTimeLogTypeRequest {
+	s.OwnerId = &v
+	return s
+}
+
+type DescribeDcdnSLSRealTimeLogTypeResponseBody struct {
+	Content   *DescribeDcdnSLSRealTimeLogTypeResponseBodyContent `json:"Content,omitempty" xml:"Content,omitempty" type:"Struct"`
+	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeDcdnSLSRealTimeLogTypeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnSLSRealTimeLogTypeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnSLSRealTimeLogTypeResponseBody) SetContent(v *DescribeDcdnSLSRealTimeLogTypeResponseBodyContent) *DescribeDcdnSLSRealTimeLogTypeResponseBody {
+	s.Content = v
+	return s
+}
+
+func (s *DescribeDcdnSLSRealTimeLogTypeResponseBody) SetRequestId(v string) *DescribeDcdnSLSRealTimeLogTypeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeDcdnSLSRealTimeLogTypeResponseBodyContent struct {
+	Business []*DescribeDcdnSLSRealTimeLogTypeResponseBodyContentBusiness `json:"Business,omitempty" xml:"Business,omitempty" type:"Repeated"`
+}
+
+func (s DescribeDcdnSLSRealTimeLogTypeResponseBodyContent) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnSLSRealTimeLogTypeResponseBodyContent) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnSLSRealTimeLogTypeResponseBodyContent) SetBusiness(v []*DescribeDcdnSLSRealTimeLogTypeResponseBodyContentBusiness) *DescribeDcdnSLSRealTimeLogTypeResponseBodyContent {
+	s.Business = v
+	return s
+}
+
+type DescribeDcdnSLSRealTimeLogTypeResponseBodyContentBusiness struct {
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Desc         *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+}
+
+func (s DescribeDcdnSLSRealTimeLogTypeResponseBodyContentBusiness) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnSLSRealTimeLogTypeResponseBodyContentBusiness) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnSLSRealTimeLogTypeResponseBodyContentBusiness) SetBusinessType(v string) *DescribeDcdnSLSRealTimeLogTypeResponseBodyContentBusiness {
+	s.BusinessType = &v
+	return s
+}
+
+func (s *DescribeDcdnSLSRealTimeLogTypeResponseBodyContentBusiness) SetDesc(v string) *DescribeDcdnSLSRealTimeLogTypeResponseBodyContentBusiness {
+	s.Desc = &v
+	return s
+}
+
+type DescribeDcdnSLSRealTimeLogTypeResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDcdnSLSRealTimeLogTypeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeDcdnSLSRealTimeLogTypeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDcdnSLSRealTimeLogTypeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDcdnSLSRealTimeLogTypeResponse) SetHeaders(v map[string]*string) *DescribeDcdnSLSRealTimeLogTypeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeDcdnSLSRealTimeLogTypeResponse) SetStatusCode(v int32) *DescribeDcdnSLSRealTimeLogTypeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeDcdnSLSRealTimeLogTypeResponse) SetBody(v *DescribeDcdnSLSRealTimeLogTypeResponseBody) *DescribeDcdnSLSRealTimeLogTypeResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeDcdnSLSRealtimeLogDeliveryRequest struct {
+	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 }
 
 func (s DescribeDcdnSLSRealtimeLogDeliveryRequest) String() string {
@@ -14506,11 +14614,6 @@ func (s DescribeDcdnSLSRealtimeLogDeliveryRequest) String() string {
 
 func (s DescribeDcdnSLSRealtimeLogDeliveryRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeDcdnSLSRealtimeLogDeliveryRequest) SetBusinessType(v string) *DescribeDcdnSLSRealtimeLogDeliveryRequest {
-	s.BusinessType = &v
-	return s
 }
 
 func (s *DescribeDcdnSLSRealtimeLogDeliveryRequest) SetOwnerId(v int64) *DescribeDcdnSLSRealtimeLogDeliveryRequest {
@@ -14556,6 +14659,7 @@ type DescribeDcdnSLSRealtimeLogDeliveryResponseBodyContent struct {
 	SLSProject   *string `json:"SLSProject,omitempty" xml:"SLSProject,omitempty"`
 	SLSRegion    *string `json:"SLSRegion,omitempty" xml:"SLSRegion,omitempty"`
 	SamplingRate *string `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	Type         *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -14609,6 +14713,11 @@ func (s *DescribeDcdnSLSRealtimeLogDeliveryResponseBodyContent) SetSLSRegion(v s
 
 func (s *DescribeDcdnSLSRealtimeLogDeliveryResponseBodyContent) SetSamplingRate(v string) *DescribeDcdnSLSRealtimeLogDeliveryResponseBodyContent {
 	s.SamplingRate = &v
+	return s
+}
+
+func (s *DescribeDcdnSLSRealtimeLogDeliveryResponseBodyContent) SetStatus(v string) *DescribeDcdnSLSRealtimeLogDeliveryResponseBodyContent {
+	s.Status = &v
 	return s
 }
 
@@ -25287,6 +25396,10 @@ func (client *Client) CreateSlrAndSlsProjectWithOptions(request *CreateSlrAndSls
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
+		body["BusinessType"] = request.BusinessType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Region)) {
 		body["Region"] = request.Region
 	}
@@ -25602,10 +25715,6 @@ func (client *Client) DeleteDcdnRealTimeLogProjectWithOptions(request *DeleteDcd
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
-		query["BusinessType"] = request.BusinessType
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
 	}
@@ -30042,16 +30151,52 @@ func (client *Client) DescribeDcdnReportList(request *DescribeDcdnReportListRequ
 	return _result, _err
 }
 
+func (client *Client) DescribeDcdnSLSRealTimeLogTypeWithOptions(request *DescribeDcdnSLSRealTimeLogTypeRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnSLSRealTimeLogTypeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeDcdnSLSRealTimeLogType"),
+		Version:     tea.String("2018-01-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeDcdnSLSRealTimeLogTypeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeDcdnSLSRealTimeLogType(request *DescribeDcdnSLSRealTimeLogTypeRequest) (_result *DescribeDcdnSLSRealTimeLogTypeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeDcdnSLSRealTimeLogTypeResponse{}
+	_body, _err := client.DescribeDcdnSLSRealTimeLogTypeWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribeDcdnSLSRealtimeLogDeliveryWithOptions(request *DescribeDcdnSLSRealtimeLogDeliveryRequest, runtime *util.RuntimeOptions) (_result *DescribeDcdnSLSRealtimeLogDeliveryResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BusinessType)) {
-		query["BusinessType"] = request.BusinessType
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.OwnerId)) {
 		query["OwnerId"] = request.OwnerId
 	}
