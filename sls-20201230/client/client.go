@@ -108,6 +108,288 @@ func (s *EncryptUserCmkConf) SetRegionId(v string) *EncryptUserCmkConf {
 	return s
 }
 
+type LogtailConfig struct {
+	// configName
+	ConfigName *string `json:"configName,omitempty" xml:"configName,omitempty"`
+	// 创建时间
+	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
+	// inputDetail
+	InputDetail *LogtailConfigInputDetail `json:"inputDetail,omitempty" xml:"inputDetail,omitempty" type:"Struct"`
+	// inputType
+	InputType *string `json:"inputType,omitempty" xml:"inputType,omitempty"`
+	// 修改时间
+	LastModifyTime *int64 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
+	// 日志样例
+	LogSample *string `json:"logSample,omitempty" xml:"logSample,omitempty"`
+	// outputDetail
+	OutputDetail *LogtailConfigOutputDetail `json:"outputDetail,omitempty" xml:"outputDetail,omitempty" type:"Struct"`
+	// outputType
+	OutputType *string `json:"outputType,omitempty" xml:"outputType,omitempty"`
+}
+
+func (s LogtailConfig) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogtailConfig) GoString() string {
+	return s.String()
+}
+
+func (s *LogtailConfig) SetConfigName(v string) *LogtailConfig {
+	s.ConfigName = &v
+	return s
+}
+
+func (s *LogtailConfig) SetCreateTime(v int64) *LogtailConfig {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *LogtailConfig) SetInputDetail(v *LogtailConfigInputDetail) *LogtailConfig {
+	s.InputDetail = v
+	return s
+}
+
+func (s *LogtailConfig) SetInputType(v string) *LogtailConfig {
+	s.InputType = &v
+	return s
+}
+
+func (s *LogtailConfig) SetLastModifyTime(v int64) *LogtailConfig {
+	s.LastModifyTime = &v
+	return s
+}
+
+func (s *LogtailConfig) SetLogSample(v string) *LogtailConfig {
+	s.LogSample = &v
+	return s
+}
+
+func (s *LogtailConfig) SetOutputDetail(v *LogtailConfigOutputDetail) *LogtailConfig {
+	s.OutputDetail = v
+	return s
+}
+
+func (s *LogtailConfig) SetOutputType(v string) *LogtailConfig {
+	s.OutputType = &v
+	return s
+}
+
+type LogtailConfigInputDetail struct {
+	// adjustTimezone
+	AdjustTimezone *bool `json:"adjustTimezone,omitempty" xml:"adjustTimezone,omitempty"`
+	// delayAlarmBytes
+	DelayAlarmBytes *int64 `json:"delayAlarmBytes,omitempty" xml:"delayAlarmBytes,omitempty"`
+	// enableTag
+	EnableTag *bool `json:"enableTag,omitempty" xml:"enableTag,omitempty"`
+	// filePattern
+	FilePattern *string `json:"filePattern,omitempty" xml:"filePattern,omitempty"`
+	// filterKey
+	FilterKey []*string `json:"filterKey,omitempty" xml:"filterKey,omitempty" type:"Repeated"`
+	// filterRegex
+	FilterRegex []*string `json:"filterRegex,omitempty" xml:"filterRegex,omitempty" type:"Repeated"`
+	// localStorage
+	LocalStorage *bool `json:"localStorage,omitempty" xml:"localStorage,omitempty"`
+	// logBeginRegex
+	LogBeginRegex *string `json:"logBeginRegex,omitempty" xml:"logBeginRegex,omitempty"`
+	// logPath
+	LogPath *string `json:"logPath,omitempty" xml:"logPath,omitempty"`
+	// logTimezone
+	LogTimezone *string `json:"logTimezone,omitempty" xml:"logTimezone,omitempty"`
+	// logType
+	LogType *string `json:"logType,omitempty" xml:"logType,omitempty"`
+	// maxSendRate
+	MaxSendRate *int32 `json:"maxSendRate,omitempty" xml:"maxSendRate,omitempty"`
+	// mergeType
+	MergeType *string `json:"mergeType,omitempty" xml:"mergeType,omitempty"`
+	// priority
+	Priority *int32 `json:"priority,omitempty" xml:"priority,omitempty"`
+	// sendRateExpire
+	SendRateExpire *int32 `json:"sendRateExpire,omitempty" xml:"sendRateExpire,omitempty"`
+	// sensitive_keys
+	SensitiveKeys []*LogtailConfigInputDetailSensitiveKeys `json:"sensitive_keys,omitempty" xml:"sensitive_keys,omitempty" type:"Repeated"`
+	// shardHashKey
+	ShardHashKey []*string `json:"shardHashKey,omitempty" xml:"shardHashKey,omitempty" type:"Repeated"`
+	// timeFormat
+	TimeFormat *string `json:"timeFormat,omitempty" xml:"timeFormat,omitempty"`
+	// topicFormat
+	TopicFormat *string `json:"topicFormat,omitempty" xml:"topicFormat,omitempty"`
+}
+
+func (s LogtailConfigInputDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogtailConfigInputDetail) GoString() string {
+	return s.String()
+}
+
+func (s *LogtailConfigInputDetail) SetAdjustTimezone(v bool) *LogtailConfigInputDetail {
+	s.AdjustTimezone = &v
+	return s
+}
+
+func (s *LogtailConfigInputDetail) SetDelayAlarmBytes(v int64) *LogtailConfigInputDetail {
+	s.DelayAlarmBytes = &v
+	return s
+}
+
+func (s *LogtailConfigInputDetail) SetEnableTag(v bool) *LogtailConfigInputDetail {
+	s.EnableTag = &v
+	return s
+}
+
+func (s *LogtailConfigInputDetail) SetFilePattern(v string) *LogtailConfigInputDetail {
+	s.FilePattern = &v
+	return s
+}
+
+func (s *LogtailConfigInputDetail) SetFilterKey(v []*string) *LogtailConfigInputDetail {
+	s.FilterKey = v
+	return s
+}
+
+func (s *LogtailConfigInputDetail) SetFilterRegex(v []*string) *LogtailConfigInputDetail {
+	s.FilterRegex = v
+	return s
+}
+
+func (s *LogtailConfigInputDetail) SetLocalStorage(v bool) *LogtailConfigInputDetail {
+	s.LocalStorage = &v
+	return s
+}
+
+func (s *LogtailConfigInputDetail) SetLogBeginRegex(v string) *LogtailConfigInputDetail {
+	s.LogBeginRegex = &v
+	return s
+}
+
+func (s *LogtailConfigInputDetail) SetLogPath(v string) *LogtailConfigInputDetail {
+	s.LogPath = &v
+	return s
+}
+
+func (s *LogtailConfigInputDetail) SetLogTimezone(v string) *LogtailConfigInputDetail {
+	s.LogTimezone = &v
+	return s
+}
+
+func (s *LogtailConfigInputDetail) SetLogType(v string) *LogtailConfigInputDetail {
+	s.LogType = &v
+	return s
+}
+
+func (s *LogtailConfigInputDetail) SetMaxSendRate(v int32) *LogtailConfigInputDetail {
+	s.MaxSendRate = &v
+	return s
+}
+
+func (s *LogtailConfigInputDetail) SetMergeType(v string) *LogtailConfigInputDetail {
+	s.MergeType = &v
+	return s
+}
+
+func (s *LogtailConfigInputDetail) SetPriority(v int32) *LogtailConfigInputDetail {
+	s.Priority = &v
+	return s
+}
+
+func (s *LogtailConfigInputDetail) SetSendRateExpire(v int32) *LogtailConfigInputDetail {
+	s.SendRateExpire = &v
+	return s
+}
+
+func (s *LogtailConfigInputDetail) SetSensitiveKeys(v []*LogtailConfigInputDetailSensitiveKeys) *LogtailConfigInputDetail {
+	s.SensitiveKeys = v
+	return s
+}
+
+func (s *LogtailConfigInputDetail) SetShardHashKey(v []*string) *LogtailConfigInputDetail {
+	s.ShardHashKey = v
+	return s
+}
+
+func (s *LogtailConfigInputDetail) SetTimeFormat(v string) *LogtailConfigInputDetail {
+	s.TimeFormat = &v
+	return s
+}
+
+func (s *LogtailConfigInputDetail) SetTopicFormat(v string) *LogtailConfigInputDetail {
+	s.TopicFormat = &v
+	return s
+}
+
+type LogtailConfigInputDetailSensitiveKeys struct {
+	// all
+	All *bool `json:"all,omitempty" xml:"all,omitempty"`
+	// key
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// regex_begin
+	RegexBegin *string `json:"regex_begin,omitempty" xml:"regex_begin,omitempty"`
+	// regex_content
+	RegexContent *string `json:"regex_content,omitempty" xml:"regex_content,omitempty"`
+	// type
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s LogtailConfigInputDetailSensitiveKeys) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogtailConfigInputDetailSensitiveKeys) GoString() string {
+	return s.String()
+}
+
+func (s *LogtailConfigInputDetailSensitiveKeys) SetAll(v bool) *LogtailConfigInputDetailSensitiveKeys {
+	s.All = &v
+	return s
+}
+
+func (s *LogtailConfigInputDetailSensitiveKeys) SetKey(v string) *LogtailConfigInputDetailSensitiveKeys {
+	s.Key = &v
+	return s
+}
+
+func (s *LogtailConfigInputDetailSensitiveKeys) SetRegexBegin(v string) *LogtailConfigInputDetailSensitiveKeys {
+	s.RegexBegin = &v
+	return s
+}
+
+func (s *LogtailConfigInputDetailSensitiveKeys) SetRegexContent(v string) *LogtailConfigInputDetailSensitiveKeys {
+	s.RegexContent = &v
+	return s
+}
+
+func (s *LogtailConfigInputDetailSensitiveKeys) SetType(v string) *LogtailConfigInputDetailSensitiveKeys {
+	s.Type = &v
+	return s
+}
+
+type LogtailConfigOutputDetail struct {
+	// endpoint
+	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
+	// logstore
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+}
+
+func (s LogtailConfigOutputDetail) String() string {
+	return tea.Prettify(s)
+}
+
+func (s LogtailConfigOutputDetail) GoString() string {
+	return s.String()
+}
+
+func (s *LogtailConfigOutputDetail) SetEndpoint(v string) *LogtailConfigOutputDetail {
+	s.Endpoint = &v
+	return s
+}
+
+func (s *LogtailConfigOutputDetail) SetLogstore(v string) *LogtailConfigOutputDetail {
+	s.Logstore = &v
+	return s
+}
+
 type SavedSearch struct {
 	// displayName
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
@@ -296,288 +578,6 @@ func (s *ChartSearch) SetStart(v string) *ChartSearch {
 
 func (s *ChartSearch) SetTopic(v string) *ChartSearch {
 	s.Topic = &v
-	return s
-}
-
-type Config struct {
-	// configName
-	ConfigName *string `json:"configName,omitempty" xml:"configName,omitempty"`
-	// 创建时间
-	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// inputDetail
-	InputDetail *ConfigInputDetail `json:"inputDetail,omitempty" xml:"inputDetail,omitempty" type:"Struct"`
-	// inputType
-	InputType *string `json:"inputType,omitempty" xml:"inputType,omitempty"`
-	// 修改时间
-	LastModifyTime *int64 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	// 日志样例
-	LogSample *string `json:"logSample,omitempty" xml:"logSample,omitempty"`
-	// outputDetail
-	OutputDetail *ConfigOutputDetail `json:"outputDetail,omitempty" xml:"outputDetail,omitempty" type:"Struct"`
-	// outputType
-	OutputType *string `json:"outputType,omitempty" xml:"outputType,omitempty"`
-}
-
-func (s Config) String() string {
-	return tea.Prettify(s)
-}
-
-func (s Config) GoString() string {
-	return s.String()
-}
-
-func (s *Config) SetConfigName(v string) *Config {
-	s.ConfigName = &v
-	return s
-}
-
-func (s *Config) SetCreateTime(v int64) *Config {
-	s.CreateTime = &v
-	return s
-}
-
-func (s *Config) SetInputDetail(v *ConfigInputDetail) *Config {
-	s.InputDetail = v
-	return s
-}
-
-func (s *Config) SetInputType(v string) *Config {
-	s.InputType = &v
-	return s
-}
-
-func (s *Config) SetLastModifyTime(v int64) *Config {
-	s.LastModifyTime = &v
-	return s
-}
-
-func (s *Config) SetLogSample(v string) *Config {
-	s.LogSample = &v
-	return s
-}
-
-func (s *Config) SetOutputDetail(v *ConfigOutputDetail) *Config {
-	s.OutputDetail = v
-	return s
-}
-
-func (s *Config) SetOutputType(v string) *Config {
-	s.OutputType = &v
-	return s
-}
-
-type ConfigInputDetail struct {
-	// adjustTimezone
-	AdjustTimezone *bool `json:"adjustTimezone,omitempty" xml:"adjustTimezone,omitempty"`
-	// delayAlarmBytes
-	DelayAlarmBytes *int64 `json:"delayAlarmBytes,omitempty" xml:"delayAlarmBytes,omitempty"`
-	// enableTag
-	EnableTag *bool `json:"enableTag,omitempty" xml:"enableTag,omitempty"`
-	// filePattern
-	FilePattern *string `json:"filePattern,omitempty" xml:"filePattern,omitempty"`
-	// filterKey
-	FilterKey []*string `json:"filterKey,omitempty" xml:"filterKey,omitempty" type:"Repeated"`
-	// filterRegex
-	FilterRegex []*string `json:"filterRegex,omitempty" xml:"filterRegex,omitempty" type:"Repeated"`
-	// localStorage
-	LocalStorage *bool `json:"localStorage,omitempty" xml:"localStorage,omitempty"`
-	// logBeginRegex
-	LogBeginRegex *string `json:"logBeginRegex,omitempty" xml:"logBeginRegex,omitempty"`
-	// logPath
-	LogPath *string `json:"logPath,omitempty" xml:"logPath,omitempty"`
-	// logTimezone
-	LogTimezone *string `json:"logTimezone,omitempty" xml:"logTimezone,omitempty"`
-	// logType
-	LogType *string `json:"logType,omitempty" xml:"logType,omitempty"`
-	// maxSendRate
-	MaxSendRate *int32 `json:"maxSendRate,omitempty" xml:"maxSendRate,omitempty"`
-	// mergeType
-	MergeType *string `json:"mergeType,omitempty" xml:"mergeType,omitempty"`
-	// priority
-	Priority *int32 `json:"priority,omitempty" xml:"priority,omitempty"`
-	// sendRateExpire
-	SendRateExpire *int32 `json:"sendRateExpire,omitempty" xml:"sendRateExpire,omitempty"`
-	// sensitive_keys
-	SensitiveKeys []*ConfigInputDetailSensitiveKeys `json:"sensitive_keys,omitempty" xml:"sensitive_keys,omitempty" type:"Repeated"`
-	// shardHashKey
-	ShardHashKey []*string `json:"shardHashKey,omitempty" xml:"shardHashKey,omitempty" type:"Repeated"`
-	// timeFormat
-	TimeFormat *string `json:"timeFormat,omitempty" xml:"timeFormat,omitempty"`
-	// topicFormat
-	TopicFormat *string `json:"topicFormat,omitempty" xml:"topicFormat,omitempty"`
-}
-
-func (s ConfigInputDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigInputDetail) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigInputDetail) SetAdjustTimezone(v bool) *ConfigInputDetail {
-	s.AdjustTimezone = &v
-	return s
-}
-
-func (s *ConfigInputDetail) SetDelayAlarmBytes(v int64) *ConfigInputDetail {
-	s.DelayAlarmBytes = &v
-	return s
-}
-
-func (s *ConfigInputDetail) SetEnableTag(v bool) *ConfigInputDetail {
-	s.EnableTag = &v
-	return s
-}
-
-func (s *ConfigInputDetail) SetFilePattern(v string) *ConfigInputDetail {
-	s.FilePattern = &v
-	return s
-}
-
-func (s *ConfigInputDetail) SetFilterKey(v []*string) *ConfigInputDetail {
-	s.FilterKey = v
-	return s
-}
-
-func (s *ConfigInputDetail) SetFilterRegex(v []*string) *ConfigInputDetail {
-	s.FilterRegex = v
-	return s
-}
-
-func (s *ConfigInputDetail) SetLocalStorage(v bool) *ConfigInputDetail {
-	s.LocalStorage = &v
-	return s
-}
-
-func (s *ConfigInputDetail) SetLogBeginRegex(v string) *ConfigInputDetail {
-	s.LogBeginRegex = &v
-	return s
-}
-
-func (s *ConfigInputDetail) SetLogPath(v string) *ConfigInputDetail {
-	s.LogPath = &v
-	return s
-}
-
-func (s *ConfigInputDetail) SetLogTimezone(v string) *ConfigInputDetail {
-	s.LogTimezone = &v
-	return s
-}
-
-func (s *ConfigInputDetail) SetLogType(v string) *ConfigInputDetail {
-	s.LogType = &v
-	return s
-}
-
-func (s *ConfigInputDetail) SetMaxSendRate(v int32) *ConfigInputDetail {
-	s.MaxSendRate = &v
-	return s
-}
-
-func (s *ConfigInputDetail) SetMergeType(v string) *ConfigInputDetail {
-	s.MergeType = &v
-	return s
-}
-
-func (s *ConfigInputDetail) SetPriority(v int32) *ConfigInputDetail {
-	s.Priority = &v
-	return s
-}
-
-func (s *ConfigInputDetail) SetSendRateExpire(v int32) *ConfigInputDetail {
-	s.SendRateExpire = &v
-	return s
-}
-
-func (s *ConfigInputDetail) SetSensitiveKeys(v []*ConfigInputDetailSensitiveKeys) *ConfigInputDetail {
-	s.SensitiveKeys = v
-	return s
-}
-
-func (s *ConfigInputDetail) SetShardHashKey(v []*string) *ConfigInputDetail {
-	s.ShardHashKey = v
-	return s
-}
-
-func (s *ConfigInputDetail) SetTimeFormat(v string) *ConfigInputDetail {
-	s.TimeFormat = &v
-	return s
-}
-
-func (s *ConfigInputDetail) SetTopicFormat(v string) *ConfigInputDetail {
-	s.TopicFormat = &v
-	return s
-}
-
-type ConfigInputDetailSensitiveKeys struct {
-	// all
-	All *bool `json:"all,omitempty" xml:"all,omitempty"`
-	// key
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// regex_begin
-	RegexBegin *string `json:"regex_begin,omitempty" xml:"regex_begin,omitempty"`
-	// regex_content
-	RegexContent *string `json:"regex_content,omitempty" xml:"regex_content,omitempty"`
-	// type
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s ConfigInputDetailSensitiveKeys) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigInputDetailSensitiveKeys) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigInputDetailSensitiveKeys) SetAll(v bool) *ConfigInputDetailSensitiveKeys {
-	s.All = &v
-	return s
-}
-
-func (s *ConfigInputDetailSensitiveKeys) SetKey(v string) *ConfigInputDetailSensitiveKeys {
-	s.Key = &v
-	return s
-}
-
-func (s *ConfigInputDetailSensitiveKeys) SetRegexBegin(v string) *ConfigInputDetailSensitiveKeys {
-	s.RegexBegin = &v
-	return s
-}
-
-func (s *ConfigInputDetailSensitiveKeys) SetRegexContent(v string) *ConfigInputDetailSensitiveKeys {
-	s.RegexContent = &v
-	return s
-}
-
-func (s *ConfigInputDetailSensitiveKeys) SetType(v string) *ConfigInputDetailSensitiveKeys {
-	s.Type = &v
-	return s
-}
-
-type ConfigOutputDetail struct {
-	// endpoint
-	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// logstore
-	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-}
-
-func (s ConfigOutputDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ConfigOutputDetail) GoString() string {
-	return s.String()
-}
-
-func (s *ConfigOutputDetail) SetEndpoint(v string) *ConfigOutputDetail {
-	s.Endpoint = &v
-	return s
-}
-
-func (s *ConfigOutputDetail) SetLogstore(v string) *ConfigOutputDetail {
-	s.Logstore = &v
 	return s
 }
 
