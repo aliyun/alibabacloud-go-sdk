@@ -3035,6 +3035,188 @@ func (s *ListShardsResponse) SetBody(v []*Shard) *ListShardsResponse {
 	return s
 }
 
+type ListTagResourcesRequest struct {
+	// 查询的资源的 id 列表。resource id 与 tags 应至少存在一个。
+	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
+	// 资源类型。目前取值范围：project。
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// 精确查找时过滤的标签键值对。resource id 与 tags 应至少存在一个。
+	Tags []*ListTagResourcesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequest) SetResourceId(v []*string) *ListTagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetResourceType(v string) *ListTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesRequest) SetTags(v []*ListTagResourcesRequestTags) *ListTagResourcesRequest {
+	s.Tags = v
+	return s
+}
+
+type ListTagResourcesRequestTags struct {
+	// 精确过滤的标签的键。
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// 精确过滤的标签的值。
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s ListTagResourcesRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesRequestTags) SetKey(v string) *ListTagResourcesRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *ListTagResourcesRequestTags) SetValue(v string) *ListTagResourcesRequestTags {
+	s.Value = &v
+	return s
+}
+
+type ListTagResourcesShrinkRequest struct {
+	// 查询的资源的 id 列表。resource id 与 tags 应至少存在一个。
+	ResourceIdShrink *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// 资源类型。目前取值范围：project。
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// 精确查找时过滤的标签键值对。resource id 与 tags 应至少存在一个。
+	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
+}
+
+func (s ListTagResourcesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesShrinkRequest) SetResourceIdShrink(v string) *ListTagResourcesShrinkRequest {
+	s.ResourceIdShrink = &v
+	return s
+}
+
+func (s *ListTagResourcesShrinkRequest) SetResourceType(v string) *ListTagResourcesShrinkRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesShrinkRequest) SetTagsShrink(v string) *ListTagResourcesShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+type ListTagResourcesResponseBody struct {
+	// 下一个查询开始Token。
+	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// 返回的标签列表。
+	TagResources []*ListTagResourcesResponseBodyTagResources `json:"tagResources,omitempty" xml:"tagResources,omitempty" type:"Repeated"`
+}
+
+func (s ListTagResourcesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBody) SetNextToken(v string) *ListTagResourcesResponseBody {
+	s.NextToken = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBody) SetTagResources(v []*ListTagResourcesResponseBodyTagResources) *ListTagResourcesResponseBody {
+	s.TagResources = v
+	return s
+}
+
+type ListTagResourcesResponseBodyTagResources struct {
+	// 资源 id。
+	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
+	// 资源类型。
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// 标签的键。
+	TagKey *string `json:"tagKey,omitempty" xml:"tagKey,omitempty"`
+	// 标签的值。
+	TagValue *string `json:"tagValue,omitempty" xml:"tagValue,omitempty"`
+}
+
+func (s ListTagResourcesResponseBodyTagResources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponseBodyTagResources) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceId(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetResourceType(v string) *ListTagResourcesResponseBodyTagResources {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagKey(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagKey = &v
+	return s
+}
+
+func (s *ListTagResourcesResponseBodyTagResources) SetTagValue(v string) *ListTagResourcesResponseBodyTagResources {
+	s.TagValue = &v
+	return s
+}
+
+type ListTagResourcesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListTagResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListTagResourcesResponse) SetHeaders(v map[string]*string) *ListTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetStatusCode(v int32) *ListTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListTagResourcesResponse) SetBody(v *ListTagResourcesResponseBody) *ListTagResourcesResponse {
+	s.Body = v
+	return s
+}
+
 type MergeShardsRequest struct {
 	// 固定为 merge。
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
@@ -3140,6 +3322,148 @@ func (s *SplitShardResponse) SetStatusCode(v int32) *SplitShardResponse {
 
 func (s *SplitShardResponse) SetBody(v []*Shard) *SplitShardResponse {
 	s.Body = v
+	return s
+}
+
+type TagResourcesRequest struct {
+	// 资源的 id 列表，可以一次为多个同类型资源打上相同的标签。
+	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
+	// 资源的类型。目前取值范围：project。
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// 标签列表。
+	Tags []*TagResourcesRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+}
+
+func (s TagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequest) SetResourceId(v []*string) *TagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *TagResourcesRequest) SetResourceType(v string) *TagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *TagResourcesRequest) SetTags(v []*TagResourcesRequestTags) *TagResourcesRequest {
+	s.Tags = v
+	return s
+}
+
+type TagResourcesRequestTags struct {
+	// 标签的 key。
+	Key *string `json:"key,omitempty" xml:"key,omitempty"`
+	// 标签的 value。
+	Value *string `json:"value,omitempty" xml:"value,omitempty"`
+}
+
+func (s TagResourcesRequestTags) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesRequestTags) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesRequestTags) SetKey(v string) *TagResourcesRequestTags {
+	s.Key = &v
+	return s
+}
+
+func (s *TagResourcesRequestTags) SetValue(v string) *TagResourcesRequestTags {
+	s.Value = &v
+	return s
+}
+
+type TagResourcesResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s TagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s TagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *TagResourcesResponse) SetHeaders(v map[string]*string) *TagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *TagResourcesResponse) SetStatusCode(v int32) *TagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type UnTagResourcesRequest struct {
+	// 是否删除所有标签，默认为 false，表示仅删除 tags 列表中的标签项。值为 true 时删除资源上绑定的所有标签。
+	All *bool `json:"all,omitempty" xml:"all,omitempty"`
+	// 资源的 id 列表，可以一次为多个同类型资源删除相同的标签。当 all 为 false 时生效。
+	ResourceId []*string `json:"resourceId,omitempty" xml:"resourceId,omitempty" type:"Repeated"`
+	// 资源的类型。目前取值范围 ： project。
+	ResourceType *string `json:"resourceType,omitempty" xml:"resourceType,omitempty"`
+	// 标签 key 列表。当 all 为 false 时，仅删除列表中的标签。
+	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+}
+
+func (s UnTagResourcesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnTagResourcesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UnTagResourcesRequest) SetAll(v bool) *UnTagResourcesRequest {
+	s.All = &v
+	return s
+}
+
+func (s *UnTagResourcesRequest) SetResourceId(v []*string) *UnTagResourcesRequest {
+	s.ResourceId = v
+	return s
+}
+
+func (s *UnTagResourcesRequest) SetResourceType(v string) *UnTagResourcesRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *UnTagResourcesRequest) SetTags(v []*string) *UnTagResourcesRequest {
+	s.Tags = v
+	return s
+}
+
+type UnTagResourcesResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UnTagResourcesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UnTagResourcesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UnTagResourcesResponse) SetHeaders(v map[string]*string) *UnTagResourcesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UnTagResourcesResponse) SetStatusCode(v int32) *UnTagResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4881,6 +5205,70 @@ func (client *Client) ListShardsWithOptions(project *string, logstore *string, h
 	return _result, _err
 }
 
+func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_result *ListTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.ListTagResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListTagResourcesWithOptions(tmpReq *ListTagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &ListTagResourcesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.ResourceId)) {
+		request.ResourceIdShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.ResourceId, tea.String("resourceId"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceIdShrink)) {
+		query["resourceId"] = request.ResourceIdShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["resourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["tags"] = request.TagsShrink
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListTagResources"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/tags"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListTagResourcesResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) MergeShards(project *string, logstore *string, shardID *string, request *MergeShardsRequest) (_result *MergeShardsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4983,6 +5371,118 @@ func (client *Client) SplitShardWithOptions(project *string, logstore *string, s
 		BodyType:    tea.String("array"),
 	}
 	_result = &SplitShardResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &TagResourcesResponse{}
+	_body, _err := client.TagResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *TagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		body["resourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["resourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["tags"] = request.Tags
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("TagResources"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/tag"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &TagResourcesResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UnTagResources(request *UnTagResourcesRequest) (_result *UnTagResourcesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UnTagResourcesResponse{}
+	_body, _err := client.UnTagResourcesWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UnTagResourcesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.All)) {
+		body["all"] = request.All
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		body["resourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		body["resourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tags)) {
+		body["tags"] = request.Tags
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UnTagResources"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/untag"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UnTagResourcesResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
