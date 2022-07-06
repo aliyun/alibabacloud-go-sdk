@@ -157,10 +157,10 @@ type AddSmsSignRequest struct {
 	Remark               *string                          `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string                          `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                           `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SceneType            *int32                           `json:"SceneType,omitempty" xml:"SceneType,omitempty"`
 	SignFileList         []*AddSmsSignRequestSignFileList `json:"SignFileList,omitempty" xml:"SignFileList,omitempty" type:"Repeated"`
 	SignName             *string                          `json:"SignName,omitempty" xml:"SignName,omitempty"`
 	SignSource           *int32                           `json:"SignSource,omitempty" xml:"SignSource,omitempty"`
+	SignType             *int32                           `json:"SignType,omitempty" xml:"SignType,omitempty"`
 }
 
 func (s AddSmsSignRequest) String() string {
@@ -191,11 +191,6 @@ func (s *AddSmsSignRequest) SetResourceOwnerId(v int64) *AddSmsSignRequest {
 	return s
 }
 
-func (s *AddSmsSignRequest) SetSceneType(v int32) *AddSmsSignRequest {
-	s.SceneType = &v
-	return s
-}
-
 func (s *AddSmsSignRequest) SetSignFileList(v []*AddSmsSignRequestSignFileList) *AddSmsSignRequest {
 	s.SignFileList = v
 	return s
@@ -208,6 +203,11 @@ func (s *AddSmsSignRequest) SetSignName(v string) *AddSmsSignRequest {
 
 func (s *AddSmsSignRequest) SetSignSource(v int32) *AddSmsSignRequest {
 	s.SignSource = &v
+	return s
+}
+
+func (s *AddSmsSignRequest) SetSignType(v int32) *AddSmsSignRequest {
+	s.SignType = &v
 	return s
 }
 
@@ -1574,10 +1574,10 @@ type ModifySmsSignRequest struct {
 	Remark               *string                             `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	ResourceOwnerAccount *string                             `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64                              `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SceneType            *int32                              `json:"SceneType,omitempty" xml:"SceneType,omitempty"`
 	SignFileList         []*ModifySmsSignRequestSignFileList `json:"SignFileList,omitempty" xml:"SignFileList,omitempty" type:"Repeated"`
 	SignName             *string                             `json:"SignName,omitempty" xml:"SignName,omitempty"`
 	SignSource           *int32                              `json:"SignSource,omitempty" xml:"SignSource,omitempty"`
+	SignType             *int32                              `json:"SignType,omitempty" xml:"SignType,omitempty"`
 }
 
 func (s ModifySmsSignRequest) String() string {
@@ -1608,11 +1608,6 @@ func (s *ModifySmsSignRequest) SetResourceOwnerId(v int64) *ModifySmsSignRequest
 	return s
 }
 
-func (s *ModifySmsSignRequest) SetSceneType(v int32) *ModifySmsSignRequest {
-	s.SceneType = &v
-	return s
-}
-
 func (s *ModifySmsSignRequest) SetSignFileList(v []*ModifySmsSignRequestSignFileList) *ModifySmsSignRequest {
 	s.SignFileList = v
 	return s
@@ -1625,6 +1620,11 @@ func (s *ModifySmsSignRequest) SetSignName(v string) *ModifySmsSignRequest {
 
 func (s *ModifySmsSignRequest) SetSignSource(v int32) *ModifySmsSignRequest {
 	s.SignSource = &v
+	return s
+}
+
+func (s *ModifySmsSignRequest) SetSignType(v int32) *ModifySmsSignRequest {
+	s.SignType = &v
 	return s
 }
 
@@ -4296,16 +4296,16 @@ func (client *Client) AddSmsSignWithOptions(request *AddSmsSignRequest, runtime 
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SceneType)) {
-		query["SceneType"] = request.SceneType
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.SignName)) {
 		query["SignName"] = request.SignName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SignSource)) {
 		query["SignSource"] = request.SignSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignType)) {
+		query["SignType"] = request.SignType
 	}
 
 	body := map[string]interface{}{}
@@ -4967,16 +4967,16 @@ func (client *Client) ModifySmsSignWithOptions(request *ModifySmsSignRequest, ru
 		query["ResourceOwnerId"] = request.ResourceOwnerId
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SceneType)) {
-		query["SceneType"] = request.SceneType
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.SignName)) {
 		query["SignName"] = request.SignName
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SignSource)) {
 		query["SignSource"] = request.SignSource
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SignType)) {
+		query["SignType"] = request.SignType
 	}
 
 	body := map[string]interface{}{}
