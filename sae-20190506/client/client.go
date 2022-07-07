@@ -808,6 +808,7 @@ type CreateApplicationRequest struct {
 	VpcId                         *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 	WarStartOptions               *string `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
 	WebContainer                  *string `json:"WebContainer,omitempty" xml:"WebContainer,omitempty"`
+	MseFeatureConfig              *string `json:"mseFeatureConfig,omitempty" xml:"mseFeatureConfig,omitempty"`
 }
 
 func (s CreateApplicationRequest) String() string {
@@ -1075,6 +1076,11 @@ func (s *CreateApplicationRequest) SetWarStartOptions(v string) *CreateApplicati
 
 func (s *CreateApplicationRequest) SetWebContainer(v string) *CreateApplicationRequest {
 	s.WebContainer = &v
+	return s
+}
+
+func (s *CreateApplicationRequest) SetMseFeatureConfig(v string) *CreateApplicationRequest {
+	s.MseFeatureConfig = &v
 	return s
 }
 
@@ -2729,6 +2735,7 @@ type DeployApplicationRequest struct {
 	MinReadyInstances     *int32  `json:"MinReadyInstances,omitempty" xml:"MinReadyInstances,omitempty"`
 	MountDesc             *string `json:"MountDesc,omitempty" xml:"MountDesc,omitempty"`
 	MountHost             *string `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
+	MseFeatureConfig      *string `json:"MseFeatureConfig,omitempty" xml:"MseFeatureConfig,omitempty"`
 	NasId                 *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
 	OpenCollectToKafka    *bool   `json:"OpenCollectToKafka,omitempty" xml:"OpenCollectToKafka,omitempty"`
 	// OSS使用的AKID
@@ -2899,6 +2906,11 @@ func (s *DeployApplicationRequest) SetMountDesc(v string) *DeployApplicationRequ
 
 func (s *DeployApplicationRequest) SetMountHost(v string) *DeployApplicationRequest {
 	s.MountHost = &v
+	return s
+}
+
+func (s *DeployApplicationRequest) SetMseFeatureConfig(v string) *DeployApplicationRequest {
+	s.MseFeatureConfig = &v
 	return s
 }
 
@@ -3511,6 +3523,7 @@ type DescribeApplicationConfigResponseBodyData struct {
 	MountHost             *string                                               `json:"MountHost,omitempty" xml:"MountHost,omitempty"`
 	// 对应MSE产品侧应用ID
 	MseApplicationId *string `json:"MseApplicationId,omitempty" xml:"MseApplicationId,omitempty"`
+	MseFeatureConfig *string `json:"MseFeatureConfig,omitempty" xml:"MseFeatureConfig,omitempty"`
 	NamespaceId      *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 	NasId            *string `json:"NasId,omitempty" xml:"NasId,omitempty"`
 	// OSS读写的AK
@@ -3689,6 +3702,11 @@ func (s *DescribeApplicationConfigResponseBodyData) SetMountHost(v string) *Desc
 
 func (s *DescribeApplicationConfigResponseBodyData) SetMseApplicationId(v string) *DescribeApplicationConfigResponseBodyData {
 	s.MseApplicationId = &v
+	return s
+}
+
+func (s *DescribeApplicationConfigResponseBodyData) SetMseFeatureConfig(v string) *DescribeApplicationConfigResponseBodyData {
+	s.MseFeatureConfig = &v
 	return s
 }
 
@@ -8995,13 +9013,13 @@ func (s *ExecJobRequest) SetWarStartOptions(v string) *ExecJobRequest {
 }
 
 type ExecJobResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
-	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+	Code      *string                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *ExecJobResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                  `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                  `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string                  `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
 }
 
 func (s ExecJobResponseBody) String() string {
@@ -9017,8 +9035,8 @@ func (s *ExecJobResponseBody) SetCode(v string) *ExecJobResponseBody {
 	return s
 }
 
-func (s *ExecJobResponseBody) SetData(v string) *ExecJobResponseBody {
-	s.Data = &v
+func (s *ExecJobResponseBody) SetData(v *ExecJobResponseBodyData) *ExecJobResponseBody {
+	s.Data = v
 	return s
 }
 
@@ -9044,6 +9062,41 @@ func (s *ExecJobResponseBody) SetSuccess(v bool) *ExecJobResponseBody {
 
 func (s *ExecJobResponseBody) SetTraceId(v string) *ExecJobResponseBody {
 	s.TraceId = &v
+	return s
+}
+
+type ExecJobResponseBodyData struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Msg     *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	Success *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ExecJobResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecJobResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ExecJobResponseBodyData) SetCode(v string) *ExecJobResponseBodyData {
+	s.Code = &v
+	return s
+}
+
+func (s *ExecJobResponseBodyData) SetData(v string) *ExecJobResponseBodyData {
+	s.Data = &v
+	return s
+}
+
+func (s *ExecJobResponseBodyData) SetMsg(v string) *ExecJobResponseBodyData {
+	s.Msg = &v
+	return s
+}
+
+func (s *ExecJobResponseBodyData) SetSuccess(v string) *ExecJobResponseBodyData {
+	s.Success = &v
 	return s
 }
 
@@ -15306,6 +15359,10 @@ func (client *Client) CreateApplicationWithOptions(request *CreateApplicationReq
 		query["WebContainer"] = request.WebContainer
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.MseFeatureConfig)) {
+		query["mseFeatureConfig"] = request.MseFeatureConfig
+	}
+
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AcrInstanceId)) {
 		body["AcrInstanceId"] = request.AcrInstanceId
@@ -16086,6 +16143,10 @@ func (client *Client) DeployApplicationWithOptions(request *DeployApplicationReq
 
 	if !tea.BoolValue(util.IsUnset(request.MountHost)) {
 		query["MountHost"] = request.MountHost
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MseFeatureConfig)) {
+		query["MseFeatureConfig"] = request.MseFeatureConfig
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NasId)) {
