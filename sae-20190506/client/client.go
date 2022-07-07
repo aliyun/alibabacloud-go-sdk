@@ -7685,6 +7685,170 @@ func (s *DescribeInstanceSpecificationsResponse) SetBody(v *DescribeInstanceSpec
 	return s
 }
 
+type DescribeJobStatusRequest struct {
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+}
+
+func (s DescribeJobStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobStatusRequest) SetAppId(v string) *DescribeJobStatusRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *DescribeJobStatusRequest) SetJobId(v string) *DescribeJobStatusRequest {
+	s.JobId = &v
+	return s
+}
+
+type DescribeJobStatusResponseBody struct {
+	Code      *string                            `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *DescribeJobStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorCode *string                            `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string                            `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool                              `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string                            `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s DescribeJobStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobStatusResponseBody) SetCode(v string) *DescribeJobStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeJobStatusResponseBody) SetData(v *DescribeJobStatusResponseBodyData) *DescribeJobStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *DescribeJobStatusResponseBody) SetErrorCode(v string) *DescribeJobStatusResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *DescribeJobStatusResponseBody) SetMessage(v string) *DescribeJobStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeJobStatusResponseBody) SetRequestId(v string) *DescribeJobStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeJobStatusResponseBody) SetSuccess(v bool) *DescribeJobStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *DescribeJobStatusResponseBody) SetTraceId(v string) *DescribeJobStatusResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type DescribeJobStatusResponseBodyData struct {
+	Active         *int64  `json:"Active,omitempty" xml:"Active,omitempty"`
+	CompletionTime *int64  `json:"CompletionTime,omitempty" xml:"CompletionTime,omitempty"`
+	Failed         *int64  `json:"Failed,omitempty" xml:"Failed,omitempty"`
+	JobId          *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	StartTime      *int64  `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	State          *string `json:"State,omitempty" xml:"State,omitempty"`
+	Succeeded      *int64  `json:"Succeeded,omitempty" xml:"Succeeded,omitempty"`
+}
+
+func (s DescribeJobStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobStatusResponseBodyData) SetActive(v int64) *DescribeJobStatusResponseBodyData {
+	s.Active = &v
+	return s
+}
+
+func (s *DescribeJobStatusResponseBodyData) SetCompletionTime(v int64) *DescribeJobStatusResponseBodyData {
+	s.CompletionTime = &v
+	return s
+}
+
+func (s *DescribeJobStatusResponseBodyData) SetFailed(v int64) *DescribeJobStatusResponseBodyData {
+	s.Failed = &v
+	return s
+}
+
+func (s *DescribeJobStatusResponseBodyData) SetJobId(v string) *DescribeJobStatusResponseBodyData {
+	s.JobId = &v
+	return s
+}
+
+func (s *DescribeJobStatusResponseBodyData) SetMessage(v string) *DescribeJobStatusResponseBodyData {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeJobStatusResponseBodyData) SetStartTime(v int64) *DescribeJobStatusResponseBodyData {
+	s.StartTime = &v
+	return s
+}
+
+func (s *DescribeJobStatusResponseBodyData) SetState(v string) *DescribeJobStatusResponseBodyData {
+	s.State = &v
+	return s
+}
+
+func (s *DescribeJobStatusResponseBodyData) SetSucceeded(v int64) *DescribeJobStatusResponseBodyData {
+	s.Succeeded = &v
+	return s
+}
+
+type DescribeJobStatusResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeJobStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeJobStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeJobStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeJobStatusResponse) SetHeaders(v map[string]*string) *DescribeJobStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeJobStatusResponse) SetStatusCode(v int32) *DescribeJobStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeJobStatusResponse) SetBody(v *DescribeJobStatusResponseBody) *DescribeJobStatusResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeNamespaceRequest struct {
 	NamespaceId *string `json:"NamespaceId,omitempty" xml:"NamespaceId,omitempty"`
 }
@@ -17131,6 +17295,56 @@ func (client *Client) DescribeInstanceSpecificationsWithOptions(headers map[stri
 		BodyType:    tea.String("json"),
 	}
 	_result = &DescribeInstanceSpecificationsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeJobStatus(request *DescribeJobStatusRequest) (_result *DescribeJobStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeJobStatusResponse{}
+	_body, _err := client.DescribeJobStatusWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeJobStatusWithOptions(request *DescribeJobStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeJobStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JobId)) {
+		query["JobId"] = request.JobId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeJobStatus"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/job/describeJobStatus"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeJobStatusResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
