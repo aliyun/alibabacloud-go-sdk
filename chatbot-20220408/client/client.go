@@ -3424,7 +3424,7 @@ type DeleteInstanceResponseBody struct {
 	// 任务id
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// 请求Id
-	RequestId []byte `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// 任务id
 	Response *int64 `json:"Response,omitempty" xml:"Response,omitempty"`
 	// 任务状态，可以在GetInstancePublishTaskState API 了解更多的状态
@@ -3469,8 +3469,8 @@ func (s *DeleteInstanceResponseBody) SetId(v int64) *DeleteInstanceResponseBody 
 	return s
 }
 
-func (s *DeleteInstanceResponseBody) SetRequestId(v []byte) *DeleteInstanceResponseBody {
-	s.RequestId = v
+func (s *DeleteInstanceResponseBody) SetRequestId(v string) *DeleteInstanceResponseBody {
+	s.RequestId = &v
 	return s
 }
 
