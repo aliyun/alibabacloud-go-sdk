@@ -114,7 +114,7 @@ type LogtailConfig struct {
 	// 创建时间
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
 	// inputDetail
-	InputDetail *LogtailConfigInputDetail `json:"inputDetail,omitempty" xml:"inputDetail,omitempty" type:"Struct"`
+	InputDetail map[string]interface{} `json:"inputDetail,omitempty" xml:"inputDetail,omitempty"`
 	// inputType
 	InputType *string `json:"inputType,omitempty" xml:"inputType,omitempty"`
 	// 修改时间
@@ -145,7 +145,7 @@ func (s *LogtailConfig) SetCreateTime(v int64) *LogtailConfig {
 	return s
 }
 
-func (s *LogtailConfig) SetInputDetail(v *LogtailConfigInputDetail) *LogtailConfig {
+func (s *LogtailConfig) SetInputDetail(v map[string]interface{}) *LogtailConfig {
 	s.InputDetail = v
 	return s
 }
@@ -175,201 +175,13 @@ func (s *LogtailConfig) SetOutputType(v string) *LogtailConfig {
 	return s
 }
 
-type LogtailConfigInputDetail struct {
-	// adjustTimezone
-	AdjustTimezone *bool `json:"adjustTimezone,omitempty" xml:"adjustTimezone,omitempty"`
-	// delayAlarmBytes
-	DelayAlarmBytes *int64 `json:"delayAlarmBytes,omitempty" xml:"delayAlarmBytes,omitempty"`
-	// enableTag
-	EnableTag *bool `json:"enableTag,omitempty" xml:"enableTag,omitempty"`
-	// filePattern
-	FilePattern *string `json:"filePattern,omitempty" xml:"filePattern,omitempty"`
-	// filterKey
-	FilterKey []*string `json:"filterKey,omitempty" xml:"filterKey,omitempty" type:"Repeated"`
-	// filterRegex
-	FilterRegex []*string `json:"filterRegex,omitempty" xml:"filterRegex,omitempty" type:"Repeated"`
-	// localStorage
-	LocalStorage *bool `json:"localStorage,omitempty" xml:"localStorage,omitempty"`
-	// logBeginRegex
-	LogBeginRegex *string `json:"logBeginRegex,omitempty" xml:"logBeginRegex,omitempty"`
-	// logPath
-	LogPath *string `json:"logPath,omitempty" xml:"logPath,omitempty"`
-	// logTimezone
-	LogTimezone *string `json:"logTimezone,omitempty" xml:"logTimezone,omitempty"`
-	// logType
-	LogType *string `json:"logType,omitempty" xml:"logType,omitempty"`
-	// maxSendRate
-	MaxSendRate *int32 `json:"maxSendRate,omitempty" xml:"maxSendRate,omitempty"`
-	// mergeType
-	MergeType *string `json:"mergeType,omitempty" xml:"mergeType,omitempty"`
-	// priority
-	Priority *int32 `json:"priority,omitempty" xml:"priority,omitempty"`
-	// sendRateExpire
-	SendRateExpire *int32 `json:"sendRateExpire,omitempty" xml:"sendRateExpire,omitempty"`
-	// sensitive_keys
-	SensitiveKeys []*LogtailConfigInputDetailSensitiveKeys `json:"sensitive_keys,omitempty" xml:"sensitive_keys,omitempty" type:"Repeated"`
-	// shardHashKey
-	ShardHashKey []*string `json:"shardHashKey,omitempty" xml:"shardHashKey,omitempty" type:"Repeated"`
-	// timeFormat
-	TimeFormat *string `json:"timeFormat,omitempty" xml:"timeFormat,omitempty"`
-	// topicFormat
-	TopicFormat *string `json:"topicFormat,omitempty" xml:"topicFormat,omitempty"`
-}
-
-func (s LogtailConfigInputDetail) String() string {
-	return tea.Prettify(s)
-}
-
-func (s LogtailConfigInputDetail) GoString() string {
-	return s.String()
-}
-
-func (s *LogtailConfigInputDetail) SetAdjustTimezone(v bool) *LogtailConfigInputDetail {
-	s.AdjustTimezone = &v
-	return s
-}
-
-func (s *LogtailConfigInputDetail) SetDelayAlarmBytes(v int64) *LogtailConfigInputDetail {
-	s.DelayAlarmBytes = &v
-	return s
-}
-
-func (s *LogtailConfigInputDetail) SetEnableTag(v bool) *LogtailConfigInputDetail {
-	s.EnableTag = &v
-	return s
-}
-
-func (s *LogtailConfigInputDetail) SetFilePattern(v string) *LogtailConfigInputDetail {
-	s.FilePattern = &v
-	return s
-}
-
-func (s *LogtailConfigInputDetail) SetFilterKey(v []*string) *LogtailConfigInputDetail {
-	s.FilterKey = v
-	return s
-}
-
-func (s *LogtailConfigInputDetail) SetFilterRegex(v []*string) *LogtailConfigInputDetail {
-	s.FilterRegex = v
-	return s
-}
-
-func (s *LogtailConfigInputDetail) SetLocalStorage(v bool) *LogtailConfigInputDetail {
-	s.LocalStorage = &v
-	return s
-}
-
-func (s *LogtailConfigInputDetail) SetLogBeginRegex(v string) *LogtailConfigInputDetail {
-	s.LogBeginRegex = &v
-	return s
-}
-
-func (s *LogtailConfigInputDetail) SetLogPath(v string) *LogtailConfigInputDetail {
-	s.LogPath = &v
-	return s
-}
-
-func (s *LogtailConfigInputDetail) SetLogTimezone(v string) *LogtailConfigInputDetail {
-	s.LogTimezone = &v
-	return s
-}
-
-func (s *LogtailConfigInputDetail) SetLogType(v string) *LogtailConfigInputDetail {
-	s.LogType = &v
-	return s
-}
-
-func (s *LogtailConfigInputDetail) SetMaxSendRate(v int32) *LogtailConfigInputDetail {
-	s.MaxSendRate = &v
-	return s
-}
-
-func (s *LogtailConfigInputDetail) SetMergeType(v string) *LogtailConfigInputDetail {
-	s.MergeType = &v
-	return s
-}
-
-func (s *LogtailConfigInputDetail) SetPriority(v int32) *LogtailConfigInputDetail {
-	s.Priority = &v
-	return s
-}
-
-func (s *LogtailConfigInputDetail) SetSendRateExpire(v int32) *LogtailConfigInputDetail {
-	s.SendRateExpire = &v
-	return s
-}
-
-func (s *LogtailConfigInputDetail) SetSensitiveKeys(v []*LogtailConfigInputDetailSensitiveKeys) *LogtailConfigInputDetail {
-	s.SensitiveKeys = v
-	return s
-}
-
-func (s *LogtailConfigInputDetail) SetShardHashKey(v []*string) *LogtailConfigInputDetail {
-	s.ShardHashKey = v
-	return s
-}
-
-func (s *LogtailConfigInputDetail) SetTimeFormat(v string) *LogtailConfigInputDetail {
-	s.TimeFormat = &v
-	return s
-}
-
-func (s *LogtailConfigInputDetail) SetTopicFormat(v string) *LogtailConfigInputDetail {
-	s.TopicFormat = &v
-	return s
-}
-
-type LogtailConfigInputDetailSensitiveKeys struct {
-	// all
-	All *bool `json:"all,omitempty" xml:"all,omitempty"`
-	// key
-	Key *string `json:"key,omitempty" xml:"key,omitempty"`
-	// regex_begin
-	RegexBegin *string `json:"regex_begin,omitempty" xml:"regex_begin,omitempty"`
-	// regex_content
-	RegexContent *string `json:"regex_content,omitempty" xml:"regex_content,omitempty"`
-	// type
-	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-}
-
-func (s LogtailConfigInputDetailSensitiveKeys) String() string {
-	return tea.Prettify(s)
-}
-
-func (s LogtailConfigInputDetailSensitiveKeys) GoString() string {
-	return s.String()
-}
-
-func (s *LogtailConfigInputDetailSensitiveKeys) SetAll(v bool) *LogtailConfigInputDetailSensitiveKeys {
-	s.All = &v
-	return s
-}
-
-func (s *LogtailConfigInputDetailSensitiveKeys) SetKey(v string) *LogtailConfigInputDetailSensitiveKeys {
-	s.Key = &v
-	return s
-}
-
-func (s *LogtailConfigInputDetailSensitiveKeys) SetRegexBegin(v string) *LogtailConfigInputDetailSensitiveKeys {
-	s.RegexBegin = &v
-	return s
-}
-
-func (s *LogtailConfigInputDetailSensitiveKeys) SetRegexContent(v string) *LogtailConfigInputDetailSensitiveKeys {
-	s.RegexContent = &v
-	return s
-}
-
-func (s *LogtailConfigInputDetailSensitiveKeys) SetType(v string) *LogtailConfigInputDetailSensitiveKeys {
-	s.Type = &v
-	return s
-}
-
 type LogtailConfigOutputDetail struct {
 	// endpoint
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// logstore
-	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// logstoreName
+	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
+	// 地域
+	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 }
 
 func (s LogtailConfigOutputDetail) String() string {
@@ -385,8 +197,13 @@ func (s *LogtailConfigOutputDetail) SetEndpoint(v string) *LogtailConfigOutputDe
 	return s
 }
 
-func (s *LogtailConfigOutputDetail) SetLogstore(v string) *LogtailConfigOutputDetail {
-	s.Logstore = &v
+func (s *LogtailConfigOutputDetail) SetLogstoreName(v string) *LogtailConfigOutputDetail {
+	s.LogstoreName = &v
+	return s
+}
+
+func (s *LogtailConfigOutputDetail) SetRegion(v string) *LogtailConfigOutputDetail {
+	s.Region = &v
 	return s
 }
 
@@ -1427,6 +1244,29 @@ func (s *Shard) SetStatus(v string) *Shard {
 	return s
 }
 
+type ApplyConfigToMachineGroupResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s ApplyConfigToMachineGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyConfigToMachineGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyConfigToMachineGroupResponse) SetHeaders(v map[string]*string) *ApplyConfigToMachineGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyConfigToMachineGroupResponse) SetStatusCode(v int32) *ApplyConfigToMachineGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type CreateConsumerGroupRequest struct {
 	ConsumerGroup *string `json:"consumerGroup,omitempty" xml:"consumerGroup,omitempty"`
 	Order         *bool   `json:"order,omitempty" xml:"order,omitempty"`
@@ -1475,6 +1315,46 @@ func (s *CreateConsumerGroupResponse) SetHeaders(v map[string]*string) *CreateCo
 }
 
 func (s *CreateConsumerGroupResponse) SetStatusCode(v int32) *CreateConsumerGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateDomainRequest struct {
+	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+}
+
+func (s CreateDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDomainRequest) SetDomainName(v string) *CreateDomainRequest {
+	s.DomainName = &v
+	return s
+}
+
+type CreateDomainResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s CreateDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDomainResponse) SetHeaders(v map[string]*string) *CreateDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDomainResponse) SetStatusCode(v int32) *CreateDomainResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -1701,6 +1581,173 @@ func (s *CreateLogStoreResponse) SetStatusCode(v int32) *CreateLogStoreResponse 
 	return s
 }
 
+type CreateLoggingRequest struct {
+	// 服务日志配置列表。
+	LoggingDetails []*CreateLoggingRequestLoggingDetails `json:"loggingDetails,omitempty" xml:"loggingDetails,omitempty" type:"Repeated"`
+	// 服务日志要保存到的 project 名称。
+	LoggingProject *string `json:"loggingProject,omitempty" xml:"loggingProject,omitempty"`
+}
+
+func (s CreateLoggingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoggingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoggingRequest) SetLoggingDetails(v []*CreateLoggingRequestLoggingDetails) *CreateLoggingRequest {
+	s.LoggingDetails = v
+	return s
+}
+
+func (s *CreateLoggingRequest) SetLoggingProject(v string) *CreateLoggingRequest {
+	s.LoggingProject = &v
+	return s
+}
+
+type CreateLoggingRequestLoggingDetails struct {
+	// 该种类服务日志要保存到的 logstore 名称。
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// 服务日志的种类。可选 "consumergroup_log"、 "logtail_alarm"、"operation_log"、"logtail_profile"、"metering"、"logtail_status"、"scheduled_sql_alert"、 "etl_alert" 等。
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s CreateLoggingRequestLoggingDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoggingRequestLoggingDetails) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoggingRequestLoggingDetails) SetLogstore(v string) *CreateLoggingRequestLoggingDetails {
+	s.Logstore = &v
+	return s
+}
+
+func (s *CreateLoggingRequestLoggingDetails) SetType(v string) *CreateLoggingRequestLoggingDetails {
+	s.Type = &v
+	return s
+}
+
+type CreateLoggingResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s CreateLoggingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateLoggingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateLoggingResponse) SetHeaders(v map[string]*string) *CreateLoggingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateLoggingResponse) SetStatusCode(v int32) *CreateLoggingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateMachineGroupRequest struct {
+	// 机器组属性。
+	GroupAttribute *CreateMachineGroupRequestGroupAttribute `json:"groupAttribute,omitempty" xml:"groupAttribute,omitempty" type:"Struct"`
+	// 机器组名称。
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// 机器组类型，可选值，默认为空。
+	GroupType *string `json:"groupType,omitempty" xml:"groupType,omitempty"`
+	// 机器组标识种类，支持 ip 、userdefined 两种。
+	MachineIdentifyType *string `json:"machineIdentifyType,omitempty" xml:"machineIdentifyType,omitempty"`
+	// 机器列表。
+	MachineList []*string `json:"machineList,omitempty" xml:"machineList,omitempty" type:"Repeated"`
+}
+
+func (s CreateMachineGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMachineGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMachineGroupRequest) SetGroupAttribute(v *CreateMachineGroupRequestGroupAttribute) *CreateMachineGroupRequest {
+	s.GroupAttribute = v
+	return s
+}
+
+func (s *CreateMachineGroupRequest) SetGroupName(v string) *CreateMachineGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *CreateMachineGroupRequest) SetGroupType(v string) *CreateMachineGroupRequest {
+	s.GroupType = &v
+	return s
+}
+
+func (s *CreateMachineGroupRequest) SetMachineIdentifyType(v string) *CreateMachineGroupRequest {
+	s.MachineIdentifyType = &v
+	return s
+}
+
+func (s *CreateMachineGroupRequest) SetMachineList(v []*string) *CreateMachineGroupRequest {
+	s.MachineList = v
+	return s
+}
+
+type CreateMachineGroupRequestGroupAttribute struct {
+	// 机器组所依赖的外部管理系统标识。
+	ExternalName *string `json:"externalName,omitempty" xml:"externalName,omitempty"`
+	// 机器组的日志主题。
+	GroupTopic *string `json:"groupTopic,omitempty" xml:"groupTopic,omitempty"`
+}
+
+func (s CreateMachineGroupRequestGroupAttribute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMachineGroupRequestGroupAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMachineGroupRequestGroupAttribute) SetExternalName(v string) *CreateMachineGroupRequestGroupAttribute {
+	s.ExternalName = &v
+	return s
+}
+
+func (s *CreateMachineGroupRequestGroupAttribute) SetGroupTopic(v string) *CreateMachineGroupRequestGroupAttribute {
+	s.GroupTopic = &v
+	return s
+}
+
+type CreateMachineGroupResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s CreateMachineGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateMachineGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateMachineGroupResponse) SetHeaders(v map[string]*string) *CreateMachineGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateMachineGroupResponse) SetStatusCode(v int32) *CreateMachineGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type CreateProjectRequest struct {
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
@@ -1834,6 +1881,29 @@ func (s *DeleteConsumerGroupResponse) SetStatusCode(v int32) *DeleteConsumerGrou
 	return s
 }
 
+type DeleteDomainResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s DeleteDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDomainResponse) SetHeaders(v map[string]*string) *DeleteDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDomainResponse) SetStatusCode(v int32) *DeleteDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteIndexResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -1880,6 +1950,52 @@ func (s *DeleteLogStoreResponse) SetStatusCode(v int32) *DeleteLogStoreResponse 
 	return s
 }
 
+type DeleteLoggingResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s DeleteLoggingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteLoggingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteLoggingResponse) SetHeaders(v map[string]*string) *DeleteLoggingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteLoggingResponse) SetStatusCode(v int32) *DeleteLoggingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteMachineGroupResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s DeleteMachineGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteMachineGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteMachineGroupResponse) SetHeaders(v map[string]*string) *DeleteMachineGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteMachineGroupResponse) SetStatusCode(v int32) *DeleteMachineGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteProjectResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -1900,6 +2016,148 @@ func (s *DeleteProjectResponse) SetHeaders(v map[string]*string) *DeleteProjectR
 
 func (s *DeleteProjectResponse) SetStatusCode(v int32) *DeleteProjectResponse {
 	s.StatusCode = &v
+	return s
+}
+
+type GetAppliedConfigsResponseBody struct {
+	// Logtail配置名称列表。
+	Configs []*string `json:"configs,omitempty" xml:"configs,omitempty" type:"Repeated"`
+	// Logtail配置数量。
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+}
+
+func (s GetAppliedConfigsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppliedConfigsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppliedConfigsResponseBody) SetConfigs(v []*string) *GetAppliedConfigsResponseBody {
+	s.Configs = v
+	return s
+}
+
+func (s *GetAppliedConfigsResponseBody) SetCount(v int32) *GetAppliedConfigsResponseBody {
+	s.Count = &v
+	return s
+}
+
+type GetAppliedConfigsResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetAppliedConfigsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetAppliedConfigsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetAppliedConfigsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetAppliedConfigsResponse) SetHeaders(v map[string]*string) *GetAppliedConfigsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetAppliedConfigsResponse) SetStatusCode(v int32) *GetAppliedConfigsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetAppliedConfigsResponse) SetBody(v *GetAppliedConfigsResponseBody) *GetAppliedConfigsResponse {
+	s.Body = v
+	return s
+}
+
+type GetCheckPointRequest struct {
+	// Shard ID。
+	// 如果指定的Shard不存在，则返回空列表。
+	// 如果不指定Shard，则返回所有Shard的checkpoint。
+	Shard *int32 `json:"shard,omitempty" xml:"shard,omitempty"`
+}
+
+func (s GetCheckPointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCheckPointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetCheckPointRequest) SetShard(v int32) *GetCheckPointRequest {
+	s.Shard = &v
+	return s
+}
+
+type GetCheckPointResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       []*GetCheckPointResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true" type:"Repeated"`
+}
+
+func (s GetCheckPointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCheckPointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetCheckPointResponse) SetHeaders(v map[string]*string) *GetCheckPointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetCheckPointResponse) SetStatusCode(v int32) *GetCheckPointResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetCheckPointResponse) SetBody(v []*GetCheckPointResponseBody) *GetCheckPointResponse {
+	s.Body = v
+	return s
+}
+
+type GetCheckPointResponseBody struct {
+	// shard id。
+	Shard *int32 `json:"shard,omitempty" xml:"shard,omitempty"`
+	// checkpoint 值。
+	Checkpoint *string `json:"checkpoint,omitempty" xml:"checkpoint,omitempty"`
+	// checkpoint最后的更新时间。Unix时间戳格式，表示从1970-1-1 00:00:00 UTC计算起的秒数。
+	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
+	// 消费者。
+	Consumer *string `json:"consumer,omitempty" xml:"consumer,omitempty"`
+}
+
+func (s GetCheckPointResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetCheckPointResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetCheckPointResponseBody) SetShard(v int32) *GetCheckPointResponseBody {
+	s.Shard = &v
+	return s
+}
+
+func (s *GetCheckPointResponseBody) SetCheckpoint(v string) *GetCheckPointResponseBody {
+	s.Checkpoint = &v
+	return s
+}
+
+func (s *GetCheckPointResponseBody) SetUpdateTime(v int64) *GetCheckPointResponseBody {
+	s.UpdateTime = &v
+	return s
+}
+
+func (s *GetCheckPointResponseBody) SetConsumer(v string) *GetCheckPointResponseBody {
+	s.Consumer = &v
 	return s
 }
 
@@ -2481,6 +2739,35 @@ func (s *GetLogStoreResponse) SetBody(v *Logstore) *GetLogStoreResponse {
 	return s
 }
 
+type GetLoggingResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Logging           `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetLoggingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetLoggingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetLoggingResponse) SetHeaders(v map[string]*string) *GetLoggingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetLoggingResponse) SetStatusCode(v int32) *GetLoggingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetLoggingResponse) SetBody(v *Logging) *GetLoggingResponse {
+	s.Body = v
+	return s
+}
+
 type GetLogsRequest struct {
 	// 查询开始时间点。该时间是指写入日志数据时指定的日志时间。
 	//
@@ -2602,6 +2889,35 @@ func (s *GetLogsResponse) SetStatusCode(v int32) *GetLogsResponse {
 }
 
 func (s *GetLogsResponse) SetBody(v []map[string]interface{}) *GetLogsResponse {
+	s.Body = v
+	return s
+}
+
+type GetMachineGroupResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *MachineGroup      `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetMachineGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetMachineGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetMachineGroupResponse) SetHeaders(v map[string]*string) *GetMachineGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetMachineGroupResponse) SetStatusCode(v int32) *GetMachineGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetMachineGroupResponse) SetBody(v *MachineGroup) *GetMachineGroupResponse {
 	s.Body = v
 	return s
 }
@@ -2751,6 +3067,94 @@ func (s *ListConsumerGroupResponse) SetBody(v []*ConsumerGroup) *ListConsumerGro
 	return s
 }
 
+type ListDomainsRequest struct {
+	// 用于搜索匹配的自定义域名
+	DomainName *string `json:"domainName,omitempty" xml:"domainName,omitempty"`
+	Offset     *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
+	Size       *int32  `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListDomainsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDomainsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDomainsRequest) SetDomainName(v string) *ListDomainsRequest {
+	s.DomainName = &v
+	return s
+}
+
+func (s *ListDomainsRequest) SetOffset(v int32) *ListDomainsRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListDomainsRequest) SetSize(v int32) *ListDomainsRequest {
+	s.Size = &v
+	return s
+}
+
+type ListDomainsResponseBody struct {
+	Count   *int64    `json:"count,omitempty" xml:"count,omitempty"`
+	Domains []*string `json:"domains,omitempty" xml:"domains,omitempty" type:"Repeated"`
+	Total   *int64    `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListDomainsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDomainsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDomainsResponseBody) SetCount(v int64) *ListDomainsResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListDomainsResponseBody) SetDomains(v []*string) *ListDomainsResponseBody {
+	s.Domains = v
+	return s
+}
+
+func (s *ListDomainsResponseBody) SetTotal(v int64) *ListDomainsResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListDomainsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDomainsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDomainsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDomainsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDomainsResponse) SetHeaders(v map[string]*string) *ListDomainsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDomainsResponse) SetStatusCode(v int32) *ListDomainsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDomainsResponse) SetBody(v *ListDomainsResponseBody) *ListDomainsResponse {
+	s.Body = v
+	return s
+}
+
 type ListLogStoresRequest struct {
 	LogstoreName  *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
 	Offset        *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
@@ -2834,6 +3238,185 @@ func (s *ListLogStoresResponse) SetStatusCode(v int32) *ListLogStoresResponse {
 }
 
 func (s *ListLogStoresResponse) SetBody(v *ListLogStoresResponseBody) *ListLogStoresResponse {
+	s.Body = v
+	return s
+}
+
+type ListMachineGroupRequest struct {
+	// 可将 groupName 作为 pattern 匹配名称，只会返回匹配的机器组。例如 test 可以匹配机器组 test-group。
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// 分页请求的起始位置。默认为0。
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// 分页查询时，设置的每页行数。最大值为500。
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListMachineGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMachineGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMachineGroupRequest) SetGroupName(v string) *ListMachineGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *ListMachineGroupRequest) SetOffset(v int32) *ListMachineGroupRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListMachineGroupRequest) SetSize(v int32) *ListMachineGroupRequest {
+	s.Size = &v
+	return s
+}
+
+type ListMachineGroupResponseBody struct {
+	// 当前页返回的机器组数量。
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// 机器组名称列表。
+	Machinegroups []*string `json:"machinegroups,omitempty" xml:"machinegroups,omitempty" type:"Repeated"`
+	// 机器组总数量。
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListMachineGroupResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMachineGroupResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMachineGroupResponseBody) SetCount(v int32) *ListMachineGroupResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListMachineGroupResponseBody) SetMachinegroups(v []*string) *ListMachineGroupResponseBody {
+	s.Machinegroups = v
+	return s
+}
+
+func (s *ListMachineGroupResponseBody) SetTotal(v int32) *ListMachineGroupResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListMachineGroupResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListMachineGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMachineGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMachineGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMachineGroupResponse) SetHeaders(v map[string]*string) *ListMachineGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMachineGroupResponse) SetStatusCode(v int32) *ListMachineGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMachineGroupResponse) SetBody(v *ListMachineGroupResponseBody) *ListMachineGroupResponse {
+	s.Body = v
+	return s
+}
+
+type ListMachinesRequest struct {
+	// 查询开始行。默认值为0。
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// 分页查询时，设置的每页行数。默认值为100，最大值为500。
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListMachinesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMachinesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListMachinesRequest) SetOffset(v int32) *ListMachinesRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListMachinesRequest) SetSize(v int32) *ListMachinesRequest {
+	s.Size = &v
+	return s
+}
+
+type ListMachinesResponseBody struct {
+	// 当前页返回的机器数目。
+	Count *int32 `json:"count,omitempty" xml:"count,omitempty"`
+	// 返回的机器信息列表。
+	Machines []*Machine `json:"machines,omitempty" xml:"machines,omitempty" type:"Repeated"`
+	// 机器总数。
+	Total *int32 `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListMachinesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMachinesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListMachinesResponseBody) SetCount(v int32) *ListMachinesResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListMachinesResponseBody) SetMachines(v []*Machine) *ListMachinesResponseBody {
+	s.Machines = v
+	return s
+}
+
+func (s *ListMachinesResponseBody) SetTotal(v int32) *ListMachinesResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListMachinesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListMachinesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListMachinesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListMachinesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListMachinesResponse) SetHeaders(v map[string]*string) *ListMachinesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListMachinesResponse) SetStatusCode(v int32) *ListMachinesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListMachinesResponse) SetBody(v *ListMachinesResponseBody) *ListMachinesResponse {
 	s.Body = v
 	return s
 }
@@ -3264,6 +3847,29 @@ func (s *MergeShardsResponse) SetBody(v []*Shard) *MergeShardsResponse {
 	return s
 }
 
+type RemoveConfigFromMachineGroupResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s RemoveConfigFromMachineGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveConfigFromMachineGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveConfigFromMachineGroupResponse) SetHeaders(v map[string]*string) *RemoveConfigFromMachineGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveConfigFromMachineGroupResponse) SetStatusCode(v int32) *RemoveConfigFromMachineGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type SplitShardRequest struct {
 	// 这里固定为 split。
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
@@ -3463,6 +4069,75 @@ func (s *UnTagResourcesResponse) SetHeaders(v map[string]*string) *UnTagResource
 }
 
 func (s *UnTagResourcesResponse) SetStatusCode(v int32) *UnTagResourcesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateCheckPointRequest struct {
+	// checkpoint值。
+	Checkpoint *string `json:"checkpoint,omitempty" xml:"checkpoint,omitempty"`
+	// shard 的 id。
+	Shard *int32 `json:"shard,omitempty" xml:"shard,omitempty"`
+	// 消费者。
+	Consumer *string `json:"consumer,omitempty" xml:"consumer,omitempty"`
+	// 当不指定消费者时，必须指定forceSuccess为true才能更新checkpoint。
+	ForceSuccess *bool `json:"forceSuccess,omitempty" xml:"forceSuccess,omitempty"`
+	// 固定为 checkpoint。
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s UpdateCheckPointRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCheckPointRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCheckPointRequest) SetCheckpoint(v string) *UpdateCheckPointRequest {
+	s.Checkpoint = &v
+	return s
+}
+
+func (s *UpdateCheckPointRequest) SetShard(v int32) *UpdateCheckPointRequest {
+	s.Shard = &v
+	return s
+}
+
+func (s *UpdateCheckPointRequest) SetConsumer(v string) *UpdateCheckPointRequest {
+	s.Consumer = &v
+	return s
+}
+
+func (s *UpdateCheckPointRequest) SetForceSuccess(v bool) *UpdateCheckPointRequest {
+	s.ForceSuccess = &v
+	return s
+}
+
+func (s *UpdateCheckPointRequest) SetType(v string) *UpdateCheckPointRequest {
+	s.Type = &v
+	return s
+}
+
+type UpdateCheckPointResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UpdateCheckPointResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateCheckPointResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateCheckPointResponse) SetHeaders(v map[string]*string) *UpdateCheckPointResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateCheckPointResponse) SetStatusCode(v int32) *UpdateCheckPointResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -3736,6 +4411,173 @@ func (s *UpdateLogStoreResponse) SetStatusCode(v int32) *UpdateLogStoreResponse 
 	return s
 }
 
+type UpdateLoggingRequest struct {
+	// 服务日志配置列表。
+	LoggingDetails []*UpdateLoggingRequestLoggingDetails `json:"loggingDetails,omitempty" xml:"loggingDetails,omitempty" type:"Repeated"`
+	// 服务日志要保存到的 project 名称。
+	LoggingProject *string `json:"loggingProject,omitempty" xml:"loggingProject,omitempty"`
+}
+
+func (s UpdateLoggingRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLoggingRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLoggingRequest) SetLoggingDetails(v []*UpdateLoggingRequestLoggingDetails) *UpdateLoggingRequest {
+	s.LoggingDetails = v
+	return s
+}
+
+func (s *UpdateLoggingRequest) SetLoggingProject(v string) *UpdateLoggingRequest {
+	s.LoggingProject = &v
+	return s
+}
+
+type UpdateLoggingRequestLoggingDetails struct {
+	// 该种类服务日志要保存到的 logstore 名称。
+	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
+	// 服务日志的种类。可选 "consumergroup_log"、 "logtail_alarm"、"operation_log"、"logtail_profile"、"metering"、"logtail_status"、"scheduled_sql_alert"、 "etl_alert" 等。
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s UpdateLoggingRequestLoggingDetails) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLoggingRequestLoggingDetails) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLoggingRequestLoggingDetails) SetLogstore(v string) *UpdateLoggingRequestLoggingDetails {
+	s.Logstore = &v
+	return s
+}
+
+func (s *UpdateLoggingRequestLoggingDetails) SetType(v string) *UpdateLoggingRequestLoggingDetails {
+	s.Type = &v
+	return s
+}
+
+type UpdateLoggingResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UpdateLoggingResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateLoggingResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateLoggingResponse) SetHeaders(v map[string]*string) *UpdateLoggingResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateLoggingResponse) SetStatusCode(v int32) *UpdateLoggingResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type UpdateMachineGroupRequest struct {
+	// 机器组属性。
+	GroupAttribute *UpdateMachineGroupRequestGroupAttribute `json:"groupAttribute,omitempty" xml:"groupAttribute,omitempty" type:"Struct"`
+	// 机器组名称。
+	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
+	// 机器组类型，可选值，默认为空。
+	GroupType *string `json:"groupType,omitempty" xml:"groupType,omitempty"`
+	// 机器组标识种类，支持 ip 、userdefined 两种。
+	MachineIdentifyType *string `json:"machineIdentifyType,omitempty" xml:"machineIdentifyType,omitempty"`
+	// 机器列表。
+	MachineList []*string `json:"machineList,omitempty" xml:"machineList,omitempty" type:"Repeated"`
+}
+
+func (s UpdateMachineGroupRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMachineGroupRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMachineGroupRequest) SetGroupAttribute(v *UpdateMachineGroupRequestGroupAttribute) *UpdateMachineGroupRequest {
+	s.GroupAttribute = v
+	return s
+}
+
+func (s *UpdateMachineGroupRequest) SetGroupName(v string) *UpdateMachineGroupRequest {
+	s.GroupName = &v
+	return s
+}
+
+func (s *UpdateMachineGroupRequest) SetGroupType(v string) *UpdateMachineGroupRequest {
+	s.GroupType = &v
+	return s
+}
+
+func (s *UpdateMachineGroupRequest) SetMachineIdentifyType(v string) *UpdateMachineGroupRequest {
+	s.MachineIdentifyType = &v
+	return s
+}
+
+func (s *UpdateMachineGroupRequest) SetMachineList(v []*string) *UpdateMachineGroupRequest {
+	s.MachineList = v
+	return s
+}
+
+type UpdateMachineGroupRequestGroupAttribute struct {
+	// 机器组所依赖的外部管理系统标识。
+	ExternalName *string `json:"externalName,omitempty" xml:"externalName,omitempty"`
+	// 机器组的日志主题。
+	GroupTopic *string `json:"groupTopic,omitempty" xml:"groupTopic,omitempty"`
+}
+
+func (s UpdateMachineGroupRequestGroupAttribute) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMachineGroupRequestGroupAttribute) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMachineGroupRequestGroupAttribute) SetExternalName(v string) *UpdateMachineGroupRequestGroupAttribute {
+	s.ExternalName = &v
+	return s
+}
+
+func (s *UpdateMachineGroupRequestGroupAttribute) SetGroupTopic(v string) *UpdateMachineGroupRequestGroupAttribute {
+	s.GroupTopic = &v
+	return s
+}
+
+type UpdateMachineGroupResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UpdateMachineGroupResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateMachineGroupResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateMachineGroupResponse) SetHeaders(v map[string]*string) *UpdateMachineGroupResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateMachineGroupResponse) SetStatusCode(v int32) *UpdateMachineGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type UpdateProjectRequest struct {
 	// Project description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
@@ -3929,6 +4771,47 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	return nil
 }
 
+func (client *Client) ApplyConfigToMachineGroup(project *string, machineGroup *string, configName *string) (_result *ApplyConfigToMachineGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ApplyConfigToMachineGroupResponse{}
+	_body, _err := client.ApplyConfigToMachineGroupWithOptions(project, machineGroup, configName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ApplyConfigToMachineGroupWithOptions(project *string, machineGroup *string, configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ApplyConfigToMachineGroupResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	machineGroup = openapiutil.GetEncodeParam(machineGroup)
+	configName = openapiutil.GetEncodeParam(configName)
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyConfigToMachineGroup"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/machinegroups/" + tea.StringValue(machineGroup) + "/configs/" + tea.StringValue(configName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &ApplyConfigToMachineGroupResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CreateConsumerGroup(project *string, logstore *string, request *CreateConsumerGroupRequest) (_result *CreateConsumerGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -3979,6 +4862,55 @@ func (client *Client) CreateConsumerGroupWithOptions(project *string, logstore *
 		BodyType:    tea.String("none"),
 	}
 	_result = &CreateConsumerGroupResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDomain(project *string, request *CreateDomainRequest) (_result *CreateDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateDomainResponse{}
+	_body, _err := client.CreateDomainWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDomainWithOptions(project *string, request *CreateDomainRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		body["domainName"] = request.DomainName
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDomain"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/domains"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateDomainResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4146,6 +5078,124 @@ func (client *Client) CreateLogStoreWithOptions(project *string, request *Create
 	return _result, _err
 }
 
+func (client *Client) CreateLogging(project *string, request *CreateLoggingRequest) (_result *CreateLoggingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateLoggingResponse{}
+	_body, _err := client.CreateLoggingWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateLoggingWithOptions(project *string, request *CreateLoggingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateLoggingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LoggingDetails)) {
+		body["loggingDetails"] = request.LoggingDetails
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoggingProject)) {
+		body["loggingProject"] = request.LoggingProject
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateLogging"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logging"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateLoggingResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateMachineGroup(project *string, request *CreateMachineGroupRequest) (_result *CreateMachineGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateMachineGroupResponse{}
+	_body, _err := client.CreateMachineGroupWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateMachineGroupWithOptions(project *string, request *CreateMachineGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateMachineGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.GroupAttribute))) {
+		body["groupAttribute"] = request.GroupAttribute
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		body["groupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupType)) {
+		body["groupType"] = request.GroupType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MachineIdentifyType)) {
+		body["machineIdentifyType"] = request.MachineIdentifyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MachineList)) {
+		body["machineList"] = request.MachineList
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateMachineGroup"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/machinegroups"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateMachineGroupResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) CreateProject(request *CreateProjectRequest) (_result *CreateProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4302,6 +5352,46 @@ func (client *Client) DeleteConsumerGroupWithOptions(project *string, logstore *
 	return _result, _err
 }
 
+func (client *Client) DeleteDomain(project *string, domainName *string) (_result *DeleteDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteDomainResponse{}
+	_body, _err := client.DeleteDomainWithOptions(project, domainName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDomainWithOptions(project *string, domainName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteDomainResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	domainName = openapiutil.GetEncodeParam(domainName)
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDomain"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/domains/" + tea.StringValue(domainName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteDomainResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DeleteIndex(project *string, logstore *string) (_result *DeleteIndexResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4382,6 +5472,85 @@ func (client *Client) DeleteLogStoreWithOptions(project *string, logstore *strin
 	return _result, _err
 }
 
+func (client *Client) DeleteLogging(project *string) (_result *DeleteLoggingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteLoggingResponse{}
+	_body, _err := client.DeleteLoggingWithOptions(project, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteLoggingWithOptions(project *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteLoggingResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteLogging"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logging"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteLoggingResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteMachineGroup(project *string, machineGroup *string) (_result *DeleteMachineGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteMachineGroupResponse{}
+	_body, _err := client.DeleteMachineGroupWithOptions(project, machineGroup, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteMachineGroupWithOptions(project *string, machineGroup *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteMachineGroupResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	machineGroup = openapiutil.GetEncodeParam(machineGroup)
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteMachineGroup"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/machinegroups/" + tea.StringValue(machineGroup)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteMachineGroupResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DeleteProject(project *string) (_result *DeleteProjectResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4413,6 +5582,97 @@ func (client *Client) DeleteProjectWithOptions(project *string, headers map[stri
 		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteProjectResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetAppliedConfigs(project *string, machineGroup *string) (_result *GetAppliedConfigsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetAppliedConfigsResponse{}
+	_body, _err := client.GetAppliedConfigsWithOptions(project, machineGroup, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetAppliedConfigsWithOptions(project *string, machineGroup *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetAppliedConfigsResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	machineGroup = openapiutil.GetEncodeParam(machineGroup)
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetAppliedConfigs"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/machinegroups/" + tea.StringValue(machineGroup) + "/configs"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetAppliedConfigsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetCheckPoint(project *string, logstore *string, consumerGroup *string, request *GetCheckPointRequest) (_result *GetCheckPointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetCheckPointResponse{}
+	_body, _err := client.GetCheckPointWithOptions(project, logstore, consumerGroup, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetCheckPointWithOptions(project *string, logstore *string, consumerGroup *string, request *GetCheckPointRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetCheckPointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	logstore = openapiutil.GetEncodeParam(logstore)
+	consumerGroup = openapiutil.GetEncodeParam(consumerGroup)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Shard)) {
+		query["shard"] = request.Shard
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetCheckPoint"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/consumergroups/" + tea.StringValue(consumerGroup)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("array"),
+	}
+	_result = &GetCheckPointResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4743,6 +6003,45 @@ func (client *Client) GetLogStoreWithOptions(project *string, logstore *string, 
 	return _result, _err
 }
 
+func (client *Client) GetLogging(project *string) (_result *GetLoggingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetLoggingResponse{}
+	_body, _err := client.GetLoggingWithOptions(project, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetLoggingWithOptions(project *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetLoggingResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetLogging"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logging"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetLoggingResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) GetLogs(project *string, logstore *string, request *GetLogsRequest) (_result *GetLogsResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4817,6 +6116,46 @@ func (client *Client) GetLogsWithOptions(project *string, logstore *string, requ
 		BodyType:    tea.String("array"),
 	}
 	_result = &GetLogsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetMachineGroup(project *string, machineGroup *string) (_result *GetMachineGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetMachineGroupResponse{}
+	_body, _err := client.GetMachineGroupWithOptions(project, machineGroup, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetMachineGroupWithOptions(project *string, machineGroup *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetMachineGroupResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	machineGroup = openapiutil.GetEncodeParam(machineGroup)
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetMachineGroup"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/machinegroups/" + tea.StringValue(machineGroup)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetMachineGroupResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4997,6 +6336,63 @@ func (client *Client) ListConsumerGroupWithOptions(project *string, logstore *st
 	return _result, _err
 }
 
+func (client *Client) ListDomains(project *string, request *ListDomainsRequest) (_result *ListDomainsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListDomainsResponse{}
+	_body, _err := client.ListDomainsWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListDomainsWithOptions(project *string, request *ListDomainsRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListDomainsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DomainName)) {
+		query["domainName"] = request.DomainName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDomains"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/domains"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDomainsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ListLogStores(project *string, request *ListLogStoresRequest) (_result *ListLogStoresResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5050,6 +6446,117 @@ func (client *Client) ListLogStoresWithOptions(project *string, request *ListLog
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListLogStoresResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMachineGroup(project *string, request *ListMachineGroupRequest) (_result *ListMachineGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMachineGroupResponse{}
+	_body, _err := client.ListMachineGroupWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListMachineGroupWithOptions(project *string, request *ListMachineGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMachineGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		query["groupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMachineGroup"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/machinegroups"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMachineGroupResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListMachines(project *string, machineGroup *string, request *ListMachinesRequest) (_result *ListMachinesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListMachinesResponse{}
+	_body, _err := client.ListMachinesWithOptions(project, machineGroup, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListMachinesWithOptions(project *string, machineGroup *string, request *ListMachinesRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListMachinesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	machineGroup = openapiutil.GetEncodeParam(machineGroup)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListMachines"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/machinegroups/" + tea.StringValue(machineGroup) + "/machines"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListMachinesResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5320,6 +6827,47 @@ func (client *Client) MergeShardsWithOptions(project *string, logstore *string, 
 	return _result, _err
 }
 
+func (client *Client) RemoveConfigFromMachineGroup(project *string, machineGroup *string, configName *string) (_result *RemoveConfigFromMachineGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &RemoveConfigFromMachineGroupResponse{}
+	_body, _err := client.RemoveConfigFromMachineGroupWithOptions(project, machineGroup, configName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RemoveConfigFromMachineGroupWithOptions(project *string, machineGroup *string, configName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *RemoveConfigFromMachineGroupResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	machineGroup = openapiutil.GetEncodeParam(machineGroup)
+	configName = openapiutil.GetEncodeParam(configName)
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveConfigFromMachineGroup"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/machinegroups/" + tea.StringValue(machineGroup) + "/configs/" + tea.StringValue(configName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &RemoveConfigFromMachineGroupResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) SplitShard(project *string, logstore *string, shardID *string, request *SplitShardRequest) (_result *SplitShardResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5483,6 +7031,75 @@ func (client *Client) UnTagResourcesWithOptions(request *UnTagResourcesRequest, 
 		BodyType:    tea.String("none"),
 	}
 	_result = &UnTagResourcesResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateCheckPoint(project *string, logstore *string, consumerGroup *string, request *UpdateCheckPointRequest) (_result *UpdateCheckPointResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateCheckPointResponse{}
+	_body, _err := client.UpdateCheckPointWithOptions(project, logstore, consumerGroup, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateCheckPointWithOptions(project *string, logstore *string, consumerGroup *string, request *UpdateCheckPointRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateCheckPointResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	logstore = openapiutil.GetEncodeParam(logstore)
+	consumerGroup = openapiutil.GetEncodeParam(consumerGroup)
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Consumer)) {
+		query["consumer"] = request.Consumer
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForceSuccess)) {
+		query["forceSuccess"] = request.ForceSuccess
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Checkpoint)) {
+		body["checkpoint"] = request.Checkpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Shard)) {
+		body["shard"] = request.Shard
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateCheckPoint"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logstores/" + tea.StringValue(logstore) + "/consumergroups/" + tea.StringValue(consumerGroup)),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateCheckPointResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5698,6 +7315,125 @@ func (client *Client) UpdateLogStoreWithOptions(project *string, logstore *strin
 		BodyType:    tea.String("none"),
 	}
 	_result = &UpdateLogStoreResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateLogging(project *string, request *UpdateLoggingRequest) (_result *UpdateLoggingResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateLoggingResponse{}
+	_body, _err := client.UpdateLoggingWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateLoggingWithOptions(project *string, request *UpdateLoggingRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateLoggingResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.LoggingDetails)) {
+		body["loggingDetails"] = request.LoggingDetails
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.LoggingProject)) {
+		body["loggingProject"] = request.LoggingProject
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateLogging"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/logging"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateLoggingResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateMachineGroup(project *string, machineGroup *string, request *UpdateMachineGroupRequest) (_result *UpdateMachineGroupResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateMachineGroupResponse{}
+	_body, _err := client.UpdateMachineGroupWithOptions(project, machineGroup, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateMachineGroupWithOptions(project *string, machineGroup *string, request *UpdateMachineGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateMachineGroupResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	machineGroup = openapiutil.GetEncodeParam(machineGroup)
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.GroupAttribute))) {
+		body["groupAttribute"] = request.GroupAttribute
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupName)) {
+		body["groupName"] = request.GroupName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.GroupType)) {
+		body["groupType"] = request.GroupType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MachineIdentifyType)) {
+		body["machineIdentifyType"] = request.MachineIdentifyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MachineList)) {
+		body["machineList"] = request.MachineList
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateMachineGroup"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/machinegroups/" + tea.StringValue(machineGroup)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateMachineGroupResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
