@@ -124,8 +124,9 @@ func (s *AddAddressBookResponseBody) SetRequestId(v string) *AddAddressBookRespo
 }
 
 type AddAddressBookResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddAddressBookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddAddressBookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddAddressBookResponse) String() string {
@@ -138,6 +139,11 @@ func (s AddAddressBookResponse) GoString() string {
 
 func (s *AddAddressBookResponse) SetHeaders(v map[string]*string) *AddAddressBookResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddAddressBookResponse) SetStatusCode(v int32) *AddAddressBookResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -289,8 +295,9 @@ func (s *AddControlPolicyResponseBody) SetRequestId(v string) *AddControlPolicyR
 }
 
 type AddControlPolicyResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddControlPolicyResponse) String() string {
@@ -303,6 +310,11 @@ func (s AddControlPolicyResponse) GoString() string {
 
 func (s *AddControlPolicyResponse) SetHeaders(v map[string]*string) *AddControlPolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddControlPolicyResponse) SetStatusCode(v int32) *AddControlPolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -369,8 +381,9 @@ func (s *AddInstanceMembersResponseBody) SetRequestId(v string) *AddInstanceMemb
 }
 
 type AddInstanceMembersResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *AddInstanceMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddInstanceMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s AddInstanceMembersResponse) String() string {
@@ -383,6 +396,11 @@ func (s AddInstanceMembersResponse) GoString() string {
 
 func (s *AddInstanceMembersResponse) SetHeaders(v map[string]*string) *AddInstanceMembersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *AddInstanceMembersResponse) SetStatusCode(v int32) *AddInstanceMembersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -445,8 +463,9 @@ func (s *BatchCopyVpcFirewallControlPolicyResponseBody) SetRequestId(v string) *
 }
 
 type BatchCopyVpcFirewallControlPolicyResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *BatchCopyVpcFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *BatchCopyVpcFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s BatchCopyVpcFirewallControlPolicyResponse) String() string {
@@ -459,6 +478,11 @@ func (s BatchCopyVpcFirewallControlPolicyResponse) GoString() string {
 
 func (s *BatchCopyVpcFirewallControlPolicyResponse) SetHeaders(v map[string]*string) *BatchCopyVpcFirewallControlPolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *BatchCopyVpcFirewallControlPolicyResponse) SetStatusCode(v int32) *BatchCopyVpcFirewallControlPolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -544,8 +568,9 @@ func (s *CreateVpcFirewallCenConfigureResponseBody) SetVpcFirewallId(v string) *
 }
 
 type CreateVpcFirewallCenConfigureResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateVpcFirewallCenConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateVpcFirewallCenConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateVpcFirewallCenConfigureResponse) String() string {
@@ -558,6 +583,11 @@ func (s CreateVpcFirewallCenConfigureResponse) GoString() string {
 
 func (s *CreateVpcFirewallCenConfigureResponse) SetHeaders(v map[string]*string) *CreateVpcFirewallCenConfigureResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateVpcFirewallCenConfigureResponse) SetStatusCode(v int32) *CreateVpcFirewallCenConfigureResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -661,8 +691,9 @@ func (s *CreateVpcFirewallConfigureResponseBody) SetVpcFirewallId(v string) *Cre
 }
 
 type CreateVpcFirewallConfigureResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateVpcFirewallConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateVpcFirewallConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateVpcFirewallConfigureResponse) String() string {
@@ -675,6 +706,11 @@ func (s CreateVpcFirewallConfigureResponse) GoString() string {
 
 func (s *CreateVpcFirewallConfigureResponse) SetHeaders(v map[string]*string) *CreateVpcFirewallConfigureResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateVpcFirewallConfigureResponse) SetStatusCode(v int32) *CreateVpcFirewallConfigureResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -814,8 +850,9 @@ func (s *CreateVpcFirewallControlPolicyResponseBody) SetRequestId(v string) *Cre
 }
 
 type CreateVpcFirewallControlPolicyResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateVpcFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateVpcFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateVpcFirewallControlPolicyResponse) String() string {
@@ -828,6 +865,11 @@ func (s CreateVpcFirewallControlPolicyResponse) GoString() string {
 
 func (s *CreateVpcFirewallControlPolicyResponse) SetHeaders(v map[string]*string) *CreateVpcFirewallControlPolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateVpcFirewallControlPolicyResponse) SetStatusCode(v int32) *CreateVpcFirewallControlPolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -883,8 +925,9 @@ func (s *DeleteAddressBookResponseBody) SetRequestId(v string) *DeleteAddressBoo
 }
 
 type DeleteAddressBookResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteAddressBookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteAddressBookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteAddressBookResponse) String() string {
@@ -897,6 +940,11 @@ func (s DeleteAddressBookResponse) GoString() string {
 
 func (s *DeleteAddressBookResponse) SetHeaders(v map[string]*string) *DeleteAddressBookResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteAddressBookResponse) SetStatusCode(v int32) *DeleteAddressBookResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -958,8 +1006,9 @@ func (s *DeleteControlPolicyResponseBody) SetRequestId(v string) *DeleteControlP
 }
 
 type DeleteControlPolicyResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteControlPolicyResponse) String() string {
@@ -972,6 +1021,11 @@ func (s DeleteControlPolicyResponse) GoString() string {
 
 func (s *DeleteControlPolicyResponse) SetHeaders(v map[string]*string) *DeleteControlPolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteControlPolicyResponse) SetStatusCode(v int32) *DeleteControlPolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1015,8 +1069,9 @@ func (s *DeleteInstanceMembersResponseBody) SetRequestId(v string) *DeleteInstan
 }
 
 type DeleteInstanceMembersResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteInstanceMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteInstanceMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteInstanceMembersResponse) String() string {
@@ -1029,6 +1084,11 @@ func (s DeleteInstanceMembersResponse) GoString() string {
 
 func (s *DeleteInstanceMembersResponse) SetHeaders(v map[string]*string) *DeleteInstanceMembersResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteInstanceMembersResponse) SetStatusCode(v int32) *DeleteInstanceMembersResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1084,8 +1144,9 @@ func (s *DeleteVpcFirewallCenConfigureResponseBody) SetRequestId(v string) *Dele
 }
 
 type DeleteVpcFirewallCenConfigureResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteVpcFirewallCenConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteVpcFirewallCenConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteVpcFirewallCenConfigureResponse) String() string {
@@ -1098,6 +1159,11 @@ func (s DeleteVpcFirewallCenConfigureResponse) GoString() string {
 
 func (s *DeleteVpcFirewallCenConfigureResponse) SetHeaders(v map[string]*string) *DeleteVpcFirewallCenConfigureResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteVpcFirewallCenConfigureResponse) SetStatusCode(v int32) *DeleteVpcFirewallCenConfigureResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1153,8 +1219,9 @@ func (s *DeleteVpcFirewallConfigureResponseBody) SetRequestId(v string) *DeleteV
 }
 
 type DeleteVpcFirewallConfigureResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteVpcFirewallConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteVpcFirewallConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteVpcFirewallConfigureResponse) String() string {
@@ -1167,6 +1234,11 @@ func (s DeleteVpcFirewallConfigureResponse) GoString() string {
 
 func (s *DeleteVpcFirewallConfigureResponse) SetHeaders(v map[string]*string) *DeleteVpcFirewallConfigureResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteVpcFirewallConfigureResponse) SetStatusCode(v int32) *DeleteVpcFirewallConfigureResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1222,8 +1294,9 @@ func (s *DeleteVpcFirewallControlPolicyResponseBody) SetRequestId(v string) *Del
 }
 
 type DeleteVpcFirewallControlPolicyResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteVpcFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteVpcFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteVpcFirewallControlPolicyResponse) String() string {
@@ -1236,6 +1309,11 @@ func (s DeleteVpcFirewallControlPolicyResponse) GoString() string {
 
 func (s *DeleteVpcFirewallControlPolicyResponse) SetHeaders(v map[string]*string) *DeleteVpcFirewallControlPolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteVpcFirewallControlPolicyResponse) SetStatusCode(v int32) *DeleteVpcFirewallControlPolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1433,8 +1511,9 @@ func (s *DescribeAddressBookResponseBodyAclsTagList) SetTagValue(v string) *Desc
 }
 
 type DescribeAddressBookResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAddressBookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAddressBookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeAddressBookResponse) String() string {
@@ -1447,6 +1526,11 @@ func (s DescribeAddressBookResponse) GoString() string {
 
 func (s *DescribeAddressBookResponse) SetHeaders(v map[string]*string) *DescribeAddressBookResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeAddressBookResponse) SetStatusCode(v int32) *DescribeAddressBookResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1699,8 +1783,9 @@ func (s *DescribeAssetListResponseBodyAssets) SetType(v string) *DescribeAssetLi
 }
 
 type DescribeAssetListResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeAssetListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeAssetListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeAssetListResponse) String() string {
@@ -1713,6 +1798,11 @@ func (s DescribeAssetListResponse) GoString() string {
 
 func (s *DescribeAssetListResponse) SetHeaders(v map[string]*string) *DescribeAssetListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeAssetListResponse) SetStatusCode(v int32) *DescribeAssetListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2025,8 +2115,9 @@ func (s *DescribeControlPolicyResponseBodyPolicys) SetSourceType(v string) *Desc
 }
 
 type DescribeControlPolicyResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeControlPolicyResponse) String() string {
@@ -2039,6 +2130,11 @@ func (s DescribeControlPolicyResponse) GoString() string {
 
 func (s *DescribeControlPolicyResponse) SetHeaders(v map[string]*string) *DescribeControlPolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeControlPolicyResponse) SetStatusCode(v int32) *DescribeControlPolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2129,8 +2225,9 @@ func (s *DescribeDomainResolveResponseBodyResolveResult) SetUpdateTime(v int64) 
 }
 
 type DescribeDomainResolveResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeDomainResolveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeDomainResolveResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeDomainResolveResponse) String() string {
@@ -2143,6 +2240,11 @@ func (s DescribeDomainResolveResponse) GoString() string {
 
 func (s *DescribeDomainResolveResponse) SetHeaders(v map[string]*string) *DescribeDomainResolveResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeDomainResolveResponse) SetStatusCode(v int32) *DescribeDomainResolveResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2298,8 +2400,9 @@ func (s *DescribeInstanceMembersResponseBodyPageInfo) SetTotalCount(v int32) *De
 }
 
 type DescribeInstanceMembersResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeInstanceMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceMembersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeInstanceMembersResponse) String() string {
@@ -2315,7 +2418,1132 @@ func (s *DescribeInstanceMembersResponse) SetHeaders(v map[string]*string) *Desc
 	return s
 }
 
+func (s *DescribeInstanceMembersResponse) SetStatusCode(v int32) *DescribeInstanceMembersResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeInstanceMembersResponse) SetBody(v *DescribeInstanceMembersResponseBody) *DescribeInstanceMembersResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeInvadeEventListRequest struct {
+	// 资产IP
+	AssetsIP *string `json:"AssetsIP,omitempty" xml:"AssetsIP,omitempty"`
+	// 实例ID
+	AssetsInstanceId *string `json:"AssetsInstanceId,omitempty" xml:"AssetsInstanceId,omitempty"`
+	// 实例名称
+	AssetsInstanceName *string `json:"AssetsInstanceName,omitempty" xml:"AssetsInstanceName,omitempty"`
+	// 当前页
+	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 事件key
+	EventKey *string `json:"EventKey,omitempty" xml:"EventKey,omitempty"`
+	// 事件名称
+	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// 事件UUID
+	EventUuid *string `json:"EventUuid,omitempty" xml:"EventUuid,omitempty"`
+	// 是否忽略
+	IsIgnore *string `json:"IsIgnore,omitempty" xml:"IsIgnore,omitempty"`
+	// 语言
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// 成员账号UID
+	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// 每页多少条
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 处理状态
+	ProcessStatus *string `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
+	// 处理状态列表
+	ProcessStatusList []*int32 `json:"ProcessStatusList,omitempty" xml:"ProcessStatusList,omitempty" type:"Repeated"`
+	// 风险等级
+	RiskLevel []*int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty" type:"Repeated"`
+	// 源IP
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// 开始时间
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeInvadeEventListRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInvadeEventListRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInvadeEventListRequest) SetAssetsIP(v string) *DescribeInvadeEventListRequest {
+	s.AssetsIP = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListRequest) SetAssetsInstanceId(v string) *DescribeInvadeEventListRequest {
+	s.AssetsInstanceId = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListRequest) SetAssetsInstanceName(v string) *DescribeInvadeEventListRequest {
+	s.AssetsInstanceName = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListRequest) SetCurrentPage(v string) *DescribeInvadeEventListRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListRequest) SetEndTime(v string) *DescribeInvadeEventListRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListRequest) SetEventKey(v string) *DescribeInvadeEventListRequest {
+	s.EventKey = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListRequest) SetEventName(v string) *DescribeInvadeEventListRequest {
+	s.EventName = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListRequest) SetEventUuid(v string) *DescribeInvadeEventListRequest {
+	s.EventUuid = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListRequest) SetIsIgnore(v string) *DescribeInvadeEventListRequest {
+	s.IsIgnore = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListRequest) SetLang(v string) *DescribeInvadeEventListRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListRequest) SetMemberUid(v int64) *DescribeInvadeEventListRequest {
+	s.MemberUid = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListRequest) SetPageSize(v string) *DescribeInvadeEventListRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListRequest) SetProcessStatus(v string) *DescribeInvadeEventListRequest {
+	s.ProcessStatus = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListRequest) SetProcessStatusList(v []*int32) *DescribeInvadeEventListRequest {
+	s.ProcessStatusList = v
+	return s
+}
+
+func (s *DescribeInvadeEventListRequest) SetRiskLevel(v []*int32) *DescribeInvadeEventListRequest {
+	s.RiskLevel = v
+	return s
+}
+
+func (s *DescribeInvadeEventListRequest) SetSourceIp(v string) *DescribeInvadeEventListRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListRequest) SetStartTime(v string) *DescribeInvadeEventListRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeInvadeEventListResponseBody struct {
+	// 事件列表
+	EventList []*DescribeInvadeEventListResponseBodyEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
+	// 高风险等级比例
+	HighLevelPercent *int32 `json:"HighLevelPercent,omitempty" xml:"HighLevelPercent,omitempty"`
+	// 低风险等级比例
+	LowLevelPercent *int32 `json:"LowLevelPercent,omitempty" xml:"LowLevelPercent,omitempty"`
+	// 中风险等级比例
+	MiddleLevelPercent *int32 `json:"MiddleLevelPercent,omitempty" xml:"MiddleLevelPercent,omitempty"`
+	// 分页信息
+	PageInfo  *DescribeInvadeEventListResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeInvadeEventListResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInvadeEventListResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInvadeEventListResponseBody) SetEventList(v []*DescribeInvadeEventListResponseBodyEventList) *DescribeInvadeEventListResponseBody {
+	s.EventList = v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBody) SetHighLevelPercent(v int32) *DescribeInvadeEventListResponseBody {
+	s.HighLevelPercent = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBody) SetLowLevelPercent(v int32) *DescribeInvadeEventListResponseBody {
+	s.LowLevelPercent = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBody) SetMiddleLevelPercent(v int32) *DescribeInvadeEventListResponseBody {
+	s.MiddleLevelPercent = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBody) SetPageInfo(v *DescribeInvadeEventListResponseBodyPageInfo) *DescribeInvadeEventListResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBody) SetRequestId(v string) *DescribeInvadeEventListResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeInvadeEventListResponseBodyEventList struct {
+	// 资产实例ID
+	AssetsInstanceId *string `json:"AssetsInstanceId,omitempty" xml:"AssetsInstanceId,omitempty"`
+	// 资产名称
+	AssetsInstanceName *string `json:"AssetsInstanceName,omitempty" xml:"AssetsInstanceName,omitempty"`
+	// 资产类型
+	AssetsType *string `json:"AssetsType,omitempty" xml:"AssetsType,omitempty"`
+	// CVE编号
+	EventKey *string `json:"EventKey,omitempty" xml:"EventKey,omitempty"`
+	// 事件名称
+	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// 事件来源
+	EventSrc *string `json:"EventSrc,omitempty" xml:"EventSrc,omitempty"`
+	// 事件UUID
+	EventUuid *string `json:"EventUuid,omitempty" xml:"EventUuid,omitempty"`
+	// 首次出现时间
+	FirstTime *int32 `json:"FirstTime,omitempty" xml:"FirstTime,omitempty"`
+	// 是否忽略
+	IsIgnore *bool `json:"IsIgnore,omitempty" xml:"IsIgnore,omitempty"`
+	// 最近一次时间
+	LastTime *int32 `json:"LastTime,omitempty" xml:"LastTime,omitempty"`
+	// 成员账号UID
+	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
+	// 私网IP
+	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
+	// 处理状态
+	ProcessStatus *int32 `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
+	// 公网IP
+	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
+	// 公开类型
+	PublicIpType *string `json:"PublicIpType,omitempty" xml:"PublicIpType,omitempty"`
+	// 风险等级
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+}
+
+func (s DescribeInvadeEventListResponseBodyEventList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInvadeEventListResponseBodyEventList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInvadeEventListResponseBodyEventList) SetAssetsInstanceId(v string) *DescribeInvadeEventListResponseBodyEventList {
+	s.AssetsInstanceId = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBodyEventList) SetAssetsInstanceName(v string) *DescribeInvadeEventListResponseBodyEventList {
+	s.AssetsInstanceName = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBodyEventList) SetAssetsType(v string) *DescribeInvadeEventListResponseBodyEventList {
+	s.AssetsType = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBodyEventList) SetEventKey(v string) *DescribeInvadeEventListResponseBodyEventList {
+	s.EventKey = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBodyEventList) SetEventName(v string) *DescribeInvadeEventListResponseBodyEventList {
+	s.EventName = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBodyEventList) SetEventSrc(v string) *DescribeInvadeEventListResponseBodyEventList {
+	s.EventSrc = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBodyEventList) SetEventUuid(v string) *DescribeInvadeEventListResponseBodyEventList {
+	s.EventUuid = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBodyEventList) SetFirstTime(v int32) *DescribeInvadeEventListResponseBodyEventList {
+	s.FirstTime = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBodyEventList) SetIsIgnore(v bool) *DescribeInvadeEventListResponseBodyEventList {
+	s.IsIgnore = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBodyEventList) SetLastTime(v int32) *DescribeInvadeEventListResponseBodyEventList {
+	s.LastTime = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBodyEventList) SetMemberUid(v string) *DescribeInvadeEventListResponseBodyEventList {
+	s.MemberUid = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBodyEventList) SetPrivateIP(v string) *DescribeInvadeEventListResponseBodyEventList {
+	s.PrivateIP = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBodyEventList) SetProcessStatus(v int32) *DescribeInvadeEventListResponseBodyEventList {
+	s.ProcessStatus = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBodyEventList) SetPublicIP(v string) *DescribeInvadeEventListResponseBodyEventList {
+	s.PublicIP = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBodyEventList) SetPublicIpType(v string) *DescribeInvadeEventListResponseBodyEventList {
+	s.PublicIpType = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBodyEventList) SetRiskLevel(v int32) *DescribeInvadeEventListResponseBodyEventList {
+	s.RiskLevel = &v
+	return s
+}
+
+type DescribeInvadeEventListResponseBodyPageInfo struct {
+	// 当前页
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// 每页大小
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 总数
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeInvadeEventListResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInvadeEventListResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInvadeEventListResponseBodyPageInfo) SetCurrentPage(v int32) *DescribeInvadeEventListResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBodyPageInfo) SetPageSize(v int32) *DescribeInvadeEventListResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponseBodyPageInfo) SetTotalCount(v int32) *DescribeInvadeEventListResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeInvadeEventListResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInvadeEventListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInvadeEventListResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInvadeEventListResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInvadeEventListResponse) SetHeaders(v map[string]*string) *DescribeInvadeEventListResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponse) SetStatusCode(v int32) *DescribeInvadeEventListResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInvadeEventListResponse) SetBody(v *DescribeInvadeEventListResponseBody) *DescribeInvadeEventListResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeOutgoingDestinationIPRequest struct {
+	// ACL覆盖情况, 枚举值.
+	// 默认值: 空
+	// 可选值:
+	// All (全部情况, 等同于空)
+	// FullCoverage ( 已覆盖)
+	// Uncovered (未覆盖)
+	AclCoverage *string `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
+	// 应用名
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// 分类, 枚举值.
+	// 默认值: 空
+	// 可选值:
+	// All (全部分类)
+	// RiskDomain (风险域名分类)
+	// RiskIP (风险IP分类)
+	// AliYun (云产品分类)
+	// NotAliYun (非云产品分类)
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// 当前页
+	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// 目的IP
+	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
+	// 结束时间
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 语言
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// 排序字段, 枚举值.
+	// 默认值: SessionCount
+	// 可选值: InBytes, OutBytes,TotalBytes,SessionCount
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// 每页大小
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 端口号
+	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
+	// 私网IP
+	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
+	// 公网IP
+	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
+	// 安全建议, 枚举值: pass, alert, drop. 默认值为空
+	SecuritySuggest *string `json:"SecuritySuggest,omitempty" xml:"SecuritySuggest,omitempty"`
+	// 顺序, 枚举值, 可选:asc, desc
+	Sort     *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// 开始时间,Unix timestamp, 精确到秒
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeOutgoingDestinationIPRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOutgoingDestinationIPRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOutgoingDestinationIPRequest) SetAclCoverage(v string) *DescribeOutgoingDestinationIPRequest {
+	s.AclCoverage = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPRequest) SetApplicationName(v string) *DescribeOutgoingDestinationIPRequest {
+	s.ApplicationName = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPRequest) SetCategoryId(v string) *DescribeOutgoingDestinationIPRequest {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPRequest) SetCurrentPage(v string) *DescribeOutgoingDestinationIPRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPRequest) SetDstIP(v string) *DescribeOutgoingDestinationIPRequest {
+	s.DstIP = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPRequest) SetEndTime(v string) *DescribeOutgoingDestinationIPRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPRequest) SetLang(v string) *DescribeOutgoingDestinationIPRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPRequest) SetOrder(v string) *DescribeOutgoingDestinationIPRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPRequest) SetPageSize(v string) *DescribeOutgoingDestinationIPRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPRequest) SetPort(v string) *DescribeOutgoingDestinationIPRequest {
+	s.Port = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPRequest) SetPrivateIP(v string) *DescribeOutgoingDestinationIPRequest {
+	s.PrivateIP = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPRequest) SetPublicIP(v string) *DescribeOutgoingDestinationIPRequest {
+	s.PublicIP = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPRequest) SetSecuritySuggest(v string) *DescribeOutgoingDestinationIPRequest {
+	s.SecuritySuggest = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPRequest) SetSort(v string) *DescribeOutgoingDestinationIPRequest {
+	s.Sort = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPRequest) SetSourceIp(v string) *DescribeOutgoingDestinationIPRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPRequest) SetStartTime(v string) *DescribeOutgoingDestinationIPRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeOutgoingDestinationIPResponseBody struct {
+	// 外联IP列表
+	DstIPList []*DescribeOutgoingDestinationIPResponseBodyDstIPList `json:"DstIPList,omitempty" xml:"DstIPList,omitempty" type:"Repeated"`
+	RequestId *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 总数
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeOutgoingDestinationIPResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOutgoingDestinationIPResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBody) SetDstIPList(v []*DescribeOutgoingDestinationIPResponseBodyDstIPList) *DescribeOutgoingDestinationIPResponseBody {
+	s.DstIPList = v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBody) SetRequestId(v string) *DescribeOutgoingDestinationIPResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBody) SetTotalCount(v int32) *DescribeOutgoingDestinationIPResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeOutgoingDestinationIPResponseBodyDstIPList struct {
+	// ACL覆盖
+	AclCoverage *string `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
+	// ACL推荐内容
+	AclRecommendDetail *string `json:"AclRecommendDetail,omitempty" xml:"AclRecommendDetail,omitempty"`
+	// ACL状态
+	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	// 地址簿名称
+	AddressGroupName *string `json:"AddressGroupName,omitempty" xml:"AddressGroupName,omitempty"`
+	// 地址簿UUID
+	AddressGroupUUID    *string                                                                  `json:"AddressGroupUUID,omitempty" xml:"AddressGroupUUID,omitempty"`
+	ApplicationPortList []*DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList `json:"ApplicationPortList,omitempty" xml:"ApplicationPortList,omitempty" type:"Repeated"`
+	// 分类ID
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// 分类名称
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// 目的IP
+	DstIP *string `json:"DstIP,omitempty" xml:"DstIP,omitempty"`
+	// 规则中的组名称
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// 是否有推荐ACL
+	HasAclRecommend *bool `json:"HasAclRecommend,omitempty" xml:"HasAclRecommend,omitempty"`
+	// 入方向流量
+	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	// 是否正常
+	IsMarkNormal *bool `json:"IsMarkNormal,omitempty" xml:"IsMarkNormal,omitempty"`
+	// 出流量
+	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	// 规则UUID
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// 安全建议
+	SecuritySuggest *string `json:"SecuritySuggest,omitempty" xml:"SecuritySuggest,omitempty"`
+	// 会话数
+	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
+	// 标签列表
+	TagList []*DescribeOutgoingDestinationIPResponseBodyDstIPListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeOutgoingDestinationIPResponseBodyDstIPList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOutgoingDestinationIPResponseBodyDstIPList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetAclCoverage(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.AclCoverage = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetAclRecommendDetail(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.AclRecommendDetail = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetAclStatus(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.AclStatus = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetAddressGroupName(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.AddressGroupName = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetAddressGroupUUID(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.AddressGroupUUID = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetApplicationPortList(v []*DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.ApplicationPortList = v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetCategoryId(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetCategoryName(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.CategoryName = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetDstIP(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.DstIP = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetGroupName(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetHasAclRecommend(v bool) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.HasAclRecommend = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetInBytes(v int64) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.InBytes = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetIsMarkNormal(v bool) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.IsMarkNormal = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetOutBytes(v int64) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.OutBytes = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetRuleId(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.RuleId = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetRuleName(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.RuleName = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetSecuritySuggest(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.SecuritySuggest = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetSessionCount(v int64) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.SessionCount = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPList) SetTagList(v []*DescribeOutgoingDestinationIPResponseBodyDstIPListTagList) *DescribeOutgoingDestinationIPResponseBodyDstIPList {
+	s.TagList = v
+	return s
+}
+
+type DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList struct {
+	// 应用名
+	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
+	// 端口
+	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
+}
+
+func (s DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList) SetApplicationName(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList {
+	s.ApplicationName = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList) SetPort(v int32) *DescribeOutgoingDestinationIPResponseBodyDstIPListApplicationPortList {
+	s.Port = &v
+	return s
+}
+
+type DescribeOutgoingDestinationIPResponseBodyDstIPListTagList struct {
+	// 风险等级
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// 标签描述
+	TagDescribe *string `json:"TagDescribe,omitempty" xml:"TagDescribe,omitempty"`
+	// 标签ID
+	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// 标签名
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s DescribeOutgoingDestinationIPResponseBodyDstIPListTagList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOutgoingDestinationIPResponseBodyDstIPListTagList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPListTagList) SetRiskLevel(v int32) *DescribeOutgoingDestinationIPResponseBodyDstIPListTagList {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPListTagList) SetTagDescribe(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPListTagList {
+	s.TagDescribe = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPListTagList) SetTagId(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPListTagList {
+	s.TagId = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponseBodyDstIPListTagList) SetTagName(v string) *DescribeOutgoingDestinationIPResponseBodyDstIPListTagList {
+	s.TagName = &v
+	return s
+}
+
+type DescribeOutgoingDestinationIPResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeOutgoingDestinationIPResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeOutgoingDestinationIPResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOutgoingDestinationIPResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOutgoingDestinationIPResponse) SetHeaders(v map[string]*string) *DescribeOutgoingDestinationIPResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponse) SetStatusCode(v int32) *DescribeOutgoingDestinationIPResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeOutgoingDestinationIPResponse) SetBody(v *DescribeOutgoingDestinationIPResponseBody) *DescribeOutgoingDestinationIPResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeOutgoingDomainRequest struct {
+	// ACL覆盖情况, 枚举值.
+	// 默认值: 空
+	// 可选值:
+	// All (全部情况, 等同于空)
+	// FullCoverage ( 已覆盖)
+	// Uncovered (未覆盖)
+	AclCoverage *string `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
+	// 分类, 枚举值.
+	// 默认值: 空
+	// 可选值:
+	// All (全部分类)
+	// RiskDomain (风险域名分类)
+	// RiskIP (风险IP分类)
+	// AliYun (云产品分类)
+	// NotAliYun (非云产品分类)
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// 当前页
+	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// 域名
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// 结束时间,Unix timestamp, 精确到秒
+	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 语言, 枚举值.
+	// 默认值: zh
+	// 可选值: en
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// 排序字段, 枚举值.
+	// 默认值: SessionCount
+	// 可选值: InBytes, OutBytes,TotalBytes,SessionCount
+	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
+	// 每页条数, 不得超过100, 超过100会设置为100
+	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// 公网IP
+	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
+	// 安全建议, 枚举值: pass, alert, drop. 默认值为空
+	SecuritySuggest *string `json:"SecuritySuggest,omitempty" xml:"SecuritySuggest,omitempty"`
+	// 顺序, 枚举值, 可选:asc, desc
+	Sort     *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
+	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	// 开始时间,Unix timestamp, 精确到秒
+	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeOutgoingDomainRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOutgoingDomainRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOutgoingDomainRequest) SetAclCoverage(v string) *DescribeOutgoingDomainRequest {
+	s.AclCoverage = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainRequest) SetCategoryId(v string) *DescribeOutgoingDomainRequest {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainRequest) SetCurrentPage(v string) *DescribeOutgoingDomainRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainRequest) SetDomain(v string) *DescribeOutgoingDomainRequest {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainRequest) SetEndTime(v string) *DescribeOutgoingDomainRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainRequest) SetLang(v string) *DescribeOutgoingDomainRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainRequest) SetOrder(v string) *DescribeOutgoingDomainRequest {
+	s.Order = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainRequest) SetPageSize(v string) *DescribeOutgoingDomainRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainRequest) SetPublicIP(v string) *DescribeOutgoingDomainRequest {
+	s.PublicIP = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainRequest) SetSecuritySuggest(v string) *DescribeOutgoingDomainRequest {
+	s.SecuritySuggest = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainRequest) SetSort(v string) *DescribeOutgoingDomainRequest {
+	s.Sort = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainRequest) SetSourceIp(v string) *DescribeOutgoingDomainRequest {
+	s.SourceIp = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainRequest) SetStartTime(v string) *DescribeOutgoingDomainRequest {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeOutgoingDomainResponseBody struct {
+	DomainList []*DescribeOutgoingDomainResponseBodyDomainList `json:"DomainList,omitempty" xml:"DomainList,omitempty" type:"Repeated"`
+	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 总数
+	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeOutgoingDomainResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOutgoingDomainResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOutgoingDomainResponseBody) SetDomainList(v []*DescribeOutgoingDomainResponseBodyDomainList) *DescribeOutgoingDomainResponseBody {
+	s.DomainList = v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBody) SetRequestId(v string) *DescribeOutgoingDomainResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBody) SetTotalCount(v int32) *DescribeOutgoingDomainResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeOutgoingDomainResponseBodyDomainList struct {
+	// ACL覆盖
+	AclCoverage *string `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
+	// ACL推荐内容
+	AclRecommendDetail *string `json:"AclRecommendDetail,omitempty" xml:"AclRecommendDetail,omitempty"`
+	// ACL状态
+	AclStatus *string `json:"AclStatus,omitempty" xml:"AclStatus,omitempty"`
+	// 地址簿名称
+	AddressGroupName *string `json:"AddressGroupName,omitempty" xml:"AddressGroupName,omitempty"`
+	// 地址簿UUID
+	AddressGroupUUID *string `json:"AddressGroupUUID,omitempty" xml:"AddressGroupUUID,omitempty"`
+	// 分类ID
+	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
+	// 分类名称
+	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
+	// 域名
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	// 规则中的组名称
+	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
+	// 是否有ACL推荐规则
+	HasAclRecommend *bool `json:"HasAclRecommend,omitempty" xml:"HasAclRecommend,omitempty"`
+	// 入流量
+	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
+	// 是否正常
+	IsMarkNormal *bool `json:"IsMarkNormal,omitempty" xml:"IsMarkNormal,omitempty"`
+	// 出流量
+	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
+	// ACL规则ID
+	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// 规则名称
+	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// 安全建议
+	SecuritySuggest *string `json:"SecuritySuggest,omitempty" xml:"SecuritySuggest,omitempty"`
+	// 会话数
+	SessionCount *int64                                                 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
+	TagList      []*DescribeOutgoingDomainResponseBodyDomainListTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+}
+
+func (s DescribeOutgoingDomainResponseBodyDomainList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOutgoingDomainResponseBodyDomainList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetAclCoverage(v string) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.AclCoverage = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetAclRecommendDetail(v string) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.AclRecommendDetail = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetAclStatus(v string) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.AclStatus = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetAddressGroupName(v string) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.AddressGroupName = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetAddressGroupUUID(v string) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.AddressGroupUUID = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetCategoryId(v string) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.CategoryId = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetCategoryName(v string) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.CategoryName = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetDomain(v string) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.Domain = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetGroupName(v string) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.GroupName = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetHasAclRecommend(v bool) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.HasAclRecommend = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetInBytes(v int64) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.InBytes = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetIsMarkNormal(v bool) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.IsMarkNormal = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetOutBytes(v int64) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.OutBytes = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetRuleId(v string) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.RuleId = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetRuleName(v string) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.RuleName = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetSecuritySuggest(v string) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.SecuritySuggest = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetSessionCount(v int64) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.SessionCount = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainList) SetTagList(v []*DescribeOutgoingDomainResponseBodyDomainListTagList) *DescribeOutgoingDomainResponseBodyDomainList {
+	s.TagList = v
+	return s
+}
+
+type DescribeOutgoingDomainResponseBodyDomainListTagList struct {
+	// 风险等级
+	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	// 标签描述
+	TagDescribe *string `json:"TagDescribe,omitempty" xml:"TagDescribe,omitempty"`
+	// 标签ID
+	TagId *string `json:"TagId,omitempty" xml:"TagId,omitempty"`
+	// 标签名称
+	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
+}
+
+func (s DescribeOutgoingDomainResponseBodyDomainListTagList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOutgoingDomainResponseBodyDomainListTagList) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainListTagList) SetRiskLevel(v int32) *DescribeOutgoingDomainResponseBodyDomainListTagList {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainListTagList) SetTagDescribe(v string) *DescribeOutgoingDomainResponseBodyDomainListTagList {
+	s.TagDescribe = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainListTagList) SetTagId(v string) *DescribeOutgoingDomainResponseBodyDomainListTagList {
+	s.TagId = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponseBodyDomainListTagList) SetTagName(v string) *DescribeOutgoingDomainResponseBodyDomainListTagList {
+	s.TagName = &v
+	return s
+}
+
+type DescribeOutgoingDomainResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeOutgoingDomainResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeOutgoingDomainResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeOutgoingDomainResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeOutgoingDomainResponse) SetHeaders(v map[string]*string) *DescribeOutgoingDomainResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponse) SetStatusCode(v int32) *DescribeOutgoingDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeOutgoingDomainResponse) SetBody(v *DescribeOutgoingDomainResponseBody) *DescribeOutgoingDomainResponse {
 	s.Body = v
 	return s
 }
@@ -2367,8 +3595,9 @@ func (s *DescribePolicyAdvancedConfigResponseBody) SetRequestId(v string) *Descr
 }
 
 type DescribePolicyAdvancedConfigResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribePolicyAdvancedConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePolicyAdvancedConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribePolicyAdvancedConfigResponse) String() string {
@@ -2381,6 +3610,11 @@ func (s DescribePolicyAdvancedConfigResponse) GoString() string {
 
 func (s *DescribePolicyAdvancedConfigResponse) SetHeaders(v map[string]*string) *DescribePolicyAdvancedConfigResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribePolicyAdvancedConfigResponse) SetStatusCode(v int32) *DescribePolicyAdvancedConfigResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2454,8 +3688,9 @@ func (s *DescribePolicyPriorUsedResponseBody) SetStart(v int32) *DescribePolicyP
 }
 
 type DescribePolicyPriorUsedResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribePolicyPriorUsedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribePolicyPriorUsedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribePolicyPriorUsedResponse) String() string {
@@ -2468,6 +3703,11 @@ func (s DescribePolicyPriorUsedResponse) GoString() string {
 
 func (s *DescribePolicyPriorUsedResponse) SetHeaders(v map[string]*string) *DescribePolicyPriorUsedResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribePolicyPriorUsedResponse) SetStatusCode(v int32) *DescribePolicyPriorUsedResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2926,8 +4166,9 @@ func (s *DescribeRiskEventGroupResponseBodyDataListVpcSrcInfo) SetRegionNo(v str
 }
 
 type DescribeRiskEventGroupResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRiskEventGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeRiskEventGroupResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeRiskEventGroupResponse) String() string {
@@ -2943,7 +4184,225 @@ func (s *DescribeRiskEventGroupResponse) SetHeaders(v map[string]*string) *Descr
 	return s
 }
 
+func (s *DescribeRiskEventGroupResponse) SetStatusCode(v int32) *DescribeRiskEventGroupResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeRiskEventGroupResponse) SetBody(v *DescribeRiskEventGroupResponseBody) *DescribeRiskEventGroupResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeUserAssetIPTrafficInfoRequest struct {
+	// 资产IP
+	AssetIP *string `json:"AssetIP,omitempty" xml:"AssetIP,omitempty"`
+	// 语言
+	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// 时间
+	TrafficTime *string `json:"TrafficTime,omitempty" xml:"TrafficTime,omitempty"`
+}
+
+func (s DescribeUserAssetIPTrafficInfoRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserAssetIPTrafficInfoRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserAssetIPTrafficInfoRequest) SetAssetIP(v string) *DescribeUserAssetIPTrafficInfoRequest {
+	s.AssetIP = &v
+	return s
+}
+
+func (s *DescribeUserAssetIPTrafficInfoRequest) SetLang(v string) *DescribeUserAssetIPTrafficInfoRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *DescribeUserAssetIPTrafficInfoRequest) SetTrafficTime(v string) *DescribeUserAssetIPTrafficInfoRequest {
+	s.TrafficTime = &v
+	return s
+}
+
+type DescribeUserAssetIPTrafficInfoResponseBody struct {
+	// 结束时间
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// 入方向流量信息
+	InTrafficInfo *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo `json:"InTrafficInfo,omitempty" xml:"InTrafficInfo,omitempty" type:"Struct"`
+	// 出方向流量信息
+	OutTrafficInfo *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo `json:"OutTrafficInfo,omitempty" xml:"OutTrafficInfo,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 开始时间
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+}
+
+func (s DescribeUserAssetIPTrafficInfoResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserAssetIPTrafficInfoResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponseBody) SetEndTime(v int64) *DescribeUserAssetIPTrafficInfoResponseBody {
+	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponseBody) SetInTrafficInfo(v *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo) *DescribeUserAssetIPTrafficInfoResponseBody {
+	s.InTrafficInfo = v
+	return s
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponseBody) SetOutTrafficInfo(v *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo) *DescribeUserAssetIPTrafficInfoResponseBody {
+	s.OutTrafficInfo = v
+	return s
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponseBody) SetRequestId(v string) *DescribeUserAssetIPTrafficInfoResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponseBody) SetStartTime(v int64) *DescribeUserAssetIPTrafficInfoResponseBody {
+	s.StartTime = &v
+	return s
+}
+
+type DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo struct {
+	// 入方向Bps
+	InBps *int64 `json:"InBps,omitempty" xml:"InBps,omitempty"`
+	// 入方向pps
+	InPps *int64 `json:"InPps,omitempty" xml:"InPps,omitempty"`
+	// 新建会话数
+	NewConn *int64 `json:"NewConn,omitempty" xml:"NewConn,omitempty"`
+	// 返回Bps
+	OutBps *int64 `json:"OutBps,omitempty" xml:"OutBps,omitempty"`
+	// 返回pps
+	OutPps *int64 `json:"OutPps,omitempty" xml:"OutPps,omitempty"`
+	// 会话数
+	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
+}
+
+func (s DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo) SetInBps(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo {
+	s.InBps = &v
+	return s
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo) SetInPps(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo {
+	s.InPps = &v
+	return s
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo) SetNewConn(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo {
+	s.NewConn = &v
+	return s
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo) SetOutBps(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo {
+	s.OutBps = &v
+	return s
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo) SetOutPps(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo {
+	s.OutPps = &v
+	return s
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo) SetSessionCount(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo {
+	s.SessionCount = &v
+	return s
+}
+
+type DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo struct {
+	// 出方向接收流量Bps
+	InBps *int64 `json:"InBps,omitempty" xml:"InBps,omitempty"`
+	// 出方向接收流量Bps
+	InPps *int64 `json:"InPps,omitempty" xml:"InPps,omitempty"`
+	// 新建会话数
+	NewConn *int64 `json:"NewConn,omitempty" xml:"NewConn,omitempty"`
+	// 出方向流量Bps
+	OutBps *int64 `json:"OutBps,omitempty" xml:"OutBps,omitempty"`
+	// 出方向pps
+	OutPps *int64 `json:"OutPps,omitempty" xml:"OutPps,omitempty"`
+	// 会话数
+	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
+}
+
+func (s DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo) SetInBps(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo {
+	s.InBps = &v
+	return s
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo) SetInPps(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo {
+	s.InPps = &v
+	return s
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo) SetNewConn(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo {
+	s.NewConn = &v
+	return s
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo) SetOutBps(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo {
+	s.OutBps = &v
+	return s
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo) SetOutPps(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo {
+	s.OutPps = &v
+	return s
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo) SetSessionCount(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo {
+	s.SessionCount = &v
+	return s
+}
+
+type DescribeUserAssetIPTrafficInfoResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeUserAssetIPTrafficInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeUserAssetIPTrafficInfoResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeUserAssetIPTrafficInfoResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponse) SetHeaders(v map[string]*string) *DescribeUserAssetIPTrafficInfoResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponse) SetStatusCode(v int32) *DescribeUserAssetIPTrafficInfoResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponse) SetBody(v *DescribeUserAssetIPTrafficInfoResponseBody) *DescribeUserAssetIPTrafficInfoResponse {
 	s.Body = v
 	return s
 }
@@ -3042,8 +4501,9 @@ func (s *DescribeVpcFirewallAclGroupListResponseBodyAclGroupList) SetMemberUid(v
 }
 
 type DescribeVpcFirewallAclGroupListResponse struct {
-	Headers map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVpcFirewallAclGroupListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeVpcFirewallAclGroupListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeVpcFirewallAclGroupListResponse) String() string {
@@ -3056,6 +4516,11 @@ func (s DescribeVpcFirewallAclGroupListResponse) GoString() string {
 
 func (s *DescribeVpcFirewallAclGroupListResponse) SetHeaders(v map[string]*string) *DescribeVpcFirewallAclGroupListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeVpcFirewallAclGroupListResponse) SetStatusCode(v int32) *DescribeVpcFirewallAclGroupListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3323,8 +4788,9 @@ func (s *DescribeVpcFirewallCenDetailResponseBodyLocalVpcVpcCidrTableListRouteEn
 }
 
 type DescribeVpcFirewallCenDetailResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVpcFirewallCenDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeVpcFirewallCenDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeVpcFirewallCenDetailResponse) String() string {
@@ -3337,6 +4803,11 @@ func (s DescribeVpcFirewallCenDetailResponse) GoString() string {
 
 func (s *DescribeVpcFirewallCenDetailResponse) SetHeaders(v map[string]*string) *DescribeVpcFirewallCenDetailResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeVpcFirewallCenDetailResponse) SetStatusCode(v int32) *DescribeVpcFirewallCenDetailResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3711,8 +5182,9 @@ func (s *DescribeVpcFirewallCenListResponseBodyVpcFirewallsLocalVpcVpcCidrTableL
 }
 
 type DescribeVpcFirewallCenListResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVpcFirewallCenListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeVpcFirewallCenListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeVpcFirewallCenListResponse) String() string {
@@ -3725,6 +5197,11 @@ func (s DescribeVpcFirewallCenListResponse) GoString() string {
 
 func (s *DescribeVpcFirewallCenListResponse) SetHeaders(v map[string]*string) *DescribeVpcFirewallCenListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeVpcFirewallCenListResponse) SetStatusCode(v int32) *DescribeVpcFirewallCenListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3977,8 +5454,9 @@ func (s *DescribeVpcFirewallControlPolicyResponseBodyPolicys) SetSourceType(v st
 }
 
 type DescribeVpcFirewallControlPolicyResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVpcFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeVpcFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeVpcFirewallControlPolicyResponse) String() string {
@@ -3991,6 +5469,11 @@ func (s DescribeVpcFirewallControlPolicyResponse) GoString() string {
 
 func (s *DescribeVpcFirewallControlPolicyResponse) SetHeaders(v map[string]*string) *DescribeVpcFirewallControlPolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeVpcFirewallControlPolicyResponse) SetStatusCode(v int32) *DescribeVpcFirewallControlPolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4058,8 +5541,9 @@ func (s *DescribeVpcFirewallDefaultIPSConfigResponseBody) SetRunMode(v int32) *D
 }
 
 type DescribeVpcFirewallDefaultIPSConfigResponse struct {
-	Headers map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVpcFirewallDefaultIPSConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeVpcFirewallDefaultIPSConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeVpcFirewallDefaultIPSConfigResponse) String() string {
@@ -4072,6 +5556,11 @@ func (s DescribeVpcFirewallDefaultIPSConfigResponse) GoString() string {
 
 func (s *DescribeVpcFirewallDefaultIPSConfigResponse) SetHeaders(v map[string]*string) *DescribeVpcFirewallDefaultIPSConfigResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeVpcFirewallDefaultIPSConfigResponse) SetStatusCode(v int32) *DescribeVpcFirewallDefaultIPSConfigResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4373,8 +5862,9 @@ func (s *DescribeVpcFirewallDetailResponseBodyPeerVpcVpcCidrTableListRouteEntryL
 }
 
 type DescribeVpcFirewallDetailResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVpcFirewallDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeVpcFirewallDetailResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeVpcFirewallDetailResponse) String() string {
@@ -4387,6 +5877,11 @@ func (s DescribeVpcFirewallDetailResponse) GoString() string {
 
 func (s *DescribeVpcFirewallDetailResponse) SetHeaders(v map[string]*string) *DescribeVpcFirewallDetailResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeVpcFirewallDetailResponse) SetStatusCode(v int32) *DescribeVpcFirewallDetailResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4776,8 +6271,9 @@ func (s *DescribeVpcFirewallListResponseBodyVpcFirewallsPeerVpcVpcCidrTableListR
 }
 
 type DescribeVpcFirewallListResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVpcFirewallListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeVpcFirewallListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeVpcFirewallListResponse) String() string {
@@ -4790,6 +6286,11 @@ func (s DescribeVpcFirewallListResponse) GoString() string {
 
 func (s *DescribeVpcFirewallListResponse) SetHeaders(v map[string]*string) *DescribeVpcFirewallListResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeVpcFirewallListResponse) SetStatusCode(v int32) *DescribeVpcFirewallListResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4851,8 +6352,9 @@ func (s *DescribeVpcFirewallPolicyPriorUsedResponseBody) SetStart(v int32) *Desc
 }
 
 type DescribeVpcFirewallPolicyPriorUsedResponse struct {
-	Headers map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeVpcFirewallPolicyPriorUsedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeVpcFirewallPolicyPriorUsedResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeVpcFirewallPolicyPriorUsedResponse) String() string {
@@ -4865,6 +6367,11 @@ func (s DescribeVpcFirewallPolicyPriorUsedResponse) GoString() string {
 
 func (s *DescribeVpcFirewallPolicyPriorUsedResponse) SetHeaders(v map[string]*string) *DescribeVpcFirewallPolicyPriorUsedResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeVpcFirewallPolicyPriorUsedResponse) SetStatusCode(v int32) *DescribeVpcFirewallPolicyPriorUsedResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -4979,8 +6486,9 @@ func (s *ModifyAddressBookResponseBody) SetRequestId(v string) *ModifyAddressBoo
 }
 
 type ModifyAddressBookResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyAddressBookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyAddressBookResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyAddressBookResponse) String() string {
@@ -4993,6 +6501,11 @@ func (s ModifyAddressBookResponse) GoString() string {
 
 func (s *ModifyAddressBookResponse) SetHeaders(v map[string]*string) *ModifyAddressBookResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyAddressBookResponse) SetStatusCode(v int32) *ModifyAddressBookResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5138,8 +6651,9 @@ func (s *ModifyControlPolicyResponseBody) SetRequestId(v string) *ModifyControlP
 }
 
 type ModifyControlPolicyResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyControlPolicyResponse) String() string {
@@ -5152,6 +6666,11 @@ func (s ModifyControlPolicyResponse) GoString() string {
 
 func (s *ModifyControlPolicyResponse) SetHeaders(v map[string]*string) *ModifyControlPolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyControlPolicyResponse) SetStatusCode(v int32) *ModifyControlPolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5219,8 +6738,9 @@ func (s *ModifyControlPolicyPositionResponseBody) SetRequestId(v string) *Modify
 }
 
 type ModifyControlPolicyPositionResponse struct {
-	Headers map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyControlPolicyPositionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyControlPolicyPositionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyControlPolicyPositionResponse) String() string {
@@ -5233,6 +6753,11 @@ func (s ModifyControlPolicyPositionResponse) GoString() string {
 
 func (s *ModifyControlPolicyPositionResponse) SetHeaders(v map[string]*string) *ModifyControlPolicyPositionResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyControlPolicyPositionResponse) SetStatusCode(v int32) *ModifyControlPolicyPositionResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5299,8 +6824,9 @@ func (s *ModifyInstanceMemberAttributesResponseBody) SetRequestId(v string) *Mod
 }
 
 type ModifyInstanceMemberAttributesResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyInstanceMemberAttributesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyInstanceMemberAttributesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyInstanceMemberAttributesResponse) String() string {
@@ -5313,6 +6839,11 @@ func (s ModifyInstanceMemberAttributesResponse) GoString() string {
 
 func (s *ModifyInstanceMemberAttributesResponse) SetHeaders(v map[string]*string) *ModifyInstanceMemberAttributesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyInstanceMemberAttributesResponse) SetStatusCode(v int32) *ModifyInstanceMemberAttributesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5368,8 +6899,9 @@ func (s *ModifyPolicyAdvancedConfigResponseBody) SetRequestId(v string) *ModifyP
 }
 
 type ModifyPolicyAdvancedConfigResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyPolicyAdvancedConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyPolicyAdvancedConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyPolicyAdvancedConfigResponse) String() string {
@@ -5382,6 +6914,11 @@ func (s ModifyPolicyAdvancedConfigResponse) GoString() string {
 
 func (s *ModifyPolicyAdvancedConfigResponse) SetHeaders(v map[string]*string) *ModifyPolicyAdvancedConfigResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyPolicyAdvancedConfigResponse) SetStatusCode(v int32) *ModifyPolicyAdvancedConfigResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5443,8 +6980,9 @@ func (s *ModifyVpcFirewallCenConfigureResponseBody) SetRequestId(v string) *Modi
 }
 
 type ModifyVpcFirewallCenConfigureResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyVpcFirewallCenConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyVpcFirewallCenConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyVpcFirewallCenConfigureResponse) String() string {
@@ -5457,6 +6995,11 @@ func (s ModifyVpcFirewallCenConfigureResponse) GoString() string {
 
 func (s *ModifyVpcFirewallCenConfigureResponse) SetHeaders(v map[string]*string) *ModifyVpcFirewallCenConfigureResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyVpcFirewallCenConfigureResponse) SetStatusCode(v int32) *ModifyVpcFirewallCenConfigureResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5518,8 +7061,9 @@ func (s *ModifyVpcFirewallCenSwitchStatusResponseBody) SetRequestId(v string) *M
 }
 
 type ModifyVpcFirewallCenSwitchStatusResponse struct {
-	Headers map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyVpcFirewallCenSwitchStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyVpcFirewallCenSwitchStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyVpcFirewallCenSwitchStatusResponse) String() string {
@@ -5532,6 +7076,11 @@ func (s ModifyVpcFirewallCenSwitchStatusResponse) GoString() string {
 
 func (s *ModifyVpcFirewallCenSwitchStatusResponse) SetHeaders(v map[string]*string) *ModifyVpcFirewallCenSwitchStatusResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyVpcFirewallCenSwitchStatusResponse) SetStatusCode(v int32) *ModifyVpcFirewallCenSwitchStatusResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5605,8 +7154,9 @@ func (s *ModifyVpcFirewallConfigureResponseBody) SetRequestId(v string) *ModifyV
 }
 
 type ModifyVpcFirewallConfigureResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyVpcFirewallConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyVpcFirewallConfigureResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyVpcFirewallConfigureResponse) String() string {
@@ -5619,6 +7169,11 @@ func (s ModifyVpcFirewallConfigureResponse) GoString() string {
 
 func (s *ModifyVpcFirewallConfigureResponse) SetHeaders(v map[string]*string) *ModifyVpcFirewallConfigureResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyVpcFirewallConfigureResponse) SetStatusCode(v int32) *ModifyVpcFirewallConfigureResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5746,8 +7301,9 @@ func (s *ModifyVpcFirewallControlPolicyResponseBody) SetRequestId(v string) *Mod
 }
 
 type ModifyVpcFirewallControlPolicyResponse struct {
-	Headers map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyVpcFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyVpcFirewallControlPolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyVpcFirewallControlPolicyResponse) String() string {
@@ -5760,6 +7316,11 @@ func (s ModifyVpcFirewallControlPolicyResponse) GoString() string {
 
 func (s *ModifyVpcFirewallControlPolicyResponse) SetHeaders(v map[string]*string) *ModifyVpcFirewallControlPolicyResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyVpcFirewallControlPolicyResponse) SetStatusCode(v int32) *ModifyVpcFirewallControlPolicyResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5821,8 +7382,9 @@ func (s *ModifyVpcFirewallControlPolicyPositionResponseBody) SetRequestId(v stri
 }
 
 type ModifyVpcFirewallControlPolicyPositionResponse struct {
-	Headers map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyVpcFirewallControlPolicyPositionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyVpcFirewallControlPolicyPositionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyVpcFirewallControlPolicyPositionResponse) String() string {
@@ -5835,6 +7397,11 @@ func (s ModifyVpcFirewallControlPolicyPositionResponse) GoString() string {
 
 func (s *ModifyVpcFirewallControlPolicyPositionResponse) SetHeaders(v map[string]*string) *ModifyVpcFirewallControlPolicyPositionResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyVpcFirewallControlPolicyPositionResponse) SetStatusCode(v int32) *ModifyVpcFirewallControlPolicyPositionResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5914,8 +7481,9 @@ func (s *ModifyVpcFirewallDefaultIPSConfigResponseBody) SetRequestId(v string) *
 }
 
 type ModifyVpcFirewallDefaultIPSConfigResponse struct {
-	Headers map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyVpcFirewallDefaultIPSConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyVpcFirewallDefaultIPSConfigResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyVpcFirewallDefaultIPSConfigResponse) String() string {
@@ -5928,6 +7496,11 @@ func (s ModifyVpcFirewallDefaultIPSConfigResponse) GoString() string {
 
 func (s *ModifyVpcFirewallDefaultIPSConfigResponse) SetHeaders(v map[string]*string) *ModifyVpcFirewallDefaultIPSConfigResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyVpcFirewallDefaultIPSConfigResponse) SetStatusCode(v int32) *ModifyVpcFirewallDefaultIPSConfigResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -5989,8 +7562,9 @@ func (s *ModifyVpcFirewallSwitchStatusResponseBody) SetRequestId(v string) *Modi
 }
 
 type ModifyVpcFirewallSwitchStatusResponse struct {
-	Headers map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ModifyVpcFirewallSwitchStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyVpcFirewallSwitchStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ModifyVpcFirewallSwitchStatusResponse) String() string {
@@ -6003,6 +7577,11 @@ func (s ModifyVpcFirewallSwitchStatusResponse) GoString() string {
 
 func (s *ModifyVpcFirewallSwitchStatusResponse) SetHeaders(v map[string]*string) *ModifyVpcFirewallSwitchStatusResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ModifyVpcFirewallSwitchStatusResponse) SetStatusCode(v int32) *ModifyVpcFirewallSwitchStatusResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6058,8 +7637,9 @@ func (s *PutDisableAllFwSwitchResponseBody) SetRequestId(v string) *PutDisableAl
 }
 
 type PutDisableAllFwSwitchResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutDisableAllFwSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutDisableAllFwSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutDisableAllFwSwitchResponse) String() string {
@@ -6072,6 +7652,11 @@ func (s PutDisableAllFwSwitchResponse) GoString() string {
 
 func (s *PutDisableAllFwSwitchResponse) SetHeaders(v map[string]*string) *PutDisableAllFwSwitchResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutDisableAllFwSwitchResponse) SetStatusCode(v int32) *PutDisableAllFwSwitchResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6139,8 +7724,9 @@ func (s *PutDisableFwSwitchResponseBody) SetRequestId(v string) *PutDisableFwSwi
 }
 
 type PutDisableFwSwitchResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutDisableFwSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutDisableFwSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutDisableFwSwitchResponse) String() string {
@@ -6153,6 +7739,11 @@ func (s PutDisableFwSwitchResponse) GoString() string {
 
 func (s *PutDisableFwSwitchResponse) SetHeaders(v map[string]*string) *PutDisableFwSwitchResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutDisableFwSwitchResponse) SetStatusCode(v int32) *PutDisableFwSwitchResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6208,8 +7799,9 @@ func (s *PutEnableAllFwSwitchResponseBody) SetRequestId(v string) *PutEnableAllF
 }
 
 type PutEnableAllFwSwitchResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutEnableAllFwSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutEnableAllFwSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutEnableAllFwSwitchResponse) String() string {
@@ -6222,6 +7814,11 @@ func (s PutEnableAllFwSwitchResponse) GoString() string {
 
 func (s *PutEnableAllFwSwitchResponse) SetHeaders(v map[string]*string) *PutEnableAllFwSwitchResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutEnableAllFwSwitchResponse) SetStatusCode(v int32) *PutEnableAllFwSwitchResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6289,8 +7886,9 @@ func (s *PutEnableFwSwitchResponseBody) SetRequestId(v string) *PutEnableFwSwitc
 }
 
 type PutEnableFwSwitchResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *PutEnableFwSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PutEnableFwSwitchResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s PutEnableFwSwitchResponse) String() string {
@@ -6303,6 +7901,11 @@ func (s PutEnableFwSwitchResponse) GoString() string {
 
 func (s *PutEnableFwSwitchResponse) SetHeaders(v map[string]*string) *PutEnableFwSwitchResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *PutEnableFwSwitchResponse) SetStatusCode(v int32) *PutEnableFwSwitchResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -6352,8 +7955,9 @@ func (s *ResetVpcFirewallRuleHitCountResponseBody) SetRequestId(v string) *Reset
 }
 
 type ResetVpcFirewallRuleHitCountResponse struct {
-	Headers map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ResetVpcFirewallRuleHitCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ResetVpcFirewallRuleHitCountResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ResetVpcFirewallRuleHitCountResponse) String() string {
@@ -6366,6 +7970,11 @@ func (s ResetVpcFirewallRuleHitCountResponse) GoString() string {
 
 func (s *ResetVpcFirewallRuleHitCountResponse) SetHeaders(v map[string]*string) *ResetVpcFirewallRuleHitCountResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ResetVpcFirewallRuleHitCountResponse) SetStatusCode(v int32) *ResetVpcFirewallRuleHitCountResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -7295,10 +8904,6 @@ func (client *Client) DescribeAddressBookWithOptions(request *DescribeAddressBoo
 		query["Lang"] = request.Lang
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.Lang)) {
-		query["Lang"] = request.Lang
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
 	}
@@ -7653,6 +9258,310 @@ func (client *Client) DescribeInstanceMembers(request *DescribeInstanceMembersRe
 	return _result, _err
 }
 
+func (client *Client) DescribeInvadeEventListWithOptions(request *DescribeInvadeEventListRequest, runtime *util.RuntimeOptions) (_result *DescribeInvadeEventListResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AssetsIP)) {
+		query["AssetsIP"] = request.AssetsIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssetsInstanceId)) {
+		query["AssetsInstanceId"] = request.AssetsInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AssetsInstanceName)) {
+		query["AssetsInstanceName"] = request.AssetsInstanceName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventKey)) {
+		query["EventKey"] = request.EventKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventName)) {
+		query["EventName"] = request.EventName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventUuid)) {
+		query["EventUuid"] = request.EventUuid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsIgnore)) {
+		query["IsIgnore"] = request.IsIgnore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.MemberUid)) {
+		query["MemberUid"] = request.MemberUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessStatus)) {
+		query["ProcessStatus"] = request.ProcessStatus
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProcessStatusList)) {
+		query["ProcessStatusList"] = request.ProcessStatusList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevel)) {
+		query["RiskLevel"] = request.RiskLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInvadeEventList"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInvadeEventListResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInvadeEventList(request *DescribeInvadeEventListRequest) (_result *DescribeInvadeEventListResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInvadeEventListResponse{}
+	_body, _err := client.DescribeInvadeEventListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeOutgoingDestinationIPWithOptions(request *DescribeOutgoingDestinationIPRequest, runtime *util.RuntimeOptions) (_result *DescribeOutgoingDestinationIPResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclCoverage)) {
+		query["AclCoverage"] = request.AclCoverage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ApplicationName)) {
+		query["ApplicationName"] = request.ApplicationName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DstIP)) {
+		query["DstIP"] = request.DstIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Port)) {
+		query["Port"] = request.Port
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PrivateIP)) {
+		query["PrivateIP"] = request.PrivateIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublicIP)) {
+		query["PublicIP"] = request.PublicIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecuritySuggest)) {
+		query["SecuritySuggest"] = request.SecuritySuggest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["Sort"] = request.Sort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeOutgoingDestinationIP"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeOutgoingDestinationIPResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeOutgoingDestinationIP(request *DescribeOutgoingDestinationIPRequest) (_result *DescribeOutgoingDestinationIPResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeOutgoingDestinationIPResponse{}
+	_body, _err := client.DescribeOutgoingDestinationIPWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeOutgoingDomainWithOptions(request *DescribeOutgoingDomainRequest, runtime *util.RuntimeOptions) (_result *DescribeOutgoingDomainResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclCoverage)) {
+		query["AclCoverage"] = request.AclCoverage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
+		query["CategoryId"] = request.CategoryId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Domain)) {
+		query["Domain"] = request.Domain
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Order)) {
+		query["Order"] = request.Order
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PublicIP)) {
+		query["PublicIP"] = request.PublicIP
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecuritySuggest)) {
+		query["SecuritySuggest"] = request.SecuritySuggest
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sort)) {
+		query["Sort"] = request.Sort
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
+		query["SourceIp"] = request.SourceIp
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeOutgoingDomain"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeOutgoingDomainResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeOutgoingDomain(request *DescribeOutgoingDomainRequest) (_result *DescribeOutgoingDomainResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeOutgoingDomainResponse{}
+	_body, _err := client.DescribeOutgoingDomainWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DescribePolicyAdvancedConfigWithOptions(request *DescribePolicyAdvancedConfigRequest, runtime *util.RuntimeOptions) (_result *DescribePolicyAdvancedConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -7874,6 +9783,46 @@ func (client *Client) DescribeRiskEventGroup(request *DescribeRiskEventGroupRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeRiskEventGroupResponse{}
 	_body, _err := client.DescribeRiskEventGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeUserAssetIPTrafficInfoWithOptions(request *DescribeUserAssetIPTrafficInfoRequest, runtime *util.RuntimeOptions) (_result *DescribeUserAssetIPTrafficInfoResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := openapiutil.Query(util.ToMap(request))
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeUserAssetIPTrafficInfo"),
+		Version:     tea.String("2017-12-07"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeUserAssetIPTrafficInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeUserAssetIPTrafficInfo(request *DescribeUserAssetIPTrafficInfoRequest) (_result *DescribeUserAssetIPTrafficInfoResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeUserAssetIPTrafficInfoResponse{}
+	_body, _err := client.DescribeUserAssetIPTrafficInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
