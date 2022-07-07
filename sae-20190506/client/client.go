@@ -4470,6 +4470,7 @@ func (s *DescribeApplicationInstancesResponseBodyData) SetTotalSize(v int32) *De
 
 type DescribeApplicationInstancesResponseBodyDataInstances struct {
 	CreateTimeStamp           *int64  `json:"CreateTimeStamp,omitempty" xml:"CreateTimeStamp,omitempty"`
+	DebugStatus               *bool   `json:"DebugStatus,omitempty" xml:"DebugStatus,omitempty"`
 	Eip                       *string `json:"Eip,omitempty" xml:"Eip,omitempty"`
 	FinishTimeStamp           *int64  `json:"FinishTimeStamp,omitempty" xml:"FinishTimeStamp,omitempty"`
 	GroupId                   *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -4493,6 +4494,11 @@ func (s DescribeApplicationInstancesResponseBodyDataInstances) GoString() string
 
 func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetCreateTimeStamp(v int64) *DescribeApplicationInstancesResponseBodyDataInstances {
 	s.CreateTimeStamp = &v
+	return s
+}
+
+func (s *DescribeApplicationInstancesResponseBodyDataInstances) SetDebugStatus(v bool) *DescribeApplicationInstancesResponseBodyDataInstances {
+	s.DebugStatus = &v
 	return s
 }
 
@@ -6498,8 +6504,9 @@ func (s *DescribeConfigMapResponse) SetBody(v *DescribeConfigMapResponseBody) *D
 }
 
 type DescribeConfigurationPriceRequest struct {
-	Cpu    *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	Memory *int32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Cpu      *int32  `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
+	Memory   *int32  `json:"Memory,omitempty" xml:"Memory,omitempty"`
+	Workload *string `json:"Workload,omitempty" xml:"Workload,omitempty"`
 }
 
 func (s DescribeConfigurationPriceRequest) String() string {
@@ -6517,6 +6524,11 @@ func (s *DescribeConfigurationPriceRequest) SetCpu(v int32) *DescribeConfigurati
 
 func (s *DescribeConfigurationPriceRequest) SetMemory(v int32) *DescribeConfigurationPriceRequest {
 	s.Memory = &v
+	return s
+}
+
+func (s *DescribeConfigurationPriceRequest) SetWorkload(v string) *DescribeConfigurationPriceRequest {
+	s.Workload = &v
 	return s
 }
 
@@ -7317,9 +7329,10 @@ func (s *DescribeIngressResponseBodyData) SetSlbType(v string) *DescribeIngressR
 }
 
 type DescribeIngressResponseBodyDataDefaultRule struct {
-	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	ContainerPort *int32  `json:"ContainerPort,omitempty" xml:"ContainerPort,omitempty"`
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BackendProtocol *string `json:"BackendProtocol,omitempty" xml:"BackendProtocol,omitempty"`
+	ContainerPort   *int32  `json:"ContainerPort,omitempty" xml:"ContainerPort,omitempty"`
 }
 
 func (s DescribeIngressResponseBodyDataDefaultRule) String() string {
@@ -7340,17 +7353,23 @@ func (s *DescribeIngressResponseBodyDataDefaultRule) SetAppName(v string) *Descr
 	return s
 }
 
+func (s *DescribeIngressResponseBodyDataDefaultRule) SetBackendProtocol(v string) *DescribeIngressResponseBodyDataDefaultRule {
+	s.BackendProtocol = &v
+	return s
+}
+
 func (s *DescribeIngressResponseBodyDataDefaultRule) SetContainerPort(v int32) *DescribeIngressResponseBodyDataDefaultRule {
 	s.ContainerPort = &v
 	return s
 }
 
 type DescribeIngressResponseBodyDataRules struct {
-	AppId         *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppName       *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	ContainerPort *int32  `json:"ContainerPort,omitempty" xml:"ContainerPort,omitempty"`
-	Domain        *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Path          *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppName         *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	BackendProtocol *string `json:"BackendProtocol,omitempty" xml:"BackendProtocol,omitempty"`
+	ContainerPort   *int32  `json:"ContainerPort,omitempty" xml:"ContainerPort,omitempty"`
+	Domain          *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
+	Path            *string `json:"Path,omitempty" xml:"Path,omitempty"`
 }
 
 func (s DescribeIngressResponseBodyDataRules) String() string {
@@ -7368,6 +7387,11 @@ func (s *DescribeIngressResponseBodyDataRules) SetAppId(v string) *DescribeIngre
 
 func (s *DescribeIngressResponseBodyDataRules) SetAppName(v string) *DescribeIngressResponseBodyDataRules {
 	s.AppName = &v
+	return s
+}
+
+func (s *DescribeIngressResponseBodyDataRules) SetBackendProtocol(v string) *DescribeIngressResponseBodyDataRules {
+	s.BackendProtocol = &v
 	return s
 }
 
@@ -8907,6 +8931,147 @@ func (s *EnableApplicationScalingRuleResponse) SetStatusCode(v int32) *EnableApp
 }
 
 func (s *EnableApplicationScalingRuleResponse) SetBody(v *EnableApplicationScalingRuleResponseBody) *EnableApplicationScalingRuleResponse {
+	s.Body = v
+	return s
+}
+
+type ExecJobRequest struct {
+	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	Command         *string `json:"Command,omitempty" xml:"Command,omitempty"`
+	CommandArgs     *string `json:"CommandArgs,omitempty" xml:"CommandArgs,omitempty"`
+	Envs            *string `json:"Envs,omitempty" xml:"Envs,omitempty"`
+	EventId         *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	JarStartArgs    *string `json:"JarStartArgs,omitempty" xml:"JarStartArgs,omitempty"`
+	JarStartOptions *string `json:"JarStartOptions,omitempty" xml:"JarStartOptions,omitempty"`
+	WarStartOptions *string `json:"WarStartOptions,omitempty" xml:"WarStartOptions,omitempty"`
+}
+
+func (s ExecJobRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecJobRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ExecJobRequest) SetAppId(v string) *ExecJobRequest {
+	s.AppId = &v
+	return s
+}
+
+func (s *ExecJobRequest) SetCommand(v string) *ExecJobRequest {
+	s.Command = &v
+	return s
+}
+
+func (s *ExecJobRequest) SetCommandArgs(v string) *ExecJobRequest {
+	s.CommandArgs = &v
+	return s
+}
+
+func (s *ExecJobRequest) SetEnvs(v string) *ExecJobRequest {
+	s.Envs = &v
+	return s
+}
+
+func (s *ExecJobRequest) SetEventId(v string) *ExecJobRequest {
+	s.EventId = &v
+	return s
+}
+
+func (s *ExecJobRequest) SetJarStartArgs(v string) *ExecJobRequest {
+	s.JarStartArgs = &v
+	return s
+}
+
+func (s *ExecJobRequest) SetJarStartOptions(v string) *ExecJobRequest {
+	s.JarStartOptions = &v
+	return s
+}
+
+func (s *ExecJobRequest) SetWarStartOptions(v string) *ExecJobRequest {
+	s.WarStartOptions = &v
+	return s
+}
+
+type ExecJobResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	TraceId   *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
+}
+
+func (s ExecJobResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecJobResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ExecJobResponseBody) SetCode(v string) *ExecJobResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ExecJobResponseBody) SetData(v string) *ExecJobResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *ExecJobResponseBody) SetErrorCode(v string) *ExecJobResponseBody {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *ExecJobResponseBody) SetMessage(v string) *ExecJobResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *ExecJobResponseBody) SetRequestId(v string) *ExecJobResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ExecJobResponseBody) SetSuccess(v bool) *ExecJobResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ExecJobResponseBody) SetTraceId(v string) *ExecJobResponseBody {
+	s.TraceId = &v
+	return s
+}
+
+type ExecJobResponse struct {
+	Headers    map[string]*string   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ExecJobResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ExecJobResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExecJobResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ExecJobResponse) SetHeaders(v map[string]*string) *ExecJobResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ExecJobResponse) SetStatusCode(v int32) *ExecJobResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ExecJobResponse) SetBody(v *ExecJobResponseBody) *ExecJobResponse {
 	s.Body = v
 	return s
 }
@@ -16675,6 +16840,10 @@ func (client *Client) DescribeConfigurationPriceWithOptions(request *DescribeCon
 		query["Memory"] = request.Memory
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Workload)) {
+		query["Workload"] = request.Workload
+	}
+
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -17275,6 +17444,80 @@ func (client *Client) EnableApplicationScalingRuleWithOptions(request *EnableApp
 		BodyType:    tea.String("json"),
 	}
 	_result = &EnableApplicationScalingRuleResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ExecJob(request *ExecJobRequest) (_result *ExecJobResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ExecJobResponse{}
+	_body, _err := client.ExecJobWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ExecJobWithOptions(request *ExecJobRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ExecJobResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppId)) {
+		query["AppId"] = request.AppId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Command)) {
+		query["Command"] = request.Command
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CommandArgs)) {
+		query["CommandArgs"] = request.CommandArgs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Envs)) {
+		query["Envs"] = request.Envs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EventId)) {
+		query["EventId"] = request.EventId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JarStartArgs)) {
+		query["JarStartArgs"] = request.JarStartArgs
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.JarStartOptions)) {
+		query["JarStartOptions"] = request.JarStartOptions
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.WarStartOptions)) {
+		query["WarStartOptions"] = request.WarStartOptions
+	}
+
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ExecJob"),
+		Version:     tea.String("2019-05-06"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/pop/v1/sam/job/execJob"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ExecJobResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
