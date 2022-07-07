@@ -147,7 +147,7 @@ type AudioStream struct {
 	// CodecTimeBase
 	CodecTimeBase *string `json:"CodecTimeBase,omitempty" xml:"CodecTimeBase,omitempty"`
 	// Duration
-	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// FrameCount
 	FrameCount *int64 `json:"FrameCount,omitempty" xml:"FrameCount,omitempty"`
 	// Index
@@ -161,7 +161,7 @@ type AudioStream struct {
 	// SampleRate
 	SampleRate *int64 `json:"SampleRate,omitempty" xml:"SampleRate,omitempty"`
 	// StartTime
-	StartTime *float32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// TimeBase
 	TimeBase *string `json:"TimeBase,omitempty" xml:"TimeBase,omitempty"`
 }
@@ -214,7 +214,7 @@ func (s *AudioStream) SetCodecTimeBase(v string) *AudioStream {
 	return s
 }
 
-func (s *AudioStream) SetDuration(v float32) *AudioStream {
+func (s *AudioStream) SetDuration(v float64) *AudioStream {
 	s.Duration = &v
 	return s
 }
@@ -249,7 +249,7 @@ func (s *AudioStream) SetSampleRate(v int64) *AudioStream {
 	return s
 }
 
-func (s *AudioStream) SetStartTime(v float32) *AudioStream {
+func (s *AudioStream) SetStartTime(v float64) *AudioStream {
 	s.StartTime = &v
 	return s
 }
@@ -444,6 +444,45 @@ func (s ClusterForReqCoverFigures) GoString() string {
 
 func (s *ClusterForReqCoverFigures) SetFigureId(v string) *ClusterForReqCoverFigures {
 	s.FigureId = &v
+	return s
+}
+
+type Codes struct {
+	// Boundary
+	Boundary *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
+	// Confidence
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+	// Content
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// Type
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s Codes) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Codes) GoString() string {
+	return s.String()
+}
+
+func (s *Codes) SetBoundary(v *Boundary) *Codes {
+	s.Boundary = v
+	return s
+}
+
+func (s *Codes) SetConfidence(v float32) *Codes {
+	s.Confidence = &v
+	return s
+}
+
+func (s *Codes) SetContent(v string) *Codes {
+	s.Content = &v
+	return s
+}
+
+func (s *Codes) SetType(v string) *Codes {
+	s.Type = &v
 	return s
 }
 
@@ -1193,7 +1232,7 @@ type File struct {
 	// Size
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
 	// StartTime
-	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// StreamCount
 	StreamCount *int64 `json:"StreamCount,omitempty" xml:"StreamCount,omitempty"`
 	// Subtitles
@@ -1210,8 +1249,6 @@ type File struct {
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 	// VideoHeight
 	VideoHeight *int64 `json:"VideoHeight,omitempty" xml:"VideoHeight,omitempty"`
-	// VideoStartTime
-	VideoStartTime *float32 `json:"VideoStartTime,omitempty" xml:"VideoStartTime,omitempty"`
 	// VideoStreams
 	VideoStreams []*VideoStream `json:"VideoStreams,omitempty" xml:"VideoStreams,omitempty" type:"Repeated"`
 	// VideoWidth
@@ -1566,7 +1603,7 @@ func (s *File) SetSize(v int64) *File {
 	return s
 }
 
-func (s *File) SetStartTime(v string) *File {
+func (s *File) SetStartTime(v float64) *File {
 	s.StartTime = &v
 	return s
 }
@@ -1608,11 +1645,6 @@ func (s *File) SetUpdateTime(v string) *File {
 
 func (s *File) SetVideoHeight(v int64) *File {
 	s.VideoHeight = &v
-	return s
-}
-
-func (s *File) SetVideoStartTime(v float32) *File {
-	s.VideoStartTime = &v
 	return s
 }
 
@@ -2092,6 +2124,31 @@ func (s *Project) SetUpdateTime(v string) *Project {
 	return s
 }
 
+type RegionType struct {
+	// LocalName
+	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
+	// RegionId
+	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+}
+
+func (s RegionType) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RegionType) GoString() string {
+	return s.String()
+}
+
+func (s *RegionType) SetLocalName(v string) *RegionType {
+	s.LocalName = &v
+	return s
+}
+
+func (s *RegionType) SetRegionId(v string) *RegionType {
+	s.RegionId = &v
+	return s
+}
+
 type Row struct {
 	// CustomLabels
 	CustomLabels []*KeyValuePair `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty" type:"Repeated"`
@@ -2170,8 +2227,6 @@ type Story struct {
 	FigureClusterIds []*string `json:"FigureClusterIds,omitempty" xml:"FigureClusterIds,omitempty" type:"Repeated"`
 	// Files
 	Files []*File `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
-	// MIILCustomFields
-	MIILCustomFields []map[string]interface{} `json:"MIILCustomFields,omitempty" xml:"MIILCustomFields,omitempty" type:"Repeated"`
 	// ObjectId
 	ObjectId *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
 	// ObjectType
@@ -2234,11 +2289,6 @@ func (s *Story) SetFigureClusterIds(v []*string) *Story {
 
 func (s *Story) SetFiles(v []*File) *Story {
 	s.Files = v
-	return s
-}
-
-func (s *Story) SetMIILCustomFields(v []map[string]interface{}) *Story {
-	s.MIILCustomFields = v
 	return s
 }
 
@@ -2306,7 +2356,7 @@ type SubtitleStream struct {
 	// Content
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// Duration
-	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// Height
 	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
 	// Index
@@ -2314,7 +2364,7 @@ type SubtitleStream struct {
 	// Language
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
 	// StartTime
-	StartTime *float32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// Width
 	Width *int64 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
@@ -2357,7 +2407,7 @@ func (s *SubtitleStream) SetContent(v string) *SubtitleStream {
 	return s
 }
 
-func (s *SubtitleStream) SetDuration(v float32) *SubtitleStream {
+func (s *SubtitleStream) SetDuration(v float64) *SubtitleStream {
 	s.Duration = &v
 	return s
 }
@@ -2377,7 +2427,7 @@ func (s *SubtitleStream) SetLanguage(v string) *SubtitleStream {
 	return s
 }
 
-func (s *SubtitleStream) SetStartTime(v float32) *SubtitleStream {
+func (s *SubtitleStream) SetStartTime(v float64) *SubtitleStream {
 	s.StartTime = &v
 	return s
 }
@@ -2553,7 +2603,7 @@ type VideoStream struct {
 	// DisplayAspectRatio
 	DisplayAspectRatio *string `json:"DisplayAspectRatio,omitempty" xml:"DisplayAspectRatio,omitempty"`
 	// Duration
-	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Duration *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	// FrameCount
 	FrameCount *int64 `json:"FrameCount,omitempty" xml:"FrameCount,omitempty"`
 	// FrameRate
@@ -2577,7 +2627,7 @@ type VideoStream struct {
 	// SampleAspectRatio
 	SampleAspectRatio *string `json:"SampleAspectRatio,omitempty" xml:"SampleAspectRatio,omitempty"`
 	// StartTime
-	StartTime *float32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// TimeBase
 	TimeBase *string `json:"TimeBase,omitempty" xml:"TimeBase,omitempty"`
 	// Width
@@ -2657,7 +2707,7 @@ func (s *VideoStream) SetDisplayAspectRatio(v string) *VideoStream {
 	return s
 }
 
-func (s *VideoStream) SetDuration(v float32) *VideoStream {
+func (s *VideoStream) SetDuration(v float64) *VideoStream {
 	s.Duration = &v
 	return s
 }
@@ -2717,7 +2767,7 @@ func (s *VideoStream) SetSampleAspectRatio(v string) *VideoStream {
 	return s
 }
 
-func (s *VideoStream) SetStartTime(v float32) *VideoStream {
+func (s *VideoStream) SetStartTime(v float64) *VideoStream {
 	s.StartTime = &v
 	return s
 }
@@ -2874,6 +2924,177 @@ func (s *WebofficeWatermark) SetValue(v string) *WebofficeWatermark {
 
 func (s *WebofficeWatermark) SetVertical(v int64) *WebofficeWatermark {
 	s.Vertical = &v
+	return s
+}
+
+type AddStoryFilesRequest struct {
+	DatasetName *string                      `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Files       []*AddStoryFilesRequestFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	ObjectId    *string                      `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// A short description of struct
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s AddStoryFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddStoryFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddStoryFilesRequest) SetDatasetName(v string) *AddStoryFilesRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *AddStoryFilesRequest) SetFiles(v []*AddStoryFilesRequestFiles) *AddStoryFilesRequest {
+	s.Files = v
+	return s
+}
+
+func (s *AddStoryFilesRequest) SetObjectId(v string) *AddStoryFilesRequest {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *AddStoryFilesRequest) SetProjectName(v string) *AddStoryFilesRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type AddStoryFilesRequestFiles struct {
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s AddStoryFilesRequestFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddStoryFilesRequestFiles) GoString() string {
+	return s.String()
+}
+
+func (s *AddStoryFilesRequestFiles) SetURI(v string) *AddStoryFilesRequestFiles {
+	s.URI = &v
+	return s
+}
+
+type AddStoryFilesShrinkRequest struct {
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
+	ObjectId    *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// A short description of struct
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s AddStoryFilesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddStoryFilesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AddStoryFilesShrinkRequest) SetDatasetName(v string) *AddStoryFilesShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *AddStoryFilesShrinkRequest) SetFilesShrink(v string) *AddStoryFilesShrinkRequest {
+	s.FilesShrink = &v
+	return s
+}
+
+func (s *AddStoryFilesShrinkRequest) SetObjectId(v string) *AddStoryFilesShrinkRequest {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *AddStoryFilesShrinkRequest) SetProjectName(v string) *AddStoryFilesShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type AddStoryFilesResponseBody struct {
+	Files []*AddStoryFilesResponseBodyFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s AddStoryFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddStoryFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AddStoryFilesResponseBody) SetFiles(v []*AddStoryFilesResponseBodyFiles) *AddStoryFilesResponseBody {
+	s.Files = v
+	return s
+}
+
+func (s *AddStoryFilesResponseBody) SetRequestId(v string) *AddStoryFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type AddStoryFilesResponseBodyFiles struct {
+	ErrorCode    *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	URI          *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s AddStoryFilesResponseBodyFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddStoryFilesResponseBodyFiles) GoString() string {
+	return s.String()
+}
+
+func (s *AddStoryFilesResponseBodyFiles) SetErrorCode(v string) *AddStoryFilesResponseBodyFiles {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *AddStoryFilesResponseBodyFiles) SetErrorMessage(v string) *AddStoryFilesResponseBodyFiles {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AddStoryFilesResponseBodyFiles) SetURI(v string) *AddStoryFilesResponseBodyFiles {
+	s.URI = &v
+	return s
+}
+
+type AddStoryFilesResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AddStoryFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AddStoryFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AddStoryFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AddStoryFilesResponse) SetHeaders(v map[string]*string) *AddStoryFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AddStoryFilesResponse) SetStatusCode(v int32) *AddStoryFilesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AddStoryFilesResponse) SetBody(v *AddStoryFilesResponseBody) *AddStoryFilesResponse {
+	s.Body = v
 	return s
 }
 
@@ -4437,8 +4658,8 @@ func (s *CreateMediaConvertTaskRequest) SetUserData(v string) *CreateMediaConver
 }
 
 type CreateMediaConvertTaskRequestSources struct {
-	Duration  *float32                                         `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	StartTime *float32                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	Duration  *float64                                         `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	StartTime *float64                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Subtitles []*CreateMediaConvertTaskRequestSourcesSubtitles `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
 	URI       *string                                          `json:"URI,omitempty" xml:"URI,omitempty"`
 }
@@ -4451,12 +4672,12 @@ func (s CreateMediaConvertTaskRequestSources) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMediaConvertTaskRequestSources) SetDuration(v float32) *CreateMediaConvertTaskRequestSources {
+func (s *CreateMediaConvertTaskRequestSources) SetDuration(v float64) *CreateMediaConvertTaskRequestSources {
 	s.Duration = &v
 	return s
 }
 
-func (s *CreateMediaConvertTaskRequestSources) SetStartTime(v float32) *CreateMediaConvertTaskRequestSources {
+func (s *CreateMediaConvertTaskRequestSources) SetStartTime(v float64) *CreateMediaConvertTaskRequestSources {
 	s.StartTime = &v
 	return s
 }
@@ -4473,7 +4694,7 @@ func (s *CreateMediaConvertTaskRequestSources) SetURI(v string) *CreateMediaConv
 
 type CreateMediaConvertTaskRequestSourcesSubtitles struct {
 	Language   *string  `json:"Language,omitempty" xml:"Language,omitempty"`
-	TimeOffset *float32 `json:"TimeOffset,omitempty" xml:"TimeOffset,omitempty"`
+	TimeOffset *float64 `json:"TimeOffset,omitempty" xml:"TimeOffset,omitempty"`
 	URI        *string  `json:"URI,omitempty" xml:"URI,omitempty"`
 }
 
@@ -4490,7 +4711,7 @@ func (s *CreateMediaConvertTaskRequestSourcesSubtitles) SetLanguage(v string) *C
 	return s
 }
 
-func (s *CreateMediaConvertTaskRequestSourcesSubtitles) SetTimeOffset(v float32) *CreateMediaConvertTaskRequestSourcesSubtitles {
+func (s *CreateMediaConvertTaskRequestSourcesSubtitles) SetTimeOffset(v float64) *CreateMediaConvertTaskRequestSourcesSubtitles {
 	s.TimeOffset = &v
 	return s
 }
@@ -4690,10 +4911,10 @@ func (s *CreateMediaConvertTaskRequestTargetsImage) SetSprites(v []*CreateMediaC
 type CreateMediaConvertTaskRequestTargetsImageSnapshots struct {
 	Format    *string  `json:"Format,omitempty" xml:"Format,omitempty"`
 	Height    *int32   `json:"Height,omitempty" xml:"Height,omitempty"`
-	Interval  *float32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Interval  *float64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	Number    *int32   `json:"Number,omitempty" xml:"Number,omitempty"`
 	ScaleType *string  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
-	StartTime *float32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	URI       *string  `json:"URI,omitempty" xml:"URI,omitempty"`
 	Width     *int32   `json:"Width,omitempty" xml:"Width,omitempty"`
 }
@@ -4716,7 +4937,7 @@ func (s *CreateMediaConvertTaskRequestTargetsImageSnapshots) SetHeight(v int32) 
 	return s
 }
 
-func (s *CreateMediaConvertTaskRequestTargetsImageSnapshots) SetInterval(v float32) *CreateMediaConvertTaskRequestTargetsImageSnapshots {
+func (s *CreateMediaConvertTaskRequestTargetsImageSnapshots) SetInterval(v float64) *CreateMediaConvertTaskRequestTargetsImageSnapshots {
 	s.Interval = &v
 	return s
 }
@@ -4731,7 +4952,7 @@ func (s *CreateMediaConvertTaskRequestTargetsImageSnapshots) SetScaleType(v stri
 	return s
 }
 
-func (s *CreateMediaConvertTaskRequestTargetsImageSnapshots) SetStartTime(v float32) *CreateMediaConvertTaskRequestTargetsImageSnapshots {
+func (s *CreateMediaConvertTaskRequestTargetsImageSnapshots) SetStartTime(v float64) *CreateMediaConvertTaskRequestTargetsImageSnapshots {
 	s.StartTime = &v
 	return s
 }
@@ -4748,14 +4969,14 @@ func (s *CreateMediaConvertTaskRequestTargetsImageSnapshots) SetWidth(v int32) *
 
 type CreateMediaConvertTaskRequestTargetsImageSprites struct {
 	Format      *string  `json:"Format,omitempty" xml:"Format,omitempty"`
-	Interval    *float32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
+	Interval    *float64 `json:"Interval,omitempty" xml:"Interval,omitempty"`
 	Margin      *int32   `json:"Margin,omitempty" xml:"Margin,omitempty"`
 	Number      *int32   `json:"Number,omitempty" xml:"Number,omitempty"`
 	Pad         *int32   `json:"Pad,omitempty" xml:"Pad,omitempty"`
 	ScaleHeight *float32 `json:"ScaleHeight,omitempty" xml:"ScaleHeight,omitempty"`
 	ScaleType   *string  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
 	ScaleWidth  *float32 `json:"ScaleWidth,omitempty" xml:"ScaleWidth,omitempty"`
-	StartTime   *float32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime   *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	TileHeight  *int32   `json:"TileHeight,omitempty" xml:"TileHeight,omitempty"`
 	TileWidth   *int32   `json:"TileWidth,omitempty" xml:"TileWidth,omitempty"`
 	URI         *string  `json:"URI,omitempty" xml:"URI,omitempty"`
@@ -4774,7 +4995,7 @@ func (s *CreateMediaConvertTaskRequestTargetsImageSprites) SetFormat(v string) *
 	return s
 }
 
-func (s *CreateMediaConvertTaskRequestTargetsImageSprites) SetInterval(v float32) *CreateMediaConvertTaskRequestTargetsImageSprites {
+func (s *CreateMediaConvertTaskRequestTargetsImageSprites) SetInterval(v float64) *CreateMediaConvertTaskRequestTargetsImageSprites {
 	s.Interval = &v
 	return s
 }
@@ -4809,7 +5030,7 @@ func (s *CreateMediaConvertTaskRequestTargetsImageSprites) SetScaleWidth(v float
 	return s
 }
 
-func (s *CreateMediaConvertTaskRequestTargetsImageSprites) SetStartTime(v float32) *CreateMediaConvertTaskRequestTargetsImageSprites {
+func (s *CreateMediaConvertTaskRequestTargetsImageSprites) SetStartTime(v float64) *CreateMediaConvertTaskRequestTargetsImageSprites {
 	s.StartTime = &v
 	return s
 }
@@ -4830,7 +5051,7 @@ func (s *CreateMediaConvertTaskRequestTargetsImageSprites) SetURI(v string) *Cre
 }
 
 type CreateMediaConvertTaskRequestTargetsSegment struct {
-	Duration    *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Duration    *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	Format      *string  `json:"Format,omitempty" xml:"Format,omitempty"`
 	StartNumber *int32   `json:"StartNumber,omitempty" xml:"StartNumber,omitempty"`
 }
@@ -4843,7 +5064,7 @@ func (s CreateMediaConvertTaskRequestTargetsSegment) GoString() string {
 	return s.String()
 }
 
-func (s *CreateMediaConvertTaskRequestTargetsSegment) SetDuration(v float32) *CreateMediaConvertTaskRequestTargetsSegment {
+func (s *CreateMediaConvertTaskRequestTargetsSegment) SetDuration(v float64) *CreateMediaConvertTaskRequestTargetsSegment {
 	s.Duration = &v
 	return s
 }
@@ -4957,12 +5178,12 @@ func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideo) SetWatermarks(v [
 }
 
 type CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos struct {
-	Durtion   *float32 `json:"Durtion,omitempty" xml:"Durtion,omitempty"`
+	Duration  *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	Dx        *float32 `json:"Dx,omitempty" xml:"Dx,omitempty"`
 	Dy        *float32 `json:"Dy,omitempty" xml:"Dy,omitempty"`
 	Height    *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
 	ReferPos  *string  `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
-	StartTime *float32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Width     *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
 }
 
@@ -4974,8 +5195,8 @@ func (s CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos) GoString() 
 	return s.String()
 }
 
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos) SetDurtion(v float32) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos {
-	s.Durtion = &v
+func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos) SetDuration(v float64) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos {
+	s.Duration = &v
 	return s
 }
 
@@ -4999,7 +5220,7 @@ func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos) SetReferPo
 	return s
 }
 
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos) SetStartTime(v float32) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos {
+func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos) SetStartTime(v float64) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoDelogos {
 	s.StartTime = &v
 	return s
 }
@@ -5013,7 +5234,7 @@ type CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks struct {
 	BorderColor *string  `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
 	BorderWidth *int32   `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
 	Content     *string  `json:"Content,omitempty" xml:"Content,omitempty"`
-	Duration    *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	Duration    *float64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	Dx          *float32 `json:"Dx,omitempty" xml:"Dx,omitempty"`
 	Dy          *float32 `json:"Dy,omitempty" xml:"Dy,omitempty"`
 	FontApha    *float32 `json:"FontApha,omitempty" xml:"FontApha,omitempty"`
@@ -5022,7 +5243,7 @@ type CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks struct {
 	FontSize    *int32   `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
 	Height      *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
 	ReferPos    *string  `json:"ReferPos,omitempty" xml:"ReferPos,omitempty"`
-	StartTime   *float32 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	StartTime   *float64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	Type        *string  `json:"Type,omitempty" xml:"Type,omitempty"`
 	URI         *string  `json:"URI,omitempty" xml:"URI,omitempty"`
 	Width       *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
@@ -5051,7 +5272,7 @@ func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetCont
 	return s
 }
 
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetDuration(v float32) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks {
+func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetDuration(v float64) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks {
 	s.Duration = &v
 	return s
 }
@@ -5096,7 +5317,7 @@ func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetRefe
 	return s
 }
 
-func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetStartTime(v float32) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks {
+func (s *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks) SetStartTime(v float64) *CreateMediaConvertTaskRequestTargetsVideoFilterVideoWatermarks {
 	s.StartTime = &v
 	return s
 }
@@ -6933,6 +7154,122 @@ func (s *DetachOSSBucketResponse) SetBody(v *DetachOSSBucketResponseBody) *Detac
 	return s
 }
 
+type DetectImageCodesRequest struct {
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// SourceURI
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+}
+
+func (s DetectImageCodesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectImageCodesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectImageCodesRequest) SetCredentialConfig(v *CredentialConfig) *DetectImageCodesRequest {
+	s.CredentialConfig = v
+	return s
+}
+
+func (s *DetectImageCodesRequest) SetProjectName(v string) *DetectImageCodesRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *DetectImageCodesRequest) SetSourceURI(v string) *DetectImageCodesRequest {
+	s.SourceURI = &v
+	return s
+}
+
+type DetectImageCodesShrinkRequest struct {
+	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// 项目名称
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	// SourceURI
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+}
+
+func (s DetectImageCodesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectImageCodesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectImageCodesShrinkRequest) SetCredentialConfigShrink(v string) *DetectImageCodesShrinkRequest {
+	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *DetectImageCodesShrinkRequest) SetProjectName(v string) *DetectImageCodesShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *DetectImageCodesShrinkRequest) SetSourceURI(v string) *DetectImageCodesShrinkRequest {
+	s.SourceURI = &v
+	return s
+}
+
+type DetectImageCodesResponseBody struct {
+	// 二维码检测结果
+	Codes []*Codes `json:"Codes,omitempty" xml:"Codes,omitempty" type:"Repeated"`
+	// 请求唯一ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DetectImageCodesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectImageCodesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetectImageCodesResponseBody) SetCodes(v []*Codes) *DetectImageCodesResponseBody {
+	s.Codes = v
+	return s
+}
+
+func (s *DetectImageCodesResponseBody) SetRequestId(v string) *DetectImageCodesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DetectImageCodesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectImageCodesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetectImageCodesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectImageCodesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetectImageCodesResponse) SetHeaders(v map[string]*string) *DetectImageCodesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetectImageCodesResponse) SetStatusCode(v int32) *DetectImageCodesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetectImageCodesResponse) SetBody(v *DetectImageCodesResponseBody) *DetectImageCodesResponse {
+	s.Body = v
+	return s
+}
+
 type DetectImageCroppingRequest struct {
 	AspectRatios     *string           `json:"AspectRatios,omitempty" xml:"AspectRatios,omitempty"`
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
@@ -8176,12 +8513,12 @@ type GetMediaMetaResponseBody struct {
 	ProduceTime    *string           `json:"ProduceTime,omitempty" xml:"ProduceTime,omitempty"`
 	ProgramCount   *int64            `json:"ProgramCount,omitempty" xml:"ProgramCount,omitempty"`
 	RequestId      *string           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Size           *int64            `json:"Size,omitempty" xml:"Size,omitempty"`
 	StartTime      *float64          `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	StreamCount    *int64            `json:"StreamCount,omitempty" xml:"StreamCount,omitempty"`
 	Subtitles      []*SubtitleStream `json:"Subtitles,omitempty" xml:"Subtitles,omitempty" type:"Repeated"`
 	Title          *string           `json:"Title,omitempty" xml:"Title,omitempty"`
 	VideoHeight    *int64            `json:"VideoHeight,omitempty" xml:"VideoHeight,omitempty"`
-	VideoStartTime *float64          `json:"VideoStartTime,omitempty" xml:"VideoStartTime,omitempty"`
 	VideoStreams   []*VideoStream    `json:"VideoStreams,omitempty" xml:"VideoStreams,omitempty" type:"Repeated"`
 	VideoWidth     *int64            `json:"VideoWidth,omitempty" xml:"VideoWidth,omitempty"`
 }
@@ -8274,6 +8611,11 @@ func (s *GetMediaMetaResponseBody) SetRequestId(v string) *GetMediaMetaResponseB
 	return s
 }
 
+func (s *GetMediaMetaResponseBody) SetSize(v int64) *GetMediaMetaResponseBody {
+	s.Size = &v
+	return s
+}
+
 func (s *GetMediaMetaResponseBody) SetStartTime(v float64) *GetMediaMetaResponseBody {
 	s.StartTime = &v
 	return s
@@ -8296,11 +8638,6 @@ func (s *GetMediaMetaResponseBody) SetTitle(v string) *GetMediaMetaResponseBody 
 
 func (s *GetMediaMetaResponseBody) SetVideoHeight(v int64) *GetMediaMetaResponseBody {
 	s.VideoHeight = &v
-	return s
-}
-
-func (s *GetMediaMetaResponseBody) SetVideoStartTime(v float64) *GetMediaMetaResponseBody {
-	s.VideoStartTime = &v
 	return s
 }
 
@@ -9475,6 +9812,76 @@ func (s *ListProjectsResponse) SetBody(v *ListProjectsResponseBody) *ListProject
 	return s
 }
 
+type ListRegionsRequest struct {
+	AcceptLanguage *string `json:"AcceptLanguage,omitempty" xml:"AcceptLanguage,omitempty"`
+}
+
+func (s ListRegionsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRegionsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListRegionsRequest) SetAcceptLanguage(v string) *ListRegionsRequest {
+	s.AcceptLanguage = &v
+	return s
+}
+
+type ListRegionsResponseBody struct {
+	Regions []*RegionType `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
+	// RequestId
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListRegionsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRegionsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListRegionsResponseBody) SetRegions(v []*RegionType) *ListRegionsResponseBody {
+	s.Regions = v
+	return s
+}
+
+func (s *ListRegionsResponseBody) SetRequestId(v string) *ListRegionsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListRegionsResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListRegionsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListRegionsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListRegionsResponse) SetHeaders(v map[string]*string) *ListRegionsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListRegionsResponse) SetStatusCode(v int32) *ListRegionsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListRegionsResponse) SetBody(v *ListRegionsResponseBody) *ListRegionsResponse {
+	s.Body = v
+	return s
+}
+
 type ListTasksRequest struct {
 	EndTimeRange *TimeRange `json:"EndTimeRange,omitempty" xml:"EndTimeRange,omitempty"`
 	// MaxResults
@@ -10344,6 +10751,142 @@ func (s *RefreshWebofficeTokenResponse) SetStatusCode(v int32) *RefreshWeboffice
 }
 
 func (s *RefreshWebofficeTokenResponse) SetBody(v *RefreshWebofficeTokenResponseBody) *RefreshWebofficeTokenResponse {
+	s.Body = v
+	return s
+}
+
+type RemoveStoryFilesRequest struct {
+	DatasetName *string                         `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	Files       []*RemoveStoryFilesRequestFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
+	ObjectId    *string                         `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// A short description of struct
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s RemoveStoryFilesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveStoryFilesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveStoryFilesRequest) SetDatasetName(v string) *RemoveStoryFilesRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *RemoveStoryFilesRequest) SetFiles(v []*RemoveStoryFilesRequestFiles) *RemoveStoryFilesRequest {
+	s.Files = v
+	return s
+}
+
+func (s *RemoveStoryFilesRequest) SetObjectId(v string) *RemoveStoryFilesRequest {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *RemoveStoryFilesRequest) SetProjectName(v string) *RemoveStoryFilesRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type RemoveStoryFilesRequestFiles struct {
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s RemoveStoryFilesRequestFiles) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveStoryFilesRequestFiles) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveStoryFilesRequestFiles) SetURI(v string) *RemoveStoryFilesRequestFiles {
+	s.URI = &v
+	return s
+}
+
+type RemoveStoryFilesShrinkRequest struct {
+	DatasetName *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	FilesShrink *string `json:"Files,omitempty" xml:"Files,omitempty"`
+	ObjectId    *string `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	// A short description of struct
+	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+}
+
+func (s RemoveStoryFilesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveStoryFilesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveStoryFilesShrinkRequest) SetDatasetName(v string) *RemoveStoryFilesShrinkRequest {
+	s.DatasetName = &v
+	return s
+}
+
+func (s *RemoveStoryFilesShrinkRequest) SetFilesShrink(v string) *RemoveStoryFilesShrinkRequest {
+	s.FilesShrink = &v
+	return s
+}
+
+func (s *RemoveStoryFilesShrinkRequest) SetObjectId(v string) *RemoveStoryFilesShrinkRequest {
+	s.ObjectId = &v
+	return s
+}
+
+func (s *RemoveStoryFilesShrinkRequest) SetProjectName(v string) *RemoveStoryFilesShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+type RemoveStoryFilesResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RemoveStoryFilesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveStoryFilesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveStoryFilesResponseBody) SetRequestId(v string) *RemoveStoryFilesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RemoveStoryFilesResponse struct {
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RemoveStoryFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RemoveStoryFilesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RemoveStoryFilesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RemoveStoryFilesResponse) SetHeaders(v map[string]*string) *RemoveStoryFilesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RemoveStoryFilesResponse) SetStatusCode(v int32) *RemoveStoryFilesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RemoveStoryFilesResponse) SetBody(v *RemoveStoryFilesResponseBody) *RemoveStoryFilesResponse {
 	s.Body = v
 	return s
 }
@@ -11472,12 +12015,13 @@ func (s *UpdateProjectResponse) SetBody(v *UpdateProjectResponseBody) *UpdatePro
 }
 
 type UpdateStoryRequest struct {
-	CustomId     *string                `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
-	CustomLabels map[string]interface{} `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
-	DatasetName  *string                `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
-	ObjectId     *string                `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
-	ProjectName  *string                `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	StoryName    *string                `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
+	Cover        *UpdateStoryRequestCover `json:"Cover,omitempty" xml:"Cover,omitempty" type:"Struct"`
+	CustomId     *string                  `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
+	CustomLabels map[string]interface{}   `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
+	DatasetName  *string                  `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
+	ObjectId     *string                  `json:"ObjectId,omitempty" xml:"ObjectId,omitempty"`
+	ProjectName  *string                  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	StoryName    *string                  `json:"StoryName,omitempty" xml:"StoryName,omitempty"`
 }
 
 func (s UpdateStoryRequest) String() string {
@@ -11486,6 +12030,11 @@ func (s UpdateStoryRequest) String() string {
 
 func (s UpdateStoryRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateStoryRequest) SetCover(v *UpdateStoryRequestCover) *UpdateStoryRequest {
+	s.Cover = v
+	return s
 }
 
 func (s *UpdateStoryRequest) SetCustomId(v string) *UpdateStoryRequest {
@@ -11518,7 +12067,25 @@ func (s *UpdateStoryRequest) SetStoryName(v string) *UpdateStoryRequest {
 	return s
 }
 
+type UpdateStoryRequestCover struct {
+	URI *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s UpdateStoryRequestCover) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStoryRequestCover) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStoryRequestCover) SetURI(v string) *UpdateStoryRequestCover {
+	s.URI = &v
+	return s
+}
+
 type UpdateStoryShrinkRequest struct {
+	CoverShrink        *string `json:"Cover,omitempty" xml:"Cover,omitempty"`
 	CustomId           *string `json:"CustomId,omitempty" xml:"CustomId,omitempty"`
 	CustomLabelsShrink *string `json:"CustomLabels,omitempty" xml:"CustomLabels,omitempty"`
 	DatasetName        *string `json:"DatasetName,omitempty" xml:"DatasetName,omitempty"`
@@ -11533,6 +12100,11 @@ func (s UpdateStoryShrinkRequest) String() string {
 
 func (s UpdateStoryShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateStoryShrinkRequest) SetCoverShrink(v string) *UpdateStoryShrinkRequest {
+	s.CoverShrink = &v
+	return s
 }
 
 func (s *UpdateStoryShrinkRequest) SetCustomId(v string) *UpdateStoryShrinkRequest {
@@ -11654,6 +12226,68 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	}
 
 	_body, _err := endpointutil.GetEndpointRules(productId, regionId, endpointRule, network, suffix)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AddStoryFilesWithOptions(tmpReq *AddStoryFilesRequest, runtime *util.RuntimeOptions) (_result *AddStoryFilesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &AddStoryFilesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Files)) {
+		request.FilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Files, tea.String("Files"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		body["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilesShrink)) {
+		body["Files"] = request.FilesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectId)) {
+		body["ObjectId"] = request.ObjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AddStoryFiles"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AddStoryFilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AddStoryFiles(request *AddStoryFilesRequest) (_result *AddStoryFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AddStoryFilesResponse{}
+	_body, _err := client.AddStoryFilesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13271,6 +13905,64 @@ func (client *Client) DetachOSSBucket(request *DetachOSSBucketRequest) (_result 
 	return _result, _err
 }
 
+func (client *Client) DetectImageCodesWithOptions(tmpReq *DetectImageCodesRequest, runtime *util.RuntimeOptions) (_result *DetectImageCodesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DetectImageCodesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
+		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
+		query["SourceURI"] = request.SourceURI
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectImageCodes"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetectImageCodesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectImageCodes(request *DetectImageCodesRequest) (_result *DetectImageCodesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectImageCodesResponse{}
+	_body, _err := client.DetectImageCodesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DetectImageCroppingWithOptions(tmpReq *DetectImageCroppingRequest, runtime *util.RuntimeOptions) (_result *DetectImageCroppingResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -14485,6 +15177,50 @@ func (client *Client) ListProjects(request *ListProjectsRequest) (_result *ListP
 	return _result, _err
 }
 
+func (client *Client) ListRegionsWithOptions(request *ListRegionsRequest, runtime *util.RuntimeOptions) (_result *ListRegionsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AcceptLanguage)) {
+		query["AcceptLanguage"] = request.AcceptLanguage
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListRegions"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListRegionsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListRegions(request *ListRegionsRequest) (_result *ListRegionsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListRegionsResponse{}
+	_body, _err := client.ListRegionsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListTasksWithOptions(tmpReq *ListTasksRequest, runtime *util.RuntimeOptions) (_result *ListTasksResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -14896,6 +15632,68 @@ func (client *Client) RefreshWebofficeToken(request *RefreshWebofficeTokenReques
 	runtime := &util.RuntimeOptions{}
 	_result = &RefreshWebofficeTokenResponse{}
 	_body, _err := client.RefreshWebofficeTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RemoveStoryFilesWithOptions(tmpReq *RemoveStoryFilesRequest, runtime *util.RuntimeOptions) (_result *RemoveStoryFilesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &RemoveStoryFilesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Files)) {
+		request.FilesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Files, tea.String("Files"), tea.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DatasetName)) {
+		body["DatasetName"] = request.DatasetName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FilesShrink)) {
+		body["Files"] = request.FilesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ObjectId)) {
+		body["ObjectId"] = request.ObjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		body["ProjectName"] = request.ProjectName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RemoveStoryFiles"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RemoveStoryFilesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RemoveStoryFiles(request *RemoveStoryFilesRequest) (_result *RemoveStoryFilesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RemoveStoryFilesResponse{}
+	_body, _err := client.RemoveStoryFilesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15448,11 +16246,19 @@ func (client *Client) UpdateStoryWithOptions(tmpReq *UpdateStoryRequest, runtime
 	}
 	request := &UpdateStoryShrinkRequest{}
 	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.Cover))) {
+		request.CoverShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.Cover), tea.String("Cover"), tea.String("json"))
+	}
+
 	if !tea.BoolValue(util.IsUnset(tmpReq.CustomLabels)) {
 		request.CustomLabelsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CustomLabels, tea.String("CustomLabels"), tea.String("json"))
 	}
 
 	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CoverShrink)) {
+		body["Cover"] = request.CoverShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.CustomId)) {
 		body["CustomId"] = request.CustomId
 	}
