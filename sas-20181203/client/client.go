@@ -2682,10 +2682,14 @@ type DescribeAlarmEventListRequest struct {
 	Lang                 *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	Levels               *string   `json:"Levels,omitempty" xml:"Levels,omitempty"`
 	OperateErrorCodeList []*string `json:"OperateErrorCodeList,omitempty" xml:"OperateErrorCodeList,omitempty" type:"Repeated"`
+	OperateTimeEnd       *string   `json:"OperateTimeEnd,omitempty" xml:"OperateTimeEnd,omitempty"`
+	OperateTimeStart     *string   `json:"OperateTimeStart,omitempty" xml:"OperateTimeStart,omitempty"`
 	PageSize             *string   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	Remark               *string   `json:"Remark,omitempty" xml:"Remark,omitempty"`
 	SourceIp             *string   `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	TacticId             *string   `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
+	TimeEnd              *string   `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
+	TimeStart            *string   `json:"TimeStart,omitempty" xml:"TimeStart,omitempty"`
 	UniqueInfo           *string   `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
 	Uuids                *string   `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
@@ -2748,6 +2752,16 @@ func (s *DescribeAlarmEventListRequest) SetOperateErrorCodeList(v []*string) *De
 	return s
 }
 
+func (s *DescribeAlarmEventListRequest) SetOperateTimeEnd(v string) *DescribeAlarmEventListRequest {
+	s.OperateTimeEnd = &v
+	return s
+}
+
+func (s *DescribeAlarmEventListRequest) SetOperateTimeStart(v string) *DescribeAlarmEventListRequest {
+	s.OperateTimeStart = &v
+	return s
+}
+
 func (s *DescribeAlarmEventListRequest) SetPageSize(v string) *DescribeAlarmEventListRequest {
 	s.PageSize = &v
 	return s
@@ -2765,6 +2779,16 @@ func (s *DescribeAlarmEventListRequest) SetSourceIp(v string) *DescribeAlarmEven
 
 func (s *DescribeAlarmEventListRequest) SetTacticId(v string) *DescribeAlarmEventListRequest {
 	s.TacticId = &v
+	return s
+}
+
+func (s *DescribeAlarmEventListRequest) SetTimeEnd(v string) *DescribeAlarmEventListRequest {
+	s.TimeEnd = &v
+	return s
+}
+
+func (s *DescribeAlarmEventListRequest) SetTimeStart(v string) *DescribeAlarmEventListRequest {
+	s.TimeStart = &v
 	return s
 }
 
@@ -19651,9 +19675,9 @@ type DescribeSuspEventsRequest struct {
 	Name                 *string   `json:"Name,omitempty" xml:"Name,omitempty"`
 	OperateErrorCodeList []*string `json:"OperateErrorCodeList,omitempty" xml:"OperateErrorCodeList,omitempty" type:"Repeated"`
 	// 处理时间结束时间
-	OperateTimeEnd *int64 `json:"OperateTimeEnd,omitempty" xml:"OperateTimeEnd,omitempty"`
+	OperateTimeEnd *string `json:"OperateTimeEnd,omitempty" xml:"OperateTimeEnd,omitempty"`
 	// 处理时间开始时间
-	OperateTimeStart *int64  `json:"OperateTimeStart,omitempty" xml:"OperateTimeStart,omitempty"`
+	OperateTimeStart *string `json:"OperateTimeStart,omitempty" xml:"OperateTimeStart,omitempty"`
 	PageSize         *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ParentEventTypes *string `json:"ParentEventTypes,omitempty" xml:"ParentEventTypes,omitempty"`
 	Remark           *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
@@ -19662,8 +19686,12 @@ type DescribeSuspEventsRequest struct {
 	Status           *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	TacticId         *string `json:"TacticId,omitempty" xml:"TacticId,omitempty"`
 	TargetType       *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	UniqueInfo       *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
-	Uuids            *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+	// 最新发生结束时间
+	TimeEnd *string `json:"TimeEnd,omitempty" xml:"TimeEnd,omitempty"`
+	// 最新发生开始时间
+	TimeStart  *string `json:"TimeStart,omitempty" xml:"TimeStart,omitempty"`
+	UniqueInfo *string `json:"UniqueInfo,omitempty" xml:"UniqueInfo,omitempty"`
+	Uuids      *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
 }
 
 func (s DescribeSuspEventsRequest) String() string {
@@ -19744,12 +19772,12 @@ func (s *DescribeSuspEventsRequest) SetOperateErrorCodeList(v []*string) *Descri
 	return s
 }
 
-func (s *DescribeSuspEventsRequest) SetOperateTimeEnd(v int64) *DescribeSuspEventsRequest {
+func (s *DescribeSuspEventsRequest) SetOperateTimeEnd(v string) *DescribeSuspEventsRequest {
 	s.OperateTimeEnd = &v
 	return s
 }
 
-func (s *DescribeSuspEventsRequest) SetOperateTimeStart(v int64) *DescribeSuspEventsRequest {
+func (s *DescribeSuspEventsRequest) SetOperateTimeStart(v string) *DescribeSuspEventsRequest {
 	s.OperateTimeStart = &v
 	return s
 }
@@ -19791,6 +19819,16 @@ func (s *DescribeSuspEventsRequest) SetTacticId(v string) *DescribeSuspEventsReq
 
 func (s *DescribeSuspEventsRequest) SetTargetType(v string) *DescribeSuspEventsRequest {
 	s.TargetType = &v
+	return s
+}
+
+func (s *DescribeSuspEventsRequest) SetTimeEnd(v string) *DescribeSuspEventsRequest {
+	s.TimeEnd = &v
+	return s
+}
+
+func (s *DescribeSuspEventsRequest) SetTimeStart(v string) *DescribeSuspEventsRequest {
+	s.TimeStart = &v
 	return s
 }
 
@@ -30670,6 +30708,14 @@ func (client *Client) DescribeAlarmEventListWithOptions(request *DescribeAlarmEv
 		query["OperateErrorCodeList"] = request.OperateErrorCodeList
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.OperateTimeEnd)) {
+		query["OperateTimeEnd"] = request.OperateTimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.OperateTimeStart)) {
+		query["OperateTimeStart"] = request.OperateTimeStart
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
 	}
@@ -30684,6 +30730,14 @@ func (client *Client) DescribeAlarmEventListWithOptions(request *DescribeAlarmEv
 
 	if !tea.BoolValue(util.IsUnset(request.TacticId)) {
 		query["TacticId"] = request.TacticId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeEnd)) {
+		query["TimeEnd"] = request.TimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeStart)) {
+		query["TimeStart"] = request.TimeStart
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UniqueInfo)) {
@@ -36257,6 +36311,14 @@ func (client *Client) DescribeSuspEventsWithOptions(request *DescribeSuspEventsR
 
 	if !tea.BoolValue(util.IsUnset(request.TargetType)) {
 		query["TargetType"] = request.TargetType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeEnd)) {
+		query["TimeEnd"] = request.TimeEnd
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TimeStart)) {
+		query["TimeStart"] = request.TimeStart
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UniqueInfo)) {
