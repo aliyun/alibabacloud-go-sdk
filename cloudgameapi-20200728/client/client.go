@@ -5726,8 +5726,9 @@ func (s *SkipTrialPolicyResponse) SetBody(v *SkipTrialPolicyResponseBody) *SkipT
 }
 
 type StartGameLiveRequest struct {
-	GameSession      *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
-	VideoPushAddress *string `json:"VideoPushAddress,omitempty" xml:"VideoPushAddress,omitempty"`
+	Extension        map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	GameSession      *string            `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
+	VideoPushAddress *string            `json:"VideoPushAddress,omitempty" xml:"VideoPushAddress,omitempty"`
 }
 
 func (s StartGameLiveRequest) String() string {
@@ -5738,12 +5739,46 @@ func (s StartGameLiveRequest) GoString() string {
 	return s.String()
 }
 
+func (s *StartGameLiveRequest) SetExtension(v map[string]*string) *StartGameLiveRequest {
+	s.Extension = v
+	return s
+}
+
 func (s *StartGameLiveRequest) SetGameSession(v string) *StartGameLiveRequest {
 	s.GameSession = &v
 	return s
 }
 
 func (s *StartGameLiveRequest) SetVideoPushAddress(v string) *StartGameLiveRequest {
+	s.VideoPushAddress = &v
+	return s
+}
+
+type StartGameLiveShrinkRequest struct {
+	ExtensionShrink  *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
+	GameSession      *string `json:"GameSession,omitempty" xml:"GameSession,omitempty"`
+	VideoPushAddress *string `json:"VideoPushAddress,omitempty" xml:"VideoPushAddress,omitempty"`
+}
+
+func (s StartGameLiveShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartGameLiveShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartGameLiveShrinkRequest) SetExtensionShrink(v string) *StartGameLiveShrinkRequest {
+	s.ExtensionShrink = &v
+	return s
+}
+
+func (s *StartGameLiveShrinkRequest) SetGameSession(v string) *StartGameLiveShrinkRequest {
+	s.GameSession = &v
+	return s
+}
+
+func (s *StartGameLiveShrinkRequest) SetVideoPushAddress(v string) *StartGameLiveShrinkRequest {
 	s.VideoPushAddress = &v
 	return s
 }
@@ -9172,12 +9207,22 @@ func (client *Client) SkipTrialPolicy(request *SkipTrialPolicyRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) StartGameLiveWithOptions(request *StartGameLiveRequest, runtime *util.RuntimeOptions) (_result *StartGameLiveResponse, _err error) {
-	_err = util.ValidateModel(request)
+func (client *Client) StartGameLiveWithOptions(tmpReq *StartGameLiveRequest, runtime *util.RuntimeOptions) (_result *StartGameLiveResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
 		return _result, _err
 	}
+	request := &StartGameLiveShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tmpReq.Extension)) {
+		request.ExtensionShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Extension, tea.String("Extension"), tea.String("json"))
+	}
+
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ExtensionShrink)) {
+		query["Extension"] = request.ExtensionShrink
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.GameSession)) {
 		query["GameSession"] = request.GameSession
 	}

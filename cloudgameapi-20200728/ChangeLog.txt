@@ -1,3 +1,6 @@
+2022-07-08 Version: v2.5.5
+- Update StartGameLive.
+
 2022-06-27 Version: v2.5.4
 - Add GetQueuingSize.
 
