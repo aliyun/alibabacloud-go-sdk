@@ -4465,81 +4465,6 @@ func (s *DescribeIstioGatewayRoutesResponse) SetBody(v *DescribeIstioGatewayRout
 	return s
 }
 
-type DescribeMeshWorkloadVersionStatusRequest struct {
-	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-}
-
-func (s DescribeMeshWorkloadVersionStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeshWorkloadVersionStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeshWorkloadVersionStatusRequest) SetNamespace(v string) *DescribeMeshWorkloadVersionStatusRequest {
-	s.Namespace = &v
-	return s
-}
-
-func (s *DescribeMeshWorkloadVersionStatusRequest) SetServiceMeshId(v string) *DescribeMeshWorkloadVersionStatusRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-type DescribeMeshWorkloadVersionStatusResponseBody struct {
-	RequestId        *string                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	WorkloadVersions map[string]*WorkloadVersionsValue `json:"WorkloadVersions,omitempty" xml:"WorkloadVersions,omitempty"`
-}
-
-func (s DescribeMeshWorkloadVersionStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeshWorkloadVersionStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeshWorkloadVersionStatusResponseBody) SetRequestId(v string) *DescribeMeshWorkloadVersionStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeMeshWorkloadVersionStatusResponseBody) SetWorkloadVersions(v map[string]*WorkloadVersionsValue) *DescribeMeshWorkloadVersionStatusResponseBody {
-	s.WorkloadVersions = v
-	return s
-}
-
-type DescribeMeshWorkloadVersionStatusResponse struct {
-	Headers    map[string]*string                             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeMeshWorkloadVersionStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeMeshWorkloadVersionStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeMeshWorkloadVersionStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeMeshWorkloadVersionStatusResponse) SetHeaders(v map[string]*string) *DescribeMeshWorkloadVersionStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeMeshWorkloadVersionStatusResponse) SetStatusCode(v int32) *DescribeMeshWorkloadVersionStatusResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeMeshWorkloadVersionStatusResponse) SetBody(v *DescribeMeshWorkloadVersionStatusResponseBody) *DescribeMeshWorkloadVersionStatusResponse {
-	s.Body = v
-	return s
-}
-
 type DescribeNamespaceScopeSidecarConfigRequest struct {
 	Namespace     *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
@@ -5090,7 +5015,6 @@ type DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus struct {
 	ApiServerEIPStatus          *string                                                                                  `json:"ApiServerEIPStatus,omitempty" xml:"ApiServerEIPStatus,omitempty"`
 	ApiServerLoadBalancerStatus *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus `json:"ApiServerLoadBalancerStatus,omitempty" xml:"ApiServerLoadBalancerStatus,omitempty" type:"Struct"`
 	AuditProjectStatus          *string                                                                                  `json:"AuditProjectStatus,omitempty" xml:"AuditProjectStatus,omitempty"`
-	ConfigSourceStatus          *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusConfigSourceStatus          `json:"ConfigSourceStatus,omitempty" xml:"ConfigSourceStatus,omitempty" type:"Struct"`
 	ControlPlaneProjectStatus   *string                                                                                  `json:"ControlPlaneProjectStatus,omitempty" xml:"ControlPlaneProjectStatus,omitempty"`
 	LogtailStatusRecord         map[string]interface{}                                                                   `json:"LogtailStatusRecord,omitempty" xml:"LogtailStatusRecord,omitempty"`
 	PilotLoadBalancerStatus     *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusPilotLoadBalancerStatus     `json:"PilotLoadBalancerStatus,omitempty" xml:"PilotLoadBalancerStatus,omitempty" type:"Struct"`
@@ -5122,11 +5046,6 @@ func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus) SetApiSer
 
 func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus) SetAuditProjectStatus(v string) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus {
 	s.AuditProjectStatus = &v
-	return s
-}
-
-func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus) SetConfigSourceStatus(v *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusConfigSourceStatus) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatus {
-	s.ConfigSourceStatus = v
 	return s
 }
 
@@ -5188,41 +5107,6 @@ func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLo
 
 func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus) SetSLBExistStatus(v string) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusApiServerLoadBalancerStatus {
 	s.SLBExistStatus = &v
-	return s
-}
-
-type DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusConfigSourceStatus struct {
-	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	Status  *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	Valid   *bool   `json:"Valid,omitempty" xml:"Valid,omitempty"`
-}
-
-func (s DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusConfigSourceStatus) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusConfigSourceStatus) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusConfigSourceStatus) SetAddress(v string) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusConfigSourceStatus {
-	s.Address = &v
-	return s
-}
-
-func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusConfigSourceStatus) SetMessage(v string) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusConfigSourceStatus {
-	s.Message = &v
-	return s
-}
-
-func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusConfigSourceStatus) SetStatus(v string) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusConfigSourceStatus {
-	s.Status = &v
-	return s
-}
-
-func (s *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusConfigSourceStatus) SetValid(v bool) *DescribeServiceMeshAdditionalStatusResponseBodyClusterStatusConfigSourceStatus {
-	s.Valid = &v
 	return s
 }
 
@@ -6001,6 +5885,7 @@ type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigur
 	IstioCRHistory                  *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationIstioCRHistory                  `json:"IstioCRHistory,omitempty" xml:"IstioCRHistory,omitempty" type:"Struct"`
 	Lifecycle                       *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationLifecycle                       `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty" type:"Struct"`
 	MultiBuffer                     *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationMultiBuffer                     `json:"MultiBuffer,omitempty" xml:"MultiBuffer,omitempty" type:"Struct"`
+	NFDConfiguration                *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationNFDConfiguration                `json:"NFDConfiguration,omitempty" xml:"NFDConfiguration,omitempty" type:"Struct"`
 	OPAScopeInjection               *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationOPAScopeInjection               `json:"OPAScopeInjection,omitempty" xml:"OPAScopeInjection,omitempty" type:"Struct"`
 	RateLimit                       *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationRateLimit                       `json:"RateLimit,omitempty" xml:"RateLimit,omitempty" type:"Struct"`
 	SidecarProxyInitResourceLimit   *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationSidecarProxyInitResourceLimit   `json:"SidecarProxyInitResourceLimit,omitempty" xml:"SidecarProxyInitResourceLimit,omitempty" type:"Struct"`
@@ -6043,6 +5928,11 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConf
 
 func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfiguration) SetMultiBuffer(v *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationMultiBuffer) *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfiguration {
 	s.MultiBuffer = v
+	return s
+}
+
+func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfiguration) SetNFDConfiguration(v *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationNFDConfiguration) *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfiguration {
+	s.NFDConfiguration = v
 	return s
 }
 
@@ -6402,6 +6292,29 @@ func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConf
 
 func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationMultiBuffer) SetPollDelay(v string) *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationMultiBuffer {
 	s.PollDelay = &v
+	return s
+}
+
+type DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationNFDConfiguration struct {
+	Enabled        *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	NFDLabelPruned *bool `json:"NFDLabelPruned,omitempty" xml:"NFDLabelPruned,omitempty"`
+}
+
+func (s DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationNFDConfiguration) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationNFDConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationNFDConfiguration) SetEnabled(v bool) *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationNFDConfiguration {
+	s.Enabled = &v
+	return s
+}
+
+func (s *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationNFDConfiguration) SetNFDLabelPruned(v bool) *DescribeServiceMeshDetailResponseBodyServiceMeshSpecMeshConfigExtraConfigurationNFDConfiguration {
+	s.NFDLabelPruned = &v
 	return s
 }
 
@@ -7312,87 +7225,6 @@ func (s *DescribeServiceMeshProxyStatusResponse) SetStatusCode(v int32) *Describ
 }
 
 func (s *DescribeServiceMeshProxyStatusResponse) SetBody(v *DescribeServiceMeshProxyStatusResponseBody) *DescribeServiceMeshProxyStatusResponse {
-	s.Body = v
-	return s
-}
-
-type DescribeServiceMeshServiceLabelRequest struct {
-	ServiceMeshId     *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	ServiceNames      *string `json:"ServiceNames,omitempty" xml:"ServiceNames,omitempty"`
-	ServiceNamespaces *string `json:"ServiceNamespaces,omitempty" xml:"ServiceNamespaces,omitempty"`
-}
-
-func (s DescribeServiceMeshServiceLabelRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceMeshServiceLabelRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceMeshServiceLabelRequest) SetServiceMeshId(v string) *DescribeServiceMeshServiceLabelRequest {
-	s.ServiceMeshId = &v
-	return s
-}
-
-func (s *DescribeServiceMeshServiceLabelRequest) SetServiceNames(v string) *DescribeServiceMeshServiceLabelRequest {
-	s.ServiceNames = &v
-	return s
-}
-
-func (s *DescribeServiceMeshServiceLabelRequest) SetServiceNamespaces(v string) *DescribeServiceMeshServiceLabelRequest {
-	s.ServiceNamespaces = &v
-	return s
-}
-
-type DescribeServiceMeshServiceLabelResponseBody struct {
-	RequestId     *string                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ServiceLabels map[string]*ServiceLabelsValue `json:"ServiceLabels,omitempty" xml:"ServiceLabels,omitempty"`
-}
-
-func (s DescribeServiceMeshServiceLabelResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceMeshServiceLabelResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceMeshServiceLabelResponseBody) SetRequestId(v string) *DescribeServiceMeshServiceLabelResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DescribeServiceMeshServiceLabelResponseBody) SetServiceLabels(v map[string]*ServiceLabelsValue) *DescribeServiceMeshServiceLabelResponseBody {
-	s.ServiceLabels = v
-	return s
-}
-
-type DescribeServiceMeshServiceLabelResponse struct {
-	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DescribeServiceMeshServiceLabelResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeServiceMeshServiceLabelResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeServiceMeshServiceLabelResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeServiceMeshServiceLabelResponse) SetHeaders(v map[string]*string) *DescribeServiceMeshServiceLabelResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DescribeServiceMeshServiceLabelResponse) SetStatusCode(v int32) *DescribeServiceMeshServiceLabelResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DescribeServiceMeshServiceLabelResponse) SetBody(v *DescribeServiceMeshServiceLabelResponseBody) *DescribeServiceMeshServiceLabelResponse {
 	s.Body = v
 	return s
 }
@@ -10019,6 +9851,75 @@ func (s *UpdateASMGatewayImportedServicesResponse) SetBody(v *UpdateASMGatewayIm
 	return s
 }
 
+type UpdateASMNamespaceFromGuestClusterRequest struct {
+	K8sClusterId  *string `json:"K8sClusterId,omitempty" xml:"K8sClusterId,omitempty"`
+	ServiceMeshId *string `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+}
+
+func (s UpdateASMNamespaceFromGuestClusterRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateASMNamespaceFromGuestClusterRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateASMNamespaceFromGuestClusterRequest) SetK8sClusterId(v string) *UpdateASMNamespaceFromGuestClusterRequest {
+	s.K8sClusterId = &v
+	return s
+}
+
+func (s *UpdateASMNamespaceFromGuestClusterRequest) SetServiceMeshId(v string) *UpdateASMNamespaceFromGuestClusterRequest {
+	s.ServiceMeshId = &v
+	return s
+}
+
+type UpdateASMNamespaceFromGuestClusterResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateASMNamespaceFromGuestClusterResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateASMNamespaceFromGuestClusterResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateASMNamespaceFromGuestClusterResponseBody) SetRequestId(v string) *UpdateASMNamespaceFromGuestClusterResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateASMNamespaceFromGuestClusterResponse struct {
+	Headers    map[string]*string                              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateASMNamespaceFromGuestClusterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateASMNamespaceFromGuestClusterResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateASMNamespaceFromGuestClusterResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateASMNamespaceFromGuestClusterResponse) SetHeaders(v map[string]*string) *UpdateASMNamespaceFromGuestClusterResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateASMNamespaceFromGuestClusterResponse) SetStatusCode(v int32) *UpdateASMNamespaceFromGuestClusterResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateASMNamespaceFromGuestClusterResponse) SetBody(v *UpdateASMNamespaceFromGuestClusterResponseBody) *UpdateASMNamespaceFromGuestClusterResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateIstioGatewayRoutesRequest struct {
 	Description      *string                                      `json:"Description,omitempty" xml:"Description,omitempty"`
 	GatewayRoute     *UpdateIstioGatewayRoutesRequestGatewayRoute `json:"GatewayRoute,omitempty" xml:"GatewayRoute,omitempty" type:"Struct"`
@@ -10878,83 +10779,89 @@ func (s *UpdateMeshCRAggregationResponse) SetBody(v *UpdateMeshCRAggregationResp
 }
 
 type UpdateMeshFeatureRequest struct {
-	AccessLogEnabled               *bool    `json:"AccessLogEnabled,omitempty" xml:"AccessLogEnabled,omitempty"`
-	AccessLogFile                  *string  `json:"AccessLogFile,omitempty" xml:"AccessLogFile,omitempty"`
-	AccessLogFormat                *string  `json:"AccessLogFormat,omitempty" xml:"AccessLogFormat,omitempty"`
-	AccessLogProject               *string  `json:"AccessLogProject,omitempty" xml:"AccessLogProject,omitempty"`
-	AccessLogServiceEnabled        *bool    `json:"AccessLogServiceEnabled,omitempty" xml:"AccessLogServiceEnabled,omitempty"`
-	AccessLogServiceHost           *string  `json:"AccessLogServiceHost,omitempty" xml:"AccessLogServiceHost,omitempty"`
-	AccessLogServicePort           *int32   `json:"AccessLogServicePort,omitempty" xml:"AccessLogServicePort,omitempty"`
-	AuditProject                   *string  `json:"AuditProject,omitempty" xml:"AuditProject,omitempty"`
-	AutoInjectionPolicyEnabled     *bool    `json:"AutoInjectionPolicyEnabled,omitempty" xml:"AutoInjectionPolicyEnabled,omitempty"`
-	CRAggregationEnabled           *bool    `json:"CRAggregationEnabled,omitempty" xml:"CRAggregationEnabled,omitempty"`
-	ClusterSpec                    *string  `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
-	CniEnabled                     *bool    `json:"CniEnabled,omitempty" xml:"CniEnabled,omitempty"`
-	CniExcludeNamespaces           *string  `json:"CniExcludeNamespaces,omitempty" xml:"CniExcludeNamespaces,omitempty"`
-	ConfigSourceEnabled            *bool    `json:"ConfigSourceEnabled,omitempty" xml:"ConfigSourceEnabled,omitempty"`
-	ConfigSourceNacosID            *string  `json:"ConfigSourceNacosID,omitempty" xml:"ConfigSourceNacosID,omitempty"`
-	CustomizedPrometheus           *bool    `json:"CustomizedPrometheus,omitempty" xml:"CustomizedPrometheus,omitempty"`
-	CustomizedZipkin               *bool    `json:"CustomizedZipkin,omitempty" xml:"CustomizedZipkin,omitempty"`
-	DNSProxyingEnabled             *bool    `json:"DNSProxyingEnabled,omitempty" xml:"DNSProxyingEnabled,omitempty"`
-	DiscoverySelectors             *string  `json:"DiscoverySelectors,omitempty" xml:"DiscoverySelectors,omitempty"`
-	DubboFilterEnabled             *bool    `json:"DubboFilterEnabled,omitempty" xml:"DubboFilterEnabled,omitempty"`
-	EnableAudit                    *bool    `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
-	EnableCRHistory                *bool    `json:"EnableCRHistory,omitempty" xml:"EnableCRHistory,omitempty"`
-	EnableNamespacesByDefault      *bool    `json:"EnableNamespacesByDefault,omitempty" xml:"EnableNamespacesByDefault,omitempty"`
-	EnableSDSServer                *bool    `json:"EnableSDSServer,omitempty" xml:"EnableSDSServer,omitempty"`
-	ExcludeIPRanges                *string  `json:"ExcludeIPRanges,omitempty" xml:"ExcludeIPRanges,omitempty"`
-	ExcludeInboundPorts            *string  `json:"ExcludeInboundPorts,omitempty" xml:"ExcludeInboundPorts,omitempty"`
-	ExcludeOutboundPorts           *string  `json:"ExcludeOutboundPorts,omitempty" xml:"ExcludeOutboundPorts,omitempty"`
-	FilterGatewayClusterConfig     *bool    `json:"FilterGatewayClusterConfig,omitempty" xml:"FilterGatewayClusterConfig,omitempty"`
-	GatewayAPIEnabled              *bool    `json:"GatewayAPIEnabled,omitempty" xml:"GatewayAPIEnabled,omitempty"`
-	GlobalRateLimitEnabled         *bool    `json:"GlobalRateLimitEnabled,omitempty" xml:"GlobalRateLimitEnabled,omitempty"`
-	Http10Enabled                  *bool    `json:"Http10Enabled,omitempty" xml:"Http10Enabled,omitempty"`
-	IncludeIPRanges                *string  `json:"IncludeIPRanges,omitempty" xml:"IncludeIPRanges,omitempty"`
-	IncludeInboundPorts            *string  `json:"IncludeInboundPorts,omitempty" xml:"IncludeInboundPorts,omitempty"`
-	IntegrateKiali                 *bool    `json:"IntegrateKiali,omitempty" xml:"IntegrateKiali,omitempty"`
-	KialiEnabled                   *bool    `json:"KialiEnabled,omitempty" xml:"KialiEnabled,omitempty"`
-	Lifecycle                      *string  `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
-	LocalityLBConf                 *string  `json:"LocalityLBConf,omitempty" xml:"LocalityLBConf,omitempty"`
-	LocalityLoadBalancing          *bool    `json:"LocalityLoadBalancing,omitempty" xml:"LocalityLoadBalancing,omitempty"`
-	MSEEnabled                     *bool    `json:"MSEEnabled,omitempty" xml:"MSEEnabled,omitempty"`
-	MultiBufferEnabled             *bool    `json:"MultiBufferEnabled,omitempty" xml:"MultiBufferEnabled,omitempty"`
-	MultiBufferPollDelay           *string  `json:"MultiBufferPollDelay,omitempty" xml:"MultiBufferPollDelay,omitempty"`
-	MysqlFilterEnabled             *bool    `json:"MysqlFilterEnabled,omitempty" xml:"MysqlFilterEnabled,omitempty"`
-	OPAInjectorCPULimit            *string  `json:"OPAInjectorCPULimit,omitempty" xml:"OPAInjectorCPULimit,omitempty"`
-	OPAInjectorCPURequirement      *string  `json:"OPAInjectorCPURequirement,omitempty" xml:"OPAInjectorCPURequirement,omitempty"`
-	OPAInjectorMemoryLimit         *string  `json:"OPAInjectorMemoryLimit,omitempty" xml:"OPAInjectorMemoryLimit,omitempty"`
-	OPAInjectorMemoryRequirement   *string  `json:"OPAInjectorMemoryRequirement,omitempty" xml:"OPAInjectorMemoryRequirement,omitempty"`
-	OPALimitCPU                    *string  `json:"OPALimitCPU,omitempty" xml:"OPALimitCPU,omitempty"`
-	OPALimitMemory                 *string  `json:"OPALimitMemory,omitempty" xml:"OPALimitMemory,omitempty"`
-	OPALogLevel                    *string  `json:"OPALogLevel,omitempty" xml:"OPALogLevel,omitempty"`
-	OPARequestCPU                  *string  `json:"OPARequestCPU,omitempty" xml:"OPARequestCPU,omitempty"`
-	OPARequestMemory               *string  `json:"OPARequestMemory,omitempty" xml:"OPARequestMemory,omitempty"`
-	OPAScopeInjected               *bool    `json:"OPAScopeInjected,omitempty" xml:"OPAScopeInjected,omitempty"`
-	OpaEnabled                     *bool    `json:"OpaEnabled,omitempty" xml:"OpaEnabled,omitempty"`
-	OpenAgentPolicy                *bool    `json:"OpenAgentPolicy,omitempty" xml:"OpenAgentPolicy,omitempty"`
-	OutboundTrafficPolicy          *string  `json:"OutboundTrafficPolicy,omitempty" xml:"OutboundTrafficPolicy,omitempty"`
-	PrometheusUrl                  *string  `json:"PrometheusUrl,omitempty" xml:"PrometheusUrl,omitempty"`
-	ProxyInitCPUResourceLimit      *string  `json:"ProxyInitCPUResourceLimit,omitempty" xml:"ProxyInitCPUResourceLimit,omitempty"`
-	ProxyInitCPUResourceRequest    *string  `json:"ProxyInitCPUResourceRequest,omitempty" xml:"ProxyInitCPUResourceRequest,omitempty"`
-	ProxyInitMemoryResourceLimit   *string  `json:"ProxyInitMemoryResourceLimit,omitempty" xml:"ProxyInitMemoryResourceLimit,omitempty"`
-	ProxyInitMemoryResourceRequest *string  `json:"ProxyInitMemoryResourceRequest,omitempty" xml:"ProxyInitMemoryResourceRequest,omitempty"`
-	ProxyLimitCPU                  *string  `json:"ProxyLimitCPU,omitempty" xml:"ProxyLimitCPU,omitempty"`
-	ProxyLimitMemory               *string  `json:"ProxyLimitMemory,omitempty" xml:"ProxyLimitMemory,omitempty"`
-	ProxyRequestCPU                *string  `json:"ProxyRequestCPU,omitempty" xml:"ProxyRequestCPU,omitempty"`
-	ProxyRequestMemory             *string  `json:"ProxyRequestMemory,omitempty" xml:"ProxyRequestMemory,omitempty"`
-	RedisFilterEnabled             *bool    `json:"RedisFilterEnabled,omitempty" xml:"RedisFilterEnabled,omitempty"`
-	ServiceMeshId                  *string  `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
-	SidecarInjectorLimitCPU        *string  `json:"SidecarInjectorLimitCPU,omitempty" xml:"SidecarInjectorLimitCPU,omitempty"`
-	SidecarInjectorLimitMemory     *string  `json:"SidecarInjectorLimitMemory,omitempty" xml:"SidecarInjectorLimitMemory,omitempty"`
-	SidecarInjectorRequestCPU      *string  `json:"SidecarInjectorRequestCPU,omitempty" xml:"SidecarInjectorRequestCPU,omitempty"`
-	SidecarInjectorRequestMemory   *string  `json:"SidecarInjectorRequestMemory,omitempty" xml:"SidecarInjectorRequestMemory,omitempty"`
-	SidecarInjectorWebhookAsYaml   *string  `json:"SidecarInjectorWebhookAsYaml,omitempty" xml:"SidecarInjectorWebhookAsYaml,omitempty"`
-	Telemetry                      *bool    `json:"Telemetry,omitempty" xml:"Telemetry,omitempty"`
-	TerminationDrainDuration       *string  `json:"TerminationDrainDuration,omitempty" xml:"TerminationDrainDuration,omitempty"`
-	ThriftFilterEnabled            *bool    `json:"ThriftFilterEnabled,omitempty" xml:"ThriftFilterEnabled,omitempty"`
-	TraceSampling                  *float32 `json:"TraceSampling,omitempty" xml:"TraceSampling,omitempty"`
-	Tracing                        *bool    `json:"Tracing,omitempty" xml:"Tracing,omitempty"`
-	WebAssemblyFilterEnabled       *bool    `json:"WebAssemblyFilterEnabled,omitempty" xml:"WebAssemblyFilterEnabled,omitempty"`
+	AccessLogEnabled                *bool    `json:"AccessLogEnabled,omitempty" xml:"AccessLogEnabled,omitempty"`
+	AccessLogFile                   *string  `json:"AccessLogFile,omitempty" xml:"AccessLogFile,omitempty"`
+	AccessLogFormat                 *string  `json:"AccessLogFormat,omitempty" xml:"AccessLogFormat,omitempty"`
+	AccessLogProject                *string  `json:"AccessLogProject,omitempty" xml:"AccessLogProject,omitempty"`
+	AccessLogServiceEnabled         *bool    `json:"AccessLogServiceEnabled,omitempty" xml:"AccessLogServiceEnabled,omitempty"`
+	AccessLogServiceHost            *string  `json:"AccessLogServiceHost,omitempty" xml:"AccessLogServiceHost,omitempty"`
+	AccessLogServicePort            *int32   `json:"AccessLogServicePort,omitempty" xml:"AccessLogServicePort,omitempty"`
+	AuditProject                    *string  `json:"AuditProject,omitempty" xml:"AuditProject,omitempty"`
+	AutoInjectionPolicyEnabled      *bool    `json:"AutoInjectionPolicyEnabled,omitempty" xml:"AutoInjectionPolicyEnabled,omitempty"`
+	CRAggregationEnabled            *bool    `json:"CRAggregationEnabled,omitempty" xml:"CRAggregationEnabled,omitempty"`
+	ClusterSpec                     *string  `json:"ClusterSpec,omitempty" xml:"ClusterSpec,omitempty"`
+	CniEnabled                      *bool    `json:"CniEnabled,omitempty" xml:"CniEnabled,omitempty"`
+	CniExcludeNamespaces            *string  `json:"CniExcludeNamespaces,omitempty" xml:"CniExcludeNamespaces,omitempty"`
+	ConfigSourceEnabled             *bool    `json:"ConfigSourceEnabled,omitempty" xml:"ConfigSourceEnabled,omitempty"`
+	ConfigSourceNacosID             *string  `json:"ConfigSourceNacosID,omitempty" xml:"ConfigSourceNacosID,omitempty"`
+	CustomizedPrometheus            *bool    `json:"CustomizedPrometheus,omitempty" xml:"CustomizedPrometheus,omitempty"`
+	CustomizedZipkin                *bool    `json:"CustomizedZipkin,omitempty" xml:"CustomizedZipkin,omitempty"`
+	DNSProxyingEnabled              *bool    `json:"DNSProxyingEnabled,omitempty" xml:"DNSProxyingEnabled,omitempty"`
+	DiscoverySelectors              *string  `json:"DiscoverySelectors,omitempty" xml:"DiscoverySelectors,omitempty"`
+	DubboFilterEnabled              *bool    `json:"DubboFilterEnabled,omitempty" xml:"DubboFilterEnabled,omitempty"`
+	EnableAudit                     *bool    `json:"EnableAudit,omitempty" xml:"EnableAudit,omitempty"`
+	EnableCRHistory                 *bool    `json:"EnableCRHistory,omitempty" xml:"EnableCRHistory,omitempty"`
+	EnableNamespacesByDefault       *bool    `json:"EnableNamespacesByDefault,omitempty" xml:"EnableNamespacesByDefault,omitempty"`
+	EnableSDSServer                 *bool    `json:"EnableSDSServer,omitempty" xml:"EnableSDSServer,omitempty"`
+	ExcludeIPRanges                 *string  `json:"ExcludeIPRanges,omitempty" xml:"ExcludeIPRanges,omitempty"`
+	ExcludeInboundPorts             *string  `json:"ExcludeInboundPorts,omitempty" xml:"ExcludeInboundPorts,omitempty"`
+	ExcludeOutboundPorts            *string  `json:"ExcludeOutboundPorts,omitempty" xml:"ExcludeOutboundPorts,omitempty"`
+	FilterGatewayClusterConfig      *bool    `json:"FilterGatewayClusterConfig,omitempty" xml:"FilterGatewayClusterConfig,omitempty"`
+	GatewayAPIEnabled               *bool    `json:"GatewayAPIEnabled,omitempty" xml:"GatewayAPIEnabled,omitempty"`
+	GlobalRateLimitEnabled          *bool    `json:"GlobalRateLimitEnabled,omitempty" xml:"GlobalRateLimitEnabled,omitempty"`
+	Http10Enabled                   *bool    `json:"Http10Enabled,omitempty" xml:"Http10Enabled,omitempty"`
+	IncludeIPRanges                 *string  `json:"IncludeIPRanges,omitempty" xml:"IncludeIPRanges,omitempty"`
+	IncludeInboundPorts             *string  `json:"IncludeInboundPorts,omitempty" xml:"IncludeInboundPorts,omitempty"`
+	IntegrateKiali                  *bool    `json:"IntegrateKiali,omitempty" xml:"IntegrateKiali,omitempty"`
+	KialiEnabled                    *bool    `json:"KialiEnabled,omitempty" xml:"KialiEnabled,omitempty"`
+	Lifecycle                       *string  `json:"Lifecycle,omitempty" xml:"Lifecycle,omitempty"`
+	LocalityLBConf                  *string  `json:"LocalityLBConf,omitempty" xml:"LocalityLBConf,omitempty"`
+	LocalityLoadBalancing           *bool    `json:"LocalityLoadBalancing,omitempty" xml:"LocalityLoadBalancing,omitempty"`
+	MSEEnabled                      *bool    `json:"MSEEnabled,omitempty" xml:"MSEEnabled,omitempty"`
+	MultiBufferEnabled              *bool    `json:"MultiBufferEnabled,omitempty" xml:"MultiBufferEnabled,omitempty"`
+	MultiBufferPollDelay            *string  `json:"MultiBufferPollDelay,omitempty" xml:"MultiBufferPollDelay,omitempty"`
+	MysqlFilterEnabled              *bool    `json:"MysqlFilterEnabled,omitempty" xml:"MysqlFilterEnabled,omitempty"`
+	NFDEnabled                      *bool    `json:"NFDEnabled,omitempty" xml:"NFDEnabled,omitempty"`
+	NFDLabelPruned                  *bool    `json:"NFDLabelPruned,omitempty" xml:"NFDLabelPruned,omitempty"`
+	OPAInjectorCPULimit             *string  `json:"OPAInjectorCPULimit,omitempty" xml:"OPAInjectorCPULimit,omitempty"`
+	OPAInjectorCPURequirement       *string  `json:"OPAInjectorCPURequirement,omitempty" xml:"OPAInjectorCPURequirement,omitempty"`
+	OPAInjectorMemoryLimit          *string  `json:"OPAInjectorMemoryLimit,omitempty" xml:"OPAInjectorMemoryLimit,omitempty"`
+	OPAInjectorMemoryRequirement    *string  `json:"OPAInjectorMemoryRequirement,omitempty" xml:"OPAInjectorMemoryRequirement,omitempty"`
+	OPALimitCPU                     *string  `json:"OPALimitCPU,omitempty" xml:"OPALimitCPU,omitempty"`
+	OPALimitMemory                  *string  `json:"OPALimitMemory,omitempty" xml:"OPALimitMemory,omitempty"`
+	OPALogLevel                     *string  `json:"OPALogLevel,omitempty" xml:"OPALogLevel,omitempty"`
+	OPARequestCPU                   *string  `json:"OPARequestCPU,omitempty" xml:"OPARequestCPU,omitempty"`
+	OPARequestMemory                *string  `json:"OPARequestMemory,omitempty" xml:"OPARequestMemory,omitempty"`
+	OPAScopeInjected                *bool    `json:"OPAScopeInjected,omitempty" xml:"OPAScopeInjected,omitempty"`
+	OpaEnabled                      *bool    `json:"OpaEnabled,omitempty" xml:"OpaEnabled,omitempty"`
+	OpenAgentPolicy                 *bool    `json:"OpenAgentPolicy,omitempty" xml:"OpenAgentPolicy,omitempty"`
+	OutboundTrafficPolicy           *string  `json:"OutboundTrafficPolicy,omitempty" xml:"OutboundTrafficPolicy,omitempty"`
+	PrometheusUrl                   *string  `json:"PrometheusUrl,omitempty" xml:"PrometheusUrl,omitempty"`
+	ProxyInitCPUResourceLimit       *string  `json:"ProxyInitCPUResourceLimit,omitempty" xml:"ProxyInitCPUResourceLimit,omitempty"`
+	ProxyInitCPUResourceRequest     *string  `json:"ProxyInitCPUResourceRequest,omitempty" xml:"ProxyInitCPUResourceRequest,omitempty"`
+	ProxyInitMemoryResourceLimit    *string  `json:"ProxyInitMemoryResourceLimit,omitempty" xml:"ProxyInitMemoryResourceLimit,omitempty"`
+	ProxyInitMemoryResourceRequest  *string  `json:"ProxyInitMemoryResourceRequest,omitempty" xml:"ProxyInitMemoryResourceRequest,omitempty"`
+	ProxyLimitCPU                   *string  `json:"ProxyLimitCPU,omitempty" xml:"ProxyLimitCPU,omitempty"`
+	ProxyLimitMemory                *string  `json:"ProxyLimitMemory,omitempty" xml:"ProxyLimitMemory,omitempty"`
+	ProxyRequestCPU                 *string  `json:"ProxyRequestCPU,omitempty" xml:"ProxyRequestCPU,omitempty"`
+	ProxyRequestMemory              *string  `json:"ProxyRequestMemory,omitempty" xml:"ProxyRequestMemory,omitempty"`
+	RedisFilterEnabled              *bool    `json:"RedisFilterEnabled,omitempty" xml:"RedisFilterEnabled,omitempty"`
+	ServiceMeshId                   *string  `json:"ServiceMeshId,omitempty" xml:"ServiceMeshId,omitempty"`
+	SidecarInjectorLimitCPU         *string  `json:"SidecarInjectorLimitCPU,omitempty" xml:"SidecarInjectorLimitCPU,omitempty"`
+	SidecarInjectorLimitMemory      *string  `json:"SidecarInjectorLimitMemory,omitempty" xml:"SidecarInjectorLimitMemory,omitempty"`
+	SidecarInjectorRequestCPU       *string  `json:"SidecarInjectorRequestCPU,omitempty" xml:"SidecarInjectorRequestCPU,omitempty"`
+	SidecarInjectorRequestMemory    *string  `json:"SidecarInjectorRequestMemory,omitempty" xml:"SidecarInjectorRequestMemory,omitempty"`
+	SidecarInjectorWebhookAsYaml    *string  `json:"SidecarInjectorWebhookAsYaml,omitempty" xml:"SidecarInjectorWebhookAsYaml,omitempty"`
+	Telemetry                       *bool    `json:"Telemetry,omitempty" xml:"Telemetry,omitempty"`
+	TerminationDrainDuration        *string  `json:"TerminationDrainDuration,omitempty" xml:"TerminationDrainDuration,omitempty"`
+	ThriftFilterEnabled             *bool    `json:"ThriftFilterEnabled,omitempty" xml:"ThriftFilterEnabled,omitempty"`
+	TraceSampling                   *float32 `json:"TraceSampling,omitempty" xml:"TraceSampling,omitempty"`
+	Tracing                         *bool    `json:"Tracing,omitempty" xml:"Tracing,omitempty"`
+	TracingOnExtZipkinLimitCPU      *string  `json:"TracingOnExtZipkinLimitCPU,omitempty" xml:"TracingOnExtZipkinLimitCPU,omitempty"`
+	TracingOnExtZipkinLimitMemory   *string  `json:"TracingOnExtZipkinLimitMemory,omitempty" xml:"TracingOnExtZipkinLimitMemory,omitempty"`
+	TracingOnExtZipkinRequestCPU    *string  `json:"TracingOnExtZipkinRequestCPU,omitempty" xml:"TracingOnExtZipkinRequestCPU,omitempty"`
+	TracingOnExtZipkinRequestMemory *string  `json:"TracingOnExtZipkinRequestMemory,omitempty" xml:"TracingOnExtZipkinRequestMemory,omitempty"`
+	WebAssemblyFilterEnabled        *bool    `json:"WebAssemblyFilterEnabled,omitempty" xml:"WebAssemblyFilterEnabled,omitempty"`
 }
 
 func (s UpdateMeshFeatureRequest) String() string {
@@ -11175,6 +11082,16 @@ func (s *UpdateMeshFeatureRequest) SetMysqlFilterEnabled(v bool) *UpdateMeshFeat
 	return s
 }
 
+func (s *UpdateMeshFeatureRequest) SetNFDEnabled(v bool) *UpdateMeshFeatureRequest {
+	s.NFDEnabled = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetNFDLabelPruned(v bool) *UpdateMeshFeatureRequest {
+	s.NFDLabelPruned = &v
+	return s
+}
+
 func (s *UpdateMeshFeatureRequest) SetOPAInjectorCPULimit(v string) *UpdateMeshFeatureRequest {
 	s.OPAInjectorCPULimit = &v
 	return s
@@ -11342,6 +11259,26 @@ func (s *UpdateMeshFeatureRequest) SetTraceSampling(v float32) *UpdateMeshFeatur
 
 func (s *UpdateMeshFeatureRequest) SetTracing(v bool) *UpdateMeshFeatureRequest {
 	s.Tracing = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetTracingOnExtZipkinLimitCPU(v string) *UpdateMeshFeatureRequest {
+	s.TracingOnExtZipkinLimitCPU = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetTracingOnExtZipkinLimitMemory(v string) *UpdateMeshFeatureRequest {
+	s.TracingOnExtZipkinLimitMemory = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetTracingOnExtZipkinRequestCPU(v string) *UpdateMeshFeatureRequest {
+	s.TracingOnExtZipkinRequestCPU = &v
+	return s
+}
+
+func (s *UpdateMeshFeatureRequest) SetTracingOnExtZipkinRequestMemory(v string) *UpdateMeshFeatureRequest {
+	s.TracingOnExtZipkinRequestMemory = &v
 	return s
 }
 
@@ -11849,64 +11786,6 @@ func (s *CCMVersionsValue) SetClusterId(v string) *CCMVersionsValue {
 
 func (s *CCMVersionsValue) SetMessage(v string) *CCMVersionsValue {
 	s.Message = &v
-	return s
-}
-
-type WorkloadVersionsValue struct {
-	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	Version   *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	State     *string `json:"State,omitempty" xml:"State,omitempty"`
-}
-
-func (s WorkloadVersionsValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s WorkloadVersionsValue) GoString() string {
-	return s.String()
-}
-
-func (s *WorkloadVersionsValue) SetName(v string) *WorkloadVersionsValue {
-	s.Name = &v
-	return s
-}
-
-func (s *WorkloadVersionsValue) SetNamespace(v string) *WorkloadVersionsValue {
-	s.Namespace = &v
-	return s
-}
-
-func (s *WorkloadVersionsValue) SetVersion(v string) *WorkloadVersionsValue {
-	s.Version = &v
-	return s
-}
-
-func (s *WorkloadVersionsValue) SetState(v string) *WorkloadVersionsValue {
-	s.State = &v
-	return s
-}
-
-type ServiceLabelsValue struct {
-	Labels  map[string]*string `json:"Labels,omitempty" xml:"Labels,omitempty"`
-	Success *bool              `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s ServiceLabelsValue) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ServiceLabelsValue) GoString() string {
-	return s.String()
-}
-
-func (s *ServiceLabelsValue) SetLabels(v map[string]*string) *ServiceLabelsValue {
-	s.Labels = v
-	return s
-}
-
-func (s *ServiceLabelsValue) SetSuccess(v bool) *ServiceLabelsValue {
-	s.Success = &v
 	return s
 }
 
@@ -13737,54 +13616,6 @@ func (client *Client) DescribeIstioGatewayRoutes(request *DescribeIstioGatewayRo
 	return _result, _err
 }
 
-func (client *Client) DescribeMeshWorkloadVersionStatusWithOptions(request *DescribeMeshWorkloadVersionStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeMeshWorkloadVersionStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.Namespace)) {
-		body["Namespace"] = request.Namespace
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
-		body["ServiceMeshId"] = request.ServiceMeshId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeMeshWorkloadVersionStatus"),
-		Version:     tea.String("2020-01-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeMeshWorkloadVersionStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeMeshWorkloadVersionStatus(request *DescribeMeshWorkloadVersionStatusRequest) (_result *DescribeMeshWorkloadVersionStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeMeshWorkloadVersionStatusResponse{}
-	_body, _err := client.DescribeMeshWorkloadVersionStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) DescribeNamespaceScopeSidecarConfigWithOptions(request *DescribeNamespaceScopeSidecarConfigRequest, runtime *util.RuntimeOptions) (_result *DescribeNamespaceScopeSidecarConfigResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14200,58 +14031,6 @@ func (client *Client) DescribeServiceMeshProxyStatus(request *DescribeServiceMes
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeServiceMeshProxyStatusResponse{}
 	_body, _err := client.DescribeServiceMeshProxyStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DescribeServiceMeshServiceLabelWithOptions(request *DescribeServiceMeshServiceLabelRequest, runtime *util.RuntimeOptions) (_result *DescribeServiceMeshServiceLabelResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
-		body["ServiceMeshId"] = request.ServiceMeshId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServiceNames)) {
-		body["ServiceNames"] = request.ServiceNames
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ServiceNamespaces)) {
-		body["ServiceNamespaces"] = request.ServiceNamespaces
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DescribeServiceMeshServiceLabel"),
-		Version:     tea.String("2020-01-11"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DescribeServiceMeshServiceLabelResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DescribeServiceMeshServiceLabel(request *DescribeServiceMeshServiceLabelRequest) (_result *DescribeServiceMeshServiceLabelResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DescribeServiceMeshServiceLabelResponse{}
-	_body, _err := client.DescribeServiceMeshServiceLabelWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -15367,6 +15146,54 @@ func (client *Client) UpdateASMGatewayImportedServices(request *UpdateASMGateway
 	return _result, _err
 }
 
+func (client *Client) UpdateASMNamespaceFromGuestClusterWithOptions(request *UpdateASMNamespaceFromGuestClusterRequest, runtime *util.RuntimeOptions) (_result *UpdateASMNamespaceFromGuestClusterResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.K8sClusterId)) {
+		body["K8sClusterId"] = request.K8sClusterId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceMeshId)) {
+		body["ServiceMeshId"] = request.ServiceMeshId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateASMNamespaceFromGuestCluster"),
+		Version:     tea.String("2020-01-11"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateASMNamespaceFromGuestClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateASMNamespaceFromGuestCluster(request *UpdateASMNamespaceFromGuestClusterRequest) (_result *UpdateASMNamespaceFromGuestClusterResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateASMNamespaceFromGuestClusterResponse{}
+	_body, _err := client.UpdateASMNamespaceFromGuestClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateIstioGatewayRoutesWithOptions(tmpReq *UpdateIstioGatewayRoutesRequest, runtime *util.RuntimeOptions) (_result *UpdateIstioGatewayRoutesResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -15741,6 +15568,14 @@ func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureReq
 		body["MysqlFilterEnabled"] = request.MysqlFilterEnabled
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.NFDEnabled)) {
+		body["NFDEnabled"] = request.NFDEnabled
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NFDLabelPruned)) {
+		body["NFDLabelPruned"] = request.NFDLabelPruned
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.OPAInjectorCPULimit)) {
 		body["OPAInjectorCPULimit"] = request.OPAInjectorCPULimit
 	}
@@ -15875,6 +15710,22 @@ func (client *Client) UpdateMeshFeatureWithOptions(request *UpdateMeshFeatureReq
 
 	if !tea.BoolValue(util.IsUnset(request.Tracing)) {
 		body["Tracing"] = request.Tracing
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TracingOnExtZipkinLimitCPU)) {
+		body["TracingOnExtZipkinLimitCPU"] = request.TracingOnExtZipkinLimitCPU
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TracingOnExtZipkinLimitMemory)) {
+		body["TracingOnExtZipkinLimitMemory"] = request.TracingOnExtZipkinLimitMemory
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TracingOnExtZipkinRequestCPU)) {
+		body["TracingOnExtZipkinRequestCPU"] = request.TracingOnExtZipkinRequestCPU
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TracingOnExtZipkinRequestMemory)) {
+		body["TracingOnExtZipkinRequestMemory"] = request.TracingOnExtZipkinRequestMemory
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.WebAssemblyFilterEnabled)) {
