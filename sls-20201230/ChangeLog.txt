@@ -1,3 +1,7 @@
+2022-07-12 Version: v1.4.0
+- Add DeleteSavedsearch.
+- Add EtlMeta.
+
 2022-07-07 Version: v1.3.0
 - Add Get Create Delete Update Logging.
 - Add Update Get CheckPoint.

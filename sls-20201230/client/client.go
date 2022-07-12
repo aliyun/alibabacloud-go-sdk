@@ -14,11 +14,11 @@ import (
 )
 
 type ConsumerGroup struct {
-	// consumerGroup
+	// 消费者名称。
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// order
+	// 是否有序消费
 	Order *bool `json:"order,omitempty" xml:"order,omitempty"`
-	// timeout
+	// 消费超时时长，单位为妙
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
 }
 
@@ -109,21 +109,21 @@ func (s *EncryptUserCmkConf) SetRegionId(v string) *EncryptUserCmkConf {
 }
 
 type LogtailConfig struct {
-	// configName
+	// logtail 配置的名称。
 	ConfigName *string `json:"configName,omitempty" xml:"configName,omitempty"`
-	// 创建时间
+	// 创建时间，unix 时间戳。
 	CreateTime *int64 `json:"createTime,omitempty" xml:"createTime,omitempty"`
-	// inputDetail
+	// logtail 输入的详细配置。
 	InputDetail map[string]interface{} `json:"inputDetail,omitempty" xml:"inputDetail,omitempty"`
-	// inputType
+	// logtail 读取日志的输入类型。
 	InputType *string `json:"inputType,omitempty" xml:"inputType,omitempty"`
-	// 修改时间
+	// 最后一次修改时间，unix 时间戳。
 	LastModifyTime *int64 `json:"lastModifyTime,omitempty" xml:"lastModifyTime,omitempty"`
-	// 日志样例
+	// 日志样例，可以用于自动生成正则捕获字段。
 	LogSample *string `json:"logSample,omitempty" xml:"logSample,omitempty"`
-	// outputDetail
+	// logtail 输出的详细配置。
 	OutputDetail *LogtailConfigOutputDetail `json:"outputDetail,omitempty" xml:"outputDetail,omitempty" type:"Struct"`
-	// outputType
+	// logtail 输出的目标类型。这里固定选择 LogService。
 	OutputType *string `json:"outputType,omitempty" xml:"outputType,omitempty"`
 }
 
@@ -176,11 +176,11 @@ func (s *LogtailConfig) SetOutputType(v string) *LogtailConfig {
 }
 
 type LogtailConfigOutputDetail struct {
-	// endpoint
+	// 日志项目的 endpoint。
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// logstoreName
+	// 输出的目标 logstore 名称。
 	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	// 地域
+	// 地域。
 	Region *string `json:"region,omitempty" xml:"region,omitempty"`
 }
 
@@ -255,14 +255,14 @@ func (s *SavedSearch) SetTopic(v string) *SavedSearch {
 
 type Chart struct {
 	// action
-	Action map[string]*string `json:"action,omitempty" xml:"action,omitempty"`
+	Action map[string]interface{} `json:"action,omitempty" xml:"action,omitempty"`
 	// 图表的显示配置
 	Display *ChartDisplay `json:"display,omitempty" xml:"display,omitempty" type:"Struct"`
 	// 查询配置
 	Search *ChartSearch `json:"search,omitempty" xml:"search,omitempty" type:"Struct"`
-	// 图表标题
+	// 图表标题。支持大小写英文字母、数字、下划线_、连字符-，连字符与下划线不能作为名称开头与结尾，长度必须在[2,64] 之间。
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// 图标类型
+	// 图表的类型。
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 }
 
@@ -274,7 +274,7 @@ func (s Chart) GoString() string {
 	return s.String()
 }
 
-func (s *Chart) SetAction(v map[string]*string) *Chart {
+func (s *Chart) SetAction(v map[string]interface{}) *Chart {
 	s.Action = v
 	return s
 }
@@ -399,15 +399,15 @@ func (s *ChartSearch) SetTopic(v string) *ChartSearch {
 }
 
 type Dashboard struct {
-	// 属性值
+	// 属性值，可用于修改仪表盘的布局等属性，例如 "type": "free" 自由布局， "type":"grid" 网格布局。
 	Attribute map[string]*string `json:"attribute,omitempty" xml:"attribute,omitempty"`
-	// 包含的图表
+	// 仪表盘内包含的图表。
 	Charts []*Chart `json:"charts,omitempty" xml:"charts,omitempty" type:"Repeated"`
-	// 内部名称
+	// 仪表盘ID。同一个Project下，仪表盘ID唯一，不可重复。
 	DashboardName *string `json:"dashboardName,omitempty" xml:"dashboardName,omitempty"`
-	// 描述信息
+	// 描述信息。
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// 展示名称
+	// 仪表盘的展示名称。
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 }
 
@@ -452,7 +452,7 @@ type EtlJob struct {
 	// 运行函数配置
 	FunctionConfig *EtlJobFunctionConfig `json:"functionConfig,omitempty" xml:"functionConfig,omitempty" type:"Struct"`
 	// 参数列表
-	FunctionParameter map[string]*string `json:"functionParameter,omitempty" xml:"functionParameter,omitempty"`
+	FunctionParameter map[string]interface{} `json:"functionParameter,omitempty" xml:"functionParameter,omitempty"`
 	// 日志配置
 	LogConfig *EtlJobLogConfig `json:"logConfig,omitempty" xml:"logConfig,omitempty" type:"Struct"`
 	// 配置数据来源
@@ -484,7 +484,7 @@ func (s *EtlJob) SetFunctionConfig(v *EtlJobFunctionConfig) *EtlJob {
 	return s
 }
 
-func (s *EtlJob) SetFunctionParameter(v map[string]*string) *EtlJob {
+func (s *EtlJob) SetFunctionParameter(v map[string]interface{}) *EtlJob {
 	s.FunctionParameter = v
 	return s
 }
@@ -511,7 +511,7 @@ type EtlJobFunctionConfig struct {
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
 	// 函数名
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// 函数 provider
+	// 函数 provider，可选值为 FunctionCompute 、CloudProdLogDispatch。当值为 FunctionCompute 时，endpoint、accountid 、regionName 、serviceName 、functionName 必选。
 	FunctionProvider *string `json:"functionProvider,omitempty" xml:"functionProvider,omitempty"`
 	// 地域
 	RegionName *string `json:"regionName,omitempty" xml:"regionName,omitempty"`
@@ -615,15 +615,15 @@ func (s *EtlJobSourceConfig) SetLogstoreName(v string) *EtlJobSourceConfig {
 }
 
 type EtlJobTriggerConfig struct {
-	// 最大重试次数
+	// 最大重试次数，必须在[0,100] 之间
 	MaxRetryTime *int32 `json:"maxRetryTime,omitempty" xml:"maxRetryTime,omitempty"`
 	// 角色授权配置
 	RoleArn *string `json:"roleArn,omitempty" xml:"roleArn,omitempty"`
-	// 开始位置
+	// 开始位置，可选 latest、at-unixtime， 默认 latest。
 	StartingPosition *string `json:"startingPosition,omitempty" xml:"startingPosition,omitempty"`
 	// 开始时间
 	StartingUnixtime *int64 `json:"startingUnixtime,omitempty" xml:"startingUnixtime,omitempty"`
-	// 触发间隔
+	// 触发间隔，单位为秒，必须在 [3,600] 之间
 	TriggerInterval *int32 `json:"triggerInterval,omitempty" xml:"triggerInterval,omitempty"`
 }
 
@@ -670,7 +670,7 @@ type EtlMeta struct {
 	// tag
 	EtlMetaTag *string `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
 	// value
-	EtlMetaValue map[string]*string `json:"etlMetaValue,omitempty" xml:"etlMetaValue,omitempty"`
+	EtlMetaValue *string `json:"etlMetaValue,omitempty" xml:"etlMetaValue,omitempty"`
 }
 
 func (s EtlMeta) String() string {
@@ -701,17 +701,17 @@ func (s *EtlMeta) SetEtlMetaTag(v string) *EtlMeta {
 	return s
 }
 
-func (s *EtlMeta) SetEtlMetaValue(v map[string]*string) *EtlMeta {
-	s.EtlMetaValue = v
+func (s *EtlMeta) SetEtlMetaValue(v string) *EtlMeta {
+	s.EtlMetaValue = &v
 	return s
 }
 
 type ExternalStore struct {
-	// 名称
+	// 外部存储的名称。
 	ExternalStoreName *string `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
 	// 参数
-	Parameter *ExternalStoreParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
-	// 类型
+	Parameter map[string]interface{} `json:"parameter,omitempty" xml:"parameter,omitempty"`
+	// 类型。可选 rds-vpc 或者 oss
 	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
 }
 
@@ -728,87 +728,13 @@ func (s *ExternalStore) SetExternalStoreName(v string) *ExternalStore {
 	return s
 }
 
-func (s *ExternalStore) SetParameter(v *ExternalStoreParameter) *ExternalStore {
+func (s *ExternalStore) SetParameter(v map[string]interface{}) *ExternalStore {
 	s.Parameter = v
 	return s
 }
 
 func (s *ExternalStore) SetStoreType(v string) *ExternalStore {
 	s.StoreType = &v
-	return s
-}
-
-type ExternalStoreParameter struct {
-	// meta
-	Db *string `json:"db,omitempty" xml:"db,omitempty"`
-	// 192.168.XX.XX
-	Host *string `json:"host,omitempty" xml:"host,omitempty"`
-	// RDS MySQL实例ID。
-	InstanceId *string `json:"instance-id,omitempty" xml:"instance-id,omitempty"`
-	// sfdsfldsfksfls****
-	Password *string `json:"password,omitempty" xml:"password,omitempty"`
-	// 3306
-	Port *string `json:"port,omitempty" xml:"port,omitempty"`
-	// cn-qingdao
-	Region *string `json:"region,omitempty" xml:"region,omitempty"`
-	// join_meta
-	Table *string `json:"table,omitempty" xml:"table,omitempty"`
-	// root
-	Username *string `json:"username,omitempty" xml:"username,omitempty"`
-	// RDS MySQL实例所属的VPC ID。
-	VpcId *string `json:"vpc-id,omitempty" xml:"vpc-id,omitempty"`
-}
-
-func (s ExternalStoreParameter) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ExternalStoreParameter) GoString() string {
-	return s.String()
-}
-
-func (s *ExternalStoreParameter) SetDb(v string) *ExternalStoreParameter {
-	s.Db = &v
-	return s
-}
-
-func (s *ExternalStoreParameter) SetHost(v string) *ExternalStoreParameter {
-	s.Host = &v
-	return s
-}
-
-func (s *ExternalStoreParameter) SetInstanceId(v string) *ExternalStoreParameter {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *ExternalStoreParameter) SetPassword(v string) *ExternalStoreParameter {
-	s.Password = &v
-	return s
-}
-
-func (s *ExternalStoreParameter) SetPort(v string) *ExternalStoreParameter {
-	s.Port = &v
-	return s
-}
-
-func (s *ExternalStoreParameter) SetRegion(v string) *ExternalStoreParameter {
-	s.Region = &v
-	return s
-}
-
-func (s *ExternalStoreParameter) SetTable(v string) *ExternalStoreParameter {
-	s.Table = &v
-	return s
-}
-
-func (s *ExternalStoreParameter) SetUsername(v string) *ExternalStoreParameter {
-	s.Username = &v
-	return s
-}
-
-func (s *ExternalStoreParameter) SetVpcId(v string) *ExternalStoreParameter {
-	s.VpcId = &v
 	return s
 }
 
@@ -958,13 +884,13 @@ func (s *Logstore) SetTtl(v int32) *Logstore {
 }
 
 type Machine struct {
-	// ip 地址
+	// 机器 ip 地址。
 	Ip *string `json:"ip,omitempty" xml:"ip,omitempty"`
-	// 上次心跳时间
+	// 最后一次心跳时间。Unix时间戳格式，表示从1970-1-1 00:00:00 UTC计算起的秒数。
 	LastHeartbeatTime *int64 `json:"lastHeartbeatTime,omitempty" xml:"lastHeartbeatTime,omitempty"`
-	// 机器的唯一标识
+	// 机器的唯一标识。
 	MachineUniqueid *string `json:"machine-uniqueid,omitempty" xml:"machine-uniqueid,omitempty"`
-	// 用户自定义标识
+	// 机器的用户自定义标识。
 	UserdefinedId *string `json:"userdefined-id,omitempty" xml:"userdefined-id,omitempty"`
 }
 
@@ -1001,7 +927,7 @@ type MachineGroup struct {
 	GroupAttribute *MachineGroupGroupAttribute `json:"groupAttribute,omitempty" xml:"groupAttribute,omitempty" type:"Struct"`
 	// 机器组名称。
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
-	// 机器组种类。
+	// 机器组种类。目前固定为空字符串。
 	GroupType *string `json:"groupType,omitempty" xml:"groupType,omitempty"`
 	// 机器组标识种类，支持 IP 标识或者用户自定义标识，即 ip 、userdefined。
 	MachineIdentifyType *string `json:"machineIdentifyType,omitempty" xml:"machineIdentifyType,omitempty"`
@@ -1064,77 +990,6 @@ func (s *MachineGroupGroupAttribute) SetExternalName(v string) *MachineGroupGrou
 
 func (s *MachineGroupGroupAttribute) SetGroupTopic(v string) *MachineGroupGroupAttribute {
 	s.GroupTopic = &v
-	return s
-}
-
-type OssExternalStore struct {
-	// 名称
-	ExternalStoreName *string `json:"externalStoreName,omitempty" xml:"externalStoreName,omitempty"`
-	// 参数
-	Parameter *OssExternalStoreParameter `json:"parameter,omitempty" xml:"parameter,omitempty" type:"Struct"`
-	// 类型。这里固定为 oss
-	StoreType *string `json:"storeType,omitempty" xml:"storeType,omitempty"`
-}
-
-func (s OssExternalStore) String() string {
-	return tea.Prettify(s)
-}
-
-func (s OssExternalStore) GoString() string {
-	return s.String()
-}
-
-func (s *OssExternalStore) SetExternalStoreName(v string) *OssExternalStore {
-	s.ExternalStoreName = &v
-	return s
-}
-
-func (s *OssExternalStore) SetParameter(v *OssExternalStoreParameter) *OssExternalStore {
-	s.Parameter = v
-	return s
-}
-
-func (s *OssExternalStore) SetStoreType(v string) *OssExternalStore {
-	s.StoreType = &v
-	return s
-}
-
-type OssExternalStoreParameter struct {
-	// 您的AccessKey Secret。
-	AccessKey *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
-	// 您的AccessKey ID。
-	Accessid *string `json:"accessid,omitempty" xml:"accessid,omitempty"`
-	// oss 桶名称。
-	Bucket *string `json:"bucket,omitempty" xml:"bucket,omitempty"`
-	// oss 的 endpoint 访问网址。
-	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-}
-
-func (s OssExternalStoreParameter) String() string {
-	return tea.Prettify(s)
-}
-
-func (s OssExternalStoreParameter) GoString() string {
-	return s.String()
-}
-
-func (s *OssExternalStoreParameter) SetAccessKey(v string) *OssExternalStoreParameter {
-	s.AccessKey = &v
-	return s
-}
-
-func (s *OssExternalStoreParameter) SetAccessid(v string) *OssExternalStoreParameter {
-	s.Accessid = &v
-	return s
-}
-
-func (s *OssExternalStoreParameter) SetBucket(v string) *OssExternalStoreParameter {
-	s.Bucket = &v
-	return s
-}
-
-func (s *OssExternalStoreParameter) SetEndpoint(v string) *OssExternalStoreParameter {
-	s.Endpoint = &v
 	return s
 }
 
@@ -1267,6 +1122,244 @@ func (s *ApplyConfigToMachineGroupResponse) SetStatusCode(v int32) *ApplyConfigT
 	return s
 }
 
+type BatchCreateEtlMetaRequest struct {
+	EtlMetaList []*BatchCreateEtlMetaRequestEtlMetaList `json:"etlMetaList,omitempty" xml:"etlMetaList,omitempty" type:"Repeated"`
+}
+
+func (s BatchCreateEtlMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateEtlMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateEtlMetaRequest) SetEtlMetaList(v []*BatchCreateEtlMetaRequestEtlMetaList) *BatchCreateEtlMetaRequest {
+	s.EtlMetaList = v
+	return s
+}
+
+type BatchCreateEtlMetaRequestEtlMetaList struct {
+	// 是否启用
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,255]之间。
+	EtlMetaKey *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
+	// 名字。由数字、大小写字母、下划线_、连字符-组成，长度需要在[2,64]之间。
+	EtlMetaName *string `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
+	// key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,128]之间。
+	EtlMetaTag   *string                `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
+	EtlMetaValue map[string]interface{} `json:"etlMetaValue,omitempty" xml:"etlMetaValue,omitempty"`
+}
+
+func (s BatchCreateEtlMetaRequestEtlMetaList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateEtlMetaRequestEtlMetaList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateEtlMetaRequestEtlMetaList) SetEnable(v bool) *BatchCreateEtlMetaRequestEtlMetaList {
+	s.Enable = &v
+	return s
+}
+
+func (s *BatchCreateEtlMetaRequestEtlMetaList) SetEtlMetaKey(v string) *BatchCreateEtlMetaRequestEtlMetaList {
+	s.EtlMetaKey = &v
+	return s
+}
+
+func (s *BatchCreateEtlMetaRequestEtlMetaList) SetEtlMetaName(v string) *BatchCreateEtlMetaRequestEtlMetaList {
+	s.EtlMetaName = &v
+	return s
+}
+
+func (s *BatchCreateEtlMetaRequestEtlMetaList) SetEtlMetaTag(v string) *BatchCreateEtlMetaRequestEtlMetaList {
+	s.EtlMetaTag = &v
+	return s
+}
+
+func (s *BatchCreateEtlMetaRequestEtlMetaList) SetEtlMetaValue(v map[string]interface{}) *BatchCreateEtlMetaRequestEtlMetaList {
+	s.EtlMetaValue = v
+	return s
+}
+
+type BatchCreateEtlMetaResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s BatchCreateEtlMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchCreateEtlMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchCreateEtlMetaResponse) SetHeaders(v map[string]*string) *BatchCreateEtlMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchCreateEtlMetaResponse) SetStatusCode(v int32) *BatchCreateEtlMetaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type BatchModifyEtlMetaStatusRequest struct {
+	// 当 range 的值为 "list" 时有效，匹配list中的 metaKey
+	EtlMetaKeyList []*string `json:"etlMetaKeyList,omitempty" xml:"etlMetaKeyList,omitempty" type:"Repeated"`
+	EtlMetaName    *string   `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
+	// 匹配的 tag，当 tag 为 "__all_etl_meta_tag_match__" 时表示全部匹配。
+	EtlMetaTag *string `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
+	// 操作作用的范围，可选 all 代表匹配全部，list 按名单列表匹配 key 两种模式。
+	Range *string `json:"range,omitempty" xml:"range,omitempty"`
+	// 操作类型，支持启用、禁用、删除三种，即 batch_enable、batch_disable、batch_delete。
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+}
+
+func (s BatchModifyEtlMetaStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchModifyEtlMetaStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchModifyEtlMetaStatusRequest) SetEtlMetaKeyList(v []*string) *BatchModifyEtlMetaStatusRequest {
+	s.EtlMetaKeyList = v
+	return s
+}
+
+func (s *BatchModifyEtlMetaStatusRequest) SetEtlMetaName(v string) *BatchModifyEtlMetaStatusRequest {
+	s.EtlMetaName = &v
+	return s
+}
+
+func (s *BatchModifyEtlMetaStatusRequest) SetEtlMetaTag(v string) *BatchModifyEtlMetaStatusRequest {
+	s.EtlMetaTag = &v
+	return s
+}
+
+func (s *BatchModifyEtlMetaStatusRequest) SetRange(v string) *BatchModifyEtlMetaStatusRequest {
+	s.Range = &v
+	return s
+}
+
+func (s *BatchModifyEtlMetaStatusRequest) SetType(v string) *BatchModifyEtlMetaStatusRequest {
+	s.Type = &v
+	return s
+}
+
+type BatchModifyEtlMetaStatusResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s BatchModifyEtlMetaStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchModifyEtlMetaStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchModifyEtlMetaStatusResponse) SetHeaders(v map[string]*string) *BatchModifyEtlMetaStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchModifyEtlMetaStatusResponse) SetStatusCode(v int32) *BatchModifyEtlMetaStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type BatchUpdateEtlMetaRequest struct {
+	EtlMetaList *BatchUpdateEtlMetaRequestEtlMetaList `json:"etlMetaList,omitempty" xml:"etlMetaList,omitempty" type:"Struct"`
+}
+
+func (s BatchUpdateEtlMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateEtlMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateEtlMetaRequest) SetEtlMetaList(v *BatchUpdateEtlMetaRequestEtlMetaList) *BatchUpdateEtlMetaRequest {
+	s.EtlMetaList = v
+	return s
+}
+
+type BatchUpdateEtlMetaRequestEtlMetaList struct {
+	// 是否启用。etlMetaTag、etlMetaValue、enable 至少需要存在一个。
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,255]之间。
+	EtlMetaKey *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
+	// 名字。由数字、大小写字母、下划线_、连字符-组成，长度需要在[2,64]之间。
+	EtlMetaName *string `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
+	// key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,128]之间。
+	EtlMetaTag   *string                `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
+	EtlMetaValue map[string]interface{} `json:"etlMetaValue,omitempty" xml:"etlMetaValue,omitempty"`
+}
+
+func (s BatchUpdateEtlMetaRequestEtlMetaList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateEtlMetaRequestEtlMetaList) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateEtlMetaRequestEtlMetaList) SetEnable(v bool) *BatchUpdateEtlMetaRequestEtlMetaList {
+	s.Enable = &v
+	return s
+}
+
+func (s *BatchUpdateEtlMetaRequestEtlMetaList) SetEtlMetaKey(v string) *BatchUpdateEtlMetaRequestEtlMetaList {
+	s.EtlMetaKey = &v
+	return s
+}
+
+func (s *BatchUpdateEtlMetaRequestEtlMetaList) SetEtlMetaName(v string) *BatchUpdateEtlMetaRequestEtlMetaList {
+	s.EtlMetaName = &v
+	return s
+}
+
+func (s *BatchUpdateEtlMetaRequestEtlMetaList) SetEtlMetaTag(v string) *BatchUpdateEtlMetaRequestEtlMetaList {
+	s.EtlMetaTag = &v
+	return s
+}
+
+func (s *BatchUpdateEtlMetaRequestEtlMetaList) SetEtlMetaValue(v map[string]interface{}) *BatchUpdateEtlMetaRequestEtlMetaList {
+	s.EtlMetaValue = v
+	return s
+}
+
+type BatchUpdateEtlMetaResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s BatchUpdateEtlMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s BatchUpdateEtlMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *BatchUpdateEtlMetaResponse) SetHeaders(v map[string]*string) *BatchUpdateEtlMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *BatchUpdateEtlMetaResponse) SetStatusCode(v int32) *BatchUpdateEtlMetaResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type CreateConsumerGroupRequest struct {
 	ConsumerGroup *string `json:"consumerGroup,omitempty" xml:"consumerGroup,omitempty"`
 	Order         *bool   `json:"order,omitempty" xml:"order,omitempty"`
@@ -1355,6 +1448,74 @@ func (s *CreateDomainResponse) SetHeaders(v map[string]*string) *CreateDomainRes
 }
 
 func (s *CreateDomainResponse) SetStatusCode(v int32) *CreateDomainResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type CreateEtlMetaRequest struct {
+	// 是否启用
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,255]之间。
+	EtlMetaKey *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
+	// 名字。由数字、大小写字母、下划线_、连字符-组成，长度需要在[2,64]之间。
+	EtlMetaName *string `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
+	// key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,128]之间。
+	EtlMetaTag   *string                `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
+	EtlMetaValue map[string]interface{} `json:"etlMetaValue,omitempty" xml:"etlMetaValue,omitempty"`
+}
+
+func (s CreateEtlMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEtlMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEtlMetaRequest) SetEnable(v bool) *CreateEtlMetaRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *CreateEtlMetaRequest) SetEtlMetaKey(v string) *CreateEtlMetaRequest {
+	s.EtlMetaKey = &v
+	return s
+}
+
+func (s *CreateEtlMetaRequest) SetEtlMetaName(v string) *CreateEtlMetaRequest {
+	s.EtlMetaName = &v
+	return s
+}
+
+func (s *CreateEtlMetaRequest) SetEtlMetaTag(v string) *CreateEtlMetaRequest {
+	s.EtlMetaTag = &v
+	return s
+}
+
+func (s *CreateEtlMetaRequest) SetEtlMetaValue(v map[string]interface{}) *CreateEtlMetaRequest {
+	s.EtlMetaValue = v
+	return s
+}
+
+type CreateEtlMetaResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s CreateEtlMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateEtlMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateEtlMetaResponse) SetHeaders(v map[string]*string) *CreateEtlMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateEtlMetaResponse) SetStatusCode(v int32) *CreateEtlMetaResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -1904,6 +2065,61 @@ func (s *DeleteDomainResponse) SetStatusCode(v int32) *DeleteDomainResponse {
 	return s
 }
 
+type DeleteEtlMetaRequest struct {
+	// key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,255]之间。
+	EtlMetaKey *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
+	// 名字。由数字、大小写字母、下划线_、连字符-组成，长度需要在[2,64]之间。
+	EtlMetaName *string `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
+	// 此处固定为 "__all_etl_meta_tag_match__"
+	EtlMetaTag *string `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
+}
+
+func (s DeleteEtlMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEtlMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEtlMetaRequest) SetEtlMetaKey(v string) *DeleteEtlMetaRequest {
+	s.EtlMetaKey = &v
+	return s
+}
+
+func (s *DeleteEtlMetaRequest) SetEtlMetaName(v string) *DeleteEtlMetaRequest {
+	s.EtlMetaName = &v
+	return s
+}
+
+func (s *DeleteEtlMetaRequest) SetEtlMetaTag(v string) *DeleteEtlMetaRequest {
+	s.EtlMetaTag = &v
+	return s
+}
+
+type DeleteEtlMetaResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s DeleteEtlMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteEtlMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteEtlMetaResponse) SetHeaders(v map[string]*string) *DeleteEtlMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteEtlMetaResponse) SetStatusCode(v int32) *DeleteEtlMetaResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type DeleteIndexResponse struct {
 	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
 	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
@@ -2015,6 +2231,29 @@ func (s *DeleteProjectResponse) SetHeaders(v map[string]*string) *DeleteProjectR
 }
 
 func (s *DeleteProjectResponse) SetStatusCode(v int32) *DeleteProjectResponse {
+	s.StatusCode = &v
+	return s
+}
+
+type DeleteSavedSearchResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s DeleteSavedSearchResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteSavedSearchResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteSavedSearchResponse) SetHeaders(v map[string]*string) *DeleteSavedSearchResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteSavedSearchResponse) SetStatusCode(v int32) *DeleteSavedSearchResponse {
 	s.StatusCode = &v
 	return s
 }
@@ -2424,6 +2663,88 @@ func (s *GetCursorTimeResponse) SetStatusCode(v int32) *GetCursorTimeResponse {
 }
 
 func (s *GetCursorTimeResponse) SetBody(v *GetCursorTimeResponseBody) *GetCursorTimeResponse {
+	s.Body = v
+	return s
+}
+
+type GetEtlMetaRequest struct {
+	ElMetaName *string `json:"elMetaName,omitempty" xml:"elMetaName,omitempty"`
+	EtlMetaKey *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
+	// 此处固定为 "__all_etl_meta_tag_match__"。
+	EtlMetaTag *string `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
+}
+
+func (s GetEtlMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEtlMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEtlMetaRequest) SetElMetaName(v string) *GetEtlMetaRequest {
+	s.ElMetaName = &v
+	return s
+}
+
+func (s *GetEtlMetaRequest) SetEtlMetaKey(v string) *GetEtlMetaRequest {
+	s.EtlMetaKey = &v
+	return s
+}
+
+func (s *GetEtlMetaRequest) SetEtlMetaTag(v string) *GetEtlMetaRequest {
+	s.EtlMetaTag = &v
+	return s
+}
+
+type GetEtlMetaResponseBody struct {
+	EtlMetaList []*EtlMeta `json:"etlMetaList,omitempty" xml:"etlMetaList,omitempty" type:"Repeated"`
+	Total       *int32     `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s GetEtlMetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEtlMetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEtlMetaResponseBody) SetEtlMetaList(v []*EtlMeta) *GetEtlMetaResponseBody {
+	s.EtlMetaList = v
+	return s
+}
+
+func (s *GetEtlMetaResponseBody) SetTotal(v int32) *GetEtlMetaResponseBody {
+	s.Total = &v
+	return s
+}
+
+type GetEtlMetaResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetEtlMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetEtlMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEtlMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEtlMetaResponse) SetHeaders(v map[string]*string) *GetEtlMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEtlMetaResponse) SetStatusCode(v int32) *GetEtlMetaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEtlMetaResponse) SetBody(v *GetEtlMetaResponseBody) *GetEtlMetaResponse {
 	s.Body = v
 	return s
 }
@@ -3155,9 +3476,188 @@ func (s *ListDomainsResponse) SetBody(v *ListDomainsResponseBody) *ListDomainsRe
 	return s
 }
 
+type ListEtlMetaRequest struct {
+	EtlMetaKey  *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
+	EtlMetaName *string `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
+	EtlMetaTag  *string `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
+	// 默认值 0。
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// 默认值 200.
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListEtlMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEtlMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEtlMetaRequest) SetEtlMetaKey(v string) *ListEtlMetaRequest {
+	s.EtlMetaKey = &v
+	return s
+}
+
+func (s *ListEtlMetaRequest) SetEtlMetaName(v string) *ListEtlMetaRequest {
+	s.EtlMetaName = &v
+	return s
+}
+
+func (s *ListEtlMetaRequest) SetEtlMetaTag(v string) *ListEtlMetaRequest {
+	s.EtlMetaTag = &v
+	return s
+}
+
+func (s *ListEtlMetaRequest) SetOffset(v int32) *ListEtlMetaRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListEtlMetaRequest) SetSize(v int32) *ListEtlMetaRequest {
+	s.Size = &v
+	return s
+}
+
+type ListEtlMetaResponseBody struct {
+	EtlMetaList []*EtlMeta `json:"etlMetaList,omitempty" xml:"etlMetaList,omitempty" type:"Repeated"`
+	Total       *int32     `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListEtlMetaResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEtlMetaResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEtlMetaResponseBody) SetEtlMetaList(v []*EtlMeta) *ListEtlMetaResponseBody {
+	s.EtlMetaList = v
+	return s
+}
+
+func (s *ListEtlMetaResponseBody) SetTotal(v int32) *ListEtlMetaResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListEtlMetaResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEtlMetaResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEtlMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEtlMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEtlMetaResponse) SetHeaders(v map[string]*string) *ListEtlMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEtlMetaResponse) SetStatusCode(v int32) *ListEtlMetaResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEtlMetaResponse) SetBody(v *ListEtlMetaResponseBody) *ListEtlMetaResponse {
+	s.Body = v
+	return s
+}
+
+type ListEtlMetaNameRequest struct {
+	// 默认值为 0。
+	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
+	// 默认值 200。
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
+}
+
+func (s ListEtlMetaNameRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEtlMetaNameRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListEtlMetaNameRequest) SetOffset(v int32) *ListEtlMetaNameRequest {
+	s.Offset = &v
+	return s
+}
+
+func (s *ListEtlMetaNameRequest) SetSize(v int32) *ListEtlMetaNameRequest {
+	s.Size = &v
+	return s
+}
+
+type ListEtlMetaNameResponseBody struct {
+	Count           *int32    `json:"count,omitempty" xml:"count,omitempty"`
+	EtlMetaNameList []*string `json:"etlMetaNameList,omitempty" xml:"etlMetaNameList,omitempty" type:"Repeated"`
+	Total           *int32    `json:"total,omitempty" xml:"total,omitempty"`
+}
+
+func (s ListEtlMetaNameResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEtlMetaNameResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListEtlMetaNameResponseBody) SetCount(v int32) *ListEtlMetaNameResponseBody {
+	s.Count = &v
+	return s
+}
+
+func (s *ListEtlMetaNameResponseBody) SetEtlMetaNameList(v []*string) *ListEtlMetaNameResponseBody {
+	s.EtlMetaNameList = v
+	return s
+}
+
+func (s *ListEtlMetaNameResponseBody) SetTotal(v int32) *ListEtlMetaNameResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListEtlMetaNameResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListEtlMetaNameResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListEtlMetaNameResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListEtlMetaNameResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListEtlMetaNameResponse) SetHeaders(v map[string]*string) *ListEtlMetaNameResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListEtlMetaNameResponse) SetStatusCode(v int32) *ListEtlMetaNameResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListEtlMetaNameResponse) SetBody(v *ListEtlMetaNameResponseBody) *ListEtlMetaNameResponse {
+	s.Body = v
+	return s
+}
+
 type ListLogStoresRequest struct {
-	LogstoreName  *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
-	Offset        *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
+	LogstoreName *string `json:"logstoreName,omitempty" xml:"logstoreName,omitempty"`
+	Offset       *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
+	// 默认值为 500。
 	Size          *int32  `json:"size,omitempty" xml:"size,omitempty"`
 	TelemetryType *string `json:"telemetryType,omitempty" xml:"telemetryType,omitempty"`
 }
@@ -3247,7 +3747,7 @@ type ListMachineGroupRequest struct {
 	GroupName *string `json:"groupName,omitempty" xml:"groupName,omitempty"`
 	// 分页请求的起始位置。默认为0。
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// 分页查询时，设置的每页行数。最大值为500。
+	// 分页查询时，设置的每页行数。默认值为2000。
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
@@ -3338,7 +3838,7 @@ func (s *ListMachineGroupResponse) SetBody(v *ListMachineGroupResponseBody) *Lis
 type ListMachinesRequest struct {
 	// 查询开始行。默认值为0。
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	// 分页查询时，设置的每页行数。默认值为100，最大值为500。
+	// 分页查询时，设置的每页行数。默认值为2000。
 	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
@@ -3424,7 +3924,8 @@ func (s *ListMachinesResponse) SetBody(v *ListMachinesResponseBody) *ListMachine
 type ListProjectRequest struct {
 	Offset      *int32  `json:"offset,omitempty" xml:"offset,omitempty"`
 	ProjectName *string `json:"projectName,omitempty" xml:"projectName,omitempty"`
-	Size        *int32  `json:"size,omitempty" xml:"size,omitempty"`
+	// 默认值为 500。
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListProjectRequest) String() string {
@@ -3510,7 +4011,8 @@ func (s *ListProjectResponse) SetBody(v *ListProjectResponseBody) *ListProjectRe
 
 type ListSavedSearchRequest struct {
 	Offset *int32 `json:"offset,omitempty" xml:"offset,omitempty"`
-	Size   *int32 `json:"size,omitempty" xml:"size,omitempty"`
+	// 默认值为 500。
+	Size *int32 `json:"size,omitempty" xml:"size,omitempty"`
 }
 
 func (s ListSavedSearchRequest) String() string {
@@ -4188,6 +4690,74 @@ func (s *UpdateConsumerGroupResponse) SetStatusCode(v int32) *UpdateConsumerGrou
 	return s
 }
 
+type UpdateEtlMetaRequest struct {
+	// 是否启用。etlMetaTag、etlMetaValue、enable 至少需要存在一个。
+	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
+	// key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,255]之间。
+	EtlMetaKey *string `json:"etlMetaKey,omitempty" xml:"etlMetaKey,omitempty"`
+	// 名字。由数字、大小写字母、下划线_、连字符-组成，长度需要在[2,64]之间。
+	EtlMetaName *string `json:"etlMetaName,omitempty" xml:"etlMetaName,omitempty"`
+	// key。由 ascii 可打印字符组成，包括数字、英文大小写字母、下划线、连字符、英文标点符号等组成，长度在[1,128]之间。
+	EtlMetaTag   *string                `json:"etlMetaTag,omitempty" xml:"etlMetaTag,omitempty"`
+	EtlMetaValue map[string]interface{} `json:"etlMetaValue,omitempty" xml:"etlMetaValue,omitempty"`
+}
+
+func (s UpdateEtlMetaRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEtlMetaRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEtlMetaRequest) SetEnable(v bool) *UpdateEtlMetaRequest {
+	s.Enable = &v
+	return s
+}
+
+func (s *UpdateEtlMetaRequest) SetEtlMetaKey(v string) *UpdateEtlMetaRequest {
+	s.EtlMetaKey = &v
+	return s
+}
+
+func (s *UpdateEtlMetaRequest) SetEtlMetaName(v string) *UpdateEtlMetaRequest {
+	s.EtlMetaName = &v
+	return s
+}
+
+func (s *UpdateEtlMetaRequest) SetEtlMetaTag(v string) *UpdateEtlMetaRequest {
+	s.EtlMetaTag = &v
+	return s
+}
+
+func (s *UpdateEtlMetaRequest) SetEtlMetaValue(v map[string]interface{}) *UpdateEtlMetaRequest {
+	s.EtlMetaValue = v
+	return s
+}
+
+type UpdateEtlMetaResponse struct {
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+}
+
+func (s UpdateEtlMetaResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateEtlMetaResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateEtlMetaResponse) SetHeaders(v map[string]*string) *UpdateEtlMetaResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateEtlMetaResponse) SetStatusCode(v int32) *UpdateEtlMetaResponse {
+	s.StatusCode = &v
+	return s
+}
+
 type UpdateIndexRequest struct {
 	// 字段索引配置，key为字段名称，value为字段索引配置。
 	Keys map[string]*KeysValue `json:"keys,omitempty" xml:"keys,omitempty"`
@@ -4758,16 +5328,6 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 
 	client.Spi = interfaceSPI
 	client.EndpointRule = tea.String("central")
-	client.EndpointMap = map[string]*string{
-		"ap-southeast-1": tea.String("sls.ap-southeast-1.aliyuncs.com"),
-		"cn-hangzhou":    tea.String("sls.cn-hangzhou.aliyuncs.com"),
-		"cn-hongkong":    tea.String("sls.cn-hongkong.aliyuncs.com"),
-		"cn-huhehaote":   tea.String("sls.cn-huhehaote.aliyuncs.com"),
-		"cn-shanghai":    tea.String("sls.cn-shanghai.aliyuncs.com"),
-		"cn-shenzhen":    tea.String("sls.cn-shenzhen.aliyuncs.com"),
-		"cn-zhangjiakou": tea.String("sls.cn-zhangjiakou.aliyuncs.com"),
-		"eu-central-1":   tea.String("sls.eu-central-1.aliyuncs.com"),
-	}
 	return nil
 }
 
@@ -4804,6 +5364,171 @@ func (client *Client) ApplyConfigToMachineGroupWithOptions(project *string, mach
 		BodyType:    tea.String("none"),
 	}
 	_result = &ApplyConfigToMachineGroupResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchCreateEtlMeta(project *string, request *BatchCreateEtlMetaRequest) (_result *BatchCreateEtlMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchCreateEtlMetaResponse{}
+	_body, _err := client.BatchCreateEtlMetaWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchCreateEtlMetaWithOptions(project *string, request *BatchCreateEtlMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchCreateEtlMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EtlMetaList)) {
+		body["etlMetaList"] = request.EtlMetaList
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchCreateEtlMeta"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etlmetas"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &BatchCreateEtlMetaResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchModifyEtlMetaStatus(project *string, request *BatchModifyEtlMetaStatusRequest) (_result *BatchModifyEtlMetaStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchModifyEtlMetaStatusResponse{}
+	_body, _err := client.BatchModifyEtlMetaStatusWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchModifyEtlMetaStatusWithOptions(project *string, request *BatchModifyEtlMetaStatusRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchModifyEtlMetaStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["type"] = request.Type
+	}
+
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EtlMetaKeyList)) {
+		body["etlMetaKeyList"] = request.EtlMetaKeyList
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EtlMetaName)) {
+		body["etlMetaName"] = request.EtlMetaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EtlMetaTag)) {
+		body["etlMetaTag"] = request.EtlMetaTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Range)) {
+		body["range"] = request.Range
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchModifyEtlMetaStatus"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etlmetas"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &BatchModifyEtlMetaStatusResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) BatchUpdateEtlMeta(project *string, request *BatchUpdateEtlMetaRequest) (_result *BatchUpdateEtlMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchUpdateEtlMetaResponse{}
+	_body, _err := client.BatchUpdateEtlMetaWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) BatchUpdateEtlMetaWithOptions(project *string, request *BatchUpdateEtlMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *BatchUpdateEtlMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.EtlMetaList))) {
+		body["etlMetaList"] = request.EtlMetaList
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("BatchUpdateEtlMeta"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etlmetas"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &BatchUpdateEtlMetaResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4911,6 +5636,71 @@ func (client *Client) CreateDomainWithOptions(project *string, request *CreateDo
 		BodyType:    tea.String("none"),
 	}
 	_result = &CreateDomainResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateEtlMeta(project *string, request *CreateEtlMetaRequest) (_result *CreateEtlMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateEtlMetaResponse{}
+	_body, _err := client.CreateEtlMetaWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateEtlMetaWithOptions(project *string, request *CreateEtlMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateEtlMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		body["enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EtlMetaKey)) {
+		body["etlMetaKey"] = request.EtlMetaKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EtlMetaName)) {
+		body["etlMetaName"] = request.EtlMetaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EtlMetaTag)) {
+		body["etlMetaTag"] = request.EtlMetaTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EtlMetaValue)) {
+		body["etlMetaValue"] = request.EtlMetaValue
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateEtlMeta"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etlmetas"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &CreateEtlMetaResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5392,6 +6182,63 @@ func (client *Client) DeleteDomainWithOptions(project *string, domainName *strin
 	return _result, _err
 }
 
+func (client *Client) DeleteEtlMeta(project *string, request *DeleteEtlMetaRequest) (_result *DeleteEtlMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteEtlMetaResponse{}
+	_body, _err := client.DeleteEtlMetaWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteEtlMetaWithOptions(project *string, request *DeleteEtlMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteEtlMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EtlMetaKey)) {
+		query["etlMetaKey"] = request.EtlMetaKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EtlMetaName)) {
+		query["etlMetaName"] = request.EtlMetaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EtlMetaTag)) {
+		query["etlMetaTag"] = request.EtlMetaTag
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteEtlMeta"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etlmetas"),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteEtlMetaResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DeleteIndex(project *string, logstore *string) (_result *DeleteIndexResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5582,6 +6429,46 @@ func (client *Client) DeleteProjectWithOptions(project *string, headers map[stri
 		BodyType:    tea.String("none"),
 	}
 	_result = &DeleteProjectResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteSavedSearch(project *string, savedsearchName *string) (_result *DeleteSavedSearchResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteSavedSearchResponse{}
+	_body, _err := client.DeleteSavedSearchWithOptions(project, savedsearchName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteSavedSearchWithOptions(project *string, savedsearchName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteSavedSearchResponse, _err error) {
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	savedsearchName = openapiutil.GetEncodeParam(savedsearchName)
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteSavedSearch"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/savedsearches/" + tea.StringValue(savedsearchName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &DeleteSavedSearchResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5849,6 +6736,63 @@ func (client *Client) GetCursorTimeWithOptions(project *string, logstore *string
 		BodyType:    tea.String("json"),
 	}
 	_result = &GetCursorTimeResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetEtlMeta(project *string, request *GetEtlMetaRequest) (_result *GetEtlMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetEtlMetaResponse{}
+	_body, _err := client.GetEtlMetaWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetEtlMetaWithOptions(project *string, request *GetEtlMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *GetEtlMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ElMetaName)) {
+		query["elMetaName"] = request.ElMetaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EtlMetaKey)) {
+		query["etlMetaKey"] = request.EtlMetaKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EtlMetaTag)) {
+		query["etlMetaTag"] = request.EtlMetaTag
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEtlMeta"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etlmetas"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEtlMetaResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -6385,6 +7329,124 @@ func (client *Client) ListDomainsWithOptions(project *string, request *ListDomai
 		BodyType:    tea.String("json"),
 	}
 	_result = &ListDomainsResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEtlMeta(project *string, request *ListEtlMetaRequest) (_result *ListEtlMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListEtlMetaResponse{}
+	_body, _err := client.ListEtlMetaWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListEtlMetaWithOptions(project *string, request *ListEtlMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEtlMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.EtlMetaKey)) {
+		query["etlMetaKey"] = request.EtlMetaKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EtlMetaName)) {
+		query["etlMetaName"] = request.EtlMetaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EtlMetaTag)) {
+		query["etlMetaTag"] = request.EtlMetaTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEtlMeta"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etlmetas"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEtlMetaResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListEtlMetaName(project *string, request *ListEtlMetaNameRequest) (_result *ListEtlMetaNameResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListEtlMetaNameResponse{}
+	_body, _err := client.ListEtlMetaNameWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListEtlMetaNameWithOptions(project *string, request *ListEtlMetaNameRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListEtlMetaNameResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Offset)) {
+		query["offset"] = request.Offset
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Size)) {
+		query["size"] = request.Size
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListEtlMetaName"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etlmetanames"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListEtlMetaNameResponse{}
 	_body, _err := client.Execute(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -7163,6 +8225,71 @@ func (client *Client) UpdateConsumerGroupWithOptions(project *string, logstore *
 	return _result, _err
 }
 
+func (client *Client) UpdateEtlMeta(project *string, request *UpdateEtlMetaRequest) (_result *UpdateEtlMetaResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateEtlMetaResponse{}
+	_body, _err := client.UpdateEtlMetaWithOptions(project, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateEtlMetaWithOptions(project *string, request *UpdateEtlMetaRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateEtlMetaResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	hostMap := make(map[string]*string)
+	hostMap["project"] = project
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Enable)) {
+		body["enable"] = request.Enable
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EtlMetaKey)) {
+		body["etlMetaKey"] = request.EtlMetaKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EtlMetaName)) {
+		body["etlMetaName"] = request.EtlMetaName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EtlMetaTag)) {
+		body["etlMetaTag"] = request.EtlMetaTag
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EtlMetaValue)) {
+		body["etlMetaValue"] = request.EtlMetaValue
+	}
+
+	req := &openapi.OpenApiRequest{
+		HostMap: hostMap,
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateEtlMeta"),
+		Version:     tea.String("2020-12-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/etlmetas"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("none"),
+	}
+	_result = &UpdateEtlMetaResponse{}
+	_body, _err := client.Execute(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) UpdateIndex(project *string, logstore *string, request *UpdateIndexRequest) (_result *UpdateIndexResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -7376,11 +8503,11 @@ func (client *Client) UpdateLoggingWithOptions(project *string, request *UpdateL
 	return _result, _err
 }
 
-func (client *Client) UpdateMachineGroup(project *string, machineGroup *string, request *UpdateMachineGroupRequest) (_result *UpdateMachineGroupResponse, _err error) {
+func (client *Client) UpdateMachineGroup(project *string, groupName *string, request *UpdateMachineGroupRequest) (_result *UpdateMachineGroupResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
 	_result = &UpdateMachineGroupResponse{}
-	_body, _err := client.UpdateMachineGroupWithOptions(project, machineGroup, request, headers, runtime)
+	_body, _err := client.UpdateMachineGroupWithOptions(project, groupName, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -7388,14 +8515,14 @@ func (client *Client) UpdateMachineGroup(project *string, machineGroup *string, 
 	return _result, _err
 }
 
-func (client *Client) UpdateMachineGroupWithOptions(project *string, machineGroup *string, request *UpdateMachineGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateMachineGroupResponse, _err error) {
+func (client *Client) UpdateMachineGroupWithOptions(project *string, groupName *string, request *UpdateMachineGroupRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateMachineGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
 		return _result, _err
 	}
 	hostMap := make(map[string]*string)
 	hostMap["project"] = project
-	machineGroup = openapiutil.GetEncodeParam(machineGroup)
+	groupName = openapiutil.GetEncodeParam(groupName)
 	body := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(tea.ToMap(request.GroupAttribute))) {
 		body["groupAttribute"] = request.GroupAttribute
@@ -7426,7 +8553,7 @@ func (client *Client) UpdateMachineGroupWithOptions(project *string, machineGrou
 		Action:      tea.String("UpdateMachineGroup"),
 		Version:     tea.String("2020-12-30"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/machinegroups/" + tea.StringValue(machineGroup)),
+		Pathname:    tea.String("/machinegroups/" + tea.StringValue(groupName)),
 		Method:      tea.String("PUT"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
