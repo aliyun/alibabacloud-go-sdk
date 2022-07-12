@@ -168,6 +168,211 @@ func (s *AddUserToDesktopGroupResponse) SetBody(v *AddUserToDesktopGroupResponse
 	return s
 }
 
+type ApplyCoordinationForMonitoringRequest struct {
+	CoordinatePolicyType *string                                                    `json:"CoordinatePolicyType,omitempty" xml:"CoordinatePolicyType,omitempty"`
+	EndUserId            *string                                                    `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	InitiatorType        *string                                                    `json:"InitiatorType,omitempty" xml:"InitiatorType,omitempty"`
+	RegionId             *string                                                    `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceCandidates   []*ApplyCoordinationForMonitoringRequestResourceCandidates `json:"ResourceCandidates,omitempty" xml:"ResourceCandidates,omitempty" type:"Repeated"`
+	Uuid                 *string                                                    `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s ApplyCoordinationForMonitoringRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyCoordinationForMonitoringRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyCoordinationForMonitoringRequest) SetCoordinatePolicyType(v string) *ApplyCoordinationForMonitoringRequest {
+	s.CoordinatePolicyType = &v
+	return s
+}
+
+func (s *ApplyCoordinationForMonitoringRequest) SetEndUserId(v string) *ApplyCoordinationForMonitoringRequest {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *ApplyCoordinationForMonitoringRequest) SetInitiatorType(v string) *ApplyCoordinationForMonitoringRequest {
+	s.InitiatorType = &v
+	return s
+}
+
+func (s *ApplyCoordinationForMonitoringRequest) SetRegionId(v string) *ApplyCoordinationForMonitoringRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ApplyCoordinationForMonitoringRequest) SetResourceCandidates(v []*ApplyCoordinationForMonitoringRequestResourceCandidates) *ApplyCoordinationForMonitoringRequest {
+	s.ResourceCandidates = v
+	return s
+}
+
+func (s *ApplyCoordinationForMonitoringRequest) SetUuid(v string) *ApplyCoordinationForMonitoringRequest {
+	s.Uuid = &v
+	return s
+}
+
+type ApplyCoordinationForMonitoringRequestResourceCandidates struct {
+	OwnerAliUid        *int64  `json:"OwnerAliUid,omitempty" xml:"OwnerAliUid,omitempty"`
+	OwnerEndUserId     *string `json:"OwnerEndUserId,omitempty" xml:"OwnerEndUserId,omitempty"`
+	ResourceId         *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName       *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+	ResourceProperties *string `json:"ResourceProperties,omitempty" xml:"ResourceProperties,omitempty"`
+	ResourceRegionId   *string `json:"ResourceRegionId,omitempty" xml:"ResourceRegionId,omitempty"`
+	ResourceType       *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s ApplyCoordinationForMonitoringRequestResourceCandidates) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyCoordinationForMonitoringRequestResourceCandidates) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyCoordinationForMonitoringRequestResourceCandidates) SetOwnerAliUid(v int64) *ApplyCoordinationForMonitoringRequestResourceCandidates {
+	s.OwnerAliUid = &v
+	return s
+}
+
+func (s *ApplyCoordinationForMonitoringRequestResourceCandidates) SetOwnerEndUserId(v string) *ApplyCoordinationForMonitoringRequestResourceCandidates {
+	s.OwnerEndUserId = &v
+	return s
+}
+
+func (s *ApplyCoordinationForMonitoringRequestResourceCandidates) SetResourceId(v string) *ApplyCoordinationForMonitoringRequestResourceCandidates {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ApplyCoordinationForMonitoringRequestResourceCandidates) SetResourceName(v string) *ApplyCoordinationForMonitoringRequestResourceCandidates {
+	s.ResourceName = &v
+	return s
+}
+
+func (s *ApplyCoordinationForMonitoringRequestResourceCandidates) SetResourceProperties(v string) *ApplyCoordinationForMonitoringRequestResourceCandidates {
+	s.ResourceProperties = &v
+	return s
+}
+
+func (s *ApplyCoordinationForMonitoringRequestResourceCandidates) SetResourceRegionId(v string) *ApplyCoordinationForMonitoringRequestResourceCandidates {
+	s.ResourceRegionId = &v
+	return s
+}
+
+func (s *ApplyCoordinationForMonitoringRequestResourceCandidates) SetResourceType(v string) *ApplyCoordinationForMonitoringRequestResourceCandidates {
+	s.ResourceType = &v
+	return s
+}
+
+type ApplyCoordinationForMonitoringResponseBody struct {
+	CoordinateFlowModels []*ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels `json:"CoordinateFlowModels,omitempty" xml:"CoordinateFlowModels,omitempty" type:"Repeated"`
+	RequestId            *string                                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ApplyCoordinationForMonitoringResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyCoordinationForMonitoringResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyCoordinationForMonitoringResponseBody) SetCoordinateFlowModels(v []*ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels) *ApplyCoordinationForMonitoringResponseBody {
+	s.CoordinateFlowModels = v
+	return s
+}
+
+func (s *ApplyCoordinationForMonitoringResponseBody) SetRequestId(v string) *ApplyCoordinationForMonitoringResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels struct {
+	CoId             *string `json:"CoId,omitempty" xml:"CoId,omitempty"`
+	CoordinateStatus *string `json:"CoordinateStatus,omitempty" xml:"CoordinateStatus,omitempty"`
+	CoordinateTicket *string `json:"CoordinateTicket,omitempty" xml:"CoordinateTicket,omitempty"`
+	InitiatorType    *string `json:"InitiatorType,omitempty" xml:"InitiatorType,omitempty"`
+	OwnerUserId      *string `json:"OwnerUserId,omitempty" xml:"OwnerUserId,omitempty"`
+	ResourceId       *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName     *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
+}
+
+func (s ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels) SetCoId(v string) *ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels {
+	s.CoId = &v
+	return s
+}
+
+func (s *ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels) SetCoordinateStatus(v string) *ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels {
+	s.CoordinateStatus = &v
+	return s
+}
+
+func (s *ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels) SetCoordinateTicket(v string) *ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels {
+	s.CoordinateTicket = &v
+	return s
+}
+
+func (s *ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels) SetInitiatorType(v string) *ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels {
+	s.InitiatorType = &v
+	return s
+}
+
+func (s *ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels) SetOwnerUserId(v string) *ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels {
+	s.OwnerUserId = &v
+	return s
+}
+
+func (s *ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels) SetResourceId(v string) *ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels) SetResourceName(v string) *ApplyCoordinationForMonitoringResponseBodyCoordinateFlowModels {
+	s.ResourceName = &v
+	return s
+}
+
+type ApplyCoordinationForMonitoringResponse struct {
+	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ApplyCoordinationForMonitoringResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ApplyCoordinationForMonitoringResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ApplyCoordinationForMonitoringResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ApplyCoordinationForMonitoringResponse) SetHeaders(v map[string]*string) *ApplyCoordinationForMonitoringResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ApplyCoordinationForMonitoringResponse) SetStatusCode(v int32) *ApplyCoordinationForMonitoringResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ApplyCoordinationForMonitoringResponse) SetBody(v *ApplyCoordinationForMonitoringResponseBody) *ApplyCoordinationForMonitoringResponse {
+	s.Body = v
+	return s
+}
+
 type ApproveFotaUpdateRequest struct {
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
 	DesktopId  *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
@@ -402,6 +607,87 @@ func (s *AttachCenResponse) SetStatusCode(v int32) *AttachCenResponse {
 }
 
 func (s *AttachCenResponse) SetBody(v *AttachCenResponseBody) *AttachCenResponse {
+	s.Body = v
+	return s
+}
+
+type CancelCoordinationForMonitoringRequest struct {
+	CoIds     []*string `json:"CoIds,omitempty" xml:"CoIds,omitempty" type:"Repeated"`
+	EndUserId *string   `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	RegionId  *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	UserType  *string   `json:"UserType,omitempty" xml:"UserType,omitempty"`
+}
+
+func (s CancelCoordinationForMonitoringRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelCoordinationForMonitoringRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CancelCoordinationForMonitoringRequest) SetCoIds(v []*string) *CancelCoordinationForMonitoringRequest {
+	s.CoIds = v
+	return s
+}
+
+func (s *CancelCoordinationForMonitoringRequest) SetEndUserId(v string) *CancelCoordinationForMonitoringRequest {
+	s.EndUserId = &v
+	return s
+}
+
+func (s *CancelCoordinationForMonitoringRequest) SetRegionId(v string) *CancelCoordinationForMonitoringRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *CancelCoordinationForMonitoringRequest) SetUserType(v string) *CancelCoordinationForMonitoringRequest {
+	s.UserType = &v
+	return s
+}
+
+type CancelCoordinationForMonitoringResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CancelCoordinationForMonitoringResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelCoordinationForMonitoringResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CancelCoordinationForMonitoringResponseBody) SetRequestId(v string) *CancelCoordinationForMonitoringResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CancelCoordinationForMonitoringResponse struct {
+	Headers    map[string]*string                           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CancelCoordinationForMonitoringResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CancelCoordinationForMonitoringResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CancelCoordinationForMonitoringResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CancelCoordinationForMonitoringResponse) SetHeaders(v map[string]*string) *CancelCoordinationForMonitoringResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CancelCoordinationForMonitoringResponse) SetStatusCode(v int32) *CancelCoordinationForMonitoringResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CancelCoordinationForMonitoringResponse) SetBody(v *CancelCoordinationForMonitoringResponseBody) *CancelCoordinationForMonitoringResponse {
 	s.Body = v
 	return s
 }
@@ -1836,8 +2122,10 @@ func (s *CreateDiskEncryptionServiceResponse) SetBody(v *CreateDiskEncryptionSer
 }
 
 type CreateImageRequest struct {
+	AutoCleanUserdata *bool     `json:"AutoCleanUserdata,omitempty" xml:"AutoCleanUserdata,omitempty"`
 	Description       *string   `json:"Description,omitempty" xml:"Description,omitempty"`
 	DesktopId         *string   `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	DiskType          *string   `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
 	ImageName         *string   `json:"ImageName,omitempty" xml:"ImageName,omitempty"`
 	ImageResourceType *string   `json:"ImageResourceType,omitempty" xml:"ImageResourceType,omitempty"`
 	RegionId          *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -1853,6 +2141,11 @@ func (s CreateImageRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateImageRequest) SetAutoCleanUserdata(v bool) *CreateImageRequest {
+	s.AutoCleanUserdata = &v
+	return s
+}
+
 func (s *CreateImageRequest) SetDescription(v string) *CreateImageRequest {
 	s.Description = &v
 	return s
@@ -1860,6 +2153,11 @@ func (s *CreateImageRequest) SetDescription(v string) *CreateImageRequest {
 
 func (s *CreateImageRequest) SetDesktopId(v string) *CreateImageRequest {
 	s.DesktopId = &v
+	return s
+}
+
+func (s *CreateImageRequest) SetDiskType(v string) *CreateImageRequest {
+	s.DiskType = &v
 	return s
 }
 
@@ -2192,6 +2490,7 @@ type CreatePolicyGroupRequest struct {
 	Html5FileTransfer           *string                                                `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
 	LocalDrive                  *string                                                `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
 	Name                        *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	NetRedirect                 *string                                                `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
 	PreemptLogin                *string                                                `json:"PreemptLogin,omitempty" xml:"PreemptLogin,omitempty"`
 	PreemptLoginUser            []*string                                              `json:"PreemptLoginUser,omitempty" xml:"PreemptLoginUser,omitempty" type:"Repeated"`
 	PrinterRedirection          *string                                                `json:"PrinterRedirection,omitempty" xml:"PrinterRedirection,omitempty"`
@@ -2268,6 +2567,11 @@ func (s *CreatePolicyGroupRequest) SetLocalDrive(v string) *CreatePolicyGroupReq
 
 func (s *CreatePolicyGroupRequest) SetName(v string) *CreatePolicyGroupRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreatePolicyGroupRequest) SetNetRedirect(v string) *CreatePolicyGroupRequest {
+	s.NetRedirect = &v
 	return s
 }
 
@@ -3736,6 +4040,7 @@ type DescribeBundlesRequest struct {
 	CheckStock              *bool     `json:"CheckStock,omitempty" xml:"CheckStock,omitempty"`
 	CpuCount                *int32    `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
 	DesktopTypeFamily       *string   `json:"DesktopTypeFamily,omitempty" xml:"DesktopTypeFamily,omitempty"`
+	FotaChannel             *string   `json:"FotaChannel,omitempty" xml:"FotaChannel,omitempty"`
 	FromDesktopGroup        *bool     `json:"FromDesktopGroup,omitempty" xml:"FromDesktopGroup,omitempty"`
 	GpuCount                *float32  `json:"GpuCount,omitempty" xml:"GpuCount,omitempty"`
 	MaxResults              *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
@@ -3777,6 +4082,11 @@ func (s *DescribeBundlesRequest) SetCpuCount(v int32) *DescribeBundlesRequest {
 
 func (s *DescribeBundlesRequest) SetDesktopTypeFamily(v string) *DescribeBundlesRequest {
 	s.DesktopTypeFamily = &v
+	return s
+}
+
+func (s *DescribeBundlesRequest) SetFotaChannel(v string) *DescribeBundlesRequest {
+	s.FotaChannel = &v
 	return s
 }
 
@@ -5221,26 +5531,27 @@ func (s *DescribeDesktopTypesResponse) SetBody(v *DescribeDesktopTypesResponseBo
 }
 
 type DescribeDesktopsRequest struct {
-	ChargeType         *string   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	DesktopId          []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	DesktopName        *string   `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	DesktopStatus      *string   `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
-	DirectoryId        *string   `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	EndUserId          []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
-	ExcludedEndUserId  []*string `json:"ExcludedEndUserId,omitempty" xml:"ExcludedEndUserId,omitempty" type:"Repeated"`
-	ExpiredTime        *string   `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	FilterDesktopGroup *bool     `json:"FilterDesktopGroup,omitempty" xml:"FilterDesktopGroup,omitempty"`
-	GroupId            *string   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	ManagementFlag     *string   `json:"ManagementFlag,omitempty" xml:"ManagementFlag,omitempty"`
-	MaxResults         *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken          *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OfficeSiteId       *string   `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	OfficeSiteName     *string   `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
-	PolicyGroupId      *string   `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	ProtocolType       *string   `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
-	QueryFotaUpdate    *bool     `json:"QueryFotaUpdate,omitempty" xml:"QueryFotaUpdate,omitempty"`
-	RegionId           *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UserName           *string   `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	ChargeType         *string                       `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	DesktopId          []*string                     `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
+	DesktopName        *string                       `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	DesktopStatus      *string                       `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
+	DirectoryId        *string                       `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
+	EndUserId          []*string                     `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
+	ExcludedEndUserId  []*string                     `json:"ExcludedEndUserId,omitempty" xml:"ExcludedEndUserId,omitempty" type:"Repeated"`
+	ExpiredTime        *string                       `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	FilterDesktopGroup *bool                         `json:"FilterDesktopGroup,omitempty" xml:"FilterDesktopGroup,omitempty"`
+	GroupId            *string                       `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	ManagementFlag     *string                       `json:"ManagementFlag,omitempty" xml:"ManagementFlag,omitempty"`
+	MaxResults         *int32                        `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken          *string                       `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OfficeSiteId       *string                       `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	OfficeSiteName     *string                       `json:"OfficeSiteName,omitempty" xml:"OfficeSiteName,omitempty"`
+	PolicyGroupId      *string                       `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	ProtocolType       *string                       `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	QueryFotaUpdate    *bool                         `json:"QueryFotaUpdate,omitempty" xml:"QueryFotaUpdate,omitempty"`
+	RegionId           *string                       `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tag                []*DescribeDesktopsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	UserName           *string                       `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s DescribeDesktopsRequest) String() string {
@@ -5346,8 +5657,36 @@ func (s *DescribeDesktopsRequest) SetRegionId(v string) *DescribeDesktopsRequest
 	return s
 }
 
+func (s *DescribeDesktopsRequest) SetTag(v []*DescribeDesktopsRequestTag) *DescribeDesktopsRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *DescribeDesktopsRequest) SetUserName(v string) *DescribeDesktopsRequest {
 	s.UserName = &v
+	return s
+}
+
+type DescribeDesktopsRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s DescribeDesktopsRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeDesktopsRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDesktopsRequestTag) SetKey(v string) *DescribeDesktopsRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *DescribeDesktopsRequestTag) SetValue(v string) *DescribeDesktopsRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -5428,6 +5767,7 @@ type DescribeDesktopsResponseBodyDesktops struct {
 	PolicyGroupName         *string                                         `json:"PolicyGroupName,omitempty" xml:"PolicyGroupName,omitempty"`
 	Progress                *string                                         `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	ProtocolType            *string                                         `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	SessionType             *string                                         `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
 	Sessions                []*DescribeDesktopsResponseBodyDesktopsSessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
 	StartTime               *string                                         `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	SystemDiskCategory      *string                                         `json:"SystemDiskCategory,omitempty" xml:"SystemDiskCategory,omitempty"`
@@ -5648,6 +5988,11 @@ func (s *DescribeDesktopsResponseBodyDesktops) SetProgress(v string) *DescribeDe
 
 func (s *DescribeDesktopsResponseBodyDesktops) SetProtocolType(v string) *DescribeDesktopsResponseBodyDesktops {
 	s.ProtocolType = &v
+	return s
+}
+
+func (s *DescribeDesktopsResponseBodyDesktops) SetSessionType(v string) *DescribeDesktopsResponseBodyDesktops {
+	s.SessionType = &v
 	return s
 }
 
@@ -7710,6 +8055,7 @@ func (s *DescribeImagePermissionResponse) SetBody(v *DescribeImagePermissionResp
 
 type DescribeImagesRequest struct {
 	DesktopInstanceType *string   `json:"DesktopInstanceType,omitempty" xml:"DesktopInstanceType,omitempty"`
+	FotaChannel         *string   `json:"FotaChannel,omitempty" xml:"FotaChannel,omitempty"`
 	GpuCategory         *bool     `json:"GpuCategory,omitempty" xml:"GpuCategory,omitempty"`
 	GpuDriverVersion    *string   `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
 	ImageId             []*string `json:"ImageId,omitempty" xml:"ImageId,omitempty" type:"Repeated"`
@@ -7733,6 +8079,11 @@ func (s DescribeImagesRequest) GoString() string {
 
 func (s *DescribeImagesRequest) SetDesktopInstanceType(v string) *DescribeImagesRequest {
 	s.DesktopInstanceType = &v
+	return s
+}
+
+func (s *DescribeImagesRequest) SetFotaChannel(v string) *DescribeImagesRequest {
+	s.FotaChannel = &v
 	return s
 }
 
@@ -7833,6 +8184,7 @@ type DescribeImagesResponseBodyImages struct {
 	OsType                  *string   `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	Progress                *string   `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	ProtocolType            *string   `json:"ProtocolType,omitempty" xml:"ProtocolType,omitempty"`
+	SessionType             *string   `json:"SessionType,omitempty" xml:"SessionType,omitempty"`
 	SharedCount             *int32    `json:"SharedCount,omitempty" xml:"SharedCount,omitempty"`
 	Size                    *int32    `json:"Size,omitempty" xml:"Size,omitempty"`
 	Status                  *string   `json:"Status,omitempty" xml:"Status,omitempty"`
@@ -7906,6 +8258,11 @@ func (s *DescribeImagesResponseBodyImages) SetProgress(v string) *DescribeImages
 
 func (s *DescribeImagesResponseBodyImages) SetProtocolType(v string) *DescribeImagesResponseBodyImages {
 	s.ProtocolType = &v
+	return s
+}
+
+func (s *DescribeImagesResponseBodyImages) SetSessionType(v string) *DescribeImagesResponseBodyImages {
+	s.SessionType = &v
 	return s
 }
 
@@ -8066,6 +8423,7 @@ type DescribeInvocationsResponseBodyInvocations struct {
 	CommandContent   *string                                                     `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
 	CommandType      *string                                                     `json:"CommandType,omitempty" xml:"CommandType,omitempty"`
 	CreationTime     *string                                                     `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
+	EndUserId        *string                                                     `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
 	InvocationStatus *string                                                     `json:"InvocationStatus,omitempty" xml:"InvocationStatus,omitempty"`
 	InvokeDesktops   []*DescribeInvocationsResponseBodyInvocationsInvokeDesktops `json:"InvokeDesktops,omitempty" xml:"InvokeDesktops,omitempty" type:"Repeated"`
 	InvokeId         *string                                                     `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
@@ -8091,6 +8449,11 @@ func (s *DescribeInvocationsResponseBodyInvocations) SetCommandType(v string) *D
 
 func (s *DescribeInvocationsResponseBodyInvocations) SetCreationTime(v string) *DescribeInvocationsResponseBodyInvocations {
 	s.CreationTime = &v
+	return s
+}
+
+func (s *DescribeInvocationsResponseBodyInvocations) SetEndUserId(v string) *DescribeInvocationsResponseBodyInvocations {
+	s.EndUserId = &v
 	return s
 }
 
@@ -9228,6 +9591,7 @@ type DescribePolicyGroupsResponseBodyDescribePolicyGroups struct {
 	Html5FileTransfer            *string                                                                             `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
 	LocalDrive                   *string                                                                             `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
 	Name                         *string                                                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	NetRedirect                  *string                                                                             `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
 	PolicyGroupId                *string                                                                             `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
 	PolicyGroupType              *string                                                                             `json:"PolicyGroupType,omitempty" xml:"PolicyGroupType,omitempty"`
 	PolicyStatus                 *string                                                                             `json:"PolicyStatus,omitempty" xml:"PolicyStatus,omitempty"`
@@ -9312,6 +9676,11 @@ func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetLocalDrive(v s
 
 func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetName(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
 	s.Name = &v
+	return s
+}
+
+func (s *DescribePolicyGroupsResponseBodyDescribePolicyGroups) SetNetRedirect(v string) *DescribePolicyGroupsResponseBodyDescribePolicyGroups {
+	s.NetRedirect = &v
 	return s
 }
 
@@ -11082,6 +11451,7 @@ type DescribeUsersInGroupRequest struct {
 	ConnectState    *int32  `json:"ConnectState,omitempty" xml:"ConnectState,omitempty"`
 	DesktopGroupId  *string `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
 	EndUserId       *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
+	Filter          *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	MaxResults      *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	NextToken       *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	QueryUserDetail *bool   `json:"QueryUserDetail,omitempty" xml:"QueryUserDetail,omitempty"`
@@ -11108,6 +11478,11 @@ func (s *DescribeUsersInGroupRequest) SetDesktopGroupId(v string) *DescribeUsers
 
 func (s *DescribeUsersInGroupRequest) SetEndUserId(v string) *DescribeUsersInGroupRequest {
 	s.EndUserId = &v
+	return s
+}
+
+func (s *DescribeUsersInGroupRequest) SetFilter(v string) *DescribeUsersInGroupRequest {
+	s.Filter = &v
 	return s
 }
 
@@ -11759,7 +12134,6 @@ func (s *DescribeVulListResponseBody) SetVulRecords(v []*DescribeVulListResponse
 
 type DescribeVulListResponseBodyVulRecords struct {
 	AliasName         *string                                                 `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	DesktopGroupId    *string                                                 `json:"DesktopGroupId,omitempty" xml:"DesktopGroupId,omitempty"`
 	DesktopId         *string                                                 `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
 	DesktopName       *string                                                 `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
 	ExtendContentJson *DescribeVulListResponseBodyVulRecordsExtendContentJson `json:"ExtendContentJson,omitempty" xml:"ExtendContentJson,omitempty" type:"Struct"`
@@ -11770,7 +12144,6 @@ type DescribeVulListResponseBodyVulRecords struct {
 	Necessity         *string                                                 `json:"Necessity,omitempty" xml:"Necessity,omitempty"`
 	Online            *bool                                                   `json:"Online,omitempty" xml:"Online,omitempty"`
 	OsVersion         *string                                                 `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
-	Progress          *int32                                                  `json:"Progress,omitempty" xml:"Progress,omitempty"`
 	Related           *string                                                 `json:"Related,omitempty" xml:"Related,omitempty"`
 	RepairTs          *int64                                                  `json:"RepairTs,omitempty" xml:"RepairTs,omitempty"`
 	ResultCode        *string                                                 `json:"ResultCode,omitempty" xml:"ResultCode,omitempty"`
@@ -11790,11 +12163,6 @@ func (s DescribeVulListResponseBodyVulRecords) GoString() string {
 
 func (s *DescribeVulListResponseBodyVulRecords) SetAliasName(v string) *DescribeVulListResponseBodyVulRecords {
 	s.AliasName = &v
-	return s
-}
-
-func (s *DescribeVulListResponseBodyVulRecords) SetDesktopGroupId(v string) *DescribeVulListResponseBodyVulRecords {
-	s.DesktopGroupId = &v
 	return s
 }
 
@@ -11845,11 +12213,6 @@ func (s *DescribeVulListResponseBodyVulRecords) SetOnline(v bool) *DescribeVulLi
 
 func (s *DescribeVulListResponseBodyVulRecords) SetOsVersion(v string) *DescribeVulListResponseBodyVulRecords {
 	s.OsVersion = &v
-	return s
-}
-
-func (s *DescribeVulListResponseBodyVulRecords) SetProgress(v int32) *DescribeVulListResponseBodyVulRecords {
-	s.Progress = &v
 	return s
 }
 
@@ -12615,20 +12978,21 @@ func (s *ExportDesktopGroupInfoResponse) SetBody(v *ExportDesktopGroupInfoRespon
 }
 
 type ExportDesktopListInfoRequest struct {
-	ChargeType    *string   `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	DesktopId     []*string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
-	DesktopName   *string   `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
-	DesktopStatus *string   `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
-	EndUserId     []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
-	ExpiredTime   *string   `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
-	GroupId       *string   `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	LangType      *string   `json:"LangType,omitempty" xml:"LangType,omitempty"`
-	MaxResults    *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken     *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	OfficeSiteId  *string   `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
-	PolicyGroupId *string   `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
-	RegionId      *string   `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	UserName      *string   `json:"UserName,omitempty" xml:"UserName,omitempty"`
+	ChargeType    *string                            `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	DesktopId     []*string                          `json:"DesktopId,omitempty" xml:"DesktopId,omitempty" type:"Repeated"`
+	DesktopName   *string                            `json:"DesktopName,omitempty" xml:"DesktopName,omitempty"`
+	DesktopStatus *string                            `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
+	EndUserId     []*string                          `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
+	ExpiredTime   *string                            `json:"ExpiredTime,omitempty" xml:"ExpiredTime,omitempty"`
+	GroupId       *string                            `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
+	LangType      *string                            `json:"LangType,omitempty" xml:"LangType,omitempty"`
+	MaxResults    *int32                             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken     *string                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	OfficeSiteId  *string                            `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
+	PolicyGroupId *string                            `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
+	RegionId      *string                            `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	Tag           []*ExportDesktopListInfoRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	UserName      *string                            `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
 func (s ExportDesktopListInfoRequest) String() string {
@@ -12704,8 +13068,36 @@ func (s *ExportDesktopListInfoRequest) SetRegionId(v string) *ExportDesktopListI
 	return s
 }
 
+func (s *ExportDesktopListInfoRequest) SetTag(v []*ExportDesktopListInfoRequestTag) *ExportDesktopListInfoRequest {
+	s.Tag = v
+	return s
+}
+
 func (s *ExportDesktopListInfoRequest) SetUserName(v string) *ExportDesktopListInfoRequest {
 	s.UserName = &v
+	return s
+}
+
+type ExportDesktopListInfoRequestTag struct {
+	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
+}
+
+func (s ExportDesktopListInfoRequestTag) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ExportDesktopListInfoRequestTag) GoString() string {
+	return s.String()
+}
+
+func (s *ExportDesktopListInfoRequestTag) SetKey(v string) *ExportDesktopListInfoRequestTag {
+	s.Key = &v
+	return s
+}
+
+func (s *ExportDesktopListInfoRequestTag) SetValue(v string) *ExportDesktopListInfoRequestTag {
+	s.Value = &v
 	return s
 }
 
@@ -12770,6 +13162,7 @@ type GetConnectionTicketRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	TaskId               *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Uuid                 *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
 }
 
 func (s GetConnectionTicketRequest) String() string {
@@ -12817,6 +13210,11 @@ func (s *GetConnectionTicketRequest) SetResourceOwnerId(v int64) *GetConnectionT
 
 func (s *GetConnectionTicketRequest) SetTaskId(v string) *GetConnectionTicketRequest {
 	s.TaskId = &v
+	return s
+}
+
+func (s *GetConnectionTicketRequest) SetUuid(v string) *GetConnectionTicketRequest {
+	s.Uuid = &v
 	return s
 }
 
@@ -13211,81 +13609,6 @@ func (s *GetDesktopGroupDetailResponse) SetStatusCode(v int32) *GetDesktopGroupD
 }
 
 func (s *GetDesktopGroupDetailResponse) SetBody(v *GetDesktopGroupDetailResponseBody) *GetDesktopGroupDetailResponse {
-	s.Body = v
-	return s
-}
-
-type GetDirectorySsoStatusRequest struct {
-	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s GetDirectorySsoStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDirectorySsoStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDirectorySsoStatusRequest) SetDirectoryId(v string) *GetDirectorySsoStatusRequest {
-	s.DirectoryId = &v
-	return s
-}
-
-func (s *GetDirectorySsoStatusRequest) SetRegionId(v string) *GetDirectorySsoStatusRequest {
-	s.RegionId = &v
-	return s
-}
-
-type GetDirectorySsoStatusResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	SsoStatus *bool   `json:"SsoStatus,omitempty" xml:"SsoStatus,omitempty"`
-}
-
-func (s GetDirectorySsoStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDirectorySsoStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDirectorySsoStatusResponseBody) SetRequestId(v string) *GetDirectorySsoStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetDirectorySsoStatusResponseBody) SetSsoStatus(v bool) *GetDirectorySsoStatusResponseBody {
-	s.SsoStatus = &v
-	return s
-}
-
-type GetDirectorySsoStatusResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDirectorySsoStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDirectorySsoStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDirectorySsoStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDirectorySsoStatusResponse) SetHeaders(v map[string]*string) *GetDirectorySsoStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDirectorySsoStatusResponse) SetStatusCode(v int32) *GetDirectorySsoStatusResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetDirectorySsoStatusResponse) SetBody(v *GetDirectorySsoStatusResponseBody) *GetDirectorySsoStatusResponse {
 	s.Body = v
 	return s
 }
@@ -15328,6 +15651,105 @@ func (s *ModifyDesktopsPolicyGroupResponse) SetBody(v *ModifyDesktopsPolicyGroup
 	return s
 }
 
+type ModifyDiskSpecRequest struct {
+	AutoPay                  *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
+	DesktopId                *string `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
+	PromotionId              *string `json:"PromotionId,omitempty" xml:"PromotionId,omitempty"`
+	RegionId                 *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RootDiskPerformanceLevel *string `json:"RootDiskPerformanceLevel,omitempty" xml:"RootDiskPerformanceLevel,omitempty"`
+	UserDiskPerformanceLevel *string `json:"UserDiskPerformanceLevel,omitempty" xml:"UserDiskPerformanceLevel,omitempty"`
+}
+
+func (s ModifyDiskSpecRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDiskSpecRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDiskSpecRequest) SetAutoPay(v bool) *ModifyDiskSpecRequest {
+	s.AutoPay = &v
+	return s
+}
+
+func (s *ModifyDiskSpecRequest) SetDesktopId(v string) *ModifyDiskSpecRequest {
+	s.DesktopId = &v
+	return s
+}
+
+func (s *ModifyDiskSpecRequest) SetPromotionId(v string) *ModifyDiskSpecRequest {
+	s.PromotionId = &v
+	return s
+}
+
+func (s *ModifyDiskSpecRequest) SetRegionId(v string) *ModifyDiskSpecRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *ModifyDiskSpecRequest) SetRootDiskPerformanceLevel(v string) *ModifyDiskSpecRequest {
+	s.RootDiskPerformanceLevel = &v
+	return s
+}
+
+func (s *ModifyDiskSpecRequest) SetUserDiskPerformanceLevel(v string) *ModifyDiskSpecRequest {
+	s.UserDiskPerformanceLevel = &v
+	return s
+}
+
+type ModifyDiskSpecResponseBody struct {
+	OrderId   *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyDiskSpecResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDiskSpecResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDiskSpecResponseBody) SetOrderId(v string) *ModifyDiskSpecResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *ModifyDiskSpecResponseBody) SetRequestId(v string) *ModifyDiskSpecResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyDiskSpecResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyDiskSpecResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyDiskSpecResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyDiskSpecResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDiskSpecResponse) SetHeaders(v map[string]*string) *ModifyDiskSpecResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyDiskSpecResponse) SetStatusCode(v int32) *ModifyDiskSpecResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyDiskSpecResponse) SetBody(v *ModifyDiskSpecResponseBody) *ModifyDiskSpecResponse {
+	s.Body = v
+	return s
+}
+
 type ModifyEntitlementRequest struct {
 	DesktopId *string   `json:"DesktopId,omitempty" xml:"DesktopId,omitempty"`
 	EndUserId []*string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty" type:"Repeated"`
@@ -16179,6 +16601,7 @@ type ModifyPolicyGroupRequest struct {
 	Html5FileTransfer           *string                                                `json:"Html5FileTransfer,omitempty" xml:"Html5FileTransfer,omitempty"`
 	LocalDrive                  *string                                                `json:"LocalDrive,omitempty" xml:"LocalDrive,omitempty"`
 	Name                        *string                                                `json:"Name,omitempty" xml:"Name,omitempty"`
+	NetRedirect                 *string                                                `json:"NetRedirect,omitempty" xml:"NetRedirect,omitempty"`
 	PolicyGroupId               *string                                                `json:"PolicyGroupId,omitempty" xml:"PolicyGroupId,omitempty"`
 	PreemptLogin                *string                                                `json:"PreemptLogin,omitempty" xml:"PreemptLogin,omitempty"`
 	PreemptLoginUser            []*string                                              `json:"PreemptLoginUser,omitempty" xml:"PreemptLoginUser,omitempty" type:"Repeated"`
@@ -16258,6 +16681,11 @@ func (s *ModifyPolicyGroupRequest) SetLocalDrive(v string) *ModifyPolicyGroupReq
 
 func (s *ModifyPolicyGroupRequest) SetName(v string) *ModifyPolicyGroupRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *ModifyPolicyGroupRequest) SetNetRedirect(v string) *ModifyPolicyGroupRequest {
+	s.NetRedirect = &v
 	return s
 }
 
@@ -17819,81 +18247,6 @@ func (s *SendVerifyCodeResponse) SetBody(v *SendVerifyCodeResponseBody) *SendVer
 	return s
 }
 
-type SetDirectorySsoStatusRequest struct {
-	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	EnableSso   *bool   `json:"EnableSso,omitempty" xml:"EnableSso,omitempty"`
-	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-}
-
-func (s SetDirectorySsoStatusRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDirectorySsoStatusRequest) GoString() string {
-	return s.String()
-}
-
-func (s *SetDirectorySsoStatusRequest) SetDirectoryId(v string) *SetDirectorySsoStatusRequest {
-	s.DirectoryId = &v
-	return s
-}
-
-func (s *SetDirectorySsoStatusRequest) SetEnableSso(v bool) *SetDirectorySsoStatusRequest {
-	s.EnableSso = &v
-	return s
-}
-
-func (s *SetDirectorySsoStatusRequest) SetRegionId(v string) *SetDirectorySsoStatusRequest {
-	s.RegionId = &v
-	return s
-}
-
-type SetDirectorySsoStatusResponseBody struct {
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s SetDirectorySsoStatusResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDirectorySsoStatusResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *SetDirectorySsoStatusResponseBody) SetRequestId(v string) *SetDirectorySsoStatusResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type SetDirectorySsoStatusResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *SetDirectorySsoStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s SetDirectorySsoStatusResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s SetDirectorySsoStatusResponse) GoString() string {
-	return s.String()
-}
-
-func (s *SetDirectorySsoStatusResponse) SetHeaders(v map[string]*string) *SetDirectorySsoStatusResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *SetDirectorySsoStatusResponse) SetStatusCode(v int32) *SetDirectorySsoStatusResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *SetDirectorySsoStatusResponse) SetBody(v *SetDirectorySsoStatusResponseBody) *SetDirectorySsoStatusResponse {
-	s.Body = v
-	return s
-}
-
 type SetIdpMetadataRequest struct {
 	DirectoryId  *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	IdpMetadata  *string `json:"IdpMetadata,omitempty" xml:"IdpMetadata,omitempty"`
@@ -17985,7 +18338,6 @@ type SetOfficeSiteSsoStatusRequest struct {
 	EnableSso    *bool   `json:"EnableSso,omitempty" xml:"EnableSso,omitempty"`
 	OfficeSiteId *string `json:"OfficeSiteId,omitempty" xml:"OfficeSiteId,omitempty"`
 	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	SsoType      *string `json:"SsoType,omitempty" xml:"SsoType,omitempty"`
 }
 
 func (s SetOfficeSiteSsoStatusRequest) String() string {
@@ -18008,11 +18360,6 @@ func (s *SetOfficeSiteSsoStatusRequest) SetOfficeSiteId(v string) *SetOfficeSite
 
 func (s *SetOfficeSiteSsoStatusRequest) SetRegionId(v string) *SetOfficeSiteSsoStatusRequest {
 	s.RegionId = &v
-	return s
-}
-
-func (s *SetOfficeSiteSsoStatusRequest) SetSsoType(v string) *SetOfficeSiteSsoStatusRequest {
-	s.SsoType = &v
 	return s
 }
 
@@ -19122,6 +19469,70 @@ func (client *Client) AddUserToDesktopGroup(request *AddUserToDesktopGroupReques
 	return _result, _err
 }
 
+func (client *Client) ApplyCoordinationForMonitoringWithOptions(request *ApplyCoordinationForMonitoringRequest, runtime *util.RuntimeOptions) (_result *ApplyCoordinationForMonitoringResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CoordinatePolicyType)) {
+		query["CoordinatePolicyType"] = request.CoordinatePolicyType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		query["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InitiatorType)) {
+		query["InitiatorType"] = request.InitiatorType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceCandidates)) {
+		query["ResourceCandidates"] = request.ResourceCandidates
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ApplyCoordinationForMonitoring"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ApplyCoordinationForMonitoringResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ApplyCoordinationForMonitoring(request *ApplyCoordinationForMonitoringRequest) (_result *ApplyCoordinationForMonitoringResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ApplyCoordinationForMonitoringResponse{}
+	_body, _err := client.ApplyCoordinationForMonitoringWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ApproveFotaUpdateWithOptions(request *ApproveFotaUpdateRequest, runtime *util.RuntimeOptions) (_result *ApproveFotaUpdateResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -19279,6 +19690,62 @@ func (client *Client) AttachCen(request *AttachCenRequest) (_result *AttachCenRe
 	runtime := &util.RuntimeOptions{}
 	_result = &AttachCenResponse{}
 	_body, _err := client.AttachCenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CancelCoordinationForMonitoringWithOptions(request *CancelCoordinationForMonitoringRequest, runtime *util.RuntimeOptions) (_result *CancelCoordinationForMonitoringResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CoIds)) {
+		query["CoIds"] = request.CoIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndUserId)) {
+		query["EndUserId"] = request.EndUserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserType)) {
+		query["UserType"] = request.UserType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CancelCoordinationForMonitoring"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CancelCoordinationForMonitoringResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CancelCoordinationForMonitoring(request *CancelCoordinationForMonitoringRequest) (_result *CancelCoordinationForMonitoringResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CancelCoordinationForMonitoringResponse{}
+	_body, _err := client.CancelCoordinationForMonitoringWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -20188,12 +20655,20 @@ func (client *Client) CreateImageWithOptions(request *CreateImageRequest, runtim
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoCleanUserdata)) {
+		query["AutoCleanUserdata"] = request.AutoCleanUserdata
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.DesktopId)) {
 		query["DesktopId"] = request.DesktopId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DiskType)) {
+		query["DiskType"] = request.DiskType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ImageName)) {
@@ -20438,6 +20913,10 @@ func (client *Client) CreatePolicyGroupWithOptions(request *CreatePolicyGroupReq
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetRedirect)) {
+		query["NetRedirect"] = request.NetRedirect
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PreemptLogin)) {
@@ -21360,6 +21839,10 @@ func (client *Client) DescribeBundlesWithOptions(request *DescribeBundlesRequest
 		query["DesktopTypeFamily"] = request.DesktopTypeFamily
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.FotaChannel)) {
+		query["FotaChannel"] = request.FotaChannel
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.FromDesktopGroup)) {
 		query["FromDesktopGroup"] = request.FromDesktopGroup
 	}
@@ -21882,6 +22365,10 @@ func (client *Client) DescribeDesktopsWithOptions(request *DescribeDesktopsReque
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserName)) {
@@ -22526,6 +23013,10 @@ func (client *Client) DescribeImagesWithOptions(request *DescribeImagesRequest, 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.DesktopInstanceType)) {
 		query["DesktopInstanceType"] = request.DesktopInstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FotaChannel)) {
+		query["FotaChannel"] = request.FotaChannel
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.GpuCategory)) {
@@ -23560,6 +24051,10 @@ func (client *Client) DescribeUsersInGroupWithOptions(request *DescribeUsersInGr
 		query["EndUserId"] = request.EndUserId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Filter)) {
+		query["Filter"] = request.Filter
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
 		query["MaxResults"] = request.MaxResults
 	}
@@ -24268,6 +24763,10 @@ func (client *Client) ExportDesktopListInfoWithOptions(request *ExportDesktopLis
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Tag)) {
+		query["Tag"] = request.Tag
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserName)) {
 		query["UserName"] = request.UserName
 	}
@@ -24342,6 +24841,10 @@ func (client *Client) GetConnectionTicketWithOptions(request *GetConnectionTicke
 
 	if !tea.BoolValue(util.IsUnset(request.TaskId)) {
 		query["TaskId"] = request.TaskId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -24419,54 +24922,6 @@ func (client *Client) GetDesktopGroupDetail(request *GetDesktopGroupDetailReques
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDesktopGroupDetailResponse{}
 	_body, _err := client.GetDesktopGroupDetailWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetDirectorySsoStatusWithOptions(request *GetDirectorySsoStatusRequest, runtime *util.RuntimeOptions) (_result *GetDirectorySsoStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
-		query["DirectoryId"] = request.DirectoryId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetDirectorySsoStatus"),
-		Version:     tea.String("2020-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetDirectorySsoStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetDirectorySsoStatus(request *GetDirectorySsoStatusRequest) (_result *GetDirectorySsoStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetDirectorySsoStatusResponse{}
-	_body, _err := client.GetDirectorySsoStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -25626,6 +26081,70 @@ func (client *Client) ModifyDesktopsPolicyGroup(request *ModifyDesktopsPolicyGro
 	return _result, _err
 }
 
+func (client *Client) ModifyDiskSpecWithOptions(request *ModifyDiskSpecRequest, runtime *util.RuntimeOptions) (_result *ModifyDiskSpecResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AutoPay)) {
+		query["AutoPay"] = request.AutoPay
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DesktopId)) {
+		query["DesktopId"] = request.DesktopId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PromotionId)) {
+		query["PromotionId"] = request.PromotionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RootDiskPerformanceLevel)) {
+		query["RootDiskPerformanceLevel"] = request.RootDiskPerformanceLevel
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserDiskPerformanceLevel)) {
+		query["UserDiskPerformanceLevel"] = request.UserDiskPerformanceLevel
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyDiskSpec"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyDiskSpecResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyDiskSpec(request *ModifyDiskSpecRequest) (_result *ModifyDiskSpecResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyDiskSpecResponse{}
+	_body, _err := client.ModifyDiskSpecWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ModifyEntitlementWithOptions(request *ModifyEntitlementRequest, runtime *util.RuntimeOptions) (_result *ModifyEntitlementResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26230,6 +26749,10 @@ func (client *Client) ModifyPolicyGroupWithOptions(request *ModifyPolicyGroupReq
 
 	if !tea.BoolValue(util.IsUnset(request.Name)) {
 		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NetRedirect)) {
+		query["NetRedirect"] = request.NetRedirect
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PolicyGroupId)) {
@@ -27126,58 +27649,6 @@ func (client *Client) SendVerifyCode(request *SendVerifyCodeRequest) (_result *S
 	return _result, _err
 }
 
-func (client *Client) SetDirectorySsoStatusWithOptions(request *SetDirectorySsoStatusRequest, runtime *util.RuntimeOptions) (_result *SetDirectorySsoStatusResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DirectoryId)) {
-		query["DirectoryId"] = request.DirectoryId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EnableSso)) {
-		query["EnableSso"] = request.EnableSso
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
-		query["RegionId"] = request.RegionId
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("SetDirectorySsoStatus"),
-		Version:     tea.String("2020-09-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &SetDirectorySsoStatusResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) SetDirectorySsoStatus(request *SetDirectorySsoStatusRequest) (_result *SetDirectorySsoStatusResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &SetDirectorySsoStatusResponse{}
-	_body, _err := client.SetDirectorySsoStatusWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) SetIdpMetadataWithOptions(request *SetIdpMetadataRequest, runtime *util.RuntimeOptions) (_result *SetIdpMetadataResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -27250,10 +27721,6 @@ func (client *Client) SetOfficeSiteSsoStatusWithOptions(request *SetOfficeSiteSs
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SsoType)) {
-		query["SsoType"] = request.SsoType
 	}
 
 	req := &openapi.OpenApiRequest{
