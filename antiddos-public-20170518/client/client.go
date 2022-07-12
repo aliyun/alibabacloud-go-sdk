@@ -36,8 +36,10 @@ func (s *DescribeBgpPackByIpRequest) SetIp(v string) *DescribeBgpPackByIpRequest
 }
 
 type DescribeBgpPackByIpResponseBody struct {
+	Code        *int32                                      `json:"Code,omitempty" xml:"Code,omitempty"`
 	DdosbgpInfo *DescribeBgpPackByIpResponseBodyDdosbgpInfo `json:"DdosbgpInfo,omitempty" xml:"DdosbgpInfo,omitempty" type:"Struct"`
 	RequestId   *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success     *bool                                       `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
 func (s DescribeBgpPackByIpResponseBody) String() string {
@@ -48,6 +50,11 @@ func (s DescribeBgpPackByIpResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeBgpPackByIpResponseBody) SetCode(v int32) *DescribeBgpPackByIpResponseBody {
+	s.Code = &v
+	return s
+}
+
 func (s *DescribeBgpPackByIpResponseBody) SetDdosbgpInfo(v *DescribeBgpPackByIpResponseBodyDdosbgpInfo) *DescribeBgpPackByIpResponseBody {
 	s.DdosbgpInfo = v
 	return s
@@ -55,6 +62,11 @@ func (s *DescribeBgpPackByIpResponseBody) SetDdosbgpInfo(v *DescribeBgpPackByIpR
 
 func (s *DescribeBgpPackByIpResponseBody) SetRequestId(v string) *DescribeBgpPackByIpResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBgpPackByIpResponseBody) SetSuccess(v bool) *DescribeBgpPackByIpResponseBody {
+	s.Success = &v
 	return s
 }
 
@@ -1597,6 +1609,7 @@ type ModifyDdosStatusRequest struct {
 	DdosRegionId *string `json:"DdosRegionId,omitempty" xml:"DdosRegionId,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	InternetIp   *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
 }
 
 func (s ModifyDdosStatusRequest) String() string {
@@ -1619,6 +1632,11 @@ func (s *ModifyDdosStatusRequest) SetInstanceId(v string) *ModifyDdosStatusReque
 
 func (s *ModifyDdosStatusRequest) SetInstanceType(v string) *ModifyDdosStatusRequest {
 	s.InstanceType = &v
+	return s
+}
+
+func (s *ModifyDdosStatusRequest) SetInternetIp(v string) *ModifyDdosStatusRequest {
+	s.InternetIp = &v
 	return s
 }
 
@@ -2431,6 +2449,10 @@ func (client *Client) ModifyDdosStatusWithOptions(request *ModifyDdosStatusReque
 
 	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
 		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InternetIp)) {
+		query["InternetIp"] = request.InternetIp
 	}
 
 	req := &openapi.OpenApiRequest{
