@@ -9957,6 +9957,7 @@ type PreviewStackRequest struct {
 	Parallelism             *int64                           `json:"Parallelism,omitempty" xml:"Parallelism,omitempty"`
 	Parameters              []*PreviewStackRequestParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 	RegionId                *string                          `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	StackId                 *string                          `json:"StackId,omitempty" xml:"StackId,omitempty"`
 	StackName               *string                          `json:"StackName,omitempty" xml:"StackName,omitempty"`
 	StackPolicyBody         *string                          `json:"StackPolicyBody,omitempty" xml:"StackPolicyBody,omitempty"`
 	StackPolicyURL          *string                          `json:"StackPolicyURL,omitempty" xml:"StackPolicyURL,omitempty"`
@@ -9999,6 +10000,11 @@ func (s *PreviewStackRequest) SetParameters(v []*PreviewStackRequestParameters) 
 
 func (s *PreviewStackRequest) SetRegionId(v string) *PreviewStackRequest {
 	s.RegionId = &v
+	return s
+}
+
+func (s *PreviewStackRequest) SetStackId(v string) *PreviewStackRequest {
+	s.StackId = &v
 	return s
 }
 
@@ -10239,9 +10245,11 @@ func (s *PreviewStackResponseBodyStackParameters) SetParameterValue(v string) *P
 }
 
 type PreviewStackResponseBodyStackResources struct {
+	Action            *string                `json:"Action,omitempty" xml:"Action,omitempty"`
 	Description       *string                `json:"Description,omitempty" xml:"Description,omitempty"`
 	LogicalResourceId *string                `json:"LogicalResourceId,omitempty" xml:"LogicalResourceId,omitempty"`
 	Properties        map[string]interface{} `json:"Properties,omitempty" xml:"Properties,omitempty"`
+	Replacement       *string                `json:"Replacement,omitempty" xml:"Replacement,omitempty"`
 	RequiredBy        []*string              `json:"RequiredBy,omitempty" xml:"RequiredBy,omitempty" type:"Repeated"`
 	ResourceType      *string                `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	Stack             map[string]interface{} `json:"Stack,omitempty" xml:"Stack,omitempty"`
@@ -10253,6 +10261,11 @@ func (s PreviewStackResponseBodyStackResources) String() string {
 
 func (s PreviewStackResponseBodyStackResources) GoString() string {
 	return s.String()
+}
+
+func (s *PreviewStackResponseBodyStackResources) SetAction(v string) *PreviewStackResponseBodyStackResources {
+	s.Action = &v
+	return s
 }
 
 func (s *PreviewStackResponseBodyStackResources) SetDescription(v string) *PreviewStackResponseBodyStackResources {
@@ -10267,6 +10280,11 @@ func (s *PreviewStackResponseBodyStackResources) SetLogicalResourceId(v string) 
 
 func (s *PreviewStackResponseBodyStackResources) SetProperties(v map[string]interface{}) *PreviewStackResponseBodyStackResources {
 	s.Properties = v
+	return s
+}
+
+func (s *PreviewStackResponseBodyStackResources) SetReplacement(v string) *PreviewStackResponseBodyStackResources {
+	s.Replacement = &v
 	return s
 }
 
@@ -16060,6 +16078,10 @@ func (client *Client) PreviewStackWithOptions(request *PreviewStackRequest, runt
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
 		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StackId)) {
+		query["StackId"] = request.StackId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StackName)) {
