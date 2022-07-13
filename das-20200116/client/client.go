@@ -1099,198 +1099,6 @@ func (s *CreateRequestDiagnosisResponse) SetBody(v *CreateRequestDiagnosisRespon
 	return s
 }
 
-type DeleteAutoScaleInstancePolicyRequest struct {
-	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	PolicyUuid     *string `json:"PolicyUuid,omitempty" xml:"PolicyUuid,omitempty"`
-}
-
-func (s DeleteAutoScaleInstancePolicyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAutoScaleInstancePolicyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAutoScaleInstancePolicyRequest) SetConsoleContext(v string) *DeleteAutoScaleInstancePolicyRequest {
-	s.ConsoleContext = &v
-	return s
-}
-
-func (s *DeleteAutoScaleInstancePolicyRequest) SetInstanceId(v string) *DeleteAutoScaleInstancePolicyRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *DeleteAutoScaleInstancePolicyRequest) SetPolicyUuid(v string) *DeleteAutoScaleInstancePolicyRequest {
-	s.PolicyUuid = &v
-	return s
-}
-
-type DeleteAutoScaleInstancePolicyResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeleteAutoScaleInstancePolicyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAutoScaleInstancePolicyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAutoScaleInstancePolicyResponseBody) SetCode(v string) *DeleteAutoScaleInstancePolicyResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteAutoScaleInstancePolicyResponseBody) SetData(v string) *DeleteAutoScaleInstancePolicyResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *DeleteAutoScaleInstancePolicyResponseBody) SetMessage(v string) *DeleteAutoScaleInstancePolicyResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteAutoScaleInstancePolicyResponseBody) SetRequestId(v string) *DeleteAutoScaleInstancePolicyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteAutoScaleInstancePolicyResponseBody) SetSuccess(v string) *DeleteAutoScaleInstancePolicyResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DeleteAutoScaleInstancePolicyResponse struct {
-	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAutoScaleInstancePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteAutoScaleInstancePolicyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAutoScaleInstancePolicyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAutoScaleInstancePolicyResponse) SetHeaders(v map[string]*string) *DeleteAutoScaleInstancePolicyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteAutoScaleInstancePolicyResponse) SetStatusCode(v int32) *DeleteAutoScaleInstancePolicyResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteAutoScaleInstancePolicyResponse) SetBody(v *DeleteAutoScaleInstancePolicyResponseBody) *DeleteAutoScaleInstancePolicyResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteAutoScalePolicyRequest struct {
-	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
-	Uuid           *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
-}
-
-func (s DeleteAutoScalePolicyRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAutoScalePolicyRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAutoScalePolicyRequest) SetConsoleContext(v string) *DeleteAutoScalePolicyRequest {
-	s.ConsoleContext = &v
-	return s
-}
-
-func (s *DeleteAutoScalePolicyRequest) SetUuid(v string) *DeleteAutoScalePolicyRequest {
-	s.Uuid = &v
-	return s
-}
-
-type DeleteAutoScalePolicyResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s DeleteAutoScalePolicyResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAutoScalePolicyResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAutoScalePolicyResponseBody) SetCode(v string) *DeleteAutoScalePolicyResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *DeleteAutoScalePolicyResponseBody) SetData(v string) *DeleteAutoScalePolicyResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *DeleteAutoScalePolicyResponseBody) SetMessage(v string) *DeleteAutoScalePolicyResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *DeleteAutoScalePolicyResponseBody) SetRequestId(v string) *DeleteAutoScalePolicyResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteAutoScalePolicyResponseBody) SetSuccess(v string) *DeleteAutoScalePolicyResponseBody {
-	s.Success = &v
-	return s
-}
-
-type DeleteAutoScalePolicyResponse struct {
-	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteAutoScalePolicyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteAutoScalePolicyResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteAutoScalePolicyResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteAutoScalePolicyResponse) SetHeaders(v map[string]*string) *DeleteAutoScalePolicyResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteAutoScalePolicyResponse) SetStatusCode(v int32) *DeleteAutoScalePolicyResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteAutoScalePolicyResponse) SetBody(v *DeleteAutoScalePolicyResponseBody) *DeleteAutoScalePolicyResponse {
-	s.Body = v
-	return s
-}
-
 type DeleteCloudBenchTaskRequest struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
@@ -4950,13 +4758,13 @@ func (s *GetAsyncErrorRequestStatResultResponseBody) SetSuccess(v bool) *GetAsyn
 }
 
 type GetAsyncErrorRequestStatResultResponseBodyData struct {
-	Complete  *bool                       `json:"complete,omitempty" xml:"complete,omitempty"`
-	Fail      *bool                       `json:"fail,omitempty" xml:"fail,omitempty"`
-	IsFinish  *bool                       `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
-	Result    map[string]*DataResultValue `json:"result,omitempty" xml:"result,omitempty"`
-	ResultId  *string                     `json:"resultId,omitempty" xml:"resultId,omitempty"`
-	State     *string                     `json:"state,omitempty" xml:"state,omitempty"`
-	Timestamp *int64                      `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
+	Complete  *bool                         `json:"complete,omitempty" xml:"complete,omitempty"`
+	Fail      *bool                         `json:"fail,omitempty" xml:"fail,omitempty"`
+	IsFinish  *bool                         `json:"isFinish,omitempty" xml:"isFinish,omitempty"`
+	Result    []map[string]*DataResultValue `json:"result,omitempty" xml:"result,omitempty" type:"Repeated"`
+	ResultId  *string                       `json:"resultId,omitempty" xml:"resultId,omitempty"`
+	State     *string                       `json:"state,omitempty" xml:"state,omitempty"`
+	Timestamp *int64                        `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
 }
 
 func (s GetAsyncErrorRequestStatResultResponseBodyData) String() string {
@@ -4982,7 +4790,7 @@ func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetIsFinish(v bool) *Ge
 	return s
 }
 
-func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetResult(v map[string]*DataResultValue) *GetAsyncErrorRequestStatResultResponseBodyData {
+func (s *GetAsyncErrorRequestStatResultResponseBodyData) SetResult(v []map[string]*DataResultValue) *GetAsyncErrorRequestStatResultResponseBodyData {
 	s.Result = v
 	return s
 }
@@ -5027,235 +4835,6 @@ func (s *GetAsyncErrorRequestStatResultResponse) SetStatusCode(v int32) *GetAsyn
 }
 
 func (s *GetAsyncErrorRequestStatResultResponse) SetBody(v *GetAsyncErrorRequestStatResultResponseBody) *GetAsyncErrorRequestStatResultResponse {
-	s.Body = v
-	return s
-}
-
-type GetAutoScaleInstancePolicyListRequest struct {
-	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OnOff          *string `json:"OnOff,omitempty" xml:"OnOff,omitempty"`
-	PageNo         *string `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	PageSize       *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s GetAutoScaleInstancePolicyListRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAutoScaleInstancePolicyListRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetAutoScaleInstancePolicyListRequest) SetConsoleContext(v string) *GetAutoScaleInstancePolicyListRequest {
-	s.ConsoleContext = &v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListRequest) SetInstanceId(v string) *GetAutoScaleInstancePolicyListRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListRequest) SetOnOff(v string) *GetAutoScaleInstancePolicyListRequest {
-	s.OnOff = &v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListRequest) SetPageNo(v string) *GetAutoScaleInstancePolicyListRequest {
-	s.PageNo = &v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListRequest) SetPageSize(v string) *GetAutoScaleInstancePolicyListRequest {
-	s.PageSize = &v
-	return s
-}
-
-type GetAutoScaleInstancePolicyListResponseBody struct {
-	Code      *string                                         `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *GetAutoScaleInstancePolicyListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	Message   *string                                         `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                                         `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetAutoScaleInstancePolicyListResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAutoScaleInstancePolicyListResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetAutoScaleInstancePolicyListResponseBody) SetCode(v string) *GetAutoScaleInstancePolicyListResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListResponseBody) SetData(v *GetAutoScaleInstancePolicyListResponseBodyData) *GetAutoScaleInstancePolicyListResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListResponseBody) SetMessage(v string) *GetAutoScaleInstancePolicyListResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListResponseBody) SetRequestId(v string) *GetAutoScaleInstancePolicyListResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListResponseBody) SetSuccess(v string) *GetAutoScaleInstancePolicyListResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetAutoScaleInstancePolicyListResponseBodyData struct {
-	List     []*GetAutoScaleInstancePolicyListResponseBodyDataList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	PageNo   *int64                                                `json:"pageNo,omitempty" xml:"pageNo,omitempty"`
-	PageSize *int64                                                `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	Total    *int64                                                `json:"total,omitempty" xml:"total,omitempty"`
-}
-
-func (s GetAutoScaleInstancePolicyListResponseBodyData) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAutoScaleInstancePolicyListResponseBodyData) GoString() string {
-	return s.String()
-}
-
-func (s *GetAutoScaleInstancePolicyListResponseBodyData) SetList(v []*GetAutoScaleInstancePolicyListResponseBodyDataList) *GetAutoScaleInstancePolicyListResponseBodyData {
-	s.List = v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListResponseBodyData) SetPageNo(v int64) *GetAutoScaleInstancePolicyListResponseBodyData {
-	s.PageNo = &v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListResponseBodyData) SetPageSize(v int64) *GetAutoScaleInstancePolicyListResponseBodyData {
-	s.PageSize = &v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListResponseBodyData) SetTotal(v int64) *GetAutoScaleInstancePolicyListResponseBodyData {
-	s.Total = &v
-	return s
-}
-
-type GetAutoScaleInstancePolicyListResponseBodyDataList struct {
-	ClassType     *string `json:"classType,omitempty" xml:"classType,omitempty"`
-	Engine        *string `json:"engine,omitempty" xml:"engine,omitempty"`
-	InstanceAlias *string `json:"instanceAlias,omitempty" xml:"instanceAlias,omitempty"`
-	InstanceClass *string `json:"instanceClass,omitempty" xml:"instanceClass,omitempty"`
-	InstanceId    *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	OnOff         *bool   `json:"onOff,omitempty" xml:"onOff,omitempty"`
-	PolicyName    *string `json:"policyName,omitempty" xml:"policyName,omitempty"`
-	PolicyUuid    *string `json:"policyUuid,omitempty" xml:"policyUuid,omitempty"`
-	ScaleSettings *string `json:"scaleSettings,omitempty" xml:"scaleSettings,omitempty"`
-	ScaleType     *string `json:"scaleType,omitempty" xml:"scaleType,omitempty"`
-	State         *string `json:"state,omitempty" xml:"state,omitempty"`
-	UserId        *string `json:"userId,omitempty" xml:"userId,omitempty"`
-}
-
-func (s GetAutoScaleInstancePolicyListResponseBodyDataList) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAutoScaleInstancePolicyListResponseBodyDataList) GoString() string {
-	return s.String()
-}
-
-func (s *GetAutoScaleInstancePolicyListResponseBodyDataList) SetClassType(v string) *GetAutoScaleInstancePolicyListResponseBodyDataList {
-	s.ClassType = &v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListResponseBodyDataList) SetEngine(v string) *GetAutoScaleInstancePolicyListResponseBodyDataList {
-	s.Engine = &v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListResponseBodyDataList) SetInstanceAlias(v string) *GetAutoScaleInstancePolicyListResponseBodyDataList {
-	s.InstanceAlias = &v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListResponseBodyDataList) SetInstanceClass(v string) *GetAutoScaleInstancePolicyListResponseBodyDataList {
-	s.InstanceClass = &v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListResponseBodyDataList) SetInstanceId(v string) *GetAutoScaleInstancePolicyListResponseBodyDataList {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListResponseBodyDataList) SetOnOff(v bool) *GetAutoScaleInstancePolicyListResponseBodyDataList {
-	s.OnOff = &v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListResponseBodyDataList) SetPolicyName(v string) *GetAutoScaleInstancePolicyListResponseBodyDataList {
-	s.PolicyName = &v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListResponseBodyDataList) SetPolicyUuid(v string) *GetAutoScaleInstancePolicyListResponseBodyDataList {
-	s.PolicyUuid = &v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListResponseBodyDataList) SetScaleSettings(v string) *GetAutoScaleInstancePolicyListResponseBodyDataList {
-	s.ScaleSettings = &v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListResponseBodyDataList) SetScaleType(v string) *GetAutoScaleInstancePolicyListResponseBodyDataList {
-	s.ScaleType = &v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListResponseBodyDataList) SetState(v string) *GetAutoScaleInstancePolicyListResponseBodyDataList {
-	s.State = &v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListResponseBodyDataList) SetUserId(v string) *GetAutoScaleInstancePolicyListResponseBodyDataList {
-	s.UserId = &v
-	return s
-}
-
-type GetAutoScaleInstancePolicyListResponse struct {
-	Headers    map[string]*string                          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetAutoScaleInstancePolicyListResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetAutoScaleInstancePolicyListResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetAutoScaleInstancePolicyListResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetAutoScaleInstancePolicyListResponse) SetHeaders(v map[string]*string) *GetAutoScaleInstancePolicyListResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListResponse) SetStatusCode(v int32) *GetAutoScaleInstancePolicyListResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetAutoScaleInstancePolicyListResponse) SetBody(v *GetAutoScaleInstancePolicyListResponseBody) *GetAutoScaleInstancePolicyListResponse {
 	s.Body = v
 	return s
 }
@@ -6136,117 +5715,6 @@ func (s *GetErrorRequestSampleResponse) SetStatusCode(v int32) *GetErrorRequestS
 }
 
 func (s *GetErrorRequestSampleResponse) SetBody(v *GetErrorRequestSampleResponseBody) *GetErrorRequestSampleResponse {
-	s.Body = v
-	return s
-}
-
-type GetEventLatencyInfoRequest struct {
-	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
-	EndTime        *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	NodeId         *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	StartTime      *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-}
-
-func (s GetEventLatencyInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEventLatencyInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetEventLatencyInfoRequest) SetConsoleContext(v string) *GetEventLatencyInfoRequest {
-	s.ConsoleContext = &v
-	return s
-}
-
-func (s *GetEventLatencyInfoRequest) SetEndTime(v string) *GetEventLatencyInfoRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *GetEventLatencyInfoRequest) SetInstanceId(v string) *GetEventLatencyInfoRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetEventLatencyInfoRequest) SetNodeId(v string) *GetEventLatencyInfoRequest {
-	s.NodeId = &v
-	return s
-}
-
-func (s *GetEventLatencyInfoRequest) SetStartTime(v string) *GetEventLatencyInfoRequest {
-	s.StartTime = &v
-	return s
-}
-
-type GetEventLatencyInfoResponseBody struct {
-	Code      *string                `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string                `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string                `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetEventLatencyInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEventLatencyInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetEventLatencyInfoResponseBody) SetCode(v string) *GetEventLatencyInfoResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetEventLatencyInfoResponseBody) SetData(v map[string]interface{}) *GetEventLatencyInfoResponseBody {
-	s.Data = v
-	return s
-}
-
-func (s *GetEventLatencyInfoResponseBody) SetMessage(v string) *GetEventLatencyInfoResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetEventLatencyInfoResponseBody) SetRequestId(v string) *GetEventLatencyInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetEventLatencyInfoResponseBody) SetSuccess(v string) *GetEventLatencyInfoResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetEventLatencyInfoResponse struct {
-	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetEventLatencyInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetEventLatencyInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetEventLatencyInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetEventLatencyInfoResponse) SetHeaders(v map[string]*string) *GetEventLatencyInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetEventLatencyInfoResponse) SetStatusCode(v int32) *GetEventLatencyInfoResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetEventLatencyInfoResponse) SetBody(v *GetEventLatencyInfoResponseBody) *GetEventLatencyInfoResponse {
 	s.Body = v
 	return s
 }
@@ -7790,153 +7258,6 @@ func (s *GetInstanceInspectionsResponse) SetStatusCode(v int32) *GetInstanceInsp
 }
 
 func (s *GetInstanceInspectionsResponse) SetBody(v *GetInstanceInspectionsResponseBody) *GetInstanceInspectionsResponse {
-	s.Body = v
-	return s
-}
-
-type GetPartitionsHeatmapRequest struct {
-	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
-	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	TimeRange      *string `json:"TimeRange,omitempty" xml:"TimeRange,omitempty"`
-	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Uid            *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	UserId         *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	Context        *string `json:"__context,omitempty" xml:"__context,omitempty"`
-	AccessKey      *string `json:"accessKey,omitempty" xml:"accessKey,omitempty"`
-	Signature      *string `json:"signature,omitempty" xml:"signature,omitempty"`
-	SkipAuth       *string `json:"skipAuth,omitempty" xml:"skipAuth,omitempty"`
-	Timestamp      *string `json:"timestamp,omitempty" xml:"timestamp,omitempty"`
-}
-
-func (s GetPartitionsHeatmapRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPartitionsHeatmapRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetPartitionsHeatmapRequest) SetConsoleContext(v string) *GetPartitionsHeatmapRequest {
-	s.ConsoleContext = &v
-	return s
-}
-
-func (s *GetPartitionsHeatmapRequest) SetInstanceId(v string) *GetPartitionsHeatmapRequest {
-	s.InstanceId = &v
-	return s
-}
-
-func (s *GetPartitionsHeatmapRequest) SetTimeRange(v string) *GetPartitionsHeatmapRequest {
-	s.TimeRange = &v
-	return s
-}
-
-func (s *GetPartitionsHeatmapRequest) SetType(v string) *GetPartitionsHeatmapRequest {
-	s.Type = &v
-	return s
-}
-
-func (s *GetPartitionsHeatmapRequest) SetUid(v string) *GetPartitionsHeatmapRequest {
-	s.Uid = &v
-	return s
-}
-
-func (s *GetPartitionsHeatmapRequest) SetUserId(v string) *GetPartitionsHeatmapRequest {
-	s.UserId = &v
-	return s
-}
-
-func (s *GetPartitionsHeatmapRequest) SetContext(v string) *GetPartitionsHeatmapRequest {
-	s.Context = &v
-	return s
-}
-
-func (s *GetPartitionsHeatmapRequest) SetAccessKey(v string) *GetPartitionsHeatmapRequest {
-	s.AccessKey = &v
-	return s
-}
-
-func (s *GetPartitionsHeatmapRequest) SetSignature(v string) *GetPartitionsHeatmapRequest {
-	s.Signature = &v
-	return s
-}
-
-func (s *GetPartitionsHeatmapRequest) SetSkipAuth(v string) *GetPartitionsHeatmapRequest {
-	s.SkipAuth = &v
-	return s
-}
-
-func (s *GetPartitionsHeatmapRequest) SetTimestamp(v string) *GetPartitionsHeatmapRequest {
-	s.Timestamp = &v
-	return s
-}
-
-type GetPartitionsHeatmapResponseBody struct {
-	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
-}
-
-func (s GetPartitionsHeatmapResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPartitionsHeatmapResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetPartitionsHeatmapResponseBody) SetCode(v string) *GetPartitionsHeatmapResponseBody {
-	s.Code = &v
-	return s
-}
-
-func (s *GetPartitionsHeatmapResponseBody) SetData(v string) *GetPartitionsHeatmapResponseBody {
-	s.Data = &v
-	return s
-}
-
-func (s *GetPartitionsHeatmapResponseBody) SetMessage(v string) *GetPartitionsHeatmapResponseBody {
-	s.Message = &v
-	return s
-}
-
-func (s *GetPartitionsHeatmapResponseBody) SetRequestId(v string) *GetPartitionsHeatmapResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetPartitionsHeatmapResponseBody) SetSuccess(v string) *GetPartitionsHeatmapResponseBody {
-	s.Success = &v
-	return s
-}
-
-type GetPartitionsHeatmapResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetPartitionsHeatmapResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetPartitionsHeatmapResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetPartitionsHeatmapResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetPartitionsHeatmapResponse) SetHeaders(v map[string]*string) *GetPartitionsHeatmapResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetPartitionsHeatmapResponse) SetStatusCode(v int32) *GetPartitionsHeatmapResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetPartitionsHeatmapResponse) SetBody(v *GetPartitionsHeatmapResponseBody) *GetPartitionsHeatmapResponse {
 	s.Body = v
 	return s
 }
@@ -10529,6 +9850,99 @@ func (s *GetSqlOptimizeAdviceResponse) SetBody(v *GetSqlOptimizeAdviceResponseBo
 	return s
 }
 
+type KillInstanceAllSessionRequest struct {
+	ConsoleContext *string `json:"ConsoleContext,omitempty" xml:"ConsoleContext,omitempty"`
+	InstanceId     *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s KillInstanceAllSessionRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KillInstanceAllSessionRequest) GoString() string {
+	return s.String()
+}
+
+func (s *KillInstanceAllSessionRequest) SetConsoleContext(v string) *KillInstanceAllSessionRequest {
+	s.ConsoleContext = &v
+	return s
+}
+
+func (s *KillInstanceAllSessionRequest) SetInstanceId(v string) *KillInstanceAllSessionRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type KillInstanceAllSessionResponseBody struct {
+	Code      *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s KillInstanceAllSessionResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KillInstanceAllSessionResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *KillInstanceAllSessionResponseBody) SetCode(v string) *KillInstanceAllSessionResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *KillInstanceAllSessionResponseBody) SetData(v string) *KillInstanceAllSessionResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *KillInstanceAllSessionResponseBody) SetMessage(v string) *KillInstanceAllSessionResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *KillInstanceAllSessionResponseBody) SetRequestId(v string) *KillInstanceAllSessionResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *KillInstanceAllSessionResponseBody) SetSuccess(v string) *KillInstanceAllSessionResponseBody {
+	s.Success = &v
+	return s
+}
+
+type KillInstanceAllSessionResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *KillInstanceAllSessionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s KillInstanceAllSessionResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s KillInstanceAllSessionResponse) GoString() string {
+	return s.String()
+}
+
+func (s *KillInstanceAllSessionResponse) SetHeaders(v map[string]*string) *KillInstanceAllSessionResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *KillInstanceAllSessionResponse) SetStatusCode(v int32) *KillInstanceAllSessionResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *KillInstanceAllSessionResponse) SetBody(v *KillInstanceAllSessionResponseBody) *KillInstanceAllSessionResponse {
+	s.Body = v
+	return s
+}
+
 type RunCloudBenchTaskRequest struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
@@ -10914,10 +10328,132 @@ func (s *SyncHDMAliyunResourceResponse) SetBody(v *SyncHDMAliyunResourceResponse
 	return s
 }
 
+type UpdateAutoSqlOptimizeStatusRequest struct {
+	Instances *string `json:"Instances,omitempty" xml:"Instances,omitempty"`
+	Status    *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+}
+
+func (s UpdateAutoSqlOptimizeStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAutoSqlOptimizeStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAutoSqlOptimizeStatusRequest) SetInstances(v string) *UpdateAutoSqlOptimizeStatusRequest {
+	s.Instances = &v
+	return s
+}
+
+func (s *UpdateAutoSqlOptimizeStatusRequest) SetStatus(v int32) *UpdateAutoSqlOptimizeStatusRequest {
+	s.Status = &v
+	return s
+}
+
+type UpdateAutoSqlOptimizeStatusResponseBody struct {
+	Code      *string                                      `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data      *UpdateAutoSqlOptimizeStatusResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	Message   *string                                      `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string                                      `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *string                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateAutoSqlOptimizeStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAutoSqlOptimizeStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAutoSqlOptimizeStatusResponseBody) SetCode(v string) *UpdateAutoSqlOptimizeStatusResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateAutoSqlOptimizeStatusResponseBody) SetData(v *UpdateAutoSqlOptimizeStatusResponseBodyData) *UpdateAutoSqlOptimizeStatusResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *UpdateAutoSqlOptimizeStatusResponseBody) SetMessage(v string) *UpdateAutoSqlOptimizeStatusResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateAutoSqlOptimizeStatusResponseBody) SetRequestId(v string) *UpdateAutoSqlOptimizeStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateAutoSqlOptimizeStatusResponseBody) SetSuccess(v string) *UpdateAutoSqlOptimizeStatusResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateAutoSqlOptimizeStatusResponseBodyData struct {
+	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	ErrorMsg  *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	Success   *string `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateAutoSqlOptimizeStatusResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAutoSqlOptimizeStatusResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAutoSqlOptimizeStatusResponseBodyData) SetErrorCode(v string) *UpdateAutoSqlOptimizeStatusResponseBodyData {
+	s.ErrorCode = &v
+	return s
+}
+
+func (s *UpdateAutoSqlOptimizeStatusResponseBodyData) SetErrorMsg(v string) *UpdateAutoSqlOptimizeStatusResponseBodyData {
+	s.ErrorMsg = &v
+	return s
+}
+
+func (s *UpdateAutoSqlOptimizeStatusResponseBodyData) SetSuccess(v string) *UpdateAutoSqlOptimizeStatusResponseBodyData {
+	s.Success = &v
+	return s
+}
+
+type UpdateAutoSqlOptimizeStatusResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateAutoSqlOptimizeStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateAutoSqlOptimizeStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateAutoSqlOptimizeStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateAutoSqlOptimizeStatusResponse) SetHeaders(v map[string]*string) *UpdateAutoSqlOptimizeStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateAutoSqlOptimizeStatusResponse) SetStatusCode(v int32) *UpdateAutoSqlOptimizeStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateAutoSqlOptimizeStatusResponse) SetBody(v *UpdateAutoSqlOptimizeStatusResponseBody) *UpdateAutoSqlOptimizeStatusResponse {
+	s.Body = v
+	return s
+}
+
 type DataResultValue struct {
-	SqlId     *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
-	ErrorCode *string `json:"errorCode,omitempty" xml:"errorCode,omitempty"`
-	Count     *int64  `json:"count,omitempty" xml:"count,omitempty"`
+	SqlId      *string `json:"sqlId,omitempty" xml:"sqlId,omitempty"`
+	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	Count      *int32  `json:"count,omitempty" xml:"count,omitempty"`
 }
 
 func (s DataResultValue) String() string {
@@ -10933,12 +10469,12 @@ func (s *DataResultValue) SetSqlId(v string) *DataResultValue {
 	return s
 }
 
-func (s *DataResultValue) SetErrorCode(v string) *DataResultValue {
-	s.ErrorCode = &v
+func (s *DataResultValue) SetInstanceId(v string) *DataResultValue {
+	s.InstanceId = &v
 	return s
 }
 
-func (s *DataResultValue) SetCount(v int64) *DataResultValue {
+func (s *DataResultValue) SetCount(v int32) *DataResultValue {
 	s.Count = &v
 	return s
 }
@@ -11474,106 +11010,6 @@ func (client *Client) CreateRequestDiagnosis(request *CreateRequestDiagnosisRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateRequestDiagnosisResponse{}
 	_body, _err := client.CreateRequestDiagnosisWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteAutoScaleInstancePolicyWithOptions(request *DeleteAutoScaleInstancePolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteAutoScaleInstancePolicyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConsoleContext)) {
-		query["ConsoleContext"] = request.ConsoleContext
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PolicyUuid)) {
-		query["PolicyUuid"] = request.PolicyUuid
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteAutoScaleInstancePolicy"),
-		Version:     tea.String("2020-01-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteAutoScaleInstancePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteAutoScaleInstancePolicy(request *DeleteAutoScaleInstancePolicyRequest) (_result *DeleteAutoScaleInstancePolicyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteAutoScaleInstancePolicyResponse{}
-	_body, _err := client.DeleteAutoScaleInstancePolicyWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteAutoScalePolicyWithOptions(request *DeleteAutoScalePolicyRequest, runtime *util.RuntimeOptions) (_result *DeleteAutoScalePolicyResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConsoleContext)) {
-		query["ConsoleContext"] = request.ConsoleContext
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
-		query["Uuid"] = request.Uuid
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteAutoScalePolicy"),
-		Version:     tea.String("2020-01-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteAutoScalePolicyResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteAutoScalePolicy(request *DeleteAutoScalePolicyRequest) (_result *DeleteAutoScalePolicyResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteAutoScalePolicyResponse{}
-	_body, _err := client.DeleteAutoScalePolicyWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12701,66 +12137,6 @@ func (client *Client) GetAsyncErrorRequestStatResult(request *GetAsyncErrorReque
 	return _result, _err
 }
 
-func (client *Client) GetAutoScaleInstancePolicyListWithOptions(request *GetAutoScaleInstancePolicyListRequest, runtime *util.RuntimeOptions) (_result *GetAutoScaleInstancePolicyListResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConsoleContext)) {
-		query["ConsoleContext"] = request.ConsoleContext
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.OnOff)) {
-		query["OnOff"] = request.OnOff
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNo)) {
-		query["PageNo"] = request.PageNo
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetAutoScaleInstancePolicyList"),
-		Version:     tea.String("2020-01-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetAutoScaleInstancePolicyListResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetAutoScaleInstancePolicyList(request *GetAutoScaleInstancePolicyListRequest) (_result *GetAutoScaleInstancePolicyListResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetAutoScaleInstancePolicyListResponse{}
-	_body, _err := client.GetAutoScaleInstancePolicyListWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetAutonomousNotifyEventContentWithOptions(request *GetAutonomousNotifyEventContentRequest, runtime *util.RuntimeOptions) (_result *GetAutonomousNotifyEventContentResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -13070,66 +12446,6 @@ func (client *Client) GetErrorRequestSample(request *GetErrorRequestSampleReques
 	runtime := &util.RuntimeOptions{}
 	_result = &GetErrorRequestSampleResponse{}
 	_body, _err := client.GetErrorRequestSampleWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetEventLatencyInfoWithOptions(request *GetEventLatencyInfoRequest, runtime *util.RuntimeOptions) (_result *GetEventLatencyInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConsoleContext)) {
-		query["ConsoleContext"] = request.ConsoleContext
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		query["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NodeId)) {
-		query["NodeId"] = request.NodeId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
-		query["StartTime"] = request.StartTime
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetEventLatencyInfo"),
-		Version:     tea.String("2020-01-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetEventLatencyInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetEventLatencyInfo(request *GetEventLatencyInfoRequest) (_result *GetEventLatencyInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetEventLatencyInfoResponse{}
-	_body, _err := client.GetEventLatencyInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -13522,90 +12838,6 @@ func (client *Client) GetInstanceInspections(request *GetInstanceInspectionsRequ
 	runtime := &util.RuntimeOptions{}
 	_result = &GetInstanceInspectionsResponse{}
 	_body, _err := client.GetInstanceInspectionsWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetPartitionsHeatmapWithOptions(request *GetPartitionsHeatmapRequest, runtime *util.RuntimeOptions) (_result *GetPartitionsHeatmapResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.ConsoleContext)) {
-		query["ConsoleContext"] = request.ConsoleContext
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
-		query["InstanceId"] = request.InstanceId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.TimeRange)) {
-		query["TimeRange"] = request.TimeRange
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Type)) {
-		query["Type"] = request.Type
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Uid)) {
-		query["Uid"] = request.Uid
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserId)) {
-		query["UserId"] = request.UserId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Context)) {
-		query["__context"] = request.Context
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.AccessKey)) {
-		query["accessKey"] = request.AccessKey
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Signature)) {
-		query["signature"] = request.Signature
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SkipAuth)) {
-		query["skipAuth"] = request.SkipAuth
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Timestamp)) {
-		query["timestamp"] = request.Timestamp
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetPartitionsHeatmap"),
-		Version:     tea.String("2020-01-16"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetPartitionsHeatmapResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetPartitionsHeatmap(request *GetPartitionsHeatmapRequest) (_result *GetPartitionsHeatmapResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetPartitionsHeatmapResponse{}
-	_body, _err := client.GetPartitionsHeatmapWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -14233,6 +13465,54 @@ func (client *Client) GetSqlOptimizeAdvice(request *GetSqlOptimizeAdviceRequest)
 	return _result, _err
 }
 
+func (client *Client) KillInstanceAllSessionWithOptions(request *KillInstanceAllSessionRequest, runtime *util.RuntimeOptions) (_result *KillInstanceAllSessionResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConsoleContext)) {
+		query["ConsoleContext"] = request.ConsoleContext
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("KillInstanceAllSession"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &KillInstanceAllSessionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) KillInstanceAllSession(request *KillInstanceAllSessionRequest) (_result *KillInstanceAllSessionResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &KillInstanceAllSessionResponse{}
+	_body, _err := client.KillInstanceAllSessionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) RunCloudBenchTaskWithOptions(request *RunCloudBenchTaskRequest, runtime *util.RuntimeOptions) (_result *RunCloudBenchTaskResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -14394,6 +13674,54 @@ func (client *Client) SyncHDMAliyunResource(request *SyncHDMAliyunResourceReques
 	runtime := &util.RuntimeOptions{}
 	_result = &SyncHDMAliyunResourceResponse{}
 	_body, _err := client.SyncHDMAliyunResourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateAutoSqlOptimizeStatusWithOptions(request *UpdateAutoSqlOptimizeStatusRequest, runtime *util.RuntimeOptions) (_result *UpdateAutoSqlOptimizeStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Instances)) {
+		query["Instances"] = request.Instances
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Status)) {
+		query["Status"] = request.Status
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateAutoSqlOptimizeStatus"),
+		Version:     tea.String("2020-01-16"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateAutoSqlOptimizeStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateAutoSqlOptimizeStatus(request *UpdateAutoSqlOptimizeStatusRequest) (_result *UpdateAutoSqlOptimizeStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateAutoSqlOptimizeStatusResponse{}
+	_body, _err := client.UpdateAutoSqlOptimizeStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
