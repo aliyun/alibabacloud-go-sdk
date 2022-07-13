@@ -17,6 +17,7 @@ type AddUserToVpcEndpointServiceRequest struct {
 	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ServiceId   *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	UserARN     *string `json:"UserARN,omitempty" xml:"UserARN,omitempty"`
 	UserId      *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -45,6 +46,11 @@ func (s *AddUserToVpcEndpointServiceRequest) SetRegionId(v string) *AddUserToVpc
 
 func (s *AddUserToVpcEndpointServiceRequest) SetServiceId(v string) *AddUserToVpcEndpointServiceRequest {
 	s.ServiceId = &v
+	return s
+}
+
+func (s *AddUserToVpcEndpointServiceRequest) SetUserARN(v string) *AddUserToVpcEndpointServiceRequest {
+	s.UserARN = &v
 	return s
 }
 
@@ -430,6 +436,94 @@ func (s *CheckProductOpenResponse) SetBody(v *CheckProductOpenResponseBody) *Che
 	return s
 }
 
+type CheckResourceSupportOperateRequest struct {
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	ZoneId       *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+}
+
+func (s CheckResourceSupportOperateRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckResourceSupportOperateRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CheckResourceSupportOperateRequest) SetResourceId(v string) *CheckResourceSupportOperateRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *CheckResourceSupportOperateRequest) SetResourceType(v string) *CheckResourceSupportOperateRequest {
+	s.ResourceType = &v
+	return s
+}
+
+func (s *CheckResourceSupportOperateRequest) SetZoneId(v string) *CheckResourceSupportOperateRequest {
+	s.ZoneId = &v
+	return s
+}
+
+type CheckResourceSupportOperateResponseBody struct {
+	// Id of the request
+	RequestId                  *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceSupportDowngrade   *bool   `json:"ResourceSupportDowngrade,omitempty" xml:"ResourceSupportDowngrade,omitempty"`
+	ResourceZoneSupportDeleted *bool   `json:"ResourceZoneSupportDeleted,omitempty" xml:"ResourceZoneSupportDeleted,omitempty"`
+}
+
+func (s CheckResourceSupportOperateResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckResourceSupportOperateResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CheckResourceSupportOperateResponseBody) SetRequestId(v string) *CheckResourceSupportOperateResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CheckResourceSupportOperateResponseBody) SetResourceSupportDowngrade(v bool) *CheckResourceSupportOperateResponseBody {
+	s.ResourceSupportDowngrade = &v
+	return s
+}
+
+func (s *CheckResourceSupportOperateResponseBody) SetResourceZoneSupportDeleted(v bool) *CheckResourceSupportOperateResponseBody {
+	s.ResourceZoneSupportDeleted = &v
+	return s
+}
+
+type CheckResourceSupportOperateResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CheckResourceSupportOperateResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CheckResourceSupportOperateResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CheckResourceSupportOperateResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CheckResourceSupportOperateResponse) SetHeaders(v map[string]*string) *CheckResourceSupportOperateResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CheckResourceSupportOperateResponse) SetStatusCode(v int32) *CheckResourceSupportOperateResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CheckResourceSupportOperateResponse) SetBody(v *CheckResourceSupportOperateResponseBody) *CheckResourceSupportOperateResponse {
+	s.Body = v
+	return s
+}
+
 type CreateVpcEndpointRequest struct {
 	ClientToken               *string                         `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	DryRun                    *bool                           `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
@@ -675,6 +769,7 @@ type CreateVpcEndpointServiceRequest struct {
 	Resource            []*CreateVpcEndpointServiceRequestResource `json:"Resource,omitempty" xml:"Resource,omitempty" type:"Repeated"`
 	ServiceDescription  *string                                    `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
 	ServiceResourceType *string                                    `json:"ServiceResourceType,omitempty" xml:"ServiceResourceType,omitempty"`
+	ServiceSupportIPv6  *bool                                      `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
 	ZoneAffinityEnabled *bool                                      `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
 }
 
@@ -726,6 +821,11 @@ func (s *CreateVpcEndpointServiceRequest) SetServiceResourceType(v string) *Crea
 	return s
 }
 
+func (s *CreateVpcEndpointServiceRequest) SetServiceSupportIPv6(v bool) *CreateVpcEndpointServiceRequest {
+	s.ServiceSupportIPv6 = &v
+	return s
+}
+
 func (s *CreateVpcEndpointServiceRequest) SetZoneAffinityEnabled(v bool) *CreateVpcEndpointServiceRequest {
 	s.ZoneAffinityEnabled = &v
 	return s
@@ -764,6 +864,7 @@ type CreateVpcEndpointServiceResponseBody struct {
 	ServiceId             *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	ServiceName           *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	ServiceStatus         *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	ServiceSupportIPv6    *bool   `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
 	ZoneAffinityEnabled   *bool   `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
 }
 
@@ -817,6 +918,11 @@ func (s *CreateVpcEndpointServiceResponseBody) SetServiceName(v string) *CreateV
 
 func (s *CreateVpcEndpointServiceResponseBody) SetServiceStatus(v string) *CreateVpcEndpointServiceResponseBody {
 	s.ServiceStatus = &v
+	return s
+}
+
+func (s *CreateVpcEndpointServiceResponseBody) SetServiceSupportIPv6(v bool) *CreateVpcEndpointServiceResponseBody {
+	s.ServiceSupportIPv6 = &v
 	return s
 }
 
@@ -1792,6 +1898,184 @@ func (s *EnableVpcEndpointZoneConnectionResponse) SetBody(v *EnableVpcEndpointZo
 	return s
 }
 
+type GetEndpointAttributeByNsiAndServiceIdRequest struct {
+	AliUid    *int64  `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	DryRun    *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	NsiIndex  *string `json:"NsiIndex,omitempty" xml:"NsiIndex,omitempty"`
+	RegionId  *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+}
+
+func (s GetEndpointAttributeByNsiAndServiceIdRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEndpointAttributeByNsiAndServiceIdRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdRequest) SetAliUid(v int64) *GetEndpointAttributeByNsiAndServiceIdRequest {
+	s.AliUid = &v
+	return s
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdRequest) SetDryRun(v bool) *GetEndpointAttributeByNsiAndServiceIdRequest {
+	s.DryRun = &v
+	return s
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdRequest) SetNextToken(v string) *GetEndpointAttributeByNsiAndServiceIdRequest {
+	s.NextToken = &v
+	return s
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdRequest) SetNsiIndex(v string) *GetEndpointAttributeByNsiAndServiceIdRequest {
+	s.NsiIndex = &v
+	return s
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdRequest) SetRegionId(v string) *GetEndpointAttributeByNsiAndServiceIdRequest {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdRequest) SetServiceId(v string) *GetEndpointAttributeByNsiAndServiceIdRequest {
+	s.ServiceId = &v
+	return s
+}
+
+type GetEndpointAttributeByNsiAndServiceIdResponseBody struct {
+	Bandwidth        *int32  `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
+	EndpointId       *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	EndpointName     *string `json:"EndpointName,omitempty" xml:"EndpointName,omitempty"`
+	EndpointStatus   *string `json:"EndpointStatus,omitempty" xml:"EndpointStatus,omitempty"`
+	EndpointType     *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	Payer            *string `json:"Payer,omitempty" xml:"Payer,omitempty"`
+	RegionId         *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Id of the request
+	RequestId                 *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceOwner             *bool   `json:"ResourceOwner,omitempty" xml:"ResourceOwner,omitempty"`
+	ServiceId                 *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceName               *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	VpcId                     *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	ZoneAffinityEnabled       *bool   `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
+	ZonePrivateIpAddressCount *int64  `json:"ZonePrivateIpAddressCount,omitempty" xml:"ZonePrivateIpAddressCount,omitempty"`
+}
+
+func (s GetEndpointAttributeByNsiAndServiceIdResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEndpointAttributeByNsiAndServiceIdResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdResponseBody) SetBandwidth(v int32) *GetEndpointAttributeByNsiAndServiceIdResponseBody {
+	s.Bandwidth = &v
+	return s
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdResponseBody) SetConnectionStatus(v string) *GetEndpointAttributeByNsiAndServiceIdResponseBody {
+	s.ConnectionStatus = &v
+	return s
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdResponseBody) SetEndpointId(v string) *GetEndpointAttributeByNsiAndServiceIdResponseBody {
+	s.EndpointId = &v
+	return s
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdResponseBody) SetEndpointName(v string) *GetEndpointAttributeByNsiAndServiceIdResponseBody {
+	s.EndpointName = &v
+	return s
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdResponseBody) SetEndpointStatus(v string) *GetEndpointAttributeByNsiAndServiceIdResponseBody {
+	s.EndpointStatus = &v
+	return s
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdResponseBody) SetEndpointType(v string) *GetEndpointAttributeByNsiAndServiceIdResponseBody {
+	s.EndpointType = &v
+	return s
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdResponseBody) SetPayer(v string) *GetEndpointAttributeByNsiAndServiceIdResponseBody {
+	s.Payer = &v
+	return s
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdResponseBody) SetRegionId(v string) *GetEndpointAttributeByNsiAndServiceIdResponseBody {
+	s.RegionId = &v
+	return s
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdResponseBody) SetRequestId(v string) *GetEndpointAttributeByNsiAndServiceIdResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdResponseBody) SetResourceOwner(v bool) *GetEndpointAttributeByNsiAndServiceIdResponseBody {
+	s.ResourceOwner = &v
+	return s
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdResponseBody) SetServiceId(v string) *GetEndpointAttributeByNsiAndServiceIdResponseBody {
+	s.ServiceId = &v
+	return s
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdResponseBody) SetServiceName(v string) *GetEndpointAttributeByNsiAndServiceIdResponseBody {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdResponseBody) SetVpcId(v string) *GetEndpointAttributeByNsiAndServiceIdResponseBody {
+	s.VpcId = &v
+	return s
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdResponseBody) SetZoneAffinityEnabled(v bool) *GetEndpointAttributeByNsiAndServiceIdResponseBody {
+	s.ZoneAffinityEnabled = &v
+	return s
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdResponseBody) SetZonePrivateIpAddressCount(v int64) *GetEndpointAttributeByNsiAndServiceIdResponseBody {
+	s.ZonePrivateIpAddressCount = &v
+	return s
+}
+
+type GetEndpointAttributeByNsiAndServiceIdResponse struct {
+	Headers    map[string]*string                                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetEndpointAttributeByNsiAndServiceIdResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetEndpointAttributeByNsiAndServiceIdResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetEndpointAttributeByNsiAndServiceIdResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdResponse) SetHeaders(v map[string]*string) *GetEndpointAttributeByNsiAndServiceIdResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdResponse) SetStatusCode(v int32) *GetEndpointAttributeByNsiAndServiceIdResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetEndpointAttributeByNsiAndServiceIdResponse) SetBody(v *GetEndpointAttributeByNsiAndServiceIdResponseBody) *GetEndpointAttributeByNsiAndServiceIdResponse {
+	s.Body = v
+	return s
+}
+
 type GetVpcEndpointAttributeRequest struct {
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
@@ -2008,6 +2292,7 @@ type GetVpcEndpointServiceAttributeResponseBody struct {
 	ServiceName           *string   `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	ServiceResourceType   *string   `json:"ServiceResourceType,omitempty" xml:"ServiceResourceType,omitempty"`
 	ServiceStatus         *string   `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	ServiceSupportIpv6    *string   `json:"ServiceSupportIpv6,omitempty" xml:"ServiceSupportIpv6,omitempty"`
 	ServiceType           *string   `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	ZoneAffinityEnabled   *bool     `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
 	Zones                 []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
@@ -2096,6 +2381,11 @@ func (s *GetVpcEndpointServiceAttributeResponseBody) SetServiceStatus(v string) 
 	return s
 }
 
+func (s *GetVpcEndpointServiceAttributeResponseBody) SetServiceSupportIpv6(v string) *GetVpcEndpointServiceAttributeResponseBody {
+	s.ServiceSupportIpv6 = &v
+	return s
+}
+
 func (s *GetVpcEndpointServiceAttributeResponseBody) SetServiceType(v string) *GetVpcEndpointServiceAttributeResponseBody {
 	s.ServiceType = &v
 	return s
@@ -2141,6 +2431,7 @@ func (s *GetVpcEndpointServiceAttributeResponse) SetBody(v *GetVpcEndpointServic
 }
 
 type ListVpcEndpointConnectionsRequest struct {
+	ConnectionId       *int64  `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
 	ConnectionStatus   *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
 	EndpointId         *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	EndpointOwnerId    *int64  `json:"EndpointOwnerId,omitempty" xml:"EndpointOwnerId,omitempty"`
@@ -2159,6 +2450,11 @@ func (s ListVpcEndpointConnectionsRequest) String() string {
 
 func (s ListVpcEndpointConnectionsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListVpcEndpointConnectionsRequest) SetConnectionId(v int64) *ListVpcEndpointConnectionsRequest {
+	s.ConnectionId = &v
+	return s
 }
 
 func (s *ListVpcEndpointConnectionsRequest) SetConnectionStatus(v string) *ListVpcEndpointConnectionsRequest {
@@ -2312,6 +2608,8 @@ func (s *ListVpcEndpointConnectionsResponseBodyConnections) SetZones(v []*ListVp
 }
 
 type ListVpcEndpointConnectionsResponseBodyConnectionsZones struct {
+	ConnectionId       *int64  `json:"ConnectionId,omitempty" xml:"ConnectionId,omitempty"`
+	ConnectionStringId *string `json:"ConnectionStringId,omitempty" xml:"ConnectionStringId,omitempty"`
 	EniId              *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
 	ReplacedEniId      *string `json:"ReplacedEniId,omitempty" xml:"ReplacedEniId,omitempty"`
 	ReplacedResourceId *string `json:"ReplacedResourceId,omitempty" xml:"ReplacedResourceId,omitempty"`
@@ -2328,6 +2626,16 @@ func (s ListVpcEndpointConnectionsResponseBodyConnectionsZones) String() string 
 
 func (s ListVpcEndpointConnectionsResponseBodyConnectionsZones) GoString() string {
 	return s.String()
+}
+
+func (s *ListVpcEndpointConnectionsResponseBodyConnectionsZones) SetConnectionId(v int64) *ListVpcEndpointConnectionsResponseBodyConnectionsZones {
+	s.ConnectionId = &v
+	return s
+}
+
+func (s *ListVpcEndpointConnectionsResponseBodyConnectionsZones) SetConnectionStringId(v string) *ListVpcEndpointConnectionsResponseBodyConnectionsZones {
+	s.ConnectionStringId = &v
+	return s
 }
 
 func (s *ListVpcEndpointConnectionsResponseBodyConnectionsZones) SetEniId(v string) *ListVpcEndpointConnectionsResponseBodyConnectionsZones {
@@ -2592,6 +2900,7 @@ type ListVpcEndpointServiceResourcesResponseBodyResources struct {
 	RelatedDeprecatedEndpointCount *int64  `json:"RelatedDeprecatedEndpointCount,omitempty" xml:"RelatedDeprecatedEndpointCount,omitempty"`
 	RelatedEndpointCount           *int64  `json:"RelatedEndpointCount,omitempty" xml:"RelatedEndpointCount,omitempty"`
 	ResourceId                     *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceSupportIpv6            *string `json:"ResourceSupportIpv6,omitempty" xml:"ResourceSupportIpv6,omitempty"`
 	ResourceType                   *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	VSwitchId                      *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
 	VpcId                          *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
@@ -2633,6 +2942,11 @@ func (s *ListVpcEndpointServiceResourcesResponseBodyResources) SetRelatedEndpoin
 
 func (s *ListVpcEndpointServiceResourcesResponseBodyResources) SetResourceId(v string) *ListVpcEndpointServiceResourcesResponseBodyResources {
 	s.ResourceId = &v
+	return s
+}
+
+func (s *ListVpcEndpointServiceResourcesResponseBodyResources) SetResourceSupportIpv6(v string) *ListVpcEndpointServiceResourcesResponseBodyResources {
+	s.ResourceSupportIpv6 = &v
 	return s
 }
 
@@ -2686,11 +3000,12 @@ func (s *ListVpcEndpointServiceResourcesResponse) SetBody(v *ListVpcEndpointServ
 }
 
 type ListVpcEndpointServiceUsersRequest struct {
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RegionId   *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ServiceId  *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	UserId     *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	MaxResults   *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RegionId     *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceId    *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	UserId       *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	UserListType *string `json:"UserListType,omitempty" xml:"UserListType,omitempty"`
 }
 
 func (s ListVpcEndpointServiceUsersRequest) String() string {
@@ -2726,11 +3041,17 @@ func (s *ListVpcEndpointServiceUsersRequest) SetUserId(v int64) *ListVpcEndpoint
 	return s
 }
 
+func (s *ListVpcEndpointServiceUsersRequest) SetUserListType(v string) *ListVpcEndpointServiceUsersRequest {
+	s.UserListType = &v
+	return s
+}
+
 type ListVpcEndpointServiceUsersResponseBody struct {
-	MaxResults *int32                                          `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string                                         `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId  *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Users      []*ListVpcEndpointServiceUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	MaxResults *int32                                             `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	NextToken  *string                                            `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	RequestId  *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	UserARNs   []*ListVpcEndpointServiceUsersResponseBodyUserARNs `json:"UserARNs,omitempty" xml:"UserARNs,omitempty" type:"Repeated"`
+	Users      []*ListVpcEndpointServiceUsersResponseBodyUsers    `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s ListVpcEndpointServiceUsersResponseBody) String() string {
@@ -2756,8 +3077,30 @@ func (s *ListVpcEndpointServiceUsersResponseBody) SetRequestId(v string) *ListVp
 	return s
 }
 
+func (s *ListVpcEndpointServiceUsersResponseBody) SetUserARNs(v []*ListVpcEndpointServiceUsersResponseBodyUserARNs) *ListVpcEndpointServiceUsersResponseBody {
+	s.UserARNs = v
+	return s
+}
+
 func (s *ListVpcEndpointServiceUsersResponseBody) SetUsers(v []*ListVpcEndpointServiceUsersResponseBodyUsers) *ListVpcEndpointServiceUsersResponseBody {
 	s.Users = v
+	return s
+}
+
+type ListVpcEndpointServiceUsersResponseBodyUserARNs struct {
+	UserARN *string `json:"UserARN,omitempty" xml:"UserARN,omitempty"`
+}
+
+func (s ListVpcEndpointServiceUsersResponseBodyUserARNs) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListVpcEndpointServiceUsersResponseBodyUserARNs) GoString() string {
+	return s.String()
+}
+
+func (s *ListVpcEndpointServiceUsersResponseBodyUserARNs) SetUserARN(v string) *ListVpcEndpointServiceUsersResponseBodyUserARNs {
+	s.UserARN = &v
 	return s
 }
 
@@ -2928,6 +3271,7 @@ type ListVpcEndpointServicesResponseBodyServices struct {
 	ServiceName           *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
 	ServiceResourceType   *string `json:"ServiceResourceType,omitempty" xml:"ServiceResourceType,omitempty"`
 	ServiceStatus         *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	ServiceSupportIpv6    *string `json:"ServiceSupportIpv6,omitempty" xml:"ServiceSupportIpv6,omitempty"`
 	ServiceType           *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	ZoneAffinityEnabled   *bool   `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
 }
@@ -3007,6 +3351,11 @@ func (s *ListVpcEndpointServicesResponseBodyServices) SetServiceResourceType(v s
 
 func (s *ListVpcEndpointServicesResponseBodyServices) SetServiceStatus(v string) *ListVpcEndpointServicesResponseBodyServices {
 	s.ServiceStatus = &v
+	return s
+}
+
+func (s *ListVpcEndpointServicesResponseBodyServices) SetServiceSupportIpv6(v string) *ListVpcEndpointServicesResponseBodyServices {
+	s.ServiceSupportIpv6 = &v
 	return s
 }
 
@@ -3132,12 +3481,13 @@ func (s *ListVpcEndpointServicesByEndUserResponseBody) SetServices(v []*ListVpcE
 }
 
 type ListVpcEndpointServicesByEndUserResponseBodyServices struct {
-	Payer         *string   `json:"Payer,omitempty" xml:"Payer,omitempty"`
-	ServiceDomain *string   `json:"ServiceDomain,omitempty" xml:"ServiceDomain,omitempty"`
-	ServiceId     *string   `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
-	ServiceName   *string   `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
-	ServiceType   *string   `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	Zones         []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
+	Payer              *string   `json:"Payer,omitempty" xml:"Payer,omitempty"`
+	ServiceDomain      *string   `json:"ServiceDomain,omitempty" xml:"ServiceDomain,omitempty"`
+	ServiceId          *string   `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceName        *string   `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	ServiceSupportIPv6 *string   `json:"ServiceSupportIPv6,omitempty" xml:"ServiceSupportIPv6,omitempty"`
+	ServiceType        *string   `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	Zones              []*string `json:"Zones,omitempty" xml:"Zones,omitempty" type:"Repeated"`
 }
 
 func (s ListVpcEndpointServicesByEndUserResponseBodyServices) String() string {
@@ -3165,6 +3515,11 @@ func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) SetServiceId(v st
 
 func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) SetServiceName(v string) *ListVpcEndpointServicesByEndUserResponseBodyServices {
 	s.ServiceName = &v
+	return s
+}
+
+func (s *ListVpcEndpointServicesByEndUserResponseBodyServices) SetServiceSupportIPv6(v string) *ListVpcEndpointServicesByEndUserResponseBodyServices {
+	s.ServiceSupportIPv6 = &v
 	return s
 }
 
@@ -3278,14 +3633,17 @@ func (s *ListVpcEndpointZonesResponseBody) SetZones(v []*ListVpcEndpointZonesRes
 }
 
 type ListVpcEndpointZonesResponseBodyZones struct {
-	EniId         *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
-	EniIp         *string `json:"EniIp,omitempty" xml:"EniIp,omitempty"`
-	RegionId      *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
-	VSwitchId     *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	ZoneDomain    *string `json:"ZoneDomain,omitempty" xml:"ZoneDomain,omitempty"`
-	ZoneId        *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	ZoneStatus    *string `json:"ZoneStatus,omitempty" xml:"ZoneStatus,omitempty"`
+	EniId           *string `json:"EniId,omitempty" xml:"EniId,omitempty"`
+	EniIp           *string `json:"EniIp,omitempty" xml:"EniIp,omitempty"`
+	NsiIndex        *int64  `json:"NsiIndex,omitempty" xml:"NsiIndex,omitempty"`
+	NsiIndexString  *string `json:"NsiIndexString,omitempty" xml:"NsiIndexString,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ServiceStatus   *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	VSwitchId       *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
+	ZoneDomain      *string `json:"ZoneDomain,omitempty" xml:"ZoneDomain,omitempty"`
+	ZoneId          *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	ZoneIpv6Address *string `json:"ZoneIpv6Address,omitempty" xml:"ZoneIpv6Address,omitempty"`
+	ZoneStatus      *string `json:"ZoneStatus,omitempty" xml:"ZoneStatus,omitempty"`
 }
 
 func (s ListVpcEndpointZonesResponseBodyZones) String() string {
@@ -3303,6 +3661,16 @@ func (s *ListVpcEndpointZonesResponseBodyZones) SetEniId(v string) *ListVpcEndpo
 
 func (s *ListVpcEndpointZonesResponseBodyZones) SetEniIp(v string) *ListVpcEndpointZonesResponseBodyZones {
 	s.EniIp = &v
+	return s
+}
+
+func (s *ListVpcEndpointZonesResponseBodyZones) SetNsiIndex(v int64) *ListVpcEndpointZonesResponseBodyZones {
+	s.NsiIndex = &v
+	return s
+}
+
+func (s *ListVpcEndpointZonesResponseBodyZones) SetNsiIndexString(v string) *ListVpcEndpointZonesResponseBodyZones {
+	s.NsiIndexString = &v
 	return s
 }
 
@@ -3328,6 +3696,11 @@ func (s *ListVpcEndpointZonesResponseBodyZones) SetZoneDomain(v string) *ListVpc
 
 func (s *ListVpcEndpointZonesResponseBodyZones) SetZoneId(v string) *ListVpcEndpointZonesResponseBodyZones {
 	s.ZoneId = &v
+	return s
+}
+
+func (s *ListVpcEndpointZonesResponseBodyZones) SetZoneIpv6Address(v string) *ListVpcEndpointZonesResponseBodyZones {
+	s.ZoneIpv6Address = &v
 	return s
 }
 
@@ -3607,6 +3980,88 @@ func (s *ListVpcEndpointsResponse) SetBody(v *ListVpcEndpointsResponseBody) *Lis
 	return s
 }
 
+type NotifyResourceAddressFamilyRequest struct {
+	AddressFamily *string `json:"AddressFamily,omitempty" xml:"AddressFamily,omitempty"`
+	Ipv6Address   *string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty"`
+	ResourceId    *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+}
+
+func (s NotifyResourceAddressFamilyRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NotifyResourceAddressFamilyRequest) GoString() string {
+	return s.String()
+}
+
+func (s *NotifyResourceAddressFamilyRequest) SetAddressFamily(v string) *NotifyResourceAddressFamilyRequest {
+	s.AddressFamily = &v
+	return s
+}
+
+func (s *NotifyResourceAddressFamilyRequest) SetIpv6Address(v string) *NotifyResourceAddressFamilyRequest {
+	s.Ipv6Address = &v
+	return s
+}
+
+func (s *NotifyResourceAddressFamilyRequest) SetResourceId(v string) *NotifyResourceAddressFamilyRequest {
+	s.ResourceId = &v
+	return s
+}
+
+func (s *NotifyResourceAddressFamilyRequest) SetResourceType(v string) *NotifyResourceAddressFamilyRequest {
+	s.ResourceType = &v
+	return s
+}
+
+type NotifyResourceAddressFamilyResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s NotifyResourceAddressFamilyResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NotifyResourceAddressFamilyResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *NotifyResourceAddressFamilyResponseBody) SetRequestId(v string) *NotifyResourceAddressFamilyResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type NotifyResourceAddressFamilyResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *NotifyResourceAddressFamilyResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s NotifyResourceAddressFamilyResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s NotifyResourceAddressFamilyResponse) GoString() string {
+	return s.String()
+}
+
+func (s *NotifyResourceAddressFamilyResponse) SetHeaders(v map[string]*string) *NotifyResourceAddressFamilyResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *NotifyResourceAddressFamilyResponse) SetStatusCode(v int32) *NotifyResourceAddressFamilyResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *NotifyResourceAddressFamilyResponse) SetBody(v *NotifyResourceAddressFamilyResponseBody) *NotifyResourceAddressFamilyResponse {
+	s.Body = v
+	return s
+}
+
 type OpenPrivateLinkServiceRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 }
@@ -3681,6 +4136,7 @@ type RemoveUserFromVpcEndpointServiceRequest struct {
 	DryRun      *bool   `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	RegionId    *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ServiceId   *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	UserARN     *string `json:"UserARN,omitempty" xml:"UserARN,omitempty"`
 	UserId      *int64  `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -3709,6 +4165,11 @@ func (s *RemoveUserFromVpcEndpointServiceRequest) SetRegionId(v string) *RemoveU
 
 func (s *RemoveUserFromVpcEndpointServiceRequest) SetServiceId(v string) *RemoveUserFromVpcEndpointServiceRequest {
 	s.ServiceId = &v
+	return s
+}
+
+func (s *RemoveUserFromVpcEndpointServiceRequest) SetUserARN(v string) *RemoveUserFromVpcEndpointServiceRequest {
+	s.UserARN = &v
 	return s
 }
 
@@ -4044,6 +4505,7 @@ type UpdateVpcEndpointServiceAttributeRequest struct {
 	RegionId            *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ServiceDescription  *string `json:"ServiceDescription,omitempty" xml:"ServiceDescription,omitempty"`
 	ServiceId           *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
+	ServiceSupportIpv6  *bool   `json:"ServiceSupportIpv6,omitempty" xml:"ServiceSupportIpv6,omitempty"`
 	ZoneAffinityEnabled *bool   `json:"ZoneAffinityEnabled,omitempty" xml:"ZoneAffinityEnabled,omitempty"`
 }
 
@@ -4087,6 +4549,11 @@ func (s *UpdateVpcEndpointServiceAttributeRequest) SetServiceDescription(v strin
 
 func (s *UpdateVpcEndpointServiceAttributeRequest) SetServiceId(v string) *UpdateVpcEndpointServiceAttributeRequest {
 	s.ServiceId = &v
+	return s
+}
+
+func (s *UpdateVpcEndpointServiceAttributeRequest) SetServiceSupportIpv6(v bool) *UpdateVpcEndpointServiceAttributeRequest {
+	s.ServiceSupportIpv6 = &v
 	return s
 }
 
@@ -4424,6 +4891,10 @@ func (client *Client) AddUserToVpcEndpointServiceWithOptions(request *AddUserToV
 		query["ServiceId"] = request.ServiceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.UserARN)) {
+		query["UserARN"] = request.UserARN
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
 		query["UserId"] = request.UserId
 	}
@@ -4699,6 +5170,58 @@ func (client *Client) CheckProductOpen() (_result *CheckProductOpenResponse, _er
 	return _result, _err
 }
 
+func (client *Client) CheckResourceSupportOperateWithOptions(request *CheckResourceSupportOperateRequest, runtime *util.RuntimeOptions) (_result *CheckResourceSupportOperateResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ZoneId)) {
+		query["ZoneId"] = request.ZoneId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CheckResourceSupportOperate"),
+		Version:     tea.String("2020-04-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CheckResourceSupportOperateResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CheckResourceSupportOperate(request *CheckResourceSupportOperateRequest) (_result *CheckResourceSupportOperateResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CheckResourceSupportOperateResponse{}
+	_body, _err := client.CheckResourceSupportOperateWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateVpcEndpointWithOptions(request *CreateVpcEndpointRequest, runtime *util.RuntimeOptions) (_result *CreateVpcEndpointResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -4835,6 +5358,10 @@ func (client *Client) CreateVpcEndpointServiceWithOptions(request *CreateVpcEndp
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceResourceType)) {
 		query["ServiceResourceType"] = request.ServiceResourceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceSupportIPv6)) {
+		query["ServiceSupportIPv6"] = request.ServiceSupportIPv6
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ZoneAffinityEnabled)) {
@@ -5495,6 +6022,70 @@ func (client *Client) EnableVpcEndpointZoneConnection(request *EnableVpcEndpoint
 	return _result, _err
 }
 
+func (client *Client) GetEndpointAttributeByNsiAndServiceIdWithOptions(request *GetEndpointAttributeByNsiAndServiceIdRequest, runtime *util.RuntimeOptions) (_result *GetEndpointAttributeByNsiAndServiceIdResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AliUid)) {
+		query["AliUid"] = request.AliUid
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DryRun)) {
+		query["DryRun"] = request.DryRun
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NsiIndex)) {
+		query["NsiIndex"] = request.NsiIndex
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
+		query["ServiceId"] = request.ServiceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetEndpointAttributeByNsiAndServiceId"),
+		Version:     tea.String("2020-04-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetEndpointAttributeByNsiAndServiceIdResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetEndpointAttributeByNsiAndServiceId(request *GetEndpointAttributeByNsiAndServiceIdRequest) (_result *GetEndpointAttributeByNsiAndServiceIdResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetEndpointAttributeByNsiAndServiceIdResponse{}
+	_body, _err := client.GetEndpointAttributeByNsiAndServiceIdWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetVpcEndpointAttributeWithOptions(request *GetVpcEndpointAttributeRequest, runtime *util.RuntimeOptions) (_result *GetVpcEndpointAttributeResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -5605,6 +6196,10 @@ func (client *Client) ListVpcEndpointConnectionsWithOptions(request *ListVpcEndp
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ConnectionId)) {
+		query["ConnectionId"] = request.ConnectionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ConnectionStatus)) {
 		query["ConnectionStatus"] = request.ConnectionStatus
 	}
@@ -5831,6 +6426,10 @@ func (client *Client) ListVpcEndpointServiceUsersWithOptions(request *ListVpcEnd
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
 		query["UserId"] = request.UserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserListType)) {
+		query["UserListType"] = request.UserListType
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -6163,6 +6762,62 @@ func (client *Client) ListVpcEndpoints(request *ListVpcEndpointsRequest) (_resul
 	return _result, _err
 }
 
+func (client *Client) NotifyResourceAddressFamilyWithOptions(request *NotifyResourceAddressFamilyRequest, runtime *util.RuntimeOptions) (_result *NotifyResourceAddressFamilyResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AddressFamily)) {
+		query["AddressFamily"] = request.AddressFamily
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Ipv6Address)) {
+		query["Ipv6Address"] = request.Ipv6Address
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceType)) {
+		query["ResourceType"] = request.ResourceType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("NotifyResourceAddressFamily"),
+		Version:     tea.String("2020-04-15"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &NotifyResourceAddressFamilyResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) NotifyResourceAddressFamily(request *NotifyResourceAddressFamilyRequest) (_result *NotifyResourceAddressFamilyResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &NotifyResourceAddressFamilyResponse{}
+	_body, _err := client.NotifyResourceAddressFamilyWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) OpenPrivateLinkServiceWithOptions(request *OpenPrivateLinkServiceRequest, runtime *util.RuntimeOptions) (_result *OpenPrivateLinkServiceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -6231,6 +6886,10 @@ func (client *Client) RemoveUserFromVpcEndpointServiceWithOptions(request *Remov
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
 		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserARN)) {
+		query["UserARN"] = request.UserARN
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.UserId)) {
@@ -6507,6 +7166,10 @@ func (client *Client) UpdateVpcEndpointServiceAttributeWithOptions(request *Upda
 
 	if !tea.BoolValue(util.IsUnset(request.ServiceId)) {
 		query["ServiceId"] = request.ServiceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServiceSupportIpv6)) {
+		query["ServiceSupportIpv6"] = request.ServiceSupportIpv6
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ZoneAffinityEnabled)) {
