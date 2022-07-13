@@ -1,3 +1,6 @@
+2022-07-13 Version: v1.0.14
+- Automatically generate sdk tasks.
+
 2022-07-13 Version: v1.0.13
 - Automatically generate sdk tasks.
 
