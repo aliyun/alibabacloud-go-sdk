@@ -5159,6 +5159,130 @@ func (s *FeedbackResponse) SetBody(v *FeedbackResponseBody) *FeedbackResponse {
 	return s
 }
 
+type GenerateUserAccessTokenRequest struct {
+	AgentKey   *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
+	Email      *string `json:"Email,omitempty" xml:"Email,omitempty"`
+	ExpireTime *int32  `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	ExtraInfo  *string `json:"ExtraInfo,omitempty" xml:"ExtraInfo,omitempty"`
+	ForeignId  *string `json:"ForeignId,omitempty" xml:"ForeignId,omitempty"`
+	Nick       *string `json:"Nick,omitempty" xml:"Nick,omitempty"`
+	Telephone  *string `json:"Telephone,omitempty" xml:"Telephone,omitempty"`
+}
+
+func (s GenerateUserAccessTokenRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateUserAccessTokenRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateUserAccessTokenRequest) SetAgentKey(v string) *GenerateUserAccessTokenRequest {
+	s.AgentKey = &v
+	return s
+}
+
+func (s *GenerateUserAccessTokenRequest) SetEmail(v string) *GenerateUserAccessTokenRequest {
+	s.Email = &v
+	return s
+}
+
+func (s *GenerateUserAccessTokenRequest) SetExpireTime(v int32) *GenerateUserAccessTokenRequest {
+	s.ExpireTime = &v
+	return s
+}
+
+func (s *GenerateUserAccessTokenRequest) SetExtraInfo(v string) *GenerateUserAccessTokenRequest {
+	s.ExtraInfo = &v
+	return s
+}
+
+func (s *GenerateUserAccessTokenRequest) SetForeignId(v string) *GenerateUserAccessTokenRequest {
+	s.ForeignId = &v
+	return s
+}
+
+func (s *GenerateUserAccessTokenRequest) SetNick(v string) *GenerateUserAccessTokenRequest {
+	s.Nick = &v
+	return s
+}
+
+func (s *GenerateUserAccessTokenRequest) SetTelephone(v string) *GenerateUserAccessTokenRequest {
+	s.Telephone = &v
+	return s
+}
+
+type GenerateUserAccessTokenResponseBody struct {
+	Code    *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data    *string `json:"Data,omitempty" xml:"Data,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success   *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GenerateUserAccessTokenResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateUserAccessTokenResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateUserAccessTokenResponseBody) SetCode(v string) *GenerateUserAccessTokenResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GenerateUserAccessTokenResponseBody) SetData(v string) *GenerateUserAccessTokenResponseBody {
+	s.Data = &v
+	return s
+}
+
+func (s *GenerateUserAccessTokenResponseBody) SetMessage(v string) *GenerateUserAccessTokenResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *GenerateUserAccessTokenResponseBody) SetRequestId(v string) *GenerateUserAccessTokenResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GenerateUserAccessTokenResponseBody) SetSuccess(v bool) *GenerateUserAccessTokenResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GenerateUserAccessTokenResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GenerateUserAccessTokenResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GenerateUserAccessTokenResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GenerateUserAccessTokenResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GenerateUserAccessTokenResponse) SetHeaders(v map[string]*string) *GenerateUserAccessTokenResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GenerateUserAccessTokenResponse) SetStatusCode(v int32) *GenerateUserAccessTokenResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GenerateUserAccessTokenResponse) SetBody(v *GenerateUserAccessTokenResponseBody) *GenerateUserAccessTokenResponse {
+	s.Body = v
+	return s
+}
+
 type GetAsyncResultRequest struct {
 	// 业务空间key,不设置则访问默认业务空间，key值在主账号业务管理页面获取
 	AgentKey *string `json:"AgentKey,omitempty" xml:"AgentKey,omitempty"`
@@ -11875,6 +11999,74 @@ func (client *Client) Feedback(request *FeedbackRequest) (_result *FeedbackRespo
 	runtime := &util.RuntimeOptions{}
 	_result = &FeedbackResponse{}
 	_body, _err := client.FeedbackWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GenerateUserAccessTokenWithOptions(request *GenerateUserAccessTokenRequest, runtime *util.RuntimeOptions) (_result *GenerateUserAccessTokenResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AgentKey)) {
+		query["AgentKey"] = request.AgentKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Email)) {
+		query["Email"] = request.Email
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExpireTime)) {
+		query["ExpireTime"] = request.ExpireTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ExtraInfo)) {
+		query["ExtraInfo"] = request.ExtraInfo
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ForeignId)) {
+		query["ForeignId"] = request.ForeignId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Nick)) {
+		query["Nick"] = request.Nick
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Telephone)) {
+		query["Telephone"] = request.Telephone
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GenerateUserAccessToken"),
+		Version:     tea.String("2022-04-08"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GenerateUserAccessTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GenerateUserAccessToken(request *GenerateUserAccessTokenRequest) (_result *GenerateUserAccessTokenResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GenerateUserAccessTokenResponse{}
+	_body, _err := client.GenerateUserAccessTokenWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
