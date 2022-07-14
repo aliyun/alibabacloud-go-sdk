@@ -2453,8 +2453,6 @@ type DescribeInvadeEventListRequest struct {
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
 	// 每页多少条
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// 处理状态
-	ProcessStatus *string `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
 	// 处理状态列表
 	ProcessStatusList []*int32 `json:"ProcessStatusList,omitempty" xml:"ProcessStatusList,omitempty" type:"Repeated"`
 	// 风险等级
@@ -2530,11 +2528,6 @@ func (s *DescribeInvadeEventListRequest) SetMemberUid(v int64) *DescribeInvadeEv
 
 func (s *DescribeInvadeEventListRequest) SetPageSize(v string) *DescribeInvadeEventListRequest {
 	s.PageSize = &v
-	return s
-}
-
-func (s *DescribeInvadeEventListRequest) SetProcessStatus(v string) *DescribeInvadeEventListRequest {
-	s.ProcessStatus = &v
 	return s
 }
 
@@ -2795,24 +2788,6 @@ func (s *DescribeInvadeEventListResponse) SetBody(v *DescribeInvadeEventListResp
 }
 
 type DescribeOutgoingDestinationIPRequest struct {
-	// ACL覆盖情况, 枚举值.
-	// 默认值: 空
-	// 可选值:
-	// All (全部情况, 等同于空)
-	// FullCoverage ( 已覆盖)
-	// Uncovered (未覆盖)
-	AclCoverage *string `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
-	// 应用名
-	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
-	// 分类, 枚举值.
-	// 默认值: 空
-	// 可选值:
-	// All (全部分类)
-	// RiskDomain (风险域名分类)
-	// RiskIP (风险IP分类)
-	// AliYun (云产品分类)
-	// NotAliYun (非云产品分类)
-	CategoryId *string `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	// 当前页
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	// 目的IP
@@ -2833,11 +2808,8 @@ type DescribeOutgoingDestinationIPRequest struct {
 	PrivateIP *string `json:"PrivateIP,omitempty" xml:"PrivateIP,omitempty"`
 	// 公网IP
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	// 安全建议, 枚举值: pass, alert, drop. 默认值为空
-	SecuritySuggest *string `json:"SecuritySuggest,omitempty" xml:"SecuritySuggest,omitempty"`
 	// 顺序, 枚举值, 可选:asc, desc
-	Sort     *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	// 开始时间,Unix timestamp, 精确到秒
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -2848,21 +2820,6 @@ func (s DescribeOutgoingDestinationIPRequest) String() string {
 
 func (s DescribeOutgoingDestinationIPRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeOutgoingDestinationIPRequest) SetAclCoverage(v string) *DescribeOutgoingDestinationIPRequest {
-	s.AclCoverage = &v
-	return s
-}
-
-func (s *DescribeOutgoingDestinationIPRequest) SetApplicationName(v string) *DescribeOutgoingDestinationIPRequest {
-	s.ApplicationName = &v
-	return s
-}
-
-func (s *DescribeOutgoingDestinationIPRequest) SetCategoryId(v string) *DescribeOutgoingDestinationIPRequest {
-	s.CategoryId = &v
-	return s
 }
 
 func (s *DescribeOutgoingDestinationIPRequest) SetCurrentPage(v string) *DescribeOutgoingDestinationIPRequest {
@@ -2910,18 +2867,8 @@ func (s *DescribeOutgoingDestinationIPRequest) SetPublicIP(v string) *DescribeOu
 	return s
 }
 
-func (s *DescribeOutgoingDestinationIPRequest) SetSecuritySuggest(v string) *DescribeOutgoingDestinationIPRequest {
-	s.SecuritySuggest = &v
-	return s
-}
-
 func (s *DescribeOutgoingDestinationIPRequest) SetSort(v string) *DescribeOutgoingDestinationIPRequest {
 	s.Sort = &v
-	return s
-}
-
-func (s *DescribeOutgoingDestinationIPRequest) SetSourceIp(v string) *DescribeOutgoingDestinationIPRequest {
-	s.SourceIp = &v
 	return s
 }
 
@@ -3198,13 +3145,6 @@ func (s *DescribeOutgoingDestinationIPResponse) SetBody(v *DescribeOutgoingDesti
 }
 
 type DescribeOutgoingDomainRequest struct {
-	// ACL覆盖情况, 枚举值.
-	// 默认值: 空
-	// 可选值:
-	// All (全部情况, 等同于空)
-	// FullCoverage ( 已覆盖)
-	// Uncovered (未覆盖)
-	AclCoverage *string `json:"AclCoverage,omitempty" xml:"AclCoverage,omitempty"`
 	// 分类, 枚举值.
 	// 默认值: 空
 	// 可选值:
@@ -3232,11 +3172,8 @@ type DescribeOutgoingDomainRequest struct {
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// 公网IP
 	PublicIP *string `json:"PublicIP,omitempty" xml:"PublicIP,omitempty"`
-	// 安全建议, 枚举值: pass, alert, drop. 默认值为空
-	SecuritySuggest *string `json:"SecuritySuggest,omitempty" xml:"SecuritySuggest,omitempty"`
 	// 顺序, 枚举值, 可选:asc, desc
-	Sort     *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
+	Sort *string `json:"Sort,omitempty" xml:"Sort,omitempty"`
 	// 开始时间,Unix timestamp, 精确到秒
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -3247,11 +3184,6 @@ func (s DescribeOutgoingDomainRequest) String() string {
 
 func (s DescribeOutgoingDomainRequest) GoString() string {
 	return s.String()
-}
-
-func (s *DescribeOutgoingDomainRequest) SetAclCoverage(v string) *DescribeOutgoingDomainRequest {
-	s.AclCoverage = &v
-	return s
 }
 
 func (s *DescribeOutgoingDomainRequest) SetCategoryId(v string) *DescribeOutgoingDomainRequest {
@@ -3294,18 +3226,8 @@ func (s *DescribeOutgoingDomainRequest) SetPublicIP(v string) *DescribeOutgoingD
 	return s
 }
 
-func (s *DescribeOutgoingDomainRequest) SetSecuritySuggest(v string) *DescribeOutgoingDomainRequest {
-	s.SecuritySuggest = &v
-	return s
-}
-
 func (s *DescribeOutgoingDomainRequest) SetSort(v string) *DescribeOutgoingDomainRequest {
 	s.Sort = &v
-	return s
-}
-
-func (s *DescribeOutgoingDomainRequest) SetSourceIp(v string) *DescribeOutgoingDomainRequest {
-	s.SourceIp = &v
 	return s
 }
 
@@ -4229,12 +4151,14 @@ func (s *DescribeUserAssetIPTrafficInfoRequest) SetTrafficTime(v string) *Descri
 type DescribeUserAssetIPTrafficInfoResponseBody struct {
 	// 结束时间
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// 入方向流量信息
-	InTrafficInfo *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo `json:"InTrafficInfo,omitempty" xml:"InTrafficInfo,omitempty" type:"Struct"`
-	// 出方向流量信息
-	OutTrafficInfo *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo `json:"OutTrafficInfo,omitempty" xml:"OutTrafficInfo,omitempty" type:"Struct"`
+	InBps   *int64 `json:"InBps,omitempty" xml:"InBps,omitempty"`
+	InPps   *int64 `json:"InPps,omitempty" xml:"InPps,omitempty"`
+	NewConn *int64 `json:"NewConn,omitempty" xml:"NewConn,omitempty"`
+	OutBps  *int64 `json:"OutBps,omitempty" xml:"OutBps,omitempty"`
+	OutPps  *int64 `json:"OutPps,omitempty" xml:"OutPps,omitempty"`
 	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	SessionCount *int64  `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
 	// 开始时间
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
@@ -4252,13 +4176,28 @@ func (s *DescribeUserAssetIPTrafficInfoResponseBody) SetEndTime(v int64) *Descri
 	return s
 }
 
-func (s *DescribeUserAssetIPTrafficInfoResponseBody) SetInTrafficInfo(v *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo) *DescribeUserAssetIPTrafficInfoResponseBody {
-	s.InTrafficInfo = v
+func (s *DescribeUserAssetIPTrafficInfoResponseBody) SetInBps(v int64) *DescribeUserAssetIPTrafficInfoResponseBody {
+	s.InBps = &v
 	return s
 }
 
-func (s *DescribeUserAssetIPTrafficInfoResponseBody) SetOutTrafficInfo(v *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo) *DescribeUserAssetIPTrafficInfoResponseBody {
-	s.OutTrafficInfo = v
+func (s *DescribeUserAssetIPTrafficInfoResponseBody) SetInPps(v int64) *DescribeUserAssetIPTrafficInfoResponseBody {
+	s.InPps = &v
+	return s
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponseBody) SetNewConn(v int64) *DescribeUserAssetIPTrafficInfoResponseBody {
+	s.NewConn = &v
+	return s
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponseBody) SetOutBps(v int64) *DescribeUserAssetIPTrafficInfoResponseBody {
+	s.OutBps = &v
+	return s
+}
+
+func (s *DescribeUserAssetIPTrafficInfoResponseBody) SetOutPps(v int64) *DescribeUserAssetIPTrafficInfoResponseBody {
+	s.OutPps = &v
 	return s
 }
 
@@ -4267,114 +4206,13 @@ func (s *DescribeUserAssetIPTrafficInfoResponseBody) SetRequestId(v string) *Des
 	return s
 }
 
+func (s *DescribeUserAssetIPTrafficInfoResponseBody) SetSessionCount(v int64) *DescribeUserAssetIPTrafficInfoResponseBody {
+	s.SessionCount = &v
+	return s
+}
+
 func (s *DescribeUserAssetIPTrafficInfoResponseBody) SetStartTime(v int64) *DescribeUserAssetIPTrafficInfoResponseBody {
 	s.StartTime = &v
-	return s
-}
-
-type DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo struct {
-	// 入方向Bps
-	InBps *int64 `json:"InBps,omitempty" xml:"InBps,omitempty"`
-	// 入方向pps
-	InPps *int64 `json:"InPps,omitempty" xml:"InPps,omitempty"`
-	// 新建会话数
-	NewConn *int64 `json:"NewConn,omitempty" xml:"NewConn,omitempty"`
-	// 返回Bps
-	OutBps *int64 `json:"OutBps,omitempty" xml:"OutBps,omitempty"`
-	// 返回pps
-	OutPps *int64 `json:"OutPps,omitempty" xml:"OutPps,omitempty"`
-	// 会话数
-	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-}
-
-func (s DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo) SetInBps(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo {
-	s.InBps = &v
-	return s
-}
-
-func (s *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo) SetInPps(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo {
-	s.InPps = &v
-	return s
-}
-
-func (s *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo) SetNewConn(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo {
-	s.NewConn = &v
-	return s
-}
-
-func (s *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo) SetOutBps(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo {
-	s.OutBps = &v
-	return s
-}
-
-func (s *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo) SetOutPps(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo {
-	s.OutPps = &v
-	return s
-}
-
-func (s *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo) SetSessionCount(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyInTrafficInfo {
-	s.SessionCount = &v
-	return s
-}
-
-type DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo struct {
-	// 出方向接收流量Bps
-	InBps *int64 `json:"InBps,omitempty" xml:"InBps,omitempty"`
-	// 出方向接收流量Bps
-	InPps *int64 `json:"InPps,omitempty" xml:"InPps,omitempty"`
-	// 新建会话数
-	NewConn *int64 `json:"NewConn,omitempty" xml:"NewConn,omitempty"`
-	// 出方向流量Bps
-	OutBps *int64 `json:"OutBps,omitempty" xml:"OutBps,omitempty"`
-	// 出方向pps
-	OutPps *int64 `json:"OutPps,omitempty" xml:"OutPps,omitempty"`
-	// 会话数
-	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-}
-
-func (s DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo) SetInBps(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo {
-	s.InBps = &v
-	return s
-}
-
-func (s *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo) SetInPps(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo {
-	s.InPps = &v
-	return s
-}
-
-func (s *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo) SetNewConn(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo {
-	s.NewConn = &v
-	return s
-}
-
-func (s *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo) SetOutBps(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo {
-	s.OutBps = &v
-	return s
-}
-
-func (s *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo) SetOutPps(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo {
-	s.OutPps = &v
-	return s
-}
-
-func (s *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo) SetSessionCount(v int64) *DescribeUserAssetIPTrafficInfoResponseBodyOutTrafficInfo {
-	s.SessionCount = &v
 	return s
 }
 
@@ -9312,10 +9150,6 @@ func (client *Client) DescribeInvadeEventListWithOptions(request *DescribeInvade
 		query["PageSize"] = request.PageSize
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.ProcessStatus)) {
-		query["ProcessStatus"] = request.ProcessStatus
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.ProcessStatusList)) {
 		query["ProcessStatusList"] = request.ProcessStatusList
 	}
@@ -9372,18 +9206,6 @@ func (client *Client) DescribeOutgoingDestinationIPWithOptions(request *Describe
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AclCoverage)) {
-		query["AclCoverage"] = request.AclCoverage
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.ApplicationName)) {
-		query["ApplicationName"] = request.ApplicationName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
-		query["CategoryId"] = request.CategoryId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
 		query["CurrentPage"] = request.CurrentPage
 	}
@@ -9420,16 +9242,8 @@ func (client *Client) DescribeOutgoingDestinationIPWithOptions(request *Describe
 		query["PublicIP"] = request.PublicIP
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SecuritySuggest)) {
-		query["SecuritySuggest"] = request.SecuritySuggest
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Sort)) {
 		query["Sort"] = request.Sort
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
-		query["SourceIp"] = request.SourceIp
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
@@ -9476,10 +9290,6 @@ func (client *Client) DescribeOutgoingDomainWithOptions(request *DescribeOutgoin
 		return _result, _err
 	}
 	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AclCoverage)) {
-		query["AclCoverage"] = request.AclCoverage
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.CategoryId)) {
 		query["CategoryId"] = request.CategoryId
 	}
@@ -9512,16 +9322,8 @@ func (client *Client) DescribeOutgoingDomainWithOptions(request *DescribeOutgoin
 		query["PublicIP"] = request.PublicIP
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.SecuritySuggest)) {
-		query["SecuritySuggest"] = request.SecuritySuggest
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.Sort)) {
 		query["Sort"] = request.Sort
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceIp)) {
-		query["SourceIp"] = request.SourceIp
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.StartTime)) {
