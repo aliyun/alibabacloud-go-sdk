@@ -6382,9 +6382,10 @@ func (s *DescribeCriteriaResponseBody) SetRequestId(v string) *DescribeCriteriaR
 }
 
 type DescribeCriteriaResponseBodyCriteriaList struct {
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	Values *string `json:"Values,omitempty" xml:"Values,omitempty"`
+	MultiValues *string `json:"MultiValues,omitempty" xml:"MultiValues,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type        *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	Values      *string `json:"Values,omitempty" xml:"Values,omitempty"`
 }
 
 func (s DescribeCriteriaResponseBodyCriteriaList) String() string {
@@ -6393,6 +6394,11 @@ func (s DescribeCriteriaResponseBodyCriteriaList) String() string {
 
 func (s DescribeCriteriaResponseBodyCriteriaList) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeCriteriaResponseBodyCriteriaList) SetMultiValues(v string) *DescribeCriteriaResponseBodyCriteriaList {
+	s.MultiValues = &v
+	return s
 }
 
 func (s *DescribeCriteriaResponseBodyCriteriaList) SetName(v string) *DescribeCriteriaResponseBodyCriteriaList {
@@ -11734,6 +11740,116 @@ func (s *DescribeInstanceAntiBruteForceRulesResponse) SetBody(v *DescribeInstanc
 	return s
 }
 
+type DescribeInstanceRebootStatusRequest struct {
+	Uuids *string `json:"Uuids,omitempty" xml:"Uuids,omitempty"`
+}
+
+func (s DescribeInstanceRebootStatusRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceRebootStatusRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceRebootStatusRequest) SetUuids(v string) *DescribeInstanceRebootStatusRequest {
+	s.Uuids = &v
+	return s
+}
+
+type DescribeInstanceRebootStatusResponseBody struct {
+	RebootStatuses []*DescribeInstanceRebootStatusResponseBodyRebootStatuses `json:"RebootStatuses,omitempty" xml:"RebootStatuses,omitempty" type:"Repeated"`
+	RequestId      *string                                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TotalCount     *int32                                                    `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s DescribeInstanceRebootStatusResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceRebootStatusResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceRebootStatusResponseBody) SetRebootStatuses(v []*DescribeInstanceRebootStatusResponseBodyRebootStatuses) *DescribeInstanceRebootStatusResponseBody {
+	s.RebootStatuses = v
+	return s
+}
+
+func (s *DescribeInstanceRebootStatusResponseBody) SetRequestId(v string) *DescribeInstanceRebootStatusResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeInstanceRebootStatusResponseBody) SetTotalCount(v int32) *DescribeInstanceRebootStatusResponseBody {
+	s.TotalCount = &v
+	return s
+}
+
+type DescribeInstanceRebootStatusResponseBodyRebootStatuses struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	Msg          *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	RebootStatus *int32  `json:"RebootStatus,omitempty" xml:"RebootStatus,omitempty"`
+	Uuid         *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s DescribeInstanceRebootStatusResponseBodyRebootStatuses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceRebootStatusResponseBodyRebootStatuses) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceRebootStatusResponseBodyRebootStatuses) SetCode(v string) *DescribeInstanceRebootStatusResponseBodyRebootStatuses {
+	s.Code = &v
+	return s
+}
+
+func (s *DescribeInstanceRebootStatusResponseBodyRebootStatuses) SetMsg(v string) *DescribeInstanceRebootStatusResponseBodyRebootStatuses {
+	s.Msg = &v
+	return s
+}
+
+func (s *DescribeInstanceRebootStatusResponseBodyRebootStatuses) SetRebootStatus(v int32) *DescribeInstanceRebootStatusResponseBodyRebootStatuses {
+	s.RebootStatus = &v
+	return s
+}
+
+func (s *DescribeInstanceRebootStatusResponseBodyRebootStatuses) SetUuid(v string) *DescribeInstanceRebootStatusResponseBodyRebootStatuses {
+	s.Uuid = &v
+	return s
+}
+
+type DescribeInstanceRebootStatusResponse struct {
+	Headers    map[string]*string                        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeInstanceRebootStatusResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeInstanceRebootStatusResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeInstanceRebootStatusResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeInstanceRebootStatusResponse) SetHeaders(v map[string]*string) *DescribeInstanceRebootStatusResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeInstanceRebootStatusResponse) SetStatusCode(v int32) *DescribeInstanceRebootStatusResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeInstanceRebootStatusResponse) SetBody(v *DescribeInstanceRebootStatusResponseBody) *DescribeInstanceRebootStatusResponse {
+	s.Body = v
+	return s
+}
+
 type DescribeInstanceStatisticsRequest struct {
 	From     *string `json:"From,omitempty" xml:"From,omitempty"`
 	Lang     *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
@@ -15648,12 +15764,12 @@ func (s *DescribeRiskCheckItemResultResponseBody) SetRequestId(v string) *Descri
 }
 
 type DescribeRiskCheckItemResultResponseBodyPageContentResource struct {
-	ContentResource *string `json:"ContentResource,omitempty" xml:"ContentResource,omitempty"`
-	Count           *int32  `json:"Count,omitempty" xml:"Count,omitempty"`
-	CurrentPage     *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	PageCount       *int32  `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount      *int32  `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	ContentResource map[string]interface{} `json:"ContentResource,omitempty" xml:"ContentResource,omitempty"`
+	Count           *int32                 `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage     *int32                 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageCount       *int32                 `json:"PageCount,omitempty" xml:"PageCount,omitempty"`
+	PageSize        *int32                 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount      *int32                 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeRiskCheckItemResultResponseBodyPageContentResource) String() string {
@@ -15664,8 +15780,8 @@ func (s DescribeRiskCheckItemResultResponseBodyPageContentResource) GoString() s
 	return s.String()
 }
 
-func (s *DescribeRiskCheckItemResultResponseBodyPageContentResource) SetContentResource(v string) *DescribeRiskCheckItemResultResponseBodyPageContentResource {
-	s.ContentResource = &v
+func (s *DescribeRiskCheckItemResultResponseBodyPageContentResource) SetContentResource(v map[string]interface{}) *DescribeRiskCheckItemResultResponseBodyPageContentResource {
+	s.ContentResource = v
 	return s
 }
 
@@ -28694,6 +28810,69 @@ func (s *QueryGroupedSecurityEventMarkMissListResponse) SetBody(v *QueryGroupedS
 	return s
 }
 
+type RebootMachineRequest struct {
+	Uuid *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
+}
+
+func (s RebootMachineRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootMachineRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RebootMachineRequest) SetUuid(v string) *RebootMachineRequest {
+	s.Uuid = &v
+	return s
+}
+
+type RebootMachineResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RebootMachineResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootMachineResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RebootMachineResponseBody) SetRequestId(v string) *RebootMachineResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RebootMachineResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RebootMachineResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RebootMachineResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RebootMachineResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RebootMachineResponse) SetHeaders(v map[string]*string) *RebootMachineResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RebootMachineResponse) SetStatusCode(v int32) *RebootMachineResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RebootMachineResponse) SetBody(v *RebootMachineResponseBody) *RebootMachineResponse {
+	s.Body = v
+	return s
+}
+
 type RefreshAssetsRequest struct {
 	AssetType *string `json:"AssetType,omitempty" xml:"AssetType,omitempty"`
 }
@@ -29351,62 +29530,62 @@ func (client *Client) Init(config *openapi.Config) (_err error) {
 	client.EndpointRule = tea.String("regional")
 	client.EndpointMap = map[string]*string{
 		"cn-hangzhou":                 tea.String("tds.aliyuncs.com"),
-		"ap-southeast-3":              tea.String("tds.ap-southeast-3.aliyuncs.com"),
-		"ap-northeast-1":              tea.String("tds.aliyuncs.com"),
-		"ap-northeast-2-pop":          tea.String("tds.aliyuncs.com"),
-		"ap-south-1":                  tea.String("tds.aliyuncs.com"),
 		"ap-southeast-1":              tea.String("tds.ap-southeast-1.aliyuncs.com"),
-		"ap-southeast-2":              tea.String("tds.aliyuncs.com"),
-		"ap-southeast-5":              tea.String("tds.aliyuncs.com"),
-		"cn-beijing":                  tea.String("tds.aliyuncs.com"),
-		"cn-beijing-finance-1":        tea.String("tds.aliyuncs.com"),
-		"cn-beijing-finance-pop":      tea.String("tds.aliyuncs.com"),
-		"cn-beijing-gov-1":            tea.String("tds.aliyuncs.com"),
-		"cn-beijing-nu16-b01":         tea.String("tds.aliyuncs.com"),
-		"cn-chengdu":                  tea.String("tds.aliyuncs.com"),
-		"cn-edge-1":                   tea.String("tds.aliyuncs.com"),
-		"cn-fujian":                   tea.String("tds.aliyuncs.com"),
-		"cn-haidian-cm12-c01":         tea.String("tds.aliyuncs.com"),
-		"cn-hangzhou-bj-b01":          tea.String("tds.aliyuncs.com"),
-		"cn-hangzhou-finance":         tea.String("tds.aliyuncs.com"),
-		"cn-hangzhou-internal-prod-1": tea.String("tds.aliyuncs.com"),
-		"cn-hangzhou-internal-test-1": tea.String("tds.aliyuncs.com"),
-		"cn-hangzhou-internal-test-2": tea.String("tds.aliyuncs.com"),
-		"cn-hangzhou-internal-test-3": tea.String("tds.aliyuncs.com"),
-		"cn-hangzhou-test-306":        tea.String("tds.aliyuncs.com"),
-		"cn-hongkong":                 tea.String("tds.aliyuncs.com"),
-		"cn-hongkong-finance-pop":     tea.String("tds.aliyuncs.com"),
-		"cn-huhehaote":                tea.String("tds.aliyuncs.com"),
-		"cn-huhehaote-nebula-1":       tea.String("tds.aliyuncs.com"),
-		"cn-north-2-gov-1":            tea.String("tds.aliyuncs.com"),
-		"cn-qingdao":                  tea.String("tds.aliyuncs.com"),
-		"cn-qingdao-nebula":           tea.String("tds.aliyuncs.com"),
-		"cn-shanghai":                 tea.String("tds.aliyuncs.com"),
-		"cn-shanghai-et15-b01":        tea.String("tds.aliyuncs.com"),
-		"cn-shanghai-et2-b01":         tea.String("tds.aliyuncs.com"),
-		"cn-shanghai-finance-1":       tea.String("tds.aliyuncs.com"),
-		"cn-shanghai-inner":           tea.String("tds.aliyuncs.com"),
-		"cn-shanghai-internal-test-1": tea.String("tds.aliyuncs.com"),
-		"cn-shenzhen":                 tea.String("tds.aliyuncs.com"),
-		"cn-shenzhen-finance-1":       tea.String("tds.aliyuncs.com"),
-		"cn-shenzhen-inner":           tea.String("tds.aliyuncs.com"),
-		"cn-shenzhen-st4-d01":         tea.String("tds.aliyuncs.com"),
-		"cn-shenzhen-su18-b01":        tea.String("tds.aliyuncs.com"),
-		"cn-wuhan":                    tea.String("tds.aliyuncs.com"),
-		"cn-wulanchabu":               tea.String("tds.aliyuncs.com"),
-		"cn-yushanfang":               tea.String("tds.aliyuncs.com"),
-		"cn-zhangbei":                 tea.String("tds.aliyuncs.com"),
-		"cn-zhangbei-na61-b01":        tea.String("tds.aliyuncs.com"),
-		"cn-zhangjiakou":              tea.String("tds.aliyuncs.com"),
-		"cn-zhangjiakou-na62-a01":     tea.String("tds.aliyuncs.com"),
-		"cn-zhengzhou-nebula-1":       tea.String("tds.aliyuncs.com"),
-		"eu-central-1":                tea.String("tds.aliyuncs.com"),
-		"eu-west-1":                   tea.String("tds.aliyuncs.com"),
-		"eu-west-1-oxs":               tea.String("tds.aliyuncs.com"),
-		"me-east-1":                   tea.String("tds.aliyuncs.com"),
-		"rus-west-1-pop":              tea.String("tds.aliyuncs.com"),
-		"us-east-1":                   tea.String("tds.aliyuncs.com"),
-		"us-west-1":                   tea.String("tds.aliyuncs.com"),
+		"ap-southeast-3":              tea.String("tds.ap-southeast-3.aliyuncs.com"),
+		"ap-northeast-1":              tea.String("sas.aliyuncs.com"),
+		"ap-northeast-2-pop":          tea.String("sas.aliyuncs.com"),
+		"ap-south-1":                  tea.String("sas.aliyuncs.com"),
+		"ap-southeast-2":              tea.String("sas.aliyuncs.com"),
+		"ap-southeast-5":              tea.String("sas.aliyuncs.com"),
+		"cn-beijing":                  tea.String("sas.aliyuncs.com"),
+		"cn-beijing-finance-1":        tea.String("sas.aliyuncs.com"),
+		"cn-beijing-finance-pop":      tea.String("sas.aliyuncs.com"),
+		"cn-beijing-gov-1":            tea.String("sas.aliyuncs.com"),
+		"cn-beijing-nu16-b01":         tea.String("sas.aliyuncs.com"),
+		"cn-chengdu":                  tea.String("sas.aliyuncs.com"),
+		"cn-edge-1":                   tea.String("sas.aliyuncs.com"),
+		"cn-fujian":                   tea.String("sas.aliyuncs.com"),
+		"cn-haidian-cm12-c01":         tea.String("sas.aliyuncs.com"),
+		"cn-hangzhou-bj-b01":          tea.String("sas.aliyuncs.com"),
+		"cn-hangzhou-finance":         tea.String("sas.aliyuncs.com"),
+		"cn-hangzhou-internal-prod-1": tea.String("sas.aliyuncs.com"),
+		"cn-hangzhou-internal-test-1": tea.String("sas.aliyuncs.com"),
+		"cn-hangzhou-internal-test-2": tea.String("sas.aliyuncs.com"),
+		"cn-hangzhou-internal-test-3": tea.String("sas.aliyuncs.com"),
+		"cn-hangzhou-test-306":        tea.String("sas.aliyuncs.com"),
+		"cn-hongkong":                 tea.String("sas.aliyuncs.com"),
+		"cn-hongkong-finance-pop":     tea.String("sas.aliyuncs.com"),
+		"cn-huhehaote":                tea.String("sas.aliyuncs.com"),
+		"cn-huhehaote-nebula-1":       tea.String("sas.aliyuncs.com"),
+		"cn-north-2-gov-1":            tea.String("sas.aliyuncs.com"),
+		"cn-qingdao":                  tea.String("sas.aliyuncs.com"),
+		"cn-qingdao-nebula":           tea.String("sas.aliyuncs.com"),
+		"cn-shanghai":                 tea.String("sas.aliyuncs.com"),
+		"cn-shanghai-et15-b01":        tea.String("sas.aliyuncs.com"),
+		"cn-shanghai-et2-b01":         tea.String("sas.aliyuncs.com"),
+		"cn-shanghai-finance-1":       tea.String("sas.aliyuncs.com"),
+		"cn-shanghai-inner":           tea.String("sas.aliyuncs.com"),
+		"cn-shanghai-internal-test-1": tea.String("sas.aliyuncs.com"),
+		"cn-shenzhen":                 tea.String("sas.aliyuncs.com"),
+		"cn-shenzhen-finance-1":       tea.String("sas.aliyuncs.com"),
+		"cn-shenzhen-inner":           tea.String("sas.aliyuncs.com"),
+		"cn-shenzhen-st4-d01":         tea.String("sas.aliyuncs.com"),
+		"cn-shenzhen-su18-b01":        tea.String("sas.aliyuncs.com"),
+		"cn-wuhan":                    tea.String("sas.aliyuncs.com"),
+		"cn-wulanchabu":               tea.String("sas.aliyuncs.com"),
+		"cn-yushanfang":               tea.String("sas.aliyuncs.com"),
+		"cn-zhangbei":                 tea.String("sas.aliyuncs.com"),
+		"cn-zhangbei-na61-b01":        tea.String("sas.aliyuncs.com"),
+		"cn-zhangjiakou":              tea.String("sas.aliyuncs.com"),
+		"cn-zhangjiakou-na62-a01":     tea.String("sas.aliyuncs.com"),
+		"cn-zhengzhou-nebula-1":       tea.String("sas.aliyuncs.com"),
+		"eu-central-1":                tea.String("sas.aliyuncs.com"),
+		"eu-west-1":                   tea.String("sas.aliyuncs.com"),
+		"eu-west-1-oxs":               tea.String("sas.aliyuncs.com"),
+		"me-east-1":                   tea.String("sas.aliyuncs.com"),
+		"rus-west-1-pop":              tea.String("sas.aliyuncs.com"),
+		"us-east-1":                   tea.String("sas.aliyuncs.com"),
+		"us-west-1":                   tea.String("sas.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -33729,6 +33908,50 @@ func (client *Client) DescribeInstanceAntiBruteForceRules(request *DescribeInsta
 	runtime := &util.RuntimeOptions{}
 	_result = &DescribeInstanceAntiBruteForceRulesResponse{}
 	_body, _err := client.DescribeInstanceAntiBruteForceRulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceRebootStatusWithOptions(request *DescribeInstanceRebootStatusRequest, runtime *util.RuntimeOptions) (_result *DescribeInstanceRebootStatusResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Uuids)) {
+		query["Uuids"] = request.Uuids
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeInstanceRebootStatus"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeInstanceRebootStatusResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeInstanceRebootStatus(request *DescribeInstanceRebootStatusRequest) (_result *DescribeInstanceRebootStatusResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DescribeInstanceRebootStatusResponse{}
+	_body, _err := client.DescribeInstanceRebootStatusWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -40422,6 +40645,50 @@ func (client *Client) QueryGroupedSecurityEventMarkMissList(request *QueryGroupe
 	runtime := &util.RuntimeOptions{}
 	_result = &QueryGroupedSecurityEventMarkMissListResponse{}
 	_body, _err := client.QueryGroupedSecurityEventMarkMissListWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RebootMachineWithOptions(request *RebootMachineRequest, runtime *util.RuntimeOptions) (_result *RebootMachineResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Uuid)) {
+		query["Uuid"] = request.Uuid
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RebootMachine"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RebootMachineResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RebootMachine(request *RebootMachineRequest) (_result *RebootMachineResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RebootMachineResponse{}
+	_body, _err := client.RebootMachineWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
