@@ -3125,14 +3125,15 @@ func (s *QuerySmsTemplateListResponseBody) SetTotalCount(v int64) *QuerySmsTempl
 }
 
 type QuerySmsTemplateListResponseBodySmsTemplateList struct {
-	AuditStatus     *string                                                `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	CreateDate      *string                                                `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
-	OrderId         *string                                                `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	Reason          *QuerySmsTemplateListResponseBodySmsTemplateListReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
-	TemplateCode    *string                                                `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
-	TemplateContent *string                                                `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
-	TemplateName    *string                                                `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
-	TemplateType    *int32                                                 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
+	AuditStatus       *string                                                `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
+	CreateDate        *string                                                `json:"CreateDate,omitempty" xml:"CreateDate,omitempty"`
+	OrderId           *string                                                `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	OuterTemplateType *int32                                                 `json:"OuterTemplateType,omitempty" xml:"OuterTemplateType,omitempty"`
+	Reason            *QuerySmsTemplateListResponseBodySmsTemplateListReason `json:"Reason,omitempty" xml:"Reason,omitempty" type:"Struct"`
+	TemplateCode      *string                                                `json:"TemplateCode,omitempty" xml:"TemplateCode,omitempty"`
+	TemplateContent   *string                                                `json:"TemplateContent,omitempty" xml:"TemplateContent,omitempty"`
+	TemplateName      *string                                                `json:"TemplateName,omitempty" xml:"TemplateName,omitempty"`
+	TemplateType      *int32                                                 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
 }
 
 func (s QuerySmsTemplateListResponseBodySmsTemplateList) String() string {
@@ -3155,6 +3156,11 @@ func (s *QuerySmsTemplateListResponseBodySmsTemplateList) SetCreateDate(v string
 
 func (s *QuerySmsTemplateListResponseBodySmsTemplateList) SetOrderId(v string) *QuerySmsTemplateListResponseBodySmsTemplateList {
 	s.OrderId = &v
+	return s
+}
+
+func (s *QuerySmsTemplateListResponseBodySmsTemplateList) SetOuterTemplateType(v int32) *QuerySmsTemplateListResponseBodySmsTemplateList {
+	s.OuterTemplateType = &v
 	return s
 }
 
