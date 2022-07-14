@@ -1377,6 +1377,163 @@ func (s *AuthorizeSecurityGroupEgressResponse) SetBody(v *AuthorizeSecurityGroup
 	return s
 }
 
+type CreateARMServerInstancesRequest struct {
+	// 数量，最大支持10
+	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
+	// 是否自动续费，默认为false。
+	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	// ENS节点ID。
+	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
+	Frequency   *int32  `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
+	// 镜像ID。
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
+	// AIC容器实例规格。
+	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	// keypair名称
+	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
+	// 付费类型。PrePaid（目前只支持此种）：包年包月
+	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	// 购买周期。
+	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
+	// Month（默认）：按月计费的价格单位。
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+	// 分辨率。目前取值
+	// 1920*1080
+	// 1280*720
+	// 1080*1920
+	// 720*1280
+	Resolution *string `json:"Resolution,omitempty" xml:"Resolution,omitempty"`
+	// 服务器规格。
+	ServerType *string `json:"ServerType,omitempty" xml:"ServerType,omitempty"`
+}
+
+func (s CreateARMServerInstancesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateARMServerInstancesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateARMServerInstancesRequest) SetAmount(v int32) *CreateARMServerInstancesRequest {
+	s.Amount = &v
+	return s
+}
+
+func (s *CreateARMServerInstancesRequest) SetAutoRenew(v bool) *CreateARMServerInstancesRequest {
+	s.AutoRenew = &v
+	return s
+}
+
+func (s *CreateARMServerInstancesRequest) SetEnsRegionId(v string) *CreateARMServerInstancesRequest {
+	s.EnsRegionId = &v
+	return s
+}
+
+func (s *CreateARMServerInstancesRequest) SetFrequency(v int32) *CreateARMServerInstancesRequest {
+	s.Frequency = &v
+	return s
+}
+
+func (s *CreateARMServerInstancesRequest) SetImageId(v string) *CreateARMServerInstancesRequest {
+	s.ImageId = &v
+	return s
+}
+
+func (s *CreateARMServerInstancesRequest) SetInstanceType(v string) *CreateARMServerInstancesRequest {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *CreateARMServerInstancesRequest) SetKeyPairName(v string) *CreateARMServerInstancesRequest {
+	s.KeyPairName = &v
+	return s
+}
+
+func (s *CreateARMServerInstancesRequest) SetPayType(v string) *CreateARMServerInstancesRequest {
+	s.PayType = &v
+	return s
+}
+
+func (s *CreateARMServerInstancesRequest) SetPeriod(v int32) *CreateARMServerInstancesRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *CreateARMServerInstancesRequest) SetPeriodUnit(v string) *CreateARMServerInstancesRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+func (s *CreateARMServerInstancesRequest) SetResolution(v string) *CreateARMServerInstancesRequest {
+	s.Resolution = &v
+	return s
+}
+
+func (s *CreateARMServerInstancesRequest) SetServerType(v string) *CreateARMServerInstancesRequest {
+	s.ServerType = &v
+	return s
+}
+
+type CreateARMServerInstancesResponseBody struct {
+	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	OrderId     *string   `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateARMServerInstancesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateARMServerInstancesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateARMServerInstancesResponseBody) SetInstanceIds(v []*string) *CreateARMServerInstancesResponseBody {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *CreateARMServerInstancesResponseBody) SetOrderId(v string) *CreateARMServerInstancesResponseBody {
+	s.OrderId = &v
+	return s
+}
+
+func (s *CreateARMServerInstancesResponseBody) SetRequestId(v string) *CreateARMServerInstancesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateARMServerInstancesResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateARMServerInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateARMServerInstancesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateARMServerInstancesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateARMServerInstancesResponse) SetHeaders(v map[string]*string) *CreateARMServerInstancesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateARMServerInstancesResponse) SetStatusCode(v int32) *CreateARMServerInstancesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateARMServerInstancesResponse) SetBody(v *CreateARMServerInstancesResponseBody) *CreateARMServerInstancesResponse {
+	s.Body = v
+	return s
+}
+
 type CreateApplicationRequest struct {
 	Template *string `json:"Template,omitempty" xml:"Template,omitempty"`
 	Timeout  *int32  `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
@@ -8531,7 +8688,6 @@ func (s *DescribeEnsRegionIdResourceResponse) SetBody(v *DescribeEnsRegionIdReso
 
 type DescribeEnsRegionsRequest struct {
 	EnsRegionId *string `json:"EnsRegionId,omitempty" xml:"EnsRegionId,omitempty"`
-	Version     *string `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s DescribeEnsRegionsRequest) String() string {
@@ -8544,11 +8700,6 @@ func (s DescribeEnsRegionsRequest) GoString() string {
 
 func (s *DescribeEnsRegionsRequest) SetEnsRegionId(v string) *DescribeEnsRegionsRequest {
 	s.EnsRegionId = &v
-	return s
-}
-
-func (s *DescribeEnsRegionsRequest) SetVersion(v string) *DescribeEnsRegionsRequest {
-	s.Version = &v
 	return s
 }
 
@@ -19188,6 +19339,71 @@ func (s *RebootInstanceResponse) SetBody(v *RebootInstanceResponseBody) *RebootI
 	return s
 }
 
+type ReleaseARMServerInstanceRequest struct {
+	// AIC实例ID.
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+}
+
+func (s ReleaseARMServerInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseARMServerInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseARMServerInstanceRequest) SetInstanceId(v string) *ReleaseARMServerInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+type ReleaseARMServerInstanceResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReleaseARMServerInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseARMServerInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseARMServerInstanceResponseBody) SetRequestId(v string) *ReleaseARMServerInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReleaseARMServerInstanceResponse struct {
+	Headers    map[string]*string                    `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReleaseARMServerInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReleaseARMServerInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReleaseARMServerInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReleaseARMServerInstanceResponse) SetHeaders(v map[string]*string) *ReleaseARMServerInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReleaseARMServerInstanceResponse) SetStatusCode(v int32) *ReleaseARMServerInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReleaseARMServerInstanceResponse) SetBody(v *ReleaseARMServerInstanceResponseBody) *ReleaseARMServerInstanceResponse {
+	s.Body = v
+	return s
+}
+
 type ReleaseInstanceRequest struct {
 	// 实例id
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
@@ -19720,6 +19936,82 @@ func (s *RemoveVSwitchesFromEpnInstanceResponse) SetStatusCode(v int32) *RemoveV
 }
 
 func (s *RemoveVSwitchesFromEpnInstanceResponse) SetBody(v *RemoveVSwitchesFromEpnInstanceResponseBody) *RemoveVSwitchesFromEpnInstanceResponse {
+	s.Body = v
+	return s
+}
+
+type RenewARMServerInstanceRequest struct {
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	Period     *int32  `json:"Period,omitempty" xml:"Period,omitempty"`
+	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
+}
+
+func (s RenewARMServerInstanceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewARMServerInstanceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *RenewARMServerInstanceRequest) SetInstanceId(v string) *RenewARMServerInstanceRequest {
+	s.InstanceId = &v
+	return s
+}
+
+func (s *RenewARMServerInstanceRequest) SetPeriod(v int32) *RenewARMServerInstanceRequest {
+	s.Period = &v
+	return s
+}
+
+func (s *RenewARMServerInstanceRequest) SetPeriodUnit(v string) *RenewARMServerInstanceRequest {
+	s.PeriodUnit = &v
+	return s
+}
+
+type RenewARMServerInstanceResponseBody struct {
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s RenewARMServerInstanceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewARMServerInstanceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *RenewARMServerInstanceResponseBody) SetRequestId(v string) *RenewARMServerInstanceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type RenewARMServerInstanceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *RenewARMServerInstanceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s RenewARMServerInstanceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RenewARMServerInstanceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *RenewARMServerInstanceResponse) SetHeaders(v map[string]*string) *RenewARMServerInstanceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *RenewARMServerInstanceResponse) SetStatusCode(v int32) *RenewARMServerInstanceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *RenewARMServerInstanceResponse) SetBody(v *RenewARMServerInstanceResponseBody) *RenewARMServerInstanceResponse {
 	s.Body = v
 	return s
 }
@@ -23329,6 +23621,94 @@ func (client *Client) AuthorizeSecurityGroupEgress(request *AuthorizeSecurityGro
 	return _result, _err
 }
 
+func (client *Client) CreateARMServerInstancesWithOptions(request *CreateARMServerInstancesRequest, runtime *util.RuntimeOptions) (_result *CreateARMServerInstancesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Amount)) {
+		query["Amount"] = request.Amount
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AutoRenew)) {
+		query["AutoRenew"] = request.AutoRenew
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
+		query["EnsRegionId"] = request.EnsRegionId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Frequency)) {
+		query["Frequency"] = request.Frequency
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageId)) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceType)) {
+		query["InstanceType"] = request.InstanceType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.KeyPairName)) {
+		query["KeyPairName"] = request.KeyPairName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PayType)) {
+		query["PayType"] = request.PayType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Resolution)) {
+		query["Resolution"] = request.Resolution
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ServerType)) {
+		query["ServerType"] = request.ServerType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateARMServerInstances"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateARMServerInstancesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateARMServerInstances(request *CreateARMServerInstancesRequest) (_result *CreateARMServerInstancesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateARMServerInstancesResponse{}
+	_body, _err := client.CreateARMServerInstancesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateApplicationWithOptions(request *CreateApplicationRequest, runtime *util.RuntimeOptions) (_result *CreateApplicationResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -26571,10 +26951,6 @@ func (client *Client) DescribeEnsRegionsWithOptions(request *DescribeEnsRegionsR
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.EnsRegionId)) {
 		query["EnsRegionId"] = request.EnsRegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Version)) {
-		query["Version"] = request.Version
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -30373,6 +30749,50 @@ func (client *Client) RebootInstance(request *RebootInstanceRequest) (_result *R
 	return _result, _err
 }
 
+func (client *Client) ReleaseARMServerInstanceWithOptions(request *ReleaseARMServerInstanceRequest, runtime *util.RuntimeOptions) (_result *ReleaseARMServerInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReleaseARMServerInstance"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReleaseARMServerInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ReleaseARMServerInstance(request *ReleaseARMServerInstanceRequest) (_result *ReleaseARMServerInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ReleaseARMServerInstanceResponse{}
+	_body, _err := client.ReleaseARMServerInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ReleaseInstanceWithOptions(request *ReleaseInstanceRequest, runtime *util.RuntimeOptions) (_result *ReleaseInstanceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -30652,6 +31072,58 @@ func (client *Client) RemoveVSwitchesFromEpnInstance(request *RemoveVSwitchesFro
 	runtime := &util.RuntimeOptions{}
 	_result = &RemoveVSwitchesFromEpnInstanceResponse{}
 	_body, _err := client.RemoveVSwitchesFromEpnInstanceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) RenewARMServerInstanceWithOptions(request *RenewARMServerInstanceRequest, runtime *util.RuntimeOptions) (_result *RenewARMServerInstanceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.InstanceId)) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Period)) {
+		query["Period"] = request.Period
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PeriodUnit)) {
+		query["PeriodUnit"] = request.PeriodUnit
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("RenewARMServerInstance"),
+		Version:     tea.String("2017-11-10"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &RenewARMServerInstanceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) RenewARMServerInstance(request *RenewARMServerInstanceRequest) (_result *RenewARMServerInstanceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &RenewARMServerInstanceResponse{}
+	_body, _err := client.RenewARMServerInstanceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
