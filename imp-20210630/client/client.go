@@ -12,170 +12,6 @@ import (
 	"github.com/alibabacloud-go/tea/tea"
 )
 
-type AppsDomain struct {
-	// 域名
-	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-}
-
-func (s AppsDomain) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AppsDomain) GoString() string {
-	return s.String()
-}
-
-func (s *AppsDomain) SetDomain(v string) *AppsDomain {
-	s.Domain = &v
-	return s
-}
-
-type AppsInteractiveVideoSettings struct {
-	Domain      *AppsDomain      `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	Severity    *AppsSecurity    `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	Transcoding *AppsTranscoding `json:"Transcoding,omitempty" xml:"Transcoding,omitempty"`
-	Type        *string          `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s AppsInteractiveVideoSettings) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AppsInteractiveVideoSettings) GoString() string {
-	return s.String()
-}
-
-func (s *AppsInteractiveVideoSettings) SetDomain(v *AppsDomain) *AppsInteractiveVideoSettings {
-	s.Domain = v
-	return s
-}
-
-func (s *AppsInteractiveVideoSettings) SetSeverity(v *AppsSecurity) *AppsInteractiveVideoSettings {
-	s.Severity = v
-	return s
-}
-
-func (s *AppsInteractiveVideoSettings) SetTranscoding(v *AppsTranscoding) *AppsInteractiveVideoSettings {
-	s.Transcoding = v
-	return s
-}
-
-func (s *AppsInteractiveVideoSettings) SetType(v string) *AppsInteractiveVideoSettings {
-	s.Type = &v
-	return s
-}
-
-type AppsSecurity struct {
-	PlayUrlTtl *int32 `json:"PlayUrlTtl,omitempty" xml:"PlayUrlTtl,omitempty"`
-}
-
-func (s AppsSecurity) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AppsSecurity) GoString() string {
-	return s.String()
-}
-
-func (s *AppsSecurity) SetPlayUrlTtl(v int32) *AppsSecurity {
-	s.PlayUrlTtl = &v
-	return s
-}
-
-type AppsSettings struct {
-	// AppId
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 云帐号Id
-	CloudUid *string `json:"CloudUid,omitempty" xml:"CloudUid,omitempty"`
-	// 客户非敏感信息
-	Customer *CommonCustomer `json:"Customer,omitempty" xml:"Customer,omitempty"`
-	// 互动视频配置
-	InteractiveVideoSettings *AppsInteractiveVideoSettings `json:"InteractiveVideoSettings,omitempty" xml:"InteractiveVideoSettings,omitempty"`
-}
-
-func (s AppsSettings) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AppsSettings) GoString() string {
-	return s.String()
-}
-
-func (s *AppsSettings) SetAppId(v string) *AppsSettings {
-	s.AppId = &v
-	return s
-}
-
-func (s *AppsSettings) SetCloudUid(v string) *AppsSettings {
-	s.CloudUid = &v
-	return s
-}
-
-func (s *AppsSettings) SetCustomer(v *CommonCustomer) *AppsSettings {
-	s.Customer = v
-	return s
-}
-
-func (s *AppsSettings) SetInteractiveVideoSettings(v *AppsInteractiveVideoSettings) *AppsSettings {
-	s.InteractiveVideoSettings = v
-	return s
-}
-
-type AppsTranscoding struct {
-	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
-	Type   *string `json:"Type,omitempty" xml:"Type,omitempty"`
-}
-
-func (s AppsTranscoding) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AppsTranscoding) GoString() string {
-	return s.String()
-}
-
-func (s *AppsTranscoding) SetFlowId(v string) *AppsTranscoding {
-	s.FlowId = &v
-	return s
-}
-
-func (s *AppsTranscoding) SetType(v string) *AppsTranscoding {
-	s.Type = &v
-	return s
-}
-
-type AssetsAuditAssetRequest struct {
-	// AppId
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 审核状态
-	AuditStatus *string `json:"AuditStatus,omitempty" xml:"AuditStatus,omitempty"`
-	// AssetId
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s AssetsAuditAssetRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AssetsAuditAssetRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AssetsAuditAssetRequest) SetAppId(v string) *AssetsAuditAssetRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *AssetsAuditAssetRequest) SetAuditStatus(v string) *AssetsAuditAssetRequest {
-	s.AuditStatus = &v
-	return s
-}
-
-func (s *AssetsAuditAssetRequest) SetId(v string) *AssetsAuditAssetRequest {
-	s.Id = &v
-	return s
-}
-
 type AssetsAuditAssetResponse struct {
 	// 请求ID
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
@@ -198,24 +34,6 @@ func (s *AssetsAuditAssetResponse) SetRequestId(v string) *AssetsAuditAssetRespo
 
 func (s *AssetsAuditAssetResponse) SetStatus(v *RpcStatus) *AssetsAuditAssetResponse {
 	s.Status = v
-	return s
-}
-
-type AssetsCreateAssetRequest struct {
-	// Asset请求Item
-	Asset *CommonSimpleAsset `json:"Asset,omitempty" xml:"Asset,omitempty"`
-}
-
-func (s AssetsCreateAssetRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AssetsCreateAssetRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AssetsCreateAssetRequest) SetAsset(v *CommonSimpleAsset) *AssetsCreateAssetRequest {
-	s.Asset = v
 	return s
 }
 
@@ -251,24 +69,6 @@ func (s *AssetsCreateAssetResponse) SetStatus(v *RpcStatus) *AssetsCreateAssetRe
 	return s
 }
 
-type AssetsDeleteAssetRequest struct {
-	// Asset
-	Asset *CommonAsset `json:"Asset,omitempty" xml:"Asset,omitempty"`
-}
-
-func (s AssetsDeleteAssetRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AssetsDeleteAssetRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AssetsDeleteAssetRequest) SetAsset(v *CommonAsset) *AssetsDeleteAssetRequest {
-	s.Asset = v
-	return s
-}
-
 type AssetsDeleteAssetResponse struct {
 	// 资产信息
 	Asset *CommonAsset `json:"Asset,omitempty" xml:"Asset,omitempty"`
@@ -298,24 +98,6 @@ func (s *AssetsDeleteAssetResponse) SetRequestId(v string) *AssetsDeleteAssetRes
 
 func (s *AssetsDeleteAssetResponse) SetStatus(v *RpcStatus) *AssetsDeleteAssetResponse {
 	s.Status = v
-	return s
-}
-
-type AssetsGetAssetRequest struct {
-	// AssetId
-	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-}
-
-func (s AssetsGetAssetRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AssetsGetAssetRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AssetsGetAssetRequest) SetId(v string) *AssetsGetAssetRequest {
-	s.Id = &v
 	return s
 }
 
@@ -441,24 +223,6 @@ func (s *AssetsListAssetsResponse) SetRequestId(v string) *AssetsListAssetsRespo
 
 func (s *AssetsListAssetsResponse) SetStatus(v *RpcStatus) *AssetsListAssetsResponse {
 	s.Status = v
-	return s
-}
-
-type AssetsUpdateAssetRequest struct {
-	// Asset
-	Asset *CommonAsset `json:"Asset,omitempty" xml:"Asset,omitempty"`
-}
-
-func (s AssetsUpdateAssetRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s AssetsUpdateAssetRequest) GoString() string {
-	return s.String()
-}
-
-func (s *AssetsUpdateAssetRequest) SetAsset(v *CommonAsset) *AssetsUpdateAssetRequest {
-	s.Asset = v
 	return s
 }
 
@@ -677,24 +441,6 @@ func (s *CommonAsset) SetVideos(v []*CommonMediaResource) *CommonAsset {
 	return s
 }
 
-type CommonCustomer struct {
-	// 云帐号Id
-	CloudUid *string `json:"CloudUid,omitempty" xml:"CloudUid,omitempty"`
-}
-
-func (s CommonCustomer) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CommonCustomer) GoString() string {
-	return s.String()
-}
-
-func (s *CommonCustomer) SetCloudUid(v string) *CommonCustomer {
-	s.CloudUid = &v
-	return s
-}
-
 type CommonMediaResource struct {
 	// media format
 	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
@@ -745,38 +491,6 @@ func (s *CommonMediaResource) SetSize(v int64) *CommonMediaResource {
 
 func (s *CommonMediaResource) SetUrl(v string) *CommonMediaResource {
 	s.Url = &v
-	return s
-}
-
-type CommonSTS struct {
-	// AccessKey ID 标识用户
-	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	// AccessKey Secret 验证用户的密钥
-	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
-	// 临时token
-	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-}
-
-func (s CommonSTS) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CommonSTS) GoString() string {
-	return s.String()
-}
-
-func (s *CommonSTS) SetAccessKeyId(v string) *CommonSTS {
-	s.AccessKeyId = &v
-	return s
-}
-
-func (s *CommonSTS) SetAccessKeySecret(v string) *CommonSTS {
-	s.AccessKeySecret = &v
-	return s
-}
-
-func (s *CommonSTS) SetSecurityToken(v string) *CommonSTS {
-	s.SecurityToken = &v
 	return s
 }
 
@@ -903,52 +617,6 @@ func (s *CommonSimpleAsset) SetVideo(v *CommonMediaResource) *CommonSimpleAsset 
 	return s
 }
 
-type CommonStorage struct {
-	// OSS bucket
-	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// OSS object path
-	Object *string `json:"Object,omitempty" xml:"Object,omitempty"`
-	// 阿里云Region，比如 cn-shanghai
-	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// OSS的签名URL
-	SignUrl *string `json:"SignUrl,omitempty" xml:"SignUrl,omitempty"`
-	// Security Token Service
-	Sts *CommonSTS `json:"Sts,omitempty" xml:"Sts,omitempty"`
-}
-
-func (s CommonStorage) String() string {
-	return tea.Prettify(s)
-}
-
-func (s CommonStorage) GoString() string {
-	return s.String()
-}
-
-func (s *CommonStorage) SetBucket(v string) *CommonStorage {
-	s.Bucket = &v
-	return s
-}
-
-func (s *CommonStorage) SetObject(v string) *CommonStorage {
-	s.Object = &v
-	return s
-}
-
-func (s *CommonStorage) SetRegion(v string) *CommonStorage {
-	s.Region = &v
-	return s
-}
-
-func (s *CommonStorage) SetSignUrl(v string) *CommonStorage {
-	s.SignUrl = &v
-	return s
-}
-
-func (s *CommonStorage) SetSts(v *CommonSTS) *CommonStorage {
-	s.Sts = v
-	return s
-}
-
 type RpcStatus struct {
 	// 错误码
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
@@ -1003,112 +671,6 @@ func (s *TypeLatLng) SetLatitude(v float64) *TypeLatLng {
 
 func (s *TypeLatLng) SetLongitude(v float64) *TypeLatLng {
 	s.Longitude = &v
-	return s
-}
-
-type V1MediaSecurityStorageRequest struct {
-	AppId        *string              `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AppSettings  *AppsSettings        `json:"AppSettings,omitempty" xml:"AppSettings,omitempty"`
-	AssetId      *string              `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
-	Customer     *CommonCustomer      `json:"Customer,omitempty" xml:"Customer,omitempty"`
-	Image        *CommonMediaResource `json:"Image,omitempty" xml:"Image,omitempty"`
-	ImageStorage *CommonStorage       `json:"ImageStorage,omitempty" xml:"ImageStorage,omitempty"`
-	Video        *CommonMediaResource `json:"Video,omitempty" xml:"Video,omitempty"`
-	VideoStorage *CommonStorage       `json:"VideoStorage,omitempty" xml:"VideoStorage,omitempty"`
-}
-
-func (s V1MediaSecurityStorageRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s V1MediaSecurityStorageRequest) GoString() string {
-	return s.String()
-}
-
-func (s *V1MediaSecurityStorageRequest) SetAppId(v string) *V1MediaSecurityStorageRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *V1MediaSecurityStorageRequest) SetAppSettings(v *AppsSettings) *V1MediaSecurityStorageRequest {
-	s.AppSettings = v
-	return s
-}
-
-func (s *V1MediaSecurityStorageRequest) SetAssetId(v string) *V1MediaSecurityStorageRequest {
-	s.AssetId = &v
-	return s
-}
-
-func (s *V1MediaSecurityStorageRequest) SetCustomer(v *CommonCustomer) *V1MediaSecurityStorageRequest {
-	s.Customer = v
-	return s
-}
-
-func (s *V1MediaSecurityStorageRequest) SetImage(v *CommonMediaResource) *V1MediaSecurityStorageRequest {
-	s.Image = v
-	return s
-}
-
-func (s *V1MediaSecurityStorageRequest) SetImageStorage(v *CommonStorage) *V1MediaSecurityStorageRequest {
-	s.ImageStorage = v
-	return s
-}
-
-func (s *V1MediaSecurityStorageRequest) SetVideo(v *CommonMediaResource) *V1MediaSecurityStorageRequest {
-	s.Video = v
-	return s
-}
-
-func (s *V1MediaSecurityStorageRequest) SetVideoStorage(v *CommonStorage) *V1MediaSecurityStorageRequest {
-	s.VideoStorage = v
-	return s
-}
-
-type V1MediaSecurityStorageResponse struct {
-	AssetId      *string              `json:"AssetId,omitempty" xml:"AssetId,omitempty"`
-	Image        *CommonMediaResource `json:"Image,omitempty" xml:"Image,omitempty"`
-	ImageStorage *CommonStorage       `json:"ImageStorage,omitempty" xml:"ImageStorage,omitempty"`
-	MediaId      *string              `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	Video        *CommonMediaResource `json:"Video,omitempty" xml:"Video,omitempty"`
-	VideoStorage *CommonStorage       `json:"VideoStorage,omitempty" xml:"VideoStorage,omitempty"`
-}
-
-func (s V1MediaSecurityStorageResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s V1MediaSecurityStorageResponse) GoString() string {
-	return s.String()
-}
-
-func (s *V1MediaSecurityStorageResponse) SetAssetId(v string) *V1MediaSecurityStorageResponse {
-	s.AssetId = &v
-	return s
-}
-
-func (s *V1MediaSecurityStorageResponse) SetImage(v *CommonMediaResource) *V1MediaSecurityStorageResponse {
-	s.Image = v
-	return s
-}
-
-func (s *V1MediaSecurityStorageResponse) SetImageStorage(v *CommonStorage) *V1MediaSecurityStorageResponse {
-	s.ImageStorage = v
-	return s
-}
-
-func (s *V1MediaSecurityStorageResponse) SetMediaId(v string) *V1MediaSecurityStorageResponse {
-	s.MediaId = &v
-	return s
-}
-
-func (s *V1MediaSecurityStorageResponse) SetVideo(v *CommonMediaResource) *V1MediaSecurityStorageResponse {
-	s.Video = v
-	return s
-}
-
-func (s *V1MediaSecurityStorageResponse) SetVideoStorage(v *CommonStorage) *V1MediaSecurityStorageResponse {
-	s.VideoStorage = v
 	return s
 }
 
@@ -2770,8 +2332,6 @@ type DeleteCommentRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// 需要删除的弹幕id列表
 	CommentIdList []*string `json:"CommentIdList,omitempty" xml:"CommentIdList,omitempty" type:"Repeated"`
-	// 弹幕的创建者ID。
-	CreatorId *string `json:"CreatorId,omitempty" xml:"CreatorId,omitempty"`
 	// 直播间唯一标识，在调用CreateRoom返回。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
 	// 删除的操作人ID。
@@ -2793,11 +2353,6 @@ func (s *DeleteCommentRequest) SetAppId(v string) *DeleteCommentRequest {
 
 func (s *DeleteCommentRequest) SetCommentIdList(v []*string) *DeleteCommentRequest {
 	s.CommentIdList = v
-	return s
-}
-
-func (s *DeleteCommentRequest) SetCreatorId(v string) *DeleteCommentRequest {
-	s.CreatorId = &v
 	return s
 }
 
@@ -3227,105 +2782,6 @@ func (s *DeleteLiveRoomResponse) SetStatusCode(v int32) *DeleteLiveRoomResponse 
 }
 
 func (s *DeleteLiveRoomResponse) SetBody(v *DeleteLiveRoomResponseBody) *DeleteLiveRoomResponse {
-	s.Body = v
-	return s
-}
-
-type DeleteRecordFileInfoRequest struct {
-	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// 本次读取的最大数据记录数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-}
-
-func (s DeleteRecordFileInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteRecordFileInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteRecordFileInfoRequest) SetAppId(v string) *DeleteRecordFileInfoRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *DeleteRecordFileInfoRequest) SetMaxResults(v int32) *DeleteRecordFileInfoRequest {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *DeleteRecordFileInfoRequest) SetNextToken(v string) *DeleteRecordFileInfoRequest {
-	s.NextToken = &v
-	return s
-}
-
-type DeleteRecordFileInfoResponseBody struct {
-	// MaxResults本次请求所返回的最大记录条数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s DeleteRecordFileInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteRecordFileInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteRecordFileInfoResponseBody) SetMaxResults(v int32) *DeleteRecordFileInfoResponseBody {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *DeleteRecordFileInfoResponseBody) SetNextToken(v string) *DeleteRecordFileInfoResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *DeleteRecordFileInfoResponseBody) SetRequestId(v string) *DeleteRecordFileInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *DeleteRecordFileInfoResponseBody) SetTotalCount(v int32) *DeleteRecordFileInfoResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type DeleteRecordFileInfoResponse struct {
-	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *DeleteRecordFileInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DeleteRecordFileInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DeleteRecordFileInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DeleteRecordFileInfoResponse) SetHeaders(v map[string]*string) *DeleteRecordFileInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *DeleteRecordFileInfoResponse) SetStatusCode(v int32) *DeleteRecordFileInfoResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *DeleteRecordFileInfoResponse) SetBody(v *DeleteRecordFileInfoResponseBody) *DeleteRecordFileInfoResponse {
 	s.Body = v
 	return s
 }
@@ -5354,135 +4810,6 @@ func (s *GetLiveRoomUserStatisticsResponse) SetBody(v *GetLiveRoomUserStatistics
 	return s
 }
 
-type GetRecordFileInfoRequest struct {
-	AppId      *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	MaxResults *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-}
-
-func (s GetRecordFileInfoRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRecordFileInfoRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetRecordFileInfoRequest) SetAppId(v string) *GetRecordFileInfoRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *GetRecordFileInfoRequest) SetMaxResults(v int32) *GetRecordFileInfoRequest {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *GetRecordFileInfoRequest) SetNextToken(v string) *GetRecordFileInfoRequest {
-	s.NextToken = &v
-	return s
-}
-
-type GetRecordFileInfoResponseBody struct {
-	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	MaxResults  *int32  `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Result    *GetRecordFileInfoResponseBodyResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-}
-
-func (s GetRecordFileInfoResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRecordFileInfoResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetRecordFileInfoResponseBody) SetDownloadUrl(v string) *GetRecordFileInfoResponseBody {
-	s.DownloadUrl = &v
-	return s
-}
-
-func (s *GetRecordFileInfoResponseBody) SetMaxResults(v int32) *GetRecordFileInfoResponseBody {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *GetRecordFileInfoResponseBody) SetNextToken(v string) *GetRecordFileInfoResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *GetRecordFileInfoResponseBody) SetRequestId(v string) *GetRecordFileInfoResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *GetRecordFileInfoResponseBody) SetResult(v *GetRecordFileInfoResponseBodyResult) *GetRecordFileInfoResponseBody {
-	s.Result = v
-	return s
-}
-
-type GetRecordFileInfoResponseBodyResult struct {
-	ETag       *string `json:"ETag,omitempty" xml:"ETag,omitempty"`
-	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	FileName   *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-}
-
-func (s GetRecordFileInfoResponseBodyResult) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRecordFileInfoResponseBodyResult) GoString() string {
-	return s.String()
-}
-
-func (s *GetRecordFileInfoResponseBodyResult) SetETag(v string) *GetRecordFileInfoResponseBodyResult {
-	s.ETag = &v
-	return s
-}
-
-func (s *GetRecordFileInfoResponseBodyResult) SetExpireTime(v string) *GetRecordFileInfoResponseBodyResult {
-	s.ExpireTime = &v
-	return s
-}
-
-func (s *GetRecordFileInfoResponseBodyResult) SetFileName(v string) *GetRecordFileInfoResponseBodyResult {
-	s.FileName = &v
-	return s
-}
-
-type GetRecordFileInfoResponse struct {
-	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetRecordFileInfoResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetRecordFileInfoResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetRecordFileInfoResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetRecordFileInfoResponse) SetHeaders(v map[string]*string) *GetRecordFileInfoResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetRecordFileInfoResponse) SetStatusCode(v int32) *GetRecordFileInfoResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetRecordFileInfoResponse) SetBody(v *GetRecordFileInfoResponseBody) *GetRecordFileInfoResponse {
-	s.Body = v
-	return s
-}
-
 type GetRoomRequest struct {
 	// 应用唯一标识，由6位小写字母、数字组成。
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -6541,129 +5868,6 @@ func (s *ListConferenceUsersResponse) SetBody(v *ListConferenceUsersResponseBody
 	return s
 }
 
-type ListLiveFilesRequest struct {
-	AppId  *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	LiveId *string `json:"LiveId,omitempty" xml:"LiveId,omitempty"`
-	// 本次读取的最大数据记录数量
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 标记当前开始读取的位置，置空表示从头开始
-	NextToken  *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	PageNumber *int64  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s ListLiveFilesRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLiveFilesRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListLiveFilesRequest) SetAppId(v string) *ListLiveFilesRequest {
-	s.AppId = &v
-	return s
-}
-
-func (s *ListLiveFilesRequest) SetLiveId(v string) *ListLiveFilesRequest {
-	s.LiveId = &v
-	return s
-}
-
-func (s *ListLiveFilesRequest) SetMaxResults(v int32) *ListLiveFilesRequest {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *ListLiveFilesRequest) SetNextToken(v string) *ListLiveFilesRequest {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListLiveFilesRequest) SetPageNumber(v int64) *ListLiveFilesRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListLiveFilesRequest) SetPageSize(v int64) *ListLiveFilesRequest {
-	s.PageSize = &v
-	return s
-}
-
-type ListLiveFilesResponseBody struct {
-	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// MaxResults本次请求所返回的最大记录条数
-	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 表示当前调用返回读取到的位置，空代表数据已经读取完毕
-	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// TotalCount本次请求条件下的数据总量，此参数为可选参数，默认可不返回
-	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListLiveFilesResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLiveFilesResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListLiveFilesResponseBody) SetFileName(v string) *ListLiveFilesResponseBody {
-	s.FileName = &v
-	return s
-}
-
-func (s *ListLiveFilesResponseBody) SetMaxResults(v int32) *ListLiveFilesResponseBody {
-	s.MaxResults = &v
-	return s
-}
-
-func (s *ListLiveFilesResponseBody) SetNextToken(v string) *ListLiveFilesResponseBody {
-	s.NextToken = &v
-	return s
-}
-
-func (s *ListLiveFilesResponseBody) SetRequestId(v string) *ListLiveFilesResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-func (s *ListLiveFilesResponseBody) SetTotalCount(v int32) *ListLiveFilesResponseBody {
-	s.TotalCount = &v
-	return s
-}
-
-type ListLiveFilesResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListLiveFilesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListLiveFilesResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListLiveFilesResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListLiveFilesResponse) SetHeaders(v map[string]*string) *ListLiveFilesResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListLiveFilesResponse) SetStatusCode(v int32) *ListLiveFilesResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListLiveFilesResponse) SetBody(v *ListLiveFilesResponseBody) *ListLiveFilesResponse {
-	s.Body = v
-	return s
-}
-
 type ListLiveRoomsRequest struct {
 	// 应用唯一标识，由6位小写字母、数字组成。
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
@@ -7030,6 +6234,10 @@ type ListLiveRoomsByIdResponseBodyResultLiveList struct {
 	ChatId *string `json:"ChatId,omitempty" xml:"ChatId,omitempty"`
 	// 封面。
 	CoverUrl *string `json:"CoverUrl,omitempty" xml:"CoverUrl,omitempty"`
+	// 直播的创建时间。单位为ms。
+	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// 直播的结束时间。单位为ms。
+	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// 直播拓展字段。
 	Extension map[string]*string `json:"Extension,omitempty" xml:"Extension,omitempty"`
 	// 直播ID。
@@ -7042,6 +6250,8 @@ type ListLiveRoomsByIdResponseBodyResultLiveList struct {
 	Pv *int64 `json:"Pv,omitempty" xml:"Pv,omitempty"`
 	// 房间ID。
 	RoomId *string `json:"RoomId,omitempty" xml:"RoomId,omitempty"`
+	// 直播的开始时间。单位为ms。
+	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// 直播状态，0-在播 1-下播。
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 标题。
@@ -7083,6 +6293,16 @@ func (s *ListLiveRoomsByIdResponseBodyResultLiveList) SetCoverUrl(v string) *Lis
 	return s
 }
 
+func (s *ListLiveRoomsByIdResponseBodyResultLiveList) SetCreateTime(v int64) *ListLiveRoomsByIdResponseBodyResultLiveList {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListLiveRoomsByIdResponseBodyResultLiveList) SetEndTime(v int64) *ListLiveRoomsByIdResponseBodyResultLiveList {
+	s.EndTime = &v
+	return s
+}
+
 func (s *ListLiveRoomsByIdResponseBodyResultLiveList) SetExtension(v map[string]*string) *ListLiveRoomsByIdResponseBodyResultLiveList {
 	s.Extension = v
 	return s
@@ -7110,6 +6330,11 @@ func (s *ListLiveRoomsByIdResponseBodyResultLiveList) SetPv(v int64) *ListLiveRo
 
 func (s *ListLiveRoomsByIdResponseBodyResultLiveList) SetRoomId(v string) *ListLiveRoomsByIdResponseBodyResultLiveList {
 	s.RoomId = &v
+	return s
+}
+
+func (s *ListLiveRoomsByIdResponseBodyResultLiveList) SetStartTime(v int64) *ListLiveRoomsByIdResponseBodyResultLiveList {
+	s.StartTime = &v
 	return s
 }
 
@@ -10181,10 +9406,6 @@ func (client *Client) DeleteCommentWithOptions(request *DeleteCommentRequest, ru
 		bodyFlat["CommentIdList"] = request.CommentIdList
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.CreatorId)) {
-		body["CreatorId"] = request.CreatorId
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.RoomId)) {
 		body["RoomId"] = request.RoomId
 	}
@@ -10437,58 +9658,6 @@ func (client *Client) DeleteLiveRoom(request *DeleteLiveRoomRequest) (_result *D
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteLiveRoomResponse{}
 	_body, _err := client.DeleteLiveRoomWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) DeleteRecordFileInfoWithOptions(request *DeleteRecordFileInfoRequest, runtime *util.RuntimeOptions) (_result *DeleteRecordFileInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
-		query["MaxResults"] = request.MaxResults
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
-		query["NextToken"] = request.NextToken
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("DeleteRecordFileInfo"),
-		Version:     tea.String("2021-06-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &DeleteRecordFileInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) DeleteRecordFileInfo(request *DeleteRecordFileInfoRequest) (_result *DeleteRecordFileInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &DeleteRecordFileInfoResponse{}
-	_body, _err := client.DeleteRecordFileInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -11154,58 +10323,6 @@ func (client *Client) GetLiveRoomUserStatistics(request *GetLiveRoomUserStatisti
 	return _result, _err
 }
 
-func (client *Client) GetRecordFileInfoWithOptions(request *GetRecordFileInfoRequest, runtime *util.RuntimeOptions) (_result *GetRecordFileInfoResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
-		query["MaxResults"] = request.MaxResults
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
-		query["NextToken"] = request.NextToken
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetRecordFileInfo"),
-		Version:     tea.String("2021-06-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetRecordFileInfoResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetRecordFileInfo(request *GetRecordFileInfoRequest) (_result *GetRecordFileInfoResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetRecordFileInfoResponse{}
-	_body, _err := client.GetRecordFileInfoWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) GetRoomWithOptions(request *GetRoomRequest, runtime *util.RuntimeOptions) (_result *GetRoomResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -11551,70 +10668,6 @@ func (client *Client) ListConferenceUsers(request *ListConferenceUsersRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &ListConferenceUsersResponse{}
 	_body, _err := client.ListConferenceUsersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) ListLiveFilesWithOptions(request *ListLiveFilesRequest, runtime *util.RuntimeOptions) (_result *ListLiveFilesResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	query := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.AppId)) {
-		query["AppId"] = request.AppId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.LiveId)) {
-		query["LiveId"] = request.LiveId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.MaxResults)) {
-		query["MaxResults"] = request.MaxResults
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
-		query["NextToken"] = request.NextToken
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		query["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		query["PageSize"] = request.PageSize
-	}
-
-	req := &openapi.OpenApiRequest{
-		Query: openapiutil.Query(query),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListLiveFiles"),
-		Version:     tea.String("2021-06-30"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListLiveFilesResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListLiveFiles(request *ListLiveFilesRequest) (_result *ListLiveFilesResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListLiveFilesResponse{}
-	_body, _err := client.ListLiveFilesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
