@@ -866,7 +866,8 @@ type GetInstanceResponseBody struct {
 	// 资源配置，弹内或者轻量化时使用
 	RequestedResource *GetInstanceResponseBodyRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
 	// 资源Id,预付费时填写
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// 实例状态
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 成功标志
@@ -1027,6 +1028,11 @@ func (s *GetInstanceResponseBody) SetRequestedResource(v *GetInstanceResponseBod
 
 func (s *GetInstanceResponseBody) SetResourceId(v string) *GetInstanceResponseBody {
 	s.ResourceId = &v
+	return s
+}
+
+func (s *GetInstanceResponseBody) SetResourceName(v string) *GetInstanceResponseBody {
+	s.ResourceName = &v
 	return s
 }
 
@@ -2380,6 +2386,7 @@ type ListInstancesRequest struct {
 	// 分页数量大小
 	PageSize    *int64  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
+	ResourceId  *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	// 排序字段
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
 	// 实例状态
@@ -2428,6 +2435,11 @@ func (s *ListInstancesRequest) SetPageSize(v int64) *ListInstancesRequest {
 
 func (s *ListInstancesRequest) SetPaymentType(v string) *ListInstancesRequest {
 	s.PaymentType = &v
+	return s
+}
+
+func (s *ListInstancesRequest) SetResourceId(v string) *ListInstancesRequest {
+	s.ResourceId = &v
 	return s
 }
 
@@ -2552,7 +2564,8 @@ type ListInstancesResponseBodyInstances struct {
 	// 资源配置，弹内或者轻量化时使用
 	RequestedResource *ListInstancesResponseBodyInstancesRequestedResource `json:"RequestedResource,omitempty" xml:"RequestedResource,omitempty" type:"Struct"`
 	// 资源Id,预付费时填写
-	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceId   *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
+	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// 实例状态
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 终端url
@@ -2691,6 +2704,11 @@ func (s *ListInstancesResponseBodyInstances) SetRequestedResource(v *ListInstanc
 
 func (s *ListInstancesResponseBodyInstances) SetResourceId(v string) *ListInstancesResponseBodyInstances {
 	s.ResourceId = &v
+	return s
+}
+
+func (s *ListInstancesResponseBodyInstances) SetResourceName(v string) *ListInstancesResponseBodyInstances {
+	s.ResourceName = &v
 	return s
 }
 
@@ -4055,6 +4073,10 @@ func (client *Client) ListInstancesWithOptions(request *ListInstancesRequest, he
 
 	if !tea.BoolValue(util.IsUnset(request.PaymentType)) {
 		query["PaymentType"] = request.PaymentType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ResourceId)) {
+		query["ResourceId"] = request.ResourceId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SortBy)) {
