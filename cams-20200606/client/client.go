@@ -1090,6 +1090,10 @@ type SendChatappMessageRequest struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// ISV客户wabaId
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
+	// 回落消息内容
+	FallBackContent *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
+	// 回落策略ID，可在控制台创建策略并查看
+	FallBackId *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
 	// 发送方
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
 	// 语言
@@ -1128,6 +1132,16 @@ func (s *SendChatappMessageRequest) SetContent(v string) *SendChatappMessageRequ
 
 func (s *SendChatappMessageRequest) SetCustWabaId(v string) *SendChatappMessageRequest {
 	s.CustWabaId = &v
+	return s
+}
+
+func (s *SendChatappMessageRequest) SetFallBackContent(v string) *SendChatappMessageRequest {
+	s.FallBackContent = &v
+	return s
+}
+
+func (s *SendChatappMessageRequest) SetFallBackId(v string) *SendChatappMessageRequest {
+	s.FallBackId = &v
 	return s
 }
 
@@ -1178,6 +1192,10 @@ type SendChatappMessageShrinkRequest struct {
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// ISV客户wabaId
 	CustWabaId *string `json:"CustWabaId,omitempty" xml:"CustWabaId,omitempty"`
+	// 回落消息内容
+	FallBackContent *string `json:"FallBackContent,omitempty" xml:"FallBackContent,omitempty"`
+	// 回落策略ID，可在控制台创建策略并查看
+	FallBackId *string `json:"FallBackId,omitempty" xml:"FallBackId,omitempty"`
 	// 发送方
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
 	// 语言
@@ -1216,6 +1234,16 @@ func (s *SendChatappMessageShrinkRequest) SetContent(v string) *SendChatappMessa
 
 func (s *SendChatappMessageShrinkRequest) SetCustWabaId(v string) *SendChatappMessageShrinkRequest {
 	s.CustWabaId = &v
+	return s
+}
+
+func (s *SendChatappMessageShrinkRequest) SetFallBackContent(v string) *SendChatappMessageShrinkRequest {
+	s.FallBackContent = &v
+	return s
+}
+
+func (s *SendChatappMessageShrinkRequest) SetFallBackId(v string) *SendChatappMessageShrinkRequest {
+	s.FallBackId = &v
 	return s
 }
 
@@ -1708,6 +1736,14 @@ func (client *Client) SendChatappMessageWithOptions(tmpReq *SendChatappMessageRe
 
 	if !tea.BoolValue(util.IsUnset(request.CustWabaId)) {
 		body["CustWabaId"] = request.CustWabaId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FallBackContent)) {
+		body["FallBackContent"] = request.FallBackContent
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.FallBackId)) {
+		body["FallBackId"] = request.FallBackId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.From)) {
