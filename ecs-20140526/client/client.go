@@ -2201,28 +2201,29 @@ func (s *AttachNetworkInterfaceResponse) SetBody(v *AttachNetworkInterfaceRespon
 }
 
 type AuthorizeSecurityGroupRequest struct {
-	ClientToken             *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestCidrIp              *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
-	IpProtocol              *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	Ipv6DestCidrIp          *string `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
-	Ipv6SourceCidrIp        *string `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
-	NicType                 *string `json:"NicType,omitempty" xml:"NicType,omitempty"`
-	OwnerAccount            *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Policy                  *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	PortRange               *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	Priority                *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount    *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId         *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityGroupId         *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SourceCidrIp            *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
-	SourceGroupId           *string `json:"SourceGroupId,omitempty" xml:"SourceGroupId,omitempty"`
-	SourceGroupOwnerAccount *string `json:"SourceGroupOwnerAccount,omitempty" xml:"SourceGroupOwnerAccount,omitempty"`
-	SourceGroupOwnerId      *int64  `json:"SourceGroupOwnerId,omitempty" xml:"SourceGroupOwnerId,omitempty"`
-	SourcePortRange         *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
-	SourcePrefixListId      *string `json:"SourcePrefixListId,omitempty" xml:"SourcePrefixListId,omitempty"`
+	ClientToken             *string                                     `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description             *string                                     `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestCidrIp              *string                                     `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
+	IpProtocol              *string                                     `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	Ipv6DestCidrIp          *string                                     `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
+	Ipv6SourceCidrIp        *string                                     `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
+	NicType                 *string                                     `json:"NicType,omitempty" xml:"NicType,omitempty"`
+	OwnerAccount            *string                                     `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                 *int64                                      `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Permissions             []*AuthorizeSecurityGroupRequestPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+	Policy                  *string                                     `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	PortRange               *string                                     `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	Priority                *string                                     `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RegionId                *string                                     `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount    *string                                     `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId         *int64                                      `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityGroupId         *string                                     `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SourceCidrIp            *string                                     `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	SourceGroupId           *string                                     `json:"SourceGroupId,omitempty" xml:"SourceGroupId,omitempty"`
+	SourceGroupOwnerAccount *string                                     `json:"SourceGroupOwnerAccount,omitempty" xml:"SourceGroupOwnerAccount,omitempty"`
+	SourceGroupOwnerId      *int64                                      `json:"SourceGroupOwnerId,omitempty" xml:"SourceGroupOwnerId,omitempty"`
+	SourcePortRange         *string                                     `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
+	SourcePrefixListId      *string                                     `json:"SourcePrefixListId,omitempty" xml:"SourcePrefixListId,omitempty"`
 }
 
 func (s AuthorizeSecurityGroupRequest) String() string {
@@ -2275,6 +2276,11 @@ func (s *AuthorizeSecurityGroupRequest) SetOwnerAccount(v string) *AuthorizeSecu
 
 func (s *AuthorizeSecurityGroupRequest) SetOwnerId(v int64) *AuthorizeSecurityGroupRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupRequest) SetPermissions(v []*AuthorizeSecurityGroupRequestPermissions) *AuthorizeSecurityGroupRequest {
+	s.Permissions = v
 	return s
 }
 
@@ -2343,6 +2349,107 @@ func (s *AuthorizeSecurityGroupRequest) SetSourcePrefixListId(v string) *Authori
 	return s
 }
 
+type AuthorizeSecurityGroupRequestPermissions struct {
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestCidrIp              *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
+	IpProtocol              *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	Ipv6DestCidrIp          *string `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
+	Ipv6SourceCidrIp        *string `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
+	NicType                 *string `json:"NicType,omitempty" xml:"NicType,omitempty"`
+	Policy                  *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	PortRange               *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	Priority                *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	SourceCidrIp            *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	SourceGroupId           *string `json:"SourceGroupId,omitempty" xml:"SourceGroupId,omitempty"`
+	SourceGroupOwnerAccount *string `json:"SourceGroupOwnerAccount,omitempty" xml:"SourceGroupOwnerAccount,omitempty"`
+	SourceGroupOwnerId      *int64  `json:"SourceGroupOwnerId,omitempty" xml:"SourceGroupOwnerId,omitempty"`
+	SourcePortRange         *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
+	SourcePrefixListId      *string `json:"SourcePrefixListId,omitempty" xml:"SourcePrefixListId,omitempty"`
+}
+
+func (s AuthorizeSecurityGroupRequestPermissions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthorizeSecurityGroupRequestPermissions) GoString() string {
+	return s.String()
+}
+
+func (s *AuthorizeSecurityGroupRequestPermissions) SetDescription(v string) *AuthorizeSecurityGroupRequestPermissions {
+	s.Description = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupRequestPermissions) SetDestCidrIp(v string) *AuthorizeSecurityGroupRequestPermissions {
+	s.DestCidrIp = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupRequestPermissions) SetIpProtocol(v string) *AuthorizeSecurityGroupRequestPermissions {
+	s.IpProtocol = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupRequestPermissions) SetIpv6DestCidrIp(v string) *AuthorizeSecurityGroupRequestPermissions {
+	s.Ipv6DestCidrIp = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupRequestPermissions) SetIpv6SourceCidrIp(v string) *AuthorizeSecurityGroupRequestPermissions {
+	s.Ipv6SourceCidrIp = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupRequestPermissions) SetNicType(v string) *AuthorizeSecurityGroupRequestPermissions {
+	s.NicType = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupRequestPermissions) SetPolicy(v string) *AuthorizeSecurityGroupRequestPermissions {
+	s.Policy = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupRequestPermissions) SetPortRange(v string) *AuthorizeSecurityGroupRequestPermissions {
+	s.PortRange = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupRequestPermissions) SetPriority(v string) *AuthorizeSecurityGroupRequestPermissions {
+	s.Priority = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupRequestPermissions) SetSourceCidrIp(v string) *AuthorizeSecurityGroupRequestPermissions {
+	s.SourceCidrIp = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupRequestPermissions) SetSourceGroupId(v string) *AuthorizeSecurityGroupRequestPermissions {
+	s.SourceGroupId = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupRequestPermissions) SetSourceGroupOwnerAccount(v string) *AuthorizeSecurityGroupRequestPermissions {
+	s.SourceGroupOwnerAccount = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupRequestPermissions) SetSourceGroupOwnerId(v int64) *AuthorizeSecurityGroupRequestPermissions {
+	s.SourceGroupOwnerId = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupRequestPermissions) SetSourcePortRange(v string) *AuthorizeSecurityGroupRequestPermissions {
+	s.SourcePortRange = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupRequestPermissions) SetSourcePrefixListId(v string) *AuthorizeSecurityGroupRequestPermissions {
+	s.SourcePrefixListId = &v
+	return s
+}
+
 type AuthorizeSecurityGroupResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -2390,28 +2497,29 @@ func (s *AuthorizeSecurityGroupResponse) SetBody(v *AuthorizeSecurityGroupRespon
 }
 
 type AuthorizeSecurityGroupEgressRequest struct {
-	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestCidrIp            *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
-	DestGroupId           *string `json:"DestGroupId,omitempty" xml:"DestGroupId,omitempty"`
-	DestGroupOwnerAccount *string `json:"DestGroupOwnerAccount,omitempty" xml:"DestGroupOwnerAccount,omitempty"`
-	DestGroupOwnerId      *int64  `json:"DestGroupOwnerId,omitempty" xml:"DestGroupOwnerId,omitempty"`
-	DestPrefixListId      *string `json:"DestPrefixListId,omitempty" xml:"DestPrefixListId,omitempty"`
-	IpProtocol            *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	Ipv6DestCidrIp        *string `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
-	Ipv6SourceCidrIp      *string `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
-	NicType               *string `json:"NicType,omitempty" xml:"NicType,omitempty"`
-	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Policy                *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	PortRange             *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	Priority              *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityGroupId       *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SourceCidrIp          *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
-	SourcePortRange       *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
+	ClientToken           *string                                           `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description           *string                                           `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestCidrIp            *string                                           `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
+	DestGroupId           *string                                           `json:"DestGroupId,omitempty" xml:"DestGroupId,omitempty"`
+	DestGroupOwnerAccount *string                                           `json:"DestGroupOwnerAccount,omitempty" xml:"DestGroupOwnerAccount,omitempty"`
+	DestGroupOwnerId      *int64                                            `json:"DestGroupOwnerId,omitempty" xml:"DestGroupOwnerId,omitempty"`
+	DestPrefixListId      *string                                           `json:"DestPrefixListId,omitempty" xml:"DestPrefixListId,omitempty"`
+	IpProtocol            *string                                           `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	Ipv6DestCidrIp        *string                                           `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
+	Ipv6SourceCidrIp      *string                                           `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
+	NicType               *string                                           `json:"NicType,omitempty" xml:"NicType,omitempty"`
+	OwnerAccount          *string                                           `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId               *int64                                            `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Permissions           []*AuthorizeSecurityGroupEgressRequestPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+	Policy                *string                                           `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	PortRange             *string                                           `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	Priority              *string                                           `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RegionId              *string                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount  *string                                           `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId       *int64                                            `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityGroupId       *string                                           `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SourceCidrIp          *string                                           `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	SourcePortRange       *string                                           `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
 }
 
 func (s AuthorizeSecurityGroupEgressRequest) String() string {
@@ -2487,6 +2595,11 @@ func (s *AuthorizeSecurityGroupEgressRequest) SetOwnerId(v int64) *AuthorizeSecu
 	return s
 }
 
+func (s *AuthorizeSecurityGroupEgressRequest) SetPermissions(v []*AuthorizeSecurityGroupEgressRequestPermissions) *AuthorizeSecurityGroupEgressRequest {
+	s.Permissions = v
+	return s
+}
+
 func (s *AuthorizeSecurityGroupEgressRequest) SetPolicy(v string) *AuthorizeSecurityGroupEgressRequest {
 	s.Policy = &v
 	return s
@@ -2528,6 +2641,107 @@ func (s *AuthorizeSecurityGroupEgressRequest) SetSourceCidrIp(v string) *Authori
 }
 
 func (s *AuthorizeSecurityGroupEgressRequest) SetSourcePortRange(v string) *AuthorizeSecurityGroupEgressRequest {
+	s.SourcePortRange = &v
+	return s
+}
+
+type AuthorizeSecurityGroupEgressRequestPermissions struct {
+	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestCidrIp            *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
+	DestGroupId           *string `json:"DestGroupId,omitempty" xml:"DestGroupId,omitempty"`
+	DestGroupOwnerAccount *string `json:"DestGroupOwnerAccount,omitempty" xml:"DestGroupOwnerAccount,omitempty"`
+	DestGroupOwnerId      *int64  `json:"DestGroupOwnerId,omitempty" xml:"DestGroupOwnerId,omitempty"`
+	DestPrefixListId      *string `json:"DestPrefixListId,omitempty" xml:"DestPrefixListId,omitempty"`
+	IpProtocol            *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	Ipv6DestCidrIp        *string `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
+	Ipv6SourceCidrIp      *string `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
+	NicType               *string `json:"NicType,omitempty" xml:"NicType,omitempty"`
+	Policy                *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	PortRange             *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	Priority              *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	SourceCidrIp          *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	SourcePortRange       *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
+}
+
+func (s AuthorizeSecurityGroupEgressRequestPermissions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AuthorizeSecurityGroupEgressRequestPermissions) GoString() string {
+	return s.String()
+}
+
+func (s *AuthorizeSecurityGroupEgressRequestPermissions) SetDescription(v string) *AuthorizeSecurityGroupEgressRequestPermissions {
+	s.Description = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupEgressRequestPermissions) SetDestCidrIp(v string) *AuthorizeSecurityGroupEgressRequestPermissions {
+	s.DestCidrIp = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupEgressRequestPermissions) SetDestGroupId(v string) *AuthorizeSecurityGroupEgressRequestPermissions {
+	s.DestGroupId = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupEgressRequestPermissions) SetDestGroupOwnerAccount(v string) *AuthorizeSecurityGroupEgressRequestPermissions {
+	s.DestGroupOwnerAccount = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupEgressRequestPermissions) SetDestGroupOwnerId(v int64) *AuthorizeSecurityGroupEgressRequestPermissions {
+	s.DestGroupOwnerId = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupEgressRequestPermissions) SetDestPrefixListId(v string) *AuthorizeSecurityGroupEgressRequestPermissions {
+	s.DestPrefixListId = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupEgressRequestPermissions) SetIpProtocol(v string) *AuthorizeSecurityGroupEgressRequestPermissions {
+	s.IpProtocol = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupEgressRequestPermissions) SetIpv6DestCidrIp(v string) *AuthorizeSecurityGroupEgressRequestPermissions {
+	s.Ipv6DestCidrIp = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupEgressRequestPermissions) SetIpv6SourceCidrIp(v string) *AuthorizeSecurityGroupEgressRequestPermissions {
+	s.Ipv6SourceCidrIp = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupEgressRequestPermissions) SetNicType(v string) *AuthorizeSecurityGroupEgressRequestPermissions {
+	s.NicType = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupEgressRequestPermissions) SetPolicy(v string) *AuthorizeSecurityGroupEgressRequestPermissions {
+	s.Policy = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupEgressRequestPermissions) SetPortRange(v string) *AuthorizeSecurityGroupEgressRequestPermissions {
+	s.PortRange = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupEgressRequestPermissions) SetPriority(v string) *AuthorizeSecurityGroupEgressRequestPermissions {
+	s.Priority = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupEgressRequestPermissions) SetSourceCidrIp(v string) *AuthorizeSecurityGroupEgressRequestPermissions {
+	s.SourceCidrIp = &v
+	return s
+}
+
+func (s *AuthorizeSecurityGroupEgressRequestPermissions) SetSourcePortRange(v string) *AuthorizeSecurityGroupEgressRequestPermissions {
 	s.SourcePortRange = &v
 	return s
 }
@@ -61881,28 +62095,29 @@ func (s *ResizeDiskResponse) SetBody(v *ResizeDiskResponseBody) *ResizeDiskRespo
 }
 
 type RevokeSecurityGroupRequest struct {
-	ClientToken             *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestCidrIp              *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
-	IpProtocol              *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	Ipv6DestCidrIp          *string `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
-	Ipv6SourceCidrIp        *string `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
-	NicType                 *string `json:"NicType,omitempty" xml:"NicType,omitempty"`
-	OwnerAccount            *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId                 *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Policy                  *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	PortRange               *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	Priority                *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RegionId                *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount    *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId         *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityGroupId         *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SourceCidrIp            *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
-	SourceGroupId           *string `json:"SourceGroupId,omitempty" xml:"SourceGroupId,omitempty"`
-	SourceGroupOwnerAccount *string `json:"SourceGroupOwnerAccount,omitempty" xml:"SourceGroupOwnerAccount,omitempty"`
-	SourceGroupOwnerId      *int64  `json:"SourceGroupOwnerId,omitempty" xml:"SourceGroupOwnerId,omitempty"`
-	SourcePortRange         *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
-	SourcePrefixListId      *string `json:"SourcePrefixListId,omitempty" xml:"SourcePrefixListId,omitempty"`
+	ClientToken             *string                                  `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description             *string                                  `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestCidrIp              *string                                  `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
+	IpProtocol              *string                                  `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	Ipv6DestCidrIp          *string                                  `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
+	Ipv6SourceCidrIp        *string                                  `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
+	NicType                 *string                                  `json:"NicType,omitempty" xml:"NicType,omitempty"`
+	OwnerAccount            *string                                  `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId                 *int64                                   `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Permissions             []*RevokeSecurityGroupRequestPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+	Policy                  *string                                  `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	PortRange               *string                                  `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	Priority                *string                                  `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RegionId                *string                                  `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount    *string                                  `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId         *int64                                   `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityGroupId         *string                                  `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SourceCidrIp            *string                                  `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	SourceGroupId           *string                                  `json:"SourceGroupId,omitempty" xml:"SourceGroupId,omitempty"`
+	SourceGroupOwnerAccount *string                                  `json:"SourceGroupOwnerAccount,omitempty" xml:"SourceGroupOwnerAccount,omitempty"`
+	SourceGroupOwnerId      *int64                                   `json:"SourceGroupOwnerId,omitempty" xml:"SourceGroupOwnerId,omitempty"`
+	SourcePortRange         *string                                  `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
+	SourcePrefixListId      *string                                  `json:"SourcePrefixListId,omitempty" xml:"SourcePrefixListId,omitempty"`
 }
 
 func (s RevokeSecurityGroupRequest) String() string {
@@ -61955,6 +62170,11 @@ func (s *RevokeSecurityGroupRequest) SetOwnerAccount(v string) *RevokeSecurityGr
 
 func (s *RevokeSecurityGroupRequest) SetOwnerId(v int64) *RevokeSecurityGroupRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupRequest) SetPermissions(v []*RevokeSecurityGroupRequestPermissions) *RevokeSecurityGroupRequest {
+	s.Permissions = v
 	return s
 }
 
@@ -62023,6 +62243,107 @@ func (s *RevokeSecurityGroupRequest) SetSourcePrefixListId(v string) *RevokeSecu
 	return s
 }
 
+type RevokeSecurityGroupRequestPermissions struct {
+	Description             *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestCidrIp              *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
+	IpProtocol              *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	Ipv6DestCidrIp          *string `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
+	Ipv6SourceCidrIp        *string `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
+	NicType                 *string `json:"NicType,omitempty" xml:"NicType,omitempty"`
+	Policy                  *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	PortRange               *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	Priority                *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	SourceCidrIp            *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	SourceGroupId           *string `json:"SourceGroupId,omitempty" xml:"SourceGroupId,omitempty"`
+	SourceGroupOwnerAccount *string `json:"SourceGroupOwnerAccount,omitempty" xml:"SourceGroupOwnerAccount,omitempty"`
+	SourceGroupOwnerId      *int64  `json:"SourceGroupOwnerId,omitempty" xml:"SourceGroupOwnerId,omitempty"`
+	SourcePortRange         *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
+	SourcePrefixListId      *string `json:"SourcePrefixListId,omitempty" xml:"SourcePrefixListId,omitempty"`
+}
+
+func (s RevokeSecurityGroupRequestPermissions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeSecurityGroupRequestPermissions) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeSecurityGroupRequestPermissions) SetDescription(v string) *RevokeSecurityGroupRequestPermissions {
+	s.Description = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupRequestPermissions) SetDestCidrIp(v string) *RevokeSecurityGroupRequestPermissions {
+	s.DestCidrIp = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupRequestPermissions) SetIpProtocol(v string) *RevokeSecurityGroupRequestPermissions {
+	s.IpProtocol = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupRequestPermissions) SetIpv6DestCidrIp(v string) *RevokeSecurityGroupRequestPermissions {
+	s.Ipv6DestCidrIp = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupRequestPermissions) SetIpv6SourceCidrIp(v string) *RevokeSecurityGroupRequestPermissions {
+	s.Ipv6SourceCidrIp = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupRequestPermissions) SetNicType(v string) *RevokeSecurityGroupRequestPermissions {
+	s.NicType = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupRequestPermissions) SetPolicy(v string) *RevokeSecurityGroupRequestPermissions {
+	s.Policy = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupRequestPermissions) SetPortRange(v string) *RevokeSecurityGroupRequestPermissions {
+	s.PortRange = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupRequestPermissions) SetPriority(v string) *RevokeSecurityGroupRequestPermissions {
+	s.Priority = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupRequestPermissions) SetSourceCidrIp(v string) *RevokeSecurityGroupRequestPermissions {
+	s.SourceCidrIp = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupRequestPermissions) SetSourceGroupId(v string) *RevokeSecurityGroupRequestPermissions {
+	s.SourceGroupId = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupRequestPermissions) SetSourceGroupOwnerAccount(v string) *RevokeSecurityGroupRequestPermissions {
+	s.SourceGroupOwnerAccount = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupRequestPermissions) SetSourceGroupOwnerId(v int64) *RevokeSecurityGroupRequestPermissions {
+	s.SourceGroupOwnerId = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupRequestPermissions) SetSourcePortRange(v string) *RevokeSecurityGroupRequestPermissions {
+	s.SourcePortRange = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupRequestPermissions) SetSourcePrefixListId(v string) *RevokeSecurityGroupRequestPermissions {
+	s.SourcePrefixListId = &v
+	return s
+}
+
 type RevokeSecurityGroupResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
@@ -62070,28 +62391,29 @@ func (s *RevokeSecurityGroupResponse) SetBody(v *RevokeSecurityGroupResponseBody
 }
 
 type RevokeSecurityGroupEgressRequest struct {
-	ClientToken           *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	DestCidrIp            *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
-	DestGroupId           *string `json:"DestGroupId,omitempty" xml:"DestGroupId,omitempty"`
-	DestGroupOwnerAccount *string `json:"DestGroupOwnerAccount,omitempty" xml:"DestGroupOwnerAccount,omitempty"`
-	DestGroupOwnerId      *int64  `json:"DestGroupOwnerId,omitempty" xml:"DestGroupOwnerId,omitempty"`
-	DestPrefixListId      *string `json:"DestPrefixListId,omitempty" xml:"DestPrefixListId,omitempty"`
-	IpProtocol            *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	Ipv6DestCidrIp        *string `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
-	Ipv6SourceCidrIp      *string `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
-	NicType               *string `json:"NicType,omitempty" xml:"NicType,omitempty"`
-	OwnerAccount          *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Policy                *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	PortRange             *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
-	Priority              *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	RegionId              *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityGroupId       *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	SourceCidrIp          *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
-	SourcePortRange       *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
+	ClientToken           *string                                        `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	Description           *string                                        `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestCidrIp            *string                                        `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
+	DestGroupId           *string                                        `json:"DestGroupId,omitempty" xml:"DestGroupId,omitempty"`
+	DestGroupOwnerAccount *string                                        `json:"DestGroupOwnerAccount,omitempty" xml:"DestGroupOwnerAccount,omitempty"`
+	DestGroupOwnerId      *int64                                         `json:"DestGroupOwnerId,omitempty" xml:"DestGroupOwnerId,omitempty"`
+	DestPrefixListId      *string                                        `json:"DestPrefixListId,omitempty" xml:"DestPrefixListId,omitempty"`
+	IpProtocol            *string                                        `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	Ipv6DestCidrIp        *string                                        `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
+	Ipv6SourceCidrIp      *string                                        `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
+	NicType               *string                                        `json:"NicType,omitempty" xml:"NicType,omitempty"`
+	OwnerAccount          *string                                        `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId               *int64                                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	Permissions           []*RevokeSecurityGroupEgressRequestPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
+	Policy                *string                                        `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	PortRange             *string                                        `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	Priority              *string                                        `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	RegionId              *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceOwnerAccount  *string                                        `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId       *int64                                         `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityGroupId       *string                                        `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
+	SourceCidrIp          *string                                        `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	SourcePortRange       *string                                        `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
 }
 
 func (s RevokeSecurityGroupEgressRequest) String() string {
@@ -62167,6 +62489,11 @@ func (s *RevokeSecurityGroupEgressRequest) SetOwnerId(v int64) *RevokeSecurityGr
 	return s
 }
 
+func (s *RevokeSecurityGroupEgressRequest) SetPermissions(v []*RevokeSecurityGroupEgressRequestPermissions) *RevokeSecurityGroupEgressRequest {
+	s.Permissions = v
+	return s
+}
+
 func (s *RevokeSecurityGroupEgressRequest) SetPolicy(v string) *RevokeSecurityGroupEgressRequest {
 	s.Policy = &v
 	return s
@@ -62208,6 +62535,107 @@ func (s *RevokeSecurityGroupEgressRequest) SetSourceCidrIp(v string) *RevokeSecu
 }
 
 func (s *RevokeSecurityGroupEgressRequest) SetSourcePortRange(v string) *RevokeSecurityGroupEgressRequest {
+	s.SourcePortRange = &v
+	return s
+}
+
+type RevokeSecurityGroupEgressRequestPermissions struct {
+	Description           *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestCidrIp            *string `json:"DestCidrIp,omitempty" xml:"DestCidrIp,omitempty"`
+	DestGroupId           *string `json:"DestGroupId,omitempty" xml:"DestGroupId,omitempty"`
+	DestGroupOwnerAccount *string `json:"DestGroupOwnerAccount,omitempty" xml:"DestGroupOwnerAccount,omitempty"`
+	DestGroupOwnerId      *string `json:"DestGroupOwnerId,omitempty" xml:"DestGroupOwnerId,omitempty"`
+	DestPrefixListId      *string `json:"DestPrefixListId,omitempty" xml:"DestPrefixListId,omitempty"`
+	IpProtocol            *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
+	Ipv6DestCidrIp        *string `json:"Ipv6DestCidrIp,omitempty" xml:"Ipv6DestCidrIp,omitempty"`
+	Ipv6SourceCidrIp      *string `json:"Ipv6SourceCidrIp,omitempty" xml:"Ipv6SourceCidrIp,omitempty"`
+	NicType               *string `json:"NicType,omitempty" xml:"NicType,omitempty"`
+	Policy                *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	PortRange             *string `json:"PortRange,omitempty" xml:"PortRange,omitempty"`
+	Priority              *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	SourceCidrIp          *string `json:"SourceCidrIp,omitempty" xml:"SourceCidrIp,omitempty"`
+	SourcePortRange       *string `json:"SourcePortRange,omitempty" xml:"SourcePortRange,omitempty"`
+}
+
+func (s RevokeSecurityGroupEgressRequestPermissions) String() string {
+	return tea.Prettify(s)
+}
+
+func (s RevokeSecurityGroupEgressRequestPermissions) GoString() string {
+	return s.String()
+}
+
+func (s *RevokeSecurityGroupEgressRequestPermissions) SetDescription(v string) *RevokeSecurityGroupEgressRequestPermissions {
+	s.Description = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupEgressRequestPermissions) SetDestCidrIp(v string) *RevokeSecurityGroupEgressRequestPermissions {
+	s.DestCidrIp = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupEgressRequestPermissions) SetDestGroupId(v string) *RevokeSecurityGroupEgressRequestPermissions {
+	s.DestGroupId = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupEgressRequestPermissions) SetDestGroupOwnerAccount(v string) *RevokeSecurityGroupEgressRequestPermissions {
+	s.DestGroupOwnerAccount = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupEgressRequestPermissions) SetDestGroupOwnerId(v string) *RevokeSecurityGroupEgressRequestPermissions {
+	s.DestGroupOwnerId = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupEgressRequestPermissions) SetDestPrefixListId(v string) *RevokeSecurityGroupEgressRequestPermissions {
+	s.DestPrefixListId = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupEgressRequestPermissions) SetIpProtocol(v string) *RevokeSecurityGroupEgressRequestPermissions {
+	s.IpProtocol = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupEgressRequestPermissions) SetIpv6DestCidrIp(v string) *RevokeSecurityGroupEgressRequestPermissions {
+	s.Ipv6DestCidrIp = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupEgressRequestPermissions) SetIpv6SourceCidrIp(v string) *RevokeSecurityGroupEgressRequestPermissions {
+	s.Ipv6SourceCidrIp = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupEgressRequestPermissions) SetNicType(v string) *RevokeSecurityGroupEgressRequestPermissions {
+	s.NicType = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupEgressRequestPermissions) SetPolicy(v string) *RevokeSecurityGroupEgressRequestPermissions {
+	s.Policy = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupEgressRequestPermissions) SetPortRange(v string) *RevokeSecurityGroupEgressRequestPermissions {
+	s.PortRange = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupEgressRequestPermissions) SetPriority(v string) *RevokeSecurityGroupEgressRequestPermissions {
+	s.Priority = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupEgressRequestPermissions) SetSourceCidrIp(v string) *RevokeSecurityGroupEgressRequestPermissions {
+	s.SourceCidrIp = &v
+	return s
+}
+
+func (s *RevokeSecurityGroupEgressRequestPermissions) SetSourcePortRange(v string) *RevokeSecurityGroupEgressRequestPermissions {
 	s.SourcePortRange = &v
 	return s
 }
@@ -66974,6 +67402,10 @@ func (client *Client) AuthorizeSecurityGroupWithOptions(request *AuthorizeSecuri
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
 	}
@@ -67006,6 +67438,10 @@ func (client *Client) AuthorizeSecurityGroupWithOptions(request *AuthorizeSecuri
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Permissions)) {
+		query["Permissions"] = request.Permissions
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Policy)) {
 		query["Policy"] = request.Policy
 	}
@@ -67026,12 +67462,20 @@ func (client *Client) AuthorizeSecurityGroupWithOptions(request *AuthorizeSecuri
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
@@ -67106,6 +67550,10 @@ func (client *Client) AuthorizeSecurityGroupEgressWithOptions(request *Authorize
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
 	}
@@ -67154,6 +67602,10 @@ func (client *Client) AuthorizeSecurityGroupEgressWithOptions(request *Authorize
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Permissions)) {
+		query["Permissions"] = request.Permissions
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Policy)) {
 		query["Policy"] = request.Policy
 	}
@@ -67174,12 +67626,20 @@ func (client *Client) AuthorizeSecurityGroupEgressWithOptions(request *Authorize
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
@@ -91908,6 +92368,10 @@ func (client *Client) RevokeSecurityGroupWithOptions(request *RevokeSecurityGrou
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
 	}
@@ -91940,6 +92404,10 @@ func (client *Client) RevokeSecurityGroupWithOptions(request *RevokeSecurityGrou
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Permissions)) {
+		query["Permissions"] = request.Permissions
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Policy)) {
 		query["Policy"] = request.Policy
 	}
@@ -91966,6 +92434,10 @@ func (client *Client) RevokeSecurityGroupWithOptions(request *RevokeSecurityGrou
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
@@ -92040,6 +92512,10 @@ func (client *Client) RevokeSecurityGroupEgressWithOptions(request *RevokeSecuri
 		query["ClientToken"] = request.ClientToken
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
+		query["ClientToken"] = request.ClientToken
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
 		query["Description"] = request.Description
 	}
@@ -92088,6 +92564,10 @@ func (client *Client) RevokeSecurityGroupEgressWithOptions(request *RevokeSecuri
 		query["OwnerId"] = request.OwnerId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Permissions)) {
+		query["Permissions"] = request.Permissions
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Policy)) {
 		query["Policy"] = request.Policy
 	}
@@ -92108,12 +92588,20 @@ func (client *Client) RevokeSecurityGroupEgressWithOptions(request *RevokeSecuri
 		query["RegionId"] = request.RegionId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
+		query["RegionId"] = request.RegionId
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerAccount)) {
 		query["ResourceOwnerAccount"] = request.ResourceOwnerAccount
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.ResourceOwnerId)) {
 		query["ResourceOwnerId"] = request.ResourceOwnerId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
+		query["SecurityGroupId"] = request.SecurityGroupId
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityGroupId)) {
