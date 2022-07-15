@@ -5326,6 +5326,8 @@ func (s *DescribeCheckWarningSummaryResponseBody) SetWarningSummarys(v []*Descri
 
 type DescribeCheckWarningSummaryResponseBodyWarningSummarys struct {
 	CheckCount          *int32  `json:"CheckCount,omitempty" xml:"CheckCount,omitempty"`
+	CheckExploit        *bool   `json:"CheckExploit,omitempty" xml:"CheckExploit,omitempty"`
+	DatabaseRisk        *bool   `json:"DatabaseRisk,omitempty" xml:"DatabaseRisk,omitempty"`
 	HighWarningCount    *int32  `json:"HighWarningCount,omitempty" xml:"HighWarningCount,omitempty"`
 	LastFoundTime       *string `json:"LastFoundTime,omitempty" xml:"LastFoundTime,omitempty"`
 	Level               *string `json:"Level,omitempty" xml:"Level,omitempty"`
@@ -5348,6 +5350,16 @@ func (s DescribeCheckWarningSummaryResponseBodyWarningSummarys) GoString() strin
 
 func (s *DescribeCheckWarningSummaryResponseBodyWarningSummarys) SetCheckCount(v int32) *DescribeCheckWarningSummaryResponseBodyWarningSummarys {
 	s.CheckCount = &v
+	return s
+}
+
+func (s *DescribeCheckWarningSummaryResponseBodyWarningSummarys) SetCheckExploit(v bool) *DescribeCheckWarningSummaryResponseBodyWarningSummarys {
+	s.CheckExploit = &v
+	return s
+}
+
+func (s *DescribeCheckWarningSummaryResponseBodyWarningSummarys) SetDatabaseRisk(v bool) *DescribeCheckWarningSummaryResponseBodyWarningSummarys {
+	s.DatabaseRisk = &v
 	return s
 }
 
@@ -5432,6 +5444,7 @@ func (s *DescribeCheckWarningSummaryResponse) SetBody(v *DescribeCheckWarningSum
 
 type DescribeCheckWarningsRequest struct {
 	CheckId     *int64  `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CheckType   *string `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
 	CurrentPage *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Lang        *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
 	PageSize    *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -5450,6 +5463,11 @@ func (s DescribeCheckWarningsRequest) GoString() string {
 
 func (s *DescribeCheckWarningsRequest) SetCheckId(v int64) *DescribeCheckWarningsRequest {
 	s.CheckId = &v
+	return s
+}
+
+func (s *DescribeCheckWarningsRequest) SetCheckType(v string) *DescribeCheckWarningsRequest {
+	s.CheckType = &v
 	return s
 }
 
@@ -5533,8 +5551,10 @@ func (s *DescribeCheckWarningsResponseBody) SetTotalCount(v int32) *DescribeChec
 type DescribeCheckWarningsResponseBodyCheckWarnings struct {
 	CheckId        *int64  `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
 	CheckWarningId *int64  `json:"CheckWarningId,omitempty" xml:"CheckWarningId,omitempty"`
+	FixStatus      *int32  `json:"FixStatus,omitempty" xml:"FixStatus,omitempty"`
 	Item           *string `json:"Item,omitempty" xml:"Item,omitempty"`
 	Level          *string `json:"Level,omitempty" xml:"Level,omitempty"`
+	Reason         *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	Status         *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
 	Type           *string `json:"Type,omitempty" xml:"Type,omitempty"`
 	Uuid           *string `json:"Uuid,omitempty" xml:"Uuid,omitempty"`
@@ -5558,6 +5578,11 @@ func (s *DescribeCheckWarningsResponseBodyCheckWarnings) SetCheckWarningId(v int
 	return s
 }
 
+func (s *DescribeCheckWarningsResponseBodyCheckWarnings) SetFixStatus(v int32) *DescribeCheckWarningsResponseBodyCheckWarnings {
+	s.FixStatus = &v
+	return s
+}
+
 func (s *DescribeCheckWarningsResponseBodyCheckWarnings) SetItem(v string) *DescribeCheckWarningsResponseBodyCheckWarnings {
 	s.Item = &v
 	return s
@@ -5565,6 +5590,11 @@ func (s *DescribeCheckWarningsResponseBodyCheckWarnings) SetItem(v string) *Desc
 
 func (s *DescribeCheckWarningsResponseBodyCheckWarnings) SetLevel(v string) *DescribeCheckWarningsResponseBodyCheckWarnings {
 	s.Level = &v
+	return s
+}
+
+func (s *DescribeCheckWarningsResponseBodyCheckWarnings) SetReason(v string) *DescribeCheckWarningsResponseBodyCheckWarnings {
+	s.Reason = &v
 	return s
 }
 
@@ -22862,6 +22892,8 @@ func (s *DescribeWarningMachinesResponseBody) SetWarningMachines(v []*DescribeWa
 }
 
 type DescribeWarningMachinesResponseBodyWarningMachines struct {
+	AuthVersion        *int32  `json:"AuthVersion,omitempty" xml:"AuthVersion,omitempty"`
+	Bind               *bool   `json:"Bind,omitempty" xml:"Bind,omitempty"`
 	HighWarningCount   *int32  `json:"HighWarningCount,omitempty" xml:"HighWarningCount,omitempty"`
 	InstanceId         *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceName       *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
@@ -22882,6 +22914,16 @@ func (s DescribeWarningMachinesResponseBodyWarningMachines) String() string {
 
 func (s DescribeWarningMachinesResponseBodyWarningMachines) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeWarningMachinesResponseBodyWarningMachines) SetAuthVersion(v int32) *DescribeWarningMachinesResponseBodyWarningMachines {
+	s.AuthVersion = &v
+	return s
+}
+
+func (s *DescribeWarningMachinesResponseBodyWarningMachines) SetBind(v bool) *DescribeWarningMachinesResponseBodyWarningMachines {
+	s.Bind = &v
+	return s
 }
 
 func (s *DescribeWarningMachinesResponseBodyWarningMachines) SetHighWarningCount(v int32) *DescribeWarningMachinesResponseBodyWarningMachines {
@@ -31825,6 +31867,10 @@ func (client *Client) DescribeCheckWarningsWithOptions(request *DescribeCheckWar
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.CheckId)) {
 		query["CheckId"] = request.CheckId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CheckType)) {
+		query["CheckType"] = request.CheckType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
