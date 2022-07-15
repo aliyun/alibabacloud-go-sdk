@@ -1207,7 +1207,10 @@ func (s *CreateApiStageVariableResponse) SetBody(v *CreateApiStageVariableRespon
 }
 
 type CreateAppRequest struct {
+	AppCode       *string                `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	AppKey        *string                `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
 	AppName       *string                `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppSecret     *string                `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
 	Description   *string                `json:"Description,omitempty" xml:"Description,omitempty"`
 	SecurityToken *string                `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 	Source        *string                `json:"Source,omitempty" xml:"Source,omitempty"`
@@ -1222,8 +1225,23 @@ func (s CreateAppRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateAppRequest) SetAppCode(v string) *CreateAppRequest {
+	s.AppCode = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetAppKey(v string) *CreateAppRequest {
+	s.AppKey = &v
+	return s
+}
+
 func (s *CreateAppRequest) SetAppName(v string) *CreateAppRequest {
 	s.AppName = &v
+	return s
+}
+
+func (s *CreateAppRequest) SetAppSecret(v string) *CreateAppRequest {
+	s.AppSecret = &v
 	return s
 }
 
@@ -6544,6 +6562,7 @@ type DescribeApiGroupResponseBodyCustomDomainsDomainItem struct {
 	DomainName             *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	DomainRemark           *string `json:"DomainRemark,omitempty" xml:"DomainRemark,omitempty"`
 	DomainWebSocketStatus  *string `json:"DomainWebSocketStatus,omitempty" xml:"DomainWebSocketStatus,omitempty"`
+	IsHttpRedirectToHttps  *bool   `json:"IsHttpRedirectToHttps,omitempty" xml:"IsHttpRedirectToHttps,omitempty"`
 	WildcardDomainPatterns *string `json:"WildcardDomainPatterns,omitempty" xml:"WildcardDomainPatterns,omitempty"`
 }
 
@@ -6602,6 +6621,11 @@ func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) SetDomainRemark(v 
 
 func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) SetDomainWebSocketStatus(v string) *DescribeApiGroupResponseBodyCustomDomainsDomainItem {
 	s.DomainWebSocketStatus = &v
+	return s
+}
+
+func (s *DescribeApiGroupResponseBodyCustomDomainsDomainItem) SetIsHttpRedirectToHttps(v bool) *DescribeApiGroupResponseBodyCustomDomainsDomainItem {
+	s.IsHttpRedirectToHttps = &v
 	return s
 }
 
@@ -20614,6 +20638,7 @@ type ModifyInstanceSpecRequest struct {
 	AutoPay      *bool   `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
+	ModifyAction *string `json:"ModifyAction,omitempty" xml:"ModifyAction,omitempty"`
 	Token        *string `json:"Token,omitempty" xml:"Token,omitempty"`
 }
 
@@ -20637,6 +20662,11 @@ func (s *ModifyInstanceSpecRequest) SetInstanceId(v string) *ModifyInstanceSpecR
 
 func (s *ModifyInstanceSpecRequest) SetInstanceSpec(v string) *ModifyInstanceSpecRequest {
 	s.InstanceSpec = &v
+	return s
+}
+
+func (s *ModifyInstanceSpecRequest) SetModifyAction(v string) *ModifyInstanceSpecRequest {
+	s.ModifyAction = &v
 	return s
 }
 
@@ -22299,6 +22329,7 @@ func (s *RemoveVpcAccessAndAbolishApisResponse) SetBody(v *RemoveVpcAccessAndAbo
 
 type ResetAppCodeRequest struct {
 	AppCode       *string `json:"AppCode,omitempty" xml:"AppCode,omitempty"`
+	NewAppCode    *string `json:"NewAppCode,omitempty" xml:"NewAppCode,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
@@ -22312,6 +22343,11 @@ func (s ResetAppCodeRequest) GoString() string {
 
 func (s *ResetAppCodeRequest) SetAppCode(v string) *ResetAppCodeRequest {
 	s.AppCode = &v
+	return s
+}
+
+func (s *ResetAppCodeRequest) SetNewAppCode(v string) *ResetAppCodeRequest {
+	s.NewAppCode = &v
 	return s
 }
 
@@ -22368,6 +22404,7 @@ func (s *ResetAppCodeResponse) SetBody(v *ResetAppCodeResponseBody) *ResetAppCod
 
 type ResetAppSecretRequest struct {
 	AppKey        *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	NewAppSecret  *string `json:"NewAppSecret,omitempty" xml:"NewAppSecret,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
@@ -22381,6 +22418,11 @@ func (s ResetAppSecretRequest) GoString() string {
 
 func (s *ResetAppSecretRequest) SetAppKey(v string) *ResetAppSecretRequest {
 	s.AppKey = &v
+	return s
+}
+
+func (s *ResetAppSecretRequest) SetNewAppSecret(v string) *ResetAppSecretRequest {
+	s.NewAppSecret = &v
 	return s
 }
 
@@ -22674,6 +22716,81 @@ func (s *SdkGenerateByGroupResponse) SetStatusCode(v int32) *SdkGenerateByGroupR
 }
 
 func (s *SdkGenerateByGroupResponse) SetBody(v *SdkGenerateByGroupResponseBody) *SdkGenerateByGroupResponse {
+	s.Body = v
+	return s
+}
+
+type SetAccessControlListAttributeRequest struct {
+	AclId         *string `json:"AclId,omitempty" xml:"AclId,omitempty"`
+	AclName       *string `json:"AclName,omitempty" xml:"AclName,omitempty"`
+	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+}
+
+func (s SetAccessControlListAttributeRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetAccessControlListAttributeRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SetAccessControlListAttributeRequest) SetAclId(v string) *SetAccessControlListAttributeRequest {
+	s.AclId = &v
+	return s
+}
+
+func (s *SetAccessControlListAttributeRequest) SetAclName(v string) *SetAccessControlListAttributeRequest {
+	s.AclName = &v
+	return s
+}
+
+func (s *SetAccessControlListAttributeRequest) SetSecurityToken(v string) *SetAccessControlListAttributeRequest {
+	s.SecurityToken = &v
+	return s
+}
+
+type SetAccessControlListAttributeResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s SetAccessControlListAttributeResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetAccessControlListAttributeResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SetAccessControlListAttributeResponseBody) SetRequestId(v string) *SetAccessControlListAttributeResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type SetAccessControlListAttributeResponse struct {
+	Headers    map[string]*string                         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SetAccessControlListAttributeResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SetAccessControlListAttributeResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SetAccessControlListAttributeResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SetAccessControlListAttributeResponse) SetHeaders(v map[string]*string) *SetAccessControlListAttributeResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SetAccessControlListAttributeResponse) SetStatusCode(v int32) *SetAccessControlListAttributeResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SetAccessControlListAttributeResponse) SetBody(v *SetAccessControlListAttributeResponseBody) *SetAccessControlListAttributeResponse {
 	s.Body = v
 	return s
 }
@@ -24721,8 +24838,20 @@ func (client *Client) CreateAppWithOptions(request *CreateAppRequest, runtime *u
 		return _result, _err
 	}
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AppCode)) {
+		query["AppCode"] = request.AppCode
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
+		query["AppKey"] = request.AppKey
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.AppName)) {
 		query["AppName"] = request.AppName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AppSecret)) {
+		query["AppSecret"] = request.AppSecret
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Description)) {
@@ -30977,6 +31106,10 @@ func (client *Client) ModifyInstanceSpecWithOptions(request *ModifyInstanceSpecR
 		query["InstanceSpec"] = request.InstanceSpec
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.ModifyAction)) {
+		query["ModifyAction"] = request.ModifyAction
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.Token)) {
 		query["Token"] = request.Token
 	}
@@ -32066,6 +32199,10 @@ func (client *Client) ResetAppCodeWithOptions(request *ResetAppCodeRequest, runt
 		query["AppCode"] = request.AppCode
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.NewAppCode)) {
+		query["NewAppCode"] = request.NewAppCode
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
 		query["SecurityToken"] = request.SecurityToken
 	}
@@ -32112,6 +32249,10 @@ func (client *Client) ResetAppSecretWithOptions(request *ResetAppSecretRequest, 
 	query := map[string]interface{}{}
 	if !tea.BoolValue(util.IsUnset(request.AppKey)) {
 		query["AppKey"] = request.AppKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NewAppSecret)) {
+		query["NewAppSecret"] = request.NewAppSecret
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
@@ -32301,6 +32442,58 @@ func (client *Client) SdkGenerateByGroup(request *SdkGenerateByGroupRequest) (_r
 	runtime := &util.RuntimeOptions{}
 	_result = &SdkGenerateByGroupResponse{}
 	_body, _err := client.SdkGenerateByGroupWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) SetAccessControlListAttributeWithOptions(request *SetAccessControlListAttributeRequest, runtime *util.RuntimeOptions) (_result *SetAccessControlListAttributeResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.AclId)) {
+		query["AclId"] = request.AclId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.AclName)) {
+		query["AclName"] = request.AclName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SecurityToken)) {
+		query["SecurityToken"] = request.SecurityToken
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SetAccessControlListAttribute"),
+		Version:     tea.String("2016-07-14"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SetAccessControlListAttributeResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SetAccessControlListAttribute(request *SetAccessControlListAttributeRequest) (_result *SetAccessControlListAttributeResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SetAccessControlListAttributeResponse{}
+	_body, _err := client.SetAccessControlListAttributeWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
