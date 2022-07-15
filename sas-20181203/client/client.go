@@ -24752,6 +24752,312 @@ func (s *InstallCloudMonitorResponse) SetBody(v *InstallCloudMonitorResponseBody
 	return s
 }
 
+type ListCheckResultRequest struct {
+	CheckKey         *string   `json:"CheckKey,omitempty" xml:"CheckKey,omitempty"`
+	CurrentPage      *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	InstanceIds      []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	InstanceSubTypes []*string `json:"InstanceSubTypes,omitempty" xml:"InstanceSubTypes,omitempty" type:"Repeated"`
+	InstanceTypes    []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	Lang             *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize         *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequirementIds   []*int64  `json:"RequirementIds,omitempty" xml:"RequirementIds,omitempty" type:"Repeated"`
+	RiskLevels       []*string `json:"RiskLevels,omitempty" xml:"RiskLevels,omitempty" type:"Repeated"`
+	SortTypes        []*string `json:"SortTypes,omitempty" xml:"SortTypes,omitempty" type:"Repeated"`
+	StandardIds      []*int64  `json:"StandardIds,omitempty" xml:"StandardIds,omitempty" type:"Repeated"`
+	Statuses         []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
+	Vendors          []*string `json:"Vendors,omitempty" xml:"Vendors,omitempty" type:"Repeated"`
+}
+
+func (s ListCheckResultRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckResultRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckResultRequest) SetCheckKey(v string) *ListCheckResultRequest {
+	s.CheckKey = &v
+	return s
+}
+
+func (s *ListCheckResultRequest) SetCurrentPage(v int32) *ListCheckResultRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListCheckResultRequest) SetInstanceIds(v []*string) *ListCheckResultRequest {
+	s.InstanceIds = v
+	return s
+}
+
+func (s *ListCheckResultRequest) SetInstanceSubTypes(v []*string) *ListCheckResultRequest {
+	s.InstanceSubTypes = v
+	return s
+}
+
+func (s *ListCheckResultRequest) SetInstanceTypes(v []*string) *ListCheckResultRequest {
+	s.InstanceTypes = v
+	return s
+}
+
+func (s *ListCheckResultRequest) SetLang(v string) *ListCheckResultRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ListCheckResultRequest) SetPageSize(v int32) *ListCheckResultRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCheckResultRequest) SetRequirementIds(v []*int64) *ListCheckResultRequest {
+	s.RequirementIds = v
+	return s
+}
+
+func (s *ListCheckResultRequest) SetRiskLevels(v []*string) *ListCheckResultRequest {
+	s.RiskLevels = v
+	return s
+}
+
+func (s *ListCheckResultRequest) SetSortTypes(v []*string) *ListCheckResultRequest {
+	s.SortTypes = v
+	return s
+}
+
+func (s *ListCheckResultRequest) SetStandardIds(v []*int64) *ListCheckResultRequest {
+	s.StandardIds = v
+	return s
+}
+
+func (s *ListCheckResultRequest) SetStatuses(v []*string) *ListCheckResultRequest {
+	s.Statuses = v
+	return s
+}
+
+func (s *ListCheckResultRequest) SetVendors(v []*string) *ListCheckResultRequest {
+	s.Vendors = v
+	return s
+}
+
+type ListCheckResultResponseBody struct {
+	Checks    []*ListCheckResultResponseBodyChecks `json:"Checks,omitempty" xml:"Checks,omitempty" type:"Repeated"`
+	PageInfo  *ListCheckResultResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
+	RequestId *string                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListCheckResultResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckResultResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckResultResponseBody) SetChecks(v []*ListCheckResultResponseBodyChecks) *ListCheckResultResponseBody {
+	s.Checks = v
+	return s
+}
+
+func (s *ListCheckResultResponseBody) SetPageInfo(v *ListCheckResultResponseBodyPageInfo) *ListCheckResultResponseBody {
+	s.PageInfo = v
+	return s
+}
+
+func (s *ListCheckResultResponseBody) SetRequestId(v string) *ListCheckResultResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListCheckResultResponseBodyChecks struct {
+	CheckId         *int64                                            `json:"CheckId,omitempty" xml:"CheckId,omitempty"`
+	CheckPolicies   []*ListCheckResultResponseBodyChecksCheckPolicies `json:"CheckPolicies,omitempty" xml:"CheckPolicies,omitempty" type:"Repeated"`
+	CheckShowName   *string                                           `json:"CheckShowName,omitempty" xml:"CheckShowName,omitempty"`
+	InstanceSubType *string                                           `json:"InstanceSubType,omitempty" xml:"InstanceSubType,omitempty"`
+	InstanceType    *string                                           `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	LastCheckTime   *int64                                            `json:"LastCheckTime,omitempty" xml:"LastCheckTime,omitempty"`
+	RiskLevel       *string                                           `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
+	Status          *string                                           `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId          *string                                           `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	Vendor          *string                                           `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	VendorShowName  *string                                           `json:"VendorShowName,omitempty" xml:"VendorShowName,omitempty"`
+}
+
+func (s ListCheckResultResponseBodyChecks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckResultResponseBodyChecks) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckResultResponseBodyChecks) SetCheckId(v int64) *ListCheckResultResponseBodyChecks {
+	s.CheckId = &v
+	return s
+}
+
+func (s *ListCheckResultResponseBodyChecks) SetCheckPolicies(v []*ListCheckResultResponseBodyChecksCheckPolicies) *ListCheckResultResponseBodyChecks {
+	s.CheckPolicies = v
+	return s
+}
+
+func (s *ListCheckResultResponseBodyChecks) SetCheckShowName(v string) *ListCheckResultResponseBodyChecks {
+	s.CheckShowName = &v
+	return s
+}
+
+func (s *ListCheckResultResponseBodyChecks) SetInstanceSubType(v string) *ListCheckResultResponseBodyChecks {
+	s.InstanceSubType = &v
+	return s
+}
+
+func (s *ListCheckResultResponseBodyChecks) SetInstanceType(v string) *ListCheckResultResponseBodyChecks {
+	s.InstanceType = &v
+	return s
+}
+
+func (s *ListCheckResultResponseBodyChecks) SetLastCheckTime(v int64) *ListCheckResultResponseBodyChecks {
+	s.LastCheckTime = &v
+	return s
+}
+
+func (s *ListCheckResultResponseBodyChecks) SetRiskLevel(v string) *ListCheckResultResponseBodyChecks {
+	s.RiskLevel = &v
+	return s
+}
+
+func (s *ListCheckResultResponseBodyChecks) SetStatus(v string) *ListCheckResultResponseBodyChecks {
+	s.Status = &v
+	return s
+}
+
+func (s *ListCheckResultResponseBodyChecks) SetTaskId(v string) *ListCheckResultResponseBodyChecks {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListCheckResultResponseBodyChecks) SetVendor(v string) *ListCheckResultResponseBodyChecks {
+	s.Vendor = &v
+	return s
+}
+
+func (s *ListCheckResultResponseBodyChecks) SetVendorShowName(v string) *ListCheckResultResponseBodyChecks {
+	s.VendorShowName = &v
+	return s
+}
+
+type ListCheckResultResponseBodyChecksCheckPolicies struct {
+	RequirementId       *int64  `json:"RequirementId,omitempty" xml:"RequirementId,omitempty"`
+	RequirementShowName *string `json:"RequirementShowName,omitempty" xml:"RequirementShowName,omitempty"`
+	SectionId           *int64  `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
+	SectionShowName     *string `json:"SectionShowName,omitempty" xml:"SectionShowName,omitempty"`
+	StandardId          *int64  `json:"StandardId,omitempty" xml:"StandardId,omitempty"`
+	StandardShowName    *string `json:"StandardShowName,omitempty" xml:"StandardShowName,omitempty"`
+}
+
+func (s ListCheckResultResponseBodyChecksCheckPolicies) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckResultResponseBodyChecksCheckPolicies) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckResultResponseBodyChecksCheckPolicies) SetRequirementId(v int64) *ListCheckResultResponseBodyChecksCheckPolicies {
+	s.RequirementId = &v
+	return s
+}
+
+func (s *ListCheckResultResponseBodyChecksCheckPolicies) SetRequirementShowName(v string) *ListCheckResultResponseBodyChecksCheckPolicies {
+	s.RequirementShowName = &v
+	return s
+}
+
+func (s *ListCheckResultResponseBodyChecksCheckPolicies) SetSectionId(v int64) *ListCheckResultResponseBodyChecksCheckPolicies {
+	s.SectionId = &v
+	return s
+}
+
+func (s *ListCheckResultResponseBodyChecksCheckPolicies) SetSectionShowName(v string) *ListCheckResultResponseBodyChecksCheckPolicies {
+	s.SectionShowName = &v
+	return s
+}
+
+func (s *ListCheckResultResponseBodyChecksCheckPolicies) SetStandardId(v int64) *ListCheckResultResponseBodyChecksCheckPolicies {
+	s.StandardId = &v
+	return s
+}
+
+func (s *ListCheckResultResponseBodyChecksCheckPolicies) SetStandardShowName(v string) *ListCheckResultResponseBodyChecksCheckPolicies {
+	s.StandardShowName = &v
+	return s
+}
+
+type ListCheckResultResponseBodyPageInfo struct {
+	Count       *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	PageSize    *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	TotalCount  *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListCheckResultResponseBodyPageInfo) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckResultResponseBodyPageInfo) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckResultResponseBodyPageInfo) SetCount(v int32) *ListCheckResultResponseBodyPageInfo {
+	s.Count = &v
+	return s
+}
+
+func (s *ListCheckResultResponseBodyPageInfo) SetCurrentPage(v int32) *ListCheckResultResponseBodyPageInfo {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListCheckResultResponseBodyPageInfo) SetPageSize(v int32) *ListCheckResultResponseBodyPageInfo {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListCheckResultResponseBodyPageInfo) SetTotalCount(v int32) *ListCheckResultResponseBodyPageInfo {
+	s.TotalCount = &v
+	return s
+}
+
+type ListCheckResultResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListCheckResultResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListCheckResultResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListCheckResultResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListCheckResultResponse) SetHeaders(v map[string]*string) *ListCheckResultResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListCheckResultResponse) SetStatusCode(v int32) *ListCheckResultResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListCheckResultResponse) SetBody(v *ListCheckResultResponseBody) *ListCheckResultResponse {
+	s.Body = v
+	return s
+}
+
 type ListVulAutoRepairConfigRequest struct {
 	// 漏洞别名
 	AliasName   *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
@@ -38343,6 +38649,98 @@ func (client *Client) InstallCloudMonitor(request *InstallCloudMonitorRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &InstallCloudMonitorResponse{}
 	_body, _err := client.InstallCloudMonitorWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListCheckResultWithOptions(request *ListCheckResultRequest, runtime *util.RuntimeOptions) (_result *ListCheckResultResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CheckKey)) {
+		query["CheckKey"] = request.CheckKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceIds)) {
+		query["InstanceIds"] = request.InstanceIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceSubTypes)) {
+		query["InstanceSubTypes"] = request.InstanceSubTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.InstanceTypes)) {
+		query["InstanceTypes"] = request.InstanceTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RequirementIds)) {
+		query["RequirementIds"] = request.RequirementIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.RiskLevels)) {
+		query["RiskLevels"] = request.RiskLevels
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SortTypes)) {
+		query["SortTypes"] = request.SortTypes
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.StandardIds)) {
+		query["StandardIds"] = request.StandardIds
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Statuses)) {
+		query["Statuses"] = request.Statuses
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Vendors)) {
+		query["Vendors"] = request.Vendors
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListCheckResult"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListCheckResultResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListCheckResult(request *ListCheckResultRequest) (_result *ListCheckResultResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListCheckResultResponse{}
+	_body, _err := client.ListCheckResultWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
