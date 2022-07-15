@@ -590,14 +590,22 @@ type DescribeDiskReplicaGroupsResponseBodyReplicaGroups struct {
 	LastRecoverPoint    *int64   `json:"LastRecoverPoint,omitempty" xml:"LastRecoverPoint,omitempty"`
 	PairIds             [][]byte `json:"PairIds,omitempty" xml:"PairIds,omitempty" type:"Repeated"`
 	// 复制组中的复制对个数
-	PairNumber     *int64  `json:"PairNumber,omitempty" xml:"PairNumber,omitempty"`
+	PairNumber *int64 `json:"PairNumber,omitempty" xml:"PairNumber,omitempty"`
+	// 复制组的初始源地域。
+	PrimaryRegion *string `json:"PrimaryRegion,omitempty" xml:"PrimaryRegion,omitempty"`
+	// 复制组的初始源可用区。
+	PrimaryZone    *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
 	RPO            *int64  `json:"RPO,omitempty" xml:"RPO,omitempty"`
 	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
 	// pair信息的后端站点来源，production或backup
 	Site           *string `json:"Site,omitempty" xml:"Site,omitempty"`
 	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	SourceZoneId   *string `json:"SourceZoneId,omitempty" xml:"SourceZoneId,omitempty"`
-	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// 复制组的初始目的地域。
+	StandbyRegion *string `json:"StandbyRegion,omitempty" xml:"StandbyRegion,omitempty"`
+	// 复制组的初始目的可用区。
+	StandbyZone *string `json:"StandbyZone,omitempty" xml:"StandbyZone,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 
 func (s DescribeDiskReplicaGroupsResponseBodyReplicaGroups) String() string {
@@ -643,6 +651,16 @@ func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) SetPairNumber(v int
 	return s
 }
 
+func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) SetPrimaryRegion(v string) *DescribeDiskReplicaGroupsResponseBodyReplicaGroups {
+	s.PrimaryRegion = &v
+	return s
+}
+
+func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) SetPrimaryZone(v string) *DescribeDiskReplicaGroupsResponseBodyReplicaGroups {
+	s.PrimaryZone = &v
+	return s
+}
+
 func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) SetRPO(v int64) *DescribeDiskReplicaGroupsResponseBodyReplicaGroups {
 	s.RPO = &v
 	return s
@@ -665,6 +683,16 @@ func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) SetSourceRegionId(v
 
 func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) SetSourceZoneId(v string) *DescribeDiskReplicaGroupsResponseBodyReplicaGroups {
 	s.SourceZoneId = &v
+	return s
+}
+
+func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) SetStandbyRegion(v string) *DescribeDiskReplicaGroupsResponseBodyReplicaGroups {
+	s.StandbyRegion = &v
+	return s
+}
+
+func (s *DescribeDiskReplicaGroupsResponseBodyReplicaGroups) SetStandbyZone(v string) *DescribeDiskReplicaGroupsResponseBodyReplicaGroups {
+	s.StandbyZone = &v
 	return s
 }
 
@@ -1580,8 +1608,6 @@ type ReprotectDiskReplicaGroupRequest struct {
 	ClientToken    *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	RegionId       *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
-	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
-	SourceZoneId   *string `json:"SourceZoneId,omitempty" xml:"SourceZoneId,omitempty"`
 }
 
 func (s ReprotectDiskReplicaGroupRequest) String() string {
@@ -1604,16 +1630,6 @@ func (s *ReprotectDiskReplicaGroupRequest) SetRegionId(v string) *ReprotectDiskR
 
 func (s *ReprotectDiskReplicaGroupRequest) SetReplicaGroupId(v string) *ReprotectDiskReplicaGroupRequest {
 	s.ReplicaGroupId = &v
-	return s
-}
-
-func (s *ReprotectDiskReplicaGroupRequest) SetSourceRegionId(v string) *ReprotectDiskReplicaGroupRequest {
-	s.SourceRegionId = &v
-	return s
-}
-
-func (s *ReprotectDiskReplicaGroupRequest) SetSourceZoneId(v string) *ReprotectDiskReplicaGroupRequest {
-	s.SourceZoneId = &v
 	return s
 }
 
@@ -2915,14 +2931,6 @@ func (client *Client) ReprotectDiskReplicaGroupWithOptions(request *ReprotectDis
 
 	if !tea.BoolValue(util.IsUnset(request.ReplicaGroupId)) {
 		query["ReplicaGroupId"] = request.ReplicaGroupId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceRegionId)) {
-		query["SourceRegionId"] = request.SourceRegionId
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.SourceZoneId)) {
-		query["SourceZoneId"] = request.SourceZoneId
 	}
 
 	req := &openapi.OpenApiRequest{
