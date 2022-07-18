@@ -474,6 +474,8 @@ type Service struct {
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// 服务的名字
 	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	// 服务的部署来源
+	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// 服务的状态
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// 服务的所有实例总个数
@@ -607,6 +609,11 @@ func (s *Service) SetServiceName(v string) *Service {
 	return s
 }
 
+func (s *Service) SetSource(v string) *Service {
+	s.Source = &v
+	return s
+}
+
 func (s *Service) SetStatus(v string) *Service {
 	s.Status = &v
 	return s
@@ -624,6 +631,87 @@ func (s *Service) SetUpdatetime(v string) *Service {
 
 func (s *Service) SetWeight(v int32) *Service {
 	s.Weight = &v
+	return s
+}
+
+type CreateBenchmarkTaskRequest struct {
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateBenchmarkTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBenchmarkTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBenchmarkTaskRequest) SetBody(v string) *CreateBenchmarkTaskRequest {
+	s.Body = &v
+	return s
+}
+
+type CreateBenchmarkTaskResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name      *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Region    *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateBenchmarkTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBenchmarkTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBenchmarkTaskResponseBody) SetMessage(v string) *CreateBenchmarkTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateBenchmarkTaskResponseBody) SetName(v string) *CreateBenchmarkTaskResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateBenchmarkTaskResponseBody) SetRegion(v string) *CreateBenchmarkTaskResponseBody {
+	s.Region = &v
+	return s
+}
+
+func (s *CreateBenchmarkTaskResponseBody) SetRequestId(v string) *CreateBenchmarkTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateBenchmarkTaskResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateBenchmarkTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateBenchmarkTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateBenchmarkTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateBenchmarkTaskResponse) SetHeaders(v map[string]*string) *CreateBenchmarkTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateBenchmarkTaskResponse) SetStatusCode(v int32) *CreateBenchmarkTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateBenchmarkTaskResponse) SetBody(v *CreateBenchmarkTaskResponseBody) *CreateBenchmarkTaskResponse {
+	s.Body = v
 	return s
 }
 
@@ -713,8 +801,9 @@ func (s *CreateResourceResponseBody) SetResourceName(v string) *CreateResourceRe
 }
 
 type CreateResourceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateResourceResponse) String() string {
@@ -727,6 +816,11 @@ func (s CreateResourceResponse) GoString() string {
 
 func (s *CreateResourceResponse) SetHeaders(v map[string]*string) *CreateResourceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateResourceResponse) SetStatusCode(v int32) *CreateResourceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -806,8 +900,9 @@ func (s *CreateResourceInstancesResponseBody) SetRequestId(v string) *CreateReso
 }
 
 type CreateResourceInstancesResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateResourceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateResourceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateResourceInstancesResponse) String() string {
@@ -820,6 +915,11 @@ func (s CreateResourceInstancesResponse) GoString() string {
 
 func (s *CreateResourceInstancesResponse) SetHeaders(v map[string]*string) *CreateResourceInstancesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateResourceInstancesResponse) SetStatusCode(v int32) *CreateResourceInstancesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -878,8 +978,9 @@ func (s *CreateResourceLogResponseBody) SetRequestId(v string) *CreateResourceLo
 }
 
 type CreateResourceLogResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateResourceLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateResourceLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateResourceLogResponse) String() string {
@@ -892,6 +993,11 @@ func (s CreateResourceLogResponse) GoString() string {
 
 func (s *CreateResourceLogResponse) SetHeaders(v map[string]*string) *CreateResourceLogResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateResourceLogResponse) SetStatusCode(v int32) *CreateResourceLogResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -972,8 +1078,9 @@ func (s *CreateServiceResponseBody) SetStatus(v string) *CreateServiceResponseBo
 }
 
 type CreateServiceResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateServiceResponse) String() string {
@@ -986,6 +1093,11 @@ func (s CreateServiceResponse) GoString() string {
 
 func (s *CreateServiceResponse) SetHeaders(v map[string]*string) *CreateServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceResponse) SetStatusCode(v int32) *CreateServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1076,8 +1188,9 @@ func (s *CreateServiceAutoScalerResponseBody) SetRequestId(v string) *CreateServ
 }
 
 type CreateServiceAutoScalerResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateServiceAutoScalerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateServiceAutoScalerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateServiceAutoScalerResponse) String() string {
@@ -1090,6 +1203,11 @@ func (s CreateServiceAutoScalerResponse) GoString() string {
 
 func (s *CreateServiceAutoScalerResponse) SetHeaders(v map[string]*string) *CreateServiceAutoScalerResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceAutoScalerResponse) SetStatusCode(v int32) *CreateServiceAutoScalerResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1180,8 +1298,9 @@ func (s *CreateServiceCronScalerResponseBody) SetRequestId(v string) *CreateServ
 }
 
 type CreateServiceCronScalerResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateServiceCronScalerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateServiceCronScalerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateServiceCronScalerResponse) String() string {
@@ -1194,6 +1313,11 @@ func (s CreateServiceCronScalerResponse) GoString() string {
 
 func (s *CreateServiceCronScalerResponse) SetHeaders(v map[string]*string) *CreateServiceCronScalerResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *CreateServiceCronScalerResponse) SetStatusCode(v int32) *CreateServiceCronScalerResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1252,8 +1376,9 @@ func (s *CreateServiceMirrorResponseBody) SetRequestId(v string) *CreateServiceM
 }
 
 type CreateServiceMirrorResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *CreateServiceMirrorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateServiceMirrorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s CreateServiceMirrorResponse) String() string {
@@ -1269,7 +1394,146 @@ func (s *CreateServiceMirrorResponse) SetHeaders(v map[string]*string) *CreateSe
 	return s
 }
 
+func (s *CreateServiceMirrorResponse) SetStatusCode(v int32) *CreateServiceMirrorResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *CreateServiceMirrorResponse) SetBody(v *CreateServiceMirrorResponseBody) *CreateServiceMirrorResponse {
+	s.Body = v
+	return s
+}
+
+type CreateStressRequest struct {
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s CreateStressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStressRequest) SetBody(v string) *CreateStressRequest {
+	s.Body = &v
+	return s
+}
+
+type CreateStressResponseBody struct {
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Region  *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s CreateStressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStressResponseBody) SetMessage(v string) *CreateStressResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *CreateStressResponseBody) SetName(v string) *CreateStressResponseBody {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateStressResponseBody) SetRegion(v string) *CreateStressResponseBody {
+	s.Region = &v
+	return s
+}
+
+func (s *CreateStressResponseBody) SetRequestId(v string) *CreateStressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type CreateStressResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateStressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateStressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateStressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateStressResponse) SetHeaders(v map[string]*string) *CreateStressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateStressResponse) SetStatusCode(v int32) *CreateStressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateStressResponse) SetBody(v *CreateStressResponseBody) *CreateStressResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteBenchmarkTaskResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DeleteBenchmarkTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBenchmarkTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBenchmarkTaskResponseBody) SetMessage(v string) *DeleteBenchmarkTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DeleteBenchmarkTaskResponseBody) SetRequestId(v string) *DeleteBenchmarkTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DeleteBenchmarkTaskResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteBenchmarkTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteBenchmarkTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteBenchmarkTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteBenchmarkTaskResponse) SetHeaders(v map[string]*string) *DeleteBenchmarkTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteBenchmarkTaskResponse) SetStatusCode(v int32) *DeleteBenchmarkTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteBenchmarkTaskResponse) SetBody(v *DeleteBenchmarkTaskResponseBody) *DeleteBenchmarkTaskResponse {
 	s.Body = v
 	return s
 }
@@ -1299,8 +1563,9 @@ func (s *DeleteResourceResponseBody) SetRequestId(v string) *DeleteResourceRespo
 }
 
 type DeleteResourceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteResourceResponse) String() string {
@@ -1313,6 +1578,11 @@ func (s DeleteResourceResponse) GoString() string {
 
 func (s *DeleteResourceResponse) SetHeaders(v map[string]*string) *DeleteResourceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteResourceResponse) SetStatusCode(v int32) *DeleteResourceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1346,8 +1616,9 @@ func (s *DeleteResourceDLinkResponseBody) SetRequestId(v string) *DeleteResource
 }
 
 type DeleteResourceDLinkResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteResourceDLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteResourceDLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteResourceDLinkResponse) String() string {
@@ -1360,6 +1631,11 @@ func (s DeleteResourceDLinkResponse) GoString() string {
 
 func (s *DeleteResourceDLinkResponse) SetHeaders(v map[string]*string) *DeleteResourceDLinkResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteResourceDLinkResponse) SetStatusCode(v int32) *DeleteResourceDLinkResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1416,8 +1692,9 @@ func (s *DeleteResourceInstancesResponseBody) SetRequestId(v string) *DeleteReso
 }
 
 type DeleteResourceInstancesResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteResourceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteResourceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteResourceInstancesResponse) String() string {
@@ -1430,6 +1707,11 @@ func (s DeleteResourceInstancesResponse) GoString() string {
 
 func (s *DeleteResourceInstancesResponse) SetHeaders(v map[string]*string) *DeleteResourceInstancesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteResourceInstancesResponse) SetStatusCode(v int32) *DeleteResourceInstancesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1463,8 +1745,9 @@ func (s *DeleteResourceLogResponseBody) SetRequestId(v string) *DeleteResourceLo
 }
 
 type DeleteResourceLogResponse struct {
-	Headers map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteResourceLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteResourceLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteResourceLogResponse) String() string {
@@ -1477,6 +1760,11 @@ func (s DeleteResourceLogResponse) GoString() string {
 
 func (s *DeleteResourceLogResponse) SetHeaders(v map[string]*string) *DeleteResourceLogResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteResourceLogResponse) SetStatusCode(v int32) *DeleteResourceLogResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1510,8 +1798,9 @@ func (s *DeleteServiceResponseBody) SetRequestId(v string) *DeleteServiceRespons
 }
 
 type DeleteServiceResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteServiceResponse) String() string {
@@ -1524,6 +1813,11 @@ func (s DeleteServiceResponse) GoString() string {
 
 func (s *DeleteServiceResponse) SetHeaders(v map[string]*string) *DeleteServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteServiceResponse) SetStatusCode(v int32) *DeleteServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1557,8 +1851,9 @@ func (s *DeleteServiceAutoScalerResponseBody) SetRequestId(v string) *DeleteServ
 }
 
 type DeleteServiceAutoScalerResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteServiceAutoScalerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteServiceAutoScalerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteServiceAutoScalerResponse) String() string {
@@ -1571,6 +1866,11 @@ func (s DeleteServiceAutoScalerResponse) GoString() string {
 
 func (s *DeleteServiceAutoScalerResponse) SetHeaders(v map[string]*string) *DeleteServiceAutoScalerResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteServiceAutoScalerResponse) SetStatusCode(v int32) *DeleteServiceAutoScalerResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1604,8 +1904,9 @@ func (s *DeleteServiceCronScalerResponseBody) SetRequestId(v string) *DeleteServ
 }
 
 type DeleteServiceCronScalerResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteServiceCronScalerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteServiceCronScalerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteServiceCronScalerResponse) String() string {
@@ -1618,6 +1919,11 @@ func (s DeleteServiceCronScalerResponse) GoString() string {
 
 func (s *DeleteServiceCronScalerResponse) SetHeaders(v map[string]*string) *DeleteServiceCronScalerResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteServiceCronScalerResponse) SetStatusCode(v int32) *DeleteServiceCronScalerResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1669,8 +1975,9 @@ func (s *DeleteServiceInstancesResponseBody) SetRequestId(v string) *DeleteServi
 }
 
 type DeleteServiceInstancesResponse struct {
-	Headers map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteServiceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteServiceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteServiceInstancesResponse) String() string {
@@ -1683,6 +1990,11 @@ func (s DeleteServiceInstancesResponse) GoString() string {
 
 func (s *DeleteServiceInstancesResponse) SetHeaders(v map[string]*string) *DeleteServiceInstancesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DeleteServiceInstancesResponse) SetStatusCode(v int32) *DeleteServiceInstancesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1716,8 +2028,9 @@ func (s *DeleteServiceMirrorResponseBody) SetRequestId(v string) *DeleteServiceM
 }
 
 type DeleteServiceMirrorResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DeleteServiceMirrorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteServiceMirrorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DeleteServiceMirrorResponse) String() string {
@@ -1733,73 +2046,228 @@ func (s *DeleteServiceMirrorResponse) SetHeaders(v map[string]*string) *DeleteSe
 	return s
 }
 
+func (s *DeleteServiceMirrorResponse) SetStatusCode(v int32) *DeleteServiceMirrorResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DeleteServiceMirrorResponse) SetBody(v *DeleteServiceMirrorResponseBody) *DeleteServiceMirrorResponse {
 	s.Body = v
 	return s
 }
 
-type DescribeRegionsResponseBody struct {
-	// 可用地域列表
-	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// Id of the request
+type DeleteStressResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
-func (s DescribeRegionsResponseBody) String() string {
+func (s DeleteStressResponseBody) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeRegionsResponseBody) GoString() string {
+func (s DeleteStressResponseBody) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRegionsResponseBody) SetRegions(v []*DescribeRegionsResponseBodyRegions) *DescribeRegionsResponseBody {
-	s.Regions = v
+func (s *DeleteStressResponseBody) SetMessage(v string) *DeleteStressResponseBody {
+	s.Message = &v
 	return s
 }
 
-func (s *DescribeRegionsResponseBody) SetRequestId(v string) *DescribeRegionsResponseBody {
+func (s *DeleteStressResponseBody) SetRequestId(v string) *DeleteStressResponseBody {
 	s.RequestId = &v
 	return s
 }
 
-type DescribeRegionsResponseBodyRegions struct {
-	// 地域Id
-	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+type DeleteStressResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteStressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
-func (s DescribeRegionsResponseBodyRegions) String() string {
+func (s DeleteStressResponse) String() string {
 	return tea.Prettify(s)
 }
 
-func (s DescribeRegionsResponseBodyRegions) GoString() string {
+func (s DeleteStressResponse) GoString() string {
 	return s.String()
 }
 
-func (s *DescribeRegionsResponseBodyRegions) SetRegionId(v string) *DescribeRegionsResponseBodyRegions {
-	s.RegionId = &v
-	return s
-}
-
-type DescribeRegionsResponse struct {
-	Headers map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeRegionsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s DescribeRegionsResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s DescribeRegionsResponse) GoString() string {
-	return s.String()
-}
-
-func (s *DescribeRegionsResponse) SetHeaders(v map[string]*string) *DescribeRegionsResponse {
+func (s *DeleteStressResponse) SetHeaders(v map[string]*string) *DeleteStressResponse {
 	s.Headers = v
 	return s
 }
 
-func (s *DescribeRegionsResponse) SetBody(v *DescribeRegionsResponseBody) *DescribeRegionsResponse {
+func (s *DeleteStressResponse) SetStatusCode(v int32) *DeleteStressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteStressResponse) SetBody(v *DeleteStressResponseBody) *DeleteStressResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeBenchmarkTaskResponseBody struct {
+	AvailableAgent *int64  `json:"AvailableAgent,omitempty" xml:"AvailableAgent,omitempty"`
+	CallerUid      *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	DesiredAgent   *int64  `json:"DesiredAgent,omitempty" xml:"DesiredAgent,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	ParentUid      *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
+	Reason         *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName       *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	Token          *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s DescribeBenchmarkTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBenchmarkTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBenchmarkTaskResponseBody) SetAvailableAgent(v int64) *DescribeBenchmarkTaskResponseBody {
+	s.AvailableAgent = &v
+	return s
+}
+
+func (s *DescribeBenchmarkTaskResponseBody) SetCallerUid(v string) *DescribeBenchmarkTaskResponseBody {
+	s.CallerUid = &v
+	return s
+}
+
+func (s *DescribeBenchmarkTaskResponseBody) SetDesiredAgent(v int64) *DescribeBenchmarkTaskResponseBody {
+	s.DesiredAgent = &v
+	return s
+}
+
+func (s *DescribeBenchmarkTaskResponseBody) SetMessage(v string) *DescribeBenchmarkTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeBenchmarkTaskResponseBody) SetParentUid(v string) *DescribeBenchmarkTaskResponseBody {
+	s.ParentUid = &v
+	return s
+}
+
+func (s *DescribeBenchmarkTaskResponseBody) SetReason(v string) *DescribeBenchmarkTaskResponseBody {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeBenchmarkTaskResponseBody) SetRequestId(v string) *DescribeBenchmarkTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeBenchmarkTaskResponseBody) SetServiceName(v string) *DescribeBenchmarkTaskResponseBody {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *DescribeBenchmarkTaskResponseBody) SetStatus(v string) *DescribeBenchmarkTaskResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeBenchmarkTaskResponseBody) SetTaskId(v string) *DescribeBenchmarkTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+func (s *DescribeBenchmarkTaskResponseBody) SetTaskName(v string) *DescribeBenchmarkTaskResponseBody {
+	s.TaskName = &v
+	return s
+}
+
+func (s *DescribeBenchmarkTaskResponseBody) SetToken(v string) *DescribeBenchmarkTaskResponseBody {
+	s.Token = &v
+	return s
+}
+
+type DescribeBenchmarkTaskResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeBenchmarkTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeBenchmarkTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBenchmarkTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBenchmarkTaskResponse) SetHeaders(v map[string]*string) *DescribeBenchmarkTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBenchmarkTaskResponse) SetStatusCode(v int32) *DescribeBenchmarkTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeBenchmarkTaskResponse) SetBody(v *DescribeBenchmarkTaskResponseBody) *DescribeBenchmarkTaskResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeBenchmarkTaskReportResponseBody struct {
+	ReportUrl *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DescribeBenchmarkTaskReportResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBenchmarkTaskReportResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBenchmarkTaskReportResponseBody) SetReportUrl(v string) *DescribeBenchmarkTaskReportResponseBody {
+	s.ReportUrl = &v
+	return s
+}
+
+func (s *DescribeBenchmarkTaskReportResponseBody) SetRequestId(v string) *DescribeBenchmarkTaskReportResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DescribeBenchmarkTaskReportResponse struct {
+	Headers    map[string]*string                       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeBenchmarkTaskReportResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeBenchmarkTaskReportResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeBenchmarkTaskReportResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeBenchmarkTaskReportResponse) SetHeaders(v map[string]*string) *DescribeBenchmarkTaskReportResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeBenchmarkTaskReportResponse) SetStatusCode(v int32) *DescribeBenchmarkTaskReportResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeBenchmarkTaskReportResponse) SetBody(v *DescribeBenchmarkTaskReportResponseBody) *DescribeBenchmarkTaskReportResponse {
 	s.Body = v
 	return s
 }
@@ -1906,8 +2374,9 @@ func (s *DescribeResourceResponseBody) SetUpdateTime(v string) *DescribeResource
 }
 
 type DescribeResourceResponse struct {
-	Headers map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string            `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                        `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeResourceResponse) String() string {
@@ -1920,6 +2389,11 @@ func (s DescribeResourceResponse) GoString() string {
 
 func (s *DescribeResourceResponse) SetHeaders(v map[string]*string) *DescribeResourceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeResourceResponse) SetStatusCode(v int32) *DescribeResourceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -1982,8 +2456,9 @@ func (s *DescribeResourceDLinkResponseBody) SetVpcId(v string) *DescribeResource
 }
 
 type DescribeResourceDLinkResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeResourceDLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeResourceDLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeResourceDLinkResponse) String() string {
@@ -1996,6 +2471,11 @@ func (s DescribeResourceDLinkResponse) GoString() string {
 
 func (s *DescribeResourceDLinkResponse) SetHeaders(v map[string]*string) *DescribeResourceDLinkResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeResourceDLinkResponse) SetStatusCode(v int32) *DescribeResourceDLinkResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2051,8 +2531,9 @@ func (s *DescribeResourceLogResponseBody) SetStatus(v string) *DescribeResourceL
 }
 
 type DescribeResourceLogResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeResourceLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeResourceLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeResourceLogResponse) String() string {
@@ -2068,14 +2549,20 @@ func (s *DescribeResourceLogResponse) SetHeaders(v map[string]*string) *Describe
 	return s
 }
 
+func (s *DescribeResourceLogResponse) SetStatusCode(v int32) *DescribeResourceLogResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeResourceLogResponse) SetBody(v *DescribeResourceLogResponseBody) *DescribeResourceLogResponse {
 	s.Body = v
 	return s
 }
 
 type DescribeServiceResponse struct {
-	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *Service           `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *Service           `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeServiceResponse) String() string {
@@ -2088,6 +2575,11 @@ func (s DescribeServiceResponse) GoString() string {
 
 func (s *DescribeServiceResponse) SetHeaders(v map[string]*string) *DescribeServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeServiceResponse) SetStatusCode(v int32) *DescribeServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2149,8 +2641,9 @@ func (s *DescribeServiceAutoScalerResponseBody) SetStrategies(v map[string]inter
 }
 
 type DescribeServiceAutoScalerResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeServiceAutoScalerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeServiceAutoScalerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeServiceAutoScalerResponse) String() string {
@@ -2163,6 +2656,11 @@ func (s DescribeServiceAutoScalerResponse) GoString() string {
 
 func (s *DescribeServiceAutoScalerResponse) SetHeaders(v map[string]*string) *DescribeServiceAutoScalerResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeServiceAutoScalerResponse) SetStatusCode(v int32) *DescribeServiceAutoScalerResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2260,8 +2758,9 @@ func (s *DescribeServiceCronScalerResponseBodyScaleJobs) SetTargetSize(v int32) 
 }
 
 type DescribeServiceCronScalerResponse struct {
-	Headers map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeServiceCronScalerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeServiceCronScalerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeServiceCronScalerResponse) String() string {
@@ -2274,6 +2773,11 @@ func (s DescribeServiceCronScalerResponse) GoString() string {
 
 func (s *DescribeServiceCronScalerResponse) SetHeaders(v map[string]*string) *DescribeServiceCronScalerResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeServiceCronScalerResponse) SetStatusCode(v int32) *DescribeServiceCronScalerResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2382,8 +2886,9 @@ func (s *DescribeServiceLogResponseBody) SetTotalPageNum(v int64) *DescribeServi
 }
 
 type DescribeServiceLogResponse struct {
-	Headers map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeServiceLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeServiceLogResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeServiceLogResponse) String() string {
@@ -2396,6 +2901,11 @@ func (s DescribeServiceLogResponse) GoString() string {
 
 func (s *DescribeServiceLogResponse) SetHeaders(v map[string]*string) *DescribeServiceLogResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *DescribeServiceLogResponse) SetStatusCode(v int32) *DescribeServiceLogResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2444,8 +2954,9 @@ func (s *DescribeServiceMirrorResponseBody) SetTarget(v string) *DescribeService
 }
 
 type DescribeServiceMirrorResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *DescribeServiceMirrorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeServiceMirrorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s DescribeServiceMirrorResponse) String() string {
@@ -2461,7 +2972,236 @@ func (s *DescribeServiceMirrorResponse) SetHeaders(v map[string]*string) *Descri
 	return s
 }
 
+func (s *DescribeServiceMirrorResponse) SetStatusCode(v int32) *DescribeServiceMirrorResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *DescribeServiceMirrorResponse) SetBody(v *DescribeServiceMirrorResponseBody) *DescribeServiceMirrorResponse {
+	s.Body = v
+	return s
+}
+
+type DescribeStressResponseBody struct {
+	AvailableAgent *int64  `json:"AvailableAgent,omitempty" xml:"AvailableAgent,omitempty"`
+	CallerUid      *string `json:"CallerUid,omitempty" xml:"CallerUid,omitempty"`
+	DesiredAgent   *int64  `json:"DesiredAgent,omitempty" xml:"DesiredAgent,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	ParentUid      *string `json:"ParentUid,omitempty" xml:"ParentUid,omitempty"`
+	Reason         *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
+	// Id of the request
+	RequestId   *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ServiceName *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StressName  *string `json:"StressName,omitempty" xml:"StressName,omitempty"`
+	Token       *string `json:"Token,omitempty" xml:"Token,omitempty"`
+}
+
+func (s DescribeStressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStressResponseBody) SetAvailableAgent(v int64) *DescribeStressResponseBody {
+	s.AvailableAgent = &v
+	return s
+}
+
+func (s *DescribeStressResponseBody) SetCallerUid(v string) *DescribeStressResponseBody {
+	s.CallerUid = &v
+	return s
+}
+
+func (s *DescribeStressResponseBody) SetDesiredAgent(v int64) *DescribeStressResponseBody {
+	s.DesiredAgent = &v
+	return s
+}
+
+func (s *DescribeStressResponseBody) SetMessage(v string) *DescribeStressResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *DescribeStressResponseBody) SetParentUid(v string) *DescribeStressResponseBody {
+	s.ParentUid = &v
+	return s
+}
+
+func (s *DescribeStressResponseBody) SetReason(v string) *DescribeStressResponseBody {
+	s.Reason = &v
+	return s
+}
+
+func (s *DescribeStressResponseBody) SetRequestId(v string) *DescribeStressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeStressResponseBody) SetServiceName(v string) *DescribeStressResponseBody {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *DescribeStressResponseBody) SetStatus(v string) *DescribeStressResponseBody {
+	s.Status = &v
+	return s
+}
+
+func (s *DescribeStressResponseBody) SetStressName(v string) *DescribeStressResponseBody {
+	s.StressName = &v
+	return s
+}
+
+func (s *DescribeStressResponseBody) SetToken(v string) *DescribeStressResponseBody {
+	s.Token = &v
+	return s
+}
+
+type DescribeStressResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DescribeStressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DescribeStressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DescribeStressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeStressResponse) SetHeaders(v map[string]*string) *DescribeStressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DescribeStressResponse) SetStatusCode(v int32) *DescribeStressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DescribeStressResponse) SetBody(v *DescribeStressResponseBody) *DescribeStressResponse {
+	s.Body = v
+	return s
+}
+
+type ListBenchmarkTaskResponseBody struct {
+	RequestId *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Tasks     []*ListBenchmarkTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
+}
+
+func (s ListBenchmarkTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBenchmarkTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListBenchmarkTaskResponseBody) SetRequestId(v string) *ListBenchmarkTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListBenchmarkTaskResponseBody) SetTasks(v []*ListBenchmarkTaskResponseBodyTasks) *ListBenchmarkTaskResponseBody {
+	s.Tasks = v
+	return s
+}
+
+type ListBenchmarkTaskResponseBodyTasks struct {
+	AvailableAgent *int64  `json:"AvailableAgent,omitempty" xml:"AvailableAgent,omitempty"`
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	TaskId         *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskName       *string `json:"TaskName,omitempty" xml:"TaskName,omitempty"`
+	UpdateTime     *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListBenchmarkTaskResponseBodyTasks) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBenchmarkTaskResponseBodyTasks) GoString() string {
+	return s.String()
+}
+
+func (s *ListBenchmarkTaskResponseBodyTasks) SetAvailableAgent(v int64) *ListBenchmarkTaskResponseBodyTasks {
+	s.AvailableAgent = &v
+	return s
+}
+
+func (s *ListBenchmarkTaskResponseBodyTasks) SetCreateTime(v string) *ListBenchmarkTaskResponseBodyTasks {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListBenchmarkTaskResponseBodyTasks) SetMessage(v string) *ListBenchmarkTaskResponseBodyTasks {
+	s.Message = &v
+	return s
+}
+
+func (s *ListBenchmarkTaskResponseBodyTasks) SetRegion(v string) *ListBenchmarkTaskResponseBodyTasks {
+	s.Region = &v
+	return s
+}
+
+func (s *ListBenchmarkTaskResponseBodyTasks) SetServiceName(v string) *ListBenchmarkTaskResponseBodyTasks {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *ListBenchmarkTaskResponseBodyTasks) SetStatus(v string) *ListBenchmarkTaskResponseBodyTasks {
+	s.Status = &v
+	return s
+}
+
+func (s *ListBenchmarkTaskResponseBodyTasks) SetTaskId(v string) *ListBenchmarkTaskResponseBodyTasks {
+	s.TaskId = &v
+	return s
+}
+
+func (s *ListBenchmarkTaskResponseBodyTasks) SetTaskName(v string) *ListBenchmarkTaskResponseBodyTasks {
+	s.TaskName = &v
+	return s
+}
+
+func (s *ListBenchmarkTaskResponseBodyTasks) SetUpdateTime(v string) *ListBenchmarkTaskResponseBodyTasks {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListBenchmarkTaskResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListBenchmarkTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListBenchmarkTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListBenchmarkTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListBenchmarkTaskResponse) SetHeaders(v map[string]*string) *ListBenchmarkTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListBenchmarkTaskResponse) SetStatusCode(v int32) *ListBenchmarkTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListBenchmarkTaskResponse) SetBody(v *ListBenchmarkTaskResponseBody) *ListBenchmarkTaskResponse {
 	s.Body = v
 	return s
 }
@@ -2536,8 +3276,9 @@ func (s *ListResourceInstanceWorkerResponseBody) SetTotalCount(v int32) *ListRes
 }
 
 type ListResourceInstanceWorkerResponse struct {
-	Headers map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListResourceInstanceWorkerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListResourceInstanceWorkerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListResourceInstanceWorkerResponse) String() string {
@@ -2553,12 +3294,21 @@ func (s *ListResourceInstanceWorkerResponse) SetHeaders(v map[string]*string) *L
 	return s
 }
 
+func (s *ListResourceInstanceWorkerResponse) SetStatusCode(v int32) *ListResourceInstanceWorkerResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListResourceInstanceWorkerResponse) SetBody(v *ListResourceInstanceWorkerResponseBody) *ListResourceInstanceWorkerResponse {
 	s.Body = v
 	return s
 }
 
 type ListResourceInstancesRequest struct {
+	// 付费类型
+	// PrePaid预付费
+	// PostPaid后付费
+	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// 请求的页码（默认为1）
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// 每页的大小（默认为100）
@@ -2571,6 +3321,11 @@ func (s ListResourceInstancesRequest) String() string {
 
 func (s ListResourceInstancesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListResourceInstancesRequest) SetChargeType(v string) *ListResourceInstancesRequest {
+	s.ChargeType = &v
+	return s
 }
 
 func (s *ListResourceInstancesRequest) SetPageNumber(v int32) *ListResourceInstancesRequest {
@@ -2626,8 +3381,9 @@ func (s *ListResourceInstancesResponseBody) SetTotalCount(v int32) *ListResource
 }
 
 type ListResourceInstancesResponse struct {
-	Headers map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListResourceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListResourceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListResourceInstancesResponse) String() string {
@@ -2640,6 +3396,11 @@ func (s ListResourceInstancesResponse) GoString() string {
 
 func (s *ListResourceInstancesResponse) SetHeaders(v map[string]*string) *ListResourceInstancesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListResourceInstancesResponse) SetStatusCode(v int32) *ListResourceInstancesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2716,8 +3477,9 @@ func (s *ListResourceServicesResponseBody) SetTotalCount(v int32) *ListResourceS
 }
 
 type ListResourceServicesResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListResourceServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListResourceServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListResourceServicesResponse) String() string {
@@ -2730,6 +3492,11 @@ func (s ListResourceServicesResponse) GoString() string {
 
 func (s *ListResourceServicesResponse) SetHeaders(v map[string]*string) *ListResourceServicesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListResourceServicesResponse) SetStatusCode(v int32) *ListResourceServicesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2806,8 +3573,9 @@ func (s *ListResourcesResponseBody) SetTotalCount(v int32) *ListResourcesRespons
 }
 
 type ListResourcesResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListResourcesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListResourcesResponse) String() string {
@@ -2820,6 +3588,11 @@ func (s ListResourcesResponse) GoString() string {
 
 func (s *ListResourcesResponse) SetHeaders(v map[string]*string) *ListResourcesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListResourcesResponse) SetStatusCode(v int32) *ListResourcesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -2896,8 +3669,9 @@ func (s *ListServiceInstancesResponseBody) SetTotalCount(v int32) *ListServiceIn
 }
 
 type ListServiceInstancesResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListServiceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListServiceInstancesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListServiceInstancesResponse) String() string {
@@ -2910,6 +3684,11 @@ func (s ListServiceInstancesResponse) GoString() string {
 
 func (s *ListServiceInstancesResponse) SetHeaders(v map[string]*string) *ListServiceInstancesResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *ListServiceInstancesResponse) SetStatusCode(v int32) *ListServiceInstancesResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3007,8 +3786,9 @@ func (s *ListServicesResponseBody) SetTotalCount(v int32) *ListServicesResponseB
 }
 
 type ListServicesResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ListServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListServicesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ListServicesResponse) String() string {
@@ -3024,7 +3804,123 @@ func (s *ListServicesResponse) SetHeaders(v map[string]*string) *ListServicesRes
 	return s
 }
 
+func (s *ListServicesResponse) SetStatusCode(v int32) *ListServicesResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ListServicesResponse) SetBody(v *ListServicesResponseBody) *ListServicesResponse {
+	s.Body = v
+	return s
+}
+
+type ListStressesResponseBody struct {
+	RequestId *string                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Stresses  []*ListStressesResponseBodyStresses `json:"Stresses,omitempty" xml:"Stresses,omitempty" type:"Repeated"`
+}
+
+func (s ListStressesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStressesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListStressesResponseBody) SetRequestId(v string) *ListStressesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListStressesResponseBody) SetStresses(v []*ListStressesResponseBodyStresses) *ListStressesResponseBody {
+	s.Stresses = v
+	return s
+}
+
+type ListStressesResponseBodyStresses struct {
+	AvailableAgent *int64  `json:"AvailableAgent,omitempty" xml:"AvailableAgent,omitempty"`
+	CreateTime     *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	Message        *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	Region         *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	ServiceName    *string `json:"ServiceName,omitempty" xml:"ServiceName,omitempty"`
+	Status         *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	StressName     *string `json:"StressName,omitempty" xml:"StressName,omitempty"`
+	UpdateTime     *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+}
+
+func (s ListStressesResponseBodyStresses) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStressesResponseBodyStresses) GoString() string {
+	return s.String()
+}
+
+func (s *ListStressesResponseBodyStresses) SetAvailableAgent(v int64) *ListStressesResponseBodyStresses {
+	s.AvailableAgent = &v
+	return s
+}
+
+func (s *ListStressesResponseBodyStresses) SetCreateTime(v string) *ListStressesResponseBodyStresses {
+	s.CreateTime = &v
+	return s
+}
+
+func (s *ListStressesResponseBodyStresses) SetMessage(v string) *ListStressesResponseBodyStresses {
+	s.Message = &v
+	return s
+}
+
+func (s *ListStressesResponseBodyStresses) SetRegion(v string) *ListStressesResponseBodyStresses {
+	s.Region = &v
+	return s
+}
+
+func (s *ListStressesResponseBodyStresses) SetServiceName(v string) *ListStressesResponseBodyStresses {
+	s.ServiceName = &v
+	return s
+}
+
+func (s *ListStressesResponseBodyStresses) SetStatus(v string) *ListStressesResponseBodyStresses {
+	s.Status = &v
+	return s
+}
+
+func (s *ListStressesResponseBodyStresses) SetStressName(v string) *ListStressesResponseBodyStresses {
+	s.StressName = &v
+	return s
+}
+
+func (s *ListStressesResponseBodyStresses) SetUpdateTime(v string) *ListStressesResponseBodyStresses {
+	s.UpdateTime = &v
+	return s
+}
+
+type ListStressesResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListStressesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListStressesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListStressesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListStressesResponse) SetHeaders(v map[string]*string) *ListStressesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListStressesResponse) SetStatusCode(v int32) *ListStressesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListStressesResponse) SetBody(v *ListStressesResponseBody) *ListStressesResponse {
 	s.Body = v
 	return s
 }
@@ -3072,8 +3968,9 @@ func (s *ReleaseServiceResponseBody) SetRequestId(v string) *ReleaseServiceRespo
 }
 
 type ReleaseServiceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *ReleaseServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReleaseServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s ReleaseServiceResponse) String() string {
@@ -3089,7 +3986,116 @@ func (s *ReleaseServiceResponse) SetHeaders(v map[string]*string) *ReleaseServic
 	return s
 }
 
+func (s *ReleaseServiceResponse) SetStatusCode(v int32) *ReleaseServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *ReleaseServiceResponse) SetBody(v *ReleaseServiceResponseBody) *ReleaseServiceResponse {
+	s.Body = v
+	return s
+}
+
+type ReportStressResponseBody struct {
+	ReportUrl *string `json:"ReportUrl,omitempty" xml:"ReportUrl,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ReportStressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReportStressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ReportStressResponseBody) SetReportUrl(v string) *ReportStressResponseBody {
+	s.ReportUrl = &v
+	return s
+}
+
+func (s *ReportStressResponseBody) SetRequestId(v string) *ReportStressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ReportStressResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ReportStressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ReportStressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ReportStressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ReportStressResponse) SetHeaders(v map[string]*string) *ReportStressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ReportStressResponse) SetStatusCode(v int32) *ReportStressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ReportStressResponse) SetBody(v *ReportStressResponseBody) *ReportStressResponse {
+	s.Body = v
+	return s
+}
+
+type StartBenchmarkTaskResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartBenchmarkTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartBenchmarkTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartBenchmarkTaskResponseBody) SetMessage(v string) *StartBenchmarkTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StartBenchmarkTaskResponseBody) SetRequestId(v string) *StartBenchmarkTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartBenchmarkTaskResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartBenchmarkTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartBenchmarkTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartBenchmarkTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartBenchmarkTaskResponse) SetHeaders(v map[string]*string) *StartBenchmarkTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartBenchmarkTaskResponse) SetStatusCode(v int32) *StartBenchmarkTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartBenchmarkTaskResponse) SetBody(v *StartBenchmarkTaskResponseBody) *StartBenchmarkTaskResponse {
 	s.Body = v
 	return s
 }
@@ -3119,8 +4125,9 @@ func (s *StartServiceResponseBody) SetRequestId(v string) *StartServiceResponseB
 }
 
 type StartServiceResponse struct {
-	Headers map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StartServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StartServiceResponse) String() string {
@@ -3136,7 +4143,116 @@ func (s *StartServiceResponse) SetHeaders(v map[string]*string) *StartServiceRes
 	return s
 }
 
+func (s *StartServiceResponse) SetStatusCode(v int32) *StartServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *StartServiceResponse) SetBody(v *StartServiceResponseBody) *StartServiceResponse {
+	s.Body = v
+	return s
+}
+
+type StartStressResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StartStressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartStressResponseBody) SetMessage(v string) *StartStressResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StartStressResponseBody) SetRequestId(v string) *StartStressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StartStressResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartStressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartStressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartStressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartStressResponse) SetHeaders(v map[string]*string) *StartStressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartStressResponse) SetStatusCode(v int32) *StartStressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartStressResponse) SetBody(v *StartStressResponseBody) *StartStressResponse {
+	s.Body = v
+	return s
+}
+
+type StopBenchmarkTaskResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopBenchmarkTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopBenchmarkTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopBenchmarkTaskResponseBody) SetMessage(v string) *StopBenchmarkTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StopBenchmarkTaskResponseBody) SetRequestId(v string) *StopBenchmarkTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopBenchmarkTaskResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopBenchmarkTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopBenchmarkTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopBenchmarkTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopBenchmarkTaskResponse) SetHeaders(v map[string]*string) *StopBenchmarkTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopBenchmarkTaskResponse) SetStatusCode(v int32) *StopBenchmarkTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopBenchmarkTaskResponse) SetBody(v *StopBenchmarkTaskResponseBody) *StopBenchmarkTaskResponse {
 	s.Body = v
 	return s
 }
@@ -3166,8 +4282,9 @@ func (s *StopServiceResponseBody) SetRequestId(v string) *StopServiceResponseBod
 }
 
 type StopServiceResponse struct {
-	Headers map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *StopServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s StopServiceResponse) String() string {
@@ -3183,7 +4300,139 @@ func (s *StopServiceResponse) SetHeaders(v map[string]*string) *StopServiceRespo
 	return s
 }
 
+func (s *StopServiceResponse) SetStatusCode(v int32) *StopServiceResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *StopServiceResponse) SetBody(v *StopServiceResponseBody) *StopServiceResponse {
+	s.Body = v
+	return s
+}
+
+type StopStressResponseBody struct {
+	Code      *int64  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s StopStressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopStressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopStressResponseBody) SetCode(v int64) *StopStressResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StopStressResponseBody) SetMessage(v string) *StopStressResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *StopStressResponseBody) SetRequestId(v string) *StopStressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type StopStressResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopStressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopStressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopStressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopStressResponse) SetHeaders(v map[string]*string) *StopStressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopStressResponse) SetStatusCode(v int32) *StopStressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopStressResponse) SetBody(v *StopStressResponseBody) *StopStressResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateBenchmarkTaskRequest struct {
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateBenchmarkTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBenchmarkTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBenchmarkTaskRequest) SetBody(v string) *UpdateBenchmarkTaskRequest {
+	s.Body = &v
+	return s
+}
+
+type UpdateBenchmarkTaskResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateBenchmarkTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBenchmarkTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBenchmarkTaskResponseBody) SetMessage(v string) *UpdateBenchmarkTaskResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateBenchmarkTaskResponseBody) SetRequestId(v string) *UpdateBenchmarkTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateBenchmarkTaskResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateBenchmarkTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateBenchmarkTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateBenchmarkTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateBenchmarkTaskResponse) SetHeaders(v map[string]*string) *UpdateBenchmarkTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateBenchmarkTaskResponse) SetStatusCode(v int32) *UpdateBenchmarkTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateBenchmarkTaskResponse) SetBody(v *UpdateBenchmarkTaskResponseBody) *UpdateBenchmarkTaskResponse {
 	s.Body = v
 	return s
 }
@@ -3237,8 +4486,9 @@ func (s *UpdateResourceResponseBody) SetResourceName(v string) *UpdateResourceRe
 }
 
 type UpdateResourceResponse struct {
-	Headers map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateResourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateResourceResponse) String() string {
@@ -3251,6 +4501,11 @@ func (s UpdateResourceResponse) GoString() string {
 
 func (s *UpdateResourceResponse) SetHeaders(v map[string]*string) *UpdateResourceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateResourceResponse) SetStatusCode(v int32) *UpdateResourceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3323,8 +4578,9 @@ func (s *UpdateResourceDLinkResponseBody) SetRequestId(v string) *UpdateResource
 }
 
 type UpdateResourceDLinkResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateResourceDLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateResourceDLinkResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateResourceDLinkResponse) String() string {
@@ -3337,6 +4593,11 @@ func (s UpdateResourceDLinkResponse) GoString() string {
 
 func (s *UpdateResourceDLinkResponse) SetHeaders(v map[string]*string) *UpdateResourceDLinkResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateResourceDLinkResponse) SetStatusCode(v int32) *UpdateResourceDLinkResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3388,8 +4649,9 @@ func (s *UpdateServiceResponseBody) SetRequestId(v string) *UpdateServiceRespons
 }
 
 type UpdateServiceResponse struct {
-	Headers map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateServiceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateServiceResponse) String() string {
@@ -3402,6 +4664,11 @@ func (s UpdateServiceResponse) GoString() string {
 
 func (s *UpdateServiceResponse) SetHeaders(v map[string]*string) *UpdateServiceResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateServiceResponse) SetStatusCode(v int32) *UpdateServiceResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3492,8 +4759,9 @@ func (s *UpdateServiceAutoScalerResponseBody) SetRequestId(v string) *UpdateServ
 }
 
 type UpdateServiceAutoScalerResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateServiceAutoScalerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateServiceAutoScalerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateServiceAutoScalerResponse) String() string {
@@ -3506,6 +4774,11 @@ func (s UpdateServiceAutoScalerResponse) GoString() string {
 
 func (s *UpdateServiceAutoScalerResponse) SetHeaders(v map[string]*string) *UpdateServiceAutoScalerResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateServiceAutoScalerResponse) SetStatusCode(v int32) *UpdateServiceAutoScalerResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3595,8 +4868,9 @@ func (s *UpdateServiceCronScalerResponseBody) SetRequestId(v string) *UpdateServ
 }
 
 type UpdateServiceCronScalerResponse struct {
-	Headers map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateServiceCronScalerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateServiceCronScalerResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateServiceCronScalerResponse) String() string {
@@ -3609,6 +4883,11 @@ func (s UpdateServiceCronScalerResponse) GoString() string {
 
 func (s *UpdateServiceCronScalerResponse) SetHeaders(v map[string]*string) *UpdateServiceCronScalerResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateServiceCronScalerResponse) SetStatusCode(v int32) *UpdateServiceCronScalerResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3667,8 +4946,9 @@ func (s *UpdateServiceMirrorResponseBody) SetRequestId(v string) *UpdateServiceM
 }
 
 type UpdateServiceMirrorResponse struct {
-	Headers map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateServiceMirrorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateServiceMirrorResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateServiceMirrorResponse) String() string {
@@ -3681,6 +4961,11 @@ func (s UpdateServiceMirrorResponse) GoString() string {
 
 func (s *UpdateServiceMirrorResponse) SetHeaders(v map[string]*string) *UpdateServiceMirrorResponse {
 	s.Headers = v
+	return s
+}
+
+func (s *UpdateServiceMirrorResponse) SetStatusCode(v int32) *UpdateServiceMirrorResponse {
+	s.StatusCode = &v
 	return s
 }
 
@@ -3731,8 +5016,9 @@ func (s *UpdateServiceVersionResponseBody) SetRequestId(v string) *UpdateService
 }
 
 type UpdateServiceVersionResponse struct {
-	Headers map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	Body    *UpdateServiceVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateServiceVersionResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
 }
 
 func (s UpdateServiceVersionResponse) String() string {
@@ -3748,7 +5034,81 @@ func (s *UpdateServiceVersionResponse) SetHeaders(v map[string]*string) *UpdateS
 	return s
 }
 
+func (s *UpdateServiceVersionResponse) SetStatusCode(v int32) *UpdateServiceVersionResponse {
+	s.StatusCode = &v
+	return s
+}
+
 func (s *UpdateServiceVersionResponse) SetBody(v *UpdateServiceVersionResponseBody) *UpdateServiceVersionResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateStressRequest struct {
+	Body *string `json:"body,omitempty" xml:"body,omitempty"`
+}
+
+func (s UpdateStressRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStressRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStressRequest) SetBody(v string) *UpdateStressRequest {
+	s.Body = &v
+	return s
+}
+
+type UpdateStressResponseBody struct {
+	Message   *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s UpdateStressResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStressResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStressResponseBody) SetMessage(v string) *UpdateStressResponseBody {
+	s.Message = &v
+	return s
+}
+
+func (s *UpdateStressResponseBody) SetRequestId(v string) *UpdateStressResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type UpdateStressResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateStressResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateStressResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateStressResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateStressResponse) SetHeaders(v map[string]*string) *UpdateStressResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateStressResponse) SetStatusCode(v int32) *UpdateStressResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateStressResponse) SetBody(v *UpdateStressResponseBody) *UpdateStressResponse {
 	s.Body = v
 	return s
 }
@@ -3814,6 +5174,47 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 		return _result, _err
 	}
 	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateBenchmarkTask(request *CreateBenchmarkTaskRequest) (_result *CreateBenchmarkTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateBenchmarkTaskResponse{}
+	_body, _err := client.CreateBenchmarkTaskWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateBenchmarkTaskWithOptions(request *CreateBenchmarkTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateBenchmarkTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateBenchmarkTask"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/benchmark-tasks"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateBenchmarkTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
 	return _result, _err
 }
 
@@ -4192,6 +5593,85 @@ func (client *Client) CreateServiceMirrorWithOptions(ClusterId *string, ServiceN
 	return _result, _err
 }
 
+func (client *Client) CreateStress(request *CreateStressRequest) (_result *CreateStressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &CreateStressResponse{}
+	_body, _err := client.CreateStressWithOptions(request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateStressWithOptions(request *CreateStressRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *CreateStressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateStress"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/stress"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateStressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteBenchmarkTask(ClusterId *string, TaskName *string) (_result *DeleteBenchmarkTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DeleteBenchmarkTaskResponse{}
+	_body, _err := client.DeleteBenchmarkTaskWithOptions(ClusterId, TaskName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteBenchmarkTaskResponse, _err error) {
+	ClusterId = openapiutil.GetEncodeParam(ClusterId)
+	TaskName = openapiutil.GetEncodeParam(TaskName)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteBenchmarkTask"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/benchmark-tasks/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(TaskName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteBenchmarkTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) DeleteResource(ClusterId *string, ResourceId *string) (_result *DeleteResourceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -4558,11 +6038,11 @@ func (client *Client) DeleteServiceMirrorWithOptions(ClusterId *string, ServiceN
 	return _result, _err
 }
 
-func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DeleteStress(ClusterId *string, StressName *string) (_result *DeleteStressResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
-	_result = &DescribeRegionsResponse{}
-	_body, _err := client.DescribeRegionsWithOptions(headers, runtime)
+	_result = &DeleteStressResponse{}
+	_body, _err := client.DeleteStressWithOptions(ClusterId, StressName, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4570,22 +6050,100 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 	return _result, _err
 }
 
-func (client *Client) DescribeRegionsWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeRegionsResponse, _err error) {
+func (client *Client) DeleteStressWithOptions(ClusterId *string, StressName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DeleteStressResponse, _err error) {
+	ClusterId = openapiutil.GetEncodeParam(ClusterId)
+	StressName = openapiutil.GetEncodeParam(StressName)
 	req := &openapi.OpenApiRequest{
 		Headers: headers,
 	}
 	params := &openapi.Params{
-		Action:      tea.String("DescribeRegions"),
+		Action:      tea.String("DeleteStress"),
 		Version:     tea.String("2021-07-01"),
 		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/api/v2/regions"),
+		Pathname:    tea.String("/api/v2/stress/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(StressName)),
+		Method:      tea.String("DELETE"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteStressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeBenchmarkTask(ClusterId *string, TaskName *string) (_result *DescribeBenchmarkTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeBenchmarkTaskResponse{}
+	_body, _err := client.DescribeBenchmarkTaskWithOptions(ClusterId, TaskName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeBenchmarkTaskResponse, _err error) {
+	ClusterId = openapiutil.GetEncodeParam(ClusterId)
+	TaskName = openapiutil.GetEncodeParam(TaskName)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBenchmarkTask"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/benchmark-tasks/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(TaskName)),
 		Method:      tea.String("GET"),
 		AuthType:    tea.String("AK"),
 		Style:       tea.String("ROA"),
 		ReqBodyType: tea.String("json"),
 		BodyType:    tea.String("json"),
 	}
-	_result = &DescribeRegionsResponse{}
+	_result = &DescribeBenchmarkTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DescribeBenchmarkTaskReport(ClusterId *string, TaskName *string) (_result *DescribeBenchmarkTaskReportResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeBenchmarkTaskReportResponse{}
+	_body, _err := client.DescribeBenchmarkTaskReportWithOptions(ClusterId, TaskName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeBenchmarkTaskReportWithOptions(ClusterId *string, TaskName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeBenchmarkTaskReportResponse, _err error) {
+	ClusterId = openapiutil.GetEncodeParam(ClusterId)
+	TaskName = openapiutil.GetEncodeParam(TaskName)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeBenchmarkTaskReport"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/benchmark-tasks/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(TaskName) + "/report"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeBenchmarkTaskReportResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -4928,6 +6486,80 @@ func (client *Client) DescribeServiceMirrorWithOptions(ClusterId *string, Servic
 	return _result, _err
 }
 
+func (client *Client) DescribeStress(ClusterId *string, StressName *string) (_result *DescribeStressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DescribeStressResponse{}
+	_body, _err := client.DescribeStressWithOptions(ClusterId, StressName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DescribeStressWithOptions(ClusterId *string, StressName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *DescribeStressResponse, _err error) {
+	ClusterId = openapiutil.GetEncodeParam(ClusterId)
+	StressName = openapiutil.GetEncodeParam(StressName)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DescribeStress"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/stress/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(StressName)),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DescribeStressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListBenchmarkTask() (_result *ListBenchmarkTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListBenchmarkTaskResponse{}
+	_body, _err := client.ListBenchmarkTaskWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListBenchmarkTaskWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListBenchmarkTaskResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListBenchmarkTask"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/benchmark-tasks"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListBenchmarkTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ListResourceInstanceWorker(ClusterId *string, ResourceId *string, InstanceName *string, request *ListResourceInstanceWorkerRequest) (_result *ListResourceInstanceWorkerResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5001,6 +6633,10 @@ func (client *Client) ListResourceInstancesWithOptions(ClusterId *string, Resour
 	ClusterId = openapiutil.GetEncodeParam(ClusterId)
 	ResourceId = openapiutil.GetEncodeParam(ResourceId)
 	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.ChargeType)) {
+		query["ChargeType"] = request.ChargeType
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
 		query["PageNumber"] = request.PageNumber
 	}
@@ -5249,6 +6885,42 @@ func (client *Client) ListServicesWithOptions(request *ListServicesRequest, head
 	return _result, _err
 }
 
+func (client *Client) ListStresses() (_result *ListStressesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ListStressesResponse{}
+	_body, _err := client.ListStressesWithOptions(headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListStressesWithOptions(headers map[string]*string, runtime *util.RuntimeOptions) (_result *ListStressesResponse, _err error) {
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListStresses"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/stress"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListStressesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) ReleaseService(ClusterId *string, ServiceName *string, request *ReleaseServiceRequest) (_result *ReleaseServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5297,6 +6969,82 @@ func (client *Client) ReleaseServiceWithOptions(ClusterId *string, ServiceName *
 	return _result, _err
 }
 
+func (client *Client) ReportStress(ClusterId *string, StressName *string) (_result *ReportStressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &ReportStressResponse{}
+	_body, _err := client.ReportStressWithOptions(ClusterId, StressName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ReportStressWithOptions(ClusterId *string, StressName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *ReportStressResponse, _err error) {
+	ClusterId = openapiutil.GetEncodeParam(ClusterId)
+	StressName = openapiutil.GetEncodeParam(StressName)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ReportStress"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/stress/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(StressName) + "/report"),
+		Method:      tea.String("GET"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ReportStressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartBenchmarkTask(ClusterId *string, TaskName *string) (_result *StartBenchmarkTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartBenchmarkTaskResponse{}
+	_body, _err := client.StartBenchmarkTaskWithOptions(ClusterId, TaskName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartBenchmarkTaskResponse, _err error) {
+	ClusterId = openapiutil.GetEncodeParam(ClusterId)
+	TaskName = openapiutil.GetEncodeParam(TaskName)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartBenchmarkTask"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/benchmark-tasks/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(TaskName) + "/start"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartBenchmarkTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) StartService(ClusterId *string, ServiceName *string) (_result *StartServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5335,6 +7083,82 @@ func (client *Client) StartServiceWithOptions(ClusterId *string, ServiceName *st
 	return _result, _err
 }
 
+func (client *Client) StartStress(ClusterId *string, StressName *string) (_result *StartStressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StartStressResponse{}
+	_body, _err := client.StartStressWithOptions(ClusterId, StressName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StartStressWithOptions(ClusterId *string, StressName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StartStressResponse, _err error) {
+	ClusterId = openapiutil.GetEncodeParam(ClusterId)
+	StressName = openapiutil.GetEncodeParam(StressName)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartStress"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/stress/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(StressName) + "/start"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartStressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopBenchmarkTask(ClusterId *string, TaskName *string) (_result *StopBenchmarkTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopBenchmarkTaskResponse{}
+	_body, _err := client.StopBenchmarkTaskWithOptions(ClusterId, TaskName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopBenchmarkTaskResponse, _err error) {
+	ClusterId = openapiutil.GetEncodeParam(ClusterId)
+	TaskName = openapiutil.GetEncodeParam(TaskName)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopBenchmarkTask"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/benchmark-tasks/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(TaskName) + "/stop"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopBenchmarkTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
 func (client *Client) StopService(ClusterId *string, ServiceName *string) (_result *StopServiceResponse, _err error) {
 	runtime := &util.RuntimeOptions{}
 	headers := make(map[string]*string)
@@ -5365,6 +7189,87 @@ func (client *Client) StopServiceWithOptions(ClusterId *string, ServiceName *str
 		BodyType:    tea.String("json"),
 	}
 	_result = &StopServiceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopStress(ClusterId *string, StressName *string) (_result *StopStressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &StopStressResponse{}
+	_body, _err := client.StopStressWithOptions(ClusterId, StressName, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopStressWithOptions(ClusterId *string, StressName *string, headers map[string]*string, runtime *util.RuntimeOptions) (_result *StopStressResponse, _err error) {
+	ClusterId = openapiutil.GetEncodeParam(ClusterId)
+	StressName = openapiutil.GetEncodeParam(StressName)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopStress"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/stress/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(StressName) + "/stop"),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopStressResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateBenchmarkTask(ClusterId *string, TaskName *string, request *UpdateBenchmarkTaskRequest) (_result *UpdateBenchmarkTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateBenchmarkTaskResponse{}
+	_body, _err := client.UpdateBenchmarkTaskWithOptions(ClusterId, TaskName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateBenchmarkTaskWithOptions(ClusterId *string, TaskName *string, request *UpdateBenchmarkTaskRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateBenchmarkTaskResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	ClusterId = openapiutil.GetEncodeParam(ClusterId)
+	TaskName = openapiutil.GetEncodeParam(TaskName)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateBenchmarkTask"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/benchmark-tasks/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(TaskName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateBenchmarkTaskResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -5724,6 +7629,49 @@ func (client *Client) UpdateServiceVersionWithOptions(ClusterId *string, Service
 		BodyType:    tea.String("json"),
 	}
 	_result = &UpdateServiceVersionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateStress(ClusterId *string, StressName *string, request *UpdateStressRequest) (_result *UpdateStressResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateStressResponse{}
+	_body, _err := client.UpdateStressWithOptions(ClusterId, StressName, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateStressWithOptions(ClusterId *string, StressName *string, request *UpdateStressRequest, headers map[string]*string, runtime *util.RuntimeOptions) (_result *UpdateStressResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	ClusterId = openapiutil.GetEncodeParam(ClusterId)
+	StressName = openapiutil.GetEncodeParam(StressName)
+	req := &openapi.OpenApiRequest{
+		Headers: headers,
+		Body:    request.Body,
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateStress"),
+		Version:     tea.String("2021-07-01"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/api/v2/stress/" + tea.StringValue(ClusterId) + "/" + tea.StringValue(StressName)),
+		Method:      tea.String("PUT"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("ROA"),
+		ReqBodyType: tea.String("json"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateStressResponse{}
 	_body, _err := client.CallApi(params, req, runtime)
 	if _err != nil {
 		return _result, _err
