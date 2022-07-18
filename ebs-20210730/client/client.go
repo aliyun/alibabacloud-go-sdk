@@ -735,8 +735,12 @@ type DescribeDiskReplicaPairsRequest struct {
 	//
 	// 默认值：10
 	MaxResults *int64 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// 查询凭证（Token）。取值为上一次调用该接口返回的NextToken参数值，初次调用接口时无需设置该参数。
+	// 查询凭证（Token）。取值为上一次调用该接口返回的NextToken参数值，初次调用接口时无需设置该参数。如果设置了NextToken，则请求参数PageSize和PageNumber将失效，且返回数据中的TotalCount无效。
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 分页查询时的页码。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 分页查询时设置的每页行数。
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// 异步复制关系ID列表。您可以指定一个或多个异步复制关系ID进行查询。格式为：pair-cn-dsa****,pair-cn-asd****。
 	//
 	// 默认值为空，表示查询当前地域下所有的异步复制关系。
@@ -744,7 +748,7 @@ type DescribeDiskReplicaPairsRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// 所属复制组id。
 	ReplicaGroupId *string `json:"ReplicaGroupId,omitempty" xml:"ReplicaGroupId,omitempty"`
-	// production或backup，表示获取本地为主站点或备站点的复制对数据，默认为production。
+	// production或backup，表示获取本地为生产站点或灾备站点的复制对数据，默认为production。
 	Site *string `json:"Site,omitempty" xml:"Site,omitempty"`
 }
 
@@ -763,6 +767,16 @@ func (s *DescribeDiskReplicaPairsRequest) SetMaxResults(v int64) *DescribeDiskRe
 
 func (s *DescribeDiskReplicaPairsRequest) SetNextToken(v string) *DescribeDiskReplicaPairsRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *DescribeDiskReplicaPairsRequest) SetPageNumber(v int32) *DescribeDiskReplicaPairsRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDiskReplicaPairsRequest) SetPageSize(v int32) *DescribeDiskReplicaPairsRequest {
+	s.PageSize = &v
 	return s
 }
 
@@ -787,10 +801,17 @@ func (s *DescribeDiskReplicaPairsRequest) SetSite(v string) *DescribeDiskReplica
 }
 
 type DescribeDiskReplicaPairsResponseBody struct {
-	NextToken    *string                                             `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 查询凭证（Token）。取值为上一次调用该接口返回的NextToken参数值，初次调用接口时无需设置该参数。如果设置了NextToken，则请求参数PageSize和PageNumber将失效，且返回数据中的TotalCount无效。
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// 参数页码。
+	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	// 参数页行数。
+	PageSize     *int32                                              `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ReplicaPairs []*DescribeDiskReplicaPairsResponseBodyReplicaPairs `json:"ReplicaPairs,omitempty" xml:"ReplicaPairs,omitempty" type:"Repeated"`
 	// Id of the request
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// 分页查询时的结果总条数。
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s DescribeDiskReplicaPairsResponseBody) String() string {
@@ -806,6 +827,16 @@ func (s *DescribeDiskReplicaPairsResponseBody) SetNextToken(v string) *DescribeD
 	return s
 }
 
+func (s *DescribeDiskReplicaPairsResponseBody) SetPageNumber(v int32) *DescribeDiskReplicaPairsResponseBody {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *DescribeDiskReplicaPairsResponseBody) SetPageSize(v int32) *DescribeDiskReplicaPairsResponseBody {
+	s.PageSize = &v
+	return s
+}
+
 func (s *DescribeDiskReplicaPairsResponseBody) SetReplicaPairs(v []*DescribeDiskReplicaPairsResponseBodyReplicaPairs) *DescribeDiskReplicaPairsResponseBody {
 	s.ReplicaPairs = v
 	return s
@@ -813,6 +844,11 @@ func (s *DescribeDiskReplicaPairsResponseBody) SetReplicaPairs(v []*DescribeDisk
 
 func (s *DescribeDiskReplicaPairsResponseBody) SetRequestId(v string) *DescribeDiskReplicaPairsResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeDiskReplicaPairsResponseBody) SetTotalCount(v int64) *DescribeDiskReplicaPairsResponseBody {
+	s.TotalCount = &v
 	return s
 }
 
@@ -2519,6 +2555,14 @@ func (client *Client) DescribeDiskReplicaPairsWithOptions(request *DescribeDiskR
 
 	if !tea.BoolValue(util.IsUnset(request.NextToken)) {
 		query["NextToken"] = request.NextToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		query["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.PairIds)) {
