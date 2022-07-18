@@ -111,6 +111,198 @@ func (s *AddDataForApiSourceResponse) SetBody(v *AddDataForApiSourceResponseBody
 	return s
 }
 
+type AttachDestinationRequest struct {
+	DestinationId *int64  `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	IsFailover    *bool   `json:"IsFailover,omitempty" xml:"IsFailover,omitempty"`
+	ParserId      *int64  `json:"ParserId,omitempty" xml:"ParserId,omitempty"`
+}
+
+func (s AttachDestinationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachDestinationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachDestinationRequest) SetDestinationId(v int64) *AttachDestinationRequest {
+	s.DestinationId = &v
+	return s
+}
+
+func (s *AttachDestinationRequest) SetIotInstanceId(v string) *AttachDestinationRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *AttachDestinationRequest) SetIsFailover(v bool) *AttachDestinationRequest {
+	s.IsFailover = &v
+	return s
+}
+
+func (s *AttachDestinationRequest) SetParserId(v int64) *AttachDestinationRequest {
+	s.ParserId = &v
+	return s
+}
+
+type AttachDestinationResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AttachDestinationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachDestinationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AttachDestinationResponseBody) SetCode(v string) *AttachDestinationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AttachDestinationResponseBody) SetErrorMessage(v string) *AttachDestinationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AttachDestinationResponseBody) SetRequestId(v string) *AttachDestinationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AttachDestinationResponseBody) SetSuccess(v bool) *AttachDestinationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AttachDestinationResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AttachDestinationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AttachDestinationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachDestinationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AttachDestinationResponse) SetHeaders(v map[string]*string) *AttachDestinationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AttachDestinationResponse) SetStatusCode(v int32) *AttachDestinationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AttachDestinationResponse) SetBody(v *AttachDestinationResponseBody) *AttachDestinationResponse {
+	s.Body = v
+	return s
+}
+
+type AttachParserDataSourceRequest struct {
+	DataSourceId  *int64  `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ParserId      *int64  `json:"ParserId,omitempty" xml:"ParserId,omitempty"`
+}
+
+func (s AttachParserDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachParserDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *AttachParserDataSourceRequest) SetDataSourceId(v int64) *AttachParserDataSourceRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *AttachParserDataSourceRequest) SetIotInstanceId(v string) *AttachParserDataSourceRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *AttachParserDataSourceRequest) SetParserId(v int64) *AttachParserDataSourceRequest {
+	s.ParserId = &v
+	return s
+}
+
+type AttachParserDataSourceResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s AttachParserDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachParserDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *AttachParserDataSourceResponseBody) SetCode(v string) *AttachParserDataSourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *AttachParserDataSourceResponseBody) SetErrorMessage(v string) *AttachParserDataSourceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *AttachParserDataSourceResponseBody) SetRequestId(v string) *AttachParserDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *AttachParserDataSourceResponseBody) SetSuccess(v bool) *AttachParserDataSourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type AttachParserDataSourceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *AttachParserDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s AttachParserDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s AttachParserDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *AttachParserDataSourceResponse) SetHeaders(v map[string]*string) *AttachParserDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *AttachParserDataSourceResponse) SetStatusCode(v int32) *AttachParserDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *AttachParserDataSourceResponse) SetBody(v *AttachParserDataSourceResponseBody) *AttachParserDataSourceResponse {
+	s.Body = v
+	return s
+}
+
 type BatchAddDataForApiSourceRequest struct {
 	ApiId         *string                `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	ContentList   map[string]interface{} `json:"ContentList,omitempty" xml:"ContentList,omitempty"`
@@ -6643,7 +6835,10 @@ func (s *CreateDataAPIServiceResponse) SetBody(v *CreateDataAPIServiceResponseBo
 
 type CreateDataSourceItemRequest struct {
 	DataSourceId  *int64  `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ProductKey    *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	ScopeType     *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
 	Topic         *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
@@ -6660,8 +6855,23 @@ func (s *CreateDataSourceItemRequest) SetDataSourceId(v int64) *CreateDataSource
 	return s
 }
 
+func (s *CreateDataSourceItemRequest) SetDeviceName(v string) *CreateDataSourceItemRequest {
+	s.DeviceName = &v
+	return s
+}
+
 func (s *CreateDataSourceItemRequest) SetIotInstanceId(v string) *CreateDataSourceItemRequest {
 	s.IotInstanceId = &v
+	return s
+}
+
+func (s *CreateDataSourceItemRequest) SetProductKey(v string) *CreateDataSourceItemRequest {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *CreateDataSourceItemRequest) SetScopeType(v string) *CreateDataSourceItemRequest {
+	s.ScopeType = &v
 	return s
 }
 
@@ -6730,6 +6940,164 @@ func (s *CreateDataSourceItemResponse) SetStatusCode(v int32) *CreateDataSourceI
 }
 
 func (s *CreateDataSourceItemResponse) SetBody(v *CreateDataSourceItemResponseBody) *CreateDataSourceItemResponse {
+	s.Body = v
+	return s
+}
+
+type CreateDestinationRequest struct {
+	Configuration *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s CreateDestinationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDestinationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDestinationRequest) SetConfiguration(v string) *CreateDestinationRequest {
+	s.Configuration = &v
+	return s
+}
+
+func (s *CreateDestinationRequest) SetDescription(v string) *CreateDestinationRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateDestinationRequest) SetIotInstanceId(v string) *CreateDestinationRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *CreateDestinationRequest) SetName(v string) *CreateDestinationRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDestinationRequest) SetType(v string) *CreateDestinationRequest {
+	s.Type = &v
+	return s
+}
+
+type CreateDestinationResponseBody struct {
+	Code         *string                                   `json:"Code,omitempty" xml:"Code,omitempty"`
+	Destination  *CreateDestinationResponseBodyDestination `json:"Destination,omitempty" xml:"Destination,omitempty" type:"Struct"`
+	ErrorMessage *string                                   `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                     `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateDestinationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDestinationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDestinationResponseBody) SetCode(v string) *CreateDestinationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateDestinationResponseBody) SetDestination(v *CreateDestinationResponseBodyDestination) *CreateDestinationResponseBody {
+	s.Destination = v
+	return s
+}
+
+func (s *CreateDestinationResponseBody) SetErrorMessage(v string) *CreateDestinationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateDestinationResponseBody) SetRequestId(v string) *CreateDestinationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateDestinationResponseBody) SetSuccess(v bool) *CreateDestinationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateDestinationResponseBodyDestination struct {
+	Configuration *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	DestinationId *int64  `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
+	IsFailover    *bool   `json:"IsFailover,omitempty" xml:"IsFailover,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UtcCreated    *string `json:"UtcCreated,omitempty" xml:"UtcCreated,omitempty"`
+}
+
+func (s CreateDestinationResponseBodyDestination) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDestinationResponseBodyDestination) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDestinationResponseBodyDestination) SetConfiguration(v string) *CreateDestinationResponseBodyDestination {
+	s.Configuration = &v
+	return s
+}
+
+func (s *CreateDestinationResponseBodyDestination) SetDestinationId(v int64) *CreateDestinationResponseBodyDestination {
+	s.DestinationId = &v
+	return s
+}
+
+func (s *CreateDestinationResponseBodyDestination) SetIsFailover(v bool) *CreateDestinationResponseBodyDestination {
+	s.IsFailover = &v
+	return s
+}
+
+func (s *CreateDestinationResponseBodyDestination) SetName(v string) *CreateDestinationResponseBodyDestination {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateDestinationResponseBodyDestination) SetType(v string) *CreateDestinationResponseBodyDestination {
+	s.Type = &v
+	return s
+}
+
+func (s *CreateDestinationResponseBodyDestination) SetUtcCreated(v string) *CreateDestinationResponseBodyDestination {
+	s.UtcCreated = &v
+	return s
+}
+
+type CreateDestinationResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateDestinationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateDestinationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateDestinationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDestinationResponse) SetHeaders(v map[string]*string) *CreateDestinationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateDestinationResponse) SetStatusCode(v int32) *CreateDestinationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateDestinationResponse) SetBody(v *CreateDestinationResponseBody) *CreateDestinationResponse {
 	s.Body = v
 	return s
 }
@@ -9520,6 +9888,239 @@ func (s *CreateOTAVerifyJobResponse) SetBody(v *CreateOTAVerifyJobResponseBody) 
 	return s
 }
 
+type CreateParserRequest struct {
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateParserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateParserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateParserRequest) SetDescription(v string) *CreateParserRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateParserRequest) SetIotInstanceId(v string) *CreateParserRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *CreateParserRequest) SetName(v string) *CreateParserRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateParserResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	ParserId     *int64  `json:"ParserId,omitempty" xml:"ParserId,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateParserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateParserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateParserResponseBody) SetCode(v string) *CreateParserResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateParserResponseBody) SetErrorMessage(v string) *CreateParserResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateParserResponseBody) SetParserId(v int64) *CreateParserResponseBody {
+	s.ParserId = &v
+	return s
+}
+
+func (s *CreateParserResponseBody) SetRequestId(v string) *CreateParserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateParserResponseBody) SetSuccess(v bool) *CreateParserResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateParserResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateParserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateParserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateParserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateParserResponse) SetHeaders(v map[string]*string) *CreateParserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateParserResponse) SetStatusCode(v int32) *CreateParserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateParserResponse) SetBody(v *CreateParserResponseBody) *CreateParserResponse {
+	s.Body = v
+	return s
+}
+
+type CreateParserDataSourceRequest struct {
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s CreateParserDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateParserDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateParserDataSourceRequest) SetDescription(v string) *CreateParserDataSourceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateParserDataSourceRequest) SetIotInstanceId(v string) *CreateParserDataSourceRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *CreateParserDataSourceRequest) SetName(v string) *CreateParserDataSourceRequest {
+	s.Name = &v
+	return s
+}
+
+type CreateParserDataSourceResponseBody struct {
+	Code         *string                                       `json:"Code,omitempty" xml:"Code,omitempty"`
+	DataSource   *CreateParserDataSourceResponseBodyDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	ErrorMessage *string                                       `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                         `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s CreateParserDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateParserDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateParserDataSourceResponseBody) SetCode(v string) *CreateParserDataSourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *CreateParserDataSourceResponseBody) SetDataSource(v *CreateParserDataSourceResponseBodyDataSource) *CreateParserDataSourceResponseBody {
+	s.DataSource = v
+	return s
+}
+
+func (s *CreateParserDataSourceResponseBody) SetErrorMessage(v string) *CreateParserDataSourceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *CreateParserDataSourceResponseBody) SetRequestId(v string) *CreateParserDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateParserDataSourceResponseBody) SetSuccess(v bool) *CreateParserDataSourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type CreateParserDataSourceResponseBodyDataSource struct {
+	DataSourceId *int64  `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	UtcCreated   *string `json:"UtcCreated,omitempty" xml:"UtcCreated,omitempty"`
+}
+
+func (s CreateParserDataSourceResponseBodyDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateParserDataSourceResponseBodyDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *CreateParserDataSourceResponseBodyDataSource) SetDataSourceId(v int64) *CreateParserDataSourceResponseBodyDataSource {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *CreateParserDataSourceResponseBodyDataSource) SetDescription(v string) *CreateParserDataSourceResponseBodyDataSource {
+	s.Description = &v
+	return s
+}
+
+func (s *CreateParserDataSourceResponseBodyDataSource) SetName(v string) *CreateParserDataSourceResponseBodyDataSource {
+	s.Name = &v
+	return s
+}
+
+func (s *CreateParserDataSourceResponseBodyDataSource) SetUtcCreated(v string) *CreateParserDataSourceResponseBodyDataSource {
+	s.UtcCreated = &v
+	return s
+}
+
+type CreateParserDataSourceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateParserDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateParserDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateParserDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateParserDataSourceResponse) SetHeaders(v map[string]*string) *CreateParserDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateParserDataSourceResponse) SetStatusCode(v int32) *CreateParserDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateParserDataSourceResponse) SetBody(v *CreateParserDataSourceResponseBody) *CreateParserDataSourceResponse {
+	s.Body = v
+	return s
+}
+
 type CreateProductRequest struct {
 	AliyunCommodityCode *string `json:"AliyunCommodityCode,omitempty" xml:"AliyunCommodityCode,omitempty"`
 	AuthType            *string `json:"AuthType,omitempty" xml:"AuthType,omitempty"`
@@ -12105,6 +12706,186 @@ func (s *DeleteConsumerGroupSubscribeRelationResponse) SetBody(v *DeleteConsumer
 	return s
 }
 
+type DeleteDataSourceItemRequest struct {
+	DataSourceId     *int64  `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	DataSourceItemId *int64  `json:"DataSourceItemId,omitempty" xml:"DataSourceItemId,omitempty"`
+	IotInstanceId    *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+}
+
+func (s DeleteDataSourceItemRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataSourceItemRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataSourceItemRequest) SetDataSourceId(v int64) *DeleteDataSourceItemRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *DeleteDataSourceItemRequest) SetDataSourceItemId(v int64) *DeleteDataSourceItemRequest {
+	s.DataSourceItemId = &v
+	return s
+}
+
+func (s *DeleteDataSourceItemRequest) SetIotInstanceId(v string) *DeleteDataSourceItemRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+type DeleteDataSourceItemResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDataSourceItemResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataSourceItemResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataSourceItemResponseBody) SetCode(v string) *DeleteDataSourceItemResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDataSourceItemResponseBody) SetErrorMessage(v string) *DeleteDataSourceItemResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteDataSourceItemResponseBody) SetRequestId(v string) *DeleteDataSourceItemResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDataSourceItemResponseBody) SetSuccess(v bool) *DeleteDataSourceItemResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDataSourceItemResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDataSourceItemResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDataSourceItemResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDataSourceItemResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDataSourceItemResponse) SetHeaders(v map[string]*string) *DeleteDataSourceItemResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDataSourceItemResponse) SetStatusCode(v int32) *DeleteDataSourceItemResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDataSourceItemResponse) SetBody(v *DeleteDataSourceItemResponseBody) *DeleteDataSourceItemResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteDestinationRequest struct {
+	DestinationId *int64  `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+}
+
+func (s DeleteDestinationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDestinationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDestinationRequest) SetDestinationId(v int64) *DeleteDestinationRequest {
+	s.DestinationId = &v
+	return s
+}
+
+func (s *DeleteDestinationRequest) SetIotInstanceId(v string) *DeleteDestinationRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+type DeleteDestinationResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteDestinationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDestinationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDestinationResponseBody) SetCode(v string) *DeleteDestinationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteDestinationResponseBody) SetErrorMessage(v string) *DeleteDestinationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteDestinationResponseBody) SetRequestId(v string) *DeleteDestinationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteDestinationResponseBody) SetSuccess(v bool) *DeleteDestinationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteDestinationResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteDestinationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteDestinationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteDestinationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteDestinationResponse) SetHeaders(v map[string]*string) *DeleteDestinationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteDestinationResponse) SetStatusCode(v int32) *DeleteDestinationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteDestinationResponse) SetBody(v *DeleteDestinationResponseBody) *DeleteDestinationResponse {
+	s.Body = v
+	return s
+}
+
 type DeleteDeviceRequest struct {
 	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
@@ -13495,6 +14276,180 @@ func (s *DeleteOTAModuleResponse) SetStatusCode(v int32) *DeleteOTAModuleRespons
 }
 
 func (s *DeleteOTAModuleResponse) SetBody(v *DeleteOTAModuleResponseBody) *DeleteOTAModuleResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteParserRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ParserId      *int64  `json:"ParserId,omitempty" xml:"ParserId,omitempty"`
+}
+
+func (s DeleteParserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteParserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteParserRequest) SetIotInstanceId(v string) *DeleteParserRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *DeleteParserRequest) SetParserId(v int64) *DeleteParserRequest {
+	s.ParserId = &v
+	return s
+}
+
+type DeleteParserResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteParserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteParserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteParserResponseBody) SetCode(v string) *DeleteParserResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteParserResponseBody) SetErrorMessage(v string) *DeleteParserResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteParserResponseBody) SetRequestId(v string) *DeleteParserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteParserResponseBody) SetSuccess(v bool) *DeleteParserResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteParserResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteParserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteParserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteParserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteParserResponse) SetHeaders(v map[string]*string) *DeleteParserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteParserResponse) SetStatusCode(v int32) *DeleteParserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteParserResponse) SetBody(v *DeleteParserResponseBody) *DeleteParserResponse {
+	s.Body = v
+	return s
+}
+
+type DeleteParserDataSourceRequest struct {
+	DataSourceId  *int64  `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+}
+
+func (s DeleteParserDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteParserDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteParserDataSourceRequest) SetDataSourceId(v int64) *DeleteParserDataSourceRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *DeleteParserDataSourceRequest) SetIotInstanceId(v string) *DeleteParserDataSourceRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+type DeleteParserDataSourceResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DeleteParserDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteParserDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteParserDataSourceResponseBody) SetCode(v string) *DeleteParserDataSourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DeleteParserDataSourceResponseBody) SetErrorMessage(v string) *DeleteParserDataSourceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DeleteParserDataSourceResponseBody) SetRequestId(v string) *DeleteParserDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DeleteParserDataSourceResponseBody) SetSuccess(v bool) *DeleteParserDataSourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DeleteParserDataSourceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DeleteParserDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DeleteParserDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DeleteParserDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DeleteParserDataSourceResponse) SetHeaders(v map[string]*string) *DeleteParserDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DeleteParserDataSourceResponse) SetStatusCode(v int32) *DeleteParserDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DeleteParserDataSourceResponse) SetBody(v *DeleteParserDataSourceResponseBody) *DeleteParserDataSourceResponse {
 	s.Body = v
 	return s
 }
@@ -14895,6 +15850,192 @@ func (s *DeleteTopicRouteTableResponse) SetStatusCode(v int32) *DeleteTopicRoute
 }
 
 func (s *DeleteTopicRouteTableResponse) SetBody(v *DeleteTopicRouteTableResponseBody) *DeleteTopicRouteTableResponse {
+	s.Body = v
+	return s
+}
+
+type DetachDestinationRequest struct {
+	DestinationId *int64  `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ParserId      *int64  `json:"ParserId,omitempty" xml:"ParserId,omitempty"`
+}
+
+func (s DetachDestinationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachDestinationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachDestinationRequest) SetDestinationId(v int64) *DetachDestinationRequest {
+	s.DestinationId = &v
+	return s
+}
+
+func (s *DetachDestinationRequest) SetIotInstanceId(v string) *DetachDestinationRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *DetachDestinationRequest) SetParserId(v int64) *DetachDestinationRequest {
+	s.ParserId = &v
+	return s
+}
+
+type DetachDestinationResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DetachDestinationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachDestinationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetachDestinationResponseBody) SetCode(v string) *DetachDestinationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DetachDestinationResponseBody) SetErrorMessage(v string) *DetachDestinationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DetachDestinationResponseBody) SetRequestId(v string) *DetachDestinationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DetachDestinationResponseBody) SetSuccess(v bool) *DetachDestinationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DetachDestinationResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetachDestinationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetachDestinationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachDestinationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetachDestinationResponse) SetHeaders(v map[string]*string) *DetachDestinationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetachDestinationResponse) SetStatusCode(v int32) *DetachDestinationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetachDestinationResponse) SetBody(v *DetachDestinationResponseBody) *DetachDestinationResponse {
+	s.Body = v
+	return s
+}
+
+type DetachParserDataSourceRequest struct {
+	DataSourceId  *int64  `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ParserId      *int64  `json:"ParserId,omitempty" xml:"ParserId,omitempty"`
+}
+
+func (s DetachParserDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachParserDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetachParserDataSourceRequest) SetDataSourceId(v int64) *DetachParserDataSourceRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *DetachParserDataSourceRequest) SetIotInstanceId(v string) *DetachParserDataSourceRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *DetachParserDataSourceRequest) SetParserId(v int64) *DetachParserDataSourceRequest {
+	s.ParserId = &v
+	return s
+}
+
+type DetachParserDataSourceResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s DetachParserDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachParserDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetachParserDataSourceResponseBody) SetCode(v string) *DetachParserDataSourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *DetachParserDataSourceResponseBody) SetErrorMessage(v string) *DetachParserDataSourceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DetachParserDataSourceResponseBody) SetRequestId(v string) *DetachParserDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *DetachParserDataSourceResponseBody) SetSuccess(v bool) *DetachParserDataSourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type DetachParserDataSourceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetachParserDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetachParserDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetachParserDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetachParserDataSourceResponse) SetHeaders(v map[string]*string) *DetachParserDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetachParserDataSourceResponse) SetStatusCode(v int32) *DetachParserDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetachParserDataSourceResponse) SetBody(v *DetachParserDataSourceResponseBody) *DetachParserDataSourceResponse {
 	s.Body = v
 	return s
 }
@@ -16410,6 +17551,146 @@ func (s *GetDataAPIServiceDetailResponse) SetStatusCode(v int32) *GetDataAPIServ
 }
 
 func (s *GetDataAPIServiceDetailResponse) SetBody(v *GetDataAPIServiceDetailResponseBody) *GetDataAPIServiceDetailResponse {
+	s.Body = v
+	return s
+}
+
+type GetDestinationRequest struct {
+	DestinationId *int64  `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+}
+
+func (s GetDestinationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDestinationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetDestinationRequest) SetDestinationId(v int64) *GetDestinationRequest {
+	s.DestinationId = &v
+	return s
+}
+
+func (s *GetDestinationRequest) SetIotInstanceId(v string) *GetDestinationRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+type GetDestinationResponseBody struct {
+	Code         *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Destination  *GetDestinationResponseBodyDestination `json:"Destination,omitempty" xml:"Destination,omitempty" type:"Struct"`
+	ErrorMessage *string                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetDestinationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDestinationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetDestinationResponseBody) SetCode(v string) *GetDestinationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetDestinationResponseBody) SetDestination(v *GetDestinationResponseBodyDestination) *GetDestinationResponseBody {
+	s.Destination = v
+	return s
+}
+
+func (s *GetDestinationResponseBody) SetErrorMessage(v string) *GetDestinationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetDestinationResponseBody) SetRequestId(v string) *GetDestinationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetDestinationResponseBody) SetSuccess(v bool) *GetDestinationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetDestinationResponseBodyDestination struct {
+	Configuration *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	DestinationId *string `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
+	IsFailover    *bool   `json:"IsFailover,omitempty" xml:"IsFailover,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UtcCreated    *string `json:"UtcCreated,omitempty" xml:"UtcCreated,omitempty"`
+}
+
+func (s GetDestinationResponseBodyDestination) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDestinationResponseBodyDestination) GoString() string {
+	return s.String()
+}
+
+func (s *GetDestinationResponseBodyDestination) SetConfiguration(v string) *GetDestinationResponseBodyDestination {
+	s.Configuration = &v
+	return s
+}
+
+func (s *GetDestinationResponseBodyDestination) SetDestinationId(v string) *GetDestinationResponseBodyDestination {
+	s.DestinationId = &v
+	return s
+}
+
+func (s *GetDestinationResponseBodyDestination) SetIsFailover(v bool) *GetDestinationResponseBodyDestination {
+	s.IsFailover = &v
+	return s
+}
+
+func (s *GetDestinationResponseBodyDestination) SetName(v string) *GetDestinationResponseBodyDestination {
+	s.Name = &v
+	return s
+}
+
+func (s *GetDestinationResponseBodyDestination) SetType(v string) *GetDestinationResponseBodyDestination {
+	s.Type = &v
+	return s
+}
+
+func (s *GetDestinationResponseBodyDestination) SetUtcCreated(v string) *GetDestinationResponseBodyDestination {
+	s.UtcCreated = &v
+	return s
+}
+
+type GetDestinationResponse struct {
+	Headers    map[string]*string          `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                      `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetDestinationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetDestinationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetDestinationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetDestinationResponse) SetHeaders(v map[string]*string) *GetDestinationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetDestinationResponse) SetStatusCode(v int32) *GetDestinationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetDestinationResponse) SetBody(v *GetDestinationResponseBody) *GetDestinationResponse {
 	s.Body = v
 	return s
 }
@@ -18175,6 +19456,298 @@ func (s *GetLoraNodesTaskResponse) SetStatusCode(v int32) *GetLoraNodesTaskRespo
 }
 
 func (s *GetLoraNodesTaskResponse) SetBody(v *GetLoraNodesTaskResponseBody) *GetLoraNodesTaskResponse {
+	s.Body = v
+	return s
+}
+
+type GetParserRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ParserId      *int64  `json:"ParserId,omitempty" xml:"ParserId,omitempty"`
+}
+
+func (s GetParserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetParserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetParserRequest) SetIotInstanceId(v string) *GetParserRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *GetParserRequest) SetParserId(v int64) *GetParserRequest {
+	s.ParserId = &v
+	return s
+}
+
+type GetParserResponseBody struct {
+	Code         *string                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *GetParserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetParserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetParserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetParserResponseBody) SetCode(v string) *GetParserResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetParserResponseBody) SetData(v *GetParserResponseBodyData) *GetParserResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *GetParserResponseBody) SetErrorMessage(v string) *GetParserResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetParserResponseBody) SetRequestId(v string) *GetParserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetParserResponseBody) SetSuccess(v bool) *GetParserResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetParserResponseBodyData struct {
+	DataSourceId *int64  `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParserId     *int64  `json:"ParserId,omitempty" xml:"ParserId,omitempty"`
+	Script       *string `json:"Script,omitempty" xml:"Script,omitempty"`
+	ScriptDraft  *string `json:"ScriptDraft,omitempty" xml:"ScriptDraft,omitempty"`
+	Status       *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UtcCreated   *string `json:"UtcCreated,omitempty" xml:"UtcCreated,omitempty"`
+	UtcModified  *string `json:"UtcModified,omitempty" xml:"UtcModified,omitempty"`
+}
+
+func (s GetParserResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetParserResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *GetParserResponseBodyData) SetDataSourceId(v int64) *GetParserResponseBodyData {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *GetParserResponseBodyData) SetDescription(v string) *GetParserResponseBodyData {
+	s.Description = &v
+	return s
+}
+
+func (s *GetParserResponseBodyData) SetName(v string) *GetParserResponseBodyData {
+	s.Name = &v
+	return s
+}
+
+func (s *GetParserResponseBodyData) SetParserId(v int64) *GetParserResponseBodyData {
+	s.ParserId = &v
+	return s
+}
+
+func (s *GetParserResponseBodyData) SetScript(v string) *GetParserResponseBodyData {
+	s.Script = &v
+	return s
+}
+
+func (s *GetParserResponseBodyData) SetScriptDraft(v string) *GetParserResponseBodyData {
+	s.ScriptDraft = &v
+	return s
+}
+
+func (s *GetParserResponseBodyData) SetStatus(v string) *GetParserResponseBodyData {
+	s.Status = &v
+	return s
+}
+
+func (s *GetParserResponseBodyData) SetUtcCreated(v string) *GetParserResponseBodyData {
+	s.UtcCreated = &v
+	return s
+}
+
+func (s *GetParserResponseBodyData) SetUtcModified(v string) *GetParserResponseBodyData {
+	s.UtcModified = &v
+	return s
+}
+
+type GetParserResponse struct {
+	Headers    map[string]*string     `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                 `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetParserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetParserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetParserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetParserResponse) SetHeaders(v map[string]*string) *GetParserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetParserResponse) SetStatusCode(v int32) *GetParserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetParserResponse) SetBody(v *GetParserResponseBody) *GetParserResponse {
+	s.Body = v
+	return s
+}
+
+type GetParserDataSourceRequest struct {
+	DataSourceId  *int64  `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+}
+
+func (s GetParserDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetParserDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *GetParserDataSourceRequest) SetDataSourceId(v int64) *GetParserDataSourceRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *GetParserDataSourceRequest) SetIotInstanceId(v string) *GetParserDataSourceRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+type GetParserDataSourceResponseBody struct {
+	Code         *string                                    `json:"Code,omitempty" xml:"Code,omitempty"`
+	DataSource   *GetParserDataSourceResponseBodyDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Struct"`
+	ErrorMessage *string                                    `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                      `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s GetParserDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetParserDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *GetParserDataSourceResponseBody) SetCode(v string) *GetParserDataSourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *GetParserDataSourceResponseBody) SetDataSource(v *GetParserDataSourceResponseBodyDataSource) *GetParserDataSourceResponseBody {
+	s.DataSource = v
+	return s
+}
+
+func (s *GetParserDataSourceResponseBody) SetErrorMessage(v string) *GetParserDataSourceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *GetParserDataSourceResponseBody) SetRequestId(v string) *GetParserDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *GetParserDataSourceResponseBody) SetSuccess(v bool) *GetParserDataSourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type GetParserDataSourceResponseBodyDataSource struct {
+	CreateUserId *int64  `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
+	DataSourceId *int64  `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	UtcCreated   *string `json:"UtcCreated,omitempty" xml:"UtcCreated,omitempty"`
+}
+
+func (s GetParserDataSourceResponseBodyDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetParserDataSourceResponseBodyDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *GetParserDataSourceResponseBodyDataSource) SetCreateUserId(v int64) *GetParserDataSourceResponseBodyDataSource {
+	s.CreateUserId = &v
+	return s
+}
+
+func (s *GetParserDataSourceResponseBodyDataSource) SetDataSourceId(v int64) *GetParserDataSourceResponseBodyDataSource {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *GetParserDataSourceResponseBodyDataSource) SetDescription(v string) *GetParserDataSourceResponseBodyDataSource {
+	s.Description = &v
+	return s
+}
+
+func (s *GetParserDataSourceResponseBodyDataSource) SetName(v string) *GetParserDataSourceResponseBodyDataSource {
+	s.Name = &v
+	return s
+}
+
+func (s *GetParserDataSourceResponseBodyDataSource) SetUtcCreated(v string) *GetParserDataSourceResponseBodyDataSource {
+	s.UtcCreated = &v
+	return s
+}
+
+type GetParserDataSourceResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *GetParserDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s GetParserDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s GetParserDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *GetParserDataSourceResponse) SetHeaders(v map[string]*string) *GetParserDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *GetParserDataSourceResponse) SetStatusCode(v int32) *GetParserDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *GetParserDataSourceResponse) SetBody(v *GetParserDataSourceResponseBody) *GetParserDataSourceResponse {
 	s.Body = v
 	return s
 }
@@ -21483,6 +23056,9 @@ func (s *ListDataSourceItemResponseBodyDataSourceItems) SetDataSourceItem(v []*L
 
 type ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem struct {
 	DataSourceItemId *int64  `json:"DataSourceItemId,omitempty" xml:"DataSourceItemId,omitempty"`
+	DeviceName       *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
+	ProductKey       *string `json:"ProductKey,omitempty" xml:"ProductKey,omitempty"`
+	ScopeType        *string `json:"ScopeType,omitempty" xml:"ScopeType,omitempty"`
 	Topic            *string `json:"Topic,omitempty" xml:"Topic,omitempty"`
 }
 
@@ -21496,6 +23072,21 @@ func (s ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem) GoString() 
 
 func (s *ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem) SetDataSourceItemId(v int64) *ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem {
 	s.DataSourceItemId = &v
+	return s
+}
+
+func (s *ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem) SetDeviceName(v string) *ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem {
+	s.DeviceName = &v
+	return s
+}
+
+func (s *ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem) SetProductKey(v string) *ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem {
+	s.ProductKey = &v
+	return s
+}
+
+func (s *ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem) SetScopeType(v string) *ListDataSourceItemResponseBodyDataSourceItemsDataSourceItem {
+	s.ScopeType = &v
 	return s
 }
 
@@ -21529,6 +23120,205 @@ func (s *ListDataSourceItemResponse) SetStatusCode(v int32) *ListDataSourceItemR
 }
 
 func (s *ListDataSourceItemResponse) SetBody(v *ListDataSourceItemResponseBody) *ListDataSourceItemResponse {
+	s.Body = v
+	return s
+}
+
+type ListDestinationRequest struct {
+	IotInstanceId *string   `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Page          *int32    `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize      *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchName    *string   `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+	Types         []*string `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
+}
+
+func (s ListDestinationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDestinationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListDestinationRequest) SetIotInstanceId(v string) *ListDestinationRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *ListDestinationRequest) SetPage(v int32) *ListDestinationRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListDestinationRequest) SetPageSize(v int32) *ListDestinationRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDestinationRequest) SetSearchName(v string) *ListDestinationRequest {
+	s.SearchName = &v
+	return s
+}
+
+func (s *ListDestinationRequest) SetTypes(v []*string) *ListDestinationRequest {
+	s.Types = v
+	return s
+}
+
+type ListDestinationResponseBody struct {
+	Code         *string                                  `json:"Code,omitempty" xml:"Code,omitempty"`
+	Destinations *ListDestinationResponseBodyDestinations `json:"Destinations,omitempty" xml:"Destinations,omitempty" type:"Struct"`
+	ErrorMessage *string                                  `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Page         *int32                                   `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize     *int32                                   `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                                  `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                    `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total        *int32                                   `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListDestinationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDestinationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListDestinationResponseBody) SetCode(v string) *ListDestinationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListDestinationResponseBody) SetDestinations(v *ListDestinationResponseBodyDestinations) *ListDestinationResponseBody {
+	s.Destinations = v
+	return s
+}
+
+func (s *ListDestinationResponseBody) SetErrorMessage(v string) *ListDestinationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListDestinationResponseBody) SetPage(v int32) *ListDestinationResponseBody {
+	s.Page = &v
+	return s
+}
+
+func (s *ListDestinationResponseBody) SetPageSize(v int32) *ListDestinationResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListDestinationResponseBody) SetRequestId(v string) *ListDestinationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListDestinationResponseBody) SetSuccess(v bool) *ListDestinationResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListDestinationResponseBody) SetTotal(v int32) *ListDestinationResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListDestinationResponseBodyDestinations struct {
+	Destinations []*ListDestinationResponseBodyDestinationsDestinations `json:"destinations,omitempty" xml:"destinations,omitempty" type:"Repeated"`
+}
+
+func (s ListDestinationResponseBodyDestinations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDestinationResponseBodyDestinations) GoString() string {
+	return s.String()
+}
+
+func (s *ListDestinationResponseBodyDestinations) SetDestinations(v []*ListDestinationResponseBodyDestinationsDestinations) *ListDestinationResponseBodyDestinations {
+	s.Destinations = v
+	return s
+}
+
+type ListDestinationResponseBodyDestinationsDestinations struct {
+	Configuration *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestinationId *int64  `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
+	IsFailover    *bool   `json:"IsFailover,omitempty" xml:"IsFailover,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UtcCreated    *string `json:"UtcCreated,omitempty" xml:"UtcCreated,omitempty"`
+}
+
+func (s ListDestinationResponseBodyDestinationsDestinations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDestinationResponseBodyDestinationsDestinations) GoString() string {
+	return s.String()
+}
+
+func (s *ListDestinationResponseBodyDestinationsDestinations) SetConfiguration(v string) *ListDestinationResponseBodyDestinationsDestinations {
+	s.Configuration = &v
+	return s
+}
+
+func (s *ListDestinationResponseBodyDestinationsDestinations) SetDescription(v string) *ListDestinationResponseBodyDestinationsDestinations {
+	s.Description = &v
+	return s
+}
+
+func (s *ListDestinationResponseBodyDestinationsDestinations) SetDestinationId(v int64) *ListDestinationResponseBodyDestinationsDestinations {
+	s.DestinationId = &v
+	return s
+}
+
+func (s *ListDestinationResponseBodyDestinationsDestinations) SetIsFailover(v bool) *ListDestinationResponseBodyDestinationsDestinations {
+	s.IsFailover = &v
+	return s
+}
+
+func (s *ListDestinationResponseBodyDestinationsDestinations) SetName(v string) *ListDestinationResponseBodyDestinationsDestinations {
+	s.Name = &v
+	return s
+}
+
+func (s *ListDestinationResponseBodyDestinationsDestinations) SetType(v string) *ListDestinationResponseBodyDestinationsDestinations {
+	s.Type = &v
+	return s
+}
+
+func (s *ListDestinationResponseBodyDestinationsDestinations) SetUtcCreated(v string) *ListDestinationResponseBodyDestinationsDestinations {
+	s.UtcCreated = &v
+	return s
+}
+
+type ListDestinationResponse struct {
+	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListDestinationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListDestinationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListDestinationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListDestinationResponse) SetHeaders(v map[string]*string) *ListDestinationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListDestinationResponse) SetStatusCode(v int32) *ListDestinationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListDestinationResponse) SetBody(v *ListDestinationResponseBody) *ListDestinationResponse {
 	s.Body = v
 	return s
 }
@@ -24134,6 +25924,525 @@ func (s *ListOTAUnfinishedTaskByDeviceResponse) SetBody(v *ListOTAUnfinishedTask
 	return s
 }
 
+type ListParserRequest struct {
+	CurrentPage   *int32  `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchName    *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+}
+
+func (s ListParserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListParserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListParserRequest) SetCurrentPage(v int32) *ListParserRequest {
+	s.CurrentPage = &v
+	return s
+}
+
+func (s *ListParserRequest) SetIotInstanceId(v string) *ListParserRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *ListParserRequest) SetPageSize(v int32) *ListParserRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListParserRequest) SetSearchName(v string) *ListParserRequest {
+	s.SearchName = &v
+	return s
+}
+
+type ListParserResponseBody struct {
+	Code         *string                     `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *ListParserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                     `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                       `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total        *int32                      `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListParserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListParserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListParserResponseBody) SetCode(v string) *ListParserResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListParserResponseBody) SetData(v *ListParserResponseBodyData) *ListParserResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListParserResponseBody) SetErrorMessage(v string) *ListParserResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListParserResponseBody) SetRequestId(v string) *ListParserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListParserResponseBody) SetSuccess(v bool) *ListParserResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListParserResponseBody) SetTotal(v int32) *ListParserResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListParserResponseBodyData struct {
+	ParserList []*ListParserResponseBodyDataParserList `json:"ParserList,omitempty" xml:"ParserList,omitempty" type:"Repeated"`
+}
+
+func (s ListParserResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListParserResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListParserResponseBodyData) SetParserList(v []*ListParserResponseBodyDataParserList) *ListParserResponseBodyData {
+	s.ParserList = v
+	return s
+}
+
+type ListParserResponseBodyDataParserList struct {
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name        *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParserId    *int64  `json:"ParserId,omitempty" xml:"ParserId,omitempty"`
+	Status      *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	UtcCreated  *string `json:"UtcCreated,omitempty" xml:"UtcCreated,omitempty"`
+	UtcModified *string `json:"UtcModified,omitempty" xml:"UtcModified,omitempty"`
+}
+
+func (s ListParserResponseBodyDataParserList) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListParserResponseBodyDataParserList) GoString() string {
+	return s.String()
+}
+
+func (s *ListParserResponseBodyDataParserList) SetDescription(v string) *ListParserResponseBodyDataParserList {
+	s.Description = &v
+	return s
+}
+
+func (s *ListParserResponseBodyDataParserList) SetName(v string) *ListParserResponseBodyDataParserList {
+	s.Name = &v
+	return s
+}
+
+func (s *ListParserResponseBodyDataParserList) SetParserId(v int64) *ListParserResponseBodyDataParserList {
+	s.ParserId = &v
+	return s
+}
+
+func (s *ListParserResponseBodyDataParserList) SetStatus(v string) *ListParserResponseBodyDataParserList {
+	s.Status = &v
+	return s
+}
+
+func (s *ListParserResponseBodyDataParserList) SetUtcCreated(v string) *ListParserResponseBodyDataParserList {
+	s.UtcCreated = &v
+	return s
+}
+
+func (s *ListParserResponseBodyDataParserList) SetUtcModified(v string) *ListParserResponseBodyDataParserList {
+	s.UtcModified = &v
+	return s
+}
+
+type ListParserResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListParserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListParserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListParserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListParserResponse) SetHeaders(v map[string]*string) *ListParserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListParserResponse) SetStatusCode(v int32) *ListParserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListParserResponse) SetBody(v *ListParserResponseBody) *ListParserResponse {
+	s.Body = v
+	return s
+}
+
+type ListParserDataSourceRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Page          *int32  `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize      *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	SearchName    *string `json:"SearchName,omitempty" xml:"SearchName,omitempty"`
+}
+
+func (s ListParserDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListParserDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListParserDataSourceRequest) SetIotInstanceId(v string) *ListParserDataSourceRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *ListParserDataSourceRequest) SetPage(v int32) *ListParserDataSourceRequest {
+	s.Page = &v
+	return s
+}
+
+func (s *ListParserDataSourceRequest) SetPageSize(v int32) *ListParserDataSourceRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListParserDataSourceRequest) SetSearchName(v string) *ListParserDataSourceRequest {
+	s.SearchName = &v
+	return s
+}
+
+type ListParserDataSourceResponseBody struct {
+	Code         *string                               `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *ListParserDataSourceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                               `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	Page         *int32                                `json:"Page,omitempty" xml:"Page,omitempty"`
+	PageSize     *int32                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequestId    *string                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                 `json:"Success,omitempty" xml:"Success,omitempty"`
+	Total        *int32                                `json:"Total,omitempty" xml:"Total,omitempty"`
+}
+
+func (s ListParserDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListParserDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListParserDataSourceResponseBody) SetCode(v string) *ListParserDataSourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListParserDataSourceResponseBody) SetData(v *ListParserDataSourceResponseBodyData) *ListParserDataSourceResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListParserDataSourceResponseBody) SetErrorMessage(v string) *ListParserDataSourceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListParserDataSourceResponseBody) SetPage(v int32) *ListParserDataSourceResponseBody {
+	s.Page = &v
+	return s
+}
+
+func (s *ListParserDataSourceResponseBody) SetPageSize(v int32) *ListParserDataSourceResponseBody {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListParserDataSourceResponseBody) SetRequestId(v string) *ListParserDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListParserDataSourceResponseBody) SetSuccess(v bool) *ListParserDataSourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *ListParserDataSourceResponseBody) SetTotal(v int32) *ListParserDataSourceResponseBody {
+	s.Total = &v
+	return s
+}
+
+type ListParserDataSourceResponseBodyData struct {
+	DataSource []*ListParserDataSourceResponseBodyDataDataSource `json:"DataSource,omitempty" xml:"DataSource,omitempty" type:"Repeated"`
+}
+
+func (s ListParserDataSourceResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListParserDataSourceResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListParserDataSourceResponseBodyData) SetDataSource(v []*ListParserDataSourceResponseBodyDataDataSource) *ListParserDataSourceResponseBodyData {
+	s.DataSource = v
+	return s
+}
+
+type ListParserDataSourceResponseBodyDataDataSource struct {
+	DataSourceId *int64  `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	Description  *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	UtcCreated   *string `json:"UtcCreated,omitempty" xml:"UtcCreated,omitempty"`
+}
+
+func (s ListParserDataSourceResponseBodyDataDataSource) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListParserDataSourceResponseBodyDataDataSource) GoString() string {
+	return s.String()
+}
+
+func (s *ListParserDataSourceResponseBodyDataDataSource) SetDataSourceId(v int64) *ListParserDataSourceResponseBodyDataDataSource {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *ListParserDataSourceResponseBodyDataDataSource) SetDescription(v string) *ListParserDataSourceResponseBodyDataDataSource {
+	s.Description = &v
+	return s
+}
+
+func (s *ListParserDataSourceResponseBodyDataDataSource) SetName(v string) *ListParserDataSourceResponseBodyDataDataSource {
+	s.Name = &v
+	return s
+}
+
+func (s *ListParserDataSourceResponseBodyDataDataSource) SetUtcCreated(v string) *ListParserDataSourceResponseBodyDataDataSource {
+	s.UtcCreated = &v
+	return s
+}
+
+type ListParserDataSourceResponse struct {
+	Headers    map[string]*string                `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                            `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListParserDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListParserDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListParserDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListParserDataSourceResponse) SetHeaders(v map[string]*string) *ListParserDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListParserDataSourceResponse) SetStatusCode(v int32) *ListParserDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListParserDataSourceResponse) SetBody(v *ListParserDataSourceResponseBody) *ListParserDataSourceResponse {
+	s.Body = v
+	return s
+}
+
+type ListParserDestinationRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	IsFailover    *bool   `json:"IsFailover,omitempty" xml:"IsFailover,omitempty"`
+	ParserId      *int64  `json:"ParserId,omitempty" xml:"ParserId,omitempty"`
+}
+
+func (s ListParserDestinationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListParserDestinationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListParserDestinationRequest) SetIotInstanceId(v string) *ListParserDestinationRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *ListParserDestinationRequest) SetIsFailover(v bool) *ListParserDestinationRequest {
+	s.IsFailover = &v
+	return s
+}
+
+func (s *ListParserDestinationRequest) SetParserId(v int64) *ListParserDestinationRequest {
+	s.ParserId = &v
+	return s
+}
+
+type ListParserDestinationResponseBody struct {
+	Code         *string                                `json:"Code,omitempty" xml:"Code,omitempty"`
+	Data         *ListParserDestinationResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	ErrorMessage *string                                `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool                                  `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s ListParserDestinationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListParserDestinationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListParserDestinationResponseBody) SetCode(v string) *ListParserDestinationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *ListParserDestinationResponseBody) SetData(v *ListParserDestinationResponseBodyData) *ListParserDestinationResponseBody {
+	s.Data = v
+	return s
+}
+
+func (s *ListParserDestinationResponseBody) SetErrorMessage(v string) *ListParserDestinationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *ListParserDestinationResponseBody) SetRequestId(v string) *ListParserDestinationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *ListParserDestinationResponseBody) SetSuccess(v bool) *ListParserDestinationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type ListParserDestinationResponseBodyData struct {
+	Destinations []*ListParserDestinationResponseBodyDataDestinations `json:"destinations,omitempty" xml:"destinations,omitempty" type:"Repeated"`
+}
+
+func (s ListParserDestinationResponseBodyData) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListParserDestinationResponseBodyData) GoString() string {
+	return s.String()
+}
+
+func (s *ListParserDestinationResponseBodyData) SetDestinations(v []*ListParserDestinationResponseBodyDataDestinations) *ListParserDestinationResponseBodyData {
+	s.Destinations = v
+	return s
+}
+
+type ListParserDestinationResponseBodyDataDestinations struct {
+	Configuration *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	DestinationId *int64  `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
+	IsFailover    *bool   `json:"IsFailover,omitempty" xml:"IsFailover,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	UtcCreated    *string `json:"UtcCreated,omitempty" xml:"UtcCreated,omitempty"`
+	UtcModified   *string `json:"UtcModified,omitempty" xml:"UtcModified,omitempty"`
+}
+
+func (s ListParserDestinationResponseBodyDataDestinations) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListParserDestinationResponseBodyDataDestinations) GoString() string {
+	return s.String()
+}
+
+func (s *ListParserDestinationResponseBodyDataDestinations) SetConfiguration(v string) *ListParserDestinationResponseBodyDataDestinations {
+	s.Configuration = &v
+	return s
+}
+
+func (s *ListParserDestinationResponseBodyDataDestinations) SetDestinationId(v int64) *ListParserDestinationResponseBodyDataDestinations {
+	s.DestinationId = &v
+	return s
+}
+
+func (s *ListParserDestinationResponseBodyDataDestinations) SetIsFailover(v bool) *ListParserDestinationResponseBodyDataDestinations {
+	s.IsFailover = &v
+	return s
+}
+
+func (s *ListParserDestinationResponseBodyDataDestinations) SetName(v string) *ListParserDestinationResponseBodyDataDestinations {
+	s.Name = &v
+	return s
+}
+
+func (s *ListParserDestinationResponseBodyDataDestinations) SetType(v string) *ListParserDestinationResponseBodyDataDestinations {
+	s.Type = &v
+	return s
+}
+
+func (s *ListParserDestinationResponseBodyDataDestinations) SetUtcCreated(v string) *ListParserDestinationResponseBodyDataDestinations {
+	s.UtcCreated = &v
+	return s
+}
+
+func (s *ListParserDestinationResponseBodyDataDestinations) SetUtcModified(v string) *ListParserDestinationResponseBodyDataDestinations {
+	s.UtcModified = &v
+	return s
+}
+
+type ListParserDestinationResponse struct {
+	Headers    map[string]*string                 `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                             `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListParserDestinationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListParserDestinationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListParserDestinationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListParserDestinationResponse) SetHeaders(v map[string]*string) *ListParserDestinationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListParserDestinationResponse) SetStatusCode(v int32) *ListParserDestinationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListParserDestinationResponse) SetBody(v *ListParserDestinationResponseBody) *ListParserDestinationResponse {
+	s.Body = v
+	return s
+}
+
 type ListProductByTagsRequest struct {
 	CurrentPage   *int32                                `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	IotInstanceId *string                               `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
@@ -26071,6 +28380,99 @@ func (s *PubBroadcastResponse) SetStatusCode(v int32) *PubBroadcastResponse {
 }
 
 func (s *PubBroadcastResponse) SetBody(v *PubBroadcastResponseBody) *PubBroadcastResponse {
+	s.Body = v
+	return s
+}
+
+type PublishScriptRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ParserId      *int64  `json:"ParserId,omitempty" xml:"ParserId,omitempty"`
+}
+
+func (s PublishScriptRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishScriptRequest) GoString() string {
+	return s.String()
+}
+
+func (s *PublishScriptRequest) SetIotInstanceId(v string) *PublishScriptRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *PublishScriptRequest) SetParserId(v int64) *PublishScriptRequest {
+	s.ParserId = &v
+	return s
+}
+
+type PublishScriptResponseBody struct {
+	Code           *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage   *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId      *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success        *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+	SyntaxErrorMsg *string `json:"SyntaxErrorMsg,omitempty" xml:"SyntaxErrorMsg,omitempty"`
+}
+
+func (s PublishScriptResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishScriptResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *PublishScriptResponseBody) SetCode(v string) *PublishScriptResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *PublishScriptResponseBody) SetErrorMessage(v string) *PublishScriptResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *PublishScriptResponseBody) SetRequestId(v string) *PublishScriptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *PublishScriptResponseBody) SetSuccess(v bool) *PublishScriptResponseBody {
+	s.Success = &v
+	return s
+}
+
+func (s *PublishScriptResponseBody) SetSyntaxErrorMsg(v string) *PublishScriptResponseBody {
+	s.SyntaxErrorMsg = &v
+	return s
+}
+
+type PublishScriptResponse struct {
+	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *PublishScriptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s PublishScriptResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s PublishScriptResponse) GoString() string {
+	return s.String()
+}
+
+func (s *PublishScriptResponse) SetHeaders(v map[string]*string) *PublishScriptResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *PublishScriptResponse) SetStatusCode(v int32) *PublishScriptResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *PublishScriptResponse) SetBody(v *PublishScriptResponseBody) *PublishScriptResponse {
 	s.Body = v
 	return s
 }
@@ -45540,6 +47942,99 @@ func (s *SaveDevicePropResponse) SetBody(v *SaveDevicePropResponseBody) *SaveDev
 	return s
 }
 
+type SaveScriptRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ParserId      *int64  `json:"ParserId,omitempty" xml:"ParserId,omitempty"`
+	ScriptDraft   *string `json:"ScriptDraft,omitempty" xml:"ScriptDraft,omitempty"`
+}
+
+func (s SaveScriptRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveScriptRequest) GoString() string {
+	return s.String()
+}
+
+func (s *SaveScriptRequest) SetIotInstanceId(v string) *SaveScriptRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *SaveScriptRequest) SetParserId(v int64) *SaveScriptRequest {
+	s.ParserId = &v
+	return s
+}
+
+func (s *SaveScriptRequest) SetScriptDraft(v string) *SaveScriptRequest {
+	s.ScriptDraft = &v
+	return s
+}
+
+type SaveScriptResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s SaveScriptResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveScriptResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *SaveScriptResponseBody) SetCode(v string) *SaveScriptResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *SaveScriptResponseBody) SetErrorMessage(v string) *SaveScriptResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *SaveScriptResponseBody) SetRequestId(v string) *SaveScriptResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *SaveScriptResponseBody) SetSuccess(v bool) *SaveScriptResponseBody {
+	s.Success = &v
+	return s
+}
+
+type SaveScriptResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *SaveScriptResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s SaveScriptResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s SaveScriptResponse) GoString() string {
+	return s.String()
+}
+
+func (s *SaveScriptResponse) SetHeaders(v map[string]*string) *SaveScriptResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *SaveScriptResponse) SetStatusCode(v int32) *SaveScriptResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *SaveScriptResponse) SetBody(v *SaveScriptResponseBody) *SaveScriptResponse {
+	s.Body = v
+	return s
+}
+
 type SetDeviceDesiredPropertyRequest struct {
 	DeviceName    *string `json:"DeviceName,omitempty" xml:"DeviceName,omitempty"`
 	IotId         *string `json:"IotId,omitempty" xml:"IotId,omitempty"`
@@ -46875,6 +49370,93 @@ func (s *StartCpuResponse) SetBody(v *StartCpuResponseBody) *StartCpuResponse {
 	return s
 }
 
+type StartParserRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ParserId      *int64  `json:"ParserId,omitempty" xml:"ParserId,omitempty"`
+}
+
+func (s StartParserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartParserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StartParserRequest) SetIotInstanceId(v string) *StartParserRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *StartParserRequest) SetParserId(v int64) *StartParserRequest {
+	s.ParserId = &v
+	return s
+}
+
+type StartParserResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s StartParserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartParserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StartParserResponseBody) SetCode(v string) *StartParserResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StartParserResponseBody) SetErrorMessage(v string) *StartParserResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *StartParserResponseBody) SetRequestId(v string) *StartParserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StartParserResponseBody) SetSuccess(v bool) *StartParserResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StartParserResponse struct {
+	Headers    map[string]*string       `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                   `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StartParserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StartParserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StartParserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StartParserResponse) SetHeaders(v map[string]*string) *StartParserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StartParserResponse) SetStatusCode(v int32) *StartParserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StartParserResponse) SetBody(v *StartParserResponseBody) *StartParserResponse {
+	s.Body = v
+	return s
+}
+
 type StartRuleRequest struct {
 	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
 	RuleId        *int64  `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
@@ -46958,6 +49540,93 @@ func (s *StartRuleResponse) SetStatusCode(v int32) *StartRuleResponse {
 }
 
 func (s *StartRuleResponse) SetBody(v *StartRuleResponseBody) *StartRuleResponse {
+	s.Body = v
+	return s
+}
+
+type StopParserRequest struct {
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	ParserId      *int64  `json:"ParserId,omitempty" xml:"ParserId,omitempty"`
+}
+
+func (s StopParserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopParserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *StopParserRequest) SetIotInstanceId(v string) *StopParserRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *StopParserRequest) SetParserId(v int64) *StopParserRequest {
+	s.ParserId = &v
+	return s
+}
+
+type StopParserResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s StopParserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopParserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *StopParserResponseBody) SetCode(v string) *StopParserResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *StopParserResponseBody) SetErrorMessage(v string) *StopParserResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *StopParserResponseBody) SetRequestId(v string) *StopParserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *StopParserResponseBody) SetSuccess(v bool) *StopParserResponseBody {
+	s.Success = &v
+	return s
+}
+
+type StopParserResponse struct {
+	Headers    map[string]*string      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *StopParserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s StopParserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s StopParserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *StopParserResponse) SetHeaders(v map[string]*string) *StopParserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *StopParserResponse) SetStatusCode(v int32) *StopParserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *StopParserResponse) SetBody(v *StopParserResponseBody) *StopParserResponse {
 	s.Body = v
 	return s
 }
@@ -48297,6 +50966,117 @@ func (s *UpdateConsumerGroupResponse) SetBody(v *UpdateConsumerGroupResponseBody
 	return s
 }
 
+type UpdateDestinationRequest struct {
+	Configuration *string `json:"Configuration,omitempty" xml:"Configuration,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	DestinationId *int64  `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Type          *string `json:"Type,omitempty" xml:"Type,omitempty"`
+}
+
+func (s UpdateDestinationRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDestinationRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDestinationRequest) SetConfiguration(v string) *UpdateDestinationRequest {
+	s.Configuration = &v
+	return s
+}
+
+func (s *UpdateDestinationRequest) SetDescription(v string) *UpdateDestinationRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateDestinationRequest) SetDestinationId(v int64) *UpdateDestinationRequest {
+	s.DestinationId = &v
+	return s
+}
+
+func (s *UpdateDestinationRequest) SetIotInstanceId(v string) *UpdateDestinationRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *UpdateDestinationRequest) SetName(v string) *UpdateDestinationRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateDestinationRequest) SetType(v string) *UpdateDestinationRequest {
+	s.Type = &v
+	return s
+}
+
+type UpdateDestinationResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateDestinationResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDestinationResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDestinationResponseBody) SetCode(v string) *UpdateDestinationResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateDestinationResponseBody) SetErrorMessage(v string) *UpdateDestinationResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateDestinationResponseBody) SetRequestId(v string) *UpdateDestinationResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateDestinationResponseBody) SetSuccess(v bool) *UpdateDestinationResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateDestinationResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateDestinationResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateDestinationResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateDestinationResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateDestinationResponse) SetHeaders(v map[string]*string) *UpdateDestinationResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateDestinationResponse) SetStatusCode(v int32) *UpdateDestinationResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateDestinationResponse) SetBody(v *UpdateDestinationResponseBody) *UpdateDestinationResponse {
+	s.Body = v
+	return s
+}
+
 type UpdateDeviceGroupRequest struct {
 	GroupDesc     *string `json:"GroupDesc,omitempty" xml:"GroupDesc,omitempty"`
 	GroupId       *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
@@ -49269,6 +52049,204 @@ func (s *UpdateOTAModuleResponse) SetStatusCode(v int32) *UpdateOTAModuleRespons
 }
 
 func (s *UpdateOTAModuleResponse) SetBody(v *UpdateOTAModuleResponseBody) *UpdateOTAModuleResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateParserRequest struct {
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	ParserId      *int64  `json:"ParserId,omitempty" xml:"ParserId,omitempty"`
+}
+
+func (s UpdateParserRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateParserRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateParserRequest) SetDescription(v string) *UpdateParserRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateParserRequest) SetIotInstanceId(v string) *UpdateParserRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *UpdateParserRequest) SetName(v string) *UpdateParserRequest {
+	s.Name = &v
+	return s
+}
+
+func (s *UpdateParserRequest) SetParserId(v int64) *UpdateParserRequest {
+	s.ParserId = &v
+	return s
+}
+
+type UpdateParserResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateParserResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateParserResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateParserResponseBody) SetCode(v string) *UpdateParserResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateParserResponseBody) SetErrorMessage(v string) *UpdateParserResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateParserResponseBody) SetRequestId(v string) *UpdateParserResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateParserResponseBody) SetSuccess(v bool) *UpdateParserResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateParserResponse struct {
+	Headers    map[string]*string        `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                    `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateParserResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateParserResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateParserResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateParserResponse) SetHeaders(v map[string]*string) *UpdateParserResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateParserResponse) SetStatusCode(v int32) *UpdateParserResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateParserResponse) SetBody(v *UpdateParserResponseBody) *UpdateParserResponse {
+	s.Body = v
+	return s
+}
+
+type UpdateParserDataSourceRequest struct {
+	DataSourceId  *int64  `json:"DataSourceId,omitempty" xml:"DataSourceId,omitempty"`
+	Description   *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	IotInstanceId *string `json:"IotInstanceId,omitempty" xml:"IotInstanceId,omitempty"`
+	Name          *string `json:"Name,omitempty" xml:"Name,omitempty"`
+}
+
+func (s UpdateParserDataSourceRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateParserDataSourceRequest) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateParserDataSourceRequest) SetDataSourceId(v int64) *UpdateParserDataSourceRequest {
+	s.DataSourceId = &v
+	return s
+}
+
+func (s *UpdateParserDataSourceRequest) SetDescription(v string) *UpdateParserDataSourceRequest {
+	s.Description = &v
+	return s
+}
+
+func (s *UpdateParserDataSourceRequest) SetIotInstanceId(v string) *UpdateParserDataSourceRequest {
+	s.IotInstanceId = &v
+	return s
+}
+
+func (s *UpdateParserDataSourceRequest) SetName(v string) *UpdateParserDataSourceRequest {
+	s.Name = &v
+	return s
+}
+
+type UpdateParserDataSourceResponseBody struct {
+	Code         *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
+	RequestId    *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	Success      *bool   `json:"Success,omitempty" xml:"Success,omitempty"`
+}
+
+func (s UpdateParserDataSourceResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateParserDataSourceResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateParserDataSourceResponseBody) SetCode(v string) *UpdateParserDataSourceResponseBody {
+	s.Code = &v
+	return s
+}
+
+func (s *UpdateParserDataSourceResponseBody) SetErrorMessage(v string) *UpdateParserDataSourceResponseBody {
+	s.ErrorMessage = &v
+	return s
+}
+
+func (s *UpdateParserDataSourceResponseBody) SetRequestId(v string) *UpdateParserDataSourceResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *UpdateParserDataSourceResponseBody) SetSuccess(v bool) *UpdateParserDataSourceResponseBody {
+	s.Success = &v
+	return s
+}
+
+type UpdateParserDataSourceResponse struct {
+	Headers    map[string]*string                  `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                              `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *UpdateParserDataSourceResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s UpdateParserDataSourceResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s UpdateParserDataSourceResponse) GoString() string {
+	return s.String()
+}
+
+func (s *UpdateParserDataSourceResponse) SetHeaders(v map[string]*string) *UpdateParserDataSourceResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *UpdateParserDataSourceResponse) SetStatusCode(v int32) *UpdateParserDataSourceResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *UpdateParserDataSourceResponse) SetBody(v *UpdateParserDataSourceResponseBody) *UpdateParserDataSourceResponse {
 	s.Body = v
 	return s
 }
@@ -51213,6 +54191,114 @@ func (client *Client) AddDataForApiSource(request *AddDataForApiSourceRequest) (
 	runtime := &util.RuntimeOptions{}
 	_result = &AddDataForApiSourceResponse{}
 	_body, _err := client.AddDataForApiSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AttachDestinationWithOptions(request *AttachDestinationRequest, runtime *util.RuntimeOptions) (_result *AttachDestinationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DestinationId)) {
+		query["DestinationId"] = request.DestinationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsFailover)) {
+		query["IsFailover"] = request.IsFailover
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParserId)) {
+		query["ParserId"] = request.ParserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachDestination"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AttachDestinationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AttachDestination(request *AttachDestinationRequest) (_result *AttachDestinationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AttachDestinationResponse{}
+	_body, _err := client.AttachDestinationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) AttachParserDataSourceWithOptions(request *AttachParserDataSourceRequest, runtime *util.RuntimeOptions) (_result *AttachParserDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParserId)) {
+		query["ParserId"] = request.ParserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("AttachParserDataSource"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &AttachParserDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) AttachParserDataSource(request *AttachParserDataSourceRequest) (_result *AttachParserDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &AttachParserDataSourceResponse{}
+	_body, _err := client.AttachParserDataSourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -54092,8 +57178,20 @@ func (client *Client) CreateDataSourceItemWithOptions(request *CreateDataSourceI
 		query["DataSourceId"] = request.DataSourceId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.DeviceName)) {
+		query["DeviceName"] = request.DeviceName
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
 		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProductKey)) {
+		query["ProductKey"] = request.ProductKey
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScopeType)) {
+		query["ScopeType"] = request.ScopeType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.Topic)) {
@@ -54127,6 +57225,66 @@ func (client *Client) CreateDataSourceItem(request *CreateDataSourceItemRequest)
 	runtime := &util.RuntimeOptions{}
 	_result = &CreateDataSourceItemResponse{}
 	_body, _err := client.CreateDataSourceItemWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateDestinationWithOptions(request *CreateDestinationRequest, runtime *util.RuntimeOptions) (_result *CreateDestinationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		query["Configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateDestination"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateDestinationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateDestination(request *CreateDestinationRequest) (_result *CreateDestinationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateDestinationResponse{}
+	_body, _err := client.CreateDestinationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -55452,6 +58610,110 @@ func (client *Client) CreateOTAVerifyJob(request *CreateOTAVerifyJobRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) CreateParserWithOptions(request *CreateParserRequest, runtime *util.RuntimeOptions) (_result *CreateParserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateParser"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateParserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateParser(request *CreateParserRequest) (_result *CreateParserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateParserResponse{}
+	_body, _err := client.CreateParserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) CreateParserDataSourceWithOptions(request *CreateParserDataSourceRequest, runtime *util.RuntimeOptions) (_result *CreateParserDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateParserDataSource"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateParserDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateParserDataSource(request *CreateParserDataSourceRequest) (_result *CreateParserDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateParserDataSourceResponse{}
+	_body, _err := client.CreateParserDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateProductWithOptions(request *CreateProductRequest, runtime *util.RuntimeOptions) (_result *CreateProductResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -56730,6 +59992,106 @@ func (client *Client) DeleteConsumerGroupSubscribeRelation(request *DeleteConsum
 	return _result, _err
 }
 
+func (client *Client) DeleteDataSourceItemWithOptions(request *DeleteDataSourceItemRequest, runtime *util.RuntimeOptions) (_result *DeleteDataSourceItemResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DataSourceItemId)) {
+		query["DataSourceItemId"] = request.DataSourceItemId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDataSourceItem"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDataSourceItemResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDataSourceItem(request *DeleteDataSourceItemRequest) (_result *DeleteDataSourceItemResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDataSourceItemResponse{}
+	_body, _err := client.DeleteDataSourceItemWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteDestinationWithOptions(request *DeleteDestinationRequest, runtime *util.RuntimeOptions) (_result *DeleteDestinationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DestinationId)) {
+		query["DestinationId"] = request.DestinationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteDestination"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteDestinationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteDestination(request *DeleteDestinationRequest) (_result *DeleteDestinationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteDestinationResponse{}
+	_body, _err := client.DeleteDestinationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DeleteDeviceWithOptions(request *DeleteDeviceRequest, runtime *util.RuntimeOptions) (_result *DeleteDeviceResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -57487,6 +60849,102 @@ func (client *Client) DeleteOTAModule(request *DeleteOTAModuleRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DeleteOTAModuleResponse{}
 	_body, _err := client.DeleteOTAModuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteParserWithOptions(request *DeleteParserRequest, runtime *util.RuntimeOptions) (_result *DeleteParserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParserId)) {
+		query["ParserId"] = request.ParserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteParser"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteParserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteParser(request *DeleteParserRequest) (_result *DeleteParserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteParserResponse{}
+	_body, _err := client.DeleteParserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DeleteParserDataSourceWithOptions(request *DeleteParserDataSourceRequest, runtime *util.RuntimeOptions) (_result *DeleteParserDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DeleteParserDataSource"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DeleteParserDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DeleteParserDataSource(request *DeleteParserDataSourceRequest) (_result *DeleteParserDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DeleteParserDataSourceResponse{}
+	_body, _err := client.DeleteParserDataSourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -58254,6 +61712,110 @@ func (client *Client) DeleteTopicRouteTable(request *DeleteTopicRouteTableReques
 	return _result, _err
 }
 
+func (client *Client) DetachDestinationWithOptions(request *DetachDestinationRequest, runtime *util.RuntimeOptions) (_result *DetachDestinationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DestinationId)) {
+		query["DestinationId"] = request.DestinationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParserId)) {
+		query["ParserId"] = request.ParserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachDestination"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetachDestinationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetachDestination(request *DetachDestinationRequest) (_result *DetachDestinationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetachDestinationResponse{}
+	_body, _err := client.DetachDestinationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetachParserDataSourceWithOptions(request *DetachParserDataSourceRequest, runtime *util.RuntimeOptions) (_result *DetachParserDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParserId)) {
+		query["ParserId"] = request.ParserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetachParserDataSource"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetachParserDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetachParserDataSource(request *DetachParserDataSourceRequest) (_result *DetachParserDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetachParserDataSourceResponse{}
+	_body, _err := client.DetachParserDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) DisableDeviceTunnelWithOptions(request *DisableDeviceTunnelRequest, runtime *util.RuntimeOptions) (_result *DisableDeviceTunnelResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -58866,6 +62428,54 @@ func (client *Client) GetDataAPIServiceDetail(request *GetDataAPIServiceDetailRe
 	return _result, _err
 }
 
+func (client *Client) GetDestinationWithOptions(request *GetDestinationRequest, runtime *util.RuntimeOptions) (_result *GetDestinationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DestinationId)) {
+		query["DestinationId"] = request.DestinationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetDestination"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetDestinationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetDestination(request *GetDestinationRequest) (_result *GetDestinationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetDestinationResponse{}
+	_body, _err := client.GetDestinationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) GetDeviceShadowWithOptions(request *GetDeviceShadowRequest, runtime *util.RuntimeOptions) (_result *GetDeviceShadowResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -59379,6 +62989,102 @@ func (client *Client) GetLoraNodesTask(request *GetLoraNodesTaskRequest) (_resul
 	runtime := &util.RuntimeOptions{}
 	_result = &GetLoraNodesTaskResponse{}
 	_body, _err := client.GetLoraNodesTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetParserWithOptions(request *GetParserRequest, runtime *util.RuntimeOptions) (_result *GetParserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParserId)) {
+		query["ParserId"] = request.ParserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetParser"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetParserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetParser(request *GetParserRequest) (_result *GetParserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetParserResponse{}
+	_body, _err := client.GetParserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) GetParserDataSourceWithOptions(request *GetParserDataSourceRequest, runtime *util.RuntimeOptions) (_result *GetParserDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("GetParserDataSource"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &GetParserDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) GetParserDataSource(request *GetParserDataSourceRequest) (_result *GetParserDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &GetParserDataSourceResponse{}
+	_body, _err := client.GetParserDataSourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -60591,6 +64297,66 @@ func (client *Client) ListDataSourceItem(request *ListDataSourceItemRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) ListDestinationWithOptions(request *ListDestinationRequest, runtime *util.RuntimeOptions) (_result *ListDestinationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchName)) {
+		query["SearchName"] = request.SearchName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Types)) {
+		query["Types"] = request.Types
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListDestination"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListDestinationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListDestination(request *ListDestinationRequest) (_result *ListDestinationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListDestinationResponse{}
+	_body, _err := client.ListDestinationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListDeviceDistributeJobWithOptions(request *ListDeviceDistributeJobRequest, runtime *util.RuntimeOptions) (_result *ListDeviceDistributeJobResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -61250,6 +65016,170 @@ func (client *Client) ListOTAUnfinishedTaskByDevice(request *ListOTAUnfinishedTa
 	runtime := &util.RuntimeOptions{}
 	_result = &ListOTAUnfinishedTaskByDeviceResponse{}
 	_body, _err := client.ListOTAUnfinishedTaskByDeviceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListParserWithOptions(request *ListParserRequest, runtime *util.RuntimeOptions) (_result *ListParserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CurrentPage)) {
+		query["CurrentPage"] = request.CurrentPage
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchName)) {
+		query["SearchName"] = request.SearchName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListParser"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListParserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListParser(request *ListParserRequest) (_result *ListParserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListParserResponse{}
+	_body, _err := client.ListParserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListParserDataSourceWithOptions(request *ListParserDataSourceRequest, runtime *util.RuntimeOptions) (_result *ListParserDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Page)) {
+		query["Page"] = request.Page
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SearchName)) {
+		query["SearchName"] = request.SearchName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListParserDataSource"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListParserDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListParserDataSource(request *ListParserDataSourceRequest) (_result *ListParserDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListParserDataSourceResponse{}
+	_body, _err := client.ListParserDataSourceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListParserDestinationWithOptions(request *ListParserDestinationRequest, runtime *util.RuntimeOptions) (_result *ListParserDestinationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IsFailover)) {
+		query["IsFailover"] = request.IsFailover
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParserId)) {
+		query["ParserId"] = request.ParserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListParserDestination"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListParserDestinationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListParserDestination(request *ListParserDestinationRequest) (_result *ListParserDestinationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListParserDestinationResponse{}
+	_body, _err := client.ListParserDestinationWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -61974,6 +65904,54 @@ func (client *Client) PubBroadcast(request *PubBroadcastRequest) (_result *PubBr
 	runtime := &util.RuntimeOptions{}
 	_result = &PubBroadcastResponse{}
 	_body, _err := client.PubBroadcastWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) PublishScriptWithOptions(request *PublishScriptRequest, runtime *util.RuntimeOptions) (_result *PublishScriptResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParserId)) {
+		query["ParserId"] = request.ParserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("PublishScript"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &PublishScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) PublishScript(request *PublishScriptRequest) (_result *PublishScriptResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &PublishScriptResponse{}
+	_body, _err := client.PublishScriptWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -68261,6 +72239,58 @@ func (client *Client) SaveDeviceProp(request *SaveDevicePropRequest) (_result *S
 	return _result, _err
 }
 
+func (client *Client) SaveScriptWithOptions(request *SaveScriptRequest, runtime *util.RuntimeOptions) (_result *SaveScriptResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParserId)) {
+		query["ParserId"] = request.ParserId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScriptDraft)) {
+		query["ScriptDraft"] = request.ScriptDraft
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("SaveScript"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &SaveScriptResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) SaveScript(request *SaveScriptRequest) (_result *SaveScriptResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &SaveScriptResponse{}
+	_body, _err := client.SaveScriptWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) SetDeviceDesiredPropertyWithOptions(request *SetDeviceDesiredPropertyRequest, runtime *util.RuntimeOptions) (_result *SetDeviceDesiredPropertyResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68909,6 +72939,54 @@ func (client *Client) StartCpu(request *StartCpuRequest) (_result *StartCpuRespo
 	return _result, _err
 }
 
+func (client *Client) StartParserWithOptions(request *StartParserRequest, runtime *util.RuntimeOptions) (_result *StartParserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParserId)) {
+		query["ParserId"] = request.ParserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StartParser"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StartParserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StartParser(request *StartParserRequest) (_result *StartParserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StartParserResponse{}
+	_body, _err := client.StartParserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) StartRuleWithOptions(request *StartRuleRequest, runtime *util.RuntimeOptions) (_result *StartRuleResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -68950,6 +73028,54 @@ func (client *Client) StartRule(request *StartRuleRequest) (_result *StartRuleRe
 	runtime := &util.RuntimeOptions{}
 	_result = &StartRuleResponse{}
 	_body, _err := client.StartRuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) StopParserWithOptions(request *StopParserRequest, runtime *util.RuntimeOptions) (_result *StopParserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParserId)) {
+		query["ParserId"] = request.ParserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("StopParser"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &StopParserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) StopParser(request *StopParserRequest) (_result *StopParserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &StopParserResponse{}
+	_body, _err := client.StopParserWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -69627,6 +73753,70 @@ func (client *Client) UpdateConsumerGroup(request *UpdateConsumerGroupRequest) (
 	return _result, _err
 }
 
+func (client *Client) UpdateDestinationWithOptions(request *UpdateDestinationRequest, runtime *util.RuntimeOptions) (_result *UpdateDestinationResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Configuration)) {
+		query["Configuration"] = request.Configuration
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.DestinationId)) {
+		query["DestinationId"] = request.DestinationId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Type)) {
+		query["Type"] = request.Type
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateDestination"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateDestinationResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateDestination(request *UpdateDestinationRequest) (_result *UpdateDestinationResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateDestinationResponse{}
+	_body, _err := client.UpdateDestinationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) UpdateDeviceGroupWithOptions(request *UpdateDeviceGroupRequest, runtime *util.RuntimeOptions) (_result *UpdateDeviceGroupResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -70154,6 +74344,118 @@ func (client *Client) UpdateOTAModule(request *UpdateOTAModuleRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &UpdateOTAModuleResponse{}
 	_body, _err := client.UpdateOTAModuleWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateParserWithOptions(request *UpdateParserRequest, runtime *util.RuntimeOptions) (_result *UpdateParserResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ParserId)) {
+		query["ParserId"] = request.ParserId
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateParser"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateParserResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateParser(request *UpdateParserRequest) (_result *UpdateParserResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateParserResponse{}
+	_body, _err := client.UpdateParserWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) UpdateParserDataSourceWithOptions(request *UpdateParserDataSourceRequest, runtime *util.RuntimeOptions) (_result *UpdateParserDataSourceResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.DataSourceId)) {
+		query["DataSourceId"] = request.DataSourceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Description)) {
+		query["Description"] = request.Description
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IotInstanceId)) {
+		query["IotInstanceId"] = request.IotInstanceId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Name)) {
+		query["Name"] = request.Name
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("UpdateParserDataSource"),
+		Version:     tea.String("2018-01-20"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &UpdateParserDataSourceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) UpdateParserDataSource(request *UpdateParserDataSourceRequest) (_result *UpdateParserDataSourceResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &UpdateParserDataSourceResponse{}
+	_body, _err := client.UpdateParserDataSourceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
