@@ -1655,6 +1655,8 @@ type CreateBasicIpSetRequest struct {
 	AcceleratorId *string `json:"AcceleratorId,omitempty" xml:"AcceleratorId,omitempty"`
 	// 客户端Token
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// 公网质量类型
+	IspType *string `json:"IspType,omitempty" xml:"IspType,omitempty"`
 	// RegionId
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 }
@@ -1679,6 +1681,11 @@ func (s *CreateBasicIpSetRequest) SetAcceleratorId(v string) *CreateBasicIpSetRe
 
 func (s *CreateBasicIpSetRequest) SetClientToken(v string) *CreateBasicIpSetRequest {
 	s.ClientToken = &v
+	return s
+}
+
+func (s *CreateBasicIpSetRequest) SetIspType(v string) *CreateBasicIpSetRequest {
+	s.IspType = &v
 	return s
 }
 
@@ -6805,6 +6812,8 @@ type GetBasicIpSetResponseBody struct {
 	IpSetId *string `json:"IpSetId,omitempty" xml:"IpSetId,omitempty"`
 	// 加速接入点地址类型
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
+	// 公网质量类型
+	IspType *string `json:"IspType,omitempty" xml:"IspType,omitempty"`
 	// 请求Id
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// 加速接入点状态
@@ -6846,6 +6855,11 @@ func (s *GetBasicIpSetResponseBody) SetIpSetId(v string) *GetBasicIpSetResponseB
 
 func (s *GetBasicIpSetResponseBody) SetIpVersion(v string) *GetBasicIpSetResponseBody {
 	s.IpVersion = &v
+	return s
+}
+
+func (s *GetBasicIpSetResponseBody) SetIspType(v string) *GetBasicIpSetResponseBody {
+	s.IspType = &v
 	return s
 }
 
@@ -14020,6 +14034,10 @@ func (client *Client) CreateBasicIpSetWithOptions(request *CreateBasicIpSetReque
 
 	if !tea.BoolValue(util.IsUnset(request.ClientToken)) {
 		query["ClientToken"] = request.ClientToken
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.IspType)) {
+		query["IspType"] = request.IspType
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.RegionId)) {
