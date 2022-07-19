@@ -24753,19 +24753,18 @@ func (s *InstallCloudMonitorResponse) SetBody(v *InstallCloudMonitorResponseBody
 }
 
 type ListCheckResultRequest struct {
-	CheckKey         *string   `json:"CheckKey,omitempty" xml:"CheckKey,omitempty"`
-	CurrentPage      *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	InstanceIds      []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	InstanceSubTypes []*string `json:"InstanceSubTypes,omitempty" xml:"InstanceSubTypes,omitempty" type:"Repeated"`
-	InstanceTypes    []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
-	Lang             *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	PageSize         *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	RequirementIds   []*int64  `json:"RequirementIds,omitempty" xml:"RequirementIds,omitempty" type:"Repeated"`
-	RiskLevels       []*string `json:"RiskLevels,omitempty" xml:"RiskLevels,omitempty" type:"Repeated"`
-	SortTypes        []*string `json:"SortTypes,omitempty" xml:"SortTypes,omitempty" type:"Repeated"`
-	StandardIds      []*int64  `json:"StandardIds,omitempty" xml:"StandardIds,omitempty" type:"Repeated"`
-	Statuses         []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
-	Vendors          []*string `json:"Vendors,omitempty" xml:"Vendors,omitempty" type:"Repeated"`
+	CheckKey       *string   `json:"CheckKey,omitempty" xml:"CheckKey,omitempty"`
+	CurrentPage    *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	InstanceIds    []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
+	InstanceTypes  []*string `json:"InstanceTypes,omitempty" xml:"InstanceTypes,omitempty" type:"Repeated"`
+	Lang           *string   `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	PageSize       *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	RequirementIds []*int64  `json:"RequirementIds,omitempty" xml:"RequirementIds,omitempty" type:"Repeated"`
+	RiskLevels     []*string `json:"RiskLevels,omitempty" xml:"RiskLevels,omitempty" type:"Repeated"`
+	SortTypes      []*string `json:"SortTypes,omitempty" xml:"SortTypes,omitempty" type:"Repeated"`
+	StandardIds    []*int64  `json:"StandardIds,omitempty" xml:"StandardIds,omitempty" type:"Repeated"`
+	Statuses       []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
+	Vendors        []*string `json:"Vendors,omitempty" xml:"Vendors,omitempty" type:"Repeated"`
 }
 
 func (s ListCheckResultRequest) String() string {
@@ -24788,11 +24787,6 @@ func (s *ListCheckResultRequest) SetCurrentPage(v int32) *ListCheckResultRequest
 
 func (s *ListCheckResultRequest) SetInstanceIds(v []*string) *ListCheckResultRequest {
 	s.InstanceIds = v
-	return s
-}
-
-func (s *ListCheckResultRequest) SetInstanceSubTypes(v []*string) *ListCheckResultRequest {
-	s.InstanceSubTypes = v
 	return s
 }
 
@@ -25650,6 +25644,87 @@ func (s *ModifyBackupPolicyStatusResponse) SetStatusCode(v int32) *ModifyBackupP
 }
 
 func (s *ModifyBackupPolicyStatusResponse) SetBody(v *ModifyBackupPolicyStatusResponseBody) *ModifyBackupPolicyStatusResponse {
+	s.Body = v
+	return s
+}
+
+type ModifyClearLogstoreStorageRequest struct {
+	From         *string `json:"From,omitempty" xml:"From,omitempty"`
+	Lang         *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	UserLogStore *string `json:"UserLogStore,omitempty" xml:"UserLogStore,omitempty"`
+	UserProject  *string `json:"UserProject,omitempty" xml:"UserProject,omitempty"`
+}
+
+func (s ModifyClearLogstoreStorageRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClearLogstoreStorageRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClearLogstoreStorageRequest) SetFrom(v string) *ModifyClearLogstoreStorageRequest {
+	s.From = &v
+	return s
+}
+
+func (s *ModifyClearLogstoreStorageRequest) SetLang(v string) *ModifyClearLogstoreStorageRequest {
+	s.Lang = &v
+	return s
+}
+
+func (s *ModifyClearLogstoreStorageRequest) SetUserLogStore(v string) *ModifyClearLogstoreStorageRequest {
+	s.UserLogStore = &v
+	return s
+}
+
+func (s *ModifyClearLogstoreStorageRequest) SetUserProject(v string) *ModifyClearLogstoreStorageRequest {
+	s.UserProject = &v
+	return s
+}
+
+type ModifyClearLogstoreStorageResponseBody struct {
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ModifyClearLogstoreStorageResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClearLogstoreStorageResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClearLogstoreStorageResponseBody) SetRequestId(v string) *ModifyClearLogstoreStorageResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ModifyClearLogstoreStorageResponse struct {
+	Headers    map[string]*string                      `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                                  `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ModifyClearLogstoreStorageResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ModifyClearLogstoreStorageResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ModifyClearLogstoreStorageResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyClearLogstoreStorageResponse) SetHeaders(v map[string]*string) *ModifyClearLogstoreStorageResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ModifyClearLogstoreStorageResponse) SetStatusCode(v int32) *ModifyClearLogstoreStorageResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ModifyClearLogstoreStorageResponse) SetBody(v *ModifyClearLogstoreStorageResponseBody) *ModifyClearLogstoreStorageResponse {
 	s.Body = v
 	return s
 }
@@ -38674,10 +38749,6 @@ func (client *Client) ListCheckResultWithOptions(request *ListCheckResultRequest
 		query["InstanceIds"] = request.InstanceIds
 	}
 
-	if !tea.BoolValue(util.IsUnset(request.InstanceSubTypes)) {
-		query["InstanceSubTypes"] = request.InstanceSubTypes
-	}
-
 	if !tea.BoolValue(util.IsUnset(request.InstanceTypes)) {
 		query["InstanceTypes"] = request.InstanceTypes
 	}
@@ -39047,6 +39118,62 @@ func (client *Client) ModifyBackupPolicyStatus(request *ModifyBackupPolicyStatus
 	runtime := &util.RuntimeOptions{}
 	_result = &ModifyBackupPolicyStatusResponse{}
 	_body, _err := client.ModifyBackupPolicyStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ModifyClearLogstoreStorageWithOptions(request *ModifyClearLogstoreStorageRequest, runtime *util.RuntimeOptions) (_result *ModifyClearLogstoreStorageResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.From)) {
+		query["From"] = request.From
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Lang)) {
+		query["Lang"] = request.Lang
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserLogStore)) {
+		query["UserLogStore"] = request.UserLogStore
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserProject)) {
+		query["UserProject"] = request.UserProject
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ModifyClearLogstoreStorage"),
+		Version:     tea.String("2018-12-03"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ModifyClearLogstoreStorageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ModifyClearLogstoreStorage(request *ModifyClearLogstoreStorageRequest) (_result *ModifyClearLogstoreStorageResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ModifyClearLogstoreStorageResponse{}
+	_body, _err := client.ModifyClearLogstoreStorageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
