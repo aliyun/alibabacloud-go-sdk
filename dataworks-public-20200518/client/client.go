@@ -3798,6 +3798,7 @@ type CreateTableRequest struct {
 	OwnerId           *string                      `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PhysicsLevelId    *int64                       `json:"PhysicsLevelId,omitempty" xml:"PhysicsLevelId,omitempty"`
 	ProjectId         *int64                       `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Schema            *string                      `json:"Schema,omitempty" xml:"Schema,omitempty"`
 	TableName         *string                      `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	Themes            []*CreateTableRequestThemes  `json:"Themes,omitempty" xml:"Themes,omitempty" type:"Repeated"`
 	Visibility        *int32                       `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
@@ -3888,6 +3889,11 @@ func (s *CreateTableRequest) SetPhysicsLevelId(v int64) *CreateTableRequest {
 
 func (s *CreateTableRequest) SetProjectId(v int64) *CreateTableRequest {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *CreateTableRequest) SetSchema(v string) *CreateTableRequest {
+	s.Schema = &v
 	return s
 }
 
@@ -6013,6 +6019,7 @@ type DeleteTableRequest struct {
 	AppGuid   *string `json:"AppGuid,omitempty" xml:"AppGuid,omitempty"`
 	EnvType   *int32  `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
 	ProjectId *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Schema    *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 }
 
@@ -6036,6 +6043,11 @@ func (s *DeleteTableRequest) SetEnvType(v int32) *DeleteTableRequest {
 
 func (s *DeleteTableRequest) SetProjectId(v int64) *DeleteTableRequest {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *DeleteTableRequest) SetSchema(v string) *DeleteTableRequest {
+	s.Schema = &v
 	return s
 }
 
@@ -11485,170 +11497,6 @@ func (s *GetDeploymentResponse) SetBody(v *GetDeploymentResponseBody) *GetDeploy
 	return s
 }
 
-type GetDutyRosterRequest struct {
-	BeginTime            *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	DutyRosterIdentifier *string `json:"DutyRosterIdentifier,omitempty" xml:"DutyRosterIdentifier,omitempty"`
-	EndTime              *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	UserType             *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
-	Watchkeeper          *string `json:"Watchkeeper,omitempty" xml:"Watchkeeper,omitempty"`
-}
-
-func (s GetDutyRosterRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDutyRosterRequest) GoString() string {
-	return s.String()
-}
-
-func (s *GetDutyRosterRequest) SetBeginTime(v int64) *GetDutyRosterRequest {
-	s.BeginTime = &v
-	return s
-}
-
-func (s *GetDutyRosterRequest) SetDutyRosterIdentifier(v string) *GetDutyRosterRequest {
-	s.DutyRosterIdentifier = &v
-	return s
-}
-
-func (s *GetDutyRosterRequest) SetEndTime(v int64) *GetDutyRosterRequest {
-	s.EndTime = &v
-	return s
-}
-
-func (s *GetDutyRosterRequest) SetUserType(v string) *GetDutyRosterRequest {
-	s.UserType = &v
-	return s
-}
-
-func (s *GetDutyRosterRequest) SetWatchkeeper(v string) *GetDutyRosterRequest {
-	s.Watchkeeper = &v
-	return s
-}
-
-type GetDutyRosterResponseBody struct {
-	Paging *GetDutyRosterResponseBodyPaging `json:"Paging,omitempty" xml:"Paging,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s GetDutyRosterResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDutyRosterResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *GetDutyRosterResponseBody) SetPaging(v *GetDutyRosterResponseBodyPaging) *GetDutyRosterResponseBody {
-	s.Paging = v
-	return s
-}
-
-func (s *GetDutyRosterResponseBody) SetRequestId(v string) *GetDutyRosterResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type GetDutyRosterResponseBodyPaging struct {
-	DutyRoster []*GetDutyRosterResponseBodyPagingDutyRoster `json:"DutyRoster,omitempty" xml:"DutyRoster,omitempty" type:"Repeated"`
-	PageNumber *int32                                       `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize   *int32                                       `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount *int32                                       `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s GetDutyRosterResponseBodyPaging) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDutyRosterResponseBodyPaging) GoString() string {
-	return s.String()
-}
-
-func (s *GetDutyRosterResponseBodyPaging) SetDutyRoster(v []*GetDutyRosterResponseBodyPagingDutyRoster) *GetDutyRosterResponseBodyPaging {
-	s.DutyRoster = v
-	return s
-}
-
-func (s *GetDutyRosterResponseBodyPaging) SetPageNumber(v int32) *GetDutyRosterResponseBodyPaging {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *GetDutyRosterResponseBodyPaging) SetPageSize(v int32) *GetDutyRosterResponseBodyPaging {
-	s.PageSize = &v
-	return s
-}
-
-func (s *GetDutyRosterResponseBodyPaging) SetTotalCount(v int32) *GetDutyRosterResponseBodyPaging {
-	s.TotalCount = &v
-	return s
-}
-
-type GetDutyRosterResponseBodyPagingDutyRoster struct {
-	EndLong         *int64  `json:"EndLong,omitempty" xml:"EndLong,omitempty"`
-	StartLong       *int64  `json:"StartLong,omitempty" xml:"StartLong,omitempty"`
-	Watchkeeper     *string `json:"Watchkeeper,omitempty" xml:"Watchkeeper,omitempty"`
-	WatchkeeperName *string `json:"WatchkeeperName,omitempty" xml:"WatchkeeperName,omitempty"`
-}
-
-func (s GetDutyRosterResponseBodyPagingDutyRoster) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDutyRosterResponseBodyPagingDutyRoster) GoString() string {
-	return s.String()
-}
-
-func (s *GetDutyRosterResponseBodyPagingDutyRoster) SetEndLong(v int64) *GetDutyRosterResponseBodyPagingDutyRoster {
-	s.EndLong = &v
-	return s
-}
-
-func (s *GetDutyRosterResponseBodyPagingDutyRoster) SetStartLong(v int64) *GetDutyRosterResponseBodyPagingDutyRoster {
-	s.StartLong = &v
-	return s
-}
-
-func (s *GetDutyRosterResponseBodyPagingDutyRoster) SetWatchkeeper(v string) *GetDutyRosterResponseBodyPagingDutyRoster {
-	s.Watchkeeper = &v
-	return s
-}
-
-func (s *GetDutyRosterResponseBodyPagingDutyRoster) SetWatchkeeperName(v string) *GetDutyRosterResponseBodyPagingDutyRoster {
-	s.WatchkeeperName = &v
-	return s
-}
-
-type GetDutyRosterResponse struct {
-	Headers    map[string]*string         `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                     `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *GetDutyRosterResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s GetDutyRosterResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s GetDutyRosterResponse) GoString() string {
-	return s.String()
-}
-
-func (s *GetDutyRosterResponse) SetHeaders(v map[string]*string) *GetDutyRosterResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *GetDutyRosterResponse) SetStatusCode(v int32) *GetDutyRosterResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *GetDutyRosterResponse) SetBody(v *GetDutyRosterResponseBody) *GetDutyRosterResponse {
-	s.Body = v
-	return s
-}
-
 type GetExtensionRequest struct {
 	ExtensionCode *string `json:"ExtensionCode,omitempty" xml:"ExtensionCode,omitempty"`
 }
@@ -15479,6 +15327,7 @@ type GetMetaTableBasicInfoResponseBodyData struct {
 	ProjectId        *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	ProjectName      *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	ReadCount        *int64  `json:"ReadCount,omitempty" xml:"ReadCount,omitempty"`
+	Schema           *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 	TableGuid        *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 	TableName        *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	TenantId         *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
@@ -15600,6 +15449,11 @@ func (s *GetMetaTableBasicInfoResponseBodyData) SetProjectName(v string) *GetMet
 
 func (s *GetMetaTableBasicInfoResponseBodyData) SetReadCount(v int64) *GetMetaTableBasicInfoResponseBodyData {
 	s.ReadCount = &v
+	return s
+}
+
+func (s *GetMetaTableBasicInfoResponseBodyData) SetSchema(v string) *GetMetaTableBasicInfoResponseBodyData {
+	s.Schema = &v
 	return s
 }
 
@@ -16216,6 +16070,7 @@ type GetMetaTableFullInfoResponseBodyData struct {
 	PartitionKeys    *string                                           `json:"PartitionKeys,omitempty" xml:"PartitionKeys,omitempty"`
 	ProjectId        *int64                                            `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	ProjectName      *string                                           `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Schema           *string                                           `json:"Schema,omitempty" xml:"Schema,omitempty"`
 	TableGuid        *string                                           `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 	TableName        *string                                           `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	TenantId         *int64                                            `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
@@ -16312,6 +16167,11 @@ func (s *GetMetaTableFullInfoResponseBodyData) SetProjectId(v int64) *GetMetaTab
 
 func (s *GetMetaTableFullInfoResponseBodyData) SetProjectName(v string) *GetMetaTableFullInfoResponseBodyData {
 	s.ProjectName = &v
+	return s
+}
+
+func (s *GetMetaTableFullInfoResponseBodyData) SetSchema(v string) *GetMetaTableFullInfoResponseBodyData {
+	s.Schema = &v
 	return s
 }
 
@@ -27196,152 +27056,6 @@ func (s *ListDeploymentsResponse) SetBody(v *ListDeploymentsResponseBody) *ListD
 	return s
 }
 
-type ListDutyRostersRequest struct {
-	DutyRosterName  *string `json:"DutyRosterName,omitempty" xml:"DutyRosterName,omitempty"`
-	DutyRosterOwner *string `json:"DutyRosterOwner,omitempty" xml:"DutyRosterOwner,omitempty"`
-	PageNumber      *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize        *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-}
-
-func (s ListDutyRostersRequest) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDutyRostersRequest) GoString() string {
-	return s.String()
-}
-
-func (s *ListDutyRostersRequest) SetDutyRosterName(v string) *ListDutyRostersRequest {
-	s.DutyRosterName = &v
-	return s
-}
-
-func (s *ListDutyRostersRequest) SetDutyRosterOwner(v string) *ListDutyRostersRequest {
-	s.DutyRosterOwner = &v
-	return s
-}
-
-func (s *ListDutyRostersRequest) SetPageNumber(v int32) *ListDutyRostersRequest {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListDutyRostersRequest) SetPageSize(v int32) *ListDutyRostersRequest {
-	s.PageSize = &v
-	return s
-}
-
-type ListDutyRostersResponseBody struct {
-	Paging *ListDutyRostersResponseBodyPaging `json:"Paging,omitempty" xml:"Paging,omitempty" type:"Struct"`
-	// Id of the request
-	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-}
-
-func (s ListDutyRostersResponseBody) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDutyRostersResponseBody) GoString() string {
-	return s.String()
-}
-
-func (s *ListDutyRostersResponseBody) SetPaging(v *ListDutyRostersResponseBodyPaging) *ListDutyRostersResponseBody {
-	s.Paging = v
-	return s
-}
-
-func (s *ListDutyRostersResponseBody) SetRequestId(v string) *ListDutyRostersResponseBody {
-	s.RequestId = &v
-	return s
-}
-
-type ListDutyRostersResponseBodyPaging struct {
-	DutyRosters []*ListDutyRostersResponseBodyPagingDutyRosters `json:"DutyRosters,omitempty" xml:"DutyRosters,omitempty" type:"Repeated"`
-	PageNumber  *int32                                          `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	PageSize    *int32                                          `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	TotalCount  *int32                                          `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-}
-
-func (s ListDutyRostersResponseBodyPaging) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDutyRostersResponseBodyPaging) GoString() string {
-	return s.String()
-}
-
-func (s *ListDutyRostersResponseBodyPaging) SetDutyRosters(v []*ListDutyRostersResponseBodyPagingDutyRosters) *ListDutyRostersResponseBodyPaging {
-	s.DutyRosters = v
-	return s
-}
-
-func (s *ListDutyRostersResponseBodyPaging) SetPageNumber(v int32) *ListDutyRostersResponseBodyPaging {
-	s.PageNumber = &v
-	return s
-}
-
-func (s *ListDutyRostersResponseBodyPaging) SetPageSize(v int32) *ListDutyRostersResponseBodyPaging {
-	s.PageSize = &v
-	return s
-}
-
-func (s *ListDutyRostersResponseBodyPaging) SetTotalCount(v int32) *ListDutyRostersResponseBodyPaging {
-	s.TotalCount = &v
-	return s
-}
-
-type ListDutyRostersResponseBodyPagingDutyRosters struct {
-	DutyRosterIdentifier *string `json:"DutyRosterIdentifier,omitempty" xml:"DutyRosterIdentifier,omitempty"`
-	DutyRosterName       *string `json:"DutyRosterName,omitempty" xml:"DutyRosterName,omitempty"`
-}
-
-func (s ListDutyRostersResponseBodyPagingDutyRosters) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDutyRostersResponseBodyPagingDutyRosters) GoString() string {
-	return s.String()
-}
-
-func (s *ListDutyRostersResponseBodyPagingDutyRosters) SetDutyRosterIdentifier(v string) *ListDutyRostersResponseBodyPagingDutyRosters {
-	s.DutyRosterIdentifier = &v
-	return s
-}
-
-func (s *ListDutyRostersResponseBodyPagingDutyRosters) SetDutyRosterName(v string) *ListDutyRostersResponseBodyPagingDutyRosters {
-	s.DutyRosterName = &v
-	return s
-}
-
-type ListDutyRostersResponse struct {
-	Headers    map[string]*string           `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
-	StatusCode *int32                       `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
-	Body       *ListDutyRostersResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
-}
-
-func (s ListDutyRostersResponse) String() string {
-	return tea.Prettify(s)
-}
-
-func (s ListDutyRostersResponse) GoString() string {
-	return s.String()
-}
-
-func (s *ListDutyRostersResponse) SetHeaders(v map[string]*string) *ListDutyRostersResponse {
-	s.Headers = v
-	return s
-}
-
-func (s *ListDutyRostersResponse) SetStatusCode(v int32) *ListDutyRostersResponse {
-	s.StatusCode = &v
-	return s
-}
-
-func (s *ListDutyRostersResponse) SetBody(v *ListDutyRostersResponseBody) *ListDutyRostersResponse {
-	s.Body = v
-	return s
-}
-
 type ListExtensionsRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize   *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
@@ -33468,6 +33182,316 @@ func (s *ListResourceGroupsResponse) SetBody(v *ListResourceGroupsResponseBody) 
 	return s
 }
 
+type ListShiftPersonnelsRequest struct {
+	BeginTime               *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	EndTime                 *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ShiftPersonUID          *string `json:"ShiftPersonUID,omitempty" xml:"ShiftPersonUID,omitempty"`
+	ShiftScheduleIdentifier *string `json:"ShiftScheduleIdentifier,omitempty" xml:"ShiftScheduleIdentifier,omitempty"`
+	UserType                *string `json:"UserType,omitempty" xml:"UserType,omitempty"`
+}
+
+func (s ListShiftPersonnelsRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListShiftPersonnelsRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListShiftPersonnelsRequest) SetBeginTime(v int64) *ListShiftPersonnelsRequest {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *ListShiftPersonnelsRequest) SetEndTime(v int64) *ListShiftPersonnelsRequest {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListShiftPersonnelsRequest) SetShiftPersonUID(v string) *ListShiftPersonnelsRequest {
+	s.ShiftPersonUID = &v
+	return s
+}
+
+func (s *ListShiftPersonnelsRequest) SetShiftScheduleIdentifier(v string) *ListShiftPersonnelsRequest {
+	s.ShiftScheduleIdentifier = &v
+	return s
+}
+
+func (s *ListShiftPersonnelsRequest) SetUserType(v string) *ListShiftPersonnelsRequest {
+	s.UserType = &v
+	return s
+}
+
+type ListShiftPersonnelsResponseBody struct {
+	Paging *ListShiftPersonnelsResponseBodyPaging `json:"Paging,omitempty" xml:"Paging,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListShiftPersonnelsResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListShiftPersonnelsResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListShiftPersonnelsResponseBody) SetPaging(v *ListShiftPersonnelsResponseBodyPaging) *ListShiftPersonnelsResponseBody {
+	s.Paging = v
+	return s
+}
+
+func (s *ListShiftPersonnelsResponseBody) SetRequestId(v string) *ListShiftPersonnelsResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListShiftPersonnelsResponseBodyPaging struct {
+	PageNumber   *int32                                               `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize     *int32                                               `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ShiftPersons []*ListShiftPersonnelsResponseBodyPagingShiftPersons `json:"ShiftPersons,omitempty" xml:"ShiftPersons,omitempty" type:"Repeated"`
+	TotalCount   *int32                                               `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListShiftPersonnelsResponseBodyPaging) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListShiftPersonnelsResponseBodyPaging) GoString() string {
+	return s.String()
+}
+
+func (s *ListShiftPersonnelsResponseBodyPaging) SetPageNumber(v int32) *ListShiftPersonnelsResponseBodyPaging {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListShiftPersonnelsResponseBodyPaging) SetPageSize(v int32) *ListShiftPersonnelsResponseBodyPaging {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListShiftPersonnelsResponseBodyPaging) SetShiftPersons(v []*ListShiftPersonnelsResponseBodyPagingShiftPersons) *ListShiftPersonnelsResponseBodyPaging {
+	s.ShiftPersons = v
+	return s
+}
+
+func (s *ListShiftPersonnelsResponseBodyPaging) SetTotalCount(v int32) *ListShiftPersonnelsResponseBodyPaging {
+	s.TotalCount = &v
+	return s
+}
+
+type ListShiftPersonnelsResponseBodyPagingShiftPersons struct {
+	BeginTime       *int64  `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	EndTime         *int64  `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	ShiftPersonName *string `json:"ShiftPersonName,omitempty" xml:"ShiftPersonName,omitempty"`
+	ShiftPersonUID  *string `json:"ShiftPersonUID,omitempty" xml:"ShiftPersonUID,omitempty"`
+}
+
+func (s ListShiftPersonnelsResponseBodyPagingShiftPersons) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListShiftPersonnelsResponseBodyPagingShiftPersons) GoString() string {
+	return s.String()
+}
+
+func (s *ListShiftPersonnelsResponseBodyPagingShiftPersons) SetBeginTime(v int64) *ListShiftPersonnelsResponseBodyPagingShiftPersons {
+	s.BeginTime = &v
+	return s
+}
+
+func (s *ListShiftPersonnelsResponseBodyPagingShiftPersons) SetEndTime(v int64) *ListShiftPersonnelsResponseBodyPagingShiftPersons {
+	s.EndTime = &v
+	return s
+}
+
+func (s *ListShiftPersonnelsResponseBodyPagingShiftPersons) SetShiftPersonName(v string) *ListShiftPersonnelsResponseBodyPagingShiftPersons {
+	s.ShiftPersonName = &v
+	return s
+}
+
+func (s *ListShiftPersonnelsResponseBodyPagingShiftPersons) SetShiftPersonUID(v string) *ListShiftPersonnelsResponseBodyPagingShiftPersons {
+	s.ShiftPersonUID = &v
+	return s
+}
+
+type ListShiftPersonnelsResponse struct {
+	Headers    map[string]*string               `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                           `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListShiftPersonnelsResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListShiftPersonnelsResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListShiftPersonnelsResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListShiftPersonnelsResponse) SetHeaders(v map[string]*string) *ListShiftPersonnelsResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListShiftPersonnelsResponse) SetStatusCode(v int32) *ListShiftPersonnelsResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListShiftPersonnelsResponse) SetBody(v *ListShiftPersonnelsResponseBody) *ListShiftPersonnelsResponse {
+	s.Body = v
+	return s
+}
+
+type ListShiftSchedulesRequest struct {
+	Owner             *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	PageNumber        *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize          *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ShiftScheduleName *string `json:"ShiftScheduleName,omitempty" xml:"ShiftScheduleName,omitempty"`
+}
+
+func (s ListShiftSchedulesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListShiftSchedulesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *ListShiftSchedulesRequest) SetOwner(v string) *ListShiftSchedulesRequest {
+	s.Owner = &v
+	return s
+}
+
+func (s *ListShiftSchedulesRequest) SetPageNumber(v int32) *ListShiftSchedulesRequest {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListShiftSchedulesRequest) SetPageSize(v int32) *ListShiftSchedulesRequest {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListShiftSchedulesRequest) SetShiftScheduleName(v string) *ListShiftSchedulesRequest {
+	s.ShiftScheduleName = &v
+	return s
+}
+
+type ListShiftSchedulesResponseBody struct {
+	Paging *ListShiftSchedulesResponseBodyPaging `json:"Paging,omitempty" xml:"Paging,omitempty" type:"Struct"`
+	// Id of the request
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s ListShiftSchedulesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListShiftSchedulesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *ListShiftSchedulesResponseBody) SetPaging(v *ListShiftSchedulesResponseBodyPaging) *ListShiftSchedulesResponseBody {
+	s.Paging = v
+	return s
+}
+
+func (s *ListShiftSchedulesResponseBody) SetRequestId(v string) *ListShiftSchedulesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type ListShiftSchedulesResponseBodyPaging struct {
+	PageNumber     *int32                                                `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
+	PageSize       *int32                                                `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	ShiftSchedules []*ListShiftSchedulesResponseBodyPagingShiftSchedules `json:"ShiftSchedules,omitempty" xml:"ShiftSchedules,omitempty" type:"Repeated"`
+	TotalCount     *int32                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+}
+
+func (s ListShiftSchedulesResponseBodyPaging) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListShiftSchedulesResponseBodyPaging) GoString() string {
+	return s.String()
+}
+
+func (s *ListShiftSchedulesResponseBodyPaging) SetPageNumber(v int32) *ListShiftSchedulesResponseBodyPaging {
+	s.PageNumber = &v
+	return s
+}
+
+func (s *ListShiftSchedulesResponseBodyPaging) SetPageSize(v int32) *ListShiftSchedulesResponseBodyPaging {
+	s.PageSize = &v
+	return s
+}
+
+func (s *ListShiftSchedulesResponseBodyPaging) SetShiftSchedules(v []*ListShiftSchedulesResponseBodyPagingShiftSchedules) *ListShiftSchedulesResponseBodyPaging {
+	s.ShiftSchedules = v
+	return s
+}
+
+func (s *ListShiftSchedulesResponseBodyPaging) SetTotalCount(v int32) *ListShiftSchedulesResponseBodyPaging {
+	s.TotalCount = &v
+	return s
+}
+
+type ListShiftSchedulesResponseBodyPagingShiftSchedules struct {
+	ShiftScheduleIdentifier *string `json:"ShiftScheduleIdentifier,omitempty" xml:"ShiftScheduleIdentifier,omitempty"`
+	ShiftScheduleName       *string `json:"ShiftScheduleName,omitempty" xml:"ShiftScheduleName,omitempty"`
+}
+
+func (s ListShiftSchedulesResponseBodyPagingShiftSchedules) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListShiftSchedulesResponseBodyPagingShiftSchedules) GoString() string {
+	return s.String()
+}
+
+func (s *ListShiftSchedulesResponseBodyPagingShiftSchedules) SetShiftScheduleIdentifier(v string) *ListShiftSchedulesResponseBodyPagingShiftSchedules {
+	s.ShiftScheduleIdentifier = &v
+	return s
+}
+
+func (s *ListShiftSchedulesResponseBodyPagingShiftSchedules) SetShiftScheduleName(v string) *ListShiftSchedulesResponseBodyPagingShiftSchedules {
+	s.ShiftScheduleName = &v
+	return s
+}
+
+type ListShiftSchedulesResponse struct {
+	Headers    map[string]*string              `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                          `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *ListShiftSchedulesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s ListShiftSchedulesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s ListShiftSchedulesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *ListShiftSchedulesResponse) SetHeaders(v map[string]*string) *ListShiftSchedulesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *ListShiftSchedulesResponse) SetStatusCode(v int32) *ListShiftSchedulesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *ListShiftSchedulesResponse) SetBody(v *ListShiftSchedulesResponseBody) *ListShiftSchedulesResponse {
+	s.Body = v
+	return s
+}
+
 type ListSuccessInstanceAmountRequest struct {
 	ProjectId *int64 `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 }
@@ -35710,6 +35734,7 @@ type SearchMetaTablesRequest struct {
 	Keyword        *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	PageNumber     *int32  `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	PageSize       *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	Schema         *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 }
 
 func (s SearchMetaTablesRequest) String() string {
@@ -35752,6 +35777,11 @@ func (s *SearchMetaTablesRequest) SetPageNumber(v int32) *SearchMetaTablesReques
 
 func (s *SearchMetaTablesRequest) SetPageSize(v int32) *SearchMetaTablesRequest {
 	s.PageSize = &v
+	return s
+}
+
+func (s *SearchMetaTablesRequest) SetSchema(v string) *SearchMetaTablesRequest {
+	s.Schema = &v
 	return s
 }
 
@@ -35845,6 +35875,7 @@ type SearchMetaTablesResponseBodyDataDataEntityList struct {
 	OwnerId      *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ProjectId    *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	ProjectName  *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Schema       *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 	TableGuid    *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 	TableName    *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	TenantId     *int64  `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
@@ -35890,6 +35921,11 @@ func (s *SearchMetaTablesResponseBodyDataDataEntityList) SetProjectId(v int64) *
 
 func (s *SearchMetaTablesResponseBodyDataDataEntityList) SetProjectName(v string) *SearchMetaTablesResponseBodyDataDataEntityList {
 	s.ProjectName = &v
+	return s
+}
+
+func (s *SearchMetaTablesResponseBodyDataDataEntityList) SetSchema(v string) *SearchMetaTablesResponseBodyDataDataEntityList {
+	s.Schema = &v
 	return s
 }
 
@@ -38889,6 +38925,7 @@ type UpdateMetaTableRequest struct {
 	NewOwnerId    *string `json:"NewOwnerId,omitempty" xml:"NewOwnerId,omitempty"`
 	ProjectId     *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
 	RemovedLabels *string `json:"RemovedLabels,omitempty" xml:"RemovedLabels,omitempty"`
+	Schema        *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
 	TableGuid     *string `json:"TableGuid,omitempty" xml:"TableGuid,omitempty"`
 	TableName     *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	Visibility    *int32  `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
@@ -38934,6 +38971,11 @@ func (s *UpdateMetaTableRequest) SetProjectId(v int64) *UpdateMetaTableRequest {
 
 func (s *UpdateMetaTableRequest) SetRemovedLabels(v string) *UpdateMetaTableRequest {
 	s.RemovedLabels = &v
+	return s
+}
+
+func (s *UpdateMetaTableRequest) SetSchema(v string) *UpdateMetaTableRequest {
+	s.Schema = &v
 	return s
 }
 
@@ -39765,6 +39807,7 @@ type UpdateTableRequest struct {
 	OwnerId           *string                      `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	PhysicsLevelId    *int64                       `json:"PhysicsLevelId,omitempty" xml:"PhysicsLevelId,omitempty"`
 	ProjectId         *int64                       `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	Schema            *string                      `json:"Schema,omitempty" xml:"Schema,omitempty"`
 	TableName         *string                      `json:"TableName,omitempty" xml:"TableName,omitempty"`
 	Themes            []*UpdateTableRequestThemes  `json:"Themes,omitempty" xml:"Themes,omitempty" type:"Repeated"`
 	Visibility        *int32                       `json:"Visibility,omitempty" xml:"Visibility,omitempty"`
@@ -39855,6 +39898,11 @@ func (s *UpdateTableRequest) SetPhysicsLevelId(v int64) *UpdateTableRequest {
 
 func (s *UpdateTableRequest) SetProjectId(v int64) *UpdateTableRequest {
 	s.ProjectId = &v
+	return s
+}
+
+func (s *UpdateTableRequest) SetSchema(v string) *UpdateTableRequest {
+	s.Schema = &v
 	return s
 }
 
@@ -43051,6 +43099,10 @@ func (client *Client) CreateTableWithOptions(request *CreateTableRequest, runtim
 		query["ProjectId"] = request.ProjectId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Schema)) {
+		query["Schema"] = request.Schema
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TableName)) {
 		query["TableName"] = request.TableName
 	}
@@ -44131,6 +44183,10 @@ func (client *Client) DeleteTableWithOptions(request *DeleteTableRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
 		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schema)) {
+		query["Schema"] = request.Schema
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TableName)) {
@@ -45472,66 +45528,6 @@ func (client *Client) GetDeployment(request *GetDeploymentRequest) (_result *Get
 	runtime := &util.RuntimeOptions{}
 	_result = &GetDeploymentResponse{}
 	_body, _err := client.GetDeploymentWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
-func (client *Client) GetDutyRosterWithOptions(request *GetDutyRosterRequest, runtime *util.RuntimeOptions) (_result *GetDutyRosterResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.BeginTime)) {
-		body["BeginTime"] = request.BeginTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DutyRosterIdentifier)) {
-		body["DutyRosterIdentifier"] = request.DutyRosterIdentifier
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
-		body["EndTime"] = request.EndTime
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.UserType)) {
-		body["UserType"] = request.UserType
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.Watchkeeper)) {
-		body["Watchkeeper"] = request.Watchkeeper
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("GetDutyRoster"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &GetDutyRosterResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) GetDutyRoster(request *GetDutyRosterRequest) (_result *GetDutyRosterResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &GetDutyRosterResponse{}
-	_body, _err := client.GetDutyRosterWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -49267,62 +49263,6 @@ func (client *Client) ListDeployments(request *ListDeploymentsRequest) (_result 
 	return _result, _err
 }
 
-func (client *Client) ListDutyRostersWithOptions(request *ListDutyRostersRequest, runtime *util.RuntimeOptions) (_result *ListDutyRostersResponse, _err error) {
-	_err = util.ValidateModel(request)
-	if _err != nil {
-		return _result, _err
-	}
-	body := map[string]interface{}{}
-	if !tea.BoolValue(util.IsUnset(request.DutyRosterName)) {
-		body["DutyRosterName"] = request.DutyRosterName
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.DutyRosterOwner)) {
-		body["DutyRosterOwner"] = request.DutyRosterOwner
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
-		body["PageNumber"] = request.PageNumber
-	}
-
-	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
-		body["PageSize"] = request.PageSize
-	}
-
-	req := &openapi.OpenApiRequest{
-		Body: openapiutil.ParseToMap(body),
-	}
-	params := &openapi.Params{
-		Action:      tea.String("ListDutyRosters"),
-		Version:     tea.String("2020-05-18"),
-		Protocol:    tea.String("HTTPS"),
-		Pathname:    tea.String("/"),
-		Method:      tea.String("POST"),
-		AuthType:    tea.String("AK"),
-		Style:       tea.String("RPC"),
-		ReqBodyType: tea.String("formData"),
-		BodyType:    tea.String("json"),
-	}
-	_result = &ListDutyRostersResponse{}
-	_body, _err := client.CallApi(params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = tea.Convert(_body, &_result)
-	return _result, _err
-}
-
-func (client *Client) ListDutyRosters(request *ListDutyRostersRequest) (_result *ListDutyRostersResponse, _err error) {
-	runtime := &util.RuntimeOptions{}
-	_result = &ListDutyRostersResponse{}
-	_body, _err := client.ListDutyRostersWithOptions(request, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_result = _body
-	return _result, _err
-}
-
 func (client *Client) ListExtensionsWithOptions(request *ListExtensionsRequest, runtime *util.RuntimeOptions) (_result *ListExtensionsResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -50943,6 +50883,122 @@ func (client *Client) ListResourceGroups(request *ListResourceGroupsRequest) (_r
 	return _result, _err
 }
 
+func (client *Client) ListShiftPersonnelsWithOptions(request *ListShiftPersonnelsRequest, runtime *util.RuntimeOptions) (_result *ListShiftPersonnelsResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.BeginTime)) {
+		body["BeginTime"] = request.BeginTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.EndTime)) {
+		body["EndTime"] = request.EndTime
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShiftPersonUID)) {
+		body["ShiftPersonUID"] = request.ShiftPersonUID
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShiftScheduleIdentifier)) {
+		body["ShiftScheduleIdentifier"] = request.ShiftScheduleIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserType)) {
+		body["UserType"] = request.UserType
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListShiftPersonnels"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListShiftPersonnelsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListShiftPersonnels(request *ListShiftPersonnelsRequest) (_result *ListShiftPersonnelsResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListShiftPersonnelsResponse{}
+	_body, _err := client.ListShiftPersonnelsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) ListShiftSchedulesWithOptions(request *ListShiftSchedulesRequest, runtime *util.RuntimeOptions) (_result *ListShiftSchedulesResponse, _err error) {
+	_err = util.ValidateModel(request)
+	if _err != nil {
+		return _result, _err
+	}
+	body := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Owner)) {
+		body["Owner"] = request.Owner
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageNumber)) {
+		body["PageNumber"] = request.PageNumber
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
+		body["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ShiftScheduleName)) {
+		body["ShiftScheduleName"] = request.ShiftScheduleName
+	}
+
+	req := &openapi.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("ListShiftSchedules"),
+		Version:     tea.String("2020-05-18"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &ListShiftSchedulesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) ListShiftSchedules(request *ListShiftSchedulesRequest) (_result *ListShiftSchedulesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &ListShiftSchedulesResponse{}
+	_body, _err := client.ListShiftSchedulesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) ListSuccessInstanceAmountWithOptions(request *ListSuccessInstanceAmountRequest, runtime *util.RuntimeOptions) (_result *ListSuccessInstanceAmountResponse, _err error) {
 	_err = util.ValidateModel(request)
 	if _err != nil {
@@ -51975,6 +52031,10 @@ func (client *Client) SearchMetaTablesWithOptions(request *SearchMetaTablesReque
 
 	if !tea.BoolValue(util.IsUnset(request.PageSize)) {
 		query["PageSize"] = request.PageSize
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schema)) {
+		query["Schema"] = request.Schema
 	}
 
 	req := &openapi.OpenApiRequest{
@@ -53475,6 +53535,10 @@ func (client *Client) UpdateMetaTableWithOptions(request *UpdateMetaTableRequest
 		query["ProjectId"] = request.ProjectId
 	}
 
+	if !tea.BoolValue(util.IsUnset(request.Schema)) {
+		query["Schema"] = request.Schema
+	}
+
 	if !tea.BoolValue(util.IsUnset(request.TableGuid)) {
 		query["TableGuid"] = request.TableGuid
 	}
@@ -54025,6 +54089,10 @@ func (client *Client) UpdateTableWithOptions(request *UpdateTableRequest, runtim
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectId)) {
 		query["ProjectId"] = request.ProjectId
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Schema)) {
+		query["Schema"] = request.Schema
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.TableName)) {
