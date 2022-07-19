@@ -326,6 +326,31 @@ func (s *Binding) SetUpdateTime(v string) *Binding {
 	return s
 }
 
+type Body struct {
+	// Boundary
+	Boundary *Boundary `json:"Boundary,omitempty" xml:"Boundary,omitempty"`
+	// Confidence
+	Confidence *float32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
+}
+
+func (s Body) String() string {
+	return tea.Prettify(s)
+}
+
+func (s Body) GoString() string {
+	return s.String()
+}
+
+func (s *Body) SetBoundary(v *Boundary) *Body {
+	s.Boundary = v
+	return s
+}
+
+func (s *Body) SetConfidence(v float32) *Body {
+	s.Confidence = &v
+	return s
+}
+
 type Boundary struct {
 	// Height
 	Height *int64 `json:"Height,omitempty" xml:"Height,omitempty"`
@@ -4598,6 +4623,291 @@ func (s *CreateImageModerationTaskResponse) SetBody(v *CreateImageModerationTask
 	return s
 }
 
+type CreateImageSplicingTaskRequest struct {
+	Align            *int64            `json:"Align,omitempty" xml:"Align,omitempty"`
+	BackgroundColor  *string           `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Direction        *string           `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	ImageFormat      *string           `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
+	NotifyEndpoint   *string           `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
+	NotifyTopicName  *string           `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	Padding          *int64            `json:"Padding,omitempty" xml:"Padding,omitempty"`
+	// A short description of struct
+	ProjectName *string                                  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Quality     *int64                                   `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	ScaleType   *string                                  `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	Sources     []*CreateImageSplicingTaskRequestSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
+	Tags        map[string]interface{}                   `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TargetURI   *string                                  `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	UserData    *string                                  `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateImageSplicingTaskRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageSplicingTaskRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageSplicingTaskRequest) SetAlign(v int64) *CreateImageSplicingTaskRequest {
+	s.Align = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskRequest) SetBackgroundColor(v string) *CreateImageSplicingTaskRequest {
+	s.BackgroundColor = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskRequest) SetCredentialConfig(v *CredentialConfig) *CreateImageSplicingTaskRequest {
+	s.CredentialConfig = v
+	return s
+}
+
+func (s *CreateImageSplicingTaskRequest) SetDirection(v string) *CreateImageSplicingTaskRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskRequest) SetImageFormat(v string) *CreateImageSplicingTaskRequest {
+	s.ImageFormat = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskRequest) SetNotifyEndpoint(v string) *CreateImageSplicingTaskRequest {
+	s.NotifyEndpoint = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskRequest) SetNotifyTopicName(v string) *CreateImageSplicingTaskRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskRequest) SetPadding(v int64) *CreateImageSplicingTaskRequest {
+	s.Padding = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskRequest) SetProjectName(v string) *CreateImageSplicingTaskRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskRequest) SetQuality(v int64) *CreateImageSplicingTaskRequest {
+	s.Quality = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskRequest) SetScaleType(v string) *CreateImageSplicingTaskRequest {
+	s.ScaleType = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskRequest) SetSources(v []*CreateImageSplicingTaskRequestSources) *CreateImageSplicingTaskRequest {
+	s.Sources = v
+	return s
+}
+
+func (s *CreateImageSplicingTaskRequest) SetTags(v map[string]interface{}) *CreateImageSplicingTaskRequest {
+	s.Tags = v
+	return s
+}
+
+func (s *CreateImageSplicingTaskRequest) SetTargetURI(v string) *CreateImageSplicingTaskRequest {
+	s.TargetURI = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskRequest) SetUserData(v string) *CreateImageSplicingTaskRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateImageSplicingTaskRequestSources struct {
+	Rotate *int64  `json:"Rotate,omitempty" xml:"Rotate,omitempty"`
+	URI    *string `json:"URI,omitempty" xml:"URI,omitempty"`
+}
+
+func (s CreateImageSplicingTaskRequestSources) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageSplicingTaskRequestSources) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageSplicingTaskRequestSources) SetRotate(v int64) *CreateImageSplicingTaskRequestSources {
+	s.Rotate = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskRequestSources) SetURI(v string) *CreateImageSplicingTaskRequestSources {
+	s.URI = &v
+	return s
+}
+
+type CreateImageSplicingTaskShrinkRequest struct {
+	Align                  *int64  `json:"Align,omitempty" xml:"Align,omitempty"`
+	BackgroundColor        *string `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
+	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	Direction              *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
+	ImageFormat            *string `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
+	NotifyEndpoint         *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
+	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
+	Padding                *int64  `json:"Padding,omitempty" xml:"Padding,omitempty"`
+	// A short description of struct
+	ProjectName   *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Quality       *int64  `json:"Quality,omitempty" xml:"Quality,omitempty"`
+	ScaleType     *string `json:"ScaleType,omitempty" xml:"ScaleType,omitempty"`
+	SourcesShrink *string `json:"Sources,omitempty" xml:"Sources,omitempty"`
+	TagsShrink    *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
+	TargetURI     *string `json:"TargetURI,omitempty" xml:"TargetURI,omitempty"`
+	UserData      *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
+}
+
+func (s CreateImageSplicingTaskShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageSplicingTaskShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageSplicingTaskShrinkRequest) SetAlign(v int64) *CreateImageSplicingTaskShrinkRequest {
+	s.Align = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskShrinkRequest) SetBackgroundColor(v string) *CreateImageSplicingTaskShrinkRequest {
+	s.BackgroundColor = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskShrinkRequest) SetCredentialConfigShrink(v string) *CreateImageSplicingTaskShrinkRequest {
+	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskShrinkRequest) SetDirection(v string) *CreateImageSplicingTaskShrinkRequest {
+	s.Direction = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskShrinkRequest) SetImageFormat(v string) *CreateImageSplicingTaskShrinkRequest {
+	s.ImageFormat = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskShrinkRequest) SetNotifyEndpoint(v string) *CreateImageSplicingTaskShrinkRequest {
+	s.NotifyEndpoint = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskShrinkRequest) SetNotifyTopicName(v string) *CreateImageSplicingTaskShrinkRequest {
+	s.NotifyTopicName = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskShrinkRequest) SetPadding(v int64) *CreateImageSplicingTaskShrinkRequest {
+	s.Padding = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskShrinkRequest) SetProjectName(v string) *CreateImageSplicingTaskShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskShrinkRequest) SetQuality(v int64) *CreateImageSplicingTaskShrinkRequest {
+	s.Quality = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskShrinkRequest) SetScaleType(v string) *CreateImageSplicingTaskShrinkRequest {
+	s.ScaleType = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskShrinkRequest) SetSourcesShrink(v string) *CreateImageSplicingTaskShrinkRequest {
+	s.SourcesShrink = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskShrinkRequest) SetTagsShrink(v string) *CreateImageSplicingTaskShrinkRequest {
+	s.TagsShrink = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskShrinkRequest) SetTargetURI(v string) *CreateImageSplicingTaskShrinkRequest {
+	s.TargetURI = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskShrinkRequest) SetUserData(v string) *CreateImageSplicingTaskShrinkRequest {
+	s.UserData = &v
+	return s
+}
+
+type CreateImageSplicingTaskResponseBody struct {
+	EventId   *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	TaskId    *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+}
+
+func (s CreateImageSplicingTaskResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageSplicingTaskResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageSplicingTaskResponseBody) SetEventId(v string) *CreateImageSplicingTaskResponseBody {
+	s.EventId = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskResponseBody) SetRequestId(v string) *CreateImageSplicingTaskResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskResponseBody) SetTaskId(v string) *CreateImageSplicingTaskResponseBody {
+	s.TaskId = &v
+	return s
+}
+
+type CreateImageSplicingTaskResponse struct {
+	Headers    map[string]*string                   `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                               `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *CreateImageSplicingTaskResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s CreateImageSplicingTaskResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s CreateImageSplicingTaskResponse) GoString() string {
+	return s.String()
+}
+
+func (s *CreateImageSplicingTaskResponse) SetHeaders(v map[string]*string) *CreateImageSplicingTaskResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *CreateImageSplicingTaskResponse) SetStatusCode(v int32) *CreateImageSplicingTaskResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskResponse) SetBody(v *CreateImageSplicingTaskResponseBody) *CreateImageSplicingTaskResponse {
+	s.Body = v
+	return s
+}
+
 type CreateMediaConvertTaskRequest struct {
 	CredentialConfig *CredentialConfig                       `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	NotifyEndpoint   *string                                 `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
@@ -7150,6 +7460,134 @@ func (s *DetachOSSBucketResponse) SetStatusCode(v int32) *DetachOSSBucketRespons
 }
 
 func (s *DetachOSSBucketResponse) SetBody(v *DetachOSSBucketResponseBody) *DetachOSSBucketResponse {
+	s.Body = v
+	return s
+}
+
+type DetectImageBodiesRequest struct {
+	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// 项目名称
+	ProjectName *string  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Sensitivity *float32 `json:"Sensitivity,omitempty" xml:"Sensitivity,omitempty"`
+	// SourceURI
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+}
+
+func (s DetectImageBodiesRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectImageBodiesRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectImageBodiesRequest) SetCredentialConfig(v *CredentialConfig) *DetectImageBodiesRequest {
+	s.CredentialConfig = v
+	return s
+}
+
+func (s *DetectImageBodiesRequest) SetProjectName(v string) *DetectImageBodiesRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *DetectImageBodiesRequest) SetSensitivity(v float32) *DetectImageBodiesRequest {
+	s.Sensitivity = &v
+	return s
+}
+
+func (s *DetectImageBodiesRequest) SetSourceURI(v string) *DetectImageBodiesRequest {
+	s.SourceURI = &v
+	return s
+}
+
+type DetectImageBodiesShrinkRequest struct {
+	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
+	// 项目名称
+	ProjectName *string  `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
+	Sensitivity *float32 `json:"Sensitivity,omitempty" xml:"Sensitivity,omitempty"`
+	// SourceURI
+	SourceURI *string `json:"SourceURI,omitempty" xml:"SourceURI,omitempty"`
+}
+
+func (s DetectImageBodiesShrinkRequest) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectImageBodiesShrinkRequest) GoString() string {
+	return s.String()
+}
+
+func (s *DetectImageBodiesShrinkRequest) SetCredentialConfigShrink(v string) *DetectImageBodiesShrinkRequest {
+	s.CredentialConfigShrink = &v
+	return s
+}
+
+func (s *DetectImageBodiesShrinkRequest) SetProjectName(v string) *DetectImageBodiesShrinkRequest {
+	s.ProjectName = &v
+	return s
+}
+
+func (s *DetectImageBodiesShrinkRequest) SetSensitivity(v float32) *DetectImageBodiesShrinkRequest {
+	s.Sensitivity = &v
+	return s
+}
+
+func (s *DetectImageBodiesShrinkRequest) SetSourceURI(v string) *DetectImageBodiesShrinkRequest {
+	s.SourceURI = &v
+	return s
+}
+
+type DetectImageBodiesResponseBody struct {
+	// 图片裁剪结果
+	Bodies []*Body `json:"Bodies,omitempty" xml:"Bodies,omitempty" type:"Repeated"`
+	// 请求唯一ID
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+}
+
+func (s DetectImageBodiesResponseBody) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectImageBodiesResponseBody) GoString() string {
+	return s.String()
+}
+
+func (s *DetectImageBodiesResponseBody) SetBodies(v []*Body) *DetectImageBodiesResponseBody {
+	s.Bodies = v
+	return s
+}
+
+func (s *DetectImageBodiesResponseBody) SetRequestId(v string) *DetectImageBodiesResponseBody {
+	s.RequestId = &v
+	return s
+}
+
+type DetectImageBodiesResponse struct {
+	Headers    map[string]*string             `json:"headers,omitempty" xml:"headers,omitempty" require:"true"`
+	StatusCode *int32                         `json:"statusCode,omitempty" xml:"statusCode,omitempty" require:"true"`
+	Body       *DetectImageBodiesResponseBody `json:"body,omitempty" xml:"body,omitempty" require:"true"`
+}
+
+func (s DetectImageBodiesResponse) String() string {
+	return tea.Prettify(s)
+}
+
+func (s DetectImageBodiesResponse) GoString() string {
+	return s.String()
+}
+
+func (s *DetectImageBodiesResponse) SetHeaders(v map[string]*string) *DetectImageBodiesResponse {
+	s.Headers = v
+	return s
+}
+
+func (s *DetectImageBodiesResponse) SetStatusCode(v int32) *DetectImageBodiesResponse {
+	s.StatusCode = &v
+	return s
+}
+
+func (s *DetectImageBodiesResponse) SetBody(v *DetectImageBodiesResponseBody) *DetectImageBodiesResponse {
 	s.Body = v
 	return s
 }
@@ -13035,6 +13473,120 @@ func (client *Client) CreateImageModerationTask(request *CreateImageModerationTa
 	return _result, _err
 }
 
+func (client *Client) CreateImageSplicingTaskWithOptions(tmpReq *CreateImageSplicingTaskRequest, runtime *util.RuntimeOptions) (_result *CreateImageSplicingTaskResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &CreateImageSplicingTaskShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Sources)) {
+		request.SourcesShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Sources, tea.String("Sources"), tea.String("json"))
+	}
+
+	if !tea.BoolValue(util.IsUnset(tmpReq.Tags)) {
+		request.TagsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Tags, tea.String("Tags"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.Align)) {
+		query["Align"] = request.Align
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.BackgroundColor)) {
+		query["BackgroundColor"] = request.BackgroundColor
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
+		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Direction)) {
+		query["Direction"] = request.Direction
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ImageFormat)) {
+		query["ImageFormat"] = request.ImageFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyEndpoint)) {
+		query["NotifyEndpoint"] = request.NotifyEndpoint
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.NotifyTopicName)) {
+		query["NotifyTopicName"] = request.NotifyTopicName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Padding)) {
+		query["Padding"] = request.Padding
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Quality)) {
+		query["Quality"] = request.Quality
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ScaleType)) {
+		query["ScaleType"] = request.ScaleType
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourcesShrink)) {
+		query["Sources"] = request.SourcesShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TagsShrink)) {
+		query["Tags"] = request.TagsShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.TargetURI)) {
+		query["TargetURI"] = request.TargetURI
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.UserData)) {
+		query["UserData"] = request.UserData
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("CreateImageSplicingTask"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &CreateImageSplicingTaskResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) CreateImageSplicingTask(request *CreateImageSplicingTaskRequest) (_result *CreateImageSplicingTaskResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &CreateImageSplicingTaskResponse{}
+	_body, _err := client.CreateImageSplicingTaskWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
 func (client *Client) CreateMediaConvertTaskWithOptions(tmpReq *CreateMediaConvertTaskRequest, runtime *util.RuntimeOptions) (_result *CreateMediaConvertTaskResponse, _err error) {
 	_err = util.ValidateModel(tmpReq)
 	if _err != nil {
@@ -13898,6 +14450,68 @@ func (client *Client) DetachOSSBucket(request *DetachOSSBucketRequest) (_result 
 	runtime := &util.RuntimeOptions{}
 	_result = &DetachOSSBucketResponse{}
 	_body, _err := client.DetachOSSBucketWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+func (client *Client) DetectImageBodiesWithOptions(tmpReq *DetectImageBodiesRequest, runtime *util.RuntimeOptions) (_result *DetectImageBodiesResponse, _err error) {
+	_err = util.ValidateModel(tmpReq)
+	if _err != nil {
+		return _result, _err
+	}
+	request := &DetectImageBodiesShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !tea.BoolValue(util.IsUnset(tea.ToMap(tmpReq.CredentialConfig))) {
+		request.CredentialConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tea.ToMap(tmpReq.CredentialConfig), tea.String("CredentialConfig"), tea.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !tea.BoolValue(util.IsUnset(request.CredentialConfigShrink)) {
+		query["CredentialConfig"] = request.CredentialConfigShrink
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.ProjectName)) {
+		query["ProjectName"] = request.ProjectName
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Sensitivity)) {
+		query["Sensitivity"] = request.Sensitivity
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SourceURI)) {
+		query["SourceURI"] = request.SourceURI
+	}
+
+	req := &openapi.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapi.Params{
+		Action:      tea.String("DetectImageBodies"),
+		Version:     tea.String("2020-09-30"),
+		Protocol:    tea.String("HTTPS"),
+		Pathname:    tea.String("/"),
+		Method:      tea.String("POST"),
+		AuthType:    tea.String("AK"),
+		Style:       tea.String("RPC"),
+		ReqBodyType: tea.String("formData"),
+		BodyType:    tea.String("json"),
+	}
+	_result = &DetectImageBodiesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = tea.Convert(_body, &_result)
+	return _result, _err
+}
+
+func (client *Client) DetectImageBodies(request *DetectImageBodiesRequest) (_result *DetectImageBodiesResponse, _err error) {
+	runtime := &util.RuntimeOptions{}
+	_result = &DetectImageBodiesResponse{}
+	_body, _err := client.DetectImageBodiesWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
