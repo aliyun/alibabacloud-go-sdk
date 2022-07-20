@@ -36718,10 +36718,11 @@ func (s *StopInstanceResponse) SetBody(v *StopInstanceResponseBody) *StopInstanc
 }
 
 type SubmitFileRequest struct {
-	Comment           *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	FileId            *int64  `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	ProjectId         *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	ProjectIdentifier *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	Comment                     *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
+	FileId                      *int64  `json:"FileId,omitempty" xml:"FileId,omitempty"`
+	ProjectId                   *int64  `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
+	ProjectIdentifier           *string `json:"ProjectIdentifier,omitempty" xml:"ProjectIdentifier,omitempty"`
+	SkipAllDeployFileExtensions *bool   `json:"SkipAllDeployFileExtensions,omitempty" xml:"SkipAllDeployFileExtensions,omitempty"`
 }
 
 func (s SubmitFileRequest) String() string {
@@ -36749,6 +36750,11 @@ func (s *SubmitFileRequest) SetProjectId(v int64) *SubmitFileRequest {
 
 func (s *SubmitFileRequest) SetProjectIdentifier(v string) *SubmitFileRequest {
 	s.ProjectIdentifier = &v
+	return s
+}
+
+func (s *SubmitFileRequest) SetSkipAllDeployFileExtensions(v bool) *SubmitFileRequest {
+	s.SkipAllDeployFileExtensions = &v
 	return s
 }
 
@@ -52451,6 +52457,10 @@ func (client *Client) SubmitFileWithOptions(request *SubmitFileRequest, runtime 
 
 	if !tea.BoolValue(util.IsUnset(request.ProjectIdentifier)) {
 		body["ProjectIdentifier"] = request.ProjectIdentifier
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.SkipAllDeployFileExtensions)) {
+		body["SkipAllDeployFileExtensions"] = request.SkipAllDeployFileExtensions
 	}
 
 	req := &openapi.OpenApiRequest{
