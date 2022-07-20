@@ -23999,9 +23999,11 @@ func (s *GetFileDetectResultResponseBody) SetResultList(v []*GetFileDetectResult
 }
 
 type GetFileDetectResultResponseBodyResultList struct {
-	Ext     *GetFileDetectResultResponseBodyResultListExt `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
-	HashKey *string                                       `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
-	Result  *int32                                        `json:"Result,omitempty" xml:"Result,omitempty"`
+	Ext       *GetFileDetectResultResponseBodyResultListExt `json:"Ext,omitempty" xml:"Ext,omitempty" type:"Struct"`
+	HashKey   *string                                       `json:"HashKey,omitempty" xml:"HashKey,omitempty"`
+	Result    *int32                                        `json:"Result,omitempty" xml:"Result,omitempty"`
+	Score     *int32                                        `json:"Score,omitempty" xml:"Score,omitempty"`
+	VirusType *string                                       `json:"VirusType,omitempty" xml:"VirusType,omitempty"`
 }
 
 func (s GetFileDetectResultResponseBodyResultList) String() string {
@@ -24024,6 +24026,16 @@ func (s *GetFileDetectResultResponseBodyResultList) SetHashKey(v string) *GetFil
 
 func (s *GetFileDetectResultResponseBodyResultList) SetResult(v int32) *GetFileDetectResultResponseBodyResultList {
 	s.Result = &v
+	return s
+}
+
+func (s *GetFileDetectResultResponseBodyResultList) SetScore(v int32) *GetFileDetectResultResponseBodyResultList {
+	s.Score = &v
+	return s
+}
+
+func (s *GetFileDetectResultResponseBodyResultList) SetVirusType(v string) *GetFileDetectResultResponseBodyResultList {
+	s.VirusType = &v
 	return s
 }
 
