@@ -4629,6 +4629,7 @@ type CreateImageSplicingTaskRequest struct {
 	CredentialConfig *CredentialConfig `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	Direction        *string           `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	ImageFormat      *string           `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
+	Margin           *int64            `json:"Margin,omitempty" xml:"Margin,omitempty"`
 	NotifyEndpoint   *string           `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
 	NotifyTopicName  *string           `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	Padding          *int64            `json:"Padding,omitempty" xml:"Padding,omitempty"`
@@ -4672,6 +4673,11 @@ func (s *CreateImageSplicingTaskRequest) SetDirection(v string) *CreateImageSpli
 
 func (s *CreateImageSplicingTaskRequest) SetImageFormat(v string) *CreateImageSplicingTaskRequest {
 	s.ImageFormat = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskRequest) SetMargin(v int64) *CreateImageSplicingTaskRequest {
+	s.Margin = &v
 	return s
 }
 
@@ -4754,6 +4760,7 @@ type CreateImageSplicingTaskShrinkRequest struct {
 	CredentialConfigShrink *string `json:"CredentialConfig,omitempty" xml:"CredentialConfig,omitempty"`
 	Direction              *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
 	ImageFormat            *string `json:"ImageFormat,omitempty" xml:"ImageFormat,omitempty"`
+	Margin                 *int64  `json:"Margin,omitempty" xml:"Margin,omitempty"`
 	NotifyEndpoint         *string `json:"NotifyEndpoint,omitempty" xml:"NotifyEndpoint,omitempty"`
 	NotifyTopicName        *string `json:"NotifyTopicName,omitempty" xml:"NotifyTopicName,omitempty"`
 	Padding                *int64  `json:"Padding,omitempty" xml:"Padding,omitempty"`
@@ -4797,6 +4804,11 @@ func (s *CreateImageSplicingTaskShrinkRequest) SetDirection(v string) *CreateIma
 
 func (s *CreateImageSplicingTaskShrinkRequest) SetImageFormat(v string) *CreateImageSplicingTaskShrinkRequest {
 	s.ImageFormat = &v
+	return s
+}
+
+func (s *CreateImageSplicingTaskShrinkRequest) SetMargin(v int64) *CreateImageSplicingTaskShrinkRequest {
+	s.Margin = &v
 	return s
 }
 
@@ -13511,6 +13523,10 @@ func (client *Client) CreateImageSplicingTaskWithOptions(tmpReq *CreateImageSpli
 
 	if !tea.BoolValue(util.IsUnset(request.ImageFormat)) {
 		query["ImageFormat"] = request.ImageFormat
+	}
+
+	if !tea.BoolValue(util.IsUnset(request.Margin)) {
+		query["Margin"] = request.Margin
 	}
 
 	if !tea.BoolValue(util.IsUnset(request.NotifyEndpoint)) {
